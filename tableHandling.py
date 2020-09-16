@@ -1792,7 +1792,6 @@ class Tables:
                             into += "alles zur selben Strukturgröße einer " + cols[4]
                     # einzeln, bis es eine ganze neue Spalte ist
                     self.relitable[i] += [into]
-                alxp(couplesNums[o])
                 self.tables.generatedSpaltenParameter[len(self.relitable[0]) - 1] = [
                     self.tables.dataDict[1][couplesNums[o]]
                 ]
@@ -1811,11 +1810,12 @@ class Tables:
             """
             global originalLinesRange
             self.relitable = relitable
+            hardCodedCouple = (10, 42)
             if len(self.tables.primUniversePrimsSet) > 0:
                 self.tables.primUniverseRowNum = len(self.relitable[0])
                 rowsAsNumbers |= {len(self.relitable[0]), len(self.relitable[0]) + 1}
                 for polytype, polytypename in zip(
-                    [10, 42], ["Sternpolygone", "gleichförmiges Polygone"]
+                    hardCodedCouple, ["Sternpolygone", "gleichförmiges Polygone"]
                 ):
                     self.transzendentalien = []
                     self.rolle = []
@@ -1868,6 +1868,11 @@ class Tables:
                                 + ")"
                             )
                         self.relitable[i] += [into]
+
+                self.tables.generatedSpaltenParameter[len(self.relitable[0]) - 1] = [
+                    self.tables.dataDict[1][tuple(self.tables.dataDict[1].keys())[0]]
+                ]
+                x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
 
         def readConcatCsv(self, relitable: list, rowsAsNumbers: set) -> list:
