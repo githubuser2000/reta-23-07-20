@@ -1738,6 +1738,7 @@ class Tables:
         ) -> tuple:
             self.relitable: list = relitable
             self.concepts: list = []
+            couplesNums = []
             for i, paar in enumerate(conceptsRowsSetOfTuple):
                 first = []
                 second = []
@@ -1746,14 +1747,20 @@ class Tables:
                     first += [cols[paar[0]]]
                     second += [cols[paar[1]]]
                 rowsAsNumbers |= {len(self.relitable[0]) + i}
-            for concept in self.concepts:
+                couplesNums += [paar]
+            for o, concept in enumerate(self.concepts):
                 for i, (cols, row1, row2) in enumerate(
                     zip(deepcopy(self.relitable), concept[0], concept[1])
                 ):
                     if i == 0:
                         into = "Generiert: " + row1
                     else:
+                        # d.h. into füll wegen zip nur die Bereiche, die Bedacht
+                        # sind und alles andere sind nicht ein mal leere Strings,
+                        # sondern garn nichts: schlecht !
                         into = ""
+                        # i muss hier i > irgendwas sein weil mir sonst alles um die Ohren fliegt
+                        # i ist die Zeile
                         if row1.strip() != "":
                             into += "sehr: " + row1 + "| "
                         if i > 2 and concept[0][i - 2].strip() != "":
@@ -1774,12 +1781,13 @@ class Tables:
                             into += concept[1][i + 1] + "| "
                         if into != "":
                             into += "alles zur selben Strukturgröße einer " + cols[4]
-                    alxp(concept)
-                    self.tables.generatedSpaltenParameter[len(self.relitable[i])] = [
-                        self.tables.dataDict[1][concept]
-                    ]
+                    # einzeln, bis es eine ganze neue Spalte ist
                     self.relitable[i] += [into]
-                    x("idiot", self.tables.generatedSpaltenParameter)
+                alxp(couplesNums[o])
+                self.tables.generatedSpaltenParameter[len(self.relitable[0]) - 1] = [
+                    self.tables.dataDict[1][couplesNums[o]]
+                ]
+                x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
 
         def concat1RowPrimUniverse2(self, relitable: list, rowsAsNumbers: set) -> tuple:
