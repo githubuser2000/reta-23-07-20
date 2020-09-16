@@ -1687,6 +1687,10 @@ class Tables:
                             )
                         )
                     ]
+                self.tables.generatedSpaltenParameter[len(self.relitable[0]) - 1] = [
+                    self.tables.dataDict[0][64]
+                ]
+                x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
 
         def concatMondExponzierenLogarithmusTyp(
@@ -1694,8 +1698,9 @@ class Tables:
         ) -> tuple:
             self.relitable = relitable
             if rowsAsNumbers >= {64}:
+                hardcodedCouple = (44, 56)
                 for rownum, rowheading in zip(
-                    [44, 56],
+                    hardcodedCouple,
                     [
                         "Mond-Typ eines Sternpolygons",
                         "Mond-Typ eines gleichförmigen Polygons",
@@ -1731,6 +1736,10 @@ class Tables:
                                     + ", obwohl man nicht kann"
                                 )
                         self.relitable[i] += [into]
+                self.tables.generatedSpaltenParameter[len(self.relitable[0]) - 1] = [
+                    self.tables.dataDict[0][64]
+                ]
+                x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
 
         def concatRowsOfConcepts(
