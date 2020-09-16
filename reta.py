@@ -40,13 +40,15 @@ class Program:
 
         def resultingSpaltenFromTuple(tupl: tuple, neg, paraValue=None) -> tuple:
             for i, eineSpaltenArtmitSpaltenNummern in enumerate(tupl):
-                if (
-                    i == 5
-                    and type(eineSpaltenArtmitSpaltenNummern[0]) is bool
-                    and eineSpaltenArtmitSpaltenNummern[0]
-                ):
-                    alxp("JAAAAAAA")
-                    # tables.spalteGestirn = True
+                """
+                Die Variable self.tables.spalteGestirn braucht man gar nicht mehr !!!
+                """
+               # if (
+               #     i == 4
+               #     and type(eineSpaltenArtmitSpaltenNummern[0]) is bool
+               #     and eineSpaltenArtmitSpaltenNummern[0]
+               # ):
+               #     self.tables.spalteGestirn = True
                 elif i == 2 and type(eineSpaltenArtmitSpaltenNummern) in [list, tuple]:
                     self.spaltenArtenKey_SpaltennummernValue[
                         (len(neg), 2)
@@ -954,6 +956,14 @@ class Program:
                 except TypeError:
                     alxp(type(commandValue))
                     alxp(commandValue)
+
+        """
+        Folgende Schleife ist eigentlich unnötig.
+        Sie ist für bool Werte da, wenn Sachen generiert werden.
+        Ich brauche aber gerade den bool wert gar nicht mehr, weil es in
+        diesem Fall auch anders geht, aber für die Zukunft kann das hilfreich sein.
+        Also lasse ich es mal stehen!
+        """
         for possibleCommands in paraNdataMatrix:
             for commandValue, aAllValue in zip(possibleCommands[6:], allValues[4:]):
                 aAllValue += [commandValue]
