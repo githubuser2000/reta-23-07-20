@@ -39,6 +39,18 @@ def getTextWrapThings() -> tuple:
     return shellRowsAmount, h_de, dic, fill
 
 
+def x(text1, text):
+    global output
+    """Für mich, damit ich mal alle prints ausschalten kann zum vorführen,
+    wenn ich noch beim Entwicklen war."""
+    if infoLog and output:
+        if type(text) is str:
+            print(text1 + ": " + text)
+        else:
+            print(text1)
+            pp.pprint(text)
+
+
 def alxp(text):
     global output
     """Für mich, damit ich mal alle prints ausschalten kann zum vorführen,

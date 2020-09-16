@@ -10,7 +10,7 @@ from tableHandling import (Enum, Iterable, OutputSyntax, Tables, Union, alxp,
                            bbcode, bbCodeSyntax, cliout, copy, csv, csvSyntax,
                            deepcopy, getTextWrapThings, htmlSyntax, infoLog,
                            markdownSyntax, math, os, output, primCreativity,
-                           re, shellRowsAmount, sys)
+                           re, shellRowsAmount, sys, x)
 
 parser = bbcode.Parser()
 parser.add_simple_formatter("hr", "<hr />", standalone=True)
@@ -43,13 +43,13 @@ class Program:
                 """
                 Die Variable self.tables.spalteGestirn braucht man gar nicht mehr !!!
                 """
-               # if (
-               #     i == 4
-               #     and type(eineSpaltenArtmitSpaltenNummern[0]) is bool
-               #     and eineSpaltenArtmitSpaltenNummern[0]
-               # ):
-               #     self.tables.spalteGestirn = True
-                elif i == 2 and type(eineSpaltenArtmitSpaltenNummern) in [list, tuple]:
+                # if (
+                #     i == 4
+                #     and type(eineSpaltenArtmitSpaltenNummern[0]) is bool
+                #     and eineSpaltenArtmitSpaltenNummern[0]
+                # ):
+                #     self.tables.spalteGestirn = True
+                if i == 2 and type(eineSpaltenArtmitSpaltenNummern) in [list, tuple]:
                     self.spaltenArtenKey_SpaltennummernValue[
                         (len(neg), 2)
                     ] |= eineSpaltenArtmitSpaltenNummern[0](paraValue)

@@ -11,7 +11,7 @@ from typing import Iterable, Union
 
 import bbcode
 
-from center import alxp, cliout, getTextWrapThings, infoLog, output, re
+from center import alxp, cliout, getTextWrapThings, infoLog, output, re, x
 
 shellRowsAmount, h_de, dic, fill = getTextWrapThings()
 
@@ -296,6 +296,7 @@ class Tables:
     def __init__(self):
         self.rowNumOrig2rowNumDisplay = {}
         self.rowNumDisplay2rowNumOrig = {}
+        self.generatedSpaltenParameter = {}
         self.getPrepare = self.Prepare(self)
         self.getCombis = self.Combi(self)
         self.getConcat = self.Concat(self)
@@ -1917,9 +1918,16 @@ class Tables:
             @return: nichts
             """
             self.relitable = relitable
-            if self.spaltegestirn:
+            if rowsAsNumbers >= {64}:
                 if len(self.relitable) > 0:
-                    self.tables.dataDict[0][len(self.relitable[0])] = [(), ()]
+                    # self.tables.dataDict[0][len(self.relitable[0])] = [(), ()]
+                    self.tables.generatedSpaltenParameter[
+                        len(self.relitable[0])
+                    ] = self.tables.dataDict[0][64]
+                    x(
+                        "zzz",
+                        self.tables.generatedSpaltenParameter[len(self.relitable[0])],
+                    )
                     rowsAsNumbers.add(len(self.relitable[0]))
 
                 # moonNumber
