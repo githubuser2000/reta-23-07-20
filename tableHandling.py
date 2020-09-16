@@ -1774,7 +1774,12 @@ class Tables:
                             into += concept[1][i + 1] + "| "
                         if into != "":
                             into += "alles zur selben Strukturgröße einer " + cols[4]
+                    alxp(concept)
+                    self.tables.generatedSpaltenParameter[len(self.relitable[i])] = [
+                        self.tables.dataDict[1][concept]
+                    ]
                     self.relitable[i] += [into]
+                    x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
 
         def concat1RowPrimUniverse2(self, relitable: list, rowsAsNumbers: set) -> tuple:
