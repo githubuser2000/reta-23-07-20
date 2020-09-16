@@ -1891,12 +1891,12 @@ class Tables:
                                     and int(heading) in self.puniverseprims
                                     and u >= headingsAmount
                                 ):
-                                    rowsAsNumbers.add(int(u))
-                                    # self.tables.dataDict[0][(int(u))] = [
-                                    #     ("primzahlvielfache"),
-                                    #     # self.tables.dataDict[2][int(u)],
-                                    #     self.tables.dataDict[2],
-                                    # ]
+                                    rowsAsNumbers.add(u)
+                                    heading = int(heading)
+                                    self.tables.generatedSpaltenParameter[u] = [
+                                        self.tables.dataDict[2][heading]
+                                    ]
+                                    # x("zzz", self.tables.generatedSpaltenParameter)
 
                 self.concatRowsAmount = len(primcol)
             return self.relitable, rowsAsNumbers
