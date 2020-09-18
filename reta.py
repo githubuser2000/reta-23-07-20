@@ -88,7 +88,7 @@ class Program:
         mainParaCmds: dict = {
             "zeilen": 0,
             "spalten": 1,
-            "kombination": 2,
+            self.tables.getCombis.parameterName: 2,
             "ausgabe": 3,
             "debug": None,
             "h": None,
@@ -189,7 +189,7 @@ class Program:
                                 + " !"
                             )
 
-                elif lastMainCmd == mainParaCmds["kombination"]:
+                elif lastMainCmd == mainParaCmds[self.tables.getCombis.parameterName]:
                     if cmd[:6] == "--was=":
                         for oneKombiSpalte in cmd[6:].split(","):
                             if len(oneKombiSpalte) > 0 and oneKombiSpalte[0] == "-":

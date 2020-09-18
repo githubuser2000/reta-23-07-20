@@ -1250,6 +1250,7 @@ class Tables:
             self.ChosenKombiLines: dict = {}
             self.sumOfAllCombiRowsAmount = 0
             self.tables = tables
+            self.parameterName = "kombination"
             """alle  Schritte für kombi:
             1. lesen: KombiTable und relation, was von kombitable zu haupt gehört
                       und matrix mit zellen sind zahlen der kombinationen
