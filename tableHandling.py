@@ -1635,6 +1635,10 @@ class Tables:
                                         zu hoch wären, weil es die dazu kommenden
                                         Spalten der kombi.csv sind.
                                         """
+                                        x(
+                                            "sss",
+                                            len(self.tables.generatedSpaltenParameter),
+                                        )
                                         self.tables.generatedSpaltenParameter[u] = [
                                             ("kombination",),
                                             self.tables.dataDict[3][a],
