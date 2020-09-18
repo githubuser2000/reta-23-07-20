@@ -1246,10 +1246,10 @@ class Tables:
         return liste1, liste2
 
     class Combi:
-        def __init__(self, table):
+        def __init__(self, tables):
             self.ChosenKombiLines: dict = {}
             self.sumOfAllCombiRowsAmount = 0
-            self.table = table
+            self.tables = tables
             """alle  Schritte für kombi:
             1. lesen: KombiTable und relation, was von kombitable zu haupt gehört
                       und matrix mit zellen sind zahlen der kombinationen
@@ -1285,10 +1285,10 @@ class Tables:
                     usw. vorbereitet wurde.
                     """
 
-                    into = self.table.tableReducedInLinesByTypeSet(
+                    into = self.tables.tableReducedInLinesByTypeSet(
                         newTable_kombi_1, {kombiLineNumber}
                     )
-                    """into = self.tables.tableReducedInLinesByTypeSet(
+                    """into = self.tabless.tableReducedInLinesByTypeSet(
                         animalsProfessionsTable, {kombiLineNumber}
                     )"""
                     if len(into) > 0:
@@ -1337,8 +1337,8 @@ class Tables:
             table2 = mainTable
             """ Hätte ich mich gleich für SQL entschieden, oder hätte ich Pandas gewählt, dann hätte ich diesen Komplizierten Mist nicht programmieren müssen!
             """
-            # if self.table.textWidth == 0 and type(self.table.getOut.outType) in [
-            if type(self.table.getOut.outType) in [
+            # if self.tables.textWidth == 0 and type(self.tables.getOut.outType) in [
+            if type(self.tables.getOut.outType) in [
                 htmlSyntax,
                 bbCodeSyntax,
             ]:
@@ -1612,7 +1612,7 @@ class Tables:
                                         u >= headingsAmount
                                         and u == headingsAmount + a - 1
                                     ):
-                                        rowsAsNumbers.add(int(u))
+                                        rowsAsNumbers.add(u)
                                         """ rowsAsNumbers müsste hier verzeigert sein
                                         Es kommen genau diese Spaltennummern hinzu,
                                         (die überzählig sind) die nicht mehr in der
@@ -1620,13 +1620,16 @@ class Tables:
                                         zu hoch wären, weil es die dazu kommenden
                                         Spalten der kombi.csv sind.
                                         """
+                                        self.tables.generatedSpaltenParameter[u] = [
+                                            ("kombination",),
+                                            self.tables.dataDict[3][a],
+                                        ]
+
             else:
                 self.kombiTable = [[]]
                 self.kombiTable_Kombis = [[]]
-            # if len(self.kombiTable) > 0:
-            #    self.rowsOfcombi = len(rowsAsNumbers) - 1
-            # else:
-            #    self.rowsOfcombi = 0
+            x("idiot", self.tables.generatedSpaltenParameter)
+
             return (
                 self.kombiTable,
                 self.relitable,
@@ -1660,6 +1663,10 @@ class Tables:
                         ]
                     else:
                         self.relitable[i] += [""]
+                self.tables.generatedSpaltenParameter[
+                    len(self.relitable[0]) - 1
+                ] = self.tables.dataDict[0][8]
+                x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
 
         def concatPrimCreativityType(
@@ -1687,9 +1694,10 @@ class Tables:
                             )
                         )
                     ]
-                self.tables.generatedSpaltenParameter[len(self.relitable[0]) - 1] = [
-                    self.tables.dataDict[0][64]
-                ]
+                self.tables.generatedSpaltenParameter[
+                    len(self.relitable[0]) - 1
+                ] = self.tables.dataDict[0][64]
+
                 x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
 
@@ -1736,9 +1744,10 @@ class Tables:
                                     + ", obwohl man nicht kann"
                                 )
                         self.relitable[i] += [into]
-                self.tables.generatedSpaltenParameter[len(self.relitable[0]) - 1] = [
-                    self.tables.dataDict[0][64]
-                ]
+                self.tables.generatedSpaltenParameter[
+                    len(self.relitable[0]) - 1
+                ] = self.tables.dataDict[0][64]
+
                 x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
 
@@ -1792,9 +1801,10 @@ class Tables:
                             into += "alles zur selben Strukturgröße einer " + cols[4]
                     # einzeln, bis es eine ganze neue Spalte ist
                     self.relitable[i] += [into]
-                self.tables.generatedSpaltenParameter[len(self.relitable[0]) - 1] = [
-                    self.tables.dataDict[1][couplesNums[o]]
-                ]
+                self.tables.generatedSpaltenParameter[
+                    len(self.relitable[0]) - 1
+                ] = self.tables.dataDict[1][couplesNums[o]]
+
                 x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
 
@@ -1869,9 +1879,10 @@ class Tables:
                             )
                         self.relitable[i] += [into]
 
-                self.tables.generatedSpaltenParameter[len(self.relitable[0]) - 1] = [
-                    self.tables.dataDict[1][tuple(self.tables.dataDict[1].keys())[0]]
-                ]
+                self.tables.generatedSpaltenParameter[
+                    len(self.relitable[0]) - 1
+                ] = self.tables.dataDict[1][tuple(self.tables.dataDict[1].keys())[0]]
+
                 x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
 
