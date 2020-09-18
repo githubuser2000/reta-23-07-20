@@ -1171,16 +1171,19 @@ class Tables:
                         if t in rowsAsNumbers:
                             if u == 0:
                                 try:
-                                    if t not in self.tables.generatedSpaltenParameter:
+                                    if (
+                                        rowToDisplay
+                                        not in self.tables.generatedSpaltenParameter
+                                    ):
                                         self.tables.generatedSpaltenParameter[
                                             rowToDisplay
                                         ] = self.tables.dataDict[0][t]
                                 except KeyError:
                                     pass
-                                    # x("rrr", t)
-                                    # x("iii", self.tables.dataDict[0])
-                                    # x("wwi", cell)
-                                    # x("wwj", self.tables.generatedSpaltenParameter[t])
+                                    x("rrr", t)
+                                    alxp("__")
+                                    x("wwi", cell)
+                                    x("iii", self.tables.dataDict[0])
 
                             self.tables.rowNumOrig2rowNumDisplay[t] = rowToDisplay
                             self.tables.rowNumDisplay2rowNumOrig[rowToDisplay] = t
@@ -1639,7 +1642,10 @@ class Tables:
                                             "sss",
                                             len(self.tables.generatedSpaltenParameter),
                                         )
-                                        self.tables.generatedSpaltenParameter[u] = [
+                                        self.tables.generatedSpaltenParameter[
+                                            len(self.tables.generatedSpaltenParameter)
+                                            + self.tables.oldSpaltenAmount
+                                        ] = [
                                             ("kombination",),
                                             self.tables.dataDict[3][a],
                                         ]
@@ -1683,7 +1689,8 @@ class Tables:
                     else:
                         self.relitable[i] += [""]
                 self.tables.generatedSpaltenParameter[
-                    len(self.relitable[0]) - 2
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.oldSpaltenAmount
                 ] = self.tables.dataDict[0][8]
                 x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
@@ -1714,7 +1721,8 @@ class Tables:
                         )
                     ]
                 self.tables.generatedSpaltenParameter[
-                    len(self.relitable[0]) - 2
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.oldSpaltenAmount
                 ] = self.tables.dataDict[0][64]
 
                 x("idiot", self.tables.generatedSpaltenParameter)
@@ -1764,7 +1772,8 @@ class Tables:
                                 )
                         self.relitable[i] += [into]
                 self.tables.generatedSpaltenParameter[
-                    len(self.relitable[0]) - 2
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.oldSpaltenAmount
                 ] = self.tables.dataDict[0][64]
 
                 x("idiot", self.tables.generatedSpaltenParameter)
@@ -1820,8 +1829,14 @@ class Tables:
                             into += "alles zur selben Strukturgröße einer " + cols[4]
                     # einzeln, bis es eine ganze neue Spalte ist
                     self.relitable[i] += [into]
+                x(
+                    "ddd",
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.oldSpaltenAmount,
+                )
                 self.tables.generatedSpaltenParameter[
-                    len(self.relitable[0]) - 2
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.oldSpaltenAmount
                 ] = self.tables.dataDict[1][couplesNums[o]]
 
                 x("idiot", self.tables.generatedSpaltenParameter)
@@ -1899,13 +1914,14 @@ class Tables:
                         self.relitable[i] += [into]
 
                 self.tables.generatedSpaltenParameter[
-                    len(self.relitable[0]) - 2
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.oldSpaltenAmount
                 ] = self.tables.dataDict[1][tuple(self.tables.dataDict[1].keys())[0]]
 
                 x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
 
-        def readConcatCsv(self, relitable: list, rowsAsNumbers: set) -> list:
+        def readConcatCsv(self, relitable: list, rowsAsNumbers: set) -> tuple:
             """Fügt eine Tabelle neben der self.relitable an
             momentan ist es noch fix auf primnumbers.csv
 
@@ -1924,6 +1940,7 @@ class Tables:
             )
             self.relitable = relitable
             headingsAmount = len(self.relitable[0])
+            self.tables.oldSpaltenAmount = len(rowsAsNumbers)
             if len(self.puniverseprims) > 0:
                 with open(place, mode="r") as csv_file:
                     self.relitable, primUniverseLine = Tables.fillBoth(
@@ -1950,9 +1967,10 @@ class Tables:
                                 ):
                                     rowsAsNumbers.add(u)
                                     heading = int(heading)
-                                    self.tables.generatedSpaltenParameter[u] = [
-                                        self.tables.dataDict[2][heading]
-                                    ]
+                                    self.tables.generatedSpaltenParameter[
+                                        len(self.tables.generatedSpaltenParameter)
+                                        + self.tables.oldSpaltenAmount
+                                    ] = [self.tables.dataDict[2][heading]]
                                     # x("zzz", self.tables.generatedSpaltenParameter)
 
                 self.concatRowsAmount = len(primcol)
@@ -1960,7 +1978,7 @@ class Tables:
 
     class Maintable:
         def __init__(self, tables):
-            self.spaltegestirn = False
+            # self.spaltegestirn = False
             self.tables = tables
 
         def createSpalteGestirn(self, relitable: list, rowsAsNumbers: set):
@@ -1979,7 +1997,8 @@ class Tables:
                 if len(self.relitable) > 0:
                     # self.tables.dataDict[0][len(self.relitable[0])] = [(), ()]
                     self.tables.generatedSpaltenParameter[
-                        len(self.relitable[0]) - 1
+                        len(self.tables.generatedSpaltenParameter)
+                        + self.tables.oldSpaltenAmount
                     ] = self.tables.dataDict[0][64]
                     rowsAsNumbers.add(len(self.relitable[0]))
 
