@@ -1169,6 +1169,19 @@ class Tables:
                     h = 0
                     for t, cell in enumerate(line):
                         if t in rowsAsNumbers:
+                            if u == 0:
+                                try:
+                                    if t not in self.tables.generatedSpaltenParameter:
+                                        self.tables.generatedSpaltenParameter[
+                                            rowToDisplay
+                                        ] = self.tables.dataDict[0][t]
+                                except KeyError:
+                                    pass
+                                    # x("rrr", t)
+                                    # x("iii", self.tables.dataDict[0])
+                                    # x("wwi", cell)
+                                    # x("wwj", self.tables.generatedSpaltenParameter[t])
+
                             self.tables.rowNumOrig2rowNumDisplay[t] = rowToDisplay
                             self.tables.rowNumDisplay2rowNumOrig[rowToDisplay] = t
 
@@ -1186,6 +1199,7 @@ class Tables:
                     if new2Lines != []:
                         newerTable += [new2Lines]
 
+            x("idiot", self.tables.generatedSpaltenParameter)
             return finallyDisplayLines, newerTable, numlen, rowsRange, old2Rows
 
         def cellWork(self, cell: str, newLines, certaintextwidth: int, t: int) -> list:
@@ -1665,7 +1679,7 @@ class Tables:
                     else:
                         self.relitable[i] += [""]
                 self.tables.generatedSpaltenParameter[
-                    len(self.relitable[0]) - 1
+                    len(self.relitable[0]) - 2
                 ] = self.tables.dataDict[0][8]
                 x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
@@ -1696,7 +1710,7 @@ class Tables:
                         )
                     ]
                 self.tables.generatedSpaltenParameter[
-                    len(self.relitable[0]) - 1
+                    len(self.relitable[0]) - 2
                 ] = self.tables.dataDict[0][64]
 
                 x("idiot", self.tables.generatedSpaltenParameter)
@@ -1746,7 +1760,7 @@ class Tables:
                                 )
                         self.relitable[i] += [into]
                 self.tables.generatedSpaltenParameter[
-                    len(self.relitable[0]) - 1
+                    len(self.relitable[0]) - 2
                 ] = self.tables.dataDict[0][64]
 
                 x("idiot", self.tables.generatedSpaltenParameter)
@@ -1803,7 +1817,7 @@ class Tables:
                     # einzeln, bis es eine ganze neue Spalte ist
                     self.relitable[i] += [into]
                 self.tables.generatedSpaltenParameter[
-                    len(self.relitable[0]) - 1
+                    len(self.relitable[0]) - 2
                 ] = self.tables.dataDict[1][couplesNums[o]]
 
                 x("idiot", self.tables.generatedSpaltenParameter)
@@ -1881,7 +1895,7 @@ class Tables:
                         self.relitable[i] += [into]
 
                 self.tables.generatedSpaltenParameter[
-                    len(self.relitable[0]) - 1
+                    len(self.relitable[0]) - 2
                 ] = self.tables.dataDict[1][tuple(self.tables.dataDict[1].keys())[0]]
 
                 x("idiot", self.tables.generatedSpaltenParameter)
@@ -1961,12 +1975,8 @@ class Tables:
                 if len(self.relitable) > 0:
                     # self.tables.dataDict[0][len(self.relitable[0])] = [(), ()]
                     self.tables.generatedSpaltenParameter[
-                        len(self.relitable[0])
+                        len(self.relitable[0]) - 1
                     ] = self.tables.dataDict[0][64]
-                    x(
-                        "zzz",
-                        self.tables.generatedSpaltenParameter[len(self.relitable[0])],
-                    )
                     rowsAsNumbers.add(len(self.relitable[0]))
 
                 # moonNumber
