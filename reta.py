@@ -509,6 +509,11 @@ class Program:
                 {82},
             ),
             (
+                Program.ParametersMain.strukturgroesse,
+                ("politik", "politischesysteme"),
+                {83},
+            ),
+            (
                 Program.ParametersMain.universum,
                 (
                     "transzendentalien",
