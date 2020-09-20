@@ -273,10 +273,8 @@ class Program:
                             x("PANAME", parameterName)
                             if i == 4 and (type(dd) is bool or type(dd[0]) is bool):
                                 dataDicts[3][("bool", 0)] = (
-                                    parameterMainName
-                                    if len(parameterMainNames) > 0
-                                    else (),
-                                    parameterName if len(parameterNames) > 0 else (),
+                                    parameterMainName,
+                                    parameterName,
                                 )
                             elif i == 2 and type(dd) not in [tuple, int]:
                                 dataDicts[i][
@@ -285,18 +283,9 @@ class Program:
                                         if parameterName.isdecimal()
                                         else parameterName
                                         if len(parameterNames) > 0
-                                        else ()
+                                        else None
                                     )
-                                ] = [
-                                    (
-                                        parameterMainName
-                                        if len(parameterMainNames) > 0
-                                        else (),
-                                        parameterName
-                                        if len(parameterNames) > 0
-                                        else (),
-                                    )
-                                ]
+                                ] = [(parameterMainName, parameterName)]
                             else:
                                 try:
                                     x("DIES", i)
@@ -304,14 +293,7 @@ class Program:
                                     x("DIES", dataDicts[i][dd])
 
                                     dataDicts[i][dd] += [
-                                        (
-                                            parameterMainName
-                                            if len(parameterMainNames) > 0
-                                            else (),
-                                            parameterName
-                                            if len(parameterNames) > 0
-                                            else (),
-                                        )
+                                        (parameterMainName, parameterName)
                                     ]
                                 #            if dd == 0:
                                 #                alxp("funktionierte")
@@ -320,14 +302,7 @@ class Program:
                                 #                alxp(parameterName)
                                 except KeyError:
                                     dataDicts[i][dd] = [
-                                        (
-                                            parameterMainName
-                                            if len(parameterMainNames) > 0
-                                            else (),
-                                            parameterName
-                                            if len(parameterNames) > 0
-                                            else (),
-                                        )
+                                        (parameterMainName, parameterName)
                                     ]
                         #             if dd == 0:
                         #                 alxp("funktionierte nicht")
