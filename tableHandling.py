@@ -1756,6 +1756,7 @@ class Tables:
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.SpaltenVanillaAmount
                 ] = self.tables.dataDict[0][64]
+                x("WIE", self.tables.dataDict[0][64])
 
                 x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
@@ -1803,19 +1804,20 @@ class Tables:
                                     + ", obwohl man nicht kann"
                                 )
                         self.relitable[i] += [into]
-                if (
-                    len(self.tables.generatedSpaltenParameter)
-                    + self.tables.SpaltenVanillaAmount
-                    in self.tables.generatedSpaltenParameter
-                ):
-                    raise ValueError
+                    if (
+                        len(self.tables.generatedSpaltenParameter)
+                        + self.tables.SpaltenVanillaAmount
+                        in self.tables.generatedSpaltenParameter
+                    ):
+                        raise ValueError
 
-                self.tables.generatedSpaltenParameter[
-                    len(self.tables.generatedSpaltenParameter)
-                    + self.tables.SpaltenVanillaAmount
-                ] = self.tables.dataDict[0][64]
+                    self.tables.generatedSpaltenParameter[
+                        len(self.tables.generatedSpaltenParameter)
+                        + self.tables.SpaltenVanillaAmount
+                    ] = self.tables.dataDict[0][64]
+                    x("WIE2", self.tables.dataDict[0][64])
 
-                x("idiot", self.tables.generatedSpaltenParameter)
+                    x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
 
         def concatRowsOfConcepts(
