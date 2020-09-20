@@ -271,7 +271,7 @@ class Program:
                         ):
                             x("PANAME", parameterMainName)
                             x("PANAME", parameterName)
-                            if i == 4 and type(dd) is bool:
+                            if i == 4 and (type(dd) is bool or type(dd[0]) is bool):
                                 dataDicts[3][("bool", 0)] = (
                                     parameterMainName
                                     if len(parameterMainNames) > 0
@@ -295,6 +295,9 @@ class Program:
                                 )
                             else:
                                 try:
+                                    x("DIES", i)
+                                    x("DIES", dd)
+                                    x("DIES", dataDicts[i][dd])
 
                                     dataDicts[i][dd] += [
                                         (
