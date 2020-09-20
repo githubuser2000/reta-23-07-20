@@ -10,7 +10,8 @@ from tableHandling import (Enum, Iterable, OutputSyntax, Tables, Union, alxp,
                            bbcode, bbCodeSyntax, cliout, copy, csv, csvSyntax,
                            deepcopy, getTextWrapThings, htmlSyntax, infoLog,
                            markdownSyntax, math, os, output, primCreativity,
-                           re, shellRowsAmount, sys, x)
+                           primzahlvielfachesuniversum, re, shellRowsAmount,
+                           sys, x)
 
 parser = bbcode.Parser()
 parser.add_simple_formatter("hr", "<hr />", standalone=True)
@@ -401,7 +402,7 @@ class Program:
             ("licht",),
             ("bedeutung",),
             ("symbole",),
-            ("primzahlvielfachesuniversum",),
+            primzahlvielfachesuniversum,
             (
                 "konzept",
                 "konzepte",

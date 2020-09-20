@@ -13,6 +13,8 @@ for arg in sys.argv:
     if arg == "-debug":
         infoLog = True
 
+primzahlvielfachesuniversum = "primzahlvielfachesuniversum"
+
 
 def getTextWrapThings() -> tuple:
     if "Brython" not in sys.version.split():

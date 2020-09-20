@@ -11,7 +11,8 @@ from typing import Iterable, Union
 
 import bbcode
 
-from center import alxp, cliout, getTextWrapThings, infoLog, output, re, x
+from center import (alxp, cliout, getTextWrapThings, infoLog, output,
+                    primzahlvielfachesuniversum, re, x)
 
 shellRowsAmount, h_de, dic, fill = getTextWrapThings()
 
@@ -1969,14 +1970,11 @@ class Tables:
                     + self.tables.SpaltenVanillaAmount,
                 )
                 x("doofi 2", tuple(self.tables.dataDict[1].keys())[0])
-                x(
-                    "doofi 3",
-                    self.tables.dataDict[1][tuple(self.tables.dataDict[1].keys())[0]],
-                )
+                x("doofi 3", primzahlvielfachesuniversum)
                 self.tables.generatedSpaltenParameter[
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.SpaltenVanillaAmount
-                ] = self.tables.dataDict[1][tuple(self.tables.dataDict[1].keys())[0]]
+                ] = primzahlvielfachesuniversum
 
                 x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
