@@ -1958,25 +1958,25 @@ class Tables:
                             )
                         self.relitable[i] += [into]
 
-                if (
-                    len(self.tables.generatedSpaltenParameter)
-                    + self.tables.SpaltenVanillaAmount
-                    in self.tables.generatedSpaltenParameter
-                ):
-                    raise ValueError
-                x(
-                    "doofi 1",
-                    len(self.tables.generatedSpaltenParameter)
-                    + self.tables.SpaltenVanillaAmount,
-                )
-                x("doofi 2", tuple(self.tables.dataDict[1].keys())[0])
-                x("doofi 3", primzahlvielfachesuniversum)
-                self.tables.generatedSpaltenParameter[
-                    len(self.tables.generatedSpaltenParameter)
-                    + self.tables.SpaltenVanillaAmount
-                ] = primzahlvielfachesuniversum
+                    if (
+                        len(self.tables.generatedSpaltenParameter)
+                        + self.tables.SpaltenVanillaAmount
+                        in self.tables.generatedSpaltenParameter
+                    ):
+                        raise ValueError
+                    x(
+                        "doofi 1",
+                        len(self.tables.generatedSpaltenParameter)
+                        + self.tables.SpaltenVanillaAmount,
+                    )
+                    x("doofi 2", tuple(self.tables.dataDict[1].keys())[0])
+                    x("doofi 3", primzahlvielfachesuniversum)
+                    self.tables.generatedSpaltenParameter[
+                        len(self.tables.generatedSpaltenParameter)
+                        + self.tables.SpaltenVanillaAmount
+                    ] = primzahlvielfachesuniversum
 
-                x("idiot", self.tables.generatedSpaltenParameter)
+                    x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
 
         def readConcatCsv(self, relitable: list, rowsAsNumbers: set) -> tuple:
