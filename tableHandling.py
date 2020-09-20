@@ -294,7 +294,6 @@ class Tables:
         self.textwidth = value
 
     def __init__(self):
-        self.rowNumOrig2rowNumDisplay = {}
         self.rowNumDisplay2rowNumOrig = {}
         self.generatedSpaltenParameter = {}
         self.getPrepare = self.Prepare(self)
@@ -1174,7 +1173,17 @@ class Tables:
                                     rowToDisplay
                                     in self.tables.generatedSpaltenParameter
                                 ):
-                                    raise ValueError
+                                    x(
+                                        "FehlerX",
+                                        self.tables.generatedSpaltenParameter[
+                                            rowToDisplay
+                                        ],
+                                    )
+                                    if self.tables.SpaltenVanillaAmount > t:
+                                        x("FehlerX", rowToDisplay)
+                                        x("FehlerX", t)
+                                        x("FehlerX", self.tables.dataDict[0][t])
+                                    # raise ValueError
                                 try:
                                     if (
                                         rowToDisplay
@@ -1189,9 +1198,6 @@ class Tables:
                                     alxp("__")
                                     x("wwi", cell)
                                     x("iii", self.tables.dataDict[0])
-
-                            self.tables.rowNumOrig2rowNumDisplay[t] = rowToDisplay
-                            self.tables.rowNumDisplay2rowNumOrig[rowToDisplay] = t
 
                             rowToDisplay += 1
                             newLines = [[]] * headingsAmount
@@ -1645,7 +1651,7 @@ class Tables:
                                         """
                                         if (
                                             len(self.tables.generatedSpaltenParameter)
-                                            + self.tables.oldSpaltenAmount
+                                            + self.tables.SpaltenVanillaAmount
                                             in self.tables.generatedSpaltenParameter
                                         ):
                                             raise ValueError
@@ -1655,7 +1661,7 @@ class Tables:
                                         )
                                         self.tables.generatedSpaltenParameter[
                                             len(self.tables.generatedSpaltenParameter)
-                                            + self.tables.oldSpaltenAmount
+                                            + self.tables.SpaltenVanillaAmount
                                         ] = [
                                             ("kombination",),
                                             self.tables.dataDict[3][a],
@@ -1701,13 +1707,13 @@ class Tables:
                         self.relitable[i] += [""]
                 if (
                     len(self.tables.generatedSpaltenParameter)
-                    + self.tables.oldSpaltenAmount
+                    + self.tables.SpaltenVanillaAmount
                     in self.tables.generatedSpaltenParameter
                 ):
                     raise ValueError
                 self.tables.generatedSpaltenParameter[
                     len(self.tables.generatedSpaltenParameter)
-                    + self.tables.oldSpaltenAmount
+                    + self.tables.SpaltenVanillaAmount
                 ] = self.tables.dataDict[0][8]
                 x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
@@ -1740,14 +1746,14 @@ class Tables:
 
                 if (
                     len(self.tables.generatedSpaltenParameter)
-                    + self.tables.oldSpaltenAmount
+                    + self.tables.SpaltenVanillaAmount
                     in self.tables.generatedSpaltenParameter
                 ):
                     raise ValueError
 
                 self.tables.generatedSpaltenParameter[
                     len(self.tables.generatedSpaltenParameter)
-                    + self.tables.oldSpaltenAmount
+                    + self.tables.SpaltenVanillaAmount
                 ] = self.tables.dataDict[0][64]
 
                 x("idiot", self.tables.generatedSpaltenParameter)
@@ -1798,14 +1804,14 @@ class Tables:
                         self.relitable[i] += [into]
                 if (
                     len(self.tables.generatedSpaltenParameter)
-                    + self.tables.oldSpaltenAmount
+                    + self.tables.SpaltenVanillaAmount
                     in self.tables.generatedSpaltenParameter
                 ):
                     raise ValueError
 
                 self.tables.generatedSpaltenParameter[
                     len(self.tables.generatedSpaltenParameter)
-                    + self.tables.oldSpaltenAmount
+                    + self.tables.SpaltenVanillaAmount
                 ] = self.tables.dataDict[0][64]
 
                 x("idiot", self.tables.generatedSpaltenParameter)
@@ -1864,17 +1870,17 @@ class Tables:
                 x(
                     "ddd",
                     len(self.tables.generatedSpaltenParameter)
-                    + self.tables.oldSpaltenAmount,
+                    + self.tables.SpaltenVanillaAmount,
                 )
                 if (
                     len(self.tables.generatedSpaltenParameter)
-                    + self.tables.oldSpaltenAmount
+                    + self.tables.SpaltenVanillaAmount
                     in self.tables.generatedSpaltenParameter
                 ):
                     raise ValueError
                 self.tables.generatedSpaltenParameter[
                     len(self.tables.generatedSpaltenParameter)
-                    + self.tables.oldSpaltenAmount
+                    + self.tables.SpaltenVanillaAmount
                 ] = self.tables.dataDict[1][couplesNums[o]]
 
                 x("idiot", self.tables.generatedSpaltenParameter)
@@ -1953,14 +1959,14 @@ class Tables:
 
                 if (
                     len(self.tables.generatedSpaltenParameter)
-                    + self.tables.oldSpaltenAmount
+                    + self.tables.SpaltenVanillaAmount
                     in self.tables.generatedSpaltenParameter
                 ):
                     raise ValueError
 
                 self.tables.generatedSpaltenParameter[
                     len(self.tables.generatedSpaltenParameter)
-                    + self.tables.oldSpaltenAmount
+                    + self.tables.SpaltenVanillaAmount
                 ] = self.tables.dataDict[1][tuple(self.tables.dataDict[1].keys())[0]]
 
                 x("idiot", self.tables.generatedSpaltenParameter)
@@ -1985,7 +1991,7 @@ class Tables:
             )
             self.relitable = relitable
             headingsAmount = len(self.relitable[0])
-            self.tables.oldSpaltenAmount = len(rowsAsNumbers)
+            self.tables.SpaltenVanillaAmount = len(rowsAsNumbers)
             if len(self.puniverseprims) > 0:
                 with open(place, mode="r") as csv_file:
                     self.relitable, primUniverseLine = Tables.fillBoth(
@@ -2014,13 +2020,13 @@ class Tables:
                                     heading = int(heading)
                                     if (
                                         len(self.tables.generatedSpaltenParameter)
-                                        + self.tables.oldSpaltenAmount
+                                        + self.tables.SpaltenVanillaAmount
                                         in self.tables.generatedSpaltenParameter
                                     ):
                                         raise ValueError
                                     self.tables.generatedSpaltenParameter[
                                         len(self.tables.generatedSpaltenParameter)
-                                        + self.tables.oldSpaltenAmount
+                                        + self.tables.SpaltenVanillaAmount
                                     ] = [self.tables.dataDict[2][heading]]
                                     # x("zzz", self.tables.generatedSpaltenParameter)
 
@@ -2049,13 +2055,13 @@ class Tables:
                     # self.tables.dataDict[0][len(self.relitable[0])] = [(), ()]
                     if (
                         len(self.tables.generatedSpaltenParameter)
-                        + self.tables.oldSpaltenAmount
+                        + self.tables.SpaltenVanillaAmount
                         in self.tables.generatedSpaltenParameter
                     ):
                         raise ValueError
                     self.tables.generatedSpaltenParameter[
                         len(self.tables.generatedSpaltenParameter)
-                        + self.tables.oldSpaltenAmount
+                        + self.tables.SpaltenVanillaAmount
                     ] = self.tables.dataDict[0][64]
                     rowsAsNumbers.add(len(self.relitable[0]))
 
