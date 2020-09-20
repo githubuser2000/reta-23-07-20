@@ -1170,7 +1170,10 @@ class Tables:
                     for t, cell in enumerate(line):
                         if t in rowsAsNumbers:
                             if u == 0:
-                                if rowToDisplay in self.tables.generatedSpaltenParameter:
+                                if (
+                                    rowToDisplay
+                                    in self.tables.generatedSpaltenParameter
+                                ):
                                     raise ValueError
                                 try:
                                     if (
@@ -1640,9 +1643,12 @@ class Tables:
                                         zu hoch wären, weil es die dazu kommenden
                                         Spalten der kombi.csv sind.
                                         """
-                                        if len(self.tables.generatedSpaltenParameter)
-                                            + self.tables.oldSpaltenAmount in self.tables.generatedSpaltenParameter:
-                                                raise ValueError
+                                        if (
+                                            len(self.tables.generatedSpaltenParameter)
+                                            + self.tables.oldSpaltenAmount
+                                            in self.tables.generatedSpaltenParameter
+                                        ):
+                                            raise ValueError
                                         x(
                                             "sss",
                                             len(self.tables.generatedSpaltenParameter),
@@ -1693,9 +1699,12 @@ class Tables:
                         ]
                     else:
                         self.relitable[i] += [""]
-                if len(self.tables.generatedSpaltenParameter)
-                    + self.tables.oldSpaltenAmount in  self.tables.generatedSpaltenParameter:
-                        raise ValueError
+                if (
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.oldSpaltenAmount
+                    in self.tables.generatedSpaltenParameter
+                ):
+                    raise ValueError
                 self.tables.generatedSpaltenParameter[
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.oldSpaltenAmount
@@ -1787,9 +1796,12 @@ class Tables:
                                     + ", obwohl man nicht kann"
                                 )
                         self.relitable[i] += [into]
-                if len(self.tables.generatedSpaltenParameter)
-                    + self.tables.oldSpaltenAmount in self.tables.generatedSpaltenParameter:
-                        raise ValueError
+                if (
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.oldSpaltenAmount
+                    in self.tables.generatedSpaltenParameter
+                ):
+                    raise ValueError
 
                 self.tables.generatedSpaltenParameter[
                     len(self.tables.generatedSpaltenParameter)
@@ -1853,8 +1865,12 @@ class Tables:
                     "ddd",
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.oldSpaltenAmount,
-                if len(self.tables.generatedSpaltenParameter)
-                    + self.tables.oldSpaltenAmount in self.tables.generatedSpaltenParameter:
+                )
+                if (
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.oldSpaltenAmount
+                    in self.tables.generatedSpaltenParameter
+                ):
                     raise ValueError
                 self.tables.generatedSpaltenParameter[
                     len(self.tables.generatedSpaltenParameter)
@@ -1935,9 +1951,12 @@ class Tables:
                             )
                         self.relitable[i] += [into]
 
-                if len(self.tables.generatedSpaltenParameter)
-                    + self.tables.oldSpaltenAmount in self.tables.generatedSpaltenParameter:
-                        raise ValueError
+                if (
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.oldSpaltenAmount
+                    in self.tables.generatedSpaltenParameter
+                ):
+                    raise ValueError
 
                 self.tables.generatedSpaltenParameter[
                     len(self.tables.generatedSpaltenParameter)
@@ -1993,9 +2012,12 @@ class Tables:
                                 ):
                                     rowsAsNumbers.add(u)
                                     heading = int(heading)
-                                    if len(self.tables.generatedSpaltenParameter)
-                                        + self.tables.oldSpaltenAmount in self.tables.generatedSpaltenParameter:
-                                            raise ValueError
+                                    if (
+                                        len(self.tables.generatedSpaltenParameter)
+                                        + self.tables.oldSpaltenAmount
+                                        in self.tables.generatedSpaltenParameter
+                                    ):
+                                        raise ValueError
                                     self.tables.generatedSpaltenParameter[
                                         len(self.tables.generatedSpaltenParameter)
                                         + self.tables.oldSpaltenAmount
@@ -2025,9 +2047,12 @@ class Tables:
             if rowsAsNumbers >= {64}:
                 if len(self.relitable) > 0:
                     # self.tables.dataDict[0][len(self.relitable[0])] = [(), ()]
-                    if len(self.tables.generatedSpaltenParameter)
-                        + self.tables.oldSpaltenAmount in self.tables.generatedSpaltenParameter:
-                            raise ValueError
+                    if (
+                        len(self.tables.generatedSpaltenParameter)
+                        + self.tables.oldSpaltenAmount
+                        in self.tables.generatedSpaltenParameter
+                    ):
+                        raise ValueError
                     self.tables.generatedSpaltenParameter[
                         len(self.tables.generatedSpaltenParameter)
                         + self.tables.oldSpaltenAmount
