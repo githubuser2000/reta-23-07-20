@@ -266,7 +266,11 @@ class Program:
             for i, d in enumerate(datas):
                 for dd in d:
                     for parameterMainName in parameterMainNames:
-                        for parameterName in parameterNames:
+                        for parameterName in (
+                            parameterNames if len(parameterNames) > 0 else ("",)
+                        ):
+                            x("PANAME", parameterMainName)
+                            x("PANAME", parameterName)
                             if i == 4 and type(dd) is bool:
                                 dataDicts[3][("bool", 0)] = (
                                     parameterMainName
@@ -323,9 +327,8 @@ class Program:
                         #                 alxp(i)
                         #                 alxp(dataDicts[i][dd])
                         #                 alxp(parameterName)
-            # alxp("--")#
-            # alxp(dataDicts)
-            # alxp("--")
+            x("dadaDick", dataDicts)
+            x("PARA", paraDict)
             return paraMainDict, paraDict, dataDicts
 
         def mergeParameterDicts(
