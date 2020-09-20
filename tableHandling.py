@@ -1170,6 +1170,8 @@ class Tables:
                     for t, cell in enumerate(line):
                         if t in rowsAsNumbers:
                             if u == 0 and combiRows == 0:
+                                x("_x_", rowToDisplay)
+                                x("_y_", self.tables.generatedSpaltenParameter)
                                 if (
                                     rowToDisplay
                                     in self.tables.generatedSpaltenParameter
