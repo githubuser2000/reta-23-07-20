@@ -365,6 +365,7 @@ class Program:
                         for key1, value1 in dict1.items():
                             for key2, value2 in dict2.items():
                                 if key2 == key1:
+                                    x("DING", dataDicts3[i][key1])
                                     dataDicts3[i][key1] += value2
                                 elif key2 not in dataDicts3[i].keys():
                                     dataDicts3[i][key2] = value2
@@ -806,7 +807,9 @@ class Program:
                 set(),
                 set(),
                 set(),
-                (True,),
+                [
+                    True,
+                ],
             ),
             (Program.ParametersMain.symbole, (), {36, 37}),
             (
