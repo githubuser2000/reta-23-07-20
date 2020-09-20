@@ -1168,13 +1168,13 @@ class Tables:
                     h = 0
                     for t, cell in enumerate(line):
                         if t in rowsAsNumbers:
-                            if u == 0:
+                            if u == 0 and combiRows == 0:
                                 if (
                                     rowToDisplay
                                     in self.tables.generatedSpaltenParameter
                                 ):
                                     x(
-                                        "FehlerX",
+                                        "FehlerY",
                                         self.tables.generatedSpaltenParameter[
                                             rowToDisplay
                                         ],
@@ -1189,11 +1189,11 @@ class Tables:
                                         rowToDisplay
                                         not in self.tables.generatedSpaltenParameter
                                     ):
+                                        pass
                                         self.tables.generatedSpaltenParameter[
                                             rowToDisplay
                                         ] = self.tables.dataDict[0][t]
                                 except KeyError:
-                                    pass
                                     x("rrr", t)
                                     alxp("__")
                                     x("wwi", cell)
@@ -1963,7 +1963,16 @@ class Tables:
                     in self.tables.generatedSpaltenParameter
                 ):
                     raise ValueError
-
+                x(
+                    "doofi 1",
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.SpaltenVanillaAmount,
+                )
+                x("doofi 2", tuple(self.tables.dataDict[1].keys())[0])
+                x(
+                    "doofi 3",
+                    self.tables.dataDict[1][tuple(self.tables.dataDict[1].keys())[0]],
+                )
                 self.tables.generatedSpaltenParameter[
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.SpaltenVanillaAmount
