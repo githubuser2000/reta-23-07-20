@@ -113,6 +113,8 @@ class Program:
                         'Der Haupt-Paramaeter "'
                         + cmd
                         + '" existiert hier nich als Befehl!'
+                        + " Es ist nur möglich: "
+                        + str(mainParaCmds.keys())
                     )
             elif cmd[:2] == "--":
                 if lastMainCmd == mainParaCmds["spalten"]:
@@ -169,6 +171,28 @@ class Program:
                                         + '" existiert hier nicht als Befehl für Haupt-Parameter'
                                         + " -spalten"
                                         + " !"
+                                        + " Es ist nur möglich:\n"
+                                        + str(
+                                            ", ".join(
+                                                tuple(
+                                                    set(
+                                                        key[0]
+                                                        for key in self.paraDict.keys()
+                                                    )
+                                                )
+                                            )
+                                        )
+                                        + "\nmit dem Werten dahinter:\n"
+                                        + str(
+                                            ", ".join(
+                                                tuple(
+                                                    set(
+                                                        key[1]
+                                                        for key in self.paraDict.keys()
+                                                    )
+                                                )
+                                            )
+                                        )
                                     )
 
                     else:
@@ -188,6 +212,14 @@ class Program:
                                 + '" existiert hier nich als Befehl für Haupt-Parameter'
                                 + " -spalten"
                                 + " !"
+                                + " Es ist nur möglich: "
+                                + str(
+                                    ", ".join(
+                                        tuple(
+                                            set(key[0] for key in self.paraDict.keys())
+                                        )
+                                    )
+                                )
                             )
 
                 elif lastMainCmd == mainParaCmds[self.tables.getCombis.parameterName]:
