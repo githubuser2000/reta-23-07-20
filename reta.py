@@ -51,11 +51,29 @@ class Program:
                 #     and eineSpaltenArtmitSpaltenNummern[0]
                 # ):
                 #     self.tables.spalteGestirn = True
+                x("___", eineSpaltenArtmitSpaltenNummern)
+                if (
+                    type(eineSpaltenArtmitSpaltenNummern) in [list, tuple]
+                    and len(eineSpaltenArtmitSpaltenNummern) > 0
+                ):
+                    if type(eineSpaltenArtmitSpaltenNummern[0]) is bool:
+                        eineSpaltenArtmitSpaltenNummern = set(
+                            eineSpaltenArtmitSpaltenNummern
+                        )
+                    elif type(eineSpaltenArtmitSpaltenNummern[0]) in [tuple, list]:
+                        eineSpaltenArtmitSpaltenNummern = set(
+                            eineSpaltenArtmitSpaltenNummern[0]
+                        )
                 if i == 2 and type(eineSpaltenArtmitSpaltenNummern) in [list, tuple]:
                     self.spaltenArtenKey_SpaltennummernValue[
                         (len(neg), 2)
                     ] |= eineSpaltenArtmitSpaltenNummern[0](paraValue)
                 else:
+                    x("_1", type(eineSpaltenArtmitSpaltenNummern))
+                    x(
+                        "_2",
+                        type(self.spaltenArtenKey_SpaltennummernValue[(len(neg), i)]),
+                    )
                     self.spaltenArtenKey_SpaltennummernValue[
                         (len(neg), i)
                     ] |= eineSpaltenArtmitSpaltenNummern
@@ -153,6 +171,7 @@ class Program:
                                     #    oneOfThingsAfterEqSign,
                                     #    self.tables,
                                     # )
+                                    x("geht villeicht 1:", cmd[:eq])
                                     resultingSpaltenFromTuple(
                                         self.paraDict[
                                             (cmd[:eq], oneOfThingsAfterEqSign)
@@ -205,9 +224,9 @@ class Program:
                                 if len(cmd) > 0 and cmd[-1] == "-" and len(neg) > 0:
                                     cmd = cmd[:-1]
 
-                                x("TT", cmd)
+                                x("TT1", self.paraDict[(cmd, "")])
                                 resultingSpaltenFromTuple(self.paraDict[(cmd, "")], neg)
-                                x("TT", cmd)
+                                x("TT2", cmd)
 
                         except KeyError:
                             cliout(
@@ -2000,10 +2019,19 @@ class Program:
         self.dataDict: tuple = [{}, {}, {}, {}]
         self.spaltenTypeNaming: namedtuple = namedtuple(
             "SpaltenTyp",
-            "ordinary generated1 concat1 kombi1 ordinaryNot generate1dNot concat1Not kombi1Not",
+            "ordinary generated1 concat1 kombi1 bool1 ordinaryNot generate1dNot concat1Not kombi1Not bool1Not",
         )
         self.spaltenTypeNaming = self.spaltenTypeNaming(
-            (0, 0), (0, 1), (0, 2), (0, 3), (1, 0), (1, 1), (1, 2), (1, 3)
+            (0, 0),
+            (0, 1),
+            (0, 2),
+            (0, 3),
+            (0, 4),
+            (1, 0),
+            (1, 1),
+            (1, 2),
+            (1, 3),
+            (1, 4),
         )
 
         # self.spaltenArtenNameKey_SpaltenArtenTupleVal_4Key4otherDict = {
@@ -2021,10 +2049,12 @@ class Program:
             (0, 1): set(),
             (0, 2): set(),
             (0, 3): set(),
+            (0, 4): set(),
             (1, 0): set(),
             (1, 1): set(),
             (1, 2): set(),
             (1, 3): set(),
+            (1, 4): set(),
         }
         self.storeParamtersForColumns()
         self.produceAllSpaltenNumbers()
