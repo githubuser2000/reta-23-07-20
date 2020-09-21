@@ -1978,7 +1978,7 @@ class Tables:
                     self.tables.generatedSpaltenParameter[
                         len(self.tables.generatedSpaltenParameter)
                         + self.tables.SpaltenVanillaAmount
-                    ] = primzahlvielfachesuniversum
+                    ] = [primzahlvielfachesuniversum]
 
                     x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
@@ -2035,11 +2035,12 @@ class Tables:
                                         in self.tables.generatedSpaltenParameter
                                     ):
                                         raise ValueError
+                                    alxp("XYZ")
                                     self.tables.generatedSpaltenParameter[
                                         len(self.tables.generatedSpaltenParameter)
                                         + self.tables.SpaltenVanillaAmount
-                                    ] = [self.tables.dataDict[2][heading]]
-                                    # x("zzz", self.tables.generatedSpaltenParameter)
+                                    ] = self.tables.dataDict[2][heading]
+                                    x("zzz", self.tables.generatedSpaltenParameter)
 
                 self.concatRowsAmount = len(primcol)
             return self.relitable, rowsAsNumbers
