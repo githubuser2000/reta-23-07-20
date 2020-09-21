@@ -183,6 +183,7 @@ class Program:
                                                 )
                                             )
                                         )
+                                        + ", --breiten, --breite"
                                         + "\nmit dem Werten dahinter:\n"
                                         + str(
                                             ",".join(
@@ -223,6 +224,7 @@ class Program:
                                         )
                                     )
                                 )
+                                + ", --keinenummerierung"
                             )
 
                 elif lastMainCmd == mainParaCmds[self.tables.getCombis.parameterName]:
