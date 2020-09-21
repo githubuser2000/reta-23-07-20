@@ -215,7 +215,7 @@ class Program:
                                 + '" existiert hier nich als Befehl für Haupt-Parameter'
                                 + " -spalten"
                                 + " !"
-                                + " Es ist nur möglich: "
+                                + " Es ist nur möglich: --"
                                 + str(
                                     ", --".join(
                                         tuple(
