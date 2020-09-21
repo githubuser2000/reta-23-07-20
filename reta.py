@@ -40,6 +40,7 @@ class Program:
         global shellRowsAmount
 
         def resultingSpaltenFromTuple(tupl: tuple, neg, paraValue=None) -> tuple:
+            x("TTT", paraValue)
             for i, eineSpaltenArtmitSpaltenNummern in enumerate(tupl):
                 """
                 Die Variable self.tables.spalteGestirn braucht man gar nicht mehr !!!
@@ -113,8 +114,8 @@ class Program:
                         'Der Haupt-Paramaeter "'
                         + cmd
                         + '" existiert hier nich als Befehl!'
-                        + " Es ist nur möglich: "
-                        + str(mainParaCmds.keys())
+                        + " Es ist nur möglich: -"
+                        + str(", -".join(list(mainParaCmds.keys())))
                     )
             elif cmd[:2] == "--":
                 if lastMainCmd == mainParaCmds["spalten"]:
@@ -159,7 +160,7 @@ class Program:
                                         neg,
                                         oneOfThingsAfterEqSign,
                                     )
-                                    alxp("geht:")
+                                    alxp("geht 1:")
                                     alxp((cmd[:eq], oneOfThingsAfterEqSign))
                                 except KeyError:
                                     alxp((cmd[:eq], oneOfThingsAfterEqSign))
@@ -171,9 +172,9 @@ class Program:
                                         + '" existiert hier nicht als Befehl für Haupt-Parameter'
                                         + " -spalten"
                                         + " !"
-                                        + " Es ist nur möglich:\n"
+                                        + " Es ist nur möglich:\n--"
                                         + str(
-                                            ", ".join(
+                                            ", --".join(
                                                 tuple(
                                                     set(
                                                         key[0]
@@ -184,7 +185,7 @@ class Program:
                                         )
                                         + "\nmit dem Werten dahinter:\n"
                                         + str(
-                                            ", ".join(
+                                            ",".join(
                                                 tuple(
                                                     set(
                                                         key[1]
@@ -203,7 +204,9 @@ class Program:
                                 if len(cmd) > 0 and cmd[-1] == "-" and len(neg) > 0:
                                     cmd = cmd[:-1]
 
+                                x("TT", cmd)
                                 resultingSpaltenFromTuple(self.paraDict[(cmd, "")], neg)
+                                x("TT", cmd)
 
                         except KeyError:
                             cliout(
@@ -214,7 +217,7 @@ class Program:
                                 + " !"
                                 + " Es ist nur möglich: "
                                 + str(
-                                    ", ".join(
+                                    ", --".join(
                                         tuple(
                                             set(key[0] for key in self.paraDict.keys())
                                         )
@@ -243,6 +246,7 @@ class Program:
                                         ),
                                         neg,
                                     )
+                                    alxp("geht 2:")
                                     # kombiSpalten |= {self.kombiReverseDict[oneKombiSpalte]}
                                     pass
                                 except KeyError:
