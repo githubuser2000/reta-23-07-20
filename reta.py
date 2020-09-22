@@ -124,7 +124,7 @@ class Program:
         # kombiSpalten = set()
         # ordinarySpalten = set()
         for cmd in self.argv[1:]:
-            if cmd[0] == "-" and cmd[1] != "-":
+            if len(cmd) > 2 and cmd[0] == "-" and cmd[1] != "-":
                 if cmd[1:] in mainParaCmds.keys():
                     lastMainCmd = mainParaCmds[cmd[1:]]
                 elif len(neg) == 0:

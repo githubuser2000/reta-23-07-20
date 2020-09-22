@@ -69,21 +69,21 @@ class bbCodeSyntax(OutputSyntax):
                 return "[tr]"
         elif numberType == 1:
             if num % 2 == 0:
-                return '[tr="background-color:#66ff66;font-size:18px;color:#000000;"]'
+                return '[tr="background-color:#66ff66;color:#000000;"]'
             else:
-                return '[tr="background-color:#009900;font-size:18px;color:#ffffff;"]'
+                return '[tr="background-color:#009900;color:#ffffff;"]'
         elif numberType == 2 or num == 1:
             if num % 2 == 0:
-                return '[tr="background-color:#ffff66;font-size:18px;color:#000099;"]'
+                return '[tr="background-color:#ffff66;color:#000099;"]'
             else:
-                return '[tr="background-color:#555500;font-size:18px;color:#aaaaff;"]'
+                return '[tr="background-color:#555500;color:#aaaaff;"]'
         elif numberType == 3:
             if num % 2 == 0:
-                return '[tr="background-color:#9999ff;font-size:18px;color:#202000;"]'
+                return '[tr="background-color:#9999ff;color:#202000;"]'
             else:
-                return '[tr="background-color:#000099;font-size:18px;color:#ffff66;"]'
+                return '[tr="background-color:#000099;color:#ffff66;"]'
         elif num == 0:
-            return '[tr="background-color:#ff2222;font-size:18px;color:#002222;"]'
+            return '[tr="background-color:#ff2222;color:#002222;"]'
 
     beginTable = "[table]"
     endTable = "[/table]"
@@ -94,8 +94,7 @@ class bbCodeSyntax(OutputSyntax):
 
 
 class htmlSyntax(OutputSyntax):
-    @staticmethod
-    def coloredBeginCol(num: int, rest: bool = False) -> str:
+    def coloredBeginCol(self, num: int, rest: bool = False) -> str:
         num = int(num) if str(num).isdecimal() else 0
         numberType = primCreativity(num)
 
@@ -110,23 +109,24 @@ class htmlSyntax(OutputSyntax):
                 return "<tr>"
         elif numberType == 1:
             if num % 2 == 0:
-                return '<tr style="background-color:#66ff66;font-size:18px;color:#000000;">'
+                return '<tr style="background-color:#66ff66;color:#000000;">'
             else:
-                return '<tr style="background-color:#009900;font-size:18px;color:#ffffff;">'
+                return '<tr style="background-color:#009900;color:#ffffff;">'
         elif numberType == 2 or num == 1:
             if num % 2 == 0:
-                return '<tr style="background-color:#ffff66;font-size:18px;color:#000099;">'
+                return '<tr style="background-color:#ffff66;color:#000099;">'
             else:
-                return '<tr style="background-color:#555500;font-size:18px;color:#aaaaff;">'
+                return '<tr style="background-color:#555500;color:#aaaaff;">'
         elif numberType == 3:
             if num % 2 == 0:
-                return '<tr style="background-color:#9999ff;font-size:18px;color:#202000;">'
+                return '<tr style="background-color:#9999ff;color:#202000;">'
             else:
-                return '<tr style="background-color:#000099;font-size:18px;color:#ffff66;">'
+                return '<tr style="background-color:#000099;color:#ffff66;">'
         elif num == 0:
-            return '<tr style="background-color:#ff2222;font-size:18px;color:#002222;">'
+            return '<tr style="background-color:#ff2222;color:#002222;">'
 
     def generateCell(self, num: int) -> str:
+        num += 1
         return '<td  style="display:none" class="RowNumber ' + str(num) + '">'
 
     beginTable = "<table border=1>"
