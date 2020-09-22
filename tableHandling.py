@@ -133,11 +133,11 @@ class htmlSyntax(OutputSyntax):
             couples = ("?", "?")
         things = {}
         for i, couple in enumerate(couples):
-            for name in couple:
+            for k, name in enumerate(couple):
                 try:
-                    things[i] += name + ","
+                    things[k] += name + ","
                 except KeyError:
-                    things[i] = name + ","
+                    things[k] = name + ","
             things[i] = things[i][:-1]
         num += 1
         return (
