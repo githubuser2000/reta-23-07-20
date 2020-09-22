@@ -23,7 +23,7 @@ class OutputSyntax:
     def coloredBeginCol(self, num: int, rest: bool = False):
         return self.beginZeile
 
-    def generateCell(self, num: int) -> str:
+    def generateCell(self, num: int, dataDict: dict) -> str:
         return self.beginCell
 
     beginTable = ""
@@ -125,9 +125,28 @@ class htmlSyntax(OutputSyntax):
         elif num == 0:
             return '<tr style="background-color:#ff2222;color:#002222;">'
 
-    def generateCell(self, num: int) -> str:
+    def generateCell(self, num: int, SpaltenParameter: dict) -> str:
+        try:
+            values = SpaltenParameter[int(num)]
+        except:
+            raise ValueError
+            values = "NIX " + str(num)
+        values2 = []
+        for both in values:
+            both2 = []
+            for one in both:
+                both2 += ",".join(one)
+            values2 += both2
         num += 1
-        return '<td  style="display:none" class="RowNumber ' + str(num) + '">'
+        return (
+            '<td  style="display:none" class="RowNumber r'
+            + str(num)
+            + " Rowparameters p1_"
+            + str(values2[0])
+            + " p2_"
+            + str(values2[1])
+            + '">'
+        )
 
     beginTable = "<table border=1>"
     endTable = "</table>"
@@ -300,7 +319,7 @@ class Tables:
         self.getPrepare = self.Prepare(self)
         self.getCombis = self.Combi(self)
         self.getConcat = self.Concat(self)
-        self.getOut = self.Output()
+        self.getOut = self.Output(self)
         self.getMainTable = self.Maintable(self)
         self.textHeight = 0
         self.textWidth = 21
@@ -321,7 +340,8 @@ class Tables:
         self.__generRows__: set = set()
 
     class Output:
-        def __init__(self):
+        def __init__(self, tables):
+            self.tables = tables
             self.__oneTable = False
             self.__color = True
             self.__outType: OutputSyntax = OutputSyntax()
@@ -502,6 +522,7 @@ class Tables:
                 if len(self.finallyDisplayLines) > 0 and shellRowsAmount != 0
                 else 0
             )
+            x("NIXX", self.tables.dataDict)
             self.finallyDisplayLines[0] = ""
             lastSubCellIndex = -1
             lastlastSubCellIndex = -2
@@ -533,7 +554,9 @@ class Tables:
                         line = (
                             ""
                             if not self.nummerierung
-                            else self.__outType.generateCell(-1)
+                            else self.__outType.generateCell(
+                                -1, self.tables.generatedSpaltenParameter
+                            )
                             + (
                                 "".rjust(numlen + 1)
                                 if iterWholeLine != 0
@@ -591,7 +614,8 @@ class Tables:
                                         else:
                                             coloredSubCell = (
                                                 self.__outType.generateCell(
-                                                    subCellIndexRightLeft
+                                                    subCellIndexRightLeft,
+                                                    self.tables.generatedSpaltenParameter,
                                                 )
                                                 + (
                                                     entry.replace("\n", "").ljust(
@@ -620,7 +644,8 @@ class Tables:
                                         else:
                                             coloredSubCell = (
                                                 self.__outType.generateCell(
-                                                    subCellIndexRightLeft
+                                                    subCellIndexRightLeft,
+                                                    self.tables.generatedSpaltenParameter,
                                                 )
                                                 + "".ljust(subCellWidth)
                                                 + self.__outType.endCell
@@ -641,7 +666,8 @@ class Tables:
                         ):  # and m < actualPartLineLen:
                             if type(self.__outType) is markdownSyntax:
                                 line += self.__outType.generateCell(
-                                    subCellIndexRightLeft
+                                    subCellIndexRightLeft,
+                                    self.tables.generatedSpaltenParameter,
                                 )
 
                                 if BigCellLineNumber > 0 and not headingfinished:
@@ -650,12 +676,14 @@ class Tables:
                                     addionalLine = ""
                                     for l in line:
                                         if l != self.__outType.generateCell(
-                                            subCellIndexRightLeft
+                                            subCellIndexRightLeft,
+                                            self.tables.generatedSpaltenParameter,
                                         ):
                                             addionalLine += "-"
                                         else:
                                             addionalLine += self.__outType.generateCell(
-                                                subCellIndexRightLeft
+                                                subCellIndexRightLeft,
+                                                self.tables.generatedSpaltenParameter,
                                             )
 
                                     line += "\n" + addionalLine
