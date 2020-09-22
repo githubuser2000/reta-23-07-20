@@ -134,19 +134,19 @@ class htmlSyntax(OutputSyntax):
         things = {}
         for i, couple in enumerate(couples):
             for k, name in enumerate(couple):
-                try:
-                    things[k] += name + ","
-                except KeyError:
-                    things[k] = name + ","
-            things[i] = things[i][:-1]
+                if name != "":
+                    try:
+                        things[k] += name + ","
+                    except KeyError:
+                        things[k] = name + ","
         num += 1
         return (
             '<td  style="display:none" class="RowNumber r'
             + str(num)
             + " Rowparameters p1_"
-            + things[0]
+            + things[0][:-1]
             + " p2_"
-            + things[1]
+            + things[1][:-1]
             + '">'
         )
 
