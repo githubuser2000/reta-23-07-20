@@ -127,24 +127,26 @@ class htmlSyntax(OutputSyntax):
 
     def generateCell(self, num: int, SpaltenParameter: dict) -> str:
         try:
-            values = SpaltenParameter[int(num)]
+            couples = SpaltenParameter[int(num)]
         except:
             raise ValueError
-            values = "NIX " + str(num)
-        values2 = []
-        for both in values:
-            both2 = []
-            for one in both:
-                both2 += ",".join(one)
-            values2 += both2
+            couples = ("?", "?")
+        things = {}
+        for i, couple in enumerate(couples):
+            for name in couple:
+                try:
+                    things[i] += name + ","
+                except KeyError:
+                    things[i] = name + ","
+            things[i] = things[i][:-1]
         num += 1
         return (
             '<td  style="display:none" class="RowNumber r'
             + str(num)
             + " Rowparameters p1_"
-            + str(values2[0])
+            + things[0]
             + " p2_"
-            + str(values2[1])
+            + things[1]
             + '">'
         )
 
