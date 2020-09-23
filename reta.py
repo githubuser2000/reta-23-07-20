@@ -1316,7 +1316,7 @@ class Program:
                         and neg == ""
                     ):
                         self.tables.getOut.oneTable = True
-                    elif len(neg) > 0:
+                    elif len(neg) == 0:
                         cliout(
                             'Den Neben-Parameter "'
                             + arg
