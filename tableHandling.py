@@ -126,11 +126,17 @@ class htmlSyntax(OutputSyntax):
             return '<tr style="background-color:#ff2222;color:#002222;">'
 
     def generateCell(self, num: int, SpaltenParameter: dict) -> str:
-        try:
-            couples = SpaltenParameter[int(num)]
-        except:
-            raise ValueError
-            couples = ("?", "?")
+        if int(num) == -1:
+            couples = (("nummerierung", ""),)
+        else:
+            try:
+                couples = SpaltenParameter[int(num)]
+            except:
+                x("NUM", SpaltenParameter)
+                x("NUM", num)
+                if str(num).isdecimal():
+                    raise ValueError
+                couples = (("?", "?"),)
         things = {}
         for i, couple in enumerate(couples):
             for k, name in enumerate(couple):
@@ -141,12 +147,12 @@ class htmlSyntax(OutputSyntax):
                         things[k] = name + ","
         num += 1
         return (
-            '<td  style="display:none" class="RowNumber r'
+            '<td  style="display:none" class="Spalte r_'
             + str(num)
-            + " Rowparameters p1_"
+            + " p1_"
             + things[0][:-1]
             + " p2_"
-            + things[1][:-1]
+            + (things[1][:-1] if len(things) > 1 else "")
             + '">'
         )
 
