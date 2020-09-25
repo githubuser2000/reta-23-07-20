@@ -26,22 +26,26 @@ window.onload = function() {
 		sArr2[i]=checkbox
 	}
 	str = sArr2.join(" ");
-	str = 'bla'
-
-	div.innerHTML = str;
  	document.body.before(div);
 	tdClasses = document.getElementsByTagName("td");
 	SpaltenArray = new Array();
 	for (i = 0; i < tdClasses.length; i++) {
-		name = tdClasses[i].className
-		var num = name.match("r_\d+\s")
-		num = num.substr(2)
-		num = parseInt(num)
-		if (typeof SpaltenArray[num] === 'undefined')
-			SpaltenArray[num]= new Set();
-		SpaltenArray[num].add(name);
+		name = tdClasses[i].className;
+		var num = name.match(/r_(\d+)/)
+		if (num != null) {
+			//num = num.substring(2,0);
+			num = parseInt(num[1]);
+			str = num[1]
+			//num = i
+			if (typeof SpaltenArray[num] === 'undefined')
+				SpaltenArray[num]= new Set();
+			SpaltenArray[num].add(name);
+		}
 	}
-
+	//str = SpaltenArray[1].values();
+	str = SpaltenArray.length;
+	//str = tdClasses.length;
+	div.innerHTML = str;
 }
 
 function toggleCol(col) {
