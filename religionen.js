@@ -49,9 +49,12 @@ window.onload = function() {
 			}
 			var p2 = name.match(/p2_([^\s]+)/)
 			if (p2 != null) {
-				if (typeof p2map[p2[1]] === 'undefined')
-					p2map[p2[1]]= new Set();
-				p2map[p2[1]].add(name)
+				p2 = p2[1].match(/([^,]+)/);
+				if (p2 != null) {
+					if (typeof p2map[p2[1]] === 'undefined')
+						p2map[p2[1]]= new Set();
+					p2map[p2[1]].add(name);
+				}
 			}
 			if (p2 != null && p1 != null) {
 				if (typeof SpaltenArray[num] === 'undefined')
@@ -80,7 +83,20 @@ window.onload = function() {
 	}
 
 	var p1keys = Object.keys(p1map);
-	str2 = p1keys.join()
+	checkboxes = ""
+	for (i = 0; i < p1keys.length; i++) {
+		checkbox = '<input type="checkbox" value="'+p1keys[i]+'" onchange="toggleCol(\''+tdClasses2[i]+'\');"><label>'+p1keys[i]+'</label>';
+		checkboxes = checkboxes + checkbox;
+	}
+	str2 = checkboxes;
+
+	var p2keys = Object.keys(p2map);
+	checkboxes = ""
+	for (i = 0; i < p2keys.length; i++) {
+		checkbox = '<input type="checkbox" value="'+p2keys[i]+'" onchange="toggleCol(\''+tdClasses2[i]+'\');"><label>'+p2keys[i]+'</label>';
+		checkboxes = checkboxes + checkbox;
+	}
+	str2 = checkboxes;
 	//str = SpaltenArray[1].values();
 	//str = tdClasses.length;
 	div.innerHTML = str2;
