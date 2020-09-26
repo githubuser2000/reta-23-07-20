@@ -29,7 +29,7 @@ window.onload = function() {
  	document.body.before(div);
 	tdClasses = document.getElementsByTagName("td");
 	SpaltenArray = new Array();
-	p1map = {};
+	p1map = {},p2map = {},mapMapMap = {};
 	for (i = 0; i < tdClasses.length; i++) {
 		name = tdClasses[i].className;
 		var num = name.match(/r_(\d+)/)
@@ -38,20 +38,35 @@ window.onload = function() {
 			num = parseInt(num[1]);
 			str = num[1]
 			//num = i
-			if (typeof SpaltenArray[num] === 'undefined')
-				SpaltenArray[num]= new Set();
-			SpaltenArray[num].add(name);
-
 			var p1 = name.match(/p1_([^\s])/)
 			if (p1 != null) {
 				if (typeof p1map[p1[1]] === 'undefined')
 					p1map[p1[1]]= new Set();
 				p1map[p1[1]].add(name)
 			}
+			var p2 = name.match(/p2_([^\s])/)
+			if (p2 != null) {
+				if (typeof p2map[p2[1]] === 'undefined')
+					p2map[p2[1]]= new Set();
+				p2map[p2[1]].add(name)
+			}
+			if (p2 != null && p1 != null) {
+				if (typeof SpaltenArray[num] === 'undefined')
+					SpaltenArray[num]= new Set();
+				SpaltenArray[num].add(name);
+
+				if (typeof mapMapMap[p1[1]] === 'undefined')
+					mapMapMap[p1[1]]= new Array();
+				if (typeof mapMapMap[p1[1]][p2[1]] === 'undefined')
+					mapMapMap[p1[1]][p2[1]]= new Array();
+				if (typeof mapMapMap[p1[1]][p2[1]][num] === 'undefined')
+					mapMapMap[p1[1]][p2[1]][num]= new Set();
+				mapMapMap[p1[1]][p2[1]][num].add(name);
+				str = mapMapMap[p1[1]][p2[1]][num].values().next().value;
+			}
 		}
 	}
 	//str = SpaltenArray[1].values();
-	str = p1map[p1[1]];
 	//str = tdClasses.length;
 	div.innerHTML = str;
 }
