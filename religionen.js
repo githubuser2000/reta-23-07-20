@@ -66,30 +66,37 @@ window.onload = function() {
 					SpaltenArray[num].add(name);
 
 					if (typeof mapMapMap[p1[1]] === 'undefined')
-						mapMapMap[p1[1]]= new Array();
+						mapMapMap[p1[1]]= {};
 					if (typeof mapMapMap[p1[1]][p2[1]] === 'undefined')
 						mapMapMap[p1[1]][p2[1]]= new Set();
-					//if (typeof mapMapMap[p1[1]][p2[1]][num] === 'undefined')
-					//	mapMapMap[p1[1]][p2[1]][num]= new Set();
+
 					mapMapMap[p1[1]][p2[1]].add(num);
-					//str = mapMapMap[p1[1]][p2[1]][num].values().next().value;
-					str2 = '';
+				
+					str3 = "";
+					var x = Object.keys(mapMapMap[p1[1]]);
+					for (n=0; n < x.length;n++ )
+						str3 = str3 + x[n] + ", ";
+
+
+					/*
+					str3 = '';
 					var p1mapSetIterator = p1map[p1[1]].values();
 					for (k = 0; k < p1map[p1[1]].size; k++) {
-						str2 = str2 + p1mapSetIterator.next().value + ', ';
+						str3 = str3 + p1mapSetIterator.next().value + ', ';
 
 					}
+					*/
 				}
 			}
 		}
 	}
 
-	var p1keys = Object.keys(p1map);
+	var p1keys = Object.keys(mapMapMap);
 	checkboxes = "";
 	for (i = 0; i < p1keys.length; i++) {
 		var chk2s = "";
 		if (typeof mapMapMap[p1keys[i]] !== 'undefined')
-			for (k = 0; k < mapMapMap[p1keys[i]].length; i++) {
+			for (k = 0; k < mapMapMap[p1keys[i]].length; k++) {
 				chk2 = '<input type="checkbox" value="'+mapMapMap[p1keys[i]][k]+'" onchange="toggleP1(\''+mapMapMap[p1keys[i]][k]+'\');"><label>'+mapMapMap[p1keys[i]][k]+'</label>';
 				chk2s = chk2s + chk2;
 			}
@@ -108,7 +115,7 @@ window.onload = function() {
 	*/
 	//str = SpaltenArray[1].values();
 	//str = tdClasses.length;
-	div.innerHTML = str2;
+	div.innerHTML = str3;
 }
 
 function toggleP1(p1) {
