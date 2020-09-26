@@ -36,13 +36,16 @@ window.onload = function() {
 		if (num != null) {
 			//num = num.substring(2,0);
 			num = parseInt(num[1]);
-			str = num[1]
+			str = num[1];
 			//num = i
-			var p1 = name.match(/p1_([^\s]+)/)
+			var p1 = name.match(/p1_([^\s]+)/);
 			if (p1 != null) {
-				if (typeof p1map[p1[1]] === 'undefined')
-					p1map[p1[1]]= new Set();
-				p1map[p1[1]].add(name)
+				p1 = p1[1].match(/([^,]+)/);
+				if (p1 != null) {
+					if (typeof p1map[p1[1]] === 'undefined')
+						p1map[p1[1]]= new Set();
+					p1map[p1[1]].add(name);
+				}
 			}
 			var p2 = name.match(/p2_([^\s]+)/)
 			if (p2 != null) {
@@ -75,6 +78,7 @@ window.onload = function() {
 			}
 		}
 	}
+
 	var p1keys = Object.keys(p1map);
 	str2 = p1keys.join()
 	//str = SpaltenArray[1].values();
