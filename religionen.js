@@ -56,40 +56,48 @@ window.onload = function() {
 					p2map[p2[1]].add(name);
 				}
 			}
+
 			if (p2 != null && p1 != null) {
-				if (typeof SpaltenArray[num] === 'undefined')
-					SpaltenArray[num]= new Set();
-				SpaltenArray[num].add(name);
+				p2 = p2[1].match(/([^,]+)/);
+				p1 = p1[1].match(/([^,]+)/);
+				if (p2 != null && p1 != null) {
+					if (typeof SpaltenArray[num] === 'undefined')
+						SpaltenArray[num]= new Set();
+					SpaltenArray[num].add(name);
 
-				if (typeof mapMapMap[p1[1]] === 'undefined')
-					mapMapMap[p1[1]]= new Array();
-				if (typeof mapMapMap[p1[1]][p2[1]] === 'undefined')
-					mapMapMap[p1[1]][p2[1]]= new Array();
-				if (typeof mapMapMap[p1[1]][p2[1]][num] === 'undefined')
-					mapMapMap[p1[1]][p2[1]][num]= new Set();
-				mapMapMap[p1[1]][p2[1]][num].add(name);
-				//str = mapMapMap[p1[1]][p2[1]][num].values().next().value;
-				str2 = '';
-				var p1mapSetIterator = p1map[p1[1]].values();
-				for (k = 0; k < p1map[p1[1]].size; k++) {
-					str2 = str2 + p1mapSetIterator.next().value + ', ';
+					if (typeof mapMapMap[p1[1]] === 'undefined')
+						mapMapMap[p1[1]]= new Array();
+					if (typeof mapMapMap[p1[1]][p2[1]] === 'undefined')
+						mapMapMap[p1[1]][p2[1]]= new Set();
+					//if (typeof mapMapMap[p1[1]][p2[1]][num] === 'undefined')
+					//	mapMapMap[p1[1]][p2[1]][num]= new Set();
+					mapMapMap[p1[1]][p2[1]].add(num);
+					//str = mapMapMap[p1[1]][p2[1]][num].values().next().value;
+					str2 = '';
+					var p1mapSetIterator = p1map[p1[1]].values();
+					for (k = 0; k < p1map[p1[1]].size; k++) {
+						str2 = str2 + p1mapSetIterator.next().value + ', ';
 
+					}
 				}
-				//var p1keys = Object.keys(p1map);
-				//str2 = p1keys.join()
-				
 			}
 		}
 	}
 
 	var p1keys = Object.keys(p1map);
-	checkboxes = ""
+	checkboxes = "";
 	for (i = 0; i < p1keys.length; i++) {
-		checkbox = '<input type="checkbox" value="'+p1keys[i]+'" onchange="toggleCol(\''+tdClasses2[i]+'\');"><label>'+p1keys[i]+'</label>';
+		var chk2s = "";
+		if (typeof mapMapMap[p1keys[i]] !== 'undefined')
+			for (k = 0; k < mapMapMap[p1keys[i]].length; i++) {
+				chk2 = '<input type="checkbox" value="'+mapMapMap[p1keys[i]][k]+'" onchange="toggleP1(\''+mapMapMap[p1keys[i]][k]+'\');"><label>'+mapMapMap[p1keys[i]][k]+'</label>';
+				chk2s = chk2s + chk2;
+			}
+		checkbox = '<input type="checkbox" value="'+p1keys[i]+'" onchange="toggleP1(\''+p1keys[i]+'\');"><label>'+p1keys[i]+'</label><div id="'+p1keys[i]+'" style="display:none">'+chk2s+'</div>';
 		checkboxes = checkboxes + checkbox;
 	}
 	str2 = checkboxes;
-
+	/*
 	var p2keys = Object.keys(p2map);
 	checkboxes = ""
 	for (i = 0; i < p2keys.length; i++) {
@@ -97,9 +105,22 @@ window.onload = function() {
 		checkboxes = checkboxes + checkbox;
 	}
 	str2 = checkboxes;
+	*/
 	//str = SpaltenArray[1].values();
 	//str = tdClasses.length;
 	div.innerHTML = str2;
+}
+
+function toggleP1(p1) {
+	p2 = document.getElementById(p1);
+	if (typeof(p2.style) != "undefined") 
+ 		if (p2.style.display != 'none') 
+			p2.style.display = 'none';
+		else 
+			p2.style.display = 'table-cell';
+	else 
+		window.alert(p2.innerHTML + ' ! ');
+	
 }
 
 function toggleCol(col) {
@@ -111,17 +132,6 @@ function toggleCol(col) {
 		else 
 			for (i = 0; i < col.length; i++)
 				col[i].style.display = 'table-cell';
-
-// geht nicht, weil Zellen verrutschen
-/*		for (i = 0; i < col.length; i++)
-			if (col[i].innerHTML.trim().length == 0) 
-				col[i].style.display = 'none';
-			else
-				if (i == 0)
-					window.alert(col[i].innerHTML + ' ! ');
-*/
-		
-
 	} else {
 		window.alert(col[0].innerHTML + ' ! ');
 	}
