@@ -29,7 +29,7 @@ window.onload = function() {
  	document.body.before(div);
 	tdClasses = document.getElementsByTagName("td");
 	SpaltenArray = new Array();
-	p1map = {},p2map = {},mapMapMap = {};
+	p1map = {},p2map = {},mapMapMap = {}, str = "";
 	for (i = 0; i < tdClasses.length; i++) {
 		name = tdClasses[i].className;
 		var num = name.match(/r_(\d+)/)
@@ -38,13 +38,13 @@ window.onload = function() {
 			num = parseInt(num[1]);
 			str = num[1]
 			//num = i
-			var p1 = name.match(/p1_([^\s])/)
+			var p1 = name.match(/p1_([^\s]+)/)
 			if (p1 != null) {
 				if (typeof p1map[p1[1]] === 'undefined')
 					p1map[p1[1]]= new Set();
 				p1map[p1[1]].add(name)
 			}
-			var p2 = name.match(/p2_([^\s])/)
+			var p2 = name.match(/p2_([^\s]+)/)
 			if (p2 != null) {
 				if (typeof p2map[p2[1]] === 'undefined')
 					p2map[p2[1]]= new Set();
@@ -62,13 +62,24 @@ window.onload = function() {
 				if (typeof mapMapMap[p1[1]][p2[1]][num] === 'undefined')
 					mapMapMap[p1[1]][p2[1]][num]= new Set();
 				mapMapMap[p1[1]][p2[1]][num].add(name);
-				str = mapMapMap[p1[1]][p2[1]][num].values().next().value;
+				//str = mapMapMap[p1[1]][p2[1]][num].values().next().value;
+				str2 = '';
+				var p1mapSetIterator = p1map[p1[1]].values();
+				for (k = 0; k < p1map[p1[1]].size; k++) {
+					str2 = str2 + p1mapSetIterator.next().value + ', ';
+
+				}
+				//var p1keys = Object.keys(p1map);
+				//str2 = p1keys.join()
+				
 			}
 		}
 	}
+	var p1keys = Object.keys(p1map);
+	str2 = p1keys.join()
 	//str = SpaltenArray[1].values();
 	//str = tdClasses.length;
-	div.innerHTML = str;
+	div.innerHTML = str2;
 }
 
 function toggleCol(col) {
