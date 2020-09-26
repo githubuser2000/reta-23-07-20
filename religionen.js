@@ -29,6 +29,7 @@ window.onload = function() {
  	document.body.before(div);
 	tdClasses = document.getElementsByTagName("td");
 	SpaltenArray = new Array();
+	p1map = {};
 	for (i = 0; i < tdClasses.length; i++) {
 		name = tdClasses[i].className;
 		var num = name.match(/r_(\d+)/)
@@ -40,10 +41,17 @@ window.onload = function() {
 			if (typeof SpaltenArray[num] === 'undefined')
 				SpaltenArray[num]= new Set();
 			SpaltenArray[num].add(name);
+
+			var p1 = name.match(/p1_([^\s])/)
+			if (p1 != null) {
+				if (typeof p1map[p1[1]] === 'undefined')
+					p1map[p1[1]]= new Set();
+				p1map[p1[1]].add(name)
+			}
 		}
 	}
 	//str = SpaltenArray[1].values();
-	str = SpaltenArray.length;
+	str = p1map[p1[1]];
 	//str = tdClasses.length;
 	div.innerHTML = str;
 }
