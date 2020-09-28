@@ -30,6 +30,7 @@ window.onload = function() {
 	tdClasses = document.getElementsByTagName("td");
 	SpaltenArray = new Array();
 	p1map = {},p2map = {},mapMapMap = {}, str = "";
+	str3 = ""
 	for (i = 0; i < tdClasses.length; i++) {
 		name = tdClasses[i].className;
 		var num = name.match(/r_(\d+)/)
@@ -72,10 +73,10 @@ window.onload = function() {
 
 					mapMapMap[p1[1]][p2[1]].add(num);
 				
-					str3 = "";
+					str3 += " | ";
 					var x = Object.keys(mapMapMap[p1[1]]);
 					for (n=0; n < x.length;n++ )
-						str3 = str3 + x[n] + ", ";
+						str3 += x[n] + ", ";
 
 
 					/*
@@ -95,11 +96,11 @@ window.onload = function() {
 	checkboxes = "";
 	for (i = 0; i < p1keys.length; i++) {
 		var chk2s = "";
-		if (typeof mapMapMap[p1keys[i]] !== 'undefined')
-			for (k = 0; k < mapMapMap[p1keys[i]].length; k++) {
-				chk2 = '<input type="checkbox" value="'+mapMapMap[p1keys[i]][k]+'" onchange="toggleP1(\''+mapMapMap[p1keys[i]][k]+'\');"><label>'+mapMapMap[p1keys[i]][k]+'</label>';
-				chk2s = chk2s + chk2;
-			}
+		var p2keys = Object.keys(mapMapMap[p1[1]]);
+		for (k = 0; k < p2keys.length; k++) {
+			chk2 = '<input type="checkbox" value="'+p2keys[k]+'" onchange="toggleP1(\''+p2keys[k]+'\');"><label>'+p2keys[k]+'</label>';
+			chk2s = chk2s + chk2;
+		}
 		checkbox = '<input type="checkbox" value="'+p1keys[i]+'" onchange="toggleP1(\''+p1keys[i]+'\');"><label>'+p1keys[i]+'</label><div id="'+p1keys[i]+'" style="display:none">'+chk2s+'</div>';
 		checkboxes = checkboxes + checkbox;
 	}
@@ -115,7 +116,7 @@ window.onload = function() {
 	*/
 	//str = SpaltenArray[1].values();
 	//str = tdClasses.length;
-	div.innerHTML = str3;
+	div.innerHTML = str2;
 }
 
 function toggleP1(p1) {
