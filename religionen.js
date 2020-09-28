@@ -5,12 +5,6 @@ window.onload = function() {
   div.className = "headingsDiv";
   tdClasses = document.getElementsByTagName("td");
 	var str = "", sArr = [], tdClassesSet = new Set();
-	for (i = 0; i < tdClasses.length; i++) {
-		name = tdClasses[i].className
-		if (name.includes("RowNumber")) {
-			tdClassesSet.add(tdClasses[i].className);
-		}
-	}
 	var tdClasses2 = Array.from(tdClassesSet);
 	for (i = 0; i < tdClasses2.length; i++) {
 		sArr[i] = tdClasses2[i];
@@ -25,7 +19,6 @@ window.onload = function() {
 		checkbox = '<input type="checkbox" value="'+textfield+'" onchange="toggleCol(\''+tdClasses2[i]+'\');"><label>'+textfield+'</label>'
 		sArr2[i]=checkbox
 	}
-	str = sArr2.join(" ");
  	document.body.before(div);
 	tdClasses = document.getElementsByTagName("td");
 	SpaltenArray = new Array();
@@ -72,11 +65,6 @@ window.onload = function() {
 						mapMapMap[p1[1]][p2[1]]= new Set();
 
 					mapMapMap[p1[1]][p2[1]].add(num);
-				
-					str3 += " | ";
-					var x = Object.keys(mapMapMap[p1[1]]);
-					for (n=0; n < x.length;n++ )
-						str3 += x[n] + ", ";
 				}
 			}
 		}
