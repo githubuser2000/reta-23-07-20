@@ -77,47 +77,37 @@ window.onload = function() {
 					var x = Object.keys(mapMapMap[p1[1]]);
 					for (n=0; n < x.length;n++ )
 						str3 += x[n] + ", ";
-
-
-					/*
-					str3 = '';
-					var p1mapSetIterator = p1map[p1[1]].values();
-					for (k = 0; k < p1map[p1[1]].size; k++) {
-						str3 = str3 + p1mapSetIterator.next().value + ', ';
-
-					}
-					*/
 				}
 			}
 		}
 	}
 
 	var p1keys = Object.keys(mapMapMap);
-	checkboxes = "";
+	checkboxes = "<span style=\"white-space: nowrap;\">";
 	for (i = 0; i < p1keys.length; i++) {
 		var chk2s = "";
 		var p2keys = Object.keys(mapMapMap[p1keys[i]]);
 		for (k = 0; k < p2keys.length; k++) {
-			chk2 = '<input type="checkbox" value="'+p2keys[k]+'" onchange="toggleP1(\''+p2keys[k]+'\');"><label>'+p2keys[k]+'</label>';
+			numbers = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
+			chk2 = '<input type="checkbox" value="'+p2keys[k]+'" onchange="toggleP2(\''+numbers+'\');"><label>'+p2keys[k]+'</label>';
 			chk2s = chk2s + chk2;
 		}
-		checkbox = '<input type="checkbox" value="'+p1keys[i]+'" onchange="toggleP1(\''+p1keys[i]+'\');"><label>'+p1keys[i]+'</label><div id="'+p1keys[i]+'" style="display:none">'+chk2s+'</div>';
+		checkbox = '<br><input type="checkbox" value="'+p1keys[i]+'" onchange="toggleP1(\''+p1keys[i]+'\');"><label>'+p1keys[i]+'</label><div id="'+p1keys[i]+'" style="display:none">'+chk2s+'</div>';
 		checkboxes = checkboxes + checkbox;
 	}
-	str2 = checkboxes;
-	/*
-	var p2keys = Object.keys(p2map);
-	checkboxes = ""
-	for (i = 0; i < p2keys.length; i++) {
-		checkbox = '<input type="checkbox" value="'+p2keys[i]+'" onchange="toggleCol(\''+tdClasses2[i]+'\');"><label>'+p2keys[i]+'</label>';
-		checkboxes = checkboxes + checkbox;
-	}
-	str2 = checkboxes;
-	*/
-	//str = SpaltenArray[1].values();
-	//str = tdClasses.length;
+	str2 = checkboxes + "</span>";
 	div.innerHTML = str2;
 }
+
+
+function toggleP2(numbers) {
+	numbers = numbers.split(',');
+	for (n = 0; n < numbers.length; n++) {
+		open('r_'+numbers[n], 'popup-beispiel', 'height=400,width=400,resizable=no');
+		toggleCol('r_'+numbers[n]);
+	}
+}
+
 
 function toggleP1(p1) {
 	p2 = document.getElementById(p1);
@@ -133,6 +123,7 @@ function toggleP1(p1) {
 
 function toggleCol(col) {
 	col = document.getElementsByClassName(col);
+	open(col, 'popup-beispiel', 'height=400,width=400,resizable=no');
 	if (typeof(col[0].style) != "undefined") {
  		if (col[0].style.display != 'none') 
 			for (i = 0; i < col.length; i++)
