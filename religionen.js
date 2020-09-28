@@ -7,7 +7,7 @@ window.onload = function() {
  	document.body.before(div);
 	tdClasses = document.getElementsByTagName("td");
 	SpaltenArray = new Array();
-	p1map = {},p2map = {},mapMapMap = {}, str = "";
+	p1map = {},p2map = {},mapMapMap = {}, str = "", p1Bmap = {};
 	str3 = ""
 	for (i = 0; i < tdClasses.length; i++) {
 		name = tdClasses[i].className;
@@ -18,15 +18,22 @@ window.onload = function() {
 			str = num[1];
 			//num = i
 			var p1 = name.match(/p1_([^\s]+)/);
+			var p2 = name.match(/p2_([^\s]+)/);
 			if (p1 != null) {
 				p1 = p1[1].match(/([^,]+)/);
 				if (p1 != null) {
 					if (typeof p1map[p1[1]] === 'undefined')
 						p1map[p1[1]]= new Set();
 					p1map[p1[1]].add(name);
+
+					if (typeof p1Bmap[p1[1]] === 'undefined')
+						p1Bmap[p1[1]]= new Set();
+					if (p2 == null) 
+						p1Bmap[p1[1]].add(num);
+					else
+						p1Bmap[p1[1]].add(null);
 				}
 			}
-			var p2 = name.match(/p2_([^\s]+)/)
 			if (p2 != null) {
 				p2 = p2[1].match(/([^,]+)/);
 				if (p2 != null) {
