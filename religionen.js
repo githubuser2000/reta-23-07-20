@@ -96,7 +96,7 @@ window.onload = function() {
 	checkboxes = "";
 	for (i = 0; i < p1keys.length; i++) {
 		var chk2s = "";
-		var p2keys = Object.keys(mapMapMap[p1[1]]);
+		var p2keys = Object.keys(mapMapMap[p1keys[i]]);
 		for (k = 0; k < p2keys.length; k++) {
 			chk2 = '<input type="checkbox" value="'+p2keys[k]+'" onchange="toggleP1(\''+p2keys[k]+'\');"><label>'+p2keys[k]+'</label>';
 			chk2s = chk2s + chk2;
