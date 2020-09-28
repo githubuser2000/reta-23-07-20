@@ -103,7 +103,6 @@ window.onload = function() {
 function toggleP2(numbers) {
 	numbers = numbers.split(',');
 	for (n = 0; n < numbers.length; n++) {
-		open('r_'+numbers[n], 'popup-beispiel', 'height=400,width=400,resizable=no');
 		toggleCol('r_'+numbers[n]);
 	}
 }
