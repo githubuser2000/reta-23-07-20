@@ -4,21 +4,6 @@ window.onload = function() {
   let div = document.createElement('div');
   div.className = "headingsDiv";
   tdClasses = document.getElementsByTagName("td");
-	var str = "", sArr = [], tdClassesSet = new Set();
-	var tdClasses2 = Array.from(tdClassesSet);
-	for (i = 0; i < tdClasses2.length; i++) {
-		sArr[i] = tdClasses2[i];
-	}
-	var sArr2 = [], eachClasses = [];
-	for (i = 0; i < tdClasses2.length; i++) {
-		eachClasses = document.getElementsByClassName(tdClasses2[i]);
-		if ( eachClasses[0].innerHTML.trim().length == 0)
-			textfield = eachClasses[1].innerHTML + ' - ' + eachClasses[eachClasses.length-1].innerHTML
-		else
-			textfield = eachClasses[0].innerHTML
-		checkbox = '<input type="checkbox" value="'+textfield+'" onchange="toggleCol(\''+tdClasses2[i]+'\');"><label>'+textfield+'</label>'
-		sArr2[i]=checkbox
-	}
  	document.body.before(div);
 	tdClasses = document.getElementsByTagName("td");
 	SpaltenArray = new Array();
