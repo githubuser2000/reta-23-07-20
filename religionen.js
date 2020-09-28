@@ -83,7 +83,7 @@ window.onload = function() {
 	}
 
 	var p1keys = Object.keys(mapMapMap);
-	checkboxes = "<span style=\"white-space: nowrap;\">";
+	checkboxes = "<span style=\"white-space: nowrap;\"><input type=\"checkbox\" onchange=\"toggleCol(\'r_0\');\"><label>Nummererierung</label>";
 	for (i = 0; i < p1keys.length; i++) {
 		var chk2s = "";
 		var p2keys = Object.keys(mapMapMap[p1keys[i]]);
@@ -122,7 +122,6 @@ function toggleP1(p1) {
 
 function toggleCol(col) {
 	col = document.getElementsByClassName(col);
-	open(col, 'popup-beispiel', 'height=400,width=400,resizable=no');
 	if (typeof(col[0].style) != "undefined") {
  		if (col[0].style.display != 'none') 
 			for (i = 0; i < col.length; i++)
