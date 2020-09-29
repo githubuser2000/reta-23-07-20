@@ -35,12 +35,14 @@ def differentLetters(text1, text2):
     more = 0
     moreless = 0
     for i, t1 in enumerate(text1):
-        if t1 == text2[i + moreless]:
-            continue
-        elif t1 == text2[i + 1]:
+        if i + moreless < len(text2) and t1 == text2[i + moreless]:
+            more += 1
+        elif i + 1 < len(text2) and t1 == text2[i + 1]:
             moreless -= 1
-        elif t1 == text2[i - 1]:
+            more += 1
+        elif i - 1 < len(text2) and t1 == text2[i - 1]:
             moreless += 1
+            more += 1
 
     return more
 
