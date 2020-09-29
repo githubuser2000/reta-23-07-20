@@ -33,15 +33,6 @@ window.onload = function() {
 						p1Bmap[p1[1]].add(null);
 				}
 			}
-			/*
-			if (p2 != null) {
-				p2 = p2[1].match(/([^,]+)/);
-				if (p2 != null) {
-					if (typeof p2map[p2[1]] === 'undefined')
-						p2map[p2[1]]= new Set();
-					p2map[p2[1]].add(name);
-				}
-			}*/
 			if (p1 != null) {
 				p1 = p1[1].match(/([^,]+)/);
 				p1 = p1[1];
@@ -88,7 +79,12 @@ window.onload = function() {
 			chk2s = chk2s + chk2;
 			
 		}
-		checkbox = '<br><input type="checkbox" value="'+p1keys[i]+'" onchange="toggleP1(\''+p1keys[i]+'\');"><label>'+p1keys[i]+'</label><div id="'+p1keys[i]+'" style="display:none">'+chk2s+'</div>';
+		if (p2keys.hasOwnProperty(null)) {
+			numbers = Array.from(mapMapMap[p1keys[i]][null]);
+			insertnull = 'toggleP2(\''+numbers+'\');'
+		} else
+			insertnull = '';
+		checkbox = '<br><input type="checkbox" value="'+p1keys[i]+'" onchange="toggleP1(\''+p1keys[i]+'\');'+insertnull+'"><label>'+p1keys[i]+'</label><div id="'+p1keys[i]+'" style="display:none">'+chk2s+'</div>';
 		checkboxes += checkbox;
 	}
 	str2 = checkboxes + "</span>";
