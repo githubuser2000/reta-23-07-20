@@ -38,10 +38,10 @@ def differentLetters(text1, text2):
         if i + moreless < len(text2) and t1 == text2[i + moreless]:
             more += 1
         elif i + 1 < len(text2) and t1 == text2[i + 1]:
-            moreless -= 1
+            moreless += 1
             more += 1
         elif i - 1 < len(text2) and t1 == text2[i - 1]:
-            moreless += 1
+            moreless -= 1
             more += 1
 
     return more
