@@ -33,9 +33,15 @@ thing = re.compile("[^>]+>[^>]+>\s*\d+(.*)")
 
 def differentLetters(text1, text2):
     more = 0
-    for t1, t2 in zip(text1, text2):
-        if t1 != t2:
-            more += 1
+    moreless = 0
+    for i, t1 in enumerate(text1):
+        if t1 == text2[i + moreless]:
+            continue
+        elif t1 == text2[i + 1]:
+            moreless -= 1
+        elif t1 == text2[i - 1]:
+            moreless += 1
+
     return more
 
 
@@ -47,6 +53,6 @@ for i, line in enumerate(textList):
         diffi = differentLetters(textList2[i - 1], line)
     else:
         diffi = len(line)
-    if diffi == 0:
+    if diffi < 10:
         multiples |= {i}
 alxp(multiples)
