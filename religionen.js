@@ -63,7 +63,7 @@ window.onload = function() {
 	}
 
 	var p1keys = Object.keys(mapMapMap);
-	var p1B1keys = Object.keys(p1Bmap);
+	var p1Bkeys = Object.keys(p1Bmap);
 	checkboxes = "<span style=\"white-space: nowrap;\"><input type=\"checkbox\" onchange=\"toggleCol(\'r_0\');\"><label>Nummererierung</label>";
 	for (i = 0; i < p1keys.length; i++) {
 		var chk2s = "";
@@ -71,12 +71,17 @@ window.onload = function() {
 		for (k = 0; k < p2keys.length; k++) {
 			numbers = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
 			chk2 = '<input type="checkbox" value="'+p2keys[k]+'" onchange="toggleP2(\''+numbers+'\');"><label>'+p2keys[k]+'</label>';
-			if ( p1Bmap[p2keys[k]] != null )
-				chk2s = chk2s + chk2;
+			chk2s = chk2s + chk2;
 			
 		}
 		checkbox = '<br><input type="checkbox" value="'+p1keys[i]+'" onchange="toggleP1(\''+p1keys[i]+'\');"><label>'+p1keys[i]+'</label><div id="'+p1keys[i]+'" style="display:none">'+chk2s+'</div>';
-		checkboxes = checkboxes + checkbox;
+		checkboxes += checkbox;
+	}
+	for (i = 0; i < p1Bkeys.length; i++) {
+		if ( !(new Set(p1Bmap[p1Bkeys[i]])).has(null) ) {
+			checkbox = '<br><input type="checkbox" value="'+p1Bkeys[i]+'" onchange="toggleP2(\''+p1Bkeys[p1Bkeys[i]]+'\');"><label>'+p1Bkeys[i]+'</label>';
+			checkboxes += checkbox;
+		}
 	}
 	str2 = checkboxes + "</span>";
 	div.innerHTML = str2;
