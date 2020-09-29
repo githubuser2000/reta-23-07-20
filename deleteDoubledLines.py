@@ -42,14 +42,11 @@ def differentLetters(text1, text2):
 textList2: dict = {}
 multiples = set()
 for i, line in enumerate(textList):
-    # found = thing.findall(line)
-    found = line
-    if found is not None and len(found) > 0 and i > 0:
-        # alxp(i)
-        diffi = differentLetters(textList2[i - 1], found[0])
-        if diffi != 0:
-            multiples |= {i}
-        textList2[i] = found[0]
+    textList2[i] = line
+    if i > 0:
+        diffi = differentLetters(textList2[i - 1], line)
     else:
-        textList2[i] = ""
+        diffi = len(line)
+    if diffi == 0:
+        multiples |= {i}
 alxp(multiples)
