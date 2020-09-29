@@ -20,21 +20,6 @@ window.onload = function() {
 			var p2 = name.match(/p2_([^\s]+)/);
 			if (p1 != null) {
 				p1 = p1[1].match(/([^,]+)/);
-				if (p1 != null) {
-					if (typeof p1map[p1[1]] === 'undefined')
-						p1map[p1[1]]= new Set();
-					p1map[p1[1]].add(name);
-
-					if (typeof p1Bmap[p1[1]] === 'undefined')
-						p1Bmap[p1[1]]= new Set();
-					if (p2 == null) 
-						p1Bmap[p1[1]].add(num);
-					else
-						p1Bmap[p1[1]].add(null);
-				}
-			}
-			if (p1 != null) {
-				p1 = p1[1].match(/([^,]+)/);
 				p1 = p1[1];
 				if (typeof mapMapMap[p1] === 'undefined')
 					mapMapMap[p1]= {};
@@ -63,13 +48,6 @@ window.onload = function() {
 	var p1Bkeys = Object.keys(p1Bmap);
 	//checkboxes = "<span style=\"white-space: nowrap;\"><input type=\"checkbox\" onchange=\"toggleCol(\'r_0\');\"><label>Nummererierung</label>";
 	checkboxes = "<span style=\"white-space: nowrap;\">";
-	for (i = 0; i < p1Bkeys.length; i++) {
-		if ( !(new Set(p1Bmap[p1Bkeys[i]])).has(null) || ((new Set(p1Bmap[p1Bkeys[i]])).has(null) && (new Array(p1Bmap[p1Bkeys[i]])).length > 1) ) {
-			numbers = Array.from(p1Bmap[p1Bkeys[i]])
-			checkbox = '<br><input type="checkbox" value="'+p1Bkeys[i]+'" onchange="toggleP2(\''+numbers+'\');"><label>'+p1Bkeys[i]+'</label>';
-			checkboxes += checkbox;
-		}
-	}
 	for (i = 0; i < p1keys.length; i++) {
 		var chk2s = "";
 		var p2keys = Object.keys(mapMapMap[p1keys[i]]);
@@ -79,11 +57,12 @@ window.onload = function() {
 			chk2s = chk2s + chk2;
 			
 		}
-		if (p2keys.hasOwnProperty(null)) {
+		if ( mapMapMap[p1keys[i]][null] !== undefined ) {
 			numbers = Array.from(mapMapMap[p1keys[i]][null]);
 			insertnull = 'toggleP2(\''+numbers+'\');'
-		} else
+		} else {
 			insertnull = '';
+		}
 		checkbox = '<br><input type="checkbox" value="'+p1keys[i]+'" onchange="toggleP1(\''+p1keys[i]+'\');'+insertnull+'"><label>'+p1keys[i]+'</label><div id="'+p1keys[i]+'" style="display:none">'+chk2s+'</div>';
 		checkboxes += checkbox;
 	}
