@@ -30,13 +30,26 @@ for line in sys.stdin:
 # thing = re.compile("[^>]+[^>]+>[\s\d]+<.*")
 thing = re.compile("[^>]+>[^>]+>\s*\d+(.*)")
 
-textList2 = {}
+
+def differentLetters(text1, text2):
+    more = 0
+    for t1, t2 in zip(text1, text2):
+        if t1 != t2:
+            more += 1
+    return more
+
+
+textList2: dict = {}
 multiples = set()
 for i, line in enumerate(textList):
-    found = thing.findall(line)
-    if found is not None and len(found) > 0:
-        if found[0] in textList2.values():
+    # found = thing.findall(line)
+    found = line
+    if found is not None and len(found) > 0 and i > 0:
+        # alxp(i)
+        diffi = differentLetters(textList2[i - 1], found[0])
+        if diffi != 0:
             multiples |= {i}
         textList2[i] = found[0]
-
+    else:
+        textList2[i] = ""
 alxp(multiples)
