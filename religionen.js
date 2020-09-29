@@ -6,7 +6,6 @@ window.onload = function() {
   tdClasses = document.getElementsByTagName("td");
  	document.body.before(div);
 	tdClasses = document.getElementsByTagName("td");
-	SpaltenArray = new Array();
 	p1map = {},p2map = {},mapMapMap = {}, str = "", p1Bmap = {};
 	str3 = ""
 	for (i = 0; i < tdClasses.length; i++) {
@@ -34,6 +33,7 @@ window.onload = function() {
 						p1Bmap[p1[1]].add(null);
 				}
 			}
+			/*
 			if (p2 != null) {
 				p2 = p2[1].match(/([^,]+)/);
 				if (p2 != null) {
@@ -41,22 +41,28 @@ window.onload = function() {
 						p2map[p2[1]]= new Set();
 					p2map[p2[1]].add(name);
 				}
-			}
-
-			if (p2 != null && p1 != null) {
-				p2 = p2[1].match(/([^,]+)/);
+			}*/
+			if (p1 != null) {
 				p1 = p1[1].match(/([^,]+)/);
-				if (p2 != null && p1 != null) {
-					if (typeof SpaltenArray[num] === 'undefined')
-						SpaltenArray[num]= new Set();
-					SpaltenArray[num].add(name);
-
-					if (typeof mapMapMap[p1[1]] === 'undefined')
-						mapMapMap[p1[1]]= {};
-					if (typeof mapMapMap[p1[1]][p2[1]] === 'undefined')
-						mapMapMap[p1[1]][p2[1]]= new Set();
-
-					mapMapMap[p1[1]][p2[1]].add(num);
+				p1 = p1[1];
+				if (typeof mapMapMap[p1] === 'undefined')
+					mapMapMap[p1]= {};
+				if (p2 != null) {
+					p2 = p2[1].match(/([^,]+)/);
+					if (p2 != null) {
+						p2 = p2[1];
+						if (typeof mapMapMap[p1][p2] === 'undefined')
+							mapMapMap[p1][p2]= new Set();
+						mapMapMap[p1][p2].add(num);
+					} else {
+						if (typeof mapMapMap[p1][null] === 'undefined')
+							mapMapMap[p1][null]= new Set();
+						mapMapMap[p1][null].add(num);
+					}
+				} else{
+					if (typeof mapMapMap[p1][null] === 'undefined')
+						mapMapMap[p1][null]= new Set();
+					mapMapMap[p1][null].add(num);
 				}
 			}
 		}
@@ -67,7 +73,7 @@ window.onload = function() {
 	//checkboxes = "<span style=\"white-space: nowrap;\"><input type=\"checkbox\" onchange=\"toggleCol(\'r_0\');\"><label>Nummererierung</label>";
 	checkboxes = "<span style=\"white-space: nowrap;\">";
 	for (i = 0; i < p1Bkeys.length; i++) {
-		if ( !(new Set(p1Bmap[p1Bkeys[i]])).has(null) ) {
+		if ( !(new Set(p1Bmap[p1Bkeys[i]])).has(null) || ((new Set(p1Bmap[p1Bkeys[i]])).has(null) && (new Array(p1Bmap[p1Bkeys[i]])).length > 1) ) {
 			numbers = Array.from(p1Bmap[p1Bkeys[i]])
 			checkbox = '<br><input type="checkbox" value="'+p1Bkeys[i]+'" onchange="toggleP2(\''+numbers+'\');"><label>'+p1Bkeys[i]+'</label>';
 			checkboxes += checkbox;
