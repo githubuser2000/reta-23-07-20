@@ -53,8 +53,10 @@ window.onload = function() {
 		var p2keys = Object.keys(mapMapMap[p1keys[i]]);
 		for (k = 0; k < p2keys.length; k++) {
 			numbers = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
-			chk2 = '<input type="checkbox" value="'+p2keys[k]+'" onchange="toggleP2(\''+numbers+'\');"><label>'+p2keys[k]+'</label>';
-			chk2s = chk2s + chk2;
+			if (p2keys[k] != null && p2keys[k] != 'null') {
+				chk2 = '<input type="checkbox" value="'+p2keys[k]+'" onchange="toggleP2(\''+numbers+'\');"><label>'+p2keys[k]+'</label>';
+				chk2s = chk2s + chk2;
+			}
 			
 		}
 		if ( mapMapMap[p1keys[i]][null] !== undefined ) {
