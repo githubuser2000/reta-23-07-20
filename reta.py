@@ -2355,7 +2355,8 @@ class Program:
         alxp(
             """Alternative Farbgebung: gerade Zahlen und durch 3 teilbare und dazu welche Zählung es ist. Mod 2 = hell dunkel,
             mod 3 = rot, grün, blau; Zählung: pure Farben oder gebräunte Farben alternierend
-            NEIN: Ich mache nur die Zahlen vorn abgwechseln hell dunkel je nach Zählung"""
+            NEIN: Ich mache nur die Zahlen vorn abgwechseln hell dunkel je nach Zählung
+            und zwar grün und lila"""
         )
         alxp(
             "Bei mehreren Spalten beide Farbgebungen automatisch wechseln lassen, cmd cli Parameter gibt jedoch explizit beides an, aber pro Spalte oder für alle oder Alternierungsmodulotyp"
