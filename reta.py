@@ -545,6 +545,14 @@ class Program:
                 {0, 3},
             ),
             (
+                Program.ParametersMain.galaxie,
+                (
+                    "analytischeontotolgie",
+                    "ontologie",
+                ),
+                {84},
+            ),
+            (
                 Program.ParametersMain.strukturgroesse,
                 ("groesse", "gross", "strukturgroesse"),
                 {4, 21, 54},
