@@ -547,7 +547,7 @@ class Program:
             (
                 Program.ParametersMain.galaxie,
                 (
-                    "analytischeontotolgie",
+                    "analytischeontologie",
                     "ontologie",
                 ),
                 {84},
