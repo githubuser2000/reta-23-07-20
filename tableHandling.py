@@ -126,7 +126,9 @@ class htmlSyntax(OutputSyntax):
             return '<tr style="background-color:#ff2222;color:#002222;">'
 
     def generateCell(self, num: int, SpaltenParameter: dict) -> str:
-        if int(num) == -1:
+        if int(num) == -2:
+            couples = (("zaehlung", ""),)
+        elif int(num) == -1:
             couples = (("nummerierung", ""),)
         else:
             try:
@@ -563,7 +565,11 @@ class Tables:
                         line = (
                             (
                                 (
-                                    "█"
+                                    self.__outType.generateCell(
+                                        -2, self.tables.generatedSpaltenParameter
+                                    )
+                                    + "█"
+                                    + self.__outType.endCell
                                     if int(
                                         self.tables.getPrepare.zeileWhichZaehlung(
                                             int(filteredLineNumbersofOrignal)
@@ -571,7 +577,11 @@ class Tables:
                                     )
                                     % 2
                                     == 0
-                                    else " "
+                                    else self.__outType.generateCell(
+                                        -2, self.tables.generatedSpaltenParameter
+                                    )
+                                    + " "
+                                    + self.__outType.endCell
                                 )
                                 if str(filteredLineNumbersofOrignal).isdecimal
                                 and filteredLineNumbersofOrignal != ""
