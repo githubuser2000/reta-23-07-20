@@ -559,7 +559,29 @@ class Tables:
                     for iterWholeLine, OneWholeScreenLine_AllSubCells in enumerate(
                         rowsRange
                     ):  # eine Bildhschirm-Zeile immer
+                        # x("abcde", self.tables.getPrepare.zaehlungen)
                         line = (
+                            (
+                                (
+                                    "█"
+                                    if int(
+                                        self.tables.getPrepare.zeileWhichZaehlung(
+                                            int(filteredLineNumbersofOrignal)
+                                        )
+                                    )
+                                    % 2
+                                    == 0
+                                    else " "
+                                )
+                                if str(filteredLineNumbersofOrignal).isdecimal
+                                and filteredLineNumbersofOrignal != ""
+                                and int(filteredLineNumbersofOrignal) > 0
+                                else " "
+                            )
+                            if self.nummerierung
+                            else ""
+                        )
+                        line += (
                             ""
                             if not self.nummerierung
                             else self.__outType.generateCell(
@@ -954,6 +976,9 @@ class Tables:
             else:
                 return (1, 1)
 
+        def zeileWhichZaehlung(self, zeile: int) -> int:
+            return self.zaehlungen[3][zeile]
+
         # ich wollte je pro extra num, nun nicht mehr nur sondern modular ein mal alles und dann pro nummer in 2 funktionen geteilt
         def FilterOriginalLines(self, numRange: set, paramLines: set) -> set:
             """Hier werden die Befehle der Angabe welche Zeilen angezeigt werden in konkrete Zeilen umgewandelt.
@@ -1032,8 +1057,10 @@ class Tables:
                         if a[0] <= n and a[1] >= n:
                             # numRange.remove(n)
                             numRangeYesZ.add(n)
-            if ifZaehlungenAtAll:
+            if ifZaehlungenAtAll or True:
                 self.setZaehlungen(originalLinesRange[-1])
+            if ifZaehlungenAtAll:
+                # self.setZaehlungen(originalLinesRange[-1])
                 numRangeYesZ2 = set()
                 for n in numRange:  # nur die nummern, die noch infrage kommen
                     for z in numRangeYesZ:
