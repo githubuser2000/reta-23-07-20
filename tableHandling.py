@@ -2164,7 +2164,7 @@ class Tables:
                     into = "" if i != 0 else "Primzahlwirkung "
                     if primCreativity(i) == 1:
                         into = PrimAnswer(i)
-                    elif i > 4:
+                    elif i > 1:
                         couples = set()
                         for couple in primRepeat(primFak(i)):
                             # couple = list(couple)
