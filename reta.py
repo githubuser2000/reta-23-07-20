@@ -2366,12 +2366,19 @@ class Program:
             NEIN: Ich mache nur die Zahlen vorn abgwechseln hell dunkel je nach Zählung
             und zwar grün und lila"""
         )
-        alxp("""alternierende Primzahlen einprogrammieren, wie ich sie kürzlich gefunden hatte """)
+        alxp(
+            """alternierende Primzahlen einprogrammieren, wie ich sie kürzlich gefunden hatte """
+        )
         alxp(
             "Bei mehreren Spalten beide Farbgebungen automatisch wechseln lassen, cmd cli Parameter gibt jedoch explizit beides an, aber pro Spalte oder für alle oder Alternierungsmodulotyp"
         )
-        alxp("""Mond hoch n programmieren, n^2 können n^3 nutzen usw., spalte müsste schon existieren in religionen.cvs """)
-        alxp(""" Spalte und Programmierung zu Basis zu Irrationalen Zahlen fehlt vom Thema Symboliken auf Seite 23 """)
+        alxp(
+            """Mond hoch n programmieren, n^2 können n^3 nutzen usw., spalte müsste schon existieren in religionen.cvs
+             Die Sachen "obwohl man nicht kann" aus Symboliken nehmen."""
+        )
+        alxp(
+            """ Spalte und Programmierung zu Basis zu Irrationalen Zahlen fehlt vom Thema Symboliken auf Seite 23 """
+        )
         alxp("vim: iIaAoOjJ mit Registern arbeiten wegen Löschen ohne ausschneiden")
         alxp(
             """Ich könnte einen schnelleren String oder Listen usw. Datentyp erschaffen.
