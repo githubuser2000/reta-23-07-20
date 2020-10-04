@@ -23,7 +23,7 @@ class OutputSyntax:
     def coloredBeginCol(self, num: int, rest: bool = False):
         return self.beginZeile
 
-    def generateCell(self, num: int, dataDict: dict) -> str:
+    def generateCell(self, num: int, dataDict: dict, content=None, zeile=None) -> str:
         return self.beginCell
 
     beginTable = ""
@@ -85,6 +85,25 @@ class bbCodeSyntax(OutputSyntax):
         elif num == 0:
             return '[tr="background-color:#ff2222;color:#002222;"]'
 
+    def generateCell(
+        self, spalte: int, SpaltenParameter: dict, content=None, zeile=None
+    ) -> str:
+        spalte = int(spalte)
+        spalte += 2
+        return (
+            "[td"
+            + (
+                (
+                    '="background-color:#000000;color:#ffffff"'
+                    if content is not None and int(content) % 2 == 0
+                    else '="background-color:#ffffff;color:#000000"'
+                )
+                if spalte == 0
+                else '=""'
+            )
+            + "]"
+        )
+
     beginTable = "[table]"
     endTable = "[/table]"
     beginCell = "[td]"
@@ -94,10 +113,13 @@ class bbCodeSyntax(OutputSyntax):
 
 
 class htmlSyntax(OutputSyntax):
+    def __init__(self):
+        self.zeile = 0
+
     def coloredBeginCol(self, num: int, rest: bool = False) -> str:
         num = int(num) if str(num).isdecimal() else 0
         numberType = primCreativity(num)
-
+        self.zeile = num
         if rest:
             # wenn der Fallm eintritt dass es leerer Text ist der frei ist
             return "<tr>"
@@ -125,14 +147,17 @@ class htmlSyntax(OutputSyntax):
         elif num == 0:
             return '<tr style="background-color:#ff2222;color:#002222;">'
 
-    def generateCell(self, spalte: int, SpaltenParameter: dict) -> str:
-        if int(spalte) == -2:
+    def generateCell(
+        self, spalte: int, SpaltenParameter: dict, content=None, zeile=None
+    ) -> str:
+        spalte = int(spalte)
+        if spalte == -2:
             couples = (("zaehlung", ""),)
-        elif int(spalte) == -1:
+        elif spalte == -1:
             couples = (("nummerierung", ""),)
         else:
             try:
-                couples = SpaltenParameter[int(spalte)]
+                couples = SpaltenParameter[spalte]
             except:
                 x("NUM", SpaltenParameter)
                 x("NUM", spalte)
@@ -149,13 +174,23 @@ class htmlSyntax(OutputSyntax):
                         things[k] = name + ","
         spalte += 2
         return (
-            '<td  style="display:none" class="Spalte r_'
+            '<td class="Spalte r_'
             + str(spalte)
             + " p1_"
             + things[0][:-1]
             + " p2_"
             + (things[1][:-1] if len(things) > 1 else "")
-            + '">'
+            + '"'
+            + (
+                (
+                    'style="background-color:#000000;color:#ffffff;display:none"'
+                    if content is not None and int(content) % 2 == 0
+                    else 'style="background-color:#ffffff;color:#000000;display:none"'
+                )
+                if spalte == 0
+                else 'style="display:none"'
+            )
+            + ">"
         )
 
     beginTable = "<table border=1>"
@@ -566,7 +601,11 @@ class Tables:
                             (
                                 (
                                     self.__outType.generateCell(
-                                        -2, self.tables.generatedSpaltenParameter
+                                        -2,
+                                        self.tables.generatedSpaltenParameter,
+                                        self.tables.getPrepare.zeileWhichZaehlung(
+                                            int(filteredLineNumbersofOrignal)
+                                        ),
                                     )
                                     + (
                                         "█"
@@ -578,15 +617,17 @@ class Tables:
                                         )
                                     )
                                     + self.__outType.endCell
-                                    if int(
-                                        self.tables.getPrepare.zeileWhichZaehlung(
-                                            int(filteredLineNumbersofOrignal)
-                                        )
+                                    if self.tables.getPrepare.zeileWhichZaehlung(
+                                        int(filteredLineNumbersofOrignal)
                                     )
                                     % 2
                                     == 0
                                     else self.__outType.generateCell(
-                                        -2, self.tables.generatedSpaltenParameter
+                                        -2,
+                                        self.tables.generatedSpaltenParameter,
+                                        self.tables.getPrepare.zeileWhichZaehlung(
+                                            int(filteredLineNumbersofOrignal)
+                                        ),
                                     )
                                     + (
                                         " "
