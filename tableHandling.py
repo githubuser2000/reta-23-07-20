@@ -2055,7 +2055,20 @@ class Tables:
                         self.rolle += [cols[19]]
                         self.transzendentalien += [cols[5]]
                         self.ziel += [cols[11]]
-                    for i, cols in enumerate(deepcopy(self.relitable)):
+                    relitableCopy = deepcopy(self.relitable)
+
+                    primAmounts = 0
+                    for i, cols in enumerate(relitableCopy):
+                        primMultiples = primMultiple(i)
+                        into = "" if i != 0 else "Primzahlwirkung "
+                        if i == 2:
+                            into = "für seitlich"
+                        elif i == 3:
+                            into = "gegen seitlich"
+                        if primCreativity(i) == 1:
+                            primAmounts += 1
+                        # self.relitable[i] += [into]
+                    for i, cols in enumerate(relitableCopy):
                         primMultiples = primMultiple(i)
                         into = (
                             ""
