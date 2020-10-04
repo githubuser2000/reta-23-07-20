@@ -652,7 +652,7 @@ class Tables:
                             if self.nummerierung
                             else ""
                         )
-                        line += (
+                        linePlus = (
                             ""
                             if not self.nummerierung
                             else self.__outType.generateCell(
@@ -668,7 +668,9 @@ class Tables:
                             + self.__outType.endCell
                         )
                         if type(self.__outType) is csvSyntax:
-                            line = [line]
+                            line = [line, linePlus]
+                        else:
+                            line += linePlus
                         rowsEmpty = 0
                         sumWidths = 0
                         lastSubCellIndex = 0
