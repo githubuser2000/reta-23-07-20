@@ -2370,6 +2370,8 @@ class Program:
         alxp(
             "Bei mehreren Spalten beide Farbgebungen automatisch wechseln lassen, cmd cli Parameter gibt jedoch explizit beides an, aber pro Spalte oder für alle oder Alternierungsmodulotyp"
         )
+        alxp("""Mond hoch n programmieren, n^2 können n^3 nutzen usw., spalte müsste schon existieren in religionen.cvs """)
+        alxp(""" Spalte und Programmierung zu Basis zu Irrationalen Zahlen fehlt vom Thema Symboliken auf Seite 23 """)
         alxp("vim: iIaAoOjJ mit Registern arbeiten wegen Löschen ohne ausschneiden")
         alxp(
             """Ich könnte einen schnelleren String oder Listen usw. Datentyp erschaffen.
