@@ -147,7 +147,7 @@ class htmlSyntax(OutputSyntax):
                         things[k] += name + ","
                     except KeyError:
                         things[k] = name + ","
-        spalte += 1
+        spalte += 2
         return (
             '<td  style="display:none" class="Spalte r_'
             + str(spalte)
