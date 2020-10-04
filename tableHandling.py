@@ -2042,7 +2042,11 @@ class Tables:
             hardCodedCouple = (10, 42)
             if len(self.tables.primUniversePrimsSet) > 0:
                 self.tables.primUniverseRowNum = len(self.relitable[0])
-                rowsAsNumbers |= {len(self.relitable[0]), len(self.relitable[0]) + 1}
+                rowsAsNumbers |= {
+                    len(self.relitable[0]),
+                    len(self.relitable[0]) + 1,
+                    len(self.relitable[0]) + 2,
+                }
                 for polytype, polytypename in zip(
                     hardCodedCouple, ["Sternpolygone", "gleichförmiges Polygone"]
                 ):
@@ -2057,17 +2061,6 @@ class Tables:
                         self.ziel += [cols[11]]
                     relitableCopy = deepcopy(self.relitable)
 
-                    primAmounts = 0
-                    for i, cols in enumerate(relitableCopy):
-                        primMultiples = primMultiple(i)
-                        into = "" if i != 0 else "Primzahlwirkung "
-                        if i == 2:
-                            into = "für seitlich"
-                        elif i == 3:
-                            into = "gegen seitlich"
-                        if primCreativity(i) == 1:
-                            primAmounts += 1
-                        # self.relitable[i] += [into]
                     for i, cols in enumerate(relitableCopy):
                         primMultiples = primMultiple(i)
                         into = (
@@ -2130,6 +2123,69 @@ class Tables:
                     ] = [primzahlvielfachesuniversum]
 
                     x("idiot", self.tables.generatedSpaltenParameter)
+
+                self.primAmounts = 3
+                self.oldPrimAmounts = 0
+                self.nth_primNum = {0: 0, 1: 1}
+
+                def PrimAnswer2(i: int) -> str:
+                    nth = self.nth_primNum[i]
+                    if nth == 2:
+                        return "für seitlich"
+                    elif nth == 3:
+                        return "gegen seitlich"
+                    elif nth % 2 == 0:
+                        return "für innen"
+                    else:
+                        return "für innen"
+
+                def PrimAnswer(i: int) -> str:
+                    if i == 2:
+                        self.nth_primNum[2] = 2
+                        return "für seitlich"
+                    elif i == 3:
+                        self.nth_primNum[3] = 3
+                        return "gegen seitlich"
+                    self.oldPrimAmounts = self.primAmounts
+                    if primCreativity(i) == 1:
+                        self.primAmounts += 1
+                    if i > 3:
+                        self.nth_primNum[i] = self.primAmounts
+                        if self.primAmounts != self.oldPrimAmounts:
+                            if self.primAmounts % 2 == 0:
+                                return "für außen"
+                            else:
+                                return "für innen"
+                        else:
+                            return ""
+
+                for i, cols in enumerate(relitableCopy):
+                    primMultiples = primMultiple(i)
+                    into = "" if i != 0 else "Primzahlwirkung "
+                    if primCreativity(i) == 1:
+                        into = PrimAnswer(i)
+                    elif i > 4:
+                        couples = set()
+                        for couple in primRepeat(primFak(i)):
+                            # couple = list(couple)
+                            # couple.sort()
+                            # couple = tuple(couple)
+                            # couples |= {couple}
+                            # for couple in couples:
+                            # for one in couple:
+                            # into += self.relitable[i - 1][-1] + " mit "
+                            if couple[1] == 1:
+                                into += PrimAnswer2(couple[0]) + " + "
+                            else:
+                                into += (
+                                    str(couple[1])
+                                    + " * "
+                                    + PrimAnswer2(couple[0])
+                                    + " + "
+                                )
+                        into = into[:-3]
+                    self.relitable[i] += [into]
+                x("ööö", self.nth_primNum)
             return self.relitable, rowsAsNumbers
 
         def readConcatCsv(self, relitable: list, rowsAsNumbers: set) -> tuple:
