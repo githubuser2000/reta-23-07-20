@@ -2165,7 +2165,6 @@ class Tables:
                     if primCreativity(i) == 1:
                         into = PrimAnswer(i)
                     elif i > 1:
-                        couples = set()
                         for couple in primRepeat(primFak(i)):
                             # couple = list(couple)
                             # couple.sort()
@@ -2186,6 +2185,12 @@ class Tables:
                         into = into[:-3]
                     self.relitable[i] += [into]
                 x("ööö", self.nth_primNum)
+                self.tables.generatedSpaltenParameter[
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.SpaltenVanillaAmount
+                ] = [primzahlvielfachesuniversum]
+
+                x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
 
         def readConcatCsv(self, relitable: list, rowsAsNumbers: set) -> tuple:
