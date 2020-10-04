@@ -2137,7 +2137,7 @@ class Tables:
                     elif nth % 2 == 0:
                         return "für innen"
                     else:
-                        return "für innen"
+                        return "für außen"
 
                 def PrimAnswer(i: int) -> str:
                     if i == 2:
@@ -2153,9 +2153,9 @@ class Tables:
                         self.nth_primNum[i] = self.primAmounts
                         if self.primAmounts != self.oldPrimAmounts:
                             if self.primAmounts % 2 == 0:
-                                return "für außen"
-                            else:
                                 return "für innen"
+                            else:
+                                return "für außen"
                         else:
                             return ""
 
