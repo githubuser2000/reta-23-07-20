@@ -2343,32 +2343,11 @@ class Program:
         alxp(
             "1. http://goexchange.de/viewtopic.php?f=13&t=2683#p17239 () \n    9. anderen etwas vormachen können (Bahai)\n    1/9. den anderen Strukturgrößen außer der Einheit (9, 1/9) etwas vormachen können"
         )
-        # alxp(
-        #    '2. Bei Kombi sollte ich noch programmieren, wegen letzter Spalte "Religionen", dass Klammern und Vorzeichen + - dennoch zu richtigen letztendlichen Zeilen der Endausgabe zugeordnet werden.'
-        # )
-        # alxp(
-        #     """SCHLIMMER BUG: bei kombi Sachen kein Zeilenumbruch mehr!
-        #      BUG zwar jetzt beseitigt, aber ich will doch keine Zeilenumbrüche
-        #      bei kombi.csv Ausgaben! Ich kümmere mich darum, wenn ich
-        #      geistig leistungsfähiger sein werde"""
-        # )
         alxp(
             """Die Modallogikvielfacher müsste ich noch einprogrammieren
              Wenn ich programmiert habe, wie multipliziert wird, um zu erreichen, dass die Modallogiken umgesetzt werden, werde ich
              programmieren, dass die bisherige Multiplikation, die man kaum verstehen kann, auch besser verständlich gemacht werden kann und sich ggf.
              auf 2 Spalten oder mehr erstrecken wird, statt auf einer, wie bisher. So wird es verständlicher"""
-        )
-        alxp(
-            """Alternative Farbgebung: gerade Zahlen und durch 3 teilbare und dazu welche Zählung es ist. Mod 2 = hell dunkel,
-            mod 3 = rot, grün, blau; Zählung: pure Farben oder gebräunte Farben alternierend
-            NEIN: Ich mache nur die Zahlen vorn abgwechseln hell dunkel je nach Zählung
-            und zwar grün und lila"""
-        )
-        alxp(
-            """alternierende Primzahlen einprogrammieren, wie ich sie kürzlich gefunden hatte """
-        )
-        alxp(
-            "Bei mehreren Spalten beide Farbgebungen automatisch wechseln lassen, cmd cli Parameter gibt jedoch explizit beides an, aber pro Spalte oder für alle oder Alternierungsmodulotyp"
         )
         alxp(
             """Mond hoch n programmieren, n^2 können n^3 nutzen usw., spalte müsste schon existieren in religionen.cvs
@@ -2394,35 +2373,7 @@ class Program:
         alxp(
             "Die Geschwindigkeitsteigerugnen entstehn meist durch anschließndes Zusammenfügen zu einer dann festen Größe."
         )
-        alxp(
-            "alles wahrscheinlich besser durch dicts ersetzen, und zeitmessungen hier und da machen und ausgeben"
-        )
-        #        alxp(
-        #            "Überprüfung aller Funktionen nach Umprogrammierung wegen Brython!kombiTable_Kombis"
-        #        )
-        # alxp(
-        #    "Bug: Es zeigt manchmal nicht alle Spalten an, z.B. wenn ich mehrere Kommaspalten angebe in der CLI"
-        # )
-        # alxp("kein Wortumbruch funktioniert nicht bei Kombinationen")
-        #        alxp(
-        #            "Es muss mein Programm sein, dass die Zeichen beim Zeilenumbruch verschluckt, da es bei beiden pyphen und pyhyphen passiert: Bereichsangabe"
-        #        )
-        #        alxp(
-        #            "Die super hohen Monde aus der Kugel müsste ich noch eintragen in die Tabelle"
-        #        )
-        # alxp("die 0 weg machen bei der ersten Zeile immer")
-        # alxp("Zeilen Option machen: nicht nur vielfache, sondern auch Potenzen")
-        # alxp(
-        #    "Leere Zeilen bei Kombis einer Tabelle auf mehrere wegen Bildschirmbreite: löschen bei Ausgabe!"
-        # )
-        #        alxp("1. Geschwindigkeitsoptimierungen, Pythonspezifisches)
-        # alxp(
-        #    "2. Audit, ob Doku = Befehle = Tabelleninhalte\n3. Überlegen, was noch rein in die Tabelle\n4. Debugging und ggf. Unit-Tests"
-        # )
         # alxp("1. Clean Code\n2. Vollständigkeit der Befehle auch")
-        # alxp(
-        #    "1. Ich muss noch Tabelleninhalte ins Programm bringen, die schon in der Tabelle stecken"
-        # )
 
     def combiTableWorkflow(
         self,
