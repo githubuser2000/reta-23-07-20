@@ -2366,6 +2366,7 @@ class Program:
             NEIN: Ich mache nur die Zahlen vorn abgwechseln hell dunkel je nach Zählung
             und zwar grün und lila"""
         )
+        alxp("""alternierende Primzahlen einprogrammieren, wie ich sie kürzlich gefunden hatte """)
         alxp(
             "Bei mehreren Spalten beide Farbgebungen automatisch wechseln lassen, cmd cli Parameter gibt jedoch explizit beides an, aber pro Spalte oder für alle oder Alternierungsmodulotyp"
         )
