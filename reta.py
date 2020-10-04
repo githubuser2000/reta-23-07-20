@@ -1342,8 +1342,8 @@ class Program:
         if not self.tables.getOut.oneTable:
             self.tables.textWidth = (
                 self.tables.textWidth
-                if shellRowsAmount > self.tables.textWidth + 7 or shellRowsAmount <= 0
-                else shellRowsAmount - 7
+                if shellRowsAmount > self.tables.textWidth + 8 or shellRowsAmount <= 0
+                else shellRowsAmount - 8
             )
         return (
             paramLines,
@@ -1943,8 +1943,8 @@ class Program:
         if not self.tables.getOut.oneTable:
             self.tables.textWidth = (
                 self.tables.textWidth
-                if shellRowsAmount > self.tables.textWidth + 7 or shellRowsAmount <= 0
-                else shellRowsAmount - 7
+                if shellRowsAmount > self.tables.textWidth + 8 or shellRowsAmount <= 0
+                else shellRowsAmount - 8
             )
         return (
             paramLines,
@@ -2093,8 +2093,6 @@ class Program:
         self.tables.generRows = self.generRows
         self.tables.getPrepare.rowsAsNumbers = self.rowsAsNumbers
         self.tables.getOut.rowsAsNumbers = self.rowsAsNumbers
-        # alxp(self.paraDict)
-        # alxp(self.dataDict)
         self.relitable, rowsAsNumbers = self.tables.getConcat.readConcatCsv(
             self.relitable, self.rowsAsNumbers
         )
