@@ -125,18 +125,18 @@ class htmlSyntax(OutputSyntax):
         elif num == 0:
             return '<tr style="background-color:#ff2222;color:#002222;">'
 
-    def generateCell(self, num: int, SpaltenParameter: dict) -> str:
-        if int(num) == -2:
+    def generateCell(self, spalte: int, SpaltenParameter: dict) -> str:
+        if int(spalte) == -2:
             couples = (("zaehlung", ""),)
-        elif int(num) == -1:
-            couples = (("nummerierung", ""),)
+        elif int(spalte) == -1:
+            couples = (("spaltemerierung", ""),)
         else:
             try:
-                couples = SpaltenParameter[int(num)]
+                couples = SpaltenParameter[int(spalte)]
             except:
                 x("NUM", SpaltenParameter)
-                x("NUM", num)
-                if str(num).isdecimal():
+                x("NUM", spalte)
+                if str(spalte).isdecimal():
                     raise ValueError
                 couples = (("?", "?"),)
         things = {}
@@ -147,10 +147,10 @@ class htmlSyntax(OutputSyntax):
                         things[k] += name + ","
                     except KeyError:
                         things[k] = name + ","
-        num += 1
+        spalte += 1
         return (
             '<td  style="display:none" class="Spalte r_'
-            + str(num)
+            + str(spalte)
             + " p1_"
             + things[0][:-1]
             + " p2_"
