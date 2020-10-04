@@ -129,7 +129,7 @@ class htmlSyntax(OutputSyntax):
         if int(spalte) == -2:
             couples = (("zaehlung", ""),)
         elif int(spalte) == -1:
-            couples = (("spaltemerierung", ""),)
+            couples = (("nummerierung", ""),)
         else:
             try:
                 couples = SpaltenParameter[int(spalte)]
@@ -568,7 +568,15 @@ class Tables:
                                     self.__outType.generateCell(
                                         -2, self.tables.generatedSpaltenParameter
                                     )
-                                    + "█"
+                                    + (
+                                        "█"
+                                        if type(self.__outType) in [OutputSyntax]
+                                        else str(
+                                            self.tables.getPrepare.zeileWhichZaehlung(
+                                                int(filteredLineNumbersofOrignal)
+                                            )
+                                        )
+                                    )
                                     + self.__outType.endCell
                                     if int(
                                         self.tables.getPrepare.zeileWhichZaehlung(
@@ -580,13 +588,25 @@ class Tables:
                                     else self.__outType.generateCell(
                                         -2, self.tables.generatedSpaltenParameter
                                     )
-                                    + " "
+                                    + (
+                                        " "
+                                        if type(self.__outType) in [OutputSyntax]
+                                        else str(
+                                            self.tables.getPrepare.zeileWhichZaehlung(
+                                                int(filteredLineNumbersofOrignal)
+                                            )
+                                        )
+                                    )
                                     + self.__outType.endCell
                                 )
                                 if str(filteredLineNumbersofOrignal).isdecimal
                                 and filteredLineNumbersofOrignal != ""
                                 and int(filteredLineNumbersofOrignal) > 0
-                                else " "
+                                else self.__outType.generateCell(
+                                    -2, self.tables.generatedSpaltenParameter
+                                )
+                                + " "
+                                + self.__outType.endCell
                             )
                             if self.nummerierung
                             else ""
