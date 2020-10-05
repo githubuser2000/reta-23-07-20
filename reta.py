@@ -1441,14 +1441,14 @@ class Program:
             spaltenreihenfolgeundnurdiese,
         )
 
-    def __init__(self, argv=[], newWay=True):
+    def __init__(self, argv=[]):
         global Tables, infoLog
         self.argv = argv
         self.allesParameters = 0
         self.tables = Tables()
-        self.workflowEverything(argv, newWay)
+        self.workflowEverything(argv)
 
-    def workflowEverything(self, argv, newWay):
+    def workflowEverything(self, argv):
         global infoLog
         (
             self.RowsLen,

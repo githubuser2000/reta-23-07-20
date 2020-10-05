@@ -5,7 +5,7 @@ import sys
 import reta
 
 # reta.infoLog = True
-retaProgram = reta.Program(sys.argv, True)
+retaProgram = reta.Program(sys.argv)
 # retaProgram.showCommandResults()
 # reta.alxp("verdreht: ")
 # retaProgram.showCommandResults("-")
