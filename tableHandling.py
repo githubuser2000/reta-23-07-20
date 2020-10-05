@@ -1899,6 +1899,25 @@ class Tables:
                 x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
 
+        def concatMondPoweredCalcMeanings(
+            self, relitable: list, rowsAsNumbers: set
+        ) -> tuple:
+            self.relitable = relitable
+            if rowsAsNumbers >= {64}:
+                for i, cols in enumerate(deepcopy(self.relitable)):
+                    self.relitable[i] += ["bla"]
+                if (
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.SpaltenVanillaAmount
+                    in self.tables.generatedSpaltenParameter
+                ):
+                    raise ValueError
+                self.tables.generatedSpaltenParameter[
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.SpaltenVanillaAmount
+                ] = self.tables.dataDict[0][64]
+            return self.relitable, rowsAsNumbers
+
         def concatMondExponzierenLogarithmusTyp(
             self, relitable: list, rowsAsNumbers: set
         ) -> tuple:
