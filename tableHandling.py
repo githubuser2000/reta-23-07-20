@@ -1906,7 +1906,11 @@ class Tables:
             if rowsAsNumbers >= {64}:
                 rowsAsNumbers |= {len(self.relitable[0])}
                 for i, cols in enumerate(deepcopy(self.relitable)):
-                    self.relitable[i] += ["bla"]
+                    if i == 0:
+                        into = "Mond-Berechnung durch Potenzen / Wurzeln - Generiert"
+                    else:
+                        into = self.relitable[i][85]
+                    self.relitable[i] += [into]
                 if (
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.SpaltenVanillaAmount
