@@ -1197,7 +1197,7 @@ class Program:
                         ].split(","):
                             if str(number).isdecimal():
                                 spaltenreihenfolgeundnurdiese += [int(number)]
-                    if arg[2:6] == "art=":
+                    elif arg[2:6] == "art=":
                         outputtype = arg[(arg.find("=") + 1) :]
                         if outputtype == "shell":
                             self.tables.outType = OutputSyntax()
