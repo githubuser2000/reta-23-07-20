@@ -1904,6 +1904,7 @@ class Tables:
         ) -> tuple:
             self.relitable = relitable
             if rowsAsNumbers >= {64}:
+                rowsAsNumbers |= {len(self.relitable[0])}
                 for i, cols in enumerate(deepcopy(self.relitable)):
                     self.relitable[i] += ["bla"]
                 if (
