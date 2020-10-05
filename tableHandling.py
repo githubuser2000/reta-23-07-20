@@ -1906,10 +1906,16 @@ class Tables:
             if rowsAsNumbers >= {64}:
                 rowsAsNumbers |= {len(self.relitable[0])}
                 for i, cols in enumerate(deepcopy(self.relitable)):
+                    into = ""
                     if i == 0:
                         into = "Mond-Berechnung durch Potenzen / Wurzeln - Generiert"
                     else:
-                        into = self.relitable[i][85]
+                        moonNumbers = moonNumber(i)
+                        if len(moonNumbers[0]) > 0:
+                            for basis, exponent in zip(*moonNumbers):
+                                into += self.relitable[basis][85]
+                        else:
+                            into += "kein Mond"
                     self.relitable[i] += [into]
                 if (
                     len(self.tables.generatedSpaltenParameter)
