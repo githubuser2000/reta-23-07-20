@@ -1414,12 +1414,6 @@ class Program:
             self.relitable,
             self.rowsAsNumbers,
         ) = self.tables.getConcat.concatLovePolygon(self.relitable, self.rowsAsNumbers)
-        (
-            self.relitable,
-            self.rowsAsNumbers,
-        ) = self.tables.getConcat.concatMondPoweredCalcMeanings(
-            self.relitable, self.rowsAsNumbers
-        )
 
         if len(self.rowsOfcombi) > 0:
             (

@@ -1899,36 +1899,6 @@ class Tables:
                 x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
 
-        def concatMondPoweredCalcMeanings(
-            self, relitable: list, rowsAsNumbers: set
-        ) -> tuple:
-            self.relitable = relitable
-            if rowsAsNumbers >= {64}:
-                rowsAsNumbers |= {len(self.relitable[0])}
-                for i, cols in enumerate(deepcopy(self.relitable)):
-                    into = ""
-                    if i == 0:
-                        into = "Mond-Berechnung durch Potenzen / Wurzeln - Generiert"
-                    else:
-                        moonNumbers = moonNumber(i)
-                        if len(moonNumbers[0]) > 0:
-                            for basis, exponent in zip(*moonNumbers):
-                                into += self.relitable[basis][85]
-                        else:
-                            into += "kein Mond"
-                    self.relitable[i] += [into]
-                if (
-                    len(self.tables.generatedSpaltenParameter)
-                    + self.tables.SpaltenVanillaAmount
-                    in self.tables.generatedSpaltenParameter
-                ):
-                    raise ValueError
-                self.tables.generatedSpaltenParameter[
-                    len(self.tables.generatedSpaltenParameter)
-                    + self.tables.SpaltenVanillaAmount
-                ] = self.tables.dataDict[0][64]
-            return self.relitable, rowsAsNumbers
-
         def concatMondExponzierenLogarithmusTyp(
             self, relitable: list, rowsAsNumbers: set
         ) -> tuple:
