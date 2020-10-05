@@ -1592,53 +1592,5 @@ class Program:
         return newTable
 
 
-#        alxp(
-#            "Wie erreiche ich das?: Ich mache erst Geschwindigkeitsoptimierungen. Welche Sachen kann ich optimieren?"
-#        )
-#        alxp(
-#            "Concattenieren von allen Strings, listen appenden bei vorhandener veränderung lieber durch funktionale programmierung "
-#        )
-#        alxp(
-#            "In Schleifen lieber lokale Variablen, KeyError catchen anstatt if machen für Erstinitialisierung eines dicts"
-#        )
-#        alxp(
-#            "imports besser erst bedingt rein holen, ggf. in funktionen, Häufungen von Funktionsaufrufen minimieren, z.B. bei Rekursionen"
-#        )
-#        alxp(
-#            "Fkt mit if drin, das irgendwann für immer gilt: besser bei Gegelenheit die funktion wie funktionszeiger überschreiben, so dass man in Schleife kein if braucht"
-#        )
-
 if __name__ == "__main__":
     Program(sys.argv)
-# inverted:
-# \e[7mi
-
-
-# Wie könnte ich Unit-Tests realisieren?
-# Ich müsste erst alles jeweilige instantiieren
-# Erst müsste ich die einfachen Funktionen durchprobieren
-# und dann die darauf aufbauenden
-# Ich sollte mich wohl auch im Netz schlau machen, wie man mit Python am Besten
-# Unit-Tests schreibt
-
-# Durch Unit-Tests lässt sich das Testen automatisieren
-# import unittest
-# from tribool import Tribool libs: nose und pytest
-
-
-"""
-Irgendwie muss ich mir jetzt überlegen, wie ich das jetzt alles umgestalte und
-architektonisch schöner mache
-Ganze klar, die eine Stelle gehört in die ganz andere Klasse.
-Aber auch so müsste ich es mal anders umbauen.
-
-Ich bilde den Ablauf wider:
-    1. init
-        da rasselt alles durch bis alles ausgegeben wird
-            dieses durchrasseln sollte ich in eine Extra Methode verlagern
-            bringAllImportantBeginThings() bzw. start() sollte ich adäquat umbenenenn.
-                das durchrasselnde sollte ich aufplitten in module
-        das ganze refactoring mache ich mit pycharm
-        was ich für Parameter programmiert habe, müsste ich auch ins Richtige
-        rein verschieben mit pycharm
-"""
