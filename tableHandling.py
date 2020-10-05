@@ -1918,7 +1918,7 @@ class Tables:
                         if i == 0:
                             into = rowheading
                         else:
-                            into = ""
+                            into = "" if len(moonTypesOf1Num[0]) > 0 else "kein Mond"
                             for k, (basis, exponentMinus2) in enumerate(
                                 zip(*moonTypesOf1Num)
                             ):
