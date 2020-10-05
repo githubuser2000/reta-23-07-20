@@ -1500,10 +1500,7 @@ class Program:
              programmieren, dass die bisherige Multiplikation, die man kaum verstehen kann, auch besser verständlich gemacht werden kann und sich ggf.
              auf 2 Spalten oder mehr erstrecken wird, statt auf einer, wie bisher. So wird es verständlicher"""
         )
-        alxp(
-            """Mond hoch n programmieren, n^2 können n^3 nutzen usw., spalte müsste schon existieren in religionen.cvs
-             Die Sachen "obwohl man nicht kann" aus Symboliken nehmen."""
-        )
+        alxp("""Die Sachen "obwohl man nicht kann" aus Symboliken nehmen.""")
         alxp(
             """ Spalte und Programmierung zu Basis zu Irrationalen Zahlen fehlt vom Thema Symboliken auf Seite 23 """
         )

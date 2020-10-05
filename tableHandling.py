@@ -1939,8 +1939,8 @@ class Tables:
                                     self.relitable[i][10]
                                     + " + "
                                     + self.relitable[i][11]
-                                    + ", obwohl man nicht kann"
                                 )
+                                into += ", " + self.relitable[exponentMinus2 + 2][85]
                         self.relitable[i] += [into]
                     if (
                         len(self.tables.generatedSpaltenParameter)
