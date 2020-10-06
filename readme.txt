@@ -46,6 +46,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 also Primzahlen[/list]
 [*]--konzept=[list][*]weisheit,gut,zeit,ruf,selbstgerecht,egoismus[/list]
 [*]--inkrementieren=[list][*]universum[/list]
+[*]--operationen=[list][*]halbierungen[/list]
 [/list]
 [*]-kombination
 [list][*]--was[list][*]tiere,berufe,intelligenz,liebe,transzendentalien,strukturalien,primzahlkreuz,frauen,maenner,persoenlichkeit,religionen[/list][/list]
