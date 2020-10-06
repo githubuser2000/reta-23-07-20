@@ -2124,33 +2124,15 @@ class Tables:
 
                     x("idiot", self.tables.generatedSpaltenParameter)
 
-                self.primAmounts = 3
+                self.primAmounts = 0
                 self.oldPrimAmounts = 0
-                self.nth_primNum = {0: 0, 1: 1}
+                self.lastPrimAnswers: dict = {}
 
                 def PrimAnswer2(i: int) -> str:
-                    nth = self.nth_primNum[i]
-                    if nth == 2:
-                        return "für seitlich"
-                    elif nth == 3:
-                        return "gegen seitlich"
-                    elif nth % 2 == 0:
-                        return "für innen"
-                    else:
-                        return "für außen"
+                    return self.lastPrimAnswers[i]
 
                 def PrimAnswer(i: int) -> str:
-                    if i == 2:
-                        self.nth_primNum[2] = 2
-                        return "für seitlich"
-                    elif i == 3:
-                        self.nth_primNum[3] = 3
-                        return "gegen seitlich"
-                    self.oldPrimAmounts = self.primAmounts
-                    if primCreativity(i) == 1:
-                        self.primAmounts += 1
                     if i > 3:
-                        self.nth_primNum[i] = self.primAmounts
                         if self.primAmounts != self.oldPrimAmounts:
                             if self.primAmounts % 2 == 0:
                                 return "für innen"
@@ -2158,21 +2140,25 @@ class Tables:
                                 return "für außen"
                         else:
                             return ""
+                    elif i == 2:
+                        return "für seitlich"
+                    elif i == 3:
+                        return "gegen seitlich"
+                    else:
+                        return ""
 
                 for i, cols in enumerate(relitableCopy):
                     primMultiples = primMultiple(i)
                     into = "" if i != 0 else "Primzahlwirkung "
+
+                    self.oldPrimAmounts = self.primAmounts
+                    if couldBePrimeNumberPrimzahlkreuz(i):
+                        self.primAmounts += 1
                     if primCreativity(i) == 1:
                         into = PrimAnswer(i)
+                        self.lastPrimAnswers[i] = into
                     elif i > 1:
                         for couple in primRepeat(primFak(i)):
-                            # couple = list(couple)
-                            # couple.sort()
-                            # couple = tuple(couple)
-                            # couples |= {couple}
-                            # for couple in couples:
-                            # for one in couple:
-                            # into += self.relitable[i - 1][-1] + " mit "
                             if couple[1] == 1:
                                 into += PrimAnswer2(couple[0]) + " + "
                             else:
@@ -2184,7 +2170,6 @@ class Tables:
                                 )
                         into = into[:-3]
                     self.relitable[i] += [into]
-                x("ööö", self.nth_primNum)
                 self.tables.generatedSpaltenParameter[
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.SpaltenVanillaAmount
@@ -2484,3 +2469,8 @@ def isPrimMultiple(isIt: int, multiples1: list, dontReturnList=True):
     if dontReturnList:
         return False
     return areThey
+
+
+def couldBePrimeNumberPrimzahlkreuz(num: int) -> bool:
+    Under24 = (1, 5, 7, 11, 13, 17, 19, 23)
+    return num % 24 in Under24
