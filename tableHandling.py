@@ -2144,6 +2144,8 @@ class Tables:
                         return "für seitlich"
                     elif i == 3:
                         return "gegen seitlich"
+                    elif i == 1:
+                        return "alle Richtungen möglich"
                     else:
                         return ""
 
@@ -2169,6 +2171,8 @@ class Tables:
                                     + " + "
                                 )
                         into = into[:-3]
+                    elif i == 1:
+                        into = PrimAnswer(1)
                     self.relitable[i] += [into]
                 self.tables.generatedSpaltenParameter[
                     len(self.tables.generatedSpaltenParameter)
