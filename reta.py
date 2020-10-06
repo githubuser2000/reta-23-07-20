@@ -412,7 +412,7 @@ class Program:
 
         Program.ParametersMain: namedtuple = namedtuple(
             "ParametersMain",
-            "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesuniversum konzept inkrementieren alles",
+            "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesuniversum konzept inkrementieren operationen alles",
         )
         Program.ParametersMain = Program.ParametersMain(
             (
@@ -453,6 +453,7 @@ class Program:
                 "konzepte",
             ),
             ("inkrementieren",),
+            ("operationen",),
             ("alles"),
         )
         allowedPrimNumbersForCommand = tuple(
@@ -471,6 +472,14 @@ class Program:
         )
 
         paraNdataMatrix = [
+            (
+                Program.ParametersMain.operationen,
+                (
+                    "halbierung",
+                    "halbierungen",
+                ),
+                {86},
+            ),
             (
                 Program.ParametersMain.religionen,
                 (
