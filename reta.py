@@ -483,9 +483,9 @@ class Program:
             (
                 Program.ParametersMain.religionen,
                 (
+                    "religionsgründertyp",
                     "prophet",
                     "archon",
-                    "religionsgründertyp",
                     "religionsgruendertyp",
                 ),
                 {72},
@@ -494,8 +494,8 @@ class Program:
             (
                 Program.ParametersMain.religionen,
                 (
-                    "babylon",
                     "dertierkreiszeichen",
+                    "babylon",
                 ),
                 {0, 36},
             ),
@@ -522,8 +522,8 @@ class Program:
             (
                 Program.ParametersMain.religionen,
                 (
-                    "gleichfoermigespolygon",
                     "gleichförmigespolygon",
+                    "gleichfoermigespolygon",
                     "nichtsternpolygon",
                     "polygon",
                 ),
@@ -549,16 +549,16 @@ class Program:
             (
                 Program.ParametersMain.galaxie,
                 (
-                    "babylon",
                     "tierkreiszeichen",
+                    "babylon",
                 ),
                 {1, 2},
             ),
             (
                 Program.ParametersMain.galaxie,
                 (
-                    "thomas",
                     "thomasevangelium",
+                    "thomas",
                 ),
                 {0, 3},
             ),
@@ -572,7 +572,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.strukturgroesse,
-                ("groesse", "gross", "strukturgroesse"),
+                ("grösse", "groesse", "gross", "strukturgroesse"),
                 {4, 21, 54},
             ),
             (
@@ -582,7 +582,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.strukturgroesse,
-                ("politik", "politischesysteme"),
+                ("politischesysteme", "politik"),
                 {83},
             ),
             (
@@ -608,7 +608,7 @@ class Program:
             (
                 Program.ParametersMain.universum,
                 (
-                    "komplex",
+                    "Modelofhierarchicalcomplexity" "komplex",
                     "komplexität",
                     "komplexitaet",
                     "complexity",
@@ -709,8 +709,8 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
-                    "angreifbar",
                     "angreifbarkeit",
+                    "angreifbar",
                 ),
                 {58, 57},
             ),
@@ -735,12 +735,12 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "intelligenz",
                     "erwerben",
                     "erlernen",
                     "lernen",
                     "evolutionaer",
                     "evolutionär",
-                    "intelligenz",
                     "kreativität",
                     "kreativitaet",
                     "kreativ",
@@ -771,6 +771,7 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "alphabeta",
                     "alpha",
                     "beta",
                     "omega",
@@ -789,17 +790,17 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
-                    "beruf",
                     "berufe",
+                    "beruf",
                 ),
                 {30},
             ),
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "lösungen",
                     "loesungen",
                     "loesung",
-                    "lösungen",
                     "lösungen",
                 ),
                 {31},
@@ -835,6 +836,7 @@ class Program:
             (
                 Program.ParametersMain.bedeutung,
                 (
+                    "anwendungdersonnenundmonde",
                     "anwendungdersonnen",
                     "anwendungenfuermonde",
                 ),
@@ -843,9 +845,9 @@ class Program:
             (
                 Program.ParametersMain.bedeutung,
                 (
+                    "zählungen",
                     "zaehlung",
                     "zaehlungen",
-                    "zählungen",
                     "zählung",
                 ),
                 {25, 45},
