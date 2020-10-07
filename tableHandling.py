@@ -167,15 +167,30 @@ class htmlSyntax(OutputSyntax):
         things1 = {}
         # for i, couple in enumerate(couples):
         if len(couples) > 0:
-            couple = couples[0]
-            for k, name in enumerate(couple):
-                if name != "":
-                    try:
-                        things1[k] |= {name}
-                    except KeyError:
-                        things1[k]: set = {
-                            name,
-                        }
+            if len(couples[0]) > 0:
+                i = 1
+                couple = couples[0][0]
+                while len(couples) > i and len(couples[i]) > 0 and couples[i][0] == "":
+                    couple = couples[i][0]
+                    i += 1
+                try:
+                    things1[0] |= {couple}
+                except KeyError:
+                    things1[0]: set = {
+                        couple,
+                    }
+            if len(couples[0]) > 1:
+                i = 1
+                couple = couples[0][1]
+                while len(couples) > i and len(couples[i]) > 1 and couples[i][1] == "":
+                    couple = couples[i][1]
+                    i += 1
+                try:
+                    things1[1] |= {couple}
+                except KeyError:
+                    things1[1]: set = {
+                        couple,
+                    }
         things = {}
         for key, values in things1.items():
             for el in values:
