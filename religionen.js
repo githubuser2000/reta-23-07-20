@@ -16,29 +16,33 @@ window.onload = function() {
 			num = parseInt(num[1]);
 			str = num[1];
 			//num = i
-			var p1 = name.match(/p1_([^\s]+)/);
-			var p2 = name.match(/p2_([^\s]+)/);
-			if (p1 != null) {
-				p1 = p1[1].match(/([^,]+)/);
-				p1 = p1[1];
-				if (typeof mapMapMap[p1] === 'undefined')
-					mapMapMap[p1]= {};
-				if (p2 != null) {
-					p2 = p2[1].match(/([^,]+)/);
-					if (p2 != null) {
-						p2 = p2[1];
-						if (typeof mapMapMap[p1][p2] === 'undefined')
-							mapMapMap[p1][p2]= new Set();
-						mapMapMap[p1][p2].add(num);
-					} else {
+			var p1a = name.match(/p1_[^\s]+/g);
+			var p2a = name.match(/p2_[^\s]+/g);
+			if (p1a != null) {
+				for (p1i = 0; p1i < p1a.length; p1i++) {
+					p1 = p1a[p1i].match(/([^,]+)/);
+					p1 = p1[1].substring(3);
+					if (typeof mapMapMap[p1] === 'undefined')
+						mapMapMap[p1]= {};
+					if (p2a != null) {
+						for (p2i = 0; p2i < p2a.length; p2i++) {
+							p2 = p2a[p2i].match(/([^,]+)/);
+							if (p2 != null) {
+								p2 = p2[1].substring(3);
+								if (typeof mapMapMap[p1][p2] === 'undefined')
+									mapMapMap[p1][p2]= new Set();
+								mapMapMap[p1][p2].add(num);
+							} else {
+								if (typeof mapMapMap[p1][null] === 'undefined')
+									mapMapMap[p1][null]= new Set();
+								mapMapMap[p1][null].add(num);
+							}
+						}
+					} else{
 						if (typeof mapMapMap[p1][null] === 'undefined')
 							mapMapMap[p1][null]= new Set();
 						mapMapMap[p1][null].add(num);
 					}
-				} else{
-					if (typeof mapMapMap[p1][null] === 'undefined')
-						mapMapMap[p1][null]= new Set();
-					mapMapMap[p1][null].add(num);
 				}
 			}
 		}

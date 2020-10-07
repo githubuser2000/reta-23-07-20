@@ -164,14 +164,26 @@ class htmlSyntax(OutputSyntax):
                 if str(spalte).isdecimal():
                     raise ValueError
                 couples = (("?", "?"),)
-        things = {}
-        for i, couple in enumerate(couples):
+        things1 = {}
+        # for i, couple in enumerate(couples):
+        if len(couples) > 0:
+            couple = couples[0]
             for k, name in enumerate(couple):
                 if name != "":
                     try:
-                        things[k] += name + ","
+                        things1[k] |= {name}
                     except KeyError:
-                        things[k] = name + ","
+                        things1[k]: set = {
+                            name,
+                        }
+        things = {}
+        for key, values in things1.items():
+            for el in values:
+                try:
+                    things[key] += el + ","
+                except KeyError:
+                    things[key] = el + ","
+
         spalte += 2
         return (
             '<td class="Spalte r_'

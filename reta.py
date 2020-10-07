@@ -588,7 +588,7 @@ class Program:
             (
                 Program.ParametersMain.universum,
                 (
-                    "analytische_ontologie ",
+                    "analytischrontologie",
                     "ontologie",
                 ),
                 {84},
@@ -608,7 +608,8 @@ class Program:
             (
                 Program.ParametersMain.universum,
                 (
-                    "Modelofhierarchicalcomplexity" "komplex",
+                    "Modelofhierarchicalcomplexity",
+                    "komplex",
                     "komplexität",
                     "komplexitaet",
                     "complexity",
@@ -1522,6 +1523,7 @@ class Program:
         alxp(
             "1. http://goexchange.de/viewtopic.php?f=13&t=2683#p17239 () \n    9. anderen etwas vormachen können (Bahai)\n    1/9. den anderen Strukturgrößen außer der Einheit (9, 1/9) etwas vormachen können"
         )
+        alxp("Ich muss noch die primzahl große csv an neuesten Stand anpassen!")
         alxp(
             """Die Modallogikvielfacher müsste ich noch einprogrammieren
              Wenn ich programmiert habe, wie multipliziert wird, um zu erreichen, dass die Modallogiken umgesetzt werden, werde ich
