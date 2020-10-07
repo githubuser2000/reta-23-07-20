@@ -32,7 +32,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--breite=[list][*]40[*]70[/list]
 [*]--breiten=[list][*]20,50,10,70[*]30,100,20[/list]
 [*]--keinenummerierung
-[*]--religionen=[list][*]sternpolygon,dertierkreiszeichen,gleichfoermigespolygon,vertreterhoehererkonzepte,messias,religionsgründertyp[/list]
+[*]--religionen=[list][*]sternpolygon,dertierkreiszeichen,gleichfoermigespolygon,vertreterhoehererkonzepte,messias,religionsgründertyp,vergleich[/list]
 [*]--galaxie= oder --kreis=[list][*]tierkreiszeichen,thomasevangelium,analytischeontologie[/list]
 [*]--groessenordnung=[list][*]strukturgroesse, organisation, politischesysteme[/list]
 [*]--universum=[list][*]transzendentalien,komplexitaet,viererstruktur,alternierung[/list]

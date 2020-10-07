@@ -471,6 +471,10 @@ class Program:
             )
         )
 
+        ontologieNebenParameters = (
+            "analytischeontologie",
+            "ontologie",
+        )
         paraNdataMatrix = [
             (
                 Program.ParametersMain.operationen,
@@ -498,6 +502,15 @@ class Program:
                     "dertierkreiszeichen",
                 ),
                 {0, 36},
+            ),
+            (
+                Program.ParametersMain.religionen,
+                (
+                    "vergleich",
+                    "sternpolygonvsgleichfoermiges",
+                    "vergleichnvs1divn",
+                ),
+                {87},
             ),
             (
                 Program.ParametersMain.religionen,
@@ -555,10 +568,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.galaxie,
-                (
-                    "analytischeontologie",
-                    "ontologie",
-                ),
+                ontologieNebenParameters,
                 {84},
             ),
             (
@@ -575,6 +585,11 @@ class Program:
                 Program.ParametersMain.strukturgroesse,
                 ("politik", "politischesysteme"),
                 {83},
+            ),
+            (
+                Program.ParametersMain.universum,
+                ontologieNebenParameters,
+                {84},
             ),
             (
                 Program.ParametersMain.universum,
