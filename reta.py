@@ -589,7 +589,7 @@ class Program:
                 Program.ParametersMain.universum,
                 (
                     "analytische_ontologie ",
-                    "ontologie_",
+                    "ontologie",
                 ),
                 {84},
             ),
