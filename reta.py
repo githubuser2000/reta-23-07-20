@@ -471,10 +471,6 @@ class Program:
             )
         )
 
-        ontologieNebenParameters = (
-            "analytischeontologie",
-            "ontologie",
-        )
         paraNdataMatrix = [
             (
                 Program.ParametersMain.operationen,
@@ -568,7 +564,10 @@ class Program:
             ),
             (
                 Program.ParametersMain.galaxie,
-                ontologieNebenParameters,
+                (
+                    "analytischeontologie",
+                    "ontologie",
+                ),
                 {84},
             ),
             (
@@ -588,7 +587,10 @@ class Program:
             ),
             (
                 Program.ParametersMain.universum,
-                ontologieNebenParameters,
+                (
+                    "analytische_ontologie ",
+                    "ontologie_",
+                ),
                 {84},
             ),
             (
