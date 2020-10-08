@@ -1,4 +1,6 @@
 var col =  document.getElementsByClassName('RowNumber 1');
+var selectedSpaltenMany1 = {};
+var selectedSpaltenMany2 = new Set();
 window.onload = function() {
   var headingsDiv =  document.getElementById('Tabelle01');
   let div = document.createElement('div');
@@ -87,24 +89,57 @@ window.onload = function() {
 
 function toggleP2(numbers) {
 	numbers = numbers.split(',');
-	for (n = 0; n < numbers.length; n++) {
-		toggleCol('r_'+numbers[n]);
+	if (selectedSpaltenMany2.has(numbers)) {
+		toggleForNums(numbers,true);
+		selectedSpaltenMany2.delete(numbers)
+	} else {
+		toggleForNums(numbers,false);
+		selectedSpaltenMany2.add(numbers)
 	}
 }
 
+function toggleForNums(numbers,really) {
+	for (n = 0; n < numbers.length; n++) {
+		toggleCol('r_'+numbers[n], really);
+	}
+}
+
+function toggleName(p2) {
+	if (p2.style.display != 'none') 
+		p2.style.display = 'none';
+	else 
+		p2.style.display = 'table-cell';
+}
 
 function toggleP1(p1) {
 	p2 = document.getElementById(p1);
-	if (typeof(p2.style) != "undefined") 
- 		if (p2.style.display != 'none') 
-			p2.style.display = 'none';
-		else 
-			p2.style.display = 'table-cell';
-	else 
+	if (typeof(p2.style) != "undefined") {
+		var num = p2.className.match(/r_(\d+)/)
+	        if (num != null && num.length > 1)
+			num = num[1]
+		if ( (selectedSpaltenMany1[num] === 'undefined') === (p2.style.display != 'none')) {
+			selectedSpaltenMany1[num] = p2
+			toggleName(p2)
+		} else {
+			toggleName(p2)
+			delete selectedSpaltenMany1[num]
+		}
+	} else 
 		window.alert(p2.innerHTML + ' ! ');
-	
 }
-
+function toggleCol2(col, really) {
+	col = document.getElementsByClassName(col);
+	if (typeof(col[0].style) != "undefined") {
+ 		if (col[0].style.display != 'none') 
+			for (i = 0; i < col.length; i++)
+				col[i].style.display = 'none';
+		else 
+			for (i = 0; i < col.length; i++)
+				col[i].style.display = 'table-cell';
+	} else {
+		window.alert(col[0].innerHTML + ' ! ');
+	}
+}
 function toggleCol(col) {
 	col = document.getElementsByClassName(col);
 	if (typeof(col[0].style) != "undefined") {
