@@ -92,14 +92,14 @@ function toggleP2(numbers,para1u2) {
 	existingParameterNamesArrayIndex = MatrixHasCouple(para1u2, selectedSpaltenMany2);
 	//window.alert((existingParameterNamesArrayIndex.size > 0));
 	if (existingParameterNamesArrayIndex.size > 0) {
-		existingParameterNamesKeys = Array.from(existingParameterNamesArrayIndex)
+		existingParameterNamesKeys = Array.from(existingParameterNamesArrayIndex);
 		toggleForNums(numbers, false);
 		//window.alert(existingParameterNamesKey);
 		/*window.alert(existingParameterNamesArrayIndex);
 		window.alert("obj: "+selectedSpaltenMany2[0]);*/
 		//for (i=0; i<existingParameterNamesArrayIndex.length; i++) {
-			//window.alert("index: "+existingParameterNamesArrayIndex[i]);
-			//selectedSpaltenMany2 .splice(existingParameterNamesArrayIndex[i], 1);
+		//window.alert("index: "+existingParameterNamesArrayIndex[i]);
+		//selectedSpaltenMany2 .splice(existingParameterNamesArrayIndex[i], 1);
 		for (i=0; i<existingParameterNamesKeys.length; i++){
 			for (k=0; k<selectedSpaltenMany2[existingParameterNamesKeys[i]].length; k++) {
 				if (selectedSpaltenMany2[existingParameterNamesKeys[i]][k] == para1u2 ) {
@@ -123,7 +123,7 @@ function toggleP2(numbers,para1u2) {
 function MatrixHasCouple(couple, SpaltenNumberToParameters) {
 	//matrix = Array.from(matrix);
 	existing = new Set();
-	window.alert(matrix.length);
+	//window.alert(Object.keys(SpaltenNumberToParameters).length);
 	for (var key in SpaltenNumberToParameters) {
 		really = true;
 		for (i=0; i<SpaltenNumberToParameters[key].length; i++) {
