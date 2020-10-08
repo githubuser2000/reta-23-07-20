@@ -608,7 +608,7 @@ class Program:
             (
                 Program.ParametersMain.universum,
                 (
-                    "Modelofhierarchicalcomplexity",
+                    "modelofhierarchicalcomplexity",
                     "komplex",
                     "komplexität",
                     "komplexitaet",

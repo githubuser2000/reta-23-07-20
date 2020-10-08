@@ -166,13 +166,18 @@ class htmlSyntax(OutputSyntax):
                 couples = (("?", "?"),)
         things1 = {}
         # for i, couple in enumerate(couples):
+        x("azu", couples)
         if len(couples) > 0:
             if len(couples[0]) > 0:
-                i = 1
+                i = 0
                 couple = couples[0][0]
-                while len(couples) > i and len(couples[i]) > 0 and couples[i][0] == "":
-                    couple = couples[i][0]
+                while (
+                    len(couples) > i + 1
+                    and len(couples[i + 1]) > 0
+                    and couples[i][0].strip() == ""
+                ):
                     i += 1
+                    couple = couples[i][0]
                 try:
                     things1[0] |= {couple}
                 except KeyError:
@@ -180,11 +185,15 @@ class htmlSyntax(OutputSyntax):
                         couple,
                     }
             if len(couples[0]) > 1:
-                i = 1
+                i = 0
                 couple = couples[0][1]
-                while len(couples) > i and len(couples[i]) > 1 and couples[i][1] == "":
-                    couple = couples[i][1]
+                while (
+                    len(couples) > i + 1
+                    and len(couples[i + 1]) > 0
+                    and couples[i][1].strip() == ""
+                ):
                     i += 1
+                    couple = couples[i][1]
                 try:
                     things1[1] |= {couple}
                 except KeyError:
@@ -1825,13 +1834,15 @@ class Tables:
                                             "sss",
                                             len(self.tables.generatedSpaltenParameter),
                                         )
+                                        into: list = []
+                                        for elementParameter in self.tables.dataDict[3][
+                                            a
+                                        ]:
+                                            into += [("kombination", elementParameter)]
                                         self.tables.generatedSpaltenParameter[
                                             len(self.tables.generatedSpaltenParameter)
                                             + self.tables.SpaltenVanillaAmount
-                                        ] = [
-                                            ("kombination",),
-                                            self.tables.dataDict[3][a],
-                                        ]
+                                        ] = into
 
             else:
                 self.kombiTable = [[]]
