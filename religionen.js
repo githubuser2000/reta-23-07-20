@@ -93,7 +93,6 @@ function toggleP2(numbers,para1u2) {
 	//window.alert((existingParameterNamesArrayIndex.size > 0));
 	if (existingParameterNamesArrayIndex.size > 0) {
 		existingParameterNamesKeys = Array.from(existingParameterNamesArrayIndex);
-		toggleForNums(numbers, false);
 		//window.alert(existingParameterNamesKey);
 		/*window.alert(existingParameterNamesArrayIndex);
 		window.alert("obj: "+selectedSpaltenMany2[0]);*/
@@ -104,19 +103,20 @@ function toggleP2(numbers,para1u2) {
 			for (k=0; k<selectedSpaltenMany2[existingParameterNamesKeys[i]].length; k++) {
 				if (selectedSpaltenMany2[existingParameterNamesKeys[i]][k] == para1u2 ) {
 					selectedSpaltenMany2[existingParameterNamesKeys[i]].splice(k,1);
-					window.alert("yes: "+i+" "+k);
+					//window.alert("yes: "+i+" "+k);
 				} else {
-					window.alert("no");
+					//window.alert("no");
 				}
 			}
 		}
+		toggleForNums(numbers, false);
 	} else {
-		toggleForNums(numbers,true);
 		for (i=0; i<numbers.length; i++)
 			if (typeof(selectedSpaltenMany2[numbers[i]]) !== "undefined")
 				selectedSpaltenMany2[numbers[i]].push(para1u2);
 			else
 				selectedSpaltenMany2[numbers[i]]=[para1u2];
+		toggleForNums(numbers,true);
 	}
 }
 
@@ -151,11 +151,10 @@ function MatrixHasCouple(couple, SpaltenNumberToParameters) {
 function toggleForNums(numbers,really) {
 	for (n = 0; n < numbers.length; n++) {
 		if (typeof(selectedSpaltenMany2[numbers]) === 'undefined')
-			toggleCol('r_'+numbers[n]);
+			toggleCol('r_'+numbers[n],true);
 		else {
-			window.alert(numbers+" has "+selectedSpaltenMany2[numbers].length+" length");
-			if (selectedSpaltenMany2[numbers].length == 0)
-				toggleCol('r_'+numbers[n]);
+			//window.alert(numbers+" has "+selectedSpaltenMany2[numbers].length+" length");
+			toggleCol('r_'+numbers[n],selectedSpaltenMany2[numbers].length == 0);
 		}
 	}
 }
@@ -181,18 +180,18 @@ function toggleP1(p1) {
 			delete selectedSpaltenMany1[num]
 		}
 	} else 
-		window.alert(p2.innerHTML + ' ! ');
+		//window.alert(p2.innerHTML + ' ! ');
 }
-function toggleCol(col) {
+function toggleCol(col,noParamatersAnymore) {
 	col = document.getElementsByClassName(col);
 	if (typeof(col[0].style) != "undefined") {
- 		if (col[0].style.display != 'none') 
+ 		if (col[0].style.display != 'none' && noParamatersAnymore) 
 			for (i = 0; i < col.length; i++)
 				col[i].style.display = 'none';
 		else 
 			for (i = 0; i < col.length; i++)
 				col[i].style.display = 'table-cell';
-	} else {
-		window.alert(col[0].innerHTML + ' ! ');
+	//} else {
+		//window.alert(col[0].innerHTML + ' ! ');
 	}
 }
