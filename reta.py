@@ -373,17 +373,19 @@ class Program:
                         else (
                             ("bool", 0)
                             if case == 1
-                            else (
+                            else tuple(
                                 (
-                                    int(para)
-                                    if para.isdecimal()
-                                    else para
-                                    if len(parameterNames) > 0
+                                    (
+                                        int(para)
+                                        if para.isdecimal()
+                                        else para
+                                        if len(parameterNames) > 0
+                                        else None
+                                        for para in parameterMainNamePerLoop
+                                    )
+                                    if case == 2
                                     else None
-                                    for para in parameterMainNamePerLoop
-                                )
-                                if case == 2
-                                else None
+                                ),
                             )
                         )
                     )
