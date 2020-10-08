@@ -1,6 +1,6 @@
 var col =  document.getElementsByClassName('RowNumber 1');
 var selectedSpaltenMany1 = {};
-var selectedSpaltenMany2 = [];
+var selectedSpaltenMany2 = {};
 window.onload = function() {
   var headingsDiv =  document.getElementById('Tabelle01');
   let div = document.createElement('div');
@@ -68,14 +68,14 @@ window.onload = function() {
 		for (k = 0; k < p2keys.length; k++) {
 			numbers = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
 			if (p2keys[k] != null && p2keys[k] != 'null') {
-				chk2 = '<input type="checkbox" value="'+p2keys[k]+'" onchange="toggleP2(\''+numbers+'\');"><label>'+p2keys[k]+'</label>';
+				chk2 = '<input type="checkbox" value="'+p2keys[k]+'" onchange="toggleP2(\''+numbers+'\',\''+[p1keys[i],p2keys[k]]+'\');"><label>'+p2keys[k]+'</label>';
 				chk2s = chk2s + chk2;
 			}
 			
 		}
 		if ( mapMapMap[p1keys[i]][null] !== undefined ) {
 			numbers = Array.from(mapMapMap[p1keys[i]][null]);
-			insertnull = 'toggleP2(\''+numbers+'\');'
+			insertnull = 'toggleP2(\''+numbers+'\',\''+[p1keys[i],null]+'\');'
 		} else {
 			insertnull = '';
 		}
@@ -87,48 +87,62 @@ window.onload = function() {
 }
 
 
-function toggleP2(numbers) {
+function toggleP2(numbers,para1u2) {
 	numbers = numbers.split(',');
-	existingParameterNamesArrayIndex = MatrixHasNumberOfList(numbers, selectedSpaltenMany2);
-	window.alert((existingParameterNamesArrayIndex.size > 0));
+	existingParameterNamesArrayIndex = MatrixHasCouple(para1u2, selectedSpaltenMany2);
+	//window.alert((existingParameterNamesArrayIndex.size > 0));
 	if (existingParameterNamesArrayIndex.size > 0) {
-		existingParameterNamesArrayIndex = Array.from(existingParameterNamesArrayIndex)
-		toggleForNums(numbers,false);
-		window.alert(numbers);
-		window.alert(existingParameterNamesArrayIndex);
-		window.alert(selectedSpaltenMany2[0]);
-		for (i=0; i<existingParameterNamesArrayIndex.length; i++) {
-			window.alert(existingParameterNamesArrayIndex[i]);
-			selectedSpaltenMany2.splice(existingParameterNamesArrayIndex[i], 1);
+		existingParameterNamesKeys = Array.from(existingParameterNamesArrayIndex)
+		toggleForNums(numbers, false);
+		//window.alert(existingParameterNamesKey);
+		/*window.alert(existingParameterNamesArrayIndex);
+		window.alert("obj: "+selectedSpaltenMany2[0]);*/
+		//for (i=0; i<existingParameterNamesArrayIndex.length; i++) {
+			//window.alert("index: "+existingParameterNamesArrayIndex[i]);
+			//selectedSpaltenMany2 .splice(existingParameterNamesArrayIndex[i], 1);
+		for (i=0; i<existingParameterNamesKeys.length; i++){
+			for (k=0; k<selectedSpaltenMany2[existingParameterNamesKeys[i]].length; k++) {
+				if (selectedSpaltenMany2[existingParameterNamesKeys[i]][k] == para1u2 ) {
+					selectedSpaltenMany2[existingParameterNamesKeys[i]].splice(k,1);
+					window.alert("yes: "+i+" "+k);
+				} else {
+					window.alert("no");
+				}
+			}
 		}
 	} else {
 		toggleForNums(numbers,true);
-		selectedSpaltenMany2.push(numbers)
+		for (i=0; i<numbers.length; i++)
+			if (typeof(selectedSpaltenMany2[numbers[i]]) !== "undefined")
+				selectedSpaltenMany2[numbers[i]].push(para1u2);
+			else
+				selectedSpaltenMany2[numbers[i]]=[para1u2];
 	}
 }
 
-function MatrixHasNumberOfList(numbers, matrix) {
-	matrix = Array.from(matrix);
+function MatrixHasCouple(couple, SpaltenNumberToParameters) {
+	//matrix = Array.from(matrix);
 	existing = new Set();
-	for(k=0; k<matrix.length; k++) 
-		for (i=0; i<matrix[k].length; i++)
-			for (l=0;l<numbers.length; l++)
-				if (matrix[k][i] == numbers[l]) {
-					existing.add(k);
-					window.alert("ja");
-				}
-	return existing
+	window.alert(matrix.length);
+	for (var key in SpaltenNumberToParameters) {
+		really = true;
+		for (i=0; i<SpaltenNumberToParameters[key].length; i++) {
+			if (SpaltenNumberToParameters[key] != couple) {
+				really = false
+			}
+		}
+		if (really) {
+			//window.alert("ja: "+k);
+			existing.add(key);
+		}
+	}
+	return existing;
 }
 
 function toggleForNums(numbers,really) {
 	for (n = 0; n < numbers.length; n++) {
-		exists = false
-		for ( i=0 ; i < selectedSpaltenMany2.length; i++) {
-			for (k=0; k < selectedSpaltenMany2[i].length; k++)
-				if (selectedSpaltenMany2[i][k] == numbers[n])
-					exists = true
-		}
-		if (exists !== really)
+		window.alert(really);
+		if (really)
 			toggleCol('r_'+numbers[n]);
 	}
 }
