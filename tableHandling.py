@@ -152,55 +152,41 @@ class htmlSyntax(OutputSyntax):
     ) -> str:
         spalte = int(spalte)
         if spalte == -2:
-            couples = (("zaehlung", ""),)
+            tupleOfListsOfCouples = (("zaehlung", ""),)
         elif spalte == -1:
-            couples = (("nummerierung", ""),)
+            tupleOfListsOfCouples = (("nummerierung", ""),)
         else:
             try:
-                couples = SpaltenParameter[spalte]
+                tupleOfListsOfCouples = SpaltenParameter[spalte]
             except:
                 x("NUM", SpaltenParameter)
                 x("NUM", spalte)
                 if str(spalte).isdecimal():
                     raise ValueError
-                couples = (("?", "?"),)
-        things1 = {}
-        # for i, couple in enumerate(couples):
-        x("azu", couples)
-        if len(couples) > 0:
-            if len(couples[0]) > 0:
-                i = 0
-                couple = couples[0][0]
-                while (
-                    len(couples) > i + 1
-                    and len(couples[i + 1]) > 0
-                    and couples[i][0].strip() == ""
-                ):
-                    i += 1
-                    couple = couples[i][0]
-                try:
-                    things1[0] |= {couple}
-                except KeyError:
-                    things1[0]: set = {
-                        couple,
-                    }
-            if len(couples[0]) > 1:
-                i = 0
-                couple = couples[0][1]
-                while (
-                    len(couples) > i + 1
-                    and len(couples[i + 1]) > 0
-                    and couples[i][1].strip() == ""
-                ):
-                    i += 1
-                    couple = couples[i][1]
-                try:
-                    things1[1] |= {couple}
-                except KeyError:
-                    things1[1]: set = {
-                        couple,
-                    }
-        things = {}
+                tupleOfListsOfCouples = (("?", "?"),)
+        things1: dict = {}
+        x("azu", tupleOfListsOfCouples)
+        for couples in tupleOfListsOfCouples:
+            for paraNum in (0, 1):
+                if len(couples) > paraNum:
+                    if len(couples[0]) > paraNum:
+                        i = 0
+                        para1o2name = couples[0][paraNum]
+                        while (
+                            len(couples) > i + 1
+                            and len(couples[i + 1]) > 0
+                            and para1o2name.strip() == ""
+                        ):
+                            i += 1
+                            para1o2name = couples[i][paraNum]
+                        if len(para1o2name.strip()) != 0:
+                            try:
+                                things1[paraNum] |= {para1o2name}
+                            except KeyError:
+                                things1[paraNum]: set = {
+                                    para1o2name,
+                                }
+        things: list = {}
         for key, values in things1.items():
             for el in values:
                 try:
