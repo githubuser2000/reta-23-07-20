@@ -89,27 +89,44 @@ window.onload = function() {
 
 function toggleP2(numbers) {
 	numbers = numbers.split(',');
-	if (selectedSpaltenMany2.has(numbers)) {
+	existingParameterNamesArrayIndex = MatrixHasNumberOfList(numbers, selectedSpaltenMany2);
+	window.alert((existingParameterNamesArrayIndex.length > 0));
+	if (existingParameterNamesArrayIndex.length > 0) {
+		existingParameterNamesArrayIndex = Array.from(existingParameterNamesArrayIndex)
 		toggleForNums(numbers,false);
-		selectedSpaltenMany2.delete(numbers)
+		window.alert(numbers);
+		window.alert(existingParameterNamesArrayIndex);
+		window.alert(selectedSpaltenMany2);
+		for (i=0; i<existing.length; i++) {
+			selectedSpaltenMany2.splice(existingParameterNamesArrayIndex[i], 1);
+		}
 	} else {
 		toggleForNums(numbers,true);
 		selectedSpaltenMany2.add(numbers)
 	}
 }
 
+function MatrixHasNumberOfList(numbers, matrix) {
+	matrix = Array.from(matrix);
+	existing = new Set()
+	for(k=0; k<matrix.length; k++) 
+		for (i=0; i<matrix[k].length; i++)
+			for (l=0;l<numbers.length; l++)
+				if (matrix[k][i] == numbers[l]) {
+					existing.add(k)
+				}
+	return existing
+}
+
 function toggleForNums(numbers,really) {
 	for (n = 0; n < numbers.length; n++) {
 		exists = false
 		for ( i=0 ; i < selectedSpaltenMany2.length; i++) {
-			for (k=0; k < selectedSpaltenMany2[i].length; k++) {
-				if (selectedSpaltenMany2[i][k] == numbers[n]) {
+			for (k=0; k < selectedSpaltenMany2[i].length; k++)
+				if (selectedSpaltenMany2[i][k] == numbers[n])
 					exists = true
-				}
-			}
 		}
-		window.alert("sometext");
-		if (exists !== really)
+		if (exists === really)
 			toggleCol('r_'+numbers[n]);
 	}
 }
