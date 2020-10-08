@@ -375,21 +375,19 @@ class Program:
                             if case == 1
                             else tuple(
                                 (
-                                    (
-                                        int(para)
-                                        if para.isdecimal()
-                                        else para
-                                        if len(parameterNames) > 0
-                                        else None
-                                        for para in parameterMainNamePerLoop
-                                    )
-                                    if case == 2
+                                    int(para)
+                                    if para.isdecimal()
+                                    else para
+                                    if len(parameterNames) > 0
                                     else None
-                                ),
+                                    for para in parameterMainNamePerLoop
+                                )
                             )
+                            if case == 2
+                            else None
                         )
                     )
-                    for index2 in index2a if case == 1 else (index2a,):
+                    for index2 in index2a if case == 2 else (index2a,):
                         try:
                             dataDicts[index1][index2] += (into,)
                         except KeyError:
