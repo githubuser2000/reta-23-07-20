@@ -90,17 +90,24 @@ window.onload = function() {
 function toggleP2(numbers) {
 	numbers = numbers.split(',');
 	if (selectedSpaltenMany2.has(numbers)) {
-		toggleForNums(numbers,true);
+		toggleForNums(numbers,false);
 		selectedSpaltenMany2.delete(numbers)
 	} else {
-		toggleForNums(numbers,false);
+		toggleForNums(numbers,true);
 		selectedSpaltenMany2.add(numbers)
 	}
 }
 
 function toggleForNums(numbers,really) {
 	for (n = 0; n < numbers.length; n++) {
-		toggleCol('r_'+numbers[n], really);
+		for ( i=0 ; i < selectedSpaltenMany2.length; i++) {
+			for (k=0; k < selectedSpaltenMany2[i].length; k++) {
+				if ( (selectedSpaltenMany2[i][k] == numbers[n]) === really) {
+					toggleCol('r_'+numbers[n], really);
+				}
+			}
+		}
+//		if (numbers[n] ==  )
 	}
 }
 
