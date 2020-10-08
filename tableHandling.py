@@ -177,7 +177,8 @@ class htmlSyntax(OutputSyntax):
         x("azu", tupleOfListsOfCouples)
         for couples in tupleOfListsOfCouples:
             for paraNum in (0, 1):
-                if len(couples) > paraNum:
+                if len(couples[0]) > paraNum:
+                    x("azu" + str(paraNum), couples[0][paraNum])
                     if len(couples[0]) > paraNum:
                         i = 0
                         para1o2name = couples[0][paraNum]
