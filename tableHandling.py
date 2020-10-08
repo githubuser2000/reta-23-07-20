@@ -122,39 +122,47 @@ class htmlSyntax(OutputSyntax):
         self.zeile = num
         if rest:
             # wenn der Fallm eintritt dass es leerer Text ist der frei ist
-            return "<tr>"
+            return "<tr>\n"
             if num == 0:
-                return "<tr>"
+                return "<tr>\n"
             elif num % 2 == 0:
-                return "<tr>"
+                return "<tr>\n"
             else:
-                return "<tr>"
+                return "<tr>\n"
         elif numberType == 1:
             if num % 2 == 0:
-                return '<tr style="background-color:#66ff66;color:#000000;">'
+                return '<tr style="background-color:#66ff66;color:#000000;">\n'
             else:
-                return '<tr style="background-color:#009900;color:#ffffff;">'
+                return '<tr style="background-color:#009900;color:#ffffff;">\n'
         elif numberType == 2 or num == 1:
             if num % 2 == 0:
-                return '<tr style="background-color:#ffff66;color:#000099;">'
+                return '<tr style="background-color:#ffff66;color:#000099;">\n'
             else:
-                return '<tr style="background-color:#555500;color:#aaaaff;">'
+                return '<tr style="background-color:#555500;color:#aaaaff;">\n'
         elif numberType == 3:
             if num % 2 == 0:
-                return '<tr style="background-color:#9999ff;color:#202000;">'
+                return '<tr style="background-color:#9999ff;color:#202000;">\n'
             else:
-                return '<tr style="background-color:#000099;color:#ffff66;">'
+                return '<tr style="background-color:#000099;color:#ffff66;">\n'
         elif num == 0:
-            return '<tr style="background-color:#ff2222;color:#002222;">'
+            return '<tr style="background-color:#ff2222;color:#002222;">\n'
 
     def generateCell(
         self, spalte: int, SpaltenParameter: dict, content=None, zeile=None
     ) -> str:
         spalte = int(spalte)
         if spalte == -2:
-            tupleOfListsOfCouples = (("zaehlung", ""),)
+            tupleOfListsOfCouples = (
+                [
+                    ("zaehlung", ""),
+                ],
+            )
         elif spalte == -1:
-            tupleOfListsOfCouples = (("nummerierung", ""),)
+            tupleOfListsOfCouples = (
+                [
+                    ("nummerierung", ""),
+                ],
+            )
         else:
             try:
                 tupleOfListsOfCouples = SpaltenParameter[spalte]
@@ -165,6 +173,7 @@ class htmlSyntax(OutputSyntax):
                     raise ValueError
                 tupleOfListsOfCouples = (("?", "?"),)
         things1: dict = {}
+        # x("ayu", SpaltenParameter)
         x("azu", tupleOfListsOfCouples)
         for couples in tupleOfListsOfCouples:
             for paraNum in (0, 1):
@@ -199,9 +208,9 @@ class htmlSyntax(OutputSyntax):
             '<td class="Spalte r_'
             + str(spalte)
             + " p1_"
-            + things[0][:-1]
+            + things[0]
             + " p2_"
-            + (things[1][:-1] if len(things) > 1 else "")
+            + (things[1] if len(things) > 1 else "")
             + '"'
             + (
                 (
@@ -212,16 +221,16 @@ class htmlSyntax(OutputSyntax):
                 if spalte == 0
                 else 'style="display:none"'
             )
-            + ">"
+            + ">\n"
         )
 
     beginTable = "<table border=1>"
-    endTable = "</table>"
-    beginCell = "<td>"
-    endCell = "</td>"
+    endTable = "</table>\n"
+    beginCell = "<td>\n"
+    endCell = "</td>\n"
     # beginZeile = "<tr>"
     beginZeile = ""
-    endZeile = "</tr>"
+    endZeile = "</tr>\n"
 
 
 class Wraptype(Enum):
@@ -1842,7 +1851,7 @@ class Tables:
                                         self.tables.generatedSpaltenParameter[
                                             len(self.tables.generatedSpaltenParameter)
                                             + self.tables.SpaltenVanillaAmount
-                                        ] = into
+                                        ] = (into,)
 
             else:
                 self.kombiTable = [[]]
@@ -2158,7 +2167,7 @@ class Tables:
                     self.tables.generatedSpaltenParameter[
                         len(self.tables.generatedSpaltenParameter)
                         + self.tables.SpaltenVanillaAmount
-                    ] = [primzahlvielfachesuniversum]
+                    ] = ([primzahlvielfachesuniversum],)
 
                     x("idiot", self.tables.generatedSpaltenParameter)
 
@@ -2215,7 +2224,7 @@ class Tables:
                 self.tables.generatedSpaltenParameter[
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.SpaltenVanillaAmount
-                ] = [primzahlvielfachesuniversum]
+                ] = ([primzahlvielfachesuniversum],)
 
                 x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
