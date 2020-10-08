@@ -179,8 +179,8 @@ function toggleP1(p1) {
 			toggleName(p2)
 			delete selectedSpaltenMany1[num]
 		}
-	//} else 
-		//window.alert(p2.innerHTML + ' ! ');
+	} else 
+		window.alert(p2.innerHTML + ' ! ');
 }
 function toggleCol(col,noParamatersAnymore) {
 	col = document.getElementsByClassName(col);
@@ -191,7 +191,7 @@ function toggleCol(col,noParamatersAnymore) {
 		else 
 			for (i = 0; i < col.length; i++)
 				col[i].style.display = 'table-cell';
-	//} else {
-		//window.alert(col[0].innerHTML + ' ! ');
+	} else {
+		window.alert(col[0].innerHTML + ' ! ');
 	}
 }
