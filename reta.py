@@ -336,34 +336,34 @@ class Program:
                                         parameterName,
                                     )
                                 ]
-                                dataDicts[3][("bool", 0)] = (
-                                    parameterMainName,
-                                    parameterName,
-                                )
+                            # dataDicts[3][("bool", 0)] = (
+                            #    parameterMainName,
+                            #    parameterName,
+                            # )
                             elif i == 2 and type(dd) not in [tuple, int]:
                                 case = 2
                                 into = [(parameterMainName, parameterName)]
-                                dataDicts[i][
-                                    (
-                                        int(parameterName)
-                                        if parameterName.isdecimal()
-                                        else parameterName
-                                        if len(parameterNames) > 0
-                                        else None
-                                    )
-                                ] = [(parameterMainName, parameterName)]
+                            # dataDicts[i][
+                            #    (
+                            #        int(parameterName)
+                            #        if parameterName.isdecimal()
+                            #        else parameterName
+                            #        if len(parameterNames) > 0
+                            #        else None
+                            #    )
+                            # ] = [(parameterMainName, parameterName)]
                             else:
                                 case = 3
                                 try:
                                     into += [(parameterMainName, parameterName)]
-                                    dataDicts[i][dd] += [
-                                        (parameterMainName, parameterName)
-                                    ]
+                                #    dataDicts[i][dd] += [
+                                #        (parameterMainName, parameterName)
+                                #    ]
                                 except KeyError:
                                     into = [(parameterMainName, parameterName)]
-                                    dataDicts[i][dd] = [
-                                        (parameterMainName, parameterName)
-                                    ]
+                            #    dataDicts[i][dd] = [
+                            #        (parameterMainName, parameterName)
+                            #    ]
                     index1 = i if case != 1 else 3
                     index2 = (
                         dd
@@ -385,9 +385,9 @@ class Program:
                         )
                     )
                     try:
-                        dataDicts[index1][index2] += [into]
+                        dataDicts[index1][index2] += (into,)
                     except KeyError:
-                        dataDicts[index1][index2] = [into]
+                        dataDicts[index1][index2] = (into,)
             x("dadaDick", dataDicts)
             x("PARA", paraDict)
             return paraMainDict, paraDict, dataDicts
@@ -1097,21 +1097,22 @@ class Program:
         """
         self.paraMainDict, self.paraDict = {}, {}
         for parameterEntry in paraNdataMatrix:
+            into = intoParameterDatatype(
+                parameterEntry[0],
+                parameterEntry[1],
+                tuple(
+                    parameterEntryElement
+                    for parameterEntryElement in parameterEntry[2:]
+                ),
+            )
+            # x("uzt1", into)
+            # x("uzt2", (*into,))
             self.paraDict, self.dataDict = mergeParameterDicts(
                 self.paraMainDict,
                 self.paraDict,
                 self.dataDict,
-                *intoParameterDatatype(
-                    parameterEntry[0],
-                    parameterEntry[1],
-                    tuple(
-                        parameterEntryElement
-                        for parameterEntryElement in parameterEntry[2:]
-                    ),
-                )
+                *into,
             )
-            # alxp("C")
-            # alxp(self.dataDict[0])
         self.dataDict[3] = Program.kombiParaNdataMatrix
         alxp("--")
         alxp(self.dataDict)
