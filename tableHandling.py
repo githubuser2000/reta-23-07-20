@@ -1839,6 +1839,20 @@ class Tables:
                                             a
                                         ]:
                                             into += [("kombination", elementParameter)]
+                                        # try:
+                                        #   self.tables.generatedSpaltenParameter[
+                                        #       len(
+                                        #           self.tables.generatedSpaltenParameter
+                                        #       )
+                                        #       + self.tables.SpaltenVanillaAmount
+                                        #   ] |= [into]
+                                        # except KeyError:
+                                        #   self.tables.generatedSpaltenParameter[
+                                        #       len(
+                                        #           self.tables.generatedSpaltenParameter
+                                        #       )
+                                        #       + self.tables.SpaltenVanillaAmount
+                                        #   ] = [into]
                                         self.tables.generatedSpaltenParameter[
                                             len(self.tables.generatedSpaltenParameter)
                                             + self.tables.SpaltenVanillaAmount

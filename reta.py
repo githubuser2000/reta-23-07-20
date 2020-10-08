@@ -322,18 +322,27 @@ class Program:
             dataDicts: tuple = ({}, {}, {}, {})
             for i, d in enumerate(datas):
                 for dd in d:
+                    into = []
+                    case: int = None
                     for parameterMainName in parameterMainNames:
                         for parameterName in (
                             parameterNames if len(parameterNames) > 0 else ("",)
                         ):
-                            x("PANAME", parameterMainName)
-                            x("PANAME", parameterName)
                             if i == 4 and (type(dd) is bool or type(dd[0]) is bool):
+                                case = 1
+                                into = [
+                                    (
+                                        parameterMainName,
+                                        parameterName,
+                                    )
+                                ]
                                 dataDicts[3][("bool", 0)] = (
                                     parameterMainName,
                                     parameterName,
                                 )
                             elif i == 2 and type(dd) not in [tuple, int]:
+                                case = 2
+                                into = [(parameterMainName, parameterName)]
                                 dataDicts[i][
                                     (
                                         int(parameterName)
@@ -344,28 +353,41 @@ class Program:
                                     )
                                 ] = [(parameterMainName, parameterName)]
                             else:
+                                case = 3
                                 try:
-                                    x("DIES", i)
-                                    x("DIES", dd)
-                                    x("DIES", dataDicts[i][dd])
-
+                                    into += [(parameterMainName, parameterName)]
                                     dataDicts[i][dd] += [
                                         (parameterMainName, parameterName)
                                     ]
-                                #            if dd == 0:
-                                #                alxp("funktionierte")
-                                #                alxp(i)
-                                #                alxp(dataDicts[i][dd])
-                                #                alxp(parameterName)
                                 except KeyError:
+                                    into = [(parameterMainName, parameterName)]
                                     dataDicts[i][dd] = [
                                         (parameterMainName, parameterName)
                                     ]
-                        #             if dd == 0:
-                        #                 alxp("funktionierte nicht")
-                        #                 alxp(i)
-                        #                 alxp(dataDicts[i][dd])
-                        #                 alxp(parameterName)
+                    index1 = i if case != 1 else 3
+                    index2 = (
+                        dd
+                        if case == 3
+                        else (
+                            ("bool", 0)
+                            if case == 1
+                            else (
+                                (
+                                    int(parameterName)
+                                    if parameterName.isdecimal()
+                                    else parameterName
+                                    if len(parameterNames) > 0
+                                    else None
+                                )
+                                if case == 2
+                                else None
+                            )
+                        )
+                    )
+                    try:
+                        dataDicts[index1][index2] += [into]
+                    except KeyError:
+                        dataDicts[index1][index2] = [into]
             x("dadaDick", dataDicts)
             x("PARA", paraDict)
             return paraMainDict, paraDict, dataDicts
