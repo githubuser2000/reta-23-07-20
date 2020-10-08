@@ -1,6 +1,6 @@
 var col =  document.getElementsByClassName('RowNumber 1');
 var selectedSpaltenMany1 = {};
-var selectedSpaltenMany2 = new Set();
+var selectedSpaltenMany2 = [];
 window.onload = function() {
   var headingsDiv =  document.getElementById('Tabelle01');
   let div = document.createElement('div');
@@ -90,30 +90,32 @@ window.onload = function() {
 function toggleP2(numbers) {
 	numbers = numbers.split(',');
 	existingParameterNamesArrayIndex = MatrixHasNumberOfList(numbers, selectedSpaltenMany2);
-	window.alert((existingParameterNamesArrayIndex.length > 0));
-	if (existingParameterNamesArrayIndex.length > 0) {
+	window.alert((existingParameterNamesArrayIndex.size > 0));
+	if (existingParameterNamesArrayIndex.size > 0) {
 		existingParameterNamesArrayIndex = Array.from(existingParameterNamesArrayIndex)
 		toggleForNums(numbers,false);
 		window.alert(numbers);
 		window.alert(existingParameterNamesArrayIndex);
-		window.alert(selectedSpaltenMany2);
-		for (i=0; i<existing.length; i++) {
+		window.alert(selectedSpaltenMany2[0]);
+		for (i=0; i<existingParameterNamesArrayIndex.length; i++) {
+			window.alert(existingParameterNamesArrayIndex[i]);
 			selectedSpaltenMany2.splice(existingParameterNamesArrayIndex[i], 1);
 		}
 	} else {
 		toggleForNums(numbers,true);
-		selectedSpaltenMany2.add(numbers)
+		selectedSpaltenMany2.push(numbers)
 	}
 }
 
 function MatrixHasNumberOfList(numbers, matrix) {
 	matrix = Array.from(matrix);
-	existing = new Set()
+	existing = new Set();
 	for(k=0; k<matrix.length; k++) 
 		for (i=0; i<matrix[k].length; i++)
 			for (l=0;l<numbers.length; l++)
 				if (matrix[k][i] == numbers[l]) {
-					existing.add(k)
+					existing.add(k);
+					window.alert("ja");
 				}
 	return existing
 }
@@ -126,7 +128,7 @@ function toggleForNums(numbers,really) {
 				if (selectedSpaltenMany2[i][k] == numbers[n])
 					exists = true
 		}
-		if (exists === really)
+		if (exists !== really)
 			toggleCol('r_'+numbers[n]);
 	}
 }
