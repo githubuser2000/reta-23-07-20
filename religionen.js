@@ -179,7 +179,7 @@ function toggleP1(p1) {
 			toggleName(p2)
 			delete selectedSpaltenMany1[num]
 		}
-	} else 
+	//} else 
 		//window.alert(p2.innerHTML + ' ! ');
 }
 function toggleCol(col,noParamatersAnymore) {
