@@ -123,35 +123,40 @@ function toggleP2(numbers,para1u2) {
 function MatrixHasCouple(couple, SpaltenNumberToParameters) {
 	//matrix = Array.from(matrix);
 	existing = new Set();
-	window.alert("drin: "+Object.keys(SpaltenNumberToParameters).length);
+	//window.alert("drin: "+Object.keys(SpaltenNumberToParameters).length);
 	for (var key in SpaltenNumberToParameters) {
 		for (i=0; i<SpaltenNumberToParameters[key].length; i++) {
 			for (k=0; k<SpaltenNumberToParameters[key].length; k++) {
 				really = true;
 				if (SpaltenNumberToParameters[key][k] != couple) {
-					window.alert("YES couple: "+couple);
-					window.alert("YES matrix el: "+SpaltenNumberToParameters[key][k]);
+					//window.alert("YES couple: "+couple);
+					//window.alert("YES matrix el: "+SpaltenNumberToParameters[key][k]);
 					really = false
 				} else {
 					existing.add(key);
-					window.alert("NO couple: "+couple);
-					window.alert("NO matrix el: "+SpaltenNumberToParameters[key][k]);
+					//window.alert("NO couple: "+couple);
+					//window.alert("NO matrix el: "+SpaltenNumberToParameters[key][k]);
 				}
 			}
 		}
+		/*
 		if (really) {
 			window.alert("ja: "+k);
 			//existing.add(key);
-		}
+		}*/
 	}
 	return existing;
 }
 
 function toggleForNums(numbers,really) {
 	for (n = 0; n < numbers.length; n++) {
-		window.alert(really);
-		if (really)
+		if (typeof(selectedSpaltenMany2[numbers]) === 'undefined')
 			toggleCol('r_'+numbers[n]);
+		else {
+			window.alert(numbers+" has "+selectedSpaltenMany2[numbers].length+" length");
+			if (selectedSpaltenMany2[numbers].length == 0)
+				toggleCol('r_'+numbers[n]);
+		}
 	}
 }
 
