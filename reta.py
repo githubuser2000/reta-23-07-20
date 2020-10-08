@@ -344,7 +344,7 @@ class Program:
                             elif i == 2 and type(dd) not in [tuple, int]:
                                 case = 2
                                 parameterMainNamePerLoop += [parameterName]
-                                into += [(parameterMainName, parameterName)]
+                                into += [[(parameterMainName, parameterName)]]
                             # dataDicts[i][
                             #    (
                             #        int(parameterName)
