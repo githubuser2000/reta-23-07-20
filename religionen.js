@@ -123,17 +123,25 @@ function toggleP2(numbers,para1u2) {
 function MatrixHasCouple(couple, SpaltenNumberToParameters) {
 	//matrix = Array.from(matrix);
 	existing = new Set();
-	//window.alert(Object.keys(SpaltenNumberToParameters).length);
+	window.alert("drin: "+Object.keys(SpaltenNumberToParameters).length);
 	for (var key in SpaltenNumberToParameters) {
-		really = true;
 		for (i=0; i<SpaltenNumberToParameters[key].length; i++) {
-			if (SpaltenNumberToParameters[key] != couple) {
-				really = false
+			for (k=0; k<SpaltenNumberToParameters[key].length; k++) {
+				really = true;
+				if (SpaltenNumberToParameters[key][k] != couple) {
+					window.alert("YES couple: "+couple);
+					window.alert("YES matrix el: "+SpaltenNumberToParameters[key][k]);
+					really = false
+				} else {
+					existing.add(key);
+					window.alert("NO couple: "+couple);
+					window.alert("NO matrix el: "+SpaltenNumberToParameters[key][k]);
+				}
 			}
 		}
 		if (really) {
-			//window.alert("ja: "+k);
-			existing.add(key);
+			window.alert("ja: "+k);
+			//existing.add(key);
 		}
 	}
 	return existing;
