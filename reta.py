@@ -388,9 +388,10 @@ class Program:
                         )
                     )
                     intoA = into if case == 2 else (into,)
-                    for into2, index2 in zip_longest(
+                    for index2, into2 in zip_longest(
                         index2a if case == 2 else (index2a,), intoA, fillvalue=into
                     ):
+                        x("asd", [into2, case, into])
                         try:
                             dataDicts[index1][index2] += (into2,)
                         except KeyError:
