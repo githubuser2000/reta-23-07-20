@@ -323,6 +323,7 @@ class Program:
             for i, d in enumerate(datas):
                 for dd in d:
                     into = []
+                    parameterMainNamePerLoop = []
                     case: int = None
                     for parameterMainName in parameterMainNames:
                         for parameterName in (
@@ -330,7 +331,7 @@ class Program:
                         ):
                             if i == 4 and (type(dd) is bool or type(dd[0]) is bool):
                                 case = 1
-                                into = [
+                                into += [
                                     (
                                         parameterMainName,
                                         parameterName,
@@ -342,7 +343,8 @@ class Program:
                             # )
                             elif i == 2 and type(dd) not in [tuple, int]:
                                 case = 2
-                                into = [(parameterMainName, parameterName)]
+                                parameterMainNamePerLoop += [parameterName]
+                                into += [(parameterMainName, parameterName)]
                             # dataDicts[i][
                             #    (
                             #        int(parameterName)
@@ -365,7 +367,7 @@ class Program:
                             #        (parameterMainName, parameterName)
                             #    ]
                     index1 = i if case != 1 else 3
-                    index2 = (
+                    index2a = (
                         dd
                         if case == 3
                         else (
@@ -373,21 +375,23 @@ class Program:
                             if case == 1
                             else (
                                 (
-                                    int(parameterName)
-                                    if parameterName.isdecimal()
-                                    else parameterName
+                                    int(para)
+                                    if para.isdecimal()
+                                    else para
                                     if len(parameterNames) > 0
                                     else None
+                                    for para in parameterMainNamePerLoop
                                 )
                                 if case == 2
                                 else None
                             )
                         )
                     )
-                    try:
-                        dataDicts[index1][index2] += (into,)
-                    except KeyError:
-                        dataDicts[index1][index2] = (into,)
+                    for index2 in index2a if case == 1 else (index2a,):
+                        try:
+                            dataDicts[index1][index2] += (into,)
+                        except KeyError:
+                            dataDicts[index1][index2] = (into,)
             x("dadaDick", dataDicts)
             x("PARA", paraDict)
             return paraMainDict, paraDict, dataDicts
@@ -1090,7 +1094,6 @@ class Program:
                 *allValues,
             )
         ]
-        # return paraDict1, dataDict1
         """
         Hier wird erreicht, dass beide Dictionaries stückweise aufgefüllt werden.
         Aus den 3 voran gegangen Datenstrukturen werden 2 Dicts gemacht.
