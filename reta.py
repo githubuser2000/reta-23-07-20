@@ -387,11 +387,14 @@ class Program:
                             else None
                         )
                     )
-                    for index2 in index2a if case == 2 else (index2a,):
+                    intoA = into if case == 2 else (into,)
+                    for into2, index2 in zip_longest(
+                        index2a if case == 2 else (index2a,), intoA, fillvalue=into
+                    ):
                         try:
-                            dataDicts[index1][index2] += (into,)
+                            dataDicts[index1][index2] += (into2,)
                         except KeyError:
-                            dataDicts[index1][index2] = (into,)
+                            dataDicts[index1][index2] = (into2,)
             x("dadaDick", dataDicts)
             x("PARA", paraDict)
             return paraMainDict, paraDict, dataDicts
