@@ -100,14 +100,16 @@ function toggleP2(numbers) {
 
 function toggleForNums(numbers,really) {
 	for (n = 0; n < numbers.length; n++) {
+		exists = false
 		for ( i=0 ; i < selectedSpaltenMany2.length; i++) {
 			for (k=0; k < selectedSpaltenMany2[i].length; k++) {
-				if ( (selectedSpaltenMany2[i][k] == numbers[n]) === really) {
-					toggleCol('r_'+numbers[n], really);
+				if (selectedSpaltenMany2[i][k] == numbers[n]) {
+					exists = true
 				}
 			}
 		}
-//		if (numbers[n] ==  )
+		if (exists !== really)
+			toggleCol('r_'+numbers[n]);
 	}
 }
 
@@ -133,19 +135,6 @@ function toggleP1(p1) {
 		}
 	} else 
 		window.alert(p2.innerHTML + ' ! ');
-}
-function toggleCol2(col, really) {
-	col = document.getElementsByClassName(col);
-	if (typeof(col[0].style) != "undefined") {
- 		if (col[0].style.display != 'none') 
-			for (i = 0; i < col.length; i++)
-				col[i].style.display = 'none';
-		else 
-			for (i = 0; i < col.length; i++)
-				col[i].style.display = 'table-cell';
-	} else {
-		window.alert(col[0].innerHTML + ' ! ');
-	}
 }
 function toggleCol(col) {
 	col = document.getElementsByClassName(col);
