@@ -108,6 +108,7 @@ function toggleForNums(numbers,really) {
 				}
 			}
 		}
+		window.alert("sometext");
 		if (exists !== really)
 			toggleCol('r_'+numbers[n]);
 	}
