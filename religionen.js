@@ -22,7 +22,7 @@ window.onload = function() {
 				for (p1i = 0; p1i < p1a.length; p1i++) {
 					p1b = p1a[p1i].substring(3).match(/[^,]+/g);
 					if (p1b != null) {
-					for (p1k == 0; p1k < p1b.length; p1k++) {
+					for (p1k = 0; p1k < p1b.length; p1k++) {
 							p1 = p1b[p1k];
 							if (typeof mapMapMap[p1] === 'undefined')
 								mapMapMap[p1]= {};
@@ -30,10 +30,9 @@ window.onload = function() {
 								for (p2i = 0; p2i < p2a.length; p2i++) {
 									p2b = p2a[p2i].substring(3).match(/[^,]+/g);
 									if (p2b != null) {
-										for (p2k == 0; p2k < p2b.length; p2k++) {
+										for (p2k = 0; p2k < p2b.length; p2k++) {
 											p2 = p2b[p2k];
 											if (p2 != null) {
-												p2 = p2[1].substring(3);
 												if (typeof mapMapMap[p1][p2] === 'undefined')
 													mapMapMap[p1][p2]= new Set();
 												mapMapMap[p1][p2].add(num);
