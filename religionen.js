@@ -155,10 +155,16 @@ function MatrixHasCouple(couple, SpaltenNumberToParameters) {
 function toggleForNums(numbers) {
 	for (n = 0; n < numbers.length; n++) {
 		if (typeof(selectedSpaltenMany2[numbers]) === 'undefined')
-			toggleSpalten('r_'+numbers[n],true);
+			toggleSpalten(numbers[n]);
 		else {
 			//window.alert(numbers+" has "+selectedSpaltenMany2[numbers].length+" length");
-			toggleSpalten('r_'+numbers[n],selectedSpaltenMany2[numbers].length == 0);
+			/*NumbersFilled = [];
+			for (i=0; i<numbers[n].length; i++) {
+				window.alert("place "+[numbers[i]]+"("+i+") has "+selectedSpaltenMany2[numbers[i]].length+" length: ");
+				NumbersFilled.push(selectedSpaltenMany2[numbers[i]].length!=0);
+			}*/
+			//toggleSpalten('r_'+numbers[n],NumbersFilled);
+			toggleSpalten(numbers[n]);
 		}
 	}
 }
@@ -186,16 +192,20 @@ function toggleP1(p1) {
 	} else 
 		window.alert(p2.innerHTML + ' ! ');
 }
-function toggleSpalten(col,noParamatersAnymore) {
-	col = document.getElementsByClassName(col);
-	if (typeof(col[0].style) != "undefined") {
- 		if (col[0].style.display != 'none' && noParamatersAnymore) 
-			for (i = 0; i < col.length; i++)
-				col[i].style.display = 'none';
-		else 
-			for (i = 0; i < col.length; i++)
+function toggleSpalten(colNumber) {
+	col = document.getElementsByClassName('r_'+colNumber);
+	if (typeof(selectedSpaltenMany2[colNumber]) === 'undefined') { 
+		away = true;
+		window.alert("undefined "+colNumber);
+	} else
+		away = selectedSpaltenMany2[colNumber].length==0;
+	if (typeof(col[0].style) != "undefined") 
+		for (i=0; i < col.length; i++) 
+			if (col[i].style.display == 'none')
 				col[i].style.display = 'table-cell';
-	} else {
+			else 
+				if (away)
+					col[i].style.display = 'none';
+	 else 
 		window.alert(col[0].innerHTML + ' ! ');
-	}
 }
