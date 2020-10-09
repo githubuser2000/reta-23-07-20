@@ -602,7 +602,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.strukturgroesse,
-                ("grösse", "groesse", "gross", "strukturgroesse"),
+                ("größe", "groesse", "gross", "strukturgroesse"),
                 {4, 21, 54},
             ),
             (
@@ -766,6 +766,7 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "evolutionärerwerbenundintelligenz",
                     "intelligenz",
                     "erwerben",
                     "erlernen",

@@ -192,16 +192,16 @@ class htmlSyntax(OutputSyntax):
                 if len(couples[0]) > paraNum:
                     x("azu" + str(paraNum), couples[0][paraNum])
                     if len(couples[0]) > paraNum:
-                        i = 0
+                        # i = 0
                         para1o2name = couples[0][paraNum]
-                        while (
-                            len(couples) > i + 1
-                            and len(couples[i + 1]) > 0
-                            and para1o2name.strip() == ""
-                        ):
-                            i += 1
-                            para1o2name = couples[i][paraNum]
-                        if len(para1o2name.strip()) != 0:
+                        # while (
+                        #    len(couples) > i + 1
+                        #    and len(couples[i + 1]) > 0
+                        #    and para1o2name.strip() == ""
+                        # ):
+                        #    i += 1
+                        #    para1o2name = couples[i][paraNum]
+                        if len(para1o2name.strip()) != 0 or True:
                             if paraNum == 1:
                                 para1o2name = "p3_" + str(c) + "_" + para1o2name
                             try:

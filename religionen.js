@@ -44,9 +44,15 @@ window.onload = function() {
 													p3b = parseInt(p3a[1], 10);
 													p2 = p2.substring(p3a[1].length + 4);
 													if (p3b == p1k) {
-														if (typeof mapMapMap[p1][p2] === 'undefined')
-															mapMapMap[p1][p2]= new Set();
-														mapMapMap[p1][p2].add(num);
+														if (p2.length > 0) {
+															if (typeof mapMapMap[p1][p2] === 'undefined')
+																mapMapMap[p1][p2]= new Set();
+															mapMapMap[p1][p2].add(num);
+														} else {
+															if (typeof mapMapMap[p1][null] === 'undefined')
+																mapMapMap[p1][null]= new Set();
+															mapMapMap[p1][null].add(num);
+														}
 													}
 												}
 											} else {
