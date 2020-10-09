@@ -667,11 +667,6 @@ class Program:
                 {76, 77, 81},
             ),
             (
-                Program.ParametersMain.universum,
-                (),
-                {5, 54, 55, 65, 75, 76, 77, 78, 79, 80, 81},
-            ),
-            (
                 Program.ParametersMain.wirtschaft,
                 ("system",),
                 {
