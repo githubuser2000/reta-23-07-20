@@ -202,7 +202,8 @@ class htmlSyntax(OutputSyntax):
                             i += 1
                             para1o2name = couples[i][paraNum]
                         if len(para1o2name.strip()) != 0:
-                            para1o2name = "p3_" + str(c) + "_" + para1o2name
+                            if paraNum == 1:
+                                para1o2name = "p3_" + str(c) + "_" + para1o2name
                             try:
                                 things1[paraNum] |= {para1o2name}
                             except KeyError:

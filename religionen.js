@@ -42,12 +42,12 @@ window.onload = function() {
 												var p3a = p2.match(/p3_(\d+)_/);
 												if (p3a != null) {
 													p3b = parseInt(p3a[1], 10);
-													//p2 = p2.substring(p3a[1].length + 4);
-													//if (p3b == p1k) {
+													p2 = p2.substring(p3a[1].length + 4);
+													if (p3b == p1k) {
 														if (typeof mapMapMap[p1][p2] === 'undefined')
-															mapMapMap[p1][p2+p1k+' '+p3b]= new Set();
-														mapMapMap[p1][p2+p1k+' '+p3b].add(num);
-													//}
+															mapMapMap[p1][p2]= new Set();
+														mapMapMap[p1][p2].add(num);
+													}
 												}
 											} else {
 												if (typeof mapMapMap[p1][null] === 'undefined')
