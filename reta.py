@@ -618,7 +618,7 @@ class Program:
             (
                 Program.ParametersMain.universum,
                 (
-                    "analytischrontologie",
+                    "analytischeontologie",
                     "ontologie",
                 ),
                 {84},
