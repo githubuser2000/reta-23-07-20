@@ -1549,6 +1549,7 @@ class Program:
         alxp(
             "1. http://goexchange.de/viewtopic.php?f=13&t=2683#p17239 () \n    9. anderen etwas vormachen können (Bahai)\n    1/9. den anderen Strukturgrößen außer der Einheit (9, 1/9) etwas vormachen können"
         )
+        alxp("immer noch nicht bestens bei umbruch einer gesamten zeile in der shell")
         alxp("Ich muss noch die primzahl große csv an neuesten Stand anpassen!")
         alxp(
             """Die Modallogikvielfacher müsste ich noch einprogrammieren

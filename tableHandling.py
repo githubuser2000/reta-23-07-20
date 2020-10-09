@@ -371,8 +371,8 @@ class Tables:
         for i, v in enumerate(copy(value)):
             value[i] = (
                 v
-                if shellRowsAmount > v + 8 or shellRowsAmount == 0
-                else shellRowsAmount - 8
+                if shellRowsAmount > v + 9 or shellRowsAmount == 0
+                else shellRowsAmount - 9
             )
         self.getPrepare.breiten = value
         self.getOut.breiten = value
@@ -504,8 +504,8 @@ class Tables:
             global shellRowsAmount
             self.textwidth = (
                 value
-                if shellRowsAmount > value + 8 or shellRowsAmount == 0
-                else shellRowsAmount - 8
+                if shellRowsAmount > value + 9 or shellRowsAmount == 0
+                else shellRowsAmount - 9
             )
 
         def onlyThatColumns(self, table, onlyThatColumns):
