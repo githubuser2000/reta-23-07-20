@@ -205,11 +205,11 @@ class htmlSyntax(OutputSyntax):
                             if paraNum == 1:
                                 para1o2name = "p3_" + str(c) + "_" + para1o2name
                             try:
-                                things1[paraNum] |= {para1o2name}
+                                things1[paraNum] += [para1o2name]
                             except KeyError:
-                                things1[paraNum]: set = {
+                                things1[paraNum]: list = [
                                     para1o2name,
-                                }
+                                ]
         things: dict = {}
         for key, values in things1.items():
             for i, el in enumerate(values):
