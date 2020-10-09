@@ -200,12 +200,13 @@ function toggleSpalten(colNumber) {
 	} else
 		away = selectedSpaltenMany2[colNumber].length==0;
 	if (typeof(col[0].style) != "undefined") 
-		for (i=0; i < col.length; i++) 
+		for (i=0; i < col.length; i++) { 
 			if (col[i].style.display == 'none')
 				col[i].style.display = 'table-cell';
 			else 
 				if (away)
 					col[i].style.display = 'none';
+		}
 	 else 
-		window.alert(col[0].innerHTML + ' ! ');
+		window.alert(col[0].innerHTML + ' ! '+colNumber);
 }
