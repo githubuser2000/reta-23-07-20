@@ -222,7 +222,7 @@ class htmlSyntax(OutputSyntax):
         spalte += 2
         return (
             '              <td class="'
-            + ("zeile_0" if zeile == 0 else "")
+            + ("zeile_0 " if zeile == 0 else "")
             + "r_"
             + str(spalte)
             + " p1_"
