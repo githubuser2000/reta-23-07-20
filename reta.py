@@ -144,6 +144,8 @@ class Program:
                             breite = abs(int(cmd[7:]))
                             if breite == 0:
                                 shellRowsAmount = 0
+                            elif shellRowsAmount > 9 and breite > shellRowsAmount - 9:
+                                breite = shellRowsAmount - 9
                             self.tables.textWidth = breite
                             self.breiteORbreiten = True
                     elif cmd[:8] == "breiten=" and len(neg) == 0:
@@ -1291,8 +1293,8 @@ class Program:
         if not self.tables.getOut.oneTable:
             self.tables.textWidth = (
                 self.tables.textWidth
-                if shellRowsAmount > self.tables.textWidth + 8 or shellRowsAmount <= 0
-                else shellRowsAmount - 8
+                if shellRowsAmount > self.tables.textWidth + 9 or shellRowsAmount <= 0
+                else shellRowsAmount - 9
             )
         return (
             paramLines,
@@ -1549,7 +1551,6 @@ class Program:
         alxp(
             "1. http://goexchange.de/viewtopic.php?f=13&t=2683#p17239 () \n    9. anderen etwas vormachen können (Bahai)\n    1/9. den anderen Strukturgrößen außer der Einheit (9, 1/9) etwas vormachen können"
         )
-        alxp("immer noch nicht bestens bei umbruch einer gesamten zeile in der shell")
         alxp("Ich muss noch die primzahl große csv an neuesten Stand anpassen!")
         alxp(
             """Die Modallogikvielfacher müsste ich noch einprogrammieren
