@@ -221,7 +221,9 @@ class htmlSyntax(OutputSyntax):
 
         spalte += 2
         return (
-            '              <td class="Spalte r_'
+            '              <td class="'
+            + ("zeile_0" if zeile == 0 else "")
+            + "r_"
             + str(spalte)
             + " p1_"
             + things[0]
@@ -653,6 +655,7 @@ class Tables:
                                         self.tables.getPrepare.zeileWhichZaehlung(
                                             int(filteredLineNumbersofOrignal)
                                         ),
+                                        zeile=BigCellLineNumber,
                                     )
                                     + (
                                         "█"
@@ -675,6 +678,7 @@ class Tables:
                                         self.tables.getPrepare.zeileWhichZaehlung(
                                             int(filteredLineNumbersofOrignal)
                                         ),
+                                        zeile=BigCellLineNumber,
                                     )
                                     + (
                                         " "
@@ -691,7 +695,9 @@ class Tables:
                                 and filteredLineNumbersofOrignal != ""
                                 and int(filteredLineNumbersofOrignal) > 0
                                 else self.__outType.generateCell(
-                                    -2, self.tables.generatedSpaltenParameter
+                                    -2,
+                                    self.tables.generatedSpaltenParameter,
+                                    zeile=BigCellLineNumber,
                                 )
                                 + " "
                                 + self.__outType.endCell
@@ -703,7 +709,9 @@ class Tables:
                             ""
                             if not self.nummerierung
                             else self.__outType.generateCell(
-                                -1, self.tables.generatedSpaltenParameter
+                                -1,
+                                self.tables.generatedSpaltenParameter,
+                                zeile=BigCellLineNumber,
                             )
                             + (
                                 "".rjust(numlen + 1)
@@ -766,6 +774,7 @@ class Tables:
                                                 self.__outType.generateCell(
                                                     subCellIndexRightLeft,
                                                     self.tables.generatedSpaltenParameter,
+                                                    zeile=BigCellLineNumber,
                                                 )
                                                 + (
                                                     entry.replace("\n", "").ljust(
@@ -796,6 +805,7 @@ class Tables:
                                                 self.__outType.generateCell(
                                                     subCellIndexRightLeft,
                                                     self.tables.generatedSpaltenParameter,
+                                                    zeile=BigCellLineNumber,
                                                 )
                                                 + "".ljust(subCellWidth)
                                                 + self.__outType.endCell
@@ -818,6 +828,7 @@ class Tables:
                                 line += self.__outType.generateCell(
                                     subCellIndexRightLeft,
                                     self.tables.generatedSpaltenParameter,
+                                    zeile=BigCellLineNumber,
                                 )
 
                                 if BigCellLineNumber > 0 and not headingfinished:
@@ -828,12 +839,14 @@ class Tables:
                                         if l != self.__outType.generateCell(
                                             subCellIndexRightLeft,
                                             self.tables.generatedSpaltenParameter,
+                                            zeile=BigCellLineNumber,
                                         ):
                                             addionalLine += "-"
                                         else:
                                             addionalLine += self.__outType.generateCell(
                                                 subCellIndexRightLeft,
                                                 self.tables.generatedSpaltenParameter,
+                                                zeile=BigCellLineNumber,
                                             )
 
                                     line += "\n" + addionalLine

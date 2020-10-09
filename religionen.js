@@ -2,78 +2,81 @@ var col =  document.getElementsByClassName('RowNumber 1');
 var selectedSpaltenMany1 = {};
 var selectedSpaltenMany2 = {};
 window.onload = function() {
-  var headingsDiv =  document.getElementById('Tabelle01');
-  let div = document.createElement('div');
-  div.className = "headingsDiv";
-  tdClasses = document.getElementsByTagName("td");
- 	document.body.before(div);
-	tdClasses = document.getElementsByTagName("td");
-	p1map = {},p2map = {},mapMapMap = {}, str = "", p1Bmap = {};
-	str3 = ""
-	for (i = 0; i < tdClasses.length; i++) {
-		name = tdClasses[i].className;
-		var num = name.match(/r_(\d+)/)
-		if (num != null) {
-			//num = num.substring(2,0);
-			num = parseInt(num[1]);
-			str = num[1];
-			//num = i
-			var p1a = name.match(/p1_([^\s])+/g);
-			var p2a = name.match(/p2_([^\s])+/g);
-			if (p1a != null) {
-				for (p1i = 0; p1i < p1a.length; p1i++) {
-					if (p1a[p1i].includes("p1_"))
-						p1a[p1i] = p1a[p1i].substring(3);
-					p1b = p1a[p1i].match(/[^,]+/g);
-					if (p1b != null) {
-					for (p1k = 0; p1k < p1b.length; p1k++) {
-							p1 = p1b[p1k];
-							if (typeof mapMapMap[p1] === 'undefined')
-								mapMapMap[p1]= {};
-							if (p2a != null) {
-								for (p2i = 0; p2i < p2a.length; p2i++) {
-									if (p2a[p2i].includes("p2_"))
-										p2a[p2i] = p2a[p2i].substring(3);
-									p2b = p2a[p2i].match(/[^,]+/g);
-									if (p2b != null) {
-										for (p2k = 0; p2k < p2b.length; p2k++) {
-											p2 = p2b[p2k];
-											if (p2 != null) {
-												var p3a = p2.match(/p3_(\d+)_/);
-												if (p3a != null) {
-													p3b = parseInt(p3a[1], 10);
-													p2 = p2.substring(p3a[1].length + 4);
-													if (p3b == p1k) {
-														if (p2.length > 0) {
-															if (typeof mapMapMap[p1][p2] === 'undefined')
-																mapMapMap[p1][p2]= new Set();
-															mapMapMap[p1][p2].add(num);
-														} else {
-															if (typeof mapMapMap[p1][null] === 'undefined')
-																mapMapMap[p1][null]= new Set();
-															mapMapMap[p1][null].add(num);
-														}
+var headingsDiv =  document.getElementById('Tabelle01');
+let div = document.createElement('div');
+div.className = "headingsDiv";
+document.body.before(div);
+tdClasses1 = document.getElementsByTagName("td");
+tdClasses = []
+for (i = 0; i < tdClasses1.length; i++) 
+	if (tdClasses1[i].className.includes("zeile_0"))
+		tdClasses.push(tdClasses1[i]);
+p1map = {},p2map = {},mapMapMap = {}, str = "", p1Bmap = {};
+str3 = ""
+for (i = 0; i < tdClasses.length; i++) {
+	name = tdClasses[i].className;
+	var num = name.match(/r_(\d+)/)
+	if (num != null) {
+		//num = num.substring(2,0);
+		num = parseInt(num[1]);
+		str = num[1];
+		//num = i
+		var p1a = name.match(/p1_([^\s])+/g);
+		var p2a = name.match(/p2_([^\s])+/g);
+		if (p1a != null) {
+			for (p1i = 0; p1i < p1a.length; p1i++) {
+				if (p1a[p1i].includes("p1_"))
+					p1a[p1i] = p1a[p1i].substring(3);
+				p1b = p1a[p1i].match(/[^,]+/g);
+				if (p1b != null) {
+				for (p1k = 0; p1k < p1b.length; p1k++) {
+						p1 = p1b[p1k];
+						if (typeof mapMapMap[p1] === 'undefined')
+							mapMapMap[p1]= {};
+						if (p2a != null) {
+							for (p2i = 0; p2i < p2a.length; p2i++) {
+								if (p2a[p2i].includes("p2_"))
+									p2a[p2i] = p2a[p2i].substring(3);
+								p2b = p2a[p2i].match(/[^,]+/g);
+								if (p2b != null) {
+									for (p2k = 0; p2k < p2b.length; p2k++) {
+										p2 = p2b[p2k];
+										if (p2 != null) {
+											var p3a = p2.match(/p3_(\d+)_/);
+											if (p3a != null) {
+												p3b = parseInt(p3a[1], 10);
+												p2 = p2.substring(p3a[1].length + 4);
+												if (p3b == p1k) {
+													if (p2.length > 0) {
+														if (typeof mapMapMap[p1][p2] === 'undefined')
+															mapMapMap[p1][p2]= new Set();
+														mapMapMap[p1][p2].add(num);
+													} else {
+														if (typeof mapMapMap[p1][null] === 'undefined')
+															mapMapMap[p1][null]= new Set();
+														mapMapMap[p1][null].add(num);
 													}
 												}
-											} else {
-												if (typeof mapMapMap[p1][null] === 'undefined')
-													mapMapMap[p1][null]= new Set();
-												mapMapMap[p1][null].add(num);
 											}
+										} else {
+											if (typeof mapMapMap[p1][null] === 'undefined')
+												mapMapMap[p1][null]= new Set();
+											mapMapMap[p1][null].add(num);
 										}
 									}
 								}
-							} else{
-								if (typeof mapMapMap[p1][null] === 'undefined')
-									mapMapMap[p1][null]= new Set();
-								mapMapMap[p1][null].add(num);
 							}
+						} else{
+							if (typeof mapMapMap[p1][null] === 'undefined')
+								mapMapMap[p1][null]= new Set();
+							mapMapMap[p1][null].add(num);
 						}
 					}
 				}
 			}
 		}
 	}
+}
 
 	var p1keys = Object.keys(mapMapMap);
 	var p1Bkeys = Object.keys(p1Bmap);
