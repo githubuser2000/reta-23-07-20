@@ -208,18 +208,19 @@ class htmlSyntax(OutputSyntax):
                                 things1[paraNum]: set = {
                                     para1o2name,
                                 }
-        things: list = {}
+        things: dict = {}
         for key, values in things1.items():
-            for el in values:
+            for i, el in enumerate(values):
+                parameter = el if key == 0 else "p3_" + str(i) + "_" + el
                 if el != "alles":
                     try:
-                        things[key] += el + ","
+                        things[key] += parameter + ","
                     except KeyError:
-                        things[key] = el + ","
+                        things[key] = parameter + ","
 
         spalte += 2
         return (
-            '          <td class="Spalte r_'
+            '              <td class="Spalte r_'
             + str(spalte)
             + " p1_"
             + things[0]
@@ -240,8 +241,8 @@ class htmlSyntax(OutputSyntax):
 
     beginTable = "      <table border=1>"
     endTable = "        </table>\n"
-    beginCell = "            <td>\n"
-    endCell = "              </td>\n"
+    beginCell = "              <td>\n"
+    endCell = "\n              </td>\n"
     # beginZeile = "          <tr>"
     beginZeile = ""
     endZeile = "          </tr>\n"

@@ -39,9 +39,15 @@ window.onload = function() {
 										for (p2k = 0; p2k < p2b.length; p2k++) {
 											p2 = p2b[p2k];
 											if (p2 != null) {
-												if (typeof mapMapMap[p1][p2] === 'undefined')
-													mapMapMap[p1][p2]= new Set();
-												mapMapMap[p1][p2].add(num);
+												var p3a = p2.match(/p3_(\d+)_/);
+												if (p3a != null) {
+													p3b = parseInt(p3a[1], 10);
+													//p2 = p2.substring(p3a[1].length + 4);
+													if (typeof mapMapMap[p1][p2] === 'undefined')
+														mapMapMap[p1][p2+p1k+' '+p3a]= new Set();
+													if (p3b == p1k)
+														mapMapMap[p1][p2+p1k+' '+p3a].add(num);
+												}
 											} else {
 												if (typeof mapMapMap[p1][null] === 'undefined')
 													mapMapMap[p1][null]= new Set();
@@ -199,6 +205,7 @@ function toggleSpalten(colNumber) {
 		window.alert("undefined "+colNumber);
 	} else
 		away = selectedSpaltenMany2[colNumber].length==0;
+	//window.alert("Stelle "+colNumber+"hat Länge "+selectedSpaltenMany2[colNumber].length);
 	if (typeof(col[0].style) != "undefined") 
 		for (i=0; i < col.length; i++) { 
 			if (col[i].style.display == 'none')
