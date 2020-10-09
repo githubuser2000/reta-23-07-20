@@ -43,10 +43,11 @@ window.onload = function() {
 												if (p3a != null) {
 													p3b = parseInt(p3a[1], 10);
 													//p2 = p2.substring(p3a[1].length + 4);
-													if (typeof mapMapMap[p1][p2] === 'undefined')
-														mapMapMap[p1][p2+p1k+' '+p3a]= new Set();
-													if (p3b == p1k)
-														mapMapMap[p1][p2+p1k+' '+p3a].add(num);
+													//if (p3b == p1k) {
+														if (typeof mapMapMap[p1][p2] === 'undefined')
+															mapMapMap[p1][p2+p1k+' '+p3b]= new Set();
+														mapMapMap[p1][p2+p1k+' '+p3b].add(num);
+													//}
 												}
 											} else {
 												if (typeof mapMapMap[p1][null] === 'undefined')

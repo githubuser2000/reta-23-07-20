@@ -187,7 +187,7 @@ class htmlSyntax(OutputSyntax):
         things1: dict = {}
         # x("ayu", SpaltenParameter)
         x("azu", tupleOfListsOfCouples)
-        for couples in tupleOfListsOfCouples:
+        for c, couples in enumerate(tupleOfListsOfCouples):
             for paraNum in (0, 1):
                 if len(couples[0]) > paraNum:
                     x("azu" + str(paraNum), couples[0][paraNum])
@@ -202,6 +202,7 @@ class htmlSyntax(OutputSyntax):
                             i += 1
                             para1o2name = couples[i][paraNum]
                         if len(para1o2name.strip()) != 0:
+                            para1o2name = "p3_" + str(c) + "_" + para1o2name
                             try:
                                 things1[paraNum] |= {para1o2name}
                             except KeyError:
@@ -211,12 +212,11 @@ class htmlSyntax(OutputSyntax):
         things: dict = {}
         for key, values in things1.items():
             for i, el in enumerate(values):
-                parameter = el if key == 0 else "p3_" + str(i) + "_" + el
                 if el != "alles":
                     try:
-                        things[key] += parameter + ","
+                        things[key] += el + ","
                     except KeyError:
-                        things[key] = parameter + ","
+                        things[key] = el + ","
 
         spalte += 2
         return (
