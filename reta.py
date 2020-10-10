@@ -694,6 +694,16 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "sinndeslebens",
+                    "lebenssinn",
+                    "sinn",
+                    "sinnsuche",
+                ),
+                {88},
+            ),
+            (
+                Program.ParametersMain.menschliches,
+                (
                     "incel",
                     "incels",
                 ),
@@ -1578,6 +1588,9 @@ class Program:
         alxp("Die meisten Listen durch Dicts ersetzen: fast immer schneller! ")
         alxp(
             "Die Geschwindigkeitsteigerugnen entstehn meist durch anschließndes Zusammenfügen zu einer dann festen Größe."
+        )
+        alxp(
+            """ausrangieren von Funktionen in tableHandling die nicht zur großen Klasse gehören in extra py Datei.\nDanach weiter py datei erstellen, die dafür da ist datenstrukturen für die js zu bilden, die für die Zeilenangelegenheiten da sind, so dass die js die nicht jedes Mal berechnen muss."""
         )
         # alxp("1. Clean Code\n2. Vollständigkeit der Befehle auch")
 
