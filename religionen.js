@@ -6,11 +6,13 @@ var headingsDiv =  document.getElementById('Tabelle01');
 let div = document.createElement('div');
 div.className = "headingsDiv";
 document.body.before(div);
-tdClasses1 = document.getElementsByTagName("td");
-tdClasses = []
+chk_spalten = "<input type=\"checkbox\" onchange=\"toggleChkSpalten();\"><label>Spalten Checkboxen</label>"
+div.innerHTML = chk_spalten;
+tdClasses = document.getElementsByClassName("z_0");
+/*tdClasses = []
 for (i = 0; i < tdClasses1.length; i++) 
-	if (tdClasses1[i].className.includes("zeile_0"))
-		tdClasses.push(tdClasses1[i]);
+	if (tdClasses1[i].className.includes("z_0"))
+		tdClasses.push(tdClasses1[i]);*/
 p1map = {},p2map = {},mapMapMap = {}, str = "", p1Bmap = {};
 str3 = ""
 for (i = 0; i < tdClasses.length; i++) {
@@ -81,7 +83,7 @@ for (i = 0; i < tdClasses.length; i++) {
 	var p1keys = Object.keys(mapMapMap);
 	var p1Bkeys = Object.keys(p1Bmap);
 	//checkboxes = "<span style=\"white-space: nowrap;\"><input type=\"checkbox\" onchange=\"toggleSpalten(\'r_0\');\"><label>Nummererierung</label>";
-	checkboxes = "<span style=\"white-space: nowrap;\">";
+	checkboxes = "<div id=\"chk_spalten\" style=\"display:none\"><span style=\"white-space: nowrap;\">";
 	for (i = 0; i < p1keys.length; i++) {
 		var chk2s = "";
 		var p2keys = Object.keys(mapMapMap[p1keys[i]]);
@@ -102,8 +104,8 @@ for (i = 0; i < tdClasses.length; i++) {
 		checkbox = '<br><input type="checkbox" value="'+p1keys[i]+'" onchange="toggleP1(\''+p1keys[i]+'\');'+insertnull+'"><label>'+p1keys[i]+'</label><div id="'+p1keys[i]+'" style="display:none">'+chk2s+'</div>';
 		checkboxes += checkbox;
 	}
-	str2 = checkboxes + "</span>";
-	div.innerHTML = str2;
+	str2 = checkboxes + "</span></div>";
+	div.innerHTML += str2;
 }
 
 
@@ -226,4 +228,11 @@ function toggleSpalten(colNumber) {
 		}
 	 else 
 		window.alert(col[0].innerHTML + ' ! '+colNumber);
+}
+function toggleChkSpalten() {
+	chk_spalten = document.getElementById("chk_spalten");
+	if (chk_spalten.style.display == 'none')
+		chk_spalten.style.display = 'initial';
+	else 
+		chk_spalten.style.display = 'none';
 }
