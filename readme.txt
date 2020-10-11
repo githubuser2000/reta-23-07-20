@@ -38,7 +38,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--universum=[list][*]transzendentalien,komplexitaet,viererstruktur,alternierung[/list]
 [*]--menschliches=[list][*]liebe,ethik,angreifbarkeit,motivation,erhalten,erwerben,benoetigen,krankheit,alpha,kreativ,chef,beruf,loesungen,musik,glaube,erkenntnis,dominierendesgeschlecht,incel,ausgangslage,sinndeslebens[/list]
 [*]--procontra=[list][*]pro,contra[/list]
-[*]--wirtschaft=[list][*]system,realistisch,funktioniert,erklaerung[/list]
+[*]--wirtschaft=[list][*]system,realistisch,funktioniert,erklaerung,maschinen[/list]
 [*]--licht
 [*]--bedeutung=[list][*]primzahlen,anwendungdersonnen,zaehlungen,jura,geist,gestirn[/list]
 [*]--symbole

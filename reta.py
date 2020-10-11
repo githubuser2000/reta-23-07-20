@@ -670,6 +670,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.wirtschaft,
+                ("maschinen", "maschine", "gerät", "geräte", "geraete", "geraet"),
+                {89},
+            ),
+            (
+                Program.ParametersMain.wirtschaft,
                 ("system",),
                 {
                     69,
@@ -699,7 +704,7 @@ class Program:
                     "sinn",
                     "sinnsuche",
                 ),
-                {88},
+                {8},
             ),
             (
                 Program.ParametersMain.menschliches,
