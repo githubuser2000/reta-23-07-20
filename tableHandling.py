@@ -2167,9 +2167,14 @@ class Tables:
                                         into = "Generiert: " + row1
                                     else:
                                         into = (
-                                            self.transzendentalien[multi[0]] # multi[0] ist primzahl, aus denen das hier so alles besteht
+                                            self.transzendentalien[
+                                                multi[0]
+                                            ]  # multi[0] ist primzahl, aus denen das hier so alles besteht
                                             + " * "
-                                            + self.motivation[multi[1]] # multi[1] ist Vielfacher dieser Primzahl
+                                            + self.motivation[
+                                                multi[1]
+                                            ]  # multi[1] ist Vielfacher dieser Primzahl
+                                        )
 
                         self.relitable[i] += [into]
 
