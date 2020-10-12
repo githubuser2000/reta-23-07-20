@@ -1597,6 +1597,9 @@ class Program:
         alxp(
             """ausrangieren von Funktionen in tableHandling die nicht zur großen Klasse gehören in extra py Datei.\nDanach weiter py datei erstellen, die dafür da ist datenstrukturen für die js zu bilden, die für die Zeilenangelegenheiten da sind, so dass die js die nicht jedes Mal berechnen muss."""
         )
+        alxp(
+            """Ich müsste wirklich noch total überall schauen und zu jedem Punkt im Forum zu gleichförmiges-Polygon-Religionen"""
+        )
         # alxp("1. Clean Code\n2. Vollständigkeit der Befehle auch")
 
     def combiTableWorkflow(
