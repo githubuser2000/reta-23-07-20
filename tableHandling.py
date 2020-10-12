@@ -2103,7 +2103,180 @@ class Tables:
                 x("idiot", self.tables.generatedSpaltenParameter)
             return self.relitable, rowsAsNumbers
 
-        def concat1RowPrimUniverse2(self, relitable: list, rowsAsNumbers: set) -> tuple:
+        def concatModallogikGenerallyForAnything(
+            self, relitable: list, rowsAsNumbers: set, spalten4generate: set
+        ) -> tuple:
+            """setzt die Modallogik um, d.h. Kombination von 2 bisher Programmierten
+            Funktionen: 1. vielfache von Primzahlen oder natürlichen Zahlen bilden
+            und die andere Funtion 2. +- 1 +- 2 und Bedeutungsveränderung
+
+            @type relitable: list
+            @param relitable: Haupttabelle self.relitable
+            @return: relitable + weitere Tabelle daneben
+            """
+            global originalLinesRange
+            self.relitable = relitable
+            hardCodedCouple = (10, 42)
+            self.concepts: list = []
+            couplesNums = []
+            if len(self.tables.primUniversePrimsSet) > 0:
+                self.tables.primUniverseRowNum = len(self.relitable[0])
+                rowsAsNumbers |= {
+                    len(self.relitable[0]),
+                    len(self.relitable[0]) + 1,
+                    len(self.relitable[0]) + 2,
+                }
+                for i, paar in enumerate(spalten4generate):
+                    first = []
+                    second = []
+                    self.concepts += [(first, second)]
+                    for cols in self.relitable:
+                        first += [cols[paar[0]]]
+                        second += [cols[paar[1]]]
+                    rowsAsNumbers |= {len(self.relitable[0]) + i}
+                    couplesNums += [paar]
+                for polytype, polytypename in zip(
+                    hardCodedCouple, ["Sternpolygone", "gleichförmiges Polygone"]
+                ):
+                    self.transzendentalien = []
+                    self.rolle = []
+                    self.motivation = []
+                    self.ziel = []
+                    for cols in self.relitable:
+                        self.motivation += [cols[polytype]]
+                        self.rolle += [cols[19]]
+                        self.transzendentalien += [cols[5]]
+                        self.ziel += [cols[11]]
+                    relitableCopy = deepcopy(self.relitable)
+
+                    for i, cols in enumerate(relitableCopy):
+                        primMultiples = primMultiple(i)
+                        into = (
+                            ""
+                            if i != 0
+                            else "generierte Multiplikationen " + polytypename
+                        )
+                        for k, multi in enumerate(primMultiples[1:]):
+                            for o, concept in enumerate(self.concepts):
+                                for i, (cols, row1, row2) in enumerate(
+                                    zip(
+                                        deepcopy(self.relitable), concept[0], concept[1]
+                                    )
+                                ):
+                                    if i == 0:
+                                        into = "Generiert: " + row1
+                            into += (
+                                "("
+                                + (
+                                    self.transzendentalien[multi[0]]
+                                    if self.transzendentalien[multi[0]].strip() != ""
+                                    else "..."
+                                )
+                                + " UND "
+                                + (
+                                    self.rolle[multi[0]]
+                                    if self.rolle[multi[0]].strip() != ""
+                                    else "..."
+                                )
+                                + ") * ("
+                                + (
+                                    self.motivation[multi[1]]
+                                    if self.motivation[multi[1]].strip() != ""
+                                    else "..."
+                                )
+                                + (
+                                    " UND "
+                                    + (
+                                        self.ziel[multi[1]]
+                                        if self.ziel[multi[1]].strip() != ""
+                                        else "..."
+                                    )
+                                    if polytype == 10
+                                    else ""
+                                )
+                                + ")"
+                            )
+                        self.relitable[i] += [into]
+
+                    if (
+                        len(self.tables.generatedSpaltenParameter)
+                        + self.tables.SpaltenVanillaAmount
+                        in self.tables.generatedSpaltenParameter
+                    ):
+                        raise ValueError
+                    x(
+                        "doofi 1",
+                        len(self.tables.generatedSpaltenParameter)
+                        + self.tables.SpaltenVanillaAmount,
+                    )
+                    x("doofi 2", tuple(self.tables.dataDict[1].keys())[0])
+                    x("doofi 3", primzahlvielfachesuniversum)
+                    self.tables.generatedSpaltenParameter[
+                        len(self.tables.generatedSpaltenParameter)
+                        + self.tables.SpaltenVanillaAmount
+                    ] = ([primzahlvielfachesuniversum],)
+
+                    x("idiot", self.tables.generatedSpaltenParameter)
+
+                self.primAmounts = 0
+                self.oldPrimAmounts = 0
+                self.lastPrimAnswers: dict = {}
+
+                def PrimAnswer2(i: int) -> str:
+                    return self.lastPrimAnswers[i]
+
+                def PrimAnswer(i: int) -> str:
+                    if i > 3:
+                        if self.primAmounts != self.oldPrimAmounts:
+                            if self.primAmounts % 2 == 0:
+                                return "für innen"
+                            else:
+                                return "für außen"
+                        else:
+                            return ""
+                    elif i == 2:
+                        return "für seitlich"
+                    elif i == 3:
+                        return "gegen seitlich"
+                    elif i == 1:
+                        return "alle Richtungen möglich"
+                    else:
+                        return ""
+
+                for i, cols in enumerate(relitableCopy):
+                    primMultiples = primMultiple(i)
+                    into = "" if i != 0 else "Primzahlwirkung "
+
+                    self.oldPrimAmounts = self.primAmounts
+                    if couldBePrimeNumberPrimzahlkreuz(i):
+                        self.primAmounts += 1
+                    if primCreativity(i) == 1:
+                        into = PrimAnswer(i)
+                        self.lastPrimAnswers[i] = into
+                    elif i > 1:
+                        for couple in primRepeat(primFak(i)):
+                            if couple[1] == 1:
+                                into += PrimAnswer2(couple[0]) + " + "
+                            else:
+                                into += (
+                                    str(couple[1])
+                                    + " * "
+                                    + PrimAnswer2(couple[0])
+                                    + " + "
+                                )
+                        into = into[:-3]
+                    elif i == 1:
+                        into = PrimAnswer(1)
+                    self.relitable[i] += [into]
+                self.tables.generatedSpaltenParameter[
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.SpaltenVanillaAmount
+                ] = ([primzahlvielfachesuniversum],)
+
+                x("idiot__", self.tables.generatedSpaltenParameter)
+            return self.relitable, rowsAsNumbers
+
+        def concat1RowPrimUniverse(self, relitable: list, rowsAsNumbers: set) -> tuple:
             """Fügt eine Spalte ein, in der Primzahlen mit Vielfachern
             auf dem Niveau des Universums nicht einfach nur aus einer
             CSV Tabelle geladen werden, sondern durch Primzahlen und

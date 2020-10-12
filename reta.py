@@ -1013,30 +1013,6 @@ class Program:
                 {(66, 67)},
             ),
             (Program.ParametersMain.inkrementieren, ("universum",), {43, 54, 74}),
-            # (
-            #     Program.ParametersMain.alles,
-            #     (),
-            #     set(range(82))
-            #     - {67, 66, 63, 62, 61, 60, 56, 44, 49, 50, 41, 40, 39, 38},
-            #     {
-            #         (40, 41),
-            #         (38, 39),
-            #         (49, 50),
-            #         (60, 61),
-            #         (62, 63),
-            #         (66, 67),
-            #     },
-            #     {
-            #         couldBePrimeNumber
-            #         if primCreativity(couldBePrimeNumber) == 1
-            #         else None
-            #         for couldBePrimeNumber in range(2, 100)
-            #     }
-            #     - {
-            #         None,
-            #     },
-            #     set(range(10)),
-            # ),
         ]
 
         Program.kombiParaNdataMatrix = {
@@ -1479,7 +1455,7 @@ class Program:
         (
             self.relitable,
             self.rowsAsNumbers,
-        ) = self.tables.getConcat.concat1RowPrimUniverse2(
+        ) = self.tables.getConcat.concat1RowPrimUniverse(
             self.relitable, self.rowsAsNumbers
         )
         (
@@ -1577,6 +1553,9 @@ class Program:
         alxp(
             """ Spalte und Programmierung zu Basis zu Irrationalen Zahlen fehlt vom Thema Symboliken auf Seite 23 """
         )
+        alxp(
+            """Ich hatte wo eine Spalte, wo ich etwas bei Menschliches doppelt gemoppelt hatte und eine der beiden sollte besser einfach weg!"""
+        )
         alxp("vim: iIaAoOjJ mit Registern arbeiten wegen Löschen ohne ausschneiden")
         alxp(
             """Ich könnte einen schnelleren String oder Listen usw. Datentyp erschaffen.
@@ -1587,6 +1566,7 @@ class Program:
             plus damit zusammen:  using a list comprehension inline
             """
         )
+        alxp("Auch htmlSyntax & CO ausrangieren")
         alxp(
             """ Überlegen wo ich besser Hashmaps statt Listen verwenden sollte oder Tuple"""
         )
