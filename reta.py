@@ -1542,6 +1542,9 @@ class Program:
         alxp(
             "1. http://goexchange.de/viewtopic.php?f=13&t=2683#p17239 () \n    9. anderen etwas vormachen können (Bahai)\n    1/9. den anderen Strukturgrößen außer der Einheit (9, 1/9) etwas vormachen können"
         )
+        alxp(
+            """Immer dann wenn ich die ganze relitable matrix deepcopy geklont habe, hätte ich das gar nicht tun müssen, da ich einfach nur die werte, die ich vorher raus genommen habe, einfach nur per copy oder deepcopy hätte nur rausnehmen müssen"""
+        )
         alxp("Ich muss noch die primzahl große csv an neuesten Stand anpassen!")
         alxp(
             """Die Modallogikvielfacher müsste ich noch einprogrammieren
@@ -1555,6 +1558,9 @@ class Program:
         )
         alxp(
             """Ich hatte wo eine Spalte, wo ich etwas bei Menschliches doppelt gemoppelt hatte und eine der beiden sollte besser einfach weg!"""
+        )
+        alxp(
+            "Ich muss bei vielen Funktionen noch den Funktionskopf, Quellcode hier dokumentieren"
         )
         alxp("vim: iIaAoOjJ mit Registern arbeiten wegen Löschen ohne ausschneiden")
         alxp(
