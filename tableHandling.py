@@ -2165,37 +2165,12 @@ class Tables:
                                 ):
                                     if i == 0:
                                         into = "Generiert: " + row1
-                            into += (
-                                "("
-                                + (
-                                    self.transzendentalien[multi[0]]
-                                    if self.transzendentalien[multi[0]].strip() != ""
-                                    else "..."
-                                )
-                                + " UND "
-                                + (
-                                    self.rolle[multi[0]]
-                                    if self.rolle[multi[0]].strip() != ""
-                                    else "..."
-                                )
-                                + ") * ("
-                                + (
-                                    self.motivation[multi[1]]
-                                    if self.motivation[multi[1]].strip() != ""
-                                    else "..."
-                                )
-                                + (
-                                    " UND "
-                                    + (
-                                        self.ziel[multi[1]]
-                                        if self.ziel[multi[1]].strip() != ""
-                                        else "..."
-                                    )
-                                    if polytype == 10
-                                    else ""
-                                )
-                                + ")"
-                            )
+                                    else:
+                                        into = (
+                                            self.transzendentalien[multi[0]]
+                                            + " * "
+                                            + self.motivation[multi[1]]
+
                         self.relitable[i] += [into]
 
                     if (
