@@ -2104,7 +2104,7 @@ class Tables:
             return self.relitable, rowsAsNumbers
 
         def concatModallogikOfGenerallyForAnything(
-            self, relitable: list, rowsAsNumbers: set, spalten4generate: set
+            self, relitable: list, rowsAsNumbers: set, couple: tuple
         ) -> tuple:
             """setzt die Modallogik um, d.h. Kombination von 2 bisher Programmierten
             Funktionen: 1. vielfache von Primzahlen oder natürlichen Zahlen
@@ -2117,7 +2117,6 @@ class Tables:
             """
             global originalLinesRange
             self.relitable = relitable
-            hardCodedCouple = (10, 42)
             self.concepts: list = []
             couplesNums = []
             if len(self.tables.primUniversePrimsSet) > 0:
@@ -2137,7 +2136,7 @@ class Tables:
                     rowsAsNumbers |= {len(self.relitable[0]) + i}
                     couplesNums += [paar]
                 for polytype, polytypename in zip(
-                    hardCodedCouple, ["Sternpolygone", "gleichförmiges Polygone"]
+                    couple, ["Sternpolygone", "gleichförmiges Polygone"]
                 ):
                     self.transzendentalien = []
                     self.rolle = []
@@ -2168,9 +2167,9 @@ class Tables:
                                         into = "Generiert: " + row1
                                     else:
                                         into = (
-                                            self.transzendentalien[multi[0]]
+                                            self.transzendentalien[multi[0]] # multi[0] ist primzahl, aus denen das hier so alles besteht
                                             + " * "
-                                            + self.motivation[multi[1]]
+                                            + self.motivation[multi[1]] # multi[1] ist Vielfacher dieser Primzahl
 
                         self.relitable[i] += [into]
 
