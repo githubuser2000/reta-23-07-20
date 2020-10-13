@@ -2195,7 +2195,6 @@ class Tables:
                                         )
 
                     self.relitable[i] += [into]
-
                 if (
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.SpaltenVanillaAmount
@@ -2205,7 +2204,7 @@ class Tables:
                 self.tables.generatedSpaltenParameter[
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.SpaltenVanillaAmount
-                ] = ([primzahlvielfachesuniversum],)
+                ] = self.tables.dataDict[1][couplesNums[o]]
             self.primAmounts = 0
             self.oldPrimAmounts = 0
             self.lastPrimAnswers: dict = {}
