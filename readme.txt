@@ -49,7 +49,7 @@ also Primzahlen[/list]
 [*]--operationen=[list][*]halbierungen[/list]
 [/list]
 [*]-kombination
-[list][*]--was[list][*]tiere,berufe,intelligenz,liebe,transzendentalien,strukturalien,primzahlkreuz,frauen,maenner,persoenlichkeit,religionen[/list][/list]
+[list][*]--was=[list][*]tiere,berufe,intelligenz,liebe,transzendentalien,strukturalien,primzahlkreuz,frauen,maenner,persoenlichkeit,religionen[/list][/list]
 [*]-ausgabe
 [list][*]--nocolor
 [*]--art=

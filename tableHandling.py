@@ -2147,10 +2147,9 @@ class Tables:
             self.relitable = relitable
             if True:
                 conceptsRowsSetOfTuple2: tuple = tuple(conceptsRowsSetOfTuple)
-                for o, concept in enumerate(self.concepts):
-                    for i, (cols, row1, row2) in enumerate(
-                        zip(deepcopy(self.relitable), concept[0], concept[1])
-                    ):
+                x("wer", conceptsRowsSetOfTuple2)
+                for o, concept in enumerate(conceptsRowsSetOfTuple2):
+                    for i, cols in enumerate(deepcopy(self.relitable)):
                         modalOperatoren = getModaloperatorsPerLineCells(i)
                         if i == 0:
                             into = "Generiert: " + cols[concept[0]]
@@ -2158,24 +2157,23 @@ class Tables:
                             if cols[concept[0]].strip() != "":
                                 into += (
                                     "sehr: "
-                                    + cols[concept[1]]
+                                    + cols[concept[0]]
                                     + " "
                                     + modalOperatoren[0]
                                     + "| "
                                 )
                             for number2 in (2, -2):
-                                if (
-                                    (i > 2)
-                                    if number2 > 0
-                                    else (len(concept[0]) > i + 2)
-                                ) and concept[0][i - number2].strip() != "":
-                                    into += (
-                                        "ganz gut: "
-                                        + concept[0][i - number2]
-                                        + " "
-                                        + " ".join(modalOperatoren[1:])
-                                        + "| "
-                                    )
+                                try:
+                                    if cols[concept[0]][i - number2].strip() != "":
+                                        into += (
+                                            "ganz gut: "
+                                            + cols[concept[0]][i + number2]
+                                            + " "
+                                            + " ".join(modalOperatoren[1:])
+                                            + "| "
+                                        )
+                                except IndexError:
+                                    pass
 
                     self.relitable[i] += [into]
                     rowsAsNumbers |= {len(self.relitable[0]) + 1}
