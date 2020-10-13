@@ -2116,6 +2116,35 @@ class Tables:
             @return: relitable + weitere Tabelle daneben
             """
             global originalLinesRange
+
+            def getModaloperatorsPerLineCells(lineWeAreAt: int) -> tuple:
+                """Gibt ein Tuple aus Strings aus, dass die richtigen Modaloperatoren
+                pro Zeile ausgibt
+                @type int
+                @param Zeile
+                @return: tuple derer Modaloperatoren
+                """
+
+                def getModaloperatorsPerLineCoordinates(lineWeAreAt: int) -> tuple:
+                    modalMainOperatorZeile: int = lineWeAreAt
+                    amountModaloperators: int = lineWeAreAt - 1
+                    modalOpElseOperatorsZeilenBegin: int = lineWeAreAt + 1
+                    modalOpElseOperatorsZeilenEnd: int = (
+                        lineWeAreAt + amountModaloperators
+                    )
+                    return (
+                        modalMainOperatorZeile,
+                        modalOpElseOperatorsZeilenBegin,
+                        modalOpElseOperatorsZeilenEnd,
+                    )
+
+                coords = getModaloperatorsPerLineCoordinates(lineWeAreAt)
+                modaloperators: list = []
+                modaloperators += [self.relitable[coords[0]][10]]
+                for coord in range(coords[1], coords[2]):
+                    modaloperators += [self.relitable[coord][42]]
+                return tuple(modaloperators)
+
             self.relitable = relitable
             self.concepts: list = []
             couplesNums = []
