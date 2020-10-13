@@ -2153,145 +2153,138 @@ class Tables:
                 rowsAsNumbers |= {
                     len(self.relitable[0]),
                 }
-                first = []
-                second = []
+                first: list = []
+                second: list = []
                 self.concepts += [(first, second)]
                 for cols in self.relitable:
                     first += [cols[couple[0]]]
                     second += [cols[couple[1]]]
                 rowsAsNumbers |= {len(self.relitable[0]) + 1}
                 couplesNums += [couple]
-                if True:
-                    relitableCopy = deepcopy(self.relitable)
-                    for i, cols in enumerate(relitableCopy):
-                        primMultiples = primMultiple(i)
-                        modalOperatoren = getModaloperatorsPerLineCells(i)
-                        into = "" if i != 0 else "generiert bla"
-                        for k, multi in enumerate(primMultiples[1:]):
-                            for o, concept in enumerate(self.concepts):
-                                for i, (cols, row1, row2) in enumerate(
-                                    zip(
-                                        deepcopy(self.relitable), concept[0], concept[1]
+                relitableCopy = deepcopy(self.relitable)
+                for i, cols in enumerate(relitableCopy):
+                    modalOperatoren = getModaloperatorsPerLineCells(i)
+                    into = "" if i != 0 else "generiert bla"
+                    for o, concept in enumerate(self.concepts):
+                        for i, (cols, row1, row2) in enumerate(
+                            zip(deepcopy(self.relitable), concept[0], concept[1])
+                        ):
+                            if i == 0:
+                                into = "Generiert: " + row1
+                            else:
+                                if row1.strip() != "":
+                                    into += (
+                                        "sehr: "
+                                        + row1
+                                        + " "
+                                        + modalOperatoren[0]
+                                        + "| "
                                     )
-                                ):
-                                    if i == 0:
-                                        into = "Generiert: " + row1
-                                    else:
-                                        if row1.strip() != "":
-                                            into += (
-                                                "sehr: "
-                                                + row1
-                                                + " "
-                                                + modalOperatoren[0]
-                                                + "| "
-                                            )
-                                        for number2 in (2, -2):
-                                            if (
-                                                (i > 2)
-                                                if number < 0
-                                                else (len(concept[0]) > i + 2)
-                                            ) and concept[0][i - number2].strip() != "":
-                                                into += (
-                                                    "ganz gut: "
-                                                    + concept[0][i - number2]
-                                                    + " "
-                                                    + " ".join(modalOperatoren[1:])
-                                                    + "| "
-                                                )
+                                for number2 in (2, -2):
+                                    if (
+                                        (i > 2)
+                                        if number < 0
+                                        else (len(concept[0]) > i + 2)
+                                    ) and concept[0][i - number2].strip() != "":
+                                        into += (
+                                            "ganz gut: "
+                                            + concept[0][i - number2]
+                                            + " "
+                                            + " ".join(modalOperatoren[1:])
+                                            + "| "
+                                        )
 
-                        self.relitable[i] += [into]
+                    self.relitable[i] += [into]
 
-                    if (
-                        len(self.tables.generatedSpaltenParameter)
-                        + self.tables.SpaltenVanillaAmount
-                        in self.tables.generatedSpaltenParameter
-                    ):
-                        raise ValueError
-                    self.tables.generatedSpaltenParameter[
-                        len(self.tables.generatedSpaltenParameter)
-                        + self.tables.SpaltenVanillaAmount
-                    ] = ([primzahlvielfachesuniversum],)
-                self.primAmounts = 0
-                self.oldPrimAmounts = 0
-                self.lastPrimAnswers: dict = {}
-
-            return self.relitable, rowsAsNumbers
-
-        def concat1RowPrimUniverse(self, relitable: list, rowsAsNumbers: set) -> tuple:
-            """Fügt eine Spalte ein, in der Primzahlen mit Vielfachern
-            auf dem Niveau des Universums nicht einfach nur aus einer
-            CSV Tabelle geladen werden, sondern durch Primzahlen und
-            deren Vielfachern generiert werden.
-
-            @type relitable: list
-            @param relitable: Haupttabelle self.relitable
-            @return: relitable + weitere Tabelle daneben
-            """
-            global originalLinesRange
-            self.relitable = relitable
-            hardCodedCouple = (10, 42)
-            if len(self.tables.primUniversePrimsSet) > 0:
-                self.tables.primUniverseRowNum = len(self.relitable[0])
-                rowsAsNumbers |= {
-                    len(self.relitable[0]),
-                    len(self.relitable[0]) + 1,
-                    len(self.relitable[0]) + 2,
-                }
-                for polytype, polytypename in zip(
-                    hardCodedCouple, ["Sternpolygone", "gleichförmiges Polygone"]
+                if (
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.SpaltenVanillaAmount
+                    in self.tables.generatedSpaltenParameter
                 ):
-                    self.transzendentalien = []
-                    self.rolle = []
-                    self.motivation = []
-                    self.ziel = []
-                    for cols in self.relitable:
-                        self.motivation += [cols[polytype]]
-                        self.rolle += [cols[19]]
-                        self.transzendentalien += [cols[5]]
-                        self.ziel += [cols[11]]
-                    relitableCopy = deepcopy(self.relitable)
+                    raise ValueError
+                self.tables.generatedSpaltenParameter[
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.SpaltenVanillaAmount
+                ] = ([primzahlvielfachesuniversum],)
+            self.primAmounts = 0
+            self.oldPrimAmounts = 0
+            self.lastPrimAnswers: dict = {}
 
-                    for i, cols in enumerate(relitableCopy):
-                        primMultiples = primMultiple(i)
-                        into = (
-                            ""
-                            if i != 0
-                            else "generierte Multiplikationen " + polytypename
-                        )
-                        for k, multi in enumerate(primMultiples[1:]):
-                            if k > 0:
-                                into += ", außerdem: "
-                            into += (
-                                "("
-                                + (
-                                    self.transzendentalien[multi[0]]
-                                    if self.transzendentalien[multi[0]].strip() != ""
-                                    else "..."
-                                )
-                                + " UND "
-                                + (
-                                    self.rolle[multi[0]]
-                                    if self.rolle[multi[0]].strip() != ""
-                                    else "..."
-                                )
-                                + ") * ("
-                                + (
-                                    self.motivation[multi[1]]
-                                    if self.motivation[multi[1]].strip() != ""
-                                    else "..."
-                                )
-                                + (
-                                    " UND "
-                                    + (
-                                        self.ziel[multi[1]]
-                                        if self.ziel[multi[1]].strip() != ""
-                                        else "..."
-                                    )
-                                    if polytype == 10
-                                    else ""
-                                )
-                                + ")"
+        return self.relitable, rowsAsNumbers
+
+    def concat1RowPrimUniverse(self, relitable: list, rowsAsNumbers: set) -> tuple:
+        """Fügt eine Spalte ein, in der Primzahlen mit Vielfachern
+        auf dem Niveau des Universums nicht einfach nur aus einer
+        CSV Tabelle geladen werden, sondern durch Primzahlen und
+        deren Vielfachern generiert werden.
+
+        @type relitable: list
+        @param relitable: Haupttabelle self.relitable
+        @return: relitable + weitere Tabelle daneben
+        """
+        global originalLinesRange
+        self.relitable = relitable
+        hardCodedCouple = (10, 42)
+        if len(self.tables.primUniversePrimsSet) > 0:
+            self.tables.primUniverseRowNum = len(self.relitable[0])
+            rowsAsNumbers |= {
+                len(self.relitable[0]),
+                len(self.relitable[0]) + 1,
+                len(self.relitable[0]) + 2,
+            }
+            for polytype, polytypename in zip(
+                hardCodedCouple, ["Sternpolygone", "gleichförmiges Polygone"]
+            ):
+                self.transzendentalien = []
+                self.rolle = []
+                self.motivation = []
+                self.ziel = []
+                for cols in self.relitable:
+                    self.motivation += [cols[polytype]]
+                    self.rolle += [cols[19]]
+                    self.transzendentalien += [cols[5]]
+                    self.ziel += [cols[11]]
+                relitableCopy = deepcopy(self.relitable)
+
+                for i, cols in enumerate(relitableCopy):
+                    primMultiples = primMultiple(i)
+                    into = (
+                        "" if i != 0 else "generierte Multiplikationen " + polytypename
+                    )
+                    for k, multi in enumerate(primMultiples[1:]):
+                        if k > 0:
+                            into += ", außerdem: "
+                        into += (
+                            "("
+                            + (
+                                self.transzendentalien[multi[0]]
+                                if self.transzendentalien[multi[0]].strip() != ""
+                                else "..."
                             )
+                            + " UND "
+                            + (
+                                self.rolle[multi[0]]
+                                if self.rolle[multi[0]].strip() != ""
+                                else "..."
+                            )
+                            + ") * ("
+                            + (
+                                self.motivation[multi[1]]
+                                if self.motivation[multi[1]].strip() != ""
+                                else "..."
+                            )
+                            + (
+                                " UND "
+                                + (
+                                    self.ziel[multi[1]]
+                                    if self.ziel[multi[1]].strip() != ""
+                                    else "..."
+                                )
+                                if polytype == 10
+                                else ""
+                            )
+                            + ")"
+                        )
                         self.relitable[i] += [into]
 
                     if (
