@@ -2196,21 +2196,19 @@ class Tables:
                                                 + modalOperatoren[0]
                                                 + "| "
                                             )
-                                        if i > 2 and concept[0][i - 2].strip() != "":
-                                            into += (
-                                                "ganz gut: "
-                                                + concept[0][i - 2]
-                                                + " "
-                                                + " ".join(modalOperatoren[1:])
-                                                + "| "
-                                            )
-                                        if (
-                                            len(concept[0]) > i + 2
-                                            and concept[0][i + 2].strip() != ""
-                                        ):
-                                            into += (
-                                                "ganz gut: " + concept[0][i + 2] + "| "
-                                            )
+                                        for number2 in (2, -2):
+                                            if (
+                                                (i > 2)
+                                                if number2 < 0
+                                                else (len(concept[0]) > i + 2)
+                                            ) and concept[0][i - number2].strip() != "":
+                                                into += (
+                                                    "ganz gut: "
+                                                    + concept[0][i - number2]
+                                                    + " "
+                                                    + " ".join(modalOperatoren[1:])
+                                                    + "| "
+                                                )
                                         into = (
                                             self.transzendentalien[
                                                 multi[0]
