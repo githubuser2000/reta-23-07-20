@@ -2162,20 +2162,11 @@ class Tables:
                 rowsAsNumbers |= {len(self.relitable[0]) + 1}
                 couplesNums += [couple]
                 if True:
-                    self.transzendentalien = []
-                    self.rolle = []
-                    self.motivation = []
-                    self.ziel = []
                     relitableCopy = deepcopy(self.relitable)
-
                     for i, cols in enumerate(relitableCopy):
                         primMultiples = primMultiple(i)
                         modalOperatoren = getModaloperatorsPerLineCells(i)
-                        into = (
-                            ""
-                            if i != 0
-                            else "generierte Multiplikationen " + polytypename
-                        )
+                        into = "" if i != 0 else "generiert bla"
                         for k, multi in enumerate(primMultiples[1:]):
                             for o, concept in enumerate(self.concepts):
                                 for i, (cols, row1, row2) in enumerate(
@@ -2186,8 +2177,6 @@ class Tables:
                                     if i == 0:
                                         into = "Generiert: " + row1
                                     else:
-                                        cols[couple[0]]
-                                        cols[couple[1]] + " " + modalOperatoren
                                         if row1.strip() != "":
                                             into += (
                                                 "sehr: "
@@ -2199,7 +2188,7 @@ class Tables:
                                         for number2 in (2, -2):
                                             if (
                                                 (i > 2)
-                                                if number2 < 0
+                                                if number < 0
                                                 else (len(concept[0]) > i + 2)
                                             ) and concept[0][i - number2].strip() != "":
                                                 into += (
@@ -2209,15 +2198,6 @@ class Tables:
                                                     + " ".join(modalOperatoren[1:])
                                                     + "| "
                                                 )
-                                        into = (
-                                            self.transzendentalien[
-                                                multi[0]
-                                            ]  # multi[0] ist primzahl, aus denen das hier so alles besteht
-                                            + " * "
-                                            + self.motivation[
-                                                multi[1]
-                                            ]  # multi[1] ist Vielfacher dieser Primzahl
-                                        )
 
                         self.relitable[i] += [into]
 
@@ -2227,20 +2207,10 @@ class Tables:
                         in self.tables.generatedSpaltenParameter
                     ):
                         raise ValueError
-                    x(
-                        "doofi 1",
-                        len(self.tables.generatedSpaltenParameter)
-                        + self.tables.SpaltenVanillaAmount,
-                    )
-                    x("doofi 2", tuple(self.tables.dataDict[1].keys())[0])
-                    x("doofi 3", primzahlvielfachesuniversum)
                     self.tables.generatedSpaltenParameter[
                         len(self.tables.generatedSpaltenParameter)
                         + self.tables.SpaltenVanillaAmount
                     ] = ([primzahlvielfachesuniversum],)
-
-                    x("idiot", self.tables.generatedSpaltenParameter)
-
                 self.primAmounts = 0
                 self.oldPrimAmounts = 0
                 self.lastPrimAnswers: dict = {}
