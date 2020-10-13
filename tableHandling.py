@@ -2146,16 +2146,16 @@ class Tables:
                 return tuple(modaloperators)
 
             self.relitable = relitable
-            self.concepts: list = []
-            couplesNums = []
             if len(self.tables.primUniversePrimsSet) > 0:
+                self.comcepts2: list = []
+                couplesNums :list = []
                 self.tables.primUniverseRowNum = len(self.relitable[0])
                 rowsAsNumbers |= {
                     len(self.relitable[0]),
                 }
                 first: list = []
                 second: list = []
-                self.concepts += [(first, second)]
+                self.comcepts2 += [(first, second)]
                 for cols in self.relitable:
                     first += [cols[couple[0]]]
                     second += [cols[couple[1]]]
@@ -2165,7 +2165,7 @@ class Tables:
                 for i, cols in enumerate(relitableCopy):
                     modalOperatoren = getModaloperatorsPerLineCells(i)
                     into = "" if i != 0 else "generiert bla"
-                    for o, concept in enumerate(self.concepts):
+                    for o, concept in enumerate(self.comcepts2):
                         for i, (cols, row1, row2) in enumerate(
                             zip(deepcopy(self.relitable), concept[0], concept[1])
                         ):

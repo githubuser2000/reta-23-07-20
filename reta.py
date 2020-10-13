@@ -1559,6 +1559,9 @@ class Program:
             "1. http://goexchange.de/viewtopic.php?f=13&t=2683#p17239 () \n    9. anderen etwas vormachen können (Bahai)\n    1/9. den anderen Strukturgrößen außer der Einheit (9, 1/9) etwas vormachen können"
         )
         alxp(
+            """Bei vielen Algorithmen schauen, ob nicht das Durchiterieren extrem lahmt, weil es polynomielle Laufzeit hat, statt lineare, wie es eigentlich sein sollte"""
+        )
+        alxp(
             """In einigen GenerierungsSpalten werden Teile aus der Reli dings kopiert, was unnötig ist.
              Außerem, dass dann die relitable ganz geklont werden muss. Und die Einzelsachen
              müssten nur selbst geklont werden und mehr nicht."""
