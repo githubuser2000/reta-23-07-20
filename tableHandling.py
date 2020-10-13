@@ -2148,7 +2148,7 @@ class Tables:
             self.relitable = relitable
             if len(self.tables.primUniversePrimsSet) > 0:
                 self.comcepts2: list = []
-                couplesNums :list = []
+                couplesNums: list = []
                 self.tables.primUniverseRowNum = len(self.relitable[0])
                 rowsAsNumbers |= {
                     len(self.relitable[0]),
@@ -2205,11 +2205,8 @@ class Tables:
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.SpaltenVanillaAmount
                 ] = self.tables.dataDict[1][couplesNums[o]]
-            self.primAmounts = 0
-            self.oldPrimAmounts = 0
-            self.lastPrimAnswers: dict = {}
 
-        return self.relitable, rowsAsNumbers
+            return self.relitable, rowsAsNumbers
 
     def concat1RowPrimUniverse(self, relitable: list, rowsAsNumbers: set) -> tuple:
         """Fügt eine Spalte ein, in der Primzahlen mit Vielfachern
