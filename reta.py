@@ -1456,6 +1456,9 @@ class Program:
         self.relitable, self.rowsAsNumbers = self.tables.getConcat.concatRowsOfConcepts(
             self.relitable, self.tables.generRows, self.rowsAsNumbers
         )
+        self.relitable, self.rowsAsNumbers = self.tables.getConcat.concatModallogik(
+            self.relitable, self.tables.generRows, self.rowsAsNumbers
+        )
         (
             self.relitable,
             self.rowsAsNumbers,
