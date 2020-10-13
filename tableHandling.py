@@ -2152,30 +2152,20 @@ class Tables:
                 self.tables.primUniverseRowNum = len(self.relitable[0])
                 rowsAsNumbers |= {
                     len(self.relitable[0]),
-                    len(self.relitable[0]) + 1,
-                    len(self.relitable[0]) + 2,
                 }
-                for i, paar in enumerate(spalten4generate):
-                    first = []
-                    second = []
-                    self.concepts += [(first, second)]
-                    for cols in self.relitable:
-                        first += [cols[paar[0]]]
-                        second += [cols[paar[1]]]
-                    rowsAsNumbers |= {len(self.relitable[0]) + i}
-                    couplesNums += [paar]
-                for polytype, polytypename in zip(
-                    couple, ["Sternpolygone", "gleichförmiges Polygone"]
-                ):
+                first = []
+                second = []
+                self.concepts += [(first, second)]
+                for cols in self.relitable:
+                    first += [cols[couple[0]]]
+                    second += [cols[couple[1]]]
+                rowsAsNumbers |= {len(self.relitable[0]) + 1}
+                couplesNums += [couple]
+                if True:
                     self.transzendentalien = []
                     self.rolle = []
                     self.motivation = []
                     self.ziel = []
-                    for cols in self.relitable:
-                        self.motivation += [cols[polytype]]
-                        self.rolle += [cols[19]]
-                        self.transzendentalien += [cols[5]]
-                        self.ziel += [cols[11]]
                     relitableCopy = deepcopy(self.relitable)
 
                     for i, cols in enumerate(relitableCopy):
@@ -2196,6 +2186,31 @@ class Tables:
                                     if i == 0:
                                         into = "Generiert: " + row1
                                     else:
+                                        cols[couple[0]]
+                                        cols[couple[1]] + " " + modalOperatoren
+                                        if row1.strip() != "":
+                                            into += (
+                                                "sehr: "
+                                                + row1
+                                                + " "
+                                                + modalOperatoren[0]
+                                                + "| "
+                                            )
+                                        if i > 2 and concept[0][i - 2].strip() != "":
+                                            into += (
+                                                "ganz gut: "
+                                                + concept[0][i - 2]
+                                                + " "
+                                                + " ".join(modalOperatoren[1:])
+                                                + "| "
+                                            )
+                                        if (
+                                            len(concept[0]) > i + 2
+                                            and concept[0][i + 2].strip() != ""
+                                        ):
+                                            into += (
+                                                "ganz gut: " + concept[0][i + 2] + "| "
+                                            )
                                         into = (
                                             self.transzendentalien[
                                                 multi[0]

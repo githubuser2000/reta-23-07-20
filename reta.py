@@ -1559,6 +1559,14 @@ class Program:
             "1. http://goexchange.de/viewtopic.php?f=13&t=2683#p17239 () \n    9. anderen etwas vormachen können (Bahai)\n    1/9. den anderen Strukturgrößen außer der Einheit (9, 1/9) etwas vormachen können"
         )
         alxp(
+            """In einigen GenerierungsSpalten werden Teile aus der Reli dings kopiert, was unnötig ist.
+             Außerem, dass dann die relitable ganz geklont werden muss. Und die Einzelsachen
+             müssten nur selbst geklont werden und mehr nicht."""
+        )
+        alxp(
+            "Alle if = 0 raus hauen und vorher machen und danach alle weiteren in der schleife"
+        )
+        alxp(
             """Immer dann wenn ich die ganze relitable matrix deepcopy geklont habe, hätte ich das gar nicht tun müssen, da ich einfach nur die werte, die ich vorher raus genommen habe, einfach nur per copy oder deepcopy hätte nur rausnehmen müssen"""
         )
         alxp("Ich muss noch die primzahl große csv an neuesten Stand anpassen!")
