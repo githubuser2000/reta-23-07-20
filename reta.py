@@ -581,6 +581,22 @@ class Program:
             (
                 Program.ParametersMain.galaxie,
                 (
+                    "offenbarung",
+                    "offenbarungdesjohannes",
+                    "johannes",
+                    "bibel",
+                    "offenbarungjohannes",
+                ),
+                {91},
+            ),
+            (
+                Program.ParametersMain.galaxie,
+                ("chinesischeshoroskop"),
+                {90},
+            ),
+            (
+                Program.ParametersMain.galaxie,
+                (
                     "tierkreiszeichen",
                     "babylon",
                 ),

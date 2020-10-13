@@ -2122,7 +2122,7 @@ class Tables:
                 pro Zeile ausgibt
                 @type int
                 @param Zeile
-                @return: tupel derer Modaloperatoren
+                @return: Tupel aus Modaloperatoren
                 """
 
                 def getModaloperatorsPerLineCoordinates(lineWeAreAt: int) -> tuple:
@@ -2180,6 +2180,7 @@ class Tables:
 
                     for i, cols in enumerate(relitableCopy):
                         primMultiples = primMultiple(i)
+                        modalOperatoren = getModaloperatorsPerLineCells(i)
                         into = (
                             ""
                             if i != 0
