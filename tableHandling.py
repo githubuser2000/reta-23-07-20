@@ -2122,7 +2122,7 @@ class Tables:
                 pro Zeile ausgibt
                 @type int
                 @param Zeile
-                @return: tuple derer Modaloperatoren
+                @return: tupel derer Modaloperatoren
                 """
 
                 def getModaloperatorsPerLineCoordinates(lineWeAreAt: int) -> tuple:
