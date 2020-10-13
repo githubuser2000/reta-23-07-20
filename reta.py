@@ -587,12 +587,12 @@ class Program:
                     "bibel",
                     "offenbarungjohannes",
                 ),
-                {91},
+                {90},
             ),
             (
                 Program.ParametersMain.galaxie,
-                ("chinesischeshoroskop"),
-                {90},
+                ("chinesischeshoroskop", "china"),
+                {91},
             ),
             (
                 Program.ParametersMain.galaxie,
