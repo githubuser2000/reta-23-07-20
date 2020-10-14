@@ -1572,6 +1572,7 @@ class Program:
         alxp(
             """ in concatRowsOfConcepts ist falsch dass relitable in einem zip mit den den concepts ist """
         )
+        alxp(""" aus noch etwas : bla1 + bla2 """)
         alxp(
             """Bei vielen Algorithmen schauen, ob nicht das Durchiterieren extrem lahmt, weil es polynomielle Laufzeit hat, statt lineare, wie es eigentlich sein sollte"""
         )

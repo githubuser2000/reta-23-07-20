@@ -2187,7 +2187,6 @@ class Tables:
                                         conceptFirstLine[i + distanceFromLine]
                                     )
                                     # if cols[concept[0]][i + distanceFromLine].strip() != "":
-                                    x("tgbw", "")
                                     into[i] += (
                                         "ganz gut: "
                                         if abs(distanceFromLine) == 2
@@ -2196,24 +2195,23 @@ class Tables:
                                             if abs(distanceFromLine) == 1
                                             else "noch etwas: "
                                         )
+                                        + (
+                                            self.relitable[i + distanceFromLine][
+                                                concept[0]
+                                            ]
+                                            if distanceFromLine % 2 == 0
+                                            else self.relitable[i + distanceFromLine][
+                                                concept[1]
+                                            ]
+                                        )
+                                        + " "
+                                        + (
+                                            " ".join(modalOperatoren[1:])
+                                            if distanceFromLine % 2 == 1
+                                            else modalOperatoren[0]
+                                        )
+                                        + "| "
                                     )
-                                    x("tgbv", "")
-                                    # + (
-                                    #    self.relitable[i + distanceFromLine][
-                                    #        concept[0]
-                                    #    ]
-                                    #    if distanceFromLine % 2 == 0
-                                    #    else self.relitable[i + distanceFromLine][
-                                    #        concept[1]
-                                    #    ]
-                                    # )
-                                    # + " "
-                                    # + (
-                                    #    " ".join(modalOperatoren[1:])
-                                    #    if distanceFromLine % 2 == 1
-                                    #    else modalOperatoren[0]
-                                    # )
-                                    # + "| "
 
                                 except IndexError:
                                     pass
