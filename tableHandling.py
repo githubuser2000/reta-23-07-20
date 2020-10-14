@@ -2155,13 +2155,20 @@ class Tables:
                 conceptsRowsSetOfTuple2: tuple = tuple(conceptsRowsSetOfTuple)
                 x("wer", conceptsRowsSetOfTuple2)
                 for o, concept in enumerate(conceptsRowsSetOfTuple2):
+                    conceptFirstLine = {}
                     for i, cols in enumerate(deepcopy(self.relitable)):
                         into = "_?_"
-                        modalOperatoren = getModaloperatorsPerLineCells(i)
                         if i == 0:
                             into = "Generiert: " + cols[concept[0]]
                         else:
                             if cols[concept[0]].strip() != "":
+                                try:
+                                    conceptFirstLine[i] += 1
+                                except KeyError:
+                                    conceptFirstLine[i] = 1
+                                modalOperatoren = getModaloperatorsPerLineCells(
+                                    conceptFirstLine[i]
+                                )
                                 into += (
                                     "sehr: "
                                     + cols[concept[0]]
@@ -2169,9 +2176,13 @@ class Tables:
                                     + modalOperatoren[0]
                                     + "| "
                                 )
+
                             for number2 in (2, -2):
                                 try:
-                                    if cols[concept[0]][i - number2].strip() != "":
+                                    if cols[concept[0]][i + number2].strip() != "":
+                                        modalOperatoren = getModaloperatorsPerLineCells(
+                                            conceptFirstLine[i + number2]
+                                        )
                                         into += (
                                             "ganz gut: "
                                             + cols[concept[0]][i + number2]
@@ -2180,6 +2191,8 @@ class Tables:
                                             + "| "
                                         )
                                 except IndexError:
+                                    pass
+                                except KeyError:
                                     pass
 
                         self.relitable[i] += [into]
