@@ -2177,17 +2177,33 @@ class Tables:
                                     + "| "
                                 )
 
-                            for number2 in (2, -2):
+                            for number2 in (-3, -2, -1, 1, 2, 3):
                                 try:
                                     modalOperatoren = getModaloperatorsPerLineCells(
                                         conceptFirstLine[i + number2]
                                     )
                                     # if cols[concept[0]][i + number2].strip() != "":
                                     into += (
-                                        "ganz gut: "
-                                        + self.relitable[i + number2][concept[0]]
+                                        (
+                                            "ganz gut: "
+                                            if abs(number2) == 2
+                                            else (
+                                                ""
+                                                if abs(number2) == 1
+                                                else "noch etwas: "
+                                            )
+                                        )
+                                        + (
+                                            self.relitable[i + number2][concept[0]]
+                                            if number2 % 2 == 0
+                                            else self.relitable[i + number2][concept[1]]
+                                        )
                                         + " "
-                                        + " ".join(modalOperatoren[1:])
+                                        + (
+                                            " ".join(modalOperatoren[1:])
+                                            if number2 % 2 == 1
+                                            else modalOperatoren[0]
+                                        )
                                         + "| "
                                     )
                                 except IndexError:

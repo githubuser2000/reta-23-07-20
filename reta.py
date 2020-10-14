@@ -1567,6 +1567,7 @@ class Program:
         alxp(
             "1. http://goexchange.de/viewtopic.php?f=13&t=2683#p17239 () \n    9. anderen etwas vormachen können (Bahai)\n    1/9. den anderen Strukturgrößen außer der Einheit (9, 1/9) etwas vormachen können"
         )
+        alxp(""" die vielen |||| bei kombi ausgabe weg machen ! """)
         alxp("""aus der ergebnis relitable ein dict machen !!!! bestes !!! """)
         alxp(
             """ in concatRowsOfConcepts ist falsch dass relitable in einem zip mit den den concepts ist """
