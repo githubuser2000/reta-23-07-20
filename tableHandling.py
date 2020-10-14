@@ -2181,7 +2181,7 @@ class Tables:
 
                     for i, cols in enumerate(reliTableCopy):
                         if i > 0:
-                            for distanceFromLine in (-3, -2, -1, 1, 2, 3):
+                            for distanceFromLine in (-4, -3, -2, -1, 1, 2, 3, 4):
                                 try:
                                     modalOperatoren = getModaloperatorsPerLineCells(
                                         conceptFirstLine[i + distanceFromLine]
@@ -2194,7 +2194,11 @@ class Tables:
                                             else (
                                                 ""
                                                 if abs(distanceFromLine) == 1
-                                                else "noch etwas: "
+                                                else (
+                                                    "noch etwas: "
+                                                    if abs(distanceFromLine) == 3
+                                                    else "ein wenig: "
+                                                )
                                             )
                                         )
                                         + (
