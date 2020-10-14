@@ -2188,18 +2188,22 @@ class Tables:
                                     )
                                     # if cols[concept[0]][i + distanceFromLine].strip() != "":
                                     into[i] += (
-                                        "ganz gut: "
-                                        if abs(distanceFromLine) == 2
-                                        else (
-                                            ""
-                                            if abs(distanceFromLine) == 1
-                                            else "noch etwas: "
+                                        (
+                                            "ganz gut: "
+                                            if abs(distanceFromLine) == 2
+                                            else (
+                                                ""
+                                                if abs(distanceFromLine) == 1
+                                                else "noch etwas: "
+                                            )
                                         )
                                         + (
-                                            self.relitable[i + distanceFromLine][
-                                                concept[0]
-                                            ]
-                                            if distanceFromLine % 2 == 0
+                                            (
+                                                self.relitable[i + distanceFromLine][
+                                                    concept[0]
+                                                ]
+                                            )
+                                            if (abs(distanceFromLine) % 2 == 0)
                                             else self.relitable[i + distanceFromLine][
                                                 concept[1]
                                             ]
@@ -2207,7 +2211,7 @@ class Tables:
                                         + " "
                                         + (
                                             " ".join(modalOperatoren[1:])
-                                            if distanceFromLine % 2 == 1
+                                            if abs(distanceFromLine) % 2 == 1
                                             else modalOperatoren[0]
                                         )
                                         + "| "
