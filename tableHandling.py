@@ -2179,17 +2179,17 @@ class Tables:
 
                             for number2 in (2, -2):
                                 try:
-                                    if cols[concept[0]][i + number2].strip() != "":
-                                        modalOperatoren = getModaloperatorsPerLineCells(
-                                            conceptFirstLine[i + number2]
-                                        )
-                                        into += (
-                                            "ganz gut: "
-                                            + cols[concept[0]][i + number2]
-                                            + " "
-                                            + " ".join(modalOperatoren[1:])
-                                            + "| "
-                                        )
+                                    modalOperatoren = getModaloperatorsPerLineCells(
+                                        conceptFirstLine[i + number2]
+                                    )
+                                    # if cols[concept[0]][i + number2].strip() != "":
+                                    into += (
+                                        "ganz gut: "
+                                        + self.relitable[i + number2][concept[0]]
+                                        + " "
+                                        + " ".join(modalOperatoren[1:])
+                                        + "| "
+                                    )
                                 except IndexError:
                                     pass
                                 except KeyError:
