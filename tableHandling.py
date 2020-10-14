@@ -2203,13 +2203,14 @@ class Tables:
                                                 ""
                                                 if abs(distanceFromLine) == 1
                                                 else (
-                                                    "sehr leicht überdurchschnittlich: "
+                                                    "mittelleicht überdurschnittlich: "
                                                     if abs(distanceFromLine) == 3
                                                     else (
                                                         "sehr: "
-                                                        if cols[concept[0]].strip()
+                                                        if abs(distanceFromLine)
+                                                        == 0
                                                         != ""
-                                                        else "mittelleicht überdurschnittlich: "
+                                                        else "sehr leicht überdurchschnittlich: "
                                                     )
                                                 )
                                             )
