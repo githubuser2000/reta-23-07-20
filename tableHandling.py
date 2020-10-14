@@ -2221,6 +2221,8 @@ class Tables:
                                     pass
                                 except KeyError:
                                     pass
+                        if into[i] != "":
+                            into[i] += "alles zur selben Strukturgröße einer " + cols[4]
 
                     for i, cols in enumerate(reliTableCopy):
                         self.relitable[i] += [into[i]]
