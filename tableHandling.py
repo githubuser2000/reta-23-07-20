@@ -2155,11 +2155,13 @@ class Tables:
                 conceptsRowsSetOfTuple2: tuple = tuple(conceptsRowsSetOfTuple)
                 x("wer", conceptsRowsSetOfTuple2)
                 for o, concept in enumerate(conceptsRowsSetOfTuple2):
-                    conceptFirstLine = {}
-                    for i, cols in enumerate(deepcopy(self.relitable)):
-                        into = "_?_"
+                    conceptFirstLine: dict = {}
+                    reliTableCopy = deepcopy(self.relitable)
+                    into: dict = {}
+                    for i, cols in enumerate(reliTableCopy):
+                        into[i] = ""
                         if i == 0:
-                            into = "Generiert: " + cols[concept[0]]
+                            into[i] = "Generiert: " + cols[concept[0]]
                         else:
                             if cols[concept[0]].strip() != "":
                                 try:
@@ -2169,7 +2171,7 @@ class Tables:
                                 modalOperatoren = getModaloperatorsPerLineCells(
                                     conceptFirstLine[i]
                                 )
-                                into += (
+                                into[i] += (
                                     "sehr: "
                                     + cols[concept[0]]
                                     + " "
@@ -2177,46 +2179,50 @@ class Tables:
                                     + "| "
                                 )
 
-                            for number2 in (-3, -2, -1, 1, 2, 3):
+                    for i, cols in enumerate(reliTableCopy):
+                        if i > 0:
+                            for distanceFromLine in (-3, -2, -1, 1, 2, 3):
                                 try:
                                     modalOperatoren = getModaloperatorsPerLineCells(
-                                        conceptFirstLine[i + number2]
+                                        conceptFirstLine[i + distanceFromLine]
                                     )
-                                    # if cols[concept[0]][i + number2].strip() != "":
-                                    into += (
-                                        (
-                                            "ganz gut: "
-                                            if abs(number2) == 2
-                                            else (
-                                                ""
-                                                if abs(number2) == 1
-                                                else "noch etwas: "
-                                            )
+                                    # if cols[concept[0]][i + distanceFromLine].strip() != "":
+                                    x("tgbw", "")
+                                    into[i] += (
+                                        "ganz gut: "
+                                        if abs(distanceFromLine) == 2
+                                        else (
+                                            ""
+                                            if abs(distanceFromLine) == 1
+                                            else "noch etwas: "
                                         )
-                                        + (
-                                            self.relitable[i + number2][concept[0]]
-                                            if number2 % 2 == 0
-                                            else self.relitable[i + number2][concept[1]]
-                                        )
-                                        + " "
-                                        + (
-                                            " ".join(modalOperatoren[1:])
-                                            if number2 % 2 == 1
-                                            else modalOperatoren[0]
-                                        )
-                                        + "| "
                                     )
+                                    x("tgbv", "")
+                                    # + (
+                                    #    self.relitable[i + distanceFromLine][
+                                    #        concept[0]
+                                    #    ]
+                                    #    if distanceFromLine % 2 == 0
+                                    #    else self.relitable[i + distanceFromLine][
+                                    #        concept[1]
+                                    #    ]
+                                    # )
+                                    # + " "
+                                    # + (
+                                    #    " ".join(modalOperatoren[1:])
+                                    #    if distanceFromLine % 2 == 1
+                                    #    else modalOperatoren[0]
+                                    # )
+                                    # + "| "
+
                                 except IndexError:
                                     pass
                                 except KeyError:
                                     pass
 
-                        self.relitable[i] += [into]
-                        x("ölka", into)
-                        x("ölki", i)
-                    x("ölkk1", rowsAsNumbers)
+                    for i, cols in enumerate(reliTableCopy):
+                        self.relitable[i] += [into[i]]
                     rowsAsNumbers |= {len(self.relitable[0]) - 1}
-                    x("ölkk2", rowsAsNumbers)
                     if (
                         len(self.tables.generatedSpaltenParameter)
                         + self.tables.SpaltenVanillaAmount
