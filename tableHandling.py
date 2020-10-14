@@ -2196,21 +2196,21 @@ class Tables:
                                     modalOperatorEnEn: list = []
                                     Orginal_i_mehrere: list = []
                                     vorkommenZeilenBegriffe: list = []
-                                    for old_i, (einVorkommen, modalOp) in enumerate(
-                                        zip(
-                                            vorkommenVielfacher[i + distanceFromLine][
-                                                0
-                                            ],
-                                            vorkommenVielfacher[i + distanceFromLine][
-                                                1
-                                            ],
-                                        )
-                                    ):
-                                        modalOperatorEnEn += [
-                                            (getModaloperatorsPerLineCells(modalOp))
-                                        ]
+                                    for old_i, liste in vorkommenVielfacher[
+                                        i + distanceFromLine
+                                    ].items():
+                                        for (vorkommen, vielfacher) in liste:
+                                            modalOperatorEnEn += [
+                                                (
+                                                    getModaloperatorsPerLineCells(
+                                                        vielfacher
+                                                    )
+                                                )
+                                            ]
+                                            vorkommenZeilenBegriffe += [
+                                                vorkommen * vielfacher
+                                            ]
                                         Orginal_i_mehrere += [old_i]
-                                        vorkommenZeilenBegriffe += [einVorkommen]
 
                                     x("r6hh", i)
                                     x("r6hh", modalOperatorEnEn)
