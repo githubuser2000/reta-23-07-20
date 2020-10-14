@@ -2155,7 +2155,6 @@ class Tables:
                 conceptsRowsSetOfTuple2: tuple = tuple(conceptsRowsSetOfTuple)
                 x("wer", conceptsRowsSetOfTuple2)
                 for o, concept in enumerate(conceptsRowsSetOfTuple2):
-                    conceptFirstLine: dict = {}
                     reliTableCopy = deepcopy(self.relitable)
                     into: dict = {}
                     einMalVorkommen = set()
@@ -2166,13 +2165,7 @@ class Tables:
                         else:
                             if cols[concept[0]].strip() != "":
                                 einMalVorkommen |= {i}
-                                try:
-                                    conceptFirstLine[i] += 1
-                                except KeyError:
-                                    conceptFirstLine[i] = 1
-                                modalOperatoren = getModaloperatorsPerLineCells(
-                                    conceptFirstLine[i]
-                                )
+                                modalOperatoren = getModaloperatorsPerLineCells(1)
                                 into[i] += (
                                     "sehr: "
                                     + cols[concept[0]]
@@ -2187,19 +2180,19 @@ class Tables:
                         ergebnis = vielfacher * einVorkommen
                         vorkommenVielfacher[ergebnis] = (einMalVorkommen, vielfacher)
                         while ergebnis < len(reliTableCopy):
+                            vielfacher += 1
                             ergebnis = vielfacher * einVorkommen
                             vorkommenVielfacher[ergebnis] = (
-                                einMalVorkommen,
-                                vielfacher,
+                                int(einVorkommen),
+                                int(vielfacher),
                             )
-                        vorkommenVielfacher = vorkommenVielfacher[:-1]
 
                     for i, cols in enumerate(reliTableCopy):
                         if i > 0:
                             for distanceFromLine in (-4, -3, -2, -1, 1, 2, 3, 4):
                                 try:
                                     modalOperatoren = getModaloperatorsPerLineCells(
-                                        conceptFirstLine[i + distanceFromLine]
+                                        vorkommenVielfacher[i + distanceFromLine][1]
                                     )
                                     # if cols[concept[0]][i + distanceFromLine].strip() != "":
                                     into[i] += (
