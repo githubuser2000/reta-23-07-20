@@ -2165,7 +2165,7 @@ class Tables:
                         else:
                             einMalVorkommen |= {i}
 
-                    vorkommenVielfacher:dict = {}
+                    vorkommenVielfacher: dict = {}
                     einMalVorkommen = tuple(einMalVorkommen)
                     for einVorkommen in einMalVorkommen:
                         vielfacher = 1
@@ -2187,19 +2187,7 @@ class Tables:
 
                     for i, cols in enumerate(reliTableCopy):
                         if i > 0 and cols[concept[0]].strip() != "":
-                            modalOperatoren = getModaloperatorsPerLineCells(1)
-                            into[i] += (
-                                "sehr: "
-                                + cols[concept[0]]
-                                + " "
-                                + modalOperatoren[0]
-                                + "| "
-                            )
-
-                    x("hct", vorkommenVielfacher)
-                    for i, cols in enumerate(reliTableCopy):
-                        if i > 0:
-                            for distanceFromLine in (-4, -3, -2, -1, 1, 2, 3, 4):
+                            for distanceFromLine in (-4, -3, -2, -1,0, 1, 2, 3, 4):
                                 try:
                                     modalOperatoren = getModaloperatorsPerLineCells(
                                         vorkommenVielfacher[i + distanceFromLine][1]
@@ -2218,7 +2206,7 @@ class Tables:
                                                 else (
                                                     "sehr leicht überdurchschnittlich: "
                                                     if abs(distanceFromLine) == 3
-                                                    else "mittelleicht überdurschnittlich: "
+                                                    else ("sehr: " if cols[concept[0]].strip() != "" else "mittelleicht überdurschnittlich: ")
                                                 )
                                             )
                                         )
