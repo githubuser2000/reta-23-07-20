@@ -2141,7 +2141,10 @@ class Tables:
                 modaloperators: list = []
                 modaloperators += [self.relitable[coords[0]][10]]
                 for coord in range(coords[1], coords[2]):
-                    modaloperators += [self.relitable[coord][42]]
+                    try:
+                        modaloperators += [self.relitable[coord][42]]
+                    except IndexError:
+                        pass
                 return tuple(modaloperators)
 
             self.relitable = relitable
