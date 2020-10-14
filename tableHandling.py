@@ -2162,7 +2162,7 @@ class Tables:
                         into[i] = ""
                         if i == 0:
                             into[i] = "Generiert: " + cols[concept[0]]
-                        else:
+                        elif cols[concept[0]].strip() != "":
                             einMalVorkommen |= {i}
 
                     vorkommenVielfacher: dict = {}
@@ -2186,8 +2186,8 @@ class Tables:
                                 )
 
                     for i, cols in enumerate(reliTableCopy):
-                        if i > 0 and cols[concept[0]].strip() != "":
-                            for distanceFromLine in (-4, -3, -2, -1,0, 1, 2, 3, 4):
+                        if i > 0:
+                            for distanceFromLine in (-4, -3, -2, -1, 0, 1, 2, 3, 4):
                                 try:
                                     modalOperatoren = getModaloperatorsPerLineCells(
                                         vorkommenVielfacher[i + distanceFromLine][1]
@@ -2195,7 +2195,6 @@ class Tables:
                                     Orginal_i = int(
                                         vorkommenVielfacher[i + distanceFromLine][0]
                                     )
-                                    # if cols[concept[0]][i + distanceFromLine].strip() != "":
                                     into[i] += (
                                         (
                                             "ganz gut: "
@@ -2206,7 +2205,12 @@ class Tables:
                                                 else (
                                                     "sehr leicht überdurchschnittlich: "
                                                     if abs(distanceFromLine) == 3
-                                                    else ("sehr: " if cols[concept[0]].strip() != "" else "mittelleicht überdurschnittlich: ")
+                                                    else (
+                                                        "sehr: "
+                                                        if cols[concept[0]].strip()
+                                                        != ""
+                                                        else "mittelleicht überdurschnittlich: "
+                                                    )
                                                 )
                                             )
                                         )
