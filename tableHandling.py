@@ -2158,12 +2158,14 @@ class Tables:
                     conceptFirstLine: dict = {}
                     reliTableCopy = deepcopy(self.relitable)
                     into: dict = {}
+                    einMalVorkommen = set()
                     for i, cols in enumerate(reliTableCopy):
                         into[i] = ""
                         if i == 0:
                             into[i] = "Generiert: " + cols[concept[0]]
                         else:
                             if cols[concept[0]].strip() != "":
+                                einMalVorkommen |= {i}
                                 try:
                                     conceptFirstLine[i] += 1
                                 except KeyError:
@@ -2178,6 +2180,19 @@ class Tables:
                                     + modalOperatoren[0]
                                     + "| "
                                 )
+                    vorkommenVielfacher = {}
+                    einMalVorkommen = tuple(einMalVorkommen)
+                    for einVorkommen in einMalVorkommen:
+                        vielfacher = 1
+                        ergebnis = vielfacher * einVorkommen
+                        vorkommenVielfacher[ergebnis] = (einMalVorkommen, vielfacher)
+                        while ergebnis < len(reliTableCopy):
+                            ergebnis = vielfacher * einVorkommen
+                            vorkommenVielfacher[ergebnis] = (
+                                einMalVorkommen,
+                                vielfacher,
+                            )
+                        vorkommenVielfacher = vorkommenVielfacher[:-1]
 
                     for i, cols in enumerate(reliTableCopy):
                         if i > 0:
