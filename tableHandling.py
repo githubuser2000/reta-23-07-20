@@ -2163,36 +2163,49 @@ class Tables:
                         if i == 0:
                             into[i] = "Generiert: " + cols[concept[0]]
                         else:
-                            if cols[concept[0]].strip() != "":
-                                einMalVorkommen |= {i}
-                                modalOperatoren = getModaloperatorsPerLineCells(1)
-                                into[i] += (
-                                    "sehr: "
-                                    + cols[concept[0]]
-                                    + " "
-                                    + modalOperatoren[0]
-                                    + "| "
-                                )
-                    vorkommenVielfacher = {}
+                            einMalVorkommen |= {i}
+
+                    vorkommenVielfacher:dict = {}
                     einMalVorkommen = tuple(einMalVorkommen)
                     for einVorkommen in einMalVorkommen:
                         vielfacher = 1
                         ergebnis = vielfacher * einVorkommen
-                        vorkommenVielfacher[ergebnis] = (einMalVorkommen, vielfacher)
+                        vorkommenVielfacher[ergebnis] = (einVorkommen, vielfacher)
                         while ergebnis < len(reliTableCopy):
                             vielfacher += 1
                             ergebnis = vielfacher * einVorkommen
-                            vorkommenVielfacher[ergebnis] = (
-                                int(einVorkommen),
-                                int(vielfacher),
+                            try:
+                                vorkommenVielfacher[ergebnis] += (
+                                    int(einVorkommen),
+                                    int(vielfacher),
+                                )
+                            except:
+                                vorkommenVielfacher[ergebnis] = (
+                                    int(einVorkommen),
+                                    int(vielfacher),
+                                )
+
+                    for i, cols in enumerate(reliTableCopy):
+                        if i > 0 and cols[concept[0]].strip() != "":
+                            modalOperatoren = getModaloperatorsPerLineCells(1)
+                            into[i] += (
+                                "sehr: "
+                                + cols[concept[0]]
+                                + " "
+                                + modalOperatoren[0]
+                                + "| "
                             )
 
+                    x("hct", vorkommenVielfacher)
                     for i, cols in enumerate(reliTableCopy):
                         if i > 0:
                             for distanceFromLine in (-4, -3, -2, -1, 1, 2, 3, 4):
                                 try:
                                     modalOperatoren = getModaloperatorsPerLineCells(
                                         vorkommenVielfacher[i + distanceFromLine][1]
+                                    )
+                                    Orginal_i = int(
+                                        vorkommenVielfacher[i + distanceFromLine][0]
                                     )
                                     # if cols[concept[0]][i + distanceFromLine].strip() != "":
                                     into[i] += (
@@ -2203,22 +2216,22 @@ class Tables:
                                                 ""
                                                 if abs(distanceFromLine) == 1
                                                 else (
-                                                    "noch etwas: "
+                                                    "sehr leicht überdurchschnittlich: "
                                                     if abs(distanceFromLine) == 3
-                                                    else "ein wenig: "
+                                                    else "mittelleicht überdurschnittlich: "
                                                 )
                                             )
                                         )
                                         + (
                                             (
-                                                self.relitable[i + distanceFromLine][
-                                                    concept[0]
-                                                ]
+                                                self.relitable[
+                                                    Orginal_i + distanceFromLine
+                                                ][concept[0]]
                                             )
                                             if (abs(distanceFromLine) % 2 == 0)
-                                            else self.relitable[i + distanceFromLine][
-                                                concept[1]
-                                            ]
+                                            else self.relitable[
+                                                Orginal_i + distanceFromLine
+                                            ][concept[1]]
                                         )
                                         + " "
                                         + (
