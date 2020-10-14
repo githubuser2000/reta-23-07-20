@@ -2170,7 +2170,7 @@ class Tables:
                     for einVorkommen in einMalVorkommen:
                         vielfacher = 1
                         ergebnis = vielfacher * einVorkommen
-                        vorkommenVielfacher[ergebnis] = (einVorkommen, vielfacher)
+                        vorkommenVielfacher[ergebnis] = [(einVorkommen, vielfacher)]
                         while ergebnis < len(reliTableCopy):
                             vielfacher += 1
                             ergebnis = vielfacher * einVorkommen
@@ -2199,12 +2199,10 @@ class Tables:
                                         vorkommenVielfacher[i + distanceFromLine][0],
                                         vorkommenVielfacher[i + distanceFromLine][1],
                                     ):
-                                        modalOperatorEnEn = (
-                                            getModaloperatorsPerLineCells(modalOp)
-                                        )
-                                        Orginal_i_mehrere = (
-                                            getModaloperatorsPerLineCells(old_i)
-                                        )
+                                        modalOperatorEnEn += [
+                                            (getModaloperatorsPerLineCells(modalOp))
+                                        ]
+                                        Orginal_i_mehrere += [old_i]
 
                                     # modalOperatorEnEn = getModaloperatorsPerLineCells(
                                     #    vorkommenVielfacher[i + distanceFromLine][1]
@@ -2215,6 +2213,8 @@ class Tables:
                                     for Orginal_i, modalOperatoren in zip(
                                         Orginal_i_mehrere, modalOperatorEnEn
                                     ):
+                                        x("uhit", Orginal_i)
+                                        x("uhit", modalOperatoren)
                                         into[i] += (
                                             (
                                                 "mittelstark überdurschnittlich: "
