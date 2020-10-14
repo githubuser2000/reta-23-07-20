@@ -2197,10 +2197,10 @@ class Tables:
                                     )
                                     into[i] += (
                                         (
-                                            "ganz gut: "
+                                            "mittelstark überdurschnittlich: "
                                             if abs(distanceFromLine) == 2
                                             else (
-                                                ""
+                                                "überdurschnittlich: "
                                                 if abs(distanceFromLine) == 1
                                                 else (
                                                     "mittelleicht überdurschnittlich: "
@@ -2228,7 +2228,10 @@ class Tables:
                                         )
                                         + " "
                                         + (
-                                            " ".join(modalOperatoren[1:])
+                                            (
+                                                "nicht: "
+                                                + (" ".join(modalOperatoren[1:]))
+                                            )
                                             if abs(distanceFromLine) % 2 == 1
                                             else modalOperatoren[0]
                                         )
