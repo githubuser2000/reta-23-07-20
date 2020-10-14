@@ -1456,9 +1456,11 @@ class Program:
         self.relitable, self.rowsAsNumbers = self.tables.getConcat.concatRowsOfConcepts(
             self.relitable, self.tables.generRows, self.rowsAsNumbers
         )
+        x("294", self.rowsAsNumbers)
         self.relitable, self.rowsAsNumbers = self.tables.getConcat.concatModallogik(
             self.relitable, self.tables.generRows, self.rowsAsNumbers
         )
+        x("294", self.rowsAsNumbers)
         (
             self.relitable,
             self.rowsAsNumbers,
@@ -1530,6 +1532,7 @@ class Program:
             spaltenreihenfolgeundnurdiese,
         ) = self.bringAllImportantBeginThings(argv)
         self.tables.getMainTable.createSpalteGestirn(self.relitable, self.rowsAsNumbers)
+        x("2943", self.rowsAsNumbers)
         (
             finallyDisplayLines,
             newTable,
@@ -1542,6 +1545,9 @@ class Program:
             self.relitable,
             self.rowsAsNumbers,
         )
+        x("2944", self.rowsAsNumbers)
+        x("2944", self.relitable[0][92])
+        x("2944", len(self.relitable[0]))
         if len(self.rowsOfcombi) > 0:
             newTable = self.combiTableWorkflow(
                 animalsProfessionsTable,
@@ -1561,6 +1567,7 @@ class Program:
         alxp(
             "1. http://goexchange.de/viewtopic.php?f=13&t=2683#p17239 () \n    9. anderen etwas vormachen können (Bahai)\n    1/9. den anderen Strukturgrößen außer der Einheit (9, 1/9) etwas vormachen können"
         )
+        alxp("""aus der ergebnis relitable ein dict machen !!!! bestes !!! """)
         alxp(
             """ in concatRowsOfConcepts ist falsch dass relitable in einem zip mit den den concepts ist """
         )

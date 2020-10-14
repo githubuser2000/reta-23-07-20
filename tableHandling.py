@@ -2139,7 +2139,10 @@ class Tables:
 
                 coords = getModaloperatorsPerLineCoordinates(lineWeAreAt)
                 modaloperators: list = []
-                modaloperators += [self.relitable[coords[0]][10]]
+                try:
+                    modaloperators += [self.relitable[coords[0]][10]]
+                except:
+                    pass
                 for coord in range(coords[1], coords[2]):
                     try:
                         modaloperators += [self.relitable[coord][42]]
@@ -2153,6 +2156,7 @@ class Tables:
                 x("wer", conceptsRowsSetOfTuple2)
                 for o, concept in enumerate(conceptsRowsSetOfTuple2):
                     for i, cols in enumerate(deepcopy(self.relitable)):
+                        into = "_?_"
                         modalOperatoren = getModaloperatorsPerLineCells(i)
                         if i == 0:
                             into = "Generiert: " + cols[concept[0]]
@@ -2178,8 +2182,12 @@ class Tables:
                                 except IndexError:
                                     pass
 
-                    self.relitable[i] += [into]
-                    rowsAsNumbers |= {len(self.relitable[0]) + 1}
+                        self.relitable[i] += [into]
+                        x("ölka", into)
+                        x("ölki", i)
+                    x("ölkk1", rowsAsNumbers)
+                    rowsAsNumbers |= {len(self.relitable[0]) - 1}
+                    x("ölkk2", rowsAsNumbers)
                     if (
                         len(self.tables.generatedSpaltenParameter)
                         + self.tables.SpaltenVanillaAmount
