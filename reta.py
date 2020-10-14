@@ -1577,6 +1577,9 @@ class Program:
             """Bei vielen Algorithmen schauen, ob nicht das Durchiterieren extrem lahmt, weil es polynomielle Laufzeit hat, statt lineare, wie es eigentlich sein sollte"""
         )
         alxp(
+            """Iteration in reli csv über die iteration in mathe von sternpolygonen, warum man auf die nächste stufe kommte, die ich vor langer zeit schrieb und sehr genau und lange schauen, ob die nicht schon drin ist"""
+        )
+        alxp(
             """In einigen GenerierungsSpalten werden Teile aus der Reli dings kopiert, was unnötig ist.
              Außerem, dass dann die relitable ganz geklont werden muss. Und die Einzelsachen
              müssten nur selbst geklont werden und mehr nicht."""
