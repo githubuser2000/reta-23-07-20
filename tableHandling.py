@@ -2196,21 +2196,18 @@ class Tables:
                                     modalOperatorEnEn: list = []
                                     Orginal_i_mehrere: list = []
                                     vorkommenZeilenBegriffe: list = []
-                                    for old_i, liste in vorkommenVielfacher[
+                                    for couple in vorkommenVielfacher[
                                         i + distanceFromLine
-                                    ].items():
-                                        for (vorkommen, vielfacher) in liste:
-                                            modalOperatorEnEn += [
-                                                (
-                                                    getModaloperatorsPerLineCells(
-                                                        vielfacher
-                                                    )
-                                                )
-                                            ]
-                                            vorkommenZeilenBegriffe += [
-                                                vorkommen * vielfacher
-                                            ]
-                                        Orginal_i_mehrere += [old_i]
+                                    ]:
+                                        x("x4hh", couple)
+                                        vorkommen, vielfacher = couple[0], couple[1]
+                                        modalOperatorEnEn += [
+                                            (getModaloperatorsPerLineCells(vielfacher))
+                                        ]
+                                        vorkommenZeilenBegriffe += [
+                                            vorkommen * vielfacher
+                                        ]
+                                        Orginal_i_mehrere += [i + distanceFromLine]
 
                                     x("r6hh", i)
                                     x("r6hh", modalOperatorEnEn)
