@@ -2193,7 +2193,8 @@ class Tables:
                         if i > 0:
                             for distanceFromLine in (-4, -3, -2, -1, 0, 1, 2, 3, 4):
                                 try:
-                                    modalOperatorEnEn : list, Orginal_i_mehrere: list = [], []
+                                    modalOperatorEnEn: list = []
+                                    Orginal_i_mehrere: list = []
                                     for old_i, modalOp in zip(
                                         vorkommenVielfacher[i + distanceFromLine][0],
                                         vorkommenVielfacher[i + distanceFromLine][1],
@@ -2211,7 +2212,9 @@ class Tables:
                                     # Orginal_i_mehrere = int(
                                     #    vorkommenVielfacher[i + distanceFromLine][0]
                                     # )
-                                    for Orginal_i,  modalOperatoren in zip(Orginal_i_mehrere,modalOperatorEnEn):
+                                    for Orginal_i, modalOperatoren in zip(
+                                        Orginal_i_mehrere, modalOperatorEnEn
+                                    ):
                                         into[i] += (
                                             (
                                                 "mittelstark überdurschnittlich: "
@@ -2255,10 +2258,10 @@ class Tables:
                                             + "| "
                                         )
 
-                                    except IndexError:
-                                        pass
-                                    except KeyError:
-                                        pass
+                                except IndexError:
+                                    pass
+                                except KeyError:
+                                    pass
                         if into[i] != "":
                             into[i] += "alles zur selben Strukturgröße einer " + cols[4]
 
