@@ -624,7 +624,20 @@ class Program:
                 {84},
             ),
             (
-                Program.ParametersMain.universum,
+                Program.ParametersMain.operationen,
+                (
+                    "5",
+                    "fünf",
+                    "fünfer",
+                    "fünferstruktur",
+                    "fuenf",
+                    "fuenfer",
+                    "fuenferstruktur",
+                ),
+                {96},
+            ),
+            (
+                Program.ParametersMain.operationen,
                 (
                     "9",
                     "neun",
@@ -634,17 +647,7 @@ class Program:
                 {94},
             ),
             (
-                Program.ParametersMain.universum,
-                (
-                    "3",
-                    "drei",
-                    "dreier",
-                    "dreierstruktur",
-                ),
-                {92, 93, 94},
-            ),
-            (
-                Program.ParametersMain.galaxie,
+                Program.ParametersMain.operationen,
                 (
                     "3",
                     "drei",
@@ -702,7 +705,7 @@ class Program:
                 {65, 75, 77},
             ),
             (
-                Program.ParametersMain.universum,
+                Program.ParametersMain.operationen,
                 (
                     "2",
                     "zwei",
@@ -715,7 +718,7 @@ class Program:
                 {78, 79, 80},
             ),
             (
-                Program.ParametersMain.universum,
+                Program.ParametersMain.operationen,
                 ("4", "vier", "viererstruktur", "viererabfolgen"),
                 {76, 77, 81},
             ),
