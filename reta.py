@@ -631,7 +631,7 @@ class Program:
                     "dreier",
                     "dreierstruktur",
                 ),
-                {92, 93},
+                {92, 93, 94},
             ),
             (
                 Program.ParametersMain.galaxie,
