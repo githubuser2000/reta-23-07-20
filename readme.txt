@@ -33,10 +33,9 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--breiten=[list][*]20,50,10,70[*]30,100,20[/list]
 [*]--keinenummerierung
 [*]--religionen=[list][*]sternpolygon,dertierkreiszeichen,gleichfoermigespolygon,vertreterhoehererkonzepte,messias,religionsgründertyp,vergleich[/list]
-[*]--galaxie= oder
---kreis=[list][*]tierkreiszeichen,thomasevangelium,analytischeontologie[*]offenbarungdesjohannes[*]chinesischeshoroskop[/list]
+[*]--galaxie= oder --kreis=[list][*]tierkreiszeichen,thomasevangelium,analytischeontologie,offenbarungdesjohannes,chinesischeshoroskop[/list]
 [*]--groessenordnung=[list][*]strukturgroesse, organisation, politischesysteme[/list]
-[*]--universum=[list][*]transzendentalien,komplexitaet[/list]
+[*]--universum= oder --kugel=[list][*]transzendentalien,komplexitaet,ontologie[/list]
 [*]--menschliches=[list][*]liebe,ethik,angreifbarkeit,motivation,erhalten,erwerben,benoetigen,krankheit,alpha,kreativ,chef,beruf,loesungen,musik,glaube,erkenntnis,dominierendesgeschlecht,incel,ausgangslage,sinndeslebens[/list]
 [*]--procontra=[list][*]pro,contra[/list]
 [*]--wirtschaft=[list][*]system,realistisch,funktioniert,erklaerung,maschinen[/list]
@@ -48,7 +47,6 @@ also Primzahlen[/list]
 [*]--konzept=[list][*]weisheit,gut,zeit,ruf,selbstgerecht,egoismus[/list]
 [*]--inkrementieren[/list]
 [*]--operationen=[list][*]halbierungen,2,3,4,5,9[/list]
-[/list]
 [*]-kombination
 [list][*]--was=[list][*]tiere,berufe,intelligenz,liebe,transzendentalien,strukturalien,primzahlkreuz,frauen,maenner,persoenlichkeit,religionen[/list][/list]
 [*]-ausgabe
