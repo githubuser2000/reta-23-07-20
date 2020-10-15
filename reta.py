@@ -619,6 +619,16 @@ class Program:
                 {84},
             ),
             (
+                Program.ParametersMain.galaxie,
+                (
+                    "3",
+                    "drei",
+                    "dreier",
+                    "dreierstruktur",
+                ),
+                {92},
+            ),
+            (
                 Program.ParametersMain.strukturgroesse,
                 ("größe", "groesse", "gross", "strukturgroesse"),
                 {4, 21, 54},
