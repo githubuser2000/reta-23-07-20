@@ -2151,7 +2151,7 @@ class Tables:
                 return tuple(modaloperators)
 
             self.relitable = relitable
-            if True:
+            if False:
                 conceptsRowsSetOfTuple2: tuple = tuple(conceptsRowsSetOfTuple)
                 x("wer", conceptsRowsSetOfTuple2)
                 for o, concept in enumerate(conceptsRowsSetOfTuple2):
