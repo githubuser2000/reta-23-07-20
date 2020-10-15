@@ -619,6 +619,16 @@ class Program:
                 {84},
             ),
             (
+                Program.ParametersMain.universum,
+                (
+                    "3",
+                    "drei",
+                    "dreier",
+                    "dreierstruktur",
+                ),
+                {92, 93},
+            ),
+            (
                 Program.ParametersMain.galaxie,
                 (
                     "3",
