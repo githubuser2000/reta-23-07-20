@@ -473,7 +473,7 @@ class Program:
                 "kugeln",
                 "ball",
                 "baelle",
-                "bälle"
+                "bälle",
             ),
             ("wirtschaft",),
             ("menschliches",),
@@ -622,6 +622,16 @@ class Program:
                     "ontologie",
                 ),
                 {84},
+            ),
+            (
+                Program.ParametersMain.universum,
+                (
+                    "9",
+                    "neun",
+                    "neuner",
+                    "neunerstruktur",
+                ),
+                {94},
             ),
             (
                 Program.ParametersMain.universum,

@@ -34,7 +34,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--keinenummerierung
 [*]--religionen=[list][*]sternpolygon,dertierkreiszeichen,gleichfoermigespolygon,vertreterhoehererkonzepte,messias,religionsgründertyp,vergleich[/list]
 [*]--galaxie= oder
---kreis=[list][*]tierkreiszeichen,thomasevangelium,analytischeontologie[*]offenbarungdesjohannes[*]chinesischeshoroskop,dreierstruktur[/list]
+--kreis=[list][*]tierkreiszeichen,thomasevangelium,analytischeontologie[*]offenbarungdesjohannes[*]chinesischeshoroskop,dreierstruktur,neunerstruktur[/list]
 [*]--groessenordnung=[list][*]strukturgroesse, organisation, politischesysteme[/list]
 [*]--universum=[list][*]transzendentalien,komplexitaet,viererstruktur,alternierung[/list]
 [*]--menschliches=[list][*]liebe,ethik,angreifbarkeit,motivation,erhalten,erwerben,benoetigen,krankheit,alpha,kreativ,chef,beruf,loesungen,musik,glaube,erkenntnis,dominierendesgeschlecht,incel,ausgangslage,sinndeslebens[/list]
