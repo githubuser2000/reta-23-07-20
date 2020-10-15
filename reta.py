@@ -1063,7 +1063,7 @@ class Program:
                 set(),
                 {(66, 67)},
             ),
-            (Program.ParametersMain.inkrementieren, ("universum",), {43, 54, 74}),
+            (Program.ParametersMain.inkrementieren, set(), {43, 54, 74, 95}),
         ]
 
         Program.kombiParaNdataMatrix = {
