@@ -469,6 +469,11 @@ class Program:
                 "universum",
                 "transzendentalien",
                 "strukturalien",
+                "kugel",
+                "kugeln",
+                "ball",
+                "baelle",
+                "bälle"
             ),
             ("wirtschaft",),
             ("menschliches",),
