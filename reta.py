@@ -626,7 +626,7 @@ class Program:
                     "dreier",
                     "dreierstruktur",
                 ),
-                {92},
+                {92, 93},
             ),
             (
                 Program.ParametersMain.strukturgroesse,
