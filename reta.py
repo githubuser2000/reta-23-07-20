@@ -1672,6 +1672,7 @@ class Program:
         alxp(
             """Fragezeichen bei noch nicht vorhandenen Religionen erklären, dass diese noch nicht vorhanden sind | Planetenerhaltungsregerung sollte Sonnen-Sys. ... erhalt reg sein. | viererstrukt raus nehmen aus komplex paramaeter | kombinationen ist verschwunden | einige Spalten sind falsch bei --alles: Kreativität und Intelligenz und andere Geistes-  ++++ Liebe, Ethik, spätere Religionen, Sternpolygone - """
         )
+        alxp("""einprogrammieren: was die Vielfacher bedeuten 7*n Anführer und 3*n existenz""")
         # alxp("1. Clean Code\n2. Vollständigkeit der Befehle auch")
 
     def combiTableWorkflow(
