@@ -2364,84 +2364,85 @@ class Tables:
                                 )
                                 + ")"
                             )
-                            self.relitable[i] += [into]
-
-                        if (
-                            len(self.tables.generatedSpaltenParameter)
-                            + self.tables.SpaltenVanillaAmount
-                            in self.tables.generatedSpaltenParameter
-                        ):
-                            raise ValueError
-                        x(
-                            "doofi 1",
-                            len(self.tables.generatedSpaltenParameter)
-                            + self.tables.SpaltenVanillaAmount,
-                        )
-                        x("doofi 2", tuple(self.tables.dataDict[1].keys())[0])
-                        x("doofi 3", primzahlvielfachesuniversum)
-                        self.tables.generatedSpaltenParameter[
-                            len(self.tables.generatedSpaltenParameter)
-                            + self.tables.SpaltenVanillaAmount
-                        ] = ([primzahlvielfachesuniversum],)
-
-                        x("idiot", self.tables.generatedSpaltenParameter)
-
-                    self.primAmounts = 0
-                    self.oldPrimAmounts = 0
-                    self.lastPrimAnswers: dict = {}
-
-                    def PrimAnswer2(i: int) -> str:
-                        return self.lastPrimAnswers[i]
-
-                    def PrimAnswer(i: int) -> str:
-                        if i > 3:
-                            if self.primAmounts != self.oldPrimAmounts:
-                                if self.primAmounts % 2 == 0:
-                                    return "für innen"
-                                else:
-                                    return "für außen"
-                            else:
-                                return ""
-                        elif i == 2:
-                            return "für seitlich"
-                        elif i == 3:
-                            return "gegen seitlich"
-                        elif i == 1:
-                            return "alle Richtungen möglich"
-                        else:
-                            return ""
-
-                    for i, cols in enumerate(relitableCopy):
-                        primMultiples = primMultiple(i)
-                        into = "" if i != 0 else "Primzahlwirkung "
-
-                        self.oldPrimAmounts = self.primAmounts
-                        if couldBePrimeNumberPrimzahlkreuz(i):
-                            self.primAmounts += 1
-                        if primCreativity(i) == 1:
-                            into = PrimAnswer(i)
-                            self.lastPrimAnswers[i] = into
-                        elif i > 1:
-                            for couple in primRepeat(primFak(i)):
-                                if couple[1] == 1:
-                                    into += PrimAnswer2(couple[0]) + " + "
-                                else:
-                                    into += (
-                                        str(couple[1])
-                                        + " * "
-                                        + PrimAnswer2(couple[0])
-                                        + " + "
-                                    )
-                            into = into[:-3]
-                        elif i == 1:
-                            into = PrimAnswer(1)
                         self.relitable[i] += [into]
+
+                    if (
+                        len(self.tables.generatedSpaltenParameter)
+                        + self.tables.SpaltenVanillaAmount
+                        in self.tables.generatedSpaltenParameter
+                    ):
+                        raise ValueError
+                    x(
+                        "doofi 1",
+                        len(self.tables.generatedSpaltenParameter)
+                        + self.tables.SpaltenVanillaAmount,
+                    )
+                    x("doofi 2", tuple(self.tables.dataDict[1].keys())[0])
+                    x("doofi 3", primzahlvielfachesuniversum)
                     self.tables.generatedSpaltenParameter[
                         len(self.tables.generatedSpaltenParameter)
                         + self.tables.SpaltenVanillaAmount
                     ] = ([primzahlvielfachesuniversum],)
 
-                    x("idiot__", self.tables.generatedSpaltenParameter)
+                    x("idiot", self.tables.generatedSpaltenParameter)
+
+                self.primAmounts = 0
+                self.oldPrimAmounts = 0
+                self.lastPrimAnswers: dict = {}
+
+                def PrimAnswer2(i: int) -> str:
+                    return self.lastPrimAnswers[i]
+
+                def PrimAnswer(i: int) -> str:
+                    if i > 3:
+                        if self.primAmounts != self.oldPrimAmounts:
+                            if self.primAmounts % 2 == 0:
+                                return "für innen"
+                            else:
+                                return "für außen"
+                        else:
+                            return ""
+                    elif i == 2:
+                        return "für seitlich"
+                    elif i == 3:
+                        return "gegen seitlich"
+                    elif i == 1:
+                        return "alle Richtungen möglich"
+                    else:
+                        return ""
+
+                for i, cols in enumerate(relitableCopy):
+                    primMultiples = primMultiple(i)
+                    into = "" if i != 0 else "Primzahlwirkung "
+
+                    self.oldPrimAmounts = self.primAmounts
+                    if couldBePrimeNumberPrimzahlkreuz(i):
+                        self.primAmounts += 1
+                    if primCreativity(i) == 1:
+                        into = PrimAnswer(i)
+                        self.lastPrimAnswers[i] = into
+                    elif i > 1:
+                        for couple in primRepeat(primFak(i)):
+                            if couple[1] == 1:
+                                into += PrimAnswer2(couple[0]) + " + "
+                            else:
+                                into += (
+                                    str(couple[1])
+                                    + " * "
+                                    + PrimAnswer2(couple[0])
+                                    + " + "
+                                )
+                        into = into[:-3]
+                    elif i == 1:
+                        into = PrimAnswer(1)
+                    self.relitable[i] += [into]
+                self.tables.generatedSpaltenParameter[
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.SpaltenVanillaAmount
+                ] = ([primzahlvielfachesuniversum],)
+
+                x("idiot__", self.tables.generatedSpaltenParameter)
+
             return self.relitable, rowsAsNumbers
 
         def readConcatCsv(self, relitable: list, rowsAsNumbers: set) -> tuple:
