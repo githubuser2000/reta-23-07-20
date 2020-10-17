@@ -2224,10 +2224,21 @@ class Tables:
                                         }
 
                                     except (IndexError, KeyError) as e:
-                                        vorkommenVielfacher_B[i][distanceFromLine] = {
-                                            "i_origS": Orginal_i_mehrere,
-                                            "modalS": modalOperatorEnEn,
-                                        }
+                                        try:
+                                            vorkommenVielfacher_B[i][
+                                                distanceFromLine
+                                            ] = {
+                                                "i_origS": Orginal_i_mehrere,
+                                                "modalS": modalOperatorEnEn,
+                                            }
+                                        except (IndexError, KeyError) as e:
+                                            vorkommenVielfacher_B[i] = {}
+                                            vorkommenVielfacher_B[i][
+                                                distanceFromLine
+                                            ] = {
+                                                "i_origS": Orginal_i_mehrere,
+                                                "modalS": modalOperatorEnEn,
+                                            }
                                     """
                                     Was ist hier drin gespeichert?
                                       erster Parameter: das i von allen Distanzen -4 bis 4 mit 0
