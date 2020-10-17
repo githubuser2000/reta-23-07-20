@@ -2228,6 +2228,12 @@ class Tables:
                                             "i_origS": Orginal_i_mehrere,
                                             "modalS": modalOperatorEnEn,
                                         }
+                                    """
+                                    Was ist hier drin gespeichert?
+                                      erster Parameter: das i von allen Distanzen -4 bis 4 mit 0
+                                      zweiter Paramter: ModalOperator oder was war Orignal i von dem das hier der Vielfacher ist
+                                      dahinter: liste von der Sache
+                                    """
                                     x("r6hh1 ", i)
                                     x("r6hh2 ", modalOperatorEnEn)
                                     x("r6hh3 ", Orginal_i_mehrere)
