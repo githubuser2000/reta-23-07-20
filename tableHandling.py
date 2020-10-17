@@ -2244,62 +2244,62 @@ class Tables:
                                 except:
                                     pass
 
-                            for distanceFromLine in (-4, -3, -2, -1, 0, 1, 2, 3, 4):
-                                try:
-                                    for Orginal_i, modalOperatoren in zip(
-                                        Orginal_i_mehrere, modalOperatorEnEn
-                                    ):
-                                        x("uhit", Orginal_i)
-                                        x("uhit", modalOperatoren)
-                                        into[i] += (
-                                            (
-                                                "mittelstark überdurschnittlich: "
-                                                if abs(distanceFromLine) == 2
+                            try:
+                                for Orignal_iS, modalOperatoren in zip(
+                                    vorkommenVielfacher_B[i]["i_origS"],
+                                    vorkommenVielfacher_B[i]["modalS"],
+                                ):
+                                    x("uhit", Orginal_i)
+                                    x("uhit", modalOperatoren)
+                                    into[i] += (
+                                        (
+                                            "mittelstark überdurschnittlich: "
+                                            if abs(distanceFromLine) == 2
+                                            else (
+                                                "überdurschnittlich: "
+                                                if abs(distanceFromLine) == 1
                                                 else (
-                                                    "überdurschnittlich: "
-                                                    if abs(distanceFromLine) == 1
+                                                    "mittelleicht überdurschnittlich: "
+                                                    if abs(distanceFromLine) == 3
                                                     else (
-                                                        "mittelleicht überdurschnittlich: "
-                                                        if abs(distanceFromLine) == 3
-                                                        else (
-                                                            "sehr: "
-                                                            if abs(distanceFromLine)
-                                                            == 0
-                                                            != ""
-                                                            else "sehr leicht überdurchschnittlich: "
-                                                        )
+                                                        "sehr: "
+                                                        if abs(distanceFromLine)
+                                                        == 0
+                                                        != ""
+                                                        else "sehr leicht überdurchschnittlich: "
                                                     )
                                                 )
                                             )
-                                            + (
-                                                (
-                                                    self.relitable[
-                                                        Orginal_i + distanceFromLine
-                                                    ][concept[0]]
-                                                )
-                                                if (abs(distanceFromLine) % 2 == 0)
-                                                else self.relitable[
-                                                    Orginal_i + distanceFromLine
-                                                ][concept[1]]
-                                            )
-                                            + " "
-                                            + (
-                                                (
-                                                    "nicht: "
-                                                    + (" ".join(modalOperatoren[1:]))
-                                                )
-                                                if abs(distanceFromLine) % 2 == 1
-                                                else modalOperatoren[0]
-                                            )
-                                            + "| "
                                         )
+                                        + (
+                                            (
+                                                self.relitable[
+                                                    Orginal_i + distanceFromLine
+                                                ][concept[0]]
+                                            )
+                                            if (abs(distanceFromLine) % 2 == 0)
+                                            else self.relitable[
+                                                Orginal_i + distanceFromLine
+                                            ][concept[1]]
+                                        )
+                                        + " "
+                                        + (
+                                            (
+                                                "nicht: "
+                                                + (" ".join(modalOperatoren[1:]))
+                                            )
+                                            if abs(distanceFromLine) % 2 == 1
+                                            else modalOperatoren[0]
+                                        )
+                                        + "| "
+                                    )
 
-                                except IndexError:
-                                    pass
-                                except KeyError:
-                                    pass
-                        if into[i] != "":
-                            into[i] += "alles zur selben Strukturgröße einer " + cols[4]
+                            except IndexError:
+                                pass
+                            except KeyError:
+                                pass
+                    if into[i] != "":
+                        into[i] += "alles zur selben Strukturgröße einer " + cols[4]
 
                     for i, cols in enumerate(reliTableCopy):
                         self.relitable[i] += [into[i]]
