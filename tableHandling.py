@@ -2193,10 +2193,6 @@ class Tables:
                         if i > 0:
                             vorkommenVielfacher_B: dict = {}
                             for distanceFromLine in (-4, -3, -2, -1, 0, 1, 2, 3, 4):
-                                """pro Zeile in relitab
-                                pro -4 bis +4 abstände geht er alles durch, d.h. i * 9 Duchläufe
-
-                                """
                                 i_with_a_distance = i + distanceFromLine
                                 try:
                                     modalOperatorEnEn: list = []
@@ -2241,65 +2237,71 @@ class Tables:
                                     # Orginal_i_mehrere = int(
                                     #    vorkommenVielfacher[i + distanceFromLine][0]
                                     # )
-                                except:
+                                except (IndexError, KeyError) as e:
                                     pass
 
-                            try:
-                                for Orignal_iS, modalOperatoren in zip(
-                                    vorkommenVielfacher_B[i]["i_origS"],
-                                    vorkommenVielfacher_B[i]["modalS"],
-                                ):
-                                    x("uhit", Orginal_i)
-                                    x("uhit", modalOperatoren)
-                                    into[i] += (
-                                        (
-                                            "mittelstark überdurschnittlich: "
-                                            if abs(distanceFromLine) == 2
-                                            else (
-                                                "überdurschnittlich: "
-                                                if abs(distanceFromLine) == 1
+                            for distanceFromLine in (-4, -3, -2, -1, 0, 1, 2, 3, 4):
+                                i_with_a_distance = i + distanceFromLine
+                                try:
+                                    for Orignal_iS, modalOperatoren in zip(
+                                        vorkommenVielfacher_B[i_with_a_distance][
+                                            "i_origS"
+                                        ],
+                                        vorkommenVielfacher_B[i_with_a_distance][
+                                            "modalS"
+                                        ],
+                                    ):
+                                        x("uhit", Orginal_i)
+                                        x("uhit", modalOperatoren)
+                                        into[i] += (
+                                            (
+                                                "mittelstark überdurschnittlich: "
+                                                if abs(distanceFromLine) == 2
                                                 else (
-                                                    "mittelleicht überdurschnittlich: "
-                                                    if abs(distanceFromLine) == 3
+                                                    "überdurschnittlich: "
+                                                    if abs(distanceFromLine) == 1
                                                     else (
-                                                        "sehr: "
-                                                        if abs(distanceFromLine)
-                                                        == 0
-                                                        != ""
-                                                        else "sehr leicht überdurchschnittlich: "
+                                                        "mittelleicht überdurschnittlich: "
+                                                        if abs(distanceFromLine) == 3
+                                                        else (
+                                                            "sehr: "
+                                                            if abs(distanceFromLine)
+                                                            == 0
+                                                            != ""
+                                                            else "sehr leicht überdurchschnittlich: "
+                                                        )
                                                     )
                                                 )
                                             )
-                                        )
-                                        + (
-                                            (
-                                                self.relitable[
+                                            + (
+                                                (
+                                                    self.relitable[
+                                                        Orginal_i + distanceFromLine
+                                                    ][concept[0]]
+                                                )
+                                                if (abs(distanceFromLine) % 2 == 0)
+                                                else self.relitable[
                                                     Orginal_i + distanceFromLine
-                                                ][concept[0]]
+                                                ][concept[1]]
                                             )
-                                            if (abs(distanceFromLine) % 2 == 0)
-                                            else self.relitable[
-                                                Orginal_i + distanceFromLine
-                                            ][concept[1]]
-                                        )
-                                        + " "
-                                        + (
-                                            (
-                                                "nicht: "
-                                                + (" ".join(modalOperatoren[1:]))
+                                            + " "
+                                            + (
+                                                (
+                                                    "nicht: "
+                                                    + (" ".join(modalOperatoren[1:]))
+                                                )
+                                                if abs(distanceFromLine) % 2 == 1
+                                                else modalOperatoren[0]
                                             )
-                                            if abs(distanceFromLine) % 2 == 1
-                                            else modalOperatoren[0]
+                                            + "| "
                                         )
-                                        + "| "
-                                    )
 
-                            except IndexError:
-                                pass
-                            except KeyError:
-                                pass
-                    if into[i] != "":
-                        into[i] += "alles zur selben Strukturgröße einer " + cols[4]
+                                except IndexError:
+                                    pass
+                                except KeyError:
+                                    pass
+                        if into[i] != "":
+                            into[i] += "alles zur selben Strukturgröße einer " + cols[4]
 
                     for i, cols in enumerate(reliTableCopy):
                         self.relitable[i] += [into[i]]
