@@ -702,7 +702,7 @@ class Program:
                     "model",
                     "abstraktion",
                 ),
-                {65, 75, 77},
+                {65, 75},
             ),
             (
                 Program.ParametersMain.operationen,
@@ -1610,9 +1610,8 @@ class Program:
         alxp(
             """ in concatRowsOfConcepts ist falsch dass relitable in einem zip mit den den concepts ist """
         )
-        alxp(""" aus noch etwas : bla1 + bla2 """)
         alxp(
-            """Bei vielen Algorithmen schauen, ob nicht das Durchiterieren extrem lahmt, weil es polynomielle Laufzeit hat, statt lineare, wie es eigentlich sein sollte"""
+            """Unwichtig weil Geschwindigkeit: Bei vielen Algorithmen schauen, ob nicht das Durchiterieren extrem lahmt, weil es polynomielle Laufzeit hat, statt lineare, wie es eigentlich sein sollte"""
         )
         alxp(
             """Iteration in reli csv über die iteration in mathe von sternpolygonen, warum man auf die nächste stufe kommte, die ich vor langer zeit schrieb und sehr genau und lange schauen, ob die nicht schon drin ist"""
@@ -1623,22 +1622,15 @@ class Program:
              müssten nur selbst geklont werden und mehr nicht."""
         )
         alxp(
-            "Alle if = 0 raus hauen und vorher machen und danach alle weiteren in der schleife"
+            "Unwichtig, weil Geschwindigkeit: Alle if = 0 raus hauen und vorher machen und danach alle weiteren in der schleife"
         )
         alxp(
             """Immer dann wenn ich die ganze relitable matrix deepcopy geklont habe, hätte ich das gar nicht tun müssen, da ich einfach nur die werte, die ich vorher raus genommen habe, einfach nur per copy oder deepcopy hätte nur rausnehmen müssen"""
         )
-        alxp("Ich muss noch die primzahl große csv an neuesten Stand anpassen!")
         alxp(
-            """Die Modallogikvielfacher müsste ich noch einprogrammieren
-             Wenn ich programmiert habe, wie multipliziert wird, um zu erreichen, dass die Modallogiken umgesetzt werden, werde ich
-             programmieren, dass die bisherige Multiplikation, die man kaum verstehen kann, auch besser verständlich gemacht werden kann und sich ggf.
-             auf 2 Spalten oder mehr erstrecken wird, statt auf einer, wie bisher. So wird es verständlicher"""
+            """Modallogik funktion so machen, ggf. aufwendig, ggf. teilautomatich ggf. mit Kommas in Spalte , dass es leicht für den Anwender zu lesen sein wird"""
         )
         alxp("""Die Sachen "obwohl man nicht kann" aus Symboliken nehmen.""")
-        alxp(
-            """ Spalte und Programmierung zu Basis zu Irrationalen Zahlen fehlt vom Thema Symboliken auf Seite 23 """
-        )
         alxp(
             """Ich hatte wo eine Spalte, wo ich etwas bei Menschliches doppelt gemoppelt hatte und eine der beiden sollte besser einfach weg!"""
         )
@@ -1670,9 +1662,11 @@ class Program:
             """Ich müsste wirklich noch total überall schauen und zu jedem Punkt im Forum zu gleichförmiges-Polygon-Religionen"""
         )
         alxp(
-            """Fragezeichen bei noch nicht vorhandenen Religionen erklären, dass diese noch nicht vorhanden sind | Planetenerhaltungsregerung sollte Sonnen-Sys. ... erhalt reg sein. | viererstrukt raus nehmen aus komplex paramaeter | kombinationen ist verschwunden | einige Spalten sind falsch bei --alles: Kreativität und Intelligenz und andere Geistes-  ++++ Liebe, Ethik, spätere Religionen, Sternpolygone - """
+            """einprogrammieren: was die Vielfacher bedeuten 7*n Anführer und 3*n existenz und das auch für galaxie die Offenbarung des Johannes"""
         )
-        alxp("""einprogrammieren: was die Vielfacher bedeuten 7*n Anführer und 3*n existenz""")
+        alxp(
+            """In js dass _ in Namen wie Leerzeichen und solche auch als Erste ParameterNamen setzen!"""
+        )
         # alxp("1. Clean Code\n2. Vollständigkeit der Befehle auch")
 
     def combiTableWorkflow(
