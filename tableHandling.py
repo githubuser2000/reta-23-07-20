@@ -2212,7 +2212,7 @@ class Tables:
                                         ]
                                         Orginal_i_mehrere += [i_with_a_distance]
                                     try:
-                                        vorkommenVielfacher_B[i_with_a_distance] = {
+                                        vorkommenVielfacher_B[i][distanceFromLine] = {
                                             "i_origS": Orginal_i_mehrere
                                             + vorkommenVielfacher_B[i_with_a_distance][
                                                 "i_origS"
@@ -2224,14 +2224,14 @@ class Tables:
                                         }
 
                                     except (IndexError, KeyError) as e:
-                                        vorkommenVielfacher_B[i_with_a_distance] = {
+                                        vorkommenVielfacher_B[i][distanceFromLine] = {
                                             "i_origS": Orginal_i_mehrere,
                                             "modalS": modalOperatorEnEn,
                                         }
                                     """
                                     Was ist hier drin gespeichert?
                                       erster Parameter: das i von allen Distanzen -4 bis 4 mit 0
-                                      zweiter Paramter: ModalOperator oder was war Orignal i von dem das hier der Vielfacher ist
+                                      zweiter Paramter: Ob: ModalOperator oder was war Orignal i von dem das hier der Vielfacher ist
                                       dahinter: liste von der Sache
                                     """
                                     x("r6hh1 ", i)
