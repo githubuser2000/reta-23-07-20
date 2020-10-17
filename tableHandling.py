@@ -2211,18 +2211,16 @@ class Tables:
                                             vorkommen * vielfacher
                                         ]
                                         Orginal_i_mehrere += [i_with_a_distance]
-                                except (IndexError, KeyError) as e:
-                                    pass
                                     try:
                                         vorkommenVielfacher_B[i][distanceFromLine] = {
                                             "i_origS": Orginal_i_mehrere
-                                            + vorkommenVielfacher_B[i][
-                                                distanceFromLine
-                                            ]["i_origS"],
+                                            + vorkommenVielfacher_B[i][distanceFromLine][
+                                                "i_origS"
+                                            ],
                                             "modalS": modalOperatorEnEn
-                                            + vorkommenVielfacher_B[i][
-                                                distanceFromLine
-                                            ]["modalS"],
+                                            + vorkommenVielfacher_B[i][distanceFromLine][
+                                                "modalS"
+                                            ],
                                         }
 
                                     except (IndexError, KeyError) as e:
@@ -2256,6 +2254,8 @@ class Tables:
                                     # Orginal_i_mehrere = int(
                                     #    vorkommenVielfacher[i + distanceFromLine][0]
                                     # )
+                                except (IndexError, KeyError) as e:
+                                    pass
 
                     x("_ö_", vorkommenVielfacher_B)
                     """
