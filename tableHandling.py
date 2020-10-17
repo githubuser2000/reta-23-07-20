@@ -1916,7 +1916,7 @@ class Tables:
                             self.relitable[i][8]
                             + " der eigenen Strukturgröße ("
                             + self.relitable[i][4]
-                            + ") auf dich"
+                            + ") auf dich bei gleichförmigen Polygonen"
                         ]
                     else:
                         self.relitable[i] += [""]

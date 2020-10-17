@@ -758,7 +758,7 @@ class Program:
                     "sinn",
                     "sinnsuche",
                 ),
-                {8},
+                {88},
             ),
             (
                 Program.ParametersMain.menschliches,
