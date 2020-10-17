@@ -1931,7 +1931,7 @@ class Tables:
                     + self.tables.SpaltenVanillaAmount
                 ] = self.tables.dataDict[0][8]
                 x("idiot", self.tables.generatedSpaltenParameter)
-                rowsAsNumbers -= {8}
+                # rowsAsNumbers -= {8}
             return self.relitable, rowsAsNumbers
 
         def concatPrimCreativityType(
