@@ -1931,7 +1931,6 @@ class Tables:
                     + self.tables.SpaltenVanillaAmount
                 ] = self.tables.dataDict[0][8]
                 x("idiot", self.tables.generatedSpaltenParameter)
-                # rowsAsNumbers -= {8}
             return self.relitable, rowsAsNumbers
 
         def concatPrimCreativityType(
@@ -2152,7 +2151,7 @@ class Tables:
                 return tuple(modaloperators)
 
             self.relitable = relitable
-            if False:
+            if True:
                 conceptsRowsSetOfTuple2: tuple = tuple(conceptsRowsSetOfTuple)
                 x("wer", conceptsRowsSetOfTuple2)
                 for o, concept in enumerate(conceptsRowsSetOfTuple2):
@@ -2192,13 +2191,20 @@ class Tables:
                     x("d5g", vorkommenVielfacher)
                     for i, cols in enumerate(reliTableCopy):
                         if i > 0:
+                            vorkommenVielfacher_B: dict = {}
                             for distanceFromLine in (-4, -3, -2, -1, 0, 1, 2, 3, 4):
+                                """pro Zeile in relitab
+                                pro -4 bis +4 abstände geht er alles durch, d.h. i * 9 Duchläufe
+
+                                """
+                                i_with_a_distance = i + distanceFromLine
                                 try:
                                     modalOperatorEnEn: list = []
                                     Orginal_i_mehrere: list = []
                                     vorkommenZeilenBegriffe: list = []
+                                    # Ein Couple besteht aus der Zahl, ggf. Primzahl mit ihrem Vielfacher danach
                                     for couple in vorkommenVielfacher[
-                                        i + distanceFromLine
+                                        i_with_a_distance
                                     ]:
                                         x("x4hh", couple)
                                         vorkommen, vielfacher = couple[0], couple[1]
@@ -2208,17 +2214,38 @@ class Tables:
                                         vorkommenZeilenBegriffe += [
                                             vorkommen * vielfacher
                                         ]
-                                        Orginal_i_mehrere += [i + distanceFromLine]
+                                        Orginal_i_mehrere += [i_with_a_distance]
+                                    try:
+                                        vorkommenVielfacher_B[i_with_a_distance] = {
+                                            "i_origS": Orginal_i_mehrere
+                                            + vorkommenVielfacher_B[i_with_a_distance][
+                                                "i_origS"
+                                            ],
+                                            "modalS": modalOperatorEnEn
+                                            + vorkommenVielfacher_B[i_with_a_distance][
+                                                "modalS"
+                                            ],
+                                        }
 
-                                    x("r6hh", i)
-                                    x("r6hh", modalOperatorEnEn)
-                                    x("r6hh", Orginal_i_mehrere)
+                                    except (IndexError, KeyError) as e:
+                                        vorkommenVielfacher_B[i_with_a_distance] = {
+                                            "i_origS": Orginal_i_mehrere,
+                                            "modalS": modalOperatorEnEn,
+                                        }
+                                    x("r6hh1 ", i)
+                                    x("r6hh2 ", modalOperatorEnEn)
+                                    x("r6hh3 ", Orginal_i_mehrere)
                                     # modalOperatorEnEn = getModaloperatorsPerLineCells(
                                     #    vorkommenVielfacher[i + distanceFromLine][1]
                                     # )
                                     # Orginal_i_mehrere = int(
                                     #    vorkommenVielfacher[i + distanceFromLine][0]
                                     # )
+                                except:
+                                    pass
+
+                            for distanceFromLine in (-4, -3, -2, -1, 0, 1, 2, 3, 4):
+                                try:
                                     for Orginal_i, modalOperatoren in zip(
                                         Orginal_i_mehrere, modalOperatorEnEn
                                     ):
