@@ -2129,7 +2129,7 @@ class Tables:
                     amountModaloperators: int = lineWeAreAt - 1
                     modalOpElseOperatorsZeilenBegin: int = lineWeAreAt + 1
                     modalOpElseOperatorsZeilenEnd: int = (
-                        lineWeAreAt + amountModaloperators
+                        lineWeAreAt + amountModaloperators + 1
                     )
                     return (
                         modalMainOperatorZeile,
@@ -2197,7 +2197,8 @@ class Tables:
                                 try:
                                     modalOperatorEnEn: list = []
                                     Orginal_i_mehrere: list = []
-                                    vorkommenZeilenBegriffe: list = []
+                                    # vorkommenZeilenBegriffe: list = []
+                                    vervielFachter: list = []
                                     # Ein Couple besteht aus der Zahl, ggf. Primzahl mit ihrem Vielfacher danach
                                     for couple in vorkommenVielfacher[
                                         i_with_a_distance
@@ -2207,20 +2208,25 @@ class Tables:
                                         modalOperatorEnEn += [
                                             (getModaloperatorsPerLineCells(vielfacher))
                                         ]
-                                        vorkommenZeilenBegriffe += [
-                                            vorkommen * vielfacher
-                                        ]
+                                        # vorkommenZeilenBegriffe += [
+                                        #    vorkommen * vielfacher
+                                        # ]
+                                        vervielFachter += [vorkommen]
                                         Orginal_i_mehrere += [i_with_a_distance]
                                     try:
                                         vorkommenVielfacher_B[i][distanceFromLine] = {
                                             "i_origS": Orginal_i_mehrere
-                                            + vorkommenVielfacher_B[i][distanceFromLine][
-                                                "i_origS"
-                                            ],
+                                            + vorkommenVielfacher_B[i][
+                                                distanceFromLine
+                                            ]["i_origS"],
                                             "modalS": modalOperatorEnEn
-                                            + vorkommenVielfacher_B[i][distanceFromLine][
-                                                "modalS"
-                                            ],
+                                            + vorkommenVielfacher_B[i][
+                                                distanceFromLine
+                                            ]["modalS"],
+                                            "vervielFacheter": vervielFachter
+                                            + vorkommenVielfacher_B[i][
+                                                distanceFromLine
+                                            ]["vervielFacheter"],
                                         }
 
                                     except (IndexError, KeyError) as e:
@@ -2230,6 +2236,7 @@ class Tables:
                                             ] = {
                                                 "i_origS": Orginal_i_mehrere,
                                                 "modalS": modalOperatorEnEn,
+                                                "vervielFacheter": vervielFachter,
                                             }
                                         except (IndexError, KeyError) as e:
                                             vorkommenVielfacher_B[i] = {}
@@ -2238,6 +2245,7 @@ class Tables:
                                             ] = {
                                                 "i_origS": Orginal_i_mehrere,
                                                 "modalS": modalOperatorEnEn,
+                                                "vervielFacheter": vervielFachter,
                                             }
                                     """
                                     Was ist hier drin gespeichert?
