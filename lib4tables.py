@@ -1,6 +1,239 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import math
+from enum import Enum
+
+class OutputSyntax:
+    def coloredBeginCol(self, num: int, rest: bool = False):
+        return self.beginZeile
+
+    def generateCell(self, num: int, dataDict: dict, content=None, zeile=None) -> str:
+        return self.beginCell
+
+    beginTable = ""
+    endTable = ""
+    beginCell = ""
+    endCell = ""
+    beginZeile = ""
+    endZeile = ""
+
+
+class csvSyntax(OutputSyntax):
+    beginTable = ""
+    endTable = ""
+    beginCell = ""
+    endCell = ""
+    beginZeile = ""
+    endZeile = ""
+
+
+class markdownSyntax(OutputSyntax):
+
+    beginTable = ""
+    endTable = ""
+    beginCell = "|"
+    endCell = ""
+    beginZeile = ""
+    endZeile = ""
+
+
+class bbCodeSyntax(OutputSyntax):
+    def coloredBeginCol(self, num: int, rest: bool = False):
+        num = int(num) if str(num).isdecimal() else 0
+        numberType = primCreativity(num)
+
+        if rest:
+            # wenn der Fallm eintritt dass es leerer Text ist der frei ist
+            return "[tr]"
+            if num == 0:
+                return "[tr]"
+            elif num % 2 == 0:
+                return "[tr]"
+            else:
+                return "[tr]"
+        elif numberType == 1:
+            if num % 2 == 0:
+                return '[tr="background-color:#66ff66;color:#000000;"]'
+            else:
+                return '[tr="background-color:#009900;color:#ffffff;"]'
+        elif numberType == 2 or num == 1:
+            if num % 2 == 0:
+                return '[tr="background-color:#ffff66;color:#000099;"]'
+            else:
+                return '[tr="background-color:#555500;color:#aaaaff;"]'
+        elif numberType == 3:
+            if num % 2 == 0:
+                return '[tr="background-color:#9999ff;color:#202000;"]'
+            else:
+                return '[tr="background-color:#000099;color:#ffff66;"]'
+        elif num == 0:
+            return '[tr="background-color:#ff2222;color:#002222;"]'
+
+    def generateCell(
+            self, spalte: int, SpaltenParameter: dict, content=None, zeile=None
+    ) -> str:
+        spalte = int(spalte)
+        spalte += 2
+        return (
+                "[td"
+                + (
+                    (
+                        '="background-color:#000000;color:#ffffff"'
+                        if content is not None and int(content) % 2 == 0
+                        else '="background-color:#ffffff;color:#000000"'
+                    )
+                    if spalte == 0
+                    else '=""'
+                )
+                + "]"
+        )
+
+    beginTable = "[table]"
+    endTable = "[/table]"
+    beginCell = "[td]"
+    endCell = "[/td]"
+    beginZeile = "[tr]"
+    endZeile = "[/tr]"
+
+
+class htmlSyntax(OutputSyntax):
+    def __init__(self):
+        self.zeile = 0
+
+    def coloredBeginCol(self, num: int, rest: bool = False) -> str:
+        num = int(num) if str(num).isdecimal() else 0
+        numberType = primCreativity(num)
+        self.zeile = num
+        if rest:
+            # wenn der Fallm eintritt dass es leerer Text ist der frei ist
+            return "          <tr>\n"
+            if num == 0:
+                return "          <tr>\n"
+            elif num % 2 == 0:
+                return "          <tr>\n"
+            else:
+                return "          <tr>\n"
+        elif numberType == 1:
+            if num % 2 == 0:
+                return (
+                    '          <tr style="background-color:#66ff66;color:#000000;">\n'
+                )
+            else:
+                return (
+                    '          <tr style="background-color:#009900;color:#ffffff;">\n'
+                )
+        elif numberType == 2 or num == 1:
+            if num % 2 == 0:
+                return (
+                    '          <tr style="background-color:#ffff66;color:#000099;">\n'
+                )
+            else:
+                return (
+                    '          <tr style="background-color:#555500;color:#aaaaff;">\n'
+                )
+        elif numberType == 3:
+            if num % 2 == 0:
+                return (
+                    '          <tr style="background-color:#9999ff;color:#202000;">\n'
+                )
+            else:
+                return (
+                    '          <tr style="background-color:#000099;color:#ffff66;">\n'
+                )
+        elif num == 0:
+            return '          <tr style="background-color:#ff2222;color:#002222;">\n'
+
+    def generateCell(
+            self, spalte: int, SpaltenParameter: dict, content=None, zeile=None
+    ) -> str:
+        spalte = int(spalte)
+        if spalte == -2:
+            tupleOfListsOfCouples = (
+                [
+                    ("zaehlung", ""),
+                ],
+            )
+        elif spalte == -1:
+            tupleOfListsOfCouples = (
+                [
+                    ("nummerierung", ""),
+                ],
+            )
+        else:
+            try:
+                tupleOfListsOfCouples = SpaltenParameter[spalte]
+            except:
+                x("NUM", SpaltenParameter)
+                x("NUM", spalte)
+                if str(spalte).isdecimal():
+                    raise ValueError
+                tupleOfListsOfCouples = (("?", "?"),)
+        things1: dict = {}
+        # x("ayu", SpaltenParameter)
+        x("azu", tupleOfListsOfCouples)
+        for c, couples in enumerate(tupleOfListsOfCouples):
+            for paraNum in (0, 1):
+                if len(couples[0]) > paraNum:
+                    x("azu" + str(paraNum), couples[0][paraNum])
+                    if len(couples[0]) > paraNum:
+                        # i = 0
+                        para1o2name = couples[0][paraNum]
+                        # while (
+                        #    len(couples) > i + 1
+                        #    and len(couples[i + 1]) > 0
+                        #    and para1o2name.strip() == ""
+                        # ):
+                        #    i += 1
+                        #    para1o2name = couples[i][paraNum]
+                        if len(para1o2name.strip()) != 0 or True:
+                            if paraNum == 1:
+                                para1o2name = "p3_" + str(c) + "_" + para1o2name
+                            try:
+                                things1[paraNum] += [para1o2name]
+                            except KeyError:
+                                things1[paraNum]: list = [
+                                    para1o2name,
+                                ]
+        things: dict = {}
+        for key, values in things1.items():
+            for i, el in enumerate(values):
+                if el != "alles":
+                    try:
+                        things[key] += el + ","
+                    except KeyError:
+                        things[key] = el + ","
+
+        spalte += 2
+        return (
+                '              <td class="'
+                + ("z_" + str(zeile))
+                + " r_"
+                + str(spalte)
+                + " p1_"
+                + things[0]
+                + " p2_"
+                + (things[1] if len(things) > 1 else "")
+                + '"'
+                + (
+                    (
+                        'style="background-color:#000000;color:#ffffff;display:none"'
+                        if content is not None and int(content) % 2 == 0
+                        else 'style="background-color:#ffffff;color:#000000;display:none"'
+                    )
+                    if spalte == 0
+                    else 'style="display:none"'
+                )
+                + ">\n"
+        )
+
+    beginTable = "      <table border=1>"
+    endTable = "        </table>\n"
+    beginCell = "              <td>\n"
+    endCell = "\n              </td>\n"
+    # beginZeile = "          <tr>"
+    beginZeile = ""
+    endZeile = "          </tr>\n"
+
 
 
 def moonNumber(num: int):
