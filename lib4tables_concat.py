@@ -411,6 +411,22 @@ class Concat:
             except (IndexError, KeyError) as e:
                 pass
 
+        def vorkommenNvielfacherPerItsProduct(einVorkommen, ergebnis, vielfacher, vorkommenVielfacher):
+            try:
+                vorkommenVielfacher[ergebnis] += [
+                    (
+                        einVorkommen,
+                        vielfacher,
+                    )
+                ]
+            except (IndexError, KeyError):
+                vorkommenVielfacher[ergebnis] = [
+                    (
+                        einVorkommen,
+                        vielfacher,
+                    )
+                ]
+
         self.relitable = relitable
         if True:
             distances = (-4, -3, -2, -1, 0, 1, 2, 3, 4)
@@ -430,23 +446,8 @@ class Concat:
                 vorkommenVielfacher: dict = {}
                 einMalVorkommen = tuple(einMalVorkommen)
 
-                def vorkommenNvielfacherPerItsProduct(einVorkommen, ergebnis, vielfacher, vorkommenVielfacher):
-                    try:
-                        vorkommenVielfacher[ergebnis] += [
-                            (
-                                einVorkommen,
-                                vielfacher,
-                            )
-                        ]
-                    except (IndexError, KeyError):
-                        vorkommenVielfacher[ergebnis] = [
-                            (
-                                einVorkommen,
-                                vielfacher,
-                            )
-                        ]
 
-                for einVorkommen in einMalVorkommen:
+                for einVorkommen in einMalVorkommen: # d.h. so ein Wort wie weise oder gut kommt in vor in der csv
                     vielfacher = 1
                     ergebnis = vielfacher * einVorkommen
                     vorkommenNvielfacherPerItsProduct(einVorkommen, ergebnis, vielfacher, vorkommenVielfacher)
@@ -456,23 +457,21 @@ class Concat:
                         vorkommenNvielfacherPerItsProduct(einVorkommen, ergebnis, vielfacher, vorkommenVielfacher)
                 # x("d5g", vorkommenVielfacher)
                 vorkommenVielfacher_B: dict = {}
-                for i, cols in enumerate(reliTableCopy):
-                    if i > 0:
-                        for distanceFromLine in distances:
-                            prepareModalIntoTable(distanceFromLine, getModaloperatorsPerLineCells, i,
-                                                       storeModalNvervielfachter, vorkommenVielfacher,
-                                                       vorkommenVielfacher_B)
+                for i, zeileninhalte in enumerate(reliTableCopy[1:], 1):
+                    for distanceFromLine in distances:
+                        prepareModalIntoTable(distanceFromLine, getModaloperatorsPerLineCells, i,
+                                                   storeModalNvervielfachter, vorkommenVielfacher,
+                                                   vorkommenVielfacher_B)
 
-                for i, cols in enumerate(reliTableCopy):
-                    if i > 0:
-                        # x("_ö_", vorkommenVielfacher_B)
-                        for distanceFromLine in distances:
-                            ModalLogikIntoTable(concept, distanceFromLine, i, into, vorkommenVielfacher_B)
-                        # wenn i>0
-                        if into[i] != "":
-                            into[i] += (
-                                    "alles zur selben Strukturgröße einer " + cols[4]
-                            )
+                for i, zeileninhalte in enumerate(reliTableCopy[1:], 1):
+                    # x("_ö_", vorkommenVielfacher_B)
+                    for distanceFromLine in distances:
+                        ModalLogikIntoTable(concept, distanceFromLine, i, into, vorkommenVielfacher_B)
+                    # wenn i>0
+                    if into[i] != "":
+                        into[i] += (
+                                "alles zur selben Strukturgröße einer " + cols[4]
+                        )
                 for w, cols in enumerate(reliTableCopy):
                     self.relitable[w] += [into[w]]
 
