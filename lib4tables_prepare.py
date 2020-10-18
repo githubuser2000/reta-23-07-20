@@ -5,7 +5,9 @@ from lib4tables import moonNumber, isPrimMultiple
 from center import (alxp, cliout, getTextWrapThings, infoLog, output,
                     primzahlvielfachesuniversum, re, x)
 from enum import Enum
+import sys
 
+shellRowsAmount, h_de, dic, fill = getTextWrapThings()
 class Wraptype(Enum):
     pyphen = 1
     pyhyphen = 2

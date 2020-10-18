@@ -12,7 +12,8 @@ from center import (alxp, cliout, getTextWrapThings, infoLog, output,
                     primzahlvielfachesuniversum, re, x)
 from lib4tables import moonNumber, primFak, divisorGenerator, primCreativity, primRepeat, primMultiple, isPrimMultiple, couldBePrimeNumberPrimzahlkreuz, math, OutputSyntax, htmlSyntax, csvSyntax, markdownSyntax, bbCodeSyntax
 
-shellRowsAmount, h_de, dic, fill = getTextWrapThings()
+from lib4tables_prepare import Prepare, shellRowsAmount
+from lib4tables_concat import Concat
 
 originalLinesRange = range(1028)  # Maximale Zeilenanzahl
 
@@ -105,9 +106,9 @@ class Tables:
         global originalLinesRange
         self.rowNumDisplay2rowNumOrig = {}
         self.generatedSpaltenParameter = {}
-        self.getPrepare = self.Prepare(self, originalLinesRange, shellRowsAmount)
+        self.getPrepare = Prepare(self, originalLinesRange, shellRowsAmount)
         self.getCombis = self.Combi(self)
-        self.getConcat = self.Concat(self)
+        self.getConcat = Concat(self)
         self.getOut = self.Output(self)
         self.getMainTable = self.Maintable(self)
         self.textHeight = 0
@@ -621,7 +622,6 @@ class Tables:
             else:
                 return "\033[100m" + "\033[37m" + text + "\033[0m" + "\033[0m"
 
-    from lib4tables_prepare import Prepare
 
     class Combi:
         def __init__(self, tables):
@@ -1044,7 +1044,6 @@ class Tables:
                 self.kombiTable_Kombis,
                 self.maintable2subtable_Relation,
             )
-    from lib4tables_concat import Concat
 
     class Maintable:
         def __init__(self, tables):
