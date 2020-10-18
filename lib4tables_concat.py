@@ -340,6 +340,77 @@ class Concat:
             except (IndexError, KeyError) as e:
                 pass
 
+        def storeModalNvervielfachter(Orginal_i_mehrere, distanceFromLine, i, modalOperatorEnEn, vervielFachter,
+                                      vorkommenVielfacher_B):
+            vorkommenVielfacher_B[i][
+                distanceFromLine
+            ] = {
+                "i_origS": Orginal_i_mehrere,
+                "modalS": modalOperatorEnEn,
+                "vervielfachter": vervielFachter,
+            }
+
+        def prepareModalIntoTable(distanceFromLine, getModaloperatorsPerLineCells, i, storeModalNvervielfachter,
+                                  vorkommenVielfacher, vorkommenVielfacher_B):
+            i_with_a_distance = i + distanceFromLine
+            try:
+                modalOperatorEnEn: list = []
+                Orginal_i_mehrere: list = []
+                # vorkommenZeilenBegriffe: list = []
+                vervielFachter: list = []
+                # Ein Couple besteht aus der Zahl, ggf. Primzahl mit ihrem Vielfacher danach
+                for couple in vorkommenVielfacher[
+                    i_with_a_distance
+                ]:
+                    # x("x4hh", couple)
+                    vorkommen, vielfacher = couple[0], couple[1]
+                    modalOperatorEnEn += [
+                        (getModaloperatorsPerLineCells(vielfacher))
+                    ]
+                    # vorkommenZeilenBegriffe += [
+                    #    vorkommen * vielfacher
+                    # ]
+                    vervielFachter += [vorkommen]
+                    Orginal_i_mehrere += [i_with_a_distance]
+                """
+                Was ist hier drin gespeichert?
+                    erster Parameter: das i von allen Distanzen -4 bis 4 mit 0
+                    zweiter Paramter: Ob: ModalOperator oder was war Orignal i von dem das hier der Vielfacher ist
+                    dahinter: liste von der Sache
+                """
+                # x("r6hh1 ", i)
+                # x("r6hh2 ", modalOperatorEnEn)
+                # x("r6hh3 ", Orginal_i_mehrere)
+                try:
+                    vorkommenVielfacher_B[i][distanceFromLine] = {
+                        "i_origS": Orginal_i_mehrere
+                                   + vorkommenVielfacher_B[i][
+                                       distanceFromLine
+                                   ]["i_origS"],
+                        "modalS": modalOperatorEnEn
+                                  + vorkommenVielfacher_B[i][
+                                      distanceFromLine
+                                  ]["modalS"],
+                        "vervielfachter": vervielFachter
+                                          + vorkommenVielfacher_B[i][
+                                              distanceFromLine
+                                          ]["vervielfachter"],
+                    }
+
+                except (IndexError, KeyError) as e:
+                    try:
+                        storeModalNvervielfachter(Orginal_i_mehrere, distanceFromLine, i,
+                                                  modalOperatorEnEn, vervielFachter,
+                                                  vorkommenVielfacher_B)
+                    except (IndexError, KeyError) as e:
+                        vorkommenVielfacher_B[i] = {}
+                        storeModalNvervielfachter(Orginal_i_mehrere, distanceFromLine, i,
+                                                  modalOperatorEnEn, vervielFachter,
+                                                  vorkommenVielfacher_B)
+                del vervielFachter
+            except (IndexError, KeyError) as e:
+                pass
+
         self.relitable = relitable
         if True:
             distances = (-4, -3, -2, -1, 0, 1, 2, 3, 4)
@@ -388,72 +459,9 @@ class Concat:
                 for i, cols in enumerate(reliTableCopy):
                     if i > 0:
                         for distanceFromLine in distances:
-                            i_with_a_distance = i + distanceFromLine
-                            try:
-                                modalOperatorEnEn: list = []
-                                Orginal_i_mehrere: list = []
-                                # vorkommenZeilenBegriffe: list = []
-                                vervielFachter: list = []
-                                # Ein Couple besteht aus der Zahl, ggf. Primzahl mit ihrem Vielfacher danach
-                                for couple in vorkommenVielfacher[
-                                    i_with_a_distance
-                                ]:
-                                    # x("x4hh", couple)
-                                    vorkommen, vielfacher = couple[0], couple[1]
-                                    modalOperatorEnEn += [
-                                        (getModaloperatorsPerLineCells(vielfacher))
-                                    ]
-                                    # vorkommenZeilenBegriffe += [
-                                    #    vorkommen * vielfacher
-                                    # ]
-                                    vervielFachter += [vorkommen]
-                                    Orginal_i_mehrere += [i_with_a_distance]
-                                """
-                                Was ist hier drin gespeichert?
-                                    erster Parameter: das i von allen Distanzen -4 bis 4 mit 0
-                                    zweiter Paramter: Ob: ModalOperator oder was war Orignal i von dem das hier der Vielfacher ist
-                                    dahinter: liste von der Sache
-                                """
-                                # x("r6hh1 ", i)
-                                # x("r6hh2 ", modalOperatorEnEn)
-                                # x("r6hh3 ", Orginal_i_mehrere)
-                                try:
-                                    vorkommenVielfacher_B[i][distanceFromLine] = {
-                                        "i_origS": Orginal_i_mehrere
-                                                   + vorkommenVielfacher_B[i][
-                                                       distanceFromLine
-                                                   ]["i_origS"],
-                                        "modalS": modalOperatorEnEn
-                                                  + vorkommenVielfacher_B[i][
-                                                      distanceFromLine
-                                                  ]["modalS"],
-                                        "vervielfachter": vervielFachter
-                                                          + vorkommenVielfacher_B[i][
-                                                              distanceFromLine
-                                                          ]["vervielfachter"],
-                                    }
-
-                                except (IndexError, KeyError) as e:
-                                    try:
-                                        vorkommenVielfacher_B[i][
-                                            distanceFromLine
-                                        ] = {
-                                            "i_origS": Orginal_i_mehrere,
-                                            "modalS": modalOperatorEnEn,
-                                            "vervielfachter": vervielFachter,
-                                        }
-                                    except (IndexError, KeyError) as e:
-                                        vorkommenVielfacher_B[i] = {}
-                                        vorkommenVielfacher_B[i][
-                                            distanceFromLine
-                                        ] = {
-                                            "i_origS": Orginal_i_mehrere,
-                                            "modalS": modalOperatorEnEn,
-                                            "vervielfachter": vervielFachter,
-                                        }
-                                del vervielFachter
-                            except (IndexError, KeyError) as e:
-                                pass
+                            prepareModalIntoTable(distanceFromLine, getModaloperatorsPerLineCells, i,
+                                                       storeModalNvervielfachter, vorkommenVielfacher,
+                                                       vorkommenVielfacher_B)
 
                 for i, cols in enumerate(reliTableCopy):
                     if i > 0:
@@ -481,6 +489,7 @@ class Concat:
                     ] = self.tables.dataDict[1][conceptsRowsSetOfTuple2[o]]
 
         return self.relitable, rowsAsNumbers
+
 
     def concat1RowPrimUniverse(self, relitable: list, rowsAsNumbers: set) -> tuple:
         """Fügt eine Spalte ein, in der Primzahlen mit Vielfachern
