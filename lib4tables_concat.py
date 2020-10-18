@@ -151,6 +151,7 @@ class Concat:
         self, relitable: list, conceptsRowsSetOfTuple: set, rowsAsNumbers: set
     ) -> tuple:
         self.relitable: list = relitable
+        return self.relitable, rowsAsNumbers
         self.concepts: list = []
         couplesNums = []
         for i, paar in enumerate(conceptsRowsSetOfTuple):
@@ -309,9 +310,10 @@ class Concat:
                                 )
                             )
                             + (
-                                ""
-                                if abs(distanceFromLine) % 2 == 1
-                                else (modalOperatoren[0] + " ")
+                                # ""
+                                # if abs(distanceFromLine) % 2 == 1
+                                # else
+                                (modalOperatoren[0] + " ")
                             )
                             + (
                                 (self.relitable[vervielfachter][concept[0]])
@@ -319,16 +321,18 @@ class Concat:
                                 else self.relitable[vervielfachter][concept[1]]
                             )
                             + " "
+                            + modalOperatoren[1]
                             + (
                                 (
-                                    (
-                                        "nicht: " + (" ".join(modalOperatoren[2:]))
-                                        if len(modalOperatoren) > 2
-                                        else ""
-                                    )
+                                    " nicht: "
+                                    + ", ".join(modalOperatoren[2:])
+                                    + ": "
+                                    + self.relitable[vervielfachter][concept[0]]
+                                    if len(modalOperatoren) > 2
+                                    else ""
                                 )
                                 if abs(distanceFromLine) % 2 == 1
-                                else (" " + modalOperatoren[1])
+                                else ""
                             )
                             + "| "
                         )
