@@ -609,21 +609,3 @@ class Prepare:
                     pass
         return newLines[t]
 
-
-@staticmethod
-def fillBoth(liste1, liste2) -> Iterable[Union[list, list]]:
-    """eine der beiden Listen erhält so viele Listenelemente
-    aus Strings dazu wie die andere hat, bis beide gleich viel haben
-
-    @type liste1: list[str]
-    @param liste1: die erste Liste
-    @type liste2: list[str]
-    @param liste2: die zweite Liste
-    @rtype: tuple(list[str],list[str])
-    @return: 2 Listen mit gleicher Länger, maximiert statt minimiert
-    """
-    while len(liste1) < len(liste2):
-        liste1 += [""]
-    while len(liste2) < len(liste1):
-        liste2 += [""]
-    return liste1, liste2

@@ -5,6 +5,9 @@ from copy import copy, deepcopy
 from center import (alxp, cliout, getTextWrapThings, infoLog, output,
                     primzahlvielfachesuniversum, re, x)
 
+import csv
+
+from lib4tables import moonNumber, primFak, divisorGenerator, primCreativity, primRepeat, primMultiple, isPrimMultiple, couldBePrimeNumberPrimzahlkreuz, math, OutputSyntax, htmlSyntax, csvSyntax, markdownSyntax, bbCodeSyntax
 class Concat:
     def __init__(self, tables):
         self.tables = tables
@@ -655,7 +658,7 @@ class Concat:
         self.tables.SpaltenVanillaAmount = len(rowsAsNumbers)
         if len(self.puniverseprims) > 0:
             with open(place, mode="r") as csv_file:
-                self.relitable, primUniverseLine = Tables.fillBoth(
+                self.relitable, primUniverseLine = self.tables.fillBoth(
                     self.relitable, list(csv.reader(csv_file, delimiter=";"))
                 )
                 lastlen = 0
