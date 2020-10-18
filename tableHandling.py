@@ -2154,7 +2154,7 @@ class Tables:
             if True:
                 distances = (-4, -3, -2, -1, 0, 1, 2, 3, 4)
                 conceptsRowsSetOfTuple2: tuple = tuple(conceptsRowsSetOfTuple)
-                x("wer", conceptsRowsSetOfTuple2)
+                # x("wer", conceptsRowsSetOfTuple2)
                 reliTableCopy = deepcopy(self.relitable)
                 for o, concept in enumerate(conceptsRowsSetOfTuple2):
                     into: dict = {}
@@ -2194,134 +2194,136 @@ class Tables:
                                         vielfacher,
                                     )
                                 ]
-                    x("d5g", vorkommenVielfacher)
+                    # x("d5g", vorkommenVielfacher)
                     vorkommenVielfacher_B: dict = {}
-                    for i, cols in enumerate(reliTableCopy):
-                        if i > 0:
-                            for distanceFromLine in distances:
-                                i_with_a_distance = i + distanceFromLine
+                for i, cols in enumerate(reliTableCopy):
+                    if i > 0:
+                        for distanceFromLine in distances:
+                            i_with_a_distance = i + distanceFromLine
+                            try:
+                                modalOperatorEnEn: list = []
+                                Orginal_i_mehrere: list = []
+                                # vorkommenZeilenBegriffe: list = []
+                                vervielFachter: list = []
+                                # Ein Couple besteht aus der Zahl, ggf. Primzahl mit ihrem Vielfacher danach
+                                for couple in vorkommenVielfacher[i_with_a_distance]:
+                                    # x("x4hh", couple)
+                                    vorkommen, vielfacher = couple[0], couple[1]
+                                    modalOperatorEnEn += [
+                                        (getModaloperatorsPerLineCells(vielfacher))
+                                    ]
+                                    # vorkommenZeilenBegriffe += [
+                                    #    vorkommen * vielfacher
+                                    # ]
+                                    vervielFachter += [vorkommen]
+                                    Orginal_i_mehrere += [i_with_a_distance]
+                                """
+                                Was ist hier drin gespeichert?
+                                    erster Parameter: das i von allen Distanzen -4 bis 4 mit 0
+                                    zweiter Paramter: Ob: ModalOperator oder was war Orignal i von dem das hier der Vielfacher ist
+                                    dahinter: liste von der Sache
+                                """
+                                # x("r6hh1 ", i)
+                                # x("r6hh2 ", modalOperatorEnEn)
+                                # x("r6hh3 ", Orginal_i_mehrere)
                                 try:
-                                    modalOperatorEnEn: list = []
-                                    Orginal_i_mehrere: list = []
-                                    # vorkommenZeilenBegriffe: list = []
-                                    vervielFachter: list = []
-                                    # Ein Couple besteht aus der Zahl, ggf. Primzahl mit ihrem Vielfacher danach
-                                    for couple in vorkommenVielfacher[
-                                        i_with_a_distance
-                                    ]:
-                                        x("x4hh", couple)
-                                        vorkommen, vielfacher = couple[0], couple[1]
-                                        modalOperatorEnEn += [
-                                            (getModaloperatorsPerLineCells(vielfacher))
-                                        ]
-                                        # vorkommenZeilenBegriffe += [
-                                        #    vorkommen * vielfacher
-                                        # ]
-                                        vervielFachter += [vorkommen]
-                                        Orginal_i_mehrere += [i_with_a_distance]
-                                    """
-                                    Was ist hier drin gespeichert?
-                                      erster Parameter: das i von allen Distanzen -4 bis 4 mit 0
-                                      zweiter Paramter: Ob: ModalOperator oder was war Orignal i von dem das hier der Vielfacher ist
-                                      dahinter: liste von der Sache
-                                    """
-                                    x("r6hh1 ", i)
-                                    x("r6hh2 ", modalOperatorEnEn)
-                                    x("r6hh3 ", Orginal_i_mehrere)
+                                    vorkommenVielfacher_B[i][distanceFromLine] = {
+                                        "i_origS": Orginal_i_mehrere
+                                        + vorkommenVielfacher_B[i][distanceFromLine][
+                                            "i_origS"
+                                        ],
+                                        "modalS": modalOperatorEnEn
+                                        + vorkommenVielfacher_B[i][distanceFromLine][
+                                            "modalS"
+                                        ],
+                                        "vervielfachter": vervielFachter
+                                        + vorkommenVielfacher_B[i][distanceFromLine][
+                                            "vervielfachter"
+                                        ],
+                                    }
+
+                                except (IndexError, KeyError) as e:
                                     try:
                                         vorkommenVielfacher_B[i][distanceFromLine] = {
-                                            "i_origS": Orginal_i_mehrere
-                                            + vorkommenVielfacher_B[i][
-                                                distanceFromLine
-                                            ]["i_origS"],
-                                            "modalS": modalOperatorEnEn
-                                            + vorkommenVielfacher_B[i][
-                                                distanceFromLine
-                                            ]["modalS"],
-                                            "vervielfachter": vervielFachter
-                                            + vorkommenVielfacher_B[i][
-                                                distanceFromLine
-                                            ]["vervielfachter"],
+                                            "i_origS": Orginal_i_mehrere,
+                                            "modalS": modalOperatorEnEn,
+                                            "vervielfachter": vervielFachter,
                                         }
-
                                     except (IndexError, KeyError) as e:
-                                        try:
-                                            vorkommenVielfacher_B[i][
-                                                distanceFromLine
-                                            ] = {
-                                                "i_origS": Orginal_i_mehrere,
-                                                "modalS": modalOperatorEnEn,
-                                                "vervielfachter": vervielFachter,
-                                            }
-                                        except (IndexError, KeyError) as e:
-                                            vorkommenVielfacher_B[i] = {}
-                                            vorkommenVielfacher_B[i][
-                                                distanceFromLine
-                                            ] = {
-                                                "i_origS": Orginal_i_mehrere,
-                                                "modalS": modalOperatorEnEn,
-                                                "vervielfachter": vervielFachter,
-                                            }
-                                except (IndexError, KeyError) as e:
-                                    pass
+                                        vorkommenVielfacher_B[i] = {}
+                                        vorkommenVielfacher_B[i][distanceFromLine] = {
+                                            "i_origS": Orginal_i_mehrere,
+                                            "modalS": modalOperatorEnEn,
+                                            "vervielfachter": vervielFachter,
+                                        }
+                                del vervielFachter
+                            except (IndexError, KeyError) as e:
+                                pass
 
-                            x("_ö_", vorkommenVielfacher_B)
-                            for distanceFromLine in distances:
-                                i_with_a_distance = i + distanceFromLine
-                                try:
-                                    modalOperatorenEn = vorkommenVielfacher_B[i][
-                                        distanceFromLine
-                                    ]["modalS"]
-                                    vervielfachterEn = vorkommenVielfacher_B[i][
-                                        distanceFromLine
-                                    ]["vervielfachter"]
-                                    for modalOperatoren, vervielfachter in zip(
-                                        modalOperatorenEn, vervielfachterEn
-                                    ):
-                                        into[i] += (
-                                            (
-                                                "mittelstark überdurschnittlich: "
-                                                if abs(distanceFromLine) == 2
+                for i, cols in enumerate(reliTableCopy):
+                    if i > 0:
+                        # x("_ö_", vorkommenVielfacher_B)
+                        for distanceFromLine in distances:
+                            i_with_a_distance = i + distanceFromLine
+                            try:
+                                modalOperatorenEn = vorkommenVielfacher_B[i][
+                                    distanceFromLine
+                                ]["modalS"]
+                                vervielfachterEn = vorkommenVielfacher_B[i][
+                                    distanceFromLine
+                                ]["vervielfachter"]
+                                for modalOperatoren, vervielfachter in zip(
+                                    modalOperatorenEn, vervielfachterEn
+                                ):
+                                    # x("_ü1_", modalOperatoren)
+                                    # x("_ü2_", vervielfachter)
+                                    # x("_ü6_", concept[1])
+                                    x(
+                                        "_ü3_",
+                                        self.relitable[vervielfachter][concept[1]],
+                                    )
+                                    # x("_ü4_", modalOperatoren[0])
+                                    # x("_ü5_", modalOperatoren[1:])
+                                    into[i] += (
+                                        (
+                                            "mittelstark überdurschnittlich: "
+                                            if abs(distanceFromLine) == 2
+                                            else (
+                                                "überdurschnittlich: "
+                                                if abs(distanceFromLine) == 1
                                                 else (
-                                                    "überdurschnittlich: "
-                                                    if abs(distanceFromLine) == 1
+                                                    "mittelleicht überdurschnittlich: "
+                                                    if abs(distanceFromLine) == 3
                                                     else (
-                                                        "mittelleicht überdurschnittlich: "
-                                                        if abs(distanceFromLine) == 3
-                                                        else (
-                                                            "sehr: "
-                                                            if abs(distanceFromLine)
-                                                            == 0
-                                                            != ""
-                                                            else "sehr leicht überdurchschnittlich: "
-                                                        )
+                                                        "sehr: "
+                                                        if abs(distanceFromLine)
+                                                        == 0
+                                                        != ""
+                                                        else "sehr leicht überdurchschnittlich: "
                                                     )
                                                 )
                                             )
-                                            + (
-                                                (
-                                                    self.relitable[vervielfachter][
-                                                        concept[0]
-                                                    ]
-                                                )
-                                                if (abs(distanceFromLine) % 2 == 0)
-                                                else self.relitable[vervielFachter][
-                                                    concept[1]
-                                                ]
-                                            )
-                                            + " "
-                                            + (
-                                                (
-                                                    "nicht: "
-                                                    + (" ".join(modalOperatoren[1:]))
-                                                )
-                                                if abs(distanceFromLine) % 2 == 1
-                                                else modalOperatoren[0]
-                                            )
-                                            + "| "
                                         )
-                                except (IndexError, KeyError) as e:
-                                    pass
+                                        + (
+                                            (self.relitable[vervielfachter][concept[0]])
+                                            if (abs(distanceFromLine) % 2 == 0)
+                                            else self.relitable[vervielfachter][
+                                                concept[1]
+                                            ]
+                                        )
+                                        + " "
+                                        + (
+                                            (
+                                                "nicht: "
+                                                + (" ".join(modalOperatoren[1:]))
+                                            )
+                                            if abs(distanceFromLine) % 2 == 1
+                                            else modalOperatoren[0]
+                                        )
+                                        + "| "
+                                    )
+                            except (IndexError, KeyError) as e:
+                                pass
 
                         if into[i] != "":
                             into[i] += "alles zur selben Strukturgröße einer " + cols[4]
