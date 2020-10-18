@@ -2342,7 +2342,7 @@ class Tables:
                     or w, cols in enumerate(reliTableCopy):
                         self.relitable[w] += [into[w]]
 
-                    rowsAsNumbers |= {len(self.relitable[0]) + 1}
+                    rowsAsNumbers |= {len(self.relitable[0])}
                     if (
                         len(self.tables.generatedSpaltenParameter)
                         + self.tables.SpaltenVanillaAmount
