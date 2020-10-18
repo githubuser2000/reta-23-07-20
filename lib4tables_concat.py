@@ -1,0 +1,697 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+import os
+from copy import copy, deepcopy
+from center import (alxp, cliout, getTextWrapThings, infoLog, output,
+                    primzahlvielfachesuniversum, re, x)
+
+class Concat:
+    def __init__(self, tables):
+        self.tables = tables
+
+    @property
+    def primUniversePrimsSet(self):
+        return self.puniverseprims
+
+    @primUniversePrimsSet.setter
+    def primUniversePrimsSet(self, value: set):
+        self.puniverseprims = value
+
+    def concatLovePolygon(self, relitable: list, rowsAsNumbers: set) -> tuple:
+        self.relitable = relitable
+        if rowsAsNumbers >= {8}:
+            rowsAsNumbers |= {len(self.relitable[0])}
+            for i, cols in enumerate(deepcopy(self.relitable)):
+                if self.relitable[i][8].strip() != "":
+                    self.relitable[i] += [
+                        self.relitable[i][8]
+                        + " der eigenen Strukturgröße ("
+                        + self.relitable[i][4]
+                        + ") auf dich bei gleichförmigen Polygonen"
+                    ]
+                else:
+                    self.relitable[i] += [""]
+            if (
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.SpaltenVanillaAmount
+                    in self.tables.generatedSpaltenParameter
+            ):
+                raise ValueError
+            self.tables.generatedSpaltenParameter[
+                len(self.tables.generatedSpaltenParameter)
+                + self.tables.SpaltenVanillaAmount
+                ] = self.tables.dataDict[0][8]
+            x("idiot", self.tables.generatedSpaltenParameter)
+        return self.relitable, rowsAsNumbers
+
+    def concatPrimCreativityType(
+            self, relitable: list, rowsAsNumbers: set
+    ) -> tuple:
+        self.relitable = relitable
+        if rowsAsNumbers >= {64}:
+            rowsAsNumbers |= {len(self.relitable[0])}
+            for i, cols in enumerate(deepcopy(self.relitable)):
+                primCreativityType = primCreativity(i)
+                self.relitable[i] += [
+                    "Evolutions-Züchtungs-Kreativität"
+                    if i == 0
+                    else (
+                        "0. Primzahl 1"
+                        if primCreativityType == 0
+                        else (
+                            "1. Primzahl und Sonnenzahl"
+                            if primCreativityType == 1
+                            else (
+                                "2. Sonnenzahl, aber keine Primzahl"
+                                if primCreativityType == 2
+                                else "3. Mondzahl"
+                            )
+                        )
+                    )
+                ]
+
+            if (
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.SpaltenVanillaAmount
+                    in self.tables.generatedSpaltenParameter
+            ):
+                raise ValueError
+
+            self.tables.generatedSpaltenParameter[
+                len(self.tables.generatedSpaltenParameter)
+                + self.tables.SpaltenVanillaAmount
+                ] = self.tables.dataDict[0][64]
+            x("WIE", self.tables.dataDict[0][64])
+
+            x("idiot", self.tables.generatedSpaltenParameter)
+        return self.relitable, rowsAsNumbers
+
+    def concatMondExponzierenLogarithmusTyp(
+            self, relitable: list, rowsAsNumbers: set
+    ) -> tuple:
+        self.relitable = relitable
+        if rowsAsNumbers >= {64}:
+            hardcodedCouple = (44, 56)
+            for rownum, rowheading in zip(
+                    hardcodedCouple,
+                    [
+                        "Mond-Typ eines Sternpolygons",
+                        "Mond-Typ eines gleichförmigen Polygons",
+                    ],
+            ):
+                rowsAsNumbers |= {len(self.relitable[0])}
+                for i, cols in enumerate(deepcopy(self.relitable)):
+                    moonTypesOf1Num = moonNumber(i)
+                    if i == 0:
+                        into = rowheading
+                    else:
+                        into = "" if len(moonTypesOf1Num[0]) > 0 else "kein Mond"
+                        for k, (basis, exponentMinus2) in enumerate(
+                                zip(*moonTypesOf1Num)
+                        ):
+                            if k > 0:
+                                into += " | "
+                            insert = re.sub(
+                                r"<SG>",
+                                self.relitable[i][4].strip(),
+                                self.relitable[basis][rownum].rstrip(),
+                            )
+                            into += (
+                                    insert
+                                    + " - "
+                                    + self.relitable[exponentMinus2 + 2][10]
+                            )
+                            into += " | "
+                            into += (
+                                    self.relitable[i][10]
+                                    + " + "
+                                    + self.relitable[i][11]
+                            )
+                            into += ", " + self.relitable[exponentMinus2 + 2][85]
+                    self.relitable[i] += [into]
+                if (
+                        len(self.tables.generatedSpaltenParameter)
+                        + self.tables.SpaltenVanillaAmount
+                        in self.tables.generatedSpaltenParameter
+                ):
+                    raise ValueError
+
+                self.tables.generatedSpaltenParameter[
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.SpaltenVanillaAmount
+                    ] = self.tables.dataDict[0][64]
+                x("WIE2", self.tables.dataDict[0][64])
+
+                x("idiot", self.tables.generatedSpaltenParameter)
+        return self.relitable, rowsAsNumbers
+
+    def concatRowsOfConcepts(
+            self, relitable: list, conceptsRowsSetOfTuple: set, rowsAsNumbers: set
+    ) -> tuple:
+        self.relitable: list = relitable
+        self.concepts: list = []
+        couplesNums = []
+        for i, paar in enumerate(conceptsRowsSetOfTuple):
+            first = []
+            second = []
+            self.concepts += [(first, second)]
+            for cols in self.relitable:
+                first += [cols[paar[0]]]
+                second += [cols[paar[1]]]
+            rowsAsNumbers |= {len(self.relitable[0]) + i}
+            couplesNums += [paar]
+        for o, concept in enumerate(self.concepts):
+            for i, (cols, row1, row2) in enumerate(
+                    zip(deepcopy(self.relitable), concept[0], concept[1])
+            ):
+                if i == 0:
+                    into = "Generiert: " + row1
+                else:
+                    # d.h. into füll wegen zip nur die Bereiche, die Bedacht
+                    # sind und alles andere sind nicht ein mal leere Strings,
+                    # sondern garn nichts: schlecht !
+                    into = ""
+                    # i muss hier i > irgendwas sein weil mir sonst alles um die Ohren fliegt
+                    # i ist die Zeile
+                    if row1.strip() != "":
+                        into += "sehr: " + row1 + "| "
+                    if i > 2 and concept[0][i - 2].strip() != "":
+                        into += "ganz gut: " + concept[0][i - 2] + "| "
+                    if len(concept[0]) > i + 2 and concept[0][i + 2].strip() != "":
+                        into += "ganz gut: " + concept[0][i + 2] + "| "
+                    if i > 4 and concept[0][i - 4].strip() != "":
+                        into += "noch etwas: " + concept[0][i - 4] + "| "
+                    if len(concept[0]) > i + 4 and concept[0][i + 4].strip() != "":
+                        into += "noch etwas: " + concept[0][i + 4] + "| "
+                    if i > 1 and concept[1][i - 1].strip() != "":
+                        into += concept[1][i - 1] + "| "
+                    if i > 3 and concept[1][i - 3].strip() != "":
+                        into += "ein wenig: " + concept[1][i - 3] + "| "
+                    if len(concept[1]) > i + 3 and concept[1][i + 3].strip() != "":
+                        into += "ein wenig: " + concept[1][i + 3] + "| "
+                    if len(concept[1]) > i + 1 and concept[1][i + 1].strip() != "":
+                        into += concept[1][i + 1] + "| "
+                    if into != "":
+                        into += "alles zur selben Strukturgröße einer " + cols[4]
+                # einzeln, bis es eine ganze neue Spalte ist
+                self.relitable[i] += [into]
+            x(
+                "ddd",
+                len(self.tables.generatedSpaltenParameter)
+                + self.tables.SpaltenVanillaAmount,
+            )
+            if (
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.SpaltenVanillaAmount
+                    in self.tables.generatedSpaltenParameter
+            ):
+                raise ValueError
+            self.tables.generatedSpaltenParameter[
+                len(self.tables.generatedSpaltenParameter)
+                + self.tables.SpaltenVanillaAmount
+                ] = self.tables.dataDict[1][couplesNums[o]]
+
+            x("idiot", self.tables.generatedSpaltenParameter)
+        return self.relitable, rowsAsNumbers
+
+    def concatModallogik(
+            self, relitable: list, conceptsRowsSetOfTuple: set, rowsAsNumbers: set
+    ) -> tuple:
+        """setzt die Modallogik um, d.h. Kombination von 2 bisher Programmierten
+        Funktionen: 1. vielfache von Primzahlen oder natürlichen Zahlen
+        (zweiteres programmiere ich später) bilden
+        und die andere Funtion 2. +- 1 +- 2 und Bedeutungsveränderung
+
+        @type relitable: list
+        @param relitable: Haupttabelle self.relitable
+        @return: relitable + weitere Tabelle daneben
+        """
+
+        def getModaloperatorsPerLineCells(lineWeAreAt: int) -> tuple:
+            """Gibt ein Tuple aus Strings aus, dass die richtigen Modaloperatoren
+            pro Zeile ausgibt
+            @type int
+            @param Zeile
+            @return: Tupel aus Modaloperatoren
+            """
+
+            def getModaloperatorsPerLineCoordinates(lineWeAreAt: int) -> tuple:
+                modalMainOperatorZeile: int = lineWeAreAt
+                amountModaloperators: int = lineWeAreAt - 1
+                modalOpElseOperatorsZeilenBegin: int = lineWeAreAt + 1
+                modalOpElseOperatorsZeilenEnd: int = (
+                        lineWeAreAt + amountModaloperators + 1
+                )
+                return (
+                    modalMainOperatorZeile,
+                    modalOpElseOperatorsZeilenBegin,
+                    modalOpElseOperatorsZeilenEnd,
+                )
+
+            coords = getModaloperatorsPerLineCoordinates(lineWeAreAt)
+            modaloperators: list = []
+            try:
+                modaloperators += [self.relitable[coords[0]][10]]
+            except:
+                pass
+            for coord in range(coords[1], coords[2]):
+                try:
+                    modaloperators += [self.relitable[coord][42]]
+                except IndexError:
+                    pass
+            return tuple(modaloperators)
+
+        self.relitable = relitable
+        if True:
+            distances = (-4, -3, -2, -1, 0, 1, 2, 3, 4)
+            conceptsRowsSetOfTuple2: tuple = tuple(conceptsRowsSetOfTuple)
+            # x("wer", conceptsRowsSetOfTuple2)
+            reliTableCopy = deepcopy(self.relitable)
+            for o, concept in enumerate(conceptsRowsSetOfTuple2):
+                into: dict = {}
+                einMalVorkommen = set()
+                for i, cols in enumerate(reliTableCopy):
+                    into[i] = ""
+                    if i == 0:
+                        into[i] = "Generiert: " + cols[concept[0]]
+                    elif cols[concept[0]].strip() != "":
+                        einMalVorkommen |= {i}
+
+                vorkommenVielfacher: dict = {}
+                einMalVorkommen = tuple(einMalVorkommen)
+                for einVorkommen in einMalVorkommen:
+                    vielfacher = 1
+                    ergebnis = vielfacher * einVorkommen
+                    try:
+                        vorkommenVielfacher[ergebnis] += [
+                            (einVorkommen, vielfacher)
+                        ]
+                    except (IndexError, KeyError) as e:
+                        vorkommenVielfacher[ergebnis] = [(einVorkommen, vielfacher)]
+                    while ergebnis < len(reliTableCopy):
+                        vielfacher += 1
+                        ergebnis = vielfacher * einVorkommen
+                        try:
+                            vorkommenVielfacher[ergebnis] += [
+                                (
+                                    einVorkommen,
+                                    vielfacher,
+                                )
+                            ]
+                        except (IndexError, KeyError) as e:
+                            vorkommenVielfacher[ergebnis] = [
+                                (
+                                    einVorkommen,
+                                    vielfacher,
+                                )
+                            ]
+                # x("d5g", vorkommenVielfacher)
+                vorkommenVielfacher_B: dict = {}
+                for i, cols in enumerate(reliTableCopy):
+                    if i > 0:
+                        for distanceFromLine in distances:
+                            i_with_a_distance = i + distanceFromLine
+                            try:
+                                modalOperatorEnEn: list = []
+                                Orginal_i_mehrere: list = []
+                                # vorkommenZeilenBegriffe: list = []
+                                vervielFachter: list = []
+                                # Ein Couple besteht aus der Zahl, ggf. Primzahl mit ihrem Vielfacher danach
+                                for couple in vorkommenVielfacher[
+                                    i_with_a_distance
+                                ]:
+                                    # x("x4hh", couple)
+                                    vorkommen, vielfacher = couple[0], couple[1]
+                                    modalOperatorEnEn += [
+                                        (getModaloperatorsPerLineCells(vielfacher))
+                                    ]
+                                    # vorkommenZeilenBegriffe += [
+                                    #    vorkommen * vielfacher
+                                    # ]
+                                    vervielFachter += [vorkommen]
+                                    Orginal_i_mehrere += [i_with_a_distance]
+                                """
+                                Was ist hier drin gespeichert?
+                                    erster Parameter: das i von allen Distanzen -4 bis 4 mit 0
+                                    zweiter Paramter: Ob: ModalOperator oder was war Orignal i von dem das hier der Vielfacher ist
+                                    dahinter: liste von der Sache
+                                """
+                                # x("r6hh1 ", i)
+                                # x("r6hh2 ", modalOperatorEnEn)
+                                # x("r6hh3 ", Orginal_i_mehrere)
+                                try:
+                                    vorkommenVielfacher_B[i][distanceFromLine] = {
+                                        "i_origS": Orginal_i_mehrere
+                                                   + vorkommenVielfacher_B[i][
+                                                       distanceFromLine
+                                                   ]["i_origS"],
+                                        "modalS": modalOperatorEnEn
+                                                  + vorkommenVielfacher_B[i][
+                                                      distanceFromLine
+                                                  ]["modalS"],
+                                        "vervielfachter": vervielFachter
+                                                          + vorkommenVielfacher_B[i][
+                                                              distanceFromLine
+                                                          ]["vervielfachter"],
+                                    }
+
+                                except (IndexError, KeyError) as e:
+                                    try:
+                                        vorkommenVielfacher_B[i][
+                                            distanceFromLine
+                                        ] = {
+                                            "i_origS": Orginal_i_mehrere,
+                                            "modalS": modalOperatorEnEn,
+                                            "vervielfachter": vervielFachter,
+                                        }
+                                    except (IndexError, KeyError) as e:
+                                        vorkommenVielfacher_B[i] = {}
+                                        vorkommenVielfacher_B[i][
+                                            distanceFromLine
+                                        ] = {
+                                            "i_origS": Orginal_i_mehrere,
+                                            "modalS": modalOperatorEnEn,
+                                            "vervielfachter": vervielFachter,
+                                        }
+                                del vervielFachter
+                            except (IndexError, KeyError) as e:
+                                pass
+
+                for i, cols in enumerate(reliTableCopy):
+                    if i > 0:
+                        # x("_ö_", vorkommenVielfacher_B)
+                        for distanceFromLine in distances:
+                            i_with_a_distance = i + distanceFromLine
+                            try:
+                                modalOperatorenEn = vorkommenVielfacher_B[i][
+                                    distanceFromLine
+                                ]["modalS"]
+                                vervielfachterEn = vorkommenVielfacher_B[i][
+                                    distanceFromLine
+                                ]["vervielfachter"]
+                                for modalOperatoren, vervielfachter in zip(
+                                        modalOperatorenEn, vervielfachterEn
+                                ):
+                                    try:
+                                        # x("_ü1_", modalOperatoren)
+                                        # x("_ü2_", vervielfachter)
+                                        # x("_ü6_", concept[1])
+                                        x(
+                                            "_ü3_",
+                                            self.relitable[vervielfachter][
+                                                concept[1]
+                                            ],
+                                        )
+                                        # x("_ü4_", modalOperatoren[0])
+                                        # x("_ü5_", modalOperatoren[1:])
+                                        into[i] += (
+                                                (
+                                                    "mittelstark überdurschnittlich: "
+                                                    if abs(distanceFromLine) == 2
+                                                    else (
+                                                        "überdurschnittlich: "
+                                                        if abs(distanceFromLine) == 1
+                                                        else (
+                                                            "mittelleicht überdurschnittlich: "
+                                                            if abs(distanceFromLine)
+                                                               == 3
+                                                            else (
+                                                                "sehr: "
+                                                                if abs(distanceFromLine)
+                                                                   == 0
+                                                                   != ""
+                                                                else "sehr leicht überdurchschnittlich: "
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                                + (
+                                                    (
+                                                        self.relitable[vervielfachter][
+                                                            concept[0]
+                                                        ]
+                                                    )
+                                                    if (abs(distanceFromLine) % 2 == 0)
+                                                    else self.relitable[vervielfachter][
+                                                        concept[1]
+                                                    ]
+                                                )
+                                                + " "
+                                                + (
+                                                    (
+                                                            "nicht: "
+                                                            + (
+                                                                " ".join(
+                                                                    modalOperatoren[1:]
+                                                                )
+                                                            )
+                                                    )
+                                                    if abs(distanceFromLine) % 2 == 1
+                                                    else modalOperatoren[0]
+                                                )
+                                                + "| "
+                                        )
+                                    except (IndexError, KeyError) as e:
+                                        pass
+                            except (IndexError, KeyError) as e:
+                                pass
+                        # wenn i>0
+                        if into[i] != "":
+                            into[i] += (
+                                    "alles zur selben Strukturgröße einer " + cols[4]
+                            )
+                for w, cols in enumerate(reliTableCopy):
+                    self.relitable[w] += [into[w]]
+
+                rowsAsNumbers |= {len(self.relitable[0]) - 1}
+                if (
+                        len(self.tables.generatedSpaltenParameter)
+                        + self.tables.SpaltenVanillaAmount
+                        in self.tables.generatedSpaltenParameter
+                ):
+                    raise ValueError
+                self.tables.generatedSpaltenParameter[
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.SpaltenVanillaAmount
+                    ] = self.tables.dataDict[1][conceptsRowsSetOfTuple2[o]]
+
+        return self.relitable, rowsAsNumbers
+
+    def concat1RowPrimUniverse(self, relitable: list, rowsAsNumbers: set) -> tuple:
+        """Fügt eine Spalte ein, in der Primzahlen mit Vielfachern
+        auf dem Niveau des Universums nicht einfach nur aus einer
+        CSV Tabelle geladen werden, sondern durch Primzahlen und
+        deren Vielfachern generiert werden.
+
+        @type relitable: list
+        @param relitable: Haupttabelle self.relitable
+        @return: relitable + weitere Tabelle daneben
+        """
+        global originalLinesRange
+        self.relitable = relitable
+        hardCodedCouple = (10, 42)
+        if len(self.tables.primUniversePrimsSet) > 0:
+            self.tables.primUniverseRowNum = len(self.relitable[0])
+            rowsAsNumbers |= {
+                len(self.relitable[0]),
+                len(self.relitable[0]) + 1,
+                len(self.relitable[0]) + 2,
+            }
+            for polytype, polytypename in zip(
+                    hardCodedCouple, ["Sternpolygone", "gleichförmiges Polygone"]
+            ):
+                self.transzendentalien = []
+                self.rolle = []
+                self.motivation = []
+                self.ziel = []
+                for cols in self.relitable:
+                    self.motivation += [cols[polytype]]
+                    self.rolle += [cols[19]]
+                    self.transzendentalien += [cols[5]]
+                    self.ziel += [cols[11]]
+                relitableCopy = deepcopy(self.relitable)
+
+                for i, cols in enumerate(relitableCopy):
+                    primMultiples = primMultiple(i)
+                    into = (
+                        ""
+                        if i != 0
+                        else "generierte Multiplikationen " + polytypename
+                    )
+                    for k, multi in enumerate(primMultiples[1:]):
+                        if k > 0:
+                            into += ", außerdem: "
+                        into += (
+                                "("
+                                + (
+                                    self.transzendentalien[multi[0]]
+                                    if self.transzendentalien[multi[0]].strip() != ""
+                                    else "..."
+                                )
+                                + " UND "
+                                + (
+                                    self.rolle[multi[0]]
+                                    if self.rolle[multi[0]].strip() != ""
+                                    else "..."
+                                )
+                                + ") * ("
+                                + (
+                                    self.motivation[multi[1]]
+                                    if self.motivation[multi[1]].strip() != ""
+                                    else "..."
+                                )
+                                + (
+                                    " UND "
+                                    + (
+                                        self.ziel[multi[1]]
+                                        if self.ziel[multi[1]].strip() != ""
+                                        else "..."
+                                    )
+                                    if polytype == 10
+                                    else ""
+                                )
+                                + ")"
+                        )
+                    self.relitable[i] += [into]
+
+                if (
+                        len(self.tables.generatedSpaltenParameter)
+                        + self.tables.SpaltenVanillaAmount
+                        in self.tables.generatedSpaltenParameter
+                ):
+                    raise ValueError
+                x(
+                    "doofi 1",
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.SpaltenVanillaAmount,
+                )
+                x("doofi 2", tuple(self.tables.dataDict[1].keys())[0])
+                x("doofi 3", primzahlvielfachesuniversum)
+                self.tables.generatedSpaltenParameter[
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.SpaltenVanillaAmount
+                    ] = ([primzahlvielfachesuniversum],)
+
+                x("idiot", self.tables.generatedSpaltenParameter)
+
+            self.primAmounts = 0
+            self.oldPrimAmounts = 0
+            self.lastPrimAnswers: dict = {}
+
+            def PrimAnswer2(i: int) -> str:
+                return self.lastPrimAnswers[i]
+
+            def PrimAnswer(i: int) -> str:
+                if i > 3:
+                    if self.primAmounts != self.oldPrimAmounts:
+                        if self.primAmounts % 2 == 0:
+                            return "für innen"
+                        else:
+                            return "für außen"
+                    else:
+                        return ""
+                elif i == 2:
+                    return "für seitlich"
+                elif i == 3:
+                    return "gegen seitlich"
+                elif i == 1:
+                    return "alle Richtungen möglich"
+                else:
+                    return ""
+
+            for i, cols in enumerate(relitableCopy):
+                primMultiples = primMultiple(i)
+                into = "" if i != 0 else "Primzahlwirkung "
+
+                self.oldPrimAmounts = self.primAmounts
+                if couldBePrimeNumberPrimzahlkreuz(i):
+                    self.primAmounts += 1
+                if primCreativity(i) == 1:
+                    into = PrimAnswer(i)
+                    self.lastPrimAnswers[i] = into
+                elif i > 1:
+                    for couple in primRepeat(primFak(i)):
+                        if couple[1] == 1:
+                            into += PrimAnswer2(couple[0]) + " + "
+                        else:
+                            into += (
+                                    str(couple[1])
+                                    + " * "
+                                    + PrimAnswer2(couple[0])
+                                    + " + "
+                            )
+                    into = into[:-3]
+                elif i == 1:
+                    into = PrimAnswer(1)
+                self.relitable[i] += [into]
+            self.tables.generatedSpaltenParameter[
+                len(self.tables.generatedSpaltenParameter)
+                + self.tables.SpaltenVanillaAmount
+                ] = ([primzahlvielfachesuniversum],)
+
+            x("idiot__", self.tables.generatedSpaltenParameter)
+
+        return self.relitable, rowsAsNumbers
+
+    def readConcatCsv(self, relitable: list, rowsAsNumbers: set) -> tuple:
+        """Fügt eine Tabelle neben der self.relitable an
+        momentan ist es noch fix auf primnumbers.csv
+
+        @type relitable: list
+        @param relitable: Haupttabelle self.relitable
+        @type rowsAsNumbers: set
+        @param rowsAsNumbers: welche Spalten der neuen Tabelle dazu kommen sollen
+        @rtype: list[list]
+        @return: relitable + weitere Tabelle daneben
+        """
+        global folder
+        place = os.path.join(
+            os.getcwd(),
+            os.path.dirname(__file__),
+            os.path.basename("./primenumbers.csv"),
+        )
+        self.relitable = relitable
+        headingsAmount = len(self.relitable[0])
+        self.tables.SpaltenVanillaAmount = len(rowsAsNumbers)
+        if len(self.puniverseprims) > 0:
+            with open(place, mode="r") as csv_file:
+                self.relitable, primUniverseLine = Tables.fillBoth(
+                    self.relitable, list(csv.reader(csv_file, delimiter=";"))
+                )
+                lastlen = 0
+                maxlen = 0
+                for i, (primcol, relicol) in enumerate(
+                        zip(primUniverseLine, self.relitable)
+                ):
+                    lastlen = len(primcol)
+                    if lastlen > maxlen:
+                        maxlen = lastlen
+
+                    self.relitable[i] += list(primcol) + [""] * (
+                            maxlen - len(primcol)
+                    )
+                    if i == 0:
+                        for u, heading in enumerate(self.relitable[0]):
+                            if (
+                                    heading.isdecimal()
+                                    and int(heading) in self.puniverseprims
+                                    and u >= headingsAmount
+                            ):
+                                rowsAsNumbers.add(u)
+                                heading = int(heading)
+                                if (
+                                        len(self.tables.generatedSpaltenParameter)
+                                        + self.tables.SpaltenVanillaAmount
+                                        in self.tables.generatedSpaltenParameter
+                                ):
+                                    raise ValueError
+                                alxp("XYZ")
+                                x("zzz2", self.tables.generatedSpaltenParameter)
+                                self.tables.generatedSpaltenParameter[
+                                    len(self.tables.generatedSpaltenParameter)
+                                    + self.tables.SpaltenVanillaAmount
+                                    ] = self.tables.dataDict[2][heading]
+                                x("zzz", self.tables.generatedSpaltenParameter)
+
+            self.concatRowsAmount = len(primcol)
+        return self.relitable, rowsAsNumbers
