@@ -2269,26 +2269,15 @@ class Tables:
                             for distanceFromLine in distances:
                                 i_with_a_distance = i + distanceFromLine
                                 try:
-                                    # vorkommenVielfacher_B[i][distanceFromLine][
-                                    #    "i_origS"
-                                    # ]
                                     modalOperatorenEn = vorkommenVielfacher_B[i][
                                         distanceFromLine
                                     ]["modalS"]
                                     vervielfachterEn = vorkommenVielfacher_B[i][
                                         distanceFromLine
                                     ]["vervielfachter"]
-                                    # for Orignal_iS, modalOperatoren in zip(
-                                    #    vorkommenVielfacher_B[i_with_a_distance][
-                                    #        "i_origS"
-                                    #    ],
-                                    #    vorkommenVielfacher_B[i_with_a_distance][
-                                    #        "modalS"
-                                    #    ],
-                                    # ):
-                                    #x("uhit", Orginal_i)
-                                    #x("uhit", modalOperatoren)
-                                    for modalOperatoren, vervielfachter in zip(modalOperatorenEn, vervielfachterEn):
+                                    for modalOperatoren, vervielfachter in zip(
+                                        modalOperatorenEn, vervielfachterEn
+                                    ):
                                         into[i] += (
                                             (
                                                 "mittelstark überdurschnittlich: "
@@ -2311,12 +2300,14 @@ class Tables:
                                             )
                                             + (
                                                 (
-                                                    self.relitable[
-                                                        vervielfachter
-                                                    ][concept[0]]
+                                                    self.relitable[vervielfachter][
+                                                        concept[0]
+                                                    ]
                                                 )
                                                 if (abs(distanceFromLine) % 2 == 0)
-                                                else self.relitable[vervielFachter][concept[1]]
+                                                else self.relitable[vervielFachter][
+                                                    concept[1]
+                                                ]
                                             )
                                             + " "
                                             + (
@@ -2329,8 +2320,8 @@ class Tables:
                                             )
                                             + "| "
                                         )
-                                    except (IndexError, KeyError) as e:
-                                        pass
+                                except (IndexError, KeyError) as e:
+                                    pass
 
                         if into[i] != "":
                             into[i] += "alles zur selben Strukturgröße einer " + cols[4]
