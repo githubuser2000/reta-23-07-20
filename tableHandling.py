@@ -2154,8 +2154,8 @@ class Tables:
             if True:
                 conceptsRowsSetOfTuple2: tuple = tuple(conceptsRowsSetOfTuple)
                 x("wer", conceptsRowsSetOfTuple2)
+                reliTableCopy = deepcopy(self.relitable)
                 for o, concept in enumerate(conceptsRowsSetOfTuple2):
-                    reliTableCopy = deepcopy(self.relitable)
                     into: dict = {}
                     einMalVorkommen = set()
                     for i, cols in enumerate(reliTableCopy):
@@ -2170,22 +2170,27 @@ class Tables:
                     for einVorkommen in einMalVorkommen:
                         vielfacher = 1
                         ergebnis = vielfacher * einVorkommen
-                        vorkommenVielfacher[ergebnis] = [(einVorkommen, vielfacher)]
+                        try:
+                            vorkommenVielfacher[ergebnis] += [
+                                (einVorkommen, vielfacher)
+                            ]
+                        except (IndexError, KeyError) as e:
+                            vorkommenVielfacher[ergebnis] = [(einVorkommen, vielfacher)]
                         while ergebnis < len(reliTableCopy):
                             vielfacher += 1
                             ergebnis = vielfacher * einVorkommen
                             try:
                                 vorkommenVielfacher[ergebnis] += [
                                     (
-                                        int(einVorkommen),
-                                        int(vielfacher),
+                                        einVorkommen,
+                                        vielfacher,
                                     )
                                 ]
-                            except:
+                            except (IndexError, KeyError) as e:
                                 vorkommenVielfacher[ergebnis] = [
                                     (
-                                        int(einVorkommen),
-                                        int(vielfacher),
+                                        einVorkommen,
+                                        vielfacher,
                                     )
                                 ]
                     x("d5g", vorkommenVielfacher)
@@ -2213,6 +2218,15 @@ class Tables:
                                         # ]
                                         vervielFachter += [vorkommen]
                                         Orginal_i_mehrere += [i_with_a_distance]
+                                    """
+                                    Was ist hier drin gespeichert?
+                                      erster Parameter: das i von allen Distanzen -4 bis 4 mit 0
+                                      zweiter Paramter: Ob: ModalOperator oder was war Orignal i von dem das hier der Vielfacher ist
+                                      dahinter: liste von der Sache
+                                    """
+                                    x("r6hh1 ", i)
+                                    x("r6hh2 ", modalOperatorEnEn)
+                                    x("r6hh3 ", Orginal_i_mehrere)
                                     try:
                                         vorkommenVielfacher_B[i][distanceFromLine] = {
                                             "i_origS": Orginal_i_mehrere
@@ -2223,10 +2237,10 @@ class Tables:
                                             + vorkommenVielfacher_B[i][
                                                 distanceFromLine
                                             ]["modalS"],
-                                            "vervielFacheter": vervielFachter
+                                            "vervielfachter": vervielFachter
                                             + vorkommenVielfacher_B[i][
                                                 distanceFromLine
-                                            ]["vervielFacheter"],
+                                            ]["vervielfachter"],
                                         }
 
                                     except (IndexError, KeyError) as e:
@@ -2236,7 +2250,7 @@ class Tables:
                                             ] = {
                                                 "i_origS": Orginal_i_mehrere,
                                                 "modalS": modalOperatorEnEn,
-                                                "vervielFacheter": vervielFachter,
+                                                "vervielfachter": vervielFachter,
                                             }
                                         except (IndexError, KeyError) as e:
                                             vorkommenVielfacher_B[i] = {}
@@ -2245,23 +2259,8 @@ class Tables:
                                             ] = {
                                                 "i_origS": Orginal_i_mehrere,
                                                 "modalS": modalOperatorEnEn,
-                                                "vervielFacheter": vervielFachter,
+                                                "vervielfachter": vervielFachter,
                                             }
-                                    """
-                                    Was ist hier drin gespeichert?
-                                      erster Parameter: das i von allen Distanzen -4 bis 4 mit 0
-                                      zweiter Paramter: Ob: ModalOperator oder was war Orignal i von dem das hier der Vielfacher ist
-                                      dahinter: liste von der Sache
-                                    """
-                                    x("r6hh1 ", i)
-                                    x("r6hh2 ", modalOperatorEnEn)
-                                    x("r6hh3 ", Orginal_i_mehrere)
-                                    # modalOperatorEnEn = getModaloperatorsPerLineCells(
-                                    #    vorkommenVielfacher[i + distanceFromLine][1]
-                                    # )
-                                    # Orginal_i_mehrere = int(
-                                    #    vorkommenVielfacher[i + distanceFromLine][0]
-                                    # )
                                 except (IndexError, KeyError) as e:
                                     pass
 
