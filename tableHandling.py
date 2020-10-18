@@ -2281,57 +2281,60 @@ class Tables:
                                     for modalOperatoren, vervielfachter in zip(
                                         modalOperatorenEn, vervielfachterEn
                                     ):
-                                        # x("_ü1_", modalOperatoren)
-                                        # x("_ü2_", vervielfachter)
-                                        # x("_ü6_", concept[1])
-                                        x(
-                                            "_ü3_",
-                                            self.relitable[vervielfachter][concept[1]],
-                                        )
-                                        # x("_ü4_", modalOperatoren[0])
-                                        # x("_ü5_", modalOperatoren[1:])
-                                        into[i] += (
-                                            (
-                                                "mittelstark überdurschnittlich: "
-                                                if abs(distanceFromLine) == 2
-                                                else (
-                                                    "überdurschnittlich: "
-                                                    if abs(distanceFromLine) == 1
+                                        try:
+                                            # x("_ü1_", modalOperatoren)
+                                            # x("_ü2_", vervielfachter)
+                                            # x("_ü6_", concept[1])
+                                            x(
+                                                "_ü3_",
+                                                self.relitable[vervielfachter][concept[1]],
+                                            )
+                                            # x("_ü4_", modalOperatoren[0])
+                                            # x("_ü5_", modalOperatoren[1:])
+                                            into[i] += (
+                                                (
+                                                    "mittelstark überdurschnittlich: "
+                                                    if abs(distanceFromLine) == 2
                                                     else (
-                                                        "mittelleicht überdurschnittlich: "
-                                                        if abs(distanceFromLine) == 3
+                                                        "überdurschnittlich: "
+                                                        if abs(distanceFromLine) == 1
                                                         else (
-                                                            "sehr: "
-                                                            if abs(distanceFromLine)
-                                                            == 0
-                                                            != ""
-                                                            else "sehr leicht überdurchschnittlich: "
+                                                            "mittelleicht überdurschnittlich: "
+                                                            if abs(distanceFromLine) == 3
+                                                            else (
+                                                                "sehr: "
+                                                                if abs(distanceFromLine)
+                                                                == 0
+                                                                != ""
+                                                                else "sehr leicht überdurchschnittlich: "
+                                                            )
                                                         )
                                                     )
                                                 )
-                                            )
-                                            + (
-                                                (
-                                                    self.relitable[vervielfachter][
-                                                        concept[0]
+                                                + (
+                                                    (
+                                                        self.relitable[vervielfachter][
+                                                            concept[0]
+                                                        ]
+                                                    )
+                                                    if (abs(distanceFromLine) % 2 == 0)
+                                                    else self.relitable[vervielfachter][
+                                                        concept[1]
                                                     ]
                                                 )
-                                                if (abs(distanceFromLine) % 2 == 0)
-                                                else self.relitable[vervielfachter][
-                                                    concept[1]
-                                                ]
-                                            )
-                                            + " "
-                                            + (
-                                                (
-                                                    "nicht: "
-                                                    + (" ".join(modalOperatoren[1:]))
+                                                + " "
+                                                + (
+                                                    (
+                                                        "nicht: "
+                                                        + (" ".join(modalOperatoren[1:]))
+                                                    )
+                                                    if abs(distanceFromLine) % 2 == 1
+                                                    else modalOperatoren[0]
                                                 )
-                                                if abs(distanceFromLine) % 2 == 1
-                                                else modalOperatoren[0]
+                                                + "| "
                                             )
-                                            + "| "
-                                        )
+                                    except (IndexError, KeyError) as e:
+                                        pass
                                 except (IndexError, KeyError) as e:
                                     pass
                             # wenn i>0
