@@ -2287,7 +2287,9 @@ class Tables:
                                             # x("_ü6_", concept[1])
                                             x(
                                                 "_ü3_",
-                                                self.relitable[vervielfachter][concept[1]],
+                                                self.relitable[vervielfachter][
+                                                    concept[1]
+                                                ],
                                             )
                                             # x("_ü4_", modalOperatoren[0])
                                             # x("_ü5_", modalOperatoren[1:])
@@ -2300,7 +2302,8 @@ class Tables:
                                                         if abs(distanceFromLine) == 1
                                                         else (
                                                             "mittelleicht überdurschnittlich: "
-                                                            if abs(distanceFromLine) == 3
+                                                            if abs(distanceFromLine)
+                                                            == 3
                                                             else (
                                                                 "sehr: "
                                                                 if abs(distanceFromLine)
@@ -2326,7 +2329,11 @@ class Tables:
                                                 + (
                                                     (
                                                         "nicht: "
-                                                        + (" ".join(modalOperatoren[1:]))
+                                                        + (
+                                                            " ".join(
+                                                                modalOperatoren[1:]
+                                                            )
+                                                        )
                                                     )
                                                     if abs(distanceFromLine) % 2 == 1
                                                     else modalOperatoren[0]
@@ -2345,7 +2352,7 @@ class Tables:
                     for w, cols in enumerate(reliTableCopy):
                         self.relitable[w] += [into[w]]
 
-                    rowsAsNumbers |= {len(self.relitable[0])}
+                    rowsAsNumbers |= {len(self.relitable[0]) - 1}
                     if (
                         len(self.tables.generatedSpaltenParameter)
                         + self.tables.SpaltenVanillaAmount
