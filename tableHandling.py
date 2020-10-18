@@ -2333,8 +2333,8 @@ class Tables:
                                                 )
                                                 + "| "
                                             )
-                                    except (IndexError, KeyError) as e:
-                                        pass
+                                        except (IndexError, KeyError) as e:
+                                            pass
                                 except (IndexError, KeyError) as e:
                                     pass
                             # wenn i>0
@@ -2342,7 +2342,7 @@ class Tables:
                                 into[i] += (
                                     "alles zur selben Strukturgröße einer " + cols[4]
                                 )
-                    or w, cols in enumerate(reliTableCopy):
+                    for w, cols in enumerate(reliTableCopy):
                         self.relitable[w] += [into[w]]
 
                     rowsAsNumbers |= {len(self.relitable[0])}
