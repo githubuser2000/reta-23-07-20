@@ -282,32 +282,30 @@ class Concat:
 
                 vorkommenVielfacher: dict = {}
                 einMalVorkommen = tuple(einMalVorkommen)
+
+                def vorkommenNvielfacherPerItsProduct(einVorkommen, ergebnis, vielfacher, vorkommenVielfacher):
+                    try:
+                        vorkommenVielfacher[ergebnis] += [
+                            (
+                                einVorkommen,
+                                vielfacher,
+                            )
+                        ]
+                    except (IndexError, KeyError):
+                        vorkommenVielfacher[ergebnis] = [
+                            (
+                                einVorkommen,
+                                vielfacher,
+                            )
+                        ]
                 for einVorkommen in einMalVorkommen:
                     vielfacher = 1
                     ergebnis = vielfacher * einVorkommen
-                    try:
-                        vorkommenVielfacher[ergebnis] += [
-                            (einVorkommen, vielfacher)
-                        ]
-                    except (IndexError, KeyError) as e:
-                        vorkommenVielfacher[ergebnis] = [(einVorkommen, vielfacher)]
+                    vorkommenNvielfacherPerItsProduct(einVorkommen, ergebnis, vielfacher, vorkommenVielfacher)
                     while ergebnis < len(reliTableCopy):
                         vielfacher += 1
                         ergebnis = vielfacher * einVorkommen
-                        try:
-                            vorkommenVielfacher[ergebnis] += [
-                                (
-                                    einVorkommen,
-                                    vielfacher,
-                                )
-                            ]
-                        except (IndexError, KeyError) as e:
-                            vorkommenVielfacher[ergebnis] = [
-                                (
-                                    einVorkommen,
-                                    vielfacher,
-                                )
-                            ]
+                        vorkommenNvielfacherPerItsProduct(einVorkommen, ergebnis, vielfacher, vorkommenVielfacher)
                 # x("d5g", vorkommenVielfacher)
                 vorkommenVielfacher_B: dict = {}
                 for i, cols in enumerate(reliTableCopy):
