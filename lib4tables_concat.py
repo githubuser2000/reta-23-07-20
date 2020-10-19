@@ -223,7 +223,7 @@ class Concat:
         spaltenToVervielfache: set = rowsAsNumbers & {90, 19}
         store = {}
         for s in spaltenToVervielfache:
-            for z, zeileninhalt in enumerate(relitable[1:], 1):
+            for z, zeileninhalt in enumerate(relitable[2:], 2):
                 content = zeileninhalt[s]
                 if len(content.strip()) > 0:
                     store[(z, s)] = content  # interessant
@@ -243,7 +243,7 @@ class Concat:
                     except (IndexError, KeyError):
                         multis[ergebnis] = [coords[0]]  # interessant
 
-            for z, zeileninhalt in enumerate(relitable[1:], 1):
+            for z, zeileninhalt in enumerate(relitable[2:], 2):
                 # alle spalten und zeilen
                 if z in multis:
                     for UrZeile in multis[z]:
