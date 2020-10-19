@@ -220,38 +220,40 @@ class Concat:
     def concatVervielfacheZeile(self, relitable: list, rowsAsNumbers: set) -> tuple:
         self.relitable = relitable
         # reliCopy = deepcopy(relitable)
-        spaltenToVervielfachen: set = rowsAsNumbers & {90}
+        spaltenToVervielfache: set = rowsAsNumbers & {90, 19}
         store = {}
-
-        for z, zeileninhalt in enumerate(relitable[1:], 1):
-            for s in tuple(spaltenToVervielfachen):
+        for s in spaltenToVervielfache:
+            for z, zeileninhalt in enumerate(relitable[1:], 1):
                 content = zeileninhalt[s]
                 if len(content.strip()) > 0:
                     store[(z, s)] = content  # interessant
 
-        multis = {}
-        for (coords, content) in store.items():
-            vielfacher = 1
-            ergebnis = vielfacher * coords[0]
-            multis[ergebnis] = [coords[0]]
-
-            while ergebnis < len(relitable):
-                vielfacher += 1
+            multis = {}
+            for (coords, content) in store.items():
+                vielfacher = 1
                 ergebnis = vielfacher * coords[0]
-                try:
-                    multis[ergebnis] += [coords[0]]  # interessant
-                    # spalten wo was hin soll = ursprungszeile1,2,3,...
-                except (IndexError, KeyError):
-                    multis[ergebnis] = [coords[0]]  # interessant
+                multis[ergebnis] = [coords[0]]
 
-        for s in tuple(spaltenToVervielfachen):
+                while ergebnis < len(relitable):
+                    vielfacher += 1
+                    ergebnis = vielfacher * coords[0]
+                    try:
+                        multis[ergebnis] += [coords[0]]  # interessant
+                        # spalten wo was hin soll = ursprungszeile1,2,3,...
+                    except (IndexError, KeyError):
+                        multis[ergebnis] = [coords[0]]  # interessant
+
             for z, zeileninhalt in enumerate(relitable[1:], 1):
                 # alle spalten und zeilen
                 if z in multis:
-                    for listeUrZeilen in (multis[z]):
-                        relitable[z][s] += store[(listeUrZeilen, s)]+", "
-                        # Zelleninhalt +=
-                    relitable[z][s] =relitable[z][s][:-2]
+                    for UrZeile in multis[z]:
+                        x = False
+                        if UrZeile != z:
+                            relitable[z][s] += store[(UrZeile, s)] + " | "
+                            x = True
+                            # Zelleninhalt +=
+                    if x:
+                        relitable[z][s] = relitable[z][s][:-3]
 
         return self.relitable, rowsAsNumbers
 
