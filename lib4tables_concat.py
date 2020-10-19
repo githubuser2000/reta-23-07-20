@@ -217,6 +217,43 @@ class Concat:
             x("idiot", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
 
+    def concatVervielfacheZeile(self, relitable: list, rowsAsNumbers: set) -> tuple:
+        self.relitable = relitable
+        # reliCopy = deepcopy(relitable)
+        spaltenToVervielfachen: set = rowsAsNumbers & {90}
+        store = {}
+
+        for z, zeileninhalt in enumerate(relitable):
+            for s in tuple(spaltenToVervielfachen):
+                content = zeileninhalt[s]
+                if len(content.strip()) > 0:
+                    store[(z, s)] = content  # interessant
+
+        multis = {}
+        for (coords, content) in store.items():
+            vielfacher = 1
+            ergebnis = vielfacher * coords[0]
+            multis[ergebnis] = *coords[0]
+
+            while ergebnis < len(relitable):
+                vielfacher += 1
+                ergebnis = vielfacher * coords[0]
+                try:
+                    multis[ergebnis] += [coords[0]]  # interessant
+                    # spalten wo was hin soll = ursprungszeile1,2,3,...
+                except (IndexError, KeyError):
+                    multis[ergebnis] = [coords[0]]  # interessant
+
+        for z, zeileninhalt in enumerate(relitable):
+            for s in tuple(spaltenToVervielfachen):
+                # alle spalten und zeilen
+                if z in multis:
+                    for listeUrZeilen in multis[z]:
+                        relitable[z][s] += store[(listeUrZeilen, s)]
+                        # Zelleninhalt +=
+
+        return self.relitable, rowsAsNumbers
+
     def concatModallogik(
         self, relitable: list, conceptsRowsSetOfTuple: set, rowsAsNumbers: set
     ) -> tuple:
@@ -475,6 +512,7 @@ class Concat:
                         vorkommenNvielfacherPerItsProduct(
                             einVorkommen, ergebnis, vielfacher, vorkommenVielfacher
                         )
+
                 # x("d5g", vorkommenVielfacher)
                 vorkommenVielfacher_B: dict = {}
                 for i, zeileninhalte in enumerate(reliTableCopy[1:], 1):
@@ -496,7 +534,10 @@ class Concat:
                         )
                     # wenn i>0
                     if into[i] != "":
-                        into[i] += "alles zur selben Strukturgröße einer " + cols[4]
+                        into[i] += (
+                            "alles nur bezogen auf die selbe Strukturgröße einer "
+                            + zeileninhalte[4]
+                        )
                 for w, cols in enumerate(reliTableCopy):
                     self.relitable[w] += [into[w]]
 
