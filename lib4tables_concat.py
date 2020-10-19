@@ -223,7 +223,7 @@ class Concat:
         spaltenToVervielfachen: set = rowsAsNumbers & {90}
         store = {}
 
-        for z, zeileninhalt in enumerate(relitable):
+        for z, zeileninhalt in enumerate(relitable[1:], 1):
             for s in tuple(spaltenToVervielfachen):
                 content = zeileninhalt[s]
                 if len(content.strip()) > 0:
@@ -233,7 +233,7 @@ class Concat:
         for (coords, content) in store.items():
             vielfacher = 1
             ergebnis = vielfacher * coords[0]
-            multis[ergebnis] = *coords[0]
+            multis[ergebnis] = [coords[0]]
 
             while ergebnis < len(relitable):
                 vielfacher += 1
@@ -244,8 +244,8 @@ class Concat:
                 except (IndexError, KeyError):
                     multis[ergebnis] = [coords[0]]  # interessant
 
-        for z, zeileninhalt in enumerate(relitable):
-            for s in tuple(spaltenToVervielfachen):
+        for s in tuple(spaltenToVervielfachen):
+            for z, zeileninhalt in enumerate(relitable[1:], 1):
                 # alle spalten und zeilen
                 if z in multis:
                     for listeUrZeilen in multis[z]:
