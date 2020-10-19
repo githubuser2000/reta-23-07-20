@@ -324,9 +324,9 @@ class Concat:
                             + modalOperatoren[1]
                             + (
                                 (
-                                    " nicht: "
+                                    ", nicht: "
                                     + ", ".join(modalOperatoren[2:])
-                                    + ": "
+                                    + " (das alles nicht): "
                                     + self.relitable[vervielfachter][concept[0]]
                                     if len(modalOperatoren) > 2
                                     else ""
@@ -334,11 +334,11 @@ class Concat:
                                 if abs(distanceFromLine) % 2 == 1
                                 else ""
                             )
-                            + "| "
+                            + " | "
                         )
-                    except (IndexError, KeyError) as e:
+                    except (IndexError, KeyError):
                         pass
-            except (IndexError, KeyError) as e:
+            except (IndexError, KeyError):
                 pass
 
         def storeModalNvervielfachter(
@@ -398,7 +398,7 @@ class Concat:
                         + vorkommenVielfacher_B[i][distanceFromLine]["vervielfachter"],
                     }
 
-                except (IndexError, KeyError) as e:
+                except (IndexError, KeyError):
                     try:
                         storeModalNvervielfachter(
                             Orginal_i_mehrere,
@@ -408,7 +408,7 @@ class Concat:
                             vervielFachter,
                             vorkommenVielfacher_B,
                         )
-                    except (IndexError, KeyError) as e:
+                    except (IndexError, KeyError):
                         vorkommenVielfacher_B[i] = {}
                         storeModalNvervielfachter(
                             Orginal_i_mehrere,
@@ -419,7 +419,7 @@ class Concat:
                             vorkommenVielfacher_B,
                         )
                 del vervielFachter
-            except (IndexError, KeyError) as e:
+            except (IndexError, KeyError):
                 pass
 
         def vorkommenNvielfacherPerItsProduct(

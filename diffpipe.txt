@@ -1,1 +1,0 @@
-diff <(ssh \"cat path/file.name/") <(cat path/file.name)

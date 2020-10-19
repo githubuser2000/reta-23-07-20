@@ -729,6 +729,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.wirtschaft,
+                ("organisationsform", "organisationsart", "firma", "verein"),
+                {99},
+            ),
+            (
+                Program.ParametersMain.wirtschaft,
                 ("system",),
                 {
                     69,
