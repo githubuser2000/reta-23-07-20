@@ -248,9 +248,10 @@ class Concat:
             for z, zeileninhalt in enumerate(relitable[1:], 1):
                 # alle spalten und zeilen
                 if z in multis:
-                    for listeUrZeilen in multis[z]:
-                        relitable[z][s] += store[(listeUrZeilen, s)]
+                    for listeUrZeilen in (multis[z]):
+                        relitable[z][s] += store[(listeUrZeilen, s)]+", "
                         # Zelleninhalt +=
+                    relitable[z][s] =relitable[z][s][:-2]
 
         return self.relitable, rowsAsNumbers
 
