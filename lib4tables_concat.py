@@ -248,7 +248,11 @@ class Concat:
                 if z in multis:
                     for UrZeile in multis[z]:
                         x = False
-                        if UrZeile != z:
+                        if (
+                            UrZeile != z
+                            and relitable[z][s] != store[(UrZeile, s)]
+                            and relitable[z][s] + " | " != store[(UrZeile, s)]
+                        ):
                             relitable[z][s] += store[(UrZeile, s)] + " | "
                             x = True
                             # Zelleninhalt +=
