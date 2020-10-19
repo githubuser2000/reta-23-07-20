@@ -1109,6 +1109,8 @@ class Program:
                 "religion",
                 "religionen",
             ),
+            10: ("motivation", "motive", "ziele", "ziel", "motive"),
+            11: ("analytischeontologie", "ontologie"),
         }
 
         self.kombiReverseDict: dict = {}
