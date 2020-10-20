@@ -4,19 +4,23 @@ import csv
 import io
 import os
 import sys
-import bbcode
 from copy import copy, deepcopy
 from enum import Enum
 from typing import Iterable, Union
+
+import bbcode
+
 from center import (alxp, cliout, getTextWrapThings, infoLog, output,
                     primzahlvielfachesuniversum, re, x)
-from lib4tables import moonNumber, primFak, divisorGenerator, primCreativity, primRepeat, primMultiple, isPrimMultiple, couldBePrimeNumberPrimzahlkreuz, math, OutputSyntax, htmlSyntax, csvSyntax, markdownSyntax, bbCodeSyntax
-
-from lib4tables_prepare import Prepare, shellRowsAmount
+from lib4tables import (OutputSyntax, bbCodeSyntax,
+                        couldBePrimeNumberPrimzahlkreuz, csvSyntax,
+                        divisorGenerator, htmlSyntax, isPrimMultiple,
+                        markdownSyntax, math, moonNumber, primCreativity,
+                        primFak, primMultiple, primRepeat)
 from lib4tables_concat import Concat
+from lib4tables_prepare import Prepare, shellRowsAmount
 
 originalLinesRange = range(1028)  # Maximale Zeilenanzahl
-
 
 
 class Tables:
@@ -640,7 +644,6 @@ class Tables:
             else:
                 return "\033[100m" + "\033[37m" + text + "\033[0m" + "\033[0m"
 
-
     class Combi:
         def __init__(self, tables):
             self.ChosenKombiLines: dict = {}
@@ -734,6 +737,8 @@ class Tables:
             table2 = mainTable
             """ Hätte ich mich gleich für SQL entschieden, oder hätte ich Pandas gewählt, dann hätte ich diesen Komplizierten Mist nicht programmieren müssen!
             """
+
+            # regex = re.compile(r"\s|\s+")
             # if self.tables.textWidth == 0 and type(self.tables.getOut.outType) in [
             if type(self.tables.getOut.outType) in [
                 htmlSyntax,
@@ -788,9 +793,13 @@ class Tables:
                                                     ]
                                                 )
                                             else:
-                                                table2[colNum][row][
-                                                    -1
-                                                ] += " | " + deepcopy(
+                                                table2[colNum][row][-1] += (
+                                                    " | "
+                                                    if len(table2[colNum][row][-1]) < 3
+                                                    or table2[colNum][row][-1][-3:]
+                                                    != " | "
+                                                    else ""
+                                                ) + deepcopy(
                                                     subTableCell[
                                                         rowsOfcombi.index(subRowNum + 1)
                                                     ][0]
@@ -811,6 +820,9 @@ class Tables:
                                                         rowsOfcombi.index(subRowNum + 1)
                                                     ]
                                                 )
+
+                        # table2[colNum][row] = regex.sub(" | ", table2[colNum][row])
+
             return table2
 
         def prepare_kombi(
@@ -1124,4 +1136,3 @@ class Tables:
             if i in linesAllowed:
                 newTable += [line]
         return newTable
-

@@ -1618,16 +1618,9 @@ class Program:
         alxp(
             "1. http://goexchange.de/viewtopic.php?f=13&t=2683#p17239 () \n    9. anderen etwas vormachen können (Bahai)\n    1/9. den anderen Strukturgrößen außer der Einheit (9, 1/9) etwas vormachen können"
         )
-        alxp(""" die vielen |||| bei kombi ausgabe weg machen ! """)
         alxp("""aus der ergebnis relitable ein dict machen !!!! bestes !!! """)
         alxp(
-            """ in concatRowsOfConcepts ist falsch dass relitable in einem zip mit den den concepts ist """
-        )
-        alxp(
             """Unwichtig weil Geschwindigkeit: Bei vielen Algorithmen schauen, ob nicht das Durchiterieren extrem lahmt, weil es polynomielle Laufzeit hat, statt lineare, wie es eigentlich sein sollte"""
-        )
-        alxp(
-            """Iteration in reli csv über die iteration in mathe von sternpolygonen, warum man auf die nächste stufe kommte, die ich vor langer zeit schrieb und sehr genau und lange schauen, ob die nicht schon drin ist"""
         )
         alxp(
             """In einigen GenerierungsSpalten werden Teile aus der Reli dings kopiert, was unnötig ist.
@@ -1640,13 +1633,7 @@ class Program:
         alxp(
             """Immer dann wenn ich die ganze relitable matrix deepcopy geklont habe, hätte ich das gar nicht tun müssen, da ich einfach nur die werte, die ich vorher raus genommen habe, einfach nur per copy oder deepcopy hätte nur rausnehmen müssen"""
         )
-        alxp(
-            """Modallogik funktion so machen, ggf. aufwendig, ggf. teilautomatich ggf. mit Kommas in Spalte , dass es leicht für den Anwender zu lesen sein wird"""
-        )
         alxp("""Die Sachen "obwohl man nicht kann" aus Symboliken nehmen.""")
-        alxp(
-            """Ich hatte wo eine Spalte, wo ich etwas bei Menschliches doppelt gemoppelt hatte und eine der beiden sollte besser einfach weg!"""
-        )
         alxp(
             "Ich muss bei vielen Funktionen noch den Funktionskopf, Quellcode hier dokumentieren"
         )
@@ -1660,22 +1647,17 @@ class Program:
             plus damit zusammen:  using a list comprehension inline
             """
         )
-        alxp("Auch htmlSyntax & CO ausrangieren")
         alxp(
-            """ Überlegen wo ich besser Hashmaps statt Listen verwenden sollte oder Tuple"""
+            """ Überlegen wo ich besser Hashmaps statt Listen verwenden sollte oder Tuple. Die meisten Listen durch Dicts ersetzen: fast immer schneller! """
         )
-        alxp("Die meisten Listen durch Dicts ersetzen: fast immer schneller! ")
         alxp(
             "Die Geschwindigkeitsteigerugnen entstehn meist durch anschließndes Zusammenfügen zu einer dann festen Größe."
         )
         alxp(
-            """ausrangieren von Funktionen in tableHandling die nicht zur großen Klasse gehören in extra py Datei.\nDanach weiter py datei erstellen, die dafür da ist datenstrukturen für die js zu bilden, die für die Zeilenangelegenheiten da sind, so dass die js die nicht jedes Mal berechnen muss."""
+            """py datei erstellen, die dafür da ist datenstrukturen für die js zu bilden, die für die Zeilenangelegenheiten da sind, so dass die js die nicht jedes Mal berechnen muss."""
         )
         alxp(
             """Ich müsste wirklich noch total überall schauen und zu jedem Punkt im Forum zu gleichförmiges-Polygon-Religionen"""
-        )
-        alxp(
-            """einprogrammieren: was die Vielfacher bedeuten 7*n Anführer und 3*n existenz und das auch für galaxie die Offenbarung des Johannes"""
         )
         alxp(
             """In js dass _ in Namen wie Leerzeichen und solche auch als Erste ParameterNamen setzen!"""
