@@ -926,6 +926,7 @@ class Program:
                 ),
                 {15, 26},
             ),
+            (Program.ParametersMain.procontra, ("gegenteil",), {100,101}),
             (Program.ParametersMain.licht, (), {20, 27}),
             (
                 Program.ParametersMain.bedeutung,
@@ -1621,6 +1622,9 @@ class Program:
         alxp("""aus der ergebnis relitable ein dict machen !!!! bestes !!! """)
         alxp(
             """Unwichtig weil Geschwindigkeit: Bei vielen Algorithmen schauen, ob nicht das Durchiterieren extrem lahmt, weil es polynomielle Laufzeit hat, statt lineare, wie es eigentlich sein sollte"""
+        )
+        alxp(
+            """breiten geht nicht richtig und zeilenumbruch funktioniert oft nicht bei zu breit, warum nur"""
         )
         alxp(
             """In einigen GenerierungsSpalten werden Teile aus der Reli dings kopiert, was unnötig ist.
