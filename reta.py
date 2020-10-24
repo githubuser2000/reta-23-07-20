@@ -926,7 +926,8 @@ class Program:
                 ),
                 {15, 26},
             ),
-            (Program.ParametersMain.procontra, ("gegenteil",), {100,101}),
+            (Program.ParametersMain.procontra, ("gegenteil",), {100, 101}),
+            (Program.ParametersMain.procontra, ("harmonie",), {102, 103}),
             (Program.ParametersMain.licht, (), {20, 27}),
             (
                 Program.ParametersMain.bedeutung,
