@@ -45,8 +45,8 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--primzahlvielfachesuniversum=[list][*]2,3,5,7,11
 also Primzahlen[/list]
 [*]--konzept=[list][*]weisheit,gut,zeit,ruf,selbstgerecht,egoismus[/list]
-[*]--inkrementieren[/list]
-[*]--operationen=[list][*]halbierungen,2,3,4,5,9[/list]
+[*]--inkrementieren
+[*]--operationen=[list][*]halbierungen,2,3,4,5,9[/list][/list]
 [*]-kombination
 [list][*]--was=[list][*]tiere,berufe,intelligenz,liebe,transzendentalien,strukturalien,primzahlkreuz,frauen,maenner,persoenlichkeit,religionen,motive,ontologie[/list][/list]
 [*]-ausgabe

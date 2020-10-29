@@ -720,7 +720,7 @@ class Program:
             (
                 Program.ParametersMain.operationen,
                 ("4", "vier", "viererstruktur", "viererabfolgen"),
-                {76, 77, 81},
+                {76, 77, 81, 104},
             ),
             (
                 Program.ParametersMain.wirtschaft,
