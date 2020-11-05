@@ -767,7 +767,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("emotionen", "gefuehle", "gefuehle","emotion","gefühl","gefuehl"),
+                ("emotionen", "gefuehle", "gefuehle", "emotion", "gefühl", "gefuehl"),
                 {105},
             ),
             (
@@ -1118,7 +1118,7 @@ class Program:
             ),
             10: ("motivation", "motive", "ziele", "ziel", "motive"),
             11: ("analytischeontologie", "ontologie"),
-            12: ("emotionen", "gefuehle", "gefühle","emotion","gefühl","gefühle"),
+            12: ("emotionen", "gefuehle", "gefühle", "emotion", "gefühl", "gefühle"),
         }
 
         self.kombiReverseDict: dict = {}
