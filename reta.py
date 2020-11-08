@@ -995,6 +995,12 @@ class Program:
                     True,
                 ],
             ),
+            (Program.ParametersMain.bedeutung, ("konjunktiv", "wurzel"), {106}),
+            (
+                Program.ParametersMain.bedeutung,
+                ("wesen", "zuechtung", "züchtung", "züchten", "zuechten"),
+                {107},
+            ),
             (Program.ParametersMain.symbole, (), {36, 37}),
             (
                 Program.ParametersMain.primzahlvielfachesuniversum,
