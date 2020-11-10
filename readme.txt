@@ -48,7 +48,7 @@ also Primzahlen[/list]
 [*]--inkrementieren
 [*]--operationen=[list][*]halbierungen,2,3,4,5,9[/list][/list]
 [*]-kombination
-[list][*]--was=[list][*]tiere,berufe,intelligenz,liebe,transzendentalien,strukturalien,primzahlkreuz,frauen,maenner,persoenlichkeit,religionen,motive,ontologie,emotionen[/list][/list]
+[list][*]--was=[list][*]tiere,berufe,intelligenz,liebe,transzendentalien,strukturalien,primzahlkreuz,frauen,maenner,persoenlichkeit,religionen,motive,ontologie,emotionen,personen[/list][/list]
 [*]-ausgabe
 [list][*]--nocolor
 [*]--art=
