@@ -755,6 +755,7 @@ class Program:
                 ),
                 {71},
             ),
+            (Program.ParametersMain.wirtschaft, ("bwl",), {109}),
             (
                 Program.ParametersMain.menschliches,
                 (
@@ -999,7 +1000,7 @@ class Program:
             (
                 Program.ParametersMain.bedeutung,
                 ("wesen", "zuechtung", "züchtung", "züchten", "zuechten"),
-                {107, 108},
+                {107, 108, 109},
             ),
             (Program.ParametersMain.symbole, (), {36, 37}),
             (
