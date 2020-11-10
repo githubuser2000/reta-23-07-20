@@ -999,7 +999,7 @@ class Program:
             (
                 Program.ParametersMain.bedeutung,
                 ("wesen", "zuechtung", "züchtung", "züchten", "zuechten"),
-                {107},
+                {107, 108},
             ),
             (Program.ParametersMain.symbole, (), {36, 37}),
             (
