@@ -1127,6 +1127,7 @@ class Program:
             11: ("analytischeontologie", "ontologie"),
             12: ("emotionen", "gefuehle", "gefühle", "emotion", "gefühl", "gefühle"),
             13: ("personen","berühmtheiten","beruehmtheiten"),
+            14: ("wesen","zuechten","züchten"),
         }
 
         self.kombiReverseDict: dict = {}
