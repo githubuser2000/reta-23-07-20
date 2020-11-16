@@ -18,6 +18,7 @@ parser.add_simple_formatter("hr", "<hr />", standalone=True)
 parser.add_simple_formatter("sub", "<sub>%(value)s</sub>")
 parser.add_simple_formatter("sup", "<sup>%(value)s</sup>")
 
+
 def render_color(tag_name, value, options, parent, context):
     return '<span style="color:%s;">%s</span>' % (tag_name, value)
 
@@ -1125,8 +1126,8 @@ class Program:
             10: ("motivation", "motive", "ziele", "ziel", "motive"),
             11: ("analytischeontologie", "ontologie"),
             12: ("emotionen", "gefuehle", "gefühle", "emotion", "gefühl", "gefühle"),
-            13: ("personen","berühmtheiten","beruehmtheiten"),
-            14: ("wesen","zuechten","züchten"),
+            13: ("personen", "berühmtheiten", "beruehmtheiten"),
+            14: ("wesen", "zuechten", "züchten"),
         }
 
         self.kombiReverseDict: dict = {}
@@ -1751,4 +1752,3 @@ class Program:
 
 if __name__ == "__main__":
     Program(sys.argv)
-
