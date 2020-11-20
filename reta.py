@@ -1029,7 +1029,7 @@ class Program:
                     "optimal",
                     "optimum",
                 ),
-                set(),
+                {112},
                 {(40, 41)},
             ),
             (
