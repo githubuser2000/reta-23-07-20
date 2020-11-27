@@ -923,7 +923,7 @@ class Program:
             (
                 Program.ParametersMain.procontra,
                 (
-                    "15",
+                    "gegenposition",
                 ),
                 {116},
             ),
