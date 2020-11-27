@@ -923,6 +923,13 @@ class Program:
             (
                 Program.ParametersMain.procontra,
                 (
+                    "pronutzen",
+                ),
+                {117},
+            ),
+            (
+                Program.ParametersMain.procontra,
+                (
                     "gegenposition",
                 ),
                 {116},
