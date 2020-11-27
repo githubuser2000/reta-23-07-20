@@ -918,6 +918,14 @@ class Program:
             (
                 Program.ParametersMain.procontra,
                 (
+                    "22",
+                    "11",
+                ),
+                {114},
+            ),
+            (
+                Program.ParametersMain.procontra,
+                (
                     "pro",
                     "dafür",
                     "dafuer",
