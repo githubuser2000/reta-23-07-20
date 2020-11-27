@@ -724,6 +724,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.wirtschaft,
+                ("pflanzen",),
+                {113},
+            ),
+            (
+                Program.ParametersMain.wirtschaft,
                 ("maschinen", "maschine", "gerät", "geräte", "geraete", "geraet"),
                 {89},
             ),
@@ -918,8 +923,15 @@ class Program:
             (
                 Program.ParametersMain.procontra,
                 (
-                    "22",
-                    "11",
+                    "hilfeerhalten",
+                ),
+                {115},
+            ),
+            (
+                Program.ParametersMain.procontra,
+                (
+                    "helfen",
+                    "hilfe",
                 ),
                 {114},
             ),

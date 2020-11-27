@@ -37,8 +37,8 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--groessenordnung=[list][*]strukturgroesse, organisation, politischesysteme[/list]
 [*]--universum= oder --kugel=[list][*]transzendentalien,komplexitaet,ontologie[/list]
 [*]--menschliches=[list][*]liebe,ethik,angreifbarkeit,motivation,erhalten,erwerben,benoetigen,krankheit,alpha,kreativ,chef,beruf,loesungen,musik,glaube,erkenntnis,dominierendesgeschlecht,incel,ausgangslage,sinndeslebens,emotionen[/list]
-[*]--procontra=[list][*]pro,contra,gegenteil,harmonie,22[/list]
-[*]--wirtschaft=[list][*]system,realistisch,funktioniert,erklaerung,maschinen,organisationsform,bwl[/list]
+[*]--procontra=[list][*]pro,contra,gegenteil,harmonie,helfen,hilfeerhalten[/list]
+[*]--wirtschaft=[list][*]system,realistisch,funktioniert,erklaerung,maschinen,organisationsform,bwl,pflanzen[/list]
 [*]--licht
 [*]--bedeutung=[list][*]primzahlen,anwendungdersonnen,zaehlungen,jura,geist,gestirn,wesen,zuechtung,konjunktiv,wurzel[/list]
 [*]--symbole
