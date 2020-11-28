@@ -40,7 +40,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--procontra=[list][*]pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen[/list]
 [*]--wirtschaft=[list][*]system,realistisch,funktioniert,erklaerung,maschinen,organisationsform,bwl,pflanzen[/list]
 [*]--licht
-[*]--bedeutung=[list][*]primzahlen,anwendungdersonnen,zaehlungen,jura,geist,gestirn,wesen,zuechtung,konjunktiv,wurzel[/list]
+[*]--bedeutung=[list][*]primzahlen,anwendungdersonnen,zaehlungen,jura,geist,gestirn,wesen,zuechtung,konjunktiv,wurzel,vorzeichen[/list]
 [*]--symbole
 [*]--primzahlvielfachesuniversum=[list][*]2,3,5,7,11
 also Primzahlen[/list]

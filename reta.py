@@ -972,6 +972,13 @@ class Program:
             (
                 Program.ParametersMain.bedeutung,
                 (
+                    "vorzeichen",
+                ),
+                {118, 119},
+            ),
+            (
+                Program.ParametersMain.bedeutung,
+                (
                     "primzahlen",
                     "vielfache",
                     "vielfacher",
