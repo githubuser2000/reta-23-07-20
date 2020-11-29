@@ -923,6 +923,13 @@ class Program:
             (
                 Program.ParametersMain.procontra,
                 (
+                    "nervig",
+                ),
+                {120},
+            ),
+            (
+                Program.ParametersMain.procontra,
+                (
                     "pronutzen",
                 ),
                 {117},
