@@ -221,18 +221,23 @@ class Concat:
         self.relitable = relitable
         # reliCopy = deepcopy(relitable)
         spaltenToVervielfache: set = rowsAsNumbers & {90, 19}
-        store = {}
         for s in spaltenToVervielfache:
+            store = {}
             for z, zeileninhalt in enumerate(relitable[2:], 2):
                 content = zeileninhalt[s]
                 if len(content.strip()) > 0:
                     store[(z, s)] = content  # interessant
-
+            #x("store", store)
             multis = {}
             for (coords, content) in store.items():
                 vielfacher = 1
                 ergebnis = vielfacher * coords[0]
-                multis[ergebnis] = [coords[0]]
+                #multis[ergebnis] = [coords[0]]
+                try:
+                    multis[ergebnis] += [coords[0]]  # interessant
+                    # spalten wo was hin soll = ursprungszeile1,2,3,...
+                except (IndexError, KeyError):
+                    multis[ergebnis] = [coords[0]]  # interessant
 
                 while ergebnis < len(relitable):
                     vielfacher += 1
@@ -242,22 +247,29 @@ class Concat:
                         # spalten wo was hin soll = ursprungszeile1,2,3,...
                     except (IndexError, KeyError):
                         multis[ergebnis] = [coords[0]]  # interessant
-
+            x("iiii", store)
             for z, zeileninhalt in enumerate(relitable[2:], 2):
                 # alle spalten und zeilen
+                xx = False
+                if (len(relitable[z][s].strip()) != 0):
+                    relitable[z][s] += " | "
                 if z in multis:
                     for UrZeile in multis[z]:
-                        x = False
+                        #x("etr", str(UrZeile))
+                        #x("etr", s)
                         if (
                             UrZeile != z
                             and relitable[z][s] != store[(UrZeile, s)]
                             and relitable[z][s] + " | " != store[(UrZeile, s)]
                         ):
-                            relitable[z][s] += store[(UrZeile, s)] + " | "
-                            x = True
+                            #if (z == 12):
+                            #    x("jjjj", store[(UrZeile, s)])
+                            if (len( store[(UrZeile, s)]) !=  0):
+                                relitable[z][s] += store[(UrZeile, s)] + " | "
+                            xx = True
                             # Zelleninhalt +=
-                    if x:
-                        relitable[z][s] = relitable[z][s][:-3]
+                if xx:
+                    relitable[z][s] = relitable[z][s][:-3]
 
         return self.relitable, rowsAsNumbers
 
