@@ -809,6 +809,7 @@ class Program:
                     "ethik",
                 ),
                 {8, 9, 28},
+                {(121, 122)},
             ),
             (
                 Program.ParametersMain.menschliches,
@@ -1121,6 +1122,14 @@ class Program:
                 ),
                 set(),
                 {(62, 63)},
+            ),
+            (
+                Program.ParametersMain.konzept,
+                (
+                    "liebepolung",
+                ),
+                set(),
+                {(121, 122)},
             ),
             (
                 Program.ParametersMain.konzept,
