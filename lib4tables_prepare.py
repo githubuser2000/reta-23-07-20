@@ -3,7 +3,7 @@
 from typing import Iterable, Union
 from lib4tables import moonNumber, isPrimMultiple
 from center import (alxp, cliout, getTextWrapThings, infoLog, output,
-                    primzahlvielfachesuniversum, re, x)
+                    primzahlvielfachesgalaxie, re, x)
 from enum import Enum
 import sys
 

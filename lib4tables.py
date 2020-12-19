@@ -4,7 +4,7 @@ import math
 from enum import Enum
 
 from center import (alxp, cliout, getTextWrapThings, infoLog, output,
-                    primzahlvielfachesuniversum, re, x)
+                    primzahlvielfachesgalaxie, re, x)
 class OutputSyntax:
     def coloredBeginCol(self, num: int, rest: bool = False):
         return self.beginZeile

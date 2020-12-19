@@ -10,7 +10,7 @@ from tableHandling import (Enum, Iterable, OutputSyntax, Tables, Union, alxp,
                            bbcode, bbCodeSyntax, cliout, copy, csv, csvSyntax,
                            deepcopy, getTextWrapThings, htmlSyntax, infoLog,
                            markdownSyntax, math, os, output, primCreativity,
-                           primzahlvielfachesuniversum, re, shellRowsAmount,
+                           primzahlvielfachesgalaxie, re, shellRowsAmount,
                            sys, x)
 
 parser = bbcode.Parser()
@@ -444,7 +444,7 @@ class Program:
 
         Program.ParametersMain: namedtuple = namedtuple(
             "ParametersMain",
-            "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesuniversum konzept inkrementieren operationen alles",
+            "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesgalaxie konzept inkrementieren operationen alles",
         )
         Program.ParametersMain = Program.ParametersMain(
             (
@@ -484,7 +484,7 @@ class Program:
             ("licht",),
             ("bedeutung",),
             ("symbole",),
-            primzahlvielfachesuniversum,
+            primzahlvielfachesgalaxie,
             (
                 "konzept",
                 "konzepte",
@@ -947,7 +947,7 @@ class Program:
                 (
                     "hilfeerhalten",
                 ),
-                {115},
+                {114},
             ),
             (
                 Program.ParametersMain.procontra,
@@ -955,7 +955,7 @@ class Program:
                     "helfen",
                     "hilfe",
                 ),
-                {114},
+                {115},
             ),
             (
                 Program.ParametersMain.procontra,
@@ -965,6 +965,62 @@ class Program:
                     "dafuer",
                 ),
                 {17, 48},
+            ),
+            (
+                Program.ParametersMain.procontra,
+                (
+                    "nichtauskommen",
+                ),
+                {123},
+            ),
+            (
+                Program.ParametersMain.procontra,
+                (
+                    "nichtdagegen",
+                ),
+                {124},
+            ),
+            (
+                Program.ParametersMain.procontra,
+                (
+                    "keingegenteil",
+                ),
+                {125},
+            ),
+            (
+                Program.ParametersMain.procontra,
+                (
+                    "nichtdafuer",
+                ),
+                {126},
+            ),
+            (
+                Program.ParametersMain.procontra,
+                (
+                    "hilfenichtgebrauchen",
+                ),
+                {127},
+            ),
+            (
+                Program.ParametersMain.procontra,
+                (
+                    "nichthelfenkoennen",
+                ),
+                {128},
+            ),
+            (
+                Program.ParametersMain.procontra,
+                (
+                    "nichtabgeneigt",
+                ),
+                {129},
+            ),
+            (
+                Program.ParametersMain.procontra,
+                (
+                    "unmotivierbar",
+                ),
+                {130},
             ),
             (
                 Program.ParametersMain.procontra,
@@ -1053,7 +1109,7 @@ class Program:
             ),
             (Program.ParametersMain.symbole, (), {36, 37}),
             (
-                Program.ParametersMain.primzahlvielfachesuniversum,
+                Program.ParametersMain.primzahlvielfachesgalaxie,
                 allowedPrimNumbersForCommand,
                 set(),
                 set(),

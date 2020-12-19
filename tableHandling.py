@@ -11,7 +11,7 @@ from typing import Iterable, Union
 import bbcode
 
 from center import (alxp, cliout, getTextWrapThings, infoLog, output,
-                    primzahlvielfachesuniversum, re, x)
+                    primzahlvielfachesgalaxie, re, x)
 from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz, csvSyntax,
                         divisorGenerator, htmlSyntax, isPrimMultiple,

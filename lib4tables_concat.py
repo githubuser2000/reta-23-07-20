@@ -5,7 +5,7 @@ import os
 from copy import copy, deepcopy
 
 from center import (alxp, cliout, getTextWrapThings, infoLog, output,
-                    primzahlvielfachesuniversum, re, x)
+                    primzahlvielfachesgalaxie, re, x)
 from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz, csvSyntax,
                         divisorGenerator, htmlSyntax, isPrimMultiple,
@@ -592,7 +592,6 @@ class Concat:
             rowsAsNumbers |= {
                 len(self.relitable[0]),
                 len(self.relitable[0]) + 1,
-                len(self.relitable[0]) + 2,
             }
             for polytype, polytypename in zip(
                 hardCodedCouple, ["Sternpolygone", "gleichförmiges Polygone"]
@@ -661,68 +660,79 @@ class Concat:
                     + self.tables.SpaltenVanillaAmount,
                 )
                 x("doofi 2", tuple(self.tables.dataDict[1].keys())[0])
-                x("doofi 3", primzahlvielfachesuniversum)
+                x("doofi 3", primzahlvielfachesgalaxie)
                 self.tables.generatedSpaltenParameter[
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.SpaltenVanillaAmount
-                ] = ([primzahlvielfachesuniversum],)
+                ] = ([primzahlvielfachesgalaxie],)
 
                 x("idiot", self.tables.generatedSpaltenParameter)
 
-            self.primAmounts = 0
-            self.oldPrimAmounts = 0
-            self.lastPrimAnswers: dict = {}
-
-            def PrimAnswer2(i: int) -> str:
-                return self.lastPrimAnswers[i]
-
-            def PrimAnswer(i: int) -> str:
-                if i > 3:
-                    if self.primAmounts != self.oldPrimAmounts:
-                        if self.primAmounts % 2 == 0:
-                            return "für innen"
-                        else:
-                            return "für außen"
-                    else:
-                        return ""
-                elif i == 2:
-                    return "für seitlich"
-                elif i == 3:
-                    return "gegen seitlich"
-                elif i == 1:
-                    return "alle Richtungen möglich"
-                else:
-                    return ""
-
-            for i, cols in enumerate(relitableCopy):
-                primMultiples = primMultiple(i)
-                into = "" if i != 0 else "Primzahlwirkung "
-
-                self.oldPrimAmounts = self.primAmounts
-                if couldBePrimeNumberPrimzahlkreuz(i):
-                    self.primAmounts += 1
-                if primCreativity(i) == 1:
-                    into = PrimAnswer(i)
-                    self.lastPrimAnswers[i] = into
-                elif i > 1:
-                    for couple in primRepeat(primFak(i)):
-                        if couple[1] == 1:
-                            into += PrimAnswer2(couple[0]) + " + "
-                        else:
-                            into += (
-                                str(couple[1]) + " * " + PrimAnswer2(couple[0]) + " + "
-                            )
-                    into = into[:-3]
-                elif i == 1:
-                    into = PrimAnswer(1)
-                self.relitable[i] += [into]
-            self.tables.generatedSpaltenParameter[
-                len(self.tables.generatedSpaltenParameter)
-                + self.tables.SpaltenVanillaAmount
-            ] = ([primzahlvielfachesuniversum],)
-
+        if len(self.tables.primUniversePrimsSet) > 0 or rowsAsNumbers >= {5}:
+            self.relitable, rowsAsNumbers = self.spalteFuerGegenInnenAussenSeitlichPrim(self.relitable, rowsAsNumbers)
             x("idiot__", self.tables.generatedSpaltenParameter)
 
+        return self.relitable, rowsAsNumbers
+
+    def spalteFuerGegenInnenAussenSeitlichPrim(self, relitable: list, rowsAsNumbers: set) -> tuple:
+
+        self.relitable = relitable
+        self.primAmounts = 0
+        self.oldPrimAmounts = 0
+        self.lastPrimAnswers: dict = {}
+
+        rowsAsNumbers |= {
+            len(self.relitable[0]),
+            }
+
+        def PrimAnswer2(i: int) -> str:
+            return self.lastPrimAnswers[i]
+
+        def PrimAnswer(i: int) -> str:
+            if i > 3:
+                if self.primAmounts != self.oldPrimAmounts:
+                    if self.primAmounts % 2 == 0:
+                        return "für innen"
+                    else:
+                        return "für außen"
+                else:
+                    return ""
+            elif i == 2:
+                return "für seitlich"
+            elif i == 3:
+                return "gegen seitlich"
+            elif i == 1:
+                return "alle Richtungen möglich"
+            else:
+                return ""
+
+        for i, cols in enumerate(relitable):
+            primMultiples = primMultiple(i)
+            into = "" if i != 0 else "Primzahlwirkung "
+
+            self.oldPrimAmounts = self.primAmounts
+            if couldBePrimeNumberPrimzahlkreuz(i):
+                self.primAmounts += 1
+            if primCreativity(i) == 1:
+                into = PrimAnswer(i)
+                self.lastPrimAnswers[i] = into
+            elif i > 1:
+                for couple in primRepeat(primFak(i)):
+                    if couple[1] == 1:
+                        into += PrimAnswer2(couple[0]) + " + "
+                    else:
+                        into += (
+                                str(couple[1]) + " * " + PrimAnswer2(couple[0]) + " + "
+                        )
+                into = into[:-3]
+            elif i == 1:
+                into = PrimAnswer(1)
+            self.relitable[i] += [into]
+        self.tables.generatedSpaltenParameter[
+            len(self.tables.generatedSpaltenParameter)
+            + self.tables.SpaltenVanillaAmount
+            ] = (self.tables.dataDict[0][5][0], [primzahlvielfachesgalaxie])
+        x("rewt", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
 
     def readConcatCsv(self, relitable: list, rowsAsNumbers: set) -> tuple:
