@@ -349,13 +349,13 @@ class Concat:
                         # x("_ü5_", modalOperatoren[1:])
                         into[i] += (
                             (
-                                "mittelstark überdurschnittlich: "
+                                "mittelstark überdurchschnittlich: "
                                 if abs(distanceFromLine) == 2
                                 else (
-                                    "überdurschnittlich: "
+                                    "überdurchschnittlich: "
                                     if abs(distanceFromLine) == 1
                                     else (
-                                        "mittelleicht überdurschnittlich: "
+                                        "mittelleicht überdurchschnittlich: "
                                         if abs(distanceFromLine) == 3
                                         else (
                                             "sehr: "
