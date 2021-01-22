@@ -2,7 +2,7 @@
 3|8|10;Mensch, Menschenaffe (nicht alle);;Intelligenz stark auf Objekte und Gegenstände bezogen;Objektliebe, Gegenstandsliebe;das existierende Ding, die existierende Sache;;;;;;;;;
 7;Hund, Wolf, Fuchs;;bloßes Verallgemeinern, ohne Sicherheit;;;;;;;;;;;
 5|9;Katze;Berufe für die Allgemeinheit;;jeden zum Fressen gern haben;das Allgemeine;;;Anmut;;;;;;
-5|9|13;;Arzt, Krankenschwester, Pfleger;;;;;;;;;;;;
+5|9|13;;Arzt, Krankenschwester, Pfleger, Sozialarbeiter, Volunteer z.B. dritte Welt-Länder;;;;;;;;;;;;
 10;Rabe, Krähe, Greifvogel, Esel, Fledermaus, Affen;M.I.N.T.: Mathematiker, Informatiker, Naturwissenschaftler, Techniker;;;;;;;;;;;;
 10|7;Delphin, Pferd, Pfau, Schwan, (Möter = Wookiee);Philosoph, Laufsteg-Model, Architekt, Künstler, Schriftsteller, Musiker;mathematische Induktionsverfahren und aus der Informatik;Partnerschaftsliebe;Schönheit;;;;;Liebesbeziehung, Schöngeistiges;;;;
 11;Kanarienvogel;Systemtheoretiker, Darsteller;;;;;;;;;;;;
@@ -55,14 +55,14 @@
 6/8|+2|+4|+1/5|+1/6|+7|-10;;;;;;;;;Religion 10;;;;;
 3|10|14;;Ingenieur, Techniker;;;;;;;;;;;;
 11|12;;;Systeme übergreifen zu können;;;;;;;;;;;
-13;;Anwalt, Pflegekraft, Sozialarbeiter;;;;;;;;;;;;
-13;;Handwerker;;;;;;;;;;;;
+13;;Anwalt;;;;;;;;;;;;
+3;;Handwerker;;;;;;;;;;;;
 19;;Motivationstrainer;;;;;;;;;;;;
 6|7|8;;;;;Tensor und Matrix, aber vielleicht braucht man dafür gar nicht die 7, die Richtung, sondern 6 und 8 reicht womöglich;;;;;;;;;
 5|7|10;;;richtige und vollständige Axiome und mathematische Induktionsverfahren basierend auf richtiger Grundlage;;;;;;;;;;;
 5|6|10;;;mathematische Abduktionsverfahren auf richtiger Grundlage, deren Axiome bestimmt wurden, indem auf den Ursprung durch Abduktion geschlussfolgert wurde;;;;;;;;;;;
 5|8|10;;;Axiome mithilfe eines allgemeineren Falles bestimmt und richtige Deduktion mithilfe solcher Axiome;;;;;;;;;;;
-2|(3)|5;;;;;;;;;;;Determinismus und Indeterminismus;;;
+1|2|(3)|4|5;;;;;;;;;;;Determinismus und Indeterminismus;;;
 1|2;;;;;nicht Vergleich, aber tatsächliche Gleichheit / Ungleichheit (1-4 ist Welt und nicht Analyse der Welt);;;;;;;;;
 7|10|13|14;;Biochemiker;;;;;;;;;;;;
 3|8|10|(15)|(29);Mensch in der Zukunft;;;;;;;;;;;;;
@@ -93,3 +93,4 @@
 6|1/7;;;;;Koordinaten (mathematisch), die Stellung (z.B. in sozialer Hierarchie, etc.), die Qualifikation;;;;;;;;;
 6|1/6|7;;;;;Vektorfeld bzw. Feld mit Feldstärke;;;;;;;;;
 6|1/6;;;;;Dichte;;;;;;;;;
+1|4;;;;;Konstanz (identische Veränderung);;;;;;;;;
