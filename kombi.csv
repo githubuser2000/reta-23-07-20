@@ -4,15 +4,15 @@
 5|9;Katze;Berufe für die Allgemeinheit;;jeden zum Fressen gern haben;das Allgemeine;;;Anmut;;;;;;
 5|9|13;;Arzt, Krankenschwester, Pfleger;;;;;;;;;;;;
 10;Rabe, Krähe, Greifvogel, Esel, Fledermaus, Affen;M.I.N.T.: Mathematiker, Informatiker, Naturwissenschaftler, Techniker;;;;;;;;;;;;
-10|7;Delphin, Pferd, Pfau, Schwan, (Möter, Wookiee);Philosoph, Laufsteg-Model, Architekt, Künstler, Schriftsteller, Musiker;mathematische Induktionsverfahren und aus der Informatik;Partnerschaftsliebe;Schönheit;;;;;Liebesbeziehung, Schöngeistiges;;;;
+10|7;Delphin, Pferd, Pfau, Schwan, (Möter = Wookiee);Philosoph, Laufsteg-Model, Architekt, Künstler, Schriftsteller, Musiker;mathematische Induktionsverfahren und aus der Informatik;Partnerschaftsliebe;Schönheit;;;;;Liebesbeziehung, Schöngeistiges;;;;
 11;Kanarienvogel;Systemtheoretiker, Darsteller;;;;;;;;;;;;
 2|4|7|14|15|18;Hundeaußerirdische;;;;;;;;;;;;;
 5|9|19;Katzenaußerirdische;;;;;;;;;;;;;
 5;Reptil;Lehrer, Professor, TV-Star, Musikstar, Influencer, Kommunist;;;;;;;;;;;;
 3|6|10|12;Elefantenaußerirdische;;;;;;;;;;;;;
 7|9;Vielleicht Schafe, Ziegen, Kühe;Nicht kommerzielle Berufe / Vereine;;;Naivität, Konstruktivität, Unbescholtenheit;;;;;;;;;
-1;vielleicht Parasit;Zauberkünstler;;;;;;;;;;;;
-9;Hase;Illusionist;;;;;;;;;;;;
+1;Mikroorganismen;Zauberkünstler;;;;;;;;;;;;
+9;Hase;;;;;;;;;;;;;
 7|12;;;abstrakte Induktionsverfahren (meta-systemisch), die es erst in 1000 Jahren geben wird, höher als Mathematik, keine Mathematik;;;;;;;;;;;
 7|6;;;verallgemeinern über Abduktionen und Abduktionen über Verallgemeinerungen, Weisheiten übergreifen können;;das Wohl, mathematisch der Vektor;;;;;;;;;
 7|5;;;verallgemeinern über Axiome;;Assent (Englisch, philosophisches Wort): Zulassung, Akzeptanz;5. das Gute für sich wollen (Selbstsucht), 7. das Gute geben wollen (Selbstlosigkeit) ;;;;Sich ständig als überlegener sich kräftig durchsetzungsstark und gut gewillter, harter, möglicher Anführer, akzeptiert zu sein, zu bemühen;;;;
@@ -42,13 +42,13 @@
 10|14;;;;;Ist eher falsch: Das ist falsch: so genannte Prädikate aus der Prädikatenlogik und damit auch Relationen aus der Computerwissenschaft;;;;;;;;;
 10|14|15;;;;;Ist eher falsch: kontextfreie Sprache und Grammatik, nicht deterministischer Kellerautomat, Negation (13) muss nicht gegeben sein, da es die Bedingung nicht gibt, dass bei Komplementbildung so genannte Abgeschlossenheit gelten müsse. ;;;;;;;;;
 10|14|15|13;;;;;Ist eher falsch: die anderen 3 übrigen Grammatiken und Sprachen aus der Chomsky-Hierarchie, Turingmaschine, endlicher Automat, Negation (13) ist notwendig, da diese 3 Sachen bei Komplementbildung immer abgeschlossen sein müssen. Negation entspricht u.a. Komplementbildung. ;;;;;;;;;
-4;Faultier;;;;;;;;;;;;;
+4;Faultier, fleißige Tiere womöglich;;;;;;;;;;;;;
 11|13;;;;;;11. Fürsorge anwerben (so wie ein Kanarienvogel), 13. Fürsorge geben (als Helfer) ;;;;;;;;
 17|19;;;;;;17. Motivation nehmen (als jemand, der einen anderen abgeneigt ist), 19. Motivation geben (als Fan) ;;;;;;;;
 2|5|6|9|11|12|13|17|64;;;;;;;Frauen;;;;;;;
 1|3|7|8|10|14|16|32;;;;;;;Männer;;;;;;;
 11|7;;;Verallgemeinerungsfähigkeit über Systeme;;;;;;;;;;;
-10|3;Bonobos (Menschenaffen);;;;;;;;;;;;;
+10|3;Bonobos (Menschenaffen) (ohne 8);;;;;;;;;;;;;
 -3|-6;;;;;;;;;Judentum;;;;;
 -7|-3;;;;;;;;;Christentum;;;;;
 +5|(-6)|(-7)|(-8)|+9;;;;;;;;;Bahai;;;;;
@@ -63,22 +63,7 @@
 5|6|10;;;mathematische Abduktionsverfahren auf richtiger Grundlage, deren Axiome bestimmt wurden, indem auf den Ursprung durch Abduktion geschlussfolgert wurde;;;;;;;;;;;
 5|8|10;;;Axiome mithilfe eines allgemeineren Falles bestimmt und richtige Deduktion mithilfe solcher Axiome;;;;;;;;;;;
 2|(3)|5;;;;;;;;;;;Determinismus und Indeterminismus;;;
-1|2;;;gleiche und selbe Typ 2 sehen können und die 1 wirkt wie ein Katalysator, Verstärker auf die andere(-n) Zahl(-en).;;;;;;;;;;;
-1|3;;;gleiche und selbe Typ 3 sehen können und die 1 wirkt wie ein Katalysator, Verstärker auf die andere(-n) Zahl(-en).;;;;;;;;;;;
-1|4;;;gleiche und selbe Typ 4 sehen können und die 1 wirkt wie ein Katalysator, Verstärker auf die andere(-n) Zahl(-en).;;;;;;;;;;;
-1|5;;;gleiche und selbe Typ 5 sehen können und die 1 wirkt wie ein Katalysator, Verstärker auf die andere(-n) Zahl(-en).;;;;;;;;;;;
-1|6;;;gleiche und selbe Typ 6 sehen können und die 1 wirkt wie ein Katalysator, Verstärker auf die andere(-n) Zahl(-en).;;;;;;;;;;;
-1|7;;;gleiche und selbe Typ 7 sehen können und die 1 wirkt wie ein Katalysator, Verstärker auf die andere(-n) Zahl(-en).;;;;;;;;;;;
-1|8;;;gleiche und selbe Typ 8 sehen können und die 1 wirkt wie ein Katalysator, Verstärker auf die andere(-n) Zahl(-en).;;;;;;;;;;;
-1|9;;;gleiche und selbe Typ 9 sehen können und die 1 wirkt wie ein Katalysator, Verstärker auf die andere(-n) Zahl(-en).;;;;;;;;;;;
-1|10;;;gleiche und selbe Typ 10 sehen können und die 1 wirkt wie ein Katalysator, Verstärker auf die andere(-n) Zahl(-en).;;;;;;;;;;;
-1|11;;;gleiche und selbe Typ 11 sehen können und die 1 wirkt wie ein Katalysator, Verstärker auf die andere(-n) Zahl(-en).;;;;;;;;;;;
-1|12;;;gleiche und selbe Typ 12 sehen können und die 1 wirkt wie ein Katalysator, Verstärker auf die andere(-n) Zahl(-en).;;;;;;;;;;;
-1|13;;;gleiche und selbe Typ 13 sehen können und die 1 wirkt wie ein Katalysator, Verstärker auf die andere(-n) Zahl(-en).;;;;;;;;;;;
-1|14;;;gleiche und selbe Typ 14 sehen können und die 1 wirkt wie ein Katalysator, Verstärker auf die andere(-n) Zahl(-en).;;;;;;;;;;;
-1|15;;;gleiche und selbe Typ 15 sehen können und die 1 wirkt wie ein Katalysator, Verstärker auf die andere(-n) Zahl(-en).;;;;;;;;;;;
-1|16;;;gleiche und selbe Typ 16 sehen können und die 1 wirkt wie ein Katalysator, Verstärker auf die andere(-n) Zahl(-en).;;;;;;;;;;;
-1|17;;;gleiche und selbe Typ 17 sehen können und die 1 wirkt wie ein Katalysator, Verstärker auf die andere(-n) Zahl(-en).;;;;;;;;;;;
+1|2;;;;;nicht Vergleich, aber tatsächliche Gleichheit / Ungleichheit (1-4 ist Welt und nicht Analyse der Welt);;;;;;;;;
 7|10|13|14;;Biochemiker;;;;;;;;;;;;
 3|8|10|(15)|(29);Mensch in der Zukunft;;;;;;;;;;;;;
 +2|+7|-8|-13|-16;;;;;;;;;;;;;Hitler;
@@ -91,7 +76,7 @@
 2|3;;;;;Existenzialien (Sturuktualie), das Greifbare (Galaxiewort);;;;;;;;;Hebel mit Einrastfunktion oder Waage oder Wippe oder Hoch-Stab-Springen
 3|4;;;;;;;;;;;;;;Rudern (ohne Lenken! weil ohne 7) oder Windmühle bzw. Wassermühle bzw. Windrad oder Segeln (ohne bestimmen der Richtung, weil ohne 7) oder Aerodynamik bzw. Fliegen bzw. Rotor
 3|4|7;;;;;;;;;;;;;;Rudern / Paddeln mit Bestimmen der Richtung
-1|3;;;;;;;;;;;;;;Staffellauf
+1|3;;;;;Solipsismus (Galaxie);;;;;;;;;Staffellauf
 3|-4|-6|-7|+10 ;;;;;;;;;;;;;Florian Homm;
 7|(14);Fuchs;;;;;;;;;;;;;
 7|10|12;;;;;;;;;;;;;Ludwig Wittgenstein;
