@@ -250,7 +250,11 @@ def moonNumber(num: int):
     exponent: list = []
     for i in range(2, num):
         oneResult = math.pow(num, 1 / i)
-        if math.floor(oneResult) == oneResult:
+        x("_z_", (num, i, oneResult))
+        """"sehr unsauber von mir gelöst!!!! , aber reicht für das was es soll
+            vorher war 125 nicht mit dabei, bei sehr großen Zahlen wird dieser
+            Algo wieder Mist bauen! """
+        if round(oneResult)*100000 == round(oneResult*100000):
             results += [int(oneResult)]
             exponent += [i - 2]
     return results, exponent
