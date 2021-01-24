@@ -134,7 +134,6 @@ class Prepare:
                 self.zaehlungen[2][i] = len(self.zaehlungen[2]) + 1
             self.zaehlungen[3][i] = len(self.zaehlungen[2])
             self.zaehlungen[4][i] = moonType
-        x("_x_", self.zaehlungen[4])
 
     @property
     def breitenn(self):
