@@ -773,6 +773,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
+                ("gleichheitvonordnungen", "ungleichheit", "dominieren", "gleichheit"),
+                {132},
+            ),
+            (
+                Program.ParametersMain.menschliches,
                 ("emotionen", "gefuehle", "gefuehle", "emotion", "gefühl", "gefuehl"),
                 {105},
             ),
