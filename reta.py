@@ -773,7 +773,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("gleichheitvonordnungen", "ungleichheit", "dominieren", "gleichheit"),
+                ("gleichheitfreiheit", "ungleichheit", "dominieren", "gleichheit","freiheit"),
                 {132},
             ),
             (
