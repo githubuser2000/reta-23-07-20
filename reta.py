@@ -1145,6 +1145,18 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 (
+                    "vereinenverbinden",
+                    "vereinen",
+                    "verbinden",
+                    "einheit",
+                    "verbindung",
+                ),
+                set(),
+                {(133, 134)},
+            ),
+            (
+                Program.ParametersMain.konzept,
+                (
                     "gut",
                     "böse",
                     "boese",
