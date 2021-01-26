@@ -5,6 +5,7 @@ from lib4tables import moonNumber, isPrimMultiple
 from center import (alxp, cliout, getTextWrapThings, infoLog, output,
                     primzahlvielfachesgalaxie, re, x)
 from enum import Enum
+from copy import deepcopy
 import sys
 
 shellRowsAmount, h_de, dic, fill = getTextWrapThings()
