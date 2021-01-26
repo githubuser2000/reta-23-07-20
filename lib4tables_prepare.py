@@ -386,7 +386,9 @@ class Prepare:
                     if n % 2 == 0:
                         numRangeYesZ.add(n)
 
+        x('_x3_', numRange)
         numRange = cutset(ifTypAtAll, numRange, numRangeYesZ)
+        x('_x2_', numRange)
 
         primMultiples: list = []
         ifPrimAtAll = False
@@ -405,6 +407,8 @@ class Prepare:
                 numRangeYesZ.add(n)
         numRange = cutset(ifPrimAtAll, numRange, numRangeYesZ)
 
+        x('_x1_', numRange)
+
         toPowerIt: list = []
         ifPowerAtall: bool = False
         for condition in paramLines:
@@ -417,15 +421,21 @@ class Prepare:
                 toPowerIt += [int(condition[:-1])]
         if ifPowerAtall:
             numRangeYesZ = set()
+            x("_y1_", (toPowerIt, numRange))
+            lastEl = list(numRange)
+            lastEl.sort()
+            lastEl = lastEl[-1]
             for base in toPowerIt:
-                for n in numRange:
+                for n in range(lastEl):
                     onePower = pow(base, n)
                     numRangeMax = max(numRange)
+                    x("_y2_", (onePower, numRangeMax))
                     if onePower <= numRangeMax:
                         numRangeYesZ |= {onePower}
                     else:
                         break
             numRange = cutset(ifPowerAtall, numRange, numRangeYesZ)
+        x('_x4_', numRange)
 
         numRangeYesZ = set()
 

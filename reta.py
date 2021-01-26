@@ -1763,6 +1763,8 @@ class Program:
             newTable, spaltenreihenfolgeundnurdiese
         )
         self.tables.getOut.cliOut(finallyDisplayLines, newTable, numlen, rowsRange)
+        alxp("""Quellcode muss noch mehr dokumentiert werden in Funktionen usw.""")
+        alxp("""Pytest verwenden wegen Geschwindigkeitstests.""")
         alxp(
             "1. http://goexchange.de/viewtopic.php?f=13&t=2683#p17239 () \n    9. anderen etwas vormachen können (Bahai)\n    1/9. den anderen Strukturgrößen außer der Einheit (9, 1/9) etwas vormachen können"
         )
