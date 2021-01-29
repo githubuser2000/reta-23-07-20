@@ -30,7 +30,7 @@
 9|9;;;;;jegliches Alles;;;;;;;;;
 7|7;;;;;das Gute selbst;;;;;;;;;
 8|9;;;;;Phantasie;;;;;;;;;
-10|6;Elefant, Bär;;;;Wichtigkeit: Die Relation (Wahrheit definiert Wert) und der Rang von Wahrheiten (Wert definiert Wahrheit), Relation synonym zu zweistelligem Prädikat, d.h. also auch dies hier mehrstelliges Prädikat aus Werten;;;;;;;;;
+(10)|+6|(3);Elefant, Bär;;;;Wichtigkeit: Die Relation (Wahrheit definiert Wert) und der Rang von Wahrheiten (Wert definiert Wahrheit), Relation synonym zu zweistelligem Prädikat, d.h. also auch dies hier mehrstelliges Prädikat aus Werten;;;;;;;;;
 9|6;;;;;Ausmessung, Vermessung;;;wahrscheinlich „gehoben“ sein;;;;;;
 10|7|8;;;;;Realismus, d.h. die Realität von Wirklichkeit und die Wirklichkeit von Realität;;;;;;;;;
 8|10|6;;;;;keine Ahnung, ob das stimmt: Welten;;;;;;;;;
@@ -56,7 +56,7 @@
 3|10|14;;Ingenieur, Techniker;;;;;;;;;;;;
 11|12;;;Systeme übergreifen zu können;;;;;;;;;;;
 13;;Anwalt;;;;;;;;;;;;
-3;;Handwerker;;;;;;;;;;;;
+3;Krebs;Handwerker;;;;;;;;;;;;
 19;;Motivationstrainer;;;;;;;;;;;;
 6|7|8;;;;;Tensor und Matrix, aber vielleicht braucht man dafür gar nicht die 7, die Richtung, sondern 6 und 8 reicht womöglich;;;;;;;;;
 5|7|10;;;richtige und vollständige Axiome und mathematische Induktionsverfahren basierend auf richtiger Grundlage;;;;;;;;;;;
