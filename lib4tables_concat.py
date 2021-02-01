@@ -668,7 +668,7 @@ class Concat:
 
                 x("idiot", self.tables.generatedSpaltenParameter)
 
-        if len(self.tables.primUniversePrimsSet) > 0 or rowsAsNumbers >= {5}:
+        if len(self.tables.primUniversePrimsSet) > 0 or rowsAsNumbers >= {5} or rowsAsNumbers >= {135}:
             self.relitable, rowsAsNumbers = self.spalteFuerGegenInnenAussenSeitlichPrim(self.relitable, rowsAsNumbers)
             x("idiot__", self.tables.generatedSpaltenParameter)
 

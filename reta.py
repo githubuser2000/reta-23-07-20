@@ -773,13 +773,20 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("gleichheitfreiheit", "ungleichheit", "dominieren", "gleichheit","freiheit"),
+                ("gleichheitfreiheit", "ungleichheit", "dominieren", "gleichheit", "freiheit"),
                 {132},
             ),
             (
                 Program.ParametersMain.menschliches,
                 ("emotionen", "gefuehle", "gefuehle", "emotion", "gefühl", "gefuehl"),
                 {105},
+            ),
+            (
+                Program.ParametersMain.menschliches,
+                (
+                    "wirkung",
+                ),
+                {135},
             ),
             (
                 Program.ParametersMain.menschliches,
