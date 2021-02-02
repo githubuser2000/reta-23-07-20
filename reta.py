@@ -784,6 +784,13 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "egoismus",
+                ),
+                {136},
+            ),
+            (
+                Program.ParametersMain.menschliches,
+                (
                     "wirkung",
                 ),
                 {135},
