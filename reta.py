@@ -1771,6 +1771,7 @@ class Program:
         )
         self.tables.getOut.cliOut(finallyDisplayLines, newTable, numlen, rowsRange)
         alxp("""Quellcode muss noch mehr dokumentiert werden in Funktionen usw.""")
+        alxp("""Meta-Thema, Konkretes und die anderen Dinger außer nur die Sache mit der 2, sondern auch 3,4,5,...""")
         alxp("""Pytest verwenden wegen Geschwindigkeitstests.""")
         alxp(
             "1. http://goexchange.de/viewtopic.php?f=13&t=2683#p17239 () \n    9. anderen etwas vormachen können (Bahai)\n    1/9. den anderen Strukturgrößen außer der Einheit (9, 1/9) etwas vormachen können"
