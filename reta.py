@@ -785,6 +785,8 @@ class Program:
                 Program.ParametersMain.menschliches,
                 (
                     "egoismus",
+                    "altruismus",
+                    "selbstlosigkeit"
                 ),
                 {136},
             ),
