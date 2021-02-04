@@ -1283,6 +1283,7 @@ class Program:
             12: ("emotionen", "gefuehle", "gefühle", "emotion", "gefühl", "gefühle"),
             13: ("personen", "berühmtheiten", "beruehmtheiten"),
             14: ("wesen", "zuechten", "züchten"),
+            15: ("gegentranszendentalien", "gegenstrukturalien"),
         }
 
         self.kombiReverseDict: dict = {}
