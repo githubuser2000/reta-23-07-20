@@ -689,7 +689,7 @@ class Program:
                     "existenzialien",
                     "universalien",
                 ),
-                {5, 54, 55, 131},
+                {5, 54, 55, 131, 138},
             ),
             (
                 Program.ParametersMain.universum,
@@ -942,6 +942,14 @@ class Program:
                 {31},
             ),
             (Program.ParametersMain.menschliches, ("musik",), {33}),
+            (
+                Program.ParametersMain.procontra,
+                (
+                    "gegenspieler",
+                    "antagonist",
+                ),
+                {137},
+            ),
             (
                 Program.ParametersMain.procontra,
                 (
