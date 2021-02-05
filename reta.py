@@ -773,6 +773,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
+                ("gegentranszendentalien", "gegenstrukturalien"),
+                {138, 139},
+            ),
+            (
+                Program.ParametersMain.menschliches,
                 ("gleichheitfreiheit", "ungleichheit", "dominieren", "gleichheit", "freiheit"),
                 {132},
             ),
