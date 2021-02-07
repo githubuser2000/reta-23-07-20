@@ -959,6 +959,42 @@ class Program:
             (
                 Program.ParametersMain.procontra,
                 (
+                    "veraenderung",
+                    "veraendern",
+                    "veränderung",
+                    "verändern",
+                ),
+                {142},
+            ),
+            (
+                Program.ParametersMain.procontra,
+                (
+                    "baendigenkontrollieren",
+                    "kontrollieren",
+                    "baendigen",
+                    "bändigen",
+                ),
+                {143},
+            ),
+            (
+                Program.ParametersMain.procontra,
+                (
+                    "vereinen",
+                    "einheit",
+                ),
+                {144},
+            ),
+            (
+                Program.ParametersMain.procontra,
+                (
+                    "vorteile",
+                    "veraenderungnutzen",
+                ),
+                {141},
+            ),
+            (
+                Program.ParametersMain.procontra,
+                (
                     "gegenspieler",
                     "antagonist",
                 ),
