@@ -950,6 +950,15 @@ class Program:
             (
                 Program.ParametersMain.procontra,
                 (
+                    "ergibtsinn",
+                    "machtsinn",
+                    "sinn",
+                ),
+                {140},
+            ),
+            (
+                Program.ParametersMain.procontra,
+                (
                     "gegenspieler",
                     "antagonist",
                 ),
