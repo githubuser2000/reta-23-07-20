@@ -595,6 +595,16 @@ class Program:
                 {90},
             ),
             (
+                Program.ParametersMain.universum,
+                ("kugelnkreise", "kugeln", "kreise"),
+                {145},
+            ),
+            (
+                Program.ParametersMain.galaxie,
+                ("kugelnkreise", "kugeln", "kreise"),
+                {145},
+            ),
+            (
                 Program.ParametersMain.galaxie,
                 ("chinesischeshoroskop", "china"),
                 {91},

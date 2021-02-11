@@ -33,9 +33,11 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--breiten=[list][*]20,50,10,70[*]30,100,20[/list]
 [*]--keinenummerierung
 [*]--religionen=[list][*]sternpolygon,dertierkreiszeichen,gleichfoermigespolygon,vertreterhoehererkonzepte,messias,religionsgründertyp,vergleich[/list]
-[*]--galaxie= oder --kreis=[list][*]tierkreiszeichen,thomasevangelium,analytischeontologie,offenbarungdesjohannes,chinesischeshoroskop[/list]
+[*]--galaxie= oder
+--kreis=[list][*]tierkreiszeichen,thomasevangelium,analytischeontologie,offenbarungdesjohannes,chinesischeshoroskop,kugelnkreise[/list]
 [*]--groessenordnung=[list][*]strukturgroesse, organisation, politischesysteme[/list]
-[*]--universum= oder --kugel=[list][*]transzendentalien,komplexitaet,ontologie[/list]
+[*]--universum= oder
+--kugel=[list][*]transzendentalien,komplexitaet,ontologie,kugelnkreise[/list]
 [*]--menschliches=[list][*]liebe,ethik,angreifbarkeit,motivation,erhalten,erwerben,benoetigen,krankheit,alpha,kreativ,chef,beruf,loesungen,musik,glaube,erkenntnis,dominierendesgeschlecht,incel,ausgangslage,sinndeslebens,emotionen,gleichheit,wirkung,egoismus,gegentranszendentalien[/list]
 [*]--procontra=[list][*]pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit[/list]
 [*]--wirtschaft=[list][*]system,realistisch,funktioniert,erklaerung,maschinen,organisationsform,bwl,pflanzen[/list]
