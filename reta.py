@@ -804,6 +804,7 @@ class Program:
                     "selbstlosigkeit"
                 ),
                 {136},
+                {(66, 67)},
             ),
             (
                 Program.ParametersMain.menschliches,
@@ -1296,7 +1297,7 @@ class Program:
                     "egoist",
                     "altruist",
                 ),
-                set(),
+                {136},
                 {(66, 67)},
             ),
             (Program.ParametersMain.konzept, ("kausal", ), set(), {(110, 111)}),
