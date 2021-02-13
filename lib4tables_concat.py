@@ -690,15 +690,15 @@ class Concat:
             b = moreAndLess[1] / metavariable if moreAndLess[1] / metavariable == round(moreAndLess[1] / metavariable) else None
             moreAndLess = (a, b)
             return moreAndLess, newCol
+        for bothRows in [0, 1] if lower1greater2both3 == 3 else [0, ] if lower1greater2both3 == 1 else [1, ] if lower1greater2both3 == 2 else []:
+            for i, row in enumerate(relitable):
+                moreAndLess = (i, i)
+                dieAnderenZeilenUndSpalten = []
+                while moreAndLess != (None, None):
+                    switching(newCol)
+                    dieAnderenZeilenUndSpalten += [(moreAndLess, newCol)]
 
-        for i, row in enumerate(relitable):
-            moreAndLess = (i, i)
-            dieAnderenZeilenUndSpalten = []
-            while moreAndLess != (None, None):
-                switching(newCol)
-                dieAnderenZeilenUndSpalten += [(moreAndLess, newCol)]
-
-            self.relitable[i] += [into]
+                self.relitable[i] += [into]
         self.tables.generatedSpaltenParameter[
             len(self.tables.generatedSpaltenParameter)
             + self.tables.SpaltenVanillaAmount
