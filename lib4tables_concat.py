@@ -681,19 +681,22 @@ class Concat:
             len(self.relitable[0]),
             }
         transzendentalienSpalten: tuple = (5, 131)
-        newRow = transzendentalienSpalten[0]
+        newCol = transzendentalienSpalten[0]
 
         #def switching(metavariable: int, lower1greater2both3: int, row: int):
-        def switching(newRow: int):
-            newRow = transzendentalienSpalten[0] if newRow == transzendentalienSpalten[1] else transzendentalienSpalten[0]
-            a = moreAndLess[0] * metavariable
+        def switching(newCol: int):
+            newCol = transzendentalienSpalten[0] if newCol == transzendentalienSpalten[1] else transzendentalienSpalten[0]
+            a = moreAndLess[0] * metavariable if moreAndLess[0] * metavariable < len(relitable) else None
             b = moreAndLess[1] / metavariable if moreAndLess[1] / metavariable == round(moreAndLess[1] / metavariable) else None
             moreAndLess = (a, b)
+            return moreAndLess, newCol
 
         for i, row in enumerate(relitable):
             moreAndLess = (i, i)
-            switching(i)
-            dieAnderenSpaltenUndZeilen = [(i, 5)]
+            dieAnderenZeilenUndSpalten = []
+            while moreAndLess != (None, None):
+                switching(newCol)
+                dieAnderenZeilenUndSpalten += [(moreAndLess, newCol)]
 
             self.relitable[i] += [into]
         self.tables.generatedSpaltenParameter[
