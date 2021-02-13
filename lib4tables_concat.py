@@ -749,24 +749,21 @@ class Concat:
                     vorworte2 = metaOrWhat[metavariable][
                         0 if len(dieAnderenZeilenUndSpalten) == 0 else 1
                     ]
-                    wort1 = makeVorwort(
+                    wort1: str = makeVorwort(
                         len(dieAnderenZeilenUndSpalten) + 1, vorworte2, 1
                     )
-                    wort2 = makeVorwort(
+                    wort2: str = makeVorwort(
                         len(dieAnderenZeilenUndSpalten) + 1, vorworte2, 2
                     )
                     dieAnderenZeilenUndSpalten += [(moreAndLess, newCol, wort1, wort2)]
 
                 for t, vier in enumerate(dieAnderenZeilenUndSpalten):
-                    into = dieAnderenZeilenUndSpalten[t][bothRows + 2] + (
+                    into = vier[bothRows + 2] + (
                         +relitable[
-                            moreAndLess[0]
-                            if bothRows == 0
-                            else relitable[moreAndLess[1]]
-                        ][newCol]
+                            vier[0][0] if bothRows == 0 else relitable[vier[0][1]]
+                        ][vier[1]]
                     )
-
-                self.relitable[i] += [into]
+                    self.relitable[i] += [into]
         self.tables.generatedSpaltenParameter[
             len(self.tables.generatedSpaltenParameter)
             + self.tables.SpaltenVanillaAmount
