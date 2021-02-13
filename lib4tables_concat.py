@@ -227,12 +227,12 @@ class Concat:
                 content = zeileninhalt[s]
                 if len(content.strip()) > 0:
                     store[(z, s)] = content  # interessant
-            #x("store", store)
+            # x("store", store)
             multis = {}
             for (coords, content) in store.items():
                 vielfacher = 1
                 ergebnis = vielfacher * coords[0]
-                #multis[ergebnis] = [coords[0]]
+                # multis[ergebnis] = [coords[0]]
                 try:
                     multis[ergebnis] += [coords[0]]  # interessant
                     # spalten wo was hin soll = ursprungszeile1,2,3,...
@@ -251,20 +251,20 @@ class Concat:
             for z, zeileninhalt in enumerate(relitable[2:], 2):
                 # alle spalten und zeilen
                 xx = False
-                if (len(relitable[z][s].strip()) != 0):
+                if len(relitable[z][s].strip()) != 0:
                     relitable[z][s] += " | "
                 if z in multis:
                     for UrZeile in multis[z]:
-                        #x("etr", str(UrZeile))
-                        #x("etr", s)
+                        # x("etr", str(UrZeile))
+                        # x("etr", s)
                         if (
                             UrZeile != z
                             and relitable[z][s] != store[(UrZeile, s)]
                             and relitable[z][s] + " | " != store[(UrZeile, s)]
                         ):
-                            #if (z == 12):
+                            # if (z == 12):
                             #    x("jjjj", store[(UrZeile, s)])
-                            if (len( store[(UrZeile, s)]) !=  0):
+                            if len(store[(UrZeile, s)]) != 0:
                                 relitable[z][s] += store[(UrZeile, s)] + " | "
                             xx = True
                             # Zelleninhalt +=
@@ -668,46 +668,94 @@ class Concat:
 
                 x("idiot", self.tables.generatedSpaltenParameter)
 
-        if len(self.tables.primUniversePrimsSet) > 0 or rowsAsNumbers >= {5} or rowsAsNumbers >= {135}:
-            self.relitable, rowsAsNumbers = self.spalteFuerGegenInnenAussenSeitlichPrim(self.relitable, rowsAsNumbers)
+        if (
+            len(self.tables.primUniversePrimsSet) > 0
+            or rowsAsNumbers >= {5}
+            or rowsAsNumbers >= {135}
+        ):
+            self.relitable, rowsAsNumbers = self.spalteFuerGegenInnenAussenSeitlichPrim(
+                self.relitable, rowsAsNumbers
+            )
             x("idiot__", self.tables.generatedSpaltenParameter)
 
         return self.relitable, rowsAsNumbers
 
-    def spalteMetaKontretTheorieAbstrakt_etc(self, relitable: list, rowsAsNumbers: set, metavariable: int = 2, lower1greater2both3: int = 3) -> tuple:
+    def spalteMetaKontretTheorieAbstrakt_etc(
+        self,
+        relitable: list,
+        rowsAsNumbers: set,
+        metavariable: int = 2,
+        lower1greater2both3: int = 3,
+    ) -> tuple:
 
         self.relitable = relitable
         rowsAsNumbers |= {
             len(self.relitable[0]),
-            }
+        }
         transzendentalienSpalten: tuple = (5, 131)
         newCol = transzendentalienSpalten[0]
 
-        #def switching(metavariable: int, lower1greater2both3: int, row: int):
+        # def switching(metavariable: int, lower1greater2both3: int, row: int):
         def switching(newCol: int):
-            newCol = transzendentalienSpalten[0] if newCol == transzendentalienSpalten[1] else transzendentalienSpalten[0]
-            a = moreAndLess[0] * metavariable if moreAndLess[0] * metavariable < len(relitable) else None
-            b = moreAndLess[1] / metavariable if moreAndLess[1] / metavariable == round(moreAndLess[1] / metavariable) else None
+            """2 neue Koordinaten der Tabelle durch 3 Parameter, d.h. einer, newCol, gilt für beide"""
+            newCol = (
+                transzendentalienSpalten[0]
+                if newCol == transzendentalienSpalten[1]
+                else transzendentalienSpalten[0]
+            )
+            a = (
+                moreAndLess[0] * metavariable
+                if moreAndLess[0] * metavariable < len(relitable)
+                else None
+            )
+            b = (
+                moreAndLess[1] / metavariable
+                if moreAndLess[1] / metavariable == round(moreAndLess[1] / metavariable)
+                else None
+            )
             moreAndLess = (a, b)
             return moreAndLess, newCol
-        for bothRows in [0, 1] if lower1greater2both3 == 3 else [0, ] if lower1greater2both3 == 1 else [1, ] if lower1greater2both3 == 2 else []:
+
+        """das große Durchiterieren beginnt durch die Tabelle mit anschließendem erweitern dieser, um Spalten"""
+        for bothRows in (
+            [0, 1]
+            if lower1greater2both3 == 3
+            else [
+                0,
+            ]
+            if lower1greater2both3 == 1
+            else [
+                1,
+            ]
+            if lower1greater2both3 == 2
+            else []
+        ):
             for i, row in enumerate(relitable):
                 moreAndLess = (i, i)
                 dieAnderenZeilenUndSpalten = []
                 while moreAndLess != (None, None):
                     switching(newCol)
                     dieAnderenZeilenUndSpalten += [(moreAndLess, newCol)]
+                    into = deepcopy(
+                        relitable[
+                            moreAndLess[0]
+                            if bothRows == 0
+                            else relitable[moreAndLess[1]]
+                        ][newCol]
+                    )
 
                 self.relitable[i] += [into]
         self.tables.generatedSpaltenParameter[
             len(self.tables.generatedSpaltenParameter)
             + self.tables.SpaltenVanillaAmount
-            ] = (self.tables.dataDict[0][5][0], [("blablub123")])
-            #] = (self.tables.dataDict[0][5][0], [("primzahlvielfachesgalaxie", "")])
+        ] = (self.tables.dataDict[0][5][0], [("blablub123")])
+        # ] = (self.tables.dataDict[0][5][0], [("primzahlvielfachesgalaxie", "")])
         x("r_wt", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
 
-    def spalteFuerGegenInnenAussenSeitlichPrim(self, relitable: list, rowsAsNumbers: set) -> tuple:
+    def spalteFuerGegenInnenAussenSeitlichPrim(
+        self, relitable: list, rowsAsNumbers: set
+    ) -> tuple:
 
         self.relitable = relitable
         self.primAmounts = 0
@@ -716,7 +764,7 @@ class Concat:
 
         rowsAsNumbers |= {
             len(self.relitable[0]),
-            }
+        }
 
         def PrimAnswer2(i: int) -> str:
             return self.lastPrimAnswers[i]
@@ -740,7 +788,7 @@ class Concat:
                 return ""
 
         for i, cols in enumerate(relitable):
-            primMultiples = primMultiple(i)
+            # primMultiples = primMultiple(i)
             into = "" if i != 0 else "Primzahlwirkung "
 
             self.oldPrimAmounts = self.primAmounts
@@ -754,9 +802,7 @@ class Concat:
                     if couple[1] == 1:
                         into += PrimAnswer2(couple[0]) + " + "
                     else:
-                        into += (
-                                str(couple[1]) + " * " + PrimAnswer2(couple[0]) + " + "
-                        )
+                        into += str(couple[1]) + " * " + PrimAnswer2(couple[0]) + " + "
                 into = into[:-3]
             elif i == 1:
                 into = PrimAnswer(1)
@@ -764,7 +810,7 @@ class Concat:
         self.tables.generatedSpaltenParameter[
             len(self.tables.generatedSpaltenParameter)
             + self.tables.SpaltenVanillaAmount
-            ] = (self.tables.dataDict[0][5][0], [primzahlvielfachesgalaxie])
+        ] = (self.tables.dataDict[0][5][0], [primzahlvielfachesgalaxie])
         x("rewt", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
 
