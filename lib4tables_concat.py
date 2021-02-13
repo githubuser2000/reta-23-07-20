@@ -716,6 +716,8 @@ class Concat:
             moreAndLess = (a, b)
             return moreAndLess, newCol
 
+        metaOrWhat = {2: (("Meta-Thema: ", "konkretes: "), ("Meta-", "konkret-"))}
+
         """das große Durchiterieren beginnt durch die Tabelle mit anschließendem erweitern dieser, um Spalten"""
         for bothRows in (
             [0, 1]
@@ -732,17 +734,20 @@ class Concat:
         ):
             for i, row in enumerate(relitable):
                 moreAndLess = (i, i)
-                dieAnderenZeilenUndSpalten = []
+                dieAnderenZeilenUndSpalten: list = []
                 while moreAndLess != (None, None):
                     switching(newCol)
-                    dieAnderenZeilenUndSpalten += [(moreAndLess, newCol)]
-                    into = deepcopy(
-                        relitable[
-                            moreAndLess[0]
-                            if bothRows == 0
-                            else relitable[moreAndLess[1]]
-                        ][newCol]
-                    )
+                    vorwort = metaOrWhat[metavariable][
+                        0 if len(dieAnderenZeilenUndSpalten) == 0 else 1
+                    ]
+                    dieAnderenZeilenUndSpalten += [(moreAndLess, newCol, vorwort)]
+
+                into = vorwort + (
+                    ""
+                    + relitable[
+                        moreAndLess[0] if bothRows == 0 else relitable[moreAndLess[1]]
+                    ][newCol]
+                )
 
                 self.relitable[i] += [into]
         self.tables.generatedSpaltenParameter[
