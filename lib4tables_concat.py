@@ -674,6 +674,36 @@ class Concat:
 
         return self.relitable, rowsAsNumbers
 
+    def spalteMetaKontretTheorieAbstrakt_etc(self, relitable: list, rowsAsNumbers: set, metavariable: int = 2, lower1greater2both3: int = 3) -> tuple:
+
+        self.relitable = relitable
+        rowsAsNumbers |= {
+            len(self.relitable[0]),
+            }
+        transzendentalienSpalten: tuple = (5, 131)
+        newRow = transzendentalienSpalten[0]
+
+        #def switching(metavariable: int, lower1greater2both3: int, row: int):
+        def switching(newRow: int):
+            newRow = transzendentalienSpalten[0] if newRow == transzendentalienSpalten[1] else transzendentalienSpalten[0]
+            a = moreAndLess[0] * metavariable
+            b = moreAndLess[1] / metavariable if moreAndLess[1] / metavariable == round(moreAndLess[1] / metavariable) else None
+            moreAndLess = (a, b)
+
+        for i, row in enumerate(relitable):
+            moreAndLess = (i, i)
+            switching(i)
+            dieAnderenSpaltenUndZeilen = [(i, 5)]
+
+            self.relitable[i] += [into]
+        self.tables.generatedSpaltenParameter[
+            len(self.tables.generatedSpaltenParameter)
+            + self.tables.SpaltenVanillaAmount
+            ] = (self.tables.dataDict[0][5][0], [("blablub123")])
+            #] = (self.tables.dataDict[0][5][0], [("primzahlvielfachesgalaxie", "")])
+        x("r_wt", self.tables.generatedSpaltenParameter)
+        return self.relitable, rowsAsNumbers
+
     def spalteFuerGegenInnenAussenSeitlichPrim(self, relitable: list, rowsAsNumbers: set) -> tuple:
 
         self.relitable = relitable

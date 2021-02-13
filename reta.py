@@ -1849,6 +1849,7 @@ class Program:
             newTable, spaltenreihenfolgeundnurdiese
         )
         self.tables.getOut.cliOut(finallyDisplayLines, newTable, numlen, rowsRange)
+        alxp("""Funktionsköpfe überall noch dokumentieren wo sie bisher noch nicht dokumentiert sind""")
         alxp("""Quellcode muss noch mehr dokumentiert werden in Funktionen usw.""")
         alxp("""Meta-Thema, Konkretes und die anderen Dinger außer nur die Sache mit der 2, sondern auch 3,4,5,...""")
         alxp("""Pytest verwenden wegen Geschwindigkeitstests.""")
