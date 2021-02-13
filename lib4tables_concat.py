@@ -696,7 +696,7 @@ class Concat:
         newCol = transzendentalienSpalten[0]
 
         # def switching(metavariable: int, lower1greater2both3: int, row: int):
-        def switching(newCol: int):
+        def switching(newCol: int) -> tuple:
             """2 neue Koordinaten der Tabelle durch 3 Parameter, d.h. einer, newCol, gilt für beide"""
             newCol = (
                 transzendentalienSpalten[0]
@@ -718,6 +718,15 @@ class Concat:
 
         metaOrWhat = {2: (("Meta-Thema: ", "konkretes: "), ("Meta-", "konkret-"))}
 
+        def makeVorwort(
+            wiederholungen: int, vorworte2: tuple, less1ormore2: int
+        ) -> str:
+            return (
+                vorworte2[less1ormore2 - 1] * wiederholungen
+                if wiederholungen > 1
+                else vorworte2[less1ormore2 - 1]
+            )
+
         """das große Durchiterieren beginnt durch die Tabelle mit anschließendem erweitern dieser, um Spalten"""
         for bothRows in (
             [0, 1]
@@ -737,17 +746,25 @@ class Concat:
                 dieAnderenZeilenUndSpalten: list = []
                 while moreAndLess != (None, None):
                     switching(newCol)
-                    vorwort = metaOrWhat[metavariable][
+                    vorworte2 = metaOrWhat[metavariable][
                         0 if len(dieAnderenZeilenUndSpalten) == 0 else 1
                     ]
-                    dieAnderenZeilenUndSpalten += [(moreAndLess, newCol, vorwort)]
+                    wort1 = makeVorwort(
+                        len(dieAnderenZeilenUndSpalten) + 1, vorworte2, 1
+                    )
+                    wort2 = makeVorwort(
+                        len(dieAnderenZeilenUndSpalten) + 1, vorworte2, 2
+                    )
+                    dieAnderenZeilenUndSpalten += [(moreAndLess, newCol, wort1, wort2)]
 
-                into = vorwort + (
-                    ""
-                    + relitable[
-                        moreAndLess[0] if bothRows == 0 else relitable[moreAndLess[1]]
-                    ][newCol]
-                )
+                for t, vier in enumerate(dieAnderenZeilenUndSpalten):
+                    into = dieAnderenZeilenUndSpalten[t][bothRows + 2] + (
+                        +relitable[
+                            moreAndLess[0]
+                            if bothRows == 0
+                            else relitable[moreAndLess[1]]
+                        ][newCol]
+                    )
 
                 self.relitable[i] += [into]
         self.tables.generatedSpaltenParameter[
