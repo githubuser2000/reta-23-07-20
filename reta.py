@@ -10,8 +10,8 @@ from tableHandling import (Enum, Iterable, OutputSyntax, Tables, Union, alxp,
                            bbcode, bbCodeSyntax, cliout, copy, csv, csvSyntax,
                            deepcopy, getTextWrapThings, htmlSyntax, infoLog,
                            markdownSyntax, math, os, output, primCreativity,
-                           primzahlvielfachesgalaxie, re, shellRowsAmount,
-                           sys, x)
+                           primzahlvielfachesgalaxie, re, shellRowsAmount, sys,
+                           x)
 
 parser = bbcode.Parser()
 parser.add_simple_formatter("hr", "<hr />", standalone=True)
@@ -358,13 +358,13 @@ class Program:
                             # ] = [(parameterMainName, parameterName)]
                             else:
                                 case = 3
-                                try:
-                                    into += [(parameterMainName, parameterName)]
+                                # try:
+                                into += [(parameterMainName, parameterName)]
                                 #    dataDicts[i][dd] += [
                                 #        (parameterMainName, parameterName)
                                 #    ]
-                                except KeyError:
-                                    into = [(parameterMainName, parameterName)]
+                                # except KeyError:
+                                #    into = [(parameterMainName, parameterName)]
                             #    dataDicts[i][dd] = [
                             #        (parameterMainName, parameterName)
                             #    ]
@@ -389,6 +389,10 @@ class Program:
                             else None
                         )
                     )
+                    if case == 1:
+                        x("_z_", index2a)
+                    if case != 1:
+                        x("_zz_", index2a)
                     intoA = into if case == 2 else (into,)
                     for index2, into2 in zip_longest(
                         index2a if case == 2 else (index2a,), intoA, fillvalue=into
@@ -444,7 +448,7 @@ class Program:
 
         Program.ParametersMain: namedtuple = namedtuple(
             "ParametersMain",
-            "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesgalaxie konzept inkrementieren operationen alles",
+            "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesgalaxie konzept inkrementieren operationen universummetakonkret alles",
         )
         Program.ParametersMain = Program.ParametersMain(
             (
@@ -491,6 +495,7 @@ class Program:
             ),
             ("inkrementieren",),
             ("operationen",),
+            ("universummetakonkret", "meta", "konkret", "theorie", "praxis"),
             ("alles"),
         )
         allowedPrimNumbersForCommand = tuple(
@@ -682,6 +687,78 @@ class Program:
                 {83},
             ),
             (
+                Program.ParametersMain.universummetakonkret,
+                ("meta",),
+                set(),
+                set(),
+                set(),
+                set(),
+                set((2, 1)),
+            ),
+            (
+                Program.ParametersMain.universummetakonkret,
+                ("konkret",),
+                set(),
+                set(),
+                set(),
+                set(),
+                set((2, 0)),
+            ),
+            (
+                Program.ParametersMain.universummetakonkret,
+                ("theorie",),
+                set(),
+                set(),
+                set(),
+                set(),
+                set((3, 1)),
+            ),
+            (
+                Program.ParametersMain.universummetakonkret,
+                ("praxis",),
+                set(),
+                set(),
+                set(),
+                set(),
+                set((3, 0)),
+            ),
+            (
+                Program.ParametersMain.universummetakonkret,
+                ("mathematisch-diskret",),
+                set(),
+                set(),
+                set(),
+                set(),
+                set((5, 1)),
+            ),
+            (
+                Program.ParametersMain.universummetakonkret,
+                ("kontinuierlich",),
+                set(),
+                set(),
+                set(),
+                set(),
+                set((5, 0)),
+            ),
+            (
+                Program.ParametersMain.universummetakonkret,
+                ("fluss",),
+                set(),
+                set(),
+                set(),
+                set(),
+                set((4, 1)),
+            ),
+            (
+                Program.ParametersMain.universummetakonkret,
+                ("stau",),
+                set(),
+                set(),
+                set(),
+                set(),
+                set((4, 0)),
+            ),
+            (
                 Program.ParametersMain.universum,
                 (
                     "analytischeontologie",
@@ -788,7 +865,13 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("gleichheitfreiheit", "ungleichheit", "dominieren", "gleichheit", "freiheit"),
+                (
+                    "gleichheitfreiheit",
+                    "ungleichheit",
+                    "dominieren",
+                    "gleichheit",
+                    "freiheit",
+                ),
                 {132},
             ),
             (
@@ -798,19 +881,13 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
-                (
-                    "egoismus",
-                    "altruismus",
-                    "selbstlosigkeit"
-                ),
+                ("egoismus", "altruismus", "selbstlosigkeit"),
                 {136},
                 {(66, 67)},
             ),
             (
                 Program.ParametersMain.menschliches,
-                (
-                    "wirkung",
-                ),
+                ("wirkung",),
                 {135},
             ),
             (
@@ -1013,30 +1090,22 @@ class Program:
             ),
             (
                 Program.ParametersMain.procontra,
-                (
-                    "nervig",
-                ),
+                ("nervig",),
                 {120},
             ),
             (
                 Program.ParametersMain.procontra,
-                (
-                    "pronutzen",
-                ),
+                ("pronutzen",),
                 {117},
             ),
             (
                 Program.ParametersMain.procontra,
-                (
-                    "gegenposition",
-                ),
+                ("gegenposition",),
                 {116},
             ),
             (
                 Program.ParametersMain.procontra,
-                (
-                    "hilfeerhalten",
-                ),
+                ("hilfeerhalten",),
                 {114},
             ),
             (
@@ -1058,58 +1127,42 @@ class Program:
             ),
             (
                 Program.ParametersMain.procontra,
-                (
-                    "nichtauskommen",
-                ),
+                ("nichtauskommen",),
                 {123},
             ),
             (
                 Program.ParametersMain.procontra,
-                (
-                    "nichtdagegen",
-                ),
+                ("nichtdagegen",),
                 {124},
             ),
             (
                 Program.ParametersMain.procontra,
-                (
-                    "keingegenteil",
-                ),
+                ("keingegenteil",),
                 {125},
             ),
             (
                 Program.ParametersMain.procontra,
-                (
-                    "nichtdafuer",
-                ),
+                ("nichtdafuer",),
                 {126},
             ),
             (
                 Program.ParametersMain.procontra,
-                (
-                    "hilfenichtgebrauchen",
-                ),
+                ("hilfenichtgebrauchen",),
                 {127},
             ),
             (
                 Program.ParametersMain.procontra,
-                (
-                    "nichthelfenkoennen",
-                ),
+                ("nichthelfenkoennen",),
                 {128},
             ),
             (
                 Program.ParametersMain.procontra,
-                (
-                    "nichtabgeneigt",
-                ),
+                ("nichtabgeneigt",),
                 {129},
             ),
             (
                 Program.ParametersMain.procontra,
-                (
-                    "unmotivierbar",
-                ),
+                ("unmotivierbar",),
                 {130},
             ),
             (
@@ -1125,9 +1178,7 @@ class Program:
             (Program.ParametersMain.licht, (), {20, 27}),
             (
                 Program.ParametersMain.bedeutung,
-                (
-                    "vorzeichen",
-                ),
+                ("vorzeichen",),
                 {118, 119},
             ),
             (
@@ -1283,9 +1334,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept,
-                (
-                    "liebepolung",
-                ),
+                ("liebepolung",),
                 set(),
                 {(121, 122)},
             ),
@@ -1300,7 +1349,7 @@ class Program:
                 {136},
                 {(66, 67)},
             ),
-            (Program.ParametersMain.konzept, ("kausal", ), set(), {(110, 111)}),
+            (Program.ParametersMain.konzept, ("kausal",), set(), {(110, 111)}),
             (Program.ParametersMain.inkrementieren, set(), {43, 54, 74, 95}),
         ]
 
@@ -1849,9 +1898,13 @@ class Program:
             newTable, spaltenreihenfolgeundnurdiese
         )
         self.tables.getOut.cliOut(finallyDisplayLines, newTable, numlen, rowsRange)
-        alxp("""Funktionsköpfe überall noch dokumentieren wo sie bisher noch nicht dokumentiert sind""")
+        alxp(
+            """Funktionsköpfe überall noch dokumentieren wo sie bisher noch nicht dokumentiert sind"""
+        )
         alxp("""Quellcode muss noch mehr dokumentiert werden in Funktionen usw.""")
-        alxp("""Meta-Thema, Konkretes und die anderen Dinger außer nur die Sache mit der 2, sondern auch 3,4,5,...""")
+        alxp(
+            """Meta-Thema, Konkretes und die anderen Dinger außer nur die Sache mit der 2, sondern auch 3,4,5,..."""
+        )
         alxp("""Pytest verwenden wegen Geschwindigkeitstests.""")
         alxp(
             "1. http://goexchange.de/viewtopic.php?f=13&t=2683#p17239 () \n    9. anderen etwas vormachen können (Bahai)\n    1/9. den anderen Strukturgrößen außer der Einheit (9, 1/9) etwas vormachen können"
@@ -1903,7 +1956,7 @@ class Program:
         alxp(
             """In js dass _ in Namen wie Leerzeichen und solche auch als Erste ParameterNamen setzen!"""
         )
-        #alxp("Mond 125 wird nicht angezeigt, also ggf. einige andere nicht oder fälschlicherweise Sonnen?")
+        # alxp("Mond 125 wird nicht angezeigt, also ggf. einige andere nicht oder fälschlicherweise Sonnen?")
         # alxp("1. Clean Code\n2. Vollständigkeit der Befehle auch")
 
     def combiTableWorkflow(
@@ -1974,4 +2027,3 @@ class Program:
 
 if __name__ == "__main__":
     Program(sys.argv)
-

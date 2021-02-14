@@ -328,7 +328,7 @@ class Concat:
         def ModalLogikIntoTable(
             concept, distanceFromLine, i, into, vorkommenVielfacher_B
         ):
-            i_with_a_distance = i + distanceFromLine
+            # i_with_a_distance = i + distanceFromLine
             try:
                 modalOperatorenEn = vorkommenVielfacher_B[i][distanceFromLine]["modalS"]
                 vervielfachterEn = vorkommenVielfacher_B[i][distanceFromLine][
@@ -694,10 +694,13 @@ class Concat:
         }
         transzendentalienSpalten: tuple = (5, 131)
         newCol = transzendentalienSpalten[0]
+        """bis hier hin waren es die Vorinitialisierungen von Variablen"""
 
         # def switching(metavariable: int, lower1greater2both3: int, row: int):
         def switching(newCol: int) -> tuple:
-            """2 neue Koordinaten der Tabelle durch 3 Parameter, d.h. einer, newCol, gilt für beide"""
+            """2 neue Koordinaten der Tabelle durch 3 Parameter, d.h. einer, newCol, gilt für beide
+            Immer eine halbierung und dopplung oder verdreifachung und ..., etc.
+            und wechsel der Spalte von den 2 Spalten"""
             newCol = (
                 transzendentalienSpalten[0]
                 if newCol == transzendentalienSpalten[1]
@@ -727,7 +730,8 @@ class Concat:
                 else vorworte2[less1ormore2 - 1]
             )
 
-        """das große Durchiterieren beginnt durch die Tabelle mit anschließendem erweitern dieser, um Spalten"""
+        """Haupt-Teil, das davor waren Vorbereitungen
+        das große Durchiterieren beginnt durch die Tabelle mit anschließendem erweitern dieser, um Spalten"""
         for bothRows in (
             [0, 1]
             if lower1greater2both3 == 3
@@ -742,33 +746,39 @@ class Concat:
             else []
         ):
             for i, row in enumerate(relitable):
-                moreAndLess = (i, i)
-                dieAnderenZeilenUndSpalten: list = []
+                moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
+                neue2KoordNeue2Vorwoerter: list = []
                 while moreAndLess != (None, None):
                     switching(newCol)
                     vorworte2 = metaOrWhat[metavariable][
-                        0 if len(dieAnderenZeilenUndSpalten) == 0 else 1
+                        0 if len(neue2KoordNeue2Vorwoerter) == 0 else 1
                     ]
                     wort1: str = makeVorwort(
-                        len(dieAnderenZeilenUndSpalten) + 1, vorworte2, 1
+                        len(neue2KoordNeue2Vorwoerter) + 1, vorworte2, 1
                     )
                     wort2: str = makeVorwort(
-                        len(dieAnderenZeilenUndSpalten) + 1, vorworte2, 2
+                        len(neue2KoordNeue2Vorwoerter) + 1, vorworte2, 2
                     )
-                    dieAnderenZeilenUndSpalten += [(moreAndLess, newCol, wort1, wort2)]
+                    neue2KoordNeue2Vorwoerter += [(moreAndLess, newCol, wort1, wort2)]
 
-                for t, vier in enumerate(dieAnderenZeilenUndSpalten):
-                    into = vier[bothRows + 2] + (
-                        +relitable[
-                            vier[0][0] if bothRows == 0 else relitable[vier[0][1]]
-                        ][vier[1]]
-                    )
-                    self.relitable[i] += [into]
-        self.tables.generatedSpaltenParameter[
-            len(self.tables.generatedSpaltenParameter)
-            + self.tables.SpaltenVanillaAmount
-        ] = (self.tables.dataDict[0][5][0], [("blablub123")])
-        # ] = (self.tables.dataDict[0][5][0], [("primzahlvielfachesgalaxie", "")])
+                intoList = []
+                for vier in neue2KoordNeue2Vorwoerter:
+                    intoList += [
+                        vier[bothRows + 2]
+                        + (
+                            +relitable[
+                                vier[0][0] if bothRows == 0 else relitable[vier[0][1]]
+                            ][vier[1]]
+                        )
+                    ]
+                self.relitable[i] += [" | ".join(intoList)]
+            """bevor ich das programmiere, erst Parameter dafür festlegen!!!"""
+            """
+            self.tables.generatedSpaltenParameter[
+                len(self.tables.generatedSpaltenParameter)
+                + self.tables.SpaltenVanillaAmount
+            ] = self.tables.dataDict[0][5][0]
+            """
         x("r_wt", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
 
