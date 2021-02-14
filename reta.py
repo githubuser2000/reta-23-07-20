@@ -42,21 +42,15 @@ class Program:
         def resultingSpaltenFromTuple(tupl: tuple, neg, paraValue=None) -> tuple:
             x("TTT", paraValue)
             x("TIT", tupl)
-            tupl2: list = []
-            for eineSpaltenArtmitSpaltenNummern in tupl:
-                if type(eineSpaltenArtmitSpaltenNummern) is set:
-                    tupl2 += [eineSpaltenArtmitSpaltenNummern]
-            tupl = tuple(tupl2)
+            # tupl2: list = []
+            # for eineSpaltenArtmitSpaltenNummern in tupl:
+            #    if type(eineSpaltenArtmitSpaltenNummern) is set:
+            #        tupl2 += [eineSpaltenArtmitSpaltenNummern]
+            # tupl = tuple(tupl2)
             for i, eineSpaltenArtmitSpaltenNummern in enumerate(tupl):
                 """
                 Die Variable self.tables.spalteGestirn braucht man gar nicht mehr !!!
                 """
-                # if (
-                #     i == 4
-                #     and type(eineSpaltenArtmitSpaltenNummern[0]) is bool
-                #     and eineSpaltenArtmitSpaltenNummern[0]
-                # ):
-                #     self.tables.spalteGestirn = True
                 x("___", eineSpaltenArtmitSpaltenNummern)
                 if (
                     type(eineSpaltenArtmitSpaltenNummern) in [list, tuple]
@@ -74,7 +68,8 @@ class Program:
                     self.spaltenArtenKey_SpaltennummernValue[
                         (len(neg), 2)
                     ] |= eineSpaltenArtmitSpaltenNummern[0](paraValue)
-                else:
+                elif i != 4:
+                    # else:
                     x("_1", type(eineSpaltenArtmitSpaltenNummern))
                     x(
                         "_2",
@@ -355,7 +350,7 @@ class Program:
                     else:
                         case = 3
 
-                    index1 = i if case not in [1, 4] else 3
+                    index1 = i if case not in [1, 4] else 4
                     index2a = (
                         dd
                         if case == 3
@@ -419,10 +414,15 @@ class Program:
             beiden Parameter sagen, welche Spalten es alle sind."""
             paraMainDict1 = {**paraMainDict1, **paraMainDict2}
             paraDict1 = {**paraDict1, **paraDict2}
+            x("uofs1", dataDicts1)
+            x("uofs2", dataDicts2)
             dataDicts3 = deepcopy(dataDicts1)
-            # alxp(dataDicts3[0])
-            # alxp(dataDicts2[0])
-            for i, (dict1, dict2) in enumerate(zip_longest(dataDicts1, dataDicts2)):
+            for i, (dict1, dict2) in enumerate(
+                # zip_longest(dataDicts1, dataDicts2, fillvalue=dict())
+                zip_longest(dataDicts1, dataDicts2)
+            ):
+                if i == 4:
+                    x("qqq", (dict1, dict2))
                 if type(dict1) is dict and type(dict2) is dict:
                     if len(dataDicts3[i].keys()) == 0:
                         dataDicts3[i] = dataDicts2[i]
@@ -436,6 +436,12 @@ class Program:
                                 elif key2 not in dataDicts3[i].keys():
                                     x("DONG", value2)
                                     dataDicts3[i][key2] = value2
+                elif type(dict1) is dict and dict2 is None:
+                    dataDicts3[i] = dict1
+                elif dict1 is None and type(dict2) is dict:
+                    x("234", i)
+                    dataDicts3[i] = dict2
+            x("uufs", dataDicts3)
             # alxp(dataDicts3)
             return paraDict1, dataDicts3
 
@@ -1462,18 +1468,22 @@ class Program:
                     for parameterEntryElement in parameterEntry[2:]
                 ),
             )
-            # x("uzt1", into)
-            # x("uzt2", (*into,))
+            x("pofs", (*into,))
             self.paraDict, self.dataDict = mergeParameterDicts(
                 self.paraMainDict,
                 self.paraDict,
                 self.dataDict,
                 *into,
             )
+            if len(self.dataDict) > 3:
+                x("lzp", self.dataDict[3])
+        x("löp", self.dataDict[3])
+        # x("l_p", self.dataDict[4])
         self.dataDict[3] = Program.kombiParaNdataMatrix
-        alxp("--")
+        x("lüp", self.dataDict[3])
+        alxp("--|-")
         alxp(self.dataDict)
-        alxp("--")
+        alxp("--||")
         self.tables.dataDict = self.dataDict
 
     def parametersToCommandsAndNumbers(
@@ -1726,7 +1736,7 @@ class Program:
             self.puniverseprimsNot,
             self.generRowsNot,
         ) = self.parametersToCommandsAndNumbers(argv, "-")
-        self.dataDict: tuple = [{}, {}, {}, {}]
+        self.dataDict: tuple = [{}, {}, {}, {}, {}]
         self.spaltenTypeNaming: namedtuple = namedtuple(
             "SpaltenTyp",
             "ordinary generated1 concat1 kombi1 bool1 ordinaryNot generate1dNot concat1Not kombi1Not bool1Not",
