@@ -333,46 +333,22 @@ class Program:
                         ):
                             if i == 4 and (type(dd) is bool or type(dd[0]) is bool):
                                 case = 1
-                                into += [
-                                    (
-                                        parameterMainName,
-                                        parameterName,
-                                    )
-                                ]
-                            # dataDicts[3][("bool", 0)] = (
-                            #    parameterMainName,
-                            #    parameterName,
-                            # )
                             elif i == 2 and type(dd) not in [tuple, int]:
                                 case = 2
                                 parameterMainNamePerLoop += [parameterName]
-                                into += [[(parameterMainName, parameterName)]]
-                            # dataDicts[i][
-                            #    (
-                            #        int(parameterName)
-                            #        if parameterName.isdecimal()
-                            #        else parameterName
-                            #        if len(parameterNames) > 0
-                            #        else None
-                            #    )
-                            # ] = [(parameterMainName, parameterName)]
                             else:
                                 case = 3
-                                # try:
-                                into += [(parameterMainName, parameterName)]
-                                #    dataDicts[i][dd] += [
-                                #        (parameterMainName, parameterName)
-                                #    ]
-                                # except KeyError:
-                                #    into = [(parameterMainName, parameterName)]
-                            #    dataDicts[i][dd] = [
-                            #        (parameterMainName, parameterName)
-                            #    ]
+                            if i == 4 and (type(dd) is bool or type(dd[0]) is set):
+                                case = 4
+                            into += [(parameterMainName, parameterName)]
                     index1 = i if case != 1 else 3
                     index2a = (
                         dd
                         if case == 3
                         else (
+                            ("set", None)
+                            if case == 4
+                            else
                             ("bool", 0)
                             if case == 1
                             else tuple(
