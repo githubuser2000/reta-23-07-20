@@ -321,35 +321,42 @@ class Program:
                     paraDict[(name1, name2)] = datas
                 if len(parameterNames) == 0:
                     paraDict[(name1, "")] = datas
-            dataDicts: tuple = ({}, {}, {}, {})
+            dataDicts: tuple = ({}, {}, {}, {}, {})
+            into: list = []
+            case: int
+            parameterMainNamePerLoop: list = []
+            for parameterMainName in parameterMainNames:
+                for parameterName in (
+                    parameterNames if len(parameterNames) > 0 else ("",)
+                ):
+                    into += [(parameterMainName, parameterName)]
+                    parameterMainNamePerLoop += [parameterName]
             for i, d in enumerate(datas):
                 for dd in d:
-                    into = []
-                    parameterMainNamePerLoop = []
-                    case: int = None
-                    for parameterMainName in parameterMainNames:
-                        for parameterName in (
-                            parameterNames if len(parameterNames) > 0 else ("",)
-                        ):
-                            if i == 4 and (type(dd) is bool or type(dd[0]) is bool):
-                                case = 1
-                            elif i == 2 and type(dd) not in [tuple, int]:
-                                case = 2
-                                parameterMainNamePerLoop += [parameterName]
-                            else:
-                                case = 3
-                            if i == 4 and (type(dd) is bool or type(dd[0]) is set):
-                                case = 4
-                            into += [(parameterMainName, parameterName)]
-                    index1 = i if case != 1 else 3
+                    if i == 4 and (
+                        type(dd) is bool
+                        or (
+                            type(dd) in (list, tuple)
+                            and len(dd) > 0
+                            and type(dd[0]) is bool
+                        )
+                    ):
+                        case = 1
+                    elif i == 2 and type(dd) not in [tuple, int]:
+                        case = 2
+                    elif i == 4 and (type(dd) in (list, tuple)):
+                        case = 1
+                    else:
+                        case = 3
+
+                    index1 = i if case not in [1, 4] else 3
                     index2a = (
                         dd
                         if case == 3
                         else (
-                            ("set", None)
+                            ("set_meta_etc", dd)
                             if case == 4
-                            else
-                            ("bool", 0)
+                            else ("bool", 0)
                             if case == 1
                             else tuple(
                                 (
@@ -365,19 +372,23 @@ class Program:
                             else None
                         )
                     )
-                    if case == 1:
-                        x("_z_", index2a)
-                    if case != 1:
-                        x("_zz_", index2a)
-                    intoA = into if case == 2 else (into,)
+                    """
+                    Alle HTML Tag Parameter noch mal überprüfen, ob richtig!!!
+                    scheint nicht gut zu sein:
+                    31: ([('alles', '')],),
+                    (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31): (   [   (   'primzahlvielfachesgalaxie',
+                                                                                                      '2'),
+                    """
                     for index2, into2 in zip_longest(
-                        index2a if case == 2 else (index2a,), intoA, fillvalue=into
+                        (index2a,),
+                        (into,),
+                        fillvalue=into,
                     ):
-                        x("asd", [into2, case, into])
                         try:
                             dataDicts[index1][index2] += (into2,)
                         except KeyError:
                             dataDicts[index1][index2] = (into2,)
+                        # x("asd", [into2, case, into])
             x("dadaDick", dataDicts)
             x("PARA", paraDict)
             return paraMainDict, paraDict, dataDicts
@@ -669,7 +680,10 @@ class Program:
                 set(),
                 set(),
                 set(),
-                set((2, 1)),
+                (
+                    2,
+                    1,
+                ),
             ),
             (
                 Program.ParametersMain.universummetakonkret,
@@ -678,7 +692,10 @@ class Program:
                 set(),
                 set(),
                 set(),
-                set((2, 0)),
+                (
+                    2,
+                    0,
+                ),
             ),
             (
                 Program.ParametersMain.universummetakonkret,
@@ -687,7 +704,10 @@ class Program:
                 set(),
                 set(),
                 set(),
-                set((3, 1)),
+                (
+                    3,
+                    1,
+                ),
             ),
             (
                 Program.ParametersMain.universummetakonkret,
@@ -696,7 +716,10 @@ class Program:
                 set(),
                 set(),
                 set(),
-                set((3, 0)),
+                (
+                    3,
+                    0,
+                ),
             ),
             (
                 Program.ParametersMain.universummetakonkret,
@@ -705,7 +728,10 @@ class Program:
                 set(),
                 set(),
                 set(),
-                set((5, 1)),
+                (
+                    5,
+                    1,
+                ),
             ),
             (
                 Program.ParametersMain.universummetakonkret,
@@ -714,7 +740,10 @@ class Program:
                 set(),
                 set(),
                 set(),
-                set((5, 0)),
+                (
+                    5,
+                    0,
+                ),
             ),
             (
                 Program.ParametersMain.universummetakonkret,
@@ -723,7 +752,10 @@ class Program:
                 set(),
                 set(),
                 set(),
-                set((4, 1)),
+                (
+                    4,
+                    1,
+                ),
             ),
             (
                 Program.ParametersMain.universummetakonkret,
@@ -732,7 +764,10 @@ class Program:
                 set(),
                 set(),
                 set(),
-                set((4, 0)),
+                (
+                    4,
+                    0,
+                ),
             ),
             (
                 Program.ParametersMain.universum,
