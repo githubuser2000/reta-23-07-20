@@ -447,8 +447,7 @@ class Program:
 
         Program.ParametersMain: namedtuple = namedtuple(
             "ParametersMain",
-            # "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesgalaxie konzept inkrementieren operationen universummetakonkret alles",
-            "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesgalaxie konzept inkrementieren operationen alles",
+            "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesgalaxie konzept inkrementieren operationen universummetakonkret alles",
         )
         Program.ParametersMain = Program.ParametersMain(
             (
@@ -495,7 +494,7 @@ class Program:
             ),
             ("inkrementieren",),
             ("operationen",),
-            # ("universummetakonkret", "meta", "konkret", "theorie", "praxis"),
+            ("universummetakonkret", "meta", "konkret", "theorie", "praxis"),
             ("alles"),
         )
         allowedPrimNumbersForCommand = tuple(
@@ -686,102 +685,102 @@ class Program:
                 ("politischesysteme", "politik"),
                 {83},
             ),
-            #            (
-            #                Program.ParametersMain.universummetakonkret,
-            #                ("meta",),
-            #                set(),
-            #                set(),
-            #                set(),
-            #                set(),
-            #                (
-            #                    2,
-            #                    1,
-            #                ),
-            #            ),
-            #            (
-            #                Program.ParametersMain.universummetakonkret,
-            #                ("konkret",),
-            #                set(),
-            #                set(),
-            #                set(),
-            #                set(),
-            #                (
-            #                    2,
-            #                    0,
-            #                ),
-            #            ),
-            #            (
-            #                Program.ParametersMain.universummetakonkret,
-            #                ("theorie",),
-            #                set(),
-            #                set(),
-            #                set(),
-            #                set(),
-            #                (
-            #                    3,
-            #                    1,
-            #                ),
-            #            ),
-            #            (
-            #                Program.ParametersMain.universummetakonkret,
-            #                ("praxis",),
-            #                set(),
-            #                set(),
-            #                set(),
-            #                set(),
-            #                (
-            #                    3,
-            #                    0,
-            #                ),
-            #            ),
-            #            (
-            #                Program.ParametersMain.universummetakonkret,
-            #                ("mathematisch-diskret",),
-            #                set(),
-            #                set(),
-            #                set(),
-            #                set(),
-            #                (
-            #                    5,
-            #                    1,
-            #                ),
-            #            ),
-            #            (
-            #                Program.ParametersMain.universummetakonkret,
-            #                ("kontinuierlich",),
-            #                set(),
-            #                set(),
-            #                set(),
-            #                set(),
-            #                (
-            #                    5,
-            #                    0,
-            #                ),
-            #            ),
-            #            (
-            #                Program.ParametersMain.universummetakonkret,
-            #                ("fluss",),
-            #                set(),
-            #                set(),
-            #                set(),
-            #                set(),
-            #                (
-            #                    4,
-            #                    1,
-            #                ),
-            #            ),
-            #            (
-            #                Program.ParametersMain.universummetakonkret,
-            #                ("stau",),
-            #                set(),
-            #                set(),
-            #                set(),
-            #                set(),
-            #                (
-            #                    4,
-            #                    0,
-            #                ),
-            #            ),
+            (
+                Program.ParametersMain.universummetakonkret,
+                ("meta",),
+                set(),
+                set(),
+                set(),
+                set(),
+                (
+                    2,
+                    1,
+                ),
+            ),
+            (
+                Program.ParametersMain.universummetakonkret,
+                ("konkret",),
+                set(),
+                set(),
+                set(),
+                set(),
+                (
+                    2,
+                    0,
+                ),
+            ),
+            (
+                Program.ParametersMain.universummetakonkret,
+                ("theorie",),
+                set(),
+                set(),
+                set(),
+                set(),
+                (
+                    3,
+                    1,
+                ),
+            ),
+            (
+                Program.ParametersMain.universummetakonkret,
+                ("praxis",),
+                set(),
+                set(),
+                set(),
+                set(),
+                (
+                    3,
+                    0,
+                ),
+            ),
+            (
+                Program.ParametersMain.universummetakonkret,
+                ("mathematisch-diskret",),
+                set(),
+                set(),
+                set(),
+                set(),
+                (
+                    5,
+                    1,
+                ),
+            ),
+            (
+                Program.ParametersMain.universummetakonkret,
+                ("kontinuierlich",),
+                set(),
+                set(),
+                set(),
+                set(),
+                (
+                    5,
+                    0,
+                ),
+            ),
+            (
+                Program.ParametersMain.universummetakonkret,
+                ("fluss",),
+                set(),
+                set(),
+                set(),
+                set(),
+                (
+                    4,
+                    1,
+                ),
+            ),
+            (
+                Program.ParametersMain.universummetakonkret,
+                ("stau",),
+                set(),
+                set(),
+                set(),
+                set(),
+                (
+                    4,
+                    0,
+                ),
+            ),
             (
                 Program.ParametersMain.universum,
                 (
