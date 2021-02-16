@@ -210,27 +210,30 @@ class htmlSyntax(OutputSyntax):
                         things[key] = el + ","
         x("öäü", things)
         spalte += 2
-        return (
-            '              <td class="'
-            + ("z_" + str(zeile))
-            + " r_"
-            + str(spalte)
-            + " p1_"
-            + things[0]
-            + " p2_"
-            + (things[1] if len(things) > 1 else "")
-            + '"'
-            + (
-                (
-                    'style="background-color:#000000;color:#ffffff;display:none"'
-                    if content is not None and int(content) % 2 == 0
-                    else 'style="background-color:#ffffff;color:#000000;display:none"'
+        if len(things) < 2:
+            return ""
+        else:
+            return (
+                '              <td class="'
+                + ("z_" + str(zeile))
+                + " r_"
+                + str(spalte)
+                + " p1_"
+                + things[0]
+                + " p2_"
+                + (things[1] if len(things) > 1 else "")
+                + '"'
+                + (
+                    (
+                        'style="background-color:#000000;color:#ffffff;display:none"'
+                        if content is not None and int(content) % 2 == 0
+                        else 'style="background-color:#ffffff;color:#000000;display:none"'
+                    )
+                    if spalte == 0
+                    else 'style="display:none"'
                 )
-                if spalte == 0
-                else 'style="display:none"'
+                + ">\n"
             )
-            + ">\n"
-        )
 
     beginTable = "      <table border=1>"
     endTable = "        </table>\n"
