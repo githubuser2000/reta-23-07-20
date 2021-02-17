@@ -1009,6 +1009,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
+                ("lebewesendenkweise", "denkweise"),
+                {146},
+            ),
+            (
+                Program.ParametersMain.menschliches,
                 ("gegentranszendentalien", "gegenstrukturalien"),
                 {138, 139},
             ),
