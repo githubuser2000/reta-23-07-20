@@ -150,8 +150,8 @@ class htmlSyntax(OutputSyntax):
     def generateCell(
         self, spalte: int, SpaltenParameter: dict, content=None, zeile=None
     ) -> str:
-        x("uzt", SpaltenParameter)
-        x("qay", spalte)
+        # x("uzt", SpaltenParameter)
+        # x("qay", spalte)
         spalte = int(spalte)
         if spalte == -2:
             tupleOfListsOfCouples = (
@@ -169,18 +169,18 @@ class htmlSyntax(OutputSyntax):
             try:
                 tupleOfListsOfCouples = SpaltenParameter[spalte]
             except:
-                x("NUM", SpaltenParameter)
-                x("NUM", spalte)
+                # x("NUM", SpaltenParameter)
+                # x("NUM", spalte)
                 if str(spalte).isdecimal():
                     raise ValueError
                 tupleOfListsOfCouples = (("?", "?"),)
         things1: dict = {}
         # x("ayu", SpaltenParameter)
-        x("azu", tupleOfListsOfCouples)
+        # x("azu", tupleOfListsOfCouples)
         for c, couples in enumerate(tupleOfListsOfCouples):
             for paraNum in (0, 1):
                 if len(couples[0]) > paraNum:
-                    x("azu" + str(paraNum), couples[0][paraNum])
+                    # x("azu" + str(paraNum), couples[0][paraNum])
                     if len(couples[0]) > paraNum:
                         # i = 0
                         para1o2name = couples[0][paraNum]
@@ -208,7 +208,7 @@ class htmlSyntax(OutputSyntax):
                         things[key] += el + ","
                     except KeyError:
                         things[key] = el + ","
-        x("öäü", things)
+        # x("öäü", things)
         spalte += 2
         if len(things) < 2:
             return ""

@@ -265,6 +265,7 @@ class Tables:
             @return: nichts
             """
             global output, shellRowsAmount
+            x("hce", self.tables.generatedSpaltenParameter)
 
             def findMaxCellTextLen(
                 finallyDisplayLines: set, newTable: list, rowsRange: range
