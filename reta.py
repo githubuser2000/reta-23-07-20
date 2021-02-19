@@ -590,6 +590,9 @@ class Program:
             (
                 "groessenordnung",
                 "strukturgroesse",
+                "strukturgroeße",
+                "strukturgrösse",
+                "strukturgröße",
                 "groesse",
                 "stufe",
                 "organisationen",
@@ -798,7 +801,15 @@ class Program:
             ),
             (
                 Program.ParametersMain.strukturgroesse,
-                ("größe", "groesse", "gross", "strukturgroesse"),
+                (
+                    "größe",
+                    "groesse",
+                    "gross",
+                    "strukturgroesse",
+                    "strukturgroeße",
+                    "strukturgrösse",
+                    "strukturgröße",
+                ),
                 {4, 21, 54},
             ),
             (
@@ -1006,6 +1017,11 @@ class Program:
                     "sinnsuche",
                 ),
                 {88},
+            ),
+            (
+                Program.ParametersMain.menschliches,
+                ("intelligenzprobleme", "intelligenzmaengel", "intelligenzmängel"),
+                {147},
             ),
             (
                 Program.ParametersMain.menschliches,
