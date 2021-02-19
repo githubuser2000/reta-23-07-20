@@ -471,24 +471,32 @@ class Program:
                                         parameterName,
                                     )
                                 ]
-                            elif i == 2 and type(dd) not in [tuple, int]:
+                            # elif i == 2 and type(dd) not in [tuple, int]:
+                            # folgendes ist eindeutig besser:
+                            elif i == 2 and callable(dd):
                                 case = 2
+                                x("|||", callable(dd))
                                 parameterMainNamePerLoop += [parameterName]
                                 into += [[(parameterMainName, parameterName)]]
                             elif i == 4 and (type(dd) in (list, tuple)):
                                 case = 4
+                                into += [(parameterMainName, parameterName)]
+                            elif i == 4 and (type(dd) in (set,)):
+                                case = 4
+                                into += [(parameterMainName, parameterName)]
+                                dd = dd.pop()
                             else:
                                 case = 3
                                 try:
                                     into += [(parameterMainName, parameterName)]
                                 except KeyError:
                                     into = [(parameterMainName, parameterName)]
-                    index1 = i if case not in [1, 4] else 3
+                    index1 = i if case != 1 else 3
                     index2a = (
                         dd
                         if case == 3
                         else (
-                            ("set_meta_etc", dd)
+                            dd
                             if case == 4
                             else ("bool", 0)
                             if case == 1
@@ -510,7 +518,7 @@ class Program:
                     for index2, into2 in zip_longest(
                         index2a if case == 2 else (index2a,), intoA, fillvalue=into
                     ):
-                        x("asd", [into2, case, into])
+                        x("asd", [into2, case, into, index2])
                         try:
                             dataDicts[index1][index2] += (into2,)
                         except KeyError:
@@ -623,7 +631,7 @@ class Program:
             ),
             ("inkrementieren",),
             ("operationen",),
-            ("universummetakonkret", "meta", "konkret", "theorie", "praxis"),
+            ("universummetakonkret",),
             ("alles"),
         )
         allowedPrimNumbersForCommand = tuple(
@@ -829,10 +837,12 @@ class Program:
                 set(),
                 set(),
                 set(),
-                (
-                    2,
-                    1,
-                ),
+                {
+                    (
+                        2,
+                        1,
+                    )
+                },
             ),
             (
                 Program.ParametersMain.universummetakonkret,
@@ -841,10 +851,12 @@ class Program:
                 set(),
                 set(),
                 set(),
-                (
-                    2,
-                    0,
-                ),
+                {
+                    (
+                        2,
+                        0,
+                    )
+                },
             ),
             (
                 Program.ParametersMain.universummetakonkret,
@@ -853,10 +865,12 @@ class Program:
                 set(),
                 set(),
                 set(),
-                (
-                    3,
-                    1,
-                ),
+                {
+                    (
+                        3,
+                        1,
+                    )
+                },
             ),
             (
                 Program.ParametersMain.universummetakonkret,
@@ -865,10 +879,12 @@ class Program:
                 set(),
                 set(),
                 set(),
-                (
-                    3,
-                    0,
-                ),
+                {
+                    (
+                        3,
+                        0,
+                    )
+                },
             ),
             (
                 Program.ParametersMain.universummetakonkret,
@@ -877,10 +893,12 @@ class Program:
                 set(),
                 set(),
                 set(),
-                (
-                    5,
-                    1,
-                ),
+                {
+                    (
+                        5,
+                        1,
+                    )
+                },
             ),
             (
                 Program.ParametersMain.universummetakonkret,
@@ -889,10 +907,12 @@ class Program:
                 set(),
                 set(),
                 set(),
-                (
-                    5,
-                    0,
-                ),
+                {
+                    (
+                        5,
+                        0,
+                    )
+                },
             ),
             (
                 Program.ParametersMain.universummetakonkret,
@@ -901,10 +921,12 @@ class Program:
                 set(),
                 set(),
                 set(),
-                (
-                    4,
-                    1,
-                ),
+                {
+                    (
+                        4,
+                        1,
+                    )
+                },
             ),
             (
                 Program.ParametersMain.universummetakonkret,
@@ -913,10 +935,12 @@ class Program:
                 set(),
                 set(),
                 set(),
-                (
-                    4,
-                    0,
-                ),
+                {
+                    (
+                        4,
+                        0,
+                    )
+                },
             ),
             (
                 Program.ParametersMain.universum,
