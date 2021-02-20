@@ -711,10 +711,11 @@ class Concat:
         """bis hier hin waren es die Vorinitialisierungen von Variablen"""
 
         # def switching(metavariable: int, lower1greater2both3: int, row: int):
-        def switching(newCol: int) -> tuple:
+        def switching(newCol: int, moreAndLess: tuple) -> tuple:
             """2 neue Koordinaten der Tabelle durch 3 Parameter, d.h. einer, newCol, gilt für beide
             Immer eine halbierung und dopplung oder verdreifachung und ..., etc.
             und wechsel der Spalte von den 2 Spalten"""
+            x("MORE", moreAndLess)
             newCol = (
                 transzendentalienSpalten[0]
                 if newCol == transzendentalienSpalten[1]
@@ -731,6 +732,8 @@ class Concat:
                 else None
             )
             moreAndLess = (a, b)
+            x("MORE", metavariable)
+            x("MORE", moreAndLess)
             return moreAndLess, newCol
 
         metaOrWhat = {2: (("Meta-Thema: ", "konkretes: "), ("Meta-", "konkret-"))}
@@ -760,11 +763,11 @@ class Concat:
             else []
         ):
             rowsAsNumbers |= {len(self.relitable[0])}
-            for i, row in enumerate(relitable):
+            for i, row in enumerate(relitable[2:], 2):
                 moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
                 neue2KoordNeue2Vorwoerter: list = []
                 while moreAndLess != (None, None):
-                    switching(newCol)
+                    switching(newCol, moreAndLess)
                     vorworte2 = metaOrWhat[metavariable][
                         0 if len(neue2KoordNeue2Vorwoerter) == 0 else 1
                     ]
