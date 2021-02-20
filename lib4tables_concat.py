@@ -728,7 +728,7 @@ class Concat:
                 else None
             )
             b = (
-                moreAndLess[1] / metavariable
+                int(moreAndLess[1] / metavariable)
                 if not moreAndLess[1] is None
                 and moreAndLess[1] / metavariable
                 == round(moreAndLess[1] / metavariable)
@@ -785,14 +785,18 @@ class Concat:
 
                 intoList = []
                 for vier in neue2KoordNeue2Vorwoerter:
-                    intoList += [
-                        vier[bothRows + 2]
-                        + (
-                            +relitable[
-                                vier[0][0] if bothRows == 0 else relitable[vier[0][1]]
-                            ][vier[1]]
-                        )
-                    ]
+                    alxp(vier)
+                    intoList += [vier[bothRows + 2]] + (
+                        [
+                            relitable[vier[0][0]]
+                            if bothRows == 0 and not vier[0][0] is None
+                            else [relitable[vier[0][1]]]
+                        ][vier[1]]
+                        if bothRows == 1 and not vier[0][1] is None
+                        else [relitable[vier[0][0]], relitable[vier[0][1]]]
+                        if not vier[0][0] is None and not vier[0][1] is None
+                        else [""]
+                    )
                 self.relitable[i] += [" | ".join(intoList)]
             """bevor ich das programmiere, erst Parameter dafür festlegen!!!"""
             if lower1greater2both3 != 3:
