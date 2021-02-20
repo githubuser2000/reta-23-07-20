@@ -1910,7 +1910,7 @@ class Program:
         self.dataDict: tuple = [{}, {}, {}, {}, {}]
         self.spaltenTypeNaming: namedtuple = namedtuple(
             "SpaltenTyp",
-            "ordinary generated1 concat1 kombi1 bool1 ordinaryNot generate1dNot concat1Not kombi1Not bool1Not",
+            "ordinary generated1 concat1 kombi1 boolAndTupleSet1 ordinaryNot generate1dNot concat1Not kombi1Not boolAndTupleSet1Not",
         )
         self.spaltenTypeNaming = self.spaltenTypeNaming(
             (0, 0),
@@ -1968,6 +1968,9 @@ class Program:
         self.rowsOfcombi = self.spaltenArtenKey_SpaltennummernValue[
             self.spaltenTypeNaming.kombi1
         ]
+        self.onlyGenerated = self.spaltenArtenKey_SpaltennummernValue[
+            self.spaltenTypeNaming.boolAndTupleSet1
+        ]
         for prims in self.puniverseprims:
             self.tables.primUniversePrimsSet.add(prims)
 
@@ -2015,6 +2018,12 @@ class Program:
             self.relitable,
             self.rowsAsNumbers,
         ) = self.tables.getConcat.concatLovePolygon(self.relitable, self.rowsAsNumbers)
+        (
+            self.relitable,
+            self.rowsAsNumbers,
+        ) = self.tables.getConcat.spalteMetaKontretTheorieAbstrakt_etc_1(
+            self.relitable, self.rowsAsNumbers, self.onlyGenerated
+        )
 
         if len(self.rowsOfcombi) > 0:
             (

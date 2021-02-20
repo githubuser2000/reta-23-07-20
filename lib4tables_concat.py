@@ -683,13 +683,14 @@ class Concat:
     def spalteMetaKontretTheorieAbstrakt_etc_1(
         self, relitable: list, rowsAsNumbers: set, geordnetePaare: set
     ):
-        for paar in tuple(geordnetePaare):
-            self.spalteMetaKontretTheorieAbstrakt_etc(
-                relitable,
-                rowsAsNumbers,
-                paar[0],
-                1 if paar[1] == 0 else 2 if paar[1] == 1 else 3,
-            )
+        alxp("jaaa")
+        # for paar in tuple(geordnetePaare):
+        #    self.spalteMetaKontretTheorieAbstrakt_etc(
+        #        relitable,
+        #        rowsAsNumbers,
+        #        paar[0],
+        #        1 if paar[1] == 0 else 2 if paar[1] == 1 else 3,
+        #    )
 
     def spalteMetaKontretTheorieAbstrakt_etc(
         self,
