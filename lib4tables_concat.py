@@ -685,14 +685,13 @@ class Concat:
     ):
         self.relitable = relitable
         self.rowsAsNumbers = rowsAsNumbers
-        alxp("yes")
-        # for paar in tuple(geordnetePaare):
-        #    self.spalteMetaKontretTheorieAbstrakt_etc(
-        #        relitable,
-        #        rowsAsNumbers,
-        #        paar[0],
-        #        1 if paar[1] == 0 else 2 if paar[1] == 1 else 3,
-        #    )
+        for paar in tuple(geordnetePaare):
+            self.spalteMetaKontretTheorieAbstrakt_etc(
+                relitable,
+                rowsAsNumbers,
+                paar[0],
+                1 if paar[1] == 0 else 2 if paar[1] == 1 else 3,
+            )
         return self.relitable, self.rowsAsNumbers
 
     def spalteMetaKontretTheorieAbstrakt_etc(
@@ -760,6 +759,7 @@ class Concat:
             if lower1greater2both3 == 2
             else []
         ):
+            rowsAsNumbers |= {len(self.relitable[0])}
             for i, row in enumerate(relitable):
                 moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
                 neue2KoordNeue2Vorwoerter: list = []
@@ -788,12 +788,21 @@ class Concat:
                     ]
                 self.relitable[i] += [" | ".join(intoList)]
             """bevor ich das programmiere, erst Parameter dafür festlegen!!!"""
-            """
-            self.tables.generatedSpaltenParameter[
-                len(self.tables.generatedSpaltenParameter)
-                + self.tables.SpaltenVanillaAmount
-            ] = self.tables.dataDict[0][5][0]
-            """
+            if lower1greater2both3 != 3:
+                self.tables.generatedSpaltenParameter[
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.SpaltenVanillaAmount
+                ] = self.tables.dataDict[4][(metavariable, lower1greater2both3 - 1)]
+            else:
+                for both in (
+                    0,
+                    1,
+                ):
+                    self.tables.generatedSpaltenParameter[
+                        len(self.tables.generatedSpaltenParameter)
+                        + self.tables.SpaltenVanillaAmount
+                    ] = self.tables.dataDict[4][(metavariable, both)]
+
         x("r_wt", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
 

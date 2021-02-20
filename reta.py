@@ -2016,7 +2016,6 @@ class Program:
             self.relitable,
             self.rowsAsNumbers,
         ) = self.tables.getConcat.concatLovePolygon(self.relitable, self.rowsAsNumbers)
-        x("cis", self.onlyGenerated)
         (
             self.relitable,
             self.rowsAsNumbers,
