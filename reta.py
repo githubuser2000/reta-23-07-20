@@ -93,8 +93,7 @@ class Program:
             ):
                 self.spaltenArtenKey_SpaltennummernValue[
                     (0, el2Type)
-                ] -= self.spaltenArtenKey_SpaltennummernValue[(1, el2Type)]
-                self.spaltenArtenKey_SpaltennummernValue.pop((1, el2Type))
+                ] -= self.spaltenArtenKey_SpaltennummernValue.pop((1, el2Type))
 
         # def notNormalParameters(parameter, parametervalue, tables):
         #     if parameter == "bedeutung" and parametervalue in [
