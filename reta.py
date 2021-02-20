@@ -68,16 +68,15 @@ class Program:
                     self.spaltenArtenKey_SpaltennummernValue[
                         (len(neg), 2)
                     ] |= eineSpaltenArtmitSpaltenNummern[0](paraValue)
-                elif i != 4:
-                    # else:
-                    # x("_1", type(eineSpaltenArtmitSpaltenNummern))
-                    # x(
-                    #    "_2",
-                    #    type(self.spaltenArtenKey_SpaltennummernValue[(len(neg), i)]),
-                    # )
-                    self.spaltenArtenKey_SpaltennummernValue[
-                        (len(neg), i)
-                    ] |= eineSpaltenArtmitSpaltenNummern
+                else:
+                    try:
+                        self.spaltenArtenKey_SpaltennummernValue[
+                            (len(neg), i)
+                        ] |= eineSpaltenArtmitSpaltenNummern
+                    except TypeError:
+                        pass
+            x("xvx", tupl)
+            x("xvx", eineSpaltenArtmitSpaltenNummern)
             return self.spaltenArtenKey_SpaltennummernValue
 
         def spalten_removeDoublesNthenRemoveOneFromAnother():
@@ -543,7 +542,9 @@ class Program:
             sein werden
             @return: Spaltennummer sagt welche Parameter es ingesamt dazu sind | die
             beiden Parameter sagen, welche Spalten es alle sind."""
+            x("QARA", (paraMainDict1, paraMainDict2))
             paraMainDict1 = {**paraMainDict1, **paraMainDict2}
+            x("QARA", (paraDict1, paraDict2))
             paraDict1 = {**paraDict1, **paraDict2}
             # x("uofs1", dataDicts1)
             # x("uofs2", dataDicts2)
@@ -574,6 +575,7 @@ class Program:
                     dataDicts3[i] = dict2
             # x("uufs", dataDicts3)
             # alxp(dataDicts3)
+            x("QORA", (paraDict1))
             return paraDict1, dataDicts3
 
         Program.ParametersMain: namedtuple = namedtuple(
@@ -1430,9 +1432,6 @@ class Program:
                 set(),
                 set(),
                 set(),
-                [
-                    True,
-                ],
             ),
             (Program.ParametersMain.bedeutung, ("konjunktiv", "wurzel"), {106}),
             (
@@ -1593,9 +1592,9 @@ class Program:
             for valuesInValuess in value:
                 self.kombiReverseDict[valuesInValuess] = key
 
-        allValues = [set(), set(), set(), set(), []]
+        allValues = [set(), set(), set(), set(), set()]
         for possibleCommands in paraNdataMatrix:
-            for commandValue, aAllValue in zip(possibleCommands[2:], allValues[:3]):
+            for commandValue, aAllValue in zip(possibleCommands[2:], allValues):
                 try:
                     aAllValue |= commandValue
                 except TypeError:
@@ -1608,14 +1607,14 @@ class Program:
         Ich brauche aber gerade den bool wert gar nicht mehr, weil es in
         diesem Fall auch anders geht, aber für die Zukunft kann das hilfreich sein.
         Also lasse ich es mal stehen!
-        """
+
         for possibleCommands in paraNdataMatrix:
             for commandValue, aAllValue in zip(possibleCommands[6:], allValues[4:]):
                 aAllValue += [commandValue]
         # allValues[1] = allValues[2]
         allValues[2] = set((int(pNum) for pNum in allowedPrimNumbersForCommand))
         allValues[3] = set(Program.kombiParaNdataMatrix.keys())
-
+        """
         paraNdataMatrix += [
             (
                 (Program.ParametersMain.alles,),
@@ -2017,6 +2016,7 @@ class Program:
             self.relitable,
             self.rowsAsNumbers,
         ) = self.tables.getConcat.concatLovePolygon(self.relitable, self.rowsAsNumbers)
+        x("cis", self.onlyGenerated)
         (
             self.relitable,
             self.rowsAsNumbers,

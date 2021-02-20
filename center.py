@@ -49,7 +49,7 @@ def x(text1, text):
         if type(text) is str:
             print(text1 + ": " + text)
         else:
-            print(text1 + ": ")
+            print(text1 + ": ", end="")
             pp.pprint(text)
 
 
