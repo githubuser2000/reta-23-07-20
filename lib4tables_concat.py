@@ -723,18 +723,21 @@ class Concat:
             )
             a = (
                 moreAndLess[0] * metavariable
-                if moreAndLess[0] * metavariable < len(relitable)
+                if not moreAndLess[0] is None
+                and moreAndLess[0] * metavariable < len(relitable)
                 else None
             )
             b = (
                 moreAndLess[1] / metavariable
-                if moreAndLess[1] / metavariable == round(moreAndLess[1] / metavariable)
+                if not moreAndLess[1] is None
+                and moreAndLess[1] / metavariable
+                == round(moreAndLess[1] / metavariable)
                 else None
             )
             moreAndLess = (a, b)
             x("MORE", metavariable)
             x("MORE", moreAndLess)
-            return moreAndLess, newCol
+            return newCol, moreAndLess
 
         metaOrWhat = {2: (("Meta-Thema: ", "konkretes: "), ("Meta-", "konkret-"))}
 
@@ -766,8 +769,9 @@ class Concat:
             for i, row in enumerate(relitable[2:], 2):
                 moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
                 neue2KoordNeue2Vorwoerter: list = []
+                alxp("new while")
                 while moreAndLess != (None, None):
-                    switching(newCol, moreAndLess)
+                    newCol, moreAndLess = switching(newCol, moreAndLess)
                     vorworte2 = metaOrWhat[metavariable][
                         0 if len(neue2KoordNeue2Vorwoerter) == 0 else 1
                     ]
