@@ -788,15 +788,19 @@ class Concat:
                     alxp(vier)
                     intoList += [vier[bothRows + 2]] + (
                         [
-                            relitable[vier[0][0]]
+                            relitable[vier[0][0]][vier[1]]
                             if bothRows == 0 and not vier[0][0] is None
                             else [relitable[vier[0][1]]]
                         ][vier[1]]
                         if bothRows == 1 and not vier[0][1] is None
-                        else [relitable[vier[0][0]], relitable[vier[0][1]]]
+                        else [
+                            relitable[vier[0][0]][vier[1]],
+                            relitable[vier[0][1]][vier[1]],
+                        ]
                         if not vier[0][0] is None and not vier[0][1] is None
                         else [""]
                     )
+                alxp(intoList)
                 self.relitable[i] += [" | ".join(intoList)]
             """bevor ich das programmiere, erst Parameter dafür festlegen!!!"""
             if lower1greater2both3 != 3:
