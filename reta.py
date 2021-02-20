@@ -475,7 +475,6 @@ class Program:
                             # folgendes ist eindeutig besser:
                             elif i == 2 and callable(dd):
                                 case = 2
-                                x("|||", callable(dd))
                                 parameterMainNamePerLoop += [parameterName]
                                 into += [[(parameterMainName, parameterName)]]
                             elif i == 4 and (type(dd) in (list, tuple)):
