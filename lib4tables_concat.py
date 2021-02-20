@@ -766,6 +766,8 @@ class Concat:
             else []
         ):
             rowsAsNumbers |= {len(self.relitable[0])}
+            for i, row in enumerate(relitable[:2]):
+                self.relitable[i] += [""]
             for i, row in enumerate(relitable[2:], 2):
                 moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
                 neue2KoordNeue2Vorwoerter: list = []
