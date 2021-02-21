@@ -724,7 +724,7 @@ class Concat:
                 moreAndLess[0] * metavariable
                 if not moreAndLess[0] is None
                 and moreAndLess[0] * metavariable < len(relitable)
-                and len((relitable[moreAndLess[0] * metavariable][newCol]).strip()) > 6
+                # würde zu früh abbrechen and len((relitable[moreAndLess[0] * metavariable][newCol]).strip()) > 3
                 else None
             )
             b = (
@@ -732,13 +732,18 @@ class Concat:
                 if not moreAndLess[1] is None
                 and moreAndLess[1] / metavariable
                 == round(moreAndLess[1] / metavariable)
-                and len((relitable[int(moreAndLess[1] / metavariable)][newCol]).strip())
-                > 6
+                # würde zu früh abbrechenand len((relitable[int(moreAndLess[1] / metavariable)][newCol]).strip()) > 3
                 else None
             )
             moreAndLess = (a, b)
             x("MORE", metavariable)
             x("MORE", moreAndLess)
+            if (
+                not moreAndLess[0] is None
+                and moreAndLess[0] * metavariable < len(relitable)
+                and len((relitable[moreAndLess[0] * metavariable][newCol]).strip()) > 3
+            ):
+                x("_u_", relitable[moreAndLess[0] * metavariable][newCol])
 
             return newCol, moreAndLess
 
@@ -791,28 +796,37 @@ class Concat:
 
                 intoList = []
                 thema = ""
+                x("_t_", neue2KoordNeue2Vorwoerter[:-1])
                 for vier in neue2KoordNeue2Vorwoerter[:-1]:
                     alxp(vier)
-                    if not vier[0][0] is None and not vier[1] is None:
-                        alxp(relitable[vier[0][0]][vier[1]])
-                    if not vier[0][1] is None and not vier[1] is None:
-                        alxp(relitable[vier[0][1]][vier[1]])
-                    intoList += (
-                        [vier[bothRows + 2]]
-                        + [thema]
-                        + (
-                            [relitable[vier[0][0]][vier[1]]]
-                            if bothRows == 0 and not vier[0][0] is None
-                            else [relitable[vier[0][1]][vier[1]]]
-                            if bothRows == 1 and not vier[0][1] is None
-                            else [
-                                relitable[vier[0][0]][vier[1]],
-                                relitable[vier[0][1]][vier[1]],
-                            ]
-                            if not vier[0][0] is None and not vier[0][1] is None
-                            else [""]
+                    # if not vier[0][0] is None and not vier[1] is None:
+                    #    alxp(relitable[vier[0][0]][vier[1]])
+                    # if not vier[0][1] is None and not vier[1] is None:
+                    #    alxp(relitable[vier[0][1]][vier[1]])
+                    if (
+                        bothRows == 0
+                        and not vier[0][0] is None
+                        and len(relitable[vier[0][0]][vier[1]].strip()) > 3
+                    ):
+                        intoList += (
+                            [vier[bothRows + 2]]
+                            + [thema]
+                            + [relitable[vier[0][0]][vier[1]]]
+                            + [" | "]
                         )
-                    ) + [" | "]
+                    elif (
+                        bothRows == 1
+                        and not vier[0][1] is None
+                        and len(relitable[vier[0][1]][vier[1]].strip()) > 3
+                    ):
+                        intoList += (
+                            [vier[bothRows + 2]]
+                            + [thema]
+                            + [relitable[vier[0][1]][vier[1]]]
+                            + [" | "]
+                        )
+                    else:
+                        intoList += [""]
                     thema = "Thema: "
                 alxp(intoList)
                 self.relitable[i] += ["".join(intoList)[:-3]]
