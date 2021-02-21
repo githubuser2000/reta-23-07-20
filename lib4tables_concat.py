@@ -789,7 +789,8 @@ class Concat:
                     neue2KoordNeue2Vorwoerter += [(moreAndLess, newCol, wort1, wort2)]
 
                 intoList = []
-                for vier in neue2KoordNeue2Vorwoerter:
+                thema = ""
+                for vier in neue2KoordNeue2Vorwoerter[:-1]:
                     alxp(vier)
                     if not vier[0][0] is None and not vier[1] is None:
                         alxp(relitable[vier[0][0]][vier[1]])
@@ -797,6 +798,7 @@ class Concat:
                         alxp(relitable[vier[0][1]][vier[1]])
                     intoList += (
                         [vier[bothRows + 2]]
+                        + [thema]
                         + (
                             [relitable[vier[0][0]][vier[1]]]
                             if bothRows == 0 and not vier[0][0] is None
@@ -810,8 +812,9 @@ class Concat:
                             else [""]
                         )
                     ) + [" | "]
+                    thema = "Thema: "
                 alxp(intoList)
-                self.relitable[i] += [" ".join(intoList)[:-3]]
+                self.relitable[i] += ["".join(intoList)[:-3]]
             """bevor ich das programmiere, erst Parameter dafür festlegen!!!"""
             if lower1greater2both3 != 3:
                 self.tables.generatedSpaltenParameter[
