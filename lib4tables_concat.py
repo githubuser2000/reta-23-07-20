@@ -795,20 +795,23 @@ class Concat:
                         alxp(relitable[vier[0][0]][vier[1]])
                     if not vier[0][1] is None and not vier[1] is None:
                         alxp(relitable[vier[0][1]][vier[1]])
-                    intoList += [vier[bothRows + 2]] + (
-                        [relitable[vier[0][0]][vier[1]]]
-                        if bothRows == 0 and not vier[0][0] is None
-                        else [relitable[vier[0][1]][vier[1]]]
-                        if bothRows == 1 and not vier[0][1] is None
-                        else [
-                            relitable[vier[0][0]][vier[1]],
-                            relitable[vier[0][1]][vier[1]],
-                        ]
-                        if not vier[0][0] is None and not vier[0][1] is None
-                        else [""]
-                    )
+                    intoList += (
+                        [vier[bothRows + 2]]
+                        + (
+                            [relitable[vier[0][0]][vier[1]]]
+                            if bothRows == 0 and not vier[0][0] is None
+                            else [relitable[vier[0][1]][vier[1]]]
+                            if bothRows == 1 and not vier[0][1] is None
+                            else [
+                                relitable[vier[0][0]][vier[1]],
+                                relitable[vier[0][1]][vier[1]],
+                            ]
+                            if not vier[0][0] is None and not vier[0][1] is None
+                            else [""]
+                        )
+                    ) + [" | "]
                 alxp(intoList)
-                self.relitable[i] += [" | ".join(intoList)[3:-3]]
+                self.relitable[i] += [" ".join(intoList)[:-3]]
             """bevor ich das programmiere, erst Parameter dafür festlegen!!!"""
             if lower1greater2both3 != 3:
                 self.tables.generatedSpaltenParameter[
