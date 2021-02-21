@@ -1612,9 +1612,11 @@ class Program:
             for commandValue, aAllValue in zip(possibleCommands[6:], allValues[4:]):
                 aAllValue += [commandValue]
         # allValues[1] = allValues[2]
+        """
         allValues[2] = set((int(pNum) for pNum in allowedPrimNumbersForCommand))
         allValues[3] = set(Program.kombiParaNdataMatrix.keys())
-        """
+        x("aLLe", allValues)
+
         paraNdataMatrix += [
             (
                 (Program.ParametersMain.alles,),
