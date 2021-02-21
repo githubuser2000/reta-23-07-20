@@ -808,7 +808,7 @@ class Concat:
                         else [""]
                     )
                 alxp(intoList)
-                self.relitable[i] += [" | ".join(intoList)]
+                self.relitable[i] += [" | ".join(intoList)[3:-3]]
             """bevor ich das programmiere, erst Parameter dafür festlegen!!!"""
             if lower1greater2both3 != 3:
                 self.tables.generatedSpaltenParameter[
