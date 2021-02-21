@@ -707,7 +707,6 @@ class Concat:
             len(self.relitable[0]),
         }
         transzendentalienSpalten: tuple = (5, 131)
-        newCol = transzendentalienSpalten[0]
         """bis hier hin waren es die Vorinitialisierungen von Variablen"""
 
         # def switching(metavariable: int, lower1greater2both3: int, row: int):
@@ -719,7 +718,7 @@ class Concat:
             newCol = (
                 transzendentalienSpalten[0]
                 if newCol == transzendentalienSpalten[1]
-                else transzendentalienSpalten[0]
+                else transzendentalienSpalten[1]
             )
             a = (
                 moreAndLess[0] * metavariable
@@ -740,6 +739,7 @@ class Concat:
             moreAndLess = (a, b)
             x("MORE", metavariable)
             x("MORE", moreAndLess)
+
             return newCol, moreAndLess
 
         metaOrWhat = {2: (("Meta-Thema: ", "konkretes: "), ("Meta-", "konkret-"))}
@@ -775,6 +775,7 @@ class Concat:
                 moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
                 neue2KoordNeue2Vorwoerter: list = []
                 alxp("new while")
+                newCol = transzendentalienSpalten[0]
                 while moreAndLess != (None, None):
                     newCol, moreAndLess = switching(newCol, moreAndLess)
                     vorworte2 = metaOrWhat[metavariable][
