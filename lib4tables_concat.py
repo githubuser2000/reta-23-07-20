@@ -784,7 +784,7 @@ class Concat:
             rowsAsNumbers |= {len(self.relitable[0])}
 
             self.relitable[1] += [""]
-            if bothRows == 1:
+            if bothRows == 0:
                 if metavariable == 2:
                     self.relitable[0] += ["Meta"]
                 if metavariable == 3:
@@ -793,7 +793,7 @@ class Concat:
                     self.relitable[0] += ["Fluss"]
                 if metavariable == 5:
                     self.relitable[0] += ["mathematisch diskret"]
-            if bothRows == 0:
+            if bothRows == 1:
                 if metavariable == 2:
                     self.relitable[0] += ["Konkretes"]
                 if metavariable == 3:
