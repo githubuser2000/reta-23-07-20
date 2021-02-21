@@ -841,6 +841,17 @@ class Concat:
                             [vier[bothRows + 2]]
                             + [thema]
                             + [relitable[vier[0][0]][vier[1]]]
+                            + [
+                                "("
+                                + (
+                                    " 1/"
+                                    if vier[1] == transzendentalienSpalten[1]
+                                    and vier[0][1] != 1
+                                    else ""
+                                )
+                                + str(vier[0][0])
+                                + ")"
+                            ]
                             + [" | "]
                         )
                     elif (
@@ -852,6 +863,17 @@ class Concat:
                             [vier[bothRows + 2]]
                             + [thema]
                             + [relitable[vier[0][1]][vier[1]]]
+                            + [
+                                " ("
+                                + (
+                                    "1/"
+                                    if vier[1] == transzendentalienSpalten[1]
+                                    and vier[0][1] != 1
+                                    else ""
+                                )
+                                + str(vier[0][1])
+                                + ")"
+                            ]
                             + [" | "]
                         )
                     else:
