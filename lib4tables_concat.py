@@ -724,7 +724,7 @@ class Concat:
                 moreAndLess[0] * metavariable
                 if not moreAndLess[0] is None
                 and moreAndLess[0] * metavariable < len(relitable)
-                and len((relitable[moreAndLess[0] * metavariable][newCol]).strip()) > 3
+                and len((relitable[moreAndLess[0] * metavariable][newCol]).strip()) > 6
                 else None
             )
             b = (
@@ -733,7 +733,7 @@ class Concat:
                 and moreAndLess[1] / metavariable
                 == round(moreAndLess[1] / metavariable)
                 and len((relitable[int(moreAndLess[1] / metavariable)][newCol]).strip())
-                > 3
+                > 6
                 else None
             )
             moreAndLess = (a, b)
