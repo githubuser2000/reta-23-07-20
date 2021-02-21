@@ -44,14 +44,13 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--licht
 [*]--bedeutung=[list][*]primzahlen,anwendungdersonnen,zaehlungen,jura,geist,gestirn,wesen,zuechtung,konjunktiv,wurzel,vorzeichen[/list]
 [*]--symbole
-[*]--primzahlvielfachesgalaxie=[list][*]2,3,5,7,11
+[*]--primzahlvielfachesgalaxie=[list][*]2,3,5,7,11,13,17,19,23
 also Primzahlen[/list]
 [*]--konzept=[list][*]weisheit,gut,zeit,ruf,selbstgerecht,egoismus,kausal,liebepolung,einheit[/list]
 [*]--inkrementieren
 [*]--operationen=[list][*]halbierungen,2,3,4,5,9[/list]
 [*]--universummetakonkret=
-funktioniert noch nicht!
-[list][*]konkret,meta,theorie,praxis[/list]
+[list][*]konkret,meta,theorie,praxis,fluss,stau,mathematisch-diskret,kontinuierlich[/list]
 [/list]
 [*]-kombination
 [list][*]--was=[list][*]tiere,berufe,intelligenz,liebe,transzendentalien,strukturalien,primzahlkreuz,frauen,maenner,persoenlichkeit,religionen,motive,ontologie,emotionen,personen,wesen,gegentranszendentalien[/list][/list]

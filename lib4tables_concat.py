@@ -747,7 +747,15 @@ class Concat:
 
             return newCol, moreAndLess
 
-        metaOrWhat = {2: (("Meta-Thema: ", "konkretes: "), ("Meta-", "konkret-"))}
+        metaOrWhat = {
+            2: (("Meta-Thema: ", "Konkretes: "), ("Meta-", "Konkret-")),
+            3: (("Theorie-Thema: ", "Praxis: "), ("Theorie-", "Praxis-")),
+            4: (("Fluss-Thema: ", "Stau: "), ("Fluss-", "Stau-")),
+            5: (
+                ("mathematisch-diskret-Thema: ", "kontinuierlich: "),
+                ("Diskret-", "Kontinuierlich-"),
+            ),
+        }
 
         def makeVorwort(
             wiederholungen: int, vorworte2: tuple, less1ormore2: int
@@ -774,8 +782,29 @@ class Concat:
             else []
         ):
             rowsAsNumbers |= {len(self.relitable[0])}
-            for i, row in enumerate(relitable[:2]):
-                self.relitable[i] += [""]
+
+            self.relitable[1] += [""]
+            if bothRows == 1:
+                if metavariable == 2:
+                    self.relitable[0] += ["Meta"]
+                if metavariable == 3:
+                    self.relitable[0] += ["Theorie"]
+                if metavariable == 4:
+                    self.relitable[0] += ["Fluss"]
+                if metavariable == 5:
+                    self.relitable[0] += ["mathematisch diskret"]
+            if bothRows == 0:
+                if metavariable == 2:
+                    self.relitable[0] += ["Konkretes"]
+                if metavariable == 3:
+                    self.relitable[0] += ["Praxis"]
+                if metavariable == 4:
+                    self.relitable[0] += ["Stau"]
+                if metavariable == 5:
+                    self.relitable[0] += ["kontiuierlich"]
+            for i, row in enumerate(relitable[2:], 2):
+                moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
+                neue2KoordNeue2Vorwoerter: list = []
             for i, row in enumerate(relitable[2:], 2):
                 moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
                 neue2KoordNeue2Vorwoerter: list = []
