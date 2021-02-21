@@ -706,7 +706,6 @@ class Concat:
         rowsAsNumbers |= {
             len(self.relitable[0]),
         }
-        transzendentalienSpalten: tuple = (5, 131)
         """bis hier hin waren es die Vorinitialisierungen von Variablen"""
 
         # def switching(metavariable: int, lower1greater2both3: int, row: int):
@@ -768,134 +767,140 @@ class Concat:
 
         """Haupt-Teil, das davor waren Vorbereitungen
         das große Durchiterieren beginnt durch die Tabelle mit anschließendem erweitern dieser, um Spalten"""
-        for bothRows in (
-            [0, 1]
-            if lower1greater2both3 == 3
-            else [
-                0,
-            ]
-            if lower1greater2both3 == 1
-            else [
-                1,
-            ]
-            if lower1greater2both3 == 2
-            else []
-        ):
-            rowsAsNumbers |= {len(self.relitable[0])}
-
-            self.relitable[1] += [""]
-            if bothRows == 0:
-                if metavariable == 2:
-                    self.relitable[0] += ["Meta"]
-                if metavariable == 3:
-                    self.relitable[0] += ["Theorie"]
-                if metavariable == 4:
-                    self.relitable[0] += ["Fluss"]
-                if metavariable == 5:
-                    self.relitable[0] += ["mathematisch diskret"]
-            if bothRows == 1:
-                if metavariable == 2:
-                    self.relitable[0] += ["Konkretes"]
-                if metavariable == 3:
-                    self.relitable[0] += ["Praxis"]
-                if metavariable == 4:
-                    self.relitable[0] += ["Stau"]
-                if metavariable == 5:
-                    self.relitable[0] += ["kontiuierlich"]
-            for i, row in enumerate(relitable[2:], 2):
-                moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
-                neue2KoordNeue2Vorwoerter: list = []
-            for i, row in enumerate(relitable[2:], 2):
-                moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
-                neue2KoordNeue2Vorwoerter: list = []
-                alxp("new while")
-                newCol = transzendentalienSpalten[0]
-                while moreAndLess != (None, None):
-                    newCol, moreAndLess = switching(newCol, moreAndLess)
-                    vorworte2 = metaOrWhat[metavariable][
-                        0 if len(neue2KoordNeue2Vorwoerter) == 0 else 1
-                    ]
-                    wort1: str = makeVorwort(
-                        len(neue2KoordNeue2Vorwoerter) + 1, vorworte2, 1
-                    )
-                    wort2: str = makeVorwort(
-                        len(neue2KoordNeue2Vorwoerter) + 1, vorworte2, 2
-                    )
-                    neue2KoordNeue2Vorwoerter += [(moreAndLess, newCol, wort1, wort2)]
-
-                intoList = []
-                thema = ""
-                x("_t_", neue2KoordNeue2Vorwoerter[:-1])
-                for vier in neue2KoordNeue2Vorwoerter[:-1]:
-                    alxp(vier)
-                    # if not vier[0][0] is None and not vier[1] is None:
-                    #    alxp(relitable[vier[0][0]][vier[1]])
-                    # if not vier[0][1] is None and not vier[1] is None:
-                    #    alxp(relitable[vier[0][1]][vier[1]])
-                    if (
-                        bothRows == 0
-                        and not vier[0][0] is None
-                        and len(relitable[vier[0][0]][vier[1]].strip()) > 3
-                    ):
-                        intoList += (
-                            [vier[bothRows + 2]]
-                            + [thema]
-                            + [relitable[vier[0][0]][vier[1]]]
-                            + [
-                                "("
-                                + (
-                                    " 1/"
-                                    if vier[1] == transzendentalienSpalten[1]
-                                    and vier[0][1] != 1
-                                    else ""
-                                )
-                                + str(vier[0][0])
-                                + ")"
-                            ]
-                            + [" | "]
-                        )
-                    elif (
-                        bothRows == 1
-                        and not vier[0][1] is None
-                        and len(relitable[vier[0][1]][vier[1]].strip()) > 3
-                    ):
-                        intoList += (
-                            [vier[bothRows + 2]]
-                            + [thema]
-                            + [relitable[vier[0][1]][vier[1]]]
-                            + [
-                                " ("
-                                + (
-                                    "1/"
-                                    if vier[1] == transzendentalienSpalten[1]
-                                    and vier[0][1] != 1
-                                    else ""
-                                )
-                                + str(vier[0][1])
-                                + ")"
-                            ]
-                            + [" | "]
-                        )
-                    else:
-                        intoList += [""]
-                    thema = "Thema: "
-                alxp(intoList)
-                self.relitable[i] += ["".join(intoList)[:-3]]
-            """bevor ich das programmiere, erst Parameter dafür festlegen!!!"""
-            if lower1greater2both3 != 3:
-                self.tables.generatedSpaltenParameter[
-                    len(self.tables.generatedSpaltenParameter)
-                    + self.tables.SpaltenVanillaAmount
-                ] = self.tables.dataDict[4][(metavariable, lower1greater2both3 - 1)]
-            else:
-                for both in (
+        for ifInvers, transzendentalienSpalten in enumerate(((5, 131), (131, 5))):
+            for bothRows in (
+                [0, 1]
+                if lower1greater2both3 == 3
+                else [
                     0,
+                ]
+                if lower1greater2both3 == 1
+                else [
                     1,
-                ):
+                ]
+                if lower1greater2both3 == 2
+                else []
+            ):
+                rowsAsNumbers |= {len(self.relitable[0])}
+
+                self.relitable[1] += [""]
+                if bothRows == 0:
+                    if metavariable == 2:
+                        self.relitable[0] += ["Meta"]
+                    if metavariable == 3:
+                        self.relitable[0] += ["Theorie"]
+                    if metavariable == 4:
+                        self.relitable[0] += ["Fluss"]
+                    if metavariable == 5:
+                        self.relitable[0] += ["mathematisch diskret"]
+                if bothRows == 1:
+                    if metavariable == 2:
+                        self.relitable[0] += ["Konkretes"]
+                    if metavariable == 3:
+                        self.relitable[0] += ["Praxis"]
+                    if metavariable == 4:
+                        self.relitable[0] += ["Stau"]
+                    if metavariable == 5:
+                        self.relitable[0] += ["kontiuierlich"]
+                self.relitable[0][-1] += (
+                    " für 1/n statt n" if ifInvers == 1 else " für n"
+                )
+                for i, row in enumerate(relitable[2:], 2):
+                    moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
+                    neue2KoordNeue2Vorwoerter: list = []
+                for i, row in enumerate(relitable[2:], 2):
+                    moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
+                    neue2KoordNeue2Vorwoerter: list = []
+                    alxp("new while")
+                    newCol = transzendentalienSpalten[0]
+                    while moreAndLess != (None, None):
+                        newCol, moreAndLess = switching(newCol, moreAndLess)
+                        vorworte2 = metaOrWhat[metavariable][
+                            0 if len(neue2KoordNeue2Vorwoerter) == 0 else 1
+                        ]
+                        wort1: str = makeVorwort(
+                            len(neue2KoordNeue2Vorwoerter) + 1, vorworte2, 1
+                        )
+                        wort2: str = makeVorwort(
+                            len(neue2KoordNeue2Vorwoerter) + 1, vorworte2, 2
+                        )
+                        neue2KoordNeue2Vorwoerter += [
+                            (moreAndLess, newCol, wort1, wort2)
+                        ]
+
+                    intoList = []
+                    thema = ""
+                    x("_t_", neue2KoordNeue2Vorwoerter[:-1])
+                    for vier in neue2KoordNeue2Vorwoerter[:-1]:
+                        alxp(vier)
+                        # if not vier[0][0] is None and not vier[1] is None:
+                        #    alxp(relitable[vier[0][0]][vier[1]])
+                        # if not vier[0][1] is None and not vier[1] is None:
+                        #    alxp(relitable[vier[0][1]][vier[1]])
+                        if (
+                            bothRows == 0
+                            and not vier[0][0] is None
+                            and len(relitable[vier[0][0]][vier[1]].strip()) > 3
+                        ):
+                            intoList += (
+                                [vier[bothRows + 2]]
+                                + [thema]
+                                + [relitable[vier[0][0]][vier[1]]]
+                                + [
+                                    " ("
+                                    + (
+                                        "1/"
+                                        if vier[1] != transzendentalienSpalten[ifInvers]
+                                        and vier[0][1] != 1
+                                        else ""
+                                    )
+                                    + str(vier[0][0])
+                                    + ")"
+                                ]
+                                + [" | "]
+                            )
+                        elif (
+                            bothRows == 1
+                            and not vier[0][1] is None
+                            and len(relitable[vier[0][1]][vier[1]].strip()) > 3
+                        ):
+                            intoList += (
+                                [vier[bothRows + 2]]
+                                + [thema]
+                                + [relitable[vier[0][1]][vier[1]]]
+                                + [
+                                    " ("
+                                    + (
+                                        "1/"
+                                        if vier[1] != transzendentalienSpalten[ifInvers]
+                                        and vier[0][1] != 1
+                                        else ""
+                                    )
+                                    + str(vier[0][1])
+                                    + ")"
+                                ]
+                                + [" | "]
+                            )
+                        else:
+                            intoList += [""]
+                        thema = "Thema: "
+                    alxp(intoList)
+                    self.relitable[i] += ["".join(intoList)[:-3]]
+                """bevor ich das programmiere, erst Parameter dafür festlegen!!!"""
+                if lower1greater2both3 != 3:
                     self.tables.generatedSpaltenParameter[
                         len(self.tables.generatedSpaltenParameter)
                         + self.tables.SpaltenVanillaAmount
-                    ] = self.tables.dataDict[4][(metavariable, both)]
+                    ] = self.tables.dataDict[4][(metavariable, lower1greater2both3 - 1)]
+                else:
+                    for both in (
+                        0,
+                        1,
+                    ):
+                        self.tables.generatedSpaltenParameter[
+                            len(self.tables.generatedSpaltenParameter)
+                            + self.tables.SpaltenVanillaAmount
+                        ] = self.tables.dataDict[4][(metavariable, both)]
 
         x("r_wt", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
