@@ -1,6 +1,6 @@
 ;Lebewesen (Vorzeichen: das bedeutet nicht Antitranszendentalien, sondern gutartigkeit oder bösartigkeit anderen Religionen gegenüber);Beruf (Vorzeichen: das bedeutet nicht Antitranszendentalien, sondern gutartigkeit oder bösartigkeit anderen Religionen gegenüber);Kreativität und Intelligenz und andere Geisteskräfte (Vorzeichen: das bedeutet nicht Antitranszendentalien, sondern gutartigkeit oder bösartigkeit anderen Religionen gegenüber);Liebe (Vorzeichen: das bedeutet nicht Antitranszendentalien, sondern gutartigkeit oder bösartigkeit anderen Religionen gegenüber);Transzendentalien und Strukturalien ähnliche Sachen (Vorzeichen: das bedeutet nicht Antitranszendentalien, sondern gutartigkeit oder bösartigkeit anderen Religionen gegenüber);Primzahlkreuz von Leibnitz (Vorzeichen: das bedeutet nicht Antitranszendentalien, sondern gutartigkeit oder bösartigkeit anderen Religionen gegenüber);Männer / Frauen (IMHO) (Vorzeichen: das bedeutet nicht Antitranszendentalien, sondern gutartigkeit oder bösartigkeit anderen Religionen gegenüber);evolutionär erwerben  (Vorzeichen: das bedeutet nicht Antitranszendentalien, sondern gutartigkeit oder bösartigkeit anderen Religionen gegenüber);Religionen (Vorzeichen: das bedeutet nicht Antitranszendentalien, sondern gutartigkeit oder bösartigkeit anderen Religionen gegenüber);Motive (Vorzeichen: das bedeutet nicht Antitranszendentalien, sondern gutartigkeit oder bösartigkeit anderen Religionen gegenüber);analytische Ontologie (Vorzeichen: das bedeutet nicht Antitranszendentalien, sondern gutartigkeit oder bösartigkeit anderen Religionen gegenüber);Emotionen (Vorzeichen: das bedeutet nicht Antitranszendentalien, sondern gutartigkeit oder bösartigkeit anderen Religionen gegenüber);Berühmtheiten und Personen (Vorzeichen: das bedeutet nicht Antitranszendentalien, sondern gutartigkeit oder bösartigkeit anderen Religionen gegenüber);Das Wesen (12), Züchten (Vorzeichen: das bedeutet nicht Antitranszendentalien, sondern gutartigkeit oder bösartigkeit anderen Religionen gegenüber);Gegen-Transzendentalien bzw. Gegen-Strukturalien (Vorzeichen: das bedeutet nicht Antitranszendentalien, sondern gutartigkeit oder bösartigkeit anderen Religionen gegenüber)
 3|8|10;;;Intelligenz stark auf Objekte und Gegenstände bezogen;Objektliebe, Gegenstandsliebe;das existierende Ding, die existierende Sache;;;;;;;;;;
-7;Hund, Wolf, Fuchs;;bloßes Verallgemeinern, ohne Sicherheit;;;;;;;;;;;;
+7;Hund, Wolf;;bloßes Verallgemeinern, ohne Sicherheit;;;;;;;;;;;;
 5|9;Katze;Berufe für die Allgemeinheit;;jeden zum Fressen gern haben;das Allgemeine;;;Anmut;;;;;;;
 5|9|13;Katze der Zukunft;Arzt, Krankenschwester, Pfleger, Sozialarbeiter, Volunteer z.B. für dritte Welt-Länder;;;;;;;;;;;;;
 10;Rabe, Krähe, Greifvogel, Esel, Fledermaus;M.I.N.T.: Mathematiker, Informatiker, Naturwissenschaftler, Techniker;;;;;;;;;;;;;
@@ -9,7 +9,7 @@
 2|4|7|14|18;Hundeaußerirdische (haben aber noch höhere Zahlen);;;;;;;;;;;;;;
 5|9|19;Katzenaußerirdische (haben aber noch höhere Zahlen);;;;;;;;;;;;;;
 5;Reptil;Lehrer, Professor, TV-Star, Musikstar, Influencer, Kommunist;;;;;;;;;;;;;
-6|12;Elefantenaußerirdische (haben aber noch höhere Zahlen);;;;;;;;;;;;;;
+6|10|12;Elefantenaußerirdische (haben aber noch höhere Zahlen);;;;;;;;;;;;;;
 7|9;Vielleicht Schafe, Ziegen, Kühe;Nicht kommerzielle Berufe / Vereine;;;Naivität, Konstruktivität, Unbescholtenheit;;;;;;;;;;
 1;Mikroorganismen;Zauberkünstler;;;;;;;;;;;;;
 9;Hase;;;;;;;;;;;;;;
@@ -30,7 +30,7 @@
 9|9;;;;;jegliches Alles;;;;;;;;;;
 7|7;;;;;das Gute selbst;;;;;;;;;;
 8|9;;;;;Phantasie;;;;;;;;;;
-(10)|+6|(3);Elefant, Bär;;;;Wichtigkeit: Die Relation (Wahrheit definiert Wert) und der Rang von Wahrheiten (Wert definiert Wahrheit), Relation synonym zu zweistelligem Prädikat, d.h. also auch dies hier mehrstelliges Prädikat aus Werten;;;;;;;;;;das Unwichtige
+-10|-6|+7;Elefant;;;;Wichtigkeit: Die Relation (Wahrheit definiert Wert) und der Rang von Wahrheiten (Wert definiert Wahrheit), Relation synonym zu zweistelligem Prädikat, d.h. also auch dies hier mehrstelliges Prädikat aus Werten;;;;;;;;;;das Unwichtige
 9|6;;;;;Vielleicht: Ausmessung, Vermessung;;;wahrscheinlich „gehoben“ sein;;;;;;;
 10|7|8;;;;;Realismus, d.h. die Realität von Wirklichkeit und die Wirklichkeit von Realität;;;;;;;;;;
 8|10|6;;;;;keine Ahnung, ob das stimmt: Welten;;;;;;;;;;
@@ -77,7 +77,7 @@
 3|4;;;;;;;;;;;;;;Rudern (ohne Lenken! weil ohne 7) oder Windmühle bzw. Wassermühle bzw. Windrad oder Segeln (ohne bestimmen der Richtung, weil ohne 7) oder Aerodynamik bzw. Fliegen bzw. Rotor;
 3|4|7;;;;;;;;;;;;;;Rudern / Paddeln mit Bestimmen der Richtung;
 3|-4|-6|-7|+10 ;;;;;;;;;;;;;Florian Homm;;
-7|(14);Fuchs;;;;;;;;;;;;;;
+7|14;Fuchs;;;;;;;;;;;;;;
 7|10|12;;;;;;;;;;;;;Ludwig Wittgenstein;;
 -1|-4|1/5|-6|-7|10|1/10|15;;;;;;;;;;;;;Steve Jobs;;
 -2|-4|+1/5|7|10|1/10|-32;;;;;;;;;;;;;Tom Cruise;;
@@ -121,3 +121,4 @@
 18;höhere Lebensformen, die als Gedanken, statt Meinungen zu haben, Meinungsvergleiche als einen einzigen Gedanken im Bewusstsein halten können und nur so denken, also als Gedanken etwas ganz anderes als Meinungen haben, dass so ein Gruppendenken stattfindet, statt dass man als Einzelperson seine Meinung für sich hat.;;;;;;;;;;;;;;
 19;höhere Lebensformen, die als Gedanken, statt Meinungen zu haben, totale Letztgedanken und Relationen von totalen Letztgedanken als einen einzigen Gedanken im Bewusstsein halten können, wie Ewigkeit oder Maximum von was auch immer, und nur so denken, also als Gedanken etwas ganz anderes als Meinungen haben, dass so ein Subkulturdenken entsteht, statt dass man als Einzelperson seine Meinung für sich hat.;;;;;;;;;;;;;;
 15;Lebewesen, die ein stark ausgeprägtes Denken in den Kategorien: gut, schlecht, schön, wertvoll, einheitlich, wesentlich, richtig, falsch, böse usw. haben.;;;;;;;;;;;;;;
+6|10;Bär;;;;;;;;;;;;;;
