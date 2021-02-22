@@ -775,6 +775,11 @@ class Program:
                 {84},
             ),
             (
+                Program.ParametersMain.galaxie,
+                ("modallogik",),
+                {148},
+            ),
+            (
                 Program.ParametersMain.operationen,
                 (
                     "5",
