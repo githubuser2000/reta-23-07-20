@@ -30,7 +30,7 @@
 9|9;;;;;jegliches Alles;;;;;;;;;;
 7|7;;;;;das Gute selbst;;;;;;;;;;
 8|9;;;;;Phantasie;;;;;;;;;;
--10|-6|+7;Elefant;;;;Wichtigkeit: Die Relation (Wahrheit definiert Wert) und der Rang von Wahrheiten (Wert definiert Wahrheit), Relation synonym zu zweistelligem Prädikat, d.h. also auch dies hier mehrstelliges Prädikat aus Werten;;;;;;;;;;das Unwichtige
+-10|-6|+7;Elefant;;;;;;;;;;;;;;das Unwichtige
 9|6;;;;;Vielleicht: Ausmessung, Vermessung;;;wahrscheinlich „gehoben“ sein;;;;;;;
 10|7|8;;;;;Realismus, d.h. die Realität von Wirklichkeit und die Wirklichkeit von Realität;;;;;;;;;;
 8|10|6;;;;;keine Ahnung, ob das stimmt: Welten;;;;;;;;;;
@@ -124,3 +124,6 @@
 6|10;Bär;;;;;;;;;;;;;;
 14;Lebewesen, die ein stark ausgeprägtes Denken in den Kategorien: nützlich, Absicht, Fähigkeit, Tätigkeit, Vorteil, Besitz, Eigentum, Selbstlosigkeit, Selbstsucht, Ehrlichkeit, Freundlichkeit, Vereinigungswillen haben;;;;;;;;;;;;;;
 13;Lebewesen, die weniger die Themen unterscheiden, zwischen denen die 14 und 15 Unterscheidungen treffen, sondern sich vielmehr innerhalb so eines Themas bewegen;;;;;;;;;;;;;;
+7|12;;;;;Mengen, die Richtungs-Arten und Richtungskategorien definieren (, statt Mengen, die Zahlen definieren, wie z.B. rationale oder natürliche Zahlen);;;;;;;;;;
+6|10;;;;;Wichtigkeit: Die Relation (Wahrheit definiert Wert) und der Rang von Wahrheiten (Wert definiert Wahrheit), Relation synonym zu zweistelligem Prädikat, d.h. also auch dies hier mehrstelliges Prädikat aus Werten, und Mengen, die Zahlen definieren (wie z.B. rationale oder natürliche Zahlen);;;;;;;;;;
+7|10|12;;;;;Arten (genauer: Mengen) von Wahrheitsvektoren, Vektoren, die statt Zahlen Wahrheitswerte haben und davon verschiedene Arten (so wie es verschiedene Zahlenarten gibt, basierend auf der Menge, d.h. Restklassen nicht, da die Klasse die 20 ist);;;;;;;;;;

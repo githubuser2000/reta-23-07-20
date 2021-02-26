@@ -2168,6 +2168,7 @@ class Program:
         alxp(
             """In js dass _ in Namen wie Leerzeichen und solche auch als Erste ParameterNamen setzen!"""
         )
+        alxp("""Einprogrammieren, dass die Fehlerausgabe besser wird, wenn man falsche Parameter setzt.""")
         # alxp("Mond 125 wird nicht angezeigt, also ggf. einige andere nicht oder fälschlicherweise Sonnen?")
         # alxp("1. Clean Code\n2. Vollständigkeit der Befehle auch")
 
