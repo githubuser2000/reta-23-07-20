@@ -776,6 +776,18 @@ class Program:
             ),
             (
                 Program.ParametersMain.galaxie,
+                (
+                    "innenaussenstrukur",
+                    "strukturalieninnenaußen",
+                    "strukturalieninnenaussen",
+                    "innenaußenstrukur",
+                    "transzendentalieninnenaußen",
+                    "transzendentalieninnenaussen",
+                ),
+                {149},
+            ),
+            (
+                Program.ParametersMain.galaxie,
                 ("modallogik",),
                 {148},
             ),
@@ -965,7 +977,7 @@ class Program:
                     "existenzialien",
                     "universalien",
                 ),
-                {5, 54, 55, 131, 138},
+                {5, 54, 55, 131, 138, 150},
             ),
             (
                 Program.ParametersMain.universum,
@@ -2168,7 +2180,9 @@ class Program:
         alxp(
             """In js dass _ in Namen wie Leerzeichen und solche auch als Erste ParameterNamen setzen!"""
         )
-        alxp("""Einprogrammieren, dass die Fehlerausgabe besser wird, wenn man falsche Parameter setzt.""")
+        alxp(
+            """Einprogrammieren, dass die Fehlerausgabe besser wird, wenn man falsche Parameter setzt."""
+        )
         # alxp("Mond 125 wird nicht angezeigt, also ggf. einige andere nicht oder fälschlicherweise Sonnen?")
         # alxp("1. Clean Code\n2. Vollständigkeit der Befehle auch")
 
