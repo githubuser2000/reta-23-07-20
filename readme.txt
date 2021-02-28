@@ -46,7 +46,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--symbole
 [*]--primzahlvielfachesgalaxie=[list][*]2,3,5,7,11,13,17,19,23,29,31
 also Primzahlen[/list]
-[*]--konzept=[list][*]weisheit,gut,zeit,ruf,selbstgerecht,egoismus,kausal,liebepolung,einheit[/list]
+[*]--konzept=[list][*]weisheit,gut,zeit,ruf,selbstgerecht,egoismus,kausal,liebepolung,einheit,meinungsintelligenz,ursprungsintelligenz[/list]
 [*]--inkrementieren
 [*]--operationen=[list][*]halbierungen,2,3,4,5,9[/list]
 [*]--universummetakonkret=

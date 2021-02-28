@@ -1542,6 +1542,12 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept,
+                ("meinungsintelligenz", "ursprungsintelligenz"),
+                set(),
+                {(151, 152)},
+            ),
+            (
+                Program.ParametersMain.konzept,
                 ("liebepolung",),
                 set(),
                 {(121, 122)},
