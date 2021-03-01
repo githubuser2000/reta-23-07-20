@@ -52,7 +52,7 @@
 -3|-6;;;;;;;;;Judentum;;;;;;
 -7|-3;;;;;;;;;Christentum;;;;;;
 +5|(-6)|(-7)|(-8)|+9;;;;;;;;;Bahai;;;;;;
-6/8|+2|+4|+1/5|+1/6|+7|-10|(14)|(15)|(17)|(18);;;;;;;;;Religion 10;;;;;;
+6/8|+2|+1/5|+1/6|+7|-10|(14)|(15)|(17)|(18);;;;;;;;;Religion 10;;;;;;
 3|10|14;;Ingenieur, Techniker;;;;;;;;;;;;;
 11|12;;;Systeme übergreifen zu können;;;;;;;;;;;;
 6|10|13|15;;Anwalt;;;;;;;;;;;;;
@@ -93,7 +93,7 @@
 6|1/6|7;;;;;Vektorfeld bzw. Feld mit Feldstärke;;;;;;;;;;
 6|1/6;;;;;Dichte (Strukturalie oder so), Synchronizität in Stärke (auch als Strukturalie) (d.h. alles das ist: alles Pures hohen Wertes, Wert der Pur ist, Reinheit im Sinn von Pur, also allgemeiner);;;;;;;;;;
 1|4;;;;;Konstanz (identische Veränderung) (ich bin mir sicher);;;;;;;;;;
-+2|+4|+6/8|+1/5|+1/6|+7|-10|14|15|17|18;;;;;;;;;;;;;Jupiter 3.0 (ich);;
++2|-4|+6/8|+1/5|+1/6|+7|-10|14|15|17|18;;;;;;;;;;;;;Jupiter 3.0 (ich);;
 3/2|3|4|3/4|1/5|1/6|6|7|10|1/10|(12)|14;;;;;;;;;;;;;Elon Musk;;
 6|7|10;;;;;courtesy (englisches Wort) (=Verbindlichkeit + Höflichkeit + zuvorkommend sein + Wohlwollen + Großzügigkeit = all das!) (sehr wahrscheinlich sehr passgenau richtig hier);;;;;;;;;;
 1|5;;;;;das Selbe (ich bin mir sicher);;;;;;;;;;
@@ -128,3 +128,5 @@
 7|10|12;;;;;Arten (genauer: Mengen) von Wahrheitsvektoren, Vektoren, die statt Zahlen Wahrheitswerte haben und davon verschiedene Arten (so wie es verschiedene Zahlenarten gibt, basierend auf der Menge, d.h. Restklassen nicht, da die Klasse die 20 ist);;;;;;;;;;
 6|12;;;;;Mengen, die Zahlen definieren (wie z.B. rationale oder natürliche Zahlen);;;;;;;;;;
 3|10|14;da soll es so eine Affenart geben, die sich durch rumgeheule in den Bergen fortpflanzt … ;;;;;;;;;;;;;;
+-2|-4;;;;;;;;;antiker römische (Jupiter = Jupiter 2.0) und antike ägyptische Religion (Ra);;;;Jupiter = Jupiter 2.0, Ra aus Ägypten;;
+-2;;;;;;;;;antiker römische, Diespiter = Jupiter 1.0;;;;Diespiter = Jupiter 1.0;;
