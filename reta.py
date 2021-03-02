@@ -1608,6 +1608,12 @@ class Program:
             13: ("personen", "berühmtheiten", "beruehmtheiten"),
             14: ("wesen", "zuechten", "züchten"),
             15: ("gegentranszendentalien", "gegenstrukturalien"),
+            16: (
+                "wirtschaftssystem",
+                "wirtschaftssysteme",
+                "kombinierteswirtschaftssystem",
+                "kombiniertewirtschaftssysteme",
+            ),
         }
 
         self.kombiReverseDict: dict = {}

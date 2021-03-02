@@ -53,7 +53,7 @@ also Primzahlen[/list]
 [list][*]konkret,meta,theorie,praxis,fluss,stau,mathematisch-diskret,kontinuierlich[/list]
 [/list]
 [*]-kombination
-[list][*]--was=[list][*]tiere,berufe,intelligenz,liebe,transzendentalien,strukturalien,primzahlkreuz,frauen,maenner,persoenlichkeit,religionen,motive,ontologie,emotionen,personen,wesen,gegentranszendentalien[/list][/list]
+[list][*]--was=[list][*]tiere,berufe,intelligenz,liebe,transzendentalien,strukturalien,primzahlkreuz,frauen,maenner,persoenlichkeit,religionen,motive,ontologie,emotionen,personen,wesen,gegentranszendentalien,wirtschaftssysteme[/list][/list]
 [*]-ausgabe
 [list][*]--nocolor
 [*]--art=
