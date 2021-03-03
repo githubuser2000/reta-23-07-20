@@ -1229,6 +1229,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
+                ("manipulation",),
+                {153},
+            ),
+            (
+                Program.ParametersMain.menschliches,
                 (
                     "berufe",
                     "beruf",
