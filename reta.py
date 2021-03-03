@@ -2144,7 +2144,7 @@ class Program:
         )
         alxp("""Quellcode muss noch mehr dokumentiert werden in Funktionen usw.""")
         alxp(
-            """Meta-Thema, Konkretes und die anderen Dinger außer nur die Sache mit der 2, sondern auch 3,4,5,..."""
+            """intelligentere detailliertere Fehlermeldung, wenn man falsche Parameter übergeben hat"""
         )
         alxp("""Pytest verwenden wegen Geschwindigkeitstests.""")
         alxp(
