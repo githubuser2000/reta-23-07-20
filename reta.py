@@ -2146,6 +2146,7 @@ class Program:
         alxp(
             """intelligentere detailliertere Fehlermeldung, wenn man falsche Parameter übergeben hat"""
         )
+        alxp("""2 mal pro seitlich = können (2) seitlich""")
         alxp("""Pytest verwenden wegen Geschwindigkeitstests.""")
         alxp(
             "1. http://goexchange.de/viewtopic.php?f=13&t=2683#p17239 () \n    9. anderen etwas vormachen können (Bahai)\n    1/9. den anderen Strukturgrößen außer der Einheit (9, 1/9) etwas vormachen können"
