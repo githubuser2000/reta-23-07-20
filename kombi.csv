@@ -131,7 +131,8 @@
 -2|-4;;;;;;;;;antiker römische (Jupiter = Jupiter 2.0) und antike ägyptische Religion (Ra);;;;Jupiter = Jupiter 2.0, Ra aus Ägypten;;;
 -2;;;;;;;;;antiker römische, Diespiter = Jupiter 1.0;;;;Diespiter = Jupiter 1.0;;;
 2|3;;Handwerker;;;;;;;;;;;;;;
-10|17;;Kabarettist;;;;;;;;;;;;;;
-+5|10|13;;Arzt, Krankenschwester, Pfleger, Sozialarbeiter, Volunteer z.B. für dritte Welt-Länder;;;;;;;;;;;;;;
-+5|9|10|13;;Arzt, Krankenschwester, Pfleger, Sozialarbeiter, Volunteer z.B. für dritte Welt-Länder;;;;;;;;;;;;;;
-+5|9|13;;Arzt, Krankenschwester, Pfleger, Sozialarbeiter, Volunteer z.B. für dritte Welt-Länder;;;;;;;;;;;;;;
++10|+17;;Kabarettist;;;;;;;;;;;;;;
++5|+10|13;;Arzt;;;;;;;;;;;;;;
++5|+9|10|13;;Arzt, Pfleger, Sozialarbeiter, Volunteer z.B. für dritte Welt-Länder;;;;;;;;;;;;;;
++5|+9|13;;Pfleger, Sozialarbeiter, Volunteer z.B. für dritte Welt-Länder;;;;;;;;;;;;;;
++5|-10|13;;Krankenschwester, Pfleger, Sozialarbeiter;;;;;;;;;;;;;;
