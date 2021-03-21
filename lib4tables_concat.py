@@ -674,9 +674,6 @@ class Concat:
             or rowsAsNumbers >= {5}
             or rowsAsNumbers >= {135}
         ):
-            self.relitable, rowsAsNumbers = self.spalteFuerGegenInnenAussenSeitlichPrim(
-                self.relitable, rowsAsNumbers
-            )
             x("idiot__", self.tables.generatedSpaltenParameter)
 
         return self.relitable, rowsAsNumbers
@@ -934,8 +931,9 @@ class Concat:
         self.primAmounts = 0
         self.oldPrimAmounts = 0
         self.lastPrimAnswers: dict = {}
-        extraSpalten = (5, 10, 42, 131, 138)
+        # extraSpalten = (5, 10, 42, 131, 138)
         extraSpalten = self.ones
+        x("OnEs", self.ones)
         spaltenNamen = (
             "Transzendentalien, Strukturalien, Universum n",
             "Galaxie n",
@@ -978,9 +976,11 @@ class Concat:
             self.tables.generatedSpaltenParameter[
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
-            ] = (self.tables.dataDict[0][5][0], [primzahlvielfachesgalaxie])
-        x("rewt1", self.tables.generatedSpaltenParameter)
-        x("rewt2", primzahlvielfachesgalaxie)
+            ] = self.tables.dataDict[4][(extraSpalten[r],)]
+
+            # self.tables.dataDict[0][5][0],
+            # x("rewt2", self.tables.dataDict[4][(extraSpalten[r],)][0])
+        # x("rewt1", self.tables.dataDict[0][5][0])
         return self.relitable, rowsAsNumbers
 
     def readConcatCsv(self, relitable: list, rowsAsNumbers: set) -> tuple:

@@ -2086,8 +2086,9 @@ class Program:
         ones = []
         for a in self.onlyGenerated:
             if len(a) == 1:
-                ones += [a]
+                ones += a
         self.tables.getConcat.ones = ones
+        # x("OnEs", self.tables.getConcat.ones)
 
         for prims in self.puniverseprims:
             self.tables.primUniversePrimsSet.add(prims)
@@ -2136,6 +2137,12 @@ class Program:
             self.relitable,
             self.rowsAsNumbers,
         ) = self.tables.getConcat.concatLovePolygon(self.relitable, self.rowsAsNumbers)
+        (
+            self.relitable,
+            rowsAsNumbers,
+        ) = self.tables.getConcat.spalteFuerGegenInnenAussenSeitlichPrim(
+            self.relitable, self.rowsAsNumbers
+        )
 
         couplesX = []
         for a in self.onlyGenerated:
