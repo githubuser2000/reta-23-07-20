@@ -51,6 +51,8 @@ also Primzahlen[/list]
 [*]--operationen=[list][*]halbierungen,2,3,4,5,9[/list]
 [*]--universummetakonkret=
 [list][*]konkret,meta,theorie,praxis,fluss,stau,mathematisch-diskret,kontinuierlich[/list]
+[*]--primzahlwirkung
+[list][*]universum,absichtgalxie,absichtgalaxiereziproke,universumreziproke,gegentranszendentalie[/list]
 [/list]
 [*]-kombination
 [list][*]--was=[list][*]tiere,berufe,intelligenz,liebe,transzendentalien,strukturalien,primzahlkreuz,frauen,maenner,persoenlichkeit,religionen,motive,ontologie,emotionen,personen,wesen,gegentranszendentalien,wirtschaftssysteme[/list][/list]
