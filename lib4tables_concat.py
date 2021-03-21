@@ -934,24 +934,24 @@ class Concat:
         # extraSpalten = (5, 10, 42, 131, 138)
         extraSpalten = self.ones
         x("OnEs", self.ones)
-        spaltenNamen = (
-            "Transzendentalien, Strukturalien, Universum n",
-            "Galaxie n",
-            "Galaxie 1/n",
-            "Transzendentalien, Strukturalien, Universum 1/n",
-            "Gegen-Transzendentalien, Gegen-Strukturalien, Universum n",
-            "Richtung-Richtung",
-        )
+        spaltenNamen = {
+            5: "Transzendentalien, Strukturalien, Universum n",
+            10: "Galaxie n",
+            42: "Galaxie 1/n",
+            131: "Transzendentalien, Strukturalien, Universum 1/n",
+            138: "Gegen-Transzendentalien, Gegen-Strukturalien, Universum n",
+            None: "Richtung-Richtung",
+        }
 
         for r, kk in enumerate(extraSpalten):
             rowsAsNumbers |= {
                 len(self.relitable[0]) + r,
             }
 
-        vergangenheit = []
+        vergangenheit: list = []
         for i, cols in enumerate(relitable):
             for kkk, kk in enumerate(extraSpalten):
-                into = "" if i != 0 else "Primzahlwirkung " + spaltenNamen[kkk]
+                into = "" if i != 0 else "Primzahlwirkung " + spaltenNamen[kk]
 
                 self.oldPrimAmounts = self.primAmounts
                 if couldBePrimeNumberPrimzahlkreuz(i):
@@ -981,8 +981,10 @@ class Concat:
                     into = into[:-3]
                 elif i == 1:
                     into = PrimAnswer(1)
-                vergangenheit += [into]
+                if kk is None:
+                    vergangenheit += [into]
                 self.relitable[i] += [into]
+
         for r, kk in enumerate(extraSpalten):
             self.tables.generatedSpaltenParameter[
                 len(self.tables.generatedSpaltenParameter)
