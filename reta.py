@@ -580,7 +580,7 @@ class Program:
 
         Program.ParametersMain: namedtuple = namedtuple(
             "ParametersMain",
-            "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesgalaxie konzept inkrementieren operationen universummetakonkret alles",
+            "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesgalaxie konzept inkrementieren operationen universummetakonkret primzahlwirkung alles",
             # "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesgalaxie konzept inkrementieren operationen alles",
         )
         Program.ParametersMain = Program.ParametersMain(
@@ -632,6 +632,7 @@ class Program:
             ("inkrementieren",),
             ("operationen",),
             ("universummetakonkret",),
+            ("primzahlwirkung",),
             ("alles"),
         )
         allowedPrimNumbersForCommand = tuple(
@@ -944,6 +945,21 @@ class Program:
                         0,
                     )
                 },
+            ),
+            (
+                Program.ParametersMain.primzahlwirkung,
+                (
+                    "universum",
+                    "strukturalie",
+                    "strukturalien",
+                    "transzendentalien",
+                    "transzendentalie",
+                ),
+                set(),
+                set(),
+                set(),
+                set(),
+                {(5,)},
             ),
             (
                 Program.ParametersMain.universummetakonkret,
@@ -1981,6 +1997,7 @@ class Program:
             (1, 3): set(),
             (1, 4): set(),
         }
+
         self.storeParamtersForColumns()
         self.produceAllSpaltenNumbers()
         if self.htmlOrBBcode and not self.breiteORbreiten:
@@ -2005,6 +2022,12 @@ class Program:
         self.onlyGenerated = self.spaltenArtenKey_SpaltennummernValue[
             self.spaltenTypeNaming.boolAndTupleSet1
         ]
+        ones = []
+        for a in self.onlyGenerated:
+            if len(a) == 1:
+                ones += [a]
+        self.tables.getConcat.ones = ones
+
         for prims in self.puniverseprims:
             self.tables.primUniversePrimsSet.add(prims)
 
@@ -2052,11 +2075,17 @@ class Program:
             self.relitable,
             self.rowsAsNumbers,
         ) = self.tables.getConcat.concatLovePolygon(self.relitable, self.rowsAsNumbers)
+
+        couplesX = []
+        for a in self.onlyGenerated:
+            if len(a) == 2:
+                couplesX += [a]
+
         (
             self.relitable,
             self.rowsAsNumbers,
         ) = self.tables.getConcat.spalteMetaKontretTheorieAbstrakt_etc_1(
-            self.relitable, self.rowsAsNumbers, self.onlyGenerated
+            self.relitable, self.rowsAsNumbers, couplesX
         )
 
         if len(self.rowsOfcombi) > 0:

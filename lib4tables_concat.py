@@ -16,6 +16,7 @@ from lib4tables import (OutputSyntax, bbCodeSyntax,
 class Concat:
     def __init__(self, tables):
         self.tables = tables
+        self.ones = set()
 
     @property
     def primUniversePrimsSet(self):
@@ -908,16 +909,6 @@ class Concat:
     def spalteFuerGegenInnenAussenSeitlichPrim(
         self, relitable: list, rowsAsNumbers: set
     ) -> tuple:
-
-        self.relitable = relitable
-        self.primAmounts = 0
-        self.oldPrimAmounts = 0
-        self.lastPrimAnswers: dict = {}
-
-        rowsAsNumbers |= {
-            len(self.relitable[0]),
-        }
-
         def PrimAnswer2(i: int) -> str:
             return self.lastPrimAnswers[i]
 
@@ -939,31 +930,57 @@ class Concat:
             else:
                 return ""
 
-        for i, cols in enumerate(relitable):
-            # primMultiples = primMultiple(i)
-            into = "" if i != 0 else "Primzahlwirkung "
+        self.relitable = relitable
+        self.primAmounts = 0
+        self.oldPrimAmounts = 0
+        self.lastPrimAnswers: dict = {}
+        extraSpalten = (5, 10, 42, 131, 138)
+        extraSpalten = self.ones
+        spaltenNamen = (
+            "Transzendentalien, Strukturalien, Universum n",
+            "Galaxie n",
+            "Galaxie 1/n",
+            "Transzendentalien, Strukturalien, Universum 1/n",
+            "Gegen-Transzendentalien, Gegen-Strukturalien, Universum n",
+        )
 
-            self.oldPrimAmounts = self.primAmounts
-            if couldBePrimeNumberPrimzahlkreuz(i):
-                self.primAmounts += 1
-            if primCreativity(i) == 1:
-                into = PrimAnswer(i)
-                self.lastPrimAnswers[i] = into
-            elif i > 1:
-                for couple in primRepeat(primFak(i)):
-                    if couple[1] == 1:
-                        into += PrimAnswer2(couple[0]) + " + "
-                    else:
-                        into += str(couple[1]) + " * " + PrimAnswer2(couple[0]) + " + "
-                into = into[:-3]
-            elif i == 1:
-                into = PrimAnswer(1)
-            self.relitable[i] += [into]
-        self.tables.generatedSpaltenParameter[
-            len(self.tables.generatedSpaltenParameter)
-            + self.tables.SpaltenVanillaAmount
-        ] = (self.tables.dataDict[0][5][0], [primzahlvielfachesgalaxie])
-        x("rewt", self.tables.generatedSpaltenParameter)
+        for r, kk in enumerate(extraSpalten):
+            rowsAsNumbers |= {
+                len(self.relitable[0]) + r,
+            }
+
+        for i, cols in enumerate(relitable):
+            for kkk, kk in enumerate(extraSpalten):
+                into = "" if i != 0 else "Primzahlwirkung " + spaltenNamen[kkk]
+
+                self.oldPrimAmounts = self.primAmounts
+                if couldBePrimeNumberPrimzahlkreuz(i):
+                    self.primAmounts += 1
+                if primCreativity(i) == 1:
+                    into = PrimAnswer(i)
+                    self.lastPrimAnswers[i] = into
+                elif i > 1:
+                    for couple in primRepeat(primFak(i)):
+                        if couple[1] == 1:
+                            into += PrimAnswer2(couple[0]) + " + "
+                        else:
+                            into += (
+                                str(relitable[couple[1]][kk])
+                                + " * "
+                                + PrimAnswer2(couple[0])
+                                + " + "
+                            )
+                    into = into[:-3]
+                elif i == 1:
+                    into = PrimAnswer(1)
+                self.relitable[i] += [into]
+        for r, kk in enumerate(extraSpalten):
+            self.tables.generatedSpaltenParameter[
+                len(self.tables.generatedSpaltenParameter)
+                + self.tables.SpaltenVanillaAmount
+            ] = (self.tables.dataDict[0][5][0], [primzahlvielfachesgalaxie])
+        x("rewt1", self.tables.generatedSpaltenParameter)
+        x("rewt2", primzahlvielfachesgalaxie)
         return self.relitable, rowsAsNumbers
 
     def readConcatCsv(self, relitable: list, rowsAsNumbers: set) -> tuple:
