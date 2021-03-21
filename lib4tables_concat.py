@@ -940,6 +940,7 @@ class Concat:
             "Galaxie 1/n",
             "Transzendentalien, Strukturalien, Universum 1/n",
             "Gegen-Transzendentalien, Gegen-Strukturalien, Universum n",
+            "Richtung-Richtung",
         )
 
         for r, kk in enumerate(extraSpalten):
@@ -947,6 +948,7 @@ class Concat:
                 len(self.relitable[0]) + r,
             }
 
+        vergangenheit = []
         for i, cols in enumerate(relitable):
             for kkk, kk in enumerate(extraSpalten):
                 into = "" if i != 0 else "Primzahlwirkung " + spaltenNamen[kkk]
@@ -961,16 +963,25 @@ class Concat:
                     for couple in primRepeat(primFak(i)):
                         if couple[1] == 1:
                             into += PrimAnswer2(couple[0]) + " + "
-                        else:
+                        elif kk is not None:
                             into += (
                                 str(relitable[couple[1]][kk])
                                 + " * "
                                 + PrimAnswer2(couple[0])
                                 + " + "
                             )
+                        else:
+                            into += (
+                                "["
+                                + str(vergangenheit[couple[1]])
+                                + "] * letztendlich: "
+                                + PrimAnswer2(couple[0])
+                                + " + "
+                            )
                     into = into[:-3]
                 elif i == 1:
                     into = PrimAnswer(1)
+                vergangenheit += [into]
                 self.relitable[i] += [into]
         for r, kk in enumerate(extraSpalten):
             self.tables.generatedSpaltenParameter[

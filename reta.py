@@ -963,6 +963,15 @@ class Program:
             ),
             (
                 Program.ParametersMain.primzahlwirkung,
+                ("richtungrichtung",),
+                set(),
+                set(),
+                set(),
+                set(),
+                {(None,)},
+            ),
+            (
+                Program.ParametersMain.primzahlwirkung,
                 (
                     "absichtgalxie",
                     "absicht",
