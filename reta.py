@@ -1047,6 +1047,27 @@ class Program:
             (
                 Program.ParametersMain.universum,
                 (
+                    "gegentranszendentalien",
+                    "gegentranszendentalie",
+                    "gegenstrukturalien",
+                    "gegenalien",
+                    "gegenexistenzialien",
+                    "gegenuniversalien",
+                ),
+                {
+                    138,
+                },
+            ),
+            (
+                Program.ParametersMain.universum,
+                ("systemsachen",),
+                {
+                    150,
+                },
+            ),
+            (
+                Program.ParametersMain.universum,
+                (
                     "transzendentalien",
                     "transzendentalie",
                     "strukturalien",
@@ -1055,6 +1076,20 @@ class Program:
                     "universalien",
                 ),
                 {5, 54, 55, 131, 138, 150},
+            ),
+            (
+                Program.ParametersMain.universum,
+                (
+                    "transzendentalienreziproke",
+                    "transzendentaliereziproke",
+                    "strukturalienreziproke",
+                    "alienreziproke",
+                    "existenzialienreziproke",
+                    "universalienreziproke",
+                ),
+                {
+                    131,
+                },
             ),
             (
                 Program.ParametersMain.universum,
