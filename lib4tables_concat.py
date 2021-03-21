@@ -923,7 +923,7 @@ class Concat:
             elif i == 3:
                 return "gegen seitlich"
             elif i == 1:
-                return "alle Richtungen möglich"
+                return "alle Richtungen"
             else:
                 return ""
 
