@@ -973,7 +973,7 @@ class Program:
             (
                 Program.ParametersMain.primzahlwirkung,
                 (
-                    "absichtgalxie",
+                    "absichtgalaxie",
                     "absicht",
                     "motive",
                     "motiv",
@@ -1575,7 +1575,7 @@ class Program:
                     "sonne",
                     "planet",
                 ),
-                {64},
+                {64, 154},
                 set(),
                 set(),
                 set(),
@@ -2291,11 +2291,12 @@ class Program:
         alxp(
             """intelligentere detailliertere Fehlermeldung, wenn man falsche Parameter übergeben hat"""
         )
-        alxp("""2 mal pro seitlich = können (2) seitlich""")
+        alxp("""Ctrl+C kontrollierter abbrechen lassen!""")
+        #alxp("""2 mal pro seitlich = können (2) seitlich""")
         alxp("""Pytest verwenden wegen Geschwindigkeitstests.""")
-        alxp(
-            "1. http://goexchange.de/viewtopic.php?f=13&t=2683#p17239 () \n    9. anderen etwas vormachen können (Bahai)\n    1/9. den anderen Strukturgrößen außer der Einheit (9, 1/9) etwas vormachen können"
-        )
+        #alxp(
+        #    "1. http://goexchange.de/viewtopic.php?f=13&t=2683#p17239 () \n    9. anderen etwas vormachen können (Bahai)\n    1/9. den anderen Strukturgrößen außer der Einheit (9, 1/9) etwas vormachen können"
+        #)
         alxp("""aus der ergebnis relitable ein dict machen !!!! bestes !!! """)
         alxp(
             """Unwichtig weil Geschwindigkeit: Bei vielen Algorithmen schauen, ob nicht das Durchiterieren extrem lahmt, weil es polynomielle Laufzeit hat, statt lineare, wie es eigentlich sein sollte"""
