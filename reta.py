@@ -1132,7 +1132,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.operationen,
-                ("Multiplikation",),
+                ("multiplikation",),
                 {158},
             ),
             (
@@ -2295,6 +2295,7 @@ class Program:
         alxp(
             """Funktionsköpfe überall noch dokumentieren wo sie bisher noch nicht dokumentiert sind"""
         )
+        alxp("""die Kleinschrift bei den Befehlen als obersten String als Normalschrift gestalten nur wegen der html Ausgabe dann""")
         alxp("""Quellcode muss noch mehr dokumentiert werden in Funktionen usw.""")
         alxp(
             """intelligentere detailliertere Fehlermeldung, wenn man falsche Parameter übergeben hat"""
