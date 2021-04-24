@@ -2350,6 +2350,7 @@ class Program:
         alxp(
             """Einprogrammieren, dass die Fehlerausgabe besser wird, wenn man falsche Parameter setzt."""
         )
+        alxp("""deutlich bessere Fehlerausgabe, wenn man falsche Parameter angibt""")
         # alxp("Mond 125 wird nicht angezeigt, also ggf. einige andere nicht oder fälschlicherweise Sonnen?")
         # alxp("1. Clean Code\n2. Vollständigkeit der Befehle auch")
 
