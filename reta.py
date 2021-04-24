@@ -2293,6 +2293,7 @@ class Program:
         )
         alxp("""Viele Routinen schreiben, die Codeteile immer dann überspringen, wenn man weiß, dass sie nicht benötigt werden, zur Geschwindigkeitssteigerung""")
         alxp("""Ctrl+C kontrollierter abbrechen lassen!""")
+        alxp("""im Forum habe ich neue Arten von Inkrementieren drin und außerdem habe ich noch gar nix zu Multiplikation überhaupt richtig""")
         alxp("""Ich könnte auch ganz einfach die mir bekannten Geschwindigkeitsfehler korrigieren: konkatenieren von strings und alle iterierungen von listen überprüfen oder gleich die tabelle als dict dict gestalten""")
         #alxp("""2 mal pro seitlich = können (2) seitlich""")
         alxp("""Pytest verwenden wegen Geschwindigkeitstests.""")
