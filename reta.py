@@ -1132,6 +1132,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.operationen,
+                ("Multiplikation",),
+                {158},
+            ),
+            (
+                Program.ParametersMain.operationen,
                 ("4", "vier", "viererstruktur", "viererabfolgen"),
                 {76, 77, 81, 104},
             ),
