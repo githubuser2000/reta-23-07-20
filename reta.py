@@ -1695,6 +1695,9 @@ class Program:
             ),
             (Program.ParametersMain.konzept, ("kausal",), set(), {(110, 111)}),
             (Program.ParametersMain.inkrementieren, set(), {43, 54, 74, 95}),
+            (Program.ParametersMain.inkrementieren, ("um1",), {155}),
+            (Program.ParametersMain.inkrementieren, ("um2",), {156}),
+            (Program.ParametersMain.inkrementieren, ("um3",), {157}),
         ]
 
         Program.kombiParaNdataMatrix = {
