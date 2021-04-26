@@ -616,43 +616,45 @@ class Concat:
                 for i, cols in enumerate(relitableCopy):
                     primMultiples = primMultiple(i)
                     into = (
-                        "" if i != 0 else "generierte Multiplikationen " + polytypename
+                        [""]
+                        if i != 0
+                        else ["generierte Multiplikationen "] + [polytypename]
                     )
                     for k, multi in enumerate(primMultiples[1:]):
                         if k > 0:
-                            into += ", außerdem: "
+                            into += [", außerdem: "]
                         into += (
-                            "("
-                            + (
+                            ["("]
+                            + [
                                 self.transzendentalien[multi[0]]
                                 if self.transzendentalien[multi[0]].strip() != ""
                                 else "..."
-                            )
-                            + " UND "
-                            + (
+                            ]
+                            + [" UND "]
+                            + [
                                 self.rolle[multi[0]]
                                 if self.rolle[multi[0]].strip() != ""
                                 else "..."
-                            )
-                            + ") * ("
-                            + (
+                            ]
+                            + [") * ("]
+                            + [
                                 self.motivation[multi[1]]
                                 if self.motivation[multi[1]].strip() != ""
                                 else "..."
-                            )
+                            ]
                             + (
-                                " UND "
-                                + (
+                                [" UND "]
+                                + [
                                     self.ziel[multi[1]]
                                     if self.ziel[multi[1]].strip() != ""
                                     else "..."
-                                )
+                                ]
                                 if polytype == 10
-                                else ""
+                                else [""]
                             )
-                            + ")"
+                            + [")"]
                         )
-                    self.relitable[i] += [into]
+                    self.relitable[i] += ["".join(into)]
 
                 if (
                     len(self.tables.generatedSpaltenParameter)
