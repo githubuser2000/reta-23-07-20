@@ -347,6 +347,7 @@ class Tables:
                     quoting=csv.QUOTE_NONE,
                     delimiter=";",
                     quotechar="",
+                    escapechar="\\",
                 )
             while (
                 len(newTable) > 0
@@ -456,7 +457,7 @@ class Tables:
                             + [self.__outType.endCell]
                         )
                         if type(self.__outType) is csvSyntax:
-                            line = line + linePlus
+                            line = ["".join(line), "".join(linePlus)]
                         else:
                             line += linePlus
                         rowsEmpty = 0
