@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+import sys
+from copy import deepcopy
+from enum import Enum
 from typing import Iterable, Union
-from lib4tables import moonNumber, isPrimMultiple
+
 from center import (alxp, cliout, getTextWrapThings, infoLog, output,
                     primzahlvielfachesgalaxie, re, x)
-from enum import Enum
-from copy import deepcopy
-import sys
+from lib4tables import isPrimMultiple, moonNumber
 
 shellRowsAmount, h_de, dic, fill = getTextWrapThings()
+
+
 class Wraptype(Enum):
     pyphen = 1
     pyhyphen = 2
@@ -81,6 +84,7 @@ def alxwrap(text: str, len_: int):
             )
         )
 
+
 class Prepare:
     def __init__(self, tables, originalLinesRange, shellRowsAmount):
         self.tables = tables
@@ -97,7 +101,7 @@ class Prepare:
         self.gezaehlt = False
 
     def setZaehlungen(
-            self, num: int
+        self, num: int
     ):  # mehrere Zählungen finden festlegen zum später auslesen
         """Eine Zahl wird untersucht und die Variable self.zaehlungen wegen dieser Ergänzt
         self.zaehlungen bekommt informationen über mondzahlen und sonnenzahlen
@@ -182,7 +186,7 @@ class Prepare:
             return 0
         combiRows = combiRows1 if combiRows1 != 0 else len(self.rowsAsNumbers)
         if len(self.rowsAsNumbers) - combiRows < len(self.breiten):
-            breiten: list = self.breiten[len(self.rowsAsNumbers) - combiRows:]
+            breiten: list = self.breiten[len(self.rowsAsNumbers) - combiRows :]
         else:
             breiten: list = []
         # delta = -1 if not self.nummerierung and combiRows1 != 0 else -1
@@ -194,7 +198,7 @@ class Prepare:
         return certaintextwidth
 
     def parametersCmdWithSomeBereich(
-            self, MehrereBereiche: str, symbol: str, neg: str
+        self, MehrereBereiche: str, symbol: str, neg: str
     ) -> set:
         """Erstellen des Befehls: Bereich
 
@@ -210,11 +214,11 @@ class Prepare:
         results = set()
         for EinBereich in MehrereBereiche.split(","):
             if (
-                    (neg == "" and len(EinBereich) > 0 and EinBereich[0].isdecimal())
-                    or (neg == EinBereich[: len(neg)] and len(neg) > 0)
+                (neg == "" and len(EinBereich) > 0 and EinBereich[0].isdecimal())
+                or (neg == EinBereich[: len(neg)] and len(neg) > 0)
             ) and len(EinBereich) > 0:
                 EinBereich = (
-                    EinBereich[len(neg):]
+                    EinBereich[len(neg) :]
                     if neg == EinBereich[: len(neg)]
                     else EinBereich
                 )
@@ -222,21 +226,25 @@ class Prepare:
                     EinBereich = EinBereich + "-" + EinBereich
                 BereichCouple = EinBereich.split("-")
                 if (
-                        len(BereichCouple) == 2
-                        and BereichCouple[0].isdecimal()
-                        and BereichCouple[0] != "0"
-                        and BereichCouple[1].isdecimal()
-                        and BereichCouple[1] != "0"
+                    len(BereichCouple) == 2
+                    and BereichCouple[0].isdecimal()
+                    and BereichCouple[0] != "0"
+                    and BereichCouple[1].isdecimal()
+                    and BereichCouple[1] != "0"
                 ):
                     results.add(
-                        BereichCouple[0] + "-" + symbol + "-" + BereichCouple[1]
+                        "".join(
+                            [BereichCouple[0]]
+                            + ["-"]
+                            + [symbol]
+                            + ["-"]
+                            + [BereichCouple[1]]
+                        )
                     )
 
         return results
 
-    def deleteDoublesInSets(
-            self, set1: set, set2: set
-    ) -> Iterable[Union[set, set]]:
+    def deleteDoublesInSets(self, set1: set, set2: set) -> Iterable[Union[set, set]]:
         """Wenn etwas in 2 Mengen doppelt vorkommt wird es gelöscht
         @rtype: tuple[set,set]
         @return: Beide Mengen werden ausgegeben
@@ -386,17 +394,17 @@ class Prepare:
                     if n % 2 == 0:
                         numRangeYesZ.add(n)
 
-        x('_x3_', numRange)
+        x("_x3_", numRange)
         numRange = cutset(ifTypAtAll, numRange, numRangeYesZ)
-        x('_x2_', numRange)
+        x("_x2_", numRange)
 
         primMultiples: list = []
         ifPrimAtAll = False
         for condition in paramLines:
             if (
-                    len(condition) > 1
-                    and condition[-1] == "p"
-                    and condition[:-1].isdecimal()
+                len(condition) > 1
+                and condition[-1] == "p"
+                and condition[:-1].isdecimal()
             ):
                 ifPrimAtAll = True
                 primMultiples += [int(condition[:-1])]
@@ -407,15 +415,15 @@ class Prepare:
                 numRangeYesZ.add(n)
         numRange = cutset(ifPrimAtAll, numRange, numRangeYesZ)
 
-        x('_x1_', numRange)
+        x("_x1_", numRange)
 
         toPowerIt: list = []
         ifPowerAtall: bool = False
         for condition in paramLines:
             if (
-                    len(condition) > 1
-                    and condition[-1] == "^"
-                    and condition[:-1].isdecimal()
+                len(condition) > 1
+                and condition[-1] == "^"
+                and condition[:-1].isdecimal()
             ):
                 ifPowerAtall = True
                 toPowerIt += [int(condition[:-1])]
@@ -435,7 +443,7 @@ class Prepare:
                     else:
                         break
             numRange = cutset(ifPowerAtall, numRange, numRangeYesZ)
-        x('_x4_', numRange)
+        x("_x4_", numRange)
 
         numRangeYesZ = set()
 
@@ -443,9 +451,9 @@ class Prepare:
         anyMultiples = []
         for condition in paramLines:
             if (
-                    len(condition) > 1
-                    and condition[-1] == "v"
-                    and condition[:-1].isdecimal()
+                len(condition) > 1
+                and condition[-1] == "v"
+                and condition[:-1].isdecimal()
             ):
                 ifMultiplesFromAnyAtAll = True
                 anyMultiples += [int(condition[:-1])]
@@ -474,12 +482,12 @@ class Prepare:
         return numRange
 
     def prepare4out(
-            self,
-            paramLines: set,
-            paramLinesNot: set,
-            contentTable: list,
-            rowsAsNumbers: set,
-            combiRows: int = 0,
+        self,
+        paramLines: set,
+        paramLinesNot: set,
+        contentTable: list,
+        rowsAsNumbers: set,
+        combiRows: int = 0,
     ) -> tuple:
         """Aus einer Tabelle wird eine gemacht, bei der der Zeilenumbruch durchgeführt wird.
         Dabei werden alle Spalten und Zeilen entfernt die nicht ausgegeben werden sollen.
@@ -511,7 +519,9 @@ class Prepare:
             finallyDisplayLines2 = self.FilterOriginalLines(
                 deepcopy(finallyDisplayLines), paramLinesNot
             )
-            hasAnythingCanged = set(self.originalLinesRange) - finallyDisplayLines2 - {0}
+            hasAnythingCanged = (
+                set(self.originalLinesRange) - finallyDisplayLines2 - {0}
+            )
             if len(hasAnythingCanged) > 0:
                 finallyDisplayLines -= finallyDisplayLines2
         finallyDisplayLines.add(0)
@@ -534,15 +544,10 @@ class Prepare:
                         if u == 0 and combiRows == 0:
                             x("_x_", rowToDisplay)
                             x("_y_", self.tables.generatedSpaltenParameter)
-                            if (
-                                    rowToDisplay
-                                    in self.tables.generatedSpaltenParameter
-                            ):
+                            if rowToDisplay in self.tables.generatedSpaltenParameter:
                                 x(
                                     "FehlerY",
-                                    self.tables.generatedSpaltenParameter[
-                                        rowToDisplay
-                                    ],
+                                    self.tables.generatedSpaltenParameter[rowToDisplay],
                                 )
                                 if self.tables.SpaltenVanillaAmount > t:
                                     x("FehlerX", rowToDisplay)
@@ -551,8 +556,8 @@ class Prepare:
                                 # raise ValueError
                             try:
                                 if (
-                                        rowToDisplay
-                                        not in self.tables.generatedSpaltenParameter
+                                    rowToDisplay
+                                    not in self.tables.generatedSpaltenParameter
                                 ):
                                     pass
                                     self.tables.generatedSpaltenParameter[
@@ -619,4 +624,3 @@ class Prepare:
                 else:
                     pass
         return newLines[t]
-

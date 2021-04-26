@@ -2295,20 +2295,31 @@ class Program:
         alxp(
             """Funktionsköpfe überall noch dokumentieren wo sie bisher noch nicht dokumentiert sind"""
         )
-        alxp("""die Kleinschrift bei den Befehlen als obersten String als Normalschrift gestalten nur wegen der html Ausgabe dann""")
+        alxp(
+            """die Kleinschrift bei den Befehlen als obersten String als Normalschrift gestalten nur wegen der html Ausgabe dann"""
+        )
         alxp("""Quellcode muss noch mehr dokumentiert werden in Funktionen usw.""")
+        alxp(
+            """Ich müsste RETA mal testen, ob ab der n ten Zeile oder alle paar Zeilen das Gleiche rauskommt, wie wenn ab Zeile 1 begonnen wird."""
+        )
         alxp(
             """intelligentere detailliertere Fehlermeldung, wenn man falsche Parameter übergeben hat"""
         )
-        alxp("""Viele Routinen schreiben, die Codeteile immer dann überspringen, wenn man weiß, dass sie nicht benötigt werden, zur Geschwindigkeitssteigerung""")
+        alxp(
+            """Viele Routinen schreiben, die Codeteile immer dann überspringen, wenn man weiß, dass sie nicht benötigt werden, zur Geschwindigkeitssteigerung"""
+        )
         alxp("""Ctrl+C kontrollierter abbrechen lassen!""")
-        alxp("""im Forum habe ich neue Arten von Inkrementieren drin und außerdem habe ich noch gar nix zu Multiplikation überhaupt richtig""")
-        alxp("""Ich könnte auch ganz einfach die mir bekannten Geschwindigkeitsfehler korrigieren: konkatenieren von strings und alle iterierungen von listen überprüfen oder gleich die tabelle als dict dict gestalten""")
-        #alxp("""2 mal pro seitlich = können (2) seitlich""")
+        alxp(
+            """im Forum habe ich neue Arten von Inkrementieren drin und außerdem habe ich noch gar nix zu Multiplikation überhaupt richtig"""
+        )
+        alxp(
+            """Ich könnte auch ganz einfach die mir bekannten Geschwindigkeitsfehler korrigieren: konkatenieren von strings und alle iterierungen von listen überprüfen oder gleich die tabelle als dict dict gestalten"""
+        )
+        # alxp("""2 mal pro seitlich = können (2) seitlich""")
         alxp("""Pytest verwenden wegen Geschwindigkeitstests.""")
-        #alxp(
+        # alxp(
         #    "1. http://goexchange.de/viewtopic.php?f=13&t=2683#p17239 () \n    9. anderen etwas vormachen können (Bahai)\n    1/9. den anderen Strukturgrößen außer der Einheit (9, 1/9) etwas vormachen können"
-        #)
+        # )
         alxp("""aus der ergebnis relitable ein dict machen !!!! bestes !!! """)
         alxp(
             """Unwichtig weil Geschwindigkeit: Bei vielen Algorithmen schauen, ob nicht das Durchiterieren extrem lahmt, weil es polynomielle Laufzeit hat, statt lineare, wie es eigentlich sein sollte"""
