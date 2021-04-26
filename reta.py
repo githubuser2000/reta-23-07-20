@@ -2303,6 +2303,9 @@ class Program:
             """Ich müsste RETA mal testen, ob ab der n ten Zeile oder alle paar Zeilen das Gleiche rauskommt, wie wenn ab Zeile 1 begonnen wird."""
         )
         alxp(
+            """funktional alles noch mal durchprobieren nach den geschwk opt und zwar nummeriereung und colorierung und sonst alle ausgabearten"""
+        )
+        alxp(
             """intelligentere detailliertere Fehlermeldung, wenn man falsche Parameter übergeben hat"""
         )
         alxp(

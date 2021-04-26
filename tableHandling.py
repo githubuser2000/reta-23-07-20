@@ -402,9 +402,7 @@ class Tables:
                                                 int(filteredLineNumbersofOrignal)
                                             ),
                                             zeile=BigCellLineNumber,
-                                        )
-                                    ]
-                                    + [
+                                        ),
                                         (
                                             " "
                                             if type(self.__outType) in [OutputSyntax]
@@ -413,9 +411,9 @@ class Tables:
                                                     int(filteredLineNumbersofOrignal)
                                                 )
                                             )
-                                        )
+                                        ),
+                                        self.__outType.endCell,
                                     ]
-                                    + [self.__outType.endCell]
                                 )
                                 if str(filteredLineNumbersofOrignal).isdecimal
                                 and filteredLineNumbersofOrignal != ""
@@ -425,10 +423,10 @@ class Tables:
                                         -2,
                                         self.tables.generatedSpaltenParameter,
                                         zeile=BigCellLineNumber,
-                                    )
+                                    ),
+                                    " ",
+                                    self.__outType.endCell,
                                 ]
-                                + [" "]
-                                + [self.__outType.endCell]
                             )
                             if self.nummerierung
                             else [""]
@@ -441,18 +439,14 @@ class Tables:
                                     -1,
                                     self.tables.generatedSpaltenParameter,
                                     zeile=BigCellLineNumber,
-                                )
-                            ]
-                            + (
-                                ["".rjust(numlen + 1)]
+                                ),
+                                "".rjust(numlen + 1)
                                 if iterWholeLine != 0
-                                else [
-                                    (str(filteredLineNumbersofOrignal) + " ").rjust(
-                                        numlen + 1
-                                    )
-                                ]
-                            )
-                            + [self.__outType.endCell]
+                                else (str(filteredLineNumbersofOrignal) + " ").rjust(
+                                    numlen + 1
+                                ),
+                                self.__outType.endCell,
+                            ]
                         )
                         if type(self.__outType) is csvSyntax:
                             line = ["".join(line), "".join(linePlus)]
