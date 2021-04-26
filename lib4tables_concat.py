@@ -974,8 +974,8 @@ class Concat:
                         if couple[1] == 1:
                             into += [PrimAnswer2(couple[0])] + [" + "]
                         elif kk is not None:
-                            into += [
-                                str(relitable[couple[1]][kk])]
+                            into += (
+                                [str(relitable[couple[1]][kk])]
                                 + [" * "]
                                 + [PrimAnswer2(couple[0])]
                                 + [" + "]
