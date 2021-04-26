@@ -592,19 +592,7 @@ class Tables:
                                         and filteredLineNumbersofOrignal == ""
                                     ):
                                         filteredLineNumbersofOrignal = 0
-                                    # if (
-                                    #    not str(
-                                    #        filteredLineNumbersofOrignal
-                                    #    ).isdecimal()
-                                    #    or True
-                                    # ):
-                                    #    sys.stderr.write(
-                                    #        " ALXALX "
-                                    #        + str(filteredLineNumbersofOrignal)
-                                    #        + " "
-                                    #        + line
-                                    #        + "\n"
-                                    #    )
+
                                     cliout(
                                         "".join(
                                             [
