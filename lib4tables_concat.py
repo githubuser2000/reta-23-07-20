@@ -279,7 +279,7 @@ class Concat:
                             xx = True
                             # Zelleninhalt +=
                 if xx:
-                    relitable[z][s] = "".join(relitable[z][s])[:-3]
+                    relitable[z][s] = "".join(relitable[z][s][:-1])
                 else:
                     relitable[z][s] = "".join(relitable[z][s])
 
@@ -340,6 +340,7 @@ class Concat:
         def ModalLogikIntoTable(
             concept, distanceFromLine, i, into, vorkommenVielfacher_B
         ):
+            into = [into]
             # i_with_a_distance = i + distanceFromLine
             try:
                 modalOperatorenEn = vorkommenVielfacher_B[i][distanceFromLine]["modalS"]
@@ -360,7 +361,7 @@ class Concat:
                         # x("_ü4_", modalOperatoren[0])
                         # x("_ü5_", modalOperatoren[1:])
                         into[i] += (
-                            (
+                            [
                                 "mittelstark überdurchschnittlich: "
                                 if abs(distanceFromLine) == 2
                                 else (
@@ -376,34 +377,33 @@ class Concat:
                                         )
                                     )
                                 )
-                            )
-                            + (
-                                # ""
-                                # if abs(distanceFromLine) % 2 == 1
-                                # else
-                                (modalOperatoren[0] + " ")
-                            )
-                            + (
+                            ]
+                            + [modalOperatoren[0]]
+                            + [" "]
+                            + [
                                 (self.relitable[vervielfachter][concept[0]])
                                 if (abs(distanceFromLine) % 2 == 0)
                                 else self.relitable[vervielfachter][concept[1]]
-                            )
-                            + " "
-                            + modalOperatoren[1]
+                            ]
+                            + [" "]
+                            + [modalOperatoren[1]]
                             + (
                                 (
-                                    ", nicht: "
-                                    + ", ".join(modalOperatoren[2:])
-                                    + " (das alles nicht): "
-                                    + self.relitable[vervielfachter][concept[0]]
-                                    if len(modalOperatoren) > 2
-                                    else ""
+                                    [", nicht: "]
+                                    + [", ".join(modalOperatoren[2:])]
+                                    + [" (das alles nicht): "]
+                                    + [
+                                        self.relitable[vervielfachter][concept[0]]
+                                        if len(modalOperatoren) > 2
+                                        else ""
+                                    ]
                                 )
                                 if abs(distanceFromLine) % 2 == 1
-                                else ""
+                                else [""]
                             )
-                            + " | "
+                            + [" | "]
                         )
+                        into[i] = "".join(into[i])
                     except (IndexError, KeyError):
                         pass
             except (IndexError, KeyError):
