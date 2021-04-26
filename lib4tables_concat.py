@@ -874,24 +874,27 @@ class Concat:
                                 + [thema]
                                 + [relitable[vier[0][1]][vier[1]]]
                                 + [
-                                    " ("
-                                    + (
-                                        "1/"
-                                        if vier[1] != transzendentalienSpalten[ifInvers]
-                                        and vier[0][1] != 1
-                                        else ""
+                                    "".join(
+                                        [" ("]
+                                        + [
+                                            "1/"
+                                            if vier[1]
+                                            != transzendentalienSpalten[ifInvers]
+                                            and vier[0][1] != 1
+                                            else ""
+                                        ]
+                                        + [str(vier[0][1])]
+                                        + [")"]
                                     )
-                                    + str(vier[0][1])
-                                    + ")"
                                 ]
                                 + [" | "]
                             )
-                        else:
-                            intoList += [""]
+                        # else:
+                        #    intoList += [""]
                         thema = "Thema: "
                     alxp(intoList)
-                    self.relitable[i] += ["".join(intoList)[:-3]]
-                """bevor ich das programmiere, erst Parameter dafür festlegen!!!"""
+                    self.relitable[i] += ["".join(intoList[:-1])]
+
                 if lower1greater2both3 != 3:
                     self.tables.generatedSpaltenParameter[
                         len(self.tables.generatedSpaltenParameter)
