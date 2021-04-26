@@ -340,8 +340,6 @@ class Concat:
         def ModalLogikIntoTable(
             concept, distanceFromLine, i, into, vorkommenVielfacher_B
         ):
-            into = [into]
-            # i_with_a_distance = i + distanceFromLine
             try:
                 modalOperatorenEn = vorkommenVielfacher_B[i][distanceFromLine]["modalS"]
                 vervielfachterEn = vorkommenVielfacher_B[i][distanceFromLine][
@@ -392,18 +390,15 @@ class Concat:
                                     [", nicht: "]
                                     + [", ".join(modalOperatoren[2:])]
                                     + [" (das alles nicht): "]
-                                    + [
-                                        self.relitable[vervielfachter][concept[0]]
-                                        if len(modalOperatoren) > 2
-                                        else ""
-                                    ]
+                                    + [self.relitable[vervielfachter][concept[0]]]
+                                    if len(modalOperatoren) > 2
+                                    else [""]
                                 )
                                 if abs(distanceFromLine) % 2 == 1
                                 else [""]
                             )
                             + [" | "]
                         )
-                        into[i] = "".join(into[i])
                     except (IndexError, KeyError):
                         pass
             except (IndexError, KeyError):
@@ -509,80 +504,79 @@ class Concat:
                 ]
 
         self.relitable = relitable
-        if True:
-            distances = (-4, -3, -2, -1, 0, 1, 2, 3, 4)
-            conceptsRowsSetOfTuple2: tuple = tuple(conceptsRowsSetOfTuple)
-            # x("wer", conceptsRowsSetOfTuple2)
-            reliTableCopy = deepcopy(self.relitable)
-            for o, concept in enumerate(conceptsRowsSetOfTuple2):
-                into: dict = {}
-                einMalVorkommen = set()
-                for i, cols in enumerate(reliTableCopy):
-                    into[i] = ""
-                    if i == 0:
-                        into[i] = "Generiert: " + cols[concept[0]]
-                    elif cols[concept[0]].strip() != "":
-                        einMalVorkommen |= {i}
 
-                vorkommenVielfacher: dict = {}
-                einMalVorkommen = tuple(einMalVorkommen)
+        distances = (-4, -3, -2, -1, 0, 1, 2, 3, 4)
+        conceptsRowsSetOfTuple2: tuple = tuple(conceptsRowsSetOfTuple)
+        # x("wer", conceptsRowsSetOfTuple2)
+        reliTableCopy = deepcopy(self.relitable)
+        for o, concept in enumerate(conceptsRowsSetOfTuple2):
+            into: dict = {}
+            einMalVorkommen = set()
+            for i, cols in enumerate(reliTableCopy):
+                into[i] = [""]
+                if i == 0:
+                    into[i] = ["Generiert: "] + [cols[concept[0]]]
+                elif cols[concept[0]].strip() != "":
+                    einMalVorkommen |= {i}
 
-                for (
-                    einVorkommen
-                ) in (
-                    einMalVorkommen
-                ):  # d.h. so ein Wort wie weise oder gut kommt in vor in der csv
-                    vielfacher = 1
+            vorkommenVielfacher: dict = {}
+            einMalVorkommen = tuple(einMalVorkommen)
+
+            for (
+                einVorkommen
+            ) in (
+                einMalVorkommen
+            ):  # d.h. so ein Wort wie weise oder gut kommt in vor in der csv
+                vielfacher = 1
+                ergebnis = vielfacher * einVorkommen
+                vorkommenNvielfacherPerItsProduct(
+                    einVorkommen, ergebnis, vielfacher, vorkommenVielfacher
+                )
+                while ergebnis < len(reliTableCopy):
+                    vielfacher += 1
                     ergebnis = vielfacher * einVorkommen
                     vorkommenNvielfacherPerItsProduct(
                         einVorkommen, ergebnis, vielfacher, vorkommenVielfacher
                     )
-                    while ergebnis < len(reliTableCopy):
-                        vielfacher += 1
-                        ergebnis = vielfacher * einVorkommen
-                        vorkommenNvielfacherPerItsProduct(
-                            einVorkommen, ergebnis, vielfacher, vorkommenVielfacher
-                        )
 
-                # x("d5g", vorkommenVielfacher)
-                vorkommenVielfacher_B: dict = {}
-                for i, zeileninhalte in enumerate(reliTableCopy[1:], 1):
-                    for distanceFromLine in distances:
-                        prepareModalIntoTable(
-                            distanceFromLine,
-                            getModaloperatorsPerLineCells,
-                            i,
-                            storeModalNvervielfachter,
-                            vorkommenVielfacher,
-                            vorkommenVielfacher_B,
-                        )
+            # x("d5g", vorkommenVielfacher)
+            vorkommenVielfacher_B: dict = {}
+            for i, zeileninhalte in enumerate(reliTableCopy[1:], 1):
+                for distanceFromLine in distances:
+                    prepareModalIntoTable(
+                        distanceFromLine,
+                        getModaloperatorsPerLineCells,
+                        i,
+                        storeModalNvervielfachter,
+                        vorkommenVielfacher,
+                        vorkommenVielfacher_B,
+                    )
 
-                for i, zeileninhalte in enumerate(reliTableCopy[1:], 1):
-                    # x("_ö_", vorkommenVielfacher_B)
-                    for distanceFromLine in distances:
-                        ModalLogikIntoTable(
-                            concept, distanceFromLine, i, into, vorkommenVielfacher_B
-                        )
-                    # wenn i>0
-                    if into[i] != "":
-                        into[i] += (
-                            "alles nur bezogen auf die selbe Strukturgröße einer "
-                            + zeileninhalte[4]
-                        )
-                for w, cols in enumerate(reliTableCopy):
-                    self.relitable[w] += [into[w]]
+            for i, zeileninhalte in enumerate(reliTableCopy[1:], 1):
+                # x("_ö_", vorkommenVielfacher_B)
+                for distanceFromLine in distances:
+                    ModalLogikIntoTable(
+                        concept, distanceFromLine, i, into, vorkommenVielfacher_B
+                    )
+                # wenn i>0
+                if into[i] != [""]:
+                    into[i] += [
+                        "alles nur bezogen auf die selbe Strukturgröße einer "
+                    ] + [zeileninhalte[4]]
+            for w, cols in enumerate(reliTableCopy):
+                self.relitable[w] += ["".join(into[w])]
 
-                rowsAsNumbers |= {len(self.relitable[0]) - 1}
-                if (
-                    len(self.tables.generatedSpaltenParameter)
-                    + self.tables.SpaltenVanillaAmount
-                    in self.tables.generatedSpaltenParameter
-                ):
-                    raise ValueError
-                self.tables.generatedSpaltenParameter[
-                    len(self.tables.generatedSpaltenParameter)
-                    + self.tables.SpaltenVanillaAmount
-                ] = self.tables.dataDict[1][conceptsRowsSetOfTuple2[o]]
+            rowsAsNumbers |= {len(self.relitable[0]) - 1}
+            if (
+                len(self.tables.generatedSpaltenParameter)
+                + self.tables.SpaltenVanillaAmount
+                in self.tables.generatedSpaltenParameter
+            ):
+                raise ValueError
+            self.tables.generatedSpaltenParameter[
+                len(self.tables.generatedSpaltenParameter)
+                + self.tables.SpaltenVanillaAmount
+            ] = self.tables.dataDict[1][conceptsRowsSetOfTuple2[o]]
 
         return self.relitable, rowsAsNumbers
 
