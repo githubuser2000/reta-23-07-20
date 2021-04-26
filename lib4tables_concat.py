@@ -512,7 +512,7 @@ class Concat:
             for i, cols in enumerate(reliTableCopy):
                 into[i] = [""]
                 if i == 0:
-                    into[i] = ["Generiert: "] + [cols[concept[0]]]
+                    into[i] = ["Generiert: ", cols[concept[0]]]
                 elif cols[concept[0]].strip() != "":
                     einMalVorkommen |= {i}
 
@@ -558,8 +558,9 @@ class Concat:
                 # wenn i>0
                 if into[i] != [""]:
                     into[i] += [
-                        "alles nur bezogen auf die selbe Strukturgröße einer "
-                    ] + [zeileninhalte[4]]
+                        "alles nur bezogen auf die selbe Strukturgröße einer ",
+                        zeileninhalte[4],
+                    ]
             for w, cols in enumerate(reliTableCopy):
                 self.relitable[w] += ["".join(into[w])]
 
@@ -615,29 +616,27 @@ class Concat:
                     into = (
                         [""]
                         if i != 0
-                        else ["generierte Multiplikationen "] + [polytypename]
+                        else ["generierte Multiplikationen ", polytypename]
                     )
                     for k, multi in enumerate(primMultiples[1:]):
                         if k > 0:
                             into += [", außerdem: "]
                         into += (
-                            ["("]
-                            + [
+                            [
+                                "(",
                                 self.transzendentalien[multi[0]]
                                 if self.transzendentalien[multi[0]].strip() != ""
-                                else "..."
-                            ]
-                            + [" UND "]
-                            + [
+                                else "...",
+                                " UND ",
                                 self.rolle[multi[0]]
                                 if self.rolle[multi[0]].strip() != ""
-                                else "..."
+                                else "...",
                             ]
-                            + [") * ("]
                             + [
+                                ") * (",
                                 self.motivation[multi[1]]
                                 if self.motivation[multi[1]].strip() != ""
-                                else "..."
+                                else "...",
                             ]
                             + (
                                 [" UND "]
