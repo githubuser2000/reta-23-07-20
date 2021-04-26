@@ -993,8 +993,8 @@ class Concat:
                     into = [PrimAnswer(1)]
                 into = ["".join(into)]
                 if kk is None:
-                    vergangenheit += [into]
-                self.relitable[i] += [into]
+                    vergangenheit += into
+                self.relitable[i] += into
 
         for r, kk in enumerate(extraSpalten):
             self.tables.generatedSpaltenParameter[
