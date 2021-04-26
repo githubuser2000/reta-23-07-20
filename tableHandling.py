@@ -377,9 +377,7 @@ class Tables:
                                                 int(filteredLineNumbersofOrignal)
                                             ),
                                             zeile=BigCellLineNumber,
-                                        )
-                                    ]
-                                    + [
+                                        ),
                                         (
                                             "█"
                                             if type(self.__outType) in [OutputSyntax]
@@ -388,9 +386,9 @@ class Tables:
                                                     int(filteredLineNumbersofOrignal)
                                                 )
                                             )
-                                        )
+                                        ),
+                                        self.__outType.endCell,
                                     ]
-                                    + [self.__outType.endCell]
                                     if self.tables.getPrepare.zeileWhichZaehlung(
                                         int(filteredLineNumbersofOrignal)
                                     )
