@@ -961,34 +961,34 @@ class Concat:
         vergangenheit: list = []
         for i, cols in enumerate(relitable):
             for kkk, kk in enumerate(extraSpalten):
-                into = "" if i != 0 else "Primzahlwirkung " + spaltenNamen[kk]
+                into = [""] if i != 0 else ["Primzahlwirkung "] + [spaltenNamen[kk]]
 
                 self.oldPrimAmounts = self.primAmounts
                 if couldBePrimeNumberPrimzahlkreuz(i):
                     self.primAmounts += 1
                 if primCreativity(i) == 1:
-                    into = PrimAnswer(i)
-                    self.lastPrimAnswers[i] = into
+                    into = [PrimAnswer(i)]
+                    self.lastPrimAnswers[i] = "".join(into)
                 elif i > 1:
                     for couple in primRepeat(primFak(i)):
                         if couple[1] == 1:
-                            into += PrimAnswer2(couple[0]) + " + "
+                            into += [PrimAnswer2(couple[0])] + [" + "]
                         elif kk is not None:
-                            into += (
-                                str(relitable[couple[1]][kk])
-                                + " * "
-                                + PrimAnswer2(couple[0])
-                                + " + "
+                            into += [
+                                str(relitable[couple[1]][kk])]
+                                + [" * "]
+                                + [PrimAnswer2(couple[0])]
+                                + [" + "]
                             )
                         else:
                             into += (
-                                "["
-                                + str(vergangenheit[couple[1]])
-                                + "] * letztendlich: "
-                                + PrimAnswer2(couple[0])
-                                + " + "
+                                ["["]
+                                + [str(vergangenheit[couple[1]])]
+                                + ["] * letztendlich: "]
+                                + [PrimAnswer2(couple[0])]
+                                + [" + "]
                             )
-                    into = into[:-3]
+                    into = "".join(into[:-1])
                 elif i == 1:
                     into = PrimAnswer(1)
                 if kk is None:
