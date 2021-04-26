@@ -33,10 +33,12 @@ class Concat:
             for i, cols in enumerate(deepcopy(self.relitable)):
                 if self.relitable[i][8].strip() != "":
                     self.relitable[i] += [
-                        self.relitable[i][8]
-                        + " der eigenen Strukturgröße ("
-                        + self.relitable[i][4]
-                        + ") auf dich bei gleichförmigen Polygonen"
+                        "".join(
+                            (self.relitable[i][8],)
+                            + (" der eigenen Strukturgröße (",)
+                            + (self.relitable[i][4],)
+                            + (") auf dich bei gleichförmigen Polygonen",)
+                        )
                     ]
                 else:
                     self.relitable[i] += [""]
@@ -110,28 +112,32 @@ class Concat:
                 for i, cols in enumerate(deepcopy(self.relitable)):
                     moonTypesOf1Num = moonNumber(i)
                     if i == 0:
-                        into = rowheading
+                        into = [rowheading]
                     else:
-                        into = "" if len(moonTypesOf1Num[0]) > 0 else "kein Mond"
+                        into = ["" if len(moonTypesOf1Num[0]) > 0 else "kein Mond"]
                         for k, (basis, exponentMinus2) in enumerate(
                             zip(*moonTypesOf1Num)
                         ):
                             if k > 0:
-                                into += " | "
+                                into += [" | "]
                             insert = re.sub(
                                 r"<SG>",
                                 self.relitable[i][4].strip(),
                                 self.relitable[basis][rownum].rstrip(),
                             )
                             into += (
-                                insert + " - " + self.relitable[exponentMinus2 + 2][10]
+                                [insert]
+                                + [" - "]
+                                + [self.relitable[exponentMinus2 + 2][10]]
                             )
-                            into += " | "
+                            into += [" | "]
                             into += (
-                                self.relitable[i][10] + " + " + self.relitable[i][11]
+                                [self.relitable[i][10]]
+                                + [" + "]
+                                + [self.relitable[i][11]]
                             )
-                            into += ", " + self.relitable[exponentMinus2 + 2][85]
-                    self.relitable[i] += [into]
+                            into += [", "] + [self.relitable[exponentMinus2 + 2][85]]
+                    self.relitable[i] += ["".join(into)]
                 if (
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.SpaltenVanillaAmount
@@ -169,36 +175,36 @@ class Concat:
                 zip(deepcopy(self.relitable), concept[0], concept[1])
             ):
                 if i == 0:
-                    into = "Generiert: " + row1
+                    into = ["Generiert: "] + [row1]
                 else:
                     # d.h. into füll wegen zip nur die Bereiche, die Bedacht
                     # sind und alles andere sind nicht ein mal leere Strings,
                     # sondern garn nichts: schlecht !
-                    into = ""
+                    into = [""]
                     # i muss hier i > irgendwas sein weil mir sonst alles um die Ohren fliegt
                     # i ist die Zeile
                     if row1.strip() != "":
-                        into += "sehr: " + row1 + "| "
+                        into += ["sehr: "] + [row1] + ["| "]
                     if i > 2 and concept[0][i - 2].strip() != "":
-                        into += "ganz gut: " + concept[0][i - 2] + "| "
+                        into += ["ganz gut: "] + [concept[0][i - 2]] + ["| "]
                     if len(concept[0]) > i + 2 and concept[0][i + 2].strip() != "":
-                        into += "ganz gut: " + concept[0][i + 2] + "| "
+                        into += ["ganz gut: "] + [concept[0][i + 2]] + ["| "]
                     if i > 4 and concept[0][i - 4].strip() != "":
-                        into += "noch etwas: " + concept[0][i - 4] + "| "
+                        into += ["noch etwas: "] + [concept[0][i - 4]] + ["| "]
                     if len(concept[0]) > i + 4 and concept[0][i + 4].strip() != "":
-                        into += "noch etwas: " + concept[0][i + 4] + "| "
+                        into += ["noch etwas: "] + [concept[0][i + 4]] + ["| "]
                     if i > 1 and concept[1][i - 1].strip() != "":
-                        into += concept[1][i - 1] + "| "
+                        into += [concept[1][i - 1]] + ["| "]
                     if i > 3 and concept[1][i - 3].strip() != "":
-                        into += "ein wenig: " + concept[1][i - 3] + "| "
+                        into += ["ein wenig: "] + [concept[1][i - 3]] + ["| "]
                     if len(concept[1]) > i + 3 and concept[1][i + 3].strip() != "":
-                        into += "ein wenig: " + concept[1][i + 3] + "| "
+                        into += ["ein wenig: "] + [concept[1][i + 3]] + ["| "]
                     if len(concept[1]) > i + 1 and concept[1][i + 1].strip() != "":
-                        into += concept[1][i + 1] + "| "
-                    if into != "":
-                        into += "alles zur selben Strukturgröße einer " + cols[4]
+                        into += [concept[1][i + 1]] + ["| "]
+                    if into != [""]:
+                        into += ["alles zur selben Strukturgröße einer "] + [cols[4]]
                 # einzeln, bis es eine ganze neue Spalte ist
-                self.relitable[i] += [into]
+                self.relitable[i] += ["".join(into)]
             x(
                 "ddd",
                 len(self.tables.generatedSpaltenParameter)
@@ -253,24 +259,29 @@ class Concat:
                 # alle spalten und zeilen
                 xx = False
                 if len(relitable[z][s].strip()) != 0:
-                    relitable[z][s] += " | "
+                    relitable[z][s] = [relitable[z][s]] + [" | "]
+                else:
+                    relitable[z][s] = [relitable[z][s]]
                 if z in multis:
                     for UrZeile in multis[z]:
                         # x("etr", str(UrZeile))
                         # x("etr", s)
                         if (
                             UrZeile != z
-                            and relitable[z][s] != store[(UrZeile, s)]
-                            and relitable[z][s] + " | " != store[(UrZeile, s)]
+                            and "".join(relitable[z][s]) != store[(UrZeile, s)]
+                            and "".join(relitable[z][s] + [" | "])
+                            != store[(UrZeile, s)]
                         ):
                             # if (z == 12):
                             #    x("jjjj", store[(UrZeile, s)])
                             if len(store[(UrZeile, s)]) != 0:
-                                relitable[z][s] += store[(UrZeile, s)] + " | "
+                                relitable[z][s] += [store[(UrZeile, s)]] + [" | "]
                             xx = True
                             # Zelleninhalt +=
                 if xx:
-                    relitable[z][s] = relitable[z][s][:-3]
+                    relitable[z][s] = "".join(relitable[z][s])[:-3]
+                elif type(relitable[z][s]) is list:
+                    relitable[z][s] = "".join(relitable[z][s])
 
         return self.relitable, rowsAsNumbers
 
@@ -348,8 +359,8 @@ class Concat:
                         )
                         # x("_ü4_", modalOperatoren[0])
                         # x("_ü5_", modalOperatoren[1:])
-                        into[i] += (
-                            (
+                        into[i] = [into[i]] + (
+                            [
                                 "mittelstark überdurchschnittlich: "
                                 if abs(distanceFromLine) == 2
                                 else (
@@ -365,34 +376,36 @@ class Concat:
                                         )
                                     )
                                 )
-                            )
-                            + (
+                            ]
+                            + [
                                 # ""
                                 # if abs(distanceFromLine) % 2 == 1
                                 # else
-                                (modalOperatoren[0] + " ")
-                            )
-                            + (
+                                modalOperatoren[0]
+                            ]
+                            + [" "]
+                            + [
                                 (self.relitable[vervielfachter][concept[0]])
                                 if (abs(distanceFromLine) % 2 == 0)
                                 else self.relitable[vervielfachter][concept[1]]
-                            )
-                            + " "
-                            + modalOperatoren[1]
+                            ]
+                            + [" "]
+                            + [modalOperatoren[1]]
                             + (
                                 (
-                                    ", nicht: "
-                                    + ", ".join(modalOperatoren[2:])
-                                    + " (das alles nicht): "
-                                    + self.relitable[vervielfachter][concept[0]]
+                                    [", nicht: "]
+                                    + [", ".join(modalOperatoren[2:])]
+                                    + [" (das alles nicht): "]
+                                    + [self.relitable[vervielfachter][concept[0]]]
                                     if len(modalOperatoren) > 2
-                                    else ""
+                                    else [""]
                                 )
                                 if abs(distanceFromLine) % 2 == 1
-                                else ""
+                                else [""]
                             )
-                            + " | "
+                            + [" | "]
                         )
+                        into[i] = "".join(into[i])
                     except (IndexError, KeyError):
                         pass
             except (IndexError, KeyError):
@@ -507,9 +520,9 @@ class Concat:
                 into: dict = {}
                 einMalVorkommen = set()
                 for i, cols in enumerate(reliTableCopy):
-                    into[i] = ""
+                    into[i] = [""]
                     if i == 0:
-                        into[i] = "Generiert: " + cols[concept[0]]
+                        into[i] = ["Generiert: "] + [cols[concept[0]]]
                     elif cols[concept[0]].strip() != "":
                         einMalVorkommen |= {i}
 
@@ -553,13 +566,12 @@ class Concat:
                             concept, distanceFromLine, i, into, vorkommenVielfacher_B
                         )
                     # wenn i>0
-                    if into[i] != "":
-                        into[i] += (
+                    if into[i] != [""]:
+                        into[i] += [
                             "alles nur bezogen auf die selbe Strukturgröße einer "
-                            + zeileninhalte[4]
-                        )
+                        ] + [zeileninhalte[4]]
                 for w, cols in enumerate(reliTableCopy):
-                    self.relitable[w] += [into[w]]
+                    self.relitable[w] += ["".join(into[w])]
 
                 rowsAsNumbers |= {len(self.relitable[0]) - 1}
                 if (
@@ -611,43 +623,45 @@ class Concat:
                 for i, cols in enumerate(relitableCopy):
                     primMultiples = primMultiple(i)
                     into = (
-                        "" if i != 0 else "generierte Multiplikationen " + polytypename
+                        [""]
+                        if i != 0
+                        else ["generierte Multiplikationen "] + [polytypename]
                     )
                     for k, multi in enumerate(primMultiples[1:]):
                         if k > 0:
-                            into += ", außerdem: "
+                            into += [", außerdem: "]
                         into += (
-                            "("
-                            + (
+                            ["("]
+                            + [
                                 self.transzendentalien[multi[0]]
                                 if self.transzendentalien[multi[0]].strip() != ""
                                 else "..."
-                            )
-                            + " UND "
-                            + (
+                            ]
+                            + [" UND "]
+                            + [
                                 self.rolle[multi[0]]
                                 if self.rolle[multi[0]].strip() != ""
                                 else "..."
-                            )
-                            + ") * ("
-                            + (
+                            ]
+                            + [") * ("]
+                            + [
                                 self.motivation[multi[1]]
                                 if self.motivation[multi[1]].strip() != ""
                                 else "..."
-                            )
-                            + (
-                                " UND "
-                                + (
+                            ]
+                            + [" UND "]
+                            + [
+                                (
                                     self.ziel[multi[1]]
                                     if self.ziel[multi[1]].strip() != ""
                                     else "..."
                                 )
                                 if polytype == 10
                                 else ""
-                            )
-                            + ")"
+                            ]
+                            + [")"]
                         )
-                    self.relitable[i] += [into]
+                    self.relitable[i] += ["".join(into)]
 
                 if (
                     len(self.tables.generatedSpaltenParameter)

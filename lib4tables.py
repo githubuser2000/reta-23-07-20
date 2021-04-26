@@ -78,8 +78,8 @@ class bbCodeSyntax(OutputSyntax):
     ) -> str:
         spalte = int(spalte)
         spalte += 2
-        return (
-            "[td"
+        return "".join(
+            ("[td",)
             + (
                 (
                     '="background-color:#000000;color:#ffffff"'
@@ -87,9 +87,9 @@ class bbCodeSyntax(OutputSyntax):
                     else '="background-color:#ffffff;color:#000000"'
                 )
                 if spalte == 0
-                else '=""'
+                else '=""',
             )
-            + "]"
+            + ("]",)
         )
 
     beginTable = "[table]"
@@ -193,7 +193,9 @@ class htmlSyntax(OutputSyntax):
                         #    para1o2name = couples[i][paraNum]
                         if len(para1o2name.strip()) != 0 or True:
                             if paraNum == 1:
-                                para1o2name = "p3_" + str(c) + "_" + para1o2name
+                                para1o2name = "".join(
+                                    ["p3_"] + [str(c)] + ["_"] + [para1o2name]
+                                )
                             try:
                                 things1[paraNum] += [para1o2name]
                             except KeyError:
@@ -205,24 +207,26 @@ class htmlSyntax(OutputSyntax):
             for i, el in enumerate(values):
                 if el != "alles":
                     try:
-                        things[key] += el + ","
+                        things[key] += (el,) + (",",)
                     except KeyError:
-                        things[key] = el + ","
-        # x("öäü", things)
+                        things[key] = (el,) + (",",)
+            things[key] = "".join(things[key])
+
         spalte += 2
         if len(things) < 2:
             return ""
         else:
-            return (
-                '              <td class="'
-                + ("z_" + str(zeile))
-                + " r_"
-                + str(spalte)
-                + " p1_"
-                + things[0]
-                + " p2_"
-                + (things[1] if len(things) > 1 else "")
-                + '"'
+            return "".join(
+                ('              <td class="',)
+                + ("z_",)
+                + (str(zeile),)
+                + (" r_",)
+                + (str(spalte),)
+                + (" p1_",)
+                + (things[0],)
+                + (" p2_",)
+                + ((things[1] if len(things) > 1 else ""),)
+                + ('"',)
                 + (
                     (
                         'style="background-color:#000000;color:#ffffff;display:none"'
@@ -230,9 +234,9 @@ class htmlSyntax(OutputSyntax):
                         else 'style="background-color:#ffffff;color:#000000;display:none"'
                     )
                     if spalte == 0
-                    else 'style="display:none"'
+                    else 'style="display:none"',
                 )
-                + ">\n"
+                + (">\n",)
             )
 
     beginTable = "      <table border=1>"
