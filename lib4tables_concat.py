@@ -988,9 +988,10 @@ class Concat:
                                 + [PrimAnswer2(couple[0])]
                                 + [" + "]
                             )
-                    into = "".join(into[:-1])
+                    into = into[:-1]
                 elif i == 1:
-                    into = PrimAnswer(1)
+                    into = [PrimAnswer(1)]
+                into = ["".join(into)]
                 if kk is None:
                     vergangenheit += [into]
                 self.relitable[i] += [into]
