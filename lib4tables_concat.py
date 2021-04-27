@@ -628,8 +628,6 @@ class Concat:
                                 self.rolle[multi[0]]
                                 if self.rolle[multi[0]].strip() != ""
                                 else "...",
-                            ]
-                            + [
                                 ") * (",
                                 self.motivation[multi[1]]
                                 if self.motivation[multi[1]].strip() != ""
