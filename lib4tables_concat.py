@@ -866,8 +866,6 @@ class Concat:
                                 str(vier[0][1]),")",
                                 " | "]
                             )
-                        # else:
-                        #    intoList += [""]
                         thema = "Thema: "
                     alxp(intoList)
                     self.relitable[i] += ["".join(intoList[:-1])]
@@ -938,7 +936,7 @@ class Concat:
         vergangenheit: list = []
         for i, cols in enumerate(relitable):
             for kkk, kk in enumerate(extraSpalten):
-                into = [""] if i != 0 else ["Primzahlwirkung "] + [spaltenNamen[kk]]
+                into = [""] if i != 0 else ["Primzahlwirkung ", spaltenNamen[kk]]
 
                 self.oldPrimAmounts = self.primAmounts
                 if couldBePrimeNumberPrimzahlkreuz(i):
@@ -949,14 +947,12 @@ class Concat:
                 elif i > 1:
                     for couple in primRepeat(primFak(i)):
                         if couple[1] == 1:
-                            into += [PrimAnswer2(couple[0])] + [" + "]
+                            into += [PrimAnswer2(couple[0]), " + "]
                         elif kk is not None:
-                            into += (
-                                [str(relitable[couple[1]][kk])]
-                                + [" * "]
-                                + [PrimAnswer2(couple[0])]
-                                + [" + "]
-                            )
+                            into += [str(relitable[couple[1]][kk]),
+                                    " * ",
+                                    PrimAnswer2(couple[0]),
+                                    " + "]
                         else:
                             into += (
                                 ["["]
