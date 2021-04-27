@@ -234,11 +234,11 @@ class Prepare:
                 ):
                     results.add(
                         "".join(
-                            [BereichCouple[0]]
-                            + ["-"]
-                            + [symbol]
-                            + ["-"]
-                            + [BereichCouple[1]]
+                            [BereichCouple[0],
+                            "-",
+                            symbol,
+                            "-",
+                            BereichCouple[1]]
                         )
                     )
 

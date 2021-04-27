@@ -954,13 +954,11 @@ class Concat:
                                     PrimAnswer2(couple[0]),
                                     " + "]
                         else:
-                            into += (
-                                ["["]
-                                + [str(vergangenheit[couple[1]])]
-                                + ["] * letztendlich: "]
-                                + [PrimAnswer2(couple[0])]
-                                + [" + "]
-                            )
+                            into += ["[",
+                                    str(vergangenheit[couple[1]]),
+                                    "] * letztendlich: ",
+                                    PrimAnswer2(couple[0]),
+                                    " + "]
                     into = into[:-1]
                 elif i == 1:
                     into = [PrimAnswer(1)]
