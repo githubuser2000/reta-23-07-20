@@ -79,8 +79,7 @@ class bbCodeSyntax(OutputSyntax):
         spalte = int(spalte)
         spalte += 2
         return "".join(
-            ("[td",)
-            + (
+            ("[td",
                 (
                     '="background-color:#000000;color:#ffffff"'
                     if content is not None and int(content) % 2 == 0
@@ -88,8 +87,7 @@ class bbCodeSyntax(OutputSyntax):
                 )
                 if spalte == 0
                 else '=""',
-            )
-            + ("]",)
+            "]",)
         )
 
     beginTable = "[table]"
