@@ -372,14 +372,11 @@ class Concat:
                                     )
                                 ),
                                 modalOperatoren[0],
-                                " ",
-                            ]
-                            + [
-                                (self.relitable[vervielfachter][concept[0]])
-                                if (abs(distanceFromLine) % 2 == 0)
+                                " ", 
+                                self.relitable[vervielfachter][concept[0]]
+                                if abs(distanceFromLine) % 2 == 0
                                 else self.relitable[vervielfachter][concept[1]],
-                            ]
-                            + [" ", modalOperatoren[1]]
+                                " ", modalOperatoren[1]]
                             + (
                                 (
                                     [
