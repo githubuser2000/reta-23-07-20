@@ -634,8 +634,7 @@ class Concat:
                                 else "...",
                             ]
                             + (
-                                [" UND "]
-                                + [
+                                [   " UND ",
                                     self.ziel[multi[1]]
                                     if self.ziel[multi[1]].strip() != ""
                                     else "..."
@@ -839,21 +838,15 @@ class Concat:
                             and len(relitable[vier[0][0]][vier[1]].strip()) > 3
                         ):
                             intoList += (
-                                [vier[bothRows + 2]]
-                                + [thema]
-                                + [relitable[vier[0][0]][vier[1]]]
-                                + [
-                                    " ("
-                                    + (
-                                        "1/"
-                                        if vier[1] != transzendentalienSpalten[ifInvers]
-                                        and vier[0][1] != 1
-                                        else ""
-                                    )
-                                    + str(vier[0][0])
-                                    + ")"
-                                ]
-                                + [" | "]
+                                [vier[bothRows + 2], thema, relitable[vier[0][0]][vier[1]],
+                                    " (",
+                                    "1/"
+                                    if vier[1] != transzendentalienSpalten[ifInvers]
+                                    and vier[0][1] != 1
+                                    else "",
+                                    str(vier[0][0]),
+                                    ")",
+                                    " | "]
                             )
                         elif (
                             bothRows == 1
@@ -861,24 +854,17 @@ class Concat:
                             and len(relitable[vier[0][1]][vier[1]].strip()) > 3
                         ):
                             intoList += (
-                                [vier[bothRows + 2]]
-                                + [thema]
-                                + [relitable[vier[0][1]][vier[1]]]
-                                + [
-                                    "".join(
-                                        [" ("]
-                                        + [
-                                            "1/"
-                                            if vier[1]
-                                            != transzendentalienSpalten[ifInvers]
-                                            and vier[0][1] != 1
-                                            else ""
-                                        ]
-                                        + [str(vier[0][1])]
-                                        + [")"]
-                                    )
-                                ]
-                                + [" | "]
+                                [vier[bothRows + 2],
+                                thema,
+                                relitable[vier[0][1]][vier[1]],
+                                " (",
+                                "1/"
+                                if vier[1]
+                                != transzendentalienSpalten[ifInvers]
+                                and vier[0][1] != 1
+                                else "",
+                                str(vier[0][1]),")",
+                                " | "]
                             )
                         # else:
                         #    intoList += [""]
