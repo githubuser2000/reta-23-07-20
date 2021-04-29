@@ -1624,6 +1624,15 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 (
+                    "sanft",
+                    "hart",
+                ),
+                set(),
+                {(159, 160),(161,162)},
+            ),
+            (
+                Program.ParametersMain.konzept,
+                (
                     "vereinenverbinden",
                     "vereinen",
                     "verbinden",
