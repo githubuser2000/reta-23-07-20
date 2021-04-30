@@ -1668,6 +1668,18 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 (
+                    "egalitaerautoritaer",
+                    "egalitaer",
+                    "autoritaer",
+                    "egalitär",
+                    "autoritär"
+                ),
+                set(),
+                {(163, 164)},
+            ),
+            (
+                Program.ParametersMain.konzept,
+                (
                     "meinungen",
                     "anderemenschen",
                     "ruf",
