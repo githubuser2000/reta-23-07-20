@@ -1724,7 +1724,7 @@ class Program:
             (Program.ParametersMain.inkrementieren, ("um1",), {155}),
             (Program.ParametersMain.inkrementieren, ("um2",), {156}),
             (Program.ParametersMain.inkrementieren, ("um3",), {157}),
-            (Program.ParametersMain.inkrementieren, ("warum Transzendentalie = Strukturgroesse =Charakter","warumtranszendentaliezustrukturgroesseundcharakter",), {165}),
+            (Program.ParametersMain.inkrementieren, ("warum_Transzendentalie_=_Strukturgroesse_=_Charakter","warumtranszendentaliezustrukturgroesseundcharakter",), {165}),
         ]
 
         Program.kombiParaNdataMatrix = {
