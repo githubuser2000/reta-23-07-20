@@ -618,6 +618,7 @@ class Program:
             ("wirtschaft",),
             ("menschliches",),
             (
+                "Pro_Contra",
                 "procontra",
                 "dagegendafuer",
             ),
@@ -654,6 +655,7 @@ class Program:
             (
                 Program.ParametersMain.operationen,
                 (
+                    "Halbierung",
                     "halbierung",
                     "halbierungen",
                 ),
@@ -662,6 +664,7 @@ class Program:
             (
                 Program.ParametersMain.religionen,
                 (
+                    "Religions-gründer-typ",
                     "religionsgründertyp",
                     "prophet",
                     "archon",
@@ -669,10 +672,11 @@ class Program:
                 ),
                 {72},
             ),
-            (Program.ParametersMain.religionen, ("sternpolygon",), {0, 6, 36}),
+            (Program.ParametersMain.religionen, ("Sternpolygon", "sternpolygon"), {0, 6, 36}),
             (
                 Program.ParametersMain.religionen,
                 (
+                    "der_Tierkreiszeichen",
                     "dertierkreiszeichen",
                     "babylon",
                 ),
@@ -681,6 +685,7 @@ class Program:
             (
                 Program.ParametersMain.religionen,
                 (
+                    "Sternpolygon_vs_gleichfoermiges",
                     "vergleich",
                     "sternpolygonvsgleichfoermiges",
                     "vergleichnvs1divn",
@@ -690,6 +695,7 @@ class Program:
             (
                 Program.ParametersMain.religionen,
                 (
+                    "Messias",
                     "messias",
                     "heptagramm",
                     "hund",
@@ -701,6 +707,7 @@ class Program:
             (
                 Program.ParametersMain.religionen,
                 (
+                    "gleichförmiges_Polygon",
                     "gleichförmigespolygon",
                     "gleichfoermigespolygon",
                     "nichtsternpolygon",
@@ -711,6 +718,7 @@ class Program:
             (
                 Program.ParametersMain.religionen,
                 (
+                    "Vertreter_höherer_Konzepte",
                     "vertreterhoehererkonzepte",
                     "galaxien",
                     "galaxie",
@@ -728,6 +736,7 @@ class Program:
             (
                 Program.ParametersMain.galaxie,
                 (
+                    "Offenbarung_des_Johannes",
                     "offenbarung",
                     "offenbarungdesjohannes",
                     "johannes",
@@ -738,22 +747,23 @@ class Program:
             ),
             (
                 Program.ParametersMain.universum,
-                ("kugelnkreise", "kugeln", "kreise"),
+                ("Kugeln_Kreise","kugelnkreise", "kugeln", "kreise"),
                 {145},
             ),
             (
                 Program.ParametersMain.galaxie,
-                ("kugelnkreise", "kugeln", "kreise"),
+                ("Kugeln_Kreise","kugelnkreise", "kugeln", "kreise"),
                 {145},
             ),
             (
                 Program.ParametersMain.galaxie,
-                ("chinesischeshoroskop", "china"),
+                ("chinesisches_Horoskop", "chinesischeshoroskop", "china"),
                 {91},
             ),
             (
                 Program.ParametersMain.galaxie,
                 (
+                    "babylonische_Tierkreiszeichen",
                     "tierkreiszeichen",
                     "babylon",
                 ),
@@ -762,6 +772,7 @@ class Program:
             (
                 Program.ParametersMain.galaxie,
                 (
+                    "Thomasevangelium",
                     "thomasevangelium",
                     "thomas",
                 ),
@@ -770,6 +781,7 @@ class Program:
             (
                 Program.ParametersMain.galaxie,
                 (
+                    "analytische-Ontologie",
                     "analytischeontologie",
                     "ontologie",
                 ),
@@ -778,6 +790,7 @@ class Program:
             (
                 Program.ParametersMain.galaxie,
                 (
+                    "Transzendentalien_innen_außen",
                     "innenaussenstrukur",
                     "strukturalieninnenaußen",
                     "strukturalieninnenaussen",
@@ -789,7 +802,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.galaxie,
-                ("modallogik",),
+                ("Modallogik","modallogik",),
                 {148},
             ),
             (
@@ -828,6 +841,7 @@ class Program:
             (
                 Program.ParametersMain.strukturgroesse,
                 (
+                    "Strukturgrösse",
                     "größe",
                     "groesse",
                     "gross",
@@ -840,12 +854,12 @@ class Program:
             ),
             (
                 Program.ParametersMain.strukturgroesse,
-                ("organisationen", "organisation"),
+                ("Organisationen","organisationen", "organisation"),
                 {82},
             ),
             (
                 Program.ParametersMain.strukturgroesse,
-                ("politischesysteme", "politik"),
+                ("politische_Systeme", "politischesysteme", "politik"),
                 {83},
             ),
             (
@@ -878,7 +892,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.universummetakonkret,
-                ("theorie",),
+                ("Theorie",),
                 set(),
                 set(),
                 set(),
@@ -892,7 +906,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.universummetakonkret,
-                ("praxis",),
+                ("Praxis",),
                 set(),
                 set(),
                 set(),
@@ -934,7 +948,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.universummetakonkret,
-                ("fluss",),
+                ("fließend","fluss",),
                 set(),
                 set(),
                 set(),
@@ -949,6 +963,7 @@ class Program:
             (
                 Program.ParametersMain.primzahlwirkung,
                 (
+                    "Universum_Strukturalien_Transzendentalien",
                     "universum",
                     "strukturalie",
                     "strukturalien",
@@ -963,6 +978,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.primzahlwirkung,
+                ("Richtung_als_Richtung",),
                 ("richtungrichtung",),
                 set(),
                 set(),
@@ -973,6 +989,7 @@ class Program:
             (
                 Program.ParametersMain.primzahlwirkung,
                 (
+                    "Galaxieabsicht",
                     "absichtgalaxie",
                     "absicht",
                     "motive",
@@ -989,6 +1006,7 @@ class Program:
             (
                 Program.ParametersMain.primzahlwirkung,
                 (
+                    "Absicht_Reziproke_Galaxie",
                     "absichtgalaxiereziproke",
                     "absichtreziproke",
                     "motivereziproke",
@@ -1005,6 +1023,7 @@ class Program:
             (
                 Program.ParametersMain.primzahlwirkung,
                 (
+                    "Universum_Reziproke",
                     "universumreziproke",
                     "strukturaliereziproke",
                     "strukturalienreziproke",
@@ -1020,6 +1039,7 @@ class Program:
             (
                 Program.ParametersMain.primzahlwirkung,
                 (
+                    "Gegentranszendentalie",
                     "gegentranszendentalie",
                     "gegentranszendentalien",
                     "gegenstrukturalien",
@@ -1033,7 +1053,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.universummetakonkret,
-                ("stau",),
+                ("Stau","stau",),
                 set(),
                 set(),
                 set(),
@@ -1048,6 +1068,7 @@ class Program:
             (
                 Program.ParametersMain.universum,
                 (
+                    "analytische_Ontologie",
                     "analytischeontologie",
                     "ontologie",
                 ),
@@ -1056,6 +1077,7 @@ class Program:
             (
                 Program.ParametersMain.universum,
                 (
+                    "Gegentranszendentalien",
                     "gegentranszendentalien",
                     "gegentranszendentalie",
                     "gegenstrukturalien",
@@ -1069,7 +1091,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.universum,
-                ("systemsachen",),
+                ("Systemsachen", "systemsachen"),
                 {
                     150,
                 },
@@ -1077,6 +1099,7 @@ class Program:
             (
                 Program.ParametersMain.universum,
                 (
+                    "Transzendentalien",
                     "transzendentalien",
                     "transzendentalie",
                     "strukturalien",
@@ -1093,6 +1116,7 @@ class Program:
             (
                 Program.ParametersMain.universum,
                 (
+                    "Reziproke_von_Transzendentalien",
                     "transzendentalienreziproke",
                     "transzendentaliereziproke",
                     "strukturalienreziproke",
@@ -1108,6 +1132,7 @@ class Program:
             (
                 Program.ParametersMain.universum,
                 (
+                    "Model_of_Hierarchical_Complexity",
                     "modelofhierarchicalcomplexity",
                     "komplex",
                     "komplexität",
@@ -1133,7 +1158,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.operationen,
-                ("multiplikation",),
+                ("Multiplikation", "multiplikation",),
                 {158},
             ),
             (
@@ -1143,22 +1168,22 @@ class Program:
             ),
             (
                 Program.ParametersMain.wirtschaft,
-                ("pflanzen",),
+                ("Pflanzen", "pflanzen",),
                 {113},
             ),
             (
                 Program.ParametersMain.wirtschaft,
-                ("maschinen", "maschine", "gerät", "geräte", "geraete", "geraet"),
+                ("Maschinen", "maschinen", "maschine", "gerät", "geräte", "geraete", "geraet"),
                 {89},
             ),
             (
                 Program.ParametersMain.wirtschaft,
-                ("organisationsform", "organisationsart", "firma", "verein"),
+                ("Organisationsform", "organisationsform", "organisationsart", "firma", "verein"),
                 {99},
             ),
             (
                 Program.ParametersMain.wirtschaft,
-                ("system",),
+                ("System", "system",),
                 {
                     69,
                 },
@@ -1174,6 +1199,7 @@ class Program:
             (
                 Program.ParametersMain.wirtschaft,
                 (
+                    "Erklärung",
                     "erklärung",
                     "erklaerung",
                 ),
@@ -1183,6 +1209,7 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "Sinn_des_Lebens",
                     "sinndeslebens",
                     "lebenssinn",
                     "sinn",
@@ -1192,22 +1219,23 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("intelligenzprobleme", "intelligenzmaengel", "intelligenzmängel"),
+                ("Intelligenzprobleme", "intelligenzprobleme", "intelligenzmaengel", "intelligenzmängel"),
                 {147},
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("lebewesendenkweise", "denkweise"),
+                ("Denkweise_von_Lebewesen", "lebewesendenkweise", "denkweise"),
                 {146},
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("gegentranszendentalien", "gegenstrukturalien"),
+                ("Gegentranszendentalien", "gegentranszendentalien", "gegenstrukturalien"),
                 {138, 139},
             ),
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "Gleichheit_Freiheit",
                     "gleichheitfreiheit",
                     "ungleichheit",
                     "dominieren",
@@ -1218,7 +1246,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("emotionen", "gefuehle", "gefuehle", "emotion", "gefühl", "gefuehl"),
+                ("Gefühle", "emotionen", "gefuehle", "gefuehle", "emotion", "gefühl", "gefuehl"),
                 {105},
             ),
             (
@@ -1229,12 +1257,13 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("wirkung",),
+                ("Wirkung", "wirkung",),
                 {135},
             ),
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "INCELs",
                     "incel",
                     "incels",
                 ),
@@ -1243,6 +1272,7 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "irrationale_Zahlen_durch_Wurzelbildung",
                     "irrationalezahlendurchwurzelbildung",
                     "ausgangslage",
                 ),
@@ -1251,6 +1281,7 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "dominierendes_Geschlecht",
                     "dominierendesgeschlecht",
                     "maennlich",
                     "männlich",
@@ -1261,6 +1292,7 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "Liebe",
                     "liebe",
                     "ethik",
                 ),
@@ -1270,6 +1302,7 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "Glaube_Erkenntnis",
                     "glauben",
                     "erkenntnis",
                     "glaube",
@@ -1279,6 +1312,7 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "Angreifbarkeit",
                     "angreifbarkeit",
                     "angreifbar",
                 ),
@@ -1287,6 +1321,7 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "Motive",
                     "motive",
                     "motivation",
                     "motiv",
@@ -1296,6 +1331,7 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "Errungenschaften",
                     "errungenschaften",
                     "ziele",
                     "erhalten",
@@ -1305,6 +1341,7 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "evolutionär_erwerben_und_Intelligenz_Kreativität",
                     "evolutionärerwerbenundintelligenz",
                     "intelligenz",
                     "erwerben",
@@ -1331,6 +1368,7 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "Krankheit",
                     "krankheit",
                     "krankheiten",
                     "pathologisch",
@@ -1342,6 +1380,7 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "alpha_beta",
                     "alphabeta",
                     "alpha",
                     "beta",
@@ -1353,6 +1392,7 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "Anfuehrer",
                     "anfuehrer",
                     "chef",
                 ),
@@ -1360,12 +1400,13 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("manipulation",),
+                ("Manipulation", "manipulation",),
                 {153},
             ),
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "Berufe",
                     "berufe",
                     "beruf",
                 ),
@@ -1374,6 +1415,7 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
+                    "Lösungen",
                     "lösungen",
                     "loesungen",
                     "loesung",
@@ -1381,10 +1423,11 @@ class Program:
                 ),
                 {31},
             ),
-            (Program.ParametersMain.menschliches, ("musik",), {33}),
+            (Program.ParametersMain.menschliches, ("Musik", "musik"), {33}),
             (
                 Program.ParametersMain.procontra,
                 (
+                    "ergibt_Sinn",
                     "ergibtsinn",
                     "machtsinn",
                     "sinn",
@@ -1394,6 +1437,7 @@ class Program:
             (
                 Program.ParametersMain.procontra,
                 (
+                    "Veränderung",
                     "veraenderung",
                     "veraendern",
                     "veränderung",
@@ -1404,6 +1448,7 @@ class Program:
             (
                 Program.ParametersMain.procontra,
                 (
+                    "bändigen_kontrollieren",
                     "baendigenkontrollieren",
                     "kontrollieren",
                     "baendigen",
@@ -1422,6 +1467,7 @@ class Program:
             (
                 Program.ParametersMain.procontra,
                 (
+                    "Vorteile",
                     "vorteile",
                     "veraenderungnutzen",
                 ),
@@ -1430,6 +1476,7 @@ class Program:
             (
                 Program.ParametersMain.procontra,
                 (
+                    "Gegenspieler",
                     "gegenspieler",
                     "antagonist",
                 ),
@@ -1442,22 +1489,23 @@ class Program:
             ),
             (
                 Program.ParametersMain.procontra,
-                ("pronutzen",),
+                ("pro_nutzen", "pronutzen",),
                 {117},
             ),
             (
                 Program.ParametersMain.procontra,
-                ("gegenposition",),
+                ("Gegenposition", "gegenposition",),
                 {116},
             ),
             (
                 Program.ParametersMain.procontra,
-                ("hilfeerhalten",),
+                ("Hilfe_erhalten", "hilfeerhalten",),
                 {114},
             ),
             (
                 Program.ParametersMain.procontra,
                 (
+                    "Helfen",
                     "helfen",
                     "hilfe",
                 ),
@@ -1466,6 +1514,7 @@ class Program:
             (
                 Program.ParametersMain.procontra,
                 (
+                    "Pro",
                     "pro",
                     "dafür",
                     "dafuer",
@@ -1474,37 +1523,37 @@ class Program:
             ),
             (
                 Program.ParametersMain.procontra,
-                ("nichtauskommen",),
+                ("nicht_miteinander_auskommen", "nichtauskommen",),
                 {123},
             ),
             (
                 Program.ParametersMain.procontra,
-                ("nichtdagegen",),
+                ("nicht_dagegen", "nichtdagegen",),
                 {124},
             ),
             (
                 Program.ParametersMain.procontra,
-                ("keingegenteil",),
+                ("kein_Gegenteil", "keingegenteil",),
                 {125},
             ),
             (
                 Program.ParametersMain.procontra,
-                ("nichtdafuer",),
+                ("nicht_dafür", "nichtdafuer",),
                 {126},
             ),
             (
                 Program.ParametersMain.procontra,
-                ("hilfenichtgebrauchen",),
+                ("Hilfe_nicht_gebrauchen", "hilfenichtgebrauchen",),
                 {127},
             ),
             (
                 Program.ParametersMain.procontra,
-                ("nichthelfenkoennen",),
+                ("nicht_helfen_können", "nichthelfenkoennen",),
                 {128},
             ),
             (
                 Program.ParametersMain.procontra,
-                ("nichtabgeneigt",),
+                ("nicht_abgeneigt", "nichtabgeneigt",),
                 {129},
             ),
             (
@@ -1520,17 +1569,18 @@ class Program:
                 ),
                 {15, 26},
             ),
-            (Program.ParametersMain.procontra, ("gegenteil",), {100, 101}),
-            (Program.ParametersMain.procontra, ("harmonie",), {102, 103}),
+            (Program.ParametersMain.procontra, ("Gegenteil", "gegenteil",), {100, 101}),
+            (Program.ParametersMain.procontra, ("Harmonie", "harmonie",), {102, 103}),
             (Program.ParametersMain.licht, (), {20, 27}),
             (
                 Program.ParametersMain.bedeutung,
-                ("vorzeichen",),
+                ("Vorzeichen", "vorzeichen",),
                 {118, 119},
             ),
             (
                 Program.ParametersMain.bedeutung,
                 (
+                    "Primzahlen",
                     "primzahlen",
                     "vielfache",
                     "vielfacher",
@@ -1540,6 +1590,7 @@ class Program:
             (
                 Program.ParametersMain.bedeutung,
                 (
+                    "Anwendung_der_Sonnen_und_Monde",
                     "anwendungdersonnenundmonde",
                     "anwendungdersonnen",
                     "anwendungenfuermonde",
@@ -1549,6 +1600,7 @@ class Program:
             (
                 Program.ParametersMain.bedeutung,
                 (
+                    "Zählungen",
                     "zählungen",
                     "zaehlung",
                     "zaehlungen",
@@ -1559,6 +1611,7 @@ class Program:
             (
                 Program.ParametersMain.bedeutung,
                 (
+                    "Jura",
                     "jura",
                     "gesetzeslehre",
                     "recht",
@@ -1568,6 +1621,7 @@ class Program:
             (
                 Program.ParametersMain.bedeutung,
                 (
+                    "Vollkommenheit_des_Geistes",
                     "vollkommenheit",
                     "geist",
                 ),
@@ -1576,6 +1630,7 @@ class Program:
             (
                 Program.ParametersMain.bedeutung,
                 (
+                    "Gestirn",
                     "gestirn",
                     "mond",
                     "sonne",
@@ -1586,10 +1641,10 @@ class Program:
                 set(),
                 set(),
             ),
-            (Program.ParametersMain.bedeutung, ("konjunktiv", "wurzel"), {106}),
+            (Program.ParametersMain.bedeutung, ("Konjunktiv_Wurzelbildung", "konjunktiv", "wurzel"), {106}),
             (
                 Program.ParametersMain.bedeutung,
-                ("wesen", "zuechtung", "züchtung", "züchten", "zuechten"),
+                ("Wesen_Züchten", "wesen", "zuechtung", "züchtung", "züchten", "zuechten"),
                 {107, 108, 109},
             ),
             (Program.ParametersMain.symbole, (), {36, 37}),
@@ -1611,6 +1666,7 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 (
+                    "Weisheit_etc",
                     "weisheit",
                     "metaweisheit",
                     "meta-weisheit",
@@ -1625,6 +1681,7 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 (
+                    "sanft_vs_hart",
                     "sanft",
                     "hart",
                 ),
@@ -1634,6 +1691,7 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 (
+                    "vereinen_vs_verbinden",
                     "vereinenverbinden",
                     "vereinen",
                     "verbinden",
@@ -1646,6 +1704,7 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 (
+                    "gut_böse_lieb_schlecht",
                     "gut",
                     "böse",
                     "boese",
@@ -1658,6 +1717,7 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 (
+                    "Zeit_vs_Raum",
                     "zeit",
                     "raum",
                     "zeitlich",
@@ -1669,6 +1729,7 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 (
+                    "egalitär_vs_autoritär",
                     "egalitaerautoritaer",
                     "egalitaer",
                     "autoritaer",
@@ -1681,6 +1742,7 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 (
+                    "Meinungen_und_Ruf",
                     "meinungen",
                     "anderemenschen",
                     "ruf",
@@ -1691,6 +1753,7 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 (
+                    "Selbstgerechtigkeit",
                     "selbstgerechtigkeit",
                     "selbstgerecht",
                 ),
@@ -1699,19 +1762,20 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept,
-                ("meinungsintelligenz", "ursprungsintelligenz"),
+                ("Meinungsintelligenz", "meinungsintelligenz", "ursprungsintelligenz"),
                 set(),
                 {(151, 152)},
             ),
             (
                 Program.ParametersMain.konzept,
-                ("liebepolung",),
+                ("Polung_der_Liebe", "liebepolung",),
                 set(),
                 {(121, 122)},
             ),
             (
                 Program.ParametersMain.konzept,
                 (
+                    "Egoismus_vs_Altruismus",
                     "egoismus",
                     "altruismus",
                     "egoist",
@@ -1730,46 +1794,53 @@ class Program:
 
         Program.kombiParaNdataMatrix = {
             1: (
+                "Tiere",
                 "tiere",
                 "tier",
                 "lebewesen",
             ),
-            2: ("berufe", "beruf"),
+            2: ("Berufe", "berufe", "beruf"),
             3: (
+                "Kreativität_und_Intelligenz",
                 "kreativität",
                 "intelligenz",
                 "kreativitaet",
             ),
-            4: ("liebe",),
+            4: ("Liebe", "liebe",),
             5: (
+                "Transzendentalien_Strukturalien",
                 "transzendenz",
                 "transzendentalien",
                 "strukturalien",
                 "alien",
             ),
-            6: ("leibnitz", "primzahlkreuz"),
+            6: ("Primzahlkreuz", "leibnitz", "primzahlkreuz"),
             7: (
+                "Männer",
                 "männer",
                 "maenner",
                 "frauen",
             ),
             8: (
+                "Persönlichkeit_evolutionär_erwerben",
                 "evolution",
                 "erwerben",
                 "persoenlichkeit",
                 "persönlichkeit",
             ),
             9: (
+                "Religion",
                 "religion",
                 "religionen",
             ),
-            10: ("motivation", "motive", "ziele", "ziel", "motive"),
-            11: ("analytischeontologie", "ontologie"),
-            12: ("emotionen", "gefuehle", "gefühle", "emotion", "gefühl", "gefühle"),
-            13: ("personen", "berühmtheiten", "beruehmtheiten"),
-            14: ("wesen", "zuechten", "züchten"),
-            15: ("gegentranszendentalien", "gegenstrukturalien"),
+            10: ("Motive_Ziele", "motivation", "motive", "ziele", "ziel", "motive"),
+            11: ("analytische_Ontologie", "analytischeontologie", "ontologie"),
+            12: ("Emotionen", "emotionen", "gefuehle", "gefühle", "emotion", "gefühl", "gefühle"),
+            13: ("Personen", "personen", "berühmtheiten", "beruehmtheiten"),
+            14: ("Wesen_Züchten", "wesen", "zuechten", "züchten"),
+            15: ("Gegentranszendentalien", "gegentranszendentalien", "gegenstrukturalien"),
             16: (
+                "Wirtschaftssysteme",
                 "wirtschaftssystem",
                 "wirtschaftssysteme",
                 "kombinierteswirtschaftssystem",
