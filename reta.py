@@ -664,7 +664,7 @@ class Program:
             (
                 Program.ParametersMain.religionen,
                 (
-                    "Religions-gründer-typ",
+                    "Religions_gründer_typ",
                     "religionsgründertyp",
                     "prophet",
                     "archon",
@@ -978,8 +978,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.primzahlwirkung,
-                ("Richtung_als_Richtung",),
-                ("richtungrichtung",),
+                ("Richtung_als_Richtung", "richtungrichtung",),
                 set(),
                 set(),
                 set(),
