@@ -135,6 +135,8 @@ function makeSpacesOutOf_(text) {
 
 
 function toggleP2(numbers, para1u2) {
+    ColNumberS = new Set();
+	window.alert(numbers);
 	numbers = numbers.split(',');
 	existingParameterNamesArrayIndex = MatrixHasCouple(para1u2, selectedSpaltenMany2);
 	if (existingParameterNamesArrayIndex.size > 0) {
@@ -173,14 +175,22 @@ function MatrixHasCouple(couple, SpaltenNumberToParameters) {
 	return existing;
 }
 
-function toggleForNums(numbers) {
-	for (n = 0; n < numbers.length; n++) {
-		if (typeof(selectedSpaltenMany2[numbers]) === 'undefined')
-			toggleSpalten(numbers[n]);
+function toggleForNums(colNums) {
+    visibleHeadings = 0;
+    for (var i=0; i<tableHeadline.length; i++)
+        if (tableHeadline[i].style.display == 'table-cell')
+            visibleHeadings += 1;
+	for (n = 0; n < colNums.length; n++) {
+        visibleHeadings += 1;
+    }
+	for (n = 0; n < colNums.length; n++) {
+		if (typeof(selectedSpaltenMany2[colNums]) === 'undefined')
+			toggleSpalten(colNums[n]);
 		else {
-			toggleSpalten(numbers[n]);
+			toggleSpalten(colNums[n]);
 		}
 	}
+
 }
 
 function toggleName(p2) {
@@ -206,25 +216,45 @@ function toggleP1(p1) {
 	} else 
 		window.alert(p2.innerHTML + ' ! ');
 }
-function toggleSpalten(colNumber) {
-	col = document.getElementsByClassName('r_'+colNumber);
-	if (typeof(selectedSpaltenMany2[colNumber]) === 'undefined') { 
+function toggleSpalten(rowNumber) {
+	cols = document.getElementsByClassName('r_'+rowNumber);
+	if (typeof(selectedSpaltenMany2[rowNumber]) === 'undefined') { 
 		away = true;
-		window.alert("undefined "+colNumber);
+		window.alert("undefined "+rowNumber);
 	} else
-		away = selectedSpaltenMany2[colNumber].length==0;
-	//window.alert("Stelle "+colNumber+"hat Länge "+selectedSpaltenMany2[colNumber].length);
-	if (typeof(col[0].style) != "undefined") 
-		for (i=0; i < col.length; i++) { 
-			if (col[i].style.display == 'none')
-				col[i].style.display = 'table-cell';
+		away = selectedSpaltenMany2[rowNumber].length==0;
+	//window.alert("Stelle "+rowNumber+"hat Länge "+selectedSpaltenMany2[rowNumber].length);
+	if (typeof(cols[0].style) != "undefined") {
+		if (cols[0].style.display == 'none')
+            changeHeadline(cols[0], rowNumber);
+		for (i=0; i < cols.length; i++) { 
+			if (cols[i].style.display == 'none')
+				cols[i].style.display = 'table-cell';
 			else 
 				if (away)
-					col[i].style.display = 'none';
+					cols[i].style.display = 'none';
 		}
+     }
 	 else 
-		window.alert(col[0].innerHTML + ' ! '+colNumber);
+		window.alert(cols[0].innerHTML + ' ! '+rowNumber);
+
 }
+
+var ColNumberS = new Set();
+var tableHeadline;
+var visibleHeadings = 0;
+
+function changeHeadline(col, colNumber) {
+    ColNumberS.add(colNumber);
+    sel = col.getElementsByTagName('select')[0];
+	//window.alert(sel[0].innerHTML + ' ! '+sel.length);
+    options = [];
+    for (var i=0; i<visibleHeadings; i++)
+        options.push("<option>"+i+"</option>");
+    sel.innerHTML = options.join("");
+	//col = document.getElementsByClassName('r_'+numbers[0]);
+}
+
 function toggleChkSpalten() {
 	chk_spalten = document.getElementById("chk_spalten");
 	if (chk_spalten.style.display == 'none')
