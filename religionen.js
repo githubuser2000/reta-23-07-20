@@ -237,25 +237,47 @@ function toggleSpalten(colNumber) {
 }
 
 var tableHeadline;
-var visibleHeadingsSelect = new Set();
+var visibleHeadingsSelect = {};
 
-function changeHeadline(col, addTrueRemoveFalse) {
-    sel = col.getElementsByTagName('select')[0];
-    if (addTrueRemoveFalse)
-        visibleHeadingsSelect.add(sel);
+function changeHeadline(oneColHeading, addTrueRemoveFalse) {
+    sel = oneColHeading.getElementsByTagName('select')[0];
+	var num = oneColHeading.className.match(/r_(\d+)/g);
+    if (num.length>0)
+        num = parseInt(num[0].substring(2));
     else
-        visibleHeadingsSelect.delete(sel);
-	//window.alert(visibleHeadingsSelect.size);
+        num = 0;
+	//window.alert(num);
+
+    if (addTrueRemoveFalse)
+        visibleHeadingsSelect[num]=sel;
+    else
+        if (num in visibleHeadingsSelect)
+            delete visibleHeadingsSelect[num];
+	//window.alert(Object.keys(visibleHeadingsSelect).length);
 }
 
 function setHeadingsAmount() {
-    options = ["<option>-</option>"];
-    for (var i=0; i<visibleHeadingsSelect.size; i++)
-        options.push("<option>"+(i+1)+"</option>");
+    var options;
+    var optionsS = [];
+    var len = Object.keys(visibleHeadingsSelect).length;
+	//window.alert(visibleHeadingsSelect.length);
+    for (var k=0; k<len; k++) {
+        options = ["<option>-</option>"];
+        for (var i=0; i<len; i++)
+            if (i != k)
+                options.push("<option>"+(i+1)+"</option>");
+            else
+                options.push("<option selected>"+(i+1)+"</option>");
+        optionsS.push(options);
+    }
 
-    visHeadSel = Array.from(visibleHeadingsSelect);
-    for (var i=0; i<visHeadSel.length; i++)
-        visHeadSel[i].innerHTML = options.join("");
+    visHeadSel = Object.keys(visibleHeadingsSelect);
+    visHeadSel.sort((a,b) => a-b);
+
+    for (var i=0; i<optionsS.length; i++) {
+	    //window.alert(visHeadSel[i]);
+        visibleHeadingsSelect[visHeadSel[i]].innerHTML = optionsS[i].join("");
+    }
 }
 
 function toggleChkSpalten() {
