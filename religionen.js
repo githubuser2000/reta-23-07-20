@@ -106,6 +106,12 @@ for (i = 0; i < tdClasses.length; i++) {
 	}
 	str2 = checkboxes + "</span></div>";
 	div.innerHTML += str2;
+
+    // Spaltenreihenfolge
+	tableHeadline = document.getElementsByTagName('tr')[0].getElementsByTagName('td');
+    for (var u=0; u<tableHeadline.length; u++) {
+        tableHeadline[u].innerHTML += '<select id="hselec_'+u+'" value="'+u+'">'+u+'</select>'
+    }
 }
 
 function makeSpacesOutOf_(text) {
@@ -131,22 +137,13 @@ function makeSpacesOutOf_(text) {
 function toggleP2(numbers, para1u2) {
 	numbers = numbers.split(',');
 	existingParameterNamesArrayIndex = MatrixHasCouple(para1u2, selectedSpaltenMany2);
-	//window.alert((existingParameterNamesArrayIndex.size > 0));
 	if (existingParameterNamesArrayIndex.size > 0) {
 		existingParameterNamesKeys = Array.from(existingParameterNamesArrayIndex);
-		//window.alert(existingParameterNamesKey);
-		/*window.alert(existingParameterNamesArrayIndex);
-		window.alert("obj: "+selectedSpaltenMany2[0]);*/
-		//for (i=0; i<existingParameterNamesArrayIndex.length; i++) {
-		//window.alert("index: "+existingParameterNamesArrayIndex[i]);
-		//selectedSpaltenMany2 .splice(existingParameterNamesArrayIndex[i], 1);
 		for (i=0; i<existingParameterNamesKeys.length; i++){
 			for (k=0; k<selectedSpaltenMany2[existingParameterNamesKeys[i]].length; k++) {
 				if (selectedSpaltenMany2[existingParameterNamesKeys[i]][k] == para1u2 ) {
 					selectedSpaltenMany2[existingParameterNamesKeys[i]].splice(k,1);
-					//window.alert("yes: "+i+" "+k+" para:"+para1u2);
 				} else {
-					//window.alert("no");
 				}
 			}
 		}
@@ -162,29 +159,16 @@ function toggleP2(numbers, para1u2) {
 }
 
 function MatrixHasCouple(couple, SpaltenNumberToParameters) {
-	//matrix = Array.from(matrix);
 	existing = new Set();
-	//window.alert("drin: "+Object.keys(SpaltenNumberToParameters).length);
 	for (var key in SpaltenNumberToParameters) {
 		for (i=0; i<SpaltenNumberToParameters[key].length; i++) {
 			for (k=0; k<SpaltenNumberToParameters[key].length; k++) {
-				//really = true;
 				if (SpaltenNumberToParameters[key][k] != couple) {
-					//window.alert("YES couple: "+couple);
-					//window.alert("YES matrix el: "+SpaltenNumberToParameters[key][k]);
-					//really = false
 				} else {
 					existing.add(key);
-					//window.alert("NO couple: "+couple);
-					//window.alert("NO matrix el: "+SpaltenNumberToParameters[key][k]);
 				}
 			}
 		}
-		/*
-		if (really) {
-			window.alert("ja: "+k);
-			//existing.add(key);
-		}*/
 	}
 	return existing;
 }
@@ -194,13 +178,6 @@ function toggleForNums(numbers) {
 		if (typeof(selectedSpaltenMany2[numbers]) === 'undefined')
 			toggleSpalten(numbers[n]);
 		else {
-			//window.alert(numbers+" has "+selectedSpaltenMany2[numbers].length+" length");
-			/*NumbersFilled = [];
-			for (i=0; i<numbers[n].length; i++) {
-				window.alert("place "+[numbers[i]]+"("+i+") has "+selectedSpaltenMany2[numbers[i]].length+" length: ");
-				NumbersFilled.push(selectedSpaltenMany2[numbers[i]].length!=0);
-			}*/
-			//toggleSpalten('r_'+numbers[n],NumbersFilled);
 			toggleSpalten(numbers[n]);
 		}
 	}
