@@ -135,7 +135,6 @@ function makeSpacesOutOf_(text) {
 
 
 function toggleP2(numbers, para1u2) {
-    ColNumberS = new Set();
 	window.alert(numbers);
 	numbers = numbers.split(',');
 	existingParameterNamesArrayIndex = MatrixHasCouple(para1u2, selectedSpaltenMany2);
@@ -220,13 +219,17 @@ function toggleSpalten(rowNumber) {
 	cols = document.getElementsByClassName('r_'+rowNumber);
 	if (typeof(selectedSpaltenMany2[rowNumber]) === 'undefined') { 
 		away = true;
-		window.alert("undefined "+rowNumber);
+		//window.alert("undefined "+rowNumber);
 	} else
 		away = selectedSpaltenMany2[rowNumber].length==0;
 	//window.alert("Stelle "+rowNumber+"hat Länge "+selectedSpaltenMany2[rowNumber].length);
 	if (typeof(cols[0].style) != "undefined") {
 		if (cols[0].style.display == 'none')
-            changeHeadline(cols[0], rowNumber);
+            changeHeadline(cols[0], true);
+        else
+            if (away)
+                changeHeadline(cols[0], false);
+
 		for (i=0; i < cols.length; i++) { 
 			if (cols[i].style.display == 'none')
 				cols[i].style.display = 'table-cell';
@@ -240,13 +243,16 @@ function toggleSpalten(rowNumber) {
 
 }
 
-var ColNumberS = new Set();
 var tableHeadline;
 var visibleHeadings = 0;
+var visibleHeadingsSelect = Set();
 
-function changeHeadline(col, colNumber) {
-    ColNumberS.add(colNumber);
+function changeHeadline(col, addTrueRemoveFalse) {
     sel = col.getElementsByTagName('select')[0];
+    if (addTrueRemoveFalse)
+        visibleHeadingsSelect.add(sel);
+    else
+        visibleHeadingsSelect.delete(sel);
 	//window.alert(sel[0].innerHTML + ' ! '+sel.length);
     options = [];
     for (var i=0; i<visibleHeadings; i++)
