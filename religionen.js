@@ -90,7 +90,7 @@ for (i = 0; i < tdClasses.length; i++) {
 		for (k = 0; k < p2keys.length; k++) {
 			numbers = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
 			if (p2keys[k] != null && p2keys[k] != 'null') {
-				chk2 = '<input type="checkbox" value="'+p2keys[k]+'" onchange="toggleP2(\''+numbers+'\',\''+[p1keys[i],p2keys[k]]+'\');"><label>'+p2keys[k]+'</label>';
+				chk2 = '<input type="checkbox" value="'+p2keys[k]+'" onchange="toggleP2(\''+numbers+'\',\''+[p1keys[i],p2keys[k]]+'\');"><label>'+makeSpacesOutOf_(p2keys[k])+'</label>';
 				chk2s = chk2s + chk2;
 			}
 			
@@ -101,15 +101,27 @@ for (i = 0; i < tdClasses.length; i++) {
 		} else {
 			insertnull = '';
 		}
-		checkbox = '<br><input type="checkbox" value="'+p1keys[i]+'" onchange="toggleP1(\''+p1keys[i]+'\');'+insertnull+'"><label>'+p1keys[i]+'</label><div id="'+p1keys[i]+'" style="display:none">'+chk2s+'</div>';
+		checkbox = '<br><input type="checkbox" value="'+p1keys[i]+'" onchange="toggleP1(\''+p1keys[i]+'\');'+insertnull+'"><label>'+makeSpacesOutOf_(p1keys[i])+'</label><div id="'+p1keys[i]+'" style="display:none">'+chk2s+'</div>';
 		checkboxes += checkbox;
 	}
 	str2 = checkboxes + "</span></div>";
 	div.innerHTML += str2;
 }
 
+function makeSpacesOutOf_(text) {
+    var forNewString = [];
+    for (var i=0; i<text.length; i++)
+        if (text[i] == '_')
+            forNewString.push(' ');
+        else
+            forNewString.push(text[i]);
+    //return text;
+    return forNewString.join("");
 
-function toggleP2(numbers,para1u2) {
+}
+
+
+function toggleP2(numbers, para1u2) {
 	numbers = numbers.split(',');
 	existingParameterNamesArrayIndex = MatrixHasCouple(para1u2, selectedSpaltenMany2);
 	//window.alert((existingParameterNamesArrayIndex.size > 0));

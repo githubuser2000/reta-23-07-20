@@ -585,10 +585,12 @@ class Program:
         )
         Program.ParametersMain = Program.ParametersMain(
             (
+                "Religionen",
                 "religionen",
                 "religion",
             ),
             (
+                "Galaxie",
                 "galaxie",
                 "alteschriften",
                 "kreis",
@@ -596,6 +598,7 @@ class Program:
                 "kreise",
             ),
             (
+                "Größenordnung",
                 "groessenordnung",
                 "strukturgroesse",
                 "strukturgroeße",
@@ -606,6 +609,7 @@ class Program:
                 "organisationen",
             ),
             (
+                "Universum",
                 "universum",
                 "transzendentalien",
                 "strukturalien",
@@ -615,25 +619,26 @@ class Program:
                 "baelle",
                 "bälle",
             ),
-            ("wirtschaft",),
-            ("menschliches",),
+            ("Wirtschaft", "wirtschaft"),
+            ("Menschliches", "menschliches",),
             (
                 "Pro_Contra",
                 "procontra",
                 "dagegendafuer",
             ),
-            ("licht",),
-            ("bedeutung",),
-            ("symbole",),
-            primzahlvielfachesgalaxie,
+            ("Licht", "licht",),
+            ("Bedeutung", "bedeutung",),
+            ("Symbole", "symbole",),
+            ("Primzahlvielfachesgalaxie",)+primzahlvielfachesgalaxie,
             (
+                "Konzepte",
                 "konzept",
                 "konzepte",
             ),
-            ("inkrementieren",),
-            ("operationen",),
-            ("universummetakonkret",),
-            ("primzahlwirkung",),
+            ("Inkrementieren", "inkrementieren",),
+            ("Operationen", "operationen",),
+            ("Meta_vs_Konkret_Universum", "universummetakonkret",),
+            ("Primzahlwirkung", "primzahlwirkung",),
             ("alles"),
         )
         allowedPrimNumbersForCommand = tuple(
@@ -685,7 +690,7 @@ class Program:
             (
                 Program.ParametersMain.religionen,
                 (
-                    "Sternpolygon_vs_gleichfoermiges",
+                    "Sternpolygon_vs_gleichförmiges",
                     "vergleich",
                     "sternpolygonvsgleichfoermiges",
                     "vergleichnvs1divn",
@@ -781,7 +786,7 @@ class Program:
             (
                 Program.ParametersMain.galaxie,
                 (
-                    "analytische-Ontologie",
+                    "analytische_Ontologie",
                     "analytischeontologie",
                     "ontologie",
                 ),
@@ -920,7 +925,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.universummetakonkret,
-                ("mathematisch-diskret",),
+                ("mathematisch_diskret",),
                 set(),
                 set(),
                 set(),
@@ -1204,7 +1209,7 @@ class Program:
                 ),
                 {71},
             ),
-            (Program.ParametersMain.wirtschaft, ("bwl",), {109}),
+            (Program.ParametersMain.wirtschaft, ("BWL", "bwl",), {109}),
             (
                 Program.ParametersMain.menschliches,
                 (
