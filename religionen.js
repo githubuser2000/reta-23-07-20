@@ -109,15 +109,22 @@ for (i = 0; i < tdClasses.length; i++) {
 }
 
 function makeSpacesOutOf_(text) {
+    if (text.length == 25)
+        if (text == 'primzahlvielfachesgalaxie')
+            return 'Primzahlvielfache Galaxie'
+    if (text.length == 8)
+        if (text == 'zaehlung')
+            return 'Zählung'
+    if (text.length == 12)
+        if (text == 'nummerierung')
+            return 'Nummerierung'
     var forNewString = [];
     for (var i=0; i<text.length; i++)
         if (text[i] == '_')
             forNewString.push(' ');
         else
             forNewString.push(text[i]);
-    //return text;
     return forNewString.join("");
-
 }
 
 

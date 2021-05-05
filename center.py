@@ -13,7 +13,7 @@ for arg in sys.argv:
     if arg == "-debug":
         infoLog = True
 
-primzahlvielfachesgalaxie = ("primzahlvielfachesgalaxie", "")
+primzahlvielfachesgalaxie = [("primzahlvielfachesgalaxie", "")]
 
 
 def getTextWrapThings() -> tuple:

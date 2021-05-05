@@ -54,7 +54,7 @@ class Concat:
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
             ] = self.tables.dataDict[0][8]
-            x("idiot", self.tables.generatedSpaltenParameter)
+            x("bliu3", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
 
     def concatPrimCreativityType(self, relitable: list, rowsAsNumbers: set) -> tuple:
@@ -151,7 +151,7 @@ class Concat:
                     + self.tables.SpaltenVanillaAmount
                 ] = self.tables.dataDict[0][64]
                 x("WIE2", self.tables.dataDict[0][64])
-
+                x("bliu4", self.tables.dataDict[0][64])
                 x("idiot", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
 
@@ -572,6 +572,7 @@ class Concat:
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
             ] = self.tables.dataDict[1][conceptsRowsSetOfTuple2[o]]
+            x("bliu2", self.tables.dataDict[1][conceptsRowsSetOfTuple2[o]])
 
         return self.relitable, rowsAsNumbers
 
@@ -662,7 +663,10 @@ class Concat:
                 self.tables.generatedSpaltenParameter[
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.SpaltenVanillaAmount
-                ] = ([primzahlvielfachesgalaxie],)
+                ] = ([primzahlvielfachesgalaxie[0]],)
+
+                x("bliu orig", (primzahlvielfachesgalaxie, ))
+                x("bliu Orig", ([primzahlvielfachesgalaxie[0]], ))
 
                 x("idiot", self.tables.generatedSpaltenParameter)
 

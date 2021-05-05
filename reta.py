@@ -581,8 +581,8 @@ class Program:
         Program.ParametersMain: namedtuple = namedtuple(
             "ParametersMain",
             "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesgalaxie konzept inkrementieren operationen universummetakonkret primzahlwirkung alles",
-            # "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesgalaxie konzept inkrementieren operationen alles",
         )
+
         Program.ParametersMain = Program.ParametersMain(
             (
                 "Religionen",
@@ -629,7 +629,7 @@ class Program:
             ("Licht", "licht",),
             ("Bedeutung", "bedeutung",),
             ("Symbole", "symbole",),
-            ("Primzahlvielfachesgalaxie",)+primzahlvielfachesgalaxie,
+            tuple(a[0] for a in primzahlvielfachesgalaxie),
             (
                 "Konzepte",
                 "konzept",
@@ -641,6 +641,7 @@ class Program:
             ("Primzahlwirkung", "primzahlwirkung",),
             ("alles"),
         )
+
         allowedPrimNumbersForCommand = tuple(
             (
                 str(num)
