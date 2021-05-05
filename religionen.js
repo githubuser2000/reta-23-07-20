@@ -134,9 +134,9 @@ function makeSpacesOutOf_(text) {
 }
 
 
-function toggleP2(numbers, para1u2) {
-	window.alert(numbers);
-	numbers = numbers.split(',');
+function toggleP2(spaltenNummern, para1u2) {
+	//window.alert(spaltenNummern);
+	spaltenNummern = spaltenNummern.split(',');
 	existingParameterNamesArrayIndex = MatrixHasCouple(para1u2, selectedSpaltenMany2);
 	if (existingParameterNamesArrayIndex.size > 0) {
 		existingParameterNamesKeys = Array.from(existingParameterNamesArrayIndex);
@@ -148,14 +148,14 @@ function toggleP2(numbers, para1u2) {
 				}
 			}
 		}
-		toggleForNums(numbers);
+		toggleForNums(spaltenNummern);
 	} else {
-		for (i=0; i<numbers.length; i++)
-			if (typeof(selectedSpaltenMany2[numbers[i]]) !== "undefined")
-				selectedSpaltenMany2[numbers[i]].push(para1u2);
+		for (i=0; i<spaltenNummern.length; i++)
+			if (typeof(selectedSpaltenMany2[spaltenNummern[i]]) !== "undefined")
+				selectedSpaltenMany2[spaltenNummern[i]].push(para1u2);
 			else
-				selectedSpaltenMany2[numbers[i]]=[para1u2];
-		toggleForNums(numbers);
+				selectedSpaltenMany2[spaltenNummern[i]]=[para1u2];
+		toggleForNums(spaltenNummern);
 	}
 }
 
@@ -175,13 +175,6 @@ function MatrixHasCouple(couple, SpaltenNumberToParameters) {
 }
 
 function toggleForNums(colNums) {
-    visibleHeadings = 0;
-    for (var i=0; i<tableHeadline.length; i++)
-        if (tableHeadline[i].style.display == 'table-cell')
-            visibleHeadings += 1;
-	for (n = 0; n < colNums.length; n++) {
-        visibleHeadings += 1;
-    }
 	for (n = 0; n < colNums.length; n++) {
 		if (typeof(selectedSpaltenMany2[colNums]) === 'undefined')
 			toggleSpalten(colNums[n]);
@@ -189,7 +182,7 @@ function toggleForNums(colNums) {
 			toggleSpalten(colNums[n]);
 		}
 	}
-
+    setHeadingsAmount();
 }
 
 function toggleName(p2) {
@@ -215,14 +208,14 @@ function toggleP1(p1) {
 	} else 
 		window.alert(p2.innerHTML + ' ! ');
 }
-function toggleSpalten(rowNumber) {
-	cols = document.getElementsByClassName('r_'+rowNumber);
-	if (typeof(selectedSpaltenMany2[rowNumber]) === 'undefined') { 
+function toggleSpalten(colNumber) {
+	cols = document.getElementsByClassName('r_'+colNumber);
+	if (typeof(selectedSpaltenMany2[colNumber]) === 'undefined') { 
 		away = true;
-		//window.alert("undefined "+rowNumber);
+		//window.alert("undefined "+colNumber);
 	} else
-		away = selectedSpaltenMany2[rowNumber].length==0;
-	//window.alert("Stelle "+rowNumber+"hat Länge "+selectedSpaltenMany2[rowNumber].length);
+		away = selectedSpaltenMany2[colNumber].length==0;
+	//window.alert("Stelle "+colNumber+"hat Länge "+selectedSpaltenMany2[colNumber].length);
 	if (typeof(cols[0].style) != "undefined") {
 		if (cols[0].style.display == 'none')
             changeHeadline(cols[0], true);
@@ -239,13 +232,12 @@ function toggleSpalten(rowNumber) {
 		}
      }
 	 else 
-		window.alert(cols[0].innerHTML + ' ! '+rowNumber);
+		window.alert(cols[0].innerHTML + ' ! '+colNumber);
 
 }
 
 var tableHeadline;
-var visibleHeadings = 0;
-var visibleHeadingsSelect = Set();
+var visibleHeadingsSelect = new Set();
 
 function changeHeadline(col, addTrueRemoveFalse) {
     sel = col.getElementsByTagName('select')[0];
@@ -253,12 +245,17 @@ function changeHeadline(col, addTrueRemoveFalse) {
         visibleHeadingsSelect.add(sel);
     else
         visibleHeadingsSelect.delete(sel);
-	//window.alert(sel[0].innerHTML + ' ! '+sel.length);
-    options = [];
-    for (var i=0; i<visibleHeadings; i++)
-        options.push("<option>"+i+"</option>");
-    sel.innerHTML = options.join("");
-	//col = document.getElementsByClassName('r_'+numbers[0]);
+	//window.alert(visibleHeadingsSelect.size);
+}
+
+function setHeadingsAmount() {
+    options = ["<option>-</option>"];
+    for (var i=0; i<visibleHeadingsSelect.size; i++)
+        options.push("<option>"+(i+1)+"</option>");
+
+    visHeadSel = Array.from(visibleHeadingsSelect);
+    for (var i=0; i<visHeadSel.length; i++)
+        visHeadSel[i].innerHTML = options.join("");
 }
 
 function toggleChkSpalten() {
