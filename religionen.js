@@ -295,22 +295,22 @@ function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
     //window.alert("for selival: "+momentaneSpalte_plusgleich1)
     selival = selectionsBefore[momentaneSpalte_plusgleich1];
     gewaehlteSpalte_plusgleich1 = selival - 1; // 1 bis +=1
-    window.alert("selival: "+selival)
+    window.alert("drüben selected gemacht Nummer: "+selival+" unter "+seli.length);
     //for (var k=0; k<seli.length; k++) {
     seli[selival].selected = 'selected';
     //}
-    //window.alert(Object.keys(visibleHeadingsSelect)[0]+' '+Object.keys(visibleHeadingsSelect)[1]+' '+Object.keys(visibleHeadingsSelect)[2]+' ');
-    window.alert(visibleHeadingsSelect[2].value+' '+visibleHeadingsSelect[8].value+' '+visibleHeadingsSelect[38].value);
+    window.alert(Object.keys(visibleHeadingsSelect)[0]+' '+Object.keys(visibleHeadingsSelect)[1]+' '+Object.keys(visibleHeadingsSelect)[2]+'\n'+visibleHeadingsSelect[2].value+' '+visibleHeadingsSelect[8].value+' '+visibleHeadingsSelect[38].value);
 
 	var spalte2ToChange = document.getElementsByClassName('r_'+momentaneSpalte_als_r_);
-    //window.alert(spalte2ToChange[1].innerHTML);
-    //window.alert(spalte1ToChange[1].innerHTML);
+    window.alert(spalte2ToChange[0].innerHTML);
+    window.alert(spalte1ToChange[0].innerHTML);
+    /*
     var merke;
     for (var i=0; i<spalte1ToChange.length; i++) {
         merke = spalte1ToChange[i].outerHTML
         spalte1ToChange[i].outerHTML = spalte2ToChange[i].outerHTML;
         spalte2ToChange[i].outerHTML = merke;
-    }
+    }*/
     //setHeadingsAmount()
 }
 
