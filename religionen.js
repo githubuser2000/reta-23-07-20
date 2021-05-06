@@ -110,7 +110,7 @@ for (i = 0; i < tdClasses.length; i++) {
     // Spaltenreihenfolge
 	tableHeadline = document.getElementsByTagName('tr')[0].getElementsByTagName('td');
     for (var u=0; u<tableHeadline.length; u++) {
-        tableHeadline[u].innerHTML += '<select id="hselec_'+u+'" value="'+u+'" onchange="headingselected(this, '+u+');">'+u+'</select>'
+        tableHeadline[u].innerHTML += '<select id="hselec_'+u+'" value="'+u+'" onchange="headingselected(this, '+u+');"></select>'
     }
 }
 
@@ -176,12 +176,15 @@ function MatrixHasCouple(couple, SpaltenNumberToParameters) {
 
 function toggleForNums(colNums) {
 	for (n = 0; n < colNums.length; n++) {
-		if (typeof(selectedSpaltenMany2[colNums]) === 'undefined')
+		/*if (typeof(selectedSpaltenMany2[colNums]) === 'undefined')
 			toggleSpalten(colNums[n]);
 		else {
 			toggleSpalten(colNums[n]);
-		}
+		}*/
+		toggleSpalten(colNums[n]);
 	}
+    window.alert("colNums 0:"+colNums[0])
+    sortedKeysOfHeadingNumbers();
     setHeadingsAmount();
 }
 
@@ -265,8 +268,7 @@ function headingselected_() {
 function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
     gewaehlteSpalte_plusgleich1 = gewaehlteSpalte_plusgleich1.value;
     //for (var i=0; i<optionsS.length; i++) {
-    //window.alert(momentaneSpalte_als_r_);
-    //window.alert(gewaehlteSpalte_plusgleich1);
+    window.alert('momenante Spalte als r_:  '+momentaneSpalte_als_r_+' gewählte als +=1: '+gewaehlteSpalte_plusgleich1);
     //window.alert(gewaehlteSpalte_plusgleich1);
     //window.alert(gewaehlteSpalte_plusgleich1.target.value);
 
@@ -292,19 +294,19 @@ function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
     //window.alert(visibleHeadingsSelect[2].value+' '+visibleHeadingsSelect[8].value+' '+visibleHeadingsSelect[38].value);
 	var spalte1ToChange = document.getElementsByClassName('r_'+gewaehlteSpalte_als_r_);
     seli = spalte1ToChange[0].getElementsByTagName("select")[0].getElementsByTagName("option");
-    //window.alert("for selival: "+momentaneSpalte_plusgleich1)
-    selival = selectionsBefore[momentaneSpalte_plusgleich1];
-    gewaehlteSpalte_plusgleich1 = selival - 1; // 1 bis +=1
+    window.alert("momentane Spalte: "+momentaneSpalte_plusgleich1)
+    selival = selectionsBefore[momentaneSpalte_plusgleich1] + 1;
+    gewaehlteSpalte_plusgleich1 = selival - 2; // 1 bis +=1
     window.alert("drüben selected gemacht Nummer: "+selival+" unter "+seli.length);
     //for (var k=0; k<seli.length; k++) {
     seli[selival].selected = 'selected';
     //}
     window.alert(Object.keys(visibleHeadingsSelect)[0]+' '+Object.keys(visibleHeadingsSelect)[1]+' '+Object.keys(visibleHeadingsSelect)[2]+'\n'+visibleHeadingsSelect[2].value+' '+visibleHeadingsSelect[8].value+' '+visibleHeadingsSelect[38].value);
 
-	var spalte2ToChange = document.getElementsByClassName('r_'+momentaneSpalte_als_r_);
+	/*var spalte2ToChange = document.getElementsByClassName('r_'+momentaneSpalte_als_r_);
     window.alert(spalte2ToChange[0].innerHTML);
     window.alert(spalte1ToChange[0].innerHTML);
-    /*
+    
     var merke;
     for (var i=0; i<spalte1ToChange.length; i++) {
         merke = spalte1ToChange[i].outerHTML
@@ -316,19 +318,32 @@ function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
 
 var selectionsBefore = {};
 var optionsS = [];
+var sichtbareSpaltenNummern;
+
+function sortedKeysOfHeadingNumbers() {
+	tableHeadline = document.getElementsByTagName('tr')[0].getElementsByTagName('td');
+    sichtbareSpaltenNummern = []
+    for (var i=0; i<tableHeadline.length; i++) {
+        if (tableHeadline[i].style.display == 'table-cell') {
+            sichtbareSpaltenNummern.push(tableHeadline[i].className.match(/r_(\d+)/g)[0].substring(2));
+        }
+    }
+    //window.alert('sichtb spalten nummern '+sichtbareSpaltenNummern[0]+' '+sichtbareSpaltenNummern[1]);
+}
 
 function setHeadingsAmount() {
     var options;
     optionsS = [];
-    var len = Object.keys(visibleHeadingsSelect).length;
+    var keys = Object.keys(visibleHeadingsSelect);
+    var len = keys.length;
 	//window.alert(visibleHeadingsSelect.length);
     for (var k=0; k<len; k++) {
-        options = ["<option value='-'>-</option>"];
+        options = ["<option value='-,"+sichtbareSpaltenNummern[k]+"'>-</option>"];
         for (var i=0; i<len; i++)
             if (i != k) 
-                options.push("<option value='"+i+"'>"+(i+1)+"</option>");
+                options.push("<option value='"+i+","+sichtbareSpaltenNummern[k]+"'>"+(i+1)+"</option>");
             else {
-                options.push("<option selected value='"+i+"'>"+(i+1)+"</option>");
+                options.push("<option selected value='"+i+","+sichtbareSpaltenNummern[k]+"'>"+(i+1)+"</option>");
                 selection = i
             }
         selectionsBefore[k] = k
