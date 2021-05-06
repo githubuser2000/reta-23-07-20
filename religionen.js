@@ -269,7 +269,7 @@ function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
     gewaehlteSpalte_plusgleich1 = gewaehlteSpalte_plusgleich1.value;
     //for (var i=0; i<optionsS.length; i++) {
     zwei = gewaehlteSpalte_plusgleich1.split(",");
-    window.alert('momenante Spalte als r_:  '+momentaneSpalte_als_r_+' gewählte als +=1: '+zwei[0]+' und '+zwei[1]);
+    window.alert('PROGRAMMIERBAUSTELLE! UNFERTIG! momenante Spalte als r_:  '+momentaneSpalte_als_r_+' gewählte als +=1: '+zwei[0]+' und '+zwei[1]);
     //window.alert(gewaehlteSpalte_plusgleich1);
     //window.alert(gewaehlteSpalte_plusgleich1.target.value);
 /*
