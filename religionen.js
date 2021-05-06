@@ -278,9 +278,10 @@ function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
     zwei = gewaehlteSpalte_plusgleich1.split(",");
     gewaehlteSpalte_plusgleich1 = zwei[0];
     gewaehlteSpalte_als_r_ = zwei[1];
+
+    window.alert("das ist nich unfertig, diese funktionalität!");
     //window.alert('PROGRAMMIERBAUSTELLE! UNFERTIG! momenante Spalte als r_:  '+momentaneSpalte_als_r_+' gewählte als +=1: '+zwei[0]+' und '+zwei[1]);
     //window.alert(gewaehlteSpalte_plusgleich1);
-    window.alert("das ist nich unfertig, diese funktionalität!");
     //window.alert(gewaehlteSpalte_plusgleich1.target.value);
 /*
     visHeadSel = Object.keys(visibleHeadingsSelect);
