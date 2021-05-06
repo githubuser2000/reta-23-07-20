@@ -183,7 +183,7 @@ function toggleForNums(colNums) {
 		}*/
 		toggleSpalten(colNums[n]);
 	}
-    window.alert("colNums 0:"+colNums[0])
+    //window.alert("colNums 0:"+colNums[0])
     sortedKeysOfHeadingNumbers();
     setHeadingsAmount();
 }
@@ -268,16 +268,17 @@ function headingselected_() {
 function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
     gewaehlteSpalte_plusgleich1 = gewaehlteSpalte_plusgleich1.value;
     //for (var i=0; i<optionsS.length; i++) {
-    window.alert('momenante Spalte als r_:  '+momentaneSpalte_als_r_+' gewählte als +=1: '+gewaehlteSpalte_plusgleich1);
+    zwei = gewaehlteSpalte_plusgleich1.split(",");
+    window.alert('momenante Spalte als r_:  '+momentaneSpalte_als_r_+' gewählte als +=1: '+zwei[0]+' und '+zwei[1]);
     //window.alert(gewaehlteSpalte_plusgleich1);
     //window.alert(gewaehlteSpalte_plusgleich1.target.value);
-
+/*
     visHeadSel = Object.keys(visibleHeadingsSelect);
     visHeadSel.sort((a,b) => a-b);
 
     gewaehlteSpalte_als_r_ = visHeadSel[gewaehlteSpalte_plusgleich1]; // dieses mal als r_ angabe statt +=1
     momentaneSpalte_plusgleich1 = visibleHeadingsSelect[momentaneSpalte_als_r_].value; // dieses mal als +=1 angabe statt als r_
-
+*/
     /*
     //visibleHeadingsSelect[visHeadSel[i]].innerHTML; // = optionsS[i].join("");
     //window.alert(gewaehlteSpalte_als_r_);
@@ -289,7 +290,7 @@ function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
     //window.alert(visHeadSel[visibleHeadingsSelect[gewaehlteSpalte_als_r_].value]);
     //window.alert(visHeadSel[visibleHeadingsSelect[momentaneSpalte_als_r_].value]);
     */
-
+/*
     //window.alert(Object.keys(visibleHeadingsSelect)[0]+' '+Object.keys(visibleHeadingsSelect)[1]+' '+Object.keys(visibleHeadingsSelect)[2]+' ');
     //window.alert(visibleHeadingsSelect[2].value+' '+visibleHeadingsSelect[8].value+' '+visibleHeadingsSelect[38].value);
 	var spalte1ToChange = document.getElementsByClassName('r_'+gewaehlteSpalte_als_r_);
@@ -302,7 +303,7 @@ function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
     seli[selival].selected = 'selected';
     //}
     window.alert(Object.keys(visibleHeadingsSelect)[0]+' '+Object.keys(visibleHeadingsSelect)[1]+' '+Object.keys(visibleHeadingsSelect)[2]+'\n'+visibleHeadingsSelect[2].value+' '+visibleHeadingsSelect[8].value+' '+visibleHeadingsSelect[38].value);
-
+*/
 	/*var spalte2ToChange = document.getElementsByClassName('r_'+momentaneSpalte_als_r_);
     window.alert(spalte2ToChange[0].innerHTML);
     window.alert(spalte1ToChange[0].innerHTML);
@@ -338,12 +339,12 @@ function setHeadingsAmount() {
     var len = keys.length;
 	//window.alert(visibleHeadingsSelect.length);
     for (var k=0; k<len; k++) {
-        options = ["<option value='-,"+sichtbareSpaltenNummern[k]+"'>-</option>"];
+        options = ["<option value='-,null'>-</option>"];
         for (var i=0; i<len; i++)
             if (i != k) 
-                options.push("<option value='"+i+","+sichtbareSpaltenNummern[k]+"'>"+(i+1)+"</option>");
+                options.push("<option value='"+i+","+sichtbareSpaltenNummern[i]+"'>"+(i+1)+"</option>");
             else {
-                options.push("<option selected value='"+i+","+sichtbareSpaltenNummern[k]+"'>"+(i+1)+"</option>");
+                options.push("<option selected value='"+i+","+sichtbareSpaltenNummern[i]+"'>"+(i+1)+"</option>");
                 selection = i
             }
         selectionsBefore[k] = k
