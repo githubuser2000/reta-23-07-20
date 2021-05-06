@@ -110,7 +110,7 @@ for (i = 0; i < tdClasses.length; i++) {
     // Spaltenreihenfolge
 	tableHeadline = document.getElementsByTagName('tr')[0].getElementsByTagName('td');
     for (var u=0; u<tableHeadline.length; u++) {
-        tableHeadline[u].innerHTML += '<select id="hselec_'+u+'" value="'+u+'">'+u+'</select>'
+        tableHeadline[u].innerHTML += '<select id="hselec_'+u+'" value="'+u+'" onchange="headingselected(this, '+u+');">'+u+'</select>'
     }
 }
 
@@ -208,6 +208,7 @@ function toggleP1(p1) {
 	} else 
 		window.alert(p2.innerHTML + ' ! ');
 }
+
 function toggleSpalten(colNumber) {
 	cols = document.getElementsByClassName('r_'+colNumber);
 	if (typeof(selectedSpaltenMany2[colNumber]) === 'undefined') { 
@@ -256,18 +257,82 @@ function changeHeadline(oneColHeading, addTrueRemoveFalse) {
 	//window.alert(Object.keys(visibleHeadingsSelect).length);
 }
 
+function headingselected_() {
+
+    window.alert('1');
+}
+
+function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
+    gewaehlteSpalte_plusgleich1 = gewaehlteSpalte_plusgleich1.value;
+    //for (var i=0; i<optionsS.length; i++) {
+    //window.alert(momentaneSpalte_als_r_);
+    //window.alert(gewaehlteSpalte_plusgleich1);
+    //window.alert(gewaehlteSpalte_plusgleich1);
+    //window.alert(gewaehlteSpalte_plusgleich1.target.value);
+
+    visHeadSel = Object.keys(visibleHeadingsSelect);
+    visHeadSel.sort((a,b) => a-b);
+
+    gewaehlteSpalte_als_r_ = visHeadSel[gewaehlteSpalte_plusgleich1]; // dieses mal als r_ angabe statt +=1
+    momentaneSpalte_plusgleich1 = visibleHeadingsSelect[momentaneSpalte_als_r_].value; // dieses mal als +=1 angabe statt als r_
+
+    /*
+    //visibleHeadingsSelect[visHeadSel[i]].innerHTML; // = optionsS[i].join("");
+    //window.alert(gewaehlteSpalte_als_r_);
+    //window.alert(momentaneSpalte_als_r_);
+    window.alert(Object.keys(visibleHeadingsSelect)[0]+' '+Object.keys(visibleHeadingsSelect)[1]+' '+Object.keys(visibleHeadingsSelect)[2]+' ');
+    window.alert(visibleHeadingsSelect[2].value+' '+visibleHeadingsSelect[8].value+' '+visibleHeadingsSelect[38].value);
+    window.alert(visibleHeadingsSelect[gewaehlteSpalte_als_r_].value);
+    window.alert(visibleHeadingsSelect[momentaneSpalte_als_r_].value);
+    //window.alert(visHeadSel[visibleHeadingsSelect[gewaehlteSpalte_als_r_].value]);
+    //window.alert(visHeadSel[visibleHeadingsSelect[momentaneSpalte_als_r_].value]);
+    */
+
+    //window.alert(Object.keys(visibleHeadingsSelect)[0]+' '+Object.keys(visibleHeadingsSelect)[1]+' '+Object.keys(visibleHeadingsSelect)[2]+' ');
+    //window.alert(visibleHeadingsSelect[2].value+' '+visibleHeadingsSelect[8].value+' '+visibleHeadingsSelect[38].value);
+	var spalte1ToChange = document.getElementsByClassName('r_'+gewaehlteSpalte_als_r_);
+    seli = spalte1ToChange[0].getElementsByTagName("select")[0].getElementsByTagName("option");
+    //window.alert("for selival: "+momentaneSpalte_plusgleich1)
+    selival = selectionsBefore[momentaneSpalte_plusgleich1];
+    gewaehlteSpalte_plusgleich1 = selival - 1; // 1 bis +=1
+    window.alert("selival: "+selival)
+    //for (var k=0; k<seli.length; k++) {
+    seli[selival].selected = 'selected';
+    //}
+    //window.alert(Object.keys(visibleHeadingsSelect)[0]+' '+Object.keys(visibleHeadingsSelect)[1]+' '+Object.keys(visibleHeadingsSelect)[2]+' ');
+    window.alert(visibleHeadingsSelect[2].value+' '+visibleHeadingsSelect[8].value+' '+visibleHeadingsSelect[38].value);
+
+	var spalte2ToChange = document.getElementsByClassName('r_'+momentaneSpalte_als_r_);
+    //window.alert(spalte2ToChange[1].innerHTML);
+    //window.alert(spalte1ToChange[1].innerHTML);
+    var merke;
+    for (var i=0; i<spalte1ToChange.length; i++) {
+        merke = spalte1ToChange[i].outerHTML
+        spalte1ToChange[i].outerHTML = spalte2ToChange[i].outerHTML;
+        spalte2ToChange[i].outerHTML = merke;
+    }
+    //setHeadingsAmount()
+}
+
+var selectionsBefore = {};
+var optionsS = [];
+
 function setHeadingsAmount() {
     var options;
-    var optionsS = [];
+    optionsS = [];
     var len = Object.keys(visibleHeadingsSelect).length;
 	//window.alert(visibleHeadingsSelect.length);
     for (var k=0; k<len; k++) {
-        options = ["<option>-</option>"];
+        options = ["<option value='-'>-</option>"];
         for (var i=0; i<len; i++)
-            if (i != k)
-                options.push("<option>"+(i+1)+"</option>");
-            else
-                options.push("<option selected>"+(i+1)+"</option>");
+            if (i != k) 
+                options.push("<option value='"+i+"'>"+(i+1)+"</option>");
+            else {
+                options.push("<option selected value='"+i+"'>"+(i+1)+"</option>");
+                selection = i
+            }
+        selectionsBefore[k] = k
+            
         optionsS.push(options);
     }
 
