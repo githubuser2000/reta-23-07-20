@@ -186,6 +186,17 @@ function toggleForNums(colNums) {
     //window.alert("colNums 0:"+colNums[0])
     sortedKeysOfHeadingNumbers();
     setHeadingsAmount();
+    updateSpaltenValues();
+}
+
+function updateSpaltenValues() {
+    keys = Object.keys(visibleHeadingsSelect);
+    for (var i=0; i<keys.length; i++) {
+        visibleHeadingsNumbers[keys[i]] = visibleHeadingsSelect[keys[i]].value;
+    }
+    keys2 = Object.keys(visibleHeadingsNumbers);
+    //window.alert("vis num"+ keys2.length)
+    //window.alert("vis num 0: "+ visibleHeadingsNumbers[keys2[0]])
 }
 
 function toggleName(p2) {
@@ -242,6 +253,7 @@ function toggleSpalten(colNumber) {
 
 var tableHeadline;
 var visibleHeadingsSelect = {};
+var visibleHeadingsNumbers = {};
 
 function changeHeadline(oneColHeading, addTrueRemoveFalse) {
     sel = oneColHeading.getElementsByTagName('select')[0];
@@ -260,16 +272,13 @@ function changeHeadline(oneColHeading, addTrueRemoveFalse) {
 	//window.alert(Object.keys(visibleHeadingsSelect).length);
 }
 
-function headingselected_() {
-
-    window.alert('1');
-}
-
 function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
     gewaehlteSpalte_plusgleich1 = gewaehlteSpalte_plusgleich1.value;
     //for (var i=0; i<optionsS.length; i++) {
     zwei = gewaehlteSpalte_plusgleich1.split(",");
-    window.alert('PROGRAMMIERBAUSTELLE! UNFERTIG! momenante Spalte als r_:  '+momentaneSpalte_als_r_+' gewählte als +=1: '+zwei[0]+' und '+zwei[1]);
+    gewaehlteSpalte_plusgleich1 = zwei[0];
+    gewaehlteSpalte_als_r_ = zwei[1];
+    //window.alert('PROGRAMMIERBAUSTELLE! UNFERTIG! momenante Spalte als r_:  '+momentaneSpalte_als_r_+' gewählte als +=1: '+zwei[0]+' und '+zwei[1]);
     //window.alert(gewaehlteSpalte_plusgleich1);
     //window.alert(gewaehlteSpalte_plusgleich1.target.value);
 /*
@@ -277,8 +286,11 @@ function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
     visHeadSel.sort((a,b) => a-b);
 
     gewaehlteSpalte_als_r_ = visHeadSel[gewaehlteSpalte_plusgleich1]; // dieses mal als r_ angabe statt +=1
-    momentaneSpalte_plusgleich1 = visibleHeadingsSelect[momentaneSpalte_als_r_].value; // dieses mal als +=1 angabe statt als r_
-*/
+    */
+    //momentaneSpalte_plusgleich1 = visibleHeadingsSelect[momentaneSpalte_als_r_].value; // dieses mal als +=1 angabe statt als r_
+    momentaneSpalte_plusgleich1 = visibleHeadingsNumbers[momentaneSpalte_als_r_]; // dieses mal als +=1 angabe statt als r_
+    zwei = momentaneSpalte_plusgleich1.split(",");
+    momentaneSpalte_plusgleich1 = zwei[0];
     /*
     //visibleHeadingsSelect[visHeadSel[i]].innerHTML; // = optionsS[i].join("");
     //window.alert(gewaehlteSpalte_als_r_);
@@ -290,31 +302,44 @@ function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
     //window.alert(visHeadSel[visibleHeadingsSelect[gewaehlteSpalte_als_r_].value]);
     //window.alert(visHeadSel[visibleHeadingsSelect[momentaneSpalte_als_r_].value]);
     */
-/*
+
     //window.alert(Object.keys(visibleHeadingsSelect)[0]+' '+Object.keys(visibleHeadingsSelect)[1]+' '+Object.keys(visibleHeadingsSelect)[2]+' ');
     //window.alert(visibleHeadingsSelect[2].value+' '+visibleHeadingsSelect[8].value+' '+visibleHeadingsSelect[38].value);
 	var spalte1ToChange = document.getElementsByClassName('r_'+gewaehlteSpalte_als_r_);
     seli = spalte1ToChange[0].getElementsByTagName("select")[0].getElementsByTagName("option");
-    window.alert("momentane Spalte: "+momentaneSpalte_plusgleich1)
+    //window.alert("momentane Spalte: "+momentaneSpalte_plusgleich1)
     selival = selectionsBefore[momentaneSpalte_plusgleich1] + 1;
     gewaehlteSpalte_plusgleich1 = selival - 2; // 1 bis +=1
-    window.alert("drüben selected gemacht Nummer: "+selival+" unter "+seli.length);
+    //window.alert("drüben selected gemacht Nummer: "+selival+" unter "+seli.length);
     //for (var k=0; k<seli.length; k++) {
     seli[selival].selected = 'selected';
     //}
-    window.alert(Object.keys(visibleHeadingsSelect)[0]+' '+Object.keys(visibleHeadingsSelect)[1]+' '+Object.keys(visibleHeadingsSelect)[2]+'\n'+visibleHeadingsSelect[2].value+' '+visibleHeadingsSelect[8].value+' '+visibleHeadingsSelect[38].value);
-*/
-	/*var spalte2ToChange = document.getElementsByClassName('r_'+momentaneSpalte_als_r_);
-    window.alert(spalte2ToChange[0].innerHTML);
-    window.alert(spalte1ToChange[0].innerHTML);
-    
-    var merke;
+    //window.alert(Object.keys(visibleHeadingsSelect)[0]+' '+Object.keys(visibleHeadingsSelect)[1]+' '+Object.keys(visibleHeadingsSelect)[2]+'\n'+visibleHeadingsSelect[2].value+' '+visibleHeadingsSelect[8].value+' '+visibleHeadingsSelect[38].value);
+
+	var spalte2ToChange = document.getElementsByClassName('r_'+momentaneSpalte_als_r_);
+    //window.alert(spalte2ToChange[0].innerHTML);
+    //window.alert(spalte1ToChange[0].innerHTML);
+
+    var name1 = [];
+    var name2 = [];
+    var c1 = spalte1ToChange[0].className;
+    var c2 = spalte2ToChange[0].className;
+    for (var u=0; u<c1.length; u++) {
+        if (c1[])
+        name1.push()
+    }
+    var g = document.querySelector('.'+spalte1ToChange[0].className+'+.'+spalte2ToChange[0].className) 
+    window.alert(g)
+    var merke = [];
+    // window.alert("len of loop: "+spalte1ToChange.length);
+    /*
     for (var i=0; i<spalte1ToChange.length; i++) {
-        merke = spalte1ToChange[i].outerHTML
-        spalte1ToChange[i].outerHTML = spalte2ToChange[i].outerHTML;
-        spalte2ToChange[i].outerHTML = merke;
-    }*/
-    //setHeadingsAmount()
+        merke.push(spalte2ToChange[i].outerHTML)
+        spalte2ToChange[i].outerHTML = spalte1ToChange[i].outerHTML;
+        spalte1ToChange[i].outerHTML = merke[i];
+    }
+    setHeadingsAmount()
+    */
 }
 
 var selectionsBefore = {};
