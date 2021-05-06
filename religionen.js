@@ -280,6 +280,7 @@ function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
     gewaehlteSpalte_als_r_ = zwei[1];
     //window.alert('PROGRAMMIERBAUSTELLE! UNFERTIG! momenante Spalte als r_:  '+momentaneSpalte_als_r_+' gewählte als +=1: '+zwei[0]+' und '+zwei[1]);
     //window.alert(gewaehlteSpalte_plusgleich1);
+    window.alert("das ist nich unfertig, diese funktionalität!");
     //window.alert(gewaehlteSpalte_plusgleich1.target.value);
 /*
     visHeadSel = Object.keys(visibleHeadingsSelect);
@@ -319,27 +320,33 @@ function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
 	var spalte2ToChange = document.getElementsByClassName('r_'+momentaneSpalte_als_r_);
     //window.alert(spalte2ToChange[0].innerHTML);
     //window.alert(spalte1ToChange[0].innerHTML);
+	var tabellenKopf = document.getElementsByClassName('z_0');
+    var aa = 0;
+    var bb = 0;
+    for (var z=0; z<tabellenKopf.length; z++) {
+        if (tabellenKopf[z] === spalte2ToChange[0])
+            aa = z;
+        if (tabellenKopf[z] === spalte1ToChange[0])
+            bb = z;
+    }
+    //window.alert(aa+' '+bb);
 
-    var name1 = [];
-    var name2 = [];
-    var c1 = spalte1ToChange[0].className;
-    var c2 = spalte2ToChange[0].className;
-    for (var u=0; u<c1.length; u++) {
-        if (c1[])
-        name1.push()
-    }
-    var g = document.querySelector('.'+spalte1ToChange[0].className+'+.'+spalte2ToChange[0].className) 
-    window.alert(g)
-    var merke = [];
+    var merke;
     // window.alert("len of loop: "+spalte1ToChange.length);
-    /*
-    for (var i=0; i<spalte1ToChange.length; i++) {
-        merke.push(spalte2ToChange[i].outerHTML)
-        spalte2ToChange[i].outerHTML = spalte1ToChange[i].outerHTML;
-        spalte1ToChange[i].outerHTML = merke[i];
-    }
-    setHeadingsAmount()
-    */
+    if (aa>bb)
+        for (var i=0; i<spalte1ToChange.length; i++) {
+            merke = spalte2ToChange[i].outerHTML
+            spalte2ToChange[i].outerHTML = spalte1ToChange[i].outerHTML;
+            spalte1ToChange[i].outerHTML = merke;
+        }
+    else
+        for (var i=0; i<spalte1ToChange.length; i++) {
+            merke = spalte1ToChange[i].outerHTML
+            spalte1ToChange[i].outerHTML = spalte2ToChange[i].outerHTML;
+            spalte2ToChange[i].outerHTML = merke;
+        }
+    //setHeadingsAmount()
+    
 }
 
 var selectionsBefore = {};
