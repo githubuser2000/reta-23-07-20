@@ -402,28 +402,29 @@ function setAllListsInHeadings() {
     }
 
     //for (var i=0; i<optionsS.length; i++) {
-    var x1 = [];
+    /* var x1 = [];
     var x2 = [];
-    var x3 = [];
+    var x3 = [];*/
     for (var i=0; i<sichtbareSpaltenNummern.length; i++) {
 	    //window.alert(visHeadSel[i]);
         //visibleHeadingsSelectUnsorted[visHeadSel[i]].innerHTML = optionsS[i].join("");
-        x1.push(visibleHeadingsSelectUnsorted[sichtbareSpaltenNummern[i]].innerHTML);
-        x2.push(sichtbareSpaltenNummern[i]);
+        //x1.push(visibleHeadingsSelectUnsorted[sichtbareSpaltenNummern[i]].innerHTML);
+        //x2.push(sichtbareSpaltenNummern[i]);
         visibleHeadingsSelectUnsorted[sichtbareSpaltenNummern[i]].innerHTML = optionsS[i].join("");
-        x3.push(visibleHeadingsSelectUnsorted[sichtbareSpaltenNummern[i]].innerHTML);
+        //x3.push(visibleHeadingsSelectUnsorted[sichtbareSpaltenNummern[i]].innerHTML);
         //optionToSelect = visibleHeadingsSelectUnsorted[sichtbareSpaltenNummern[i]].getElementsByTagName("option");
         //optionToSelect[i+1].selected = 'selected';
         //window.alert("select: _r "+sichtbareSpaltenNummern[i]+" an "+(i+1));
 
         //window.alert("sichtb spalt nr i+=1: "+sichtbareSpaltenNummern[i]+" "+optionsS[i].join(""));
     }
+    /*
     s = sichtbareSpaltenNummern.join(", ");
     k = keys.join(", ");
     x1 = x1.join(", ");
     x2 = x2.join(", ");
     x3 = x3.join(", ");
-    //window.alert("Anzahl sichtbare spaltennummern: "+sichtbareSpaltenNummern.length+"\nderen Inhalt: "+s+"\nAnzahl sichtbare überschriften ihre Selektierungen: "+len+"\nderen keys: "+k+"\nderen inhalte: "+x1+"\nderen Inhalte danach:"+x3+"\ndie Inhalte der sichtbaren Spaltenbummern: "+x2);
+    window.alert("Anzahl sichtbare spaltennummern: "+sichtbareSpaltenNummern.length+"\nderen Inhalt: "+s+"\nAnzahl sichtbare überschriften ihre Selektierungen: "+len+"\nderen keys: "+k+"\nderen inhalte: "+x1+"\nderen Inhalte danach:"+x3+"\ndie Inhalte der sichtbaren Spaltenbummern: "+x2);*/
 }
 
 function toggleChkSpalten() {
