@@ -302,13 +302,6 @@ function headingSelected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
         makeSpalteUnsichtbar(spalte2ToChange, momentaneSpalte_als_r_, true);
         refresh();
         return
-    } else {
-        // das wird nie passieren:
-        if (spalteToUnsichtbar[1].style.visibility = 'none') {
-            makeSpalteUnsichtbar(spalte2ToChange, momentaneSpalte_als_r_, false);
-            refresh();
-            return
-        }
     }
 
     //window.alert("das ist noch unfertig, diese funktionalität!");
