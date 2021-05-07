@@ -184,15 +184,19 @@ function toggleForNums(colNums) {
 		toggleSpalten(colNums[n]);
 	}
     //window.alert("colNums 0:"+colNums[0])
-    sortedKeysOfHeadingNumbers();
-    setHeadingsAmount();
-    updateSpaltenValues();
+    refresh();
 }
 
-function updateSpaltenValues() {
-    keys = Object.keys(visibleHeadingsSelect);
+function refresh() {
+    sortedKeysOfHeadingNumbersByVisibility();
+    setAllListsInHeadings();
+    updateVisibleHeadingsNumbersAndItsKeysList();
+}
+
+function updateVisibleHeadingsNumbersAndItsKeysList() {
+    keys = Object.keys(visibleHeadingsSelectUnsorted);
     for (var i=0; i<keys.length; i++) {
-        visibleHeadingsNumbers[keys[i]] = visibleHeadingsSelect[keys[i]].value;
+        visibleHeadingsNumbers[keys[i]] = visibleHeadingsSelectUnsorted[keys[i]].value;
     }
     keys2 = Object.keys(visibleHeadingsNumbers);
     //window.alert("vis num"+ keys2.length)
@@ -252,7 +256,7 @@ function toggleSpalten(colNumber) {
 }
 
 var tableHeadline;
-var visibleHeadingsSelect = {};
+var visibleHeadingsSelectUnsorted = {};
 var visibleHeadingsNumbers = {};
 
 function changeHeadline(oneColHeading, addTrueRemoveFalse) {
@@ -265,11 +269,12 @@ function changeHeadline(oneColHeading, addTrueRemoveFalse) {
 	//window.alert(num);
 
     if (addTrueRemoveFalse)
-        visibleHeadingsSelect[num]=sel;
+        visibleHeadingsSelectUnsorted[num]=sel;
     else
-        if (num in visibleHeadingsSelect)
-            delete visibleHeadingsSelect[num];
-	//window.alert(Object.keys(visibleHeadingsSelect).length);
+        if (num in visibleHeadingsSelectUnsorted)
+            delete visibleHeadingsSelectUnsorted[num];
+	//window.alert(Object.keys(visibleHeadingsSelectUnsorted).length);
+    //
 }
 
 function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
@@ -279,34 +284,34 @@ function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
     gewaehlteSpalte_plusgleich1 = zwei[0];
     gewaehlteSpalte_als_r_ = zwei[1];
 
-    window.alert("das ist nich unfertig, diese funktionalität!");
+    //window.alert("das ist noch unfertig, diese funktionalität!");
     //window.alert('PROGRAMMIERBAUSTELLE! UNFERTIG! momenante Spalte als r_:  '+momentaneSpalte_als_r_+' gewählte als +=1: '+zwei[0]+' und '+zwei[1]);
     //window.alert(gewaehlteSpalte_plusgleich1);
     //window.alert(gewaehlteSpalte_plusgleich1.target.value);
 /*
-    visHeadSel = Object.keys(visibleHeadingsSelect);
+    visHeadSel = Object.keys(visibleHeadingsSelectUnsorted);
     visHeadSel.sort((a,b) => a-b);
 
     gewaehlteSpalte_als_r_ = visHeadSel[gewaehlteSpalte_plusgleich1]; // dieses mal als r_ angabe statt +=1
     */
-    //momentaneSpalte_plusgleich1 = visibleHeadingsSelect[momentaneSpalte_als_r_].value; // dieses mal als +=1 angabe statt als r_
+    //momentaneSpalte_plusgleich1 = visibleHeadingsSelectUnsorted[momentaneSpalte_als_r_].value; // dieses mal als +=1 angabe statt als r_
     momentaneSpalte_plusgleich1 = visibleHeadingsNumbers[momentaneSpalte_als_r_]; // dieses mal als +=1 angabe statt als r_
     zwei = momentaneSpalte_plusgleich1.split(",");
     momentaneSpalte_plusgleich1 = zwei[0];
     /*
-    //visibleHeadingsSelect[visHeadSel[i]].innerHTML; // = optionsS[i].join("");
+    //visibleHeadingsSelectUnsorted[visHeadSel[i]].innerHTML; // = optionsS[i].join("");
     //window.alert(gewaehlteSpalte_als_r_);
     //window.alert(momentaneSpalte_als_r_);
-    window.alert(Object.keys(visibleHeadingsSelect)[0]+' '+Object.keys(visibleHeadingsSelect)[1]+' '+Object.keys(visibleHeadingsSelect)[2]+' ');
-    window.alert(visibleHeadingsSelect[2].value+' '+visibleHeadingsSelect[8].value+' '+visibleHeadingsSelect[38].value);
-    window.alert(visibleHeadingsSelect[gewaehlteSpalte_als_r_].value);
-    window.alert(visibleHeadingsSelect[momentaneSpalte_als_r_].value);
-    //window.alert(visHeadSel[visibleHeadingsSelect[gewaehlteSpalte_als_r_].value]);
-    //window.alert(visHeadSel[visibleHeadingsSelect[momentaneSpalte_als_r_].value]);
+    window.alert(Object.keys(visibleHeadingsSelectUnsorted)[0]+' '+Object.keys(visibleHeadingsSelectUnsorted)[1]+' '+Object.keys(visibleHeadingsSelectUnsorted)[2]+' ');
+    window.alert(visibleHeadingsSelectUnsorted[2].value+' '+visibleHeadingsSelectUnsorted[8].value+' '+visibleHeadingsSelectUnsorted[38].value);
+    window.alert(visibleHeadingsSelectUnsorted[gewaehlteSpalte_als_r_].value);
+    window.alert(visibleHeadingsSelectUnsorted[momentaneSpalte_als_r_].value);
+    //window.alert(visHeadSel[visibleHeadingsSelectUnsorted[gewaehlteSpalte_als_r_].value]);
+    //window.alert(visHeadSel[visibleHeadingsSelectUnsorted[momentaneSpalte_als_r_].value]);
     */
 
-    //window.alert(Object.keys(visibleHeadingsSelect)[0]+' '+Object.keys(visibleHeadingsSelect)[1]+' '+Object.keys(visibleHeadingsSelect)[2]+' ');
-    //window.alert(visibleHeadingsSelect[2].value+' '+visibleHeadingsSelect[8].value+' '+visibleHeadingsSelect[38].value);
+    //window.alert(Object.keys(visibleHeadingsSelectUnsorted)[0]+' '+Object.keys(visibleHeadingsSelectUnsorted)[1]+' '+Object.keys(visibleHeadingsSelectUnsorted)[2]+' ');
+    //window.alert(visibleHeadingsSelectUnsorted[2].value+' '+visibleHeadingsSelectUnsorted[8].value+' '+visibleHeadingsSelectUnsorted[38].value);
 	var spalte1ToChange = document.getElementsByClassName('r_'+gewaehlteSpalte_als_r_);
     seli = spalte1ToChange[0].getElementsByTagName("select")[0].getElementsByTagName("option");
     //window.alert("momentane Spalte: "+momentaneSpalte_plusgleich1)
@@ -316,7 +321,7 @@ function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
     //for (var k=0; k<seli.length; k++) {
     seli[selival].selected = 'selected';
     //}
-    //window.alert(Object.keys(visibleHeadingsSelect)[0]+' '+Object.keys(visibleHeadingsSelect)[1]+' '+Object.keys(visibleHeadingsSelect)[2]+'\n'+visibleHeadingsSelect[2].value+' '+visibleHeadingsSelect[8].value+' '+visibleHeadingsSelect[38].value);
+    //window.alert(Object.keys(visibleHeadingsSelectUnsorted)[0]+' '+Object.keys(visibleHeadingsSelectUnsorted)[1]+' '+Object.keys(visibleHeadingsSelectUnsorted)[2]+'\n'+visibleHeadingsSelectUnsorted[2].value+' '+visibleHeadingsSelectUnsorted[8].value+' '+visibleHeadingsSelectUnsorted[38].value);
 
 	var spalte2ToChange = document.getElementsByClassName('r_'+momentaneSpalte_als_r_);
     //window.alert(spalte2ToChange[0].innerHTML);
@@ -346,15 +351,18 @@ function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
             spalte1ToChange[i].outerHTML = spalte2ToChange[i].outerHTML;
             spalte2ToChange[i].outerHTML = merke;
         }
-    //setHeadingsAmount()
-    
+
+    visibleHeadingsSelectUnsorted[gewaehlteSpalte_als_r_] = spalte1ToChange[0].getElementsByTagName('select')[0];
+    visibleHeadingsSelectUnsorted[momentaneSpalte_als_r_] = spalte2ToChange[0].getElementsByTagName('select')[0];
+    //setAllListsInHeadings()
+    refresh();
 }
 
 var selectionsBefore = {};
 var optionsS = [];
 var sichtbareSpaltenNummern;
 
-function sortedKeysOfHeadingNumbers() {
+function sortedKeysOfHeadingNumbersByVisibility() {
 	tableHeadline = document.getElementsByTagName('tr')[0].getElementsByTagName('td');
     sichtbareSpaltenNummern = []
     for (var i=0; i<tableHeadline.length; i++) {
@@ -362,15 +370,16 @@ function sortedKeysOfHeadingNumbers() {
             sichtbareSpaltenNummern.push(tableHeadline[i].className.match(/r_(\d+)/g)[0].substring(2));
         }
     }
-    //window.alert('sichtb spalten nummern '+sichtbareSpaltenNummern[0]+' '+sichtbareSpaltenNummern[1]);
+    //reihenfolgenstring = sichtbareSpaltenNummern.join(", ");
+    //window.alert('sichtb spalten r_ nummern: '+reihenfolgenstring);
 }
 
-function setHeadingsAmount() {
+function setAllListsInHeadings() {
     var options;
     optionsS = [];
-    var keys = Object.keys(visibleHeadingsSelect);
+    var keys = Object.keys(visibleHeadingsSelectUnsorted);
     var len = keys.length;
-	//window.alert(visibleHeadingsSelect.length);
+	//window.alert(visibleHeadingsSelectUnsorted.length);
     for (var k=0; k<len; k++) {
         options = ["<option value='-,null'>-</option>"];
         for (var i=0; i<len; i++)
@@ -381,17 +390,40 @@ function setHeadingsAmount() {
                 selection = i
             }
         selectionsBefore[k] = k
-            
+        //window.alert("options: "+options.join(", "));
         optionsS.push(options);
     }
+    
+    //visHeadSel = Object.keys(visibleHeadingsSelectUnsorted);
+    //visHeadSel.sort((a,b) => a-b);
 
-    visHeadSel = Object.keys(visibleHeadingsSelect);
-    visHeadSel.sort((a,b) => a-b);
-
-    for (var i=0; i<optionsS.length; i++) {
-	    //window.alert(visHeadSel[i]);
-        visibleHeadingsSelect[visHeadSel[i]].innerHTML = optionsS[i].join("");
+    if (len != sichtbareSpaltenNummern.length) {
+        window.alert("beides sichtbares und beide Längen nicht gleich: td spalten zellen anzahl als dict mir _r keys und die _r Nummerierung derer als array, sichtbareSpaltenNummern ist "+sichtbareSpaltenNummern.length+" und visibleHeadingsSelectUnsorted ist "+len);
     }
+
+    //for (var i=0; i<optionsS.length; i++) {
+    var x1 = [];
+    var x2 = [];
+    var x3 = [];
+    for (var i=0; i<sichtbareSpaltenNummern.length; i++) {
+	    //window.alert(visHeadSel[i]);
+        //visibleHeadingsSelectUnsorted[visHeadSel[i]].innerHTML = optionsS[i].join("");
+        x1.push(visibleHeadingsSelectUnsorted[sichtbareSpaltenNummern[i]].innerHTML);
+        x2.push(sichtbareSpaltenNummern[i]);
+        visibleHeadingsSelectUnsorted[sichtbareSpaltenNummern[i]].innerHTML = optionsS[i].join("");
+        x3.push(visibleHeadingsSelectUnsorted[sichtbareSpaltenNummern[i]].innerHTML);
+        //optionToSelect = visibleHeadingsSelectUnsorted[sichtbareSpaltenNummern[i]].getElementsByTagName("option");
+        //optionToSelect[i+1].selected = 'selected';
+        //window.alert("select: _r "+sichtbareSpaltenNummern[i]+" an "+(i+1));
+
+        //window.alert("sichtb spalt nr i+=1: "+sichtbareSpaltenNummern[i]+" "+optionsS[i].join(""));
+    }
+    s = sichtbareSpaltenNummern.join(", ");
+    k = keys.join(", ");
+    x1 = x1.join(", ");
+    x2 = x2.join(", ");
+    x3 = x3.join(", ");
+    window.alert("Anzahl sichtbare spaltennummern: "+sichtbareSpaltenNummern.length+"\nderen Inhalt: "+s+"\nAnzahl sichtbare überschriften ihre Selektierungen: "+len+"\nderen keys: "+k+"\nderen inhalte: "+x1+"\nderen Inhalte danach:"+x3+"\ndie Inhalte der sichtbaren Spaltenbummern: "+x2);
 }
 
 function toggleChkSpalten() {
