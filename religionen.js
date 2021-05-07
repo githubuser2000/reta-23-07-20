@@ -110,7 +110,7 @@ for (i = 0; i < tdClasses.length; i++) {
     // Spaltenreihenfolge
 	tableHeadline = document.getElementsByTagName('tr')[0].getElementsByTagName('td');
     for (var u=0; u<tableHeadline.length; u++) {
-        tableHeadline[u].innerHTML += '<select id="hselec_'+u+'" value="'+u+'" onchange="headingselected(this, '+u+');"></select>'
+        tableHeadline[u].innerHTML += '<select id="hselec_'+u+'" value="'+u+'" onchange="headingSelected(this, '+u+');"></select>'
     }
 }
 
@@ -277,12 +277,39 @@ function changeHeadline(oneColHeading, addTrueRemoveFalse) {
     //
 }
 
-function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
+function makeSpalteUnsichtbar(spalteToUnsichtbar, momentaneSpalte_als_r_ , hiddenTrueVisibleFalse) {
+    //spalteToUnsichtbar = document.getElementsByClassName("r_"+momentaneSpalte_als_r_);
+    len = spalteToUnsichtbar.length;
+    if (hiddenTrueVisibleFalse) {
+        for (var i=0; i<len; i++) 
+            spalteToUnsichtbar[i].style.display = 'none';
+        delete visibleHeadingsSelectUnsorted[momentaneSpalte_als_r_];
+    } /*else {
+        for (var i=0; i<len; i++) 
+            spalteToUnsichtbar[i].style.display = 'table-cell'
+        visibleHeadingsSelectUnsorted['r_'+momentaneSpalte_als_r_]=spalteToUnsichtbar;
+    }*/
+}
+
+function headingSelected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
     gewaehlteSpalte_plusgleich1 = gewaehlteSpalte_plusgleich1.value;
     //for (var i=0; i<optionsS.length; i++) {
     zwei = gewaehlteSpalte_plusgleich1.split(",");
     gewaehlteSpalte_plusgleich1 = zwei[0];
     gewaehlteSpalte_als_r_ = zwei[1];
+	var spalte2ToChange = document.getElementsByClassName('r_'+momentaneSpalte_als_r_);
+    if (gewaehlteSpalte_plusgleich1 == '-') {
+        makeSpalteUnsichtbar(spalte2ToChange, momentaneSpalte_als_r_, true);
+        refresh();
+        return
+    } else {
+        // das wird nie passieren:
+        if (spalteToUnsichtbar[1].style.visibility = 'none') {
+            makeSpalteUnsichtbar(spalte2ToChange, momentaneSpalte_als_r_, false);
+            refresh();
+            return
+        }
+    }
 
     //window.alert("das ist noch unfertig, diese funktionalität!");
     //window.alert('PROGRAMMIERBAUSTELLE! UNFERTIG! momenante Spalte als r_:  '+momentaneSpalte_als_r_+' gewählte als +=1: '+zwei[0]+' und '+zwei[1]);
@@ -323,7 +350,6 @@ function headingselected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
     //}
     //window.alert(Object.keys(visibleHeadingsSelectUnsorted)[0]+' '+Object.keys(visibleHeadingsSelectUnsorted)[1]+' '+Object.keys(visibleHeadingsSelectUnsorted)[2]+'\n'+visibleHeadingsSelectUnsorted[2].value+' '+visibleHeadingsSelectUnsorted[8].value+' '+visibleHeadingsSelectUnsorted[38].value);
 
-	var spalte2ToChange = document.getElementsByClassName('r_'+momentaneSpalte_als_r_);
     //window.alert(spalte2ToChange[0].innerHTML);
     //window.alert(spalte1ToChange[0].innerHTML);
 	var tabellenKopf = document.getElementsByClassName('z_0');
