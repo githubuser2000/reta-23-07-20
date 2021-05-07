@@ -90,14 +90,14 @@ for (i = 0; i < tdClasses.length; i++) {
 		for (k = 0; k < p2keys.length; k++) {
 			numbers = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
 			if (p2keys[k] != null && p2keys[k] != 'null') {
-				chk2 = '<input type="checkbox" value="'+p2keys[k]+'" onchange="toggleP2(\''+numbers+'\',\''+[p1keys[i],p2keys[k]]+'\');"><label>'+makeSpacesOutOf_(p2keys[k])+'</label>';
+				chk2 = '<input type="checkbox" value="'+p2keys[k]+'" onchange="toggleP2(this,\''+numbers+'\',\''+[p1keys[i],p2keys[k]]+'\');"><label>'+makeSpacesOutOf_(p2keys[k])+'</label>';
 				chk2s = chk2s + chk2;
 			}
 			
 		}
 		if ( mapMapMap[p1keys[i]][null] !== undefined ) {
 			numbers = Array.from(mapMapMap[p1keys[i]][null]);
-			insertnull = 'toggleP2(\''+numbers+'\',\''+[p1keys[i],null]+'\');'
+			insertnull = 'toggleP2(this,\''+numbers+'\',\''+[p1keys[i],null]+'\');'
 		} else {
 			insertnull = '';
 		}
@@ -134,8 +134,8 @@ function makeSpacesOutOf_(text) {
 }
 
 
-function toggleP2(spaltenNummern, para1u2) {
-	//window.alert(spaltenNummern);
+function toggleP2(dasTag, spaltenNummern, para1u2) {
+    //window.alert('bla: '+dasTag.checked);
 	spaltenNummern = spaltenNummern.split(',');
 	existingParameterNamesArrayIndex = MatrixHasCouple(para1u2, selectedSpaltenMany2);
 	if (existingParameterNamesArrayIndex.size > 0) {
@@ -228,30 +228,47 @@ function toggleP1(p1) {
 }
 
 function toggleSpalten(colNumber) {
-	cols = document.getElementsByClassName('r_'+colNumber);
+	ZeileIhreZellen = document.getElementsByClassName('r_'+colNumber);
 	if (typeof(selectedSpaltenMany2[colNumber]) === 'undefined') { 
 		away = true;
 		//window.alert("undefined "+colNumber);
 	} else
 		away = selectedSpaltenMany2[colNumber].length==0;
 	//window.alert("Stelle "+colNumber+"hat Länge "+selectedSpaltenMany2[colNumber].length);
-	if (typeof(cols[0].style) != "undefined") {
-		if (cols[0].style.display == 'none')
-            changeHeadline(cols[0], true);
+	if (typeof(ZeileIhreZellen[0].style) != "undefined") {
+		if (ZeileIhreZellen[0].style.display == 'none')
+            changeHeadline(ZeileIhreZellen[0], true);
         else
             if (away)
-                changeHeadline(cols[0], false);
+                changeHeadline(ZeileIhreZellen[0], false);
 
-		for (i=0; i < cols.length; i++) { 
-			if (cols[i].style.display == 'none')
-				cols[i].style.display = 'table-cell';
-			else 
-				if (away)
-					cols[i].style.display = 'none';
-		}
-     }
-	 else 
-		window.alert(cols[0].innerHTML + ' ! '+colNumber);
+        if (ZeileIhreZellen[0].getElementsByTagName("option").length == 0)
+            spalteEinzelnDeaktiviertWorden = false;
+        else 
+            if (ZeileIhreZellen[0].getElementsByTagName("option")[0].selected)
+                spalteEinzelnDeaktiviertWorden = true;
+            else
+                spalteEinzelnDeaktiviertWorden = false;
+
+		for (i=0; i < ZeileIhreZellen.length; i++) { 
+			if (ZeileIhreZellen[i].style.display == 'none' && ! spalteEinzelnDeaktiviertWorden) {
+				ZeileIhreZellen[i].style.display = 'table-cell';
+            } else 
+				if (away || spalteEinzelnDeaktiviertWorden) {
+					ZeileIhreZellen[i].style.display = 'none';
+		    }
+        }
+		if (spalteEinzelnDeaktiviertWorden) {
+                //window.alert('B '+ZeileIhreZellen[0].className.match(/r_(\d+)/g)[0]);
+                //window.alert('B '+ZeileIhreZellen[0].className.match(/r_(\d+)/g)[0].substring(2));
+                delete visibleHeadingsSelectUnsorted[parseInt(ZeileIhreZellen[0].className.match(/r_(\d+)/g)[0].substring(2))];
+                // sie wieder zu aktivieren, auf 1 statt 0 setzen (wobei hier die richtige zahl eigentlich besser wäre)
+                // auf 1 setzen ist aber okay, weil die durch refresh usw. sowieso wieder umgesetzt wird 
+                ZeileIhreZellen[0].getElementsByTagName("option")[1].selected = 'selected';
+        }
+    }
+	else 
+		window.alert(ZeileIhreZellen[0].innerHTML + ' ! '+colNumber);
 
 }
 
