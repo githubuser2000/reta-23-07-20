@@ -423,7 +423,7 @@ function setAllListsInHeadings() {
     x1 = x1.join(", ");
     x2 = x2.join(", ");
     x3 = x3.join(", ");
-    window.alert("Anzahl sichtbare spaltennummern: "+sichtbareSpaltenNummern.length+"\nderen Inhalt: "+s+"\nAnzahl sichtbare überschriften ihre Selektierungen: "+len+"\nderen keys: "+k+"\nderen inhalte: "+x1+"\nderen Inhalte danach:"+x3+"\ndie Inhalte der sichtbaren Spaltenbummern: "+x2);
+    //window.alert("Anzahl sichtbare spaltennummern: "+sichtbareSpaltenNummern.length+"\nderen Inhalt: "+s+"\nAnzahl sichtbare überschriften ihre Selektierungen: "+len+"\nderen keys: "+k+"\nderen inhalte: "+x1+"\nderen Inhalte danach:"+x3+"\ndie Inhalte der sichtbaren Spaltenbummern: "+x2);
 }
 
 function toggleChkSpalten() {
