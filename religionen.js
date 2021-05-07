@@ -291,6 +291,8 @@ function makeSpalteUnsichtbar(spalteToUnsichtbar, momentaneSpalte_als_r_ , hidde
     }*/
 }
 
+var erstesMal = true;
+
 function headingSelected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
     gewaehlteSpalte_plusgleich1 = gewaehlteSpalte_plusgleich1.value;
     //for (var i=0; i<optionsS.length; i++) {
@@ -301,7 +303,11 @@ function headingSelected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
     if (gewaehlteSpalte_plusgleich1 == '-') {
         makeSpalteUnsichtbar(spalte2ToChange, momentaneSpalte_als_r_, true);
         refresh();
-        return
+        return;
+    }
+    if (erstesMal) {
+        window.alert("Das Dauert! Geduld mitbringen! Alles friert kurz ein!");
+        erstesMal = false;
     }
 
     //window.alert("das ist noch unfertig, diese funktionalität!");
