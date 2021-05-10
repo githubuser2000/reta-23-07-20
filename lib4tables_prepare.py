@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import sys
-from copy import deepcopy
+from copy import deepcopy, copy
 from enum import Enum
 from typing import Iterable, Union
 
@@ -397,6 +397,11 @@ class Prepare:
         x("_x3_", numRange)
         numRange = cutset(ifTypAtAll, numRange, numRangeYesZ)
         x("_x2_", numRange)
+
+        # Sonnen über 114 immer entfernen
+        for n in copy(numRange):
+            if (self.zaehlungen[4][n][0] == []) and (n > 114):
+                numRange.remove(n)
 
         primMultiples: list = []
         ifPrimAtAll = False

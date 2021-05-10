@@ -2396,6 +2396,8 @@ class Program:
         alxp(
             """Funktionsköpfe überall noch dokumentieren wo sie bisher noch nicht dokumentiert sind"""
         )
+        alxp("""Ich könnte die <td> class parameter auf der ersten bzw. nullten Spalte belassen, anstelle diese Redundanz zu halten: deutlich kleinere html""")
+        alxp("""Wenn ich alle Sonnen über 114 ab 115 entferne, dann ist die html schneller und kleiner""")
         alxp(
             """die Kleinschrift bei den Befehlen als obersten String als Normalschrift gestalten nur wegen der html Ausgabe dann"""
         )
