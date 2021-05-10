@@ -107,7 +107,7 @@ for (i = 0; i < tdClasses.length; i++) {
 	}
 	str2 = checkboxes + "</span></div>";
 	div.innerHTML += str2;
-str4 = "<div id=\"inputZeilen\" style=\"display:none\"><label>von bis und einzelenes: </label><input typ=\"text\" id=\"zeilenErlaubtText\" value=\"1-10,12\"></input><input onclick=\"makeAllAllowedZeilen(zeilenAngabenToContainer());\" type=\"submit\" value=\"nur das\"></div>"
+str4 = "<div id=\"inputZeilen\" style=\"display:none\"><label>von bis und einzelenes: </label><input typ=\"text\" id=\"zeilenErlaubtText\" value=\"1-10,12\"></input><input onclick=\"makeAllAllowedZeilen(zeilenAngabenToContainer());get_r__SpaltenNummern();\" type=\"submit\" value=\"nur das\"></div>"
 	div.innerHTML += str4;
     // Spaltenreihenfolge
 	tableHeadline = document.getElementsByTagName('tr')[0].getElementsByTagName('td');
@@ -217,7 +217,7 @@ function toggleP1(p1) {
 	p2 = document.getElementById(p1);
 	if (typeof(p2.style) != "undefined") {
 		var num = p2.className.match(/r_(\d+)/)
-	        if (num != null && num.length > 1)
+        if (num != null && num.length > 1)
 			num = num[1]
 		if ( (selectedSpaltenMany1[num] === 'undefined') === (p2.style.display != 'none')) {
 			selectedSpaltenMany1[num] = p2
@@ -529,4 +529,18 @@ function makeAllAllowedZeilen(zeilenAngaben) {
         } 
     }
     return erlaubteZeilen;
+}
+
+var spalten_r__ = new Set();
+
+function get_r__SpaltenNummern() {
+    tabelenkopfZeile = tdClasses;
+    for (var i=0; i<tabelenkopfZeile.length; i++) {
+        if (tabelenkopfZeile[i].style.display === 'table-cell') {
+            num = tabelenkopfZeile[i].className.match(/r_(\d+)/);
+	        if (num != null && num.length > 1)
+    			num = num[1];
+            spalten_r__.add(num);
+        }
+    }
 }
