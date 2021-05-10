@@ -4,9 +4,10 @@ var selectedSpaltenMany2 = {};
 window.onload = function() {
 var headingsDiv =  document.getElementById('Tabelle01');
 let div = document.createElement('div');
+let div2 = document.createElement('div');
 div.className = "headingsDiv";
 document.body.before(div);
-chk_spalten = "<input type=\"checkbox\" onchange=\"toggleChkSpalten();\"><label>Spalten Checkboxen</label>"
+chk_spalten = "<fieldset><input type=\"radio\" id=\"spaltenWahl\" name=\"spaltOrZeilWahl\" onchange=\"toggleChkSpalten(this);\" checked=\"true\"><label>Spalten Checkboxen</label><input type=\"radio\" id=\"zeilenWahl\" name=\"spaltOrZeilWahl\" onchange=\"toggleChkSpalten(this);\"><label>Zeilen Eingabefelder</label><input type=\"radio\" id=\"keinsWahl\" name=\"spaltOrZeilWahl\" onchange=\"toggleChkSpalten(this);\"><label>nichts dergleichen</label></fieldset>"
 div.innerHTML = chk_spalten;
 tdClasses = document.getElementsByClassName("z_0");
 /*tdClasses = []
@@ -106,12 +107,14 @@ for (i = 0; i < tdClasses.length; i++) {
 	}
 	str2 = checkboxes + "</span></div>";
 	div.innerHTML += str2;
-
+str4 = "<div id=\"inputZeilen\" style=\"display:none\"><label>von bis und einzelenes: </label><input typ=\"text\" id=\"zeilenErlaubtText\" value=\"1-10,12\"></input><input onclick=\"makeAllAllowedZeilen(zeilenAngabenToContainer());\" type=\"submit\" value=\"nur das\"></div>"
+	div.innerHTML += str4;
     // Spaltenreihenfolge
 	tableHeadline = document.getElementsByTagName('tr')[0].getElementsByTagName('td');
     for (var u=0; u<tableHeadline.length; u++) {
         tableHeadline[u].innerHTML += '<select id="hselec_'+u+'" value="'+u+'" onchange="headingSelected(this, '+u+');"></select>'
     }
+    toggleChkSpalten();
 }
 
 function makeSpacesOutOf_(text) {
@@ -469,10 +472,61 @@ function setAllListsInHeadings() {
     window.alert("Anzahl sichtbare spaltennummern: "+sichtbareSpaltenNummern.length+"\nderen Inhalt: "+s+"\nAnzahl sichtbare überschriften ihre Selektierungen: "+len+"\nderen keys: "+k+"\nderen inhalte: "+x1+"\nderen Inhalte danach:"+x3+"\ndie Inhalte der sichtbaren Spaltenbummern: "+x2);*/
 }
 
-function toggleChkSpalten() {
+function toggleChkSpalten(radiobutton) {
 	chk_spalten = document.getElementById("chk_spalten");
-	if (chk_spalten.style.display == 'none')
+	inputZeilen = document.getElementById("inputZeilen");
+	spaltenWahl = document.getElementById("spaltenWahl");
+	zeilenWahl = document.getElementById("zeilenWahl");
+
+	if (inputZeilen.style.display == 'none' && zeilenWahl.checked)
+		inputZeilen.style.display = 'initial';
+    else
+        if (! zeilenWahl.checked) 
+		    inputZeilen.style.display = 'none';
+
+	if (chk_spalten.style.display == 'none' && spaltenWahl.checked)
 		chk_spalten.style.display = 'initial';
-	else 
-		chk_spalten.style.display = 'none';
+    else
+        if (! spaltenWahl.checked) 
+		    chk_spalten.style.display = 'none';
+}
+
+
+function zeilenAngabenToContainer() {
+    text = document.getElementById('zeilenErlaubtText').value;
+    var zeilenAngaben = new Set();
+    text = text.split(",");
+    for (var i=0; i<text.length; i++) {
+        text2 = text[i].split("-");
+
+        richtig = true;
+        if (text2.length < 3) 
+            for (var k=0; k<text2.length; k++)
+                if (parseInt(text2[k]) == 'NaN')
+                    richtig = false;
+                else
+                    text2[k] = parseInt(text2[k]);
+        else
+            richtig = false;
+        
+        if (richtig) {
+            if (text2.length == 1) 
+                text2.push(text2[0]);
+            zeilenAngaben.add(text2);
+        }
+    }    
+    return zeilenAngaben;
+}
+
+var erlaubteZeilen = new Set();
+
+function makeAllAllowedZeilen(zeilenAngaben) {
+    zeilenAngaben = Array.from(zeilenAngaben);
+    erlaubteZeilen = new Set();
+    for (var i=0; i<zeilenAngaben.length; i++) {
+        for (var k=zeilenAngaben[i][0]; k<=zeilenAngaben[i][1]; k++) {
+            erlaubteZeilen.add(k);
+        } 
+    }
+    return erlaubteZeilen;
 }

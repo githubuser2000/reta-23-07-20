@@ -2397,16 +2397,9 @@ class Program:
             """Funktionsköpfe überall noch dokumentieren wo sie bisher noch nicht dokumentiert sind"""
         )
         alxp("""Ich könnte die <td> class parameter auf der ersten bzw. nullten Spalte belassen, anstelle diese Redundanz zu halten: deutlich kleinere html""")
-        alxp("""Wenn ich alle Sonnen über 114 ab 115 entferne, dann ist die html schneller und kleiner""")
-        alxp(
-            """die Kleinschrift bei den Befehlen als obersten String als Normalschrift gestalten nur wegen der html Ausgabe dann"""
-        )
         alxp("""Quellcode muss noch mehr dokumentiert werden in Funktionen usw.""")
         alxp(
             """Ich müsste RETA mal testen, ob ab der n ten Zeile oder alle paar Zeilen das Gleiche rauskommt, wie wenn ab Zeile 1 begonnen wird."""
-        )
-        alxp(
-            """funktional alles noch mal durchprobieren nach den geschwk opt und zwar nummeriereung und colorierung und sonst alle ausgabearten"""
         )
         alxp(
             """intelligentere detailliertere Fehlermeldung, wenn man falsche Parameter übergeben hat"""
