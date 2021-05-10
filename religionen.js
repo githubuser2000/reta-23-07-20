@@ -107,7 +107,7 @@ for (i = 0; i < tdClasses.length; i++) {
 	}
 	str2 = checkboxes + "</span></div>";
 	div.innerHTML += str2;
-str4 = "<div id=\"inputZeilen\" style=\"display:none\"><label>von bis und einzelenes: </label><input typ=\"text\" id=\"zeilenErlaubtText\" value=\"1-10,12\"></input><input onclick=\"makeAllAllowedZeilen(zeilenAngabenToContainer());get_r__SpaltenNummern();\" type=\"submit\" value=\"nur das\"></div>"
+str4 = "<div id=\"inputZeilen\" style=\"display:none\"><label>von bis und einzelenes: </label><input typ=\"text\" id=\"zeilenErlaubtText\" value=\"1-10,12\"></input><input onclick=\"clickZeilenErlaubenUsw();\" type=\"submit\" value=\"nur das\"></div>"
 	div.innerHTML += str4;
     // Spaltenreihenfolge
 	tableHeadline = document.getElementsByTagName('tr')[0].getElementsByTagName('td');
@@ -544,3 +544,49 @@ function get_r__SpaltenNummern() {
         }
     }
 }
+
+var verboteneZeilen = new Set();
+
+function invertErlaubteZeilen() {
+    verboteneZeilen = new Set();
+    for (var i=0; i<1025; i++) {
+        if ((!i in erlaubteZeilen))
+            verboteneZeilen.add(i);
+    }
+}
+
+
+function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten() {
+    Spalten_r__Array = Array.from(spalten_r__);
+    erlaubteZeilen_Array = Array.from(erlaubteZeilen);
+    for (var i=0; i<Spalten_r__Array.length; i++) {
+        rs_ = document.getElementsByClassName("r_"+Spalten_r__Array[i])
+        for (var k=0; k<erlaubteZeilen.length; k++) {
+            if (rs_.length > 0) {
+                tabellenZelle = rs_.getElementsByClassName("z_"+erlaubteZeilen[k]);
+                if (tabellenZelle.length > 0) {
+                    tabellenZelle = tabellenZelle[0];
+                    tabellenZelle.style.display = 'table-cell';
+                }
+            
+            }
+        }
+        for (var k=0; k<verboteneZeilen.length; k++) {
+            if (rs_.length > 0) {
+                tabellenZelle = rs_.getElementsByClassName("z_"+erlaubteZeilen[k]);
+                if (tabellenZelle.length > 0) {
+                    tabellenZelle = tabellenZelle[0];
+                    tabellenZelle.style.display = 'none';
+                }
+            }
+        }
+    }
+}
+
+function clickZeilenErlaubenUsw() {
+    makeAllAllowedZeilen(zeilenAngabenToContainer());
+    get_r__SpaltenNummern();
+    invertErlaubteZeilen();
+    erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten();
+}
+
