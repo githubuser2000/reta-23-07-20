@@ -107,11 +107,12 @@ for (i = 0; i < tdClasses.length; i++) {
 	str2 = checkboxes + "</span></div>";
 	div.innerHTML += str2;
     str4 = "<div id=\"inputZeilen\" style=\"display:none\"><table borders=\"0\" id=\"table2\">";
-    str5 = "<tr><td><label>von bis und einzelenes: </label></td><td><input typ=\"text\" id=\"zeilenErlaubtText\" value=\"1-10,12\"></input><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg1\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickZeilenErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
-    str6 = "<tr><td><label>Vielfacher und Nachbarn: </label></td><td><input typ=\"text\" id=\"VielfacheErlaubtText\" value=\"10+0+1,7+0\"></input><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg2\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg2\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg2\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg2\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickVielfacheErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
-    str8 = "<tr><td><label>Potenzen: </label></td><td><input typ=\"text\" id=\"potenzenErlaubtText\" value=\"3,5\"></input><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg3\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg3\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg3\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg3\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickPotenzenErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
+    str5 = "<tr><td><label>von bis und einzelenes: </label></td><td><input typ=\"text\" id=\"zeilenErlaubtText\" value=\"1-10,12\"></input></td><td><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg1\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickZeilenErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
+    str6 = "<tr><td><label>Vielfacher und Nachbarn: </label></td><td><input typ=\"text\" id=\"VielfacheErlaubtText\" value=\"10+0+1,7+0\"></td><td></input><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg2\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg2\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg2\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg2\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickVielfacheErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
+    str8 = "<tr><td><label>Potenzen: </label></td><td><input typ=\"text\" id=\"potenzenErlaubtText\" value=\"3,5\"></input></td><td><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg3\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg3\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg3\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg3\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickPotenzenErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
+    str9 = "<tr><td colspan=\"2\"><input type=\"radio\" id=\"sonneWahl\" name=\"sunmoonplanetblackhole\" onchange=\"\" checked=\"true\"><label>Sonne</label><input type=\"radio\" id=\"mondWahl\" name=\"sunmoonplanetblackhole\" onchange=\"\"><label>Mond</label><input type=\"radio\" id=\"planetWahl\" name=\"sunmoonplanetblackhole\" onchange=\"\"><label>Planet</label><input type=\"radio\" id=\"schwarzeSonneWahl\" name=\"sunmoonplanetblackhole\" onchange=\"\" onclick=\"window.alert('Schwarze Sonnen kehren die Orginalbedeutung ins Gegenteil.');\"><label>schwarze Sonne</label></td><td><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg3\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg3\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg3\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg3\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickHimmelskoerperErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
     str7 = "</table></div>";
-	div.innerHTML += str4 + str5 + str6 + str8 + str7;
+	div.innerHTML += str4 + str5 + str6 + str8 + str9 + str7;
     // Spaltenreihenfolge
 	tableHeadline = document.getElementsByTagName("table")[1].getElementsByTagName('tr')[0].getElementsByTagName('td');
     for (var u=0; u<tableHeadline.length; u++) {
@@ -119,6 +120,8 @@ for (i = 0; i < tdClasses.length; i++) {
     }
     toggleChkSpalten();
 }
+
+alleMonde = [4,8,9,16,25,27,32,36,49,64,81,100,121,125,128,144,169,196,216,225,243,256,289,324,343,361,400,441,484,512,529,576,625,676,729,784,841,900,961,1000,1024]
 
 function makeSpacesOutOf_(text) {
     if (text.length == 25)
@@ -534,6 +537,35 @@ function makeAllerlaubteZeilenPotenzen(zeilenAngaben) {
     return erlaubteZeilen;
 }
 
+function makeAllAllowedZeilenHimmelskoerper() {
+    sonneWahl = document.getElementById("sonneWahl").checked;
+    mondWahl = document.getElementById("mondWahl").checked;
+    planetWahl = document.getElementById("planetWahl").checked;
+    schwarzeSonneWahl = document.getElementById("schwarzeSonneWahl").checked;
+    erlaubteZeilen = new Set();
+    if (mondWahl) {
+        erlaubteZeilen = new Set(alleMonde);
+        return erlaubteZeilen;
+    }
+    if (sonneWahl) {
+        alleMondeSet = new Set(alleMonde)
+        for (var i=1; i<1025; i++) {
+            if (!alleMondeSet.has(i))
+                erlaubteZeilen.add(i);
+        }
+        return erlaubteZeilen;
+    }
+    if (planetWahl) {
+        for (var i=2; i<1025;i+=2) 
+            erlaubteZeilen.add(i);
+        return erlaubteZeilen
+    }
+    if (schwarzeSonneWahl) {
+        for (var i=3; i<1025;i+=3) 
+            erlaubteZeilen.add(i);
+        return erlaubteZeilen
+    }
+}
 
 function makeAllAllowedZeilen(zeilenAngaben) {
     zeilenAngaben = Array.from(zeilenAngaben);
@@ -619,6 +651,12 @@ function clickVielfacheErlaubenUsw() {
     makeAllerlaubteZeilenVielfacher(vielfacherAngabentoContainer());
     get_r__SpaltenNummern();
     erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(1);
+}
+
+function clickHimmelskoerperErlaubenUsw() {
+    erlaubteZeilen = makeAllAllowedZeilenHimmelskoerper();
+    get_r__SpaltenNummern();
+    erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(0);
 }
 
 function clickZeilenErlaubenUsw() {
