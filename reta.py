@@ -1332,7 +1332,7 @@ class Program:
                     "motivation",
                     "motiv",
                 ),
-                {10, 18, 42},
+                {10, 18, 42, 167, 168},
             ),
             (
                 Program.ParametersMain.menschliches,
