@@ -107,10 +107,13 @@ for (i = 0; i < tdClasses.length; i++) {
 	}
 	str2 = checkboxes + "</span></div>";
 	div.innerHTML += str2;
-    str4 = "<div id=\"inputZeilen\" style=\"display:none\"><label>von bis und einzelenes: </label><input typ=\"text\" id=\"zeilenErlaubtText\" value=\"1-10,12\"></input><input onclick=\"clickZeilenErlaubenUsw();\" type=\"submit\" value=\"nur das\"></div>"
-	div.innerHTML += str4;
+    str4 = "<div id=\"inputZeilen\" style=\"display:none\"><table borders=\"0\" id=\"table2\">";
+    str5 = "<tr><td><label>von bis und einzelenes: </label></td><td><input typ=\"text\" id=\"zeilenErlaubtText\" value=\"1-10,12\"></input><input type=\"radio\" id=\"neuErlauben\" name=\"zeilenDazuOrWeg1\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" id=\"neuHinfort\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" id=\"dazuErlauben\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" id=\"dazuHinfort\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickZeilenErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
+    str6 = "<tr><td><label>Vielfacher und Nachbarn: </label></td><td><input typ=\"text\" id=\"VielfacheErlaubtText\" value=\"10+0+1,7+0\"></input><input type=\"radio\" id=\"neuErlauben2\" name=\"zeilenDazuOrWeg2\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" id=\"neuHinfort2\" name=\"zeilenDazuOrWeg2\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" id=\"dazuErlauben2\" name=\"zeilenDazuOrWeg2\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" id=\"dazuHinfort2\" name=\"zeilenDazuOrWeg2\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickVielfacheErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
+    str7 = "</table></div>";
+	div.innerHTML += str4 + str5 + str6 +str7;
     // Spaltenreihenfolge
-	tableHeadline = document.getElementsByTagName('tr')[0].getElementsByTagName('td');
+	tableHeadline = document.getElementsByTagName("table")[1].getElementsByTagName('tr')[0].getElementsByTagName('td');
     for (var u=0; u<tableHeadline.length; u++) {
         tableHeadline[u].innerHTML += '<select id="hselec_'+u+'" value="'+u+'" onchange="headingSelected(this, '+u+');"></select>'
     }
@@ -408,7 +411,7 @@ var optionsS = [];
 var sichtbareSpaltenNummern;
 
 function sortedKeysOfHeadingNumbersByVisibility() {
-	tableHeadline = document.getElementsByTagName('tr')[0].getElementsByTagName('td');
+	tableHeadline = document.getElementsByTagName("table")[1].getElementsByTagName('tr')[0].getElementsByTagName('td');
     sichtbareSpaltenNummern = []
     for (var i=0; i<tableHeadline.length; i++) {
         if (tableHeadline[i].style.display == 'table-cell') {
@@ -518,7 +521,52 @@ function zeilenAngabenToContainer() {
     return zeilenAngaben;
 }
 
+function vielfacherAngabentoContainer() {
+    text = document.getElementById('VielfacheErlaubtText').value;
+    var vielfacherAngaben = new Set();
+    text = text.split(",");
+    for (var i=0; i<text.length; i++) {
+        text2 = text[i].split("+");
+        richtig = true;
+        for (var k=0; k<text2.length; k++)
+            if (parseInt(text2[k]) == 'NaN')
+                richtig = false;
+            else
+                text2[k] = parseInt(text2[k]);
+        if (richtig)
+            vielfacherAngaben.add(text2);
+    }
+    return vielfacherAngaben;
+}
+
 var erlaubteZeilen = new Set();
+
+function makeAllerlaubteZeilenVielfacher(zeilenAngaben) {
+    zeilenAngaben = Array.from(zeilenAngaben);
+    muls = [];
+    erlaubteZeilen = new Set();
+    for (var i=0; i<zeilenAngaben.length; i++) { 
+        last = zeilenAngaben[i][0];
+        mul = 1;
+        while (last<1025) {
+            last = mul * zeilenAngaben[i][0];
+            muls.push(last);
+            mul++;
+        }
+        for (var h=0; h<muls.length; h++) {
+            for (var k=1; k<zeilenAngaben[i].length; k++) {
+                erlaubteZeilen.add(muls[h] - zeilenAngaben[i][k]);
+                //window.alert(parseInt(muls[h]}-zeilenAngaben[i][k]));
+                erlaubteZeilen.add(zeilenAngaben[i][k]+muls[h]);
+            } 
+            if (zeilenAngaben[i].length == 1) {
+                erlaubteZeilen.add(muls[h]);
+            }
+        }
+    }
+    return erlaubteZeilen;
+}
+
 
 function makeAllAllowedZeilen(zeilenAngaben) {
     zeilenAngaben = Array.from(zeilenAngaben);
@@ -558,37 +606,46 @@ function invertErlaubteZeilen() {
 */
 
 
-function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten() {
+    //str4 = "<div id=\"inputZeilen\" style=\"display:none\"><label>von bis und einzelenes: </label><input typ=\"text\" id=\"zeilenErlaubtText\" value=\"1-10,12\"></input><input type=\"radio\" id=\"neuDazu\" name=\"zeilenDazuOrWeg1\" onchange=\"\" checked=\"true\"><label>neu erlauben</label><input type=\"radio\" id=\"neuHinfort\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>neu verbieten</label><input type=\"radio\" id=\"dazuErlauben\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>zusätzlich erlauben</label><input type=\"radio\" id=\"dazuHinfort\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>zusätzlich verbieten</label><input onclick=\"clickZeilenErlaubenUsw();\" type=\"submit\" value=\"nur das\"></div>"
+
+function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which) {
     Spalten_r__Array = Array.from(spalten_r__);
     erlaubteZeilen_Array = Array.from(erlaubteZeilen);
-    //window.alert(erlaubteZeilen_Array[0]);
-    //for (var i=0; i<Spalten_r__Array.length; i++) {
-        //spalte = document.getElementsByClassName("r_"+Spalten_r__Array[i]);
-        spalte = document.getElementsByTagName("tr");
-        //window.alert('i: '+i);
+    if (which == 1) {
+        neuErlauben = document.getElementById("neuErlauben").checked;
+        neuHinfort = document.getElementById("neuHinfort").checked;
+        dazuErlauben = document.getElementById("dazuErlauben").checked;
+        dazuHinfort = document.getElementById("dazuHinfort").checked;
+    }
+    if (which == 2) {
+        neuErlauben = document.getElementById("neuErlauben2").checked;
+        neuHinfort = document.getElementById("neuHinfort2").checked;
+        dazuErlauben = document.getElementById("dazuErlauben2").checked;
+        dazuHinfort = document.getElementById("dazuHinfort2").checked;
+    }
+    window.alert(neuErlauben+" "+neuHinfort+" "+dazuErlauben+" "+dazuHinfort);
+        spalte = document.getElementsByTagName("table")[1].getElementsByTagName("tr");
         for (var s=1; s<spalte.length; s++) {
-            //tabellenZelle = spalte[s].getElementsByClassName("z_"+erlaubteZeilen_Array[k]);
             tabellenZelle = spalte[s];
-            //window.alert("zellen len: "+tabellenZelle.length); 
-            //if (tabellenZelle.length === 1 ) { 
-                //window.alert("s: "+s);
-                //tabellenZelle = tabellenZelle[0];
-
-                if (erlaubteZeilen.has(s)) 
-                    //if (tabellenZelle.style.display == 'none')
+                if (((erlaubteZeilen.has(s) && (neuErlauben || dazuErlauben)) || (! erlaubteZeilen.has(s) && neuHinfort)) && (! dazuHinfort))
                     tabellenZelle.style.display = 'table-row';
                 else
-                    //if (tabellenZelle.style.display == 'table-cell')
-                    tabellenZelle.style.display = 'none';
-            //}
+                    if (((neuErlauben || neuHinfort) && !dazuErlauben) || (dazuHinfort && erlaubteZeilen.has(s)))
+                        tabellenZelle.style.display = 'none';
         }
-    //}
+}
+function clickVielfacheErlaubenUsw() {
+    //window.alert("bla");
+    makeAllerlaubteZeilenVielfacher(vielfacherAngabentoContainer());
+    get_r__SpaltenNummern();
+    //invertErlaubteZeilen();
+    erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(2);
 }
 
 function clickZeilenErlaubenUsw() {
     makeAllAllowedZeilen(zeilenAngabenToContainer());
     get_r__SpaltenNummern();
     //invertErlaubteZeilen();
-    erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten();
+    erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(1);
 }
 

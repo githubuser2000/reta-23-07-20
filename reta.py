@@ -1332,7 +1332,7 @@ class Program:
                     "motivation",
                     "motiv",
                 ),
-                {10, 18, 42, 167, 168},
+                {10, 18, 42, 167, 168, 149},
             ),
             (
                 Program.ParametersMain.menschliches,
@@ -1795,8 +1795,8 @@ class Program:
             (Program.ParametersMain.inkrementieren, ("um1",), {155}),
             (Program.ParametersMain.inkrementieren, ("um2",), {156}),
             (Program.ParametersMain.inkrementieren, ("um3",), {157}),
-            (Program.ParametersMain.inkrementieren, ("warum_Transzendentalie_=_Strukturgroesse_=_Charakter", "warumtranszendentaliezustrukturgroesseundcharakter"), {4, 54, 149, 165}),
-            (Program.ParametersMain.inkrementieren, ("warum_Transzendentalie_=_Komplexität_von_Michael_Commons", "warumtranszendentaliegleichkomplexitaet"), {65, 149 , 166}),
+            (Program.ParametersMain.inkrementieren, ("warum_Transzendentalie_=_Strukturgroesse_=_Charakter", "warumtranszendentaliezustrukturgroesseundcharakter"), {4, 54, 5, 165}),
+            (Program.ParametersMain.inkrementieren, ("warum_Transzendentalie_=_Komplexität_von_Michael_Commons", "warumtranszendentaliegleichkomplexitaet"), {65, 5 , 166}),
         ]
 
         Program.kombiParaNdataMatrix = {
