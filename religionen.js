@@ -545,6 +545,7 @@ function get_r__SpaltenNummern() {
     }
 }
 
+/*
 var verboteneZeilen = [];
 
 function invertErlaubteZeilen() {
@@ -554,48 +555,40 @@ function invertErlaubteZeilen() {
             verboteneZeilen.push(i);
     }
 }
+*/
 
 
 function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten() {
     Spalten_r__Array = Array.from(spalten_r__);
     erlaubteZeilen_Array = Array.from(erlaubteZeilen);
-    window.alert("bla");
-    for (var i=0; i<Spalten_r__Array.length; i++) {
-        rs_ = document.getElementsByClassName("r_"+Spalten_r__Array[i]);
-        window.alert(i);
-        for (var s=0; s<rs_.length; s++) {
-            tabellenZelle = rs_[s].getElementsByClassName("z_"+erlaubteZeilen_Array[k]);
-            if (tabellenZelle.length > 0) {
-                tabellenZelle = tabellenZelle[0];
-                /*
-                for (var k=0; k<erlaubteZeilen_Array.length; k++) {
-                    if (erlaubteZeilen_Array[k] == ) {
-                        window.alert("blub: "+tabellenZelle.length);
-                        if (tabellenZelle.length > 0) {
-                            tabellenZelle = tabellenZelle[0];
-                            tabellenZelle.style.display = 'table-cell';
-                        }
-                    
-                    }
-                }
+    //window.alert(erlaubteZeilen_Array[0]);
+    //for (var i=0; i<Spalten_r__Array.length; i++) {
+        //spalte = document.getElementsByClassName("r_"+Spalten_r__Array[i]);
+        spalte = document.getElementsByTagName("tr");
+        //window.alert('i: '+i);
+        for (var s=1; s<spalte.length; s++) {
+            //tabellenZelle = spalte[s].getElementsByClassName("z_"+erlaubteZeilen_Array[k]);
+            tabellenZelle = spalte[s];
+            //window.alert("zellen len: "+tabellenZelle.length); 
+            //if (tabellenZelle.length === 1 ) { 
+                //window.alert("s: "+s);
+                //tabellenZelle = tabellenZelle[0];
 
-                for (var k=0; k<verboteneZeilen.length; k++) {
-                    if (rs_.length > 0) {
-                        if (tabellenZelle.length > 0) {
-                            tabellenZelle = tabellenZelle[0];
-                            tabellenZelle.style.display = 'none';
-                        }
-                    }
-                }*/
-            }
+                if (erlaubteZeilen.has(s)) 
+                    //if (tabellenZelle.style.display == 'none')
+                    tabellenZelle.style.display = 'table-row';
+                else
+                    //if (tabellenZelle.style.display == 'table-cell')
+                    tabellenZelle.style.display = 'none';
+            //}
         }
-    }
+    //}
 }
 
 function clickZeilenErlaubenUsw() {
     makeAllAllowedZeilen(zeilenAngabenToContainer());
     get_r__SpaltenNummern();
-    invertErlaubteZeilen();
+    //invertErlaubteZeilen();
     erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten();
 }
 
