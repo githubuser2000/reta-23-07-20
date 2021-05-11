@@ -141,6 +141,7 @@ function makeSpacesOutOf_(text) {
 
 
 function toggleP2(dasTag, spaltenNummern, para1u2) {
+    //window.alert('bla: '+dasTag.checked);
 	spaltenNummern = spaltenNummern.split(',');
 	existingParameterNamesArrayIndex = MatrixHasCouple(para1u2, selectedSpaltenMany2);
 	if (existingParameterNamesArrayIndex.size > 0) {
@@ -188,6 +189,7 @@ function toggleForNums(colNums) {
 		}*/
 		toggleSpalten(colNums[n]);
 	}
+    //window.alert("colNums 0:"+colNums[0])
     refresh();
 }
 
@@ -327,7 +329,7 @@ function headingSelected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
         return;
     }
     if (erstesMal) {
-        window.alert("Das Dauert! Geduld mitbringen! Alles friert kurz ein!");
+        //window.alert("Das Dauert! Geduld mitbringen! Alles friert kurz ein!");
         erstesMal = false;
     }
     momentaneSpalte_plusgleich1 = visibleHeadingsNumbers[momentaneSpalte_als_r_]; // dieses mal als +=1 angabe statt als r_
@@ -335,6 +337,7 @@ function headingSelected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
     momentaneSpalte_plusgleich1 = zwei[0];
 	var spalte1ToChange = document.getElementsByClassName('r_'+gewaehlteSpalte_als_r_);
     seli = spalte1ToChange[0].getElementsByTagName("select")[0].getElementsByTagName("option");
+    selival = selectionsBefore[momentaneSpalte_plusgleich1] + 1;
     gewaehlteSpalte_plusgleich1 = selival - 2; // 1 bis +=1
     seli[selival].selected = 'selected';
 	var tabellenKopf = document.getElementsByClassName('z_0');
@@ -579,6 +582,7 @@ function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which) {
     neuHinfort = document.getElementsByClassName("neuHinfort")[which].checked;
     dazuErlauben = document.getElementsByClassName("dazuErlauben")[which].checked;
     dazuHinfort = document.getElementsByClassName ("dazuHinfort")[which].checked;
+    //window.alert(neuErlauben+" "+neuHinfort+" "+dazuErlauben+" "+dazuHinfort);
     spalte = document.getElementsByTagName("table")[1].getElementsByTagName("tr");
     for (var s=1; s<spalte.length; s++) {
         tabellenZelle = spalte[s];
