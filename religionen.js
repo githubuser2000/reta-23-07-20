@@ -141,7 +141,6 @@ function makeSpacesOutOf_(text) {
 
 
 function toggleP2(dasTag, spaltenNummern, para1u2) {
-    //window.alert('bla: '+dasTag.checked);
 	spaltenNummern = spaltenNummern.split(',');
 	existingParameterNamesArrayIndex = MatrixHasCouple(para1u2, selectedSpaltenMany2);
 	if (existingParameterNamesArrayIndex.size > 0) {
@@ -189,7 +188,6 @@ function toggleForNums(colNums) {
 		}*/
 		toggleSpalten(colNums[n]);
 	}
-    //window.alert("colNums 0:"+colNums[0])
     refresh();
 }
 
@@ -332,48 +330,13 @@ function headingSelected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
         window.alert("Das Dauert! Geduld mitbringen! Alles friert kurz ein!");
         erstesMal = false;
     }
-
-    //window.alert("das ist noch unfertig, diese funktionalität!");
-    //window.alert('PROGRAMMIERBAUSTELLE! UNFERTIG! momenante Spalte als r_:  '+momentaneSpalte_als_r_+' gewählte als +=1: '+zwei[0]+' und '+zwei[1]);
-    //window.alert(gewaehlteSpalte_plusgleich1);
-    //window.alert(gewaehlteSpalte_plusgleich1.target.value);
-/*
-    visHeadSel = Object.keys(visibleHeadingsSelectUnsorted);
-    visHeadSel.sort((a,b) => a-b);
-
-    gewaehlteSpalte_als_r_ = visHeadSel[gewaehlteSpalte_plusgleich1]; // dieses mal als r_ angabe statt +=1
-    */
-    //momentaneSpalte_plusgleich1 = visibleHeadingsSelectUnsorted[momentaneSpalte_als_r_].value; // dieses mal als +=1 angabe statt als r_
     momentaneSpalte_plusgleich1 = visibleHeadingsNumbers[momentaneSpalte_als_r_]; // dieses mal als +=1 angabe statt als r_
     zwei = momentaneSpalte_plusgleich1.split(",");
     momentaneSpalte_plusgleich1 = zwei[0];
-    /*
-    //visibleHeadingsSelectUnsorted[visHeadSel[i]].innerHTML; // = optionsS[i].join("");
-    //window.alert(gewaehlteSpalte_als_r_);
-    //window.alert(momentaneSpalte_als_r_);
-    window.alert(Object.keys(visibleHeadingsSelectUnsorted)[0]+' '+Object.keys(visibleHeadingsSelectUnsorted)[1]+' '+Object.keys(visibleHeadingsSelectUnsorted)[2]+' ');
-    window.alert(visibleHeadingsSelectUnsorted[2].value+' '+visibleHeadingsSelectUnsorted[8].value+' '+visibleHeadingsSelectUnsorted[38].value);
-    window.alert(visibleHeadingsSelectUnsorted[gewaehlteSpalte_als_r_].value);
-    window.alert(visibleHeadingsSelectUnsorted[momentaneSpalte_als_r_].value);
-    //window.alert(visHeadSel[visibleHeadingsSelectUnsorted[gewaehlteSpalte_als_r_].value]);
-    //window.alert(visHeadSel[visibleHeadingsSelectUnsorted[momentaneSpalte_als_r_].value]);
-    */
-
-    //window.alert(Object.keys(visibleHeadingsSelectUnsorted)[0]+' '+Object.keys(visibleHeadingsSelectUnsorted)[1]+' '+Object.keys(visibleHeadingsSelectUnsorted)[2]+' ');
-    //window.alert(visibleHeadingsSelectUnsorted[2].value+' '+visibleHeadingsSelectUnsorted[8].value+' '+visibleHeadingsSelectUnsorted[38].value);
 	var spalte1ToChange = document.getElementsByClassName('r_'+gewaehlteSpalte_als_r_);
     seli = spalte1ToChange[0].getElementsByTagName("select")[0].getElementsByTagName("option");
-    //window.alert("momentane Spalte: "+momentaneSpalte_plusgleich1)
-    selival = selectionsBefore[momentaneSpalte_plusgleich1] + 1;
     gewaehlteSpalte_plusgleich1 = selival - 2; // 1 bis +=1
-    //window.alert("drüben selected gemacht Nummer: "+selival+" unter "+seli.length);
-    //for (var k=0; k<seli.length; k++) {
     seli[selival].selected = 'selected';
-    //}
-    //window.alert(Object.keys(visibleHeadingsSelectUnsorted)[0]+' '+Object.keys(visibleHeadingsSelectUnsorted)[1]+' '+Object.keys(visibleHeadingsSelectUnsorted)[2]+'\n'+visibleHeadingsSelectUnsorted[2].value+' '+visibleHeadingsSelectUnsorted[8].value+' '+visibleHeadingsSelectUnsorted[38].value);
-
-    //window.alert(spalte2ToChange[0].innerHTML);
-    //window.alert(spalte1ToChange[0].innerHTML);
 	var tabellenKopf = document.getElementsByClassName('z_0');
     var aa = 0;
     var bb = 0;
@@ -383,10 +346,8 @@ function headingSelected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
         if (tabellenKopf[z] === spalte1ToChange[0])
             bb = z;
     }
-    //window.alert(aa+' '+bb);
 
     var merke;
-    // window.alert("len of loop: "+spalte1ToChange.length);
     if (aa>bb)
         for (var i=0; i<spalte1ToChange.length; i++) {
             merke = spalte2ToChange[i].outerHTML
@@ -402,7 +363,6 @@ function headingSelected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
 
     visibleHeadingsSelectUnsorted[gewaehlteSpalte_als_r_] = spalte1ToChange[0].getElementsByTagName('select')[0];
     visibleHeadingsSelectUnsorted[momentaneSpalte_als_r_] = spalte2ToChange[0].getElementsByTagName('select')[0];
-    //setAllListsInHeadings()
     refresh();
 }
 
@@ -613,32 +573,36 @@ function invertErlaubteZeilen() {
 
 function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which) {
     Spalten_r__Array = Array.from(spalten_r__);
-    //erlaubteZeilen_Array = Array.from(erlaubteZeilen);
+    erlaubteZeilen_Array = Array.from(erlaubteZeilen);
+    erlaubteZeilen_String = erlaubteZeilen_Array.join(",");
     neuErlauben = document.getElementsByClassName("neuErlauben")[which].checked;
     neuHinfort = document.getElementsByClassName("neuHinfort")[which].checked;
     dazuErlauben = document.getElementsByClassName("dazuErlauben")[which].checked;
     dazuHinfort = document.getElementsByClassName ("dazuHinfort")[which].checked;
-    //window.alert(neuErlauben+" "+neuHinfort+" "+dazuErlauben+" "+dazuHinfort);
     spalte = document.getElementsByTagName("table")[1].getElementsByTagName("tr");
     for (var s=1; s<spalte.length; s++) {
-        if (s<115) {
-            tabellenZelle = spalte[s];
-            //if (erlaubteZeilen.has(s)) window.alert(s)
-            if (((erlaubteZeilen.has(s) && (neuErlauben || dazuErlauben)) || (! erlaubteZeilen.has(s) && neuHinfort)) && (! dazuHinfort))
-                tabellenZelle.style.display = 'table-row';
-            else
-                if (((neuErlauben || neuHinfort) && !dazuErlauben) || (dazuHinfort && erlaubteZeilen.has(s)))
-                    tabellenZelle.style.display = 'none';
-        } else {
-            zeilendarueber = spalte[s].getElementsByClassName("z_"+s);
-            if (zeilendarueber.length > 0) {
-                zeile = zeilendarueber[0].parentElement;
-                window.alert(s);
+        tabellenZelle = spalte[s];
+        if (s<115)
+            zeilenLetztendlichZeigenVerstecken(s, neuErlauben, dazuErlauben, neuHinfort, dazuHinfort, tabellenZelle);
+        else {
+            echteZeilenNummer = spalte[s].getElementsByTagName("td")[0].className.match(/z_(\d+)/g);
+            if (echteZeilenNummer != null && echteZeilenNummer.length > 0) {
+                echteZeilenNummer = parseInt(echteZeilenNummer[0].substr(2));
+                zeilenLetztendlichZeigenVerstecken(echteZeilenNummer, neuErlauben, dazuErlauben, neuHinfort, dazuHinfort, tabellenZelle);
             }
 
         }
     }
 }
+
+function zeilenLetztendlichZeigenVerstecken(s, neuErlauben, dazuErlauben, neuHinfort, dazuHinfort, tabellenZelle) {
+    if (((erlaubteZeilen.has(s) && (neuErlauben || dazuErlauben)) || (! erlaubteZeilen.has(s) && neuHinfort)) && (! dazuHinfort))
+        tabellenZelle.style.display = 'table-row';
+    else
+        if (((neuErlauben || neuHinfort) && !dazuErlauben) || (dazuHinfort && erlaubteZeilen.has(s)))
+            tabellenZelle.style.display = 'none';
+}
+
 
 function clickPotenzenErlaubenUsw() {
     makeAllerlaubteZeilenPotenzen(potenzenAngabenToContainer());

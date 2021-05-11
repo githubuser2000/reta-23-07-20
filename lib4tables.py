@@ -148,6 +148,8 @@ class htmlSyntax(OutputSyntax):
     def generateCell(
         self, spalte: int, SpaltenParameter: dict, content=None, zeile=None
     ) -> str:
+        if zeile == '':
+            zeile = 0
         # x("uzt", SpaltenParameter)
         # x("qay", spalte)
         spalte = int(spalte)
