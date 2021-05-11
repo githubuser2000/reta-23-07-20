@@ -623,7 +623,7 @@ function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which) {
         dazuErlauben = document.getElementById("dazuErlauben2").checked;
         dazuHinfort = document.getElementById("dazuHinfort2").checked;
     }
-    window.alert(neuErlauben+" "+neuHinfort+" "+dazuErlauben+" "+dazuHinfort);
+    //window.alert(neuErlauben+" "+neuHinfort+" "+dazuErlauben+" "+dazuHinfort);
         spalte = document.getElementsByTagName("table")[1].getElementsByTagName("tr");
         for (var s=1; s<spalte.length; s++) {
             tabellenZelle = spalte[s];
