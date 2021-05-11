@@ -808,7 +808,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.galaxie,
-                ("Modallogik","modallogik",),
+                ("Modallogik", "modallogik",),
                 {148},
             ),
             (
@@ -1133,8 +1133,8 @@ class Program:
                     131,
                 },
             ),
-            (Program.ParametersMain.universum, ("warum_Transzendentalie_=_Strukturgroesse_=_Charakter", "warumtranszendentaliezustrukturgroesseundcharakter"), {4, 54, 149, 165}),
-            (Program.ParametersMain.universum, ("warum_Transzendentalie_=_Komplexität_von_Michael_Commons", "warumtranszendentaliegleichkomplexitaet"), {65, 149, 166}),
+            (Program.ParametersMain.universum, ("warum_Transzendentalie_=_Strukturgroesse_=_Charakter", "warumtranszendentaliezustrukturgroesseundcharakter"), {4, 54, 5, 165}),
+            (Program.ParametersMain.universum, ("warum_Transzendentalie_=_Komplexität_von_Michael_Commons", "warumtranszendentaliegleichkomplexitaet"), {65, 5, 166}),
             (
                 Program.ParametersMain.universum,
                 (

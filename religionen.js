@@ -567,6 +567,7 @@ function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten() {
             tabellenZelle = rs_[s].getElementsByClassName("z_"+erlaubteZeilen_Array[k]);
             if (tabellenZelle.length > 0) {
                 tabellenZelle = tabellenZelle[0];
+                /*
                 for (var k=0; k<erlaubteZeilen_Array.length; k++) {
                     if (erlaubteZeilen_Array[k] == ) {
                         window.alert("blub: "+tabellenZelle.length);
@@ -585,7 +586,7 @@ function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten() {
                             tabellenZelle.style.display = 'none';
                         }
                     }
-                }
+                }*/
             }
         }
     }
