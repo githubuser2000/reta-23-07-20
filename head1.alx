@@ -2,4 +2,20 @@
 <html>
 	<head>
 		<meta charset="UTF-8"/><title>Religionstabellen durch ReTa generiert</title>
+		<style type="text/css">
+			/*body {
+			    background-color: #efefef;
+			}
+
+			table {
+			    margin: 10px;
+			    border-collapse: separate;
+			}
+
+			td {
+			    border-radius: 55px;
+			    background-color: white;
+			    border: 1px solid gray;
+			}*/
+		</style>
 		<script type="text/javascript" language="JavaScript1.2">

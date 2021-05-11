@@ -232,7 +232,7 @@ class htmlSyntax(OutputSyntax):
                 else 'style="display:none"',
                 ">\n",))
 
-    beginTable = "      <table border=1>"
+    beginTable = "      <table border=0>"
     endTable = "        </table>\n"
     beginCell = "              <td>\n"
     endCell = "\n              </td>\n"
