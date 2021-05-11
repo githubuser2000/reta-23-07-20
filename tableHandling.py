@@ -376,7 +376,7 @@ class Tables:
                                             self.tables.getPrepare.zeileWhichZaehlung(
                                                 int(filteredLineNumbersofOrignal)
                                             ),
-                                            zeile=BigCellLineNumber,
+                                            zeile=int(filteredLineNumbersofOrignal),
                                         ),
                                         (
                                             "█"
@@ -401,7 +401,7 @@ class Tables:
                                             self.tables.getPrepare.zeileWhichZaehlung(
                                                 int(filteredLineNumbersofOrignal)
                                             ),
-                                            zeile=BigCellLineNumber,
+                                            zeile=int(filteredLineNumbersofOrignal),
                                         ),
                                         (
                                             " "
@@ -422,7 +422,7 @@ class Tables:
                                     self.__outType.generateCell(
                                         -2,
                                         self.tables.generatedSpaltenParameter,
-                                        zeile=BigCellLineNumber,
+                                        zeile=int(filteredLineNumbersofOrignal),
                                     ),
                                     " ",
                                     self.__outType.endCell,
@@ -438,7 +438,7 @@ class Tables:
                                 self.__outType.generateCell(
                                     -1,
                                     self.tables.generatedSpaltenParameter,
-                                    zeile=BigCellLineNumber,
+                                    zeile=int(filteredLineNumbersofOrignal),
                                 ),
                                 "".rjust(numlen + 1)
                                 if iterWholeLine != 0
@@ -500,7 +500,7 @@ class Tables:
                                                 self.__outType.generateCell(
                                                     subCellIndexRightLeft,
                                                     self.tables.generatedSpaltenParameter,
-                                                    zeile=BigCellLineNumber,
+                                                    zeile=int(filteredLineNumbersofOrignal),
                                                 )
                                                 + (
                                                     entry.replace("\n", "").ljust(

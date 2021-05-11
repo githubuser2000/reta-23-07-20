@@ -2,7 +2,6 @@ var col =  document.getElementsByClassName('RowNumber 1');
 var selectedSpaltenMany1 = {};
 var selectedSpaltenMany2 = {};
 window.onload = function() {
-var headingsDiv =  document.getElementById('Tabelle01');
 let div = document.createElement('div');
 let div2 = document.createElement('div');
 div.className = "headingsDiv";
@@ -110,8 +109,9 @@ for (i = 0; i < tdClasses.length; i++) {
     str4 = "<div id=\"inputZeilen\" style=\"display:none\"><table borders=\"0\" id=\"table2\">";
     str5 = "<tr><td><label>von bis und einzelenes: </label></td><td><input typ=\"text\" id=\"zeilenErlaubtText\" value=\"1-10,12\"></input><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg1\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickZeilenErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
     str6 = "<tr><td><label>Vielfacher und Nachbarn: </label></td><td><input typ=\"text\" id=\"VielfacheErlaubtText\" value=\"10+0+1,7+0\"></input><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg2\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg2\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg2\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg2\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickVielfacheErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
+    str8 = "<tr><td><label>Potenzen: </label></td><td><input typ=\"text\" id=\"potenzenErlaubtText\" value=\"3,5\"></input><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg3\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg3\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg3\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg3\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickPotenzenErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
     str7 = "</table></div>";
-	div.innerHTML += str4 + str5 + str6 +str7;
+	div.innerHTML += str4 + str5 + str6 + str8 + str7;
     // Spaltenreihenfolge
 	tableHeadline = document.getElementsByTagName("table")[1].getElementsByTagName('tr')[0].getElementsByTagName('td');
     for (var u=0; u<tableHeadline.length; u++) {
@@ -466,6 +466,17 @@ function toggleChkSpalten(radiobutton) {
 		    chk_spalten.style.display = 'none';
 }
 
+function potenzenAngabenToContainer() {
+    text = document.getElementById('potenzenErlaubtText').value;
+    var zeilenAngaben = new Set();
+    text = text.split(",");
+    for (var i=0; i<text.length; i++) {
+        number = parseInt(text[i]);
+        if (number != 'NaN') 
+            zeilenAngaben.add(number);
+    }
+    return zeilenAngaben;
+}
 
 function zeilenAngabenToContainer() {
     text = document.getElementById('zeilenErlaubtText').value;
@@ -521,9 +532,10 @@ function makeAllerlaubteZeilenVielfacher(zeilenAngaben) {
         last = zeilenAngaben[i][0];
         muls = []
         mul = 1;
+        last = mul * zeilenAngaben[i][0];
         while (last<1025) {
-            last = mul * zeilenAngaben[i][0];
             muls.push(last);
+            last = mul * zeilenAngaben[i][0];
             mul++;
         }
         for (var h=0; h<muls.length; h++) {
@@ -535,6 +547,25 @@ function makeAllerlaubteZeilenVielfacher(zeilenAngaben) {
                     //window.alert(parseInt(muls[h]}-zeilenAngaben[i][k]));
                     erlaubteZeilen.add(zeilenAngaben[i][k]+muls[h]);
                 } 
+        }
+    }
+    return erlaubteZeilen;
+}
+
+
+function makeAllerlaubteZeilenPotenzen(zeilenAngaben) {
+    zeilenAngaben = Array.from(zeilenAngaben);
+    erlaubteZeilen = new Set();
+    for (var i=0; i<zeilenAngaben.length; i++) {
+        if (zeilenAngaben[i]>0) {
+            exponent = 1
+            potenz = Math.pow(zeilenAngaben[i], exponent);
+            while (potenz < 1025) {
+                erlaubteZeilen.add(potenz);
+                potenz = Math.pow(zeilenAngaben[i], exponent);
+                //window.alert(potenz);
+                exponent++;
+            }
         }
     }
     return erlaubteZeilen;
@@ -582,34 +613,49 @@ function invertErlaubteZeilen() {
 
 function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which) {
     Spalten_r__Array = Array.from(spalten_r__);
-    erlaubteZeilen_Array = Array.from(erlaubteZeilen);
+    //erlaubteZeilen_Array = Array.from(erlaubteZeilen);
     neuErlauben = document.getElementsByClassName("neuErlauben")[which].checked;
     neuHinfort = document.getElementsByClassName("neuHinfort")[which].checked;
     dazuErlauben = document.getElementsByClassName("dazuErlauben")[which].checked;
     dazuHinfort = document.getElementsByClassName ("dazuHinfort")[which].checked;
     //window.alert(neuErlauben+" "+neuHinfort+" "+dazuErlauben+" "+dazuHinfort);
-        spalte = document.getElementsByTagName("table")[1].getElementsByTagName("tr");
-        for (var s=1; s<spalte.length; s++) {
+    spalte = document.getElementsByTagName("table")[1].getElementsByTagName("tr");
+    for (var s=1; s<spalte.length; s++) {
+        if (s<115) {
             tabellenZelle = spalte[s];
-                if (((erlaubteZeilen.has(s) && (neuErlauben || dazuErlauben)) || (! erlaubteZeilen.has(s) && neuHinfort)) && (! dazuHinfort))
-                    tabellenZelle.style.display = 'table-row';
-                else
-                    if (((neuErlauben || neuHinfort) && !dazuErlauben) || (dazuHinfort && erlaubteZeilen.has(s)))
-                        tabellenZelle.style.display = 'none';
+            //if (erlaubteZeilen.has(s)) window.alert(s)
+            if (((erlaubteZeilen.has(s) && (neuErlauben || dazuErlauben)) || (! erlaubteZeilen.has(s) && neuHinfort)) && (! dazuHinfort))
+                tabellenZelle.style.display = 'table-row';
+            else
+                if (((neuErlauben || neuHinfort) && !dazuErlauben) || (dazuHinfort && erlaubteZeilen.has(s)))
+                    tabellenZelle.style.display = 'none';
+        } else {
+            zeilendarueber = spalte[s].getElementsByClassName("z_"+s);
+            if (zeilendarueber.length > 0) {
+                zeile = zeilendarueber[0].parentElement;
+                window.alert(s);
+            }
+
         }
+    }
 }
+
+function clickPotenzenErlaubenUsw() {
+    makeAllerlaubteZeilenPotenzen(potenzenAngabenToContainer());
+    get_r__SpaltenNummern();
+    erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(2);
+}
+
+
 function clickVielfacheErlaubenUsw() {
-    //window.alert("bla");
     makeAllerlaubteZeilenVielfacher(vielfacherAngabentoContainer());
     get_r__SpaltenNummern();
-    //invertErlaubteZeilen();
     erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(1);
 }
 
 function clickZeilenErlaubenUsw() {
     makeAllAllowedZeilen(zeilenAngabenToContainer());
     get_r__SpaltenNummern();
-    //invertErlaubteZeilen();
     erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(0);
 }
 
