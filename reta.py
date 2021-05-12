@@ -631,7 +631,9 @@ class Program:
             ("Symbole", "symbole",),
             tuple(a[0] for a in primzahlvielfachesgalaxie),
             (
-                "Konzepte",
+                "Eigenschaften",
+                "eigenschaften",
+                "eigenschaft",
                 "konzept",
                 "konzepte",
             ),
