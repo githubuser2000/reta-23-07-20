@@ -134,6 +134,9 @@ function makeSpacesOutOf_(text) {
     if (text.length == 12)
         if (text == 'nummerierung')
             return 'Nummerierung'
+    if (text.length == 11)
+        if (text == 'kombination')
+            return 'Kombinationen'
     var forNewString = [];
     for (var i=0; i<text.length; i++)
         if (text[i] == '_')
