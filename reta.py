@@ -2513,6 +2513,8 @@ class Program:
             finallyDisplayLines,
             kombiTable_Kombis,
         )
+        x("AAAC1", animalsProfessionsTable)
+        x("AAAC2", "ENDDD")
         (
             finallyDisplayLines_kombi,
             newTable_kombi_1,
@@ -2526,6 +2528,8 @@ class Program:
             self.rowsOfcombi,
             self.tables.getCombis.sumOfAllCombiRowsAmount,
         )
+        x("AAAD1", newTable_kombi_1)
+        x("AAAD2", "ENDDD")
         KombiTables = self.tables.getCombis.prepareTableJoin(
             ChosenKombiLines, newTable_kombi_1
         )

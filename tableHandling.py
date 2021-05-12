@@ -675,6 +675,7 @@ class Tables:
 
         def prepareTableJoin(self, ChosenKombiLines, newTable_kombi_1):
             KombiTables = []
+            x("AAAB", (ChosenKombiLines, newTable_kombi_1,))
             for key, value in ChosenKombiLines.items():
                 """Zeilennummern der kombi, die hinten dran kommen sollen
                      an die Haupt- und Anzeigetabelle
@@ -747,6 +748,7 @@ class Tables:
 
             # regex = re.compile(r"\s|\s+")
             # if self.tables.textWidth == 0 and type(self.tables.getOut.outType) in [
+            x("AAAA", manySubTables)
             if type(self.tables.getOut.outType) in [
                 htmlSyntax,
                 bbCodeSyntax,
@@ -837,7 +839,7 @@ class Tables:
             finallyDisplayLines_kombi_1: set,
             kombiTable: list,
             paramLines: set,
-            displayingMainLines: set,
+            displayingZeilen: set,
             kombiTable_Kombis: list,
         ) -> dict:
             """Vorbereiten zum Kombinieren von Tabellen, wie bei einem SQL-Join
@@ -850,8 +852,8 @@ class Tables:
             @param kombiTable: Tabelle um die es geht, die zur Haupttabelle dazu kommt
             @type paramLines: set
             @param paramLines: Befehle die aus den Shell Paramentern konstruiert wurden
-            @type displayingMainLines: set
-            @param displayingMainLines: Zeilen die angezeigt werden sollen
+            @type displayingZeilen: set
+            @param displayingZeilen: Zeilen die angezeigt werden sollen
             @type kombiTable_Kombis: list
             @param kombiTable_Kombis: wird anscheinend hier gar nicht gebraucht
             @rtype: dict[set[int]]
@@ -861,36 +863,43 @@ class Tables:
             """
             # kombitypes = {"displaying": False, "or": False, "and": False}
             # self.ChosenKombiLines: dict = {}
+            # x("AAA6", displayingZeilen)
             for condition in paramLines:
                 if "ka" == condition:
                     # kombitypes["displaying"] = True
-                    for MainLineNum in displayingMainLines:
-                        for kombiLineNumber, kombiLine in enumerate(kombiTable_Kombis):
-                            """kombiLineNumber ist die csv Zeilennummer in der Kombitabelle
-                            kombiLine ist aus der ersten Spalte die jeweilige Liste an Zahlenkombinationen pro Zeile"""
-                            for kombiNumber in kombiLine:
-                                """kombiNumber ist demzufolge eine so eine Zahl
-                                von n*m Zahlen
-                                if: wenn eine dieser Zahlen zu denen gehört, die am Ende angezeigt werden sollen und
-                                wenn diese Zahl eine ist, die genau der richtigen Anzeigezeile entspricht"""
-                                if (
-                                    kombiNumber in displayingMainLines
-                                    and kombiNumber == MainLineNum
-                                ):
-                                    try:
-                                        """Zugehörig zur richtigen Anzeigeezeile wird diese Kombizeile ausgewählt
-                                        d.h. anzeige in zeile enthält die richtige kombizeile
-                                        NUMMERN werden da rein gelistet
-                                        key = haupttabellenzeilennummer
-                                        value = kombitabellenzeilennummer
-                                        """
-                                        self.ChosenKombiLines[MainLineNum] |= {
-                                            kombiLineNumber + 1
-                                        }
-                                    except KeyError:
-                                        self.ChosenKombiLines[MainLineNum] = {
-                                            kombiLineNumber + 1
-                                        }
+                    # for ZeilennummerOfOnlyDisplayingOnes in displayingZeilen:
+                    for kombiLineNumber, kombiLine in enumerate(kombiTable_Kombis):
+                        """kombiLineNumber ist die csv Zeilennummer in der Kombitabelle
+                        kombiLine ist aus der ersten Spalte die jeweilige Liste an Zahlenkombinationen pro Zeile"""
+                        # x("AAA7", (kombiLineNumber, kombiLine, ))
+                        for kombiNumber in kombiLine:
+                            """kombiNumber ist demzufolge eine so eine Zahl
+                            von n*m Zahlen
+                            if: wenn eine dieser Zahlen zu denen gehört, die am Ende angezeigt werden sollen und
+                            wenn diese Zahl eine ist, die genau der richtigen Anzeigezeile entspricht"""
+
+                            # x ("AAA5", (ZeilennummerOfOnlyDisplayingOnes, kombiLineNumber, kombiLine, kombiNumber in displayingZeilen, kombiNumber, ZeilennummerOfOnlyDisplayingOnes))
+                            # x("AAA5", (kombiLineNumber, kombiNumber == 125,))
+                            if (
+                                # kombiNumber == ZeilennummerOfOnlyDisplayingOnes
+                                kombiNumber in displayingZeilen
+                            ):
+                                # x("AAA8", (ZeilennummerOfOnlyDisplayingOnes, kombiLineNumber, kombiLine,))
+                                try:
+                                    """Zugehörig zur richtigen Anzeigeezeile wird diese Kombizeile ausgewählt
+                                    d.h. anzeige in zeile enthält die richtige kombizeile
+                                    NUMMERN werden da rein gelistet
+                                    key = haupttabellenzeilennummer
+                                    value = kombitabellenzeilennummer
+                                    """
+                                    self.ChosenKombiLines[kombiNumber] |= {
+                                        kombiLineNumber + 1
+                                    }
+                                except KeyError:
+                                    self.ChosenKombiLines[kombiNumber] = {
+                                        kombiLineNumber + 1
+                                    }
+            # x("AAA4", self.ChosenKombiLines)
             return self.ChosenKombiLines
 
         def readKombiCsv(
@@ -1073,7 +1082,11 @@ class Tables:
             else:
                 self.kombiTable = [[]]
                 self.kombiTable_Kombis = [[]]
-            x("idiot", self.tables.generatedSpaltenParameter)
+            # x("idiot", self.tables.generatedSpaltenParameter)
+
+            x("AAA1", self.kombiTable)
+            x("AAA2", self.kombiTable_Kombis)
+            x("AAA3", self.maintable2subtable_Relation)
 
             return (
                 self.kombiTable,

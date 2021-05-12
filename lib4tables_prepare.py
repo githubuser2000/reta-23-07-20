@@ -538,7 +538,9 @@ class Prepare:
         old2Rows: tuple = ({}, {})
         reliNumbersBool = False if self.religionNumbers != [] else True
         for u, line in enumerate(contentTable):
-            if u in finallyDisplayLines:
+            x("AAAF1", (contentTable[u], u, ))
+            x("AAAF2", "ENNDD")
+            if u in finallyDisplayLines or combiRows != 0:
                 if reliNumbersBool:
                     self.religionNumbers += [int(u)]
                 new2Lines: list = []
@@ -577,6 +579,7 @@ class Prepare:
                         rowToDisplay += 1
                         newLines = [[]] * headingsAmount
                         certaintextwidth = self.setWidth(rowToDisplay, combiRows)
+                        x("AAAE", cell)
                         into = self.cellWork(cell, newLines, certaintextwidth, t)
                         if into != [""] or True:
                             new2Lines += [into]
@@ -588,7 +591,7 @@ class Prepare:
                 if new2Lines != []:
                     newerTable += [new2Lines]
 
-        x("idiot", self.tables.generatedSpaltenParameter)
+        # x("idiot", self.tables.generatedSpaltenParameter)
         return finallyDisplayLines, newerTable, numlen, rowsRange, old2Rows
 
     def cellWork(self, cell: str, newLines, certaintextwidth: int, t: int) -> list:
