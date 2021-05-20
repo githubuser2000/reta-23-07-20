@@ -3,9 +3,10 @@
 	<head>
 		<meta charset="UTF-8"/><title>Religionstabellen durch ReTa generiert</title>
 		<style type="text/css">
-			/*body {
-			    background-color: #efefef;
+			label {
+				font-size: medium;
 			}
+			/*
 
 			table {
 			    margin: 10px;

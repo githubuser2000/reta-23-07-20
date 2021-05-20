@@ -6,7 +6,7 @@ let div = document.createElement('div');
 let div2 = document.createElement('div');
 div.className = "headingsDiv";
 document.body.before(div);
-chk_spalten = "<fieldset><input type=\"radio\" id=\"spaltenWahl\" name=\"spaltOrZeilWahl\" onchange=\"toggleChkSpalten(this);\" checked=\"true\"><label>Spalten Checkboxen</label><input type=\"radio\" id=\"zeilenWahl\" name=\"spaltOrZeilWahl\" onchange=\"toggleChkSpalten(this);\"><label>Zeilen Eingabefelder</label><input type=\"radio\" id=\"keinsWahl\" name=\"spaltOrZeilWahl\" onchange=\"toggleChkSpalten(this);\"><label>nichts dergleichen</label></fieldset>"
+    chk_spalten = "<fieldset style=\"font-size: medium;\"><input type=\"radio\" id=\"spaltenWahl\" name=\"spaltOrZeilWahl\" onchange=\"toggleChkSpalten(this);\" checked=\"true\"><label>Spalten Checkboxen</label><input type=\"radio\" id=\"zeilenWahl\" name=\"spaltOrZeilWahl\" onchange=\"toggleChkSpalten(this);\"><label>Zeilen Eingabefelder</label><input type=\"radio\" id=\"keinsWahl\" name=\"spaltOrZeilWahl\" onchange=\"toggleChkSpalten(this);\"><label>nichts dergleichen</label></fieldset>"
 div.innerHTML = chk_spalten;
 tdClasses = document.getElementsByClassName("z_0");
 /*tdClasses = []
@@ -90,7 +90,7 @@ checkboxes = "<div id=\"chk_spalten\" style=\"display:none;\"><span style=\"\">"
 		for (k = 0; k < p2keys.length; k++) {
 			numbers = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
 			if (p2keys[k] != null && p2keys[k] != 'null') {
-				chk2 = '<label style=\"white-space: nowrap;\"><input type="checkbox" value="'+p2keys[k]+'" onchange="toggleP2(this,\''+numbers+'\',\''+[p1keys[i],p2keys[k]]+'\');">'+makeSpacesOutOf_(p2keys[k])+'</label><label style=\"white-space: normal;\">&nbsp; </label>';
+				chk2 = '<label style=\"white-space: nowrap;font-size: medium;\"><input type="checkbox" value="'+p2keys[k]+'" onchange="toggleP2(this,\''+numbers+'\',\''+[p1keys[i],p2keys[k]]+'\');">'+makeSpacesOutOf_(p2keys[k])+'</label><label style=\"white-space: normal;\">&nbsp; </label>';
 				chk2s = chk2s + chk2;
 			}
 			
@@ -101,7 +101,7 @@ checkboxes = "<div id=\"chk_spalten\" style=\"display:none;\"><span style=\"\">"
 		} else {
 			insertnull = '';
 		}
-        checkbox = '<br><input type="checkbox" value="'+p1keys[i]+'" onchange="toggleP1(\''+p1keys[i]+'\');'+insertnull+'"><label style=\"white-space: normal;\">'+makeSpacesOutOf_(p1keys[i])+'</label><div id="'+p1keys[i]+'" style="display:none;white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">'+chk2s+'<br><br></div>';
+        checkbox = '<br><input type="checkbox" value="'+p1keys[i]+'" onchange="toggleP1(\''+p1keys[i]+'\');'+insertnull+'"><label style=\"white-space: normal;font-size: medium;\">'+makeSpacesOutOf_(p1keys[i])+'</label><div id="'+p1keys[i]+'" style="display:none;white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">'+chk2s+'<br><br></div>';
 		checkboxes += checkbox;
 	}
 	str2 = checkboxes + "</span></div>";
@@ -219,8 +219,11 @@ function updateVisibleHeadingsNumbersAndItsKeysList() {
 function toggleName(p2) {
 	if (p2.style.display != 'none') 
 		p2.style.display = 'none';
-	else 
-		p2.style.display = 'table-cell';
+    else { 
+		p2.style.display = 'block';
+		p2.style.fontSize = 'medium';
+    
+    }
 }
 
 function toggleP1(p1) {
@@ -266,6 +269,7 @@ function toggleSpalten(colNumber) {
 		for (i=0; i < ZeileIhreZellen.length; i++) { 
 			if (ZeileIhreZellen[i].style.display == 'none' && ! spalteEinzelnDeaktiviertWorden) {
 				ZeileIhreZellen[i].style.display = 'table-cell';
+		        ZeileIhreZellen[i].style.fontSize = 'medium';
             } else 
 				if (away || spalteEinzelnDeaktiviertWorden) {
 					ZeileIhreZellen[i].style.display = 'none';
