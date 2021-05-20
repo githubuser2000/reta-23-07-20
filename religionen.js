@@ -83,14 +83,14 @@ for (i = 0; i < tdClasses.length; i++) {
 	var p1keys = Object.keys(mapMapMap);
 	var p1Bkeys = Object.keys(p1Bmap);
 	//checkboxes = "<span style=\"white-space: nowrap;\"><input type=\"checkbox\" onchange=\"toggleSpalten(\'r_0\');\"><label>Nummererierung</label>";
-	checkboxes = "<div id=\"chk_spalten\" style=\"display:none\"><span style=\"white-space: nowrap;\">";
+checkboxes = "<div id=\"chk_spalten\" style=\"display:none;\"><span style=\"\">";
 	for (i = 0; i < p1keys.length; i++) {
 		var chk2s = "";
 		var p2keys = Object.keys(mapMapMap[p1keys[i]]);
 		for (k = 0; k < p2keys.length; k++) {
 			numbers = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
 			if (p2keys[k] != null && p2keys[k] != 'null') {
-				chk2 = '<input type="checkbox" value="'+p2keys[k]+'" onchange="toggleP2(this,\''+numbers+'\',\''+[p1keys[i],p2keys[k]]+'\');"><label>'+makeSpacesOutOf_(p2keys[k])+'</label>';
+				chk2 = '<label style=\"white-space: nowrap;\"><input type="checkbox" value="'+p2keys[k]+'" onchange="toggleP2(this,\''+numbers+'\',\''+[p1keys[i],p2keys[k]]+'\');">'+makeSpacesOutOf_(p2keys[k])+'</label><label style=\"white-space: normal;\">&nbsp; </label>';
 				chk2s = chk2s + chk2;
 			}
 			
@@ -101,7 +101,7 @@ for (i = 0; i < tdClasses.length; i++) {
 		} else {
 			insertnull = '';
 		}
-		checkbox = '<br><input type="checkbox" value="'+p1keys[i]+'" onchange="toggleP1(\''+p1keys[i]+'\');'+insertnull+'"><label>'+makeSpacesOutOf_(p1keys[i])+'</label><div id="'+p1keys[i]+'" style="display:none">'+chk2s+'</div>';
+        checkbox = '<br><input type="checkbox" value="'+p1keys[i]+'" onchange="toggleP1(\''+p1keys[i]+'\');'+insertnull+'"><label style=\"white-space: normal;\">'+makeSpacesOutOf_(p1keys[i])+'</label><div id="'+p1keys[i]+'" style="display:none;white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">'+chk2s+'<br><br></div>';
 		checkboxes += checkbox;
 	}
 	str2 = checkboxes + "</span></div>";
