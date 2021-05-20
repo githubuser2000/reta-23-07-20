@@ -20,10 +20,11 @@ def getTextWrapThings() -> tuple:
     if "Brython" not in sys.version.split():
         import html2text
         import pyphen
-        from hyphen import Hyphenator
+        #from hyphen import Hyphenator
         from textwrap2 import fill
 
-        h_de = Hyphenator("de_DE")
+        h_de = None
+        #h_de = Hyphenator("de_DE")
         dic = pyphen.Pyphen(
             lang="de_DE"
         )  # Bibliothek für Worteilumbruch bei Zeilenumbruch
