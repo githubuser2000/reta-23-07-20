@@ -5,8 +5,8 @@ window.onload = function() {
 let div = document.createElement('div');
 let div2 = document.createElement('div');
 div.className = "headingsDiv";
-document.body.before(div);
-    chk_spalten = "<fieldset style=\"font-size: medium;\"><input type=\"radio\" id=\"spaltenWahl\" name=\"spaltOrZeilWahl\" onchange=\"toggleChkSpalten(this);\" checked=\"true\"><label>Spalten Checkboxen</label><input type=\"radio\" id=\"zeilenWahl\" name=\"spaltOrZeilWahl\" onchange=\"toggleChkSpalten(this);\"><label>Zeilen Eingabefelder</label><input type=\"radio\" id=\"keinsWahl\" name=\"spaltOrZeilWahl\" onchange=\"toggleChkSpalten(this);\"><label>nichts dergleichen</label></fieldset>"
+document.body.insertBefore(div, document.getElementsByTagName("table")[0]);
+    chk_spalten = "<fieldset style=\"font-size: medium;\"><input type=\"radio\" id=\"spaltenWahl\" name=\"spaltOrZeilWahl\" onchange=\"toggleChkSpalten(this);\" checked=\"true\"><label>Spalten Checkboxen</label><input type=\"radio\" id=\"zeilenWahl\" name=\"spaltOrZeilWahl\" onchange=\"toggleChkSpalten(this);\"><label>Zeilen Eingabefelder</label><input type=\"radio\" id=\"keinsWahl\" name=\"spaltOrZeilWahl\" onchange=\"toggleChkSpalten(this);\"><label>frei machen zur Tabellenansicht</label></fieldset>"
 div.innerHTML = chk_spalten;
 tdClasses = document.getElementsByClassName("z_0");
 /*tdClasses = []
@@ -91,7 +91,7 @@ checkboxes = "<div id=\"chk_spalten\" style=\"display:none;\"><span style=\"\">"
 			numbers = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
 			if (p2keys[k] != null && p2keys[k] != 'null') {
 				chk2 = '<label style=\"white-space: nowrap;font-size: medium;\"><input type="checkbox" value="'+p2keys[k]+'" onchange="toggleP2(this,\''+numbers+'\',\''+[p1keys[i],p2keys[k]]+'\');">'+makeSpacesOutOf_(p2keys[k])+'</label><label style=\"white-space: normal;\">&nbsp; </label>';
-				chk2s = chk2s + chk2;
+				chk2s += chk2;
 			}
 			
 		}
@@ -101,19 +101,21 @@ checkboxes = "<div id=\"chk_spalten\" style=\"display:none;\"><span style=\"\">"
 		} else {
 			insertnull = '';
 		}
-        checkbox = '<br><input type="checkbox" value="'+p1keys[i]+'" onchange="toggleP1(\''+p1keys[i]+'\');'+insertnull+'"><label style=\"white-space: normal;font-size: medium;\">'+makeSpacesOutOf_(p1keys[i])+'</label><div id="'+p1keys[i]+'" style="display:none;white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">'+chk2s+'<br><br></div>';
+        checkbox = '<br><input type="checkbox" value="'+p1keys[i]+'" onchange="toggleP1(\''+p1keys[i]+'\');'+insertnull+'"><label style=\"white-space: normal;font-size: medium;\">'+makeSpacesOutOf_(p1keys[i])+'</label><div id="'+p1keys[i]+'" style="display:none;white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">'+chk2s+'</div>';
 		checkboxes += checkbox;
 	}
 	str2 = checkboxes + "</span></div>";
 	div.innerHTML += str2;
     str4 = "<div id=\"inputZeilen\" style=\"display:none\"><table borders=\"0\" id=\"table2\">";
-    str5 = "<tr><td><label>von bis und einzelenes: </label></td><td><input typ=\"text\" id=\"zeilenErlaubtText\" value=\"1-10,12\"></input></td><td><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg1\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickZeilenErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
+    str5 = "<tr><td><label>von bis und Einzelnes: </label></td><td><input typ=\"text\" id=\"zeilenErlaubtText\" value=\"1-10,12\"></input></td><td><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg1\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg1\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickZeilenErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
     str6 = "<tr><td><label>Vielfacher und Nachbarn: </label></td><td><input typ=\"text\" id=\"VielfacheErlaubtText\" value=\"10+0+1,7+0\"></td><td></input><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg2\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg2\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg2\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg2\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickVielfacheErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
     str8 = "<tr><td><label>Potenzen: </label></td><td><input typ=\"text\" id=\"potenzenErlaubtText\" value=\"3,5\"></input></td><td><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg3\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg3\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg3\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg3\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickPotenzenErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
     str9 = "<tr><td colspan=\"2\"><input type=\"radio\" id=\"sonneWahl\" name=\"sunmoonplanetblackhole\" onchange=\"\" checked=\"true\"><label>Sonne</label><input type=\"radio\" id=\"mondWahl\" name=\"sunmoonplanetblackhole\" onchange=\"\"><label>Mond</label><input type=\"radio\" id=\"planetWahl\" name=\"sunmoonplanetblackhole\" onchange=\"\"><label>Planet</label><input type=\"radio\" id=\"schwarzeSonneWahl\" name=\"sunmoonplanetblackhole\" onchange=\"\" onclick=\"window.alert('Schwarze Sonnen kehren die Orginalbedeutung ins Gegenteil.');\"><label>schwarze Sonne</label></td><td><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg4\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg4\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg4\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg4\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickHimmelskoerperErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
     str10 = "<tr><td><label>Zählung: </label></td><td><input typ=\"text\" id=\"zaehlungErlaubtText\" value=\"1,3-4\"></input></td><td><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg5\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg5\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg5\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg5\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickZaehlungenErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
+    str11 = "<tr><td><label>Primzahlvielfacher: </label></td><td><input typ=\"text\" id=\"primVielfache\" value=\"1\"></input></td><td><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg6\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg6\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg6\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg6\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickPrimVielfacheErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
+    str12 = "<tr><td colspan=\"2\"><input type=\"radio\" id=\"proInnen\" name=\"proContra4Richtungen\" onchange=\"\" checked=\"true\"><label>pro innen</label><input type=\"radio\" id=\"proAussen\" name=\"proContra4Richtungen\" onchange=\"\"><label>pro Außen</label><input type=\"radio\" id=\"gegenDritte\" name=\"proContra4Richtungen\" onchange=\"\"><label>gegen Dritte</label><input type=\"radio\" id=\"proDritte\" name=\"proContra4Richtungen\" onchange=\"\" onclick=\"\"><label>pro Dritte</label></td><td><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg7\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg7\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg7\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg7\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickPrimRichtungenErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
     str7 = "</table></div>";
-	div.innerHTML += str4 + str5 + str6 + str8 + str9 + str10 + str7;
+	div.innerHTML += str4 + str5 + str6 + str8 + str9 + str10 + str11 + str12 + str7;
     // Spaltenreihenfolge
 	tableHeadline = document.getElementsByTagName("table")[1].getElementsByTagName('tr')[0].getElementsByTagName('td');
     for (var u=0; u<tableHeadline.length; u++) {
@@ -123,6 +125,8 @@ checkboxes = "<div id=\"chk_spalten\" style=\"display:none;\"><span style=\"\">"
 }
 
 alleMonde = [4,8,9,16,25,27,32,36,49,64,81,100,121,125,128,144,169,196,216,225,243,256,289,324,343,361,400,441,484,512,529,576,625,676,729,784,841,900,961,1000,1024]
+primZahlen = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541, 547, 557, 563, 569, 571, 577, 587, 593, 599, 601, 607, 613, 617, 619, 631, 641, 643, 647, 653, 659, 661, 673, 677, 683, 691, 701, 709, 719, 727, 733, 739, 743, 751, 757, 761, 769, 773, 787, 797, 809, 811, 821, 823, 827, 829, 839, 853, 857, 859, 863, 877, 881, 883, 887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997, 1009, 1013, 1019, 1021]
+
 
 function makeSpacesOutOf_(text) {
     if (text.length == 25)
@@ -219,11 +223,12 @@ function updateVisibleHeadingsNumbersAndItsKeysList() {
 function toggleName(p2) {
 	if (p2.style.display != 'none') 
 		p2.style.display = 'none';
-    else { 
-		p2.style.display = 'block';
-		p2.style.fontSize = 'medium';
-    
-    }
+    else
+        if (p2.getElementsByTagName("input").length > 0)
+        { 
+		    p2.style.display = 'block';
+		    p2.style.fontSize = 'medium';
+        }
 }
 
 function toggleP1(p1) {
@@ -457,6 +462,8 @@ function zeilenAngabenToContainer(welches) {
         text = document.getElementById('zeilenErlaubtText').value;
     if (welches == 2)
         text = document.getElementById('zaehlungErlaubtText').value;
+    if (welches == 3)
+        text = document.getElementById('primVielfache').value;
     var zeilenAngaben = new Set();
     text = text.split(",");
     for (var i=0; i<text.length; i++) {
@@ -548,6 +555,38 @@ function makeAllerlaubteZeilenPotenzen(zeilenAngaben) {
     return erlaubteZeilen;
 }
 
+function makeAllAllowedZeilenPrimRichtungen() {
+    innen = document.getElementById("proInnen").checked;
+    aussen = document.getElementById("proAussen").checked;
+    hand = document.getElementById("gegenDritte").checked;
+    faehig = document.getElementById("proDritte").checked;
+    erlaubteZeilen = new Set();
+    
+
+    if (hand || faehig) {
+        inkrement = (3 ? hand : (2 ? faehig : null));
+        for (var i=0; i<1025; i+= inkrement) 
+            erlaubteZeilen.add(i)
+        return erlaubteZeilen; 
+    }
+
+    if (innen || aussen) {
+        begin = (3 ? aussen : (2 ? innen : null));
+        for (var i=0; i<1025;i++) {
+            innenPrimZahl = false;
+            for (k=begin; k<primZahlen.length; k+=2) {
+                vielfacher = 1;
+                while (vielfacher * i < 1025)
+                    if (primZahlen[k] == i * vielfacher)
+                        innenPrimZahl = true;
+            }
+            if (innenPrimZahl)
+                erlaubteZeilen.add(i);
+        }
+        return erlaubteZeilen;
+    }
+}
+
 function makeAllAllowedZeilenHimmelskoerper() {
     sonneWahl = document.getElementById("sonneWahl").checked;
     mondWahl = document.getElementById("mondWahl").checked;
@@ -576,6 +615,29 @@ function makeAllAllowedZeilenHimmelskoerper() {
             erlaubteZeilen.add(i);
         return erlaubteZeilen
     }
+}
+function makeAllowedZeilenFromPrimVielfacher(zeilenAngaben) {
+    zeilenAngaben = Array.from(zeilenAngaben);
+    erlaubteZeilen = new Set();
+    ersteSpalte = document.getElementsByTagName("table")[1].getElementsByClassName("r_0");
+    for (var i=0; i<1025;i++)
+        for (var k=0; k<zeilenAngaben.length; k++) 
+            if (zahlIstVielfacherEinerPrimzahl(i, zeilenAngaben[k]))
+                erlaubteZeilen.add(i);
+    return erlaubteZeilen;
+}
+
+function zahlIstVielfacherEinerPrimzahl(zahl, vielfacher) {
+    zahl = parseInt(zahl);
+    vielfacher = parseInt(vielfacher);
+    if (zahl === "NaN" || vielfacher === "Nan")
+        return false;
+
+    stimmt = false;
+    for (var i=0;i<primZahlen.length; i++)
+        if (primZahlen[i] == zahl / vielfacher)
+            stimmt=true;
+    return stimmt;
 }
 
 function makeAllowedZeilenFromZaehlung(zeilenAngaben) {
@@ -703,4 +765,13 @@ function clickZaehlungenErlaubenUsw() {
     get_r__SpaltenNummern();
     erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(4);
 }
-
+function clickPrimVielfacheErlaubenUsw() {
+    makeAllowedZeilenFromPrimVielfacher(zeilenAngabenToContainer(3));
+    get_r__SpaltenNummern();
+    erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(5);
+}
+function clickPrimRichtungenErlaubenUsw() {
+    erlaubteZeilen = makeAllAllowedZeilenPrimRichtungen();
+    get_r__SpaltenNummern();
+    erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(6);
+}
