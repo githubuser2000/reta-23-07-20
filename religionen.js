@@ -564,7 +564,10 @@ function makeAllAllowedZeilenPrimRichtungen() {
     
 
     if (hand || faehig) {
-        inkrement = (3 ? hand : (2 ? faehig : null));
+        if (hand)
+            inkrement = 3;
+        else
+            inkrement = 2;
         for (var i=0; i<1025; i+= inkrement) 
             erlaubteZeilen.add(i)
         return erlaubteZeilen; 
@@ -573,14 +576,18 @@ function makeAllAllowedZeilenPrimRichtungen() {
     if (innen || aussen) {
         begin = (3 ? aussen : (2 ? innen : null));
         for (var i=0; i<1025;i++) {
-            innenPrimZahl = false;
+            primVielfacherVorhanden = false;
             for (k=begin; k<primZahlen.length; k+=2) {
                 vielfacher = 1;
-                while (vielfacher * i < 1025)
-                    if (primZahlen[k] == i * vielfacher)
-                        innenPrimZahl = true;
+                while (i / vielfacher > 2) {
+                    if (primZahlen[k] == i / vielfacher) {
+                        primVielfacherVorhanden = true;
+                        vielfacher = i;
+                    } else
+                        vielfacher++;
+                }
             }
-            if (innenPrimZahl)
+            if (primVielfacherVorhanden)
                 erlaubteZeilen.add(i);
         }
         return erlaubteZeilen;
