@@ -114,8 +114,9 @@ checkboxes = "<div id=\"chk_spalten\" style=\"display:none;\"><span style=\"\">"
     str10 = "<tr><td><label>Zählung: </label></td><td><input typ=\"text\" id=\"zaehlungErlaubtText\" value=\"1,3-4\"></input></td><td><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg5\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg5\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg5\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg5\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickZaehlungenErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
     str11 = "<tr><td><label>Primzahlvielfacher: </label></td><td><input typ=\"text\" id=\"primVielfache\" value=\"1\"></input></td><td><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg6\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg6\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg6\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg6\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickPrimVielfacheErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
     str12 = "<tr><td colspan=\"2\"><input type=\"radio\" id=\"proInnen\" name=\"proContra4Richtungen\" onchange=\"\" checked=\"true\"><label>pro innen</label><input type=\"radio\" id=\"proAussen\" name=\"proContra4Richtungen\" onchange=\"\"><label>pro Außen</label><input type=\"radio\" id=\"gegenDritte\" name=\"proContra4Richtungen\" onchange=\"\"><label>gegen Dritte</label><input type=\"radio\" id=\"proDritte\" name=\"proContra4Richtungen\" onchange=\"\" onclick=\"\"><label>pro Dritte</label></td><td><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg7\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg7\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg7\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg7\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickPrimRichtungenErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
+    str13 = "<tr><td><label>Primzahlkreuzradius: </label></td><td><input typ=\"text\" id=\"primZahlKreuzRadius\" value=\"1\"></input></td><td><input type=\"radio\" class=\"neuErlauben\" name=\"zeilenDazuOrWeg8\" onchange=\"\" checked=\"true\"><label>neu sichtbar</label><input type=\"radio\" class=\"neuHinfort\" name=\"zeilenDazuOrWeg8\" onchange=\"\"><label>neu unsichtbar</label><input type=\"radio\" class=\"dazuErlauben\" name=\"zeilenDazuOrWeg8\" onchange=\"\"><label>zusätzlich sichtbar</label><input type=\"radio\" class=\"dazuHinfort\" name=\"zeilenDazuOrWeg8\" onchange=\"\"><label>zusätzlich unsichtbar</label><input onclick=\"clickPrimZahlKreuzRadiusErlaubenUsw();\" type=\"submit\" value=\"auswählen\"></td></tr>";
     str7 = "</table></div>";
-	div.innerHTML += str4 + str5 + str6 + str8 + str9 + str10 + str11 + str12 + str7;
+	div.innerHTML += str4 + str5 + str6 + str8 + str9 + str10 + str11 + str12 + str13 + str7;
     // Spaltenreihenfolge
 	tableHeadline = document.getElementsByTagName("table")[1].getElementsByTagName('tr')[0].getElementsByTagName('td');
     for (var u=0; u<tableHeadline.length; u++) {
@@ -464,6 +465,9 @@ function zeilenAngabenToContainer(welches) {
         text = document.getElementById('zaehlungErlaubtText').value;
     if (welches == 3)
         text = document.getElementById('primVielfache').value;
+    if (welches == 4)
+        text = document.getElementById('primZahlKreuzRadius').value;
+
     var zeilenAngaben = new Set();
     text = text.split(",");
     for (var i=0; i<text.length; i++) {
@@ -629,8 +633,9 @@ function makeAllowedZeilenFromPrimVielfacher(zeilenAngaben) {
     ersteSpalte = document.getElementsByTagName("table")[1].getElementsByClassName("r_0");
     for (var i=0; i<1025;i++)
         for (var k=0; k<zeilenAngaben.length; k++) 
-            if (zahlIstVielfacherEinerPrimzahl(i, zeilenAngaben[k]))
-                erlaubteZeilen.add(i);
+            for (var l=zeilenAngaben[k][0]; l<=zeilenAngaben[k][1]; l++)
+                if (zahlIstVielfacherEinerPrimzahl(i, l))
+                    erlaubteZeilen.add(i);
     return erlaubteZeilen;
 }
 
@@ -678,6 +683,18 @@ function makeAllAllowedZeilen(zeilenAngaben) {
         } 
     }
     return erlaubteZeilen;
+}
+
+function makeAllowedZeilenFromPrimZahlKreuzRadius(zeilenAngaben) {
+    zeilenAngaben = Array.from(zeilenAngaben);
+    erlaubteZeilen = new Set();
+    for (var i=1; i<1025; i++) 
+        for (var k=0; k<zeilenAngaben.length; k++)
+            for (var l=zeilenAngaben[k][0]; l<=zeilenAngaben[k][1]; l++)
+                if (l == Math.floor((i-1) / 24)+1)
+                    erlaubteZeilen.add(i)
+
+    return zeilenAngaben;
 }
 
 var spalten_r__ = new Set();
@@ -781,4 +798,10 @@ function clickPrimRichtungenErlaubenUsw() {
     erlaubteZeilen = makeAllAllowedZeilenPrimRichtungen();
     get_r__SpaltenNummern();
     erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(6);
+}
+
+function clickPrimZahlKreuzRadiusErlaubenUsw() {
+    makeAllowedZeilenFromPrimZahlKreuzRadius(zeilenAngabenToContainer(4));
+    get_r__SpaltenNummern();
+    erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(7);
 }
