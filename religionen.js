@@ -563,6 +563,16 @@ function makeAllerlaubteZeilenPotenzen(zeilenAngaben) {
     return erlaubteZeilen;
 }
 
+function intersection(setA, setB) {
+    var _intersection = new Set();
+    for (var elem of setB) {
+        if (setA.has(elem)) {
+            _intersection.add(elem);
+        }
+    }
+    return _intersection;
+}
+
 function makeAllAllowedZeilenPrimRichtungen() {
     innen = document.getElementById("proInnen").checked;
     aussen = document.getElementById("proAussen").checked;
@@ -582,20 +592,25 @@ function makeAllAllowedZeilenPrimRichtungen() {
     }
 
     if (innen || aussen) {
-        begin = (3 ? aussen : (2 ? innen : null));
+        var innenAussen;
+        if (aussen)
+            innenAussen = new Set([1,7,13,19]);
+        if (innen)
+            innenAussen = new Set([5,11,17,23]);
+
         for (var i=0; i<1025;i++) {
-            primVielfacherVorhanden = false;
-            for (k=begin; k<primZahlen.length; k+=2) {
+            primZahlenModulo = new Set();
+            for (k=2; k<primZahlen.length; k+=1) {
                 vielfacher = 1;
                 while (i / vielfacher > 2) {
                     if (primZahlen[k] == i / vielfacher) {
-                        primVielfacherVorhanden = true;
                         vielfacher = i;
-                    } else
-                        vielfacher++;
+                        primZahlenModulo.add(primZahlen[k] % 24);
+                    }
+                    vielfacher++;
                 }
             }
-            if (primVielfacherVorhanden)
+            if (intersection(primZahlenModulo, innenAussen).size != 0) 
                 erlaubteZeilen.add(i);
         }
         return erlaubteZeilen;
