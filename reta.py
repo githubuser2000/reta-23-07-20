@@ -1404,7 +1404,7 @@ class Program:
                     "anfuehrer",
                     "chef",
                 ),
-                {29},
+                {29, 170},
             ),
             (
                 Program.ParametersMain.menschliches,
@@ -1614,7 +1614,7 @@ class Program:
                     "zaehlungen",
                     "zählung",
                 ),
-                {25, 45},
+                {25, 45, 169},
             ),
             (
                 Program.ParametersMain.bedeutung,
