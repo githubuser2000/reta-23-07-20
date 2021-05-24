@@ -2411,9 +2411,6 @@ class Program:
         )
         alxp("""Ctrl+C kontrollierter abbrechen lassen!""")
         alxp(
-            """im Forum habe ich neue Arten von Inkrementieren drin und außerdem habe ich noch gar nix zu Multiplikation überhaupt richtig"""
-        )
-        alxp(
             """Ich könnte auch ganz einfach die mir bekannten Geschwindigkeitsfehler korrigieren: konkatenieren von strings und alle iterierungen von listen überprüfen oder gleich die tabelle als dict dict gestalten"""
         )
         # alxp("""2 mal pro seitlich = können (2) seitlich""")
@@ -2466,12 +2463,8 @@ class Program:
             """Ich müsste wirklich noch total überall schauen und zu jedem Punkt im Forum zu gleichförmiges-Polygon-Religionen"""
         )
         alxp(
-            """In js dass _ in Namen wie Leerzeichen und solche auch als Erste ParameterNamen setzen!"""
-        )
-        alxp(
             """Einprogrammieren, dass die Fehlerausgabe besser wird, wenn man falsche Parameter setzt."""
         )
-        alxp("""deutlich bessere Fehlerausgabe, wenn man falsche Parameter angibt""")
         # alxp("Mond 125 wird nicht angezeigt, also ggf. einige andere nicht oder fälschlicherweise Sonnen?")
         # alxp("1. Clean Code\n2. Vollständigkeit der Befehle auch")
 
