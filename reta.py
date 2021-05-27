@@ -1776,6 +1776,12 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept,
+                ("Führung", "führung", "fuehrung"),
+                set(),
+                {(173, 174)},
+            ),
+            (
+                Program.ParametersMain.konzept,
                 ("Überheblichkeit", "überheblich", "ueberheblichkein", "ueberheblich", "überheblichkeit"),
                 set(),
                 {(171, 172)},
