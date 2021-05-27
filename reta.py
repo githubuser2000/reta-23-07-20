@@ -1782,7 +1782,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept,
-                ("Überheblichkeit", "überheblich", "ueberheblichkein", "ueberheblich", "überheblichkeit"),
+                ("Überheblichkeit", "überheblich", "ueberheblichkeit", "ueberheblich", "überheblichkeit"),
                 set(),
                 {(171, 172)},
             ),
