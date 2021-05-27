@@ -1776,6 +1776,12 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept,
+                ("Überheblichkeit", "überheblich", "ueberheblichkein", "ueberheblich", "überheblichkeit"),
+                set(),
+                {(171, 172)},
+            ),
+            (
+                Program.ParametersMain.konzept,
                 ("Polung_der_Liebe", "liebepolung",),
                 set(),
                 {(121, 122)},
