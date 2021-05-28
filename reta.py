@@ -1333,6 +1333,8 @@ class Program:
                     "motive",
                     "motivation",
                     "motiv",
+                    "absicht",
+                    "absichten",
                 ),
                 {10, 18, 42, 167, 168, 149},
             ),
@@ -1779,6 +1781,12 @@ class Program:
                 ("Führung", "führung", "fuehrung"),
                 set(),
                 {(173, 174)},
+            ),
+            (
+                Program.ParametersMain.konzept,
+                ("Fördern","foerdern","fördern","begrenzen"),
+                set(),
+                {(175, 176)},
             ),
             (
                 Program.ParametersMain.konzept,
