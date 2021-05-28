@@ -1784,7 +1784,13 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept,
-                ("Fördern","foerdern","fördern","begrenzen"),
+                ("Durchleuchten", "durchleuchten", "erleuchten"),
+                set(),
+                {(177, 178)},
+            ),
+            (
+                Program.ParametersMain.konzept,
+                ("Fördern", "foerdern", "fördern", "begrenzen"),
                 set(),
                 {(175, 176)},
             ),
