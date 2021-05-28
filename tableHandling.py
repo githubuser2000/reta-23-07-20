@@ -265,7 +265,7 @@ class Tables:
             @return: nichts
             """
             global output, shellRowsAmount
-            x("hce", self.tables.generatedSpaltenParameter)
+            #x("hce", self.tables.generatedSpaltenParameter)
 
             def findMaxCellTextLen(
                 finallyDisplayLines: set, newTable: list, rowsRange: range
@@ -335,7 +335,7 @@ class Tables:
                 if len(self.finallyDisplayLines) > 0 and shellRowsAmount != 0
                 else 0
             )
-            x("NIXX", self.tables.dataDict)
+            #x("NIXX", self.tables.dataDict)
             self.finallyDisplayLines[0] = ""
             lastSubCellIndex = -1
             lastlastSubCellIndex = -2
@@ -365,7 +365,7 @@ class Tables:
                     for iterWholeLine, OneWholeScreenLine_AllSubCells in enumerate(
                         rowsRange
                     ):  # eine Bildhschirm-Zeile immer
-                        # x("abcde", self.tables.getPrepare.zaehlungen)
+                        # #x("abcde", self.tables.getPrepare.zaehlungen)
                         line = (
                             (
                                 (
@@ -675,7 +675,7 @@ class Tables:
 
         def prepareTableJoin(self, ChosenKombiLines, newTable_kombi_1):
             KombiTables = []
-            x("AAAB", (ChosenKombiLines, newTable_kombi_1,))
+            #x("AAAB", (ChosenKombiLines, newTable_kombi_1,))
             for key, value in ChosenKombiLines.items():
                 """Zeilennummern der kombi, die hinten dran kommen sollen
                      an die Haupt- und Anzeigetabelle
@@ -748,7 +748,7 @@ class Tables:
 
             # regex = re.compile(r"\s|\s+")
             # if self.tables.textWidth == 0 and type(self.tables.getOut.outType) in [
-            x("AAAA", manySubTables)
+            #x("AAAA", manySubTables)
             if type(self.tables.getOut.outType) in [
                 htmlSyntax,
                 bbCodeSyntax,
@@ -798,7 +798,7 @@ class Tables:
                                             ):
                                                 table2[colNum][row] = deepcopy(
                                                     subTableCell[
-                                                        rowsOfcombi.index(subRowNum + 1)
+                                                        rowsOfcombi.inde#x(subRowNum + 1)
                                                     ]
                                                 )
                                             else:
@@ -810,7 +810,7 @@ class Tables:
                                                     else ""
                                                 ) + deepcopy(
                                                     subTableCell[
-                                                        rowsOfcombi.index(subRowNum + 1)
+                                                        rowsOfcombi.inde#x(subRowNum + 1)
                                                     ][0]
                                                 )
                                         else:
@@ -863,7 +863,7 @@ class Tables:
             """
             # kombitypes = {"displaying": False, "or": False, "and": False}
             # self.ChosenKombiLines: dict = {}
-            # x("AAA6", displayingZeilen)
+            # #x("AAA6", displayingZeilen)
             for condition in paramLines:
                 if "ka" == condition:
                     # kombitypes["displaying"] = True
@@ -871,7 +871,7 @@ class Tables:
                     for kombiLineNumber, kombiLine in enumerate(kombiTable_Kombis):
                         """kombiLineNumber ist die csv Zeilennummer in der Kombitabelle
                         kombiLine ist aus der ersten Spalte die jeweilige Liste an Zahlenkombinationen pro Zeile"""
-                        # x("AAA7", (kombiLineNumber, kombiLine, ))
+                        # #x("AAA7", (kombiLineNumber, kombiLine, ))
                         for kombiNumber in kombiLine:
                             """kombiNumber ist demzufolge eine so eine Zahl
                             von n*m Zahlen
@@ -879,12 +879,12 @@ class Tables:
                             wenn diese Zahl eine ist, die genau der richtigen Anzeigezeile entspricht"""
 
                             # x ("AAA5", (ZeilennummerOfOnlyDisplayingOnes, kombiLineNumber, kombiLine, kombiNumber in displayingZeilen, kombiNumber, ZeilennummerOfOnlyDisplayingOnes))
-                            # x("AAA5", (kombiLineNumber, kombiNumber == 125,))
+                            # #x("AAA5", (kombiLineNumber, kombiNumber == 125,))
                             if (
                                 # kombiNumber == ZeilennummerOfOnlyDisplayingOnes
                                 kombiNumber in displayingZeilen
                             ):
-                                # x("AAA8", (ZeilennummerOfOnlyDisplayingOnes, kombiLineNumber, kombiLine,))
+                                # #x("AAA8", (ZeilennummerOfOnlyDisplayingOnes, kombiLineNumber, kombiLine,))
                                 try:
                                     """Zugehörig zur richtigen Anzeigeezeile wird diese Kombizeile ausgewählt
                                     d.h. anzeige in zeile enthält die richtige kombizeile
@@ -899,7 +899,7 @@ class Tables:
                                     self.ChosenKombiLines[kombiNumber] = {
                                         kombiLineNumber + 1
                                     }
-            # x("AAA4", self.ChosenKombiLines)
+            # #x("AAA4", self.ChosenKombiLines)
             return self.ChosenKombiLines
 
         def readKombiCsv(
@@ -1051,10 +1051,10 @@ class Tables:
                                             in self.tables.generatedSpaltenParameter
                                         ):
                                             raise ValueError
-                                        x(
-                                            "sss",
-                                            len(self.tables.generatedSpaltenParameter),
-                                        )
+                                        #x(
+                                        #    "sss",
+                                        #    len(self.tables.generatedSpaltenParameter),
+                                        #)
                                         into: list = []
                                         for elementParameter in self.tables.dataDict[3][
                                             a
@@ -1082,11 +1082,11 @@ class Tables:
             else:
                 self.kombiTable = [[]]
                 self.kombiTable_Kombis = [[]]
-            # x("idiot", self.tables.generatedSpaltenParameter)
+            # #x("idiot", self.tables.generatedSpaltenParameter)
 
-            x("AAA1", self.kombiTable)
-            x("AAA2", self.kombiTable_Kombis)
-            x("AAA3", self.maintable2subtable_Relation)
+            #x("AAA1", self.kombiTable)
+            #x("AAA2", self.kombiTable_Kombis)
+            #x("AAA3", self.maintable2subtable_Relation)
 
             return (
                 self.kombiTable,

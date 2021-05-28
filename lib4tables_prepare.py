@@ -394,9 +394,9 @@ class Prepare:
                     if n % 2 == 0:
                         numRangeYesZ.add(n)
 
-        x("_x3_", numRange)
+        #x("_x3_", numRange)
         numRange = cutset(ifTypAtAll, numRange, numRangeYesZ)
-        x("_x2_", numRange)
+        #x("_x2_", numRange)
 
         # Sonnen über 114 immer entfernen
         for n in copy(numRange):
@@ -420,7 +420,7 @@ class Prepare:
                 numRangeYesZ.add(n)
         numRange = cutset(ifPrimAtAll, numRange, numRangeYesZ)
 
-        x("_x1_", numRange)
+        #x("_x1_", numRange)
 
         toPowerIt: list = []
         ifPowerAtall: bool = False
@@ -434,21 +434,21 @@ class Prepare:
                 toPowerIt += [int(condition[:-1])]
         if ifPowerAtall:
             numRangeYesZ = set()
-            x("_y1_", (toPowerIt, numRange))
+            #x("_y1_", (toPowerIt, numRange))
             lastEl = list(numRange)
             lastEl.sort()
             lastEl = lastEl[-1]
             for base in toPowerIt:
                 for n in range(lastEl):
                     onePower = pow(base, n)
-                    numRangeMax = max(numRange)
-                    x("_y2_", (onePower, numRangeMax))
+                    numRangeMax = ma#x(numRange)
+                    #x("_y2_", (onePower, numRangeMax))
                     if onePower <= numRangeMax:
                         numRangeYesZ |= {onePower}
                     else:
                         break
             numRange = cutset(ifPowerAtall, numRange, numRangeYesZ)
-        x("_x4_", numRange)
+        #x("_x4_", numRange)
 
         numRangeYesZ = set()
 
@@ -538,8 +538,8 @@ class Prepare:
         old2Rows: tuple = ({}, {})
         reliNumbersBool = False if self.religionNumbers != [] else True
         for u, line in enumerate(contentTable):
-            x("AAAF1", (contentTable[u], u, ))
-            x("AAAF2", "ENNDD")
+            #x("AAAF1", (contentTable[u], u, ))
+            #x("AAAF2", "ENNDD")
             if u in finallyDisplayLines or combiRows != 0:
                 if reliNumbersBool:
                     self.religionNumbers += [int(u)]
@@ -549,18 +549,19 @@ class Prepare:
                 for t, cell in enumerate(line):
                     if t in rowsAsNumbers:
                         if u == 0 and combiRows == 0:
-                            x("_x_", rowToDisplay)
-                            x("_y_", self.tables.generatedSpaltenParameter)
+                            #x("_x_", rowToDisplay)
+                            #x("_y_", self.tables.generatedSpaltenParameter)
                             if rowToDisplay in self.tables.generatedSpaltenParameter:
-                                x(
-                                    "FehlerY",
-                                    self.tables.generatedSpaltenParameter[rowToDisplay],
-                                )
-                                if self.tables.SpaltenVanillaAmount > t:
-                                    x("FehlerX", rowToDisplay)
-                                    x("FehlerX", t)
-                                    x("FehlerX", self.tables.dataDict[0][t])
+                                #x(
+                                #    "FehlerY",
+                                #    self.tables.generatedSpaltenParameter[rowToDisplay],
+                                #)
+                                #if self.tables.SpaltenVanillaAmount > t:
+                                    #x("FehlerX", rowToDisplay)
+                                    #x("FehlerX", t)
+                                    #x("FehlerX", self.tables.dataDict[0][t])
                                 # raise ValueError
+                                pass
                             try:
                                 if (
                                     rowToDisplay
@@ -571,15 +572,15 @@ class Prepare:
                                         rowToDisplay
                                     ] = self.tables.dataDict[0][t]
                             except KeyError:
-                                x("rrr", t)
+                                #x("rrr", t)
                                 alxp("__")
-                                x("wwi", cell)
-                                x("iii", self.tables.dataDict[0])
+                                #x("wwi", cell)
+                                #x("iii", self.tables.dataDict[0])
 
                         rowToDisplay += 1
                         newLines = [[]] * headingsAmount
                         certaintextwidth = self.setWidth(rowToDisplay, combiRows)
-                        x("AAAE", cell)
+                        #x("AAAE", cell)
                         into = self.cellWork(cell, newLines, certaintextwidth, t)
                         if into != [""] or True:
                             new2Lines += [into]
@@ -591,7 +592,7 @@ class Prepare:
                 if new2Lines != []:
                     newerTable += [new2Lines]
 
-        # x("idiot", self.tables.generatedSpaltenParameter)
+        # #x("idiot", self.tables.generatedSpaltenParameter)
         return finallyDisplayLines, newerTable, numlen, rowsRange, old2Rows
 
     def cellWork(self, cell: str, newLines, certaintextwidth: int, t: int) -> list:
