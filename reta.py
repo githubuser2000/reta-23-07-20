@@ -75,8 +75,8 @@ class Program:
                         ] |= eineSpaltenArtmitSpaltenNummern
                     except TypeError:
                         pass
-            x("xvx", tupl)
-            x("xvx", eineSpaltenArtmitSpaltenNummern)
+            #x("xvx", tupl)
+            #x("xvx", eineSpaltenArtmitSpaltenNummern)
             return self.spaltenArtenKey_SpaltennummernValue
 
         def spalten_removeDoublesNthenRemoveOneFromAnother():
@@ -180,10 +180,10 @@ class Program:
                                         neg,
                                         oneOfThingsAfterEqSign,
                                     )
-                                    alxp("geht 1:")
-                                    alxp((cmd[:eq], oneOfThingsAfterEqSign))
+                                    #alxp("geht 1:")
+                                    #alxp((cmd[:eq], oneOfThingsAfterEqSign))
                                 except KeyError:
-                                    alxp((cmd[:eq], oneOfThingsAfterEqSign))
+                                    #alxp((cmd[:eq], oneOfThingsAfterEqSign))
                                     cliout(
                                         'Der Unter-Paramaeter "--'
                                         + cmd[:eq]
@@ -268,7 +268,7 @@ class Program:
                                         ),
                                         neg,
                                     )
-                                    alxp("geht 2:")
+                                    #alxp("geht 2:")
                                     # kombiSpalten |= {self.kombiReverseDict[oneKombiSpalte]}
                                     pass
                                 except KeyError:
@@ -421,7 +421,7 @@ class Program:
             #                        except KeyError:
             #                            dataDicts[index1][index2] = (into2,)
             #                        # x("asd", [into2, case, into])
-            x("dadaDick", dataDicts)
+            # x("dadaDick", dataDicts)
             # x("PARA", paraDict)
             return paraMainDict, paraDict, dataDicts
 
@@ -515,13 +515,13 @@ class Program:
                     for index2, into2 in zip_longest(
                         index2a if case == 2 else (index2a,), intoA, fillvalue=into
                     ):
-                        x("asd", [into2, case, into, index2])
+                        # x("asd", [into2, case, into, index2])
                         try:
                             dataDicts[index1][index2] += (into2,)
                         except KeyError:
                             dataDicts[index1][index2] = (into2,)
-            x("dadaDick", dataDicts)
-            x("PARA", paraDict)
+            # x("dadaDick", dataDicts)
+            # x("PARA", paraDict)
             return paraMainDict, paraDict, dataDicts
 
         def mergeParameterDicts(
@@ -542,9 +542,9 @@ class Program:
             sein werden
             @return: Spaltennummer sagt welche Parameter es ingesamt dazu sind | die
             beiden Parameter sagen, welche Spalten es alle sind."""
-            x("QARA", (paraMainDict1, paraMainDict2))
+            #x("QARA", (paraMainDict1, paraMainDict2))
             paraMainDict1 = {**paraMainDict1, **paraMainDict2}
-            x("QARA", (paraDict1, paraDict2))
+            #x("QARA", (paraDict1, paraDict2))
             paraDict1 = {**paraDict1, **paraDict2}
             # x("uofs1", dataDicts1)
             # x("uofs2", dataDicts2)
@@ -575,7 +575,7 @@ class Program:
                     dataDicts3[i] = dict2
             # x("uufs", dataDicts3)
             # alxp(dataDicts3)
-            x("QORA", (paraDict1))
+            #x("QORA", (paraDict1))
             return paraDict1, dataDicts3
 
         Program.ParametersMain: namedtuple = namedtuple(
@@ -1911,7 +1911,7 @@ class Program:
         """
         allValues[2] = set((int(pNum) for pNum in allowedPrimNumbersForCommand))
         allValues[3] = set(Program.kombiParaNdataMatrix.keys())
-        x("aLLe", allValues)
+        #x("aLLe", allValues)
 
         paraNdataMatrix += [
             (
@@ -1947,10 +1947,10 @@ class Program:
         # x("l_p", self.dataDict[4])
         self.dataDict[3] = Program.kombiParaNdataMatrix
         # x("lüp", self.dataDict[3])
-        alxp(self.paraDict)
-        alxp("--|-")
-        alxp(self.dataDict)
-        alxp("--||")
+        #alxp(self.paraDict)
+        #alxp("--|-")
+        #alxp(self.dataDict)
+        #alxp("--||")
         self.tables.dataDict = self.dataDict
 
     def parametersToCommandsAndNumbers(
@@ -2295,11 +2295,11 @@ class Program:
         ) = self.tables.getConcat.concatVervielfacheZeile(
             self.relitable, self.rowsAsNumbers
         )
-        x("294", self.rowsAsNumbers)
+        #x("294", self.rowsAsNumbers)
         self.relitable, self.rowsAsNumbers = self.tables.getConcat.concatModallogik(
             self.relitable, self.tables.generRows, self.rowsAsNumbers
         )
-        x("294", self.rowsAsNumbers)
+        #x("294", self.rowsAsNumbers)
         (
             self.relitable,
             self.rowsAsNumbers,
@@ -2389,7 +2389,7 @@ class Program:
             spaltenreihenfolgeundnurdiese,
         ) = self.bringAllImportantBeginThings(argv)
         self.tables.getMainTable.createSpalteGestirn(self.relitable, self.rowsAsNumbers)
-        x("2943", self.rowsAsNumbers)
+        #x("2943", self.rowsAsNumbers)
         (
             finallyDisplayLines,
             newTable,
@@ -2402,9 +2402,9 @@ class Program:
             self.relitable,
             self.rowsAsNumbers,
         )
-        x("2944", self.rowsAsNumbers)
-        x("2944", self.relitable[0][92])
-        x("2944", len(self.relitable[0]))
+        #x("2944", self.rowsAsNumbers)
+        #x("2944", self.relitable[0][92])
+        #x("2944", len(self.relitable[0]))
         if len(self.rowsOfcombi) > 0:
             newTable = self.combiTableWorkflow(
                 animalsProfessionsTable,
@@ -2534,8 +2534,8 @@ class Program:
             finallyDisplayLines,
             kombiTable_Kombis,
         )
-        x("AAAC1", animalsProfessionsTable)
-        x("AAAC2", "ENDDD")
+        #x("AAAC1", animalsProfessionsTable)
+        #x("AAAC2", "ENDDD")
         (
             finallyDisplayLines_kombi,
             newTable_kombi_1,
@@ -2549,8 +2549,8 @@ class Program:
             self.rowsOfcombi,
             self.tables.getCombis.sumOfAllCombiRowsAmount,
         )
-        x("AAAD1", newTable_kombi_1)
-        x("AAAD2", "ENDDD")
+        #x("AAAD1", newTable_kombi_1)
+        #x("AAAD2", "ENDDD")
         KombiTables = self.tables.getCombis.prepareTableJoin(
             ChosenKombiLines, newTable_kombi_1
         )
