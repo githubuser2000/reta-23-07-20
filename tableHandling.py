@@ -798,7 +798,7 @@ class Tables:
                                             ):
                                                 table2[colNum][row] = deepcopy(
                                                     subTableCell[
-                                                        rowsOfcombi.inde#x(subRowNum + 1)
+                                                        rowsOfcombi.index(subRowNum + 1)
                                                     ]
                                                 )
                                             else:
@@ -810,7 +810,7 @@ class Tables:
                                                     else ""
                                                 ) + deepcopy(
                                                     subTableCell[
-                                                        rowsOfcombi.inde#x(subRowNum + 1)
+                                                        rowsOfcombi.index(subRowNum + 1)
                                                     ][0]
                                                 )
                                         else:
