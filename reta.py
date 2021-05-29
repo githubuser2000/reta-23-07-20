@@ -1778,6 +1778,12 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept,
+                ("Sittlichkeit", "sittlichkeit", "annaehrerung"),
+                set(),
+                {(179, 180)},
+            ),
+            (
+                Program.ParametersMain.konzept,
                 ("Führung", "führung", "fuehrung"),
                 set(),
                 {(173, 174)},
