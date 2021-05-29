@@ -2459,6 +2459,7 @@ class Program:
         alxp(
             "Unwichtig, weil Geschwindigkeit: Alle if = 0 raus hauen und vorher machen und danach alle weiteren in der schleife"
         )
+        alxp
         alxp(
             """Immer dann wenn ich die ganze relitable matrix deepcopy geklont habe, hätte ich das gar nicht tun müssen, da ich einfach nur die werte, die ich vorher raus genommen habe, einfach nur per copy oder deepcopy hätte nur rausnehmen müssen"""
         )
