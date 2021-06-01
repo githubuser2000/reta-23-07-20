@@ -75,8 +75,8 @@ class Program:
                         ] |= eineSpaltenArtmitSpaltenNummern
                     except TypeError:
                         pass
-            #x("xvx", tupl)
-            #x("xvx", eineSpaltenArtmitSpaltenNummern)
+            # x("xvx", tupl)
+            # x("xvx", eineSpaltenArtmitSpaltenNummern)
             return self.spaltenArtenKey_SpaltennummernValue
 
         def spalten_removeDoublesNthenRemoveOneFromAnother():
@@ -180,10 +180,10 @@ class Program:
                                         neg,
                                         oneOfThingsAfterEqSign,
                                     )
-                                    #alxp("geht 1:")
-                                    #alxp((cmd[:eq], oneOfThingsAfterEqSign))
+                                    # alxp("geht 1:")
+                                    # alxp((cmd[:eq], oneOfThingsAfterEqSign))
                                 except KeyError:
-                                    #alxp((cmd[:eq], oneOfThingsAfterEqSign))
+                                    # alxp((cmd[:eq], oneOfThingsAfterEqSign))
                                     cliout(
                                         'Der Unter-Paramaeter "--'
                                         + cmd[:eq]
@@ -268,7 +268,7 @@ class Program:
                                         ),
                                         neg,
                                     )
-                                    #alxp("geht 2:")
+                                    # alxp("geht 2:")
                                     # kombiSpalten |= {self.kombiReverseDict[oneKombiSpalte]}
                                     pass
                                 except KeyError:
@@ -542,9 +542,9 @@ class Program:
             sein werden
             @return: Spaltennummer sagt welche Parameter es ingesamt dazu sind | die
             beiden Parameter sagen, welche Spalten es alle sind."""
-            #x("QARA", (paraMainDict1, paraMainDict2))
+            # x("QARA", (paraMainDict1, paraMainDict2))
             paraMainDict1 = {**paraMainDict1, **paraMainDict2}
-            #x("QARA", (paraDict1, paraDict2))
+            # x("QARA", (paraDict1, paraDict2))
             paraDict1 = {**paraDict1, **paraDict2}
             # x("uofs1", dataDicts1)
             # x("uofs2", dataDicts2)
@@ -575,7 +575,7 @@ class Program:
                     dataDicts3[i] = dict2
             # x("uufs", dataDicts3)
             # alxp(dataDicts3)
-            #x("QORA", (paraDict1))
+            # x("QORA", (paraDict1))
             return paraDict1, dataDicts3
 
         Program.ParametersMain: namedtuple = namedtuple(
@@ -620,15 +620,27 @@ class Program:
                 "bälle",
             ),
             ("Wirtschaft", "wirtschaft"),
-            ("Menschliches", "menschliches",),
+            (
+                "Menschliches",
+                "menschliches",
+            ),
             (
                 "Pro_Contra",
                 "procontra",
                 "dagegendafuer",
             ),
-            ("Licht", "licht",),
-            ("Bedeutung", "bedeutung",),
-            ("Symbole", "symbole",),
+            (
+                "Licht",
+                "licht",
+            ),
+            (
+                "Bedeutung",
+                "bedeutung",
+            ),
+            (
+                "Symbole",
+                "symbole",
+            ),
             tuple(a[0] for a in primzahlvielfachesgalaxie),
             (
                 "Eigenschaften",
@@ -637,10 +649,22 @@ class Program:
                 "konzept",
                 "konzepte",
             ),
-            ("Inkrementieren", "inkrementieren",),
-            ("Operationen", "operationen",),
-            ("Meta_vs_Konkret_Universum", "universummetakonkret",),
-            ("Primzahlwirkung", "primzahlwirkung",),
+            (
+                "Inkrementieren",
+                "inkrementieren",
+            ),
+            (
+                "Operationen",
+                "operationen",
+            ),
+            (
+                "Meta_vs_Konkret_Universum",
+                "universummetakonkret",
+            ),
+            (
+                "Primzahlwirkung",
+                "primzahlwirkung",
+            ),
             ("alles"),
         )
 
@@ -680,7 +704,11 @@ class Program:
                 ),
                 {72},
             ),
-            (Program.ParametersMain.religionen, ("Sternpolygon", "sternpolygon"), {0, 6, 36}),
+            (
+                Program.ParametersMain.religionen,
+                ("Sternpolygon", "sternpolygon"),
+                {0, 6, 36},
+            ),
             (
                 Program.ParametersMain.religionen,
                 (
@@ -755,12 +783,12 @@ class Program:
             ),
             (
                 Program.ParametersMain.universum,
-                ("Kugeln_Kreise","kugelnkreise", "kugeln", "kreise"),
+                ("Kugeln_Kreise", "kugelnkreise", "kugeln", "kreise"),
                 {145},
             ),
             (
                 Program.ParametersMain.galaxie,
-                ("Kugeln_Kreise","kugelnkreise", "kugeln", "kreise"),
+                ("Kugeln_Kreise", "kugelnkreise", "kugeln", "kreise"),
                 {145},
             ),
             (
@@ -810,7 +838,10 @@ class Program:
             ),
             (
                 Program.ParametersMain.galaxie,
-                ("Modallogik", "modallogik",),
+                (
+                    "Modallogik",
+                    "modallogik",
+                ),
                 {148},
             ),
             (
@@ -862,7 +893,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.strukturgroesse,
-                ("Organisationen","organisationen", "organisation"),
+                ("Organisationen", "organisationen", "organisation"),
                 {82},
             ),
             (
@@ -956,7 +987,10 @@ class Program:
             ),
             (
                 Program.ParametersMain.universummetakonkret,
-                ("fließend","fluss",),
+                (
+                    "fließend",
+                    "fluss",
+                ),
                 set(),
                 set(),
                 set(),
@@ -986,7 +1020,10 @@ class Program:
             ),
             (
                 Program.ParametersMain.primzahlwirkung,
-                ("Richtung_als_Richtung", "richtungrichtung",),
+                (
+                    "Richtung_als_Richtung",
+                    "richtungrichtung",
+                ),
                 set(),
                 set(),
                 set(),
@@ -1060,7 +1097,10 @@ class Program:
             ),
             (
                 Program.ParametersMain.universummetakonkret,
-                ("Stau","stau",),
+                (
+                    "Stau",
+                    "stau",
+                ),
                 set(),
                 set(),
                 set(),
@@ -1135,8 +1175,22 @@ class Program:
                     131,
                 },
             ),
-            (Program.ParametersMain.universum, ("warum_Transzendentalie_=_Strukturgroesse_=_Charakter", "warumtranszendentaliezustrukturgroesseundcharakter"), {4, 54, 5, 165}),
-            (Program.ParametersMain.universum, ("warum_Transzendentalie_=_Komplexität_von_Michael_Commons", "warumtranszendentaliegleichkomplexitaet"), {65, 5, 166}),
+            (
+                Program.ParametersMain.universum,
+                (
+                    "warum_Transzendentalie_=_Strukturgroesse_=_Charakter",
+                    "warumtranszendentaliezustrukturgroesseundcharakter",
+                ),
+                {4, 54, 5, 165},
+            ),
+            (
+                Program.ParametersMain.universum,
+                (
+                    "warum_Transzendentalie_=_Komplexität_von_Michael_Commons",
+                    "warumtranszendentaliegleichkomplexitaet",
+                ),
+                {65, 5, 166},
+            ),
             (
                 Program.ParametersMain.universum,
                 (
@@ -1166,7 +1220,10 @@ class Program:
             ),
             (
                 Program.ParametersMain.operationen,
-                ("Multiplikation", "multiplikation",),
+                (
+                    "Multiplikation",
+                    "multiplikation",
+                ),
                 {158},
             ),
             (
@@ -1176,22 +1233,42 @@ class Program:
             ),
             (
                 Program.ParametersMain.wirtschaft,
-                ("Pflanzen", "pflanzen",),
+                (
+                    "Pflanzen",
+                    "pflanzen",
+                ),
                 {113},
             ),
             (
                 Program.ParametersMain.wirtschaft,
-                ("Maschinen", "maschinen", "maschine", "gerät", "geräte", "geraete", "geraet"),
+                (
+                    "Maschinen",
+                    "maschinen",
+                    "maschine",
+                    "gerät",
+                    "geräte",
+                    "geraete",
+                    "geraet",
+                ),
                 {89},
             ),
             (
                 Program.ParametersMain.wirtschaft,
-                ("Organisationsform", "organisationsform", "organisationsart", "firma", "verein"),
+                (
+                    "Organisationsform",
+                    "organisationsform",
+                    "organisationsart",
+                    "firma",
+                    "verein",
+                ),
                 {99},
             ),
             (
                 Program.ParametersMain.wirtschaft,
-                ("System", "system",),
+                (
+                    "System",
+                    "system",
+                ),
                 {
                     69,
                 },
@@ -1213,7 +1290,14 @@ class Program:
                 ),
                 {71},
             ),
-            (Program.ParametersMain.wirtschaft, ("BWL", "bwl",), {109}),
+            (
+                Program.ParametersMain.wirtschaft,
+                (
+                    "BWL",
+                    "bwl",
+                ),
+                {109},
+            ),
             (
                 Program.ParametersMain.menschliches,
                 (
@@ -1227,7 +1311,12 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("Intelligenzprobleme", "intelligenzprobleme", "intelligenzmaengel", "intelligenzmängel"),
+                (
+                    "Intelligenzprobleme",
+                    "intelligenzprobleme",
+                    "intelligenzmaengel",
+                    "intelligenzmängel",
+                ),
                 {147},
             ),
             (
@@ -1237,7 +1326,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("Gegentranszendentalien", "gegentranszendentalien", "gegenstrukturalien"),
+                (
+                    "Gegentranszendentalien",
+                    "gegentranszendentalien",
+                    "gegenstrukturalien",
+                ),
                 {138, 139},
             ),
             (
@@ -1254,7 +1347,15 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("Gefühle", "emotionen", "gefuehle", "gefuehle", "emotion", "gefühl", "gefuehl"),
+                (
+                    "Gefühle",
+                    "emotionen",
+                    "gefuehle",
+                    "gefuehle",
+                    "emotion",
+                    "gefühl",
+                    "gefuehl",
+                ),
                 {105},
             ),
             (
@@ -1265,7 +1366,10 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("Wirkung", "wirkung",),
+                (
+                    "Wirkung",
+                    "wirkung",
+                ),
                 {135},
             ),
             (
@@ -1410,7 +1514,10 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("Manipulation", "manipulation",),
+                (
+                    "Manipulation",
+                    "manipulation",
+                ),
                 {153},
             ),
             (
@@ -1499,17 +1606,26 @@ class Program:
             ),
             (
                 Program.ParametersMain.procontra,
-                ("pro_nutzen", "pronutzen",),
+                (
+                    "pro_nutzen",
+                    "pronutzen",
+                ),
                 {117},
             ),
             (
                 Program.ParametersMain.procontra,
-                ("Gegenposition", "gegenposition",),
+                (
+                    "Gegenposition",
+                    "gegenposition",
+                ),
                 {116},
             ),
             (
                 Program.ParametersMain.procontra,
-                ("Hilfe_erhalten", "hilfeerhalten",),
+                (
+                    "Hilfe_erhalten",
+                    "hilfeerhalten",
+                ),
                 {114},
             ),
             (
@@ -1533,37 +1649,58 @@ class Program:
             ),
             (
                 Program.ParametersMain.procontra,
-                ("nicht_miteinander_auskommen", "nichtauskommen",),
+                (
+                    "nicht_miteinander_auskommen",
+                    "nichtauskommen",
+                ),
                 {123},
             ),
             (
                 Program.ParametersMain.procontra,
-                ("nicht_dagegen", "nichtdagegen",),
+                (
+                    "nicht_dagegen",
+                    "nichtdagegen",
+                ),
                 {124},
             ),
             (
                 Program.ParametersMain.procontra,
-                ("kein_Gegenteil", "keingegenteil",),
+                (
+                    "kein_Gegenteil",
+                    "keingegenteil",
+                ),
                 {125},
             ),
             (
                 Program.ParametersMain.procontra,
-                ("nicht_dafür", "nichtdafuer",),
+                (
+                    "nicht_dafür",
+                    "nichtdafuer",
+                ),
                 {126},
             ),
             (
                 Program.ParametersMain.procontra,
-                ("Hilfe_nicht_gebrauchen", "hilfenichtgebrauchen",),
+                (
+                    "Hilfe_nicht_gebrauchen",
+                    "hilfenichtgebrauchen",
+                ),
                 {127},
             ),
             (
                 Program.ParametersMain.procontra,
-                ("nicht_helfen_können", "nichthelfenkoennen",),
+                (
+                    "nicht_helfen_können",
+                    "nichthelfenkoennen",
+                ),
                 {128},
             ),
             (
                 Program.ParametersMain.procontra,
-                ("nicht_abgeneigt", "nichtabgeneigt",),
+                (
+                    "nicht_abgeneigt",
+                    "nichtabgeneigt",
+                ),
                 {129},
             ),
             (
@@ -1579,12 +1716,29 @@ class Program:
                 ),
                 {15, 26},
             ),
-            (Program.ParametersMain.procontra, ("Gegenteil", "gegenteil",), {100, 101}),
-            (Program.ParametersMain.procontra, ("Harmonie", "harmonie",), {102, 103}),
+            (
+                Program.ParametersMain.procontra,
+                (
+                    "Gegenteil",
+                    "gegenteil",
+                ),
+                {100, 101},
+            ),
+            (
+                Program.ParametersMain.procontra,
+                (
+                    "Harmonie",
+                    "harmonie",
+                ),
+                {102, 103},
+            ),
             (Program.ParametersMain.licht, (), {20, 27}),
             (
                 Program.ParametersMain.bedeutung,
-                ("Vorzeichen", "vorzeichen",),
+                (
+                    "Vorzeichen",
+                    "vorzeichen",
+                ),
                 {118, 119},
             ),
             (
@@ -1651,10 +1805,21 @@ class Program:
                 set(),
                 set(),
             ),
-            (Program.ParametersMain.bedeutung, ("Konjunktiv_Wurzelbildung", "konjunktiv", "wurzel"), {106}),
             (
                 Program.ParametersMain.bedeutung,
-                ("Wesen_Züchten", "wesen", "zuechtung", "züchtung", "züchten", "zuechten"),
+                ("Konjunktiv_Wurzelbildung", "konjunktiv", "wurzel"),
+                {106},
+            ),
+            (
+                Program.ParametersMain.bedeutung,
+                (
+                    "Wesen_Züchten",
+                    "wesen",
+                    "zuechtung",
+                    "züchtung",
+                    "züchten",
+                    "zuechten",
+                ),
                 {107, 108, 109},
             ),
             (Program.ParametersMain.symbole, (), {36, 37}),
@@ -1696,7 +1861,7 @@ class Program:
                     "hart",
                 ),
                 set(),
-                {(159, 160),(161,162)},
+                {(159, 160), (161, 162)},
             ),
             (
                 Program.ParametersMain.konzept,
@@ -1726,6 +1891,12 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept,
+                ("Sinn_und_Zweck_des_Lebens", "sinn", "zweck", "bedeutung"),
+                set(),
+                {(181, 182)},
+            ),
+            (
+                Program.ParametersMain.konzept,
                 (
                     "Zeit_vs_Raum",
                     "zeit",
@@ -1744,7 +1915,7 @@ class Program:
                     "egalitaer",
                     "autoritaer",
                     "egalitär",
-                    "autoritär"
+                    "autoritär",
                 ),
                 set(),
                 {(163, 164)},
@@ -1802,13 +1973,22 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept,
-                ("Überheblichkeit", "überheblich", "ueberheblichkeit", "ueberheblich", "überheblichkeit"),
+                (
+                    "Überheblichkeit",
+                    "überheblich",
+                    "ueberheblichkeit",
+                    "ueberheblich",
+                    "überheblichkeit",
+                ),
                 set(),
                 {(171, 172)},
             ),
             (
                 Program.ParametersMain.konzept,
-                ("Polung_der_Liebe", "liebepolung",),
+                (
+                    "Polung_der_Liebe",
+                    "liebepolung",
+                ),
                 set(),
                 {(121, 122)},
             ),
@@ -1829,8 +2009,22 @@ class Program:
             (Program.ParametersMain.inkrementieren, ("um1",), {155}),
             (Program.ParametersMain.inkrementieren, ("um2",), {156}),
             (Program.ParametersMain.inkrementieren, ("um3",), {157}),
-            (Program.ParametersMain.inkrementieren, ("warum_Transzendentalie_=_Strukturgroesse_=_Charakter", "warumtranszendentaliezustrukturgroesseundcharakter"), {4, 54, 5, 165}),
-            (Program.ParametersMain.inkrementieren, ("warum_Transzendentalie_=_Komplexität_von_Michael_Commons", "warumtranszendentaliegleichkomplexitaet"), {65, 5 , 166}),
+            (
+                Program.ParametersMain.inkrementieren,
+                (
+                    "warum_Transzendentalie_=_Strukturgroesse_=_Charakter",
+                    "warumtranszendentaliezustrukturgroesseundcharakter",
+                ),
+                {4, 54, 5, 165},
+            ),
+            (
+                Program.ParametersMain.inkrementieren,
+                (
+                    "warum_Transzendentalie_=_Komplexität_von_Michael_Commons",
+                    "warumtranszendentaliegleichkomplexitaet",
+                ),
+                {65, 5, 166},
+            ),
         ]
 
         Program.kombiParaNdataMatrix = {
@@ -1847,7 +2041,10 @@ class Program:
                 "intelligenz",
                 "kreativitaet",
             ),
-            4: ("Liebe", "liebe",),
+            4: (
+                "Liebe",
+                "liebe",
+            ),
             5: (
                 "Transzendentalien_Strukturalien",
                 "transzendenz",
@@ -1876,10 +2073,22 @@ class Program:
             ),
             10: ("Motive_Ziele", "motivation", "motive", "ziele", "ziel", "motive"),
             11: ("analytische_Ontologie", "analytischeontologie", "ontologie"),
-            12: ("Emotionen", "emotionen", "gefuehle", "gefühle", "emotion", "gefühl", "gefühle"),
+            12: (
+                "Emotionen",
+                "emotionen",
+                "gefuehle",
+                "gefühle",
+                "emotion",
+                "gefühl",
+                "gefühle",
+            ),
             13: ("Personen", "personen", "berühmtheiten", "beruehmtheiten"),
             14: ("Wesen_Züchten", "wesen", "zuechten", "züchten"),
-            15: ("Gegentranszendentalien", "gegentranszendentalien", "gegenstrukturalien"),
+            15: (
+                "Gegentranszendentalien",
+                "gegentranszendentalien",
+                "gegenstrukturalien",
+            ),
             16: (
                 "Wirtschaftssysteme",
                 "wirtschaftssystem",
@@ -1917,7 +2126,7 @@ class Program:
         """
         allValues[2] = set((int(pNum) for pNum in allowedPrimNumbersForCommand))
         allValues[3] = set(Program.kombiParaNdataMatrix.keys())
-        #x("aLLe", allValues)
+        # x("aLLe", allValues)
 
         paraNdataMatrix += [
             (
@@ -1953,10 +2162,10 @@ class Program:
         # x("l_p", self.dataDict[4])
         self.dataDict[3] = Program.kombiParaNdataMatrix
         # x("lüp", self.dataDict[3])
-        #alxp(self.paraDict)
-        #alxp("--|-")
-        #alxp(self.dataDict)
-        #alxp("--||")
+        # alxp(self.paraDict)
+        # alxp("--|-")
+        # alxp(self.dataDict)
+        # alxp("--||")
         self.tables.dataDict = self.dataDict
 
     def parametersToCommandsAndNumbers(
@@ -2301,11 +2510,11 @@ class Program:
         ) = self.tables.getConcat.concatVervielfacheZeile(
             self.relitable, self.rowsAsNumbers
         )
-        #x("294", self.rowsAsNumbers)
+        # x("294", self.rowsAsNumbers)
         self.relitable, self.rowsAsNumbers = self.tables.getConcat.concatModallogik(
             self.relitable, self.tables.generRows, self.rowsAsNumbers
         )
-        #x("294", self.rowsAsNumbers)
+        # x("294", self.rowsAsNumbers)
         (
             self.relitable,
             self.rowsAsNumbers,
@@ -2395,7 +2604,7 @@ class Program:
             spaltenreihenfolgeundnurdiese,
         ) = self.bringAllImportantBeginThings(argv)
         self.tables.getMainTable.createSpalteGestirn(self.relitable, self.rowsAsNumbers)
-        #x("2943", self.rowsAsNumbers)
+        # x("2943", self.rowsAsNumbers)
         (
             finallyDisplayLines,
             newTable,
@@ -2408,9 +2617,9 @@ class Program:
             self.relitable,
             self.rowsAsNumbers,
         )
-        #x("2944", self.rowsAsNumbers)
-        #x("2944", self.relitable[0][92])
-        #x("2944", len(self.relitable[0]))
+        # x("2944", self.rowsAsNumbers)
+        # x("2944", self.relitable[0][92])
+        # x("2944", len(self.relitable[0]))
         if len(self.rowsOfcombi) > 0:
             newTable = self.combiTableWorkflow(
                 animalsProfessionsTable,
@@ -2430,7 +2639,9 @@ class Program:
         alxp(
             """Funktionsköpfe überall noch dokumentieren wo sie bisher noch nicht dokumentiert sind"""
         )
-        alxp("""Ich könnte die <td> class parameter auf der ersten bzw. nullten Spalte belassen, anstelle diese Redundanz zu halten: deutlich kleinere html""")
+        alxp(
+            """Ich könnte die <td> class parameter auf der ersten bzw. nullten Spalte belassen, anstelle diese Redundanz zu halten: deutlich kleinere html"""
+        )
         alxp("""Quellcode muss noch mehr dokumentiert werden in Funktionen usw.""")
         alxp(
             """Ich müsste RETA mal testen, ob ab der n ten Zeile oder alle paar Zeilen das Gleiche rauskommt, wie wenn ab Zeile 1 begonnen wird."""
@@ -2541,8 +2752,8 @@ class Program:
             finallyDisplayLines,
             kombiTable_Kombis,
         )
-        #x("AAAC1", animalsProfessionsTable)
-        #x("AAAC2", "ENDDD")
+        # x("AAAC1", animalsProfessionsTable)
+        # x("AAAC2", "ENDDD")
         (
             finallyDisplayLines_kombi,
             newTable_kombi_1,
@@ -2556,8 +2767,8 @@ class Program:
             self.rowsOfcombi,
             self.tables.getCombis.sumOfAllCombiRowsAmount,
         )
-        #x("AAAD1", newTable_kombi_1)
-        #x("AAAD2", "ENDDD")
+        # x("AAAD1", newTable_kombi_1)
+        # x("AAAD2", "ENDDD")
         KombiTables = self.tables.getCombis.prepareTableJoin(
             ChosenKombiLines, newTable_kombi_1
         )
