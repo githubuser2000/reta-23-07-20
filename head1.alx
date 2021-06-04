@@ -4,7 +4,7 @@
 		<meta charset="UTF-8"/><title>Religionstabellen durch ReTa generiert</title>
 		<style type="text/css">
 			label {
-				font-size: medium;
+				font-size: 100%;
 			}
 			/*
 
@@ -12,11 +12,12 @@
 			    margin: 10px;
 			    border-collapse: separate;
 			}
-
+            */
 			td {
-			    border-radius: 55px;
+				font-size: 100%;
+			    /*border-radius: 55px;
 			    background-color: white;
-			    border: 1px solid gray;
-			}*/
+			    border: 1px solid gray;*/
+			}
 		</style>
 		<script type="text/javascript" language="JavaScript1.2">

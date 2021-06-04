@@ -79,7 +79,8 @@ class bbCodeSyntax(OutputSyntax):
         spalte = int(spalte)
         spalte += 2
         return "".join(
-            ("[td",
+            (
+                "[td",
                 (
                     '="background-color:#000000;color:#ffffff"'
                     if content is not None and int(content) % 2 == 0
@@ -87,7 +88,8 @@ class bbCodeSyntax(OutputSyntax):
                 )
                 if spalte == 0
                 else '=""',
-            "]",)
+                "]",
+            )
         )
 
     beginTable = "[table]"
@@ -148,7 +150,7 @@ class htmlSyntax(OutputSyntax):
     def generateCell(
         self, spalte: int, SpaltenParameter: dict, content=None, zeile=None
     ) -> str:
-        if zeile == '':
+        if zeile == "":
             zeile = 0
         # x("uzt", SpaltenParameter)
         # x("qay", spalte)
@@ -193,9 +195,7 @@ class htmlSyntax(OutputSyntax):
                         #    para1o2name = couples[i][paraNum]
                         if len(para1o2name.strip()) != 0 or True:
                             if paraNum == 1:
-                                para1o2name = "".join(
-                                    ["p3_", str(c), "_", para1o2name]
-                                )
+                                para1o2name = "".join(["p3_", str(c), "_", para1o2name])
                             try:
                                 things1[paraNum] += [para1o2name]
                             except KeyError:
@@ -207,9 +207,15 @@ class htmlSyntax(OutputSyntax):
             for i, el in enumerate(values):
                 if el != "alles":
                     try:
-                        things[key] += (el,",",)
+                        things[key] += (
+                            el,
+                            ",",
+                        )
                     except KeyError:
-                        things[key] = (el,",",)
+                        things[key] = (
+                            el,
+                            ",",
+                        )
             things[key] = "".join(things[key])
 
         spalte += 2
@@ -217,22 +223,25 @@ class htmlSyntax(OutputSyntax):
             return ""
         else:
             return "".join(
-                ('              <td class="',
-                "z_",
-                str(zeile),
-                " r_",
-                str(spalte),
-                " p1_",
-                things[0],
-                " p2_",
-                (things[1] if len(things) > 1 else ""),
-                '"',
-                'style="background-color:#000000;color:#ffffff;display:none"'
-                if content is not None and int(content) % 2 == 0
-                else 'style="background-color:#ffffff;color:#000000;display:none"'
-                if spalte == 0
-                else 'style="display:none"',
-                ">\n",))
+                (
+                    '              <td class="',
+                    "z_",
+                    str(zeile),
+                    " r_",
+                    str(spalte),
+                    " p1_",
+                    things[0],
+                    " p2_",
+                    (things[1] if len(things) > 1 else ""),
+                    '"',
+                    'style="background-color:#000000;color:#ffffff;display:none;font-size:100%"'
+                    if content is not None and int(content) % 2 == 0
+                    else 'style="background-color:#ffffff;color:#000000;display:none;font-size:100%"'
+                    if spalte == 0
+                    else 'style="display:none;font-size:100%"',
+                    ">\n",
+                )
+            )
 
     beginTable = "      <table border=0>"
     endTable = "        </table>\n"

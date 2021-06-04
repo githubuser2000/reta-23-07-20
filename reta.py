@@ -1232,6 +1232,16 @@ class Program:
                 {76, 77, 81, 104},
             ),
             (
+                Program.ParametersMain.menschliches,
+                ("Fachgebiete", "fachgebiete", "fachbereiche", "themen"),
+                {183},
+            ),
+            (
+                Program.ParametersMain.wirtschaft,
+                ("Fachgebiete", "fachgebiete", "fachbereiche", "themen"),
+                {183},
+            ),
+            (
                 Program.ParametersMain.wirtschaft,
                 (
                     "Pflanzen",
@@ -2636,6 +2646,9 @@ class Program:
             newTable, spaltenreihenfolgeundnurdiese
         )
         self.tables.getOut.cliOut(finallyDisplayLines, newTable, numlen, rowsRange)
+        alxp(
+            """text html tag in tabellen-zellen rein machen, damit handys nicht total unterschiedlich große Schrift setzen"""
+        )
         alxp(
             """Funktionsköpfe überall noch dokumentieren wo sie bisher noch nicht dokumentiert sind"""
         )
