@@ -234,11 +234,11 @@ class htmlSyntax(OutputSyntax):
                     " p2_",
                     (things[1] if len(things) > 1 else ""),
                     '"',
-                    'style="background-color:#000000;color:#ffffff;display:none;font-size:100%"'
+                    'style="background-color:#000000;color:#ffffff;display:none"'
                     if content is not None and int(content) % 2 == 0
-                    else 'style="background-color:#ffffff;color:#000000;display:none;font-size:100%"'
+                    else 'style="background-color:#ffffff;color:#000000;display:none"'
                     if spalte == 0
-                    else 'style="display:none;font-size:100%"',
+                    else 'style="display:none"',
                     ">\n",
                 )
             )
