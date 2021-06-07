@@ -183,39 +183,64 @@ class Program:
                                     # alxp("geht 1:")
                                     # alxp((cmd[:eq], oneOfThingsAfterEqSign))
                                 except KeyError:
-                                    # alxp((cmd[:eq], oneOfThingsAfterEqSign))
-                                    cliout(
-                                        'Der Unter-Paramaeter "--'
-                                        + cmd[:eq]
-                                        + '" mit dem Textwert "'
-                                        + oneOfThingsAfterEqSign
-                                        + '" existiert hier nicht als Befehl für Haupt-Parameter'
-                                        + " -spalten"
-                                        + " !"
-                                        + " Es ist nur möglich:\n--"
-                                        + str(
-                                            ", --".join(
-                                                tuple(
-                                                    set(
-                                                        key[0]
-                                                        for key in self.paraDict.keys()
+                                    nebenParameters: list = []
+                                    nebenparameterWerte: list = []
+                                    for value in self.paraDict.keys():
+                                        nebenParameters += [value[0]]
+                                        nebenparameterWerte += [value[1]]
+
+                                    if cmd[:eq] in nebenParameters:
+                                        possibleNebenparameterWert: list = []
+                                        for nebenParameter, nebenparameterWert in zip(
+                                            nebenParameters,
+                                            nebenparameterWerte,
+                                        ):
+                                            if nebenParameter == cmd[:eq]:
+                                                possibleNebenparameterWert += [
+                                                    nebenparameterWert
+                                                ]
+
+                                        cliout(
+                                            'Der Unter-Paramaeter "--'
+                                            + cmd[:eq]
+                                            + '" existiert, aber nicht mit dem Textwert "'
+                                            + oneOfThingsAfterEqSign
+                                            + '" mögliche Nebenparameter-Textwerte, für diesen Unter-Parameter, sind: '
+                                            + ",".join(possibleNebenparameterWert)
+                                        )
+                                    else:
+                                        cliout(
+                                            'Der Unter-Paramaeter "--'
+                                            + cmd[:eq]
+                                            + '" mit dem Textwert "'
+                                            + oneOfThingsAfterEqSign
+                                            + '" existiert hier nicht als Befehl für Haupt-Parameter'
+                                            + " -spalten"
+                                            + " !"
+                                            + " Es ist nur möglich:\n--"
+                                            + str(
+                                                ", --".join(
+                                                    tuple(
+                                                        set(
+                                                            key[0]
+                                                            for key in self.paraDict.keys()
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                            + ", --breiten, --breite"
+                                            + "\nmit dem Werten dahinter:\n"
+                                            + str(
+                                                ",".join(
+                                                    tuple(
+                                                        set(
+                                                            key[1]
+                                                            for key in self.paraDict.keys()
+                                                        )
                                                     )
                                                 )
                                             )
                                         )
-                                        + ", --breiten, --breite"
-                                        + "\nmit dem Werten dahinter:\n"
-                                        + str(
-                                            ",".join(
-                                                tuple(
-                                                    set(
-                                                        key[1]
-                                                        for key in self.paraDict.keys()
-                                                    )
-                                                )
-                                            )
-                                        )
-                                    )
 
                     else:
                         try:
