@@ -2672,37 +2672,18 @@ class Program:
         )
         self.tables.getOut.cliOut(finallyDisplayLines, newTable, numlen, rowsRange)
         alxp(
-            """text html tag in tabellen-zellen rein machen, damit handys nicht total unterschiedlich große Schrift setzen"""
-        )
-        alxp(
-            """Funktionsköpfe überall noch dokumentieren wo sie bisher noch nicht dokumentiert sind"""
-        )
-        alxp(
             """Ich könnte die <td> class parameter auf der ersten bzw. nullten Spalte belassen, anstelle diese Redundanz zu halten: deutlich kleinere html"""
-        )
-        alxp("""Quellcode muss noch mehr dokumentiert werden in Funktionen usw.""")
-        alxp(
-            """Ich müsste RETA mal testen, ob ab der n ten Zeile oder alle paar Zeilen das Gleiche rauskommt, wie wenn ab Zeile 1 begonnen wird."""
-        )
-        alxp(
-            """intelligentere detailliertere Fehlermeldung, wenn man falsche Parameter übergeben hat"""
         )
         alxp(
             """Viele Routinen schreiben, die Codeteile immer dann überspringen, wenn man weiß, dass sie nicht benötigt werden, zur Geschwindigkeitssteigerung"""
         )
         alxp("""Ctrl+C kontrollierter abbrechen lassen!""")
-        alxp(
-            """Ich könnte auch ganz einfach die mir bekannten Geschwindigkeitsfehler korrigieren: konkatenieren von strings und alle iterierungen von listen überprüfen oder gleich die tabelle als dict dict gestalten"""
-        )
         # alxp("""2 mal pro seitlich = können (2) seitlich""")
         alxp("""Pytest verwenden wegen Geschwindigkeitstests.""")
         # alxp(
         #    "1. http://goexchange.de/viewtopic.php?f=13&t=2683#p17239 () \n    9. anderen etwas vormachen können (Bahai)\n    1/9. den anderen Strukturgrößen außer der Einheit (9, 1/9) etwas vormachen können"
         # )
         alxp("""aus der ergebnis relitable ein dict machen !!!! bestes !!! """)
-        alxp(
-            """Unwichtig weil Geschwindigkeit: Bei vielen Algorithmen schauen, ob nicht das Durchiterieren extrem lahmt, weil es polynomielle Laufzeit hat, statt lineare, wie es eigentlich sein sollte"""
-        )
         alxp(
             """breiten geht nicht richtig und zeilenumbruch funktioniert oft nicht bei zu breit, warum nur"""
         )
@@ -2711,27 +2692,14 @@ class Program:
              Außerem, dass dann die relitable ganz geklont werden muss. Und die Einzelsachen
              müssten nur selbst geklont werden und mehr nicht."""
         )
-        alxp(
-            "Unwichtig, weil Geschwindigkeit: Alle if = 0 raus hauen und vorher machen und danach alle weiteren in der schleife"
-        )
         alxp
         alxp(
             """Immer dann wenn ich die ganze relitable matrix deepcopy geklont habe, hätte ich das gar nicht tun müssen, da ich einfach nur die werte, die ich vorher raus genommen habe, einfach nur per copy oder deepcopy hätte nur rausnehmen müssen"""
         )
-        alxp("""Die Sachen "obwohl man nicht kann" aus Symboliken nehmen.""")
         alxp(
             "Ich muss bei vielen Funktionen noch den Funktionskopf, Quellcode hier dokumentieren"
         )
         alxp("vim: iIaAoOjJ mit Registern arbeiten wegen Löschen ohne ausschneiden")
-        alxp(
-            """Ich könnte einen schnelleren String oder Listen usw. Datentyp erschaffen.
-             Dazu erbe ich String oder etc. den Addieren oder so Operator schreibe ich um.
-             dass der sich die Stellen nur merken soll und nicht konkatenieren soll.
-             Dann gibt es dann am Ende nur noch so einen Extra-Befehl, der das dann erst wirklich konkatenieren soll!
-            Mit f-string concateniert er am Schnellsten, gut ist auch: building a list of strings, then calling "".join()
-            plus damit zusammen:  using a list comprehension inline
-            """
-        )
         alxp(
             """ Überlegen wo ich besser Hashmaps statt Listen verwenden sollte oder Tuple. Die meisten Listen durch Dicts ersetzen: fast immer schneller! """
         )
@@ -2743,9 +2711,6 @@ class Program:
         )
         alxp(
             """Ich müsste wirklich noch total überall schauen und zu jedem Punkt im Forum zu gleichförmiges-Polygon-Religionen"""
-        )
-        alxp(
-            """Einprogrammieren, dass die Fehlerausgabe besser wird, wenn man falsche Parameter setzt."""
         )
         # alxp("Mond 125 wird nicht angezeigt, also ggf. einige andere nicht oder fälschlicherweise Sonnen?")
         # alxp("1. Clean Code\n2. Vollständigkeit der Befehle auch")
