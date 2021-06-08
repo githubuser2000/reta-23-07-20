@@ -1891,6 +1891,12 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept,
+                ("Götter_Propheten_und_Familien", "familiaer", "goettlich"),
+                set(),
+                {(184, 185)},
+            ),
+            (
+                Program.ParametersMain.konzept,
                 (
                     "sanft_vs_hart",
                     "sanft",
