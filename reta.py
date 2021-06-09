@@ -1891,6 +1891,12 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept,
+                ("wertvoll", "wertlos"),
+                set(),
+                {(186, 187)},
+            ),
+            (
+                Program.ParametersMain.konzept,
                 ("Götter_Propheten_und_Familien", "familiaer", "goettlich"),
                 set(),
                 {(184, 185)},
