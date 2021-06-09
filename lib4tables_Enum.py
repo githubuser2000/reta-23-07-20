@@ -247,3 +247,39 @@ tableTags_kombiTable = {
         15,
     },
 }
+"""
+Hier sind die ganzen Spaltennummern enthalten:
+        self.spaltenArtenKey_SpaltennummernValue = {
+            (0, 0): set(),
+            (0, 1): set(),
+            (0, 2): set(),
+            (0, 3): set(),
+            (0, 4): set(),
+            (1, 0): set(),
+            (1, 1): set(),
+            (1, 2): set(),
+            (1, 3): set(),
+            (1, 4): set(),
+        }
+So heißen die dazu gehörignen Benennungen:
+self.spaltenTypeNaming: namedtuple = namedtuple(
+            "SpaltenTyp",
+            "ordinary generated1 concat1 kombi1 boolAndTupleSet1 ordinaryNot generate1dNot concat1Not kombi1Not boolAndTupleSet1Not",
+        )
+oder so:
+        self.rowsAsNumbers = self.spaltenArtenKey_SpaltennummernValue[
+            self.spaltenTypeNaming.ordinary
+        ]
+        self.generRows = self.spaltenArtenKey_SpaltennummernValue[
+            self.spaltenTypeNaming.generated1
+        ]
+        self.puniverseprims = self.spaltenArtenKey_SpaltennummernValue[
+            self.spaltenTypeNaming.concat1
+        ]
+        self.rowsOfcombi = self.spaltenArtenKey_SpaltennummernValue[
+            self.spaltenTypeNaming.kombi1
+        ]
+        self.onlyGenerated = self.spaltenArtenKey_SpaltennummernValue[
+            self.spaltenTypeNaming.boolAndTupleSet1
+        ]
+"""

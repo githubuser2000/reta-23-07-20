@@ -40,13 +40,6 @@ class Program:
         global shellRowsAmount
 
         def resultingSpaltenFromTuple(tupl: tuple, neg, paraValue=None) -> tuple:
-            # x("TTT", paraValue)
-            # x("TIT", tupl)
-            # tupl2: list = []
-            # for eineSpaltenArtmitSpaltenNummern in tupl:
-            #    if type(eineSpaltenArtmitSpaltenNummern) is set:
-            #        tupl2 += [eineSpaltenArtmitSpaltenNummern]
-            # tupl = tuple(tupl2)
             for i, eineSpaltenArtmitSpaltenNummern in enumerate(tupl):
                 """
                 Die Variable self.tables.spalteGestirn braucht man gar nicht mehr !!!
@@ -259,7 +252,7 @@ class Program:
                             cliout(
                                 'Der Unter-Paramaeter "--'
                                 + cmd
-                                + '" existiert hier nich als Befehl für Haupt-Parameter'
+                                + '" existiert hier nicht als Befehl für Haupt-Parameter'
                                 + " -spalten"
                                 + " !"
                                 + " Es ist nur möglich: --"
