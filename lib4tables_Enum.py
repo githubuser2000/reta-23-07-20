@@ -226,13 +226,24 @@ tableTags = {
 
 
 tableTags_kombiTable = {
-    {ST.universum, ST.sternPolygon, ST.gleichfoermigesPolygon}: {
-        None,
-    },
     {ST.galaxie, ST.sternPolygon, ST.gleichfoermigesPolygon}: {
-        None,
+        1,
+        2,
+        3,
+        4,
+        7,
+        8,
+        10,
+        12,
+        13,
+        16,
     },
     {ST.universum, ST.galaxie, ST.sternPolygon, ST.gleichfoermigesPolygon}: {
-        None,
+        5,
+        6,
+        9,
+        11,
+        14,
+        15,
     },
 }
