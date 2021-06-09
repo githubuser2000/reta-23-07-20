@@ -111,6 +111,34 @@ tableTags = {
         133,
         134,
         136,
+        139,
+        146,
+        147,
+        151,
+        152,
+        153,
+        159,
+        160,
+        163,
+        164,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
     },
     {ST.universum, ST.sternPolygon}: {
         4,
@@ -138,14 +166,44 @@ tableTags = {
         129,
         130,
         137,
+        138,
+        140,
+        141,
+        142,
+        143,
+        144,
+        158,
+        169,
     },
-    {ST.galaxie, ST.gleichfoermigesPolygon}: {16, 37, 42, 58},
+    {ST.galaxie, ST.gleichfoermigesPolygon}: {16, 37, 42, 58, 148, 161, 162},
     {ST.universum, ST.gleichfoermigesPolygon, ST.sternPolygon}: {
         20,
         21,
     },
-    {ST.galaxie, ST.gleichfoermigesPolygon, ST.sternPolygon}: {52, 53, 87},
-    {ST.galaxie, ST.universum, ST.sternPolygon}: {75, 76, 84, 101, 103, 135},
+    {ST.galaxie, ST.gleichfoermigesPolygon, ST.sternPolygon}: {
+        52,
+        53,
+        87,
+        154,
+        167,
+        168,
+    },
+    {ST.galaxie, ST.universum, ST.sternPolygon}: {
+        75,
+        76,
+        84,
+        101,
+        103,
+        135,
+        145,
+        149,
+        150,
+        155,
+        156,
+        157,
+        165,
+        166,
+    },
     {ST.universum, ST.gleichfoermigesPolygon}: {
         131,
     },
@@ -159,3 +217,22 @@ tableTags = {
 # 120 = 3*3=9, größere Zahl fühlt sich genervt, gestört, regt sich auf, wird griesgrämig wegen niedrigerer Zahl
 # 130 = 19*1 Abstand „niederes nicht motivieren können“ (negative Zahlen sind Antitranszendentalien und nicht "böse nach außen")
 # 137 Gegenspieler = Antagonisten
+# 144 = 2*3*3=18 „kann vereinen“, „nutzt zum Vorteil“
+# 150 = Systemsachen (Typen 13,14,15)
+# 157 = Inkrementieren um 3
+# 158 steht schon drin
+# 166 = Warum die Transzendentalie zu der Komplexitäts-Sache von Michael Commons (und darüber hinaus, höher) gehört
+# 170 = Herrschaft (7 und oder 7*n) über welche Spezies
+
+
+tableTags_kombiTable = {
+    {ST.universum, ST.sternPolygon, ST.gleichfoermigesPolygon}: {
+        None,
+    },
+    {ST.galaxie, ST.sternPolygon, ST.gleichfoermigesPolygon}: {
+        None,
+    },
+    {ST.universum, ST.galaxie, ST.sternPolygon, ST.gleichfoermigesPolygon}: {
+        None,
+    },
+}
