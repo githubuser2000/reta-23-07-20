@@ -226,11 +226,14 @@ class htmlSyntax(OutputSyntax):
         else:
             p4: str
             try:
-                p4 = str(tables.generatedSpaltenParameter_TagsKombi(spalte))
+                p4 = str(tables.generatedSpaltenParameter_Tags[spalte - 2])
             except KeyError:
                 p4 = ""
             except:
                 p4 = ""
+            x("nix", tables.generatedSpaltenParameter_Tags)
+            x("nüx", spalte - 2)
+            x("nöx2", p4)
 
             return "".join(
                 (
@@ -246,7 +249,7 @@ class htmlSyntax(OutputSyntax):
                     " p4_",
                     p4,
                     '"',
-                    'style="background-color:#000000;color:#ffffff;display:none"'
+                    ' style="background-color:#000000;color:#ffffff;display:none"'
                     if content is not None and int(content) % 2 == 0
                     else 'style="background-color:#ffffff;color:#000000;display:none"'
                     if spalte == 0
