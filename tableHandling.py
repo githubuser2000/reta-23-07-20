@@ -126,9 +126,10 @@ class Tables:
 
     def __init__(self):
         global originalLinesRange
-        self.generatedSpaltenParameter_Tags = {}
         self.rowNumDisplay2rowNumOrig = {}
         self.generatedSpaltenParameter = {}
+        self.generatedSpaltenParameter_Tags = {}
+        self.generatedSpaltenParameter_TagsKombi = {}
         self.getPrepare = Prepare(self, originalLinesRange, shellRowsAmount)
         self.getCombis = self.Combi(self)
         self.getConcat = Concat(self)

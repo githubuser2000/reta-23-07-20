@@ -541,27 +541,32 @@ class Prepare:
                 new2Lines: list = []
                 rowToDisplay = 0
                 h = 0
+
                 for t, cell in enumerate(line):
                     if t in rowsAsNumbers:
-                        if u == 0 and combiRows == 0:
-                            try:
-                                if (
-                                    rowToDisplay
-                                    not in self.tables.generatedSpaltenParameter
-                                ):
-                                    pass
-                                    self.tables.generatedSpaltenParameter[
+                        if u == 0:
+                            if combiRows == 0:
+                                try:
+                                    if (
                                         rowToDisplay
-                                    ] = self.tables.dataDict[0][t]
-                                    self.tables.generatedSpaltenParameter_Tags[
+                                        not in self.tables.generatedSpaltenParameter
+                                    ):
+                                        self.tables.generatedSpaltenParameter[
+                                            rowToDisplay
+                                        ] = self.tables.dataDict[0][t]
+                                        self.tables.generatedSpaltenParameter_Tags[
+                                            rowToDisplay
+                                        ] = lib4tables_Enum.tableTags2[t]
+                                except KeyError:
+                                    pass
+
+                            else:
+                                try:
+                                    self.tables.generatedSpaltenParameter_TagsKombi[
                                         rowToDisplay
                                     ] = lib4tables_Enum.tableTags2[t]
-                            except KeyError:
-                                pass
-                                # x("rrr", t)
-                                # alxp("__")
-                                # x("wwi", cell)
-                                # x("iii", self.tables.dataDict[0])
+                                except KeyError:
+                                    pass
 
                         rowToDisplay += 1
                         newLines: list = [[]] * headingsAmount
