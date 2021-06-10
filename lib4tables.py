@@ -224,6 +224,14 @@ class htmlSyntax(OutputSyntax):
         if len(things) < 2:
             return ""
         else:
+            p4: str
+            try:
+                p4 = str(tables.generatedSpaltenParameter_TagsKombi(spalte))
+            except KeyError:
+                p4 = ""
+            except:
+                p4 = ""
+
             return "".join(
                 (
                     '              <td class="',
@@ -235,6 +243,8 @@ class htmlSyntax(OutputSyntax):
                     things[0],
                     " p2_",
                     (things[1] if len(things) > 1 else ""),
+                    " p4_",
+                    p4,
                     '"',
                     'style="background-color:#000000;color:#ffffff;display:none"'
                     if content is not None and int(content) % 2 == 0

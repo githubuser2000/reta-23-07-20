@@ -514,7 +514,7 @@ class Tables:
                                                         subCellWidth
                                                     )
                                                 )
-                                                + self.__outType.endCell,
+                                                + self.__outType.endCell
                                             )
                                         if type(self.__outType) is csvSyntax:
                                             line += [coloredSubCell]
@@ -543,7 +543,7 @@ class Tables:
                                                     tables=self.tables,
                                                 )
                                                 + "".ljust(subCellWidth)
-                                                + self.__outType.endCell,
+                                                + self.__outType.endCell
                                             )
                                         if type(self.__outType) is csvSyntax:
                                             line += [coloredSubCell]
