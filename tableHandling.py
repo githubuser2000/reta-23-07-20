@@ -80,7 +80,7 @@ class Tables:
 
     @property
     def nummeriere(self):
-        """ # Nummerierung der Zeilen, z.B. Religion 1,2,3 """
+        """# Nummerierung der Zeilen, z.B. Religion 1,2,3"""
         return self.getOut.nummerierung
 
     @nummeriere.setter
@@ -126,6 +126,7 @@ class Tables:
 
     def __init__(self):
         global originalLinesRange
+        self.generatedSpaltenParameter_Tags = {}
         self.rowNumDisplay2rowNumOrig = {}
         self.generatedSpaltenParameter = {}
         self.getPrepare = Prepare(self, originalLinesRange, shellRowsAmount)
@@ -200,7 +201,7 @@ class Tables:
 
         @property
         def nummeriere(self):
-            """ # Nummerierung der Zeilen, z.B. Religion 1,2,3 """
+            """# Nummerierung der Zeilen, z.B. Religion 1,2,3"""
             return self.nummerierung
 
         @nummeriere.setter
@@ -265,7 +266,7 @@ class Tables:
             @return: nichts
             """
             global output, shellRowsAmount
-            #x("hce", self.tables.generatedSpaltenParameter)
+            # x("hce", self.tables.generatedSpaltenParameter)
 
             def findMaxCellTextLen(
                 finallyDisplayLines: set, newTable: list, rowsRange: range
@@ -335,7 +336,7 @@ class Tables:
                 if len(self.finallyDisplayLines) > 0 and shellRowsAmount != 0
                 else 0
             )
-            #x("NIXX", self.tables.dataDict)
+            # x("NIXX", self.tables.dataDict)
             self.finallyDisplayLines[0] = ""
             lastSubCellIndex = -1
             lastlastSubCellIndex = -2
@@ -675,7 +676,7 @@ class Tables:
 
         def prepareTableJoin(self, ChosenKombiLines, newTable_kombi_1):
             KombiTables = []
-            #x("AAAB", (ChosenKombiLines, newTable_kombi_1,))
+            # x("AAAB", (ChosenKombiLines, newTable_kombi_1,))
             for key, value in ChosenKombiLines.items():
                 """Zeilennummern der kombi, die hinten dran kommen sollen
                      an die Haupt- und Anzeigetabelle
@@ -748,7 +749,7 @@ class Tables:
 
             # regex = re.compile(r"\s|\s+")
             # if self.tables.textWidth == 0 and type(self.tables.getOut.outType) in [
-            #x("AAAA", manySubTables)
+            # x("AAAA", manySubTables)
             if type(self.tables.getOut.outType) in [
                 htmlSyntax,
                 bbCodeSyntax,
@@ -882,7 +883,8 @@ class Tables:
                             # #x("AAA5", (kombiLineNumber, kombiNumber == 125,))
                             if (
                                 # kombiNumber == ZeilennummerOfOnlyDisplayingOnes
-                                kombiNumber in displayingZeilen
+                                kombiNumber
+                                in displayingZeilen
                             ):
                                 # #x("AAA8", (ZeilennummerOfOnlyDisplayingOnes, kombiLineNumber, kombiLine,))
                                 try:
@@ -1051,10 +1053,10 @@ class Tables:
                                             in self.tables.generatedSpaltenParameter
                                         ):
                                             raise ValueError
-                                        #x(
+                                        # x(
                                         #    "sss",
                                         #    len(self.tables.generatedSpaltenParameter),
-                                        #)
+                                        # )
                                         into: list = []
                                         for elementParameter in self.tables.dataDict[3][
                                             a
@@ -1084,9 +1086,9 @@ class Tables:
                 self.kombiTable_Kombis = [[]]
             # #x("idiot", self.tables.generatedSpaltenParameter)
 
-            #x("AAA1", self.kombiTable)
-            #x("AAA2", self.kombiTable_Kombis)
-            #x("AAA3", self.maintable2subtable_Relation)
+            # x("AAA1", self.kombiTable)
+            # x("AAA2", self.kombiTable_Kombis)
+            # x("AAA3", self.maintable2subtable_Relation)
 
             return (
                 self.kombiTable,

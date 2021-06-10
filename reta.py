@@ -250,12 +250,12 @@ class Program:
 
                         except KeyError:
                             cliout(
-                                'Der Unter-Paramaeter "--'
+                                'Der Unter-Parameter "--'
                                 + cmd
                                 + '" existiert hier nicht als Befehl für Haupt-Parameter'
                                 + " -spalten"
-                                + " !"
-                                + " Es ist nur möglich: --"
+                                + ", oder dieser Parameter braucht Werte analog wie: \n--unterParameter=Wert1\n"
+                                + "Es ist nur möglich: --"
                                 + str(
                                     ", --".join(
                                         tuple(

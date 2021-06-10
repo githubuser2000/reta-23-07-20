@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+from copy import copy
+from enum import Enum
 
 
 class ST(Enum):
@@ -13,7 +15,7 @@ class ST(Enum):
 
 
 tableTags = {
-    {ST.sternPolygon, ST.galaxie,}: {
+    frozenset({ST.sternPolygon, ST.galaxie}): {
         0,
         1,
         2,
@@ -140,7 +142,7 @@ tableTags = {
         186,
         187,
     },
-    {ST.universum, ST.sternPolygon}: {
+    frozenset({ST.universum, ST.sternPolygon}): {
         4,
         5,
         65,
@@ -175,12 +177,12 @@ tableTags = {
         158,
         169,
     },
-    {ST.galaxie, ST.gleichfoermigesPolygon}: {16, 37, 42, 58, 148, 161, 162},
-    {ST.universum, ST.gleichfoermigesPolygon, ST.sternPolygon}: {
+    frozenset({ST.galaxie, ST.gleichfoermigesPolygon}): {16, 37, 42, 58, 148, 161, 162},
+    frozenset({ST.universum, ST.gleichfoermigesPolygon, ST.sternPolygon}): {
         20,
         21,
     },
-    {ST.galaxie, ST.gleichfoermigesPolygon, ST.sternPolygon}: {
+    frozenset({ST.galaxie, ST.gleichfoermigesPolygon, ST.sternPolygon}): {
         52,
         53,
         87,
@@ -188,7 +190,7 @@ tableTags = {
         167,
         168,
     },
-    {ST.galaxie, ST.universum, ST.sternPolygon}: {
+    frozenset({ST.galaxie, ST.universum, ST.sternPolygon}): {
         75,
         76,
         84,
@@ -204,7 +206,7 @@ tableTags = {
         165,
         166,
     },
-    {ST.universum, ST.gleichfoermigesPolygon}: {
+    frozenset({ST.universum, ST.gleichfoermigesPolygon}): {
         131,
     },
 }
@@ -226,7 +228,7 @@ tableTags = {
 
 
 tableTags_kombiTable = {
-    {ST.galaxie, ST.sternPolygon, ST.gleichfoermigesPolygon}: {
+    frozenset({ST.galaxie, ST.sternPolygon, ST.gleichfoermigesPolygon}): {
         1,
         2,
         3,
@@ -238,7 +240,7 @@ tableTags_kombiTable = {
         13,
         16,
     },
-    {ST.universum, ST.galaxie, ST.sternPolygon, ST.gleichfoermigesPolygon}: {
+    frozenset({ST.universum, ST.galaxie, ST.sternPolygon, ST.gleichfoermigesPolygon}): {
         5,
         6,
         9,
@@ -247,6 +249,20 @@ tableTags_kombiTable = {
         15,
     },
 }
+
+
+def dictViceversa(dic: dict) -> dict:
+    newDict = {}
+    for key, value in dic.items():
+        for number in value:
+            newDict[int(number)] = copy(key)
+    return newDict
+
+
+tableTags2 = dictViceversa(tableTags)
+tableTags2_kombiTable = dictViceversa(tableTags_kombiTable)
+
+
 """
 Hier sind die ganzen Spaltennummern enthalten:
         self.spaltenArtenKey_SpaltennummernValue = {

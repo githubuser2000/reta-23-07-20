@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import sys
-from copy import deepcopy, copy
+from copy import copy, deepcopy
 from enum import Enum
 from typing import Iterable, Union
 
+import lib4tables_Enum
 from center import (alxp, cliout, getTextWrapThings, infoLog, output,
                     primzahlvielfachesgalaxie, re, x)
 from lib4tables import isPrimMultiple, moonNumber
@@ -150,7 +151,7 @@ class Prepare:
 
     @property
     def nummeriere(self):
-        """ # Nummerierung der Zeilen, z.B. Religion 1,2,3 """
+        """# Nummerierung der Zeilen, z.B. Religion 1,2,3"""
         return self.nummerierung
 
     @nummeriere.setter
@@ -233,13 +234,7 @@ class Prepare:
                     and BereichCouple[1] != "0"
                 ):
                     results.add(
-                        "".join(
-                            [BereichCouple[0],
-                            "-",
-                            symbol,
-                            "-",
-                            BereichCouple[1]]
-                        )
+                        "".join([BereichCouple[0], "-", symbol, "-", BereichCouple[1]])
                     )
 
         return results
@@ -394,9 +389,9 @@ class Prepare:
                     if n % 2 == 0:
                         numRangeYesZ.add(n)
 
-        #x("_x3_", numRange)
+        # x("_x3_", numRange)
         numRange = cutset(ifTypAtAll, numRange, numRangeYesZ)
-        #x("_x2_", numRange)
+        # x("_x2_", numRange)
 
         # Sonnen über 114 immer entfernen
         for n in copy(numRange):
@@ -420,7 +415,7 @@ class Prepare:
                 numRangeYesZ.add(n)
         numRange = cutset(ifPrimAtAll, numRange, numRangeYesZ)
 
-        #x("_x1_", numRange)
+        # x("_x1_", numRange)
 
         toPowerIt: list = []
         ifPowerAtall: bool = False
@@ -434,21 +429,21 @@ class Prepare:
                 toPowerIt += [int(condition[:-1])]
         if ifPowerAtall:
             numRangeYesZ = set()
-            #x("_y1_", (toPowerIt, numRange))
+            # x("_y1_", (toPowerIt, numRange))
             lastEl = list(numRange)
             lastEl.sort()
             lastEl = lastEl[-1]
             for base in toPowerIt:
                 for n in range(lastEl):
                     onePower = pow(base, n)
-                    numRangeMax = ma#x(numRange)
-                    #x("_y2_", (onePower, numRangeMax))
+                    numRangeMax = ma  # x(numRange)
+                    # x("_y2_", (onePower, numRangeMax))
                     if onePower <= numRangeMax:
                         numRangeYesZ |= {onePower}
                     else:
                         break
             numRange = cutset(ifPowerAtall, numRange, numRangeYesZ)
-        #x("_x4_", numRange)
+        # x("_x4_", numRange)
 
         numRangeYesZ = set()
 
@@ -538,8 +533,8 @@ class Prepare:
         old2Rows: tuple = ({}, {})
         reliNumbersBool = False if self.religionNumbers != [] else True
         for u, line in enumerate(contentTable):
-            #x("AAAF1", (contentTable[u], u, ))
-            #x("AAAF2", "ENNDD")
+            # x("AAAF1", (contentTable[u], u, ))
+            # x("AAAF2", "ENNDD")
             if u in finallyDisplayLines or combiRows != 0:
                 if reliNumbersBool:
                     self.religionNumbers += [int(u)]
@@ -549,19 +544,6 @@ class Prepare:
                 for t, cell in enumerate(line):
                     if t in rowsAsNumbers:
                         if u == 0 and combiRows == 0:
-                            #x("_x_", rowToDisplay)
-                            #x("_y_", self.tables.generatedSpaltenParameter)
-                            if rowToDisplay in self.tables.generatedSpaltenParameter:
-                                #x(
-                                #    "FehlerY",
-                                #    self.tables.generatedSpaltenParameter[rowToDisplay],
-                                #)
-                                #if self.tables.SpaltenVanillaAmount > t:
-                                    #x("FehlerX", rowToDisplay)
-                                    #x("FehlerX", t)
-                                    #x("FehlerX", self.tables.dataDict[0][t])
-                                # raise ValueError
-                                pass
                             try:
                                 if (
                                     rowToDisplay
@@ -571,16 +553,20 @@ class Prepare:
                                     self.tables.generatedSpaltenParameter[
                                         rowToDisplay
                                     ] = self.tables.dataDict[0][t]
+                                    self.tables.generatedSpaltenParameter_Tags[
+                                        rowToDisplay
+                                    ] = lib4tables_Enum.tableTags2[t]
                             except KeyError:
-                                #x("rrr", t)
-                                alxp("__")
-                                #x("wwi", cell)
-                                #x("iii", self.tables.dataDict[0])
+                                pass
+                                # x("rrr", t)
+                                # alxp("__")
+                                # x("wwi", cell)
+                                # x("iii", self.tables.dataDict[0])
 
                         rowToDisplay += 1
-                        newLines = [[]] * headingsAmount
+                        newLines: list = [[]] * headingsAmount
                         certaintextwidth = self.setWidth(rowToDisplay, combiRows)
-                        #x("AAAE", cell)
+                        # x("AAAE", cell)
                         into = self.cellWork(cell, newLines, certaintextwidth, t)
                         if into != [""] or True:
                             new2Lines += [into]
