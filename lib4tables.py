@@ -226,14 +226,15 @@ class htmlSyntax(OutputSyntax):
         else:
             p4: str
             try:
-                p4 = str(tables.generatedSpaltenParameter_Tags[spalte - 2])
+                p4a = tables.generatedSpaltenParameter_Tags[spalte - 2]
+                p4b: list = []
+                for a in p4a:
+                    p4b += [str(a.value)]
+                p4 = ",".join(p4b)
             except KeyError:
                 p4 = ""
             except:
                 p4 = ""
-            x("nix", tables.generatedSpaltenParameter_Tags)
-            x("nüx", spalte - 2)
-            x("nöx2", p4)
 
             return "".join(
                 (
