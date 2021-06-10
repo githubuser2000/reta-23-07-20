@@ -488,6 +488,7 @@ class Prepare:
         contentTable: list,
         rowsAsNumbers: set,
         combiRows: int = 0,
+        reliTableLenUntilNow=None,
     ) -> tuple:
         """Aus einer Tabelle wird eine gemacht, bei der der Zeilenumbruch durchgeführt wird.
         Dabei werden alle Spalten und Zeilen entfernt die nicht ausgegeben werden sollen.
@@ -562,9 +563,10 @@ class Prepare:
 
                             else:
                                 try:
-                                    self.tables.generatedSpaltenParameter_TagsKombi[
-                                        rowToDisplay
-                                    ] = lib4tables_Enum.tableTags2[t]
+                                    self.tables.generatedSpaltenParameter_Tags[
+                                        reliTableLenUntilNow + rowToDisplay
+                                    ] = lib4tables_Enum.tableTags2_kombiTable[t]
+                                    # x("zz", [, t])
                                 except KeyError:
                                     pass
 
