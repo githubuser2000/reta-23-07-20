@@ -379,6 +379,7 @@ class Tables:
                                                 int(filteredLineNumbersofOrignal)
                                             ),
                                             zeile=filteredLineNumbersofOrignal,
+                                            tables=self.tables,
                                         ),
                                         (
                                             "█"
@@ -404,6 +405,7 @@ class Tables:
                                                 int(filteredLineNumbersofOrignal)
                                             ),
                                             zeile=filteredLineNumbersofOrignal,
+                                            tables=self.tables,
                                         ),
                                         (
                                             " "
@@ -425,6 +427,7 @@ class Tables:
                                         -2,
                                         self.tables.generatedSpaltenParameter,
                                         zeile=filteredLineNumbersofOrignal,
+                                        tables=self.tables,
                                     ),
                                     " ",
                                     self.__outType.endCell,
@@ -441,6 +444,7 @@ class Tables:
                                     -1,
                                     self.tables.generatedSpaltenParameter,
                                     zeile=filteredLineNumbersofOrignal,
+                                    tables=self.tables,
                                 ),
                                 "".rjust(numlen + 1)
                                 if iterWholeLine != 0
@@ -503,13 +507,14 @@ class Tables:
                                                     subCellIndexRightLeft,
                                                     self.tables.generatedSpaltenParameter,
                                                     zeile=filteredLineNumbersofOrignal,
+                                                    tables=self.tables,
                                                 )
                                                 + (
                                                     entry.replace("\n", "").ljust(
                                                         subCellWidth
                                                     )
                                                 )
-                                                + self.__outType.endCell
+                                                + self.__outType.endCell,
                                             )
                                         if type(self.__outType) is csvSyntax:
                                             line += [coloredSubCell]
@@ -535,9 +540,10 @@ class Tables:
                                                     subCellIndexRightLeft,
                                                     self.tables.generatedSpaltenParameter,
                                                     zeile=filteredLineNumbersofOrignal,
+                                                    tables=self.tables,
                                                 )
                                                 + "".ljust(subCellWidth)
-                                                + self.__outType.endCell
+                                                + self.__outType.endCell,
                                             )
                                         if type(self.__outType) is csvSyntax:
                                             line += [coloredSubCell]
@@ -560,6 +566,7 @@ class Tables:
                                         subCellIndexRightLeft,
                                         self.tables.generatedSpaltenParameter,
                                         zeile=filteredLineNumbersofOrignal,
+                                        tables=self.tables,
                                     )
                                 ]
 
@@ -573,6 +580,7 @@ class Tables:
                                             subCellIndexRightLeft,
                                             self.tables.generatedSpaltenParameter,
                                             zeile=filteredLineNumbersofOrignal,
+                                            tables=self.tables,
                                         ):
                                             addionalLine += ["-"]
                                         else:
@@ -581,6 +589,7 @@ class Tables:
                                                     subCellIndexRightLeft,
                                                     self.tables.generatedSpaltenParameter,
                                                     zeile=filteredLineNumbersofOrignal,
+                                                    tables=self.tables,
                                                 )
                                             ]
 

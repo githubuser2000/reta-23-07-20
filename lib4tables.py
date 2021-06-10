@@ -11,7 +11,9 @@ class OutputSyntax:
     def coloredBeginCol(self, num: int, rest: bool = False):
         return self.beginZeile
 
-    def generateCell(self, num: int, dataDict: dict, content=None, zeile=None) -> str:
+    def generateCell(
+        self, num: int, dataDict: dict, content=None, zeile=None, tables=None
+    ) -> str:
         return self.beginCell
 
     beginTable = ""
@@ -74,7 +76,7 @@ class bbCodeSyntax(OutputSyntax):
             return '[tr="background-color:#ff2222;color:#002222;"]'
 
     def generateCell(
-        self, spalte: int, SpaltenParameter: dict, content=None, zeile=None
+        self, spalte: int, SpaltenParameter: dict, content=None, zeile=None, tables=None
     ) -> str:
         spalte = int(spalte)
         spalte += 2
@@ -148,7 +150,7 @@ class htmlSyntax(OutputSyntax):
             return '          <tr style="background-color:#ff2222;color:#002222;">\n'
 
     def generateCell(
-        self, spalte: int, SpaltenParameter: dict, content=None, zeile=None
+        self, spalte: int, SpaltenParameter: dict, content=None, zeile=None, tables=None
     ) -> str:
         if zeile == "":
             zeile = 0
