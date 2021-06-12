@@ -1067,8 +1067,18 @@ class Concat:
                     if lastlen > maxlen:
                         maxlen = lastlen
 
-                    self.relitable[i] += list(primcol) + [""] * (maxlen - len(primcol))
+                    dazu = list(primcol) + [""] * (maxlen - len(primcol))
                     if i == 0:
+                        for a in range(len(dazu)):
+                            pass
+                            # self.tables.generatedSpaltenParameter_Tags[
+                            #    len(self.relitable[0]) - 1 + a
+                            # ] = frozenset({ST.sternPolygon, ST.universum, ST.galaxie})
+                            # x("IXX", len(self.relitable[0]) - 1 + a)
+
+                    self.relitable[i] += dazu
+                    if i == 0:
+                        # ALXX
                         for u, heading in enumerate(self.relitable[0]):
                             if (
                                 heading.isdecimal()
