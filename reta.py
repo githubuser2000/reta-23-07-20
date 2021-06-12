@@ -2632,7 +2632,6 @@ class Program:
         self.argv = argv
         self.allesParameters = 0
         self.tables = Tables()
-
         self.workflowEverything(argv)
 
     def workflowEverything(self, argv):

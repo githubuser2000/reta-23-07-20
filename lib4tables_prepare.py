@@ -561,13 +561,16 @@ class Prepare:
                                         self.tables.generatedSpaltenParameter_Tags[
                                             rowToDisplay
                                         ] = lib4tables_Enum.tableTags2[t]
-                                except KeyError:
-                                    if primSpalten is not None and t in primSpalten:
+                                    elif primSpalten is not None and t in primSpalten:
                                         self.tables.generatedSpaltenParameter_Tags[
                                             rowToDisplay
                                         ] = frozenset(
                                             {ST.sternPolygon, ST.universum, ST.galaxie}
                                         )
+
+                                    x("UIU2", [t, primSpalten, rowToDisplay])
+                                except KeyError:
+                                    pass
 
                             else:
                                 try:
