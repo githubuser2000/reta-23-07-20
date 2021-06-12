@@ -11,6 +11,7 @@ from lib4tables import (OutputSyntax, bbCodeSyntax,
                         divisorGenerator, htmlSyntax, isPrimMultiple,
                         markdownSyntax, math, moonNumber, primCreativity,
                         primFak, primMultiple, primRepeat)
+from lib4tables_Enum import ST
 
 
 class Concat:
@@ -54,7 +55,7 @@ class Concat:
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
             ] = self.tables.dataDict[0][8]
-            #x("bliu3", self.tables.generatedSpaltenParameter)
+            # x("bliu3", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
 
     def concatPrimCreativityType(self, relitable: list, rowsAsNumbers: set) -> tuple:
@@ -92,9 +93,9 @@ class Concat:
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
             ] = self.tables.dataDict[0][64]
-            #x("WIE", self.tables.dataDict[0][64])
+            # x("WIE", self.tables.dataDict[0][64])
 
-            #x("idiot", self.tables.generatedSpaltenParameter)
+            # x("idiot", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
 
     def concatMondExponzierenLogarithmusTyp(
@@ -150,9 +151,9 @@ class Concat:
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.SpaltenVanillaAmount
                 ] = self.tables.dataDict[0][64]
-                #x("WIE2", self.tables.dataDict[0][64])
-                #x("bliu4", self.tables.dataDict[0][64])
-                #x("idiot", self.tables.generatedSpaltenParameter)
+                # x("WIE2", self.tables.dataDict[0][64])
+                # x("bliu4", self.tables.dataDict[0][64])
+                # x("idiot", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
 
     def concatRowsOfConcepts(
@@ -170,7 +171,11 @@ class Concat:
                 first += [cols[paar[0]]]
                 second += [cols[paar[1]]]
             rowsAsNumbers |= {len(self.relitable[0]) + i}
+            self.tables.generatedSpaltenParameter_Tags[
+                len(rowsAsNumbers) - 1
+            ] = frozenset({ST.sternPolygon, ST.galaxie})
             couplesNums += [paar]
+        x("bla", self.tables.generatedSpaltenParameter_Tags)
         for o, concept in enumerate(self.concepts):
             for i, (cols, row1, row2) in enumerate(
                 zip(deepcopy(self.relitable), concept[0], concept[1])
@@ -206,11 +211,11 @@ class Concat:
                         into += ["alles zur selben Strukturgröße einer ", cols[4]]
                 # einzeln, bis es eine ganze neue Spalte ist
                 self.relitable[i] += ["".split(into)]
-            #x(
+            # x(
             #    "ddd",
             #    len(self.tables.generatedSpaltenParameter)
             #    + self.tables.SpaltenVanillaAmount,
-            #)
+            # )
             if (
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
@@ -222,7 +227,7 @@ class Concat:
                 + self.tables.SpaltenVanillaAmount
             ] = self.tables.dataDict[1][couplesNums[o]]
 
-            #x("idiot", self.tables.generatedSpaltenParameter)
+            # x("idiot", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
 
     def concatVervielfacheZeile(self, relitable: list, rowsAsNumbers: set) -> tuple:
@@ -255,7 +260,7 @@ class Concat:
                         # spalten wo was hin soll = ursprungszeile1,2,3,...
                     except (IndexError, KeyError):
                         multis[ergebnis] = [coords[0]]  # interessant
-            #x("iiii", store)
+            # x("iiii", store)
             for z, zeileninhalt in enumerate(relitable[2:], 2):
                 # alle spalten und zeilen
                 xx = False
@@ -348,10 +353,10 @@ class Concat:
                         # #x("_ü1_", modalOperatoren)
                         # #x("_ü2_", vervielfachter)
                         # #x("_ü6_", concept[1])
-                        #x(
+                        # x(
                         #    "_ü3_",
                         #    self.relitable[vervielfachter][concept[1]],
-                        #)
+                        # )
                         # #x("_ü4_", modalOperatoren[0])
                         # #x("_ü5_", modalOperatoren[1:])
                         into[i] += (
@@ -372,11 +377,13 @@ class Concat:
                                     )
                                 ),
                                 modalOperatoren[0],
-                                " ", 
+                                " ",
                                 self.relitable[vervielfachter][concept[0]]
                                 if abs(distanceFromLine) % 2 == 0
                                 else self.relitable[vervielfachter][concept[1]],
-                                " ", modalOperatoren[1]]
+                                " ",
+                                modalOperatoren[1],
+                            ]
                             + (
                                 (
                                     [
@@ -572,7 +579,7 @@ class Concat:
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
             ] = self.tables.dataDict[1][conceptsRowsSetOfTuple2[o]]
-            #x("bliu2", self.tables.dataDict[1][conceptsRowsSetOfTuple2[o]])
+            # x("bliu2", self.tables.dataDict[1][conceptsRowsSetOfTuple2[o]])
 
         return self.relitable, rowsAsNumbers
 
@@ -635,10 +642,11 @@ class Concat:
                                 else "...",
                             ]
                             + (
-                                [   " UND ",
+                                [
+                                    " UND ",
                                     self.ziel[multi[1]]
                                     if self.ziel[multi[1]].strip() != ""
-                                    else "..."
+                                    else "...",
                                 ]
                                 if polytype == 10
                                 else [""]
@@ -653,22 +661,22 @@ class Concat:
                     in self.tables.generatedSpaltenParameter
                 ):
                     raise ValueError
-                #x(
+                # x(
                 #    "doofi 1",
                 #    len(self.tables.generatedSpaltenParameter)
                 #    + self.tables.SpaltenVanillaAmount,
-                #)
-                #x("doofi 2", tuple(self.tables.dataDict[1].keys())[0])
-                #x("doofi 3", primzahlvielfachesgalaxie)
+                # )
+                # x("doofi 2", tuple(self.tables.dataDict[1].keys())[0])
+                # x("doofi 3", primzahlvielfachesgalaxie)
                 self.tables.generatedSpaltenParameter[
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.SpaltenVanillaAmount
                 ] = ([primzahlvielfachesgalaxie[0]],)
 
-                #x("bliu orig", (primzahlvielfachesgalaxie, ))
-                #x("bliu Orig", ([primzahlvielfachesgalaxie[0]], ))
+                # x("bliu orig", (primzahlvielfachesgalaxie, ))
+                # x("bliu Orig", ([primzahlvielfachesgalaxie[0]], ))
 
-                #x("idiot", self.tables.generatedSpaltenParameter)
+                # x("idiot", self.tables.generatedSpaltenParameter)
 
         if (
             len(self.tables.primUniversePrimsSet) > 0
@@ -676,7 +684,7 @@ class Concat:
             or rowsAsNumbers >= {135}
         ):
             pass
-            #x("idiot__", self.tables.generatedSpaltenParameter)
+            # x("idiot__", self.tables.generatedSpaltenParameter)
 
         return self.relitable, rowsAsNumbers
 
@@ -713,7 +721,7 @@ class Concat:
             """2 neue Koordinaten der Tabelle durch 3 Parameter, d.h. einer, newCol, gilt für beide
             Immer eine halbierung und dopplung oder verdreifachung und ..., etc.
             und wechsel der Spalte von den 2 Spalten"""
-            #x("MORE", moreAndLess)
+            # x("MORE", moreAndLess)
             newCol = (
                 transzendentalienSpalten[0]
                 if newCol == transzendentalienSpalten[1]
@@ -735,15 +743,15 @@ class Concat:
                 else None
             )
             moreAndLess = (a, b)
-            #x("MORE", metavariable)
-            #x("MORE", moreAndLess)
+            # x("MORE", metavariable)
+            # x("MORE", moreAndLess)
             if (
                 not moreAndLess[0] is None
                 and moreAndLess[0] * metavariable < len(relitable)
                 and len((relitable[moreAndLess[0] * metavariable][newCol]).strip()) > 3
             ):
                 pass
-                #x("_u_", relitable[moreAndLess[0] * metavariable][newCol])
+                # x("_u_", relitable[moreAndLess[0] * metavariable][newCol])
 
             return newCol, moreAndLess
 
@@ -812,7 +820,7 @@ class Concat:
                 for i, row in enumerate(relitable[2:], 2):
                     moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
                     neue2KoordNeue2Vorwoerter: list = []
-                   # alxp("new while")
+                    # alxp("new while")
                     newCol = transzendentalienSpalten[0]
                     while moreAndLess != (None, None):
                         newCol, moreAndLess = switching(newCol, moreAndLess)
@@ -831,9 +839,9 @@ class Concat:
 
                     intoList = []
                     thema = ""
-                    #x("_t_", neue2KoordNeue2Vorwoerter[:-1])
+                    # x("_t_", neue2KoordNeue2Vorwoerter[:-1])
                     for vier in neue2KoordNeue2Vorwoerter[:-1]:
-                       # alxp(vier)
+                        # alxp(vier)
                         # if not vier[0][0] is None and not vier[1] is None:
                         #   # alxp(relitable[vier[0][0]][vier[1]])
                         # if not vier[0][1] is None and not vier[1] is None:
@@ -843,37 +851,39 @@ class Concat:
                             and not vier[0][0] is None
                             and len(relitable[vier[0][0]][vier[1]].strip()) > 3
                         ):
-                            intoList += (
-                                [vier[bothRows + 2], thema, relitable[vier[0][0]][vier[1]],
-                                    " (",
-                                    "1/"
-                                    if vier[1] != transzendentalienSpalten[ifInvers]
-                                    and vier[0][1] != 1
-                                    else "",
-                                    str(vier[0][0]),
-                                    ")",
-                                    " | "]
-                            )
+                            intoList += [
+                                vier[bothRows + 2],
+                                thema,
+                                relitable[vier[0][0]][vier[1]],
+                                " (",
+                                "1/"
+                                if vier[1] != transzendentalienSpalten[ifInvers]
+                                and vier[0][1] != 1
+                                else "",
+                                str(vier[0][0]),
+                                ")",
+                                " | ",
+                            ]
                         elif (
                             bothRows == 1
                             and not vier[0][1] is None
                             and len(relitable[vier[0][1]][vier[1]].strip()) > 3
                         ):
-                            intoList += (
-                                [vier[bothRows + 2],
+                            intoList += [
+                                vier[bothRows + 2],
                                 thema,
                                 relitable[vier[0][1]][vier[1]],
                                 " (",
                                 "1/"
-                                if vier[1]
-                                != transzendentalienSpalten[ifInvers]
+                                if vier[1] != transzendentalienSpalten[ifInvers]
                                 and vier[0][1] != 1
                                 else "",
-                                str(vier[0][1]),")",
-                                " | "]
-                            )
+                                str(vier[0][1]),
+                                ")",
+                                " | ",
+                            ]
                         thema = "Thema: "
-                   # alxp(intoList)
+                    # alxp(intoList)
                     self.relitable[i] += ["".join(intoList[:-1])]
 
                 if lower1greater2both3 != 3:
@@ -891,7 +901,7 @@ class Concat:
                             + self.tables.SpaltenVanillaAmount
                         ] = self.tables.dataDict[4][(metavariable, both)]
 
-        #x("r_wt", self.tables.generatedSpaltenParameter)
+        # x("r_wt", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
 
     def spalteFuerGegenInnenAussenSeitlichPrim(
@@ -924,7 +934,7 @@ class Concat:
         self.lastPrimAnswers: dict = {}
         # extraSpalten = (5, 10, 42, 131, 138)
         extraSpalten = self.ones
-        #x("OnEs", self.ones)
+        # x("OnEs", self.ones)
         spaltenNamen = {
             5: "Transzendentalien, Strukturalien, Universum n",
             10: "Galaxie n",
@@ -955,16 +965,20 @@ class Concat:
                         if couple[1] == 1:
                             into += [PrimAnswer2(couple[0]), " + "]
                         elif kk is not None:
-                            into += [str(relitable[couple[1]][kk]),
-                                    " * ",
-                                    PrimAnswer2(couple[0]),
-                                    " + "]
+                            into += [
+                                str(relitable[couple[1]][kk]),
+                                " * ",
+                                PrimAnswer2(couple[0]),
+                                " + ",
+                            ]
                         else:
-                            into += ["[",
-                                    str(vergangenheit[couple[1]]),
-                                    "] * letztendlich: ",
-                                    PrimAnswer2(couple[0]),
-                                    " + "]
+                            into += [
+                                "[",
+                                str(vergangenheit[couple[1]]),
+                                "] * letztendlich: ",
+                                PrimAnswer2(couple[0]),
+                                " + ",
+                            ]
                     into = into[:-1]
                 elif i == 1:
                     into = [PrimAnswer(1)]
@@ -1034,13 +1048,13 @@ class Concat:
                                     in self.tables.generatedSpaltenParameter
                                 ):
                                     raise ValueError
-                               # alxp("XYZ")
-                                #x("zzz2", self.tables.generatedSpaltenParameter)
+                                # alxp("XYZ")
+                                # x("zzz2", self.tables.generatedSpaltenParameter)
                                 self.tables.generatedSpaltenParameter[
                                     len(self.tables.generatedSpaltenParameter)
                                     + self.tables.SpaltenVanillaAmount
                                 ] = self.tables.dataDict[2][heading]
-                                #x("zzz", self.tables.generatedSpaltenParameter)
+                                # x("zzz", self.tables.generatedSpaltenParameter)
 
             self.concatRowsAmount = len(primcol)
         return self.relitable, rowsAsNumbers

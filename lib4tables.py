@@ -235,9 +235,9 @@ class htmlSyntax(OutputSyntax):
                 p4 = ""
             except:
                 p4 = ""
-            x("nix", tables.generatedSpaltenParameter_Tags)
-            x("nüx", spalte - 2)
-            x("nöx2", p4)
+            # x("nix", tables.generatedSpaltenParameter_Tags)
+            # x("nüx", spalte - 2)
+            # x("nöx2", p4)
 
             return "".join(
                 (
