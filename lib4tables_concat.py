@@ -569,6 +569,9 @@ class Concat:
                 self.relitable[w] += ["".join(into[w])]
 
             rowsAsNumbers |= {len(self.relitable[0]) - 1}
+            self.tables.generatedSpaltenParameter_Tags[
+                len(rowsAsNumbers) - 1
+            ] = frozenset({ST.sternPolygon, ST.galaxie})
             if (
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
