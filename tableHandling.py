@@ -18,6 +18,7 @@ from lib4tables import (OutputSyntax, bbCodeSyntax,
                         markdownSyntax, math, moonNumber, primCreativity,
                         primFak, primMultiple, primRepeat)
 from lib4tables_concat import Concat
+from lib4tables_Enum import ST
 from lib4tables_prepare import Prepare, shellRowsAmount
 
 originalLinesRange = range(1028)  # Maximale Zeilenanzahl
@@ -1139,6 +1140,9 @@ class Tables:
                         + self.tables.SpaltenVanillaAmount
                     ] = self.tables.dataDict[0][64]
                     rowsAsNumbers.add(len(self.relitable[0]))
+                    self.tables.generatedSpaltenParameter_Tags[
+                        len(rowsAsNumbers) - 1
+                    ] = frozenset({ST.sternPolygon, ST.universum, ST.galaxie})
 
                 # moonNumber
                 for i, line in enumerate(self.relitable):

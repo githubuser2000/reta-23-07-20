@@ -2781,7 +2781,7 @@ class Program:
             animalsProfessionsTable,
             self.rowsOfcombi,
             self.tables.getCombis.sumOfAllCombiRowsAmount,
-            reliTableLenUntilNow=len(newTable),
+            reliTableLenUntilNow=len(newTable[0]) - len(self.rowsOfcombi),
         )
         # x("AAAD1", newTable_kombi_1)
         # x("AAAD2", "ENDDD")

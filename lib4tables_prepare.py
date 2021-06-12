@@ -575,9 +575,9 @@ class Prepare:
                             else:
                                 try:
                                     self.tables.generatedSpaltenParameter_Tags[
-                                        reliTableLenUntilNow + rowToDisplay
+                                        reliTableLenUntilNow + rowToDisplay - 1
                                     ] = lib4tables_Enum.tableTags2_kombiTable[t]
-                                    # x("zz", [, t])
+                                    # x("zz", [reliTableLenUntilNow + rowToDisplay, t])
                                 except KeyError:
                                     pass
 
