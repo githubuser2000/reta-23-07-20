@@ -1045,6 +1045,7 @@ class Concat:
         @return: relitable + weitere Tabelle daneben
         """
         global folder
+        primSpalten: set = set()
         place = os.path.join(
             os.getcwd(),
             os.path.dirname(__file__),
@@ -1071,10 +1072,9 @@ class Concat:
                     if i == 0:
                         for a in range(len(dazu)):
                             pass
-                            # self.tables.generatedSpaltenParameter_Tags[
-                            #    len(self.relitable[0]) - 1 + a
+                            # self.tables.generatedSpaltenParameter_Tags_concat1[
+                            #    a
                             # ] = frozenset({ST.sternPolygon, ST.universum, ST.galaxie})
-                            # x("IXX", len(self.relitable[0]) - 1 + a)
 
                     self.relitable[i] += dazu
                     if i == 0:
@@ -1086,6 +1086,12 @@ class Concat:
                                 and u >= headingsAmount
                             ):
                                 rowsAsNumbers.add(u)
+                                primSpalten.add(u)
+                                # self.tables.generatedSpaltenParameter_Tags[
+                                #    u
+                                # ] = frozenset(
+                                #    {ST.sternPolygon, ST.universum, ST.galaxie}
+                                # )
                                 heading = int(heading)
                                 if (
                                     len(self.tables.generatedSpaltenParameter)
@@ -1102,4 +1108,4 @@ class Concat:
                                 # x("zzz", self.tables.generatedSpaltenParameter)
 
             self.concatRowsAmount = len(primcol)
-        return self.relitable, rowsAsNumbers
+        return self.relitable, rowsAsNumbers, primSpalten

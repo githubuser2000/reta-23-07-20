@@ -2539,9 +2539,11 @@ class Program:
         self.tables.generRows = self.generRows
         self.tables.getPrepare.rowsAsNumbers = self.rowsAsNumbers
         self.tables.getOut.rowsAsNumbers = self.rowsAsNumbers
-        self.relitable, rowsAsNumbers = self.tables.getConcat.readConcatCsv(
-            self.relitable, self.rowsAsNumbers
-        )
+        (
+            self.relitable,
+            rowsAsNumbers,
+            primSpalten,
+        ) = self.tables.getConcat.readConcatCsv(self.relitable, self.rowsAsNumbers)
         self.relitable, self.rowsAsNumbers = self.tables.getConcat.concatRowsOfConcepts(
             self.relitable, self.tables.generRows, self.rowsAsNumbers
         )
@@ -2568,6 +2570,7 @@ class Program:
         ) = self.tables.getConcat.concatMondExponzierenLogarithmusTyp(
             self.relitable, self.rowsAsNumbers
         )
+
         (
             self.relitable,
             self.rowsAsNumbers,
@@ -2621,6 +2624,7 @@ class Program:
             kombiTable_Kombis,
             maintable2subtable_Relation,
             spaltenreihenfolgeundnurdiese,
+            primSpalten,
         )
 
     def __init__(self, argv=[]):
@@ -2643,6 +2647,7 @@ class Program:
             kombiTable_Kombis,
             maintable2subtable_Relation,
             spaltenreihenfolgeundnurdiese,
+            primSpalten,
         ) = self.bringAllImportantBeginThings(argv)
         self.tables.getMainTable.createSpalteGestirn(self.relitable, self.rowsAsNumbers)
         # x("2943", self.rowsAsNumbers)
@@ -2657,6 +2662,7 @@ class Program:
             paramLinesNot,
             self.relitable,
             self.rowsAsNumbers,
+            primSpalten=primSpalten,
         )
         # x("2944", self.rowsAsNumbers)
         # x("2944", self.relitable[0][92])

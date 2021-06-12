@@ -9,6 +9,7 @@ import lib4tables_Enum
 from center import (alxp, cliout, getTextWrapThings, infoLog, output,
                     primzahlvielfachesgalaxie, re, x)
 from lib4tables import isPrimMultiple, moonNumber
+from lib4tables_Enum import ST
 
 shellRowsAmount, h_de, dic, fill = getTextWrapThings()
 
@@ -489,6 +490,7 @@ class Prepare:
         rowsAsNumbers: set,
         combiRows: int = 0,
         reliTableLenUntilNow=None,
+        primSpalten: set = None,
     ) -> tuple:
         """Aus einer Tabelle wird eine gemacht, bei der der Zeilenumbruch durchgeführt wird.
         Dabei werden alle Spalten und Zeilen entfernt die nicht ausgegeben werden sollen.
@@ -533,6 +535,7 @@ class Prepare:
         numlen = len(str(finallyDisplayLines3[-1]))
         old2Rows: tuple = ({}, {})
         reliNumbersBool = False if self.religionNumbers != [] else True
+        x("XIX", rowsAsNumbers)
         for u, line in enumerate(contentTable):
             # x("AAAF1", (contentTable[u], u, ))
             # x("AAAF2", "ENNDD")
@@ -559,7 +562,12 @@ class Prepare:
                                             rowToDisplay
                                         ] = lib4tables_Enum.tableTags2[t]
                                 except KeyError:
-                                    pass
+                                    if primSpalten is not None and t in primSpalten:
+                                        self.tables.generatedSpaltenParameter_Tags[
+                                            rowToDisplay
+                                        ] = frozenset(
+                                            {ST.sternPolygon, ST.universum, ST.galaxie}
+                                        )
 
                             else:
                                 try:
