@@ -31,6 +31,9 @@ class Concat:
         self.relitable = relitable
         if rowsAsNumbers >= {8}:
             rowsAsNumbers |= {len(self.relitable[0])}
+            self.tables.generatedSpaltenParameter_Tags[
+                len(rowsAsNumbers) - 1
+            ] = frozenset({ST.sternPolygon, ST.galaxie, ST.gleichfoermigesPolygon})
             for i, cols in enumerate(deepcopy(self.relitable)):
                 if self.relitable[i][8].strip() != "":
                     self.relitable[i] += [
@@ -62,6 +65,9 @@ class Concat:
         self.relitable = relitable
         if rowsAsNumbers >= {64}:
             rowsAsNumbers |= {len(self.relitable[0])}
+            self.tables.generatedSpaltenParameter_Tags[
+                len(rowsAsNumbers) - 1
+            ] = frozenset({ST.sternPolygon, ST.galaxie})
             for i, cols in enumerate(deepcopy(self.relitable)):
                 primCreativityType = primCreativity(i)
                 self.relitable[i] += [
@@ -112,6 +118,11 @@ class Concat:
                 ],
             ):
                 rowsAsNumbers |= {len(self.relitable[0])}
+                self.tables.generatedSpaltenParameter_Tags[len(rowsAsNumbers) - 1] = (
+                    frozenset({ST.sternPolygon, ST.universum})
+                    if rownum == 0
+                    else frozenset({ST.gleichfoermigesPolygon, ST.universum})
+                )
                 for i, cols in enumerate(deepcopy(self.relitable)):
                     moonTypesOf1Num = moonNumber(i)
                     if i == 0:
@@ -605,6 +616,12 @@ class Concat:
                 len(self.relitable[0]),
                 len(self.relitable[0]) + 1,
             }
+            self.tables.generatedSpaltenParameter_Tags[
+                len(rowsAsNumbers) - 2
+            ] = frozenset({ST.sternPolygon, ST.galaxie, ST.universum})
+            self.tables.generatedSpaltenParameter_Tags[
+                len(rowsAsNumbers) - 1
+            ] = frozenset({ST.sternPolygon, ST.galaxie, ST.universum})
             for polytype, polytypename in zip(
                 hardCodedCouple, ["Sternpolygone", "gleichförmiges Polygone"]
             ):
@@ -681,13 +698,13 @@ class Concat:
 
                 # x("idiot", self.tables.generatedSpaltenParameter)
 
-        if (
-            len(self.tables.primUniversePrimsSet) > 0
-            or rowsAsNumbers >= {5}
-            or rowsAsNumbers >= {135}
-        ):
-            pass
-            # x("idiot__", self.tables.generatedSpaltenParameter)
+        # if (
+        #    len(self.tables.primUniversePrimsSet) > 0
+        #    or rowsAsNumbers >= {5}
+        #    or rowsAsNumbers >= {135}
+        # ):
+        #    pass
+        # x("idiot__", self.tables.generatedSpaltenParameter)
 
         return self.relitable, rowsAsNumbers
 
@@ -717,6 +734,9 @@ class Concat:
         rowsAsNumbers |= {
             len(self.relitable[0]),
         }
+        self.tables.generatedSpaltenParameter_Tags[len(rowsAsNumbers) - 1] = frozenset(
+            {ST.sternPolygon, ST.universum}
+        )
         """bis hier hin waren es die Vorinitialisierungen von Variablen"""
 
         # def switching(metavariable: int, lower1greater2both3: int, row: int):
@@ -794,6 +814,9 @@ class Concat:
                 else []
             ):
                 rowsAsNumbers |= {len(self.relitable[0])}
+                self.tables.generatedSpaltenParameter_Tags[
+                    len(rowsAsNumbers) - 1
+                ] = frozenset({ST.sternPolygon, ST.universum})
 
                 self.relitable[1] += [""]
                 if bothRows == 0:
@@ -946,11 +969,20 @@ class Concat:
             138: "Gegen-Transzendentalien, Gegen-Strukturalien, Universum n",
             None: "Richtung-Richtung",
         }
+        tags = [
+            frozenset({ST.sternPolygon, ST.universum}),
+            frozenset({ST.sternPolygon, ST.galaxie}),
+            frozenset({ST.gleichfoermigesPolygon, ST.galaxie}),
+            frozenset({ST.gleichfoermigesPolygon, ST.universum}),
+            frozenset({ST.sternPolygon, ST.universum}),
+            frozenset({ST.sternPolygon, ST.universum}),
+        ]
 
         for r, kk in enumerate(extraSpalten):
             rowsAsNumbers |= {
                 len(self.relitable[0]) + r,
             }
+            self.tables.generatedSpaltenParameter_Tags[len(rowsAsNumbers) - 1] = tags[r]
 
         vergangenheit: list = []
         for i, cols in enumerate(relitable):
