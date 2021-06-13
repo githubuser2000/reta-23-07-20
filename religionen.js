@@ -101,7 +101,9 @@ for (i = 0; i < tdClasses1.length; i++)
       numbers = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
       if (p2keys[k] != null && p2keys[k] != "null") {
         chk2 =
-          '<label style="white-space: nowrap;font-size: 100%;"><input type="checkbox" class="chks c_' +
+          '<label style="white-space: nowrap;font-size: 100%;" class="chks c_' +
+          Array.from(mapMapMapTags[p1keys[i]][p2keys[k]]).join(",") +
+          '" ><input type="checkbox" class="chks c_' +
           Array.from(mapMapMapTags[p1keys[i]][p2keys[k]]).join(",") +
           '" value="' +
           p2keys[k] +
