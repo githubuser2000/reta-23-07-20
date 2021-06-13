@@ -240,6 +240,7 @@ function disEnAbleChks(Enums) {
     for (var k = 0; k < Enums.length; k++) {
       //window.alert(chks1[i].disabled);
       chks1[i].disabled = !chks2.includes(Enums[k]);
+      chks1[i].style = "color: grey";
       //window.alert(chks1[i].disabled);
     }
 }
