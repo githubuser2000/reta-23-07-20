@@ -249,9 +249,15 @@ function disEnAbleChks(Enums) {
     //for (var k = 0; k < Enums.length; k++) {
     //window.alert(chks2[i] + " " + Enums+ ": "+intersection(new Set(Enums), new Set(chks2[i])).size);
     flag = false;
-    for (var k; k < chks2[i].length; k++)
-      for (var l; l < Enums.length; l++)
+    for (var k = 0; k < chks2[i].length; k++) {
+      window.alert(chks2[i][k]);
+      for (var l = 0; l < Enums.length; l++) {
         if (chks2[i][k] == Enums[l]) flag = true;
+        //window.alert(chks2[i][k] + " " + Enums[l] + ": " + flag);
+      }
+    }
+    //window.alert(chks2[i] + " " + Enums + ": " + flag);
+    //window.alert(chks2[i][0]);
     if (flag) {
       //if (!chks2[i].includes(Enums[k])) {
       chks1[i].disabled = true;
