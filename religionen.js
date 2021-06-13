@@ -1,6 +1,7 @@
 var col = document.getElementsByClassName("RowNumber 1");
 var selectedSpaltenMany1 = {};
 var selectedSpaltenMany2 = {};
+var labelstyle = "white-space: nowrap;font-size: 100%;";
 window.onload = function () {
   let div = document.createElement("div");
   let div2 = document.createElement("div");
@@ -94,7 +95,6 @@ for (i = 0; i < tdClasses1.length; i++)
     '<div id="chk_spalten" style="display:none;">' +
     radio_tags +
     '<span style="">';
-  var labelstyle = "white-space: nowrap;font-size: 100%;";
   for (i = 0; i < p1keys.length; i++) {
     var chk2s = "";
     var p2keys = Object.keys(mapMapMap[p1keys[i]]);
@@ -152,12 +152,14 @@ for (i = 0; i < tdClasses1.length; i++)
   div.innerHTML += str2;
   chks1 = document.getElementsByClassName("chks");
   chks2 = [];
-  for (var i = 0; i < chks1.length; i++)
+  for (var i = 0; i < chks1.length; i++) {
     chks2.push(
       String(chks1[i].className.match(/c_([\d,]+)/g))
         .substr(2)
         .split(",")
     );
+    //window.alert(chks2[i]);
+  }
 
   str4 =
     '<div id="inputZeilen" style="display:none"><table borders="0" id="table2">';
@@ -243,17 +245,23 @@ function disEnAbleChks(Enums) {
   //window.alert("bla");
   //window.alert(Enums);
   for (var i = 0; i < chks2.length; i++) {
-    chks2[i];
-    for (var k = 0; k < Enums.length; k++) {
-      if (chks2.includes(Enums[k])) {
-        chks1[i].disabled = true;
-        chks1[i].style = "color: grey;" + labelstyle;
-      } else {
-        chks1[i].disabled = false;
-        chks1[i].style = "color: black;" + labelstyle;
-      }
-      //window.alert(chks1[i].disabled);
+    //window.alert(chks2[i]);
+    //for (var k = 0; k < Enums.length; k++) {
+    //window.alert(chks2[i] + " " + Enums+ ": "+intersection(new Set(Enums), new Set(chks2[i])).size);
+    flag = false;
+    for (var k; k < chks2[i].length; k++)
+      for (var l; l < Enums.length; l++)
+        if (chks2[i][k] == Enums[l]) flag = true;
+    if (flag) {
+      //if (!chks2[i].includes(Enums[k])) {
+      chks1[i].disabled = true;
+      chks1[i].style = "color: grey;" + labelstyle;
+    } else {
+      chks1[i].disabled = false;
+      chks1[i].style = "color: black;" + labelstyle;
     }
+    //window.alert(chks1[i].disabled);
+    //}
   }
 }
 
