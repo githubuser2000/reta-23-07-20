@@ -145,12 +145,15 @@ for (i = 0; i < tdClasses1.length; i++)
   div.innerHTML += str2;
   chks1 = document.getElementsByClassName("chks");
   chks2 = [];
-  for (var i = 0; i < chks1.length; i++)
+  for (var i = 0; i < chks1.length; i++) {
     chks2.push(
       String(chks1[i].className.match(/c_([\d,]+)/g))
         .substr(2)
         .split(",")
     );
+    window.alert(chks2[i]);
+  }
+
   str4 =
     '<div id="inputZeilen" style="display:none"><table borders="0" id="table2">';
   str5 =
