@@ -258,7 +258,7 @@ function disEnAbleChks(Enums) {
     }
     //window.alert(chks2[i] + " " + Enums + ": " + flag);
     //window.alert(chks2[i][0]);
-    if (flag) {
+    if (!flag) {
       //if (!chks2[i].includes(Enums[k])) {
       chks1[i].disabled = true;
       chks1[i].style = "color: grey;" + labelstyle;
