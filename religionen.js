@@ -265,7 +265,7 @@ function disEnAbleChks(Enums) {
   Enume = Set.union(Enums, Enume);
   for (var i = 0; i < abzug.length; i++) Enume.delete(abzug[i]);
   Enums = Array.from(Enume);
-  window.alert(Enums);
+  //window.alert(Enums);
 
   for (var i = 0; i < chks2.length; i++) {
     flag = false;
