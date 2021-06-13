@@ -265,19 +265,18 @@ function disEnAbleChks(Enums) {
   Enume = Set.union(Enums, Enume);
   for (var i = 0; i < abzug.length; i++) Enume.delete(abzug[i]);
   Enums = Array.from(Enume);
-  //window.alert(Enums);
 
   for (var i = 0; i < chks2.length; i++) {
-    flag = false;
-    sum = 0;
+    enumi = new Set();
     for (var k = 0; k < chks2[i].length; k++) {
       for (var l = 0; l < Enums.length; l++) {
-        if (chks2[i][k] == Enums[l]) sum++;
+        if (chks2[i][k] == Enums[l]) enumi.add(Enums[l]);
       }
     }
     //window.alert(chks2[i] + " " + Enums + ": " + flag);
     //window.alert(chks2[i][0]);
-    if (sum == 0) {
+    if ((!enumi.has(0) && !enumi.has(1)) || (!enumi.has(3) && !enumi.has(4))) {
+      //if (sum == 0) {
       //if (!chks2[i].includes(Enums[k])) {
       chks1[i].disabled = true;
       chks1[i].style = "color: grey;" + labelstylekl;
