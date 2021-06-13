@@ -258,14 +258,14 @@ class htmlSyntax(OutputSyntax):
                     else 'style="background-color:#ffffff;color:#000000;display:none"'
                     if spalte == 0
                     else 'style="display:none"',
-                    ">\n",
+                    "><label>\n",
                 )
             )
 
     beginTable = "      <table border=0>"
     endTable = "        </table>\n"
-    beginCell = "              <td>\n"
-    endCell = "\n              </td>\n"
+    beginCell = "              <td><label>\n"
+    endCell = "\n              </label></td>\n"
     # beginZeile = "          <tr>"
     beginZeile = ""
     endZeile = "          </tr>\n"

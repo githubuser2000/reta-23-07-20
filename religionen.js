@@ -2,6 +2,7 @@ var col = document.getElementsByClassName("RowNumber 1");
 var selectedSpaltenMany1 = {};
 var selectedSpaltenMany2 = {};
 var labelstyle = "white-space: nowrap;font-size: 100%;";
+var labelstylekl = "white-space: nowrap;font-size: 80%;";
 window.onload = function () {
   let div = document.createElement("div");
   let div2 = document.createElement("div");
@@ -29,8 +30,21 @@ for (i = 0; i < tdClasses1.length; i++)
     (mapMapMap = {}),
     (str = ""),
     (p1Bmap = {}),
-    (mapMapMapTags = {});
+    (mapMapMapTags = {}),
+    (spaltenTags = []),
+    (spalten4spaltenTags = {});
   str3 = "";
+
+  TRs = document.getElementsByTagName("tr");
+  for (var i = 0; i < TRs.length; i++) {
+    TDs = TRs[i].getElementsByTagName("td");
+    for (var k = 0; k < TDs.length; k++) {
+      if (typeof spalten4spaltenTags[k] == "undefined")
+        spalten4spaltenTags[k] = [];
+      spalten4spaltenTags[k].push(TDs[k]);
+    }
+  }
+
   for (i = 0; i < tdClasses.length; i++) {
     name = tdClasses[i].className;
     var num = name.match(/r_(\d+)/);
@@ -38,9 +52,8 @@ for (i = 0; i < tdClasses1.length; i++)
     var tags = name.match(/p4_([\d,]+)/g);
     if (tags === null) tags = [];
     else tags = String(tags).substr(3).split(",");
-    tags = new Set(tags);
-    /*tags_test = Array.from(tags);
-    window.alert(tags_test);*/
+    tags = Array.from(new Set(tags));
+    spaltenTags.push(tags);
 
     if (num != null) {
       //num = num.substring(2,0);
@@ -249,25 +262,57 @@ function disEnAbleChks(Enums) {
     //for (var k = 0; k < Enums.length; k++) {
     //window.alert(chks2[i] + " " + Enums+ ": "+intersection(new Set(Enums), new Set(chks2[i])).size);
     flag = false;
+    sum = 0;
     for (var k = 0; k < chks2[i].length; k++) {
       //window.alert(chks2[i][k]);
       for (var l = 0; l < Enums.length; l++) {
-        if (chks2[i][k] == Enums[l]) flag = true;
+        if (chks2[i][k] == Enums[l]) sum++;
         //window.alert(chks2[i][k] + " " + Enums[l] + ": " + flag);
       }
     }
     //window.alert(chks2[i] + " " + Enums + ": " + flag);
     //window.alert(chks2[i][0]);
-    if (!flag) {
+    if (sum == 0) {
       //if (!chks2[i].includes(Enums[k])) {
       chks1[i].disabled = true;
-      chks1[i].style = "color: grey;" + labelstyle;
+      chks1[i].style = "color: grey;" + labelstylekl;
     } else {
       chks1[i].disabled = false;
       chks1[i].style = "color: black;" + labelstyle;
     }
     //window.alert(chks1[i].disabled);
     //}
+  }
+
+  for (var i = 0; i < spaltenTags.length; i++) {
+    flag = false;
+    for (var l = 0; l < Enums.length; l++) {
+      for (var k = 0; k < spaltenTags[i].length; k++) {
+        if (spaltenTags[i][k] == Enums[l]) flag = true;
+        /*window.alert(
+          spaltenTags[i][k] + " == " + Enums[l] + " ," + spaltenTags.length
+        );*/
+      }
+    }
+    if (!flag) {
+      /*spaltenTags2 = String(
+        spalten4spaltenTags[i][0].className.match(/c_([\d,]+)/g)
+      )
+        .substr(2)
+        .split(",");*/
+      for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
+        spaltenTags2 = spalten4spaltenTags[i][k].getElementsByTagName(
+          "label"
+        )[0].style = "font-size: 80%;color: grey";
+      }
+      //window.alert(spaltenTags + " xx");
+    } else {
+      for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
+        spaltenTags2 = spalten4spaltenTags[i][k].getElementsByTagName(
+          "label"
+        )[0].style = "font-size: 100%;color: black";
+      }
+    }
   }
 }
 
