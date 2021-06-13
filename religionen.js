@@ -16,7 +16,7 @@ window.onload = function () {
   chk_spalten =
     '<fieldset style="font-size: 100%;"><input type="radio" id="spaltenWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);" checked="true"><label>Spalten Checkboxen</label><input type="radio" id="zeilenWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);"><label>Zeilen Eingabefelder</label><input type="radio" id="keinsWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);"><label>frei machen zur Tabellenansicht</label></fieldset>';
   radio_tags =
-    '<fieldset style="font-size: 100%;"><input type="radio" id="galaxieuniversum" name="galaxieuniversum" onchange="" checked="true"><label>Galaxie und Universum</label><input type="radio" id="galaxie" name="galaxieuniversum" onchange="disEnAbleChks(3)"><label>Galaxie</label><input type="radio" id="universum" name="galaxieuniversum" onchange=""><label>Universum</label><input type="radio" id="sternpolygongleichfoermigespolygon" name="sternpolygongleichfoermigespolygon" onchange="" checked="true"><label>Sternpolygon und gleichförmiges Polygon</label><input type="radio" id="sternpolygon" name="sternpolygongleichfoermigespolygon" onchange=""><label>Sternpolygon n</label><input type="radio" id="gleichfoermigespolygon" name="sternpolygongleichfoermigespolygon" onchange=""><label>gleichfoermiges Polygon 1/n</label></fieldset>';
+    '<fieldset style="font-size: 100%;"><input type="radio" id="galaxieuniversum" name="galaxieuniversum" onchange="disEnAbleChks([3,4]);" checked="true"><label>Galaxie und Universum</label><input type="radio" id="galaxie" name="galaxieuniversum" onchange="disEnAbleChks([3]);"><label>Galaxie (14)</label><input type="radio" id="universum" name="galaxieuniversum" onchange="disEnAbleChks([4]);"><label>Universum (15)</label><input type="radio" id="sternpolygongleichfoermigespolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([0,1]);" checked="true"><label>Sternpolygon und gleichförmiges Polygon</label><input type="radio" id="sternpolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([0]);"><label>Sternpolygon n</label><input type="radio" id="gleichfoermigespolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([1]);"><label>gleichfoermiges Polygon 1/n</label></fieldset>';
   div.innerHTML = chk_spalten;
   tdClasses = document.getElementsByClassName("z_0");
   /*tdClasses = []
@@ -145,14 +145,12 @@ for (i = 0; i < tdClasses1.length; i++)
   div.innerHTML += str2;
   chks1 = document.getElementsByClassName("chks");
   chks2 = [];
-  for (var i = 0; i < chks1.length; i++) {
+  for (var i = 0; i < chks1.length; i++)
     chks2.push(
       String(chks1[i].className.match(/c_([\d,]+)/g))
         .substr(2)
         .split(",")
     );
-    window.alert(chks2[i]);
-  }
 
   str4 =
     '<div id="inputZeilen" style="display:none"><table borders="0" id="table2">';
@@ -235,9 +233,13 @@ Set.union = function (s1, s2) {
 };
 
 function disEnAbleChks(Enums) {
+  //window.alert("bla");
   for (var i = 0; i < chks2.length; i++)
-    for (var k = 0; k < Enums.length; k++)
-      chks[i].disabled = !chks2.includes(Enums[k]);
+    for (var k = 0; k < Enums.length; k++) {
+      //window.alert(chks1[i].disabled);
+      chks1[i].disabled = !chks2.includes(Enums[k]);
+      //window.alert(chks1[i].disabled);
+    }
 }
 
 function returnChangeButtons(number) {
