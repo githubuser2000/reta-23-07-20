@@ -290,16 +290,15 @@ function disEnAbleChks(Enums) {
   }
 
   for (var i = 0; i < spaltenTags.length; i++) {
-    flag = false;
-    for (var l = 0; l < Enums.length; l++) {
-      for (var k = 0; k < spaltenTags[i].length; k++) {
-        if (spaltenTags[i][k] == Enums[l]) flag = true;
-        /*window.alert(
-          spaltenTags[i][k] + " == " + Enums[l] + " ," + spaltenTags.length
-        );*/
+    enumi = new Set();
+    for (var k = 0; k < spaltenTags[i].length; k++) {
+      for (var l = 0; l < Enums.length; l++) {
+        if (spaltenTags[i][k] == Enums[l]) enumi.add(Enums[l]);
       }
     }
-    if (!flag) {
+    //window.alert(summe + " " + Enums.length);
+
+    if ((!enumi.has(0) && !enumi.has(1)) || (!enumi.has(3) && !enumi.has(4))) {
       /*spaltenTags2 = String(
         spalten4spaltenTags[i][0].className.match(/c_([\d,]+)/g)
       )
@@ -315,7 +314,7 @@ function disEnAbleChks(Enums) {
       for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
         spaltenTags2 = spalten4spaltenTags[i][k].getElementsByTagName(
           "label"
-        )[0].style = "font-size: 100%;color: black";
+        )[0].style = "";
       }
     }
   }
