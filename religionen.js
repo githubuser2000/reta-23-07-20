@@ -239,8 +239,13 @@ function disEnAbleChks(Enums) {
   for (var i = 0; i < chks2.length; i++)
     for (var k = 0; k < Enums.length; k++) {
       //window.alert(chks1[i].disabled);
-      chks1[i].disabled = !chks2.includes(Enums[k]);
-      chks1[i].style = "color: grey";
+      if (chks2.includes(Enums[k])) {
+        chks1[i].disabled = true;
+        chks1[i].style = "color: grey";
+      } else {
+        chks1[i].disabled = false;
+        chks1[i].style = "color: black";
+      }
       //window.alert(chks1[i].disabled);
     }
 }
