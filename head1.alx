@@ -14,10 +14,15 @@
 			}
             */
 			td {
+                hyphens: auto; 
 				font-size: 100%;
-			    /*border-radius: 55px;
+                /*text-align: justify;
+			    border-radius: 55px;
 			    background-color: white;
 			    border: 1px solid gray;*/
 			}
+            .z_0 {
+                vertical-align:top;
+            }
 		</style>
 		<script type="text/javascript" language="JavaScript1.2">
