@@ -250,7 +250,7 @@ function disEnAbleChks(Enums) {
     //window.alert(chks2[i] + " " + Enums+ ": "+intersection(new Set(Enums), new Set(chks2[i])).size);
     flag = false;
     for (var k = 0; k < chks2[i].length; k++) {
-      window.alert(chks2[i][k]);
+      //window.alert(chks2[i][k]);
       for (var l = 0; l < Enums.length; l++) {
         if (chks2[i][k] == Enums[l]) flag = true;
         //window.alert(chks2[i][k] + " " + Enums[l] + ": " + flag);
