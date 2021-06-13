@@ -3,6 +3,7 @@ var selectedSpaltenMany1 = {};
 var selectedSpaltenMany2 = {};
 var labelstyle = "white-space: nowrap;font-size: 100%;";
 var labelstylekl = "white-space: nowrap;font-size: 80%;";
+var Enume = new Set([0, 1, 3, 4]);
 window.onload = function () {
   let div = document.createElement("div");
   let div2 = document.createElement("div");
@@ -255,19 +256,23 @@ Set.union = function (s1, s2) {
 };
 
 function disEnAbleChks(Enums) {
-  //window.alert("bla");
-  //window.alert(Enums);
+  Enums = new Set(Enums);
+  abzug = [];
+  if (Enums.has(1) && !Enums.has(0)) abzug.push(0);
+  if (Enums.has(0) && !Enums.has(1)) abzug.push(1);
+  if (Enums.has(3) && !Enums.has(4)) abzug.push(4);
+  if (Enums.has(4) && !Enums.has(3)) abzug.push(3);
+  Enume = Set.union(Enums, Enume);
+  for (var i = 0; i < abzug.length; i++) Enume.delete(abzug[i]);
+  Enums = Array.from(Enume);
+  window.alert(Enums);
+
   for (var i = 0; i < chks2.length; i++) {
-    //window.alert(chks2[i]);
-    //for (var k = 0; k < Enums.length; k++) {
-    //window.alert(chks2[i] + " " + Enums+ ": "+intersection(new Set(Enums), new Set(chks2[i])).size);
     flag = false;
     sum = 0;
     for (var k = 0; k < chks2[i].length; k++) {
-      //window.alert(chks2[i][k]);
       for (var l = 0; l < Enums.length; l++) {
         if (chks2[i][k] == Enums[l]) sum++;
-        //window.alert(chks2[i][k] + " " + Enums[l] + ": " + flag);
       }
     }
     //window.alert(chks2[i] + " " + Enums + ": " + flag);
