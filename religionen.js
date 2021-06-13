@@ -94,6 +94,7 @@ for (i = 0; i < tdClasses1.length; i++)
     '<div id="chk_spalten" style="display:none;">' +
     radio_tags +
     '<span style="">';
+  var labelstyle = "white-space: nowrap;font-size: 100%;";
   for (i = 0; i < p1keys.length; i++) {
     var chk2s = "";
     var p2keys = Object.keys(mapMapMap[p1keys[i]]);
@@ -101,7 +102,9 @@ for (i = 0; i < tdClasses1.length; i++)
       numbers = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
       if (p2keys[k] != null && p2keys[k] != "null") {
         chk2 =
-          '<label style="white-space: nowrap;font-size: 100%;" class="chks c_' +
+          '<label style="' +
+          labelstyle +
+          '" class="chks c_' +
           Array.from(mapMapMapTags[p1keys[i]][p2keys[k]]).join(",") +
           '" ><input type="checkbox" class="chks c_' +
           Array.from(mapMapMapTags[p1keys[i]][p2keys[k]]).join(",") +
@@ -134,7 +137,9 @@ for (i = 0; i < tdClasses1.length; i++)
       p1keys[i] +
       "');" +
       insertnull +
-      '"><label style="white-space: normal;font-size: 100%;">' +
+      '"><label style="' +
+      labelstyle +
+      '">' +
       makeSpacesOutOf_(p1keys[i]) +
       '</label><div id="' +
       p1keys[i] +
@@ -236,18 +241,20 @@ Set.union = function (s1, s2) {
 
 function disEnAbleChks(Enums) {
   //window.alert("bla");
-  for (var i = 0; i < chks2.length; i++)
+  //window.alert(Enums);
+  for (var i = 0; i < chks2.length; i++) {
+    chks2[i];
     for (var k = 0; k < Enums.length; k++) {
-      //window.alert(chks1[i].disabled);
       if (chks2.includes(Enums[k])) {
         chks1[i].disabled = true;
-        chks1[i].style = "color: grey";
+        chks1[i].style = "color: grey;" + labelstyle;
       } else {
         chks1[i].disabled = false;
-        chks1[i].style = "color: black";
+        chks1[i].style = "color: black;" + labelstyle;
       }
       //window.alert(chks1[i].disabled);
     }
+  }
 }
 
 function returnChangeButtons(number) {
