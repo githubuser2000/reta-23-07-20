@@ -2,7 +2,7 @@ var col = document.getElementsByClassName("RowNumber 1");
 var selectedSpaltenMany1 = {};
 var selectedSpaltenMany2 = {};
 var labelstyle = "white-space: nowrap;font-size: 100%;";
-var labelstylekl = "white-space: nowrap;font-size: 80%;";
+var labelstylekl = "white-space: nowrap;font-size: 80%;color: grey;";
 var Enume = new Set([0, 1, 3, 4]);
 window.onload = function () {
   let div = document.createElement("div");
@@ -142,7 +142,7 @@ for (i = 0; i < tdClasses1.length; i++)
       insertnull = "";
     }
     checkbox =
-      '<br><input type="checkbox" ' + // class="chks c_' +
+      '<div class="chksA"><input type="checkbox" ' + // class="chks c_' +
       //Array.from(mapMapMap[p1keys[i]][null]).join(",") +
       //'"  value="' +
       ' value="' +
@@ -159,7 +159,7 @@ for (i = 0; i < tdClasses1.length; i++)
       p1keys[i] +
       '" style="display:none;white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">' +
       chk2s +
-      "</div>";
+      "</div></div>";
     checkboxes += checkbox;
   }
   str2 = checkboxes + "</span></div>";
@@ -279,10 +279,10 @@ function disEnAbleChks(Enums) {
       //if (sum == 0) {
       //if (!chks2[i].includes(Enums[k])) {
       chks1[i].disabled = true;
-      chks1[i].style = "color: grey;" + labelstylekl;
+      chks1[i].style = labelstylekl;
     } else {
       chks1[i].disabled = false;
-      chks1[i].style = "color: black;" + labelstyle;
+      chks1[i].style = labelstyle;
     }
     //window.alert(chks1[i].disabled);
     //}
@@ -316,6 +316,19 @@ function disEnAbleChks(Enums) {
         )[0].style = "";
       }
     }
+  }
+  var Achks = document.getElementsByClassName("chksA");
+  for (var i = 0; i < Achks.length; i++) {
+    Bchks = Achks[i]
+      .getElementsByTagName("div")[0]
+      .getElementsByTagName("input");
+    deakAmount = 0;
+    for (var k = 0; k < Bchks.length; k++) {
+      if (Bchks[k].disabled) deakAmount++;
+    }
+    if (deakAmount == Bchks.length && deakAmount != 0)
+      Achks[i].getElementsByTagName("label")[0].style = labelstylekl;
+    else Achks[i].getElementsByTagName("label")[0].style = labelstyle;
   }
 }
 
