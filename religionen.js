@@ -276,11 +276,9 @@ function disEnAbleChks(Enums) {
 
   for (var i = 0; i < chks2.length; i++) {
     enumi = new Set();
-    for (var k = 0; k < chks2[i].length; k++) {
-      for (var l = 0; l < Enums.length; l++) {
+    for (var k = 0; k < chks2[i].length; k++)
+      for (var l = 0; l < Enums.length; l++)
         if (chks2[i][k] == Enums[l]) enumi.add(Enums[l]);
-      }
-    }
     if ((!enumi.has(0) && !enumi.has(1)) || (!enumi.has(3) && !enumi.has(4))) {
       chks1[i].disabled = true;
       chks1[i].style = labelstylekl;
@@ -292,31 +290,20 @@ function disEnAbleChks(Enums) {
 
   for (var i = 0; i < spaltenTags.length; i++) {
     enumi = new Set();
-    for (var k = 0; k < spaltenTags[i].length; k++) {
-      for (var l = 0; l < Enums.length; l++) {
+    for (var k = 0; k < spaltenTags[i].length; k++)
+      for (var l = 0; l < Enums.length; l++)
         if (spaltenTags[i][k] == Enums[l]) enumi.add(Enums[l]);
-      }
-    }
-    //window.alert(summe + " " + Enums.length);
 
     if ((!enumi.has(0) && !enumi.has(1)) || (!enumi.has(3) && !enumi.has(4))) {
-      /*spaltenTags2 = String(
-        spalten4spaltenTags[i][0].className.match(/c_([\d,]+)/g)
-      )
-        .substr(2)
-        .split(",");*/
-      for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
+      for (var k = 0; k < spalten4spaltenTags[i].length; k++)
         spaltenTags2 = spalten4spaltenTags[i][k].getElementsByTagName(
           "label"
         )[0].style = "font-size: 80%;color: grey";
-      }
-      //window.alert(spaltenTags + " xx");
     } else {
-      for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
+      for (var k = 0; k < spalten4spaltenTags[i].length; k++)
         spaltenTags2 = spalten4spaltenTags[i][k].getElementsByTagName(
           "label"
         )[0].style = "";
-      }
     }
   }
   var Achks = document.getElementsByClassName("chksA");
@@ -325,9 +312,7 @@ function disEnAbleChks(Enums) {
       .getElementsByTagName("div")[0]
       .getElementsByTagName("input");
     deakAmount = 0;
-    for (var k = 0; k < Bchks.length; k++) {
-      if (Bchks[k].disabled) deakAmount++;
-    }
+    for (var k = 0; k < Bchks.length; k++) if (Bchks[k].disabled) deakAmount++;
     if (deakAmount == Bchks.length && deakAmount != 0)
       Achks[i].getElementsByTagName("label")[0].style = labelstylekl;
     else Achks[i].getElementsByTagName("label")[0].style = labelstyle;
@@ -337,31 +322,20 @@ function disEnAbleChks(Enums) {
   for (var i = 0; i < chksA1label.length; i++) {
     tagsPerA1Label = chksA1label[i].className.match(/c1_([\d,]+)/g);
     if (tagsPerA1Label == null) tagsPerA1Label = [];
-    else {
+    else
       tagsPerA1Label = String(chksA1label[i].className.match(/c1_([\d,]+)/g))
         .substr(3)
         .split(",");
-    }
     if (tagsPerA1Label.length != 0) {
       enumo = new Set();
       for (var k = 0; k < tagsPerA1Label.length; k++)
-        for (var l = 0; l < Enums.length; l++) {
+        for (var l = 0; l < Enums.length; l++)
           if (tagsPerA1Label[k] == Enums[l]) enumo.add(Enums[l]);
-        }
       if (enumo.size > 0)
         if (
           (!enumo.has(0) && !enumo.has(1)) ||
           (!enumo.has(3) && !enumo.has(4))
         )
-          /*window.alert(
-          Array.from(enumo) +
-            " " +
-            chksA1label[i].innerHTML +
-            " " +
-            tagsPerA1Label +
-            "==" +
-            Enums
-        );*/
           chksA1label[i].style = labelstylekl;
     }
   }
