@@ -141,6 +141,11 @@ for (i = 0; i < tdClasses1.length; i++)
     } else {
       insertnull = "";
     }
+    mapsTagsif = mapMapMapTags[p1keys[i]][null];
+    if (typeof mapsTagsif == "undefined") mapsTagsif = [];
+    else mapsTagsif = Array.from(mapMapMapTags[p1keys[i]][null]);
+    //window.alert(mapsTagsif);
+
     checkbox =
       '<div class="chksA"><input type="checkbox" ' + // class="chks c_' +
       //Array.from(mapMapMap[p1keys[i]][null]).join(",") +
@@ -151,7 +156,9 @@ for (i = 0; i < tdClasses1.length; i++)
       p1keys[i] +
       "');" +
       insertnull +
-      '"><label style="' +
+      '"><label class="chksA1 c1_' +
+      mapsTagsif.join(",") +
+      '" style="' +
       labelstyle +
       '">' +
       makeSpacesOutOf_(p1keys[i]) +
@@ -237,7 +244,8 @@ function makeMapsOfHeadLCheckB(p1, p2, num, tags) {
   if (typeof mapMapMapTags[p1] === "undefined") mapMapMapTags[p1] = {};
   if (typeof mapMapMapTags[p1][p2] === "undefined")
     mapMapMapTags[p1][p2] = new Set();
-  mapMapMapTags[p1][p2] = Set.union(mapMapMapTags[p1][p2], tags);
+  if (typeof tags != "undefined" && tags != "null")
+    mapMapMapTags[p1][p2] = Set.union(mapMapMapTags[p1][p2], tags);
   //window.alert(Array.from(mapMapMapTags[p1][p2]))
 }
 
@@ -329,6 +337,18 @@ function disEnAbleChks(Enums) {
     if (deakAmount == Bchks.length && deakAmount != 0)
       Achks[i].getElementsByTagName("label")[0].style = labelstylekl;
     else Achks[i].getElementsByTagName("label")[0].style = labelstyle;
+  }
+  //'"><label class="chksA1 c1_' +
+  chksA1label = document.getElementsByClassName("chksA1");
+  for (var i = 0; i < chksA1label.length; i++) {
+    tagsPerA1Label = String(chksA1label[i].className.match(/c1_([\d,]+)/g))
+      .substr(2)
+      .split(",");
+    enumo = new Set();
+    for (var k = 0; k < tagsPerA1Label.length; k++)
+      for (var l = 0; l < Enums.length; l++) {
+        if (tagsPerA1Label[k] == Enums[l]) enumo.add(Enums[l]);
+      }
   }
 }
 
