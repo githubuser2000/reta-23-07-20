@@ -288,7 +288,7 @@ function disEnAbleChks(Enums) {
     }
   }
 
-  for (var i = 0; i < spaltenTags.length; i++) {
+  for (var i = 2; i < spaltenTags.length; i++) {
     enumi = new Set();
     for (var k = 0; k < spaltenTags[i].length; k++)
       for (var l = 0; l < Enums.length; l++)
