@@ -281,19 +281,13 @@ function disEnAbleChks(Enums) {
         if (chks2[i][k] == Enums[l]) enumi.add(Enums[l]);
       }
     }
-    //window.alert(chks2[i] + " " + Enums + ": " + flag);
-    //window.alert(chks2[i][0]);
     if ((!enumi.has(0) && !enumi.has(1)) || (!enumi.has(3) && !enumi.has(4))) {
-      //if (sum == 0) {
-      //if (!chks2[i].includes(Enums[k])) {
       chks1[i].disabled = true;
       chks1[i].style = labelstylekl;
     } else {
       chks1[i].disabled = false;
       chks1[i].style = labelstyle;
     }
-    //window.alert(chks1[i].disabled);
-    //}
   }
 
   for (var i = 0; i < spaltenTags.length; i++) {
@@ -341,17 +335,37 @@ function disEnAbleChks(Enums) {
   //'"><label class="chksA1 c1_' +
   chksA1label = document.getElementsByClassName("chksA1");
   for (var i = 0; i < chksA1label.length; i++) {
-    tagsPerA1Label = String(chksA1label[i].className.match(/c1_([\d,]+)/g))
-      .substr(2)
-      .split(",");
-    enumo = new Set();
-    for (var k = 0; k < tagsPerA1Label.length; k++)
-      for (var l = 0; l < Enums.length; l++) {
-        if (tagsPerA1Label[k] == Enums[l]) enumo.add(Enums[l]);
-      }
+    tagsPerA1Label = chksA1label[i].className.match(/c1_([\d,]+)/g);
+    if (tagsPerA1Label == null) tagsPerA1Label = [];
+    else {
+      tagsPerA1Label = String(chksA1label[i].className.match(/c1_([\d,]+)/g))
+        .substr(3)
+        .split(",");
+    }
+    if (tagsPerA1Label.length != 0) {
+      enumo = new Set();
+      for (var k = 0; k < tagsPerA1Label.length; k++)
+        for (var l = 0; l < Enums.length; l++) {
+          if (tagsPerA1Label[k] == Enums[l]) enumo.add(Enums[l]);
+        }
+      if (enumo.size > 0)
+        if (
+          (!enumo.has(0) && !enumo.has(1)) ||
+          (!enumo.has(3) && !enumo.has(4))
+        )
+          /*window.alert(
+          Array.from(enumo) +
+            " " +
+            chksA1label[i].innerHTML +
+            " " +
+            tagsPerA1Label +
+            "==" +
+            Enums
+        );*/
+          chksA1label[i].style = labelstylekl;
+    }
   }
 }
-
 function returnChangeButtons(number) {
   return (
     '<label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="neuErlauben" name="zeilenDazuOrWeg' +
