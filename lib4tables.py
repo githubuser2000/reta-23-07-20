@@ -445,3 +445,13 @@ def isPrimMultiple(isIt: int, multiples1: list, dontReturnList=True):
 def couldBePrimeNumberPrimzahlkreuz(num: int) -> bool:
     Under24 = (1, 5, 7, 11, 13, 17, 19, 23)
     return num % 24 in Under24
+
+
+def couldBePrimeNumberPrimzahlkreuz_fuer_innen(num: int) -> bool:
+    Under24 = (5, 11, 17, 23)
+    return num % 24 in Under24
+
+
+def couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num: int) -> bool:
+    Under24 = (1, 7, 13, 19)
+    return num % 24 in Under24

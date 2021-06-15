@@ -955,9 +955,6 @@ class Concat:
                 return ""
 
         self.relitable = relitable
-        self.primAmounts = 0
-        self.oldPrimAmounts = 0
-        self.lastPrimAnswers: dict = {}
         # extraSpalten = (5, 10, 42, 131, 138)
         extraSpalten = self.ones
         # x("OnEs", self.ones)
@@ -985,8 +982,11 @@ class Concat:
             self.tables.generatedSpaltenParameter_Tags[len(rowsAsNumbers) - 1] = tags[r]
 
         vergangenheit: list = []
-        for i, cols in enumerate(relitable):
-            for kkk, kk in enumerate(extraSpalten):
+        for kkk, kk in enumerate(extraSpalten):
+            self.primAmounts = 0
+            self.oldPrimAmounts = 0
+            self.lastPrimAnswers: dict = {}
+            for i, cols in enumerate(relitable):
                 into = [""] if i != 0 else ["Primzahlwirkung ", spaltenNamen[kk]]
 
                 self.oldPrimAmounts = self.primAmounts
@@ -995,6 +995,7 @@ class Concat:
                 if primCreativity(i) == 1:
                     into = [PrimAnswer(i)]
                     self.lastPrimAnswers[i] = "".join(into)
+
                 elif i > 1:
                     for couple in primRepeat(primFak(i)):
                         if couple[1] == 1:
