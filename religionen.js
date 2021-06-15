@@ -924,7 +924,9 @@ function makeAllowedZeilenFromZaehlung(zeilenAngaben) {
       erlaubteZaehlungen.add(k);
 
   for (i = 0; i < ersteSpalte.length; i++) {
-    zaehlung = parseInt(ersteSpalte[i].innerHTML.trim());
+    zaehlung = parseInt(
+      ersteSpalte[i].getElementsByTagName("label")[0].innerHTML.trim()
+    );
     if (zaehlung != "NaN" && erlaubteZaehlungen.has(zaehlung)) {
       wirklicheZeile = ersteSpalte[i].className.match(/z_(\d+)/g);
       if (wirklicheZeile.length > 0) {
