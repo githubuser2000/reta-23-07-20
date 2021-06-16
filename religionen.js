@@ -699,7 +699,6 @@ function setAllListsInHeadings() {
   }
 }
 
-
 function toggleChkSpalten(radiobutton) {
   chk_spalten = document.getElementById("chk_spalten");
   inputZeilen = document.getElementById("inputZeilen");
