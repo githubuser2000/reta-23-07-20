@@ -2070,7 +2070,7 @@ class Program:
 
         Program.kombiParaNdataMatrix = {
             1: (
-                "Tiere",
+                "Lebewesen",
                 "tiere",
                 "tier",
                 "lebewesen",
