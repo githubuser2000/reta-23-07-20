@@ -1854,7 +1854,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.gebrochenuniversum,
-                set(range(2, 100)),
+                set([str(a) for a in range(2, 100)]),
                 set(),
                 set(),
                 (
