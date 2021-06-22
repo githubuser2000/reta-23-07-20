@@ -1859,10 +1859,10 @@ class Program:
                 set(),
                 (
                     lambda paraValues: {
-                        abs(int(chosen)) if chosen.isdecimal() else None
+                        str(abs(int(chosen))) + "gu" if chosen.isdecimal() else None
                         for chosen in [value for value in (paraValues.split(","))]
                     }
-                    - {None, 0, 1},
+                    - {"Nonegu", "0gu", "1gu"},
                 ),
             ),
             (Program.ParametersMain.symbole, (), {36, 37}),
