@@ -1034,7 +1034,9 @@ class Concat:
         # #x("rewt1", self.tables.dataDict[0][5][0])
         return self.relitable, rowsAsNumbers
 
-    def readConcatCsv(self, relitable: list, rowsAsNumbers: set) -> tuple:
+    def readConcatCsv(
+        self, relitable: list, rowsAsNumbers: set, concatTable: int = 1
+    ) -> tuple:
         """Fügt eine Tabelle neben der self.relitable an
         momentan ist es noch fix auf primnumbers.csv
 
@@ -1050,7 +1052,11 @@ class Concat:
         place = os.path.join(
             os.getcwd(),
             os.path.dirname(__file__),
-            os.path.basename("./primenumbers.csv"),
+            os.path.basename(
+                "./primenumbers.csv"
+                if concatTable == 1
+                else "./gebrochen-rational-universum.csv"
+            ),
         )
         self.relitable = relitable
         headingsAmount = len(self.relitable[0])
@@ -1077,25 +1083,30 @@ class Concat:
                         for u, heading in enumerate(self.relitable[0]):
                             if (
                                 heading.isdecimal()
-                                and int(heading) in self.puniverseprims
+                                and (
+                                    (
+                                        int(heading) in self.puniverseprims
+                                        and concatTable == 1
+                                    )
+                                    or concatTable != 1
+                                )
                                 and u >= headingsAmount
                             ):
                                 rowsAsNumbers.add(u)
                                 primSpalten.add(u)
-                                heading = int(heading)
                                 if (
                                     len(self.tables.generatedSpaltenParameter)
                                     + self.tables.SpaltenVanillaAmount
                                     in self.tables.generatedSpaltenParameter
                                 ):
                                     raise ValueError
-                                # alxp("XYZ")
-                                # x("zzz2", self.tables.generatedSpaltenParameter)
-                                self.tables.generatedSpaltenParameter[
-                                    len(self.tables.generatedSpaltenParameter)
-                                    + self.tables.SpaltenVanillaAmount
-                                ] = self.tables.dataDict[2][heading]
-                                # x("zzz", self.tables.generatedSpaltenParameter)
+
+                                if concatTable == 1:
+                                    heading = int(heading)
+                                    self.tables.generatedSpaltenParameter[
+                                        len(self.tables.generatedSpaltenParameter)
+                                        + self.tables.SpaltenVanillaAmount
+                                    ] = self.tables.dataDict[2][heading]
 
             self.concatRowsAmount = len(primcol)
         return self.relitable, rowsAsNumbers, primSpalten

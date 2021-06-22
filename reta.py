@@ -599,7 +599,7 @@ class Program:
 
         Program.ParametersMain: namedtuple = namedtuple(
             "ParametersMain",
-            "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesgalaxie konzept inkrementieren operationen universummetakonkret primzahlwirkung alles",
+            "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesgalaxie konzept inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum alles",
         )
 
         Program.ParametersMain = Program.ParametersMain(
@@ -684,6 +684,7 @@ class Program:
                 "Primzahlwirkung",
                 "primzahlwirkung",
             ),
+            ("Gebrochen-Rational_Universum", "gebrochenuniversum"),
             ("alles"),
         )
 
@@ -1851,6 +1852,19 @@ class Program:
                 ),
                 {107, 108, 109},
             ),
+            (
+                Program.ParametersMain.gebrochenuniversum,
+                set(range(2, 100)),
+                set(),
+                set(),
+                (
+                    lambda paraValues: {
+                        abs(int(chosen)) if chosen.isdecimal() else None
+                        for chosen in [value for value in (paraValues.split(","))]
+                    }
+                    - {None, 0, 1},
+                ),
+            ),
             (Program.ParametersMain.symbole, (), {36, 37}),
             (
                 Program.ParametersMain.primzahlvielfachesgalaxie,
@@ -2539,11 +2553,18 @@ class Program:
         self.tables.generRows = self.generRows
         self.tables.getPrepare.rowsAsNumbers = self.rowsAsNumbers
         self.tables.getOut.rowsAsNumbers = self.rowsAsNumbers
+
         (
             self.relitable,
             rowsAsNumbers,
             primSpalten,
         ) = self.tables.getConcat.readConcatCsv(self.relitable, self.rowsAsNumbers)
+        (
+            self.relitable,
+            rowsAsNumbers,
+            gebrochenuniversumNumbers,
+        ) = self.tables.getConcat.readConcatCsv(self.relitable, self.rowsAsNumbers, 2)
+
         self.relitable, self.rowsAsNumbers = self.tables.getConcat.concatRowsOfConcepts(
             self.relitable, self.tables.generRows, self.rowsAsNumbers
         )
