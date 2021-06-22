@@ -1070,12 +1070,6 @@ class Concat:
                         maxlen = lastlen
 
                     dazu = list(primcol) + [""] * (maxlen - len(primcol))
-                    if i == 0:
-                        for a in range(len(dazu)):
-                            pass
-                            # self.tables.generatedSpaltenParameter_Tags_concat1[
-                            #    a
-                            # ] = frozenset({ST.sternPolygon, ST.universum, ST.galaxie})
 
                     self.relitable[i] += dazu
                     if i == 0:
@@ -1088,11 +1082,6 @@ class Concat:
                             ):
                                 rowsAsNumbers.add(u)
                                 primSpalten.add(u)
-                                # self.tables.generatedSpaltenParameter_Tags[
-                                #    u
-                                # ] = frozenset(
-                                #    {ST.sternPolygon, ST.universum, ST.galaxie}
-                                # )
                                 heading = int(heading)
                                 if (
                                     len(self.tables.generatedSpaltenParameter)
