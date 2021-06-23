@@ -150,6 +150,7 @@ class Tables:
         self.gebrUniv: set = set()
         self.getOut.primUniversePrimsSet = self.puniverseprims
         self.getConcat.primUniversePrimsSet = self.puniverseprims
+        self.getConcat.gebrUnivSet = self.gebrUniv
         self.religionNumbers: list = []
         self.getOut.religionNumbers = self.religionNumbers
         self.getPrepare.religionNumbers = self.religionNumbers
