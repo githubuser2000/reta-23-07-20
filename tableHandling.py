@@ -64,6 +64,10 @@ class Tables:
         return self.puniverseprims
 
     @property
+    def gebrUnivSet(self):
+        return self.gebrUniv
+
+    @property
     def breitenn(self):
         return self.getOut.breiten
 
@@ -143,6 +147,7 @@ class Tables:
         self.spaltegGestirn = False
         self.breitenn: list = []
         self.puniverseprims: set = set()  # welche Spalten von "primenumbers.csv"
+        self.gebrUniv: set = set()
         self.getOut.primUniversePrimsSet = self.puniverseprims
         self.getConcat.primUniversePrimsSet = self.puniverseprims
         self.religionNumbers: list = []

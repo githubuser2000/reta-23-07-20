@@ -20,6 +20,14 @@ class Concat:
         self.ones = set()
 
     @property
+    def gebrUnivSet(self):
+        return self.puniverseprims
+
+    @gebrUnivSet.setter
+    def gebrUnivSet(self, value: set):
+        self.gebrUniv = value
+
+    @property
     def primUniversePrimsSet(self):
         return self.puniverseprims
 
@@ -1061,7 +1069,7 @@ class Concat:
         )
         self.relitable = relitable
         headingsAmount = len(self.relitable[0])
-        if len(self.puniverseprims) > 0:
+        if (len(self.puniverseprims) > 0 and concatTable == 1) or concatTable != 1:
             with open(place, mode="r") as csv_file:
                 self.relitable, primUniverseLine = self.tables.fillBoth(
                     self.relitable, list(csv.reader(csv_file, delimiter=";"))

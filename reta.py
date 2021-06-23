@@ -1906,11 +1906,9 @@ class Program:
                 set(),
                 set(),
                 (
-                    lambda paraValues: {
-                        abs(int(chosen)) if chosen.isdecimal() else None
-                        for chosen in [value for value in (paraValues.split(","))]
-                    }
-                    - {None, 0},
+                    lambda: {
+                        None,
+                    },
                 ),
             ),
             (Program.ParametersMain.symbole, (), {36, 37}),
@@ -1920,13 +1918,9 @@ class Program:
                 set(),
                 set(),
                 (
-                    lambda paraValues: {
-                        abs(int(chosen))
-                        if chosen.isdecimal() and primCreativity(abs(int(chosen))) == 1
-                        else None
-                        for chosen in [value for value in (paraValues.split(","))]
-                    }
-                    - {None, 0, 1},
+                    lambda: {
+                        None,
+                    },
                 ),
             ),
             (
@@ -2591,6 +2585,9 @@ class Program:
         self.onlyGenerated = self.spaltenArtenKey_SpaltennummernValue[
             self.spaltenTypeNaming.boolAndTupleSet1
         ]
+        self.gebrUni = self.spaltenArtenKey_SpaltennummernValue[
+            self.spaltenTypeNaming.gebroUni1
+        ]
         ones = []
         for a in self.onlyGenerated:
             if len(a) == 1:
@@ -2598,6 +2595,8 @@ class Program:
         self.tables.getConcat.ones = ones
         # x("OnEs", self.tables.getConcat.ones)
 
+        for gebrUniva in self.gebrUni:
+            self.tables.gebrUnivSet.add(gebrUniva)
         for prims in self.puniverseprims:
             self.tables.primUniversePrimsSet.add(prims)
 
