@@ -46,28 +46,35 @@ class Program:
                 """
                 Die Variable self.tables.spalteGestirn braucht man gar nicht mehr !!!
                 """
-                # x("___", eineSpaltenArtmitSpaltenNummern)
+                x("ZTG", [befehlName, eineSpaltenArtmitSpaltenNummern, paraValue])
+
                 if (
                     type(eineSpaltenArtmitSpaltenNummern) in [list, tuple]
                     and len(eineSpaltenArtmitSpaltenNummern) > 0
                 ):
+                    alxp("1")
                     if type(eineSpaltenArtmitSpaltenNummern[0]) is bool:
+                        alxp("2")
                         eineSpaltenArtmitSpaltenNummern = set(
                             eineSpaltenArtmitSpaltenNummern
                         )
                     elif type(eineSpaltenArtmitSpaltenNummern[0]) in [tuple, list]:
+                        alxp("3")
                         eineSpaltenArtmitSpaltenNummern = set(
                             eineSpaltenArtmitSpaltenNummern[0]
                         )
                 if i == 2 and type(eineSpaltenArtmitSpaltenNummern) in [list, tuple]:
+                    alxp("4")
                     if (
                         befehlName
                         == Program.ParametersMain.primzahlvielfachesgalaxie[0]
                     ):
+                        alxp("5")
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), 2)
                         ] |= Program.lambdaGebrUniv(paraValue)
                     elif befehlName == Program.ParametersMain.gebrochenuniversum[0]:
+                        alxp("6")
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), 5)
                         ] |= Program.lambdaPrimGalax(paraValue)
@@ -92,6 +99,7 @@ class Program:
                         ],
                     )
                 else:
+                    alxp("7+" + str(i) + str(eineSpaltenArtmitSpaltenNummern))
                     try:
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), i)
@@ -522,8 +530,6 @@ class Program:
                                         parameterName,
                                     )
                                 ]
-                            # elif i == 2 and type(dd) not in [tuple, int]:
-                            # folgendes ist eindeutig besser:
                             elif i == 2 and callable(dd):
                                 case = 2
                                 parameterMainNamePerLoop += [parameterName]
@@ -1902,15 +1908,13 @@ class Program:
             ),
             (
                 Program.ParametersMain.gebrochenuniversum,
-                set([str(a) for a in range(1, 100)]),
+                set([str(a) for a in range(2, 100)]),
                 set(),
                 set(),
-                (
-                    lambda: {
-                        None,
-                    },
-                ),
-                set([str(a) for a in range(1, 100)]),
+                set(),
+                set(),
+                set(),
+                set([str(a) for a in range(2, 100)]),
             ),
             (Program.ParametersMain.symbole, (), {36, 37}),
             (
@@ -1919,7 +1923,7 @@ class Program:
                 set(),
                 set(),
                 (
-                    lambda: {
+                    lambda: {  # nur noch ein Platzhalter
                         None,
                     },
                 ),

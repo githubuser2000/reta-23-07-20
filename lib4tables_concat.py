@@ -1118,6 +1118,7 @@ class Concat:
 
                                 if concatTable == 1:
                                     heading = int(heading)
+                                    x("EDS", self.tables.dataDict[2][heading])
                                     self.tables.generatedSpaltenParameter[
                                         len(self.tables.generatedSpaltenParameter)
                                         + self.tables.SpaltenVanillaAmount
