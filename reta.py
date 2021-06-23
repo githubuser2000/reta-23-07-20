@@ -1910,6 +1910,7 @@ class Program:
                         None,
                     },
                 ),
+                set([str(a) for a in range(1, 100)]),
             ),
             (Program.ParametersMain.symbole, (), {36, 37}),
             (
@@ -2223,7 +2224,7 @@ class Program:
         """
         allValues[2] = set((int(pNum) for pNum in allowedPrimNumbersForCommand))
         allValues[3] = set(Program.kombiParaNdataMatrix.keys())
-        allValues[5] = set(range(1, 100))
+        allValues[5] = set(range(2, 100))
         # allValues[5] = set(range(1, 100))
         x("aLLe", allValues)
 
