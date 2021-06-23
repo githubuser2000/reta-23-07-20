@@ -497,7 +497,7 @@ class Program:
                     paraDict[(name1, name2)] = datas
                 if len(parameterNames) == 0:
                     paraDict[(name1, "")] = datas
-            dataDicts: tuple = ({}, {}, {}, {}, {})
+            dataDicts: tuple = ({}, {}, {}, {}, {}, {})
             for i, d in enumerate(datas):
                 for dd in d:
                     into = []
@@ -721,7 +721,7 @@ class Program:
             ),
             # ("Gebrochen-Rational_Universum", "gebrochenuniversum"),
             ("gebrochenuniversum",),
-            ("alles"),
+            ("alles",),
         )
 
         allowedPrimNumbersForCommand = tuple(
@@ -2200,7 +2200,7 @@ class Program:
             for valuesInValuess in value:
                 self.kombiReverseDict[valuesInValuess] = key
 
-        allValues = [set(), set(), set(), set(), set()]
+        allValues = [set(), set(), set(), set(), set(), set()]
         for possibleCommands in paraNdataMatrix:
             for commandValue, aAllValue in zip(possibleCommands[2:], allValues):
                 try:
@@ -2223,12 +2223,13 @@ class Program:
         """
         allValues[2] = set((int(pNum) for pNum in allowedPrimNumbersForCommand))
         allValues[3] = set(Program.kombiParaNdataMatrix.keys())
+        allValues[5] = set(range(1, 100))
         # allValues[5] = set(range(1, 100))
         x("aLLe", allValues)
 
         paraNdataMatrix += [
             (
-                (Program.ParametersMain.alles,),
+                Program.ParametersMain.alles,
                 (),
                 *allValues,
             )
@@ -2516,7 +2517,7 @@ class Program:
             self.puniverseprimsNot,
             self.generRowsNot,
         ) = self.parametersToCommandsAndNumbers(argv, "-")
-        self.dataDict: tuple = [{}, {}, {}, {}, {}]
+        self.dataDict: tuple = [{}, {}, {}, {}, {}, {}]
         self.spaltenTypeNaming: namedtuple = namedtuple(
             "SpaltenTyp",
             "ordinary generated1 concat1 kombi1 boolAndTupleSet1 gebroUni1 ordinaryNot generate1dNot concat1Not kombi1Not boolAndTupleSet1Not gebroUni1Not",
