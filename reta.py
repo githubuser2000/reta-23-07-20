@@ -60,18 +60,20 @@ class Program:
                             eineSpaltenArtmitSpaltenNummern[0]
                         )
                 if i == 2 and type(eineSpaltenArtmitSpaltenNummern) in [list, tuple]:
-                    self.spaltenArtenKey_SpaltennummernValue[
-                        (
-                            len(neg),
-                            2
-                            if befehlName
-                            == Program.ParametersMain.primzahlvielfachesgalaxie[0]
-                            else 5
-                            if befehlName
-                            == Program.ParametersMain.gebrochenuniversum[0]
-                            else None,
-                        )
-                    ] |= eineSpaltenArtmitSpaltenNummern[0](paraValue)
+                    if (
+                        befehlName
+                        == Program.ParametersMain.primzahlvielfachesgalaxie[0]
+                    ):
+                        self.spaltenArtenKey_SpaltennummernValue[
+                            (len(neg), 2)
+                        ] |= Program.lambdaGebrUniv(paraValue)
+                    elif befehlName == Program.ParametersMain.gebrochenuniversum[0]:
+                        self.spaltenArtenKey_SpaltennummernValue[
+                            (len(neg), 5)
+                        ] |= Program.lambdaPrimGalax(paraValue)
+                    else:
+                        raise ValueError
+
                     x(
                         "EDF",
                         [
@@ -736,6 +738,18 @@ class Program:
                 )
             )
         )
+
+        Program.lambdaGebrUniv = lambda paraValues: {
+            abs(int(chosen)) if chosen.isdecimal() else None
+            for chosen in [value for value in (paraValues.split(","))]
+        } - {None, 0, 1}
+
+        Program.lambdaPrimGalax = lambda paraValues: {
+            abs(int(chosen))
+            if chosen.isdecimal() and primCreativity(abs(int(chosen))) == 1
+            else None
+            for chosen in [value for value in (paraValues.split(","))]
+        } - {None, 0, 1}
 
         paraNdataMatrix = [
             (
