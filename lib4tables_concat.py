@@ -1060,7 +1060,6 @@ class Concat:
         )
         self.relitable = relitable
         headingsAmount = len(self.relitable[0])
-        self.tables.SpaltenVanillaAmount = len(rowsAsNumbers)
         if len(self.puniverseprims) > 0:
             with open(place, mode="r") as csv_file:
                 self.relitable, primUniverseLine = self.tables.fillBoth(

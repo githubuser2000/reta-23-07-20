@@ -2554,6 +2554,7 @@ class Program:
         self.tables.getPrepare.rowsAsNumbers = self.rowsAsNumbers
         self.tables.getOut.rowsAsNumbers = self.rowsAsNumbers
 
+        self.tables.SpaltenVanillaAmount = len(self.rowsAsNumbers)
         (
             self.relitable,
             rowsAsNumbers,
