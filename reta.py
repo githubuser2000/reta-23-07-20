@@ -2217,10 +2217,10 @@ class Program:
         # x("l_p", self.dataDict[4])
         self.dataDict[3] = Program.kombiParaNdataMatrix
         # x("lüp", self.dataDict[3])
-        # alxp(self.paraDict)
-        # alxp("--|-")
-        # alxp(self.dataDict)
-        # alxp("--||")
+        alxp(self.paraDict)
+        alxp("--|-")
+        alxp(self.dataDict)
+        alxp("--||")
         self.tables.dataDict = self.dataDict
 
     def parametersToCommandsAndNumbers(
