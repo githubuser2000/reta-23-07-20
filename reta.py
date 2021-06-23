@@ -39,7 +39,9 @@ class Program:
     def produceAllSpaltenNumbers(self, neg=""):
         global shellRowsAmount
 
-        def resultingSpaltenFromTuple(tupl: tuple, neg, paraValue=None) -> tuple:
+        def resultingSpaltenFromTuple(
+            tupl: tuple, neg, paraValue=None, befehlName=None
+        ) -> tuple:
             for i, eineSpaltenArtmitSpaltenNummern in enumerate(tupl):
                 """
                 Die Variable self.tables.spalteGestirn braucht man gar nicht mehr !!!
@@ -59,8 +61,34 @@ class Program:
                         )
                 if i == 2 and type(eineSpaltenArtmitSpaltenNummern) in [list, tuple]:
                     self.spaltenArtenKey_SpaltennummernValue[
-                        (len(neg), 2)
+                        (
+                            len(neg),
+                            2
+                            if befehlName
+                            == Program.ParametersMain.primzahlvielfachesgalaxie[0]
+                            else 5
+                            if befehlName
+                            == Program.ParametersMain.gebrochenuniversum[0]
+                            else None,
+                        )
                     ] |= eineSpaltenArtmitSpaltenNummern[0](paraValue)
+                    x(
+                        "EDF",
+                        [
+                            paraValue,
+                            eineSpaltenArtmitSpaltenNummern,
+                            befehlName,
+                            Program.ParametersMain.gebrochenuniversum,
+                            2
+                            if befehlName
+                            == Program.ParametersMain.primzahlvielfachesgalaxie[0]
+                            else 5
+                            if befehlName
+                            == Program.ParametersMain.gebrochenuniversum[0]
+                            else None,
+                            Program.ParametersMain.primzahlvielfachesgalaxie,
+                        ],
+                    )
                 else:
                     try:
                         self.spaltenArtenKey_SpaltennummernValue[
@@ -173,6 +201,7 @@ class Program:
                                         ],
                                         neg,
                                         oneOfThingsAfterEqSign,
+                                        befehlName=cmd[:eq],
                                     )
                                     # alxp("geht 1:")
                                     # alxp((cmd[:eq], oneOfThingsAfterEqSign))
@@ -245,7 +274,9 @@ class Program:
                                     cmd = cmd[:-1]
 
                                 # x("TT1", self.paraDict[(cmd, "")])
-                                resultingSpaltenFromTuple(self.paraDict[(cmd, "")], neg)
+                                resultingSpaltenFromTuple(
+                                    self.paraDict[(cmd, "")], neg, befehlName=cmd
+                                )
                                 # x("TT2", cmd)
 
                         except KeyError:
@@ -286,6 +317,7 @@ class Program:
                                             },
                                         ),
                                         neg,
+                                        befehlName="kombinationen",
                                     )
                                     # alxp("geht 2:")
                                     # kombiSpalten |= {self.kombiReverseDict[oneKombiSpalte]}
@@ -494,6 +526,7 @@ class Program:
                                 case = 2
                                 parameterMainNamePerLoop += [parameterName]
                                 into += [[(parameterMainName, parameterName)]]
+                                # x("ert", [parameterName, parameterMainName])
                             elif i == 4 and (type(dd) in (list, tuple)):
                                 case = 4
                                 into += [(parameterMainName, parameterName)]
@@ -684,7 +717,8 @@ class Program:
                 "Primzahlwirkung",
                 "primzahlwirkung",
             ),
-            ("Gebrochen-Rational_Universum", "gebrochenuniversum"),
+            # ("Gebrochen-Rational_Universum", "gebrochenuniversum"),
+            ("gebrochenuniversum",),
             ("alles"),
         )
 
@@ -1854,15 +1888,15 @@ class Program:
             ),
             (
                 Program.ParametersMain.gebrochenuniversum,
-                set([str(a) for a in range(2, 100)]),
+                set([str(a) for a in range(1, 100)]),
                 set(),
                 set(),
                 (
                     lambda paraValues: {
-                        str(abs(int(chosen))) + "gu" if chosen.isdecimal() else None
+                        abs(int(chosen)) if chosen.isdecimal() else None
                         for chosen in [value for value in (paraValues.split(","))]
                     }
-                    - {"Nonegu", "0gu", "1gu"},
+                    - {None, 0},
                 ),
             ),
             (Program.ParametersMain.symbole, (), {36, 37}),
@@ -2181,7 +2215,8 @@ class Program:
         """
         allValues[2] = set((int(pNum) for pNum in allowedPrimNumbersForCommand))
         allValues[3] = set(Program.kombiParaNdataMatrix.keys())
-        # x("aLLe", allValues)
+        # allValues[5] = set(range(1, 100))
+        x("aLLe", allValues)
 
         paraNdataMatrix += [
             (
@@ -2476,7 +2511,7 @@ class Program:
         self.dataDict: tuple = [{}, {}, {}, {}, {}]
         self.spaltenTypeNaming: namedtuple = namedtuple(
             "SpaltenTyp",
-            "ordinary generated1 concat1 kombi1 boolAndTupleSet1 ordinaryNot generate1dNot concat1Not kombi1Not boolAndTupleSet1Not",
+            "ordinary generated1 concat1 kombi1 boolAndTupleSet1 gebroUni1 ordinaryNot generate1dNot concat1Not kombi1Not boolAndTupleSet1Not gebroUni1Not",
         )
         self.spaltenTypeNaming = self.spaltenTypeNaming(
             (0, 0),
@@ -2484,11 +2519,13 @@ class Program:
             (0, 2),
             (0, 3),
             (0, 4),
+            (0, 5),
             (1, 0),
             (1, 1),
             (1, 2),
             (1, 3),
             (1, 4),
+            (1, 5),
         )
 
         # self.spaltenArtenNameKey_SpaltenArtenTupleVal_4Key4otherDict = {
@@ -2507,11 +2544,13 @@ class Program:
             (0, 2): set(),
             (0, 3): set(),
             (0, 4): set(),
+            (0, 5): set(),
             (1, 0): set(),
             (1, 1): set(),
             (1, 2): set(),
             (1, 3): set(),
             (1, 4): set(),
+            (1, 5): set(),
         }
 
         self.storeParamtersForColumns()

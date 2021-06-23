@@ -1039,6 +1039,7 @@ class Concat:
     ) -> tuple:
         """Fügt eine Tabelle neben der self.relitable an
         momentan ist es noch fix auf primnumbers.csv
+        aber das wird gerade geändert
 
         @type relitable: list
         @param relitable: Haupttabelle self.relitable

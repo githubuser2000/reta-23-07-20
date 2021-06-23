@@ -535,7 +535,7 @@ class Prepare:
         numlen = len(str(finallyDisplayLines3[-1]))
         old2Rows: tuple = ({}, {})
         reliNumbersBool = False if self.religionNumbers != [] else True
-        x("XIX", rowsAsNumbers)
+        # x("XIX", rowsAsNumbers)
         for u, line in enumerate(contentTable):
             # x("AAAF1", (contentTable[u], u, ))
             # x("AAAF2", "ENNDD")
