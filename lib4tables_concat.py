@@ -1069,7 +1069,10 @@ class Concat:
         )
         self.relitable = relitable
         headingsAmount = len(self.relitable[0])
-        if (len(self.puniverseprims) > 0 and concatTable == 1) or concatTable != 1:
+        if (len(self.puniverseprims) > 0 and concatTable == 1) or (
+            concatTable != 1 and len(self.gebrUniv) > 0
+        ):
+
             with open(place, mode="r") as csv_file:
                 self.relitable, primUniverseLine = self.tables.fillBoth(
                     self.relitable, list(csv.reader(csv_file, delimiter=";"))
@@ -1096,7 +1099,10 @@ class Concat:
                                         int(heading) in self.puniverseprims
                                         and concatTable == 1
                                     )
-                                    or concatTable != 1
+                                    or (
+                                        concatTable != 1
+                                        and int(heading) in self.gebrUniv
+                                    )
                                 )
                                 and u >= headingsAmount
                             ):
