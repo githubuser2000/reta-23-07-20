@@ -1091,7 +1091,8 @@ class Concat:
                                 )
                                 and u >= headingsAmount
                             ):
-                                rowsAsNumbers.add(u)
+                                if concatTable == 1:
+                                    rowsAsNumbers.add(u)
                                 primSpalten.add(u)
                                 if (
                                     len(self.tables.generatedSpaltenParameter)
@@ -1107,5 +1108,4 @@ class Concat:
                                         + self.tables.SpaltenVanillaAmount
                                     ] = self.tables.dataDict[2][heading]
 
-            self.concatRowsAmount = len(primcol)
         return self.relitable, rowsAsNumbers, primSpalten

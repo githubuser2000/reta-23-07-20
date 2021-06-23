@@ -152,7 +152,6 @@ class Tables:
         self.getPrepare.ifprimmultis = False
         self.getCombis.rowsOfcombi = set()
         # self.getPrepare.rowsAsNumbers = set()
-        self.getConcat.concatRowsAmount = 0
         self.__generRows__: set = set()
 
     class Output:
