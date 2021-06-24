@@ -85,7 +85,7 @@ class Program:
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), 6)
                         ] |= Program.lambdaGebrUnivUndGalax(paraValue)
-                   else:
+                    else:
                         raise ValueError
 
                 else:
