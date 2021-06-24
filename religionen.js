@@ -383,6 +383,8 @@ function makeSpacesOutOf_(text) {
   if (text.length == 8) if (text == "zaehlung") return "Zählung";
   if (text.length == 12) if (text == "nummerierung") return "Nummerierung";
   if (text.length == 11) if (text == "kombination") return "Kombinationen";
+  if (text.length == 18)
+    if (text == "gebrochenuniversum") return "gebrochen-rational Universum";
   var forNewString = [];
   for (var i = 0; i < text.length; i++)
     if (text[i] == "_") forNewString.push(" ");

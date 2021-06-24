@@ -1079,14 +1079,17 @@ class Concat:
         ):
 
             with open(place, mode="r") as csv_file:
-                self.relitable, primUniverseLine = self.tables.fillBoth(
-                    self.relitable, list(csv.reader(csv_file, delimiter=";"))
+                tableToAdd = list(csv.reader(csv_file, delimiter=";"))
+                if concatTable == 2:
+                    tableToAdd = [
+                        ["n/" + str(n + 1) for n in range(len(tableToAdd[0]))]
+                    ] + tableToAdd
+                self.relitable, tableToAdd = self.tables.fillBoth(
+                    self.relitable, tableToAdd
                 )
                 lastlen = 0
                 maxlen = 0
-                for i, (primcol, relicol) in enumerate(
-                    zip(primUniverseLine, self.relitable)
-                ):
+                for i, (primcol, relicol) in enumerate(zip(tableToAdd, self.relitable)):
                     lastlen = len(primcol)
                     if lastlen > maxlen:
                         maxlen = lastlen
@@ -1097,13 +1100,20 @@ class Concat:
                     if i == 0:
                         # ALXX
                         # x("ACI", [concatTable, dazu])
+                        # if concatTable == 1:
+                        #    prims: list = list(concatTableSelection)
+                        #    prims.sort()
                         for u, heading in enumerate(dazu):
                             # x("SBm", [concatTable, u, headingsAmount])
-                            if u in concatTableSelection:
+                            if (u + 2 in concatTableSelection and concatTable == 2) or (
+                                concatTable == 1
+                                and int(heading) in concatTableSelection
+                            ):
+                                delta = 1 if concatTable == 2 else 0
                                 rowsAsNumbers.add(
-                                    u + len(self.relitable[0] - len(dazu))
+                                    u + len(self.relitable[0]) - len(dazu) + delta
                                 )
-                                concatCSVspalten.add(u)
+                                concatCSVspalten.add(u + delta)
                                 if (
                                     len(self.tables.generatedSpaltenParameter)
                                     + self.tables.SpaltenVanillaAmount
@@ -1116,20 +1126,20 @@ class Concat:
                                     x(
                                         "SUJ",
                                         [
-                                            u - headingsAmount,
+                                            u + 2 + delta,
                                             self.tables.dataDict[5],
                                         ],
                                     )
                                     self.tables.generatedSpaltenParameter[
                                         len(self.tables.generatedSpaltenParameter)
                                         + self.tables.SpaltenVanillaAmount
-                                    ] = self.tables.dataDict[5][u - headingsAmount + 2]
+                                    ] = self.tables.dataDict[5][u + 2]
 
                                 if concatTable == 1:
-                                    x("EDS", self.tables.dataDict[2][u + 2])
+                                    x("EDS", self.tables.dataDict[2][int(heading)])
                                     self.tables.generatedSpaltenParameter[
                                         len(self.tables.generatedSpaltenParameter)
                                         + self.tables.SpaltenVanillaAmount
-                                    ] = self.tables.dataDict[2][u + 2]
+                                    ] = self.tables.dataDict[2][int(heading)]
 
         return self.relitable, rowsAsNumbers, concatCSVspalten
