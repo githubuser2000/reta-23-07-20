@@ -2490,6 +2490,9 @@ class Program:
         self.gebrUni = self.spaltenArtenKey_SpaltennummernValue[
             self.spaltenTypeNaming.gebroUni1
         ]
+        self.gebrGal = self.spaltenArtenKey_SpaltennummernValue[
+            self.spaltenTypeNaming.gebrGal1
+        ]
         ones = []
         for a in self.onlyGenerated:
             if len(a) == 1:
@@ -2529,7 +2532,7 @@ class Program:
             rowsAsNumbers,
             gebrGalSpalten,
         ) = self.tables.getConcat.readConcatCsv(
-            self.relitable, self.rowsAsNumbers, self.gebrUni, 3
+            self.relitable, self.rowsAsNumbers, self.gebrGal, 3
         )
 
         self.relitable, self.rowsAsNumbers = self.tables.getConcat.concatRowsOfConcepts(

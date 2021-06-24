@@ -1076,6 +1076,7 @@ class Concat:
         self.relitable = relitable
         headingsAmount = len(self.relitable[0])
         if len(concatTableSelection) > 0 and concatTable in (1, 2, 3):
+            x("SVO", concatTable)
 
             with open(place, mode="r") as csv_file:
                 tableToAdd = list(csv.reader(csv_file, delimiter=";"))
