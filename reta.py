@@ -76,15 +76,16 @@ class Program:
                             (len(neg), 2)
                         ] |= Program.lambdaPrimGalax(paraValue)
                     elif befehlName in Program.ParametersMain.gebrochenuniversum[0]:
-                        alxp("6")
+                        alxp("N6N")
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), 5)
                         ] |= Program.lambdaGebrUnivUndGalax(paraValue)
                     elif befehlName in Program.ParametersMain.gebrochengalaxie[0]:
-                        alxp("8")
+                        alxp("N8N")
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), 6)
                         ] |= Program.lambdaGebrUnivUndGalax(paraValue)
+                        alxp("N9N")
                     else:
                         raise ValueError
 
@@ -95,6 +96,7 @@ class Program:
                         ] |= eineSpaltenArtmitSpaltenNummern
                     except TypeError:
                         pass
+            alxp("N10N")
             return self.spaltenArtenKey_SpaltennummernValue
 
         def spalten_removeDoublesNthenRemoveOneFromAnother():
@@ -192,6 +194,15 @@ class Program:
                                     #    self.tables,
                                     # )
                                     # x("geht villeicht 1:", cmd[:eq])
+                                    x("SOCV", (cmd[:eq], oneOfThingsAfterEqSign))
+                                    x(
+                                        "SOCV",
+                                        (
+                                            self.paraDict[
+                                                (cmd[:eq], oneOfThingsAfterEqSign)
+                                            ]
+                                        ),
+                                    )
                                     resultingSpaltenFromTuple(
                                         self.paraDict[
                                             (cmd[:eq], oneOfThingsAfterEqSign)
@@ -2147,10 +2158,10 @@ class Program:
         # x("l_p", self.dataDict[4])
         self.dataDict[3] = Program.kombiParaNdataMatrix
         # x("lüp", self.dataDict[3])
-        # alxp(self.paraDict)
-        # alxp("--|-")
-        # alxp(self.dataDict)
-        # alxp("--||")
+        alxp(self.paraDict)
+        alxp("--|-")
+        alxp(self.dataDict)
+        alxp("--||")
         self.tables.dataDict = self.dataDict
 
     def parametersToCommandsAndNumbers(
@@ -2442,12 +2453,14 @@ class Program:
             (0, 3): set(),
             (0, 4): set(),
             (0, 5): set(),
+            (0, 6): set(),
             (1, 0): set(),
             (1, 1): set(),
             (1, 2): set(),
             (1, 3): set(),
             (1, 4): set(),
             (1, 5): set(),
+            (1, 6): set(),
         }
 
         self.storeParamtersForColumns()
