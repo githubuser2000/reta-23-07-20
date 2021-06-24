@@ -1069,21 +1069,22 @@ class Concat:
                 "./primenumbers.csv"
                 if concatTable == 1
                 else "./gebrochen-rational-universum.csv"
+                if concatTable == 2
+                else "./gebrochen-rational-galaxie.csv"
             ),
         )
         self.relitable = relitable
         headingsAmount = len(self.relitable[0])
-        if len(concatTableSelection) > 0 and concatTable in (
-            1,
-            2,
-        ):
+        if len(concatTableSelection) > 0 and concatTable in (1, 2, 3):
 
             with open(place, mode="r") as csv_file:
                 tableToAdd = list(csv.reader(csv_file, delimiter=";"))
-                if concatTable == 2:
+                if concatTable in (2, 3):
                     tableToAdd = [
                         [
-                            "n/" + str(n + 1) + " Universum"
+                            "n/"
+                            + str(n + 1)
+                            + (" Universum" if concatTable == 2 else " Galaxie")
                             for n in range(len(tableToAdd[0]))
                         ]
                     ] + tableToAdd
@@ -1108,12 +1109,14 @@ class Concat:
                         #    prims.sort()
                         for u, heading in enumerate(dazu):
                             # x("SBm", [concatTable, u, headingsAmount])
-                            if (u + 2 in concatTableSelection and concatTable == 2) or (
+                            if (
+                                u + 2 in concatTableSelection and concatTable in (2, 3)
+                            ) or (
                                 concatTable == 1
                                 and int(heading) in concatTableSelection
                             ):
-                                if concatTable != 2 or u + 1 != len(dazu):
-                                    delta = 1 if concatTable == 2 else 0
+                                if concatTable not in (2, 3) or u + 1 != len(dazu):
+                                    delta = 1 if concatTable in (2, 3) else 0
                                     selectedSpalten = (
                                         u + len(self.relitable[0]) - len(dazu) + delta
                                     )
@@ -1126,19 +1129,15 @@ class Concat:
                                     ):
                                         raise ValueError
 
-                                    x("SBn", concatTable)
-                                    if concatTable == 2:
-                                        x(
-                                            "SUJ",
-                                            [
-                                                u + 2 + delta,
-                                                self.tables.dataDict[5],
-                                            ],
-                                        )
+                                    if concatTable in (2, 3):
                                         self.tables.generatedSpaltenParameter[
                                             len(self.tables.generatedSpaltenParameter)
                                             + self.tables.SpaltenVanillaAmount
-                                        ] = self.tables.dataDict[5][u + 2]
+                                        ] = self.tables.dataDict[
+                                            5 + (-concatTable + 2)
+                                        ][
+                                            u + 2
+                                        ]
 
                                     if concatTable == 1:
                                         x("EDS", self.tables.dataDict[2][int(heading)])
