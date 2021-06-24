@@ -1082,7 +1082,10 @@ class Concat:
                 tableToAdd = list(csv.reader(csv_file, delimiter=";"))
                 if concatTable == 2:
                     tableToAdd = [
-                        ["n/" + str(n + 1) for n in range(len(tableToAdd[0]))]
+                        [
+                            "n/" + str(n + 1) + " Universum"
+                            for n in range(len(tableToAdd[0]))
+                        ]
                     ] + tableToAdd
                 self.relitable, tableToAdd = self.tables.fillBoth(
                     self.relitable, tableToAdd
