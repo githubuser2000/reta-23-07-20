@@ -385,6 +385,8 @@ function makeSpacesOutOf_(text) {
   if (text.length == 11) if (text == "kombination") return "Kombinationen";
   if (text.length == 18)
     if (text == "gebrochenuniversum") return "gebrochen-rational Universum";
+  if (text.length == 16)
+    if (text == "gebrochengalaxie") return "gebrochen-rational Galaxie";
   var forNewString = [];
   for (var i = 0; i < text.length; i++)
     if (text[i] == "_") forNewString.push(" ");

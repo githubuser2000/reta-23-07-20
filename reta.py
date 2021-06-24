@@ -61,11 +61,16 @@ class Program:
                         eineSpaltenArtmitSpaltenNummern = set(
                             eineSpaltenArtmitSpaltenNummern[0]
                         )
-                if i == 2 and type(eineSpaltenArtmitSpaltenNummern) in [
-                    list,
-                    tuple,
-                    set,
-                ]:
+                if i == 2 and (
+                    type(eineSpaltenArtmitSpaltenNummern)
+                    in [
+                        list,
+                        tuple,
+                        # set,
+                    ]
+                    or befehlName in Program.ParametersMain.gebrochenuniversum[0]
+                    or befehlName in Program.ParametersMain.gebrochengalaxie[0]
+                ):
                     alxp("4")
                     if (
                         befehlName
@@ -92,9 +97,11 @@ class Program:
 
                 else:
                     try:
+                        alxp("N11N")
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), i)
                         ] |= eineSpaltenArtmitSpaltenNummern
+                        alxp("N12N")
                     except TypeError:
                         pass
             alxp("N10N")
