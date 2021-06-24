@@ -2511,6 +2511,13 @@ class Program:
         ) = self.tables.getConcat.readConcatCsv(
             self.relitable, self.rowsAsNumbers, self.gebrUni, 2
         )
+        (
+            self.relitable,
+            rowsAsNumbers,
+            gebrGalSpalten,
+        ) = self.tables.getConcat.readConcatCsv(
+            self.relitable, self.rowsAsNumbers, self.gebrUni, 3
+        )
 
         self.relitable, self.rowsAsNumbers = self.tables.getConcat.concatRowsOfConcepts(
             self.relitable, self.tables.generRows, self.rowsAsNumbers
@@ -2594,6 +2601,7 @@ class Program:
             spaltenreihenfolgeundnurdiese,
             primSpalten,
             gebrUnivSpalten,
+            gebrGalSpalten,
         )
 
     def __init__(self, argv=[]):
@@ -2618,6 +2626,7 @@ class Program:
             spaltenreihenfolgeundnurdiese,
             primSpalten,
             gebrUnivSpalten,
+            gebrGalSpalten,
         ) = self.bringAllImportantBeginThings(argv)
         self.tables.getMainTable.createSpalteGestirn(self.relitable, self.rowsAsNumbers)
         # x("2943", self.rowsAsNumbers)
@@ -2634,6 +2643,7 @@ class Program:
             self.rowsAsNumbers,
             primSpalten=primSpalten,
             gebrUnivSpalten=gebrUnivSpalten,
+            gebrGalSpalten=gebrGalSpalten,
         )
         # x("2944", self.rowsAsNumbers)
         # x("2944", self.relitable[0][92])
