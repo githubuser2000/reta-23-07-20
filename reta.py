@@ -530,6 +530,11 @@ class Program:
                                         parameterName,
                                     )
                                 ]
+                            elif i == 5:  # and type(dd) is set:
+                                x("SIC", [i, dd])
+                                case = 2
+                                into += [[(parameterMainName, parameterName)]]
+                                parameterMainNamePerLoop += [parameterName]
                             elif i == 2 and callable(dd):
                                 case = 2
                                 parameterMainNamePerLoop += [parameterName]
@@ -576,6 +581,7 @@ class Program:
                         index2a if case == 2 else (index2a,), intoA, fillvalue=into
                     ):
                         # x("asd", [into2, case, into, index2])
+                        x("ugj" + str(case), [index2a])
                         try:
                             dataDicts[index1][index2] += (into2,)
                         except KeyError:
@@ -2618,6 +2624,7 @@ class Program:
             rowsAsNumbers,
             primSpalten,
         ) = self.tables.getConcat.readConcatCsv(self.relitable, self.rowsAsNumbers)
+        self.tables.SpaltenVanillaAmount2 = len(self.rowsAsNumbers)
         (
             self.relitable,
             rowsAsNumbers,

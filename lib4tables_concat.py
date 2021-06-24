@@ -1070,7 +1070,7 @@ class Concat:
         self.relitable = relitable
         headingsAmount = len(self.relitable[0])
         if (len(self.puniverseprims) > 0 and concatTable == 1) or (
-            concatTable != 1 and len(self.gebrUniv) > 0
+            concatTable != 1  # and len(self.gebrUniv) > 0
         ):
 
             with open(place, mode="r") as csv_file:
@@ -1092,6 +1092,7 @@ class Concat:
                     if i == 0:
                         # ALXX
                         for u, heading in enumerate(self.relitable[0]):
+                            x("SBm", [concatTable, u, headingsAmount])
                             if (
                                 heading.isdecimal()
                                 and (
@@ -1099,14 +1100,14 @@ class Concat:
                                         int(heading) in self.puniverseprims
                                         and concatTable == 1
                                     )
-                                    or (
-                                        concatTable != 1
-                                        and int(heading) in self.gebrUniv
-                                    )
                                 )
-                                and u >= headingsAmount
-                            ):
-                                if concatTable == 1:
+                                or (
+                                    concatTable
+                                    != 1
+                                    # and int(heading) in self.gebrUniv
+                                )
+                            ) and u >= headingsAmount:
+                                if concatTable == 1 and True:
                                     rowsAsNumbers.add(u)
                                 primSpalten.add(u)
                                 if (
@@ -1115,6 +1116,20 @@ class Concat:
                                     in self.tables.generatedSpaltenParameter
                                 ):
                                     raise ValueError
+
+                                x("SBn", concatTable)
+                                if concatTable == 2:
+                                    x(
+                                        "SUJ",
+                                        [
+                                            u - headingsAmount,
+                                            self.tables.dataDict[5],
+                                        ],
+                                    )
+                                    self.tables.generatedSpaltenParameter[
+                                        len(self.tables.generatedSpaltenParameter)
+                                        + self.tables.SpaltenVanillaAmount
+                                    ] = self.tables.dataDict[5][u - headingsAmount + 2]
 
                                 if concatTable == 1:
                                     heading = int(heading)
