@@ -46,8 +46,6 @@ class Program:
                 """
                 Die Variable self.tables.spalteGestirn braucht man gar nicht mehr !!!
                 """
-                x("ZTG", [befehlName, eineSpaltenArtmitSpaltenNummern, paraValue])
-
                 if (
                     type(eineSpaltenArtmitSpaltenNummern) in [list, tuple]
                     and len(eineSpaltenArtmitSpaltenNummern) > 0
@@ -63,7 +61,11 @@ class Program:
                         eineSpaltenArtmitSpaltenNummern = set(
                             eineSpaltenArtmitSpaltenNummern[0]
                         )
-                if i == 2 and type(eineSpaltenArtmitSpaltenNummern) in [list, tuple]:
+                if i == 2 and type(eineSpaltenArtmitSpaltenNummern) in [
+                    list,
+                    tuple,
+                    set,
+                ]:
                     alxp("4")
                     if (
                         befehlName
@@ -72,12 +74,12 @@ class Program:
                         alxp("5")
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), 2)
-                        ] |= Program.lambdaGebrUniv(paraValue)
+                        ] |= Program.lambdaPrimGalax(paraValue)
                     elif befehlName == Program.ParametersMain.gebrochenuniversum[0]:
                         alxp("6")
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), 5)
-                        ] |= Program.lambdaPrimGalax(paraValue)
+                        ] |= Program.lambdaGebrUniv(paraValue)
                     else:
                         raise ValueError
 
