@@ -79,37 +79,17 @@ class Program:
                         alxp("6")
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), 5)
-                        ] |= Program.lambdaGebrUniv(paraValue)
+                        ] |= Program.lambdaGebrUnivUndGalax(paraValue)
                     else:
                         raise ValueError
 
-                    x(
-                        "EDF",
-                        [
-                            paraValue,
-                            eineSpaltenArtmitSpaltenNummern,
-                            befehlName,
-                            Program.ParametersMain.gebrochenuniversum,
-                            2
-                            if befehlName
-                            == Program.ParametersMain.primzahlvielfachesgalaxie[0]
-                            else 5
-                            if befehlName
-                            == Program.ParametersMain.gebrochenuniversum[0]
-                            else None,
-                            Program.ParametersMain.primzahlvielfachesgalaxie,
-                        ],
-                    )
                 else:
-                    alxp("7+" + str(i) + str(eineSpaltenArtmitSpaltenNummern))
                     try:
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), i)
                         ] |= eineSpaltenArtmitSpaltenNummern
                     except TypeError:
                         pass
-            # x("xvx", tupl)
-            # x("xvx", eineSpaltenArtmitSpaltenNummern)
             return self.spaltenArtenKey_SpaltennummernValue
 
         def spalten_removeDoublesNthenRemoveOneFromAnother():
@@ -507,7 +487,7 @@ class Program:
                     paraDict[(name1, name2)] = datas
                 if len(parameterNames) == 0:
                     paraDict[(name1, "")] = datas
-            dataDicts: tuple = ({}, {}, {}, {}, {}, {})
+            dataDicts: tuple = ({}, {}, {}, {}, {}, {}, {})
             for i, d in enumerate(datas):
                 for dd in d:
                     into = []
@@ -648,7 +628,7 @@ class Program:
 
         Program.ParametersMain: namedtuple = namedtuple(
             "ParametersMain",
-            "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesgalaxie konzept inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum alles",
+            "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesgalaxie konzept inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie alles",
         )
 
         Program.ParametersMain = Program.ParametersMain(
@@ -735,6 +715,7 @@ class Program:
             ),
             # ("Gebrochen-Rational_Universum", "gebrochenuniversum"),
             ("gebrochenuniversum",),
+            ("gebrochengalaxie",),
             ("alles",),
         )
 
@@ -753,7 +734,7 @@ class Program:
             )
         )
 
-        Program.lambdaGebrUniv = lambda paraValues: {
+        Program.lambdaGebrUnivUndGalax = lambda paraValues: {
             abs(int(chosen)) if chosen.isdecimal() else None
             for chosen in [value for value in (paraValues.split(","))]
         } - {None, 0, 1}
@@ -1915,6 +1896,17 @@ class Program:
                 {107, 108, 109},
             ),
             (
+                Program.ParametersMain.gebrochengalaxie,
+                set([str(a) for a in range(2, 100)]),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set([str(a) for a in range(2, 100)]),
+            ),
+            (
                 Program.ParametersMain.gebrochenuniversum,
                 set([str(a) for a in range(2, 100)]),
                 set(),
@@ -2530,10 +2522,10 @@ class Program:
             self.puniverseprimsNot,
             self.generRowsNot,
         ) = self.parametersToCommandsAndNumbers(argv, "-")
-        self.dataDict: tuple = [{}, {}, {}, {}, {}, {}]
+        self.dataDict: tuple = [{}, {}, {}, {}, {}, {}, {}]
         self.spaltenTypeNaming: namedtuple = namedtuple(
             "SpaltenTyp",
-            "ordinary generated1 concat1 kombi1 boolAndTupleSet1 gebroUni1 ordinaryNot generate1dNot concat1Not kombi1Not boolAndTupleSet1Not gebroUni1Not",
+            "ordinary generated1 concat1 kombi1 boolAndTupleSet1 gebroUni1 gebrGal1 ordinaryNot generate1dNot concat1Not kombi1Not boolAndTupleSet1Not gebroUni1Not gebrGal1Not",
         )
         self.spaltenTypeNaming = self.spaltenTypeNaming(
             (0, 0),
@@ -2542,12 +2534,14 @@ class Program:
             (0, 3),
             (0, 4),
             (0, 5),
+            (0, 6),
             (1, 0),
             (1, 1),
             (1, 2),
             (1, 3),
             (1, 4),
             (1, 5),
+            (1, 6),
         )
 
         # self.spaltenArtenNameKey_SpaltenArtenTupleVal_4Key4otherDict = {
