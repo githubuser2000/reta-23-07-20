@@ -491,6 +491,7 @@ class Prepare:
         combiRows: int = 0,
         reliTableLenUntilNow=None,
         primSpalten: set = None,
+        gebrUnivSpalten: set = None,
     ) -> tuple:
         """Aus einer Tabelle wird eine gemacht, bei der der Zeilenumbruch durchgeführt wird.
         Dabei werden alle Spalten und Zeilen entfernt die nicht ausgegeben werden sollen.
@@ -566,6 +567,19 @@ class Prepare:
                                             rowToDisplay
                                         ] = frozenset(
                                             {ST.sternPolygon, ST.universum, ST.galaxie}
+                                        )
+                                    elif (
+                                        gebrUnivSpalten is not None
+                                        and t in gebrUnivSpalten
+                                    ):
+                                        self.tables.generatedSpaltenParameter_Tags[
+                                            rowToDisplay
+                                        ] = frozenset(
+                                            {
+                                                ST.sternPolygon,
+                                                ST.universum,
+                                                ST.gleichfoermigesPolygon,
+                                            }
                                         )
 
                                     x("UIU2", [t, primSpalten, rowToDisplay])

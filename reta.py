@@ -2630,7 +2630,7 @@ class Program:
         (
             self.relitable,
             rowsAsNumbers,
-            gebrochenuniversumNumbers,
+            gebrUnivSpalten,
         ) = self.tables.getConcat.readConcatCsv(
             self.relitable, self.rowsAsNumbers, self.gebrUni, 2
         )
@@ -2716,6 +2716,7 @@ class Program:
             maintable2subtable_Relation,
             spaltenreihenfolgeundnurdiese,
             primSpalten,
+            gebrUnivSpalten,
         )
 
     def __init__(self, argv=[]):
@@ -2739,6 +2740,7 @@ class Program:
             maintable2subtable_Relation,
             spaltenreihenfolgeundnurdiese,
             primSpalten,
+            gebrUnivSpalten,
         ) = self.bringAllImportantBeginThings(argv)
         self.tables.getMainTable.createSpalteGestirn(self.relitable, self.rowsAsNumbers)
         # x("2943", self.rowsAsNumbers)
@@ -2754,6 +2756,7 @@ class Program:
             self.relitable,
             self.rowsAsNumbers,
             primSpalten=primSpalten,
+            gebrUnivSpalten=gebrUnivSpalten,
         )
         # x("2944", self.rowsAsNumbers)
         # x("2944", self.relitable[0][92])

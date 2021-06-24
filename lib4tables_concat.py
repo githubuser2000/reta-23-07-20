@@ -1109,37 +1109,39 @@ class Concat:
                                 concatTable == 1
                                 and int(heading) in concatTableSelection
                             ):
-                                delta = 1 if concatTable == 2 else 0
-                                rowsAsNumbers.add(
-                                    u + len(self.relitable[0]) - len(dazu) + delta
-                                )
-                                concatCSVspalten.add(u + delta)
-                                if (
-                                    len(self.tables.generatedSpaltenParameter)
-                                    + self.tables.SpaltenVanillaAmount
-                                    in self.tables.generatedSpaltenParameter
-                                ):
-                                    raise ValueError
-
-                                x("SBn", concatTable)
-                                if concatTable == 2:
-                                    x(
-                                        "SUJ",
-                                        [
-                                            u + 2 + delta,
-                                            self.tables.dataDict[5],
-                                        ],
+                                if concatTable != 2 or u + 1 != len(dazu):
+                                    delta = 1 if concatTable == 2 else 0
+                                    selectedSpalten = (
+                                        u + len(self.relitable[0]) - len(dazu) + delta
                                     )
-                                    self.tables.generatedSpaltenParameter[
+                                    rowsAsNumbers.add(selectedSpalten)
+                                    concatCSVspalten.add(selectedSpalten)
+                                    if (
                                         len(self.tables.generatedSpaltenParameter)
                                         + self.tables.SpaltenVanillaAmount
-                                    ] = self.tables.dataDict[5][u + 2]
+                                        in self.tables.generatedSpaltenParameter
+                                    ):
+                                        raise ValueError
 
-                                if concatTable == 1:
-                                    x("EDS", self.tables.dataDict[2][int(heading)])
-                                    self.tables.generatedSpaltenParameter[
-                                        len(self.tables.generatedSpaltenParameter)
-                                        + self.tables.SpaltenVanillaAmount
-                                    ] = self.tables.dataDict[2][int(heading)]
+                                    x("SBn", concatTable)
+                                    if concatTable == 2:
+                                        x(
+                                            "SUJ",
+                                            [
+                                                u + 2 + delta,
+                                                self.tables.dataDict[5],
+                                            ],
+                                        )
+                                        self.tables.generatedSpaltenParameter[
+                                            len(self.tables.generatedSpaltenParameter)
+                                            + self.tables.SpaltenVanillaAmount
+                                        ] = self.tables.dataDict[5][u + 2]
+
+                                    if concatTable == 1:
+                                        x("EDS", self.tables.dataDict[2][int(heading)])
+                                        self.tables.generatedSpaltenParameter[
+                                            len(self.tables.generatedSpaltenParameter)
+                                            + self.tables.SpaltenVanillaAmount
+                                        ] = self.tables.dataDict[2][int(heading)]
 
         return self.relitable, rowsAsNumbers, concatCSVspalten
