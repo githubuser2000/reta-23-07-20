@@ -582,7 +582,7 @@ class Prepare:
                                                 ST.gleichfoermigesPolygon,
                                             }
                                         )
-                                   elif (
+                                    elif (
                                         gebrUnivSpalten is not None
                                         and t in gebrUnivSpalten
                                     ):
