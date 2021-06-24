@@ -53,6 +53,8 @@ also Primzahlen[/list]
 [list][*]konkret,meta,theorie,praxis,fluss,stau,mathematisch-diskret,kontinuierlich[/list]
 [*]--primzahlwirkung
 [list][*]universum,absichtgalaxie,absichtgalaxiereziproke,universumreziproke,gegentranszendentalie,richtungrichtung[/list]
+[*]--gebrochengalaxie
+[list][*]2,3,4,5,6,7,8,9,10,11,12,13,14,15, ..... usw.[/list]
 [*]--gebrochenuniversum
 [list][*]2,3,4,5,6,7,8,9,10,11,12,13,14,15, ..... usw.[/list]
 [/list]

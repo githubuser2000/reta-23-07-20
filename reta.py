@@ -87,6 +87,7 @@ class Program:
                         ] |= Program.lambdaGebrUnivUndGalax(paraValue)
                         alxp("N9N")
                     else:
+                        print(befehlName)
                         raise ValueError
 
                 else:

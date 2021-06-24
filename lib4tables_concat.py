@@ -1134,9 +1134,7 @@ class Concat:
                                         self.tables.generatedSpaltenParameter[
                                             len(self.tables.generatedSpaltenParameter)
                                             + self.tables.SpaltenVanillaAmount
-                                        ] = self.tables.dataDict[
-                                            5 + (-concatTable + 2)
-                                        ][
+                                        ] = self.tables.dataDict[5 + (concatTable - 2)][
                                             u + 2
                                         ]
 
