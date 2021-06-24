@@ -75,12 +75,17 @@ class Program:
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), 2)
                         ] |= Program.lambdaPrimGalax(paraValue)
-                    elif befehlName == Program.ParametersMain.gebrochenuniversum[0]:
+                    elif befehlName in Program.ParametersMain.gebrochenuniversum[0]:
                         alxp("6")
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), 5)
                         ] |= Program.lambdaGebrUnivUndGalax(paraValue)
-                    else:
+                    elif befehlName in Program.ParametersMain.gebrochengalaxie[0]:
+                        alxp("8")
+                        self.spaltenArtenKey_SpaltennummernValue[
+                            (len(neg), 6)
+                        ] |= Program.lambdaGebrUnivUndGalax(paraValue)
+                   else:
                         raise ValueError
 
                 else:
@@ -343,131 +348,6 @@ class Program:
 
     def storeParamtersForColumns(self):
         # global puniverseprims
-
-        def intoParameterDatatype_(
-            parameterMainNames: tuple, parameterNames: tuple, datas: tuple
-        ) -> tuple:
-            """Speichert einen Parameter mit seinem DatenSet
-            in 2 Datenstrukturen (die beides kombinieren 2x2)
-            Diese werden jedoch nur zurück gegeben und nicht in der Klasse gespeichert.
-            @return: alle Hauptparamter| alle Nebenparamter zu nur einem
-            Hauptparameter ergibt Mengen an Spalten | enthält alle Haup- und
-            Nebenparameter keys sind Spalten der Tabelle
-            """
-            paraMainDict = {}
-            for name in parameterMainNames:
-                paraMainDict[name] = parameterNames
-            paraDict = {}
-            for name1 in parameterMainNames:
-                for name2 in parameterNames:
-                    paraDict[(name1, name2)] = datas
-                if len(parameterNames) == 0:
-                    paraDict[(name1, "")] = datas
-            dataDicts: tuple = ({}, {}, {}, {}, {})
-            into: list = []
-            case: int
-            parameterMainNamePerLoop: list = []
-            for parameterMainName in parameterMainNames:
-                for parameterName in (
-                    parameterNames if len(parameterNames) > 0 else ("",)
-                ):
-                    into += [(parameterMainName, parameterName)]
-                    parameterMainNamePerLoop += [parameterName]
-            for i, d in enumerate(datas):
-                for dd in d:
-                    if i == 4 and (type(dd) is bool or type(dd[0]) is bool):
-                        case = 1
-                    elif i == 2 and type(dd) not in [tuple, int]:
-                        case = 2
-                        parameterMainNamePerLoop += [parameterName]
-                    else:
-                        case = 3
-                    #    ]
-                    # if False:
-                    #    pass
-                    # if i == 4 and (
-                    #    type(dd) is bool
-                    #    or (
-                    #        type(dd) in (list, tuple)
-                    #        and len(dd) > 0
-                    #        and type(dd[0]) is bool
-                    #    )
-                    # ):
-                    #    case = 1
-                    # elif i == 2 and type(dd) not in [tuple, int]:
-                    #    case = 2
-                    # elif i == 4 and (type(dd) in (list, tuple)):
-                    #    case = 1
-                    # else:
-                    #    case = 3
-
-                    index1 = i if case not in [1, 4] else 3
-                    index2a = (
-                        dd
-                        if case == 3
-                        else (
-                            ("set_meta_etc", dd)
-                            if case == 4
-                            else ("bool", 0)
-                            if case == 1
-                            else tuple(
-                                (
-                                    int(para)
-                                    if para.isdecimal()
-                                    else para
-                                    if len(parameterNames) > 0
-                                    else None
-                                    for para in parameterMainNamePerLoop
-                                )
-                            )
-                            if case == 2
-                            else None
-                        )
-                    )
-                    index1 = i if case != 1 else 3
-                    index2a = (
-                        dd
-                        if case == 3
-                        else (
-                            ("bool", 0)
-                            if case == 1
-                            else tuple(
-                                (
-                                    int(para)
-                                    if para.isdecimal()
-                                    else para
-                                    if len(parameterNames) > 0
-                                    else None
-                                    for para in parameterMainNamePerLoop
-                                )
-                            )
-                            if case == 2
-                            else None
-                        )
-                    )
-                    intoA = into if case == 2 else (into,)
-                    for index2, into2 in zip_longest(
-                        index2a if case == 2 else (index2a,), intoA, fillvalue=into
-                    ):
-                        # x("asd", [into2, case, into])
-                        try:
-                            dataDicts[index1][index2] += (into2,)
-                        except KeyError:
-                            dataDicts[index1][index2] = (into2,)
-            #                    for index2, into2 in zip_longest(
-            #                       (index2a,),
-            #                        (into,),
-            #                        fillvalue=into,
-            #                    ):
-            #                        try:
-            #                            dataDicts[index1][index2] += (into2,)
-            #                        except KeyError:
-            #                            dataDicts[index1][index2] = (into2,)
-            #                        # x("asd", [into2, case, into])
-            # x("dadaDick", dataDicts)
-            # x("PARA", paraDict)
-            return paraMainDict, paraDict, dataDicts
-
         def intoParameterDatatype(
             parameterMainNames: tuple, parameterNames: tuple, datas: tuple
         ) -> tuple:
@@ -512,8 +392,8 @@ class Program:
                                         parameterName,
                                     )
                                 ]
-                            elif i == 5:  # and type(dd) is set:
-                                x("SIC", [i, dd])
+                            elif i in (5, 6):  # and type(dd) is set:
+                                # x("SIC", [i, dd])
                                 case = 2
                                 into += [[(parameterMainName, parameterName)]]
                                 parameterMainNamePerLoop += [parameterName]
@@ -563,7 +443,7 @@ class Program:
                         index2a if case == 2 else (index2a,), intoA, fillvalue=into
                     ):
                         # x("asd", [into2, case, into, index2])
-                        x("ugj" + str(case), [index2a])
+                        # x("ugj" + str(case), [index2a])
                         try:
                             dataDicts[index1][index2] += (into2,)
                         except KeyError:
@@ -2205,7 +2085,7 @@ class Program:
             for valuesInValuess in value:
                 self.kombiReverseDict[valuesInValuess] = key
 
-        allValues = [set(), set(), set(), set(), set(), set()]
+        allValues = [set(), set(), set(), set(), set(), set(), set()]
         for possibleCommands in paraNdataMatrix:
             for commandValue, aAllValue in zip(possibleCommands[2:], allValues):
                 try:
@@ -2229,6 +2109,7 @@ class Program:
         allValues[2] = set((int(pNum) for pNum in allowedPrimNumbersForCommand))
         allValues[3] = set(Program.kombiParaNdataMatrix.keys())
         allValues[5] = set(range(2, 100))
+        allValues[6] = set(range(2, 100))
         # allValues[5] = set(range(1, 100))
         x("aLLe", allValues)
 
@@ -2266,10 +2147,10 @@ class Program:
         # x("l_p", self.dataDict[4])
         self.dataDict[3] = Program.kombiParaNdataMatrix
         # x("lüp", self.dataDict[3])
-        alxp(self.paraDict)
-        alxp("--|-")
-        alxp(self.dataDict)
-        alxp("--||")
+        # alxp(self.paraDict)
+        # alxp("--|-")
+        # alxp(self.dataDict)
+        # alxp("--||")
         self.tables.dataDict = self.dataDict
 
     def parametersToCommandsAndNumbers(
