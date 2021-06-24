@@ -2623,13 +2623,17 @@ class Program:
             self.relitable,
             rowsAsNumbers,
             primSpalten,
-        ) = self.tables.getConcat.readConcatCsv(self.relitable, self.rowsAsNumbers)
+        ) = self.tables.getConcat.readConcatCsv(
+            self.relitable, self.rowsAsNumbers, self.puniverseprims, 1
+        )
         self.tables.SpaltenVanillaAmount2 = len(self.rowsAsNumbers)
         (
             self.relitable,
             rowsAsNumbers,
             gebrochenuniversumNumbers,
-        ) = self.tables.getConcat.readConcatCsv(self.relitable, self.rowsAsNumbers, 2)
+        ) = self.tables.getConcat.readConcatCsv(
+            self.relitable, self.rowsAsNumbers, self.gebrUni, 2
+        )
 
         self.relitable, self.rowsAsNumbers = self.tables.getConcat.concatRowsOfConcepts(
             self.relitable, self.tables.generRows, self.rowsAsNumbers

@@ -1043,7 +1043,11 @@ class Concat:
         return self.relitable, rowsAsNumbers
 
     def readConcatCsv(
-        self, relitable: list, rowsAsNumbers: set, concatTable: int = 1
+        self,
+        relitable: list,
+        rowsAsNumbers: set,
+        concatTableSelection: set,
+        concatTable: int = 1,
     ) -> tuple:
         """Fügt eine Tabelle neben der self.relitable an
         momentan ist es noch fix auf primnumbers.csv
@@ -1057,7 +1061,7 @@ class Concat:
         @return: relitable + weitere Tabelle daneben
         """
         global folder
-        primSpalten: set = set()
+        concatCSVspalten: set = set()
         place = os.path.join(
             os.getcwd(),
             os.path.dirname(__file__),
@@ -1069,8 +1073,9 @@ class Concat:
         )
         self.relitable = relitable
         headingsAmount = len(self.relitable[0])
-        if (len(self.puniverseprims) > 0 and concatTable == 1) or (
-            concatTable != 1  # and len(self.gebrUniv) > 0
+        if len(concatTableSelection) > 0 and concatTable in (
+            1,
+            2,
         ):
 
             with open(place, mode="r") as csv_file:
@@ -1091,25 +1096,14 @@ class Concat:
                     self.relitable[i] += dazu
                     if i == 0:
                         # ALXX
-                        for u, heading in enumerate(self.relitable[0]):
-                            x("SBm", [concatTable, u, headingsAmount])
-                            if (
-                                heading.isdecimal()
-                                and (
-                                    (
-                                        int(heading) in self.puniverseprims
-                                        and concatTable == 1
-                                    )
+                        # x("ACI", [concatTable, dazu])
+                        for u, heading in enumerate(dazu):
+                            # x("SBm", [concatTable, u, headingsAmount])
+                            if u in concatTableSelection:
+                                rowsAsNumbers.add(
+                                    u + len(self.relitable[0] - len(dazu))
                                 )
-                                or (
-                                    concatTable
-                                    != 1
-                                    # and int(heading) in self.gebrUniv
-                                )
-                            ) and u >= headingsAmount:
-                                if concatTable == 1 and True:
-                                    rowsAsNumbers.add(u)
-                                primSpalten.add(u)
+                                concatCSVspalten.add(u)
                                 if (
                                     len(self.tables.generatedSpaltenParameter)
                                     + self.tables.SpaltenVanillaAmount
@@ -1132,11 +1126,10 @@ class Concat:
                                     ] = self.tables.dataDict[5][u - headingsAmount + 2]
 
                                 if concatTable == 1:
-                                    heading = int(heading)
-                                    x("EDS", self.tables.dataDict[2][heading])
+                                    x("EDS", self.tables.dataDict[2][u + 2])
                                     self.tables.generatedSpaltenParameter[
                                         len(self.tables.generatedSpaltenParameter)
                                         + self.tables.SpaltenVanillaAmount
-                                    ] = self.tables.dataDict[2][heading]
+                                    ] = self.tables.dataDict[2][u + 2]
 
-        return self.relitable, rowsAsNumbers, primSpalten
+        return self.relitable, rowsAsNumbers, concatCSVspalten
