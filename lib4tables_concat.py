@@ -1061,21 +1061,32 @@ class Concat:
         @return: relitable + weitere Tabelle daneben
         """
         global folder
+
+        def transpose(matrix):
+            t = []
+            x: int
+            y: int
+            for x in range(len(matrix[0])):
+                t += [[]]
+                for y in range(len(matrix)):
+                    t[x] += [matrix[y][x]]
+            return t
+
         concatCSVspalten: set = set()
         place = os.path.join(
             os.getcwd(),
             os.path.dirname(__file__),
             os.path.basename(
                 "./primenumbers.csv"
-                if concatTable == 1
+                if concatTable in (1, 3)
                 else "./gebrochen-rational-universum.csv"
-                if concatTable == 2
+                if concatTable in (2, 4)
                 else "./gebrochen-rational-galaxie.csv"
             ),
         )
         self.relitable = relitable
         headingsAmount = len(self.relitable[0])
-        if len(concatTableSelection) > 0 and concatTable in (1, 2, 3):
+        if len(concatTableSelection) > 0 and concatTable in range(1, 5):
             x("SVO", concatTable)
 
             with open(place, mode="r") as csv_file:
