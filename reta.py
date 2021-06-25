@@ -2521,7 +2521,7 @@ class Program:
 
         self.tables.SpaltenVanillaAmount = len(self.rowsAsNumbers)
 
-        CsvTheirsSpalten = {}
+        CsvTheirsSpalten: dict = {}
         for i, input1 in enumerate(
             [self.puniverseprims, self.gebrUni, self.gebrGal], start=1
         ):
