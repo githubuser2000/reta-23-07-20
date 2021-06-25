@@ -1078,30 +1078,40 @@ class Concat:
             os.path.dirname(__file__),
             os.path.basename(
                 "./primenumbers.csv"
-                if concatTable in (1, 3)
+                if concatTable == 1
                 else "./gebrochen-rational-universum.csv"
                 if concatTable in (2, 4)
                 else "./gebrochen-rational-galaxie.csv"
+                if concatTable in (3, 5)
+                else None
             ),
         )
         self.relitable = relitable
         headingsAmount = len(self.relitable[0])
-        if len(concatTableSelection) > 0 and concatTable in range(1, 5):
+        if len(concatTableSelection) > 0 and concatTable in range(1, 6):
             # x("SVO", concatTable)
 
             with open(place, mode="r") as csv_file:
                 tableToAdd = list(csv.reader(csv_file, delimiter=";"))
-                if concatTable in (3, 4):
+                if concatTable in (4, 5):
                     concatTable = transpose(concatTable)
-                if concatTable in range(2, 5):
+                if concatTable in range(2, 6):
                     tableToAdd = [
                         [
                             (
                                 ("n/" + str(n + 1))
-                                if concatTable in (1, 2)
+                                if concatTable in (2, 3)
                                 else (str(n + 1) + "/n")
+                                if concatTable in (4, 5)
+                                else "Fehler"
                             )
-                            + (" Universum" if concatTable in (2, 4) else " Galaxie")
+                            + (
+                                " Universum"
+                                if concatTable in (2, 4)
+                                else " Galaxie"
+                                if concatTable in (3, 5)
+                                else "Fehler"
+                            )
                             for n in range(len(tableToAdd[0]))
                         ]
                     ] + tableToAdd
@@ -1127,13 +1137,14 @@ class Concat:
                         for u, heading in enumerate(dazu):
                             # x("SBm", [concatTable, u, headingsAmount])
                             if (
-                                u + 2 in concatTableSelection and concatTable in (2, 3)
+                                u + 2 in concatTableSelection
+                                and concatTable in range(2, 6)
                             ) or (
                                 concatTable == 1
                                 and int(heading) in concatTableSelection
                             ):
-                                if concatTable not in (2, 3) or u + 1 != len(dazu):
-                                    delta = 1 if concatTable in (2, 3) else 0
+                                if concatTable not in range(2, 6) or u + 1 != len(dazu):
+                                    delta = 1 if concatTable in range(2, 6) else 0
                                     selectedSpalten = (
                                         u + len(self.relitable[0]) - len(dazu) + delta
                                     )
@@ -1146,11 +1157,13 @@ class Concat:
                                     ):
                                         raise ValueError
 
-                                    if concatTable in (2, 3):
+                                    if concatTable in range(2, 6):
                                         self.tables.generatedSpaltenParameter[
                                             len(self.tables.generatedSpaltenParameter)
                                             + self.tables.SpaltenVanillaAmount
-                                        ] = self.tables.dataDict[5 + (concatTable - 2)][
+                                        ] = self.tables.dataDict[
+                                            5 + ((concatTable - 2) % 2)
+                                        ][
                                             u + 2
                                         ]
 
