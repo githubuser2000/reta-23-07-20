@@ -1129,11 +1129,6 @@ class Concat:
 
                     self.relitable[i] += dazu
                     if i == 0:
-                        # ALXX
-                        # x("ACI", [concatTable, dazu])
-                        # if concatTable == 1:
-                        #    prims: list = list(concatTableSelection)
-                        #    prims.sort()
                         for u, heading in enumerate(dazu):
                             # x("SBm", [concatTable, u, headingsAmount])
                             if (
