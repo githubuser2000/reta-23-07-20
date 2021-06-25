@@ -1087,16 +1087,21 @@ class Concat:
         self.relitable = relitable
         headingsAmount = len(self.relitable[0])
         if len(concatTableSelection) > 0 and concatTable in range(1, 5):
-            x("SVO", concatTable)
+            # x("SVO", concatTable)
 
             with open(place, mode="r") as csv_file:
                 tableToAdd = list(csv.reader(csv_file, delimiter=";"))
-                if concatTable in (2, 3):
+                if concatTable in (3, 4):
+                    concatTable = transpose(concatTable)
+                if concatTable in range(2, 5):
                     tableToAdd = [
                         [
-                            "n/"
-                            + str(n + 1)
-                            + (" Universum" if concatTable == 2 else " Galaxie")
+                            (
+                                ("n/" + str(n + 1))
+                                if concatTable in (1, 2)
+                                else (str(n + 1) + "/n")
+                            )
+                            + (" Universum" if concatTable in (2, 4) else " Galaxie")
                             for n in range(len(tableToAdd[0]))
                         ]
                     ] + tableToAdd
