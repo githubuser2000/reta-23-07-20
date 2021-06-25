@@ -2520,28 +2520,21 @@ class Program:
         self.tables.getOut.rowsAsNumbers = self.rowsAsNumbers
 
         self.tables.SpaltenVanillaAmount = len(self.rowsAsNumbers)
-        (
-            self.relitable,
-            rowsAsNumbers,
-            primSpalten,
-        ) = self.tables.getConcat.readConcatCsv(
-            self.relitable, self.rowsAsNumbers, self.puniverseprims, 1
-        )
-        self.tables.SpaltenVanillaAmount2 = len(self.rowsAsNumbers)
-        (
-            self.relitable,
-            rowsAsNumbers,
-            gebrUnivSpalten,
-        ) = self.tables.getConcat.readConcatCsv(
-            self.relitable, self.rowsAsNumbers, self.gebrUni, 2
-        )
-        (
-            self.relitable,
-            rowsAsNumbers,
-            gebrGalSpalten,
-        ) = self.tables.getConcat.readConcatCsv(
-            self.relitable, self.rowsAsNumbers, self.gebrGal, 3
-        )
+
+        CsvTheirsSpalten = {}
+        for i, input1 in enumerate(
+            [self.puniverseprims, self.gebrUni, self.gebrGal], start=1
+        ):
+            (
+                self.relitable,
+                rowsAsNumbers,
+                CsvTheirsSpalten[i],
+            ) = self.tables.getConcat.readConcatCsv(
+                self.relitable, self.rowsAsNumbers, input1, i
+            )
+        primSpalten = CsvTheirsSpalten[1]
+        gebrUnivSpalten = CsvTheirsSpalten[2]
+        gebrGalSpalten = CsvTheirsSpalten[3]
 
         self.relitable, self.rowsAsNumbers = self.tables.getConcat.concatRowsOfConcepts(
             self.relitable, self.tables.generRows, self.rowsAsNumbers
