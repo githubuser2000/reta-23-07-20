@@ -1094,7 +1094,7 @@ class Concat:
             with open(place, mode="r") as csv_file:
                 tableToAdd = list(csv.reader(csv_file, delimiter=";"))
                 if concatTable in (4, 5):
-                    concatTable = transpose(concatTable)
+                    tableToAdd = transpose(tableToAdd)
                 if concatTable in range(2, 6):
                     tableToAdd = [
                         [

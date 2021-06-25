@@ -2523,7 +2523,14 @@ class Program:
 
         CsvTheirsSpalten: dict = {}
         for i, input1 in enumerate(
-            [self.puniverseprims, self.gebrUni, self.gebrGal], start=1
+            [
+                self.puniverseprims,
+                self.gebrUni,
+                self.gebrGal,
+                self.gebrUni,
+                self.gebrGal,
+            ],
+            start=1,
         ):
             (
                 self.relitable,
@@ -2535,6 +2542,8 @@ class Program:
         primSpalten = CsvTheirsSpalten[1]
         gebrUnivSpalten = CsvTheirsSpalten[2]
         gebrGalSpalten = CsvTheirsSpalten[3]
+        gebrUnivSpalten2 = CsvTheirsSpalten[4]
+        gebrGalSpalten2 = CsvTheirsSpalten[5]
 
         self.relitable, self.rowsAsNumbers = self.tables.getConcat.concatRowsOfConcepts(
             self.relitable, self.tables.generRows, self.rowsAsNumbers
@@ -2619,6 +2628,8 @@ class Program:
             primSpalten,
             gebrUnivSpalten,
             gebrGalSpalten,
+            gebrUnivSpalten2,
+            gebrGalSpalten2,
         )
 
     def __init__(self, argv=[]):
@@ -2644,6 +2655,8 @@ class Program:
             primSpalten,
             gebrUnivSpalten,
             gebrGalSpalten,
+            gebrUnivSpalten2,
+            gebrGalSpalten2,
         ) = self.bringAllImportantBeginThings(argv)
         self.tables.getMainTable.createSpalteGestirn(self.relitable, self.rowsAsNumbers)
         # x("2943", self.rowsAsNumbers)
@@ -2661,6 +2674,8 @@ class Program:
             primSpalten=primSpalten,
             gebrUnivSpalten=gebrUnivSpalten,
             gebrGalSpalten=gebrGalSpalten,
+            gebrUnivSpalten2=gebrUnivSpalten2,
+            gebrGalSpalten2=gebrGalSpalten2,
         )
         # x("2944", self.rowsAsNumbers)
         # x("2944", self.relitable[0][92])
