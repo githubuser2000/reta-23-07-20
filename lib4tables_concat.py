@@ -821,52 +821,71 @@ class Concat:
                 if lower1greater2both3 == 2
                 else []
             ):
-                rowsAsNumbers = self.spalteMetaKonkretAbstrakt_UeberschriftenUndTags(bothRows, ifInvers, metavariable,
-                                                                                     rowsAsNumbers)
-                for i, row in enumerate(relitable[2:], 2):
-                    moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
-                    neue2KoordNeue2Vorwoerter: list = []
-                for i, row in enumerate(relitable[2:], 2):
-                    moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
-                    neue2KoordNeue2Vorwoerter: list = []
-                    # alxp("new while")
-                    newCol = transzendentalienSpalten[0]
-                    while moreAndLess != (None, None):
-                        newCol, moreAndLess = switching(newCol, moreAndLess)
-                        vorworte2 = metaOrWhat[metavariable][
-                            0 if len(neue2KoordNeue2Vorwoerter) == 0 else 1
-                        ]
-                        wort1: str = makeVorwort(
-                            len(neue2KoordNeue2Vorwoerter) + 1, vorworte2, 1
-                        )
-                        wort2: str = makeVorwort(
-                            len(neue2KoordNeue2Vorwoerter) + 1, vorworte2, 2
-                        )
-                        neue2KoordNeue2Vorwoerter += [
-                            (moreAndLess, newCol, wort1, wort2)
-                        ]
+                rowsAsNumbers = self.spalteMetaKonkretTheorieAbstrakt_mainPart(bothRows, ifInvers, makeVorwort,
+                                                                               metaOrWhat, metavariable, relitable,
+                                                                               rowsAsNumbers, switching,
+                                                                               transzendentalienSpalten)
 
-                    self.spalteMetaKonkretTheorieAbstrakt_mainPart_InsertingText(bothRows, i, ifInvers,
-                                                                                 neue2KoordNeue2Vorwoerter, relitable,
-                                                                                 transzendentalienSpalten)
-
-                if lower1greater2both3 != 3:
-                    self.tables.generatedSpaltenParameter[
-                        len(self.tables.generatedSpaltenParameter)
-                        + self.tables.SpaltenVanillaAmount
-                    ] = self.tables.dataDict[4][(metavariable, lower1greater2both3 - 1)]
-                else:
-                    for both in (
-                        0,
-                        1,
-                    ):
-                        self.tables.generatedSpaltenParameter[
-                            len(self.tables.generatedSpaltenParameter)
-                            + self.tables.SpaltenVanillaAmount
-                        ] = self.tables.dataDict[4][(metavariable, both)]
+                self.spalteMetaKonkretTheorieAbstrakt_SetHtmlParamters(lower1greater2both3, metavariable)
 
         # x("r_wt", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
+
+    def spalteMetaKonkretTheorieAbstrakt_SetHtmlParamters(self, lower1greater2both3, metavariable):
+        if lower1greater2both3 != 3:
+            self.tables.generatedSpaltenParameter[
+                len(self.tables.generatedSpaltenParameter)
+                + self.tables.SpaltenVanillaAmount
+                ] = self.tables.dataDict[4][(metavariable, lower1greater2both3 - 1)]
+        else:
+            for both in (
+                    0,
+                    1,
+            ):
+                self.tables.generatedSpaltenParameter[
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.SpaltenVanillaAmount
+                    ] = self.tables.dataDict[4][(metavariable, both)]
+
+    def spalteMetaKonkretTheorieAbstrakt_mainPart(self, bothRows, ifInvers, makeVorwort, metaOrWhat, metavariable,
+                                                  relitable, rowsAsNumbers, switching, transzendentalienSpalten):
+        rowsAsNumbers = self.spalteMetaKonkretAbstrakt_UeberschriftenUndTags(bothRows, ifInvers, metavariable,
+                                                                             rowsAsNumbers)
+        for i, row in enumerate(relitable[2:], 2):
+            moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
+            neue2KoordNeue2Vorwoerter: list = []
+        for i, row in enumerate(relitable[2:], 2):
+            moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
+            neue2KoordNeue2Vorwoerter: list = []
+            # alxp("new while")
+            newCol = transzendentalienSpalten[0]
+            neue2KoordNeue2Vorwoerter = self.spalteMetaKonkretTheorieAbstrakt_VorwortBehandlungWieVorwortMeta(
+                makeVorwort, metaOrWhat, metavariable, moreAndLess, neue2KoordNeue2Vorwoerter, newCol,
+                switching)
+
+            self.spalteMetaKonkretTheorieAbstrakt_mainPart_InsertingText(bothRows, i, ifInvers,
+                                                                         neue2KoordNeue2Vorwoerter, relitable,
+                                                                         transzendentalienSpalten)
+        return rowsAsNumbers
+
+    def spalteMetaKonkretTheorieAbstrakt_VorwortBehandlungWieVorwortMeta(self, makeVorwort, metaOrWhat, metavariable,
+                                                                         moreAndLess, neue2KoordNeue2Vorwoerter, newCol,
+                                                                         switching):
+        while moreAndLess != (None, None):
+            newCol, moreAndLess = switching(newCol, moreAndLess)
+            vorworte2 = metaOrWhat[metavariable][
+                0 if len(neue2KoordNeue2Vorwoerter) == 0 else 1
+            ]
+            wort1: str = makeVorwort(
+                len(neue2KoordNeue2Vorwoerter) + 1, vorworte2, 1
+            )
+            wort2: str = makeVorwort(
+                len(neue2KoordNeue2Vorwoerter) + 1, vorworte2, 2
+            )
+            neue2KoordNeue2Vorwoerter += [
+                (moreAndLess, newCol, wort1, wort2)
+            ]
+        return neue2KoordNeue2Vorwoerter
 
     def spalteMetaKonkretTheorieAbstrakt_mainPart_InsertingText(self, bothRows, i, ifInvers, neue2KoordNeue2Vorwoerter,
                                                                 relitable, transzendentalienSpalten):
