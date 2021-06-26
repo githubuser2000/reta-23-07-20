@@ -512,6 +512,26 @@ class Prepare:
             range aus zu zeigenden Spalten 1-n nicht alle , welche neuen Spalten welche alten waren und umgekehrt
         return finallyDisplayLines, newerTable, numlen, rowsRange, old2Rows
         """
+        finallyDisplayLines, headingsAmount, newerTable, numlen, rowsRange = self.prepare4out_beforeForLoop_SpaltenZeilenBestimmen(
+            contentTable, paramLines, paramLinesNot)
+        old2Rows: tuple = ({}, {})
+        reliNumbersBool = False if self.religionNumbers != [] else True
+        # x("XIX", rowsAsNumbers)
+        for u, line in enumerate(contentTable):
+            # x("AAAF1", (contentTable[u], u, ))
+            # x("AAAF2", "ENNDD")
+            if u in finallyDisplayLines or combiRows != 0:
+                new2Lines = self.prepare4out_LoopBody(combiRows, gebrGalSpalten, gebrGalSpalten2, gebrUnivSpalten,
+                                                      gebrUnivSpalten2, headingsAmount, line, old2Rows, primSpalten,
+                                                      reliNumbersBool, reliTableLenUntilNow, rowsAsNumbers, u)
+
+                if new2Lines != []:
+                    newerTable += [new2Lines]
+
+        # #x("idiot", self.tables.generatedSpaltenParameter)
+        return finallyDisplayLines, newerTable, numlen, rowsRange, old2Rows
+
+    def prepare4out_beforeForLoop_SpaltenZeilenBestimmen(self, contentTable, paramLines, paramLinesNot):
         newerTable: list = []
         if len(contentTable) > 0:
             headingsAmount = len(contentTable[0])
@@ -527,7 +547,7 @@ class Prepare:
                 deepcopy(finallyDisplayLines), paramLinesNot
             )
             hasAnythingCanged = (
-                set(self.originalLinesRange) - finallyDisplayLines2 - {0}
+                    set(self.originalLinesRange) - finallyDisplayLines2 - {0}
             )
             if len(hasAnythingCanged) > 0:
                 finallyDisplayLines -= finallyDisplayLines2
@@ -537,124 +557,122 @@ class Prepare:
         finallyDisplayLines = set(finallyDisplayLines3)
         #    maxPartLineLen = 0
         numlen = len(str(finallyDisplayLines3[-1]))
-        old2Rows: tuple = ({}, {})
-        reliNumbersBool = False if self.religionNumbers != [] else True
-        # x("XIX", rowsAsNumbers)
-        for u, line in enumerate(contentTable):
-            # x("AAAF1", (contentTable[u], u, ))
-            # x("AAAF2", "ENNDD")
-            if u in finallyDisplayLines or combiRows != 0:
-                if reliNumbersBool:
-                    self.religionNumbers += [int(u)]
-                new2Lines: list = []
-                rowToDisplay = 0
-                h = 0
+        return finallyDisplayLines, headingsAmount, newerTable, numlen, rowsRange
 
-                for t, cell in enumerate(line):
-                    if t in rowsAsNumbers:
-                        if u == 0:
-                            if combiRows == 0:
-                                try:
-                                    if (
-                                        rowToDisplay
-                                        not in self.tables.generatedSpaltenParameter
-                                    ):
-                                        self.tables.generatedSpaltenParameter[
-                                            rowToDisplay
-                                        ] = self.tables.dataDict[0][t]
-                                        self.tables.generatedSpaltenParameter_Tags[
-                                            rowToDisplay
-                                        ] = lib4tables_Enum.tableTags2[t]
-                                    elif primSpalten is not None and t in primSpalten:
-                                        self.tables.generatedSpaltenParameter_Tags[
-                                            rowToDisplay
-                                        ] = frozenset(
-                                            {ST.sternPolygon, ST.universum, ST.galaxie}
-                                        )
-                                    elif (
-                                        gebrGalSpalten is not None
-                                        and t in gebrGalSpalten
-                                    ):
-                                        self.tables.generatedSpaltenParameter_Tags[
-                                            rowToDisplay
-                                        ] = frozenset(
-                                            {
-                                                ST.sternPolygon,
-                                                ST.galaxie,
-                                                ST.gleichfoermigesPolygon,
-                                            }
-                                        )
-                                    elif (
-                                        gebrUnivSpalten2 is not None
-                                        and t in gebrUnivSpalten2
-                                    ):
-                                        self.tables.generatedSpaltenParameter_Tags[
-                                            rowToDisplay
-                                        ] = frozenset(
-                                            {
-                                                ST.sternPolygon,
-                                                ST.universum,
-                                                ST.gleichfoermigesPolygon,
-                                            }
-                                        )
+    def prepare4out_LoopBody(self, combiRows, gebrGalSpalten, gebrGalSpalten2, gebrUnivSpalten, gebrUnivSpalten2,
+                             headingsAmount, line, old2Rows, primSpalten, reliNumbersBool, reliTableLenUntilNow,
+                             rowsAsNumbers, u):
+        if reliNumbersBool:
+            self.religionNumbers += [int(u)]
+        new2Lines: list = []
+        rowToDisplay = 0
+        h = 0
+        for t, cell in enumerate(line):
+            if t in rowsAsNumbers:
+                if u == 0:
+                    self.prepare4out_Tagging(combiRows, gebrGalSpalten, gebrGalSpalten2, gebrUnivSpalten,
+                                            gebrUnivSpalten2, primSpalten, reliTableLenUntilNow, rowToDisplay,
+                                            t)
 
-                                    elif (
-                                        gebrGalSpalten2 is not None
-                                        and t in gebrGalSpalten2
-                                    ):
-                                        self.tables.generatedSpaltenParameter_Tags[
-                                            rowToDisplay
-                                        ] = frozenset(
-                                            {
-                                                ST.sternPolygon,
-                                                ST.galaxie,
-                                                ST.gleichfoermigesPolygon,
-                                            }
-                                        )
-                                    elif (
-                                        gebrUnivSpalten is not None
-                                        and t in gebrUnivSpalten
-                                    ):
-                                        self.tables.generatedSpaltenParameter_Tags[
-                                            rowToDisplay
-                                        ] = frozenset(
-                                            {
-                                                ST.sternPolygon,
-                                                ST.universum,
-                                                ST.gleichfoermigesPolygon,
-                                            }
-                                        )
+                rowToDisplay += 1
+                newLines: list = [[]] * headingsAmount
+                certaintextwidth = self.setWidth(rowToDisplay, combiRows)
+                # x("AAAE", cell)
+                into = self.cellWork(cell, newLines, certaintextwidth, t)
+                if into != [""] or True:
+                    new2Lines += [into]
+                if u == 0:
+                    old2Rows[0][t] = h
+                    old2Rows[1][h] = t
+                h += 1
+        return new2Lines
 
-                                    x("UIU2", [t, primSpalten, rowToDisplay])
-                                except KeyError:
-                                    pass
+    def prepare4out_Tagging(self, combiRows, gebrGalSpalten, gebrGalSpalten2, gebrUnivSpalten, gebrUnivSpalten2,
+                           primSpalten, reliTableLenUntilNow, rowToDisplay, t):
+        if combiRows == 0:
+            try:
+                if (
+                        rowToDisplay
+                        not in self.tables.generatedSpaltenParameter
+                ):
+                    self.tables.generatedSpaltenParameter[
+                        rowToDisplay
+                    ] = self.tables.dataDict[0][t]
+                    self.tables.generatedSpaltenParameter_Tags[
+                        rowToDisplay
+                    ] = lib4tables_Enum.tableTags2[t]
+                elif primSpalten is not None and t in primSpalten:
+                    self.tables.generatedSpaltenParameter_Tags[
+                        rowToDisplay
+                    ] = frozenset(
+                        {ST.sternPolygon, ST.universum, ST.galaxie}
+                    )
+                elif (
+                        gebrGalSpalten is not None
+                        and t in gebrGalSpalten
+                ):
+                    self.tables.generatedSpaltenParameter_Tags[
+                        rowToDisplay
+                    ] = frozenset(
+                        {
+                            ST.sternPolygon,
+                            ST.galaxie,
+                            ST.gleichfoermigesPolygon,
+                        }
+                    )
+                elif (
+                        gebrUnivSpalten2 is not None
+                        and t in gebrUnivSpalten2
+                ):
+                    self.tables.generatedSpaltenParameter_Tags[
+                        rowToDisplay
+                    ] = frozenset(
+                        {
+                            ST.sternPolygon,
+                            ST.universum,
+                            ST.gleichfoermigesPolygon,
+                        }
+                    )
 
-                            else:
-                                try:
-                                    self.tables.generatedSpaltenParameter_Tags[
-                                        reliTableLenUntilNow + rowToDisplay - 1
-                                    ] = lib4tables_Enum.tableTags2_kombiTable[t]
-                                    # x("zz", [reliTableLenUntilNow + rowToDisplay, t])
-                                except KeyError:
-                                    pass
+                elif (
+                        gebrGalSpalten2 is not None
+                        and t in gebrGalSpalten2
+                ):
+                    self.tables.generatedSpaltenParameter_Tags[
+                        rowToDisplay
+                    ] = frozenset(
+                        {
+                            ST.sternPolygon,
+                            ST.galaxie,
+                            ST.gleichfoermigesPolygon,
+                        }
+                    )
+                elif (
+                        gebrUnivSpalten is not None
+                        and t in gebrUnivSpalten
+                ):
+                    self.tables.generatedSpaltenParameter_Tags[
+                        rowToDisplay
+                    ] = frozenset(
+                        {
+                            ST.sternPolygon,
+                            ST.universum,
+                            ST.gleichfoermigesPolygon,
+                        }
+                    )
 
-                        rowToDisplay += 1
-                        newLines: list = [[]] * headingsAmount
-                        certaintextwidth = self.setWidth(rowToDisplay, combiRows)
-                        # x("AAAE", cell)
-                        into = self.cellWork(cell, newLines, certaintextwidth, t)
-                        if into != [""] or True:
-                            new2Lines += [into]
-                        if u == 0:
-                            old2Rows[0][t] = h
-                            old2Rows[1][h] = t
-                        h += 1
+                x("UIU2", [t, primSpalten, rowToDisplay])
+            except KeyError:
+                pass
 
-                if new2Lines != []:
-                    newerTable += [new2Lines]
-
-        # #x("idiot", self.tables.generatedSpaltenParameter)
-        return finallyDisplayLines, newerTable, numlen, rowsRange, old2Rows
+        else:
+            try:
+                self.tables.generatedSpaltenParameter_Tags[
+                    reliTableLenUntilNow + rowToDisplay - 1
+                    ] = lib4tables_Enum.tableTags2_kombiTable[t]
+                # x("zz", [reliTableLenUntilNow + rowToDisplay, t])
+            except KeyError:
+                pass
 
     def cellWork(self, cell: str, newLines, certaintextwidth: int, t: int) -> list:
         """aus String mach Liste aus Strings mit korrektem Zeilenumbruch

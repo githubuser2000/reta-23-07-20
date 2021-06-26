@@ -1073,48 +1073,14 @@ class Concat:
             return t
 
         concatCSVspalten: set = set()
-        place = os.path.join(
-            os.getcwd(),
-            os.path.dirname(__file__),
-            os.path.basename(
-                "./primenumbers.csv"
-                if concatTable == 1
-                else "./gebrochen-rational-universum.csv"
-                if concatTable in (2, 4)
-                else "./gebrochen-rational-galaxie.csv"
-                if concatTable in (3, 5)
-                else None
-            ),
-        )
+        place = self.readConcatCSV_choseCsvFile(concatTable)
         self.relitable = relitable
         headingsAmount = len(self.relitable[0])
         if len(concatTableSelection) > 0 and concatTable in range(1, 6):
             # x("SVO", concatTable)
 
             with open(place, mode="r") as csv_file:
-                tableToAdd = list(csv.reader(csv_file, delimiter=";"))
-                if concatTable in (4, 5):
-                    tableToAdd = transpose(tableToAdd)
-                if concatTable in range(2, 6):
-                    tableToAdd = [
-                        [
-                            (
-                                ("n/" + str(n + 1))
-                                if concatTable in (2, 3)
-                                else (str(n + 1) + "/n")
-                                if concatTable in (4, 5)
-                                else "Fehler"
-                            )
-                            + (
-                                " Universum"
-                                if concatTable in (2, 4)
-                                else " Galaxie"
-                                if concatTable in (3, 5)
-                                else "Fehler"
-                            )
-                            for n in range(len(tableToAdd[0]))
-                        ]
-                    ] + tableToAdd
+                tableToAdd = self.readConcatCsv_getTableToAdd(concatTable, csv_file, transpose)
                 self.relitable, tableToAdd = self.tables.fillBoth(
                     self.relitable, tableToAdd
                 )
@@ -1131,42 +1097,91 @@ class Concat:
                     if i == 0:
                         for u, heading in enumerate(dazu):
                             # x("SBm", [concatTable, u, headingsAmount])
-                            if (
-                                u + 2 in concatTableSelection
-                                and concatTable in range(2, 6)
-                            ) or (
-                                concatTable == 1
-                                and int(heading) in concatTableSelection
-                            ):
-                                if concatTable not in range(2, 6) or u + 1 != len(dazu):
-                                    delta = 1 if concatTable in range(2, 6) else 0
-                                    selectedSpalten = (
-                                        u + len(self.relitable[0]) - len(dazu) + delta
-                                    )
-                                    rowsAsNumbers.add(selectedSpalten)
-                                    concatCSVspalten.add(selectedSpalten)
-                                    if (
-                                        len(self.tables.generatedSpaltenParameter)
-                                        + self.tables.SpaltenVanillaAmount
-                                        in self.tables.generatedSpaltenParameter
-                                    ):
-                                        raise ValueError
-
-                                    if concatTable in range(2, 6):
-                                        self.tables.generatedSpaltenParameter[
-                                            len(self.tables.generatedSpaltenParameter)
-                                            + self.tables.SpaltenVanillaAmount
-                                        ] = self.tables.dataDict[
-                                            5 + ((concatTable - 2) % 2)
-                                        ][
-                                            u + 2
-                                        ]
-
-                                    if concatTable == 1:
-                                        x("EDS", self.tables.dataDict[2][int(heading)])
-                                        self.tables.generatedSpaltenParameter[
-                                            len(self.tables.generatedSpaltenParameter)
-                                            + self.tables.SpaltenVanillaAmount
-                                        ] = self.tables.dataDict[2][int(heading)]
+                            self.readConcatCsv_LoopBody(concatCSVspalten, concatTable, concatTableSelection, dazu,
+                                                        heading, rowsAsNumbers, u)
 
         return self.relitable, rowsAsNumbers, concatCSVspalten
+
+    def readConcatCSV_choseCsvFile(self, concatTable):
+        place = os.path.join(
+            os.getcwd(),
+            os.path.dirname(__file__),
+            os.path.basename(
+                "./primenumbers.csv"
+                if concatTable == 1
+                else "./gebrochen-rational-universum.csv"
+                if concatTable in (2, 4)
+                else "./gebrochen-rational-galaxie.csv"
+                if concatTable in (3, 5)
+                else None
+            ),
+        )
+        return place
+
+    def readConcatCsv_getTableToAdd(self, concatTable, csv_file, transpose):
+        tableToAdd = list(csv.reader(csv_file, delimiter=";"))
+        if concatTable in (4, 5):
+            tableToAdd = transpose(tableToAdd)
+        if concatTable in range(2, 6):
+            tableToAdd = [
+                             [
+                                 (
+                                     ("n/" + str(n + 1))
+                                     if concatTable in (2, 3)
+                                     else (str(n + 1) + "/n")
+                                     if concatTable in (4, 5)
+                                     else "Fehler"
+                                 )
+                                 + (
+                                     " Universum"
+                                     if concatTable in (2, 4)
+                                     else " Galaxie"
+                                     if concatTable in (3, 5)
+                                     else "Fehler"
+                                 )
+                                 for n in range(len(tableToAdd[0]))
+                             ]
+                         ] + tableToAdd
+        return tableToAdd
+
+    def readConcatCsv_LoopBody(self, concatCSVspalten, concatTable, concatTableSelection, dazu, heading, rowsAsNumbers,
+                               u):
+        if (
+                u + 2 in concatTableSelection
+                and concatTable in range(2, 6)
+        ) or (
+                concatTable == 1
+                and int(heading) in concatTableSelection
+        ):
+            if concatTable not in range(2, 6) or u + 1 != len(dazu):
+                delta = 1 if concatTable in range(2, 6) else 0
+                selectedSpalten = (
+                        u + len(self.relitable[0]) - len(dazu) + delta
+                )
+                rowsAsNumbers.add(selectedSpalten)
+                concatCSVspalten.add(selectedSpalten)
+                if (
+                        len(self.tables.generatedSpaltenParameter)
+                        + self.tables.SpaltenVanillaAmount
+                        in self.tables.generatedSpaltenParameter
+                ):
+                    raise ValueError
+
+                self.readConcatCsv_SetHtmlParamaters(concatTable, heading, u)
+
+    def readConcatCsv_SetHtmlParamaters(self, concatTable, heading, u):
+        if concatTable in range(2, 6):
+            self.tables.generatedSpaltenParameter[
+                len(self.tables.generatedSpaltenParameter)
+                + self.tables.SpaltenVanillaAmount
+                ] = self.tables.dataDict[
+                5 + ((concatTable - 2) % 2)
+                ][
+                u + 2
+                ]
+        if concatTable == 1:
+            x("EDS", self.tables.dataDict[2][int(heading)])
+            self.tables.generatedSpaltenParameter[
+                len(self.tables.generatedSpaltenParameter)
+                + self.tables.SpaltenVanillaAmount
+                ] = self.tables.dataDict[2][int(heading)]
