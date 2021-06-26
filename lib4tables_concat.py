@@ -760,7 +760,17 @@ class Concat:
         9. b) 3. das insofern in Schleife, dass mehreres Sowas in eine Zelle kann mit "|" dazwischen
 
         10. HTML Paramter werden aus dem dataDict genommen, damit sie für die html ausgabe genutzt werden können.
+
+        Wie mache ich gebr rat univ rein?
+        1. bei (zahl1,noch mal zahl1) bzw. (i,i) msste ich schauen, wenn ein wert None werden würde, weil er nicht mehr ganzzahlig wäre
+        2. dann ein if für diesen fall und else wie gehabt.
+        3. im if fall die komma zahl bestimmen
+        4. die kommazahl als rationalen bruch maximal vereinfachen mit rational zahl lib von python
+        5. Vorwörter weiter spinnen lassen, aber schauen, dass es richtig gemacht wird
+        5. a) dafür brauche ich eine iterator variable extra noch mal zur Kommazahl
+        6. aus dem rechteck der großen tabelle mit den richtigen koordinaten das universum-wort raus nehmen
         """
+
         self.relitable = relitable
         # rowsAsNumbers |= {
         #    len(self.relitable[0]),
