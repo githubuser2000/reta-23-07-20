@@ -826,12 +826,12 @@ class Concat:
                                                                                rowsAsNumbers, switching,
                                                                                transzendentalienSpalten)
 
-                self.spalteMetaKonkretTheorieAbstrakt_SetHtmlParamters(lower1greater2both3, metavariable)
+                self.spalteMetaKonkretTheorieAbstrakt_SetHtmlParameters(lower1greater2both3, metavariable)
 
         # x("r_wt", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
 
-    def spalteMetaKonkretTheorieAbstrakt_SetHtmlParamters(self, lower1greater2both3, metavariable):
+    def spalteMetaKonkretTheorieAbstrakt_SetHtmlParameters(self, lower1greater2both3, metavariable):
         if lower1greater2both3 != 3:
             self.tables.generatedSpaltenParameter[
                 len(self.tables.generatedSpaltenParameter)
