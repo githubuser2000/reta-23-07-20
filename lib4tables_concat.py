@@ -821,33 +821,8 @@ class Concat:
                 if lower1greater2both3 == 2
                 else []
             ):
-                rowsAsNumbers |= {len(self.relitable[0])}
-                self.tables.generatedSpaltenParameter_Tags[
-                    len(rowsAsNumbers) - 1
-                ] = frozenset({ST.sternPolygon, ST.universum})
-
-                self.relitable[1] += [""]
-                if bothRows == 0:
-                    if metavariable == 2:
-                        self.relitable[0] += ["Meta"]
-                    if metavariable == 3:
-                        self.relitable[0] += ["Theorie"]
-                    if metavariable == 4:
-                        self.relitable[0] += ["Fluss"]
-                    if metavariable == 5:
-                        self.relitable[0] += ["mathematisch diskret"]
-                if bothRows == 1:
-                    if metavariable == 2:
-                        self.relitable[0] += ["Konkretes"]
-                    if metavariable == 3:
-                        self.relitable[0] += ["Praxis"]
-                    if metavariable == 4:
-                        self.relitable[0] += ["Stau"]
-                    if metavariable == 5:
-                        self.relitable[0] += ["kontiuierlich"]
-                self.relitable[0][-1] += (
-                    " für 1/n statt n" if ifInvers == 1 else " für n"
-                )
+                rowsAsNumbers = self.spalteMetaKonkretAbstrakt_UeberschriftenUndTags(bothRows, ifInvers, metavariable,
+                                                                                     rowsAsNumbers)
                 for i, row in enumerate(relitable[2:], 2):
                     moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
                     neue2KoordNeue2Vorwoerter: list = []
@@ -871,54 +846,9 @@ class Concat:
                             (moreAndLess, newCol, wort1, wort2)
                         ]
 
-                    intoList = []
-                    thema = ""
-                    # x("_t_", neue2KoordNeue2Vorwoerter[:-1])
-                    for vier in neue2KoordNeue2Vorwoerter[:-1]:
-                        # alxp(vier)
-                        # if not vier[0][0] is None and not vier[1] is None:
-                        #   # alxp(relitable[vier[0][0]][vier[1]])
-                        # if not vier[0][1] is None and not vier[1] is None:
-                        #   # alxp(relitable[vier[0][1]][vier[1]])
-                        if (
-                            bothRows == 0
-                            and not vier[0][0] is None
-                            and len(relitable[vier[0][0]][vier[1]].strip()) > 3
-                        ):
-                            intoList += [
-                                vier[bothRows + 2],
-                                thema,
-                                relitable[vier[0][0]][vier[1]],
-                                " (",
-                                "1/"
-                                if vier[1] != transzendentalienSpalten[ifInvers]
-                                and vier[0][1] != 1
-                                else "",
-                                str(vier[0][0]),
-                                ")",
-                                " | ",
-                            ]
-                        elif (
-                            bothRows == 1
-                            and not vier[0][1] is None
-                            and len(relitable[vier[0][1]][vier[1]].strip()) > 3
-                        ):
-                            intoList += [
-                                vier[bothRows + 2],
-                                thema,
-                                relitable[vier[0][1]][vier[1]],
-                                " (",
-                                "1/"
-                                if vier[1] != transzendentalienSpalten[ifInvers]
-                                and vier[0][1] != 1
-                                else "",
-                                str(vier[0][1]),
-                                ")",
-                                " | ",
-                            ]
-                        thema = "Thema: "
-                    # alxp(intoList)
-                    self.relitable[i] += ["".join(intoList[:-1])]
+                    self.spalteMetaKonkretTheorieAbstrakt_mainPart_InsertingText(bothRows, i, ifInvers,
+                                                                                 neue2KoordNeue2Vorwoerter, relitable,
+                                                                                 transzendentalienSpalten)
 
                 if lower1greater2both3 != 3:
                     self.tables.generatedSpaltenParameter[
@@ -937,6 +867,86 @@ class Concat:
 
         # x("r_wt", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
+
+    def spalteMetaKonkretTheorieAbstrakt_mainPart_InsertingText(self, bothRows, i, ifInvers, neue2KoordNeue2Vorwoerter,
+                                                                relitable, transzendentalienSpalten):
+        intoList = []
+        thema = ""
+        # x("_t_", neue2KoordNeue2Vorwoerter[:-1])
+        for vier in neue2KoordNeue2Vorwoerter[:-1]:
+            # alxp(vier)
+            # if not vier[0][0] is None and not vier[1] is None:
+            #   # alxp(relitable[vier[0][0]][vier[1]])
+            # if not vier[0][1] is None and not vier[1] is None:
+            #   # alxp(relitable[vier[0][1]][vier[1]])
+            if (
+                    bothRows == 0
+                    and not vier[0][0] is None
+                    and len(relitable[vier[0][0]][vier[1]].strip()) > 3
+            ):
+                intoList += [
+                    vier[bothRows + 2],
+                    thema,
+                    relitable[vier[0][0]][vier[1]],
+                    " (",
+                    "1/"
+                    if vier[1] != transzendentalienSpalten[ifInvers]
+                       and vier[0][1] != 1
+                    else "",
+                    str(vier[0][0]),
+                    ")",
+                    " | ",
+                ]
+            elif (
+                    bothRows == 1
+                    and not vier[0][1] is None
+                    and len(relitable[vier[0][1]][vier[1]].strip()) > 3
+            ):
+                intoList += [
+                    vier[bothRows + 2],
+                    thema,
+                    relitable[vier[0][1]][vier[1]],
+                    " (",
+                    "1/"
+                    if vier[1] != transzendentalienSpalten[ifInvers]
+                       and vier[0][1] != 1
+                    else "",
+                    str(vier[0][1]),
+                    ")",
+                    " | ",
+                ]
+            thema = "Thema: "
+        # alxp(intoList)
+        self.relitable[i] += ["".join(intoList[:-1])]
+
+    def spalteMetaKonkretAbstrakt_UeberschriftenUndTags(self, bothRows, ifInvers, metavariable, rowsAsNumbers):
+        rowsAsNumbers |= {len(self.relitable[0])}
+        self.tables.generatedSpaltenParameter_Tags[
+            len(rowsAsNumbers) - 1
+            ] = frozenset({ST.sternPolygon, ST.universum})
+        self.relitable[1] += [""]
+        if bothRows == 0:
+            if metavariable == 2:
+                self.relitable[0] += ["Meta"]
+            if metavariable == 3:
+                self.relitable[0] += ["Theorie"]
+            if metavariable == 4:
+                self.relitable[0] += ["Fluss"]
+            if metavariable == 5:
+                self.relitable[0] += ["mathematisch diskret"]
+        if bothRows == 1:
+            if metavariable == 2:
+                self.relitable[0] += ["Konkretes"]
+            if metavariable == 3:
+                self.relitable[0] += ["Praxis"]
+            if metavariable == 4:
+                self.relitable[0] += ["Stau"]
+            if metavariable == 5:
+                self.relitable[0] += ["kontiuierlich"]
+        self.relitable[0][-1] += (
+            " für 1/n statt n" if ifInvers == 1 else " für n"
+        )
+        return rowsAsNumbers
 
     def spalteFuerGegenInnenAussenSeitlichPrim(
         self, relitable: list, rowsAsNumbers: set
