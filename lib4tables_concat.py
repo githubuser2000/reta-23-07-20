@@ -737,7 +737,30 @@ class Concat:
         metavariable: int = 2,
         lower1greater2both3: int = 3,
     ) -> tuple:
+        """
+        1. nächste Zeile wird Anzeigezeile
+        2. Diese Zeile erhält die Tags
+        3. Vorwörternamen in Struktur: z.B. Meta-
+        4. for alle Strukturalien und inverse Strukturalien
+        5. ob diese beiden oder eins der beiden
+        6. Überschriften und Tags: Schritt 1. und 2. in Schleife noch mal. <s>Dann ist doch das erste bei beiden schon eins zu viel!</s>
+        7. Haupttabelle erhält schon direkt die Überschriften
+        <s>8. Da waren 3 Zeilen Unsinn Code</s>
 
+        9. for zeile 2 bis Unten und mit i++
+        9. a) Vorwörter werden bestimmt
+        9. a) 1. startet mit (zahl1,zahl1) und die eine wird dann immer größer und die andere kleiner
+        9. a) 2. Fkt switching verdoppelt und halbiert (wenn Zahl 2) und wählt die spalte, ob strukturalie oder reziproke strukturalie
+        9. a) 3. Fkt makeVorwort macht die Wiederholungen eines solchen Vorwortes
+        9. a) 4.
+
+        9. b) Text kommt in Zelle
+        9. b) 1. wenn Ursprungszelle etwas enthält
+        9. b) 2. Vorwörter, dann Transzendentalie, dann Zahl dazu in Klammern
+        9. b) 3. das insofern in Schleife, dass mehreres Sowas in eine Zelle kann mit "|" dazwischen
+
+        10. HTML Paramter werden aus dem dataDict genommen, damit sie für die html ausgabe genutzt werden können.
+        """
         self.relitable = relitable
         # rowsAsNumbers |= {
         #    len(self.relitable[0]),
