@@ -739,12 +739,12 @@ class Concat:
     ) -> tuple:
 
         self.relitable = relitable
-        rowsAsNumbers |= {
-            len(self.relitable[0]),
-        }
-        self.tables.generatedSpaltenParameter_Tags[len(rowsAsNumbers) - 1] = frozenset(
-            {ST.sternPolygon, ST.universum}
-        )
+        # rowsAsNumbers |= {
+        #    len(self.relitable[0]),
+        # }
+        # self.tables.generatedSpaltenParameter_Tags[len(rowsAsNumbers) - 1] = frozenset(
+        #    {ST.sternPolygon, ST.universum}
+        # )
         """bis hier hin waren es die Vorinitialisierungen von Variablen"""
 
         # def switching(metavariable: int, lower1greater2both3: int, row: int):
@@ -821,36 +821,58 @@ class Concat:
                 if lower1greater2both3 == 2
                 else []
             ):
-                rowsAsNumbers = self.spalteMetaKonkretTheorieAbstrakt_mainPart(bothRows, ifInvers, makeVorwort,
-                                                                               metaOrWhat, metavariable, relitable,
-                                                                               rowsAsNumbers, switching,
-                                                                               transzendentalienSpalten)
+                rowsAsNumbers = self.spalteMetaKonkretTheorieAbstrakt_mainPart(
+                    bothRows,
+                    ifInvers,
+                    makeVorwort,
+                    metaOrWhat,
+                    metavariable,
+                    relitable,
+                    rowsAsNumbers,
+                    switching,
+                    transzendentalienSpalten,
+                )
 
-                self.spalteMetaKonkretTheorieAbstrakt_SetHtmlParameters(lower1greater2both3, metavariable)
+                self.spalteMetaKonkretTheorieAbstrakt_SetHtmlParameters(
+                    lower1greater2both3, metavariable
+                )
 
         # x("r_wt", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
 
-    def spalteMetaKonkretTheorieAbstrakt_SetHtmlParameters(self, lower1greater2both3, metavariable):
+    def spalteMetaKonkretTheorieAbstrakt_SetHtmlParameters(
+        self, lower1greater2both3, metavariable
+    ):
         if lower1greater2both3 != 3:
             self.tables.generatedSpaltenParameter[
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
-                ] = self.tables.dataDict[4][(metavariable, lower1greater2both3 - 1)]
+            ] = self.tables.dataDict[4][(metavariable, lower1greater2both3 - 1)]
         else:
             for both in (
-                    0,
-                    1,
+                0,
+                1,
             ):
                 self.tables.generatedSpaltenParameter[
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.SpaltenVanillaAmount
-                    ] = self.tables.dataDict[4][(metavariable, both)]
+                ] = self.tables.dataDict[4][(metavariable, both)]
 
-    def spalteMetaKonkretTheorieAbstrakt_mainPart(self, bothRows, ifInvers, makeVorwort, metaOrWhat, metavariable,
-                                                  relitable, rowsAsNumbers, switching, transzendentalienSpalten):
-        rowsAsNumbers = self.spalteMetaKonkretAbstrakt_UeberschriftenUndTags(bothRows, ifInvers, metavariable,
-                                                                             rowsAsNumbers)
+    def spalteMetaKonkretTheorieAbstrakt_mainPart(
+        self,
+        bothRows,
+        ifInvers,
+        makeVorwort,
+        metaOrWhat,
+        metavariable,
+        relitable,
+        rowsAsNumbers,
+        switching,
+        transzendentalienSpalten,
+    ):
+        rowsAsNumbers = self.spalteMetaKonkretAbstrakt_UeberschriftenUndTags(
+            bothRows, ifInvers, metavariable, rowsAsNumbers
+        )
         for i, row in enumerate(relitable[2:], 2):
             moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
             neue2KoordNeue2Vorwoerter: list = []
@@ -859,36 +881,57 @@ class Concat:
             neue2KoordNeue2Vorwoerter: list = []
             # alxp("new while")
             newCol = transzendentalienSpalten[0]
-            neue2KoordNeue2Vorwoerter = self.spalteMetaKonkretTheorieAbstrakt_VorwortBehandlungWieVorwortMeta(
-                makeVorwort, metaOrWhat, metavariable, moreAndLess, neue2KoordNeue2Vorwoerter, newCol,
-                switching)
+            neue2KoordNeue2Vorwoerter = (
+                self.spalteMetaKonkretTheorieAbstrakt_VorwortBehandlungWieVorwortMeta(
+                    makeVorwort,
+                    metaOrWhat,
+                    metavariable,
+                    moreAndLess,
+                    neue2KoordNeue2Vorwoerter,
+                    newCol,
+                    switching,
+                )
+            )
 
-            self.spalteMetaKonkretTheorieAbstrakt_mainPart_InsertingText(bothRows, i, ifInvers,
-                                                                         neue2KoordNeue2Vorwoerter, relitable,
-                                                                         transzendentalienSpalten)
+            self.spalteMetaKonkretTheorieAbstrakt_mainPart_InsertingText(
+                bothRows,
+                i,
+                ifInvers,
+                neue2KoordNeue2Vorwoerter,
+                relitable,
+                transzendentalienSpalten,
+            )
         return rowsAsNumbers
 
-    def spalteMetaKonkretTheorieAbstrakt_VorwortBehandlungWieVorwortMeta(self, makeVorwort, metaOrWhat, metavariable,
-                                                                         moreAndLess, neue2KoordNeue2Vorwoerter, newCol,
-                                                                         switching):
+    def spalteMetaKonkretTheorieAbstrakt_VorwortBehandlungWieVorwortMeta(
+        self,
+        makeVorwort,
+        metaOrWhat,
+        metavariable,
+        moreAndLess,
+        neue2KoordNeue2Vorwoerter,
+        newCol,
+        switching,
+    ):
         while moreAndLess != (None, None):
             newCol, moreAndLess = switching(newCol, moreAndLess)
             vorworte2 = metaOrWhat[metavariable][
                 0 if len(neue2KoordNeue2Vorwoerter) == 0 else 1
             ]
-            wort1: str = makeVorwort(
-                len(neue2KoordNeue2Vorwoerter) + 1, vorworte2, 1
-            )
-            wort2: str = makeVorwort(
-                len(neue2KoordNeue2Vorwoerter) + 1, vorworte2, 2
-            )
-            neue2KoordNeue2Vorwoerter += [
-                (moreAndLess, newCol, wort1, wort2)
-            ]
+            wort1: str = makeVorwort(len(neue2KoordNeue2Vorwoerter) + 1, vorworte2, 1)
+            wort2: str = makeVorwort(len(neue2KoordNeue2Vorwoerter) + 1, vorworte2, 2)
+            neue2KoordNeue2Vorwoerter += [(moreAndLess, newCol, wort1, wort2)]
         return neue2KoordNeue2Vorwoerter
 
-    def spalteMetaKonkretTheorieAbstrakt_mainPart_InsertingText(self, bothRows, i, ifInvers, neue2KoordNeue2Vorwoerter,
-                                                                relitable, transzendentalienSpalten):
+    def spalteMetaKonkretTheorieAbstrakt_mainPart_InsertingText(
+        self,
+        bothRows,
+        i,
+        ifInvers,
+        neue2KoordNeue2Vorwoerter,
+        relitable,
+        transzendentalienSpalten,
+    ):
         intoList = []
         thema = ""
         # x("_t_", neue2KoordNeue2Vorwoerter[:-1])
@@ -899,9 +942,9 @@ class Concat:
             # if not vier[0][1] is None and not vier[1] is None:
             #   # alxp(relitable[vier[0][1]][vier[1]])
             if (
-                    bothRows == 0
-                    and not vier[0][0] is None
-                    and len(relitable[vier[0][0]][vier[1]].strip()) > 3
+                bothRows == 0
+                and not vier[0][0] is None
+                and len(relitable[vier[0][0]][vier[1]].strip()) > 3
             ):
                 intoList += [
                     vier[bothRows + 2],
@@ -909,17 +952,16 @@ class Concat:
                     relitable[vier[0][0]][vier[1]],
                     " (",
                     "1/"
-                    if vier[1] != transzendentalienSpalten[ifInvers]
-                       and vier[0][1] != 1
+                    if vier[1] != transzendentalienSpalten[ifInvers] and vier[0][1] != 1
                     else "",
                     str(vier[0][0]),
                     ")",
                     " | ",
                 ]
             elif (
-                    bothRows == 1
-                    and not vier[0][1] is None
-                    and len(relitable[vier[0][1]][vier[1]].strip()) > 3
+                bothRows == 1
+                and not vier[0][1] is None
+                and len(relitable[vier[0][1]][vier[1]].strip()) > 3
             ):
                 intoList += [
                     vier[bothRows + 2],
@@ -927,8 +969,7 @@ class Concat:
                     relitable[vier[0][1]][vier[1]],
                     " (",
                     "1/"
-                    if vier[1] != transzendentalienSpalten[ifInvers]
-                       and vier[0][1] != 1
+                    if vier[1] != transzendentalienSpalten[ifInvers] and vier[0][1] != 1
                     else "",
                     str(vier[0][1]),
                     ")",
@@ -938,11 +979,13 @@ class Concat:
         # alxp(intoList)
         self.relitable[i] += ["".join(intoList[:-1])]
 
-    def spalteMetaKonkretAbstrakt_UeberschriftenUndTags(self, bothRows, ifInvers, metavariable, rowsAsNumbers):
+    def spalteMetaKonkretAbstrakt_UeberschriftenUndTags(
+        self, bothRows, ifInvers, metavariable, rowsAsNumbers
+    ):
         rowsAsNumbers |= {len(self.relitable[0])}
-        self.tables.generatedSpaltenParameter_Tags[
-            len(rowsAsNumbers) - 1
-            ] = frozenset({ST.sternPolygon, ST.universum})
+        self.tables.generatedSpaltenParameter_Tags[len(rowsAsNumbers) - 1] = frozenset(
+            {ST.sternPolygon, ST.universum}
+        )
         self.relitable[1] += [""]
         if bothRows == 0:
             if metavariable == 2:
@@ -962,9 +1005,7 @@ class Concat:
                 self.relitable[0] += ["Stau"]
             if metavariable == 5:
                 self.relitable[0] += ["kontiuierlich"]
-        self.relitable[0][-1] += (
-            " für 1/n statt n" if ifInvers == 1 else " für n"
-        )
+        self.relitable[0][-1] += " für 1/n statt n" if ifInvers == 1 else " für n"
         return rowsAsNumbers
 
     def spalteFuerGegenInnenAussenSeitlichPrim(
@@ -1109,7 +1150,9 @@ class Concat:
             # x("SVO", concatTable)
 
             with open(place, mode="r") as csv_file:
-                tableToAdd = self.readConcatCsv_getTableToAdd(concatTable, csv_file, transpose)
+                tableToAdd = self.readConcatCsv_getTableToAdd(
+                    concatTable, csv_file, transpose
+                )
                 self.relitable, tableToAdd = self.tables.fillBoth(
                     self.relitable, tableToAdd
                 )
@@ -1126,8 +1169,15 @@ class Concat:
                     if i == 0:
                         for u, heading in enumerate(dazu):
                             # x("SBm", [concatTable, u, headingsAmount])
-                            self.readConcatCsv_LoopBody(concatCSVspalten, concatTable, concatTableSelection, dazu,
-                                                        heading, rowsAsNumbers, u)
+                            self.readConcatCsv_LoopBody(
+                                concatCSVspalten,
+                                concatTable,
+                                concatTableSelection,
+                                dazu,
+                                heading,
+                                rowsAsNumbers,
+                                u,
+                            )
 
         return self.relitable, rowsAsNumbers, concatCSVspalten
 
@@ -1153,46 +1203,48 @@ class Concat:
             tableToAdd = transpose(tableToAdd)
         if concatTable in range(2, 6):
             tableToAdd = [
-                             [
-                                 (
-                                     ("n/" + str(n + 1))
-                                     if concatTable in (2, 3)
-                                     else (str(n + 1) + "/n")
-                                     if concatTable in (4, 5)
-                                     else "Fehler"
-                                 )
-                                 + (
-                                     " Universum"
-                                     if concatTable in (2, 4)
-                                     else " Galaxie"
-                                     if concatTable in (3, 5)
-                                     else "Fehler"
-                                 )
-                                 for n in range(len(tableToAdd[0]))
-                             ]
-                         ] + tableToAdd
+                [
+                    (
+                        ("n/" + str(n + 1))
+                        if concatTable in (2, 3)
+                        else (str(n + 1) + "/n")
+                        if concatTable in (4, 5)
+                        else "Fehler"
+                    )
+                    + (
+                        " Universum"
+                        if concatTable in (2, 4)
+                        else " Galaxie"
+                        if concatTable in (3, 5)
+                        else "Fehler"
+                    )
+                    for n in range(len(tableToAdd[0]))
+                ]
+            ] + tableToAdd
         return tableToAdd
 
-    def readConcatCsv_LoopBody(self, concatCSVspalten, concatTable, concatTableSelection, dazu, heading, rowsAsNumbers,
-                               u):
-        if (
-                u + 2 in concatTableSelection
-                and concatTable in range(2, 6)
-        ) or (
-                concatTable == 1
-                and int(heading) in concatTableSelection
+    def readConcatCsv_LoopBody(
+        self,
+        concatCSVspalten,
+        concatTable,
+        concatTableSelection,
+        dazu,
+        heading,
+        rowsAsNumbers,
+        u,
+    ):
+        if (u + 2 in concatTableSelection and concatTable in range(2, 6)) or (
+            concatTable == 1 and int(heading) in concatTableSelection
         ):
             if concatTable not in range(2, 6) or u + 1 != len(dazu):
                 delta = 1 if concatTable in range(2, 6) else 0
-                selectedSpalten = (
-                        u + len(self.relitable[0]) - len(dazu) + delta
-                )
+                selectedSpalten = u + len(self.relitable[0]) - len(dazu) + delta
                 rowsAsNumbers.add(selectedSpalten)
                 concatCSVspalten.add(selectedSpalten)
                 if (
-                        len(self.tables.generatedSpaltenParameter)
-                        + self.tables.SpaltenVanillaAmount
-                        in self.tables.generatedSpaltenParameter
+                    len(self.tables.generatedSpaltenParameter)
+                    + self.tables.SpaltenVanillaAmount
+                    in self.tables.generatedSpaltenParameter
                 ):
                     raise ValueError
 
@@ -1203,14 +1255,10 @@ class Concat:
             self.tables.generatedSpaltenParameter[
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
-                ] = self.tables.dataDict[
-                5 + ((concatTable - 2) % 2)
-                ][
-                u + 2
-                ]
+            ] = self.tables.dataDict[5 + ((concatTable - 2) % 2)][u + 2]
         if concatTable == 1:
             x("EDS", self.tables.dataDict[2][int(heading)])
             self.tables.generatedSpaltenParameter[
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
-                ] = self.tables.dataDict[2][int(heading)]
+            ] = self.tables.dataDict[2][int(heading)]
