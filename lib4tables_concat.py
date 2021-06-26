@@ -873,9 +873,9 @@ class Concat:
         rowsAsNumbers = self.spalteMetaKonkretAbstrakt_UeberschriftenUndTags(
             bothRows, ifInvers, metavariable, rowsAsNumbers
         )
-        for i, row in enumerate(relitable[2:], 2):
-            moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
-            neue2KoordNeue2Vorwoerter: list = []
+        # for i, row in enumerate(relitable[2:], 2):
+        #    moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
+        #    neue2KoordNeue2Vorwoerter: list = []
         for i, row in enumerate(relitable[2:], 2):
             moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
             neue2KoordNeue2Vorwoerter: list = []
