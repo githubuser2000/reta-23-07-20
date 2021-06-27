@@ -1084,31 +1084,31 @@ class Tables:
             )
 
         def kombiNumbersCorrectTest(self, num):
-            if num.isdecimal() or (num[0] in ["+", "-"] and num[1:].isdecimal()):
+            num = num.strip()
+            if len(num) > 2 and num[0] == "(" and num[-1] == ")":
+                self.kombiNumbersCorrectTest(num[1:-1])
+                return
+            if num.isdecimal() or (
+                len(num) > 0 and num[0] in ["+", "-"] and num[1:].isdecimal()
+            ):
                 """Nummer ... Liste mit alles Zahlen einer Religionskombination
                 in eine Zeile pro Religionskombination und nicht bereits hier
                 mit was eine Religion mit anderen Zahlen kombiniert werden würde,
                 denn das kommt später und wird genau daraus hier gebaut.
                 """
                 self.kombiTable_Kombis_Col += [abs(int(num))]
-            elif num[1:-1].isdecimal() or (
-                num[1] in ["+", "-"] and num[2:-1].isdecimal()
-            ):
-                self.kombiTable_Kombis_Col += [abs(int(num[1:-1]))]
-                # arg[(arg.find("=") + 1) :].split(",")
-            elif "/" in num and num[num.find("/") + 1 :].isdecimal():
-                self.kombiTable_Kombis_Col += [
-                    abs(int(num[num.find("/") + 1 :])),
-                    abs(int(num[: num.find("/")])),
-                ]
-            elif "/" in num and num[num.find("/") + 2 : -1].isdecimal():
-                self.kombiTable_Kombis_Col += [
-                    abs(int(num[num.find("/") + 2 : -1])),
-                    abs(int(num[1 : num.find("/")])),
-                ]
+            elif len(num) > 2 and "/" in num:
+                self.kombiNumbersCorrectTest(num[: num.find("/")])
+                self.kombiNumbersCorrectTest(num[num.find("/") + 1 :])
+                return
             else:
                 raise BaseException(
-                    "Die kombi.csv ist in der ersten Spalte nicht so wie sie sein soll mit den Zahlen."
+                    "Die kombi.csv ist in der ersten Spalte nicht so wie sie sein soll mit den Zahlen. "
+                    + str(num)
+                    + " "
+                    + str(type(num))
+                    + " "
+                    + str(len(num))
                 )
 
     class Maintable:
