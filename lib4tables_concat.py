@@ -812,8 +812,8 @@ class Concat:
                 and not moreAndLess[1] is None
                 and divresult == round(divresult)
                 # würde zu früh abbrechenand len((relitable[int(moreAndLess[1] / metavariable)][newCol]).strip()) > 3
-                # else Fraction(moreAndLess[1], metavariable)
-                else None
+                else Fraction(moreAndLess[1], metavariable)
+                # else None
             )
             moreAndLess = (a, b)
             # x("MORE", metavariable)
@@ -955,13 +955,7 @@ class Concat:
         newCol,
         switching,
     ):
-        while (
-            moreAndLess
-            != (None, None)
-            # not moreAndLess[0] is None
-            # and not moreAndLess[1] is None
-            # and not type(moreAndLess[1]) is Fraction
-        ):
+        while not (moreAndLess[0] is None and type(moreAndLess[1]) is Fraction):
             newCol, moreAndLess = switching(newCol, moreAndLess)
             vorworte2 = metaOrWhat[metavariable][
                 0 if len(neue2KoordNeue2Vorwoerter) == 0 else 1
@@ -1000,9 +994,7 @@ class Concat:
                     relitable[vier[0][0]][vier[1]],
                     " (",
                     "1/"
-                    if vier[1] != transzendentalienSpalten[ifInvers]
-                    and vier[0][1] != 1
-                    and not type(vier[0][1]) is Fraction
+                    if vier[1] != transzendentalienSpalten[ifInvers] and vier[0][1] != 1
                     else "",
                     str(vier[0][0]),
                     ")",
