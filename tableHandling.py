@@ -973,39 +973,8 @@ class Tables:
                                 Liste mit allen Zeilen der neuen Tabelle aus der ersten
                                 Spalte je Liste aus allem darin das mit Komma getrennt wurde
                                 """
-                                if num.isdecimal() or (
-                                    num[0] in ["+", "-"] and num[1:].isdecimal()
-                                ):
-                                    """Nummer ... Liste mit alles Zahlen einer Religionskombination
-                                    in eine Zeile pro Religionskombination und nicht bereits hier
-                                    mit was eine Religion mit anderen Zahlen kombiniert werden würde,
-                                    denn das kommt später und wird genau daraus hier gebaut.
-                                    """
-                                    self.kombiTable_Kombis_Col += [abs(int(num))]
-                                elif num[1:-1].isdecimal() or (
-                                    num[1] in ["+", "-"] and num[2:-1].isdecimal()
-                                ):
-                                    self.kombiTable_Kombis_Col += [abs(int(num[1:-1]))]
-                                    # arg[(arg.find("=") + 1) :].split(",")
-                                elif (
-                                    "/" in num and num[num.find("/") + 1 :].isdecimal()
-                                ):
-                                    self.kombiTable_Kombis_Col += [
-                                        abs(int(num[num.find("/") + 1 :])),
-                                        abs(int(num[: num.find("/")])),
-                                    ]
-                                elif (
-                                    "/" in num
-                                    and num[num.find("/") + 2 : -1].isdecimal()
-                                ):
-                                    self.kombiTable_Kombis_Col += [
-                                        abs(int(num[num.find("/") + 2 : -1])),
-                                        abs(int(num[1 : num.find("/")])),
-                                    ]
-                                else:
-                                    raise BaseException(
-                                        "Die kombi.csv ist in der ersten Spalte nicht so wie sie sein soll mit den Zahlen."
-                                    )
+                                self.kombiNumbersCorrectTest(num)
+
                             self.kombiTable_Kombis += [self.kombiTable_Kombis_Col]
                     self.relitable, animalsProfessionsCol = Tables.fillBoth(
                         self.relitable, list(self.kombiTable)
@@ -1114,6 +1083,40 @@ class Tables:
                 self.maintable2subtable_Relation,
             )
 
+        def kombiNumbersCorrectTest(self, num):
+            if num.isdecimal() or (
+                    num[0] in ["+", "-"] and num[1:].isdecimal()
+            ):
+                """Nummer ... Liste mit alles Zahlen einer Religionskombination
+                in eine Zeile pro Religionskombination und nicht bereits hier
+                mit was eine Religion mit anderen Zahlen kombiniert werden würde,
+                denn das kommt später und wird genau daraus hier gebaut.
+                """
+                self.kombiTable_Kombis_Col += [abs(int(num))]
+            elif num[1:-1].isdecimal() or (
+                    num[1] in ["+", "-"] and num[2:-1].isdecimal()
+            ):
+                self.kombiTable_Kombis_Col += [abs(int(num[1:-1]))]
+                # arg[(arg.find("=") + 1) :].split(",")
+            elif (
+                    "/" in num and num[num.find("/") + 1:].isdecimal()
+            ):
+                self.kombiTable_Kombis_Col += [
+                    abs(int(num[num.find("/") + 1:])),
+                    abs(int(num[: num.find("/")])),
+                ]
+            elif (
+                    "/" in num
+                    and num[num.find("/") + 2: -1].isdecimal()
+            ):
+                self.kombiTable_Kombis_Col += [
+                    abs(int(num[num.find("/") + 2: -1])),
+                    abs(int(num[1: num.find("/")])),
+                ]
+            else:
+                raise BaseException(
+                "Die kombi.csv ist in der ersten Spalte nicht so wie sie sein soll mit den Zahlen."
+                )
     class Maintable:
         def __init__(self, tables):
             # self.spaltegestirn = False
