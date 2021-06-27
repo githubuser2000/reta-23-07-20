@@ -3,6 +3,7 @@
 import csv
 import os
 from copy import copy, deepcopy
+from fractions import Fraction
 
 from center import (alxp, cliout, getTextWrapThings, infoLog, output,
                     primzahlvielfachesgalaxie, re, x)
@@ -791,31 +792,39 @@ class Concat:
                 if newCol == transzendentalienSpalten[1]
                 else transzendentalienSpalten[1]
             )
+            try:
+                mulresult = moreAndLess[0] * metavariable
+            except:
+                pass
             a = (
-                moreAndLess[0] * metavariable
-                if not moreAndLess[0] is None
-                and moreAndLess[0] * metavariable < len(relitable)
+                mulresult
+                if not moreAndLess[0] is None and mulresult < len(relitable)
                 # würde zu früh abbrechen and len((relitable[moreAndLess[0] * metavariable][newCol]).strip()) > 3
                 else None
             )
+            try:
+                divresult = moreAndLess[1] / metavariable
+            except:
+                pass
             b = (
-                int(moreAndLess[1] / metavariable)
-                if not moreAndLess[1] is None
-                and moreAndLess[1] / metavariable
-                == round(moreAndLess[1] / metavariable)
+                int(divresult)
+                if not type(moreAndLess[1]) is Fraction
+                and not moreAndLess[1] is None
+                and divresult == round(divresult)
                 # würde zu früh abbrechenand len((relitable[int(moreAndLess[1] / metavariable)][newCol]).strip()) > 3
+                # else Fraction(moreAndLess[1], metavariable)
                 else None
             )
             moreAndLess = (a, b)
             # x("MORE", metavariable)
             # x("MORE", moreAndLess)
-            if (
-                not moreAndLess[0] is None
-                and moreAndLess[0] * metavariable < len(relitable)
-                and len((relitable[moreAndLess[0] * metavariable][newCol]).strip()) > 3
-            ):
-                pass
-                # x("_u_", relitable[moreAndLess[0] * metavariable][newCol])
+            # if (
+            #    not moreAndLess[0] is None
+            #    and moreAndLess[0] * metavariable < len(relitable)
+            #    and len((relitable[moreAndLess[0] * metavariable][newCol]).strip()) > 3
+            # ):
+            #    pass
+            # x("_u_", relitable[moreAndLess[0] * metavariable][newCol])
 
             return newCol, moreAndLess
 
@@ -946,7 +955,13 @@ class Concat:
         newCol,
         switching,
     ):
-        while moreAndLess != (None, None):
+        while (
+            moreAndLess
+            != (None, None)
+            # not moreAndLess[0] is None
+            # and not moreAndLess[1] is None
+            # and not type(moreAndLess[1]) is Fraction
+        ):
             newCol, moreAndLess = switching(newCol, moreAndLess)
             vorworte2 = metaOrWhat[metavariable][
                 0 if len(neue2KoordNeue2Vorwoerter) == 0 else 1
@@ -985,7 +1000,9 @@ class Concat:
                     relitable[vier[0][0]][vier[1]],
                     " (",
                     "1/"
-                    if vier[1] != transzendentalienSpalten[ifInvers] and vier[0][1] != 1
+                    if vier[1] != transzendentalienSpalten[ifInvers]
+                    and vier[0][1] != 1
+                    and not type(vier[0][1]) is Fraction
                     else "",
                     str(vier[0][0]),
                     ")",
@@ -994,6 +1011,7 @@ class Concat:
             elif (
                 bothRows == 1
                 and not vier[0][1] is None
+                and not type(vier[0][1]) is Fraction
                 and len(relitable[vier[0][1]][vier[1]].strip()) > 3
             ):
                 intoList += [
