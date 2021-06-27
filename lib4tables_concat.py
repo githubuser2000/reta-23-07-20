@@ -816,15 +816,6 @@ class Concat:
                 # else None
             )
             moreAndLess = (a, b)
-            # x("MORE", metavariable)
-            # x("MORE", moreAndLess)
-            # if (
-            #    not moreAndLess[0] is None
-            #    and moreAndLess[0] * metavariable < len(relitable)
-            #    and len((relitable[moreAndLess[0] * metavariable][newCol]).strip()) > 3
-            # ):
-            #    pass
-            # x("_u_", relitable[moreAndLess[0] * metavariable][newCol])
 
             return newCol, moreAndLess
 
