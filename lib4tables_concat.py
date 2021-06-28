@@ -834,9 +834,9 @@ class Concat:
                 and divresult == round(divresult)
                 # würde zu früh abbrechenand len((relitable[int(moreAndLess[1] / metavariable)][newCol]).strip()) > 3
                 else (
-                    Fraction(moreAndLess[1], metavariable)
+                    Fraction(metavariable, moreAndLess[1])
                     if moreAndLess[1] == round(moreAndLess[1])
-                    else moreAndLess[1] * metavariable * 10
+                    else moreAndLess[1] * metavariable
                     if type(moreAndLess[1]) is Fraction
                     and moreAndLess[1] != round(moreAndLess[1])
                     else None
@@ -847,6 +847,8 @@ class Concat:
             )
             if b is not None:
                 # print(str(type(b)))
+                # if type(b) is Fraction:
+                #    print(str(b))
                 if Fraction(b) in self.gebrRatEtwaSchonMalDabeiGewesen:
                     b = None
                 else:
