@@ -791,9 +791,9 @@ class Concat:
             und wechsel der Spalte von den 2 Spalten"""
             # x("MORE", moreAndLess)
             newCol = (
-                transzendentalienSpalten[0]
-                if newCol == transzendentalienSpalten[1]
-                else transzendentalienSpalten[1]
+                self.transzendentalienSpalten[0]
+                if newCol == self.transzendentalienSpalten[1]
+                else self.transzendentalienSpalten[1]
             )
             try:
                 mulresult = moreAndLess[0] * metavariable
@@ -849,7 +849,7 @@ class Concat:
 
         """Haupt-Teil, das davor waren Vorbereitungen
         das große Durchiterieren beginnt durch die Tabelle mit anschließendem erweitern dieser, um Spalten"""
-        for ifInvers, transzendentalienSpalten in enumerate(((5, 131), (131, 5))):
+        for ifInvers, self.transzendentalienSpalten in enumerate(((5, 131), (131, 5))):
             for bothRows in (
                 [0, 1]
                 if lower1greater2both3 == 3
@@ -872,7 +872,7 @@ class Concat:
                     relitable,
                     rowsAsNumbers,
                     switching,
-                    transzendentalienSpalten,
+                    self.transzendentalienSpalten,
                 )
 
                 self.spalteMetaKonkretTheorieAbstrakt_SetHtmlParameters(
@@ -910,7 +910,7 @@ class Concat:
         relitable,
         rowsAsNumbers,
         switching,
-        transzendentalienSpalten,
+        self.transzendentalienSpalten,
     ):
         rowsAsNumbers = self.spalteMetaKonkretAbstrakt_UeberschriftenUndTags(
             bothRows, ifInvers, metavariable, rowsAsNumbers
@@ -922,7 +922,7 @@ class Concat:
             moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
             neue2KoordNeue2Vorwoerter: list = []
             # alxp("new while")
-            newCol = transzendentalienSpalten[0]
+            newCol = self.transzendentalienSpalten[0]
             neue2KoordNeue2Vorwoerter = (
                 self.spalteMetaKonkretTheorieAbstrakt_VorwortBehandlungWieVorwortMeta(
                     makeVorwort,
@@ -941,7 +941,7 @@ class Concat:
                 ifInvers,
                 neue2KoordNeue2Vorwoerter,
                 relitable,
-                transzendentalienSpalten,
+                self.transzendentalienSpalten,
             )
         return rowsAsNumbers
 
@@ -970,9 +970,13 @@ class Concat:
             vorworte2 = metaOrWhat[metavariable][
                 0 if len(neue2KoordNeue2Vorwoerter) == 0 else 1
             ]
-            wort1: str = makeVorwort(len(neue2KoordNeue2Vorwoerter) + 1, vorworte2, 1)
-            wort2: str = makeVorwort(len(neue2KoordNeue2Vorwoerter) + 1, vorworte2, 2)
-            neue2KoordNeue2Vorwoerter += [(moreAndLess, newCol, wort1, wort2)]
+            vorwort1: str = makeVorwort(
+                len(neue2KoordNeue2Vorwoerter) + 1, vorworte2, 1
+            )
+            vorwort2: str = makeVorwort(
+                len(neue2KoordNeue2Vorwoerter) + 1, vorworte2, 2
+            )
+            neue2KoordNeue2Vorwoerter += [(moreAndLess, newCol, vorwort1, vorwort2)]
         return neue2KoordNeue2Vorwoerter
 
     def spalteMetaKonkretTheorieAbstrakt_mainPart_InsertingText(
@@ -982,17 +986,12 @@ class Concat:
         ifInvers,
         neue2KoordNeue2Vorwoerter,
         relitable,
-        transzendentalienSpalten,
+        self.transzendentalienSpalten,
     ):
         intoList = []
         thema = ""
-        # x("_t_", neue2KoordNeue2Vorwoerter[:-1])
+
         for vier in neue2KoordNeue2Vorwoerter[:-1]:
-            # alxp(vier)
-            # if not vier[0][0] is None and not vier[1] is None:
-            #   # alxp(relitable[vier[0][0]][vier[1]])
-            # if not vier[0][1] is None and not vier[1] is None:
-            #   # alxp(relitable[vier[0][1]][vier[1]])
             if (
                 bothRows == 0
                 and not vier[0][0] is None
@@ -1004,7 +1003,7 @@ class Concat:
                     relitable[vier[0][0]][vier[1]],
                     " (",
                     "1/"
-                    if vier[1] != transzendentalienSpalten[ifInvers] and vier[0][1] != 1
+                    if vier[1] != self.transzendentalienSpalten[ifInvers] and vier[0][1] != 1
                     else "",
                     str(vier[0][0]),
                     ")",
@@ -1022,7 +1021,7 @@ class Concat:
                     relitable[vier[0][1]][vier[1]],
                     " (",
                     "1/"
-                    if vier[1] != transzendentalienSpalten[ifInvers] and vier[0][1] != 1
+                    if vier[1] != self.transzendentalienSpalten[ifInvers] and vier[0][1] != 1
                     else "",
                     str(vier[0][1]),
                     ")",
@@ -1040,18 +1039,16 @@ class Concat:
                     )
                 )
                 if len(gebrStrukWort.strip()) > 3:
-                    sys.stderr.write("bla1")
+                    #sys.stderr.write("bla1")
                     intoList += [
                         vier[bothRows + 2],
                         thema,
-                        gebrStrukWort,
+                        gebrStrukWort if self.transzendentalienSpalten[1] == vier[1] else "",
                         " | ",
                     ]
                 else:
-                    sys.stderr.write("bla2")
+                    #sys.stderr.write("bla2")
                     vier[0][1] = None
-            sys.stderr.write("bla3")
-            print("aaaa")
             thema = "Thema: "
         # alxp(intoList)
         self.relitable[i] += ["".join(intoList[:-1])]
