@@ -836,7 +836,7 @@ class Concat:
                 else (
                     Fraction(moreAndLess[1], metavariable)
                     if moreAndLess[1] == round(moreAndLess[1])
-                    else moreAndLess[1] * metavariable
+                    else moreAndLess[1] * metavariable * 10
                     if type(moreAndLess[1]) is Fraction
                     and moreAndLess[1] != round(moreAndLess[1])
                     else None
