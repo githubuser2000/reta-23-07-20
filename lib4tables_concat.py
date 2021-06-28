@@ -1016,7 +1016,11 @@ class Concat:
     def getGebrUnivTable(self):
         place = self.readConcatCSV_choseCsvFile(2)
         with open(place, mode="r") as csv_file:
-            self.gebUnivTable4metaKonkret = list(csv.reader(csv_file, delimiter=";"))
+            self.gebrUnivTable4metaKonkret = list(csv.reader(csv_file, delimiter=";"))
+        return self.gebrUnivTable4metaKonkret
+
+    def getGebrRatUnivStrukturalie4metaKonkret(self, koord: Fraction) -> str:
+        return self.gebrUnivTable4metaKonkret[koord.numerator][koord.denominator]
 
     def spalteMetaKonkretAbstrakt_UeberschriftenUndTags(
         self, bothRows, ifInvers, metavariable, rowsAsNumbers
