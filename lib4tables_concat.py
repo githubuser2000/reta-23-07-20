@@ -773,6 +773,23 @@ class Concat:
         5. Vorwörter weiter spinnen lassen, aber schauen, dass es richtig gemacht wird
         5. a) dafür brauche ich eine iterator variable extra noch mal zur Kommazahl
         6. aus dem rechteck der großen tabelle mit den richtigen koordinaten das universum-wort raus nehmen
+
+        Alle Schleifen ineinander noch mal
+        for zeilen in 4 spalten aus 2 echten spalten, also beim zweiten mal verdreht, so dass es 4 sind
+        darin
+
+        for nur meta nur konkret oder beides auf ein mal
+        darin funktion mainpart und funktion html parameter; mainpart:
+
+        for relitable zeile 2, d.h. der nummer 2, d.h. überschrift und nummer 1 wird ausgelassen
+        darin fkt 1. vorwortbehandlung 2. fkt insert texte; 1. vorwortbehandlung:
+
+        wiederhole bis beides None ist, also meta hochzählen und konkret runter zählen
+        2. fkt insert:
+
+        for sammlung von variablen: hochzähl- und runterzählvariable, spalte - entweder strukturalie oder reziproke davon, und vorwörter
+
+        darin if bedingungen: ob spalte strukturalie oder reziproke strukturalie
         """
 
         self.relitable = relitable
