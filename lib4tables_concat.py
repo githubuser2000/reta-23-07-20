@@ -838,6 +838,8 @@ class Concat:
                 else vorworte2[less1ormore2 - 1]
             )
 
+        self.spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable()
+
         """Haupt-Teil, das davor waren Vorbereitungen
         das große Durchiterieren beginnt durch die Tabelle mit anschließendem erweitern dieser, um Spalten"""
         for ifInvers, transzendentalienSpalten in enumerate(((5, 131), (131, 5))):
@@ -1013,14 +1015,17 @@ class Concat:
         # alxp(intoList)
         self.relitable[i] += ["".join(intoList[:-1])]
 
-    def getGebrUnivTable(self):
+    def spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(self) -> list:
         place = self.readConcatCSV_choseCsvFile(2)
         with open(place, mode="r") as csv_file:
             self.gebrUnivTable4metaKonkret = list(csv.reader(csv_file, delimiter=";"))
         return self.gebrUnivTable4metaKonkret
 
-    def getGebrRatUnivStrukturalie4metaKonkret(self, koord: Fraction) -> str:
-        return self.gebrUnivTable4metaKonkret[koord.numerator][koord.denominator]
+    def spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(self, koord: Fraction) -> str:
+        try:
+            return self.gebrUnivTable4metaKonkret[koord.numerator][koord.denominator]
+        except KeyError:
+            return ""
 
     def spalteMetaKonkretAbstrakt_UeberschriftenUndTags(
         self, bothRows, ifInvers, metavariable, rowsAsNumbers
