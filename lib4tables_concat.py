@@ -850,27 +850,29 @@ class Concat:
         das große Durchiterieren beginnt durch die Tabelle mit anschließendem erweitern dieser, um Spalten"""
         self.struktAndInversSpalten: tuple = (5, 131)
 
-        blub = [
-            self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                Fraction(1, 1)
-            ),
-            self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                Fraction(1, 3)
-            ),
-            self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                Fraction(3, 1)
-            ),
-            self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                Fraction(2, 3)
-            ),
-            self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                Fraction(3, 2)
-            ),
-        ]
-        print(" ".join(blub))
+        # blub = [
+        #    self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+        #        Fraction(1, 1)
+        #    ),
+        #    self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+        #        Fraction(1, 3)
+        #    ),
+        #    self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+        #        Fraction(3, 1)
+        #    ),
+        #    self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+        #        Fraction(2, 3)
+        #    ),
+        #    self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+        #        Fraction(3, 2)
+        #    ),
+        # ]
+        # print("\n".join(blub))
         for ifInvers, self.transzendentalienSpalten in enumerate(
-            self.struktAndInversSpalten,
-            (self.struktAndInversSpalten[1], self.struktAndInversSpalten[0]),
+            (
+                self.struktAndInversSpalten,
+                (self.struktAndInversSpalten[1], self.struktAndInversSpalten[0]),
+            )
         ):
             for bothRows in (
                 [0, 1]
@@ -987,7 +989,7 @@ class Concat:
                         moreAndLess[1]
                     )
                 )
-                if len(gebrStrukWort.strip()) < 4:
+                if gebrStrukWort is None or len(gebrStrukWort.strip()) < 4:
                     moreAndLess = (moreAndLess[0], None)
                     if moreAndLess[0] is None and moreAndLess[1] is None:
                         break
@@ -1099,10 +1101,12 @@ class Concat:
     ) -> str:
         if koord.denominator == 0 or koord.numerator == 0:
             return ""
+        elif koord.denominator > 100 or koord.numerator > 100:
+            return None
         elif koord.numerator == 1:
-            return self.relitable[self.struktAndInversSpalten[0]][koord.denominator]
+            return self.relitable[koord.denominator][self.struktAndInversSpalten[1]]
         elif koord.denominator == 1:
-            return self.relitable[koord.numerator][self.struktAndInversSpalten[1]]
+            return self.relitable[koord.numerator][self.struktAndInversSpalten[0]]
         else:
             try:
                 return self.gebrUnivTable4metaKonkret[koord.numerator - 1][
