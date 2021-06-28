@@ -810,7 +810,6 @@ class Concat:
             except:
                 pass
 
-            sys.stderr.write(str(moreAndLess[1]) + " ||| " + str(metavariable) + "\n")
             b = (
                 int(divresult)
                 if not type(moreAndLess[1]) is Fraction
@@ -849,7 +848,14 @@ class Concat:
 
         """Haupt-Teil, das davor waren Vorbereitungen
         das große Durchiterieren beginnt durch die Tabelle mit anschließendem erweitern dieser, um Spalten"""
-        for ifInvers, self.transzendentalienSpalten in enumerate(((5, 131), (131, 5))):
+        self.struktAndInversSpalten = (5, 131)
+        self.struktAndInversSpalten = (
+            self.struktAndInversSpalten,
+            (self.struktAndInversSpalten[1], self.struktAndInversSpalten[0]),
+        )
+        for ifInvers, self.transzendentalienSpalten in enumerate(
+            self.struktAndInversSpalten
+        ):
             for bothRows in (
                 [0, 1]
                 if lower1greater2both3 == 3
@@ -910,11 +916,13 @@ class Concat:
         relitable,
         rowsAsNumbers,
         switching,
-        self.transzendentalienSpalten,
+        transzendentalienSpalten,
     ):
         rowsAsNumbers = self.spalteMetaKonkretAbstrakt_UeberschriftenUndTags(
             bothRows, ifInvers, metavariable, rowsAsNumbers
         )
+
+        self.transzendentalienSpalten = transzendentalienSpalten
         # for i, row in enumerate(relitable[2:], 2):
         #    moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
         #    neue2KoordNeue2Vorwoerter: list = []
@@ -986,10 +994,11 @@ class Concat:
         ifInvers,
         neue2KoordNeue2Vorwoerter,
         relitable,
-        self.transzendentalienSpalten,
+        transzendentalienSpalten,
     ):
         intoList = []
         thema = ""
+        self.transzendentalienSpalten = transzendentalienSpalten
 
         for vier in neue2KoordNeue2Vorwoerter[:-1]:
             if (
@@ -1003,7 +1012,8 @@ class Concat:
                     relitable[vier[0][0]][vier[1]],
                     " (",
                     "1/"
-                    if vier[1] != self.transzendentalienSpalten[ifInvers] and vier[0][1] != 1
+                    if vier[1] != self.transzendentalienSpalten[ifInvers]
+                    and vier[0][1] != 1
                     else "",
                     str(vier[0][0]),
                     ")",
@@ -1021,7 +1031,8 @@ class Concat:
                     relitable[vier[0][1]][vier[1]],
                     " (",
                     "1/"
-                    if vier[1] != self.transzendentalienSpalten[ifInvers] and vier[0][1] != 1
+                    if vier[1] != self.transzendentalienSpalten[ifInvers]
+                    and vier[0][1] != 1
                     else "",
                     str(vier[0][1]),
                     ")",
@@ -1039,15 +1050,24 @@ class Concat:
                     )
                 )
                 if len(gebrStrukWort.strip()) > 3:
-                    #sys.stderr.write("bla1")
+                    # sys.stderr.write("bla1")
                     intoList += [
                         vier[bothRows + 2],
                         thema,
-                        gebrStrukWort if self.transzendentalienSpalten[1] == vier[1] else "",
+                        gebrStrukWort
+                        if False
+                        else str(
+                            [
+                                vier[1],
+                                self.transzendentalienSpalten[1],
+                                bothRows,
+                                transzendentalienSpalten,
+                            ]
+                        ),
                         " | ",
                     ]
                 else:
-                    #sys.stderr.write("bla2")
+                    # sys.stderr.write("bla2")
                     vier[0][1] = None
             thema = "Thema: "
         # alxp(intoList)
@@ -1063,7 +1083,9 @@ class Concat:
         self, koord: Fraction
     ) -> str:
         try:
-            return self.gebrUnivTable4metaKonkret[koord.numerator][koord.denominator]
+            return self.gebrUnivTable4metaKonkret[koord.numerator - 1][
+                koord.denominator - 1
+            ]
         except (KeyError, IndexError):
             return ""
 
