@@ -1021,7 +1021,9 @@ class Concat:
             self.gebrUnivTable4metaKonkret = list(csv.reader(csv_file, delimiter=";"))
         return self.gebrUnivTable4metaKonkret
 
-    def spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(self, koord: Fraction) -> str:
+    def spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+        self, koord: Fraction
+    ) -> str:
         try:
             return self.gebrUnivTable4metaKonkret[koord.numerator][koord.denominator]
         except KeyError:
