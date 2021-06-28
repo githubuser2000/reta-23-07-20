@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import csv
 import os
+import sys
 from copy import copy, deepcopy
 from fractions import Fraction
 
@@ -808,13 +809,19 @@ class Concat:
                 divresult = moreAndLess[1] / metavariable
             except:
                 pass
+
+            sys.stderr.write(str(moreAndLess[1]) + " ||| " + str(metavariable) + "\n")
             b = (
                 int(divresult)
                 if not type(moreAndLess[1]) is Fraction
                 and not moreAndLess[1] is None
                 and divresult == round(divresult)
                 # würde zu früh abbrechenand len((relitable[int(moreAndLess[1] / metavariable)][newCol]).strip()) > 3
-                else Fraction(moreAndLess[1], metavariable)
+                else (
+                    Fraction(moreAndLess[1], metavariable)
+                    if moreAndLess[1] is not None
+                    else None
+                )
                 # else None
             )
             moreAndLess = (a, b)
@@ -948,8 +955,18 @@ class Concat:
         newCol,
         switching,
     ):
-        while not (moreAndLess[0] is None and type(moreAndLess[1]) is Fraction):
+        while not (moreAndLess[0] is None and moreAndLess[1] is None):
             newCol, moreAndLess = switching(newCol, moreAndLess)
+            if type(moreAndLess[1]) is Fraction and moreAndLess[1] is not None:
+                gebrStrukWort = (
+                    self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+                        moreAndLess[1]
+                    )
+                )
+                if len(gebrStrukWort.strip()) < 4:
+                    moreAndLess = (moreAndLess[0], None)
+                    if moreAndLess[0] is None and moreAndLess[1] is None:
+                        break
             vorworte2 = metaOrWhat[metavariable][
                 0 if len(neue2KoordNeue2Vorwoerter) == 0 else 1
             ]
@@ -1011,6 +1028,30 @@ class Concat:
                     ")",
                     " | ",
                 ]
+            elif (
+                bothRows == 1
+                and not vier[0][1] is None
+                and type(vier[0][1]) is Fraction
+            ):
+
+                gebrStrukWort = (
+                    self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+                        vier[0][1]
+                    )
+                )
+                if len(gebrStrukWort.strip()) > 3:
+                    sys.stderr.write("bla1")
+                    intoList += [
+                        vier[bothRows + 2],
+                        thema,
+                        gebrStrukWort,
+                        " | ",
+                    ]
+                else:
+                    sys.stderr.write("bla2")
+                    vier[0][1] = None
+            sys.stderr.write("bla3")
+            print("aaaa")
             thema = "Thema: "
         # alxp(intoList)
         self.relitable[i] += ["".join(intoList[:-1])]
@@ -1026,7 +1067,7 @@ class Concat:
     ) -> str:
         try:
             return self.gebrUnivTable4metaKonkret[koord.numerator][koord.denominator]
-        except KeyError:
+        except (KeyError, IndexError):
             return ""
 
     def spalteMetaKonkretAbstrakt_UeberschriftenUndTags(
