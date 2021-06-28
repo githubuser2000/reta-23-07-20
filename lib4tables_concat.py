@@ -1079,7 +1079,7 @@ class Concat:
                 bothRows == 1
                 and not vier[0][1] is None
                 and type(vier[0][1]) is Fraction
-                and self.struktAndInversSpalten[0] == transzendentalienSpalten
+                and self.struktAndInversSpalten == transzendentalienSpalten
             ):
 
                 gebrStrukWort = (
