@@ -848,7 +848,7 @@ class Concat:
 
         """Haupt-Teil, das davor waren Vorbereitungen
         das große Durchiterieren beginnt durch die Tabelle mit anschließendem erweitern dieser, um Spalten"""
-        self.struktAndInversSpalten = (5, 131)
+        self.struktAndInversSpalten: tuple = (5, 131)
         self.struktAndInversSpalten = (
             self.struktAndInversSpalten,
             (self.struktAndInversSpalten[1], self.struktAndInversSpalten[0]),
@@ -1042,6 +1042,7 @@ class Concat:
                 bothRows == 1
                 and not vier[0][1] is None
                 and type(vier[0][1]) is Fraction
+                and self.struktAndInversSpalten[0] == transzendentalienSpalten
             ):
 
                 gebrStrukWort = (
@@ -1054,16 +1055,7 @@ class Concat:
                     intoList += [
                         vier[bothRows + 2],
                         thema,
-                        gebrStrukWort
-                        if False
-                        else str(
-                            [
-                                vier[1],
-                                self.transzendentalienSpalten[1],
-                                bothRows,
-                                transzendentalienSpalten,
-                            ]
-                        ),
+                        gebrStrukWort,
                         " | ",
                     ]
                 else:
