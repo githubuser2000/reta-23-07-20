@@ -1013,6 +1013,11 @@ class Concat:
         # alxp(intoList)
         self.relitable[i] += ["".join(intoList[:-1])]
 
+    def getGebrUnivTable(self):
+        place = self.readConcatCSV_choseCsvFile(2)
+        with open(place, mode="r") as csv_file:
+            self.gebUnivTable4metaKonkret = list(csv.reader(csv_file, delimiter=";"))
+
     def spalteMetaKonkretAbstrakt_UeberschriftenUndTags(
         self, bothRows, ifInvers, metavariable, rowsAsNumbers
     ):
