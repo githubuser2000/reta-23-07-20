@@ -1005,6 +1005,7 @@ class Concat:
                 bothRows == 0
                 and not vier[0][0] is None
                 and len(relitable[vier[0][0]][vier[1]].strip()) > 3
+                and False
             ):
                 intoList += [
                     vier[bothRows + 2],
@@ -1024,6 +1025,7 @@ class Concat:
                 and not vier[0][1] is None
                 and not type(vier[0][1]) is Fraction
                 and len(relitable[vier[0][1]][vier[1]].strip()) > 3
+                and False
             ):
                 intoList += [
                     vier[bothRows + 2],
