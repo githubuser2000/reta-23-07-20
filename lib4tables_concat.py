@@ -1267,11 +1267,9 @@ class Concat:
         rowsAsNumbers,
         u,
     ):
-        if (
-            (u + 2 in concatTableSelection and concatTable in range(2, 6))
-            or (concatTable == 1 and int(heading) in concatTableSelection)
-            or concatTable == 2
-        ):  # concatTable == 2 wegen spalten metakonkret
+        if (u + 2 in concatTableSelection and concatTable in range(2, 6)) or (
+            concatTable == 1 and int(heading) in concatTableSelection
+        ):
             if concatTable not in range(2, 6) or u + 1 != len(dazu):
                 delta = 1 if concatTable in range(2, 6) else 0
                 selectedSpalten = u + len(self.relitable[0]) - len(dazu) + delta
