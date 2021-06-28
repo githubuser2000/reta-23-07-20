@@ -722,6 +722,8 @@ class Concat:
     ):
         self.relitable = relitable
         self.rowsAsNumbers = rowsAsNumbers
+        if len(geordnetePaare) > 0:
+            self.spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable()
         for paar in tuple(geordnetePaare):
             self.spalteMetaKontretTheorieAbstrakt_etc(
                 relitable,
@@ -837,8 +839,6 @@ class Concat:
                 if wiederholungen > 1
                 else vorworte2[less1ormore2 - 1]
             )
-
-        self.spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable()
 
         """Haupt-Teil, das davor waren Vorbereitungen
         das große Durchiterieren beginnt durch die Tabelle mit anschließendem erweitern dieser, um Spalten"""
