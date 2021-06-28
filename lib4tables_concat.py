@@ -845,6 +845,11 @@ class Concat:
                 else None
                 # else None
             )
+            if Fraction(b) in self.gebrRatEtwaSchonMalDabeiGewesen:
+                b = None
+            else:
+                self.gebrRatEtwaSchonMalDabeiGewesen |= {Fraction(b)}
+
             moreAndLess = (a, b)
 
             return newCol, moreAndLess
@@ -961,6 +966,7 @@ class Concat:
         rowsAsNumbers = self.spalteMetaKonkretAbstrakt_UeberschriftenUndTags(
             bothRows, ifInvers, metavariable, rowsAsNumbers
         )
+        self.gebrRatEtwaSchonMalDabeiGewesen = set()
 
         self.transzendentalienSpalten = transzendentalienSpalten
         # for i, row in enumerate(relitable[2:], 2):
