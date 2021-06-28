@@ -1056,6 +1056,11 @@ class Concat:
                         vier[bothRows + 2],
                         thema,
                         gebrStrukWort,
+                        "(",
+                        str(vier[0][1].numerator),
+                        "/",
+                        str(vier[0][1].denominator),
+                        ")",
                         " | ",
                     ]
                 else:
