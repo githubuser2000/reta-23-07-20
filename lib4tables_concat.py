@@ -845,10 +845,12 @@ class Concat:
                 else None
                 # else None
             )
-            if Fraction(b) in self.gebrRatEtwaSchonMalDabeiGewesen:
-                b = None
-            else:
-                self.gebrRatEtwaSchonMalDabeiGewesen |= {Fraction(b)}
+            if b is not None:
+                # print(str(type(b)))
+                if Fraction(b) in self.gebrRatEtwaSchonMalDabeiGewesen:
+                    b = None
+                else:
+                    self.gebrRatEtwaSchonMalDabeiGewesen |= {Fraction(b)}
 
             moreAndLess = (a, b)
 
