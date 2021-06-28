@@ -849,12 +849,28 @@ class Concat:
         """Haupt-Teil, das davor waren Vorbereitungen
         das große Durchiterieren beginnt durch die Tabelle mit anschließendem erweitern dieser, um Spalten"""
         self.struktAndInversSpalten: tuple = (5, 131)
-        self.struktAndInversSpalten = (
+
+        blub = [
+            self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+                Fraction(1, 1)
+            ),
+            self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+                Fraction(1, 3)
+            ),
+            self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+                Fraction(3, 1)
+            ),
+            self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+                Fraction(2, 3)
+            ),
+            self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+                Fraction(3, 2)
+            ),
+        ]
+        print(" ".join(blub))
+        for ifInvers, self.transzendentalienSpalten in enumerate(
             self.struktAndInversSpalten,
             (self.struktAndInversSpalten[1], self.struktAndInversSpalten[0]),
-        )
-        for ifInvers, self.transzendentalienSpalten in enumerate(
-            self.struktAndInversSpalten
         ):
             for bothRows in (
                 [0, 1]
@@ -1081,12 +1097,19 @@ class Concat:
     def spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
         self, koord: Fraction
     ) -> str:
-        try:
-            return self.gebrUnivTable4metaKonkret[koord.numerator - 1][
-                koord.denominator - 1
-            ]
-        except (KeyError, IndexError):
+        if koord.denominator == 0 or koord.numerator == 0:
             return ""
+        elif koord.numerator == 1:
+            return self.relitable[self.struktAndInversSpalten[0]][koord.denominator]
+        elif koord.denominator == 1:
+            return self.relitable[koord.numerator][self.struktAndInversSpalten[1]]
+        else:
+            try:
+                return self.gebrUnivTable4metaKonkret[koord.numerator - 1][
+                    koord.denominator - 1
+                ]
+            except (KeyError, IndexError):
+                return ""
 
     def spalteMetaKonkretAbstrakt_UeberschriftenUndTags(
         self, bothRows, ifInvers, metavariable, rowsAsNumbers
