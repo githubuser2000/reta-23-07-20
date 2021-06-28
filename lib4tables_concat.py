@@ -1104,9 +1104,19 @@ class Concat:
         elif koord.denominator > 100 or koord.numerator > 100:
             return None
         elif koord.numerator == 1:
-            return self.relitable[koord.denominator][self.struktAndInversSpalten[1]]
+            strukname = self.relitable[koord.denominator][
+                self.struktAndInversSpalten[1]
+            ]
+            if len(strukname.strip()) > 3:
+                return strukname
+            else:
+                return ""
         elif koord.denominator == 1:
-            return self.relitable[koord.numerator][self.struktAndInversSpalten[0]]
+            strukname = self.relitable[koord.numerator][self.struktAndInversSpalten[0]]
+            if len(strukname.strip()) > 3:
+                return strukname
+            else:
+                return ""
         else:
             try:
                 return self.gebrUnivTable4metaKonkret[koord.numerator - 1][
