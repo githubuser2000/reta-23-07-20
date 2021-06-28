@@ -835,9 +835,14 @@ class Concat:
                 # würde zu früh abbrechenand len((relitable[int(moreAndLess[1] / metavariable)][newCol]).strip()) > 3
                 else (
                     Fraction(moreAndLess[1], metavariable)
-                    if moreAndLess[1] is not None
+                    if moreAndLess[1] == round(moreAndLess[1])
+                    else moreAndLess[1] * metavariable
+                    if type(moreAndLess[1]) is Fraction
+                    and moreAndLess[1] != round(moreAndLess[1])
                     else None
                 )
+                if moreAndLess[1] is not None
+                else None
                 # else None
             )
             moreAndLess = (a, b)
