@@ -903,6 +903,10 @@ class Concat:
                 ("mathematisch-diskret-Thema: ", "kontinuierlich: "),
                 ("Diskret-", "Kontinuierlich-"),
             ),
+            6: (
+                ("Wert-Thema: ", "verwertung: "),
+                ("Wert-", "Verwertung-"),
+            ),
         }
 
         def makeVorwort(
@@ -1216,7 +1220,7 @@ class Concat:
             if metavariable == 3:
                 self.relitable[0] += ["Theorie"]
             if metavariable == 4:
-                self.relitable[0] += ["Fluss"]
+                self.relitable[0] += ["verändernd"]
             if metavariable == 5:
                 self.relitable[0] += ["mathematisch diskret"]
         if bothRows == 1:
@@ -1225,7 +1229,7 @@ class Concat:
             if metavariable == 3:
                 self.relitable[0] += ["Praxis"]
             if metavariable == 4:
-                self.relitable[0] += ["Stau"]
+                self.relitable[0] += ["Management"]
             if metavariable == 5:
                 self.relitable[0] += ["kontiuierlich"]
         self.relitable[0][-1] += " für 1/n statt n" if ifInvers == 1 else " für n"
