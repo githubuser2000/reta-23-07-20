@@ -1220,18 +1220,22 @@ class Concat:
             if metavariable == 3:
                 self.relitable[0] += ["Theorie"]
             if metavariable == 4:
-                self.relitable[0] += ["verändernd"]
+                self.relitable[0] += ["Management"]
             if metavariable == 5:
                 self.relitable[0] += ["mathematisch diskret"]
+            if metavariable == 6:
+                self.relitable[0] += ["wertvoll"]
         if bothRows == 1:
             if metavariable == 2:
                 self.relitable[0] += ["Konkretes"]
             if metavariable == 3:
                 self.relitable[0] += ["Praxis"]
             if metavariable == 4:
-                self.relitable[0] += ["Management"]
+                self.relitable[0] += ["verändernd"]
             if metavariable == 5:
                 self.relitable[0] += ["kontiuierlich"]
+            if metavariable == 6:
+                self.relitable[0] += ["Verwertung"]
         self.relitable[0][-1] += " für 1/n statt n" if ifInvers == 1 else " für n"
         return rowsAsNumbers
 
