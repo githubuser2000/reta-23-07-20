@@ -822,33 +822,29 @@ class Concat:
                 # würde zu früh abbrechen and len((relitable[moreAndLess[0] * metavariable][newCol]).strip()) > 3
                 else None
             )
-            try:
+            if (
+                moreAndLess[1] is not None
+                and moreAndLess[1] < 100
+                and moreAndLess[1] > 0.01
+            ):
                 divresult = moreAndLess[1] / metavariable
-            except:
-                pass
 
-            b = (
-                int(divresult)
-                if not type(moreAndLess[1]) is Fraction
-                and not moreAndLess[1] is None
-                and divresult == round(divresult)
-                # würde zu früh abbrechenand len((relitable[int(moreAndLess[1] / metavariable)][newCol]).strip()) > 3
-                else (
-                    Fraction(metavariable, moreAndLess[1])
-                    if moreAndLess[1] == round(moreAndLess[1])
-                    else moreAndLess[1] * metavariable
-                    if type(moreAndLess[1]) is Fraction
-                    and moreAndLess[1] != round(moreAndLess[1])
-                    else None
+                b = (
+                    int(divresult)
+                    if divresult == round(divresult)
+                    else (
+                        Fraction(metavariable, moreAndLess[1])
+                        if moreAndLess[1] == round(moreAndLess[1])
+                        else Fraction(moreAndLess[1] * metavariable)
+                    )
                 )
-                if moreAndLess[1] is not None
-                else None
-                # else None
-            )
+            else:
+                b = None
+
             if b is not None:
-                # print(str(type(b)))
-                # if type(b) is Fraction:
-                #    print(str(b))
+                if b == round(b):
+                    b = int(b)
+
                 if Fraction(b) in self.gebrRatEtwaSchonMalDabeiGewesen:
                     b = None
                 else:
@@ -970,13 +966,13 @@ class Concat:
         rowsAsNumbers = self.spalteMetaKonkretAbstrakt_UeberschriftenUndTags(
             bothRows, ifInvers, metavariable, rowsAsNumbers
         )
-        self.gebrRatEtwaSchonMalDabeiGewesen = set()
 
         self.transzendentalienSpalten = transzendentalienSpalten
         # for i, row in enumerate(relitable[2:], 2):
         #    moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
         #    neue2KoordNeue2Vorwoerter: list = []
         for i, row in enumerate(relitable[2:], 2):
+            self.gebrRatEtwaSchonMalDabeiGewesen = set()
             moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
             neue2KoordNeue2Vorwoerter: list = []
             # alxp("new while")
@@ -1015,16 +1011,16 @@ class Concat:
     ):
         while not (moreAndLess[0] is None and moreAndLess[1] is None):
             newCol, moreAndLess = switching(newCol, moreAndLess)
-            if type(moreAndLess[1]) is Fraction and moreAndLess[1] is not None:
-                gebrStrukWort = (
-                    self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                        moreAndLess[1]
-                    )
-                )
-                if gebrStrukWort is None or len(gebrStrukWort.strip()) < 4:
-                    moreAndLess = (moreAndLess[0], None)
-                    if moreAndLess[0] is None and moreAndLess[1] is None:
-                        break
+            # if type(moreAndLess[1]) is Fraction and moreAndLess[1] is not None:
+            #    gebrStrukWort = (
+            #        self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+            #            moreAndLess[1]
+            #        )
+            #    )
+            #    if gebrStrukWort is None or len(gebrStrukWort.strip()) < 4:
+            #        moreAndLess = (moreAndLess[0], None)
+            #        if moreAndLess[0] is None and moreAndLess[1] is None:
+            #            break
             vorworte2 = metaOrWhat[metavariable][
                 0 if len(neue2KoordNeue2Vorwoerter) == 0 else 1
             ]
@@ -1055,7 +1051,7 @@ class Concat:
                 bothRows == 0
                 and not vier[0][0] is None
                 and len(relitable[vier[0][0]][vier[1]].strip()) > 3
-                and False
+                # and False
             ):
                 intoList += [
                     vier[bothRows + 2],
@@ -1075,7 +1071,7 @@ class Concat:
                 and not vier[0][1] is None
                 and not type(vier[0][1]) is Fraction
                 and len(relitable[vier[0][1]][vier[1]].strip()) > 3
-                and False
+                # and False
             ):
                 intoList += [
                     vier[bothRows + 2],
@@ -1102,22 +1098,28 @@ class Concat:
                         vier[0][1]
                     )
                 )
-                if len(gebrStrukWort.strip()) > 3:
-                    # sys.stderr.write("bla1")
-                    intoList += [
-                        vier[bothRows + 2],
-                        thema,
-                        gebrStrukWort,
-                        "(",
-                        str(vier[0][1].numerator),
-                        "/",
-                        str(vier[0][1].denominator),
-                        ")",
-                        " | ",
-                    ]
+                if gebrStrukWort is not None:
+                    if len(gebrStrukWort.strip()) > 3:
+                        # sys.stderr.write("bla1")
+                        intoList += [
+                            vier[bothRows + 2],
+                            thema,
+                            gebrStrukWort,
+                            "(",
+                            str(vier[0][1].numerator),
+                            "/",
+                            str(vier[0][1].denominator),
+                            ")",
+                            " | ",
+                        ]
+                    else:
+                        pass
                 else:
+                    pass
                     # sys.stderr.write("bla2")
-                    vier[0][1] = None
+                    # vier[0][1] = None
+                    # vier[0] = (vier[0][0], None)
+                    # intoList = [None]
             thema = "Thema: "
         # alxp(intoList)
         self.relitable[i] += ["".join(intoList[:-1])]
