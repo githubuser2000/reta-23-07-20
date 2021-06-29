@@ -907,6 +907,10 @@ class Concat:
                 ("Unternehmung: ", "Wert-Thema: "),
                 ("unternehmend-", "Wert-"),
             ),
+            7: (
+                ("Beherrschung: ", "Richtung-Thema: "),
+                ("beherrschend-", "Richtung-"),
+            ),
         }
 
         def makeVorwort(
@@ -1225,6 +1229,8 @@ class Concat:
                 self.relitable[0] += ["mathematisch diskret"]
             if metavariable == 6:
                 self.relitable[0] += ["Verwertung, Unternehmung, Geschäft"]
+            if metavariable == 7:
+                self.relitable[0] += ["regieren, beherrschen"]
         if bothRows == 1:
             if metavariable == 2:
                 self.relitable[0] += ["Konkretes"]
@@ -1236,6 +1242,8 @@ class Concat:
                 self.relitable[0] += ["kontiuierlich"]
             if metavariable == 6:
                 self.relitable[0] += ["wertvoll"]
+            if metavariable == 7:
+                self.relitable[0] += ["Richtung"]
         self.relitable[0][-1] += " für 1/n statt n" if ifInvers == 1 else " für n"
         return rowsAsNumbers
 

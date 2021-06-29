@@ -1093,11 +1093,9 @@ class Program:
             (
                 Program.ParametersMain.universummetakonkret,
                 (
-                    "Unternehmung_Geschäft",
-                    "unternehmen",
-                    "unternehmung",
-                    "geschaeft",
-                    "geschäft",
+                    "Beherrschen",
+                    "regieren",
+                    "beherrschen",
                 ),
                 set(),
                 set(),
@@ -1105,8 +1103,25 @@ class Program:
                 set(),
                 {
                     (
-                        6,
+                        7,
                         0,
+                    )
+                },
+            ),
+            (
+                Program.ParametersMain.universummetakonkret,
+                (
+                    "Richtung",
+                    "richtung",
+                ),
+                set(),
+                set(),
+                set(),
+                set(),
+                {
+                    (
+                        7,
+                        1,
                     )
                 },
             ),
