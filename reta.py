@@ -605,7 +605,7 @@ class Program:
                 "operationen",
             ),
             (
-                "Meta_vs_Konkret_Universum",
+                "Meta_vs_Konkret_(Universum)",
                 "universummetakonkret",
             ),
             (
