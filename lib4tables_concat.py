@@ -1239,7 +1239,7 @@ class Concat:
             if metavariable == 4:
                 self.relitable[0] += ["verändernd"]
             if metavariable == 5:
-                self.relitable[0] += ["kontiuierlich"]
+                self.relitable[0] += ["kontinuierlich"]
             if metavariable == 6:
                 self.relitable[0] += ["wertvoll"]
             if metavariable == 7:
