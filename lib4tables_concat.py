@@ -904,8 +904,8 @@ class Concat:
                 ("Diskret-", "Kontinuierlich-"),
             ),
             6: (
-                ("Wert-Thema: ", "Unternehmung: "),
-                ("Wert-", "unternehmend-"),
+                ("Unternehmung: ", "Wert-Thema: "),
+                ("unternehmend-", "Wert-"),
             ),
         }
 
@@ -1224,7 +1224,7 @@ class Concat:
             if metavariable == 5:
                 self.relitable[0] += ["mathematisch diskret"]
             if metavariable == 6:
-                self.relitable[0] += ["wertvoll"]
+                self.relitable[0] += ["Verwertung, Unternehmung, Geschäft"]
         if bothRows == 1:
             if metavariable == 2:
                 self.relitable[0] += ["Konkretes"]
@@ -1235,7 +1235,7 @@ class Concat:
             if metavariable == 5:
                 self.relitable[0] += ["kontiuierlich"]
             if metavariable == 6:
-                self.relitable[0] += ["Verwertung, Unternehmung, Geschäft"]
+                self.relitable[0] += ["wertvoll"]
         self.relitable[0][-1] += " für 1/n statt n" if ifInvers == 1 else " für n"
         return rowsAsNumbers
 
