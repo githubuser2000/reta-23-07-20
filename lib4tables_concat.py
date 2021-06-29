@@ -734,6 +734,13 @@ class Concat:
             )
         return self.relitable, self.rowsAsNumbers
 
+    def isGanzZahlig(self, zahl) -> bool:
+        zahl %= 1
+        if zahl < 0.00001 or zahl > 0.9999:
+            return True
+        else:
+            return False
+
     def spalteMetaKontretTheorieAbstrakt_etc(
         self,
         relitable: list,
@@ -831,10 +838,10 @@ class Concat:
 
                 b = (
                     int(divresult)
-                    if divresult == round(divresult)
+                    if self.isGanzZahlig(divresult)
                     else (
                         Fraction(metavariable, moreAndLess[1])
-                        if moreAndLess[1] == round(moreAndLess[1])
+                        if self.isGanzZahlig(moreAndLess[1])
                         else Fraction(moreAndLess[1] * metavariable)
                     )
                 )
