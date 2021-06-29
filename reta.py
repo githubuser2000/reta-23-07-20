@@ -1131,11 +1131,9 @@ class Program:
             (
                 Program.ParametersMain.universummetakonkret,
                 (
-                    "Unternehmung_Geschäft",
-                    "unternehmen",
-                    "unternehmung",
-                    "geschaeft",
-                    "geschäft",
+                    "Richtung",
+                    "richtung",
+                    "gut",
                 ),
                 set(),
                 set(),

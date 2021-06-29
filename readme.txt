@@ -50,7 +50,7 @@ also Primzahlen[/list]
 [*]--inkrementieren[list][*]um1,um2,um3,warumtranszendentaliezustrukturgroesseundcharakter,warumtranszendentaliegleichkomplexitaet[/list]
 [*]--operationen=[list][*]halbierungen,2,3,4,5,9,multiplikation[/list]
 [*]--universummetakonkret=
-[list][*]konkret,meta,theorie,praxis,diskret,kontinuierlich,management,veraendernd,unternehmung,wert[/list]
+[list][*]konkret,meta,theorie,praxis,diskret,kontinuierlich,management,veraendernd,unternehmung,wert,richtung,regieren[/list]
 [*]--primzahlwirkung
 [list][*]universum,absichtgalaxie,absichtgalaxiereziproke,universumreziproke,gegentranszendentalie,richtungrichtung[/list]
 [*]--gebrochengalaxie
