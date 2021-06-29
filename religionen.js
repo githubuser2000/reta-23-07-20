@@ -16,6 +16,7 @@ window.onload = function () {
     universum = 4
 */
   document.body.insertBefore(div, document.getElementsByTagName("table")[0]);
+
   chk_spalten =
     '<fieldset style="font-size: 100%;"><input type="radio" id="spaltenWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);" checked="true"><label>Spalten wählen</label><input type="radio" id="zeilenWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);"><label>Zeilen, welche ja nein</label><input type="radio" id="keinsWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);"><label>frei machen zur Tabellenansicht</label></fieldset>';
   radio_tags =
@@ -236,6 +237,13 @@ for (i = 0; i < tdClasses1.length; i++)
       tableHeadline[u].innerHTML;
   }
   toggleChkSpalten();
+
+  tabelle = document.getElementsByTagName("table")[1];
+  tds = tabelle.getElementsByTagName("td");
+  for (var i = 0; i < tds.length; i++) {
+    text = tds[i].getElementsByTagName("label");
+    text[0].innerHTML = text[0].innerHTML.replaceAll(") | ", ") | <br>");
+  }
 };
 
 function makeMapsOfHeadLCheckB(p1, p2, num, tags) {
