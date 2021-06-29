@@ -1067,9 +1067,9 @@ class Concat:
                 # and False
             ):
                 intoList += [
-                    # vier[bothRows + 2],
-                    # thema,
-                    # relitable[vier[0][0]][vier[1]],
+                    vier[bothRows + 2],
+                    thema,
+                    relitable[vier[0][0]][vier[1]],
                     " (",
                     "1/"
                     if vier[1] != self.transzendentalienSpalten[ifInvers]
@@ -1087,9 +1087,9 @@ class Concat:
                 # and False
             ):
                 intoList += [
-                    # vier[bothRows + 2],
-                    # thema,
-                    # relitable[vier[0][1]][vier[1]],
+                    vier[bothRows + 2],
+                    thema,
+                    relitable[vier[0][1]][vier[1]],
                     " (",
                     "1/"
                     if vier[1] != self.transzendentalienSpalten[ifInvers]
@@ -1116,9 +1116,9 @@ class Concat:
                     if len(gebrStrukWort.strip()) > 3:
                         # sys.stderr.write("bla1")
                         intoList += [
-                            # vier[bothRows + 2],
-                            # thema,
-                            # gebrStrukWort,
+                            vier[bothRows + 2],
+                            thema,
+                            gebrStrukWort,
                             "(",
                             str(vier[0][1].numerator),
                             ("/" + str(vier[0][1].denominator))
