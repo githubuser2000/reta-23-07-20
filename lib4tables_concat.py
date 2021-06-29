@@ -842,9 +842,6 @@ class Concat:
                 b = None
 
             if b is not None:
-                if b == round(b):
-                    b = int(b)
-
                 if Fraction(b) in self.gebrRatEtwaSchonMalDabeiGewesen:
                     b = None
                 else:
@@ -1090,6 +1087,7 @@ class Concat:
                 bothRows == 1
                 and not vier[0][1] is None
                 and type(vier[0][1]) is Fraction
+                # and False
                 # and self.struktAndInversSpalten == transzendentalienSpalten
             ):
 
@@ -1107,8 +1105,9 @@ class Concat:
                             gebrStrukWort,
                             "(",
                             str(vier[0][1].numerator),
-                            "/",
-                            str(vier[0][1].denominator),
+                            ("/" + str(vier[0][1].denominator))
+                            if vier[0][1].denominator > 1
+                            else "",
                             ")",
                             " | ",
                         ]
