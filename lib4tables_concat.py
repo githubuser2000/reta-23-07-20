@@ -845,10 +845,12 @@ class Concat:
                     )
                     else (
                         Fraction(metavariable, moreAndLess[1])
+                        # Fraction(1, moreAndLess[1]) * Fraction(metavariable)
                         if self.spalteMetaKonkretAbstrakt_isGanzZahlig(
                             moreAndLess[1], spaltenWahl
                         )
-                        else Fraction(moreAndLess[1] * metavariable)
+                        # else Fraction(moreAndLess[1] * metavariable)
+                        else Fraction(1, moreAndLess[1]) / Fraction(metavariable)
                     )
                 )
             else:
