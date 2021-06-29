@@ -838,26 +838,41 @@ class Concat:
             ):
                 divresult = moreAndLess[1] / metavariable
                 alxp("a " + str(divresult))
+
+                if (
+                    newCol == self.transzendentalienSpalten[ifInvers]
+                    and type(moreAndLess[1]) is not Fraction
+                ):
+                    moreAndLess = (moreAndLess[0], Fraction(1, moreAndLess[1]))
+
                 b = (
-                    (
-                        int(divresult)
-                        if self.spalteMetaKonkretAbstrakt_isGanzZahlig(divresult, False)
-                        else (
-                            Fraction(metavariable, moreAndLess[1])
-                            # Fraction(1, moreAndLess[1]) * Fraction(metavariable)
-                            if self.spalteMetaKonkretAbstrakt_isGanzZahlig(
-                                moreAndLess[1], False
-                            )
-                            # else Fraction(moreAndLess[1] * metavariable)
-                            else Fraction(1, moreAndLess[1]) / Fraction(metavariable)
-                        )
+                    Fraction(metavariable, moreAndLess[1])
+                    if self.spalteMetaKonkretAbstrakt_isGanzZahlig(
+                        moreAndLess[1], False
                     )
-                    if newCol != self.transzendentalienSpalten[ifInvers]
-                    and not self.spalteMetaKonkretAbstrakt_isGanzZahlig(
-                        moreAndLess[1], True
-                    )
-                    else Fraction(moreAndLess[1], metavariable)
+                    else Fraction(1, moreAndLess[1]) / Fraction(metavariable)
                 )
+
+                # b = (
+                #    (
+                #        int(divresult)
+                #        if self.spalteMetaKonkretAbstrakt_isGanzZahlig(divresult, False)
+                #        else (
+                #            Fraction(metavariable, moreAndLess[1])
+                #            # Fraction(1, moreAndLess[1]) * Fraction(metavariable)
+                #            if self.spalteMetaKonkretAbstrakt_isGanzZahlig(
+                #                moreAndLess[1], False
+                #            )
+                #            # else Fraction(moreAndLess[1] * metavariable)
+                #            else Fraction(1, moreAndLess[1]) / Fraction(metavariable)
+                #        )
+                #    )
+                #    if newCol != self.transzendentalienSpalten[ifInvers]
+                #    and not self.spalteMetaKonkretAbstrakt_isGanzZahlig(
+                #        moreAndLess[1], True
+                #    )
+                #    else Fraction(moreAndLess[1], metavariable)
+                # )
 
             else:
                 alxp("c1 None")
