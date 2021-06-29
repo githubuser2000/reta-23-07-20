@@ -895,7 +895,10 @@ class Concat:
         metaOrWhat = {
             2: (("Meta-Thema: ", "Konkretes: "), ("Meta-", "Konkret-")),
             3: (("Theorie-Thema: ", "Praxis: "), ("Theorie-", "Praxis-")),
-            4: (("Management-Thema: ", "Veränderungs-Thema: "), ("Management-","Veränderung-"),
+            4: (
+                ("Management-Thema: ", "Veränderungs-Thema: "),
+                ("Management-", "Veränderung-"),
+            ),
             5: (
                 ("mathematisch-diskret-Thema: ", "kontinuierlich: "),
                 ("Diskret-", "Kontinuierlich-"),
