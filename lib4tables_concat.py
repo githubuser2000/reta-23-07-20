@@ -853,6 +853,9 @@ class Concat:
                         )
                     )
                     if newCol != self.transzendentalienSpalten[ifInvers]
+                    and not self.spalteMetaKonkretAbstrakt_isGanzZahlig(
+                        moreAndLess[1], True
+                    )
                     else Fraction(moreAndLess[1], metavariable)
                 )
 
