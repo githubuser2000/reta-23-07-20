@@ -735,7 +735,7 @@ class Concat:
         return self.relitable, self.rowsAsNumbers
 
     def spalteMetaKonkretAbstrakt_isGanzZahlig(self, zahl, spaltenWahl) -> bool:
-        # zahl = (1 / zahl) if spaltenWahl == 1 else zahl
+        zahl = (1 / zahl) if spaltenWahl else zahl
         zahl %= 1
         if zahl < 0.00001 or zahl > 0.99999:
             return True
@@ -839,25 +839,30 @@ class Concat:
                 divresult = moreAndLess[1] / metavariable
                 alxp("a " + str(divresult))
                 b = (
-                    int(divresult)
-                    if self.spalteMetaKonkretAbstrakt_isGanzZahlig(
-                        divresult, spaltenWahl
-                    )
-                    else (
-                        Fraction(metavariable, moreAndLess[1])
-                        # Fraction(1, moreAndLess[1]) * Fraction(metavariable)
-                        if self.spalteMetaKonkretAbstrakt_isGanzZahlig(
-                            moreAndLess[1], spaltenWahl
+                    (
+                        int(divresult)
+                        if self.spalteMetaKonkretAbstrakt_isGanzZahlig(divresult, False)
+                        else (
+                            Fraction(metavariable, moreAndLess[1])
+                            # Fraction(1, moreAndLess[1]) * Fraction(metavariable)
+                            if self.spalteMetaKonkretAbstrakt_isGanzZahlig(
+                                moreAndLess[1], False
+                            )
+                            # else Fraction(moreAndLess[1] * metavariable)
+                            else Fraction(1, moreAndLess[1]) / Fraction(metavariable)
                         )
-                        # else Fraction(moreAndLess[1] * metavariable)
-                        else Fraction(1, moreAndLess[1]) / Fraction(metavariable)
                     )
+                    if newCol != self.transzendentalienSpalten[ifInvers]
+                    else Fraction(moreAndLess[1], metavariable)
                 )
+
             else:
                 alxp("c1 None")
                 b = None
-
             alxp("b " + str(b))
+            # if newCol == self.transzendentalienSpalten[ifInvers]:
+            #    b = 11
+
             if b is not None:
                 if Fraction(b) in self.gebrRatEtwaSchonMalDabeiGewesen:
                     alxp("c2 None")
@@ -1063,7 +1068,7 @@ class Concat:
 
         for vier in neue2KoordNeue2Vorwoerter[:-1]:
             if (
-                bothRows == 0
+                bothRows == 0  # bei meta aber nicht bei konkret
                 and not vier[0][0] is None
                 and len(relitable[vier[0][0]][vier[1]].strip()) > 3
                 # and False
@@ -1082,7 +1087,7 @@ class Concat:
                     " | ",
                 ]
             elif (
-                bothRows == 1
+                bothRows == 1  # bei konkret aber nicht meta
                 and not vier[0][1] is None
                 and not type(vier[0][1]) is Fraction
                 and len(relitable[vier[0][1]][vier[1]].strip()) > 3
@@ -1102,7 +1107,7 @@ class Concat:
                     " | ",
                 ]
             elif (
-                bothRows == 1
+                bothRows == 1  # bei konkret aber nicht meta
                 and not vier[0][1] is None
                 and type(vier[0][1]) is Fraction
                 # and False
