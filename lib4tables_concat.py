@@ -734,9 +734,10 @@ class Concat:
             )
         return self.relitable, self.rowsAsNumbers
 
-    def isGanzZahlig(self, zahl) -> bool:
+    def spalteMetaKonkretAbstrakt_isGanzZahlig(self, zahl, spaltenWahl) -> bool:
+        # zahl = (1 / zahl) if spaltenWahl == 1 else zahl
         zahl %= 1
-        if zahl < 0.00001 or zahl > 0.9999:
+        if zahl < 0.00001 or zahl > 0.99999:
             return True
         else:
             return False
@@ -814,10 +815,11 @@ class Concat:
             Immer eine halbierung und dopplung oder verdreifachung und ..., etc.
             und wechsel der Spalte von den 2 Spalten"""
             # x("MORE", moreAndLess)
-            newCol = (
-                self.transzendentalienSpalten[0]
+            spaltenWahl: int
+            newCol, spaltenWahl = (
+                (self.transzendentalienSpalten[0], 0)
                 if newCol == self.transzendentalienSpalten[1]
-                else self.transzendentalienSpalten[1]
+                else (self.transzendentalienSpalten[1], 1)
             )
             try:
                 mulresult = moreAndLess[0] * metavariable
@@ -835,21 +837,28 @@ class Concat:
                 and moreAndLess[1] > 0.01
             ):
                 divresult = moreAndLess[1] / metavariable
-
+                alxp("a " + str(divresult))
                 b = (
                     int(divresult)
-                    if self.isGanzZahlig(divresult)
+                    if self.spalteMetaKonkretAbstrakt_isGanzZahlig(
+                        divresult, spaltenWahl
+                    )
                     else (
                         Fraction(metavariable, moreAndLess[1])
-                        if self.isGanzZahlig(moreAndLess[1])
+                        if self.spalteMetaKonkretAbstrakt_isGanzZahlig(
+                            moreAndLess[1], spaltenWahl
+                        )
                         else Fraction(moreAndLess[1] * metavariable)
                     )
                 )
             else:
+                alxp("c1 None")
                 b = None
 
+            alxp("b " + str(b))
             if b is not None:
                 if Fraction(b) in self.gebrRatEtwaSchonMalDabeiGewesen:
+                    alxp("c2 None")
                     b = None
                 else:
                     self.gebrRatEtwaSchonMalDabeiGewesen |= {Fraction(b)}
@@ -1058,9 +1067,9 @@ class Concat:
                 # and False
             ):
                 intoList += [
-                    vier[bothRows + 2],
-                    thema,
-                    relitable[vier[0][0]][vier[1]],
+                    # vier[bothRows + 2],
+                    # thema,
+                    # relitable[vier[0][0]][vier[1]],
                     " (",
                     "1/"
                     if vier[1] != self.transzendentalienSpalten[ifInvers]
@@ -1078,9 +1087,9 @@ class Concat:
                 # and False
             ):
                 intoList += [
-                    vier[bothRows + 2],
-                    thema,
-                    relitable[vier[0][1]][vier[1]],
+                    # vier[bothRows + 2],
+                    # thema,
+                    # relitable[vier[0][1]][vier[1]],
                     " (",
                     "1/"
                     if vier[1] != self.transzendentalienSpalten[ifInvers]
@@ -1107,9 +1116,9 @@ class Concat:
                     if len(gebrStrukWort.strip()) > 3:
                         # sys.stderr.write("bla1")
                         intoList += [
-                            vier[bothRows + 2],
-                            thema,
-                            gebrStrukWort,
+                            # vier[bothRows + 2],
+                            # thema,
+                            # gebrStrukWort,
                             "(",
                             str(vier[0][1].numerator),
                             ("/" + str(vier[0][1].denominator))

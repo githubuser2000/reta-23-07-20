@@ -50,14 +50,14 @@ class Program:
                     type(eineSpaltenArtmitSpaltenNummern) in [list, tuple]
                     and len(eineSpaltenArtmitSpaltenNummern) > 0
                 ):
-                    alxp("1")
+                    # alxp("1")
                     if type(eineSpaltenArtmitSpaltenNummern[0]) is bool:
-                        alxp("2")
+                        # alxp("2")
                         eineSpaltenArtmitSpaltenNummern = set(
                             eineSpaltenArtmitSpaltenNummern
                         )
                     elif type(eineSpaltenArtmitSpaltenNummern[0]) in [tuple, list]:
-                        alxp("3")
+                        # alxp("3")
                         eineSpaltenArtmitSpaltenNummern = set(
                             eineSpaltenArtmitSpaltenNummern[0]
                         )
@@ -71,40 +71,40 @@ class Program:
                     or befehlName in Program.ParametersMain.gebrochenuniversum[0]
                     or befehlName in Program.ParametersMain.gebrochengalaxie[0]
                 ):
-                    alxp("4")
+                    # alxp("4")
                     if (
                         befehlName
                         == Program.ParametersMain.primzahlvielfachesgalaxie[0]
                     ):
-                        alxp("5")
+                        # alxp("5")
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), 2)
                         ] |= Program.lambdaPrimGalax(paraValue)
                     elif befehlName in Program.ParametersMain.gebrochenuniversum[0]:
-                        alxp("N6N")
+                        # alxp("N6N")
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), 5)
                         ] |= Program.lambdaGebrUnivUndGalax(paraValue)
                     elif befehlName in Program.ParametersMain.gebrochengalaxie[0]:
-                        alxp("N8N")
+                        # alxp("N8N")
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), 6)
                         ] |= Program.lambdaGebrUnivUndGalax(paraValue)
-                        alxp("N9N")
+                        # alxp("N9N")
                     else:
                         print(befehlName)
                         raise ValueError
 
                 else:
                     try:
-                        alxp("N11N")
+                        # alxp("N11N")
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), i)
                         ] |= eineSpaltenArtmitSpaltenNummern
-                        alxp("N12N")
+                        # alxp("N12N")
                     except TypeError:
                         pass
-            alxp("N10N")
+            # alxp("N10N")
             return self.spaltenArtenKey_SpaltennummernValue
 
         def spalten_removeDoublesNthenRemoveOneFromAnother():
@@ -202,15 +202,15 @@ class Program:
                                     #    self.tables,
                                     # )
                                     # x("geht villeicht 1:", cmd[:eq])
-                                    x("SOCV", (cmd[:eq], oneOfThingsAfterEqSign))
-                                    x(
-                                        "SOCV",
-                                        (
-                                            self.paraDict[
-                                                (cmd[:eq], oneOfThingsAfterEqSign)
-                                            ]
-                                        ),
-                                    )
+                                    # x("SOCV", (cmd[:eq], oneOfThingsAfterEqSign))
+                                    # x(
+                                    #    "SOCV",
+                                    #    (
+                                    #        self.paraDict[
+                                    #            (cmd[:eq], oneOfThingsAfterEqSign)
+                                    #        ]
+                                    #    ),
+                                    # )
                                     resultingSpaltenFromTuple(
                                         self.paraDict[
                                             (cmd[:eq], oneOfThingsAfterEqSign)
@@ -2130,7 +2130,7 @@ class Program:
         allValues[5] = set(range(2, 100))
         allValues[6] = set(range(2, 100))
         # allValues[5] = set(range(1, 100))
-        x("aLLe", allValues)
+        # x("aLLe", allValues)
 
         paraNdataMatrix += [
             (
@@ -2166,10 +2166,10 @@ class Program:
         # x("l_p", self.dataDict[4])
         self.dataDict[3] = Program.kombiParaNdataMatrix
         # x("lüp", self.dataDict[3])
-        alxp(self.paraDict)
-        alxp("--|-")
-        alxp(self.dataDict)
-        alxp("--||")
+        # alxp(self.paraDict)
+        # alxp("--|-")
+        # alxp(self.dataDict)
+        # alxp("--||")
         self.tables.dataDict = self.dataDict
 
     def parametersToCommandsAndNumbers(
