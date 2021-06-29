@@ -921,6 +921,42 @@ class Program:
             ),
             (
                 Program.ParametersMain.universummetakonkret,
+                (
+                    "Management",
+                    "management",
+                    "stau",
+                ),
+                set(),
+                set(),
+                set(),
+                set(),
+                {
+                    (
+                        4,
+                        0,
+                    )
+                },
+            ),
+            (
+                Program.ParametersMain.universummetakonkret,
+                (
+                    "verändernd",
+                    "veraendernd",
+                    "fluss",
+                ),
+                set(),
+                set(),
+                set(),
+                set(),
+                {
+                    (
+                        4,
+                        1,
+                    )
+                },
+            ),
+            (
+                Program.ParametersMain.universummetakonkret,
                 ("mathematisch_diskret", "diskret"),
                 set(),
                 set(),
@@ -943,24 +979,6 @@ class Program:
                 {
                     (
                         5,
-                        1,
-                    )
-                },
-            ),
-            (
-                Program.ParametersMain.universummetakonkret,
-                (
-                    "verändernd",
-                    "veraendernd",
-                    "fluss",
-                ),
-                set(),
-                set(),
-                set(),
-                set(),
-                {
-                    (
-                        4,
                         1,
                     )
                 },
@@ -1061,9 +1079,11 @@ class Program:
             (
                 Program.ParametersMain.universummetakonkret,
                 (
-                    "Management",
-                    "management",
-                    "stau",
+                    "Unternehmung_Geschäft",
+                    "unternehmen",
+                    "unternehmung",
+                    "geschaeft",
+                    "geschäft",
                 ),
                 set(),
                 set(),
@@ -1071,7 +1091,7 @@ class Program:
                 set(),
                 {
                     (
-                        4,
+                        6,
                         0,
                     )
                 },
@@ -1111,8 +1131,11 @@ class Program:
             (
                 Program.ParametersMain.universummetakonkret,
                 (
-                    "Richtung",
-                    "richtung",
+                    "Unternehmung_Geschäft",
+                    "unternehmen",
+                    "unternehmung",
+                    "geschaeft",
+                    "geschäft",
                 ),
                 set(),
                 set(),
