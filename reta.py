@@ -935,40 +935,6 @@ class Program:
             ),
             (
                 Program.ParametersMain.universummetakonkret,
-                ("wertvoll", "wert"),
-                set(),
-                set(),
-                set(),
-                set(),
-                {
-                    (
-                        6,
-                        0,
-                    )
-                },
-            ),
-            (
-                Program.ParametersMain.universummetakonkret,
-                (
-                    "Unternehmung_Geschäft",
-                    "unternehmen",
-                    "unternehmung",
-                    "geschaeft",
-                    "geschäft",
-                ),
-                set(),
-                set(),
-                set(),
-                set(),
-                {
-                    (
-                        6,
-                        1,
-                    )
-                },
-            ),
-            (
-                Program.ParametersMain.universummetakonkret,
                 ("kontinuierlich",),
                 set(),
                 set(),
@@ -1107,6 +1073,40 @@ class Program:
                     (
                         4,
                         0,
+                    )
+                },
+            ),
+            (
+                Program.ParametersMain.universummetakonkret,
+                ("wertvoll", "wert"),
+                set(),
+                set(),
+                set(),
+                set(),
+                {
+                    (
+                        6,
+                        0,
+                    )
+                },
+            ),
+            (
+                Program.ParametersMain.universummetakonkret,
+                (
+                    "Unternehmung_Geschäft",
+                    "unternehmen",
+                    "unternehmung",
+                    "geschaeft",
+                    "geschäft",
+                ),
+                set(),
+                set(),
+                set(),
+                set(),
+                {
+                    (
+                        6,
+                        1,
                     )
                 },
             ),
