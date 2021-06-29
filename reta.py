@@ -950,7 +950,8 @@ class Program:
             (
                 Program.ParametersMain.universummetakonkret,
                 (
-                    "fließend",
+                    "verändernd",
+                    "veraendernd",
                     "fluss",
                 ),
                 set(),
@@ -960,7 +961,7 @@ class Program:
                 {
                     (
                         4,
-                        0,
+                        1,
                     )
                 },
             ),
@@ -1060,7 +1061,8 @@ class Program:
             (
                 Program.ParametersMain.universummetakonkret,
                 (
-                    "Stau",
+                    "Management",
+                    "management",
                     "stau",
                 ),
                 set(),
@@ -1070,7 +1072,7 @@ class Program:
                 {
                     (
                         4,
-                        1,
+                        0,
                     )
                 },
             ),
