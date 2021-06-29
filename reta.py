@@ -893,7 +893,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.universummetakonkret,
-                ("Theorie",),
+                ("Theorie", "theorie"),
                 set(),
                 set(),
                 set(),
@@ -907,7 +907,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.universummetakonkret,
-                ("Praxis",),
+                ("Praxis", "praxis"),
                 set(),
                 set(),
                 set(),
@@ -921,7 +921,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.universummetakonkret,
-                ("mathematisch_diskret",),
+                ("mathematisch_diskret", "diskret"),
                 set(),
                 set(),
                 set(),
