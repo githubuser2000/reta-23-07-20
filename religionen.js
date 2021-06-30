@@ -241,12 +241,10 @@ for (i = 0; i < tdClasses1.length; i++)
   tabelle = document.getElementsByTagName("table")[1];
   tds = tabelle.getElementsByTagName("td");
   for (var i = 0; i < tds.length; i++) {
-    //text = tds[i].getElementsByTagName("label");
     text = tds[i];
-    //text[0].innerHTML =
     text.innerHTML = [
       "<label>",
-      text.innerHTML.replaceAll(") | ", ") | <br>"),
+      text.innerHTML.replaceAll(") | ", ") | <br>").trim(),
       "</label>",
     ].join("");
   }
@@ -258,7 +256,8 @@ for (i = 0; i < tdClasses1.length; i++)
     classnames.push(tdsHeadlines[i].className);
   for (var k = 1; k < trs.length; k++) {
     tds = trs[k].getElementsByTagName("td");
-    for (var i = 0; i < tds.length; i++) tds[i].className = classnames[i];
+    for (var i = 0; i < tds.length; i++)
+      tds[i].className = classnames[i].replace("z_0", "z_" + k);
   }
 
   for (var k = 0; k < trs.length; k++) {
@@ -961,11 +960,13 @@ function makeAllowedZeilenFromZaehlung(zeilenAngaben) {
       erlaubteZaehlungen.add(k);
 
   for (i = 0; i < ersteSpalte.length; i++) {
+    //window.alert(ersteSpalte[i].getElementsByTagName("label")[0].innerHTML);
     zaehlung = parseInt(
       ersteSpalte[i].getElementsByTagName("label")[0].innerHTML.trim()
     );
     if (zaehlung != "NaN" && erlaubteZaehlungen.has(zaehlung)) {
       wirklicheZeile = ersteSpalte[i].className.match(/z_(\d+)/g);
+      //window.alert(wirklicheZeile);
       if (wirklicheZeile.length > 0) {
         wirklicheZeile = wirklicheZeile[0].substr(2);
         erlaubteZeilen.add(parseInt(wirklicheZeile));
