@@ -257,7 +257,10 @@ for (i = 0; i < tdClasses1.length; i++)
   for (var k = 1; k < trs.length; k++) {
     tds = trs[k].getElementsByTagName("td");
     for (var i = 0; i < tds.length; i++)
-      tds[i].className = classnames[i].replace("z_0", "z_" + k);
+      tds[i].className = classnames[i].replace(
+        "z_0",
+        "z_" + tds[1].getElementsByTagName("label")[0].innerHTML
+      );
   }
 
   for (var k = 0; k < trs.length; k++) {
