@@ -241,9 +241,34 @@ for (i = 0; i < tdClasses1.length; i++)
   tabelle = document.getElementsByTagName("table")[1];
   tds = tabelle.getElementsByTagName("td");
   for (var i = 0; i < tds.length; i++) {
-    text = tds[i].getElementsByTagName("label");
-    text[0].innerHTML = text[0].innerHTML.replaceAll(") | ", ") | <br>");
+    //text = tds[i].getElementsByTagName("label");
+    text = tds[i];
+    //text[0].innerHTML =
+    text.innerHTML = [
+      "<label>",
+      text.innerHTML.replaceAll(") | ", ") | <br>"),
+      "</label>",
+    ].join("");
   }
+
+  trs = tabelle.getElementsByTagName("tr");
+  tdsHeadlines = trs[0].getElementsByTagName("td");
+  classnames = [];
+  for (var i = 0; i < tdsHeadlines.length; i++)
+    classnames.push(tdsHeadlines[i].className);
+  for (var k = 1; k < trs.length; k++) {
+    tds = trs[k].getElementsByTagName("td");
+    for (var i = 0; i < tds.length; i++) tds[i].className = classnames[i];
+  }
+
+  for (var k = 0; k < trs.length; k++) {
+    tds = trs[k].getElementsByTagName("td");
+    for (var i = 2; i < tds.length; i++)
+      tds[i].style.cssText = tds[1].style.cssText;
+  }
+
+  //window.alert(tds[10].style);
+  //window.alert(tdsHeadlines.length);
 };
 
 function makeMapsOfHeadLCheckB(p1, p2, num, tags) {
