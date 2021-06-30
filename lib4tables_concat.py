@@ -1495,6 +1495,8 @@ class Concat:
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
             ] = self.tables.dataDict[5 + ((concatTable - 2) % 2)][u + 2]
+            x("nnn", self.tables.dataDict[5 + ((concatTable - 2) % 2)][u + 2])
+            # x("nnn", u)
         if concatTable == 1:
             x("EDS", self.tables.dataDict[2][int(heading)])
             self.tables.generatedSpaltenParameter[
