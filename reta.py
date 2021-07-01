@@ -1821,7 +1821,7 @@ class Program:
                     "zaehlungen",
                     "zählung",
                 ),
-                {25, 45, 169},
+                {25, 45, 169, 188},
             ),
             (
                 Program.ParametersMain.bedeutung,
