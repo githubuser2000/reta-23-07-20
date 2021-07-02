@@ -1557,7 +1557,7 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 (
-                    "Anfuehrer",
+                    "Anführer",
                     "anfuehrer",
                     "chef",
                 ),
