@@ -340,7 +340,7 @@ class Tables:
             ##    os.popen("stty size", "r").read().split()
             # )  # Wie viele Zeilen und Spalten hat die Shell ?
             shellRowsAmount -= (
-                len(str(self.finallyDisplayLines[-1]))
+                len(str(self.finallyDisplayLines[-1])) + 2
                 if len(self.finallyDisplayLines) > 0 and shellRowsAmount != 0
                 else 0
             )
