@@ -415,13 +415,13 @@ class Program:
                                 # x("SIC", [i, dd])
                                 case = 2
                                 into += [[(parameterMainName, parameterName)]]
-                                x("mmm", into)
+                                # x("mmm", into)
                                 parameterMainNamePerLoop += [parameterName]
                             elif i == 2 and callable(dd):
                                 case = 2
                                 parameterMainNamePerLoop += [parameterName]
                                 into += [[(parameterMainName, parameterName)]]
-                                x("ooo", into)
+                                # x("ooo", into)
                                 # x("ert", [parameterName, parameterMainName])
                             elif i == 4 and (type(dd) in (list, tuple)):
                                 case = 4
@@ -473,8 +473,8 @@ class Program:
                             )
                         except KeyError:
                             dataDicts[index1][index2] = (into2,)
-            if case == 2:
-                x("dadaDick", dataDicts)
+            # if case == 2:
+            # x("dadaDick", dataDicts)
             # x("PARA", paraDict)
             return paraMainDict, paraDict, dataDicts
 
@@ -2189,8 +2189,9 @@ class Program:
                 try:
                     aAllValue |= commandValue
                 except TypeError:
-                    alxp(type(commandValue))
-                    alxp(commandValue)
+                    pass
+                    # alxp(type(commandValue))
+                    # alxp(commandValue)
 
         """
         Folgende Schleife ist eigentlich unnötig.
@@ -2247,9 +2248,9 @@ class Program:
 
         # x("lüp", self.dataDict[3])
         # alxp(self.paraDict)
-        alxp("--|-")
-        alxp(self.dataDict)
-        alxp("--||")
+        # alxp("--|-")
+        # alxp(self.dataDict)
+        # alxp("--||")
         self.tables.dataDict = self.dataDict
 
     def parametersToCommandsAndNumbers(
