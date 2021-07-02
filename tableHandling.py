@@ -77,8 +77,8 @@ class Tables:
         for i, v in enumerate(copy(value)):
             value[i] = (
                 v
-                if shellRowsAmount > v + 9 or shellRowsAmount == 0
-                else shellRowsAmount - 9
+                if shellRowsAmount > v + 6 or shellRowsAmount == 0
+                else shellRowsAmount - 6
             )
         self.getPrepare.breiten = value
         self.getOut.breiten = value
@@ -233,8 +233,8 @@ class Tables:
             global shellRowsAmount
             self.textwidth = (
                 value
-                if shellRowsAmount > value + 9 or shellRowsAmount == 0
-                else shellRowsAmount - 9
+                if shellRowsAmount > value + 6 or shellRowsAmount == 0
+                else shellRowsAmount - 6
             )
 
         def onlyThatColumns(self, table, onlyThatColumns):
@@ -340,7 +340,7 @@ class Tables:
             ##    os.popen("stty size", "r").read().split()
             # )  # Wie viele Zeilen und Spalten hat die Shell ?
             shellRowsAmount -= (
-                len(str(self.finallyDisplayLines[-1])) + 2
+                len(str(self.finallyDisplayLines[-1])) + 1
                 if len(self.finallyDisplayLines) > 0 and shellRowsAmount != 0
                 else 0
             )

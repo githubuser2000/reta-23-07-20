@@ -172,8 +172,8 @@ class Program:
                             breite = abs(int(cmd[7:]))
                             if breite == 0:
                                 shellRowsAmount = 0
-                            elif shellRowsAmount > 9 and breite > shellRowsAmount - 9:
-                                breite = shellRowsAmount - 9
+                            elif shellRowsAmount > 6 and breite > shellRowsAmount - 6:
+                                breite = shellRowsAmount - 6
                             self.tables.textWidth = breite
                             self.breiteORbreiten = True
                     elif cmd[:8] == "breiten=" and len(neg) == 0:
@@ -2421,8 +2421,8 @@ class Program:
         if not self.tables.getOut.oneTable:
             self.tables.textWidth = (
                 self.tables.textWidth
-                if shellRowsAmount > self.tables.textWidth + 9 or shellRowsAmount <= 0
-                else shellRowsAmount - 9
+                if shellRowsAmount > self.tables.textWidth + 6 or shellRowsAmount <= 0
+                else shellRowsAmount - 6
             )
         return (
             paramLines,
