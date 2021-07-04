@@ -1358,7 +1358,8 @@ class Program:
                     "sinn",
                     "sinnsuche",
                 ),
-                {88},
+                {88, 189},
+                {(181, 182)},
             ),
             (
                 Program.ParametersMain.menschliches,
@@ -1972,7 +1973,7 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 ("Sinn_und_Zweck_des_Lebens", "sinn", "zweck", "bedeutung"),
-                set(),
+                {88, 189},
                 {(181, 182)},
             ),
             (
