@@ -753,12 +753,12 @@ class Program:
             (
                 Program.ParametersMain.universum,
                 ("Kugeln_Kreise", "kugelnkreise", "kugeln", "kreise"),
-                {145},
+                {77, 145},
             ),
             (
                 Program.ParametersMain.galaxie,
                 ("Kugeln_Kreise", "kugelnkreise", "kugeln", "kreise"),
-                {145},
+                {77, 145},
             ),
             (
                 Program.ParametersMain.galaxie,
