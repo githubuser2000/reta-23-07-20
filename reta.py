@@ -752,6 +752,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.universum,
+                ("Meta-Paradigma-Religionen", "metaparadigmareligion"),
+                {190},
+            ),
+            (
+                Program.ParametersMain.universum,
                 ("Kugeln_Kreise", "kugelnkreise", "kugeln", "kreise"),
                 {77, 145},
             ),

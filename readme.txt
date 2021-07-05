@@ -52,7 +52,7 @@ also Primzahlen[/list]
 [*]--universummetakonkret=
 [list][*]konkret,meta,theorie,praxis,diskret,kontinuierlich,management,veraendernd,unternehmung,wert,richtung,regieren[/list]
 [*]--primzahlwirkung
-[list][*]universum,absichtgalaxie,absichtgalaxiereziproke,universumreziproke,gegentranszendentalie,richtungrichtung[/list]
+[list][*]universum,absichtgalaxie,absichtgalaxiereziproke,universumreziproke,gegentranszendentalie,richtungrichtung,metaparadigmareligion[/list]
 [*]--gebrochengalaxie
 [list][*]2,3,4,5,6,7,8,9,10,11,12,13,14,15, ..... usw.[/list]
 [*]--gebrochenuniversum
