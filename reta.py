@@ -969,7 +969,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.universummetakonkret,
-                ("mathematisch_diskret", "diskret"),
+                ("ganzheitlich", "mathematisch_diskret", "diskret"),
                 set(),
                 set(),
                 set(),
@@ -983,7 +983,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.universummetakonkret,
-                ("kontinuierlich",),
+                (
+                    "darüber_hinausgehend",
+                    "hinausgehend",
+                    "kontinuierlich",
+                ),
                 set(),
                 set(),
                 set(),
