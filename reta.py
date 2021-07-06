@@ -2095,6 +2095,18 @@ class Program:
                 {(66, 67)},
             ),
             (Program.ParametersMain.konzept, ("kausal",), set(), {(110, 111)}),
+            (
+                Program.ParametersMain.konzept,
+                ("Gleichheit", "gleich"),
+                set(),
+                {(192, 193)},
+            ),
+            (
+                Program.ParametersMain.konzept,
+                ("Überleben", "ueberleben"),
+                set(),
+                {(194, 195)},
+            ),
             (Program.ParametersMain.inkrementieren, set(), {43, 54, 74, 95}),
             (Program.ParametersMain.inkrementieren, ("um1",), {155}),
             (Program.ParametersMain.inkrementieren, ("um2",), {156}),
