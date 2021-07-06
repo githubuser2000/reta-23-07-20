@@ -900,8 +900,8 @@ class Concat:
                 ("Management-", "Veränderung-"),
             ),
             5: (
-                ("mathematisch-diskret-Thema: ", "kontinuierlich: "),
-                ("Diskret-", "Kontinuierlich-"),
+                ("Ganzheitlich-Thema: ", "darüber-hinausgehend-: "),
+                ("ganzheitlich-", "darüber-hinausgehend-"),
             ),
             6: (
                 ("Unternehmung: ", "Wert-Thema: "),
@@ -1226,7 +1226,7 @@ class Concat:
             if metavariable == 4:
                 self.relitable[0] += ["Management"]
             if metavariable == 5:
-                self.relitable[0] += ["mathematisch diskret"]
+                self.relitable[0] += ["ganzheitlich"]
             if metavariable == 6:
                 self.relitable[0] += ["Verwertung, Unternehmung, Geschäft"]
             if metavariable == 7:
@@ -1239,7 +1239,7 @@ class Concat:
             if metavariable == 4:
                 self.relitable[0] += ["verändernd"]
             if metavariable == 5:
-                self.relitable[0] += ["kontinuierlich"]
+                self.relitable[0] += ["darüber hinaus gehend"]
             if metavariable == 6:
                 self.relitable[0] += ["wertvoll"]
             if metavariable == 7:
