@@ -269,12 +269,12 @@ for (i = 0; i < tdClasses1.length; i++)
       tds[i].style.cssText = tds[1].style.cssText;
   }
 
-  //window.alert(tds[10].style);
-  //window.alert(tdsHeadlines.length);
   var inputs = document.getElementsByTagName("input");
   var checkbox_i = [];
-  for (var i = 0; i < inputs.length; i++)
+  for (var i = 0; i < inputs.length; i++) {
     if (inputs[i].type == "checkbox") checkbox_i.push(i);
+    if (checkbox_i.length > 1) i = inputs.length;
+  }
   inputs[checkbox_i[1]].checked = true;
   inputs[checkbox_i[1]].onchange();
 };
