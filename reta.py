@@ -752,7 +752,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.universum,
-                ("Meta-Paradigma-Religionen", "metaparadigmareligion"),
+                ("keine_Nur-Paradigma-Religionen", "metaparadigmareligion"),
                 {190, 191, 196},
             ),
             (
