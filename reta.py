@@ -863,7 +863,7 @@ class Program:
                     "strukturgrösse",
                     "strukturgröße",
                 ),
-                {4, 21, 54},
+                {4, 21, 54, 197},
             ),
             (
                 Program.ParametersMain.strukturgroesse,

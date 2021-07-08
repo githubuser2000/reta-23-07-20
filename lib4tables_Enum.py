@@ -186,7 +186,14 @@ tableTags = {
         191,
         196,
     },
-    frozenset({ST.galaxie, ST.gleichfoermigesPolygon}): {16, 42, 58, 148, 161, 162},
+    frozenset({ST.galaxie, ST.gleichfoermigesPolygon}): {
+        16,
+        42,
+        58,
+        148,
+        161,
+        162,
+    },
     frozenset({ST.universum, ST.gleichfoermigesPolygon, ST.sternPolygon}): {
         20,
         21,
@@ -218,6 +225,7 @@ tableTags = {
     frozenset({ST.universum, ST.gleichfoermigesPolygon}): {
         37,
         131,
+        197,
     },
 }
 
