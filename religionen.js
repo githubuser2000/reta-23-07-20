@@ -271,6 +271,7 @@ for (i = 0; i < tdClasses1.length; i++)
     tds[0].style.cssText += "display:none;";
     for (var i = 1; i < tds.length; i++)
       tds[i].style.cssText += ["display:none;", trs[k].style.cssText].join("");
+    tds[0].style.textAlign = "center";
     tds[1].style.textAlign = "center";
     trs[k].style.cssText = "";
   }
