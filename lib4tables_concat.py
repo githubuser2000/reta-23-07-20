@@ -1201,7 +1201,8 @@ class Concat:
                 self.relitable[koord.numerator][self.struktAndInversSpalten[0]],
                 " (",
                 str(koord.numerator),
-                ") ;",
+                ")",
+                "; " if len(self.relitable[koord.numerator][198]) > 2 else "",
                 self.relitable[koord.numerator][198],
             )
             strukname = "".join(strukname)
@@ -1358,6 +1359,22 @@ class Concat:
         # #x("rewt1", self.tables.dataDict[0][5][0])
         return self.relitable, rowsAsNumbers
 
+    def readConcatCsv_primColchange(
+        self, zeilenNr: int, primcol: list, ifTransponiert=False
+    ) -> list:
+        primcolNeu: list = []
+
+        for i, cell in enumerate(primcol, 1):
+            gebrRatZahl = (
+                Fraction(zeilenNr, i) if not ifTransponiert else Fraction(i, zeilenNr)
+            )
+            cellNeu = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+                gebrRatZahl
+            )
+            primcolNeu += [cellNeu if cellNeu is not None else ""]
+
+        return primcolNeu
+
     def readConcatCsv(
         self,
         relitable: list,
@@ -1377,6 +1394,12 @@ class Concat:
         @return: relitable + weitere Tabelle daneben
         """
         global folder
+
+        try:
+            self.gebrUnivTable4metaKonkret[0]
+        except:
+            self.struktAndInversSpalten: tuple = (5, 131)
+            self.spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable()
 
         def transpose(matrix):
             t = []
@@ -1408,8 +1431,12 @@ class Concat:
                     lastlen = len(primcol)
                     if lastlen > maxlen:
                         maxlen = lastlen
-
                     dazu = list(primcol) + [""] * (maxlen - len(primcol))
+
+                    if concatTable == 2 and i != 0:
+                        dazu = self.readConcatCsv_primColchange(i, dazu)
+                    if concatTable == 4 and i != 0:
+                        dazu = self.readConcatCsv_primColchange(i, dazu, True)
 
                     self.relitable[i] += dazu
                     if i == 0:
