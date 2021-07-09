@@ -1204,11 +1204,7 @@ class Program:
                     "existenzialien",
                     "universalien",
                 ),
-                {
-                    5,
-                    54,
-                    55,
-                },
+                {5, 54, 55, 198},
             ),
             (
                 Program.ParametersMain.universum,
