@@ -112,42 +112,30 @@ class htmlSyntax(OutputSyntax):
         self.zeile = num
         if rest:
             # wenn der Fallm eintritt dass es leerer Text ist der frei ist
-            return "          <tr>\n"
+            return "<tr>\n"
             if num == 0:
-                return "          <tr>\n"
+                return "<tr>\n"
             elif num % 2 == 0:
-                return "          <tr>\n"
+                return "<tr>\n"
             else:
-                return "          <tr>\n"
+                return "<tr>\n"
         elif numberType == 1:
             if num % 2 == 0:
-                return (
-                    '          <tr style="background-color:#66ff66;color:#000000;">\n'
-                )
+                return '<tr style="background-color:#66ff66;color:#000000;">\n'
             else:
-                return (
-                    '          <tr style="background-color:#009900;color:#ffffff;">\n'
-                )
+                return '<tr style="background-color:#009900;color:#ffffff;">\n'
         elif numberType == 2 or num == 1:
             if num % 2 == 0:
-                return (
-                    '          <tr style="background-color:#ffff66;color:#000099;">\n'
-                )
+                return '<tr style="background-color:#ffff66;color:#000099;">\n'
             else:
-                return (
-                    '          <tr style="background-color:#555500;color:#aaaaff;">\n'
-                )
+                return '<tr style="background-color:#555500;color:#aaaaff;">\n'
         elif numberType == 3:
             if num % 2 == 0:
-                return (
-                    '          <tr style="background-color:#9999ff;color:#202000;">\n'
-                )
+                return '<tr style="background-color:#9999ff;color:#202000;">\n'
             else:
-                return (
-                    '          <tr style="background-color:#000099;color:#ffff66;">\n'
-                )
+                return '<tr style="background-color:#000099;color:#ffff66;">\n'
         elif num == 0:
-            return '          <tr style="background-color:#ff2222;color:#002222;">\n'
+            return '<tr style="background-color:#ff2222;color:#002222;">\n'
 
     def generateCell(
         self, spalte: int, SpaltenParameter: dict, content=None, zeile=None, tables=None
@@ -240,10 +228,10 @@ class htmlSyntax(OutputSyntax):
             # x("nöx2", p4)
 
             return "".join(
-                ("              <td ",)
+                ("<td",)
                 + (
                     (
-                        'class="',
+                        ' class="',
                         "z_",
                         str(zeile),
                         " r_",
@@ -275,13 +263,13 @@ class htmlSyntax(OutputSyntax):
                 + (">\n",)
             )
 
-    beginTable = "      <table border=0>"
-    endTable = "        </table>\n"
-    beginCell = "              <td>\n"
-    endCell = "\n              </td>\n"
-    # beginZeile = "          <tr>"
+    beginTable = "<table border=0>"
+    endTable = "</table>\n"
+    beginCell = "<td>\n"
+    endCell = "\n</td>\n"
+    # beginZeile = "<tr>"
     beginZeile = ""
-    endZeile = "          </tr>\n"
+    endZeile = "</tr>\n"
 
 
 def moonNumber(num: int):
