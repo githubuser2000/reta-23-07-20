@@ -724,7 +724,7 @@ class Concat:
         self.relitable = relitable
         self.rowsAsNumbers = rowsAsNumbers
         if len(geordnetePaare) > 0:
-            self.spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable()
+            self.spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(2)
         for paar in tuple(geordnetePaare):
             self.spalteMetaKontretTheorieAbstrakt_etc(
                 relitable,
@@ -1175,8 +1175,8 @@ class Concat:
         # alxp(intoList)
         self.relitable[i] += ["".join(intoList[:-1])]
 
-    def spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(self) -> list:
-        place = self.readConcatCSV_choseCsvFile(2)
+    def spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(self, wahl) -> list:
+        place = self.readConcatCSV_choseCsvFile(wahl)
         with open(place, mode="r") as csv_file:
             self.gebrUnivTable4metaKonkret = list(csv.reader(csv_file, delimiter=";"))
         return self.gebrUnivTable4metaKonkret
@@ -1395,11 +1395,12 @@ class Concat:
         """
         global folder
 
-        try:
-            self.gebrUnivTable4metaKonkret[0]
-        except:
+        if concatTable in (2, 4):
             self.struktAndInversSpalten: tuple = (5, 131)
-            self.spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable()
+            self.spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(2)
+        elif concatTable in (3, 5):
+            self.struktAndInversSpalten: tuple = (10, 42)
+            self.spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(3)
 
         def transpose(matrix):
             t = []
@@ -1433,9 +1434,9 @@ class Concat:
                         maxlen = lastlen
                     dazu = list(primcol) + [""] * (maxlen - len(primcol))
 
-                    if concatTable == 2 and i != 0:
+                    if concatTable in (2, 3) and i != 0:
                         dazu = self.readConcatCsv_primColchange(i, dazu)
-                    if concatTable == 4 and i != 0:
+                    elif concatTable in (4, 5) and i != 0:
                         dazu = self.readConcatCsv_primColchange(i, dazu, True)
 
                     self.relitable[i] += dazu
