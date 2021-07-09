@@ -1197,7 +1197,14 @@ class Concat:
             else:
                 return ""
         elif koord.denominator == 1:
-            strukname = self.relitable[koord.numerator][self.struktAndInversSpalten[0]]
+            strukname = (
+                self.relitable[koord.numerator][self.struktAndInversSpalten[0]],
+                " (",
+                str(koord.numerator),
+                ") ;",
+                self.relitable[koord.numerator][198],
+            )
+            strukname = "".join(strukname)
             if len(strukname.strip()) > 3:
                 return strukname
             else:

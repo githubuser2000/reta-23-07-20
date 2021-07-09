@@ -665,7 +665,7 @@ class Program:
             (
                 Program.ParametersMain.religionen,
                 (
-                    "Religions_gründer_typ",
+                    "Religions-Gründer-Typ",
                     "religionsgründertyp",
                     "prophet",
                     "archon",

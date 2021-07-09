@@ -37,8 +37,11 @@ for (i = 0; i < tdClasses1.length; i++)
     (spalten4spaltenTags = {});
   str3 = "";
 
+  trStyles = [];
+
   TRs = document.getElementsByTagName("tr");
   for (var i = 0; i < TRs.length; i++) {
+    trStyles.push(TRs[i].style.cssText);
     TDs = TRs[i].getElementsByTagName("td");
     for (var k = 0; k < TDs.length; k++) {
       if (typeof spalten4spaltenTags[k] == "undefined")
@@ -265,9 +268,18 @@ for (i = 0; i < tdClasses1.length; i++)
 
   for (var k = 0; k < trs.length; k++) {
     tds = trs[k].getElementsByTagName("td");
+    tds[0].style.cssText += "display:none;";
+    for (var i = 1; i < tds.length; i++)
+      tds[i].style.cssText += ["display:none;", trs[k].style.cssText].join("");
+    tds[1].style.textAlign = "center";
+    trs[k].style.cssText = "";
+  }
+  /*
+  for (var k = 0; k < trs.length; k++) {
+    tds = trs[k].getElementsByTagName("td");
     for (var i = 2; i < tds.length; i++)
       tds[i].style.cssText = tds[1].style.cssText;
-  }
+  }*/
 
   var inputs = document.getElementsByTagName("input");
   var checkbox_i = [];

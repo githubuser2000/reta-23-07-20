@@ -261,11 +261,11 @@ class htmlSyntax(OutputSyntax):
                 )
                 + (
                     (
-                        ' style="background-color:#000000;color:#ffffff;display:none"'
+                        ' style="background-color:#000000;color:#ffffff;"'
                         if content is not None and int(content) % 2 == 0
-                        else ' style="background-color:#ffffff;color:#000000;display:none"'
+                        else ' style="background-color:#ffffff;color:#000000;"'
                         if spalte == 0
-                        else ' style="display:none"',
+                        else "",
                     )
                     if spalte in (0, 1)
                     # else (' style="display:none"',)
