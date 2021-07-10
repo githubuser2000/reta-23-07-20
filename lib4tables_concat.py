@@ -367,19 +367,19 @@ class Concat:
                 vervielfachterEn = vorkommenVielfacher_B[i][distanceFromLine][
                     "vervielfachter"
                 ]
+                # x("ASD", vorkommenVielfacher_B[i][distanceFromLine]["modalS"][0][0])
+                # x("DSF", self.relitable[1][97])
                 for modalOperatoren, vervielfachter in zip(
                     modalOperatorenEn, vervielfachterEn
                 ):
                     try:
-                        # #x("_ü1_", modalOperatoren)
-                        # #x("_ü2_", vervielfachter)
-                        # #x("_ü6_", concept[1])
-                        # x(
-                        #    "_ü3_",
-                        #    self.relitable[vervielfachter][concept[1]],
-                        # )
-                        # #x("_ü4_", modalOperatoren[0])
-                        # #x("_ü5_", modalOperatoren[1:])
+                        intoItsContent = (
+                            self.relitable[vervielfachter][concept[0]]
+                            if abs(distanceFromLine) % 2 == 0
+                            else self.relitable[vervielfachter][concept[1]]
+                        )
+                        x("WSDRF", modalOperatoren[0] != self.relitable[1][97])
+
                         into[i] += (
                             [
                                 "mittelstark überdurchschnittlich: "
@@ -399,9 +399,11 @@ class Concat:
                                 ),
                                 modalOperatoren[0],
                                 " ",
-                                self.relitable[vervielfachter][concept[0]]
-                                if abs(distanceFromLine) % 2 == 0
-                                else self.relitable[vervielfachter][concept[1]],
+                                intoItsContent
+                                if modalOperatoren[0] == self.relitable[1][97]
+                                else intoItsContent.replace(
+                                    "intrinsisch", "zuerst"
+                                ).replace("extrinsisch", "als zweites"),
                                 " ",
                                 modalOperatoren[1],
                             ]
@@ -439,6 +441,7 @@ class Concat:
                 "modalS": modalOperatorEnEn,
                 "vervielfachter": vervielFachter,
             }
+            # x("SDF ", vorkommenVielfacher_B[i][distanceFromLine])
 
         def prepareModalIntoTable(
             distanceFromLine,
@@ -470,9 +473,6 @@ class Concat:
                     zweiter Paramter: Ob: ModalOperator oder was war Orignal i von dem das hier der Vielfacher ist
                     dahinter: liste von der Sache
                 """
-                # #x("r6hh1 ", i)
-                # #x("r6hh2 ", modalOperatorEnEn)
-                # #x("r6hh3 ", Orginal_i_mehrere)
                 try:
                     vorkommenVielfacher_B[i][distanceFromLine] = {
                         "i_origS": Orginal_i_mehrere
@@ -482,6 +482,7 @@ class Concat:
                         "vervielfachter": vervielFachter
                         + vorkommenVielfacher_B[i][distanceFromLine]["vervielfachter"],
                     }
+                    # x("DGS ", vorkommenVielfacher_B[i][distanceFromLine])
 
                 except (IndexError, KeyError):
                     try:
