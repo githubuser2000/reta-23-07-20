@@ -1929,6 +1929,12 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept,
+                ("Zuneigung_abgewandt", "abgeneigt", "zugewandt"),
+                set(),
+                {(199, 200)},
+            ),
+            (
+                Program.ParametersMain.konzept,
                 ("wertvoll", "wertlos"),
                 set(),
                 {(186, 187)},
