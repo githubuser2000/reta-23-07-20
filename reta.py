@@ -1929,15 +1929,15 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept,
-                ("Zuneigung_abgewandt", "abgeneigt", "zugewandt"),
+                (
+                    "Zuneigung_Abneigung",
+                    "abgeneigt",
+                    "zugewandt",
+                    "reserviert",
+                    "zugeneigt",
+                ),
                 set(),
                 {(199, 200)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                ("Zugeneigt", "reserviert", "zugeneigt"),
-                set(),
-                {(201, 202)},
             ),
             (
                 Program.ParametersMain.konzept,
