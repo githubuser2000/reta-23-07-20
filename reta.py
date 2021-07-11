@@ -1935,6 +1935,12 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept,
+                ("Zugeneigt", "reserviert", "zugeneigt"),
+                set(),
+                {(201, 202)},
+            ),
+            (
+                Program.ParametersMain.konzept,
                 ("wertvoll", "wertlos"),
                 set(),
                 {(186, 187)},
