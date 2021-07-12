@@ -624,16 +624,41 @@ class Concat:
         transzendentalienNrezi = (5, 131)
         if len(self.tables.primUniversePrimsSet) > 0:
             self.tables.primUniverseRowNum = len(self.relitable[0])
+            self.tables.generatedSpaltenParameter_Tags[len(rowsAsNumbers)] = frozenset(
+                {ST.sternPolygon, ST.galaxie, ST.universum}
+            )
+            self.tables.generatedSpaltenParameter_Tags[
+                len(rowsAsNumbers) + 1
+            ] = frozenset({ST.sternPolygon, ST.galaxie, ST.universum})
+            self.tables.generatedSpaltenParameter_Tags[
+                len(rowsAsNumbers) + 2
+            ] = frozenset({ST.sternPolygon, ST.galaxie, ST.universum})
+            self.tables.generatedSpaltenParameter_Tags[
+                len(rowsAsNumbers) + 3
+            ] = frozenset({ST.sternPolygon, ST.galaxie, ST.universum})
+            self.tables.generatedSpaltenParameter_Tags[
+                len(rowsAsNumbers) + 4
+            ] = frozenset({ST.sternPolygon, ST.galaxie, ST.universum})
+            self.tables.generatedSpaltenParameter_Tags[
+                len(rowsAsNumbers) + 5
+            ] = frozenset({ST.sternPolygon, ST.galaxie, ST.universum})
+            self.tables.generatedSpaltenParameter_Tags[
+                len(rowsAsNumbers) + 6
+            ] = frozenset({ST.sternPolygon, ST.galaxie, ST.universum})
+            self.tables.generatedSpaltenParameter_Tags[
+                len(rowsAsNumbers) + 7
+            ] = frozenset({ST.sternPolygon, ST.galaxie, ST.universum})
+
             rowsAsNumbers |= {
                 len(self.relitable[0]),
                 len(self.relitable[0]) + 1,
+                len(self.relitable[0]) + 2,
+                len(self.relitable[0]) + 3,
+                len(self.relitable[0]) + 4,
+                len(self.relitable[0]) + 5,
+                len(self.relitable[0]) + 6,
+                len(self.relitable[0]) + 7,
             }
-            self.tables.generatedSpaltenParameter_Tags[
-                len(rowsAsNumbers) - 2
-            ] = frozenset({ST.sternPolygon, ST.galaxie, ST.universum})
-            self.tables.generatedSpaltenParameter_Tags[
-                len(rowsAsNumbers) - 1
-            ] = frozenset({ST.sternPolygon, ST.galaxie, ST.universum})
 
             # stern vs gleichf:
             for polytype, polytypename, transzType in zip(
