@@ -14,7 +14,7 @@
 			    border-collapse: separate;
 			}
             */
-			td {
+			table td {
                 hyphens: auto; 
 				font-size: 100%;
                 font-family: Arial, Helvetica, sans-serif;
@@ -26,6 +26,10 @@
 			}
             .z_0 {
                 vertical-align:top;
+            }
+            #table2 td {
+                padding: 1px;
+			    border-radius: 1px;
             }
 		</style>
 		<script type="text/javascript" language="JavaScript1.2">
