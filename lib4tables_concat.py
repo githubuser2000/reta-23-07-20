@@ -1240,7 +1240,7 @@ class Concat:
         return self.gebrUnivTable4metaKonkret
 
     def spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-        self, koord: Fraction
+        self, koord: Fraction, isGalaxie=False
     ) -> str:
         if koord.denominator == 0 or koord.numerator == 0:
             return ""
@@ -1248,12 +1248,18 @@ class Concat:
             return None
         elif koord.numerator == 1:
             strukname = (
-                self.relitable[koord.denominator][self.struktAndInversSpalten[1]],
-                " (1/",
-                str(koord.denominator),
-                ")",
-                "; " if len(self.relitable[koord.denominator][201]) > 2 else "",
-                self.relitable[koord.denominator][201],
+                (
+                    self.relitable[koord.denominator][self.struktAndInversSpalten[1]],
+                    " (1/",
+                    str(koord.denominator),
+                    ")",
+                    "; " if len(self.relitable[koord.denominator][201]) > 2 else "",
+                    self.relitable[koord.denominator][201],
+                )
+                if not isGalaxie
+                else (
+                    self.relitable[koord.denominator][self.struktAndInversSpalten[1]],
+                )
             )
             strukname = "".join(strukname)
             # strukname = self.relitable[koord.denominator][
@@ -1265,12 +1271,16 @@ class Concat:
                 return ""
         elif koord.denominator == 1:
             strukname = (
-                self.relitable[koord.numerator][self.struktAndInversSpalten[0]],
-                " (",
-                str(koord.numerator),
-                ")",
-                "; " if len(self.relitable[koord.numerator][198]) > 2 else "",
-                self.relitable[koord.numerator][198],
+                (
+                    self.relitable[koord.numerator][self.struktAndInversSpalten[0]],
+                    " (",
+                    str(koord.numerator),
+                    ")",
+                    "; " if len(self.relitable[koord.numerator][198]) > 2 else "",
+                    self.relitable[koord.numerator][198],
+                )
+                if not isGalaxie
+                else (self.relitable[koord.numerator][self.struktAndInversSpalten[0]],)
             )
             strukname = "".join(strukname)
             if len(strukname.strip()) > 3:
@@ -1427,7 +1437,7 @@ class Concat:
         return self.relitable, rowsAsNumbers
 
     def readConcatCsv_primColchange(
-        self, zeilenNr: int, primcol: list, ifTransponiert=False
+        self, zeilenNr: int, primcol: list, concatTable: int, ifTransponiert=False
     ) -> list:
         primcolNeu: list = []
 
@@ -1436,7 +1446,7 @@ class Concat:
                 Fraction(zeilenNr, i) if not ifTransponiert else Fraction(i, zeilenNr)
             )
             cellNeu = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                gebrRatZahl
+                gebrRatZahl, concatTable in (3, 5)
             )
             primcolNeu += [cellNeu if cellNeu is not None else ""]
 
@@ -1502,9 +1512,11 @@ class Concat:
                     dazu = list(primcol) + [""] * (maxlen - len(primcol))
 
                     if concatTable in (2, 3) and i != 0:
-                        dazu = self.readConcatCsv_primColchange(i, dazu)
+                        dazu = self.readConcatCsv_primColchange(i, dazu, concatTable)
                     elif concatTable in (4, 5) and i != 0:
-                        dazu = self.readConcatCsv_primColchange(i, dazu, True)
+                        dazu = self.readConcatCsv_primColchange(
+                            i, dazu, concatTable, True
+                        )
 
                     self.relitable[i] += dazu
                     if i == 0:
