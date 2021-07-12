@@ -677,15 +677,17 @@ class Concat:
                     self.transzendentalien_ += [cols[transzType]]
                     # self.ziel += [cols[11]]
                 relitableCopy = deepcopy(self.relitable)
-                self.motivation: tuple = tuple(self.motivation)
-                self.transzendentalien: tuple = tuple(self.transzendentalien)
+                self.motivation: tuple = tuple(self.motivation_)
+                self.transzendentalien: tuple = tuple(self.transzendentalien_)
 
                 for i, cols in enumerate(self.relitable):
                     kombi_ += [
-                        (self.motivation[i], self.motivation[i]),
-                        (self.motivation[i], self.transzendentalien[i]),
-                        (self.transzendentalien[i], self.motivation[i]),
-                        (self.transzendentalien[i], self.transzendentalien[i]),
+                        (
+                            (self.motivation[i], self.motivation[i]),
+                            (self.motivation[i], self.transzendentalien[i]),
+                            (self.transzendentalien[i], self.motivation[i]),
+                            (self.transzendentalien[i], self.transzendentalien[i]),
+                        )
                     ]
                 kombis: tuple = tuple(kombi_)
 
@@ -712,15 +714,16 @@ class Concat:
                         for k, multi in enumerate(multipless):
                             if k > 0:
                                 into += [", außerdem: "]
+                            x("__", kombis[multi[0]])
                             into += (
                                 [
                                     "( ",
                                     kombis[multi[0]][nullBisDrei]
-                                    if len(kombis[multi[0][nullBisDrei]].strip()) > 3
+                                    if len(kombis[multi[0]][nullBisDrei].strip()) > 3
                                     else "...",
                                     ") * (",
                                     kombis[multi[1]][nullBisDrei]
-                                    if len(kombis[multi[1][nullBisDrei]].strip()) > 3
+                                    if len(kombis[multi[1]][nullBisDrei].strip()) > 3
                                     else "...",
                                     " )",
                                 ]
