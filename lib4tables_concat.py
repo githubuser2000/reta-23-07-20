@@ -1247,9 +1247,18 @@ class Concat:
         elif koord.denominator > 100 or koord.numerator > 100:
             return None
         elif koord.numerator == 1:
-            strukname = self.relitable[koord.denominator][
-                self.struktAndInversSpalten[1]
-            ]
+            strukname = (
+                self.relitable[koord.denominator][self.struktAndInversSpalten[1]],
+                " (1/",
+                str(koord.denominator),
+                ")",
+                "; " if len(self.relitable[koord.denominator][201]) > 2 else "",
+                self.relitable[koord.denominator][201],
+            )
+            strukname = "".join(strukname)
+            # strukname = self.relitable[koord.denominator][
+            #    self.struktAndInversSpalten[1]
+            # ]
             if len(strukname.strip()) > 3:
                 return strukname
             else:
