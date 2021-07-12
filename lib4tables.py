@@ -456,3 +456,13 @@ def couldBePrimeNumberPrimzahlkreuz_fuer_innen(num: int) -> bool:
 def couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num: int) -> bool:
     Under24 = (1, 7, 13, 19)
     return num % 24 in Under24
+
+
+def multiples(a):
+    menge = set()
+    for b in range(2, math.floor(math.sqrt(a) + 1)):
+        c = a / b * 1000
+        c = round(c) / 1000
+        if c == round(c):
+            menge |= {(int(c), b)}
+    return list(menge)

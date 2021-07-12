@@ -11,8 +11,8 @@ from center import (alxp, cliout, getTextWrapThings, infoLog, output,
 from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz, csvSyntax,
                         divisorGenerator, htmlSyntax, isPrimMultiple,
-                        markdownSyntax, math, moonNumber, primCreativity,
-                        primFak, primMultiple, primRepeat)
+                        markdownSyntax, math, moonNumber, multiples,
+                        primCreativity, primFak, primRepeat)
 from lib4tables_Enum import ST
 
 
@@ -621,6 +621,7 @@ class Concat:
         global originalLinesRange
         self.relitable = relitable
         hardCodedCouple = (10, 42)
+        transzendentalienNrezi = (5, 131)
         if len(self.tables.primUniversePrimsSet) > 0:
             self.tables.primUniverseRowNum = len(self.relitable[0])
             rowsAsNumbers |= {
@@ -633,58 +634,84 @@ class Concat:
             self.tables.generatedSpaltenParameter_Tags[
                 len(rowsAsNumbers) - 1
             ] = frozenset({ST.sternPolygon, ST.galaxie, ST.universum})
-            for polytype, polytypename in zip(
-                hardCodedCouple, ["Sternpolygone", "gleichförmiges Polygone"]
+
+            # stern vs gleichf:
+            for polytype, polytypename, transzType in zip(
+                hardCodedCouple,
+                ["Sternpolygone", "gleichförmiges Polygone"],
+                transzendentalienNrezi,
             ):
-                self.transzendentalien = []
-                self.rolle = []
-                self.motivation = []
-                self.ziel = []
+                self.transzendentalien_ = []
+                # self.rolle = []
+                self.motivation_ = []
+                # self.ziel = []
+                kombi_ = []
                 for cols in self.relitable:
-                    self.motivation += [cols[polytype]]
-                    self.rolle += [cols[19]]
-                    self.transzendentalien += [cols[5]]
-                    self.ziel += [cols[11]]
+                    self.motivation_ += [cols[polytype]]
+                    # self.rolle += [cols[19]]
+                    self.transzendentalien_ += [cols[transzType]]
+                    # self.ziel += [cols[11]]
                 relitableCopy = deepcopy(self.relitable)
+                self.motivation: tuple = tuple(self.motivation)
+                self.transzendentalien: tuple = tuple(self.transzendentalien)
+
+                for i, cols in enumerate(self.relitable):
+                    kombi_ += [
+                        (self.motivation[i], self.motivation[i]),
+                        (self.motivation[i], self.transzendentalien[i]),
+                        (self.transzendentalien[i], self.motivation[i]),
+                        (self.transzendentalien[i], self.transzendentalien[i]),
+                    ]
+                kombis: tuple = tuple(kombi_)
+
+                kombisNamen: tuple = (
+                    "Motiv -> Motiv",
+                    "Motiv -> Strukur",
+                    "Struktur -> Motiv",
+                    "Struktur -> Strukur",
+                )
 
                 for i, cols in enumerate(relitableCopy):
-                    primMultiples = primMultiple(i)
-                    into = (
-                        [""]
-                        if i != 0
-                        else ["generierte Multiplikationen ", polytypename]
-                    )
-                    for k, multi in enumerate(primMultiples[1:]):
-                        if k > 0:
-                            into += [", außerdem: "]
-                        into += (
-                            [
-                                "(",
-                                self.transzendentalien[multi[0]]
-                                if self.transzendentalien[multi[0]].strip() != ""
-                                else "...",
-                                " UND ",
-                                self.rolle[multi[0]]
-                                if self.rolle[multi[0]].strip() != ""
-                                else "...",
-                                ") * (",
-                                self.motivation[multi[1]]
-                                if self.motivation[multi[1]].strip() != ""
-                                else "...",
+                    multipless = multiples(i)
+                    for nullBisDrei, kombiUeberschrift in enumerate(kombisNamen):
+                        into = (
+                            [""]
+                            if i != 0
+                            else [
+                                "generierte Multiplikationen ",
+                                polytypename,
+                                " ",
+                                kombiUeberschrift,
                             ]
-                            + (
-                                [
-                                    " UND ",
-                                    self.ziel[multi[1]]
-                                    if self.ziel[multi[1]].strip() != ""
-                                    else "...",
-                                ]
-                                if polytype == 10
-                                else [""]
-                            )
-                            + [")"]
                         )
-                    self.relitable[i] += ["".join(into)]
+                        for k, multi in enumerate(multipless):
+                            if k > 0:
+                                into += [", außerdem: "]
+                            into += (
+                                [
+                                    "( ",
+                                    kombis[multi[0]][nullBisDrei]
+                                    if len(kombis[multi[0][nullBisDrei]].strip()) > 3
+                                    else "...",
+                                    ") * (",
+                                    kombis[multi[1]][nullBisDrei]
+                                    if len(kombis[multi[1][nullBisDrei]].strip()) > 3
+                                    else "...",
+                                    " )",
+                                ]
+                                # + (
+                                #    [
+                                #        " UND ",
+                                #        self.ziel[multi[1]]
+                                #        if self.ziel[multi[1]].strip() != ""
+                                #        else "...",
+                                #    ]
+                                #    if polytype == 10
+                                #    else [""]
+                                # )
+                                # + [")"]
+                            )
+                        self.relitable[i] += ["".join(into)]
 
                 if (
                     len(self.tables.generatedSpaltenParameter)
