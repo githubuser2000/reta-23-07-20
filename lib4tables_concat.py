@@ -625,7 +625,7 @@ class Concat:
         if len(self.tables.primUniversePrimsSet) > 0:
             self.tables.primUniverseRowNum = len(self.relitable[0])
             self.tables.generatedSpaltenParameter_Tags[len(rowsAsNumbers)] = frozenset(
-                {ST.sternPolygon, ST.galaxie, ST.universum}
+                {ST.sternPolygon, ST.galaxie}
             )
             self.tables.generatedSpaltenParameter_Tags[
                 len(rowsAsNumbers) + 1
@@ -635,19 +635,19 @@ class Concat:
             ] = frozenset({ST.sternPolygon, ST.galaxie, ST.universum})
             self.tables.generatedSpaltenParameter_Tags[
                 len(rowsAsNumbers) + 3
-            ] = frozenset({ST.sternPolygon, ST.galaxie, ST.universum})
+            ] = frozenset({ST.sternPolygon, ST.universum})
             self.tables.generatedSpaltenParameter_Tags[
                 len(rowsAsNumbers) + 4
-            ] = frozenset({ST.sternPolygon, ST.galaxie, ST.universum})
+            ] = frozenset({ST.gleichfoermigesPolygon, ST.galaxie})
             self.tables.generatedSpaltenParameter_Tags[
                 len(rowsAsNumbers) + 5
-            ] = frozenset({ST.sternPolygon, ST.galaxie, ST.universum})
+            ] = frozenset({ST.gleichfoermigesPolygon, ST.galaxie, ST.universum})
             self.tables.generatedSpaltenParameter_Tags[
                 len(rowsAsNumbers) + 6
-            ] = frozenset({ST.sternPolygon, ST.galaxie, ST.universum})
+            ] = frozenset({ST.gleichfoermigesPolygon, ST.galaxie, ST.universum})
             self.tables.generatedSpaltenParameter_Tags[
                 len(rowsAsNumbers) + 7
-            ] = frozenset({ST.sternPolygon, ST.galaxie, ST.universum})
+            ] = frozenset({ST.gleichfoermigesPolygon, ST.universum})
 
             rowsAsNumbers |= {
                 len(self.relitable[0]),
@@ -663,7 +663,7 @@ class Concat:
             # stern vs gleichf:
             for polytype, polytypename, transzType in zip(
                 hardCodedCouple,
-                ["Sternpolygone", "gleichförmiges Polygone"],
+                ["Sternpolygone", "gleichförmige Polygone"],
                 transzendentalienNrezi,
             ):
                 self.transzendentalien_ = []
@@ -698,9 +698,9 @@ class Concat:
                     "Struktur -> Strukur",
                 )
 
-                for i, cols in enumerate(relitableCopy):
-                    multipless = multiples(i)
-                    for nullBisDrei, kombiUeberschrift in enumerate(kombisNamen):
+                for nullBisDrei, kombiUeberschrift in enumerate(kombisNamen):
+                    for i, cols in enumerate(relitableCopy):
+                        multipless = multiples(i)
                         into = (
                             [""]
                             if i != 0
@@ -714,16 +714,16 @@ class Concat:
                         for k, multi in enumerate(multipless):
                             if k > 0:
                                 into += [", außerdem: "]
-                            x("__", kombis[multi[0]])
+                            x("__", kombis[multi[0]][nullBisDrei][0])
                             into += (
                                 [
                                     "( ",
-                                    kombis[multi[0]][nullBisDrei]
-                                    if len(kombis[multi[0]][nullBisDrei].strip()) > 3
+                                    kombis[multi[0]][nullBisDrei][0]
+                                    if len(kombis[multi[0]][nullBisDrei][0].strip()) > 3
                                     else "...",
                                     ") * (",
-                                    kombis[multi[1]][nullBisDrei]
-                                    if len(kombis[multi[1]][nullBisDrei].strip()) > 3
+                                    kombis[multi[1]][nullBisDrei][1]
+                                    if len(kombis[multi[1]][nullBisDrei][1].strip()) > 3
                                     else "...",
                                     " )",
                                 ]
@@ -741,28 +741,30 @@ class Concat:
                             )
                         self.relitable[i] += ["".join(into)]
 
-                if (
-                    len(self.tables.generatedSpaltenParameter)
-                    + self.tables.SpaltenVanillaAmount
-                    in self.tables.generatedSpaltenParameter
-                ):
-                    raise ValueError
-                # x(
-                #    "doofi 1",
-                #    len(self.tables.generatedSpaltenParameter)
-                #    + self.tables.SpaltenVanillaAmount,
-                # )
-                # x("doofi 2", tuple(self.tables.dataDict[1].keys())[0])
-                # x("doofi 3", primzahlvielfachesgalaxie)
-                self.tables.generatedSpaltenParameter[
-                    len(self.tables.generatedSpaltenParameter)
-                    + self.tables.SpaltenVanillaAmount
-                ] = ([primzahlvielfachesgalaxie[0]],)
+                    if (
+                        len(self.tables.generatedSpaltenParameter)
+                        + self.tables.SpaltenVanillaAmount
+                        in self.tables.generatedSpaltenParameter
+                    ):
+                        raise ValueError
+                    # x(
+                    #    "doofi 1",
+                    #    len(self.tables.generatedSpaltenParameter)
+                    #    + self.tables.SpaltenVanillaAmount,
+                    # )
+                    # x("doofi 2", tuple(self.tables.dataDict[1].keys())[0])
+                    # x("doofi 3", primzahlvielfachesgalaxie)
 
-                # x("bliu orig", (primzahlvielfachesgalaxie, ))
-                # x("bliu Orig", ([primzahlvielfachesgalaxie[0]], ))
+                    # primzahlvielfachesgalaxie = [("primzahlvielfachesgalaxie", "")]
+                    self.tables.generatedSpaltenParameter[
+                        len(self.tables.generatedSpaltenParameter)
+                        + self.tables.SpaltenVanillaAmount
+                    ] = ([primzahlvielfachesgalaxie[0]],)
 
-                # x("idiot", self.tables.generatedSpaltenParameter)
+                    # x("bliu orig", (primzahlvielfachesgalaxie, ))
+                    # x("bliu Orig", ([primzahlvielfachesgalaxie[0]], ))
+
+                    # x("idiot", self.tables.generatedSpaltenParameter)
 
         # if (
         #    len(self.tables.primUniversePrimsSet) > 0
