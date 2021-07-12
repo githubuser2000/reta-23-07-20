@@ -31,5 +31,11 @@
                 padding: 1px;
 			    border-radius: 1px;
             }
+            #table2 tr td {
+                background-color: white;
+            }
+            #table2 tr:nth-child(2n) td {
+                background-color: lightgrey;
+            }
 		</style>
 		<script type="text/javascript" language="JavaScript1.2">
