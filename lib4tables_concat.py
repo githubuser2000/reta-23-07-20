@@ -1416,6 +1416,7 @@ class Concat:
             frozenset({ST.gleichfoermigesPolygon, ST.universum}),
             frozenset({ST.sternPolygon, ST.universum}),
             frozenset({ST.sternPolygon, ST.universum}),
+            frozenset({ST.sternPolygon, ST.universum}),
         ]
 
         for r, kk in enumerate(extraSpalten):
