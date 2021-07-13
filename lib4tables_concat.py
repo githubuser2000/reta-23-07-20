@@ -201,7 +201,7 @@ class Concat:
                 len(rowsAsNumbers) - 1
             ] = frozenset({ST.sternPolygon, ST.galaxie})
             couplesNums += [paar]
-        x("bla", self.tables.generatedSpaltenParameter_Tags)
+        # x("bla", self.tables.generatedSpaltenParameter_Tags)
         for o, concept in enumerate(self.concepts):
             for i, (cols, row1, row2) in enumerate(
                 zip(deepcopy(self.relitable), concept[0], concept[1])
@@ -389,7 +389,7 @@ class Concat:
                             if abs(distanceFromLine) % 2 == 0
                             else self.relitable[vervielfachter][concept[1]]
                         )
-                        x("WSDRF", modalOperatoren[0] != self.relitable[1][97])
+                        # x("WSDRF", modalOperatoren[0] != self.relitable[1][97])
 
                         into[i] += (
                             [
@@ -730,7 +730,7 @@ class Concat:
                                     if self.tables.htmlOutputYes
                                     else [", außerdem: "]
                                 )
-                            x("__", kombis[multi[0]][nullBisDrei][0])
+                            # x("__", kombis[multi[0]][nullBisDrei][0])
                             into += (
                                 [
                                     "( ",
@@ -911,7 +911,7 @@ class Concat:
                 and moreAndLess[1] > 0.01
             ):
                 divresult = moreAndLess[1] / metavariable
-                alxp("a " + str(divresult))
+                # alxp("a " + str(divresult))
 
                 if (
                     newCol == self.transzendentalienSpalten[ifInvers]
@@ -949,15 +949,15 @@ class Concat:
                 # )
 
             else:
-                alxp("c1 None")
+                # alxp("c1 None")
                 b = None
-            alxp("b " + str(b))
+            # alxp("b " + str(b))
             # if newCol == self.transzendentalienSpalten[ifInvers]:
             #    b = 11
 
             if b is not None:
                 if Fraction(b) in self.gebrRatEtwaSchonMalDabeiGewesen:
-                    alxp("c2 None")
+                    # alxp("c2 None")
                     b = None
                 else:
                     self.gebrRatEtwaSchonMalDabeiGewesen |= {Fraction(b)}
@@ -1254,6 +1254,7 @@ class Concat:
 
     def spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(self, wahl) -> list:
         if wahl in self.CSVsAlreadRead:
+            # alxp("BLUB")
             return self.CSVsAlreadRead[wahl]
         else:
             place = self.readConcatCSV_choseCsvFile(wahl)
@@ -1651,10 +1652,10 @@ class Concat:
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
             ] = self.tables.dataDict[5 + ((concatTable - 2) % 2)][u + 2]
-            x("nnn", self.tables.dataDict[5 + ((concatTable - 2) % 2)][u + 2])
+            # x("nnn", self.tables.dataDict[5 + ((concatTable - 2) % 2)][u + 2])
             # x("nnn", u)
         if concatTable == 1:
-            x("EDS", self.tables.dataDict[2][int(heading)])
+            # x("EDS", self.tables.dataDict[2][int(heading)])
             self.tables.generatedSpaltenParameter[
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
