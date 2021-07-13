@@ -2849,8 +2849,7 @@ class Program:
         alxp(
             """Ich könnte die Klasse immer nur ein mal definieren und dann per js auf alle in der gleichen Reihe die gleichen Tags dazu machen. Das geht schnell, macht die html kleiner, aber eigentlich beschleunigt das nichts wirklich, außer langsames Internet"""
         )
-        # alxp("Mond 125 wird nicht angezeigt, also ggf. einige andere nicht oder fälschlicherweise Sonnen?")
-        # alxp("1. Clean Code\n2. Vollständigkeit der Befehle auch")
+        # x("__", self.tables.htmlOutputYes)
 
     def combiTableWorkflow(
         self,

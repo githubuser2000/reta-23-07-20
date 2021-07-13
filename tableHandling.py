@@ -36,6 +36,10 @@ class Tables:
         }
 
     @property
+    def htmlOutputYes(self) -> bool:
+        return type(self.getOut.outType) is htmlSyntax
+
+    @property
     def outType(self) -> OutputSyntax:
         return self.getOut.outType
 
@@ -821,7 +825,14 @@ class Tables:
                                                 )
                                             else:
                                                 table2[colNum][row][-1] += (
-                                                    " | "
+                                                    (
+                                                        " |"
+                                                        + (
+                                                            "<br>"
+                                                            if self.tables.htmlOutputYes
+                                                            else " "
+                                                        )
+                                                    )
                                                     if len(table2[colNum][row][-1]) < 3
                                                     or table2[colNum][row][-1][-3:]
                                                     != " | "

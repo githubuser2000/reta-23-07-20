@@ -144,6 +144,8 @@ class Concat:
                         ):
                             if k > 0:
                                 into += [" | "]
+                                if self.tables.htmlOutputYes:
+                                    into += ["<br>"]
                             insert = re.sub(
                                 r"<SG>",
                                 self.relitable[i][4].strip(),
@@ -154,6 +156,7 @@ class Concat:
                                 " - ",
                                 self.relitable[exponentMinus2 + 2][10],
                                 " | ",
+                                "<br>" if self.tables.htmlOutputYes else "",
                                 self.relitable[i][10],
                                 " + ",
                                 self.relitable[i][11],
@@ -230,6 +233,8 @@ class Concat:
                         into += [concept[1][i + 1], "| "]
                     if into != [""]:
                         into += ["alles zur selben Strukturgröße einer ", cols[4]]
+                    if self.tables.htmlOutputYes:
+                        into += ["<br>"]
                 # einzeln, bis es eine ganze neue Spalte ist
                 self.relitable[i] += ["".split(into)]
             # x(
@@ -287,6 +292,8 @@ class Concat:
                 xx = False
                 if len(relitable[z][s].strip()) != 0:
                     relitable[z][s] = [relitable[z][s], " | "]
+                    if self.tables.htmlOutputYes:
+                        into += ["<br>"]
                 else:
                     relitable[z][s] = [relitable[z][s]]
                 if z in multis:
@@ -300,6 +307,8 @@ class Concat:
                             if len(store[(UrZeile, s)]) != 0:
                                 relitable[z][s] += [store[(UrZeile, s)], " | "]
                             xx = True
+                            if self.tables.htmlOutputYes:
+                                into += ["<br>"]
                 if xx:
                     relitable[z][s] = "".join(relitable[z][s][:-1])
                 else:
@@ -422,6 +431,7 @@ class Concat:
                                 else [""]
                             )
                             + [" | "]
+                            + (["<br>"] if self.tables.htmlOutputYes else [""])
                         )
                     except (IndexError, KeyError):
                         pass
@@ -1172,6 +1182,7 @@ class Concat:
                     str(vier[0][0]),
                     ")",
                     " | ",
+                    "<br>" if self.tables.htmlOutputYes else "",
                 ]
             elif (
                 bothRows == 1  # bei konkret aber nicht meta
@@ -1192,6 +1203,7 @@ class Concat:
                     str(vier[0][1]),
                     ")",
                     " | ",
+                    "<br>" if self.tables.htmlOutputYes else "",
                 ]
             elif (
                 bothRows == 1  # bei konkret aber nicht meta
@@ -1220,6 +1232,7 @@ class Concat:
                             else "",
                             ")",
                             " | ",
+                            "<br>" if self.tables.htmlOutputYes else "",
                         ]
                     else:
                         pass
