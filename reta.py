@@ -495,7 +495,19 @@ class Program:
             @param dataDicts: die beiden Parameter sagen welche Spaltennummern es
             sein werden
             @return: Spaltennummer sagt welche Parameter es ingesamt dazu sind | die
-            beiden Parameter sagen, welche Spalten es alle sind."""
+            beiden Parameter sagen, welche Spalten es alle sind.
+
+            *paraNdataMatrix*
+            enthält die meisten Parameternamen mit den zugehörigen Spaltennummern mit Sonderdaten, weil einige Spalten generiert werden aus anderen
+
+            u.a. daraus wird das *paraDict* und *dataDict* gebaut. Beides hat das Gleiche drin, nur das andere jeweils mit Key und Value vertauscht.
+            Darin sind die Paramenternamen und csv Spaltennummern drin, die nicht verwechselt werden dürfen mit den dann real vorhandenen Spaltennummern, die nicht die gleichen als Zahl sind, wie die in der CSV-Datei.
+
+            *self.tables.generatedSpaltenParameter*
+            key ist Spaltennummer der Ausgabe, value ist ein Paar von 2 Strings über Überparametername und Unterparametername für den Klassenname für die Spalte des HTML-Tags.
+            <em>
+            Das beinhaltet das für alle Parameter und Ausgabe-Spalten-Nummern.</em>"""
+
             # x("QARA", (paraMainDict1, paraMainDict2))
             paraMainDict1 = {**paraMainDict1, **paraMainDict2}
             # x("QARA", (paraDict1, paraDict2))
