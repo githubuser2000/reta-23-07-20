@@ -20,6 +20,8 @@ class Concat:
     def __init__(self, tables):
         self.tables = tables
         self.ones = set()
+        self.CSVsAlreadRead = {}
+        self.CSVsSame = {1: (1,), 2: (2, 4), 3: (3, 5), 4: (2, 4), 5: (3, 5)}
 
     @property
     def gebrUnivSet(self):
@@ -1251,10 +1253,17 @@ class Concat:
         self.relitable[i] += ["".join(intoList[:-1])]
 
     def spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(self, wahl) -> list:
-        place = self.readConcatCSV_choseCsvFile(wahl)
-        with open(place, mode="r") as csv_file:
-            self.gebrUnivTable4metaKonkret = list(csv.reader(csv_file, delimiter=";"))
-        return self.gebrUnivTable4metaKonkret
+        if wahl in self.CSVsAlreadRead:
+            return self.CSVsAlreadRead[wahl]
+        else:
+            place = self.readConcatCSV_choseCsvFile(wahl)
+            with open(place, mode="r") as csv_file:
+                self.gebrUnivTable4metaKonkret = list(
+                    csv.reader(csv_file, delimiter=";")
+                )
+            for wahl2 in self.CSVsSame[wahl]:
+                self.CSVsAlreadRead[wahl2] = self.gebrUnivTable4metaKonkret
+            return self.gebrUnivTable4metaKonkret
 
     def spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
         self, koord: Fraction, isGalaxie=False
@@ -1270,7 +1279,14 @@ class Concat:
                     " (1/",
                     str(koord.denominator),
                     ")",
-                    "; " if len(self.relitable[koord.denominator][201]) > 2 else "",
+                    "; "
+                    if len(self.relitable[koord.denominator][201]) > 2
+                    and not self.tables.htmlOutputYes
+                    else "",
+                    "<br>"
+                    if len(self.relitable[koord.denominator][201]) > 2
+                    and self.tables.htmlOutputYes
+                    else "",
                     self.relitable[koord.denominator][201],
                 )
                 if not isGalaxie
@@ -1293,7 +1309,14 @@ class Concat:
                     " (",
                     str(koord.numerator),
                     ")",
-                    "; " if len(self.relitable[koord.numerator][198]) > 2 else "",
+                    "; "
+                    if len(self.relitable[koord.numerator][198]) > 2
+                    and not self.tables.htmlOutputYes
+                    else "",
+                    "<br>"
+                    if len(self.relitable[koord.numerator][198]) > 2
+                    and self.tables.htmlOutputYes
+                    else "",
                     self.relitable[koord.numerator][198],
                 )
                 if not isGalaxie
