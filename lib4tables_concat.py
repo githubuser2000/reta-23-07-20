@@ -293,7 +293,7 @@ class Concat:
                 if len(relitable[z][s].strip()) != 0:
                     relitable[z][s] = [relitable[z][s], " | "]
                     if self.tables.htmlOutputYes:
-                        into += ["<br>"]
+                        relitable[z][s] += ["<br>"]
                 else:
                     relitable[z][s] = [relitable[z][s]]
                 if z in multis:
@@ -308,7 +308,7 @@ class Concat:
                                 relitable[z][s] += [store[(UrZeile, s)], " | "]
                             xx = True
                             if self.tables.htmlOutputYes:
-                                into += ["<br>"]
+                                relitable[z][s] += ["<br>"]
                 if xx:
                     relitable[z][s] = "".join(relitable[z][s][:-1])
                 else:
@@ -723,7 +723,11 @@ class Concat:
                         )
                         for k, multi in enumerate(multipless):
                             if k > 0:
-                                into += [", außerdem: "]
+                                into += (
+                                    [",<br>außerdem: "]
+                                    if self.tables.htmlOutputYes
+                                    else [", außerdem: "]
+                                )
                             x("__", kombis[multi[0]][nullBisDrei][0])
                             into += (
                                 [

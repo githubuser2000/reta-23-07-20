@@ -835,7 +835,12 @@ class Tables:
                                                     )
                                                     if len(table2[colNum][row][-1]) < 3
                                                     or table2[colNum][row][-1][-3:]
-                                                    != " | "
+                                                    != (" | ")
+                                                    and (
+                                                        len(table2[colNum][row][-1]) < 6
+                                                        or table2[colNum][row][-1][-6:]
+                                                        != (" |<br>")
+                                                    )
                                                     else ""
                                                 ) + deepcopy(
                                                     subTableCell[

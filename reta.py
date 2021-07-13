@@ -1415,7 +1415,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("egoismus", "altruismus", "selbstlosigkeit"),
+                ("Egoismus", "egoismus", "altruismus", "selbstlosigkeit"),
                 {136},
                 {(66, 67)},
             ),
