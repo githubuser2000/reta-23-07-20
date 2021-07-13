@@ -1080,17 +1080,32 @@ class Program:
             (
                 Program.ParametersMain.primzahlwirkung,
                 (
-                    "Gegentranszendentalie",
-                    "gegentranszendentalie",
-                    "gegentranszendentalien",
-                    "gegenstrukturalien",
-                    "gegenstrukturalie",
+                    "Dagegen-Gegentranszendentalie",
+                    "dagegengegentranszendentalie",
+                    "dagegengegentranszendentalien",
+                    "dagegengegenstrukturalien",
+                    "dagegengegenstrukturalie",
                 ),
                 set(),
                 set(),
                 set(),
                 set(),
                 {(138,)},
+            ),
+            (
+                Program.ParametersMain.primzahlwirkung,
+                (
+                    "neutrale_Gegentranszendentalie",
+                    "neutralegegentranszendentalie",
+                    "neutralegegentranszendentalien",
+                    "neutralegegenstrukturalien",
+                    "neutralegegenstrukturalie",
+                ),
+                set(),
+                set(),
+                set(),
+                set(),
+                {(202,)},
             ),
             (
                 Program.ParametersMain.universummetakonkret,
@@ -1182,9 +1197,7 @@ class Program:
                     "gegenexistenzialien",
                     "gegenuniversalien",
                 ),
-                {
-                    138,
-                },
+                {138, 202},
             ),
             (
                 Program.ParametersMain.universum,
