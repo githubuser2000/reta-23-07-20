@@ -1405,7 +1405,8 @@ class Concat:
             10: "Galaxie n",
             42: "Galaxie 1/n",
             131: "Transzendentalien, Strukturalien, Universum 1/n",
-            138: "Gegen-Transzendentalien, Gegen-Strukturalien, Universum n",
+            138: "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n",
+            202: "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n",
             None: "Richtung-Richtung",
         }
         tags = [
