@@ -1386,7 +1386,7 @@ class Program:
                     "gegentranszendentalien",
                     "gegenstrukturalien",
                 ),
-                {138, 139},
+                {138, 139, 202},
             ),
             (
                 Program.ParametersMain.menschliches,
