@@ -248,7 +248,7 @@ for (i = 0; i < tdClasses1.length; i++)
     text.innerHTML = [
       "<label>",
       //text.innerHTML.replaceAll(") | ", ") | <br>").trim(),
-      text.innerHTML.trim(),
+      text.innerHTML,
       "</label>",
     ].join("");
   }
