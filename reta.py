@@ -2821,14 +2821,18 @@ class Program:
             self.relitable, self.rowsAsNumbers
         )
 
+        blub1, blub2 = None, None
         (
             self.relitable,
             self.rowsAsNumbers,
+            # blub1,
+            # blub2,
         ) = self.tables.getConcat.concat1RowPrimUniverse2(
             self.relitable,
             self.rowsAsNumbers,
             self.spaltenArtenKey_SpaltennummernValue[(0, 7)],
         )
+
         (
             self.relitable,
             self.rowsAsNumbers,

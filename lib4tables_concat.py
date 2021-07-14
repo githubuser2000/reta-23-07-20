@@ -756,6 +756,8 @@ class Concat:
                             rowsAsNumbers |= {
                                 len(self.relitable[0]),
                             }
+                            x("HJM", len(self.relitable[0]))
+
                             multipless = multiples(i)
                             into = (
                                 [""]
@@ -787,16 +789,21 @@ class Concat:
                                 ]
                             self.relitable[i] += ["".join(into)]
 
-                        if (
-                            len(self.tables.generatedSpaltenParameter)
-                            + self.tables.SpaltenVanillaAmount
-                            in self.tables.generatedSpaltenParameter
-                        ):
-                            raise ValueError
-                        self.tables.generatedSpaltenParameter[
-                            len(self.tables.generatedSpaltenParameter)
-                            + self.tables.SpaltenVanillaAmount
-                        ] = ([primzahlvielfachesgalaxie[0]],)
+                            if (
+                                len(self.tables.generatedSpaltenParameter)
+                                + self.tables.SpaltenVanillaAmount
+                                in self.tables.generatedSpaltenParameter
+                            ):
+                                raise ValueError
+                            self.tables.generatedSpaltenParameter[
+                                len(self.tables.generatedSpaltenParameter)
+                                + self.tables.SpaltenVanillaAmount
+                            ] = ([primzahlvielfachesgalaxie[0]],)
+                            # ] = (
+                            #    [
+                            #        ("PrimVielfache2", "test"),
+                            #    ],
+                            # )
 
         return self.relitable, rowsAsNumbers
 
@@ -1668,6 +1675,7 @@ class Concat:
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
             ] = self.tables.dataDict[4][(extraSpalten[r],)]
+            x("HFT", self.tables.dataDict[4][(extraSpalten[r],)])
 
         return self.relitable, rowsAsNumbers
 
