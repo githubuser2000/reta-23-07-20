@@ -196,21 +196,6 @@ class Program:
                                 yes1 = True if len(neg) == 0 else False
                             if yes1:
                                 try:
-                                    # notNormalParameters(
-                                    #    cmd[:eq],
-                                    #    oneOfThingsAfterEqSign,
-                                    #    self.tables,
-                                    # )
-                                    # x("geht villeicht 1:", cmd[:eq])
-                                    # x("SOCV", (cmd[:eq], oneOfThingsAfterEqSign))
-                                    # x(
-                                    #    "SOCV",
-                                    #    (
-                                    #        self.paraDict[
-                                    #            (cmd[:eq], oneOfThingsAfterEqSign)
-                                    #        ]
-                                    #    ),
-                                    # )
                                     resultingSpaltenFromTuple(
                                         self.paraDict[
                                             (cmd[:eq], oneOfThingsAfterEqSign)
@@ -219,8 +204,6 @@ class Program:
                                         oneOfThingsAfterEqSign,
                                         befehlName=cmd[:eq],
                                     )
-                                    # alxp("geht 1:")
-                                    # alxp((cmd[:eq], oneOfThingsAfterEqSign))
                                 except KeyError:
                                     nebenParameters: list = []
                                     nebenparameterWerte: list = []
@@ -2160,6 +2143,30 @@ class Program:
             ),
         ]
 
+        paraNdataMatrix4onlyGenerated: dict = {
+            "primMotivGleichf": (
+                ("Primzahlvielfache", "primvielfache"),
+                ("Motive_gleichförmige_Polygone", "motivgleichfoermig"),
+            ),
+            "primStrukGleichf": (
+                ("Primzahlvielfache", "primvielfache"),
+                ("Struktur_gleichförmige_Polygone", "strukturgleichfoermig"),
+            ),
+            "primMotivStern": (
+                ("Primzahlvielfache", "primvielfache"),
+                ("Motive_Sternpolygone", "motivstern"),
+            ),
+            "primStrukStern": (
+                ("Primzahlvielfache", "primvielfache"),
+                ("Struktur_Sternpolygone", "strukturstern"),
+            ),
+            "primStrukGebrRat": (
+                ("Primzahlvielfache", "primvielfache"),
+                ("Struktur_gebrochen-rational", "strukturgebrochenrational"),
+            ),
+            "PrimCSV": (("Primzahlvielfache", "primvielfache"), ("beschrieben",)),
+        }
+
         Program.kombiParaNdataMatrix = {
             1: (
                 "Lebewesen",
@@ -2262,8 +2269,6 @@ class Program:
         allValues[3] = set(Program.kombiParaNdataMatrix.keys())
         allValues[5] = set(range(2, 100))
         allValues[6] = set(range(2, 100))
-        # allValues[5] = set(range(1, 100))
-        # x("aLLe", allValues)
 
         paraNdataMatrix += [
             (
@@ -2286,20 +2291,26 @@ class Program:
                     for parameterEntryElement in parameterEntry[2:]
                 ),
             )
-            # x("pofs", (*into,))
             self.paraDict, self.dataDict = mergeParameterDicts(
                 self.paraMainDict,
                 self.paraDict,
                 self.dataDict,
                 *into,
             )
-            # if len(self.dataDict) > 3:
-            #    x("lzp", self.dataDict[3])
-        # x("löp", self.dataDict[3])
-        # x("l_p", self.dataDict[4])
+
+        self.paraDictGenerated = {}
+        self.paraDictGenerated4htmlTags = {}
+        for key, value in paraNdataMatrix4onlyGenerated.items():
+            for firstParameter in value[0][1:]:
+                for secondParameter in value[1][1:]:
+                    self.paraDictGenerated[(firstParameter, secondParameter)] = key
+            self.paraDictGenerated4htmlTags[(value[0][0], value[1][0])] = key
         self.dataDict[3] = Program.kombiParaNdataMatrix
 
-        # x("lüp", self.dataDict[3])
+        alxp(self.paraDictGenerated)
+        alxp("-|-|")
+        alxp(self.paraDictGenerated4htmlTags)
+        alxp("||-|")
         # alxp(self.paraDict)
         # alxp("--|-")
         # alxp(self.dataDict)
