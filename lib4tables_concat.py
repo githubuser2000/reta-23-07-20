@@ -819,7 +819,16 @@ class Concat:
                                 for para in koord2Parameter[(zwei, nullBisDrei)]
                             ],
                         )
-                        # x("SGHN", len(self.tables.generatedSpaltenParameter))
+                        x(
+                            "SGHN",
+                            tuple(
+                                (
+                                    "PrimVielfache2",
+                                    htmlTagWoerter[para][0][0][0][1],
+                                )
+                                for para in koord2Parameter[(zwei, nullBisDrei)]
+                            ),
+                        )
 
         return self.relitable, rowsAsNumbers
 
