@@ -272,11 +272,9 @@ class Program:
                                 if len(cmd) > 0 and cmd[-1] == "-" and len(neg) > 0:
                                     cmd = cmd[:-1]
 
-                                # x("TT1", self.paraDict[(cmd, "")])
                                 resultingSpaltenFromTuple(
                                     self.paraDict[(cmd, "")], neg, befehlName=cmd
                                 )
-                                # x("TT2", cmd)
 
                         except KeyError:
                             cliout(
@@ -353,7 +351,12 @@ class Program:
         def intoParameterDatatype(
             parameterMainNames: tuple, parameterNames: tuple, datas: tuple
         ) -> tuple:
-            """Speichert einen Parameter mit seinem DatenSet
+            """
+            ALLE PARAMETER DIESER FUNKTION SIND EIGENTLICH NUR EIN JEWEILIGES ELEMENT VON
+            paraNdataMatrix
+            ZUSAMMEN
+
+            Speichert einen Parameter mit seinem DatenSet
             in 2 Datenstrukturen (die beides kombinieren 2x2)
             Diese werden jedoch nur zurück gegeben und nicht in der Klasse gespeichert.
             @return: alle Hauptparamter| alle Nebenparamter zu nur einem
@@ -369,22 +372,29 @@ class Program:
                     paraDict[(name1, name2)] = datas
                 if len(parameterNames) == 0:
                     paraDict[(name1, "")] = datas
-            dataDicts: tuple = ({}, {}, {}, {}, {}, {}, {})
+            dataDicts: tuple = ({}, {}, {}, {}, {}, {}, {}, {})
+
+            # datas sind nicht die Haupt-und-Neben-Parameter, sondern alles das diese enthalten und meinen können
+            # ein datas Datensatz sind alle sets, die ein Haupt-Neben-Parameter Zusammenhang enthalten kann an sets
             for i, d in enumerate(datas):
-                for dd in d:
+                for spaltenNummerOderEtc in d:
+                    # spaltenNummerOderEtc ist hier also eine Zahl von einem set, die z.B. eine Spaltennummer meinen kann
                     into = []
                     parameterMainNamePerLoop = []
                     case: int = None
+
+                    # das mit 2 Schleifen nur deshalb, damit immer alle Haupt- und Neben-Parameter in die Liste rein kommen
                     for parameterMainName in parameterMainNames:
                         for parameterName in (
                             parameterNames if len(parameterNames) > 0 else ("",)
                         ):
+                            # i ist die Nummer welches Set es ist
                             if i == 4 and (
-                                type(dd) is bool
+                                type(spaltenNummerOderEtc) is bool
                                 or (
-                                    type(dd) in [tuple, list]
-                                    and len(dd) > 0
-                                    and type(dd[0]) is bool
+                                    type(spaltenNummerOderEtc) in [tuple, list]
+                                    and len(spaltenNummerOderEtc) > 0
+                                    and type(spaltenNummerOderEtc[0]) is bool
                                 )
                             ):
                                 case = 1
@@ -394,37 +404,43 @@ class Program:
                                         parameterName,
                                     )
                                 ]
-                            elif i in (5, 6):  # and type(dd) is set:
-                                # x("SIC", [i, dd])
+                            elif i in (5, 6):  # and type(spaltenNummerOderEtc) is set:
+                                # x("SIC", [i, spaltenNummerOderEtc])
                                 case = 2
                                 into += [[(parameterMainName, parameterName)]]
                                 # x("mmm", into)
                                 parameterMainNamePerLoop += [parameterName]
-                            elif i == 2 and callable(dd):
+                            elif i == 2 and callable(spaltenNummerOderEtc):
                                 case = 2
                                 parameterMainNamePerLoop += [parameterName]
                                 into += [[(parameterMainName, parameterName)]]
                                 # x("ooo", into)
                                 # x("ert", [parameterName, parameterMainName])
-                            elif i == 4 and (type(dd) in (list, tuple)):
+                            elif i == 4 and (
+                                type(spaltenNummerOderEtc) in (list, tuple)
+                            ):
                                 case = 4
                                 into += [(parameterMainName, parameterName)]
-                            elif i == 4 and (type(dd) in (set,)):
+                            elif i == 4 and (type(spaltenNummerOderEtc) in (set,)):
                                 case = 4
                                 into += [(parameterMainName, parameterName)]
-                                dd = dd.pop()
+                                spaltenNummerOderEtc = spaltenNummerOderEtc.pop()
+                            # elsif i ==7 and type(spaltenNummerOderEtc) is str:
                             else:
                                 case = 3
                                 try:
                                     into += [(parameterMainName, parameterName)]
                                 except KeyError:
                                     into = [(parameterMainName, parameterName)]
+
+                    if i == 7:
+                        x("SDV", d)
                     index1 = i if case != 1 else 3
                     index2a = (
-                        dd
+                        spaltenNummerOderEtc
                         if case == 3
                         else (
-                            dd
+                            spaltenNummerOderEtc
                             if case == 4
                             else ("bool", 0)
                             if case == 1
@@ -446,8 +462,6 @@ class Program:
                     for index2, into2 in zip_longest(
                         index2a if case == 2 else (index2a,), intoA, fillvalue=into
                     ):
-                        # x("asd", [into2, case, into, index2])
-                        # x("ugj" + str(case), [index2a])
                         try:
                             dataDicts[index1][index2] += (
                                 (into2,)
@@ -529,7 +543,7 @@ class Program:
 
         Program.ParametersMain: namedtuple = namedtuple(
             "ParametersMain",
-            "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesgalaxie konzept inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie alles",
+            "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesgalaxie konzept inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache alles",
         )
 
         Program.ParametersMain = Program.ParametersMain(
@@ -617,6 +631,7 @@ class Program:
             # ("Gebrochen-Rational_Universum", "gebrochenuniversum"),
             ("gebrochenuniversum",),
             ("gebrochengalaxie",),
+            ("Primvielfache", "primvielfache"),
             ("alles",),
         )
 
@@ -2141,8 +2156,81 @@ class Program:
                 ),
                 {65, 5, 166},
             ),
+            (
+                Program.ParametersMain.primvielfache,
+                ("Motive_gleichförmige_Polygone", "motivgleichfoermig"),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                {"primMotivGleichf"},
+            ),
+            (
+                Program.ParametersMain.primvielfache,
+                ("Struktur_gleichförmige_Polygone", "strukturgleichfoermig"),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                {"primStrukGleichf"},
+            ),
+            (
+                Program.ParametersMain.primvielfache,
+                ("Motive_Sternpolygone", "motivstern"),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                {"primMotivStern"},
+            ),
+            (
+                Program.ParametersMain.primvielfache,
+                ("Struktur_Sternpolygone", "strukturstern"),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                {"primStrukStern"},
+            ),
+            (
+                Program.ParametersMain.primvielfache,
+                ("Struktur_gebrochen-rational", "strukturgebrochenrational"),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                {"primStrukGebrRat"},
+            ),
+            (
+                Program.ParametersMain.primvielfache,
+                ("beschrieben",),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                {"PrimCSV"},
+            ),
         ]
 
+        """
         paraNdataMatrix4onlyGenerated: dict = {
             "primMotivGleichf": (
                 ("Primzahlvielfache", "primvielfache"),
@@ -2166,6 +2254,7 @@ class Program:
             ),
             "PrimCSV": (("Primzahlvielfache", "primvielfache"), ("beschrieben",)),
         }
+        """
 
         Program.kombiParaNdataMatrix = {
             1: (
@@ -2243,7 +2332,7 @@ class Program:
             for valuesInValuess in value:
                 self.kombiReverseDict[valuesInValuess] = key
 
-        allValues = [set(), set(), set(), set(), set(), set(), set()]
+        allValues = [set(), set(), set(), set(), set(), set(), set(), set()]
         for possibleCommands in paraNdataMatrix:
             for commandValue, aAllValue in zip(possibleCommands[2:], allValues):
                 try:
@@ -2270,6 +2359,7 @@ class Program:
         allValues[5] = set(range(2, 100))
         allValues[6] = set(range(2, 100))
 
+        """
         self.paraDictGenerated = {}
         self.paraDictGenerated4htmlTags = {}
         for key, value in paraNdataMatrix4onlyGenerated.items():
@@ -2277,7 +2367,8 @@ class Program:
                 for secondParameter in value[1][1:]:
                     self.paraDictGenerated[(firstParameter, secondParameter)] = key
             self.paraDictGenerated4htmlTags[(value[0][0], value[1][0])] = key
-            # allValues[7] |= {key}
+            allValues[7] |= {key}
+        """
 
         paraNdataMatrix += [
             (
@@ -2309,14 +2400,14 @@ class Program:
 
         self.dataDict[3] = Program.kombiParaNdataMatrix
 
-        alxp(self.paraDictGenerated)
-        alxp("-|-|")
-        alxp(self.paraDictGenerated4htmlTags)
-        alxp("||-|")
-        # alxp(self.paraDict)
-        # alxp("--|-")
-        # alxp(self.dataDict)
-        # alxp("--||")
+        # alxp(self.paraDictGenerated)
+        # alxp("-|-|")
+        # alxp(self.paraDictGenerated4htmlTags)
+        # alxp("||-|")
+        alxp(self.paraDict)
+        alxp("--|-")
+        alxp(self.dataDict)
+        alxp("--||")
         self.tables.dataDict = self.dataDict
 
     def parametersToCommandsAndNumbers(
@@ -2569,10 +2660,10 @@ class Program:
             self.puniverseprimsNot,
             self.generRowsNot,
         ) = self.parametersToCommandsAndNumbers(argv, "-")
-        self.dataDict: tuple = [{}, {}, {}, {}, {}, {}, {}]
+        self.dataDict: list = [{}, {}, {}, {}, {}, {}, {}, {}]
         self.spaltenTypeNaming: namedtuple = namedtuple(
             "SpaltenTyp",
-            "ordinary generated1 concat1 kombi1 boolAndTupleSet1 gebroUni1 gebrGal1 ordinaryNot generate1dNot concat1Not kombi1Not boolAndTupleSet1Not gebroUni1Not gebrGal1Not",
+            "ordinary generated1 concat1 kombi1 boolAndTupleSet1 gebroUni1 gebrGal1 generated2 ordinaryNot generate1dNot concat1Not kombi1Not boolAndTupleSet1Not gebroUni1Not gebrGal1Not generated2Not",
         )
         self.spaltenTypeNaming = self.spaltenTypeNaming(
             (0, 0),
@@ -2582,6 +2673,7 @@ class Program:
             (0, 4),
             (0, 5),
             (0, 6),
+            (0, 7),
             (1, 0),
             (1, 1),
             (1, 2),
@@ -2589,6 +2681,7 @@ class Program:
             (1, 4),
             (1, 5),
             (1, 6),
+            (1, 7),
         )
 
         # self.spaltenArtenNameKey_SpaltenArtenTupleVal_4Key4otherDict = {
@@ -2609,6 +2702,7 @@ class Program:
             (0, 4): set(),
             (0, 5): set(),
             (0, 6): set(),
+            (0, 7): set(),
             (1, 0): set(),
             (1, 1): set(),
             (1, 2): set(),
@@ -2616,6 +2710,7 @@ class Program:
             (1, 4): set(),
             (1, 5): set(),
             (1, 6): set(),
+            (1, 7): set(),
         }
 
         self.storeParamtersForColumns()
