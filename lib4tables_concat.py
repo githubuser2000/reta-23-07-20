@@ -114,6 +114,7 @@ class Concat:
                 + self.tables.SpaltenVanillaAmount
             ] = self.tables.dataDict[0][64]
             # x("WIE", self.tables.dataDict[0][64])
+            # x("JDG", self.tables.generatedSpaltenParameter)
 
             # x("idiot", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
@@ -807,13 +808,26 @@ class Concat:
                             in self.tables.generatedSpaltenParameter
                         ):
                             raise ValueError
+                        kette = (
+                            [
+                                (
+                                    "primzahlvielfachesgalaxie",
+                                    htmlTagWoerter[para][0][0][0][1],
+                                )
+                            ]
+                            for para in koord2Parameter[(zwei, nullBisDrei)]
+                        )
+
                         self.tables.generatedSpaltenParameter[
                             len(self.tables.generatedSpaltenParameter)
                             + self.tables.SpaltenVanillaAmount
-                        ] = (
+                        ] = tuple(kette)
+
+                        """
+                        (
                             [
                                 (
-                                    "PrimVielfache2",
+                                    "primzahlvielfachesgalaxie",
                                     htmlTagWoerter[para][0][0][0][1],
                                 )
                                 for para in koord2Parameter[(zwei, nullBisDrei)]
@@ -821,14 +835,9 @@ class Concat:
                         )
                         x(
                             "SGHN",
-                            tuple(
-                                (
-                                    "PrimVielfache2",
-                                    htmlTagWoerter[para][0][0][0][1],
-                                )
-                                for para in koord2Parameter[(zwei, nullBisDrei)]
-                            ),
+                            tuple(kette),
                         )
+                        """
 
         return self.relitable, rowsAsNumbers
 
