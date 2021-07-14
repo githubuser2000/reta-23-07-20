@@ -22,6 +22,8 @@ class Concat:
         self.ones = set()
         self.CSVsAlreadRead = {}
         self.CSVsSame = {1: (1,), 2: (2, 4), 3: (3, 5), 4: (2, 4), 5: (3, 5)}
+        self.BruecheUni = set()
+        self.BruecheGal = set()
 
     @property
     def gebrUnivSet(self):
@@ -1252,6 +1254,17 @@ class Concat:
         # alxp(intoList)
         self.relitable[i] += ["".join(intoList[:-1])]
 
+    def getAllBrueche(self, gebrUnivTable4metaKonkret):
+        menge = set()
+        for i, a in enumerate(gebrUnivTable4metaKonkret[1:]):
+            for k, b in enumerate(a[1:]):
+                b = b.strip()
+                if len(b) > 3:
+                    frac = Fraction(i + 2, k + 2)
+                    if frac.denominator != 1 and frac.numerator != 1:
+                        menge |= {frac}
+        return menge
+
     def spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(self, wahl) -> list:
         if wahl in self.CSVsAlreadRead:
             # alxp("BLUB")
@@ -1264,6 +1277,11 @@ class Concat:
                 )
             for wahl2 in self.CSVsSame[wahl]:
                 self.CSVsAlreadRead[wahl2] = self.gebrUnivTable4metaKonkret
+            if wahl in (2, 4):
+                self.BruecheUni = self.getAllBrueche(self.gebrUnivTable4metaKonkret)
+                x("SDF", self.BruecheUni)
+            if wahl in (3, 5):
+                self.BruecheGal = self.getAllBrueche(self.gebrUnivTable4metaKonkret)
             return self.gebrUnivTable4metaKonkret
 
     def spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
