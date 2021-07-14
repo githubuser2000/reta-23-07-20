@@ -623,7 +623,11 @@ class Concat:
         return self.relitable, rowsAsNumbers
 
     def concat1RowPrimUniverse2(
-        self, relitable: list, rowsAsNumbers: set, generatedBefehle: set
+        self,
+        relitable: list,
+        rowsAsNumbers: set,
+        generatedBefehle: set,
+        htmlTagWoerter: list,
     ) -> tuple:
         """Fügt eine Spalte ein, in der Primzahlen mit Vielfachern
         auf dem Niveau des Universums nicht einfach nur aus einer
@@ -636,7 +640,7 @@ class Concat:
         """
         global originalLinesRange
         self.relitable = relitable
-        # x("TZJ", generatedBefehle)
+        x("TZJ", htmlTagWoerter)
 
         hardCodedCouple = (10, 42)
         transzendentalienNrezi = (5, 131)
@@ -692,12 +696,13 @@ class Concat:
                 ),
             }
 
-            koord2tag = {}
+            koord2tag, koord2Parameter = {}, {}
             for name, mehrereEinraege in forGeneratedSpaltenParameter_Tags.items():
                 for befehl in generatedBefehle:
                     if name == befehl:
                         for drei in mehrereEinraege:
                             koord2tag[(drei[0], drei[1])] = drei[2]
+                            koord2Parameter[(drei[0], drei[1])] = befehl
 
             # stern vs gleichf:
             for zwei, (polytype, polytypename, transzType) in enumerate(
@@ -796,13 +801,17 @@ class Concat:
                         self.tables.generatedSpaltenParameter[
                             len(self.tables.generatedSpaltenParameter)
                             + self.tables.SpaltenVanillaAmount
-                        ] = ([primzahlvielfachesgalaxie[0]],)
-                        # ] = (
-                        #    [
-                        #        ("PrimVielfache2", "test"),
-                        #    ],
-                        # )
-                        x("SGHN", len(self.tables.generatedSpaltenParameter))
+                        ] = (
+                            [
+                                (
+                                    "PrimVielfache2",
+                                    htmlTagWoerter[
+                                        koord2Parameter[(zwei, nullBisDrei)]
+                                    ][0][0][0][1],
+                                ),
+                            ],
+                        )
+                        # x("SGHN", len(self.tables.generatedSpaltenParameter))
 
         return self.relitable, rowsAsNumbers
 

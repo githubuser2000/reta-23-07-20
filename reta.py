@@ -2821,16 +2821,18 @@ class Program:
             self.relitable, self.rowsAsNumbers
         )
 
-        blub1, blub2 = None, None
+        paraTextNamen = {}
+        for text in self.spaltenArtenKey_SpaltennummernValue[(0, 7)]:
+            paraTextNamen[text] = [self.dataDict[7][text]]
+
         (
             self.relitable,
             self.rowsAsNumbers,
-            # blub1,
-            # blub2,
         ) = self.tables.getConcat.concat1RowPrimUniverse2(
             self.relitable,
             self.rowsAsNumbers,
             self.spaltenArtenKey_SpaltennummernValue[(0, 7)],
+            paraTextNamen,
         )
 
         (
