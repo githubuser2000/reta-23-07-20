@@ -1266,20 +1266,19 @@ class Concat:
         return menge
 
     def spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(self, wahl) -> list:
-        if wahl in self.CSVsAlreadRead:
+        if wahl in self.CSVsAlreadRead and False:
             # alxp("BLUB")
-            return self.CSVsAlreadRead[wahl]
+            return self.CSVsAlreadRead[csv_file]
         else:
             place = self.readConcatCSV_choseCsvFile(wahl)
             with open(place, mode="r") as csv_file:
                 self.gebrUnivTable4metaKonkret = list(
                     csv.reader(csv_file, delimiter=";")
                 )
-            for wahl2 in self.CSVsSame[wahl]:
-                self.CSVsAlreadRead[wahl2] = self.gebrUnivTable4metaKonkret
+            self.CSVsAlreadRead[csv_file] = self.gebrUnivTable4metaKonkret
             if wahl in (2, 4):
                 self.BruecheUni = self.getAllBrueche(self.gebrUnivTable4metaKonkret)
-                x("SDF", self.BruecheUni)
+                # x("SDF", self.BruecheUni)
             if wahl in (3, 5):
                 self.BruecheGal = self.getAllBrueche(self.gebrUnivTable4metaKonkret)
             return self.gebrUnivTable4metaKonkret
@@ -1506,9 +1505,18 @@ class Concat:
             gebrRatZahl = (
                 Fraction(zeilenNr, i) if not ifTransponiert else Fraction(i, zeilenNr)
             )
+            # x("TRANS", ifTransponiert)
             cellNeu = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                 gebrRatZahl, concatTable in (3, 5)
             )
+            # if (
+            #    (zeilenNr == 3 and i == 5)
+            #    or (zeilenNr == 5 and i == 3)
+            #    and concatTable in (2, 4)
+            # ):
+            #    x("TDV", (gebrRatZahl == Fraction(3, 5), gebrRatZahl == Fraction(5, 3)))
+            #    x("BLAU", cellNeu)
+            # x("SDsd", cellNeu)
             primcolNeu += [cellNeu if cellNeu is not None else ""]
 
         return primcolNeu

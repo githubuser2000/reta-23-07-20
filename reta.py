@@ -2270,6 +2270,15 @@ class Program:
         allValues[5] = set(range(2, 100))
         allValues[6] = set(range(2, 100))
 
+        self.paraDictGenerated = {}
+        self.paraDictGenerated4htmlTags = {}
+        for key, value in paraNdataMatrix4onlyGenerated.items():
+            for firstParameter in value[0][1:]:
+                for secondParameter in value[1][1:]:
+                    self.paraDictGenerated[(firstParameter, secondParameter)] = key
+            self.paraDictGenerated4htmlTags[(value[0][0], value[1][0])] = key
+            # allValues[7] |= {key}
+
         paraNdataMatrix += [
             (
                 Program.ParametersMain.alles,
@@ -2298,13 +2307,6 @@ class Program:
                 *into,
             )
 
-        self.paraDictGenerated = {}
-        self.paraDictGenerated4htmlTags = {}
-        for key, value in paraNdataMatrix4onlyGenerated.items():
-            for firstParameter in value[0][1:]:
-                for secondParameter in value[1][1:]:
-                    self.paraDictGenerated[(firstParameter, secondParameter)] = key
-            self.paraDictGenerated4htmlTags[(value[0][0], value[1][0])] = key
         self.dataDict[3] = Program.kombiParaNdataMatrix
 
         alxp(self.paraDictGenerated)
