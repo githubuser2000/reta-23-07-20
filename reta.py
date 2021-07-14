@@ -204,6 +204,7 @@ class Program:
                                         oneOfThingsAfterEqSign,
                                         befehlName=cmd[:eq],
                                     )
+                                    x("DFGH", self.spaltenArtenKey_SpaltennummernValue)
                                 except KeyError:
                                     nebenParameters: list = []
                                     nebenparameterWerte: list = []
@@ -2813,12 +2814,20 @@ class Program:
         ) = self.tables.getConcat.concatMondExponzierenLogarithmusTyp(
             self.relitable, self.rowsAsNumbers
         )
-
         (
             self.relitable,
             self.rowsAsNumbers,
         ) = self.tables.getConcat.concat1RowPrimUniverse(
             self.relitable, self.rowsAsNumbers
+        )
+
+        (
+            self.relitable,
+            self.rowsAsNumbers,
+        ) = self.tables.getConcat.concat1RowPrimUniverse2(
+            self.relitable,
+            self.rowsAsNumbers,
+            self.spaltenArtenKey_SpaltennummernValue[(0, 7)],
         )
         (
             self.relitable,

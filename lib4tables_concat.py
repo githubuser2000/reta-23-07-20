@@ -623,7 +623,7 @@ class Concat:
         return self.relitable, rowsAsNumbers
 
     def concat1RowPrimUniverse2(
-        self, relitable: list, rowsAsNumbers: set, generatedBefehle: list
+        self, relitable: list, rowsAsNumbers: set, generatedBefehle: set
     ) -> tuple:
         """Fügt eine Spalte ein, in der Primzahlen mit Vielfachern
         auf dem Niveau des Universums nicht einfach nur aus einer
@@ -636,6 +636,8 @@ class Concat:
         """
         global originalLinesRange
         self.relitable = relitable
+        # x("TZJ", generatedBefehle)
+
         hardCodedCouple = (10, 42)
         transzendentalienNrezi = (5, 131)
         if len(self.tables.primUniversePrimsSet) > 0:
