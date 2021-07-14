@@ -740,16 +740,14 @@ class Concat:
                 )
 
                 for nullBisDrei, kombiUeberschrift in enumerate(kombisNamen):
-                    for i, cols in enumerate(relitableCopy):
-
+                    flag = False
+                    try:
+                        tag: frozenset = koord2tag[(zwei, nullBisDrei)]
+                        flag = True
+                    except KeyError:
                         flag = False
-                        try:
-                            tag: frozenset = koord2tag[(zwei, nullBisDrei)]
-                            flag = True
-                        except KeyError:
-                            flag = False
-
-                        if flag:
+                    if flag:
+                        for i, cols in enumerate(relitableCopy):
                             self.tables.generatedSpaltenParameter_Tags[
                                 len(rowsAsNumbers)
                             ] = tag
@@ -789,21 +787,22 @@ class Concat:
                                 ]
                             self.relitable[i] += ["".join(into)]
 
-                            if (
-                                len(self.tables.generatedSpaltenParameter)
-                                + self.tables.SpaltenVanillaAmount
-                                in self.tables.generatedSpaltenParameter
-                            ):
-                                raise ValueError
-                            self.tables.generatedSpaltenParameter[
-                                len(self.tables.generatedSpaltenParameter)
-                                + self.tables.SpaltenVanillaAmount
-                            ] = ([primzahlvielfachesgalaxie[0]],)
-                            # ] = (
-                            #    [
-                            #        ("PrimVielfache2", "test"),
-                            #    ],
-                            # )
+                        if (
+                            len(self.tables.generatedSpaltenParameter)
+                            + self.tables.SpaltenVanillaAmount
+                            in self.tables.generatedSpaltenParameter
+                        ):
+                            raise ValueError
+                        self.tables.generatedSpaltenParameter[
+                            len(self.tables.generatedSpaltenParameter)
+                            + self.tables.SpaltenVanillaAmount
+                        ] = ([primzahlvielfachesgalaxie[0]],)
+                        # ] = (
+                        #    [
+                        #        ("PrimVielfache2", "test"),
+                        #    ],
+                        # )
+                        x("SGHN", len(self.tables.generatedSpaltenParameter))
 
         return self.relitable, rowsAsNumbers
 
