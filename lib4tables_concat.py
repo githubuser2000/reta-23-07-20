@@ -640,19 +640,15 @@ class Concat:
 
         hardCodedCouple = (10, 42)
         transzendentalienNrezi = (5, 131)
-        if len(self.tables.primUniversePrimsSet) > 0:
+        if len(generatedBefehle) > 0:
             self.tables.primUniverseRowNum = len(self.relitable[0])
             self.tables.generatedSpaltenParameter_Tags[len(rowsAsNumbers)] = frozenset(
                 {ST.sternPolygon, ST.galaxie}
             )
             forGeneratedSpaltenParameter_Tags: dict = {
                 "primMotivStern": (
-                    (
-                        0,
-                        0,
-                        frozenset({ST.sternPolygon, ST.galaxie}),
-                        (0, 1, frozenset({ST.sternPolygon, ST.galaxie, ST.universum})),
-                    ),
+                    (0, 0, frozenset({ST.sternPolygon, ST.galaxie})),
+                    (0, 1, frozenset({ST.sternPolygon, ST.galaxie, ST.universum})),
                     (0, 2, frozenset({ST.sternPolygon, ST.galaxie, ST.universum})),
                 ),
                 "primStrukStern": (
@@ -698,9 +694,11 @@ class Concat:
 
             koord2tag = {}
             for name, drei in forGeneratedSpaltenParameter_Tags.items():
+                x("SDFG", drei)
                 for befehl in generatedBefehle:
                     if name == befehl:
                         koord2tag[(drei[0], drei[1])] = drei[2]
+            x("SDFG", koord2tag)
 
             # stern vs gleichf:
             for zwei, (polytype, polytypename, transzType) in enumerate(
