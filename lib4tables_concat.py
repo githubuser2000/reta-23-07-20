@@ -701,8 +701,16 @@ class Concat:
                 for befehl in generatedBefehle:
                     if name == befehl:
                         for drei in mehrereEinraege:
-                            koord2tag[(drei[0], drei[1])] = drei[2]
-                            koord2Parameter[(drei[0], drei[1])] = befehl
+                            try:
+                                koord2tag[(drei[0], drei[1])] += [drei[2]]
+                            except KeyError:
+                                koord2tag[(drei[0], drei[1])] = [drei[2]]
+                            try:
+                                koord2Parameter[(drei[0], drei[1])] += [befehl]
+                            except KeyError:
+                                koord2Parameter[(drei[0], drei[1])] = [befehl]
+            x("FBN", koord2Parameter)
+            x("FB_", koord2tag)
 
             # stern vs gleichf:
             for zwei, (polytype, polytypename, transzType) in enumerate(
@@ -747,7 +755,8 @@ class Concat:
                 for nullBisDrei, kombiUeberschrift in enumerate(kombisNamen):
                     flag = False
                     try:
-                        tag: frozenset = koord2tag[(zwei, nullBisDrei)]
+                        tags: list = koord2tag[(zwei, nullBisDrei)]
+                        tag: frozenset = max(tags)
                         flag = True
                     except KeyError:
                         flag = False
@@ -805,10 +814,9 @@ class Concat:
                             [
                                 (
                                     "PrimVielfache2",
-                                    htmlTagWoerter[
-                                        koord2Parameter[(zwei, nullBisDrei)]
-                                    ][0][0][0][1],
-                                ),
+                                    htmlTagWoerter[para][0][0][0][1],
+                                )
+                                for para in koord2Parameter[(zwei, nullBisDrei)]
                             ],
                         )
                         # x("SGHN", len(self.tables.generatedSpaltenParameter))
