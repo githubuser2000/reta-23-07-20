@@ -622,6 +622,185 @@ class Concat:
 
         return self.relitable, rowsAsNumbers
 
+    def concat1RowPrimUniverse2(
+        self, relitable: list, rowsAsNumbers: set, generatedBefehle: list
+    ) -> tuple:
+        """Fügt eine Spalte ein, in der Primzahlen mit Vielfachern
+        auf dem Niveau des Universums nicht einfach nur aus einer
+        CSV Tabelle geladen werden, sondern durch Primzahlen und
+        deren Vielfachern generiert werden.
+
+        @type relitable: list
+        @param relitable: Haupttabelle self.relitable
+        @return: relitable + weitere Tabelle daneben
+        """
+        global originalLinesRange
+        self.relitable = relitable
+        hardCodedCouple = (10, 42)
+        transzendentalienNrezi = (5, 131)
+        if len(self.tables.primUniversePrimsSet) > 0:
+            self.tables.primUniverseRowNum = len(self.relitable[0])
+            self.tables.generatedSpaltenParameter_Tags[len(rowsAsNumbers)] = frozenset(
+                {ST.sternPolygon, ST.galaxie}
+            )
+            forGeneratedSpaltenParameter_Tags: dict = {
+                "primMotivStern": (
+                    (
+                        0,
+                        0,
+                        frozenset({ST.sternPolygon, ST.galaxie}),
+                        (0, 1, frozenset({ST.sternPolygon, ST.galaxie, ST.universum})),
+                    ),
+                    (0, 2, frozenset({ST.sternPolygon, ST.galaxie, ST.universum})),
+                ),
+                "primStrukStern": (
+                    (0, 1, frozenset({ST.sternPolygon, ST.galaxie, ST.universum})),
+                    (0, 2, frozenset({ST.sternPolygon, ST.galaxie, ST.universum})),
+                    (0, 3, frozenset({ST.sternPolygon, ST.universum})),
+                ),
+                "primMotivGleichf": (
+                    (1, 0, frozenset({ST.gleichfoermigesPolygon, ST.galaxie})),
+                    (
+                        1,
+                        1,
+                        frozenset(
+                            {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum}
+                        ),
+                    ),
+                    (
+                        1,
+                        2,
+                        frozenset(
+                            {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum}
+                        ),
+                    ),
+                ),
+                "primStrukGleichf": (
+                    (
+                        1,
+                        1,
+                        frozenset(
+                            {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum}
+                        ),
+                    ),
+                    (
+                        1,
+                        2,
+                        frozenset(
+                            {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum}
+                        ),
+                    ),
+                    (1, 3, frozenset({ST.gleichfoermigesPolygon, ST.universum})),
+                ),
+            }
+
+            koord2tag = {}
+            for name, drei in forGeneratedSpaltenParameter_Tags.items():
+                for befehl in generatedBefehle:
+                    if name == befehl:
+                        koord2tag[(drei[0], drei[1])] = drei[2]
+
+            # stern vs gleichf:
+            for zwei, (polytype, polytypename, transzType) in enumerate(
+                zip(
+                    hardCodedCouple,
+                    ["Sternpolygone", "gleichförmige Polygone"],
+                    transzendentalienNrezi,
+                )
+            ):
+                self.transzendentalien_ = []
+                # self.rolle = []
+                self.motivation_ = []
+                # self.ziel = []
+                kombi_ = []
+                for cols in self.relitable:
+                    self.motivation_ += [cols[polytype]]
+                    # self.rolle += [cols[19]]
+                    self.transzendentalien_ += [cols[transzType]]
+                    # self.ziel += [cols[11]]
+                relitableCopy = deepcopy(self.relitable)
+                self.motivation: tuple = tuple(self.motivation_)
+                self.transzendentalien: tuple = tuple(self.transzendentalien_)
+
+                for i, cols in enumerate(self.relitable):
+                    kombi_ += [
+                        (
+                            (self.motivation[i], self.motivation[i]),
+                            (self.motivation[i], self.transzendentalien[i]),
+                            (self.transzendentalien[i], self.motivation[i]),
+                            (self.transzendentalien[i], self.transzendentalien[i]),
+                        )
+                    ]
+                kombis: tuple = tuple(kombi_)
+
+                kombisNamen: tuple = (
+                    "Motiv -> Motiv",
+                    "Motiv -> Strukur",
+                    "Struktur -> Motiv",
+                    "Struktur -> Strukur",
+                )
+
+                for nullBisDrei, kombiUeberschrift in enumerate(kombisNamen):
+                    for i, cols in enumerate(relitableCopy):
+
+                        flag = False
+                        try:
+                            tag: frozenset = koord2tag[(zwei, nullBisDrei)]
+                            flag = True
+                        except KeyError:
+                            flag = False
+
+                        if flag:
+                            self.tables.generatedSpaltenParameter_Tags[
+                                len(rowsAsNumbers)
+                            ] = tag
+                            rowsAsNumbers |= {
+                                len(self.relitable[0]),
+                            }
+                            multipless = multiples(i)
+                            into = (
+                                [""]
+                                if i != 0
+                                else [
+                                    "generierte Multiplikationen ",
+                                    polytypename,
+                                    " ",
+                                    kombiUeberschrift,
+                                ]
+                            )
+                            for k, multi in enumerate(multipless):
+                                if k > 0:
+                                    into += (
+                                        [",<br>außerdem: "]
+                                        if self.tables.htmlOutputYes
+                                        else [", außerdem: "]
+                                    )
+                                into += [
+                                    "( ",
+                                    kombis[multi[0]][nullBisDrei][0]
+                                    if len(kombis[multi[0]][nullBisDrei][0].strip()) > 3
+                                    else "...",
+                                    ") * (",
+                                    kombis[multi[1]][nullBisDrei][1]
+                                    if len(kombis[multi[1]][nullBisDrei][1].strip()) > 3
+                                    else "...",
+                                    " )",
+                                ]
+                            self.relitable[i] += ["".join(into)]
+
+                        if (
+                            len(self.tables.generatedSpaltenParameter)
+                            + self.tables.SpaltenVanillaAmount
+                            in self.tables.generatedSpaltenParameter
+                        ):
+                            raise ValueError
+                        self.tables.generatedSpaltenParameter[
+                            len(self.tables.generatedSpaltenParameter)
+                            + self.tables.SpaltenVanillaAmount
+                        ] = ([primzahlvielfachesgalaxie[0]],)
+
+        return self.relitable, rowsAsNumbers
+
     def concat1RowPrimUniverse(self, relitable: list, rowsAsNumbers: set) -> tuple:
         """Fügt eine Spalte ein, in der Primzahlen mit Vielfachern
         auf dem Niveau des Universums nicht einfach nur aus einer
