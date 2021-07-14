@@ -693,12 +693,11 @@ class Concat:
             }
 
             koord2tag = {}
-            for name, drei in forGeneratedSpaltenParameter_Tags.items():
-                x("SDFG", drei)
+            for name, mehrereEinraege in forGeneratedSpaltenParameter_Tags.items():
                 for befehl in generatedBefehle:
                     if name == befehl:
-                        koord2tag[(drei[0], drei[1])] = drei[2]
-            x("SDFG", koord2tag)
+                        for drei in mehrereEinraege:
+                            koord2tag[(drei[0], drei[1])] = drei[2]
 
             # stern vs gleichf:
             for zwei, (polytype, polytypename, transzType) in enumerate(
