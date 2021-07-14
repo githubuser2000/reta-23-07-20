@@ -1491,9 +1491,6 @@ class Concat:
                 + self.tables.SpaltenVanillaAmount
             ] = self.tables.dataDict[4][(extraSpalten[r],)]
 
-            # self.tables.dataDict[0][5][0],
-            # #x("rewt2", self.tables.dataDict[4][(extraSpalten[r],)][0])
-        # #x("rewt1", self.tables.dataDict[0][5][0])
         return self.relitable, rowsAsNumbers
 
     def readConcatCsv_primColchange(
@@ -1505,18 +1502,10 @@ class Concat:
             gebrRatZahl = (
                 Fraction(zeilenNr, i) if not ifTransponiert else Fraction(i, zeilenNr)
             )
-            # x("TRANS", ifTransponiert)
+
             cellNeu = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                 gebrRatZahl, concatTable in (3, 5)
             )
-            # if (
-            #    (zeilenNr == 3 and i == 5)
-            #    or (zeilenNr == 5 and i == 3)
-            #    and concatTable in (2, 4)
-            # ):
-            #    x("TDV", (gebrRatZahl == Fraction(3, 5), gebrRatZahl == Fraction(5, 3)))
-            #    x("BLAU", cellNeu)
-            # x("SDsd", cellNeu)
             primcolNeu += [cellNeu if cellNeu is not None else ""]
 
         return primcolNeu
