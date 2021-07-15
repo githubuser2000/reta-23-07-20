@@ -1918,7 +1918,7 @@ class Concat:
                 [
                     (
                         "primzahlvielfachesgalaxie",
-                        "Nicht_Generiert",
+                        "Nicht_generiert",
                     )
                 ],
             )
