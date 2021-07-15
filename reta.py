@@ -42,6 +42,7 @@ class Program:
         def resultingSpaltenFromTuple(
             tupl: tuple, neg, paraValue=None, befehlName=None
         ) -> tuple:
+            # x("SDH1", [befehlName in Program.ParametersMain.primvielfache, paraValue])
             for i, eineSpaltenArtmitSpaltenNummern in enumerate(tupl):
                 """
                 Die Variable self.tables.spalteGestirn braucht man gar nicht mehr !!!
@@ -94,7 +95,11 @@ class Program:
                     else:
                         print(befehlName)
                         raise ValueError
-
+                elif (
+                    paraValue == "beschrieben"
+                    and befehlName in Program.ParametersMain.primvielfache
+                ):
+                    self.spaltenArtenKey_SpaltennummernValue[(len(neg), 2)] |= {2}
                 else:
                     try:
                         # alxp("N11N")
@@ -1923,17 +1928,17 @@ class Program:
                 set([str(a) for a in range(2, 100)]),
             ),
             (Program.ParametersMain.symbole, (), {36, 37}),
-            (
-                Program.ParametersMain.primzahlvielfachesgalaxie,
-                allowedPrimNumbersForCommand,
-                set(),
-                set(),
-                (
-                    lambda: {  # nur noch ein Platzhalter
-                        None,
-                    },
-                ),
-            ),
+            # (
+            #    Program.ParametersMain.primzahlvielfachesgalaxie,
+            #    allowedPrimNumbersForCommand,
+            #    set(),
+            #    set(),
+            #    (
+            #        lambda: {  # nur noch ein Platzhalter
+            #            None,
+            #        },
+            #    ),
+            # ),
             (
                 Program.ParametersMain.konzept,
                 (

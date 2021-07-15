@@ -1713,12 +1713,16 @@ class Concat:
 
         return self.relitable, rowsAsNumbers
 
-    def readConcatCsv_primColchange(
-        self, zeilenNr: int, primcol: list, concatTable: int, ifTransponiert=False
+    def readConcatCsv_tabelleDazuColchange(
+        self,
+        zeilenNr: int,
+        tabelleDazuCol: list,
+        concatTable: int,
+        ifTransponiert=False,
     ) -> list:
-        primcolNeu: list = []
+        tabelleDazuColNeu: list = []
 
-        for i, cell in enumerate(primcol, 1):
+        for i, cell in enumerate(tabelleDazuCol, 1):
             gebrRatZahl = (
                 Fraction(zeilenNr, i) if not ifTransponiert else Fraction(i, zeilenNr)
             )
@@ -1726,9 +1730,9 @@ class Concat:
             cellNeu = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                 gebrRatZahl, concatTable in (3, 5)
             )
-            primcolNeu += [cellNeu if cellNeu is not None else ""]
+            tabelleDazuColNeu += [cellNeu if cellNeu is not None else ""]
 
-        return primcolNeu
+        return tabelleDazuColNeu
 
     def readConcatCsv(
         self,
@@ -1778,21 +1782,41 @@ class Concat:
                 tableToAdd = self.readConcatCsv_getTableToAdd(
                     concatTable, csv_file, transpose
                 )
+                if concatTable == 1:
+                    tableToAdd2 = [["Primzahlvielfache, nicht generiert"]]
+                    for t, zeile in enumerate(tableToAdd[1:], 1):
+                        zeileNeu = []
+                        for zelle in zeile:
+                            if len(zelle.strip()) > 3:
+                                zeileNeu += [zelle]
+                        zeileNeu = [
+                            ("| <br>" if self.tables.htmlOutputYes else " | ").join(
+                                zeileNeu
+                            )
+                        ]
+                        tableToAdd2 += [zeileNeu]
+                    tableToAdd = tableToAdd2
+
                 self.relitable, tableToAdd = self.tables.fillBoth(
                     self.relitable, tableToAdd
                 )
                 lastlen = 0
                 maxlen = 0
-                for i, (primcol, relicol) in enumerate(zip(tableToAdd, self.relitable)):
-                    lastlen = len(primcol)
+                for i, (tabelleDazuCol, relicol) in enumerate(
+                    zip(tableToAdd, self.relitable)
+                ):
+
+                    lastlen = len(tabelleDazuCol)
                     if lastlen > maxlen:
                         maxlen = lastlen
-                    dazu = list(primcol) + [""] * (maxlen - len(primcol))
+                    dazu = list(tabelleDazuCol) + [""] * (maxlen - len(tabelleDazuCol))
 
                     if concatTable in (2, 3) and i != 0:
-                        dazu = self.readConcatCsv_primColchange(i, dazu, concatTable)
+                        dazu = self.readConcatCsv_tabelleDazuColchange(
+                            i, dazu, concatTable
+                        )
                     elif concatTable in (4, 5) and i != 0:
-                        dazu = self.readConcatCsv_primColchange(
+                        dazu = self.readConcatCsv_tabelleDazuColchange(
                             i, dazu, concatTable, True
                         )
 
@@ -1865,7 +1889,7 @@ class Concat:
         u,
     ):
         if (u + 2 in concatTableSelection and concatTable in range(2, 6)) or (
-            concatTable == 1 and int(heading) in concatTableSelection
+            concatTable == 1  # and int(heading) in concatTableSelection
         ):
             if concatTable not in range(2, 6) or u + 1 != len(dazu):
                 delta = 1 if concatTable in range(2, 6) else 0
@@ -1890,8 +1914,18 @@ class Concat:
             # x("nnn", self.tables.dataDict[5 + ((concatTable - 2) % 2)][u + 2])
             # x("nnn", u)
         if concatTable == 1:
+            intoHtmlPara = (
+                [
+                    (
+                        "primzahlvielfachesgalaxie",
+                        "Nicht_Generiert",
+                    )
+                ],
+            )
+
             # x("EDS", self.tables.dataDict[2][int(heading)])
             self.tables.generatedSpaltenParameter[
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
-            ] = self.tables.dataDict[2][int(heading)]
+                # ] = self.tables.dataDict[2][int(heading)]
+            ] = intoHtmlPara

@@ -53,6 +53,8 @@ also Primzahlen[/list]
 [list][*]konkret,meta,theorie,praxis,ganzheitlich,hinausgehend,management,veraendernd,unternehmung,wert,richtung,regieren[/list]
 [*]--primzahlwirkung
 [list][*]universum,absichtgalaxie,absichtgalaxiereziproke,universumreziproke,neutralegegentranszendentalie,richtungrichtung,metaparadigmareligion,dagegengegentranszendentalie[/list]
+[*]--primvielfache
+[list][*]beschrieben,motivstern,strukturstern,motivgleichfoermig,strukturgleichfoermig[/list]
 [*]--gebrochengalaxie
 [list][*]2,3,4,5,6,7,8,9,10,11,12,13,14,15, ..... usw.[/list]
 [*]--gebrochenuniversum
