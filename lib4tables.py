@@ -458,11 +458,15 @@ def couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num: int) -> bool:
     return num % 24 in Under24
 
 
-def multiples(a):
+def multiples(a, mul1=True):
     menge = set()
     for b in range(2, math.floor(math.sqrt(a) + 1)):
         c = a / b * 1000
         c = round(c) / 1000
         if c == round(c):
             menge |= {(int(c), b)}
-    return list(menge)
+    if mul1:
+        menge = list(menge) + [(a, 1)]
+    else:
+        menge = list(menge)
+    return menge
