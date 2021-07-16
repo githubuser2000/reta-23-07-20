@@ -1486,20 +1486,15 @@ class Concat:
 
     def spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(self, wahl) -> list:
         place = self.readConcatCSV_choseCsvFile(wahl)
-        if place in self.CSVsAlreadRead and False:
-            # alxp("BLUB")
+        if place in self.CSVsAlreadRead:
+            self.gebrUnivTable4metaKonkret = self.CSVsAlreadRead[place]
             return self.CSVsAlreadRead[place]
         else:
             with open(place, mode="r") as csv_file:
                 self.gebrUnivTable4metaKonkret = list(
                     csv.reader(csv_file, delimiter=";")
                 )
-            self.CSVsAlreadRead[place] = deepcopy(self.gebrUnivTable4metaKonkret)
-            if self.CSVsAlreadRead[place] != self.gebrUnivTable4metaKonkret:
-                x("AAA", self.gebrUnivTable4metaKonkret)
-                x("BBB", self.CSVsAlreadRead[place])
-            if place in self.CSVsAlreadRead:
-                return self.CSVsAlreadRead[place]
+            self.CSVsAlreadRead[place] = self.gebrUnivTable4metaKonkret
             if wahl in (2, 4):
                 self.BruecheUni = self.getAllBrueche(self.gebrUnivTable4metaKonkret)
                 # x("SDF", self.BruecheUni)
