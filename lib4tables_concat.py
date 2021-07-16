@@ -1497,7 +1497,8 @@ class Concat:
             self.CSVsAlreadRead[place] = self.gebrUnivTable4metaKonkret
             if wahl in (2, 4):
                 self.BruecheUni = self.getAllBrueche(self.gebrUnivTable4metaKonkret)
-                # x("SDF", self.BruecheUni)
+                for self.BruecheUn in self.BruecheUni:
+                    x("SDF", self.BruecheUn * self.BruecheUn.denominator)
             if wahl in (3, 5):
                 self.BruecheGal = self.getAllBrueche(self.gebrUnivTable4metaKonkret)
             return self.gebrUnivTable4metaKonkret
