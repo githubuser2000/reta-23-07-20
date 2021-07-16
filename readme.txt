@@ -1,3 +1,5 @@
+Hauptprogramm ist reta oder reta.py
+
 Bedienungsanleitung:
 Es gibt 4 Hauptparameter.
 [b]Wichtig: die Nebenparameter müssen direkt hinter dem richtigen Hauptparamter stehen, sonst wirken sie nicht und dazwischen darf kein anderer Hauptparameter stehen![/b]

@@ -439,8 +439,8 @@ class Program:
                                 except KeyError:
                                     into = [(parameterMainName, parameterName)]
 
-                    if i == 7:
-                        x("SDV", d)
+                    # if i == 7:
+                    #    x("SDV", d)
                     index1 = i if case != 1 else 3
                     index2a = (
                         spaltenNummerOderEtc
@@ -2410,10 +2410,10 @@ class Program:
         # alxp("-|-|")
         # alxp(self.paraDictGenerated4htmlTags)
         # alxp("||-|")
-        alxp(self.paraDict)
-        alxp("--|-")
-        alxp(self.dataDict)
-        alxp("--||")
+        # alxp(self.paraDict)
+        # alxp("--|-")
+        # alxp(self.dataDict)
+        # alxp("--||")
         self.tables.dataDict = self.dataDict
 
     def parametersToCommandsAndNumbers(

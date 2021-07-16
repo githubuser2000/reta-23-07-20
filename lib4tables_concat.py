@@ -641,7 +641,7 @@ class Concat:
         """
         global originalLinesRange
         self.relitable = relitable
-        x("TZJ", htmlTagWoerter)
+        # x("TZJ", htmlTagWoerter)
 
         hardCodedCouple = (10, 42)
         transzendentalienNrezi = (5, 131)
@@ -710,8 +710,8 @@ class Concat:
                                 koord2Parameter[(drei[0], drei[1])] += [befehl]
                             except KeyError:
                                 koord2Parameter[(drei[0], drei[1])] = [befehl]
-            x("FBN", koord2Parameter)
-            x("FB_", koord2tag)
+            # x("FBN", koord2Parameter)
+            # x("FB_", koord2tag)
 
             # stern vs gleichf:
             for zwei, (polytype, polytypename, transzType) in enumerate(
@@ -769,7 +769,7 @@ class Concat:
                             rowsAsNumbers |= {
                                 len(self.relitable[0]),
                             }
-                            x("HJM", len(self.relitable[0]))
+                            # x("HJM", len(self.relitable[0]))
 
                             multipless = multiples(i)
                             into = (
@@ -1485,16 +1485,21 @@ class Concat:
         return menge
 
     def spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(self, wahl) -> list:
-        if wahl in self.CSVsAlreadRead and False:
+        place = self.readConcatCSV_choseCsvFile(wahl)
+        if place in self.CSVsAlreadRead and False:
             # alxp("BLUB")
-            return self.CSVsAlreadRead[csv_file]
+            return self.CSVsAlreadRead[place]
         else:
-            place = self.readConcatCSV_choseCsvFile(wahl)
             with open(place, mode="r") as csv_file:
                 self.gebrUnivTable4metaKonkret = list(
                     csv.reader(csv_file, delimiter=";")
                 )
-            self.CSVsAlreadRead[csv_file] = self.gebrUnivTable4metaKonkret
+            self.CSVsAlreadRead[place] = deepcopy(self.gebrUnivTable4metaKonkret)
+            if self.CSVsAlreadRead[place] != self.gebrUnivTable4metaKonkret:
+                x("AAA", self.gebrUnivTable4metaKonkret)
+                x("BBB", self.CSVsAlreadRead[place])
+            if place in self.CSVsAlreadRead:
+                return self.CSVsAlreadRead[place]
             if wahl in (2, 4):
                 self.BruecheUni = self.getAllBrueche(self.gebrUnivTable4metaKonkret)
                 # x("SDF", self.BruecheUni)
@@ -1709,7 +1714,7 @@ class Concat:
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
             ] = self.tables.dataDict[4][(extraSpalten[r],)]
-            x("HFT", self.tables.dataDict[4][(extraSpalten[r],)])
+            # x("HFT", self.tables.dataDict[4][(extraSpalten[r],)])
 
         return self.relitable, rowsAsNumbers
 
