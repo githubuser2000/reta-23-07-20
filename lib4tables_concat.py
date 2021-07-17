@@ -767,6 +767,15 @@ class Concat:
                 "Sternpolygone": [],
                 "gleichförmige Polygone": [],
             }
+
+            relitableCopy = deepcopy(self.relitable)
+            kombisNamen: tuple = (
+                "Motiv -> Motiv",
+                "Motiv -> Strukur",
+                "Struktur -> Motiv",
+                "Struktur -> Strukur",
+            )
+
             # self.rolle = []
             self.motivation: dict = {"Sternpolygone": [], "gleichförmige Polygone": []}
             # self.ziel = []
@@ -792,7 +801,6 @@ class Concat:
                     )
                 ):
                     kombi_ = []
-                    relitableCopy = deepcopy(self.relitable)
 
                     # alle Kombis die von strukur oder motiven also 2x2 möglich sind
                     for i, cols in enumerate(self.relitable):
@@ -817,14 +825,6 @@ class Concat:
                             )
                         ]
                     kombis: tuple = tuple(kombi_)
-
-                    kombisNamen: tuple = (
-                        "Motiv -> Motiv",
-                        "Motiv -> Strukur",
-                        "Struktur -> Motiv",
-                        "Struktur -> Strukur",
-                    )
-
                     # alle 2x2 kombis von motiven und struktur
                     for nullBisDrei, kombiUeberschrift in enumerate(kombisNamen):
                         flag = False
