@@ -757,7 +757,7 @@ class Concat:
             koord2tag, koord2Parameter = {}, {}
             for name, mehrereEinraege in forGeneratedSpaltenParameter_Tags.items():
                 for befehl in generatedBefehle:
-                    if name == befehl:
+                    if name == befehl:) # ob der Befehl des Users mit den jeweils vorhandenen übereinstimmt
                         for drei in mehrereEinraege:
                             try:
                                 koord2tag[(drei[0], drei[1], drei[3])] += [drei[2]]
