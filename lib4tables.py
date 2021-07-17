@@ -463,6 +463,8 @@ def multiples(a, mul1=True):
     findet für eine Zahl alle Kombinationen aus möglichen Multiplikationen aus ganzen Zahlen, die diese Zahl ergibt
     @type a: int
     @param a: Produkt von mehreren möglichen Faktoren
+    @type mul1: bool
+    @param mul1: ob auch 1 * a als Faktor als geordnetes Paar mit am Ende dazu kommen soll
     @return: gibt Liste an Paaren von Faktoren aus
     """
     menge = set()
