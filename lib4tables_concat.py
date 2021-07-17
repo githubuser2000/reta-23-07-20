@@ -24,6 +24,10 @@ class Concat:
         self.CSVsSame = {1: (1,), 2: (2, 4), 3: (3, 5), 4: (2, 4), 5: (3, 5)}
         self.BruecheUni = set()
         self.BruecheGal = set()
+        self.bla1 = []
+        self.bla2 = []
+        self.bla3 = []
+        self.bla4 = []
 
     @property
     def gebrUnivSet(self):
@@ -1498,7 +1502,39 @@ class Concat:
             if wahl in (2, 4):
                 self.BruecheUni = self.getAllBrueche(self.gebrUnivTable4metaKonkret)
                 for self.BruecheUn in self.BruecheUni:
-                    x("SDF", self.BruecheUn * self.BruecheUn.denominator)
+                    # x("SDF", self.BruecheUn * self.BruecheUn.denominator)
+                    for self.BruecheUn2 in self.BruecheUni:
+                        if (
+                            round(self.BruecheUn * self.BruecheUn2)
+                            == (self.BruecheUn * self.BruecheUn2)
+                            and self.BruecheUn != self.BruecheUn2
+                        ):
+                            x("SXF", int(self.BruecheUn * self.BruecheUn2))
+                            self.bla1 += [int(self.BruecheUn * self.BruecheUn2)]
+                        if (
+                            round(self.BruecheUn / self.BruecheUn2)
+                            == (self.BruecheUn / self.BruecheUn2)
+                            and self.BruecheUn != self.BruecheUn2
+                        ):
+                            x("S_F", int(self.BruecheUn / self.BruecheUn2))
+                            self.bla2 += [int(self.BruecheUn / self.BruecheUn2)]
+                        if (
+                            round(1 / (self.BruecheUn * self.BruecheUn2))
+                            == (1 / (self.BruecheUn * self.BruecheUn2))
+                            and self.BruecheUn != self.BruecheUn2
+                        ):
+                            x("SUF", int(self.BruecheUn * self.BruecheUn2))
+                            self.bla3 += [int(1 / (self.BruecheUn * self.BruecheUn2))]
+                            x("JFB", ["1/" + str(self.bla3)])
+                        if (
+                            round(1 / (self.BruecheUn / self.BruecheUn2))
+                            == (1 / (self.BruecheUn / self.BruecheUn2))
+                            and self.BruecheUn != self.BruecheUn2
+                        ):
+                            x("SUF", int(self.BruecheUn / self.BruecheUn2))
+                            self.bla4 += [int(1 / (self.BruecheUn / self.BruecheUn2))]
+                            x("TFB", ["1/" + str(self.bla4)])
+
             if wahl in (3, 5):
                 self.BruecheGal = self.getAllBrueche(self.gebrUnivTable4metaKonkret)
             return self.gebrUnivTable4metaKonkret
