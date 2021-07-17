@@ -759,6 +759,7 @@ class Concat:
                     "Struktur -> Strukur",
                 )
 
+                # alle 2x2 kombis von motiven und struktur
                 for nullBisDrei, kombiUeberschrift in enumerate(kombisNamen):
                     flag = False
                     try:
