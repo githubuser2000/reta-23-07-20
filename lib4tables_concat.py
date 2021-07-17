@@ -763,7 +763,27 @@ class Concat:
             # x("FB_", koord2tag)
 
             # stern vs gleichf:
-            for gebrOrGanz in ["ganz", "gebr"]:
+            self.transzendentalien: dict = {
+                "Sternpolygone": [],
+                "gleichförmige Polygone": [],
+            }
+            # self.rolle = []
+            self.motivation: dict = {"Sternpolygone": [], "gleichförmige Polygone": []}
+            # self.ziel = []
+            for zwei, (polytype, polytypename, transzType) in enumerate(
+                zip(
+                    hardCodedCouple,
+                    ["Sternpolygone", "gleichförmige Polygone"],
+                    transzendentalienNrezi,
+                )
+            ):
+                for cols in self.relitable:
+                    # self.rolle += [cols[19]]
+                    self.transzendentalien[polytypename] += [cols[transzType]]
+                    self.motivation[polytypename] += [cols[polytype]]
+                    # self.ziel += [cols[11]]
+
+            for gebrOrGanz in ["ganz"]:
                 for zwei, (polytype, polytypename, transzType) in enumerate(
                     zip(
                         hardCodedCouple,
@@ -771,28 +791,29 @@ class Concat:
                         transzendentalienNrezi,
                     )
                 ):
-                    self.transzendentalien_ = []
-                    # self.rolle = []
-                    self.motivation_ = []
-                    # self.ziel = []
                     kombi_ = []
-                    for cols in self.relitable:
-                        self.motivation_ += [cols[polytype]]
-                        # self.rolle += [cols[19]]
-                        self.transzendentalien_ += [cols[transzType]]
-                        # self.ziel += [cols[11]]
                     relitableCopy = deepcopy(self.relitable)
-                    self.motivation: tuple = tuple(self.motivation_)
-                    self.transzendentalien: tuple = tuple(self.transzendentalien_)
 
                     # alle Kombis die von strukur oder motiven also 2x2 möglich sind
                     for i, cols in enumerate(self.relitable):
                         kombi_ += [
                             (
-                                (self.motivation[i], self.motivation[i]),
-                                (self.motivation[i], self.transzendentalien[i]),
-                                (self.transzendentalien[i], self.motivation[i]),
-                                (self.transzendentalien[i], self.transzendentalien[i]),
+                                (
+                                    self.motivation[polytypename][i],
+                                    self.motivation[polytypename][i],
+                                ),
+                                (
+                                    self.motivation[polytypename][i],
+                                    self.transzendentalien[polytypename][i],
+                                ),
+                                (
+                                    self.transzendentalien[polytypename][i],
+                                    self.motivation[polytypename][i],
+                                ),
+                                (
+                                    self.transzendentalien[polytypename][i],
+                                    self.transzendentalien[polytypename][i],
+                                ),
                             )
                         ]
                     kombis: tuple = tuple(kombi_)
