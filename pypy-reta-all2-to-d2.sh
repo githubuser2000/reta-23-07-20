@@ -10,7 +10,7 @@ else
 	[ `cat ~/religionen_.html | grep '<table' | grep -v table2 | wc -l` -eq 1 ] && geschafft=true
 	$geschafft && cp -av ~/religionen_.html ~/religionen.html
 fi 
-$geschafft && cp ~/religionen.html ~/myRepos/reta/religionen.html 
+#$geschafft && cp ~/religionen.html ~/myRepos/reta/religionen.html 
 if [ "$1" == 'htmld2' ] || [ "$2" == 'htmld2' ] || [ "$3" == 'htmld2' ] || [ "$4" == 'htmld2' ]; then
 	if $geschafft; then
 		cd ~;tar -c religionen.html | plzip -1 - | ssh d2 'plzip -d - | tar -xf - -C /media/2TB/data/www/forum/' && echo html gesendet || echo html konnte nicht gesendet werden
