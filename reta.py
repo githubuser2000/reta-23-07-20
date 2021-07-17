@@ -2820,15 +2820,6 @@ class Program:
             self.relitable, self.rowsAsNumbers
         )
 
-        """
-        (
-            self.relitable,
-            self.rowsAsNumbers,
-        ) = self.tables.getConcat.concat1RowPrimUniverse(
-            self.relitable, self.rowsAsNumbers
-        )
-        """
-
         paraTextNamen = {}
         for text in self.spaltenArtenKey_SpaltennummernValue[(0, 7)]:
             paraTextNamen[text] = [self.dataDict[7][text]]
