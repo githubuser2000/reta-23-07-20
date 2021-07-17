@@ -760,13 +760,13 @@ class Concat:
                     if name == befehl:
                         for drei in mehrereEinraege:
                             try:
-                                koord2tag[(drei[0], drei[1])] += [drei[2]]
+                                koord2tag[(drei[0], drei[1], drei[3])] += [drei[2]]
                             except KeyError:
-                                koord2tag[(drei[0], drei[1])] = [drei[2]]
+                                koord2tag[(drei[0], drei[1], drei[3])] = [drei[2]]
                             try:
-                                koord2Parameter[(drei[0], drei[1])] += [befehl]
+                                koord2Parameter[(drei[0], drei[1], drei[3])] += [befehl]
                             except KeyError:
-                                koord2Parameter[(drei[0], drei[1])] = [befehl]
+                                koord2Parameter[(drei[0], drei[1], drei[3])] = [befehl]
             # x("FBN", koord2Parameter)
             # x("FB_", koord2tag)
 
@@ -800,7 +800,7 @@ class Concat:
                     self.motivation[polytypename] += [cols[polytype]]
                     # self.ziel += [cols[11]]
 
-            for ganzOrGebr in enumerate(["ganz"]):
+            for brr, ganzOrGebr in enumerate(["ganz"]):
                 for zwei, (polytype, polytypename, transzType) in enumerate(
                     zip(
                         hardCodedCouple,
@@ -837,7 +837,7 @@ class Concat:
                     for nullBisDrei, kombiUeberschrift in enumerate(kombisNamen):
                         flag = False
                         try:
-                            tags: list = koord2tag[(zwei, nullBisDrei)]
+                            tags: list = koord2tag[(zwei, nullBisDrei, brr)]
                             tag: frozenset = max(tags)
                             flag = True
                         except KeyError:
@@ -898,7 +898,7 @@ class Concat:
                                         htmlTagWoerter[para][0][0][0][1],
                                     )
                                 ]
-                                for para in koord2Parameter[(zwei, nullBisDrei)]
+                                for para in koord2Parameter[(zwei, nullBisDrei, brr)]
                             )
 
                             self.tables.generatedSpaltenParameter[
