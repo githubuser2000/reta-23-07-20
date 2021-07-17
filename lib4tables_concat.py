@@ -656,23 +656,24 @@ class Concat:
             )
             forGeneratedSpaltenParameter_Tags: dict = {
                 "primMotivSternGebr": (
-                    (0, 0, frozenset({ST.sternPolygon, ST.galaxie})),
-                    (0, 1, frozenset({ST.sternPolygon, ST.galaxie, ST.universum})),
-                    (0, 2, frozenset({ST.sternPolygon, ST.galaxie, ST.universum})),
+                    (0, 0, frozenset({ST.sternPolygon, ST.galaxie}), 1),
+                    (0, 1, frozenset({ST.sternPolygon, ST.galaxie, ST.universum}), 1),
+                    (0, 2, frozenset({ST.sternPolygon, ST.galaxie, ST.universum}), 1),
                 ),
                 "primStrukSternGebr": (
-                    (0, 1, frozenset({ST.sternPolygon, ST.galaxie, ST.universum})),
-                    (0, 2, frozenset({ST.sternPolygon, ST.galaxie, ST.universum})),
-                    (0, 3, frozenset({ST.sternPolygon, ST.universum})),
+                    (0, 1, frozenset({ST.sternPolygon, ST.galaxie, ST.universum}), 1),
+                    (0, 2, frozenset({ST.sternPolygon, ST.galaxie, ST.universum}), 1),
+                    (0, 3, frozenset({ST.sternPolygon, ST.universum}), 1),
                 ),
                 "primMotivGleichfGebr": (
-                    (1, 0, frozenset({ST.gleichfoermigesPolygon, ST.galaxie})),
+                    (1, 0, frozenset({ST.gleichfoermigesPolygon, ST.galaxie}), 1),
                     (
                         1,
                         1,
                         frozenset(
                             {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum}
                         ),
+                        1,
                     ),
                     (
                         1,
@@ -680,6 +681,7 @@ class Concat:
                         frozenset(
                             {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum}
                         ),
+                        1,
                     ),
                 ),
                 "primStrukGleichfGebr": (
@@ -689,6 +691,7 @@ class Concat:
                         frozenset(
                             {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum}
                         ),
+                        1,
                     ),
                     (
                         1,
@@ -696,27 +699,29 @@ class Concat:
                         frozenset(
                             {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum}
                         ),
+                        1,
                     ),
-                    (1, 3, frozenset({ST.gleichfoermigesPolygon, ST.universum})),
+                    (1, 3, frozenset({ST.gleichfoermigesPolygon, ST.universum}), 1),
                 ),
                 "primMotivStern": (
-                    (0, 0, frozenset({ST.sternPolygon, ST.galaxie})),
-                    (0, 1, frozenset({ST.sternPolygon, ST.galaxie, ST.universum})),
-                    (0, 2, frozenset({ST.sternPolygon, ST.galaxie, ST.universum})),
+                    (0, 0, frozenset({ST.sternPolygon, ST.galaxie}), 0),
+                    (0, 1, frozenset({ST.sternPolygon, ST.galaxie, ST.universum}), 0),
+                    (0, 2, frozenset({ST.sternPolygon, ST.galaxie, ST.universum}), 0),
                 ),
                 "primStrukStern": (
-                    (0, 1, frozenset({ST.sternPolygon, ST.galaxie, ST.universum})),
-                    (0, 2, frozenset({ST.sternPolygon, ST.galaxie, ST.universum})),
-                    (0, 3, frozenset({ST.sternPolygon, ST.universum})),
+                    (0, 1, frozenset({ST.sternPolygon, ST.galaxie, ST.universum}), 0),
+                    (0, 2, frozenset({ST.sternPolygon, ST.galaxie, ST.universum}), 0),
+                    (0, 3, frozenset({ST.sternPolygon, ST.universum}), 0),
                 ),
                 "primMotivGleichf": (
-                    (1, 0, frozenset({ST.gleichfoermigesPolygon, ST.galaxie})),
+                    (1, 0, frozenset({ST.gleichfoermigesPolygon, ST.galaxie}), 0),
                     (
                         1,
                         1,
                         frozenset(
                             {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum}
                         ),
+                        0,
                     ),
                     (
                         1,
@@ -724,6 +729,7 @@ class Concat:
                         frozenset(
                             {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum}
                         ),
+                        0,
                     ),
                 ),
                 "primStrukGleichf": (
@@ -733,6 +739,7 @@ class Concat:
                         frozenset(
                             {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum}
                         ),
+                        0,
                     ),
                     (
                         1,
@@ -740,8 +747,9 @@ class Concat:
                         frozenset(
                             {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum}
                         ),
+                        0,
                     ),
-                    (1, 3, frozenset({ST.gleichfoermigesPolygon, ST.universum})),
+                    (1, 3, frozenset({ST.gleichfoermigesPolygon, ST.universum}), 0),
                 ),
             }
 
@@ -792,7 +800,7 @@ class Concat:
                     self.motivation[polytypename] += [cols[polytype]]
                     # self.ziel += [cols[11]]
 
-            for gebrOrGanz in ["ganz"]:
+            for ganzOrGebr in enumerate(["ganz"]):
                 for zwei, (polytype, polytypename, transzType) in enumerate(
                     zip(
                         hardCodedCouple,
