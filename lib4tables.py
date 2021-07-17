@@ -459,6 +459,12 @@ def couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num: int) -> bool:
 
 
 def multiples(a, mul1=True):
+    """
+    findet für eine Zahl alle Kombinationen aus möglichen Multiplikationen aus ganzen Zahlen, die diese Zahl ergibt
+    @type a: int
+    @param a: Produkt von mehreren möglichen Faktoren
+    @return: gibt Liste an Paaren von Faktoren aus
+    """
     menge = set()
     for b in range(2, math.floor(math.sqrt(a) + 1)):
         c = a / b * 1000
