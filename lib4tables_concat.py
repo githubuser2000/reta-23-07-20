@@ -740,6 +740,7 @@ class Concat:
                 self.motivation: tuple = tuple(self.motivation_)
                 self.transzendentalien: tuple = tuple(self.transzendentalien_)
 
+                # alle Kombis die von strukur oder motiven also 2x2 möglich sind
                 for i, cols in enumerate(self.relitable):
                     kombi_ += [
                         (
