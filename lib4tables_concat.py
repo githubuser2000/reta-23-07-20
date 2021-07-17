@@ -1813,68 +1813,64 @@ class Concat:
                     t[x] += [matrix[y][x]]
             return t
 
-        concatCSVspalten: set = set()
-        place = self.readConcatCSV_choseCsvFile(concatTable)
         self.relitable = relitable
-        headingsAmount = len(self.relitable[0])
         if len(concatTableSelection) > 0 and concatTable in range(1, 6):
-            # x("SVO", concatTable)
-
-            with open(place, mode="r") as csv_file:
-                tableToAdd = self.readConcatCsv_getTableToAdd(
-                    concatTable, csv_file, transpose
-                )
-                if concatTable == 1:
-                    tableToAdd2 = [["Primzahlvielfache, nicht generiert"]]
-                    for t, zeile in enumerate(tableToAdd[1:], 1):
-                        zeileNeu = []
-                        for zelle in zeile:
-                            if len(zelle.strip()) > 3:
-                                zeileNeu += [zelle]
-                        zeileNeu = [
-                            ("| <br>" if self.tables.htmlOutputYes else " | ").join(
-                                zeileNeu
-                            )
-                        ]
-                        tableToAdd2 += [zeileNeu]
-                    tableToAdd = tableToAdd2
-
-                self.relitable, tableToAdd = self.tables.fillBoth(
-                    self.relitable, tableToAdd
-                )
-                lastlen = 0
-                maxlen = 0
-                for i, (tabelleDazuCol, relicol) in enumerate(
-                    zip(tableToAdd, self.relitable)
-                ):
-
-                    lastlen = len(tabelleDazuCol)
-                    if lastlen > maxlen:
-                        maxlen = lastlen
-                    dazu = list(tabelleDazuCol) + [""] * (maxlen - len(tabelleDazuCol))
-
-                    if concatTable in (2, 3) and i != 0:
-                        dazu = self.readConcatCsv_tabelleDazuColchange(
-                            i, dazu, concatTable
+            concatCSVspalten: set = set()
+            tableToAdd = self.spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(
+                concatTable
+            )
+            tableToAdd = self.readConcatCsv_getTableToAdd(
+                concatTable, tableToAdd, transpose
+            )
+            if concatTable == 1:
+                tableToAdd2 = [["Primzahlvielfache, nicht generiert"]]
+                for t, zeile in enumerate(tableToAdd[1:], 1):
+                    zeileNeu = []
+                    for zelle in zeile:
+                        if len(zelle.strip()) > 3:
+                            zeileNeu += [zelle]
+                    zeileNeu = [
+                        ("| <br>" if self.tables.htmlOutputYes else " | ").join(
+                            zeileNeu
                         )
-                    elif concatTable in (4, 5) and i != 0:
-                        dazu = self.readConcatCsv_tabelleDazuColchange(
-                            i, dazu, concatTable, True
-                        )
+                    ]
+                    tableToAdd2 += [zeileNeu]
+                tableToAdd = tableToAdd2
 
-                    self.relitable[i] += dazu
-                    if i == 0:
-                        for u, heading in enumerate(dazu):
-                            # x("SBm", [concatTable, u, headingsAmount])
-                            self.readConcatCsv_LoopBody(
-                                concatCSVspalten,
-                                concatTable,
-                                concatTableSelection,
-                                dazu,
-                                heading,
-                                rowsAsNumbers,
-                                u,
-                            )
+            self.relitable, tableToAdd = self.tables.fillBoth(
+                self.relitable, tableToAdd
+            )
+            lastlen = 0
+            maxlen = 0
+            for i, (tabelleDazuCol, relicol) in enumerate(
+                zip(tableToAdd, self.relitable)
+            ):
+
+                lastlen = len(tabelleDazuCol)
+                if lastlen > maxlen:
+                    maxlen = lastlen
+                dazu = list(tabelleDazuCol) + [""] * (maxlen - len(tabelleDazuCol))
+
+                if concatTable in (2, 3) and i != 0:
+                    dazu = self.readConcatCsv_tabelleDazuColchange(i, dazu, concatTable)
+                elif concatTable in (4, 5) and i != 0:
+                    dazu = self.readConcatCsv_tabelleDazuColchange(
+                        i, dazu, concatTable, True
+                    )
+
+                self.relitable[i] += dazu
+                if i == 0:
+                    for u, heading in enumerate(dazu):
+                        # x("SBm", [concatTable, u, headingsAmount])
+                        self.readConcatCsv_LoopBody(
+                            concatCSVspalten,
+                            concatTable,
+                            concatTableSelection,
+                            dazu,
+                            heading,
+                            rowsAsNumbers,
+                            u,
+                        )
 
         return self.relitable, rowsAsNumbers, concatCSVspalten
 
@@ -1894,8 +1890,7 @@ class Concat:
         )
         return place
 
-    def readConcatCsv_getTableToAdd(self, concatTable, csv_file, transpose):
-        tableToAdd = list(csv.reader(csv_file, delimiter=";"))
+    def readConcatCsv_getTableToAdd(self, concatTable, tableToAdd, transpose):
         if concatTable in (4, 5):
             tableToAdd = transpose(tableToAdd)
         if concatTable in range(2, 6):
