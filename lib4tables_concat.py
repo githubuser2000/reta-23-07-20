@@ -1023,7 +1023,9 @@ class Concat:
         self.relitable = relitable
         self.rowsAsNumbers = rowsAsNumbers
         if len(geordnetePaare) > 0:
-            self.spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(2)
+            self.gebrUnivTable4metaKonkret = (
+                self.spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(2)
+            )
         for paar in tuple(geordnetePaare):
             self.spalteMetaKontretTheorieAbstrakt_etc(
                 relitable,
@@ -1491,16 +1493,13 @@ class Concat:
     def spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(self, wahl) -> list:
         place = self.readConcatCSV_choseCsvFile(wahl)
         if place in self.CSVsAlreadRead:
-            self.gebrUnivTable4metaKonkret = self.CSVsAlreadRead[place]
             return self.CSVsAlreadRead[place]
         else:
             with open(place, mode="r") as csv_file:
-                self.gebrUnivTable4metaKonkret = list(
-                    csv.reader(csv_file, delimiter=";")
-                )
-            self.CSVsAlreadRead[place] = self.gebrUnivTable4metaKonkret
+                gebrUnivTable4metaKonkret = list(csv.reader(csv_file, delimiter=";"))
+            self.CSVsAlreadRead[place] = gebrUnivTable4metaKonkret
             if wahl in (2, 4):
-                self.BruecheUni = self.getAllBrueche(self.gebrUnivTable4metaKonkret)
+                self.BruecheUni = self.getAllBrueche(gebrUnivTable4metaKonkret)
                 for self.BruecheUn in self.BruecheUni:
                     # x("SDF", self.BruecheUn * self.BruecheUn.denominator)
                     for self.BruecheUn2 in self.BruecheUni:
@@ -1536,8 +1535,8 @@ class Concat:
                             x("TFB", ["1/" + str(self.bla4)])
 
             if wahl in (3, 5):
-                self.BruecheGal = self.getAllBrueche(self.gebrUnivTable4metaKonkret)
-            return self.gebrUnivTable4metaKonkret
+                self.BruecheGal = self.getAllBrueche(gebrUnivTable4metaKonkret)
+            return gebrUnivTable4metaKonkret
 
     def spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
         self, koord: Fraction, isGalaxie=False
@@ -1793,10 +1792,16 @@ class Concat:
 
         if concatTable in (2, 4):
             self.struktAndInversSpalten: tuple = (5, 131)
-            self.spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(2)
+
+            self.gebrUnivTable4metaKonkret = (
+                self.spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(2)
+            )
+
         elif concatTable in (3, 5):
             self.struktAndInversSpalten: tuple = (10, 42)
-            self.spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(3)
+            self.gebrUnivTable4metaKonkret = (
+                self.spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(3)
+            )
 
         def transpose(matrix):
             t = []
