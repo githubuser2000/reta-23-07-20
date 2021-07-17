@@ -655,6 +655,50 @@ class Concat:
                 {ST.sternPolygon, ST.galaxie}
             )
             forGeneratedSpaltenParameter_Tags: dict = {
+                "primMotivSternGebr": (
+                    (0, 0, frozenset({ST.sternPolygon, ST.galaxie})),
+                    (0, 1, frozenset({ST.sternPolygon, ST.galaxie, ST.universum})),
+                    (0, 2, frozenset({ST.sternPolygon, ST.galaxie, ST.universum})),
+                ),
+                "primStrukSternGebr": (
+                    (0, 1, frozenset({ST.sternPolygon, ST.galaxie, ST.universum})),
+                    (0, 2, frozenset({ST.sternPolygon, ST.galaxie, ST.universum})),
+                    (0, 3, frozenset({ST.sternPolygon, ST.universum})),
+                ),
+                "primMotivGleichfGebr": (
+                    (1, 0, frozenset({ST.gleichfoermigesPolygon, ST.galaxie})),
+                    (
+                        1,
+                        1,
+                        frozenset(
+                            {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum}
+                        ),
+                    ),
+                    (
+                        1,
+                        2,
+                        frozenset(
+                            {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum}
+                        ),
+                    ),
+                ),
+                "primStrukGleichfGebr": (
+                    (
+                        1,
+                        1,
+                        frozenset(
+                            {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum}
+                        ),
+                    ),
+                    (
+                        1,
+                        2,
+                        frozenset(
+                            {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum}
+                        ),
+                    ),
+                    (1, 3, frozenset({ST.gleichfoermigesPolygon, ST.universum})),
+                ),
                 "primMotivStern": (
                     (0, 0, frozenset({ST.sternPolygon, ST.galaxie})),
                     (0, 1, frozenset({ST.sternPolygon, ST.galaxie, ST.universum})),
@@ -719,116 +763,119 @@ class Concat:
             # x("FB_", koord2tag)
 
             # stern vs gleichf:
-            for zwei, (polytype, polytypename, transzType) in enumerate(
-                zip(
-                    hardCodedCouple,
-                    ["Sternpolygone", "gleichförmige Polygone"],
-                    transzendentalienNrezi,
-                )
-            ):
-                self.transzendentalien_ = []
-                # self.rolle = []
-                self.motivation_ = []
-                # self.ziel = []
-                kombi_ = []
-                for cols in self.relitable:
-                    self.motivation_ += [cols[polytype]]
-                    # self.rolle += [cols[19]]
-                    self.transzendentalien_ += [cols[transzType]]
-                    # self.ziel += [cols[11]]
-                relitableCopy = deepcopy(self.relitable)
-                self.motivation: tuple = tuple(self.motivation_)
-                self.transzendentalien: tuple = tuple(self.transzendentalien_)
+            for gebrOrGanz in ["ganz", "gebr"]:
+                for zwei, (polytype, polytypename, transzType) in enumerate(
+                    zip(
+                        hardCodedCouple,
+                        ["Sternpolygone", "gleichförmige Polygone"],
+                        transzendentalienNrezi,
+                    )
+                ):
+                    self.transzendentalien_ = []
+                    # self.rolle = []
+                    self.motivation_ = []
+                    # self.ziel = []
+                    kombi_ = []
+                    for cols in self.relitable:
+                        self.motivation_ += [cols[polytype]]
+                        # self.rolle += [cols[19]]
+                        self.transzendentalien_ += [cols[transzType]]
+                        # self.ziel += [cols[11]]
+                    relitableCopy = deepcopy(self.relitable)
+                    self.motivation: tuple = tuple(self.motivation_)
+                    self.transzendentalien: tuple = tuple(self.transzendentalien_)
 
-                # alle Kombis die von strukur oder motiven also 2x2 möglich sind
-                for i, cols in enumerate(self.relitable):
-                    kombi_ += [
-                        (
-                            (self.motivation[i], self.motivation[i]),
-                            (self.motivation[i], self.transzendentalien[i]),
-                            (self.transzendentalien[i], self.motivation[i]),
-                            (self.transzendentalien[i], self.transzendentalien[i]),
-                        )
-                    ]
-                kombis: tuple = tuple(kombi_)
-
-                kombisNamen: tuple = (
-                    "Motiv -> Motiv",
-                    "Motiv -> Strukur",
-                    "Struktur -> Motiv",
-                    "Struktur -> Strukur",
-                )
-
-                # alle 2x2 kombis von motiven und struktur
-                for nullBisDrei, kombiUeberschrift in enumerate(kombisNamen):
-                    flag = False
-                    try:
-                        tags: list = koord2tag[(zwei, nullBisDrei)]
-                        tag: frozenset = max(tags)
-                        flag = True
-                    except KeyError:
-                        flag = False
-                    if flag:
-                        for i, cols in enumerate(relitableCopy):
-                            self.tables.generatedSpaltenParameter_Tags[
-                                len(rowsAsNumbers)
-                            ] = tag
-                            rowsAsNumbers |= {
-                                len(self.relitable[0]),
-                            }
-                            # x("HJM", len(self.relitable[0]))
-
-                            multipless = multiples(i)
-                            into = (
-                                [""]
-                                if i != 0
-                                else [
-                                    "generierte Multiplikationen ",
-                                    polytypename,
-                                    " ",
-                                    kombiUeberschrift,
-                                ]
+                    # alle Kombis die von strukur oder motiven also 2x2 möglich sind
+                    for i, cols in enumerate(self.relitable):
+                        kombi_ += [
+                            (
+                                (self.motivation[i], self.motivation[i]),
+                                (self.motivation[i], self.transzendentalien[i]),
+                                (self.transzendentalien[i], self.motivation[i]),
+                                (self.transzendentalien[i], self.transzendentalien[i]),
                             )
-                            for k, multi in enumerate(multipless):
-                                if k > 0:
-                                    into += (
-                                        [",<br>außerdem: "]
-                                        if self.tables.htmlOutputYes
-                                        else [", außerdem: "]
-                                    )
-                                into += [
-                                    "( ",
-                                    kombis[multi[0]][nullBisDrei][0]
-                                    if len(kombis[multi[0]][nullBisDrei][0].strip()) > 3
-                                    else "...",
-                                    ") * (",
-                                    kombis[multi[1]][nullBisDrei][1]
-                                    if len(kombis[multi[1]][nullBisDrei][1].strip()) > 3
-                                    else "...",
-                                    " )",
-                                ]
-                            self.relitable[i] += ["".join(into)]
+                        ]
+                    kombis: tuple = tuple(kombi_)
 
-                        if (
-                            len(self.tables.generatedSpaltenParameter)
-                            + self.tables.SpaltenVanillaAmount
-                            in self.tables.generatedSpaltenParameter
-                        ):
-                            raise ValueError
-                        kette = (
-                            [
-                                (
-                                    "primzahlvielfachesgalaxie",
-                                    htmlTagWoerter[para][0][0][0][1],
+                    kombisNamen: tuple = (
+                        "Motiv -> Motiv",
+                        "Motiv -> Strukur",
+                        "Struktur -> Motiv",
+                        "Struktur -> Strukur",
+                    )
+
+                    # alle 2x2 kombis von motiven und struktur
+                    for nullBisDrei, kombiUeberschrift in enumerate(kombisNamen):
+                        flag = False
+                        try:
+                            tags: list = koord2tag[(zwei, nullBisDrei)]
+                            tag: frozenset = max(tags)
+                            flag = True
+                        except KeyError:
+                            flag = False
+                        if flag:
+                            for i, cols in enumerate(relitableCopy):
+                                self.tables.generatedSpaltenParameter_Tags[
+                                    len(rowsAsNumbers)
+                                ] = tag
+                                rowsAsNumbers |= {
+                                    len(self.relitable[0]),
+                                }
+                                # x("HJM", len(self.relitable[0]))
+
+                                multipless = multiples(i)
+                                into = (
+                                    [""]
+                                    if i != 0
+                                    else [
+                                        "generierte Multiplikationen ",
+                                        polytypename,
+                                        " ",
+                                        kombiUeberschrift,
+                                    ]
                                 )
-                            ]
-                            for para in koord2Parameter[(zwei, nullBisDrei)]
-                        )
+                                for k, multi in enumerate(multipless):
+                                    if k > 0:
+                                        into += (
+                                            [",<br>außerdem: "]
+                                            if self.tables.htmlOutputYes
+                                            else [", außerdem: "]
+                                        )
+                                    into += [
+                                        "( ",
+                                        kombis[multi[0]][nullBisDrei][0]
+                                        if len(kombis[multi[0]][nullBisDrei][0].strip())
+                                        > 3
+                                        else "...",
+                                        ") * (",
+                                        kombis[multi[1]][nullBisDrei][1]
+                                        if len(kombis[multi[1]][nullBisDrei][1].strip())
+                                        > 3
+                                        else "...",
+                                        " )",
+                                    ]
+                                self.relitable[i] += ["".join(into)]
 
-                        self.tables.generatedSpaltenParameter[
-                            len(self.tables.generatedSpaltenParameter)
-                            + self.tables.SpaltenVanillaAmount
-                        ] = tuple(kette)
+                            if (
+                                len(self.tables.generatedSpaltenParameter)
+                                + self.tables.SpaltenVanillaAmount
+                                in self.tables.generatedSpaltenParameter
+                            ):
+                                raise ValueError
+                            kette = (
+                                [
+                                    (
+                                        "primzahlvielfachesgalaxie",
+                                        htmlTagWoerter[para][0][0][0][1],
+                                    )
+                                ]
+                                for para in koord2Parameter[(zwei, nullBisDrei)]
+                            )
+
+                            self.tables.generatedSpaltenParameter[
+                                len(self.tables.generatedSpaltenParameter)
+                                + self.tables.SpaltenVanillaAmount
+                            ] = tuple(kette)
 
         return self.relitable, rowsAsNumbers
 
