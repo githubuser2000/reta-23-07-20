@@ -1023,9 +1023,7 @@ class Concat:
         self.relitable = relitable
         self.rowsAsNumbers = rowsAsNumbers
         if len(geordnetePaare) > 0:
-            self.gebrUnivTable4metaKonkret = (
-                self.spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(2)
-            )
+            self.gebrUnivTable4metaKonkret = self.readOneCSVAndReturn(2)
         for paar in tuple(geordnetePaare):
             self.spalteMetaKontretTheorieAbstrakt_etc(
                 relitable,
@@ -1490,7 +1488,7 @@ class Concat:
                         menge |= {frac}
         return menge
 
-    def spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(self, wahl) -> list:
+    def readOneCSVAndReturn(self, wahl) -> list:
         place = self.readConcatCSV_choseCsvFile(wahl)
         if place in self.CSVsAlreadRead:
             return self.CSVsAlreadRead[place]
@@ -1793,15 +1791,11 @@ class Concat:
         if concatTable in (2, 4):
             self.struktAndInversSpalten: tuple = (5, 131)
 
-            self.gebrUnivTable4metaKonkret = (
-                self.spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(2)
-            )
+            self.gebrUnivTable4metaKonkret = self.readOneCSVAndReturn(2)
 
         elif concatTable in (3, 5):
             self.struktAndInversSpalten: tuple = (10, 42)
-            self.gebrUnivTable4metaKonkret = (
-                self.spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(3)
-            )
+            self.gebrUnivTable4metaKonkret = self.readOneCSVAndReturn(3)
 
         def transpose(matrix):
             t = []
@@ -1816,10 +1810,8 @@ class Concat:
         self.relitable = relitable
         if len(concatTableSelection) > 0 and concatTable in range(1, 6):
             concatCSVspalten: set = set()
-            tableToAdd = self.spalteMetaKonkretTheorieAbstrakt_getGebrUnivTable(
-                concatTable
-            )
-            tableToAdd = self.readConcatCsv_getTableToAdd(
+            tableToAdd = self.readOneCSVAndReturn(concatTable)
+            tableToAdd = self.readConcatCsv_ChangeTableToAddToTable(
                 concatTable, tableToAdd, transpose
             )
             if concatTable == 1:
@@ -1890,7 +1882,7 @@ class Concat:
         )
         return place
 
-    def readConcatCsv_getTableToAdd(self, concatTable, tableToAdd, transpose):
+    def readConcatCsv_ChangeTableToAddToTable(self, concatTable, tableToAdd, transpose):
         if concatTable in (4, 5):
             tableToAdd = transpose(tableToAdd)
         if concatTable in range(2, 6):
