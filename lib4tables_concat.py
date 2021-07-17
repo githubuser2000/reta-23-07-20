@@ -24,10 +24,10 @@ class Concat:
         self.CSVsSame = {1: (1,), 2: (2, 4), 3: (3, 5), 4: (2, 4), 5: (3, 5)}
         self.BruecheUni = set()
         self.BruecheGal = set()
-        self.gebrRatMulStern = []
-        self.gebrRatDivStern = []
-        self.gebrRatMulGleichf = []
-        self.gebrRatDivGleichf = []
+        self.gebrRatMulStern = set()
+        self.gebrRatDivStern = set()
+        self.gebrRatMulGleichf = set()
+        self.gebrRatDivGleichf = set()
 
     @property
     def gebrUnivSet(self):
@@ -1507,27 +1507,22 @@ class Concat:
                             and self.BruecheUn != self.BruecheUn2
                         ):
                             x("SXF", int(self.BruecheUn * self.BruecheUn2))
-                            self.gebrRatMulStern += [
-                                int(self.BruecheUn * self.BruecheUn2)
-                            ]
+                            self.gebrRatMulStern |= {{self.BruecheUn, self.BruecheUn2}}
                         if (
                             round(self.BruecheUn / self.BruecheUn2)
                             == (self.BruecheUn / self.BruecheUn2)
                             and self.BruecheUn != self.BruecheUn2
                         ):
                             x("S_F", int(self.BruecheUn / self.BruecheUn2))
-                            self.gebrRatDivStern += [
-                                int(self.BruecheUn / self.BruecheUn2)
-                            ]
+                            self.gebrRatDivStern |= {{self.BruecheUn, self.BruecheUn2}}
+
                         if (
                             round(1 / (self.BruecheUn * self.BruecheUn2))
                             == (1 / (self.BruecheUn * self.BruecheUn2))
                             and self.BruecheUn != self.BruecheUn2
                         ):
                             x("SUF", int(self.BruecheUn * self.BruecheUn2))
-                            self.gebrRatMulGleichf += [
-                                int(1 / (self.BruecheUn * self.BruecheUn2))
-                            ]
+                            self.gebrRatMulGleichf |= {{self.BruecheUn, self.BruecheUn2}}
                             x("JFB", ["1/" + str(self.gebrRatMulGleichf)])
                         if (
                             round(1 / (self.BruecheUn / self.BruecheUn2))
@@ -1535,9 +1530,10 @@ class Concat:
                             and self.BruecheUn != self.BruecheUn2
                         ):
                             x("SUF", int(self.BruecheUn / self.BruecheUn2))
-                            self.gebrRatDivGleichf += [
-                                int(1 / (self.BruecheUn / self.BruecheUn2))
-                            ]
+                            self.gebrRatDivGleichf |= {
+                                {self.BruecheUn, self.BruecheUn2}
+                            }
+
                             x("TFB", ["1/" + str(self.gebrRatDivGleichf)])
 
             if wahl in (3, 5):
