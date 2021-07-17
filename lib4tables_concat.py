@@ -701,6 +701,7 @@ class Concat:
                 ),
             }
 
+            # hier geht es um die html class Parameter und um Tagging ob Galaxie oder Polygon
             koord2tag, koord2Parameter = {}, {}
             for name, mehrereEinraege in forGeneratedSpaltenParameter_Tags.items():
                 for befehl in generatedBefehle:

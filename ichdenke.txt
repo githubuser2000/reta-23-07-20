@@ -1,0 +1,7 @@
+Wie programmiere ich die Fkt um, damit sie gebr rat akzeptiert
+
+ich muss eine weitere for schleife einschachteln, die unterscheidet zwischen
+gebr rat mit dabei und ohne, so dass aus den 8 Spalten 16 werden
+
+Die 8 Zuweisungen für die Tags kann ich in der Reihenfolge daher 1:1 für die
+neuen 8 Spalten übernehmen
