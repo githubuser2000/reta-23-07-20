@@ -1497,7 +1497,7 @@ class Concat:
                 gebrUnivTable4metaKonkret = list(csv.reader(csv_file, delimiter=";"))
             self.CSVsAlreadRead[place] = gebrUnivTable4metaKonkret
             if wahl in (2, 4):
-                self.BruecheUni = self.getAllBrueche(gebrUnivTable4metaKonkret)
+                self.BruecheUni = tuple(self.getAllBrueche(gebrUnivTable4metaKonkret))
                 for self.BruecheUn in self.BruecheUni[
                     : round(len(self.BruecheUni) / 2)
                 ]:
@@ -1511,14 +1511,18 @@ class Concat:
                             and self.BruecheUn != self.BruecheUn2
                         ):
                             x("SXF", int(self.BruecheUn * self.BruecheUn2))
-                            self.gebrRatMulStern |= {{self.BruecheUn, self.BruecheUn2}}
+                            self.gebrRatMulStern |= {
+                                frozenset({self.BruecheUn, self.BruecheUn2})
+                            }
                         if (
                             round(self.BruecheUn / self.BruecheUn2)
                             == (self.BruecheUn / self.BruecheUn2)
                             and self.BruecheUn != self.BruecheUn2
                         ):
                             x("S_F", int(self.BruecheUn / self.BruecheUn2))
-                            self.gebrRatDivStern |= {{self.BruecheUn, self.BruecheUn2}}
+                            self.gebrRatDivStern |= {
+                                frozenset({self.BruecheUn, self.BruecheUn2})
+                            }
 
                         if (
                             round(1 / (self.BruecheUn * self.BruecheUn2))
@@ -1527,7 +1531,7 @@ class Concat:
                         ):
                             x("SUF", int(self.BruecheUn * self.BruecheUn2))
                             self.gebrRatMulGleichf |= {
-                                {self.BruecheUn, self.BruecheUn2}
+                                frozenset({self.BruecheUn, self.BruecheUn2})
                             }
                             x("JFB", ["1/" + str(self.gebrRatMulGleichf)])
                         if (
@@ -1537,7 +1541,7 @@ class Concat:
                         ):
                             x("SUF", int(self.BruecheUn / self.BruecheUn2))
                             self.gebrRatDivGleichf |= {
-                                {self.BruecheUn, self.BruecheUn2}
+                                frozenset({self.BruecheUn, self.BruecheUn2})
                             }
 
                             x("TFB", ["1/" + str(self.gebrRatDivGleichf)])
