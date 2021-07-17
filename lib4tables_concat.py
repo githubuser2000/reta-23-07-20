@@ -1522,7 +1522,9 @@ class Concat:
                             and self.BruecheUn != self.BruecheUn2
                         ):
                             x("SUF", int(self.BruecheUn * self.BruecheUn2))
-                            self.gebrRatMulGleichf |= {{self.BruecheUn, self.BruecheUn2}}
+                            self.gebrRatMulGleichf |= {
+                                {self.BruecheUn, self.BruecheUn2}
+                            }
                             x("JFB", ["1/" + str(self.gebrRatMulGleichf)])
                         if (
                             round(1 / (self.BruecheUn / self.BruecheUn2))
