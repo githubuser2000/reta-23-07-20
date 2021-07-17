@@ -830,22 +830,6 @@ class Concat:
                             + self.tables.SpaltenVanillaAmount
                         ] = tuple(kette)
 
-                        """
-                        (
-                            [
-                                (
-                                    "primzahlvielfachesgalaxie",
-                                    htmlTagWoerter[para][0][0][0][1],
-                                )
-                                for para in koord2Parameter[(zwei, nullBisDrei)]
-                            ],
-                        )
-                        x(
-                            "SGHN",
-                            tuple(kette),
-                        )
-                        """
-
         return self.relitable, rowsAsNumbers
 
     def spalteMetaKontretTheorieAbstrakt_etc_1(

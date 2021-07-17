@@ -5,3 +5,10 @@ gebr rat mit dabei und ohne, so dass aus den 8 Spalten 16 werden
 
 Die 8 Zuweisungen für die Tags kann ich in der Reihenfolge daher 1:1 für die
 neuen 8 Spalten übernehmen
+
+multipless = multiples(i)
+gibt geordnette Paare zurück aus welchen möglichen Faktoren eine Zahl
+multipliziert werden könnte
+
+Da muss ich ne Fkt programmieren, die jedoch die Faktoren aus den gebr rat
+Zahlen baut
