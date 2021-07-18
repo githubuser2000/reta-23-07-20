@@ -897,7 +897,12 @@ class Concat:
                                         > 3
                                         else "...",
                                         " )",
-                                    ]
+                                    ] if brr == 0 else ["( ",
+                                            str(multi[0]),
+                                        ") * (",
+                                            str(multi[1]),
+                                    ," )"]
+
                                 self.relitable[i] += ["".join(into)]
 
                             if (
