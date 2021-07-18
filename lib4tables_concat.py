@@ -911,15 +911,18 @@ class Concat:
                                         ganzOrGebr,
                                     ]
                                 )
+                                if self.tables.htmlOutputYes:
+                                    into += ["<ul>"]
                                 for k, multi in enumerate(multipless):
                                     if k > 0:
                                         into += (
                                             [",<br>außerdem: "]
-                                            if self.tables.htmlOutputYes
+                                            if self.tables.htmlOutputYes and False
                                             else [", außerdem: "]
                                         )
                                     if brr == 0:
                                         into += [
+                                            "<li>" if self.tables.htmlOutputYes else "",
                                             "( ",
                                             kombis[multi[0]][nullBisDrei][0]
                                             if len(
@@ -935,6 +938,9 @@ class Concat:
                                             > 3
                                             else "...",
                                             " )",
+                                            "</li>"
+                                            if self.tables.htmlOutputYes
+                                            else "",
                                         ]
                                     elif brr == 1:
                                         von = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
@@ -945,7 +951,9 @@ class Concat:
                                         )
                                         if von != None and bis != None:
                                             into += [
-                                                '"',
+                                                "<li>"
+                                                if self.tables.htmlOutputYes
+                                                else "" '"',
                                                 von,
                                                 # self.CSVsAlreadRead[place][
                                                 #    multi[0].numerator - 1
@@ -962,7 +970,12 @@ class Concat:
                                                 #    multi[1].numerator - 1
                                                 # ][multi[1].denominator - 1],
                                                 '"',
+                                                "</li>"
+                                                if self.tables.htmlOutputYes
+                                                else "",
                                             ]
+                                if self.tables.htmlOutputYes:
+                                    into += ["</ul>"]
 
                                 self.relitable[i] += ["".join(into)]
 
