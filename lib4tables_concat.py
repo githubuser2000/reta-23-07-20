@@ -634,9 +634,9 @@ class Concat:
         for paar in tuple(paareSet):
             paar = tuple(paar)
             try:
-                result[paar[0]*paar[1]] += [paar]
+                result[paar[0] * paar[1]] += [paar]
             except KeyError:
-                result[paar[0]*paar[1]] = [paar]
+                result[paar[0] * paar[1]] = [paar]
         return result
 
     def concat1RowPrimUniverse2(
@@ -644,7 +644,7 @@ class Concat:
         relitable: list,
         rowsAsNumbers: set,
         generatedBefehle: set,
-        htmlTagWoerter: list,
+        htmlTagParaClassWoerter: list,
     ) -> tuple:
         """Fügt eine Spalte ein, in der Primzahlen mit Vielfachern
         auf dem Niveau des Universums nicht einfach nur aus einer
@@ -657,7 +657,7 @@ class Concat:
         """
         global originalLinesRange
         self.relitable = relitable
-        # x("TZJ", htmlTagWoerter)
+        # x("TZJ", htmlTagParaClassWoerter)
 
         hardCodedCouple = (10, 42)
         transzendentalienNrezi = (5, 131)
@@ -765,13 +765,17 @@ class Concat:
                 ),
             }
 
-            self.gebrRatMulSternDict = self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatMulStern)
+            self.gebrRatMulSternDict = self.convertSetOfPaarenToDictOfNumToPaare(
+                self.gebrRatMulStern
+            )
 
             # hier geht es um die html class Parameter und um Tagging ob Galaxie oder Polygon
             koord2tag, koord2Parameter = {}, {}
             for name, mehrereEinraege in forGeneratedSpaltenParameter_Tags.items():
                 for befehl in generatedBefehle:
-                    if name == befehl:) # ob der Befehl des Users mit den jeweils vorhandenen übereinstimmt
+                    if (
+                        name == befehl
+                    ):  # ob der Befehl des Users mit den jeweils vorhandenen übereinstimmt
                         for drei in mehrereEinraege:
                             try:
                                 koord2tag[(drei[0], drei[1], drei[3])] += [drei[2]]
@@ -814,7 +818,9 @@ class Concat:
                     self.motivation[polytypename] += [cols[polytype]]
                     # self.ziel += [cols[11]]
 
-            for brr, ganzOrGebr in enumerate(["", ", mit Faktoren aus gebrochen-rationalen Zahlen"]):
+            for brr, ganzOrGebr in enumerate(
+                ["", ", mit Faktoren aus gebrochen-rationalen Zahlen"]
+            ):
                 for zwei, (polytype, polytypename, transzType) in enumerate(
                     zip(
                         hardCodedCouple,
@@ -866,7 +872,11 @@ class Concat:
                                 }
                                 # x("HJM", len(self.relitable[0]))
 
-                                multipless = multiples(i) if brr == 0 else self.gebrRatMulSternDict[i]
+                                multipless = (
+                                    multiples(i)
+                                    if brr == 0
+                                    else self.gebrRatMulSternDict[i]
+                                )
                                 into = (
                                     []
                                     if i != 0
@@ -875,7 +885,7 @@ class Concat:
                                         polytypename,
                                         " ",
                                         kombiUeberschrift,
-                                        ganzOrGebr
+                                        ganzOrGebr,
                                     ]
                                 )
                                 for k, multi in enumerate(multipless):
@@ -885,23 +895,33 @@ class Concat:
                                             if self.tables.htmlOutputYes
                                             else [", außerdem: "]
                                         )
-                                    into += [
-                                        "( ",
-                                        kombis[multi[0]][nullBisDrei][0]
-                                        if len(kombis[multi[0]][nullBisDrei][0].strip())
-                                        > 3
-                                        else "...",
-                                        ") * (",
-                                        kombis[multi[1]][nullBisDrei][1]
-                                        if len(kombis[multi[1]][nullBisDrei][1].strip())
-                                        > 3
-                                        else "...",
-                                        " )",
-                                    ] if brr == 0 else ["( ",
+                                    into += (
+                                        [
+                                            "( ",
+                                            kombis[multi[0]][nullBisDrei][0]
+                                            if len(
+                                                kombis[multi[0]][nullBisDrei][0].strip()
+                                            )
+                                            > 3
+                                            else "...",
+                                            ") * (",
+                                            kombis[multi[1]][nullBisDrei][1]
+                                            if len(
+                                                kombis[multi[1]][nullBisDrei][1].strip()
+                                            )
+                                            > 3
+                                            else "...",
+                                            " )",
+                                        ]
+                                        if brr == 0
+                                        else [
+                                            "( ",
                                             str(multi[0]),
-                                        ") * (",
+                                            ") * (",
                                             str(multi[1]),
-                                    ," )"]
+                                            " )",
+                                        ]
+                                    )
 
                                 self.relitable[i] += ["".join(into)]
 
@@ -915,7 +935,7 @@ class Concat:
                                 [
                                     (
                                         "primzahlvielfachesgalaxie",
-                                        htmlTagWoerter[para][0][0][0][1],
+                                        htmlTagParaClassWoerter[para][0][0][0][1],
                                     )
                                 ]
                                 for para in koord2Parameter[(zwei, nullBisDrei, brr)]

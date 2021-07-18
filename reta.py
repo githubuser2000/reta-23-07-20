@@ -2220,7 +2220,7 @@ class Program:
                 set(),
                 set(),
                 set(),
-                {"primStrukGebrRat"},
+                {"primStrukSternGebr"},
             ),
             (
                 Program.ParametersMain.primvielfache,
