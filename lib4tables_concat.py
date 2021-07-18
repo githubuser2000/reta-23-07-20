@@ -863,6 +863,9 @@ class Concat:
                         except KeyError:
                             flag = False
                         if flag:
+                            if brr == 1:
+                                place = self.readConcatCSV_choseCsvFile(2)
+
                             for i, cols in enumerate(relitableCopy):
                                 self.tables.generatedSpaltenParameter_Tags[
                                     len(rowsAsNumbers)
@@ -915,11 +918,21 @@ class Concat:
                                         ]
                                         if brr == 0
                                         else [
-                                            "( ",
+                                            '"',
+                                            self.CSVsAlreadRead[place][
+                                                multi[0].numerator - 1
+                                            ][multi[0].denominator - 1],
+                                            '"',
+                                            "(",
                                             str(multi[0]),
                                             ") * (",
                                             str(multi[1]),
-                                            " )",
+                                            ")",
+                                            ' "',
+                                            self.CSVsAlreadRead[place][
+                                                multi[1].numerator - 1
+                                            ][multi[1].denominator - 1],
+                                            '"',
                                         ]
                                     )
 
@@ -1753,8 +1766,8 @@ class Concat:
             return t
 
         self.relitable = relitable
+        concatCSVspalten: set = set()
         if len(concatTableSelection) > 0 and concatTable in range(1, 6):
-            concatCSVspalten: set = set()
             tableToAdd = self.readOneCSVAndReturn(concatTable)
             tableToAdd = self.readConcatCsv_ChangeTableToAddToTable(
                 concatTable, tableToAdd, transpose
