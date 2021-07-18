@@ -949,10 +949,14 @@ class Concat:
                                             ]
                                         elif brr == 1:
                                             von = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                                                multi[0]
+                                                multi[0],
+                                                self.struktAndInversSpalten,
+                                                self.gebrUnivTable4metaKonkret,
                                             )
                                             bis = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                                                multi[1]
+                                                multi[1],
+                                                self.struktAndInversSpalten,
+                                                self.gebrUnivTable4metaKonkret,
                                             )
                                             if von != None and bis != None:
                                                 into += [
@@ -1215,24 +1219,6 @@ class Concat:
         das große Durchiterieren beginnt durch die Tabelle mit anschließendem erweitern dieser, um Spalten"""
         self.struktAndInversSpalten: tuple = (5, 131)
 
-        # blub = [
-        #    self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-        #        Fraction(1, 1)
-        #    ),
-        #    self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-        #        Fraction(1, 3)
-        #    ),
-        #    self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-        #        Fraction(3, 1)
-        #    ),
-        #    self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-        #        Fraction(2, 3)
-        #    ),
-        #    self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-        #        Fraction(3, 2)
-        #    ),
-        # ]
-        # print("\n".join(blub))
         for ifInvers, self.transzendentalienSpalten in enumerate(
             (
                 self.struktAndInversSpalten,
@@ -1436,7 +1422,9 @@ class Concat:
 
                 gebrStrukWort = (
                     self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                        vier[0][1]
+                        vier[0][1],
+                        self.struktAndInversSpalten,
+                        self.gebrUnivTable4metaKonkret,
                     )
                 )
                 if gebrStrukWort is not None:
@@ -1541,7 +1529,11 @@ class Concat:
             return gebrUnivTable4metaKonkret
 
     def spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-        self, koord: Fraction, isGalaxie=False
+        self,
+        koord: Fraction,
+        n_and_invers_spalten,
+        gebrTable4metaKonkretAndMore,
+        isGalaxie=False,
     ) -> str:
         if koord.denominator == 0 or koord.numerator == 0:
             return ""
@@ -1550,7 +1542,7 @@ class Concat:
         elif koord.numerator == 1:
             strukname = (
                 (
-                    self.relitable[koord.denominator][self.struktAndInversSpalten[1]],
+                    self.relitable[koord.denominator][n_and_invers_spalten[1]],
                     " (1/",
                     str(koord.denominator),
                     ")",
@@ -1565,13 +1557,11 @@ class Concat:
                     self.relitable[koord.denominator][201],
                 )
                 if not isGalaxie
-                else (
-                    self.relitable[koord.denominator][self.struktAndInversSpalten[1]],
-                )
+                else (self.relitable[koord.denominator][n_and_invers_spalten[1]],)
             )
             strukname = "".join(strukname)
             # strukname = self.relitable[koord.denominator][
-            #    self.struktAndInversSpalten[1]
+            #    n_and_invers_spalten[1]
             # ]
             if len(strukname.strip()) > 3:
                 return strukname
@@ -1580,7 +1570,7 @@ class Concat:
         elif koord.denominator == 1:
             strukname = (
                 (
-                    self.relitable[koord.numerator][self.struktAndInversSpalten[0]],
+                    self.relitable[koord.numerator][n_and_invers_spalten[0]],
                     " (",
                     str(koord.numerator),
                     ")",
@@ -1595,7 +1585,7 @@ class Concat:
                     self.relitable[koord.numerator][198],
                 )
                 if not isGalaxie
-                else (self.relitable[koord.numerator][self.struktAndInversSpalten[0]],)
+                else (self.relitable[koord.numerator][n_and_invers_spalten[0]],)
             )
             strukname = "".join(strukname)
             if len(strukname.strip()) > 3:
@@ -1604,7 +1594,7 @@ class Concat:
                 return ""
         else:
             try:
-                return self.gebrUnivTable4metaKonkret[koord.numerator - 1][
+                return gebrTable4metaKonkretAndMore[koord.numerator - 1][
                     koord.denominator - 1
                 ]
             except (KeyError, IndexError):
@@ -1766,7 +1756,10 @@ class Concat:
             )
 
             cellNeu = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                gebrRatZahl, concatTable in (3, 5)
+                gebrRatZahl,
+                self.struktAndInversSpalten,
+                self.gebrUnivTable4metaKonkret,
+                concatTable in (3, 5),
             )
             tabelleDazuColNeu += [cellNeu if cellNeu is not None else ""]
 
