@@ -7,7 +7,7 @@ if [ "$1" == 'snapshot' ] || [ "$2" == 'snapshot' ]  || [ "$3" == 'snapshot' ] |
 else
 	geschafft=false
 	pypy-reta-all2.sh $bla > ~/religionen_.html
-	[ `cat ~/religionen_.html | grep '<table' | grep -v table2 | wc -l` -eq 1 ] && geschafft=true
+	[ `cat ~/religionen_.html | grep -e '^</table>$' | grep -v table2 | wc -l` -eq 1 ] && geschafft=true
 	$geschafft && cp -av ~/religionen_.html ~/religionen.html
 fi 
 #$geschafft && cp ~/religionen.html ~/myRepos/reta/religionen.html 
