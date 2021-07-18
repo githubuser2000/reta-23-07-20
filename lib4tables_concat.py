@@ -643,7 +643,7 @@ class Concat:
         for frac in tuple(fracs):
             for zusatzMul in range(1, 1025):
                 paar = (frac, Fraction(frac.denominator) * zusatzMul)
-                result[int(paar[0] * paar[1] * zusatzMul)] |= {paar}
+                result[int(paar[0] * paar[1])] |= {paar}
 
         result2: defaultdict = defaultdict(list)
         for key, value in result.items():
