@@ -778,6 +778,7 @@ class Concat:
                 ),
             }
 
+            self.struktAndInversSpalten: tuple = (5, 131)
             self.gebrRatMulSternDict = self.convertSetOfPaarenToDictOfNumToPaare(
                 self.gebrRatMulStern
             )
