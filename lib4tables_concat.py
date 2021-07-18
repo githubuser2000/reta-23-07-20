@@ -776,6 +776,14 @@ class Concat:
                     (1, 3, frozenset({ST.gleichfoermigesPolygon, ST.universum}), 0),
                 ),
             }
+            uni_ = (5, 131)
+            gal_ = (10, 42)
+            GalOrUni_nOrInvers = {
+                0: (gal_, gal_),
+                1: (gal_, uni_),
+                2: (uni_, gal_),
+                3: (uni_, uni_),
+            }
 
             self.struktAndInversSpalten: tuple = (5, 131)
             self.gebrRatMulSternDict = self.convertSetOfPaarenToDictOfNumToPaare(
@@ -789,6 +797,7 @@ class Concat:
 
             # hier geht es um die html class Parameter und um Tagging ob Galaxie oder Polygon
             koord2tag, koord2Parameter = {}, {}
+
             for name, mehrereEinraege in forGeneratedSpaltenParameter_Tags.items():
                 for befehl in generatedBefehle:
                     if (
@@ -950,13 +959,23 @@ class Concat:
                                         elif brr == 1:
                                             von = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                                                 multi[0],
-                                                self.struktAndInversSpalten,
-                                                self.gebrUnivTable4metaKonkret,
+                                                GalOrUni_nOrInvers[nullBisDrei],
+                                                self.readOneCSVAndReturn(
+                                                    2 if nullBisDrei in (2, 3) else 3
+                                                ),
+                                                False
+                                                if nullBisDrei in (2, 3)
+                                                else True,
                                             )
                                             bis = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                                                 multi[1],
-                                                self.struktAndInversSpalten,
-                                                self.gebrUnivTable4metaKonkret,
+                                                GalOrUni_nOrInvers[nullBisDrei],
+                                                self.readOneCSVAndReturn(
+                                                    2 if nullBisDrei in (1, 3) else 3
+                                                ),
+                                                False
+                                                if nullBisDrei in (1, 3)
+                                                else True,
                                             )
                                             if von != None and bis != None:
                                                 into += [
