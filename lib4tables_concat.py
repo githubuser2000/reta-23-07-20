@@ -633,24 +633,23 @@ class Concat:
         result: defaultdict = defaultdict(list)
         for paar in tuple(paareSet):
             paar = tuple(paar)
-            try:
-                result[paar[0] * paar[1]] += [paar]
-            except KeyError:
-                result[paar[0] * paar[1]] = [paar]
+            result[paar[0] * paar[1]] += [paar]
         return result
 
     def convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
         self, fracs: set
     ) -> defaultdict:
-        result: defaultdict = defaultdict(list)
+        result: defaultdict = defaultdict(set)
         for frac in tuple(fracs):
-            paar = (frac, Fraction(frac.denominator))
-            try:
-                result[int(paar[0] * paar[1])] += [paar]
-            except KeyError:
-                result[int(paar[0] * paar[1])] = [paar]
+            for zusatzMul in range(1, 1025):
+                paar = (frac, Fraction(frac.denominator) * zusatzMul)
+                result[int(paar[0] * paar[1] * zusatzMul)] |= {paar}
 
-        return result
+        result2: defaultdict = defaultdict(list)
+        for key, value in result.items():
+            result2[key] = list(value)
+
+        return result2
 
     def concat1RowPrimUniverse2(
         self,
@@ -919,8 +918,8 @@ class Concat:
                                             if self.tables.htmlOutputYes
                                             else [", außerdem: "]
                                         )
-                                    into += (
-                                        [
+                                    if brr == 0:
+                                        into += [
                                             "( ",
                                             kombis[multi[0]][nullBisDrei][0]
                                             if len(
@@ -937,31 +936,33 @@ class Concat:
                                             else "...",
                                             " )",
                                         ]
-                                        if brr == 0
-                                        else [
-                                            '"',
-                                            self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                                                multi[0]
-                                            ),
-                                            # self.CSVsAlreadRead[place][
-                                            #    multi[0].numerator - 1
-                                            # ][multi[0].denominator - 1],
-                                            '"',
-                                            " (",
-                                            str(multi[0]),
-                                            ") * (",
-                                            str(multi[1]),
-                                            ")",
-                                            ' "',
-                                            self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                                                multi[1]
-                                            ),
-                                            # self.CSVsAlreadRead[place][
-                                            #    multi[1].numerator - 1
-                                            # ][multi[1].denominator - 1],
-                                            '"',
-                                        ]
-                                    )
+                                    elif brr == 1:
+                                        von = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+                                            multi[0]
+                                        )
+                                        bis = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+                                            multi[1]
+                                        )
+                                        if von != None and bis != None:
+                                            into += [
+                                                '"',
+                                                von,
+                                                # self.CSVsAlreadRead[place][
+                                                #    multi[0].numerator - 1
+                                                # ][multi[0].denominator - 1],
+                                                '"',
+                                                " (",
+                                                str(multi[0]),
+                                                ") * (",
+                                                str(multi[1]),
+                                                ")",
+                                                ' "',
+                                                bis,
+                                                # self.CSVsAlreadRead[place][
+                                                #    multi[1].numerator - 1
+                                                # ][multi[1].denominator - 1],
+                                                '"',
+                                            ]
 
                                 self.relitable[i] += ["".join(into)]
 
