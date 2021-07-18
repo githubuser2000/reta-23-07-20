@@ -814,6 +814,7 @@ class Concat:
                 "Struktur -> Motiv",
                 "Struktur -> Strukur",
             )
+            self.gebrUnivTable4metaKonkret = self.readOneCSVAndReturn(2)
 
             # self.rolle = []
             self.motivation: dict = {"Sternpolygone": [], "gleichförmige Polygone": []}
@@ -932,19 +933,25 @@ class Concat:
                                         if brr == 0
                                         else [
                                             '"',
-                                            self.CSVsAlreadRead[place][
-                                                multi[0].numerator - 1
-                                            ][multi[0].denominator - 1],
+                                            self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+                                                multi[0]
+                                            ),
+                                            # self.CSVsAlreadRead[place][
+                                            #    multi[0].numerator - 1
+                                            # ][multi[0].denominator - 1],
                                             '"',
-                                            "(",
+                                            " (",
                                             str(multi[0]),
                                             ") * (",
                                             str(multi[1]),
                                             ")",
                                             ' "',
-                                            self.CSVsAlreadRead[place][
-                                                multi[1].numerator - 1
-                                            ][multi[1].denominator - 1],
+                                            self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+                                                multi[1]
+                                            ),
+                                            # self.CSVsAlreadRead[place][
+                                            #    multi[1].numerator - 1
+                                            # ][multi[1].denominator - 1],
                                             '"',
                                         ]
                                     )
@@ -1467,7 +1474,7 @@ class Concat:
                             == (self.BruecheUn * self.BruecheUn2)
                             and self.BruecheUn != self.BruecheUn2
                         ):
-                            x("SXF", int(self.BruecheUn * self.BruecheUn2))
+                            # x("SXF", int(self.BruecheUn * self.BruecheUn2))
                             self.gebrRatMulStern |= {
                                 frozenset({self.BruecheUn, self.BruecheUn2})
                             }
@@ -1476,7 +1483,7 @@ class Concat:
                             == (self.BruecheUn / self.BruecheUn2)
                             and self.BruecheUn != self.BruecheUn2
                         ):
-                            x("S_F", int(self.BruecheUn / self.BruecheUn2))
+                            # x("S_F", int(self.BruecheUn / self.BruecheUn2))
                             self.gebrRatDivStern |= {
                                 frozenset({self.BruecheUn, self.BruecheUn2})
                             }
@@ -1486,22 +1493,22 @@ class Concat:
                             == (1 / (self.BruecheUn * self.BruecheUn2))
                             and self.BruecheUn != self.BruecheUn2
                         ):
-                            x("SUF", int(self.BruecheUn * self.BruecheUn2))
+                            # x("SUF", int(self.BruecheUn * self.BruecheUn2))
                             self.gebrRatMulGleichf |= {
                                 frozenset({self.BruecheUn, self.BruecheUn2})
                             }
-                            x("JFB", ["1/" + str(self.gebrRatMulGleichf)])
+                            # x("JFB", ["1/" + str(self.gebrRatMulGleichf)])
                         if (
                             round(1 / (self.BruecheUn / self.BruecheUn2))
                             == (1 / (self.BruecheUn / self.BruecheUn2))
                             and self.BruecheUn != self.BruecheUn2
                         ):
-                            x("SUF", int(self.BruecheUn / self.BruecheUn2))
+                            # x("SUF", int(self.BruecheUn / self.BruecheUn2))
                             self.gebrRatDivGleichf |= {
                                 frozenset({self.BruecheUn, self.BruecheUn2})
                             }
 
-                            x("TFB", ["1/" + str(self.gebrRatDivGleichf)])
+                            # x("TFB", ["1/" + str(self.gebrRatDivGleichf)])
 
             if wahl in (3, 5):
                 self.BruecheGal = self.getAllBrueche(gebrUnivTable4metaKonkret)

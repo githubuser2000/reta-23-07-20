@@ -209,7 +209,7 @@ class Program:
                                         oneOfThingsAfterEqSign,
                                         befehlName=cmd[:eq],
                                     )
-                                    x("DFGH", self.spaltenArtenKey_SpaltennummernValue)
+                                    # x("DFGH", self.spaltenArtenKey_SpaltennummernValue)
                                 except KeyError:
                                     nebenParameters: list = []
                                     nebenparameterWerte: list = []
