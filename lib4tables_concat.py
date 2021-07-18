@@ -868,7 +868,7 @@ class Concat:
 
                                 multipless = multiples(i) if brr == 0 else self.gebrRatMulSternDict[i]
                                 into = (
-                                    [""]
+                                    []
                                     if i != 0
                                     else [
                                         "generierte Multiplikationen ",
