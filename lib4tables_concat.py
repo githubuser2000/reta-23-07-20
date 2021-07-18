@@ -3,6 +3,7 @@
 import csv
 import os
 import sys
+from collections import defaultdict
 from copy import copy, deepcopy
 from fractions import Fraction
 
@@ -627,6 +628,17 @@ class Concat:
 
         return self.relitable, rowsAsNumbers
 
+    def convertSetOfPaarenToDictOfNumToPaare(self, paareSet: set) -> defaultdict:
+        """Macht aus einem Set aus Paaren eins von verschiedenen möglichen dicts mit key int und value liste aus paaren"""
+        result = defaultdict(list)
+        for paar in tuple(paareSet):
+            paar = tuple(paar)
+            try:
+                result[paar[0]*paar[1]] += [paar]
+            except KeyError:
+                result[paar[0]*paar[1]] = [paar]
+        return result
+
     def concat1RowPrimUniverse2(
         self,
         relitable: list,
@@ -753,6 +765,8 @@ class Concat:
                 ),
             }
 
+            self.gebrRatMulSternDict = self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatMulStern)
+
             # hier geht es um die html class Parameter und um Tagging ob Galaxie oder Polygon
             koord2tag, koord2Parameter = {}, {}
             for name, mehrereEinraege in forGeneratedSpaltenParameter_Tags.items():
@@ -800,7 +814,7 @@ class Concat:
                     self.motivation[polytypename] += [cols[polytype]]
                     # self.ziel += [cols[11]]
 
-            for brr, ganzOrGebr in enumerate(["ganz"]):
+            for brr, ganzOrGebr in enumerate(["", ", mit Faktoren aus gebrochen-rationalen Zahlen"]):
                 for zwei, (polytype, polytypename, transzType) in enumerate(
                     zip(
                         hardCodedCouple,
@@ -852,7 +866,7 @@ class Concat:
                                 }
                                 # x("HJM", len(self.relitable[0]))
 
-                                multipless = multiples(i)
+                                multipless = multiples(i) if brr == 0 else self.gebrRatMulSternDict[i]
                                 into = (
                                     [""]
                                     if i != 0
@@ -861,6 +875,7 @@ class Concat:
                                         polytypename,
                                         " ",
                                         kombiUeberschrift,
+                                        ganzOrGebr
                                     ]
                                 )
                                 for k, multi in enumerate(multipless):
