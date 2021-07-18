@@ -630,13 +630,26 @@ class Concat:
 
     def convertSetOfPaarenToDictOfNumToPaare(self, paareSet: set) -> defaultdict:
         """Macht aus einem Set aus Paaren eins von verschiedenen möglichen dicts mit key int und value liste aus paaren"""
-        result = defaultdict(list)
+        result: defaultdict = defaultdict(list)
         for paar in tuple(paareSet):
             paar = tuple(paar)
             try:
                 result[paar[0] * paar[1]] += [paar]
             except KeyError:
                 result[paar[0] * paar[1]] = [paar]
+        return result
+
+    def convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+        self, fracs: set
+    ) -> defaultdict:
+        result: defaultdict = defaultdict(list)
+        for frac in tuple(fracs):
+            paar = (frac, Fraction(frac.denominator))
+            try:
+                result[int(paar[0] * paar[1])] += [paar]
+            except KeyError:
+                result[int(paar[0] * paar[1])] = [paar]
+
         return result
 
     def concat1RowPrimUniverse2(
