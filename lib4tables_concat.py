@@ -781,6 +781,11 @@ class Concat:
             self.gebrRatMulSternDict = self.convertSetOfPaarenToDictOfNumToPaare(
                 self.gebrRatMulStern
             )
+            self.gebrRatMulSternDict2 = (
+                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                    self.BruecheUni
+                )
+            )
 
             # hier geht es um die html class Parameter und um Tagging ob Galaxie oder Polygon
             koord2tag, koord2Parameter = {}, {}
@@ -893,6 +898,7 @@ class Concat:
                                     multiples(i)
                                     if brr == 0
                                     else self.gebrRatMulSternDict[i]
+                                    + self.gebrRatMulSternDict2[i]
                                 )
                                 into = (
                                     []
