@@ -662,11 +662,15 @@ class Concat:
 
     def combineDicts(self, a: defaultdict, b: defaultdict) -> defaultdict:
         e: defaultdict = defaultdict(list)
-        for (key1, value1), (key2, value2) in zip_longest(
-            a.items(), b.items(), fillvalue=[]
-        ):
-            e[key1] += value1
-            e[key2] += value2
+        # x("SDFA1", a.items())
+        # x("SDFA2", b)
+        # a: dict = dict(a)
+        # b: dict = dict(b)
+        # x("SDFA1", a.items())
+        for key, value in a.items():
+            e[key] += value
+        for key, value in b.items():
+            e[key] += value
         return e
 
     def concat1RowPrimUniverse2(
