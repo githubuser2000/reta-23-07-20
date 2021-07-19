@@ -1045,13 +1045,15 @@ class Concat:
                                                 else "",
                                             ]
                                     elif brr == 1:
-                                        for k, multi in enumerate(
-                                            (multiples1, multiples2)
+                                        for k, (multi1, multi2) in enumerate(
+                                            zip_longest(
+                                                multiples1, multiples2, fillvalue=""
+                                            )
                                         ):
                                             if k > 0 and not self.tables.htmlOutputYes:
                                                 into += [", außerdem: "]
                                             von = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                                                multi[0],
+                                                multi1,
                                                 GalOrUni_nOrInvers[nullBisDrei][zwei],
                                                 self.readOneCSVAndReturn(
                                                     2 if nullBisDrei in (2, 3) else 3
@@ -1061,7 +1063,7 @@ class Concat:
                                                 else True,
                                             )
                                             bis = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                                                multi[1],
+                                                multi2,
                                                 GalOrUni_nOrInvers[nullBisDrei][zwei],
                                                 self.readOneCSVAndReturn(
                                                     2 if nullBisDrei in (1, 3) else 3
@@ -1084,7 +1086,7 @@ class Concat:
                                                         # ][multi[0].denominator - 1],
                                                         '"',
                                                         " (",
-                                                        str(multi[0]),
+                                                        str(multi1),
                                                         ")",
                                                         "<br>"
                                                         if self.tables.htmlOutputYes
@@ -1102,7 +1104,7 @@ class Concat:
                                                         )
                                                         else " ",
                                                         "(",
-                                                        str(multi[1]),
+                                                        str(multi2),
                                                         ")",
                                                         ' "',
                                                         bis,
