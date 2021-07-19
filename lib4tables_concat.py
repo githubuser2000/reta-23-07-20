@@ -835,7 +835,7 @@ class Concat:
                 (1, 0, 1): "gebrRatMulGleichfDictGal",
                 (1, 1, 1): "gebrRatDivGleichfDictGal",
             }
-            alleFractionErgebnisseMappingPaare: dict = {}
+            alleFractionErgebnisseMapping2: dict = {}
             for zwei1 in [0, 1]:
                 for zwei2 in [0, 1]:
                     for zwei3 in [0, 1]:
@@ -845,7 +845,7 @@ class Concat:
                                 "mul0div1": zwei2,
                                 "stern0gleichf1": zwei3,
                             }
-                        ] = (zwei1, zwei2, zwei3), (zwei1, zwei2, zwei3)
+                        ] = (zwei1, zwei2, zwei3)
 
             # hier geht es um die html class Parameter und um Tagging ob Galaxie oder Polygon
             koord2tag, koord2Parameter = {}, {}
@@ -1574,7 +1574,6 @@ class Concat:
                             == (self.BruecheUn * self.BruecheUn2)
                             and self.BruecheUn != self.BruecheUn2
                         ):
-                            # x("SXF", int(self.BruecheUn * self.BruecheUn2))
                             self.gebrRatMulStern |= {
                                 frozenset({self.BruecheUn, self.BruecheUn2})
                             }
@@ -1583,7 +1582,6 @@ class Concat:
                             == (self.BruecheUn / self.BruecheUn2)
                             and self.BruecheUn != self.BruecheUn2
                         ):
-                            # x("S_F", int(self.BruecheUn / self.BruecheUn2))
                             self.gebrRatDivStern |= {
                                 frozenset({self.BruecheUn, self.BruecheUn2})
                             }
@@ -1593,22 +1591,17 @@ class Concat:
                             == (1 / (self.BruecheUn * self.BruecheUn2))
                             and self.BruecheUn != self.BruecheUn2
                         ):
-                            # x("SUF", int(self.BruecheUn * self.BruecheUn2))
                             self.gebrRatMulGleichf |= {
                                 frozenset({self.BruecheUn, self.BruecheUn2})
                             }
-                            # x("JFB", ["1/" + str(self.gebrRatMulGleichf)])
                         if (
                             round(1 / (self.BruecheUn / self.BruecheUn2))
                             == (1 / (self.BruecheUn / self.BruecheUn2))
                             and self.BruecheUn != self.BruecheUn2
                         ):
-                            # x("SUF", int(self.BruecheUn / self.BruecheUn2))
                             self.gebrRatDivGleichf |= {
                                 frozenset({self.BruecheUn, self.BruecheUn2})
                             }
-
-                            # x("TFB", ["1/" + str(self.gebrRatDivGleichf)])
 
             if wahl in (3, 5):
                 self.BruecheGal = self.getAllBrueche(gebrUnivTable4metaKonkret)
