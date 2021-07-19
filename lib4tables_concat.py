@@ -1040,6 +1040,7 @@ class Concat:
                                                 zwei,
                                             ]
                                         ]
+                                        x("HFG", multiples1.items())
                                         multiples2 = alleFractionErgebnisse[
                                             alleFractionErgebnisseMapping[
                                                 0 if nullBisDrei in [0, 2] else 1,
@@ -1057,7 +1058,7 @@ class Concat:
                                             alxp("BBB")
 
                                             von = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                                                multi1,
+                                                multi1[i],
                                                 GalOrUni_nOrInvers[nullBisDrei][zwei],
                                                 self.readOneCSVAndReturn(
                                                     2 if nullBisDrei in (2, 3) else 3
@@ -1068,7 +1069,7 @@ class Concat:
                                             )
                                             alxp("BBB2")
                                             bis = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                                                multi2,
+                                                multi2[i],
                                                 GalOrUni_nOrInvers[nullBisDrei][zwei],
                                                 self.readOneCSVAndReturn(
                                                     2 if nullBisDrei in (1, 3) else 3
