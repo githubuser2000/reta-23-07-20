@@ -1562,10 +1562,10 @@ class Concat:
             return self.CSVsAlreadRead[place]
         else:
             with open(place, mode="r") as csv_file:
-                gebrUnivTable4metaKonkret = list(csv.reader(csv_file, delimiter=";"))
-            self.CSVsAlreadRead[place] = gebrUnivTable4metaKonkret
+                gebrRatTable = list(csv.reader(csv_file, delimiter=";"))
+            self.CSVsAlreadRead[place] = gebrRatTable
             if wahl in (2, 4):
-                self.BruecheUni = tuple(self.getAllBrueche(gebrUnivTable4metaKonkret))
+                self.BruecheUni = tuple(self.getAllBrueche(gebrRatTable))
                 for BruecheUn in self.BruecheUni[: round(len(self.BruecheUni) / 2)]:
                     for BruecheUn2 in self.BruecheUni[
                         round(len(self.BruecheUni) / 2) :
@@ -1603,7 +1603,7 @@ class Concat:
                             }
 
             if wahl in (3, 5):
-                self.BruecheGal = tuple(self.getAllBrueche(gebrUnivTable4metaKonkret))
+                self.BruecheGal = tuple(self.getAllBrueche(gebrRatTable))
                 for BruecheGal in self.BruecheGal[: round(len(self.BruecheGal) / 2)]:
                     for BruecheGal2 in self.BruecheGal[
                         round(len(self.BruecheGal) / 2) :
@@ -1641,7 +1641,7 @@ class Concat:
                             self.gebrRatDivGleichfGal |= {
                                 frozenset({BruecheGal, BruecheGal2})
                             }
-            return gebrUnivTable4metaKonkret
+            return gebrRatTable
 
     def spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
         self,
