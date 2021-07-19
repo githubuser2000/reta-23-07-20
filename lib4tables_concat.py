@@ -922,12 +922,8 @@ class Concat:
                                     if self.tables.htmlOutputYes:
                                         into += ["<ul>"]
                                     for k, multi in enumerate(multipless):
-                                        if k > 0 and False:
-                                            into += (
-                                                [",<br>außerdem: "]
-                                                if self.tables.htmlOutputYes and False
-                                                else [", außerdem: "]
-                                            )
+                                        if k > 0 and not self.tables.htmlOutputYes:
+                                            into += [", außerdem: "]
                                         if brr == 0:
                                             into += [
                                                 "<li>"
