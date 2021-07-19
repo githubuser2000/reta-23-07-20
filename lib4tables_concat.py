@@ -814,7 +814,7 @@ class Concat:
             alleFractionErgebnisse["gebrRatDivSternDictUni"] = self.combineDicts(
                 self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatDivSternUni),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheUni
+                    self.BruecheUni, True
                 ),
             )
             alleFractionErgebnisse["gebrRatMulSternDictGal"] = self.combineDicts(
@@ -826,7 +826,7 @@ class Concat:
             alleFractionErgebnisse["gebrRatDivSternDictGal"] = self.combineDicts(
                 self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatDivSternGal),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheGal
+                    self.BruecheGal, True
                 ),
             )
             alleFractionErgebnisse["gebrRatMulGleichfDictUni"] = self.combineDicts(
@@ -838,7 +838,7 @@ class Concat:
             alleFractionErgebnisse["gebrRatDivGleichfDictUni"] = self.combineDicts(
                 self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatDivGleichfUni),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheUni
+                    self.BruecheUni, True
                 ),
             )
             alleFractionErgebnisse["gebrRatMulGleichfDictGal"] = self.combineDicts(
@@ -850,7 +850,7 @@ class Concat:
             alleFractionErgebnisse["gebrRatDivGleichfDictGal"] = self.combineDicts(
                 self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatDivGleichfGal),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheGal
+                    self.BruecheGal, True
                 ),
             )
 
@@ -864,17 +864,17 @@ class Concat:
                 (1, 0, 1): "gebrRatMulGleichfDictGal",
                 (1, 1, 1): "gebrRatDivGleichfDictGal",
             }
-            alleFractionErgebnisseMapping2: dict = {}
-            for zwei1 in [0, 1]:
-                for zwei2 in [0, 1]:
-                    for zwei3 in [0, 1]:
-                        alleFractionErgebnisseMapping2[
-                            {
-                                "Gal0Uni1": zwei1,
-                                "mul0div1": zwei2,
-                                "stern0gleichf1": zwei3,
-                            }
-                        ] = (zwei1, zwei2, zwei3)
+            # alleFractionErgebnisseMapping2: dict = {}
+            # for zwei1 in [0, 1]:
+            #    for zwei2 in [0, 1]:
+            #        for zwei3 in [0, 1]:
+            #            alleFractionErgebnisseMapping2[
+            #                {
+            #                    "Gal0Uni1": zwei1,
+            #                    "mul0div1": zwei2,
+            #                    "stern0gleichf1": zwei3,
+            #                }
+            #            ] = (zwei1, zwei2, zwei3)
 
             # hier geht es um die html class Parameter und um Tagging ob Galaxie oder Polygon
             koord2tag, koord2Parameter = {}, {}
@@ -983,13 +983,23 @@ class Concat:
                                     len(self.relitable[0]),
                                 }
                                 # x("HJM", len(self.relitable[0]))
-
-                                multipless = (
-                                    multiples(i)
-                                    if brr == 0
-                                    else self.gebrRatMulSternDict[i]
-                                    + self.gebrRatMulSternDict2[i]
-                                )
+                                if brr == 1:
+                                    multiples1 = alleFractionErgebnisse[
+                                        alleFractionErgebnisseMapping[
+                                            0 if nullBisDrei in [0, 1] else 1,
+                                            0,
+                                            zwei,
+                                        ]
+                                    ]
+                                    multiples2 = alleFractionErgebnisse[
+                                        alleFractionErgebnisseMapping[
+                                            0 if nullBisDrei in [0, 2] else 1,
+                                            0,
+                                            zwei,
+                                        ]
+                                    ]
+                                else:
+                                    multipless = multiples(i)
                                 if i == 0:
                                     into = [
                                         "generierte Multiplikationen ",
@@ -1002,9 +1012,10 @@ class Concat:
                                     into = []
                                     if self.tables.htmlOutputYes:
                                         into += ["<ul>"]
-                                    for k, multi in enumerate(multipless):
-                                        if k > 0 and not self.tables.htmlOutputYes:
-                                            into += [", außerdem: "]
+                                    if brr == 0:
+                                        for k, multi in enumerate(multipless):
+                                            if k > 0 and not self.tables.htmlOutputYes:
+                                                into += [", außerdem: "]
                                         if brr == 0:
                                             into += [
                                                 "<li>"
@@ -1033,7 +1044,12 @@ class Concat:
                                                 if self.tables.htmlOutputYes
                                                 else "",
                                             ]
-                                        elif brr == 1:
+                                    elif brr == 1:
+                                        for k, multi in enumerate(
+                                            (multiples1, multiples2)
+                                        ):
+                                            if k > 0 and not self.tables.htmlOutputYes:
+                                                into += [", außerdem: "]
                                             von = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                                                 multi[0],
                                                 GalOrUni_nOrInvers[nullBisDrei][zwei],
