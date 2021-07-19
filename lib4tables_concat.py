@@ -1056,6 +1056,8 @@ class Concat:
                                         ):
                                             if k > 0 and not self.tables.htmlOutputYes:
                                                 into += [", außerdem: "]
+                                            alxp("BBB")
+
                                             von = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                                                 multi1,
                                                 GalOrUni_nOrInvers[nullBisDrei][zwei],
@@ -1066,6 +1068,7 @@ class Concat:
                                                 if nullBisDrei in (2, 3)
                                                 else True,
                                             )
+                                            alxp("BBB2")
                                             bis = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                                                 multi2,
                                                 GalOrUni_nOrInvers[nullBisDrei][zwei],
@@ -1557,6 +1560,7 @@ class Concat:
                 # and self.struktAndInversSpalten == transzendentalienSpalten
             ):
 
+                alxp("CCC")
                 gebrStrukWort = (
                     self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                         vier[0][1],
@@ -1918,6 +1922,7 @@ class Concat:
                 Fraction(zeilenNr, i) if not ifTransponiert else Fraction(i, zeilenNr)
             )
 
+            alxp("AAA")
             cellNeu = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                 gebrRatZahl,
                 self.struktAndInversSpalten,
