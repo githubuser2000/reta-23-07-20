@@ -1697,6 +1697,7 @@ class Concat:
         gebrTable4metaKonkretAndMore,
         isGalaxie=False,
     ) -> str:
+        x("SDF", koord)
         if koord.denominator == 0 or koord.numerator == 0:
             return ""
         elif koord.denominator > 100 or koord.numerator > 100:
