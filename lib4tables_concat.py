@@ -826,21 +826,26 @@ class Concat:
                 ),
             )
             alleFractionErgebnisseMapping: dict = {
-                (0, 0): "gebrRatMulSternDictUni",
-                (0, 1): "gebrRatDivSternDictUni",
-                (1, 0): "gebrRatMulSternDictGal",
-                (1, 1): "gebrRatDivSternDictGal",
+                (0, 0, 0): "gebrRatMulSternDictUni",
+                (0, 1, 0): "gebrRatDivSternDictUni",
+                (1, 0, 0): "gebrRatMulSternDictGal",
+                (1, 1, 0): "gebrRatDivSternDictGal",
+                (0, 0, 1): "gebrRatMulGleichfDictUni",
+                (0, 1, 1): "gebrRatDivGleichfDictUni",
+                (1, 0, 1): "gebrRatMulGleichfDictGal",
+                (1, 1, 1): "gebrRatDivGleichfDictGal",
             }
             alleFractionErgebnisseMappingPaare: dict = {}
             for zwei1 in [0, 1]:
                 for zwei2 in [0, 1]:
-                    alleFractionErgebnisseMapping2[
-                        {
-                            "Gal0Uni1": zwei1,
-                            "mul0div1": None,
-                            "erster0zweiter1": zwei3,
-                        }
-                    ] = (zwei1, zwei2, zwei3), (zwei1, zwei2, zwei3)
+                    for zwei3 in [0, 1]:
+                        alleFractionErgebnisseMapping2[
+                            {
+                                "Gal0Uni1": zwei1,
+                                "mul0div1": zwei2,
+                                "stern0gleichf1": zwei3,
+                            }
+                        ] = (zwei1, zwei2, zwei3), (zwei1, zwei2, zwei3)
 
             # hier geht es um die html class Parameter und um Tagging ob Galaxie oder Polygon
             koord2tag, koord2Parameter = {}, {}
