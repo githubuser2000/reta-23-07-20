@@ -806,29 +806,54 @@ class Concat:
             alleFractionErgebnisse = {}
             # self.struktAndInversSpalten: tuple = (5, 131)
             alleFractionErgebnisse["gebrRatMulSternDictUni"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatMulStern),
+                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatMulSternUni),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
                     self.BruecheUni
                 ),
             )
             alleFractionErgebnisse["gebrRatDivSternDictUni"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatDivStern),
+                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatDivSternUni),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
                     self.BruecheUni
                 ),
             )
             alleFractionErgebnisse["gebrRatMulSternDictGal"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatMulStern),
+                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatMulSternGal),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheUni
+                    self.BruecheGal
                 ),
             )
             alleFractionErgebnisse["gebrRatDivSternDictGal"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatDivStern),
+                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatDivSternGal),
+                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                    self.BruecheGal
+                ),
+            )
+            alleFractionErgebnisse["gebrRatMulGleichfDictUni"] = self.combineDicts(
+                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatMulGleichfUni),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
                     self.BruecheUni
                 ),
             )
+            alleFractionErgebnisse["gebrRatDivGleichfDictUni"] = self.combineDicts(
+                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatDivGleichfUni),
+                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                    self.BruecheUni
+                ),
+            )
+            alleFractionErgebnisse["gebrRatMulGleichfDictGal"] = self.combineDicts(
+                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatMulGleichfGal),
+                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                    self.BruecheGal
+                ),
+            )
+            alleFractionErgebnisse["gebrRatDivGleichfDictGal"] = self.combineDicts(
+                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatDivGleichfGal),
+                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                    self.BruecheGal
+                ),
+            )
+
             alleFractionErgebnisseMapping: dict = {
                 (0, 0, 0): "gebrRatMulSternDictUni",
                 (0, 1, 0): "gebrRatDivSternDictUni",
