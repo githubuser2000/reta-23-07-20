@@ -789,38 +789,39 @@ class Concat:
                 3: (uni_, uni_),
             }
 
+            alleFractionErgebnisse = {}
             # self.struktAndInversSpalten: tuple = (5, 131)
-            self.gebrRatMulSternDictUni = self.convertSetOfPaarenToDictOfNumToPaare(
-                self.gebrRatMulStern
+            alleFractionErgebnisse[
+                "gebrRatMulSternDictUni"
+            ] = self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatMulStern)
+            alleFractionErgebnisse[
+                "gebrRatMulSternDictUni2"
+            ] = self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                self.BruecheUni
             )
-            self.gebrRatMulSternDictUni2 = (
-                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheUni
-                )
+            alleFractionErgebnisse[
+                "gebrRatDivSternDictUni"
+            ] = self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatDivStern)
+            alleFractionErgebnisse[
+                "gebrRatDivSternDictUni2"
+            ] = self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                self.BruecheUni
             )
-            self.gebrRatDivSternDictUni = self.convertSetOfPaarenToDictOfNumToPaare(
-                self.gebrRatDivStern
+            alleFractionErgebnisse[
+                "gebrRatMulSternDictGal"
+            ] = self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatMulStern)
+            alleFractionErgebnisse[
+                "gebrRatMulSternDictGal2"
+            ] = self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                self.BruecheUni
             )
-            self.gebrRatDivSternDictUni = (
-                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheUni
-                )
-            )
-            self.gebrRatMulSternDictGal = self.convertSetOfPaarenToDictOfNumToPaare(
-                self.gebrRatMulStern
-            )
-            self.gebrRatMulSternDictGal2 = (
-                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheUni
-                )
-            )
-            self.gebrRatDivSternDictGal = self.convertSetOfPaarenToDictOfNumToPaare(
-                self.gebrRatDivStern
-            )
-            self.gebrRatDivSternDictGal2 = (
-                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheUni
-                )
+            alleFractionErgebnisse[
+                "gebrRatDivSternDictGal"
+            ] = self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatDivStern)
+            alleFractionErgebnisse[
+                "gebrRatDivSternDictGal2"
+            ] = self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                self.BruecheUni
             )
 
             # hier geht es um die html class Parameter und um Tagging ob Galaxie oder Polygon
