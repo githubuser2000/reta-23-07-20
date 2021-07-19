@@ -26,10 +26,14 @@ class Concat:
         self.CSVsSame = {1: (1,), 2: (2, 4), 3: (3, 5), 4: (2, 4), 5: (3, 5)}
         self.BruecheUni = set()
         self.BruecheGal = set()
-        self.gebrRatMulStern = set()
-        self.gebrRatDivStern = set()
-        self.gebrRatMulGleichf = set()
-        self.gebrRatDivGleichf = set()
+        self.gebrRatMulSternUni = set()
+        self.gebrRatDivSternUni = set()
+        self.gebrRatMulGleichfUni = set()
+        self.gebrRatDivGleichfUni = set()
+        self.gebrRatMulSternGal = set()
+        self.gebrRatDivSternGal = set()
+        self.gebrRatMulGleichfGal = set()
+        self.gebrRatDivGleichfGal = set()
 
     @property
     def gebrUnivSet(self):
