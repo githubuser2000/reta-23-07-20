@@ -1050,15 +1050,18 @@ class Concat:
                                         ]
                                         for k, (multi1, multi2) in enumerate(
                                             zip_longest(
-                                                multiples1, multiples2, fillvalue=""
+                                                multiples1[i],
+                                                multiples2[i],
+                                                fillvalue="",
                                             )
                                         ):
                                             if k > 0 and not self.tables.htmlOutputYes:
                                                 into += [", außerdem: "]
                                             alxp("BBB")
+                                            x("GHJ", i)
 
                                             von = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                                                multi1[i],
+                                                multi1,
                                                 GalOrUni_nOrInvers[nullBisDrei][zwei],
                                                 self.readOneCSVAndReturn(
                                                     2 if nullBisDrei in (2, 3) else 3
