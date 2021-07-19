@@ -2236,7 +2236,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.primvielfache,
-                ("Motiv_gleichförmige_Polygone_gebrochen-rational", "motivgebrgleich"),
+                ("Motiv_gleichförmige_Polygone_gebrochen-rational", "motivgebrgleichf"),
                 set(),
                 set(),
                 set(),
@@ -2250,7 +2250,7 @@ class Program:
                 Program.ParametersMain.primvielfache,
                 (
                     "Struktur_gleichförmige_Polygone_gebrochen-rational",
-                    "strukgebrgleich",
+                    "strukgebrgleichf",
                 ),
                 set(),
                 set(),
