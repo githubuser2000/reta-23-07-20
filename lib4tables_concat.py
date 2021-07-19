@@ -6,6 +6,7 @@ import sys
 from collections import defaultdict
 from copy import copy, deepcopy
 from fractions import Fraction
+from itertools import zip_longest
 
 from center import (alxp, cliout, getTextWrapThings, infoLog, output,
                     primzahlvielfachesgalaxie, re, x)
@@ -655,6 +656,15 @@ class Concat:
 
         return result2
 
+    def combineDicts(self, a: defaultdict, b: defaultdict) -> defaultdict:
+        e: defaultdict = defaultdict(list)
+        for (key1, value1), (key2, value2) in zip_longest(
+            a.items(), b.items(), fillvalue=[]
+        ):
+            e[key1] += value1
+            e[key2] += value2
+        return e
+
     def concat1RowPrimUniverse2(
         self,
         relitable: list,
@@ -791,37 +801,29 @@ class Concat:
 
             alleFractionErgebnisse = {}
             # self.struktAndInversSpalten: tuple = (5, 131)
-            alleFractionErgebnisse[
-                "gebrRatMulSternDictUni"
-            ] = self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatMulStern)
-            alleFractionErgebnisse[
-                "gebrRatMulSternDictUni2"
-            ] = self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                self.BruecheUni
+            alleFractionErgebnisse["gebrRatMulSternDictUni"] = self.combineDicts(
+                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatMulStern),
+                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                    self.BruecheUni
+                ),
             )
-            alleFractionErgebnisse[
-                "gebrRatDivSternDictUni"
-            ] = self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatDivStern)
-            alleFractionErgebnisse[
-                "gebrRatDivSternDictUni2"
-            ] = self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                self.BruecheUni
+            alleFractionErgebnisse["gebrRatDivSternDictUni"] = self.combineDicts(
+                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatDivStern),
+                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                    self.BruecheUni
+                ),
             )
-            alleFractionErgebnisse[
-                "gebrRatMulSternDictGal"
-            ] = self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatMulStern)
-            alleFractionErgebnisse[
-                "gebrRatMulSternDictGal2"
-            ] = self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                self.BruecheUni
+            alleFractionErgebnisse["gebrRatMulSternDictGal"] = self.combineDicts(
+                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatMulStern),
+                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                    self.BruecheUni
+                ),
             )
-            alleFractionErgebnisse[
-                "gebrRatDivSternDictGal"
-            ] = self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatDivStern)
-            alleFractionErgebnisse[
-                "gebrRatDivSternDictGal2"
-            ] = self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                self.BruecheUni
+            alleFractionErgebnisse["gebrRatDivSternDictGal"] = self.combineDicts(
+                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatDivStern),
+                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                    self.BruecheUni
+                ),
             )
             alleFractionErgebnisseMapping: dict = {
                 (0, 0, 0): "gebrRatMulSternDictUni",
