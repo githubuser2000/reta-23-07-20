@@ -959,7 +959,7 @@ class Concat:
                                         elif brr == 1:
                                             von = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                                                 multi[0],
-                                                GalOrUni_nOrInvers[nullBisDrei],
+                                                GalOrUni_nOrInvers[nullBisDrei][zwei],
                                                 self.readOneCSVAndReturn(
                                                     2 if nullBisDrei in (2, 3) else 3
                                                 ),
@@ -969,7 +969,7 @@ class Concat:
                                             )
                                             bis = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                                                 multi[1],
-                                                GalOrUni_nOrInvers[nullBisDrei],
+                                                GalOrUni_nOrInvers[nullBisDrei][zwei],
                                                 self.readOneCSVAndReturn(
                                                     2 if nullBisDrei in (1, 3) else 3
                                                 ),
@@ -977,31 +977,50 @@ class Concat:
                                                 if nullBisDrei in (1, 3)
                                                 else True,
                                             )
-                                            if von != None and bis != None:
-                                                into += [
-                                                    "<li>"
-                                                    if self.tables.htmlOutputYes
-                                                    else "" '"',
-                                                    von,
-                                                    # self.CSVsAlreadRead[place][
-                                                    #    multi[0].numerator - 1
-                                                    # ][multi[0].denominator - 1],
-                                                    '"',
-                                                    " (",
-                                                    str(multi[0]),
-                                                    ") * (",
-                                                    str(multi[1]),
-                                                    ")",
-                                                    ' "',
-                                                    bis,
-                                                    # self.CSVsAlreadRead[place][
-                                                    #    multi[1].numerator - 1
-                                                    # ][multi[1].denominator - 1],
-                                                    '"',
-                                                    "</li>"
-                                                    if self.tables.htmlOutputYes
-                                                    else "",
-                                                ]
+                                            if von is not None and bis is not None:
+                                                von = von.strip()
+                                                bis = bis.strip()
+                                                if len(von) > 3 and len(bis) > 3:
+                                                    into += [
+                                                        "<li>"
+                                                        if self.tables.htmlOutputYes
+                                                        else "" '"',
+                                                        von,
+                                                        # self.CSVsAlreadRead[place][
+                                                        #    multi[0].numerator - 1
+                                                        # ][multi[0].denominator - 1],
+                                                        '"',
+                                                        " (",
+                                                        str(multi[0]),
+                                                        ")",
+                                                        "<br>"
+                                                        if self.tables.htmlOutputYes
+                                                        and (
+                                                            len(von) > 30
+                                                            or len(bis) > 30
+                                                        )
+                                                        else " ",
+                                                        "*",
+                                                        "<br>"
+                                                        if self.tables.htmlOutputYes
+                                                        and (
+                                                            len(von) > 30
+                                                            or len(bis) > 30
+                                                        )
+                                                        else " ",
+                                                        "(",
+                                                        str(multi[1]),
+                                                        ")",
+                                                        ' "',
+                                                        bis,
+                                                        # self.CSVsAlreadRead[place][
+                                                        #    multi[1].numerator - 1
+                                                        # ][multi[1].denominator - 1],
+                                                        '"',
+                                                        "</li>"
+                                                        if self.tables.htmlOutputYes
+                                                        else "",
+                                                    ]
                                     if self.tables.htmlOutputYes:
                                         into += ["</ul>"]
 
