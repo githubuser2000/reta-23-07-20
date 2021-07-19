@@ -637,13 +637,17 @@ class Concat:
         return result
 
     def convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-        self, fracs: set
+        self, fracs: set, inverse=False
     ) -> defaultdict:
         result: defaultdict = defaultdict(set)
         for frac in tuple(fracs):
             for zusatzMul in range(1, 1025):
-                paar = (frac, Fraction(frac.denominator) * zusatzMul)
-                result[int(paar[0] * paar[1])] |= {paar}
+                if not inverse:
+                    paar = (frac, Fraction(frac.denominator) * zusatzMul)
+                    result[int(paar[0] * paar[1])] |= {paar}
+                else:
+                    paar = (frac, Fraction(frac.numerator) * zusatzMul)
+                    result[round(paar[1] / paar[0])] |= {paar}
 
         result2: defaultdict = defaultdict(list)
         for key, value in result.items():
@@ -785,11 +789,35 @@ class Concat:
                 3: (uni_, uni_),
             }
 
-            self.struktAndInversSpalten: tuple = (5, 131)
-            self.gebrRatMulSternDict = self.convertSetOfPaarenToDictOfNumToPaare(
+            # self.struktAndInversSpalten: tuple = (5, 131)
+            self.gebrRatMulSternDictUni = self.convertSetOfPaarenToDictOfNumToPaare(
                 self.gebrRatMulStern
             )
-            self.gebrRatMulSternDict2 = (
+            self.gebrRatMulSternDictUni2 = (
+                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                    self.BruecheUni
+                )
+            )
+            self.gebrRatDivSternDictUni = self.convertSetOfPaarenToDictOfNumToPaare(
+                self.gebrRatDivStern
+            )
+            self.gebrRatDivSternDictUni = (
+                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                    self.BruecheUni
+                )
+            )
+            self.gebrRatMulSternDictGal = self.convertSetOfPaarenToDictOfNumToPaare(
+                self.gebrRatMulStern
+            )
+            self.gebrRatMulSternDictGal2 = (
+                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                    self.BruecheUni
+                )
+            )
+            self.gebrRatDivSternDictGal = self.convertSetOfPaarenToDictOfNumToPaare(
+                self.gebrRatDivStern
+            )
+            self.gebrRatDivSternDictGal2 = (
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
                     self.BruecheUni
                 )
