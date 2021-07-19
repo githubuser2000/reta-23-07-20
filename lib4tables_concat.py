@@ -1085,7 +1085,7 @@ class Concat:
                                                 von = von.strip()
                                                 bis = bis.strip()
                                                 if len(von) > 3 and len(bis) > 3:
-                                                    into += [
+                                                    into += [""] if True else [
                                                         "<li>"
                                                         if self.tables.htmlOutputYes
                                                         else "" '"',
