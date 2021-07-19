@@ -987,23 +987,6 @@ class Concat:
                                     len(self.relitable[0]),
                                 }
                                 # x("HJM", len(self.relitable[0]))
-                                if brr == 1:
-                                    multiples1 = alleFractionErgebnisse[
-                                        alleFractionErgebnisseMapping[
-                                            0 if nullBisDrei in [0, 1] else 1,
-                                            0,
-                                            zwei,
-                                        ]
-                                    ]
-                                    multiples2 = alleFractionErgebnisse[
-                                        alleFractionErgebnisseMapping[
-                                            0 if nullBisDrei in [0, 2] else 1,
-                                            0,
-                                            zwei,
-                                        ]
-                                    ]
-                                else:
-                                    multipless = multiples(i)
                                 if i == 0:
                                     into = [
                                         "generierte Multiplikationen ",
@@ -1017,6 +1000,7 @@ class Concat:
                                     if self.tables.htmlOutputYes:
                                         into += ["<ul>"]
                                     if brr == 0:
+                                        multipless = multiples(i)
                                         for k, multi in enumerate(multipless):
                                             if k > 0 and not self.tables.htmlOutputYes:
                                                 into += [", außerdem: "]
@@ -1049,6 +1033,20 @@ class Concat:
                                                 else "",
                                             ]
                                     elif brr == 1:
+                                        multiples1 = alleFractionErgebnisse[
+                                            alleFractionErgebnisseMapping[
+                                                0 if nullBisDrei in [0, 1] else 1,
+                                                0,
+                                                zwei,
+                                            ]
+                                        ]
+                                        multiples2 = alleFractionErgebnisse[
+                                            alleFractionErgebnisseMapping[
+                                                0 if nullBisDrei in [0, 2] else 1,
+                                                0,
+                                                zwei,
+                                            ]
+                                        ]
                                         for k, (multi1, multi2) in enumerate(
                                             zip_longest(
                                                 multiples1, multiples2, fillvalue=""
