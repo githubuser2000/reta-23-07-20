@@ -833,7 +833,7 @@ class Concat:
                 (1, 1, 0): "gebrRatDivSternDictGal",
                 (1, 1, 1): "gebrRatDivSternDictGal2",
             }
-            alleFractionErgebnisseMapping2: dict = {}
+            alleFractionErgebnisseMappingPaare: dict = {}
             for zwei1 in [0, 1]:
                 for zwei2 in [0, 1]:
                     for zwei3 in [0, 1]:
@@ -843,7 +843,7 @@ class Concat:
                                 "mul0div1": None,
                                 "erster0zweiter1": zwei3,
                             }
-                        ] = (zwei1, zwei2, zwei3)
+                        ] = (zwei1, zwei2, zwei3), (zwei1, zwei2, zwei3)
 
             # hier geht es um die html class Parameter und um Tagging ob Galaxie oder Polygon
             koord2tag, koord2Parameter = {}, {}
