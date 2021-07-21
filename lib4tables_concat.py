@@ -1004,12 +1004,11 @@ class Concat:
                                         for k, multi in enumerate(multipless):
                                             if k > 0 and not self.tables.htmlOutputYes:
                                                 into += [", außerdem: "]
-                                        if brr == 0:
                                             into += [
                                                 "<li>"
                                                 if self.tables.htmlOutputYes
                                                 else "",
-                                                "( ",
+                                                "(",
                                                 kombis[multi[0]][nullBisDrei][0]
                                                 if len(
                                                     kombis[multi[0]][nullBisDrei][
@@ -1027,7 +1026,7 @@ class Concat:
                                                 )
                                                 > 3
                                                 else "...",
-                                                " )",
+                                                ")",
                                                 "</li>"
                                                 if self.tables.htmlOutputYes
                                                 else "",
