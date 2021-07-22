@@ -1159,27 +1159,27 @@ class Concat:
                                                             #    multi[0].numerator - 1
                                                             # ][multi[0].denominator - 1],
                                                             '"',
+                                                            "<br>"
+                                                            if self.tables.htmlOutputYes
+                                                            and (
+                                                                len(von) > 30
+                                                                or len(bis) > 30
+                                                            )
+                                                            else " ",
                                                             " (",
                                                             str(multi1),
                                                             ")",
-                                                            "<br>"
-                                                            if self.tables.htmlOutputYes
-                                                            and (
-                                                                len(von) > 30
-                                                                or len(bis) > 30
-                                                            )
-                                                            else " ",
                                                             "*",
-                                                            "<br>"
-                                                            if self.tables.htmlOutputYes
-                                                            and (
-                                                                len(von) > 30
-                                                                or len(bis) > 30
-                                                            )
-                                                            else " ",
                                                             "(",
                                                             str(multi2),
                                                             ")",
+                                                            "<br>"
+                                                            if self.tables.htmlOutputYes
+                                                            and (
+                                                                len(von) > 30
+                                                                or len(bis) > 30
+                                                            )
+                                                            else " ",
                                                             ' "',
                                                             bis,
                                                             # self.CSVsAlreadRead[place][
