@@ -633,13 +633,34 @@ class Concat:
 
         return self.relitable, rowsAsNumbers
 
-    def convertSetOfPaarenToDictOfNumToPaare(self, paareSet: set) -> defaultdict:
+    def convertSetOfPaarenToDictOfNumToPaareDiv(self, paareSet: set) -> defaultdict:
+        """Macht aus einem Set aus Paaren eins von verschiedenen möglichen dicts mit key int und value liste aus paaren"""
+        result: defaultdict = defaultdict(list)
+        paareSet: tuple = tuple(paareSet)
+        if len(paareSet) > 0:
+            if paareSet[0] == round(paareSet[0]):
+                flag = True
+            elif 1 / paareSet[0] == round(1 / paareSet[0]):
+                flag = False
+            else:
+                flag = None
+
+        for paar in paareSet:
+            paar = tuple(paar)
+            div = paar[0] / paar[1] if flag else paar[1] / paar[0]
+            x("fsd", div)
+            assert div == round(div)
+            result[div] += [paar]
+        x("GHJ1A", dict(result))
+        return result
+
+    def convertSetOfPaarenToDictOfNumToPaareMul(self, paareSet: set) -> defaultdict:
         """Macht aus einem Set aus Paaren eins von verschiedenen möglichen dicts mit key int und value liste aus paaren"""
         result: defaultdict = defaultdict(list)
         for paar in tuple(paareSet):
             paar = tuple(paar)
             result[paar[0] * paar[1]] += [paar]
-        x("GHJ1", dict(result))
+        x("GHJ1B", dict(result))
         return result
 
     def convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
@@ -651,13 +672,13 @@ class Concat:
                 if not inverse:
                     paar = (frac, Fraction(frac.denominator) * zusatzMul)
                     mul = int(paar[0] * paar[1])
-                    if mul > 1024:
+                    if mul > len(self.relitable):
                         break
                     result[mul] |= {paar}
                 else:
                     paar = (frac, Fraction(frac.numerator) * zusatzMul)
                     div = paar[1] / paar[0]
-                    if div < 1:
+                    if div < 1 or div > 1024:
                         break
                     result[round(div)] |= {paar}
 
@@ -819,49 +840,49 @@ class Concat:
             alleFractionErgebnisse = {}
             # self.struktAndInversSpalten: tuple = (5, 131)
             alleFractionErgebnisse["gebrRatMulSternDictUni"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatMulSternUni),
+                self.convertSetOfPaarenToDictOfNumToPaareMul(self.gebrRatMulSternUni),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
                     self.BruecheUni
                 ),
             )
             alleFractionErgebnisse["gebrRatDivSternDictUni"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatDivSternUni),
+                self.convertSetOfPaarenToDictOfNumToPaareDiv(self.gebrRatDivSternUni),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
                     self.BruecheUni, True
                 ),
             )
             alleFractionErgebnisse["gebrRatMulSternDictGal"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatMulSternGal),
+                self.convertSetOfPaarenToDictOfNumToPaareMul(self.gebrRatMulSternGal),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
                     self.BruecheGal
                 ),
             )
             alleFractionErgebnisse["gebrRatDivSternDictGal"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatDivSternGal),
+                self.convertSetOfPaarenToDictOfNumToPaareDiv(self.gebrRatDivSternGal),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
                     self.BruecheGal, True
                 ),
             )
             alleFractionErgebnisse["gebrRatMulGleichfDictUni"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatMulGleichfUni),
+                self.convertSetOfPaarenToDictOfNumToPaareMul(self.gebrRatMulGleichfUni),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
                     self.BruecheUni
                 ),
             )
             alleFractionErgebnisse["gebrRatDivGleichfDictUni"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatDivGleichfUni),
+                self.convertSetOfPaarenToDictOfNumToPaareDiv(self.gebrRatDivGleichfUni),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
                     self.BruecheUni, True
                 ),
             )
             alleFractionErgebnisse["gebrRatMulGleichfDictGal"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatMulGleichfGal),
+                self.convertSetOfPaarenToDictOfNumToPaareMul(self.gebrRatMulGleichfGal),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
                     self.BruecheGal
                 ),
             )
             alleFractionErgebnisse["gebrRatDivGleichfDictGal"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaare(self.gebrRatDivGleichfGal),
+                self.convertSetOfPaarenToDictOfNumToPaareDiv(self.gebrRatDivGleichfGal),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
                     self.BruecheGal, True
                 ),
