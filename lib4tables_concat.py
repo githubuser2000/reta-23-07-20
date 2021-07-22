@@ -1107,8 +1107,6 @@ class Concat:
                                             except:
                                                 continue
 
-                                            if k > 0 and not self.tables.htmlOutputYes:
-                                                into += [", außerdem: "]
                                             # alxp("BBB")
                                             # x("GHJ", i)
 
@@ -1139,6 +1137,12 @@ class Concat:
                                                 von = von.strip()
                                                 bis = bis.strip()
                                                 if len(von) > 3 and len(bis) > 3:
+                                                    if (
+                                                        k > 0
+                                                        and not self.tables.htmlOutputYes
+                                                        and len(into) > 0
+                                                    ):
+                                                        into += ["| außerdem: "]
                                                     into += [
                                                         "<li>"
                                                         if self.tables.htmlOutputYes
@@ -1700,6 +1704,7 @@ class Concat:
                             self.gebrRatMulGleichfUni |= {
                                 frozenset({BruecheUn, BruecheUn2})
                             }
+                            x("SDZ", self.gebrRatMulGleichfUni)
                         if (
                             round(1 / (BruecheUn / BruecheUn2))
                             == (1 / (BruecheUn / BruecheUn2))
