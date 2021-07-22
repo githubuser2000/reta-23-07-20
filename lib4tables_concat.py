@@ -639,7 +639,7 @@ class Concat:
         for paar in tuple(paareSet):
             paar = tuple(paar)
             result[paar[0] * paar[1]] += [paar]
-        x("GHJ1", result.items())
+        x("GHJ1", dict(result))
         return result
 
     def convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
@@ -650,16 +650,22 @@ class Concat:
             for zusatzMul in range(1, 1025):
                 if not inverse:
                     paar = (frac, Fraction(frac.denominator) * zusatzMul)
-                    result[int(paar[0] * paar[1])] |= {paar}
+                    mul = int(paar[0] * paar[1])
+                    if mul > 1024:
+                        break
+                    result[mul] |= {paar}
                 else:
                     paar = (frac, Fraction(frac.numerator) * zusatzMul)
-                    result[round(paar[1] / paar[0])] |= {paar}
+                    div = paar[1] / paar[0]
+                    if div < 1:
+                        break
+                    result[round(div)] |= {paar}
 
         result2: defaultdict = defaultdict(list)
         for key, value in result.items():
             result2[key] = list(value)
 
-        x("GHJ2", result2.items())
+        x("GHJ2", dict(result2))
         return result2
 
     def combineDicts(self, a: defaultdict, b: defaultdict) -> defaultdict:
@@ -673,7 +679,7 @@ class Concat:
             e[key] += value
         for key, value in b.items():
             e[key] += value
-        x("GHJ3", e.items())
+        x("GHJ3", dict(e))
         return e
 
     def concat1RowPrimUniverse2(
