@@ -639,6 +639,7 @@ class Concat:
         for paar in tuple(paareSet):
             paar = tuple(paar)
             result[paar[0] * paar[1]] += [paar]
+        x("GHJ1", result.items())
         return result
 
     def convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
@@ -658,6 +659,7 @@ class Concat:
         for key, value in result.items():
             result2[key] = list(value)
 
+        x("GHJ2", result2.items())
         return result2
 
     def combineDicts(self, a: defaultdict, b: defaultdict) -> defaultdict:
@@ -671,6 +673,7 @@ class Concat:
             e[key] += value
         for key, value in b.items():
             e[key] += value
+        x("GHJ3", e.items())
         return e
 
     def concat1RowPrimUniverse2(
