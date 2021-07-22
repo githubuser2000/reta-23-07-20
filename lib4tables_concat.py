@@ -633,21 +633,15 @@ class Concat:
 
         return self.relitable, rowsAsNumbers
 
-    def convertSetOfPaarenToDictOfNumToPaareDiv(self, paareSet: set) -> defaultdict:
+    def convertSetOfPaarenToDictOfNumToPaareDiv(
+        self, paareSet: set, inverse=False
+    ) -> defaultdict:
         """Macht aus einem Set aus Paaren eins von verschiedenen möglichen dicts mit key int und value liste aus paaren"""
         result: defaultdict = defaultdict(list)
         paareSet: tuple = tuple(paareSet)
-        if len(paareSet) > 0:
-            if paareSet[0] == round(paareSet[0]):
-                flag = True
-            elif 1 / paareSet[0] == round(1 / paareSet[0]):
-                flag = False
-            else:
-                flag = None
-
         for paar in paareSet:
             paar = tuple(paar)
-            div = paar[0] / paar[1] if flag else paar[1] / paar[0]
+            div = paar[0] / paar[1] if not inverse else paar[1] / paar[0]
             x("fsd", div)
             assert div == round(div)
             result[div] += [paar]
@@ -870,7 +864,9 @@ class Concat:
                 ),
             )
             alleFractionErgebnisse["gebrRatDivGleichfDictUni"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaareDiv(self.gebrRatDivGleichfUni),
+                self.convertSetOfPaarenToDictOfNumToPaareDiv(
+                    self.gebrRatDivGleichfUni, True
+                ),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
                     self.BruecheUni, True
                 ),
@@ -882,7 +878,9 @@ class Concat:
                 ),
             )
             alleFractionErgebnisse["gebrRatDivGleichfDictGal"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaareDiv(self.gebrRatDivGleichfGal),
+                self.convertSetOfPaarenToDictOfNumToPaareDiv(
+                    self.gebrRatDivGleichfGal, True
+                ),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
                     self.BruecheGal, True
                 ),
