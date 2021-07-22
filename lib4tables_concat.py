@@ -669,20 +669,27 @@ class Concat:
         self, fracs: set, inverse=False
     ) -> defaultdict:
         result: defaultdict = defaultdict(set)
-        for frac in tuple(fracs):
-            for zusatzMul in range(1, 1025):
-                if not inverse:
+        if not inverse:
+            for frac in tuple(fracs):
+                for zusatzMul in range(1, 1025):
                     paar = (frac, Fraction(frac.denominator) * zusatzMul)
-                    mul = int(paar[0] * paar[1])
+                    mul = paar[0] * paar[1]
+                    mulr = round(mul)
+                    assert mulr == mul
                     if mul > len(self.relitable):
                         break
-                    result[mul] |= {paar}
-                else:
+                    result[int(mul)] |= {paar}
+
+        else:
+            for frac in tuple(fracs):
+                for zusatzMul in range(1, 1025):
                     paar = (frac, Fraction(frac.numerator) * zusatzMul)
                     div = paar[1] / paar[0]
-                    if div < 1:
+                    divr = round(div)
+                    assert divr == div
+                    if div > len(self.relitable):
                         break
-                    result[round(div)] |= {paar}
+                    result[int(divr)] |= {paar}
 
         result2: defaultdict = defaultdict(list)
         for key, value in result.items():
@@ -866,7 +873,9 @@ class Concat:
                 ),
             )
             alleFractionErgebnisse["gebrRatMulGleichfDictUni"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaareMul(self.gebrRatMulGleichfUni, True),
+                self.convertSetOfPaarenToDictOfNumToPaareMul(
+                    self.gebrRatMulGleichfUni, True
+                ),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
                     self.BruecheUni
                 ),
@@ -880,7 +889,9 @@ class Concat:
                 ),
             )
             alleFractionErgebnisse["gebrRatMulGleichfDictGal"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaareMul(self.gebrRatMulGleichfGal, True),
+                self.convertSetOfPaarenToDictOfNumToPaareMul(
+                    self.gebrRatMulGleichfGal, True
+                ),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
                     self.BruecheGal
                 ),
