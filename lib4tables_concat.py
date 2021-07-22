@@ -682,9 +682,13 @@ class Concat:
 
         else:
             for frac in tuple(fracs):
-                for zusatzMul in range(1, 1025):
-                    paar = (frac, Fraction(frac.numerator) * zusatzMul)
-                    div = paar[1] / paar[0]
+                for zusatzDiv in range(1, 1025):
+                    x("HDF1", frac)
+                    paar = (frac, 1 / Fraction(frac.numerator) / zusatzDiv)
+                    x("HDF2", paar)
+                    x("HDF3", paar[0] * paar[1])
+                    div = 1 / (paar[1] * paar[0])
+                    x("HDF4", div)
                     divr = round(div)
                     assert divr == div
                     if div > len(self.relitable):
@@ -872,6 +876,13 @@ class Concat:
                     self.BruecheGal, True
                 ),
             )
+            x("GHR", self.gebrRatMulGleichfUni)
+            x(
+                "BDE",
+                self.convertSetOfPaarenToDictOfNumToPaareMul(
+                    self.gebrRatMulGleichfUni, True
+                ),
+            )
             alleFractionErgebnisse["gebrRatMulGleichfDictUni"] = self.combineDicts(
                 self.convertSetOfPaarenToDictOfNumToPaareMul(
                     self.gebrRatMulGleichfUni, True
@@ -880,6 +891,7 @@ class Concat:
                     self.BruecheUni
                 ),
             )
+            x("COE", alleFractionErgebnisse["gebrRatMulGleichfDictUni"])
             alleFractionErgebnisse["gebrRatDivGleichfDictUni"] = self.combineDicts(
                 self.convertSetOfPaarenToDictOfNumToPaareDiv(
                     self.gebrRatDivGleichfUni, True
