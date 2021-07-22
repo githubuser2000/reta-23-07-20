@@ -866,7 +866,7 @@ class Concat:
                 ),
             )
             alleFractionErgebnisse["gebrRatMulGleichfDictUni"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaareMul(self.gebrRatMulGleichfUni),
+                self.convertSetOfPaarenToDictOfNumToPaareMul(self.gebrRatMulGleichfUni, True),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
                     self.BruecheUni
                 ),
@@ -880,7 +880,7 @@ class Concat:
                 ),
             )
             alleFractionErgebnisse["gebrRatMulGleichfDictGal"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaareMul(self.gebrRatMulGleichfGal),
+                self.convertSetOfPaarenToDictOfNumToPaareMul(self.gebrRatMulGleichfGal, True),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
                     self.BruecheGal
                 ),
