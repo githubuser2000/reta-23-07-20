@@ -813,58 +813,51 @@ class Tables:
                                         Dabei ist die Zelle in die die Zelle rein kommt, widerum selbst eine kleine Tabelle, eigentlich.
                                         """
                                         if oneLinePerLine:
+                                            hinein = deepcopy(
+                                                subTableCell[
+                                                    rowsOfcombi.index(subRowNum + 1)
+                                                ]
+                                            )
+                                            if (
+                                                len(hinein) > 0
+                                                and len(hinein[0].strip()) > 2
+                                            ):
+                                                if self.tables.htmlOutputYes:
+                                                    hinein[0] = (
+                                                        "<li>" + hinein[0] + "</li>"
+                                                    )
+                                                else:
+                                                    hinein[0] += " |"
 
                                             if (
                                                 len(table2[colNum][row]) == 1
                                                 and table2[colNum][row][0] == ""
                                             ):
-                                                table2[colNum][row] = deepcopy(
-                                                    subTableCell[
-                                                        rowsOfcombi.index(subRowNum + 1)
-                                                    ]
-                                                )
+                                                table2[colNum][row] = hinein
                                             else:
-                                                table2[colNum][row][-1] += (
-                                                    (
-                                                        " |"
-                                                        + (
-                                                            "<br>"
-                                                            if self.tables.htmlOutputYes
-                                                            else " "
-                                                        )
-                                                    )
-                                                    if len(table2[colNum][row][-1]) < 3
-                                                    or table2[colNum][row][-1][-3:]
-                                                    != (" | ")
-                                                    and (
-                                                        len(table2[colNum][row][-1]) < 6
-                                                        or table2[colNum][row][-1][-6:]
-                                                        != (" |<br>")
-                                                    )
-                                                    else ""
-                                                ) + deepcopy(
-                                                    subTableCell[
-                                                        rowsOfcombi.index(subRowNum + 1)
-                                                    ][0]
-                                                )
+                                                x("FBU", hinein)
+                                                table2[colNum][row][-1] += hinein[0]
                                         else:
+                                            hinein = deepcopy(
+                                                subTableCell[
+                                                    rowsOfcombi.index(subRowNum + 1)
+                                                ]
+                                            )
+
                                             if (
                                                 len(table2[colNum][row]) == 1
                                                 and table2[colNum][row][0] == ""
                                             ):
-                                                table2[colNum][row] = deepcopy(
-                                                    subTableCell[
-                                                        rowsOfcombi.index(subRowNum + 1)
-                                                    ]
-                                                )
+                                                table2[colNum][row] = hinein
                                             else:
-                                                table2[colNum][row] += deepcopy(
-                                                    subTableCell[
-                                                        rowsOfcombi.index(subRowNum + 1)
-                                                    ]
-                                                )
+                                                table2[colNum][row] += hinein
 
                         # table2[colNum][row] = regex.sub(" | ", table2[colNum][row])
+            if self.tables.htmlOutputYes:
+                for i, a in enumerate(table2):
+                    for k, b in enumerate(a):
+                        for l, c in enumerate(b):
+                            table2[i][k][l] = "<ul>" + table2[i][k][l] + "</ul>"
 
             return table2
 

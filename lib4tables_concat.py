@@ -642,10 +642,10 @@ class Concat:
         for paar in paareSet:
             paar = tuple(paar)
             div = paar[0] / paar[1] if not inverse else paar[1] / paar[0]
-            x("fsd", div)
+            # x("fsd", div)
             assert div == round(div)
             result[int(div)] += [paar]
-        x("GHJ1A", dict(result))
+        # x("GHJ1A", dict(result))
         return result
 
     def convertSetOfPaarenToDictOfNumToPaareMul(
@@ -659,10 +659,10 @@ class Concat:
             if inverse:
                 mul = 1 / mul
             mulr = round(mul)
-            x("jzd", [mul, mulr])
+            # x("jzd", [mul, mulr])
             assert mul == mulr
             result[int(mulr)] += [paar]
-        x("GHJ1B", dict(result))
+        # x("GHJ1B", dict(result))
         return result
 
     def convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
@@ -695,7 +695,7 @@ class Concat:
         for key, value in result.items():
             result2[key] = list(value)
 
-        x("GHJ2", dict(result2))
+        # x("GHJ2", dict(result2))
         return result2
 
     def combineDicts(self, a: defaultdict, b: defaultdict) -> defaultdict:
@@ -709,7 +709,7 @@ class Concat:
             e[key] += value
         for key, value in b.items():
             e[key] += value
-        x("GHJ3", dict(e))
+        # x("GHJ3", dict(e))
         return e
 
     def concat1RowPrimUniverse2(
@@ -1086,7 +1086,7 @@ class Concat:
                                                 zwei,
                                             ]
                                         ]
-                                        x("HFG", multiples1.items())
+                                        # x("HFG", multiples1.items())
                                         multiples2 = alleFractionErgebnisse[
                                             alleFractionErgebnisseMapping[
                                                 0 if nullBisDrei in [0, 2] else 1,
@@ -1109,10 +1109,10 @@ class Concat:
 
                                             if k > 0 and not self.tables.htmlOutputYes:
                                                 into += [", außerdem: "]
-                                            alxp("BBB")
+                                            # alxp("BBB")
                                             # x("GHJ", i)
 
-                                            x("HIX", [multi1, multi2])
+                                            # x("HIX", [multi1, multi2])
                                             von = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                                                 multi1[0],
                                                 GalOrUni_nOrInvers[nullBisDrei][zwei],
@@ -1123,7 +1123,7 @@ class Concat:
                                                 if nullBisDrei in (2, 3)
                                                 else True,
                                             )
-                                            alxp("BBB2")
+                                            # alxp("BBB2")
                                             bis = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                                                 multi2[1],
                                                 GalOrUni_nOrInvers[nullBisDrei][zwei],
@@ -1156,11 +1156,11 @@ class Concat:
                                                         )
                                                         else " ",
                                                         " (",
-                                                        str(multi1),
+                                                        str(multi1[0]),
                                                         ")",
                                                         "*",
                                                         "(",
-                                                        str(multi2),
+                                                        str(multi2[1]),
                                                         ")",
                                                         "<br>"
                                                         if self.tables.htmlOutputYes
@@ -1616,7 +1616,7 @@ class Concat:
                 # and self.struktAndInversSpalten == transzendentalienSpalten
             ):
 
-                alxp("CCC")
+                # alxp("CCC")
                 gebrStrukWort = (
                     self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                         vier[0][1],
@@ -1977,7 +1977,7 @@ class Concat:
                 Fraction(zeilenNr, i) if not ifTransponiert else Fraction(i, zeilenNr)
             )
 
-            alxp("AAA")
+            # alxp("AAA")
             cellNeu = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                 gebrRatZahl,
                 self.struktAndInversSpalten,
