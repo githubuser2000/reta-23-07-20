@@ -644,16 +644,24 @@ class Concat:
             div = paar[0] / paar[1] if not inverse else paar[1] / paar[0]
             x("fsd", div)
             assert div == round(div)
-            result[div] += [paar]
+            result[int(div)] += [paar]
         x("GHJ1A", dict(result))
         return result
 
-    def convertSetOfPaarenToDictOfNumToPaareMul(self, paareSet: set) -> defaultdict:
+    def convertSetOfPaarenToDictOfNumToPaareMul(
+        self, paareSet: set, inverse=False
+    ) -> defaultdict:
         """Macht aus einem Set aus Paaren eins von verschiedenen möglichen dicts mit key int und value liste aus paaren"""
         result: defaultdict = defaultdict(list)
         for paar in tuple(paareSet):
             paar = tuple(paar)
-            result[paar[0] * paar[1]] += [paar]
+            mul = paar[0] * paar[1]
+            if inverse:
+                mul = 1 / mul
+            mulr = round(mul)
+            x("jzd", [mul, mulr])
+            assert mul == mulr
+            result[int(mulr)] += [paar]
         x("GHJ1B", dict(result))
         return result
 
