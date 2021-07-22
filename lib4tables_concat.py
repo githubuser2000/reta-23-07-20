@@ -1101,13 +1101,20 @@ class Concat:
                                                 fillvalue="",
                                             )
                                         ):
+                                            try:
+                                                multi1[0]
+                                                multi2[1]
+                                            except:
+                                                continue
+
                                             if k > 0 and not self.tables.htmlOutputYes:
                                                 into += [", außerdem: "]
                                             alxp("BBB")
                                             # x("GHJ", i)
 
+                                            x("HIX", [multi1, multi2])
                                             von = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                                                multi1,
+                                                multi1[0],
                                                 GalOrUni_nOrInvers[nullBisDrei][zwei],
                                                 self.readOneCSVAndReturn(
                                                     2 if nullBisDrei in (2, 3) else 3
@@ -1118,7 +1125,7 @@ class Concat:
                                             )
                                             alxp("BBB2")
                                             bis = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                                                multi2[i],
+                                                multi2[1],
                                                 GalOrUni_nOrInvers[nullBisDrei][zwei],
                                                 self.readOneCSVAndReturn(
                                                     2 if nullBisDrei in (1, 3) else 3
@@ -1127,6 +1134,7 @@ class Concat:
                                                 if nullBisDrei in (1, 3)
                                                 else True,
                                             )
+
                                             if von is not None and bis is not None:
                                                 von = von.strip()
                                                 bis = bis.strip()
@@ -1749,7 +1757,6 @@ class Concat:
         gebrTable4metaKonkretAndMore,
         isGalaxie=False,
     ) -> str:
-        x("SDF", koord)
         if koord.denominator == 0 or koord.numerator == 0:
             return ""
         elif koord.denominator > 100 or koord.numerator > 100:
