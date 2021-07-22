@@ -672,7 +672,7 @@ class Concat:
                 else:
                     paar = (frac, Fraction(frac.numerator) * zusatzMul)
                     div = paar[1] / paar[0]
-                    if div < 1 or div > 1024:
+                    if div < 1:
                         break
                     result[round(div)] |= {paar}
 
