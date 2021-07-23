@@ -1253,13 +1253,13 @@ class Concat:
                                                 else "",
                                             ]
                                     elif brr == 1:
-                                        multiples = alleFractionErgebnisse2[
+                                        multipless = alleFractionErgebnisse2[
                                             GalUniKombis
                                         ][sternOrGleichf]["mul"]
-                                        x("HFG", multiples.items())
+                                        x("HFG", multipless.items())
                                         for k, multi in enumerate(
                                             zip_longest(
-                                                multiples[i],
+                                                multipless[i],
                                                 fillvalue="",
                                             )
                                         ):
@@ -1267,6 +1267,7 @@ class Concat:
                                                 multi[0]
                                                 multi[1]
                                             except:
+                                                assert False
                                                 continue
 
                                             # alxp("BBB")
