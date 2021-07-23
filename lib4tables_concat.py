@@ -980,7 +980,7 @@ class Concat:
                                     True if KeySternOrGleichf == "gleichf" else False,
                                 ),
                             )
-                            if KeyMulOrDiv == "mul"
+                            if KeyMulOrDiv == "mul" or True
                             else self.combineDicts(
                                 self.convertSetOfPaarenToDictOfNumToPaareDiv(
                                     Couples,
