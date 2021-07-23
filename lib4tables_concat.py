@@ -976,7 +976,9 @@ class Concat:
                                 if KeyGalUniUniGal[3:] == "Uni"
                                 else self.BruecheGal,
                                 True if KeySternOrGleichf == "gleichf" else False,
-                            ),
+                            )
+                            if KeyMulOrDiv == "mul"
+                            else defaultdict(list),
                         )
 
             """
