@@ -676,9 +676,21 @@ class Concat:
                     mul = paar[0] * paar[1]
                     mulr = round(mul)
                     assert mulr == mul
-                    if mul > len(self.relitable):
+                    if mul > 1024:
                         break
                     result[int(mul)] |= {paar}
+
+            for frac in tuple(fracs):
+                for zusatzMul in range(1024, 0, -1):
+                    faktor = Fraction(frac.denominator) / zusatzMul
+                    if (faktor in fracs) or faktor.numerator == 1:
+                        paar = (frac, faktor)
+                        mul = paar[0] * paar[1]
+                        mulr = round(mul)
+                        if mul > 1024:
+                            break
+                        if mulr == mul:
+                            result[int(mul)] |= {paar}
 
         else:
             for frac in tuple(fracs):
@@ -691,9 +703,22 @@ class Concat:
                     x("HDF4", div)
                     divr = round(div)
                     assert divr == div
-                    if 1 / (paar[0] * paar[1]) > 1024:
+                    if div > 1024:
                         break
                     result[int(divr)] |= {paar}
+
+            for frac in tuple(fracs):
+                for zusatzDiv in range(1, 1025):
+                    faktor = (1 / frac) / zusatzDiv
+                    if faktor in fracs or faktor.numerator == 1:
+                        paar = (frac, faktor)
+                        x("SOV", paar)
+                        mul = 1 / (paar[1] * paar[0])
+                        mulr = round(mul)
+                        assert mulr == mul
+                        if 1 / mul > 1024:
+                            break
+                        result[int(mulr)] |= {paar}
 
         result2: defaultdict = defaultdict(list)
         for key, value in result.items():
