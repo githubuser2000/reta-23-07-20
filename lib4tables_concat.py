@@ -954,6 +954,7 @@ class Concat:
                 "GalUni": copy(kombis1),
                 "GalGal": copy(kombis1),
             }
+            x("XCGH1", self.gebrRatAllCombis["UniUni"]["stern"]["mul"])
 
             for KeyGalUniUniGal, ValueSternOrGleichf in self.gebrRatAllCombis.items():
                 for KeySternOrGleichf, ValueMulOrDiv in ValueSternOrGleichf.items():
@@ -1867,17 +1868,15 @@ class Concat:
             for BruecheUn in brueche1:
                 for BruecheUn2 in brueche2:
                     if BruecheUn != BruecheUn2:
+
+                        # BruecheUn = copy(BruecheUn)
+                        # BruecheUn2 = copy(BruecheUn2)
                         if round(BruecheUn * BruecheUn2) == (BruecheUn * BruecheUn2):
-                            self.gebrRatMulSternUni |= {
-                                frozenset({BruecheUn, BruecheUn2})
-                            }
                             self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["stern"][
                                 "mul"
                             ] |= {frozenset({BruecheUn, BruecheUn2})}
+                            x("SDUG", frozenset({BruecheUn, BruecheUn2}))
                         if round(BruecheUn / BruecheUn2) == (BruecheUn / BruecheUn2):
-                            self.gebrRatDivSternUni |= {
-                                frozenset({BruecheUn, BruecheUn2})
-                            }
                             self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["stern"][
                                 "div"
                             ] |= {frozenset({BruecheUn, BruecheUn2})}
@@ -1885,9 +1884,6 @@ class Concat:
                         if round(1 / (BruecheUn * BruecheUn2)) == (
                             1 / (BruecheUn * BruecheUn2)
                         ):
-                            self.gebrRatMulGleichfUni |= {
-                                frozenset({BruecheUn, BruecheUn2})
-                            }
                             self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["gleichf"][
                                 "mul"
                             ] |= {frozenset({BruecheUn, BruecheUn2})}
@@ -1895,12 +1891,11 @@ class Concat:
                         if round(1 / (BruecheUn / BruecheUn2)) == (
                             1 / (BruecheUn / BruecheUn2)
                         ):
-                            self.gebrRatDivGleichfUni |= {
-                                frozenset({BruecheUn, BruecheUn2})
-                            }
                             self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["gleichf"][
                                 "div"
                             ] |= {frozenset({BruecheUn, BruecheUn2})}
+
+            x("XCGH2", self.gebrRatAllCombis["UniUni"]["stern"]["mul"])
             return self.gebrRatAllCombis
 
     def spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
