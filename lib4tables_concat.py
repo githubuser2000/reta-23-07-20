@@ -634,14 +634,14 @@ class Concat:
         return self.relitable, rowsAsNumbers
 
     def convertSetOfPaarenToDictOfNumToPaareDiv(
-        self, paareSet: set, inverse=False
+        self, paareSet: set, gleichf=False
     ) -> defaultdict:
         """Macht aus einem Set aus Paaren eins von verschiedenen möglichen dicts mit key int und value liste aus paaren"""
         result: defaultdict = defaultdict(list)
         paareSet: tuple = tuple(paareSet)
         for paar in paareSet:
             paar = tuple(paar)
-            div = paar[0] / paar[1] if not inverse else paar[1] / paar[0]
+            div = paar[0] / paar[1] if not gleichf else paar[1] / paar[0]
             # x("fsd", div)
             assert div == round(div)
             result[int(div)] += [paar]
@@ -649,14 +649,14 @@ class Concat:
         return result
 
     def convertSetOfPaarenToDictOfNumToPaareMul(
-        self, paareSet: set, inverse=False
+        self, paareSet: set, gleichf=False
     ) -> defaultdict:
         """Macht aus einem Set aus Paaren eins von verschiedenen möglichen dicts mit key int und value liste aus paaren"""
         result: defaultdict = defaultdict(list)
         for paar in tuple(paareSet):
             paar = tuple(paar)
             mul = paar[0] * paar[1]
-            if inverse:
+            if gleichf:
                 mul = 1 / mul
             mulr = round(mul)
             # x("jzd", [mul, mulr])
@@ -666,10 +666,10 @@ class Concat:
         return result
 
     def convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-        self, fracs: set, inverse=False
+        self, fracs: set, gleichf=False
     ) -> defaultdict:
         result: defaultdict = defaultdict(set)
-        if not inverse:
+        if not gleichf:
             for frac in tuple(fracs):
                 for zusatzMul in range(1, 1025):
                     paar = (frac, Fraction(frac.denominator) * zusatzMul)
@@ -691,7 +691,7 @@ class Concat:
                     x("HDF4", div)
                     divr = round(div)
                     assert divr == div
-                    if div > len(self.relitable):
+                    if 1 / (paar[0] * paar[1]) > 1024:
                         break
                     result[int(divr)] |= {paar}
 
@@ -861,7 +861,7 @@ class Concat:
             alleFractionErgebnisse["gebrRatDivSternDictUni"] = self.combineDicts(
                 self.convertSetOfPaarenToDictOfNumToPaareDiv(self.gebrRatDivSternUni),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheUni, True
+                    self.BruecheUni
                 ),
             )
             alleFractionErgebnisse["gebrRatMulSternDictGal"] = self.combineDicts(
@@ -873,7 +873,7 @@ class Concat:
             alleFractionErgebnisse["gebrRatDivSternDictGal"] = self.combineDicts(
                 self.convertSetOfPaarenToDictOfNumToPaareDiv(self.gebrRatDivSternGal),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheGal, True
+                    self.BruecheGal
                 ),
             )
             x("GHR", self.gebrRatMulGleichfUni)
@@ -888,7 +888,13 @@ class Concat:
                     self.gebrRatMulGleichfUni, True
                 ),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheUni
+                    self.BruecheUni, True
+                ),
+            )
+            x(
+                "SJB",
+                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                    self.BruecheUni, True
                 ),
             )
             x("COE", alleFractionErgebnisse["gebrRatMulGleichfDictUni"])
@@ -905,7 +911,7 @@ class Concat:
                     self.gebrRatMulGleichfGal, True
                 ),
                 self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheGal
+                    self.BruecheGal, True
                 ),
             )
             alleFractionErgebnisse["gebrRatDivGleichfDictGal"] = self.combineDicts(
