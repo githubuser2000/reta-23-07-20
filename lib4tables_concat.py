@@ -1808,14 +1808,14 @@ class Concat:
             "GalGal": copy(kombis1),
         }
 
-        for brueche1, brueche2 in zip(
+        for brueche1, brueche2, GalOrUni1, GalOrUni2 in zip(
             (self.BruecheGal, self.BruecheGal, self.BruecheUni, self.BruecheUni),
             (self.BruecheGal, self.BruecheUni, self.BruecheGal, self.BruecheUni),
+            ("Gal", "Gal", "Uni", "Uni"),
+            ("Gal", "Uni", "Gal", "Uni"),
         ):
-            for BruecheUn, GalOrUni1 in zip(brueche1, ("Gal", "Gal", "Uni", "Uni")):
-                for BruecheUn2, GalOrUni2 in zip(
-                    brueche2, ("Gal", "Uni", "Gal", "Uni")
-                ):
+            for BruecheUn in brueche1:
+                for BruecheUn2 in brueche2:
                     if (
                         round(BruecheUn * BruecheUn2) == (BruecheUn * BruecheUn2)
                         and BruecheUn != BruecheUn2
