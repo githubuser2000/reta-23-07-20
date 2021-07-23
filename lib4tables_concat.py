@@ -1267,7 +1267,6 @@ class Concat:
                                                 multi[0]
                                                 multi[1]
                                             except:
-                                                assert False
                                                 continue
 
                                             # alxp("BBB")
