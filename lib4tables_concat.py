@@ -946,13 +946,13 @@ class Concat:
 
             self.gebrRatAllCombis = self.findAllBruecheAndTheirCombinations()
             kombis2: dict = {"mul": {}, "div": {}}
-            kombis1: dict = {"stern": copy(kombis2), "gleichf": copy(kombis2)}
+            kombis1 = {"stern": deepcopy(kombis2), "gleichf": deepcopy(kombis2)}
             # self.gebrRatAllCombis = {
             alleFractionErgebnisse2: dict = {
-                "UniUni": copy(kombis1),
-                "UniGal": copy(kombis1),
-                "GalUni": copy(kombis1),
-                "GalGal": copy(kombis1),
+                "UniUni": deepcopy(kombis1),
+                "UniGal": deepcopy(kombis1),
+                "GalUni": deepcopy(kombis1),
+                "GalGal": deepcopy(kombis1),
             }
             x("XCGH1", self.gebrRatAllCombis["UniUni"]["stern"]["mul"])
 
@@ -1851,7 +1851,7 @@ class Concat:
         self.readOneCSVAndReturn(2)
         self.readOneCSVAndReturn(3)
         kombis2 = {"mul": set(), "div": set()}
-        kombis1 = {"stern": kombis2, "gleichf": kombis2}
+        kombis1 = {"stern": deepcopy(kombis2), "gleichf": deepcopy(kombis2)}
         self.gebrRatAllCombis = {
             "UniUni": deepcopy(kombis1),
             "UniGal": deepcopy(kombis1),
@@ -1882,7 +1882,6 @@ class Concat:
                                     GalOrUni1 + GalOrUni2,
                                 ),
                             )
-                        # continue
                         if round(BruecheUn / BruecheUn2) == (BruecheUn / BruecheUn2):
                             self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["stern"][
                                 "div"
@@ -1894,13 +1893,19 @@ class Concat:
                             self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["gleichf"][
                                 "mul"
                             ] |= deepcopy(couple)
-                            x("SDZ", self.gebrRatMulGleichfUni)
+                            x("SDZ", couple)
                         if round(1 / (BruecheUn / BruecheUn2)) == (
                             1 / (BruecheUn / BruecheUn2)
                         ):
                             self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["gleichf"][
                                 "div"
                             ] |= deepcopy(couple)
+
+        for a in self.gebrRatAllCombis["UniUni"]["stern"]["mul"]:
+            a = list(a)
+            a = a[0] * a[1]
+            x("FGD", a)
+            assert a == round(a)
 
         x("XCGH2", self.gebrRatAllCombis["UniUni"]["stern"]["mul"])
         return self.gebrRatAllCombis
