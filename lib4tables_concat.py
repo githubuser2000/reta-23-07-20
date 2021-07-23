@@ -34,6 +34,14 @@ class Concat:
         self.gebrRatDivSternGal = set()
         self.gebrRatMulGleichfGal = set()
         self.gebrRatDivGleichfGal = set()
+        kombis2 = {"mul", "div"}
+        kombis1 = {"stern": copy(kombis2), "gleichf": copy(kombis2)}
+        self.gebrRatAllCombis = {
+            "UniUni": copy(kombis1),
+            "UniGal": copy(kombis1),
+            "GalUni": copy(kombis1),
+            "GalGal": copy(kombis1),
+        }
 
     @property
     def gebrUnivSet(self):
@@ -649,10 +657,11 @@ class Concat:
         return result
 
     def convertSetOfPaarenToDictOfNumToPaareMul(
-        self, paareSet: set, gleichf=False
+        self, paareSet1: set, paarseSet2: set, gleichf=False
     ) -> defaultdict:
         """Macht aus einem Set aus Paaren eins von verschiedenen möglichen dicts mit key int und value liste aus paaren"""
         result: defaultdict = defaultdict(list)
+
         for paar in tuple(paareSet):
             paar = tuple(paar)
             mul = paar[0] * paar[1]
@@ -664,6 +673,70 @@ class Concat:
             result[int(mulr)] += [paar]
         # x("GHJ1B", dict(result))
         return result
+
+    def convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction2(
+        self, fracs: set, fracs2: set, gleichf=False
+    ) -> defaultdict:
+        result: defaultdict = defaultdict(set)
+        if not gleichf:
+            for frac in tuple(fracs):
+                for zusatzMul in range(1, 1025):
+                    paar = (frac, Fraction(frac.denominator) * zusatzMul)
+                    mul = paar[0] * paar[1]
+                    mulr = round(mul)
+                    assert mulr == mul
+                    if mul > 1024:
+                        break
+                    result[int(mul)] |= {paar}
+
+            for frac in tuple(fracs):
+                for zusatzMul in range(1024, 0, -1):
+                    faktor = Fraction(frac.denominator) / zusatzMul
+                    if (faktor in fracs2) or faktor.numerator == 1:
+                        paar = (frac, faktor)
+                        x("GGG", paar)
+                        mul = paar[0] * paar[1]
+                        mulr = round(mul)
+                        if mul > 1024:
+                            break
+                        if mulr == mul:
+                            result[int(mul)] |= {paar}
+            x("IIL", result)
+
+        else:
+            for frac in tuple(fracs):
+                for zusatzDiv in range(1, 1025):
+                    x("HDF1", frac)
+                    paar = (frac, 1 / Fraction(frac.numerator) / zusatzDiv)
+                    x("HDF2", paar)
+                    x("HDF3", paar[0] * paar[1])
+                    div = 1 / (paar[1] * paar[0])
+                    x("HDF4", div)
+                    divr = round(div)
+                    assert divr == div
+                    if div > 1024:
+                        break
+                    result[int(divr)] |= {paar}
+
+            for frac in tuple(fracs):
+                for zusatzDiv in range(1, 1025):
+                    faktor = (1 / frac) / zusatzDiv
+                    if faktor in fracs2 or faktor.numerator == 1:
+                        paar = (frac, faktor)
+                        x("SOV", paar)
+                        mul = 1 / (paar[1] * paar[0])
+                        mulr = round(mul)
+                        assert mulr == mul
+                        if 1 / mul > 1024:
+                            break
+                        result[int(mulr)] |= {paar}
+
+        result2: defaultdict = defaultdict(list)
+        for key, value in result.items():
+            result2[key] = list(value)
+
+        # x("GHJ2", dict(result2))
+        return result2
 
     def convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
         self, fracs: set, gleichf=False
@@ -685,12 +758,14 @@ class Concat:
                     faktor = Fraction(frac.denominator) / zusatzMul
                     if (faktor in fracs) or faktor.numerator == 1:
                         paar = (frac, faktor)
+                        x("GGG", paar)
                         mul = paar[0] * paar[1]
                         mulr = round(mul)
                         if mul > 1024:
                             break
                         if mulr == mul:
                             result[int(mul)] |= {paar}
+            x("IIL", result)
 
         else:
             for frac in tuple(fracs):
