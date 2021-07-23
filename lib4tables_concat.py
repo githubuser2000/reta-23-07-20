@@ -941,20 +941,31 @@ class Concat:
                 2: (uni_, gal_),
                 3: (uni_, uni_),
             }
-            """
-            kombis2 = {"mul": set(), "div": set()}
-            kombis1 = {"stern": copy(kombis2), "gleichf": copy(kombis2)}
-            self.gebrRatAllCombis = {
+            kombis2: dict = {"mul": {}, "div": {}}
+            kombis1: dict = {"stern": copy(kombis2), "gleichf": copy(kombis2)}
+            # self.gebrRatAllCombis = {
+            alleFractionErgebnisse2: dict = {
                 "UniUni": copy(kombis1),
                 "UniGal": copy(kombis1),
                 "GalUni": copy(kombis1),
                 "GalGal": copy(kombis1),
-            }"""
-            alleFractionErgebnisseNeu = {}
+            }
+            alleFractionErgebnisse2 = {}
             for KeyGalUniUniGal, ValueSternOrGleichf in self.gebrRatAllCombis.items():
                 for KeySternOrGleichf, ValueMulOrDiv in ValueSternOrGleichf.items():
-                    pass
+                    alleFractionErgebnisse2[KeyGalUniUniGal][KeySternOrGleichf][
+                        ValueMulOrDiv
+                    ] = self.combineDicts(
+                self.convertSetOfPaarenToDictOfNumToPaareMul(ValueMulOrDiv,
+                    True if KeySternOrGleichf == "gleichf" else False
+                ),
+                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                    self.BruecheUni if KeyGalUniUniGal[:3] == "Uni" else self.BruecheGal,
+                    self.BruecheUni if KeyGalUniUniGal[3:] == "Uni" else self.BruecheGal,
+                    True if KeySternOrGleichf == "gleichf" else False
+                ),
 
+            """
             alleFractionErgebnisse = {}
             # self.struktAndInversSpalten: tuple = (5, 131)
             alleFractionErgebnisse["gebrRatMulSternDictUni"] = self.combineDicts(
@@ -1027,6 +1038,7 @@ class Concat:
                     self.BruecheGal, True
                 ),
             )
+            """
 
             alleFractionErgebnisseMapping: dict = {
                 (0, 0, 0): "gebrRatMulSternDictUni",
