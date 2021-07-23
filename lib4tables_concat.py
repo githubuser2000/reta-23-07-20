@@ -34,14 +34,6 @@ class Concat:
         self.gebrRatDivSternGal = set()
         self.gebrRatMulGleichfGal = set()
         self.gebrRatDivGleichfGal = set()
-        kombis2 = {"mul", "div"}
-        kombis1 = {"stern": copy(kombis2), "gleichf": copy(kombis2)}
-        self.gebrRatAllCombis = {
-            "UniUni": copy(kombis1),
-            "UniGal": copy(kombis1),
-            "GalUni": copy(kombis1),
-            "GalGal": copy(kombis1),
-        }
 
     @property
     def gebrUnivSet(self):
@@ -1078,7 +1070,10 @@ class Concat:
                 "Struktur -> Motiv",
                 "Struktur -> Strukur",
             )
+            assert False
+            # nur diese table? nicht noch die andere ?
             self.gebrUnivTable4metaKonkret = self.readOneCSVAndReturn(2)
+            assert False
 
             # self.rolle = []
             self.motivation: dict = {"Sternpolygone": [], "gleichförmige Polygone": []}
@@ -1795,99 +1790,48 @@ class Concat:
             self.CSVsAlreadRead[place] = gebrRatTable
             if wahl in (2, 4):
                 self.BruecheUni = tuple(self.getAllBrueche(gebrRatTable))
-                for BruecheUn in self.BruecheUni[: round(len(self.BruecheUni) / 2)]:
-                    for BruecheUn2 in self.BruecheUni[
-                        round(len(self.BruecheUni) / 2) :
-                    ]:
-                        if (
-                            round(BruecheUn * BruecheUn2) == (BruecheUn * BruecheUn2)
-                            and BruecheUn != BruecheUn2
-                        ):
-                            self.gebrRatMulSternUni |= {
-                                frozenset({BruecheUn, BruecheUn2})
-                            }
-                        if (
-                            round(BruecheUn / BruecheUn2) == (BruecheUn / BruecheUn2)
-                            and BruecheUn != BruecheUn2
-                        ):
-                            self.gebrRatDivSternUni |= {
-                                frozenset({BruecheUn, BruecheUn2})
-                            }
-
-                        if (
-                            round(1 / (BruecheUn * BruecheUn2))
-                            == (1 / (BruecheUn * BruecheUn2))
-                            and BruecheUn != BruecheUn2
-                        ):
-                            self.gebrRatMulGleichfUni |= {
-                                frozenset({BruecheUn, BruecheUn2})
-                            }
-                            x("SDZ", self.gebrRatMulGleichfUni)
-                        if (
-                            round(1 / (BruecheUn / BruecheUn2))
-                            == (1 / (BruecheUn / BruecheUn2))
-                            and BruecheUn != BruecheUn2
-                        ):
-                            self.gebrRatDivGleichfUni |= {
-                                frozenset({BruecheUn, BruecheUn2})
-                            }
 
             if wahl in (3, 5):
                 self.BruecheGal = tuple(self.getAllBrueche(gebrRatTable))
-                for BruecheGal in self.BruecheGal[: round(len(self.BruecheGal) / 2)]:
-                    for BruecheGal2 in self.BruecheGal[
-                        round(len(self.BruecheGal) / 2) :
-                    ]:
-                        if (
-                            round(BruecheGal * BruecheGal2)
-                            == (BruecheGal * BruecheGal2)
-                            and BruecheGal != BruecheGal2
-                        ):
-                            self.gebrRatMulSternGal |= {
-                                frozenset({BruecheGal, BruecheGal2})
-                            }
-                        if (
-                            round(BruecheGal / BruecheGal2)
-                            == (BruecheGal / BruecheGal2)
-                            and BruecheGal != BruecheGal2
-                        ):
-                            self.gebrRatDivSternGal |= {
-                                frozenset({BruecheGal, BruecheGal2})
-                            }
 
-                        if (
-                            round(1 / (BruecheGal * BruecheGal2))
-                            == (1 / (BruecheGal * BruecheGal2))
-                            and BruecheGal != BruecheGal2
-                        ):
-                            self.gebrRatMulGleichfGal |= {
-                                frozenset({BruecheGal, BruecheGal2})
-                            }
-                        if (
-                            round(1 / (BruecheGal / BruecheGal2))
-                            == (1 / (BruecheGal / BruecheGal2))
-                            and BruecheGal != BruecheGal2
-                        ):
-                            self.gebrRatDivGleichfGal |= {
-                                frozenset({BruecheGal, BruecheGal2})
-                            }
             return gebrRatTable
 
     def findAllBruecheAndTheirCombinations(self):
-        if wahl in (2, 4):
-            self.BruecheUni = tuple(self.getAllBrueche(gebrRatTable))
-            for BruecheUn in self.BruecheUni[: round(len(self.BruecheUni) / 2)]:
-                for BruecheUn2 in self.BruecheUni[round(len(self.BruecheUni) / 2) :]:
+        self.readOneCSVAndReturn(2)
+        self.readOneCSVAndReturn(3)
+        kombis2 = {"mul": set(), "div": set()}
+        kombis1 = {"stern": copy(kombis2), "gleichf": copy(kombis2)}
+        self.gebrRatAllCombis = {
+            "UniUni": copy(kombis1),
+            "UniGal": copy(kombis1),
+            "GalUni": copy(kombis1),
+            "GalGal": copy(kombis1),
+        }
+
+        for brueche1, brueche2 in zip(
+            (self.BruecheGal, self.BruecheGal, self.BruecheUni, self.BruecheUni),
+            (self.BruecheGal, self.BruecheUni, self.BruecheGal, self.BruecheUni),
+        ):
+            for BruecheUn, GalOrUni1 in zip(brueche1, ("Gal", "Gal", "Uni", "Uni")):
+                for BruecheUn2, GalOrUni2 in zip(
+                    brueche2, ("Gal", "Uni", "Gal", "Uni")
+                ):
                     if (
                         round(BruecheUn * BruecheUn2) == (BruecheUn * BruecheUn2)
                         and BruecheUn != BruecheUn2
                     ):
                         self.gebrRatMulSternUni |= {frozenset({BruecheUn, BruecheUn2})}
+                        self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["stern"][
+                            "mul"
+                        ] |= {frozenset({BruecheUn, BruecheUn2})}
                     if (
                         round(BruecheUn / BruecheUn2) == (BruecheUn / BruecheUn2)
                         and BruecheUn != BruecheUn2
                     ):
                         self.gebrRatDivSternUni |= {frozenset({BruecheUn, BruecheUn2})}
+                        self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["stern"][
+                            "div"
+                        ] |= {frozenset({BruecheUn, BruecheUn2})}
 
                     if (
                         round(1 / (BruecheUn * BruecheUn2))
@@ -1897,6 +1841,9 @@ class Concat:
                         self.gebrRatMulGleichfUni |= {
                             frozenset({BruecheUn, BruecheUn2})
                         }
+                        self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["gleichf"][
+                            "mul"
+                        ] |= {frozenset({BruecheUn, BruecheUn2})}
                         x("SDZ", self.gebrRatMulGleichfUni)
                     if (
                         round(1 / (BruecheUn / BruecheUn2))
@@ -1906,43 +1853,9 @@ class Concat:
                         self.gebrRatDivGleichfUni |= {
                             frozenset({BruecheUn, BruecheUn2})
                         }
-
-        if wahl in (3, 5):
-            self.BruecheGal = tuple(self.getAllBrueche(gebrRatTable))
-            for BruecheGal in self.BruecheGal[: round(len(self.BruecheGal) / 2)]:
-                for BruecheGal2 in self.BruecheGal[round(len(self.BruecheGal) / 2) :]:
-                    if (
-                        round(BruecheGal * BruecheGal2) == (BruecheGal * BruecheGal2)
-                        and BruecheGal != BruecheGal2
-                    ):
-                        self.gebrRatMulSternGal |= {
-                            frozenset({BruecheGal, BruecheGal2})
-                        }
-                    if (
-                        round(BruecheGal / BruecheGal2) == (BruecheGal / BruecheGal2)
-                        and BruecheGal != BruecheGal2
-                    ):
-                        self.gebrRatDivSternGal |= {
-                            frozenset({BruecheGal, BruecheGal2})
-                        }
-
-                    if (
-                        round(1 / (BruecheGal * BruecheGal2))
-                        == (1 / (BruecheGal * BruecheGal2))
-                        and BruecheGal != BruecheGal2
-                    ):
-                        self.gebrRatMulGleichfGal |= {
-                            frozenset({BruecheGal, BruecheGal2})
-                        }
-                    if (
-                        round(1 / (BruecheGal / BruecheGal2))
-                        == (1 / (BruecheGal / BruecheGal2))
-                        and BruecheGal != BruecheGal2
-                    ):
-                        self.gebrRatDivGleichfGal |= {
-                            frozenset({BruecheGal, BruecheGal2})
-                        }
-        return gebrRatTable
+                        self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["gleichf"][
+                            "div"
+                        ] |= {frozenset({BruecheUn, BruecheUn2})}
 
     def spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
         self,
