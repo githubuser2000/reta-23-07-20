@@ -660,7 +660,7 @@ class Concat:
             if gleichf:
                 mul = 1 / mul
             mulr = round(mul)
-            x("jzd", [mul, mulr, gleichf])
+            # x("jzd", [mul, mulr, gleichf])
             assert mul == mulr
             result[int(mulr)] |= {paar}
         # x("GHJ1B", dict(result))
@@ -686,24 +686,24 @@ class Concat:
                     faktor = Fraction(frac.denominator) / zusatzMul
                     if (faktor in fracs2) or faktor.numerator == 1:
                         paar = (frac, faktor)
-                        x("GGG", paar)
+                        # x("GGG", paar)
                         mul = paar[0] * paar[1]
                         mulr = round(mul)
                         if mul > 1024:
                             break
                         if mulr == mul:
                             result[int(mul)] |= {paar}
-            x("IIL", result)
+            # x("IIL", result)
 
         else:
             for frac in tuple(fracs):
                 for zusatzDiv in range(1, 1025):
-                    x("HDF1", frac)
+                    # x("HDF1", frac)
                     paar = (frac, 1 / Fraction(frac.numerator) / zusatzDiv)
-                    x("HDF2", paar)
-                    x("HDF3", paar[0] * paar[1])
+                    # x("HDF2", paar)
+                    # x("HDF3", paar[0] * paar[1])
                     div = 1 / (paar[1] * paar[0])
-                    x("HDF4", div)
+                    # x("HDF4", div)
                     divr = round(div)
                     assert divr == div
                     if div > 1024:
@@ -715,7 +715,7 @@ class Concat:
                     faktor = (1 / frac) / zusatzDiv
                     if faktor in fracs2 or faktor.numerator == 1:
                         paar = (frac, faktor)
-                        x("SOV", paar)
+                        # x("SOV", paar)
                         mul = 1 / (paar[1] * paar[0])
                         mulr = round(mul)
                         assert mulr == mul
@@ -954,13 +954,13 @@ class Concat:
                 "GalUni": deepcopy(kombis1),
                 "GalGal": deepcopy(kombis1),
             }
-            x("XCGH1", self.gebrRatAllCombis["UniUni"]["stern"]["mul"])
+            # x("XCGH1", self.gebrRatAllCombis["UniUni"]["stern"]["mul"])
 
             for KeyGalUniUniGal, ValueSternOrGleichf in self.gebrRatAllCombis.items():
                 for KeySternOrGleichf, ValueMulOrDiv in ValueSternOrGleichf.items():
                     for KeyMulOrDiv, Couples in ValueMulOrDiv.items():
 
-                        x("COED1", [KeyGalUniUniGal, KeySternOrGleichf, KeyMulOrDiv])
+                        # x("COED1", [KeyGalUniUniGal, KeySternOrGleichf, KeyMulOrDiv])
                         # x("COED2", Couples)
                         alleFractionErgebnisse2[KeyGalUniUniGal][KeySternOrGleichf][
                             KeyMulOrDiv
@@ -1256,20 +1256,24 @@ class Concat:
                                         multipless = alleFractionErgebnisse2[
                                             GalUniKombis
                                         ][sternOrGleichf]["mul"]
-                                        x("HFG", multipless.items())
+                                        # x("HFG", multipless.items())
                                         for k, multi in enumerate(
                                             zip_longest(
                                                 multipless[i],
                                                 fillvalue="",
                                             )
                                         ):
+                                            multi = multi[0]
+                                            # x("DFS", (multi[0], len(multi[0])))
+                                            # assert len(multi) == 1
+                                            # assert len(multi[0]) == 2
                                             try:
                                                 multi[0]
                                                 multi[1]
                                             except:
                                                 continue
 
-                                            # alxp("BBB")
+                                            alxp("BBB")
                                             # x("GHJ", i)
 
                                             # x("HIX", [multi1, multi2])
@@ -1863,7 +1867,7 @@ class Concat:
             ("Gal", "Gal", "Uni", "Uni"),
             ("Gal", "Uni", "Gal", "Uni"),
         ):
-            x("DSK", GalOrUni1 + GalOrUni2)
+            # x("DSK", GalOrUni1 + GalOrUni2)
             for BruecheUn in brueche1:
                 for BruecheUn2 in brueche2:
                     if BruecheUn != BruecheUn2:
@@ -1873,13 +1877,14 @@ class Concat:
                             gebrRatAllCombis[GalOrUni1 + GalOrUni2]["stern"][
                                 "mul"
                             ] |= deepcopy(couple)
+                            """
                             x(
                                 "SDUG",
                                 (
                                     list(list(couple)[0])[0] * list(list(couple)[0])[1],
                                     GalOrUni1 + GalOrUni2,
                                 ),
-                            )
+                            )"""
                         if round(BruecheUn / BruecheUn2) == (BruecheUn / BruecheUn2):
                             gebrRatAllCombis[GalOrUni1 + GalOrUni2]["stern"][
                                 "div"
@@ -1891,7 +1896,7 @@ class Concat:
                             gebrRatAllCombis[GalOrUni1 + GalOrUni2]["gleichf"][
                                 "mul"
                             ] |= deepcopy(couple)
-                            x("SDZ", couple)
+                            # x("SDZ", couple)
                         if round(1 / (BruecheUn / BruecheUn2)) == (
                             1 / (BruecheUn / BruecheUn2)
                         ):
@@ -1906,7 +1911,7 @@ class Concat:
             assert a == round(a)
         """
 
-        x("XCGH2", gebrRatAllCombis["UniUni"]["stern"]["mul"])
+        # x("XCGH2", gebrRatAllCombis["UniUni"]["stern"]["mul"])
         return gebrRatAllCombis
 
     def spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
