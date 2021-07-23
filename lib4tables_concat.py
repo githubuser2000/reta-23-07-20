@@ -944,6 +944,7 @@ class Concat:
                 3: (uni_, uni_),
             }
 
+            self.findAllBruecheAndTheirCombinations()
             kombis2: dict = {"mul": {}, "div": {}}
             kombis1: dict = {"stern": copy(kombis2), "gleichf": copy(kombis2)}
             # self.gebrRatAllCombis = {
