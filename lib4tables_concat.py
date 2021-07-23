@@ -1865,6 +1865,7 @@ class Concat:
             ("Gal", "Gal", "Uni", "Uni"),
             ("Gal", "Uni", "Gal", "Uni"),
         ):
+            x("DSK", GalOrUni1 + GalOrUni2)
             for BruecheUn in brueche1:
                 for BruecheUn2 in brueche2:
                     if BruecheUn != BruecheUn2:
@@ -1874,7 +1875,13 @@ class Concat:
                             self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["stern"][
                                 "mul"
                             ] |= deepcopy(couple)
-                            # x("SDUG", frozenset({BruecheUn, BruecheUn2}))
+                            x(
+                                "SDUG",
+                                (
+                                    list(list(couple)[0])[0] * list(list(couple)[0])[1],
+                                    GalOrUni1 + GalOrUni2,
+                                ),
+                            )
                         # continue
                         if round(BruecheUn / BruecheUn2) == (BruecheUn / BruecheUn2):
                             self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["stern"][
@@ -1895,8 +1902,8 @@ class Concat:
                                 "div"
                             ] |= deepcopy(couple)
 
-            x("XCGH2", self.gebrRatAllCombis["UniUni"]["stern"]["mul"])
-            return self.gebrRatAllCombis
+        x("XCGH2", self.gebrRatAllCombis["UniUni"]["stern"]["mul"])
+        return self.gebrRatAllCombis
 
     def spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
         self,
