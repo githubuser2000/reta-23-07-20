@@ -959,27 +959,30 @@ class Concat:
                     for KeyMulOrDiv, Couples in ValueMulOrDiv.items():
                         alleFractionErgebnisse2[KeyGalUniUniGal][KeySternOrGleichf][
                             ValueMulOrDiv
-                        ] = self.combineDicts(
-                            self.convertSetOfPaarenToDictOfNumToPaareMul(
-                                ValueMulOrDiv,
-                                True if KeySternOrGleichf == "gleichf" else False,
+                        ] = (
+                            self.combineDicts(
+                                self.convertSetOfPaarenToDictOfNumToPaareMul(
+                                    Couples,
+                                    True if KeySternOrGleichf == "gleichf" else False,
+                                ),
+                                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                                    self.BruecheUni
+                                    if KeyGalUniUniGal[:3] == "Uni"
+                                    else self.BruecheGal,
+                                    self.BruecheUni
+                                    if KeyGalUniUniGal[3:] == "Uni"
+                                    else self.BruecheGal,
+                                    True if KeySternOrGleichf == "gleichf" else False,
+                                ),
                             )
                             if KeyMulOrDiv == "mul"
-                            else self.convertSetOfPaarenToDictOfNumToPaareDiv(
-                                ValueMulOrDiv,
-                                True if KeySternOrGleichf == "gleichf" else False,
-                            ),
-                            self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                                self.BruecheUni
-                                if KeyGalUniUniGal[:3] == "Uni"
-                                else self.BruecheGal,
-                                self.BruecheUni
-                                if KeyGalUniUniGal[3:] == "Uni"
-                                else self.BruecheGal,
-                                True if KeySternOrGleichf == "gleichf" else False,
+                            else self.combineDicts(
+                                self.convertSetOfPaarenToDictOfNumToPaareDiv(
+                                    Couples,
+                                    True if KeySternOrGleichf == "gleichf" else False,
+                                ),
+                                defaultdict(set),
                             )
-                            if KeyMulOrDiv == "mul"
-                            else defaultdict(set),
                         )
 
             """
