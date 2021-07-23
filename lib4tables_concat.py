@@ -944,7 +944,7 @@ class Concat:
                 3: (uni_, uni_),
             }
 
-            self.findAllBruecheAndTheirCombinations()
+            self.gebrRatAllCombis = self.findAllBruecheAndTheirCombinations()
             kombis2: dict = {"mul": {}, "div": {}}
             kombis1: dict = {"stern": copy(kombis2), "gleichf": copy(kombis2)}
             # self.gebrRatAllCombis = {
@@ -1899,6 +1899,7 @@ class Concat:
                         self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["gleichf"][
                             "div"
                         ] |= {frozenset({BruecheUn, BruecheUn2})}
+        return self.gebrRatAllCombis
 
     def spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
         self,
