@@ -1926,56 +1926,57 @@ class Concat:
         elif koord.denominator > 100 or koord.numerator > 100:
             return None
         elif koord.numerator == 1:
-            strukname = (
-                (
-                    self.relitable[koord.denominator][n_and_invers_spalten[1]],
-                    " (1/",
-                    str(koord.denominator),
-                    ")",
-                    "; "
-                    if len(self.relitable[koord.denominator][201]) > 2
-                    and not self.tables.htmlOutputYes
-                    else "",
-                    "<br>"
-                    if len(self.relitable[koord.denominator][201]) > 2
-                    and self.tables.htmlOutputYes
-                    else "",
-                    self.relitable[koord.denominator][201],
+            if (
+                len(self.relitable[koord.denominator][n_and_invers_spalten[1]].strip())
+                > 3
+            ):
+                strukname = (
+                    (
+                        self.relitable[koord.denominator][n_and_invers_spalten[1]],
+                        " (1/",
+                        str(koord.denominator),
+                        ")",
+                        "; "
+                        if len(self.relitable[koord.denominator][201]) > 2
+                        and not self.tables.htmlOutputYes
+                        else "",
+                        "<br>"
+                        if len(self.relitable[koord.denominator][201]) > 2
+                        and self.tables.htmlOutputYes
+                        else "",
+                        self.relitable[koord.denominator][201],
+                    )
+                    if not isGalaxie
+                    else (self.relitable[koord.denominator][n_and_invers_spalten[1]],)
                 )
-                if not isGalaxie
-                else (self.relitable[koord.denominator][n_and_invers_spalten[1]],)
-            )
-            strukname = "".join(strukname)
-            # strukname = self.relitable[koord.denominator][
-            #    n_and_invers_spalten[1]
-            # ]
-            if len(strukname.strip()) > 3:
-                return strukname
+                return "".join(strukname)
             else:
                 return ""
         elif koord.denominator == 1:
-            strukname = (
-                (
-                    self.relitable[koord.numerator][n_and_invers_spalten[0]],
-                    " (",
-                    str(koord.numerator),
-                    ")",
-                    "; "
-                    if len(self.relitable[koord.numerator][198]) > 2
-                    and not self.tables.htmlOutputYes
-                    else "",
-                    "<br>"
-                    if len(self.relitable[koord.numerator][198]) > 2
-                    and self.tables.htmlOutputYes
-                    else "",
-                    self.relitable[koord.numerator][198],
+            if (
+                len(self.relitable[koord.numerator][n_and_invers_spalten[0]].strip())
+                > 3
+            ):
+                strukname = (
+                    (
+                        self.relitable[koord.numerator][n_and_invers_spalten[0]],
+                        " (",
+                        str(koord.numerator),
+                        ")",
+                        "; "
+                        if len(self.relitable[koord.numerator][198]) > 2
+                        and not self.tables.htmlOutputYes
+                        else "",
+                        "<br>"
+                        if len(self.relitable[koord.numerator][198]) > 2
+                        and self.tables.htmlOutputYes
+                        else "",
+                        self.relitable[koord.numerator][198],
+                    )
+                    if not isGalaxie
+                    else (self.relitable[koord.numerator][n_and_invers_spalten[0]],)
                 )
-                if not isGalaxie
-                else (self.relitable[koord.numerator][n_and_invers_spalten[0]],)
-            )
-            strukname = "".join(strukname)
-            if len(strukname.strip()) > 3:
-                return strukname
+                return "".join(strukname)
             else:
                 return ""
         else:
