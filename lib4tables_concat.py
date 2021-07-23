@@ -637,14 +637,14 @@ class Concat:
         self, paareSet: set, gleichf=False
     ) -> defaultdict:
         """Macht aus einem Set aus Paaren eins von verschiedenen möglichen dicts mit key int und value liste aus paaren"""
-        result: defaultdict = defaultdict(list)
+        result: defaultdict = defaultdict(set)
         paareSet: tuple = tuple(paareSet)
         for paar in paareSet:
             paar = tuple(paar)
             div = paar[0] / paar[1] if not gleichf else paar[1] / paar[0]
             # x("fsd", div)
             assert div == round(div)
-            result[int(div)] += [paar]
+            result[int(div)] |= {paar}
         # x("GHJ1A", dict(result))
         return result
 
@@ -652,7 +652,7 @@ class Concat:
         self, paareSet: set, gleichf=False
     ) -> defaultdict:
         """Macht aus einem Set aus Paaren eins von verschiedenen möglichen dicts mit key int und value liste aus paaren"""
-        result: defaultdict = defaultdict(list)
+        result: defaultdict = defaultdict(set)
 
         for paar in tuple(paareSet):
             paar = tuple(paar)
@@ -662,7 +662,7 @@ class Concat:
             mulr = round(mul)
             # x("jzd", [mul, mulr])
             assert mul == mulr
-            result[int(mulr)] += [paar]
+            result[int(mulr)] |= {paar}
         # x("GHJ1B", dict(result))
         return result
 
@@ -723,9 +723,9 @@ class Concat:
                             break
                         result[int(mulr)] |= {paar}
 
-        result2: defaultdict = defaultdict(list)
-        for key, value in result.items():
-            result2[key] = list(value)
+        ##result2: defaultdict = defaultdict(list)
+        # for key, value in result.items():
+        #    result2[key] = list(value)
 
         # x("GHJ2", dict(result2))
         return result2
@@ -797,16 +797,16 @@ class Concat:
     """
 
     def combineDicts(self, a: defaultdict, b: defaultdict) -> defaultdict:
-        e: defaultdict = defaultdict(list)
+        e: defaultdict = defaultdict(set)
         # x("SDFA1", a.items())
         # x("SDFA2", b)
         # a: dict = dict(a)
         # b: dict = dict(b)
         # x("SDFA1", a.items())
         for key, value in a.items():
-            e[key] += value
+            e[key] |= value
         for key, value in b.items():
-            e[key] += value
+            e[key] |= value
         # x("GHJ3", dict(e))
         return e
 
@@ -978,7 +978,7 @@ class Concat:
                                 True if KeySternOrGleichf == "gleichf" else False,
                             )
                             if KeyMulOrDiv == "mul"
-                            else defaultdict(list),
+                            else defaultdict(set),
                         )
 
             """
