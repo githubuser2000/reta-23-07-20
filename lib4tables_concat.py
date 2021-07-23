@@ -941,6 +941,19 @@ class Concat:
                 2: (uni_, gal_),
                 3: (uni_, uni_),
             }
+            """
+            kombis2 = {"mul": set(), "div": set()}
+            kombis1 = {"stern": copy(kombis2), "gleichf": copy(kombis2)}
+            self.gebrRatAllCombis = {
+                "UniUni": copy(kombis1),
+                "UniGal": copy(kombis1),
+                "GalUni": copy(kombis1),
+                "GalGal": copy(kombis1),
+            }"""
+            alleFractionErgebnisseNeu = {}
+            for KeyGalUniUniGal, ValueSternOrGleichf in self.gebrRatAllCombis.items():
+                for KeySternOrGleichf, ValueMulOrDiv in ValueSternOrGleichf.items():
+                    pass
 
             alleFractionErgebnisse = {}
             # self.struktAndInversSpalten: tuple = (5, 131)
