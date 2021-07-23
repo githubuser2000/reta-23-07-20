@@ -963,7 +963,7 @@ class Concat:
                         x("COED1", [KeyGalUniUniGal, KeySternOrGleichf, KeyMulOrDiv])
                         # x("COED2", Couples)
                         alleFractionErgebnisse2[KeyGalUniUniGal][KeySternOrGleichf][
-                            ValueMulOrDiv
+                            KeyMulOrDiv
                         ] = (
                             self.combineDicts(
                                 self.convertSetOfPaarenToDictOfNumToPaareMul(
@@ -980,7 +980,7 @@ class Concat:
                                     True if KeySternOrGleichf == "gleichf" else False,
                                 ),
                             )
-                            if KeyMulOrDiv == "mul" or True
+                            if KeyMulOrDiv == "mul"
                             else self.combineDicts(
                                 self.convertSetOfPaarenToDictOfNumToPaareDiv(
                                     Couples,
