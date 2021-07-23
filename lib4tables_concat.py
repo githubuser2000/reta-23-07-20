@@ -1256,7 +1256,7 @@ class Concat:
                                         multiples = alleFractionErgebnisse2[
                                             GalUniKombis
                                         ][sternOrGleichf]["mul"]
-                                        x("HFG", multiples1.items())
+                                        x("HFG", multiples.items())
                                         for k, multi in enumerate(
                                             zip_longest(
                                                 multiples[i],
