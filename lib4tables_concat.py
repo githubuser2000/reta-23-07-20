@@ -1900,12 +1900,13 @@ class Concat:
                             self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["gleichf"][
                                 "div"
                             ] |= deepcopy(couple)
-
+        """
         for a in self.gebrRatAllCombis["UniUni"]["stern"]["mul"]:
             a = list(a)
             a = a[0] * a[1]
             x("FGD", a)
             assert a == round(a)
+        """
 
         x("XCGH2", self.gebrRatAllCombis["UniUni"]["stern"]["mul"])
         return self.gebrRatAllCombis
