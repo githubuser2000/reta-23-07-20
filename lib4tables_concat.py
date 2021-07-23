@@ -956,14 +956,20 @@ class Concat:
                     alleFractionErgebnisse2[KeyGalUniUniGal][KeySternOrGleichf][
                         ValueMulOrDiv
                     ] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaareMul(ValueMulOrDiv,
-                    True if KeySternOrGleichf == "gleichf" else False
-                ),
-                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheUni if KeyGalUniUniGal[:3] == "Uni" else self.BruecheGal,
-                    self.BruecheUni if KeyGalUniUniGal[3:] == "Uni" else self.BruecheGal,
-                    True if KeySternOrGleichf == "gleichf" else False
-                ),
+                        self.convertSetOfPaarenToDictOfNumToPaareMul(
+                            ValueMulOrDiv,
+                            True if KeySternOrGleichf == "gleichf" else False,
+                        ),
+                        self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                            self.BruecheUni
+                            if KeyGalUniUniGal[:3] == "Uni"
+                            else self.BruecheGal,
+                            self.BruecheUni
+                            if KeyGalUniUniGal[3:] == "Uni"
+                            else self.BruecheGal,
+                            True if KeySternOrGleichf == "gleichf" else False,
+                        ),
+                    )
 
             """
             alleFractionErgebnisse = {}
