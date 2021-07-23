@@ -666,7 +666,7 @@ class Concat:
         # x("GHJ1B", dict(result))
         return result
 
-    def convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction2(
+    def convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
         self, fracs: set, fracs2: set, gleichf=False
     ) -> defaultdict:
         result: defaultdict = defaultdict(set)
@@ -730,6 +730,7 @@ class Concat:
         # x("GHJ2", dict(result2))
         return result2
 
+    """
     def convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
         self, fracs: set, gleichf=False
     ) -> defaultdict:
@@ -793,6 +794,7 @@ class Concat:
 
         # x("GHJ2", dict(result2))
         return result2
+    """
 
     def combineDicts(self, a: defaultdict, b: defaultdict) -> defaultdict:
         e: defaultdict = defaultdict(list)
