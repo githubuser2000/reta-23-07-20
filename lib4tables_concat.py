@@ -728,7 +728,7 @@ class Concat:
         #    result2[key] = list(value)
 
         # x("GHJ2", dict(result2))
-        return result2
+        return result
 
     """
     def convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
@@ -1851,12 +1851,12 @@ class Concat:
         self.readOneCSVAndReturn(2)
         self.readOneCSVAndReturn(3)
         kombis2 = {"mul": set(), "div": set()}
-        kombis1 = {"stern": copy(kombis2), "gleichf": copy(kombis2)}
+        kombis1 = {"stern": kombis2, "gleichf": kombis2}
         self.gebrRatAllCombis = {
-            "UniUni": copy(kombis1),
-            "UniGal": copy(kombis1),
-            "GalUni": copy(kombis1),
-            "GalGal": copy(kombis1),
+            "UniUni": deepcopy(kombis1),
+            "UniGal": deepcopy(kombis1),
+            "GalUni": deepcopy(kombis1),
+            "GalGal": deepcopy(kombis1),
         }
 
         for brueche1, brueche2, GalOrUni1, GalOrUni2 in zip(
@@ -1869,31 +1869,31 @@ class Concat:
                 for BruecheUn2 in brueche2:
                     if BruecheUn != BruecheUn2:
 
-                        # BruecheUn = copy(BruecheUn)
-                        # BruecheUn2 = copy(BruecheUn2)
+                        couple = {frozenset({BruecheUn, BruecheUn2})}
                         if round(BruecheUn * BruecheUn2) == (BruecheUn * BruecheUn2):
                             self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["stern"][
                                 "mul"
-                            ] |= {frozenset({BruecheUn, BruecheUn2})}
-                            x("SDUG", frozenset({BruecheUn, BruecheUn2}))
+                            ] |= deepcopy(couple)
+                            # x("SDUG", frozenset({BruecheUn, BruecheUn2}))
+                        # continue
                         if round(BruecheUn / BruecheUn2) == (BruecheUn / BruecheUn2):
                             self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["stern"][
                                 "div"
-                            ] |= {frozenset({BruecheUn, BruecheUn2})}
+                            ] |= deepcopy(couple)
 
                         if round(1 / (BruecheUn * BruecheUn2)) == (
                             1 / (BruecheUn * BruecheUn2)
                         ):
                             self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["gleichf"][
                                 "mul"
-                            ] |= {frozenset({BruecheUn, BruecheUn2})}
+                            ] |= deepcopy(couple)
                             x("SDZ", self.gebrRatMulGleichfUni)
                         if round(1 / (BruecheUn / BruecheUn2)) == (
                             1 / (BruecheUn / BruecheUn2)
                         ):
                             self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["gleichf"][
                                 "div"
-                            ] |= {frozenset({BruecheUn, BruecheUn2})}
+                            ] |= deepcopy(couple)
 
             x("XCGH2", self.gebrRatAllCombis["UniUni"]["stern"]["mul"])
             return self.gebrRatAllCombis
