@@ -1253,27 +1253,19 @@ class Concat:
                                                 else "",
                                             ]
                                     elif brr == 1:
-                                        multiples1 = alleFractionErgebnisse2[
+                                        multiples = alleFractionErgebnisse2[
                                             GalUniKombis
                                         ][sternOrGleichf]["mul"]
-                                        # x("HFG", multiples1.items())
-                                        multiples2 = alleFractionErgebnisse[
-                                            alleFractionErgebnisseMapping[
-                                                0 if nullBisDrei in [0, 2] else 1,
-                                                0,
-                                                zwei,
-                                            ]
-                                        ]
-                                        for k, (multi1, multi2) in enumerate(
+                                        x("HFG", multiples1.items())
+                                        for k, multi in enumerate(
                                             zip_longest(
-                                                multiples1[i],
-                                                multiples2[i],
+                                                multiples[i],
                                                 fillvalue="",
                                             )
                                         ):
                                             try:
-                                                multi1[0]
-                                                multi2[1]
+                                                multi[0]
+                                                multi[1]
                                             except:
                                                 continue
 
@@ -1282,7 +1274,7 @@ class Concat:
 
                                             # x("HIX", [multi1, multi2])
                                             von = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                                                multi1[0],
+                                                multi[0],
                                                 GalOrUni_nOrInvers[nullBisDrei][zwei],
                                                 self.readOneCSVAndReturn(
                                                     2 if nullBisDrei in (2, 3) else 3
@@ -1293,7 +1285,7 @@ class Concat:
                                             )
                                             # alxp("BBB2")
                                             bis = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                                                multi2[1],
+                                                multi[1],
                                                 GalOrUni_nOrInvers[nullBisDrei][zwei],
                                                 self.readOneCSVAndReturn(
                                                     2 if nullBisDrei in (1, 3) else 3
@@ -1330,11 +1322,11 @@ class Concat:
                                                         )
                                                         else " ",
                                                         " (",
-                                                        str(multi1[0]),
+                                                        str(multi[0]),
                                                         ")",
                                                         "*",
                                                         "(",
-                                                        str(multi2[1]),
+                                                        str(multi[1]),
                                                         ")",
                                                         "<br>"
                                                         if self.tables.htmlOutputYes
