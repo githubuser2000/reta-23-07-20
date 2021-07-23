@@ -1121,10 +1121,12 @@ class Concat:
                 "Struktur -> Motiv",
                 "Struktur -> Strukur",
             )
-            assert False
-            # nur diese table? nicht noch die andere ?
-            self.gebrUnivTable4metaKonkret = self.readOneCSVAndReturn(2)
-            assert False
+            kombisNamen2: tuple = (
+                "GalGal",
+                "GalUni",
+                "UniGal",
+                "UniUni",
+            )
 
             # self.rolle = []
             self.motivation: dict = {"Sternpolygone": [], "gleichförmige Polygone": []}
@@ -1145,11 +1147,17 @@ class Concat:
             for brr, ganzOrGebr in enumerate(
                 ["", ", mit Faktoren aus gebrochen-rationalen Zahlen"]
             ):
-                for zwei, (polytype, polytypename, transzType) in enumerate(
+                for zwei, (
+                    polytype,
+                    polytypename,
+                    transzType,
+                    sternOrGleichf,
+                ) in enumerate(
                     zip(
                         hardCodedCouple,
                         ["Sternpolygone", "gleichförmige Polygone"],
                         transzendentalienNrezi,
+                        kombis1.keys(),
                     )
                 ):
                     kombi_ = []
@@ -1178,7 +1186,9 @@ class Concat:
                         ]
                     kombis: tuple = tuple(kombi_)
                     # alle 2x2 kombis von motiven und struktur
-                    for nullBisDrei, kombiUeberschrift in enumerate(kombisNamen):
+                    for nullBisDrei, (kombiUeberschrift, GalUniKombis) in enumerate(
+                        zip(kombisNamen, kombisNamen2)
+                    ):
                         flag = False
                         try:
                             tags: list = koord2tag[(zwei, nullBisDrei, brr)]
@@ -1243,13 +1253,9 @@ class Concat:
                                                 else "",
                                             ]
                                     elif brr == 1:
-                                        multiples1 = alleFractionErgebnisse[
-                                            alleFractionErgebnisseMapping[
-                                                0 if nullBisDrei in [0, 1] else 1,
-                                                0,
-                                                zwei,
-                                            ]
-                                        ]
+                                        multiples1 = alleFractionErgebnisse2[
+                                            GalUniKombis
+                                        ][sternOrGleichf]["mul"]
                                         # x("HFG", multiples1.items())
                                         multiples2 = alleFractionErgebnisse[
                                             alleFractionErgebnisseMapping[
@@ -1852,7 +1858,7 @@ class Concat:
         self.readOneCSVAndReturn(3)
         kombis2 = {"mul": set(), "div": set()}
         kombis1 = {"stern": deepcopy(kombis2), "gleichf": deepcopy(kombis2)}
-        self.gebrRatAllCombis = {
+        gebrRatAllCombis = {
             "UniUni": deepcopy(kombis1),
             "UniGal": deepcopy(kombis1),
             "GalUni": deepcopy(kombis1),
@@ -1872,7 +1878,7 @@ class Concat:
 
                         couple = {frozenset({BruecheUn, BruecheUn2})}
                         if round(BruecheUn * BruecheUn2) == (BruecheUn * BruecheUn2):
-                            self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["stern"][
+                            gebrRatAllCombis[GalOrUni1 + GalOrUni2]["stern"][
                                 "mul"
                             ] |= deepcopy(couple)
                             x(
@@ -1883,33 +1889,33 @@ class Concat:
                                 ),
                             )
                         if round(BruecheUn / BruecheUn2) == (BruecheUn / BruecheUn2):
-                            self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["stern"][
+                            gebrRatAllCombis[GalOrUni1 + GalOrUni2]["stern"][
                                 "div"
                             ] |= deepcopy(couple)
 
                         if round(1 / (BruecheUn * BruecheUn2)) == (
                             1 / (BruecheUn * BruecheUn2)
                         ):
-                            self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["gleichf"][
+                            gebrRatAllCombis[GalOrUni1 + GalOrUni2]["gleichf"][
                                 "mul"
                             ] |= deepcopy(couple)
                             x("SDZ", couple)
                         if round(1 / (BruecheUn / BruecheUn2)) == (
                             1 / (BruecheUn / BruecheUn2)
                         ):
-                            self.gebrRatAllCombis[GalOrUni1 + GalOrUni2]["gleichf"][
+                            gebrRatAllCombis[GalOrUni1 + GalOrUni2]["gleichf"][
                                 "div"
                             ] |= deepcopy(couple)
         """
-        for a in self.gebrRatAllCombis["UniUni"]["stern"]["mul"]:
+        for a in gebrRatAllCombis["UniUni"]["stern"]["mul"]:
             a = list(a)
             a = a[0] * a[1]
             x("FGD", a)
             assert a == round(a)
         """
 
-        x("XCGH2", self.gebrRatAllCombis["UniUni"]["stern"]["mul"])
-        return self.gebrRatAllCombis
+        x("XCGH2", gebrRatAllCombis["UniUni"]["stern"]["mul"])
+        return gebrRatAllCombis
 
     def spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
         self,
