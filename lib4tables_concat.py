@@ -941,6 +941,7 @@ class Concat:
                 2: (uni_, gal_),
                 3: (uni_, uni_),
             }
+
             kombis2: dict = {"mul": {}, "div": {}}
             kombis1: dict = {"stern": copy(kombis2), "gleichf": copy(kombis2)}
             # self.gebrRatAllCombis = {
@@ -950,7 +951,6 @@ class Concat:
                 "GalUni": copy(kombis1),
                 "GalGal": copy(kombis1),
             }
-            alleFractionErgebnisse2 = {}
             for KeyGalUniUniGal, ValueSternOrGleichf in self.gebrRatAllCombis.items():
                 for KeySternOrGleichf, ValueMulOrDiv in ValueSternOrGleichf.items():
                     alleFractionErgebnisse2[KeyGalUniUniGal][KeySternOrGleichf][
@@ -1039,9 +1039,9 @@ class Concat:
                 ),
             )
             """
-
+            """
             alleFractionErgebnisseMapping: dict = {
-                (0, 0, 0): "gebrRatMulSternDictUni",
+                (0, 0, 0):  "gebrRatMulSternDictUni",
                 (0, 1, 0): "gebrRatDivSternDictUni",
                 (1, 0, 0): "gebrRatMulSternDictGal",
                 (1, 1, 0): "gebrRatDivSternDictGal",
@@ -1049,7 +1049,8 @@ class Concat:
                 (0, 1, 1): "gebrRatDivGleichfDictUni",
                 (1, 0, 1): "gebrRatMulGleichfDictGal",
                 (1, 1, 1): "gebrRatDivGleichfDictGal",
-            }
+            }"""
+
             # alleFractionErgebnisseMapping2: dict = {}
             # for zwei1 in [0, 1]:
             #    for zwei2 in [0, 1]:
