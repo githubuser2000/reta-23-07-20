@@ -649,7 +649,7 @@ class Concat:
         return result
 
     def convertSetOfPaarenToDictOfNumToPaareMul(
-        self, paareSet1: set, paarseSet2: set, gleichf=False
+        self, paareSet: set, gleichf=False
     ) -> defaultdict:
         """Macht aus einem Set aus Paaren eins von verschiedenen möglichen dicts mit key int und value liste aus paaren"""
         result: defaultdict = defaultdict(list)
@@ -953,23 +953,29 @@ class Concat:
             }
             for KeyGalUniUniGal, ValueSternOrGleichf in self.gebrRatAllCombis.items():
                 for KeySternOrGleichf, ValueMulOrDiv in ValueSternOrGleichf.items():
-                    alleFractionErgebnisse2[KeyGalUniUniGal][KeySternOrGleichf][
-                        ValueMulOrDiv
-                    ] = self.combineDicts(
-                        self.convertSetOfPaarenToDictOfNumToPaareMul(
-                            ValueMulOrDiv,
-                            True if KeySternOrGleichf == "gleichf" else False,
-                        ),
-                        self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                            self.BruecheUni
-                            if KeyGalUniUniGal[:3] == "Uni"
-                            else self.BruecheGal,
-                            self.BruecheUni
-                            if KeyGalUniUniGal[3:] == "Uni"
-                            else self.BruecheGal,
-                            True if KeySternOrGleichf == "gleichf" else False,
-                        ),
-                    )
+                    for KeyMulOrDiv, Couples in ValueMulOrDiv.items():
+                        alleFractionErgebnisse2[KeyGalUniUniGal][KeySternOrGleichf][
+                            ValueMulOrDiv
+                        ] = self.combineDicts(
+                            self.convertSetOfPaarenToDictOfNumToPaareMul(
+                                ValueMulOrDiv,
+                                True if KeySternOrGleichf == "gleichf" else False,
+                            )
+                            if KeyMulOrDiv == "mul"
+                            else self.convertSetOfPaarenToDictOfNumToPaareDiv(
+                                ValueMulOrDiv,
+                                True if KeySternOrGleichf == "gleichf" else False,
+                            ),
+                            self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                                self.BruecheUni
+                                if KeyGalUniUniGal[:3] == "Uni"
+                                else self.BruecheGal,
+                                self.BruecheUni
+                                if KeyGalUniUniGal[3:] == "Uni"
+                                else self.BruecheGal,
+                                True if KeySternOrGleichf == "gleichf" else False,
+                            ),
+                        )
 
             """
             alleFractionErgebnisse = {}
