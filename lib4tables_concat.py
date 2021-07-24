@@ -1746,6 +1746,7 @@ class Concat:
                 # and False
             ):
                 intoList += [
+                    "<li>" if self.tables.htmlOutputYes else "",
                     vier[bothRows + 2],
                     thema,
                     relitable[vier[0][0]][vier[1]],
@@ -1756,8 +1757,7 @@ class Concat:
                     else "",
                     str(vier[0][0]),
                     ")",
-                    " | ",
-                    "<br>" if self.tables.htmlOutputYes else "",
+                    "</li>" if self.tables.htmlOutputYes else " | ",
                 ]
             elif (
                 bothRows == 1  # bei konkret aber nicht meta
@@ -1767,6 +1767,7 @@ class Concat:
                 # and False
             ):
                 intoList += [
+                    "<li>" if self.tables.htmlOutputYes else "",
                     vier[bothRows + 2],
                     thema,
                     relitable[vier[0][1]][vier[1]],
@@ -1777,8 +1778,7 @@ class Concat:
                     else "",
                     str(vier[0][1]),
                     ")",
-                    " | ",
-                    "<br>" if self.tables.htmlOutputYes else "",
+                    "</li>" if self.tables.htmlOutputYes else " | ",
                 ]
             elif (
                 bothRows == 1  # bei konkret aber nicht meta
@@ -1800,6 +1800,7 @@ class Concat:
                     if len(gebrStrukWort.strip()) > 3:
                         # sys.stderr.write("gebrRatMulStern")
                         intoList += [
+                            "<li>" if self.tables.htmlOutputYes else "",
                             vier[bothRows + 2],
                             thema,
                             gebrStrukWort,
@@ -1809,8 +1810,7 @@ class Concat:
                             if vier[0][1].denominator > 1
                             else "",
                             ")",
-                            " | ",
-                            "<br>" if self.tables.htmlOutputYes else "",
+                            "</li>" if self.tables.htmlOutputYes else " | ",
                         ]
                     else:
                         pass
@@ -1822,7 +1822,13 @@ class Concat:
                     # intoList = [None]
             thema = "Thema: "
         # alxp(intoList)
-        self.relitable[i] += ["".join(intoList[:-1])]
+        self.relitable[i] += [
+            "".join(
+                (["<ul>"] if self.tables.htmlOutputYes else [""])
+                + intoList
+                + (["</ul>"] if self.tables.htmlOutputYes else [""])
+            )
+        ]
 
     def getAllBrueche(self, gebrUnivTable4metaKonkret):
         menge = set()
