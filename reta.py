@@ -2099,11 +2099,13 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 (
-                    "Fördern_und_Sensiblisieren",
+                    "Fördern_Sensiblisieren_und_Gedeihen",
                     "foerdern",
                     "fördern",
                     "begrenzen",
                     "sensibilisieren",
+                    "gedeihen",
+                    "verderben",
                 ),
                 set(),
                 {(175, 176)},
