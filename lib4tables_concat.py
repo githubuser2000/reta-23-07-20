@@ -644,7 +644,7 @@ class Concat:
             div = paar[0] / paar[1] if not gleichf else paar[1] / paar[0]
             # x("fsd", div)
             assert div == round(div)
-            result[int(div)] |= {paar}
+            result[int(div)] |= {frozenset(paar)}
         # x("GHJ1A", dict(result))
         return result
 
@@ -662,7 +662,7 @@ class Concat:
             mulr = round(mul)
             # x("jzd", [mul, mulr, gleichf])
             assert mul == mulr
-            result[int(mulr)] |= {paar}
+            result[int(mulr)] |= {frozenset(paar)}
         # x("GHJ1B", dict(result))
         return result
 
@@ -679,7 +679,7 @@ class Concat:
                     assert mulr == mul
                     if mul > 1024:
                         break
-                    result[int(mul)] |= {paar}
+                    result[int(mul)] |= {frozenset(paar)}
 
             for frac in tuple(fracs):
                 for zusatzMul in range(1024, 0, -1):
@@ -692,7 +692,7 @@ class Concat:
                         if mul > 1024:
                             break
                         if mulr == mul:
-                            result[int(mul)] |= {paar}
+                            result[int(mul)] |= {frozenset(paar)}
             # x("IIL", result)
 
         else:
@@ -708,7 +708,7 @@ class Concat:
                     assert divr == div
                     if div > 1024:
                         break
-                    result[int(divr)] |= {paar}
+                    result[int(divr)] |= {frozenset(paar)}
 
             for frac in tuple(fracs):
                 for zusatzDiv in range(1, 1025):
@@ -721,7 +721,7 @@ class Concat:
                         assert mulr == mul
                         if 1 / mul > 1024:
                             break
-                        result[int(mulr)] |= {paar}
+                        result[int(mulr)] |= {frozenset(paar)}
 
         ##result2: defaultdict = defaultdict(list)
         # for key, value in result.items():
@@ -804,9 +804,15 @@ class Concat:
         # b: dict = dict(b)
         # x("SDFA1", a.items())
         for key, value in a.items():
-            e[key] |= value
+            paare = set()
+            for v in value:
+                paare |= {tuple(v)}
+            e[key] |= paare
         for key, value in b.items():
-            e[key] |= value
+            paare = set()
+            for v in value:
+                paare |= {tuple(v)}
+            e[key] |= paare
         # x("GHJ3", dict(e))
         return e
 
