@@ -798,22 +798,18 @@ class Concat:
 
     def combineDicts(self, a: defaultdict, b: defaultdict) -> defaultdict:
         e: defaultdict = defaultdict(set)
-        # x("SDFA1", a.items())
-        # x("SDFA2", b)
-        # a: dict = dict(a)
-        # b: dict = dict(b)
-        # x("SDFA1", a.items())
+
         for key, value in a.items():
-            paare = set()
-            for v in value:
-                paare |= {tuple(v)}
-            e[key] |= paare
+            e[key] |= value
         for key, value in b.items():
-            paare = set()
+            e[key] |= value
+
+        for key, value in e.items():
+            newValue = set()
             for v in value:
-                paare |= {tuple(v)}
-            e[key] |= paare
-        # x("GHJ3", dict(e))
+                newValue |= {tuple(v)}
+            e[key] = newValue
+
         return e
 
     def concat1RowPrimUniverse2(
