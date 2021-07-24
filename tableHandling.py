@@ -852,13 +852,48 @@ class Tables:
                                             else:
                                                 table2[colNum][row] += hinein
 
-                        # table2[colNum][row] = regex.sub(" | ", table2[colNum][row])
-            if self.tables.htmlOutputYes:
+            for colNum, (reliNum, col) in enumerate(
+                zip(self.religionNumbers, mainTable)
+            ):
+                """geht die Zeilen der anzuzeigenden Haupttabelle durch
+                1. Zeilenummer, 2. richtige Nummer der Religion (z.B: 1-10), 3. anzuzeigende Haupttabellenzeile
+                """
+                for subTable in manySubTables:
+                    """Liste aus Tabellen: eine Untertabelle = was in Haupttabellenzeilennummer rein soll aus der Kombitabelle
+                    Zusammen ist das die Matrix der Kombis, die an die Haupt+Anzeige Tabelle deneben ran soll
+
+                    hier werden also alle Orginal-Haupt+Anzeige Zeilen durchgegangen
+                    """
+                    if reliNum in subTable:
+                        """Wenn z.B. Religion 2 als Spalte 2 auch als Spalte 2 drin ist als Zelle der kombis die als Zelle in die Haupt+Anzeige Tabelle rein soll
+                        d.h. hier die Frage ob z.B. 2==2    viel mehr ist das nicht"""
+                        for row, bigCell in enumerate(mainTable[colNum]):
+                            """HauptTabellenzeilen werden durchIteriert"""
+                            if old2newRows[1][row] in maintable2subtable_Relation[0]:
+                                """Wenn Haupttabellenzeile der Kombitabellenzeile entspricht"""
+                                subRowNum = maintable2subtable_Relation[0][
+                                    old2newRows[1][row]
+                                ]
+                                """
+                                #for subTableCell in subTable[reliNum]:
+                                    #if rowsOfcombi.index(subRowNum + 1) < len(
+                                    #    subTableCell
+                                    #) and subTableCell != [[""]]:
+                                """
+                                if oneLinePerLine:
+                                    for z, cell in enumerate(table2[colNum][row]):
+                                        table2[colNum][row][z] = "<ul>" + cell + "</ul>"
+
+            #                                            table2[colNum][row][q] = "<ul>" + cell + "</ul>"
+            # table2[colNum][row] = regex.sub(" | ", table2[colNum][row])
+
+            """
+            if self.tables.htmlOutputYes and False:
                 for i, a in enumerate(table2):
                     for k, b in enumerate(a):
                         for l, c in enumerate(b):
                             table2[i][k][l] = "<ul>" + table2[i][k][l] + "</ul>"
-
+            """
             return table2
 
         def prepare_kombi(
