@@ -992,7 +992,8 @@ function makeAllowedZeilenFromZaehlung(zeilenAngaben) {
       ersteSpalte[i].getElementsByTagName("label")[0].innerHTML.trim()
     );
     if (zaehlung != "NaN" && erlaubteZaehlungen.has(zaehlung)) {
-      wirklicheZeile = ersteSpalte[i].className.match(/z_(\d+)/g);
+      wirklicheZeile = ersteSpalte[i].className.match(/z_\s*(\d+)/g);
+      //window.alert(ersteSpalte[i].className);
       //window.alert(wirklicheZeile);
       if (wirklicheZeile.length > 0) {
         wirklicheZeile = wirklicheZeile[0].substr(2);
@@ -1077,7 +1078,7 @@ function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which) {
     else {
       echteZeilenNummer = spalte[s]
         .getElementsByTagName("td")[0]
-        .className.match(/z_(\d+)/g);
+        .className.match(/z_\s*(\d+)/g);
       if (echteZeilenNummer != null && echteZeilenNummer.length > 0) {
         echteZeilenNummer = parseInt(echteZeilenNummer[0].substr(2));
         zeilenLetztendlichZeigenVerstecken(

@@ -233,7 +233,7 @@ class htmlSyntax(OutputSyntax):
                     (
                         ' class="',
                         "z_",
-                        str(zeile),
+                        str(int(zeile)),
                         " r_",
                         str(spalte),
                         " p1_",
