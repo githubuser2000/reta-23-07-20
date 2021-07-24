@@ -2213,10 +2213,16 @@ class Concat:
                     zeileNeu = []
                     for zelle in zeile:
                         if len(zelle.strip()) > 3:
-                            zeileNeu += [zelle]
+                            zeileNeu += [
+                                ("<li>" if self.tables.htmlOutputYes else "")
+                                + zelle
+                                + ("</li>" if self.tables.htmlOutputYes else "")
+                            ]
                     zeileNeu = [
-                        ("| <br>" if self.tables.htmlOutputYes else " | ").join(
-                            zeileNeu
+                        ("" if self.tables.htmlOutputYes else " | ").join(
+                            (["<ul>"] if self.tables.htmlOutputYes else [""])
+                            + zeileNeu
+                            + (["</ul>"] if self.tables.htmlOutputYes else [""])
                         )
                     ]
                     tableToAdd2 += [zeileNeu]
