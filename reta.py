@@ -1974,7 +1974,13 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept,
-                ("Götter_Propheten_und_Familien", "familiaer", "goettlich"),
+                (
+                    "Götter_Propheten_Familien_Freunde",
+                    "familiaer",
+                    "goettlich",
+                    "freunde",
+                    "propheten",
+                ),
                 set(),
                 {(184, 185)},
             ),
