@@ -36,6 +36,10 @@ class Tables:
         }
 
     @property
+    def bbcodeOutputYes(self) -> bool:
+        return type(self.getOut.outType) is bbCodeSyntax
+
+    @property
     def htmlOutputYes(self) -> bool:
         return type(self.getOut.outType) is htmlSyntax
 
@@ -826,6 +830,8 @@ class Tables:
                                                     hinein[0] = (
                                                         "<li>" + hinein[0] + "</li>"
                                                     )
+                                                elif self.tables.bbcodeOutputYes:
+                                                    hinein[0] = "[*]" + hinein[0]
                                                 else:
                                                     hinein[0] += " |"
 
@@ -854,6 +860,11 @@ class Tables:
                                 if oneLinePerLine and self.tables.htmlOutputYes:
                                     for z, cell in enumerate(table2[colNum][row]):
                                         table2[colNum][row][z] = "<ul>" + cell + "</ul>"
+                                if oneLinePerLine and self.tables.bbcodeOutputYes:
+                                    for z, cell in enumerate(table2[colNum][row]):
+                                        table2[colNum][row][z] = (
+                                            "[list]" + cell + "[/list]"
+                                        )
 
             return table2
 

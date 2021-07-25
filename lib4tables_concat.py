@@ -1222,13 +1222,21 @@ class Concat:
                                     into = []
                                     if self.tables.htmlOutputYes:
                                         into += ["<ul>"]
+                                    elif self.tables.bbcodeOutputYes:
+                                        into += ["[list]"]
                                     if brr == 0:
                                         multipless = multiples(i)
                                         for k, multi in enumerate(multipless):
-                                            if k > 0 and not self.tables.htmlOutputYes:
+                                            if (
+                                                k > 0
+                                                and not self.tables.htmlOutputYes
+                                                and not self.tables.bbcodeOutputYes
+                                            ):
                                                 into += [", außerdem: "]
                                             into += [
                                                 "<li>"
+                                                if self.tables.htmlOutputYes
+                                                else "[*]"
                                                 if self.tables.htmlOutputYes
                                                 else "",
                                                 "(",
@@ -1308,12 +1316,15 @@ class Concat:
                                                     if (
                                                         k > 0
                                                         and not self.tables.htmlOutputYes
+                                                        and not self.tables.bbcodeOutputYes
                                                         and len(into) > 0
                                                     ):
                                                         into += ["| außerdem: "]
                                                     into += [
                                                         "<li>"
                                                         if self.tables.htmlOutputYes
+                                                        else "[*]"
+                                                        if self.tables.bbcodeOutputYes
                                                         else "" '"',
                                                         von,
                                                         # self.CSVsAlreadRead[place][
@@ -1353,6 +1364,8 @@ class Concat:
                                                     ]
                                     if self.tables.htmlOutputYes:
                                         into += ["</ul>"]
+                                    elif self.tables.bbcodeOutputYes:
+                                        into += ["[/list]"]
 
                                 self.relitable[i] += ["".join(into)]
 
@@ -1746,7 +1759,11 @@ class Concat:
                 # and False
             ):
                 intoList += [
-                    "<li>" if self.tables.htmlOutputYes else "",
+                    "<li>"
+                    if self.tables.htmlOutputYes
+                    else "[*]"
+                    if self.tables.bbcodeOutputYes
+                    else "",
                     vier[bothRows + 2],
                     thema,
                     relitable[vier[0][0]][vier[1]],
@@ -1757,7 +1774,11 @@ class Concat:
                     else "",
                     str(vier[0][0]),
                     ")",
-                    "</li>" if self.tables.htmlOutputYes else " | ",
+                    "</li>"
+                    if self.tables.htmlOutputYes
+                    else " | "
+                    if not self.tables.bbcodeOutputYes
+                    else "",
                 ]
             elif (
                 bothRows == 1  # bei konkret aber nicht meta
@@ -1767,7 +1788,11 @@ class Concat:
                 # and False
             ):
                 intoList += [
-                    "<li>" if self.tables.htmlOutputYes else "",
+                    "<li>"
+                    if self.tables.htmlOutputYes
+                    else "[*]"
+                    if self.tables.bbcodeOutputYes
+                    else "",
                     vier[bothRows + 2],
                     thema,
                     relitable[vier[0][1]][vier[1]],
@@ -1778,7 +1803,11 @@ class Concat:
                     else "",
                     str(vier[0][1]),
                     ")",
-                    "</li>" if self.tables.htmlOutputYes else " | ",
+                    "</li>"
+                    if self.tables.htmlOutputYes
+                    else " | "
+                    if not self.tables.bbcodeOutputYes
+                    else "",
                 ]
             elif (
                 bothRows == 1  # bei konkret aber nicht meta
@@ -1800,7 +1829,11 @@ class Concat:
                     if len(gebrStrukWort.strip()) > 3:
                         # sys.stderr.write("gebrRatMulStern")
                         intoList += [
-                            "<li>" if self.tables.htmlOutputYes else "",
+                            "<li>"
+                            if self.tables.htmlOutputYes
+                            else ""
+                            if not self.tables.bbcodeOutputYes
+                            else "[*]",
                             vier[bothRows + 2],
                             thema,
                             gebrStrukWort,
@@ -1810,7 +1843,11 @@ class Concat:
                             if vier[0][1].denominator > 1
                             else "",
                             ")",
-                            "</li>" if self.tables.htmlOutputYes else " | ",
+                            "</li>"
+                            if self.tables.htmlOutputYes
+                            else " | "
+                            if not self.tables.bbcodeOutputYes
+                            else "",
                         ]
                     else:
                         pass
@@ -1824,9 +1861,21 @@ class Concat:
         # alxp(intoList)
         self.relitable[i] += [
             "".join(
-                (["<ul>"] if self.tables.htmlOutputYes else [""])
+                (
+                    ["<ul>"]
+                    if self.tables.htmlOutputYes
+                    else [""]
+                    if not self.tables.bbcodeOutputYes
+                    else ["[list]"]
+                )
                 + intoList
-                + (["</ul>"] if self.tables.htmlOutputYes else [""])
+                + (
+                    ["</ul>"]
+                    if self.tables.htmlOutputYes
+                    else [""]
+                    if not self.tables.bbcodeOutputYes
+                    else ["[/tables]"]
+                )
             )
         ]
 
@@ -2214,15 +2263,37 @@ class Concat:
                     for zelle in zeile:
                         if len(zelle.strip()) > 3:
                             zeileNeu += [
-                                ("<li>" if self.tables.htmlOutputYes else "")
+                                (
+                                    "<li>"
+                                    if self.tables.htmlOutputYes
+                                    else ""
+                                    if not self.tables.bbcodeOutputYes
+                                    else "[*]"
+                                )
                                 + zelle
                                 + ("</li>" if self.tables.htmlOutputYes else "")
                             ]
                     zeileNeu = [
-                        ("" if self.tables.htmlOutputYes else " | ").join(
-                            (["<ul>"] if self.tables.htmlOutputYes else [""])
+                        (
+                            ""
+                            if self.tables.htmlOutputYes or self.tables.bbcodeOutputYes
+                            else " | "
+                        ).join(
+                            (
+                                ["<ul>"]
+                                if self.tables.htmlOutputYes
+                                else [""]
+                                if not self.tables.bbcodeOutputYes
+                                else ["[list]"]
+                            )
                             + zeileNeu
-                            + (["</ul>"] if self.tables.htmlOutputYes else [""])
+                            + (
+                                ["</ul>"]
+                                if self.tables.htmlOutputYes
+                                else [""]
+                                if not self.tables.bbcodeOutputYes
+                                else ["[/list]"]
+                            )
                         )
                     ]
                     tableToAdd2 += [zeileNeu]
