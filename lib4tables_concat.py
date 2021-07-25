@@ -835,10 +835,10 @@ class Concat:
         hardCodedCouple = (10, 42)
         transzendentalienNrezi = (5, 131)
         if len(generatedBefehle) > 0:
-            self.tables.primUniverseRowNum = len(self.relitable[0])
-            self.tables.generatedSpaltenParameter_Tags[len(rowsAsNumbers)] = frozenset(
-                {ST.sternPolygon, ST.galaxie}
-            )
+            # self.tables.primUniverseRowNum = len(self.relitable[0])
+            # self.tables.generatedSpaltenParameter_Tags[len(rowsAsNumbers)] = frozenset(
+            #    {ST.sternPolygon, ST.galaxie}
+            # )
             forGeneratedSpaltenParameter_Tags: dict = {
                 "primMotivSternGebr": (
                     (0, 0, frozenset({ST.sternPolygon, ST.galaxie}), 1),
@@ -956,14 +956,11 @@ class Concat:
                 "GalUni": deepcopy(kombis1),
                 "GalGal": deepcopy(kombis1),
             }
-            # x("XCGH1", self.gebrRatAllCombis["UniUni"]["stern"]["mul"])
 
             for KeyGalUniUniGal, ValueSternOrGleichf in self.gebrRatAllCombis.items():
                 for KeySternOrGleichf, ValueMulOrDiv in ValueSternOrGleichf.items():
                     for KeyMulOrDiv, Couples in ValueMulOrDiv.items():
 
-                        # x("COED1", [KeyGalUniUniGal, KeySternOrGleichf, KeyMulOrDiv])
-                        # x("COED2", Couples)
                         alleFractionErgebnisse2[KeyGalUniUniGal][KeySternOrGleichf][
                             KeyMulOrDiv
                         ] = (
@@ -992,104 +989,6 @@ class Concat:
                             )
                         )
 
-            """
-            alleFractionErgebnisse = {}
-            # self.struktAndInversSpalten: tuple = (5, 131)
-            alleFractionErgebnisse["gebrRatMulSternDictUni"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaareMul(self.gebrRatMulSternUni),
-                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheUni
-                ),
-            )
-            alleFractionErgebnisse["gebrRatDivSternDictUni"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaareDiv(self.gebrRatDivSternUni),
-                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheUni
-                ),
-            )
-            alleFractionErgebnisse["gebrRatMulSternDictGal"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaareMul(self.gebrRatMulSternGal),
-                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheGal
-                ),
-            )
-            alleFractionErgebnisse["gebrRatDivSternDictGal"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaareDiv(self.gebrRatDivSternGal),
-                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheGal
-                ),
-            )
-            x("GHR", self.gebrRatMulGleichfUni)
-            x(
-                "BDE",
-                self.convertSetOfPaarenToDictOfNumToPaareMul(
-                    self.gebrRatMulGleichfUni, True
-                ),
-            )
-            alleFractionErgebnisse["gebrRatMulGleichfDictUni"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaareMul(
-                    self.gebrRatMulGleichfUni, True
-                ),
-                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheUni, True
-                ),
-            )
-            x(
-                "SJB",
-                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheUni, True
-                ),
-            )
-            x("COE", alleFractionErgebnisse["gebrRatMulGleichfDictUni"])
-            alleFractionErgebnisse["gebrRatDivGleichfDictUni"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaareDiv(
-                    self.gebrRatDivGleichfUni, True
-                ),
-                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheUni, True
-                ),
-            )
-            alleFractionErgebnisse["gebrRatMulGleichfDictGal"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaareMul(
-                    self.gebrRatMulGleichfGal, True
-                ),
-                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheGal, True
-                ),
-            )
-            alleFractionErgebnisse["gebrRatDivGleichfDictGal"] = self.combineDicts(
-                self.convertSetOfPaarenToDictOfNumToPaareDiv(
-                    self.gebrRatDivGleichfGal, True
-                ),
-                self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                    self.BruecheGal, True
-                ),
-            )
-            """
-            """
-            alleFractionErgebnisseMapping: dict = {
-                (0, 0, 0):  "gebrRatMulSternDictUni",
-                (0, 1, 0): "gebrRatDivSternDictUni",
-                (1, 0, 0): "gebrRatMulSternDictGal",
-                (1, 1, 0): "gebrRatDivSternDictGal",
-                (0, 0, 1): "gebrRatMulGleichfDictUni",
-                (0, 1, 1): "gebrRatDivGleichfDictUni",
-                (1, 0, 1): "gebrRatMulGleichfDictGal",
-                (1, 1, 1): "gebrRatDivGleichfDictGal",
-            }"""
-
-            # alleFractionErgebnisseMapping2: dict = {}
-            # for zwei1 in [0, 1]:
-            #    for zwei2 in [0, 1]:
-            #        for zwei3 in [0, 1]:
-            #            alleFractionErgebnisseMapping2[
-            #                {
-            #                    "Gal0Uni1": zwei1,
-            #                    "mul0div1": zwei2,
-            #                    "stern0gleichf1": zwei3,
-            #                }
-            #            ] = (zwei1, zwei2, zwei3)
-
             # hier geht es um die html class Parameter und um Tagging ob Galaxie oder Polygon
             koord2tag, koord2ParameterA, koord2Parameter = {}, {}, {}
 
@@ -1099,9 +998,6 @@ class Concat:
                         name == befehl
                     ):  # ob der Befehl des Users mit den jeweils vorhandenen übereinstimmt
                         for drei in mehrereEinraege:
-                            x("NMD", befehl)
-                            x("HNC", (drei[0], drei[1], drei[3], drei[2]))
-                            # x("HNC", (drei[0], drei[1], drei[3], drei[2]))
                             try:
                                 koord2tag[(drei[0], drei[1], drei[3])] |= {drei[2]}
                             except KeyError:
@@ -1117,10 +1013,6 @@ class Concat:
                 assert len(value) == 1
             for key, value in koord2ParameterA.items():
                 koord2Parameter[key] = list(value)
-                x("SFb", [key, value, koord2tag[key]])
-
-            # x("FBN", koord2Parameter)
-            # x("FB_", koord2tag)
 
             # stern vs gleichf:
             self.transzendentalien: dict = {
@@ -1205,17 +1097,15 @@ class Concat:
                         zip(kombisNamen, kombisNamen2)
                     ):
                         tag: frozenset = list(koord2tag[(zwei, nullBisDrei, brr)])[0]
-                        if brr == 1:
-                            place = self.readConcatCSV_choseCsvFile(2)
 
+                        self.tables.generatedSpaltenParameter_Tags[
+                            len(rowsAsNumbers)
+                        ] = tag
+                        rowsAsNumbers |= {
+                            len(self.relitable[0]),
+                        }
+                        # x("HJM", len(self.relitable[0]))
                         for i, cols in enumerate(relitableCopy):
-                            self.tables.generatedSpaltenParameter_Tags[
-                                len(rowsAsNumbers)
-                            ] = tag
-                            rowsAsNumbers |= {
-                                len(self.relitable[0]),
-                            }
-                            # x("HJM", len(self.relitable[0]))
                             if i == 0:
                                 into = [
                                     "generierte Multiplikationen ",
@@ -1224,6 +1114,7 @@ class Concat:
                                     kombiUeberschrift,
                                     ganzOrGebr,
                                 ]
+                                x("GSJ", "".join(into))
                             else:
                                 into = []
                                 if self.tables.htmlOutputYes:
@@ -1276,17 +1167,13 @@ class Concat:
                                         )
                                     ):
                                         multi = multi[0]
-                                        # x("DFS", (multi[0], len(multi[0])))
-                                        # assert len(multi) == 1
-                                        # assert len(multi[0]) == 2
                                         try:
                                             multi[0]
                                             multi[1]
                                         except:
                                             continue
 
-                                        alxp("BBB")
-                                        # x("GHJ", i)
+                                        # alxp("BBB")
 
                                         # x("HIX", [multi1, multi2])
                                         von = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
