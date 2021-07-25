@@ -8,8 +8,8 @@ from copy import copy, deepcopy
 from fractions import Fraction
 from itertools import zip_longest
 
-from center import (alxp, cliout, getTextWrapThings, infoLog, output,
-                    Multiplikationen, re, x)
+from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
+                    output, re, x)
 from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz, csvSyntax,
                         divisorGenerator, htmlSyntax, isPrimMultiple,
@@ -1091,7 +1091,7 @@ class Concat:
             #            ] = (zwei1, zwei2, zwei3)
 
             # hier geht es um die html class Parameter und um Tagging ob Galaxie oder Polygon
-            koord2tag, koord2Parameter = {}, {}
+            koord2tag, koord2ParameterA, koord2Parameter = {}, {}, {}
 
             for name, mehrereEinraege in forGeneratedSpaltenParameter_Tags.items():
                 for befehl in generatedBefehle:
@@ -1099,14 +1099,26 @@ class Concat:
                         name == befehl
                     ):  # ob der Befehl des Users mit den jeweils vorhandenen übereinstimmt
                         for drei in mehrereEinraege:
+                            x("NMD", befehl)
+                            x("HNC", (drei[0], drei[1], drei[3], drei[2]))
+                            # x("HNC", (drei[0], drei[1], drei[3], drei[2]))
                             try:
-                                koord2tag[(drei[0], drei[1], drei[3])] += [drei[2]]
+                                koord2tag[(drei[0], drei[1], drei[3])] |= {drei[2]}
                             except KeyError:
-                                koord2tag[(drei[0], drei[1], drei[3])] = [drei[2]]
+                                koord2tag[(drei[0], drei[1], drei[3])] = {drei[2]}
                             try:
-                                koord2Parameter[(drei[0], drei[1], drei[3])] += [befehl]
+                                koord2ParameterA[(drei[0], drei[1], drei[3])] |= {
+                                    befehl
+                                }
                             except KeyError:
-                                koord2Parameter[(drei[0], drei[1], drei[3])] = [befehl]
+                                koord2ParameterA[(drei[0], drei[1], drei[3])] = {befehl}
+
+            for key, value in koord2tag.items():
+                assert len(value) == 1
+            for key, value in koord2ParameterA.items():
+                koord2Parameter[key] = list(value)
+                x("SFb", [key, value, koord2tag[key]])
+
             # x("FBN", koord2Parameter)
             # x("FB_", koord2tag)
 
@@ -1188,207 +1200,187 @@ class Concat:
                         ]
                     kombis: tuple = tuple(kombi_)
                     # alle 2x2 kombis von motiven und struktur
+
                     for nullBisDrei, (kombiUeberschrift, GalUniKombis) in enumerate(
                         zip(kombisNamen, kombisNamen2)
                     ):
-                        flag = False
-                        try:
-                            tags: list = koord2tag[(zwei, nullBisDrei, brr)]
-                            tag: frozenset = max(tags)
-                            flag = True
-                        except KeyError:
-                            flag = False
-                        if flag:
-                            if brr == 1:
-                                place = self.readConcatCSV_choseCsvFile(2)
+                        tag: frozenset = list(koord2tag[(zwei, nullBisDrei, brr)])[0]
+                        if brr == 1:
+                            place = self.readConcatCSV_choseCsvFile(2)
 
-                            for i, cols in enumerate(relitableCopy):
-                                self.tables.generatedSpaltenParameter_Tags[
-                                    len(rowsAsNumbers)
-                                ] = tag
-                                rowsAsNumbers |= {
-                                    len(self.relitable[0]),
-                                }
-                                # x("HJM", len(self.relitable[0]))
-                                if i == 0:
-                                    into = [
-                                        "generierte Multiplikationen ",
-                                        polytypename,
-                                        " ",
-                                        kombiUeberschrift,
-                                        ganzOrGebr,
-                                    ]
-                                else:
-                                    into = []
-                                    if self.tables.htmlOutputYes:
-                                        into += ["<ul>"]
-                                    elif self.tables.bbcodeOutputYes:
-                                        into += ["[list]"]
-                                    if brr == 0:
-                                        multipless = multiples(i)
-                                        for k, multi in enumerate(multipless):
-                                            if (
-                                                k > 0
-                                                and not self.tables.htmlOutputYes
-                                                and not self.tables.bbcodeOutputYes
-                                            ):
-                                                into += [", außerdem: "]
-                                            into += [
-                                                "<li>"
-                                                if self.tables.htmlOutputYes
-                                                else "[*]"
-                                                if self.tables.bbcodeOutputYes
-                                                else "",
-                                                "(",
-                                                kombis[multi[0]][nullBisDrei][0]
-                                                if len(
-                                                    kombis[multi[0]][nullBisDrei][
-                                                        0
-                                                    ].strip()
-                                                )
-                                                > 3
-                                                else "...",
-                                                ") * (",
-                                                kombis[multi[1]][nullBisDrei][1]
-                                                if len(
-                                                    kombis[multi[1]][nullBisDrei][
-                                                        1
-                                                    ].strip()
-                                                )
-                                                > 3
-                                                else "...",
-                                                ")",
-                                                "</li>"
-                                                if self.tables.htmlOutputYes
-                                                else "",
-                                            ]
-                                    elif brr == 1:
-                                        multipless = alleFractionErgebnisse2[
-                                            GalUniKombis
-                                        ][sternOrGleichf]["mul"]
-                                        # x("HFG", multipless.items())
-                                        for k, multi in enumerate(
-                                            zip_longest(
-                                                multipless[i],
-                                                fillvalue="",
-                                            )
-                                        ):
-                                            multi = multi[0]
-                                            # x("DFS", (multi[0], len(multi[0])))
-                                            # assert len(multi) == 1
-                                            # assert len(multi[0]) == 2
-                                            try:
-                                                multi[0]
-                                                multi[1]
-                                            except:
-                                                continue
-
-                                            alxp("BBB")
-                                            # x("GHJ", i)
-
-                                            # x("HIX", [multi1, multi2])
-                                            von = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                                                multi[0],
-                                                GalOrUni_nOrInvers[nullBisDrei][zwei],
-                                                self.readOneCSVAndReturn(
-                                                    2 if nullBisDrei in (2, 3) else 3
-                                                ),
-                                                False
-                                                if nullBisDrei in (2, 3)
-                                                else True,
-                                            )
-                                            # alxp("BBB2")
-                                            bis = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
-                                                multi[1],
-                                                GalOrUni_nOrInvers[nullBisDrei][zwei],
-                                                self.readOneCSVAndReturn(
-                                                    2 if nullBisDrei in (1, 3) else 3
-                                                ),
-                                                False
-                                                if nullBisDrei in (1, 3)
-                                                else True,
-                                            )
-
-                                            if von is not None and bis is not None:
-                                                von = von.strip()
-                                                bis = bis.strip()
-                                                if len(von) > 3 and len(bis) > 3:
-                                                    if (
-                                                        k > 0
-                                                        and not self.tables.htmlOutputYes
-                                                        and not self.tables.bbcodeOutputYes
-                                                        and len(into) > 0
-                                                    ):
-                                                        into += ["| außerdem: "]
-                                                    into += [
-                                                        "<li>"
-                                                        if self.tables.htmlOutputYes
-                                                        else "[*]"
-                                                        if self.tables.bbcodeOutputYes
-                                                        else "" '"',
-                                                        von,
-                                                        # self.CSVsAlreadRead[place][
-                                                        #    multi[0].numerator - 1
-                                                        # ][multi[0].denominator - 1],
-                                                        '"',
-                                                        "<br>"
-                                                        if self.tables.htmlOutputYes
-                                                        and (
-                                                            len(von) > 30
-                                                            or len(bis) > 30
-                                                        )
-                                                        else " ",
-                                                        " (",
-                                                        str(multi[0]),
-                                                        ")",
-                                                        "*",
-                                                        "(",
-                                                        str(multi[1]),
-                                                        ")",
-                                                        "<br>"
-                                                        if self.tables.htmlOutputYes
-                                                        and (
-                                                            len(von) > 30
-                                                            or len(bis) > 30
-                                                        )
-                                                        else " ",
-                                                        ' "',
-                                                        bis,
-                                                        # self.CSVsAlreadRead[place][
-                                                        #    multi[1].numerator - 1
-                                                        # ][multi[1].denominator - 1],
-                                                        '"',
-                                                        "</li>"
-                                                        if self.tables.htmlOutputYes
-                                                        else "",
-                                                    ]
-                                    if self.tables.htmlOutputYes:
-                                        into += ["</ul>"]
-                                    elif self.tables.bbcodeOutputYes:
-                                        into += ["[/list]"]
-
-                                self.relitable[i] += ["".join(into)]
-
-                            if (
-                                len(self.tables.generatedSpaltenParameter)
-                                + self.tables.SpaltenVanillaAmount
-                                in self.tables.generatedSpaltenParameter
-                            ):
-                                raise ValueError
-                            kette = (
-                                [
-                                    (
-                                        "Multiplikationen",
-                                        htmlTagParaClassWoerter[para][0][0][0][1],
-                                    )
+                        for i, cols in enumerate(relitableCopy):
+                            self.tables.generatedSpaltenParameter_Tags[
+                                len(rowsAsNumbers)
+                            ] = tag
+                            rowsAsNumbers |= {
+                                len(self.relitable[0]),
+                            }
+                            # x("HJM", len(self.relitable[0]))
+                            if i == 0:
+                                into = [
+                                    "generierte Multiplikationen ",
+                                    polytypename,
+                                    " ",
+                                    kombiUeberschrift,
+                                    ganzOrGebr,
                                 ]
-                                for para in koord2Parameter[(zwei, nullBisDrei, brr)]
-                            )
+                            else:
+                                into = []
+                                if self.tables.htmlOutputYes:
+                                    into += ["<ul>"]
+                                elif self.tables.bbcodeOutputYes:
+                                    into += ["[list]"]
+                                if brr == 0:
+                                    multipless = multiples(i)
+                                    for k, multi in enumerate(multipless):
+                                        if (
+                                            k > 0
+                                            and not self.tables.htmlOutputYes
+                                            and not self.tables.bbcodeOutputYes
+                                        ):
+                                            into += [", außerdem: "]
+                                        into += [
+                                            "<li>"
+                                            if self.tables.htmlOutputYes
+                                            else "[*]"
+                                            if self.tables.bbcodeOutputYes
+                                            else "",
+                                            "(",
+                                            kombis[multi[0]][nullBisDrei][0]
+                                            if len(
+                                                kombis[multi[0]][nullBisDrei][0].strip()
+                                            )
+                                            > 3
+                                            else "...",
+                                            ") * (",
+                                            kombis[multi[1]][nullBisDrei][1]
+                                            if len(
+                                                kombis[multi[1]][nullBisDrei][1].strip()
+                                            )
+                                            > 3
+                                            else "...",
+                                            ")",
+                                            "</li>"
+                                            if self.tables.htmlOutputYes
+                                            else "",
+                                        ]
+                                elif brr == 1:
+                                    multipless = alleFractionErgebnisse2[GalUniKombis][
+                                        sternOrGleichf
+                                    ]["mul"]
+                                    # x("HFG", multipless.items())
+                                    for k, multi in enumerate(
+                                        zip_longest(
+                                            multipless[i],
+                                            fillvalue="",
+                                        )
+                                    ):
+                                        multi = multi[0]
+                                        # x("DFS", (multi[0], len(multi[0])))
+                                        # assert len(multi) == 1
+                                        # assert len(multi[0]) == 2
+                                        try:
+                                            multi[0]
+                                            multi[1]
+                                        except:
+                                            continue
 
-                            self.tables.generatedSpaltenParameter[
-                                len(self.tables.generatedSpaltenParameter)
-                                + self.tables.SpaltenVanillaAmount
-                            ] = tuple(kette)
+                                        alxp("BBB")
+                                        # x("GHJ", i)
+
+                                        # x("HIX", [multi1, multi2])
+                                        von = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+                                            multi[0],
+                                            GalOrUni_nOrInvers[nullBisDrei][zwei],
+                                            self.readOneCSVAndReturn(
+                                                2 if nullBisDrei in (2, 3) else 3
+                                            ),
+                                            False if nullBisDrei in (2, 3) else True,
+                                        )
+                                        # alxp("BBB2")
+                                        bis = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
+                                            multi[1],
+                                            GalOrUni_nOrInvers[nullBisDrei][zwei],
+                                            self.readOneCSVAndReturn(
+                                                2 if nullBisDrei in (1, 3) else 3
+                                            ),
+                                            False if nullBisDrei in (1, 3) else True,
+                                        )
+
+                                        if von is not None and bis is not None:
+                                            von = von.strip()
+                                            bis = bis.strip()
+                                            if len(von) > 3 and len(bis) > 3:
+                                                if (
+                                                    k > 0
+                                                    and not self.tables.htmlOutputYes
+                                                    and not self.tables.bbcodeOutputYes
+                                                    and len(into) > 0
+                                                ):
+                                                    into += ["| außerdem: "]
+                                                into += [
+                                                    "<li>"
+                                                    if self.tables.htmlOutputYes
+                                                    else "[*]"
+                                                    if self.tables.bbcodeOutputYes
+                                                    else "" '"',
+                                                    von,
+                                                    # self.CSVsAlreadRead[place][
+                                                    #    multi[0].numerator - 1
+                                                    # ][multi[0].denominator - 1],
+                                                    '"',
+                                                    "<br>"
+                                                    if self.tables.htmlOutputYes
+                                                    and (len(von) > 30 or len(bis) > 30)
+                                                    else " ",
+                                                    " (",
+                                                    str(multi[0]),
+                                                    ")",
+                                                    "*",
+                                                    "(",
+                                                    str(multi[1]),
+                                                    ")",
+                                                    "<br>"
+                                                    if self.tables.htmlOutputYes
+                                                    and (len(von) > 30 or len(bis) > 30)
+                                                    else " ",
+                                                    ' "',
+                                                    bis,
+                                                    # self.CSVsAlreadRead[place][
+                                                    #    multi[1].numerator - 1
+                                                    # ][multi[1].denominator - 1],
+                                                    '"',
+                                                    "</li>"
+                                                    if self.tables.htmlOutputYes
+                                                    else "",
+                                                ]
+                                if self.tables.htmlOutputYes:
+                                    into += ["</ul>"]
+                                elif self.tables.bbcodeOutputYes:
+                                    into += ["[/list]"]
+
+                            self.relitable[i] += ["".join(into)]
+
+                        if (
+                            len(self.tables.generatedSpaltenParameter)
+                            + self.tables.SpaltenVanillaAmount
+                            in self.tables.generatedSpaltenParameter
+                        ):
+                            raise ValueError
+                        kette = (
+                            [
+                                (
+                                    "Multiplikationen",
+                                    htmlTagParaClassWoerter[para][0][0][0][1],
+                                )
+                            ]
+                            for para in koord2Parameter[(zwei, nullBisDrei, brr)]
+                        )
+
+                        self.tables.generatedSpaltenParameter[
+                            len(self.tables.generatedSpaltenParameter)
+                            + self.tables.SpaltenVanillaAmount
+                        ] = tuple(kette)
 
         return self.relitable, rowsAsNumbers
 
