@@ -851,7 +851,7 @@ class Tables:
                                                 table2[colNum][row] = hinein
                                             else:
                                                 table2[colNum][row] += hinein
-                                if oneLinePerLine:
+                                if oneLinePerLine and self.tables.htmlOutputYes:
                                     for z, cell in enumerate(table2[colNum][row]):
                                         table2[colNum][row][z] = "<ul>" + cell + "</ul>"
 
