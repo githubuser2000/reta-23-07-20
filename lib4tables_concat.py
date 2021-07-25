@@ -2150,7 +2150,7 @@ class Concat:
                     self.lastPrimAnswers[i] = "".join(into)
 
                 elif i > 1:
-                    for couple in primRepeat(primFak(i)):
+                    for couple in primRepeat(tuple(primFak(i))):
                         if couple[1] == 1:
                             into += [PrimAnswer2(couple[0]), " + "]
                         elif kk is not None:

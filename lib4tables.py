@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import math
 from enum import Enum
+from functools import lru_cache
 
 from center import (alxp, cliout, getTextWrapThings, infoLog, output,
                     primzahlvielfachesgalaxie, re, x)
@@ -333,7 +334,7 @@ def divisorGenerator(n):
 def primCreativity(num: int):
     if num == 0:
         return 0
-    fak = primRepeat(primFak(num))
+    fak = primRepeat(tuple(primFak(num)))
     if len(fak) == 1 and fak[0][1] == 1:
         return 1
     if len(fak) == 1:
@@ -373,7 +374,8 @@ def primCreativity(num: int):
 #        return None
 
 
-def primRepeat(n: list) -> list:
+@lru_cache(maxsize=1025)
+def primRepeat(n: tuple) -> tuple:
     """Primfaktoren werden zusammengefasst in Liste aus Primfaktor hoch n
 
     @type n:  list
@@ -381,6 +383,7 @@ def primRepeat(n: list) -> list:
     @rtype: list[tuple(n1,n2)]
     @return: Liste aus geordneten Paaren mit Primfaktor hoch n
     """
+    n = list(n)
     n.reverse()
     c = 1
     b = None
@@ -402,7 +405,7 @@ def primRepeat(n: list) -> list:
             else:
                 f += [(e, g)]
         b = e
-    return f
+    return tuple(f)
 
 
 def primMultiple(n: int) -> list:
@@ -414,7 +417,7 @@ def primMultiple(n: int) -> list:
     @return: Primzahl und dessen Vielfacher, das mehrmals, so viele Primzahlen wie es gibt, aus denen n besteht
     """
     multiples = [(1, n)]
-    for prim in primRepeat(primFak(n)):
+    for prim in primRepeat(tuple(primFak(n))):
         multiples += [(prim[0], round(n / prim[0]))]
     return multiples
 
