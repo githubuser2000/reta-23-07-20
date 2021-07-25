@@ -7,7 +7,7 @@ from typing import Iterable, Union
 
 import lib4tables_Enum
 from center import (alxp, cliout, getTextWrapThings, infoLog, output,
-                    primzahlvielfachesgalaxie, re, x)
+                    Multiplikationen, re, x)
 from lib4tables import isPrimMultiple, moonNumber
 from lib4tables_Enum import ST
 

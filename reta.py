@@ -10,7 +10,7 @@ from tableHandling import (Enum, Iterable, OutputSyntax, Tables, Union, alxp,
                            bbcode, bbCodeSyntax, cliout, copy, csv, csvSyntax,
                            deepcopy, getTextWrapThings, htmlSyntax, infoLog,
                            markdownSyntax, math, os, output, primCreativity,
-                           primzahlvielfachesgalaxie, re, shellRowsAmount, sys,
+                           Multiplikationen, re, shellRowsAmount, sys,
                            x)
 
 parser = bbcode.Parser()
@@ -75,7 +75,7 @@ class Program:
                     # alxp("4")
                     if (
                         befehlName
-                        == Program.ParametersMain.primzahlvielfachesgalaxie[0]
+                        == Program.ParametersMain.Multiplikationen[0]
                     ):
                         # alxp("5")
                         self.spaltenArtenKey_SpaltennummernValue[
@@ -549,7 +549,7 @@ class Program:
 
         Program.ParametersMain: namedtuple = namedtuple(
             "ParametersMain",
-            "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole primzahlvielfachesgalaxie konzept inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache alles",
+            "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache alles",
         )
 
         Program.ParametersMain = Program.ParametersMain(
@@ -610,7 +610,7 @@ class Program:
                 "Symbole",
                 "symbole",
             ),
-            tuple(a[0] for a in primzahlvielfachesgalaxie),
+            tuple(a[0] for a in Multiplikationen),
             (
                 "Eigenschaften",
                 "eigenschaften",
@@ -1928,7 +1928,7 @@ class Program:
             ),
             (Program.ParametersMain.symbole, (), {36, 37}),
             # (
-            #    Program.ParametersMain.primzahlvielfachesgalaxie,
+            #    Program.ParametersMain.Multiplikationen,
             #    allowedPrimNumbersForCommand,
             #    set(),
             #    set(),

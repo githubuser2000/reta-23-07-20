@@ -5,7 +5,7 @@ import sys
 
 import lib4tables
 from center import (alxp, cliout, getTextWrapThings, infoLog, output,
-                    primzahlvielfachesgalaxie, re, x)
+                    Multiplikationen, re, x)
 from lib4tables import primMultiple
 
 

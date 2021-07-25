@@ -5,7 +5,7 @@ from enum import Enum
 from functools import lru_cache
 
 from center import (alxp, cliout, getTextWrapThings, infoLog, output,
-                    primzahlvielfachesgalaxie, re, x)
+                    Multiplikationen, re, x)
 
 
 class OutputSyntax:

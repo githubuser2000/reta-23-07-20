@@ -9,7 +9,7 @@ from fractions import Fraction
 from itertools import zip_longest
 
 from center import (alxp, cliout, getTextWrapThings, infoLog, output,
-                    primzahlvielfachesgalaxie, re, x)
+                    Multiplikationen, re, x)
 from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz, csvSyntax,
                         divisorGenerator, htmlSyntax, isPrimMultiple,
@@ -1378,7 +1378,7 @@ class Concat:
                             kette = (
                                 [
                                     (
-                                        "primzahlvielfachesgalaxie",
+                                        "Multiplikationen",
                                         htmlTagParaClassWoerter[para][0][0][0][1],
                                     )
                                 ]
@@ -2416,7 +2416,7 @@ class Concat:
             intoHtmlPara = (
                 [
                     (
-                        "primzahlvielfachesgalaxie",
+                        "Multiplikationen",
                         "Nicht_generiert",
                     )
                 ],
