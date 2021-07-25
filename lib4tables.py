@@ -273,6 +273,7 @@ class htmlSyntax(OutputSyntax):
     endZeile = "</tr>\n"
 
 
+@lru_cache(maxsize=10489)
 def moonNumber(num: int):
     """Hier wird der Zeilenumbruch umgesetzt
 
@@ -294,6 +295,7 @@ def moonNumber(num: int):
     return results, exponent
 
 
+@lru_cache(maxsize=10489)
 def primFak(n: int) -> list:
     """Alle Primfaktoren einer Zahl als Liste mit mehrfachvorkommen, sofern ja
 
@@ -331,6 +333,7 @@ def divisorGenerator(n):
         yield divisor
 
 
+@lru_cache(maxsize=10489)
 def primCreativity(num: int):
     if num == 0:
         return 0
@@ -374,7 +377,7 @@ def primCreativity(num: int):
 #        return None
 
 
-@lru_cache(maxsize=1025)
+@lru_cache(maxsize=10489)
 def primRepeat(n: tuple) -> tuple:
     """Primfaktoren werden zusammengefasst in Liste aus Primfaktor hoch n
 
@@ -461,6 +464,7 @@ def couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num: int) -> bool:
     return num % 24 in Under24
 
 
+@lru_cache(maxsize=10489)
 def multiples(a, mul1=True):
     """
     findet für eine Zahl alle Kombinationen aus möglichen Multiplikationen aus ganzen Zahlen, die diese Zahl ergibt
