@@ -1874,7 +1874,7 @@ class Concat:
                     if self.tables.htmlOutputYes
                     else [""]
                     if not self.tables.bbcodeOutputYes
-                    else ["[/tables]"]
+                    else ["[/list]"]
                 )
             )
         ]
