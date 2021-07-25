@@ -1237,7 +1237,7 @@ class Concat:
                                                 "<li>"
                                                 if self.tables.htmlOutputYes
                                                 else "[*]"
-                                                if self.tables.htmlOutputYes
+                                                if self.tables.bbcodeOutputYes
                                                 else "",
                                                 "(",
                                                 kombis[multi[0]][nullBisDrei][0]

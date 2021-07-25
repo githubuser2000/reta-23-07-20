@@ -634,10 +634,9 @@ class Program:
                 "Primzahlwirkung",
                 "primzahlwirkung",
             ),
-            # ("Gebrochen-Rational_Universum", "gebrochenuniversum"),
             ("gebrochenuniversum",),
             ("gebrochengalaxie",),
-            ("Primvielfache", "primvielfache"),
+            ("Multiplikationen", "multiplikationen"),
             ("alles",),
         )
 
