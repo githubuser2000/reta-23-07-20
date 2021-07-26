@@ -753,11 +753,33 @@ class Tables:
                 x("UDF1", zeile)
                 x("UDF3", colNum)
                 hineinNeu += [
-                    # re.sub(r"([^1]+)" + r"str(colNum)" + r"(.*\).*)", r"\2", zeile)
-                    "nl"
+                    (
+                        # re.sub(r"([^1]+)" + r"str(colNum)" + r"(.*\).*)", r"", zeile)
+                        re.sub(
+                            r"([^\/])" + str(colNum) + r"([^\/])",
+                            r"\1\2",
+                            re.sub(r"([^\)]+\)).*", r"\1", zeile, count=1),
+                            count=0,
+                        )
+                        .replace("()", "")
+                        .replace("(|", "(")
+                        .replace("|)", ")")
+                        .replace("||", "|")
+                        + re.sub(r"[^\)]+\)(.*)", r"\1", zeile, count=1)
+                    ).strip()
                 ]
+                x("UDF5", re.sub(r"([^\)]+).*", r"\1", zeile, count=1))
+                x(
+                    "UDF4",
+                    re.sub(
+                        r"([^\/])" + str(colNum) + r"([^\/])",
+                        r"\1\2",
+                        "(1)",
+                        count=0,
+                    ),
+                )
                 x("UDF2", hineinNeu)
-            return hinein
+            return hineinNeu
 
         def tableJoin(
             self,
@@ -837,8 +859,8 @@ class Tables:
                                                 rowsOfcombi.index(subRowNum + 1)
                                             ]
                                         )
-                                        # hinein = self.removeOneNumber(hinein, colNum)
-                                        # x("VSG1", hinein)
+                                        hinein = self.removeOneNumber(hinein, colNum)
+                                        x("VSG1", hinein)
                                         if oneLinePerLine:
                                             if (
                                                 len(hinein) > 0
