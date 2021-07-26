@@ -437,8 +437,8 @@ primZahlen = [
 ];
 
 function makeSpacesOutOf_(text) {
-  if (text.length == 25)
-    if (text == "primzahlvielfachesgalaxie") return "Multiplikationen";
+  if (text.length == 10)
+    if (text == "Wichtigste") return "<b>Wichtigste</b>";
   if (text.length == 8) if (text == "zaehlung") return "Zählung";
   if (text.length == 12) if (text == "nummerierung") return "Nummerierung";
   if (text.length == 11) if (text == "kombination") return "Kombinationen";
