@@ -6,12 +6,11 @@ from itertools import zip_longest
 
 import html2text
 
-from tableHandling import (Enum, Iterable, OutputSyntax, Tables, Union, alxp,
-                           bbcode, bbCodeSyntax, cliout, copy, csv, csvSyntax,
-                           deepcopy, getTextWrapThings, htmlSyntax, infoLog,
-                           markdownSyntax, math, os, output, primCreativity,
-                           Multiplikationen, re, shellRowsAmount, sys,
-                           x)
+from tableHandling import (Enum, Iterable, Multiplikationen, OutputSyntax,
+                           Tables, Union, alxp, bbcode, bbCodeSyntax, cliout,
+                           copy, csv, csvSyntax, deepcopy, getTextWrapThings,
+                           htmlSyntax, infoLog, markdownSyntax, math, os,
+                           output, primCreativity, re, shellRowsAmount, sys, x)
 
 parser = bbcode.Parser()
 parser.add_simple_formatter("hr", "<hr />", standalone=True)
@@ -73,10 +72,7 @@ class Program:
                     or befehlName in Program.ParametersMain.gebrochengalaxie[0]
                 ):
                     # alxp("4")
-                    if (
-                        befehlName
-                        == Program.ParametersMain.Multiplikationen[0]
-                    ):
+                    if befehlName == Program.ParametersMain.Multiplikationen[0]:
                         # alxp("5")
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), 2)
@@ -549,10 +545,11 @@ class Program:
 
         Program.ParametersMain: namedtuple = namedtuple(
             "ParametersMain",
-            "religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache alles",
+            "wichtigste religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache alles",
         )
 
         Program.ParametersMain = Program.ParametersMain(
+            ("Wichtigste", "wichtigste"),
             (
                 "Religionen",
                 "religionen",
@@ -668,6 +665,7 @@ class Program:
         } - {None, 0, 1}
 
         paraNdataMatrix = [
+            (Program.ParametersMain.wichtigste, (), {10, 5, 4, 8}),
             (
                 Program.ParametersMain.operationen,
                 (
