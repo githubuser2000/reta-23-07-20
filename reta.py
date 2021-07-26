@@ -686,7 +686,8 @@ class Program:
                 set(),
                 set(),
                 {(10,)},
-            )(
+            ),
+            (
                 Program.ParametersMain.operationen,
                 (
                     "Halbierung",
