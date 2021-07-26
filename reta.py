@@ -692,13 +692,6 @@ class Program:
                     "drittwichtigste",
                 ),
                 {64},
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                {"primMotivStern"},
             ),
             (
                 Program.ParametersMain.operationen,
