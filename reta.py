@@ -679,7 +679,7 @@ class Program:
                     "Zweitwichtigste",
                     "zweitwichtigste",
                 ),
-                {19, 65},
+                {64, 65},
             ),
             (
                 Program.ParametersMain.wichtigste,
@@ -687,7 +687,7 @@ class Program:
                     "Drittwichtigste",
                     "drittwichtigste",
                 ),
-                {183, 64},
+                {183, 19},
                 set(),
                 set(),
                 set(),
