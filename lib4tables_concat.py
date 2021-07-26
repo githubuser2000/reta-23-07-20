@@ -1281,6 +1281,12 @@ class Concat:
                                 ]
                                 for para in koord2Parameter[(zwei, nullBisDrei, brr)]
                             )
+                            x(
+                                "GIO",
+                                htmlTagParaClassWoerter["primMotivStern"][0][0][0][
+                                    1
+                                ],
+                            )
 
                             self.tables.generatedSpaltenParameter[
                                 len(self.tables.generatedSpaltenParameter)
