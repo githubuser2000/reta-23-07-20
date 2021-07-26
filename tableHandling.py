@@ -10,8 +10,8 @@ from typing import Iterable, Union
 
 import bbcode
 
-from center import (alxp, cliout, getTextWrapThings, infoLog, output,
-                    Multiplikationen, re, x)
+from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
+                    output, re, x)
 from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz, csvSyntax,
                         divisorGenerator, htmlSyntax, isPrimMultiple,
@@ -704,9 +704,13 @@ class Tables:
             # x("AAAB", (ChosenKombiLines, newTable_kombi_1,))
             for key, value in ChosenKombiLines.items():
                 """Zeilennummern der kombi, die hinten dran kommen sollen
-                     an die Haupt- und Anzeigetabelle
-                     key = haupttabellenzeilennummer
-                g    value = kombitabellenzeilennummer
+                an die Haupt- und Anzeigetabelle
+                key = haupttabellenzeilennummer
+                value = kombitabellenzeilennummer
+
+                oder doch:
+                key = zeilennummer der kombi csv
+                value = alle n und m von n/m oder n
                 """
                 tables = {}
                 for kombiLineNumber in value:
@@ -742,6 +746,18 @@ class Tables:
                 """
                 KombiTables += [tables]
             return KombiTables
+
+        def removeOneNumber(self, hinein: list, colNum: int) -> list:
+            hineinNeu: list = []
+            for zeile in hinein:
+                x("UDF1", zeile)
+                x("UDF3", colNum)
+                hineinNeu += [
+                    # re.sub(r"([^1]+)" + r"str(colNum)" + r"(.*\).*)", r"\2", zeile)
+                    "nl"
+                ]
+                x("UDF2", hineinNeu)
+            return hinein
 
         def tableJoin(
             self,
@@ -816,12 +832,14 @@ class Tables:
                                         D.h. die Sache aus der Kombitabelle kommt in die Zelle der Haupt+Anzeige-Tabelle rein.
                                         Dabei ist die Zelle in die die Zelle rein kommt, widerum selbst eine kleine Tabelle, eigentlich.
                                         """
+                                        hinein = deepcopy(
+                                            subTableCell[
+                                                rowsOfcombi.index(subRowNum + 1)
+                                            ]
+                                        )
+                                        # hinein = self.removeOneNumber(hinein, colNum)
+                                        # x("VSG1", hinein)
                                         if oneLinePerLine:
-                                            hinein = deepcopy(
-                                                subTableCell[
-                                                    rowsOfcombi.index(subRowNum + 1)
-                                                ]
-                                            )
                                             if (
                                                 len(hinein) > 0
                                                 and len(hinein[0].strip()) > 2
@@ -841,14 +859,8 @@ class Tables:
                                             ):
                                                 table2[colNum][row] = hinein
                                             else:
-                                                x("FBU", hinein)
                                                 table2[colNum][row][-1] += hinein[0]
                                         else:
-                                            hinein = deepcopy(
-                                                subTableCell[
-                                                    rowsOfcombi.index(subRowNum + 1)
-                                                ]
-                                            )
 
                                             if (
                                                 len(table2[colNum][row]) == 1
@@ -978,9 +990,12 @@ class Tables:
                                 and col[i].strip() != ""
                                 and len(col[0].strip()) != 0
                             ):
-                                col[i] += " (" + col[0] + ")"
+                                col[i] = (
+                                    "(" + col[0] + ") " + col[i] + " (" + col[0] + ")"
+                                )
                         self.kombiTable += [col]
                         self.kombiTable_Kombis_Col: list = []
+                        # x("EEE1", self.kombiTable)
                         if len(col) > 0 and z > 0:
                             """die Behandlung des Auslesens von Religionsnummern in Kombination
                             in der ersten Spalte der kombi.csv"""
@@ -989,7 +1004,7 @@ class Tables:
                                 Liste mit allen Zeilen der neuen Tabelle aus der ersten
                                 Spalte je Liste aus allem darin das mit Komma getrennt wurde
                                 """
-                                self.kombiNumbersCorrectTest(num)
+                                self.kombiNumbersCorrectTestAndSet(num)
 
                             self.kombiTable_Kombis += [self.kombiTable_Kombis_Col]
                     self.relitable, animalsProfessionsCol = Tables.fillBoth(
@@ -1099,10 +1114,10 @@ class Tables:
                 self.maintable2subtable_Relation,
             )
 
-        def kombiNumbersCorrectTest(self, num):
+        def kombiNumbersCorrectTestAndSet(self, num):
             num = num.strip()
             if len(num) > 2 and num[0] == "(" and num[-1] == ")":
-                self.kombiNumbersCorrectTest(num[1:-1])
+                self.kombiNumbersCorrectTestAndSet(num[1:-1])
                 return
             if num.isdecimal() or (
                 len(num) > 0 and num[0] in ["+", "-"] and num[1:].isdecimal()
@@ -1114,8 +1129,8 @@ class Tables:
                 """
                 self.kombiTable_Kombis_Col += [abs(int(num))]
             elif len(num) > 2 and "/" in num:
-                self.kombiNumbersCorrectTest(num[: num.find("/")])
-                self.kombiNumbersCorrectTest(num[num.find("/") + 1 :])
+                self.kombiNumbersCorrectTestAndSet(num[: num.find("/")])
+                self.kombiNumbersCorrectTestAndSet(num[num.find("/") + 1 :])
                 return
             else:
                 raise BaseException(
