@@ -81,7 +81,7 @@ class Concat:
             self.tables.generatedSpaltenParameter[
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
-            ] = self.tables.dataDict[0][8]
+            ] = self.tables.dataDict[0][9]
             # x("bliu3", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
 
