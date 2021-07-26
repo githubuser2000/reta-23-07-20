@@ -53,7 +53,7 @@ class Concat:
 
     def concatLovePolygon(self, relitable: list, rowsAsNumbers: set) -> tuple:
         self.relitable = relitable
-        if rowsAsNumbers >= {8}:
+        if rowsAsNumbers >= {9}:
             rowsAsNumbers |= {len(self.relitable[0])}
             self.tables.generatedSpaltenParameter_Tags[
                 len(rowsAsNumbers) - 1
