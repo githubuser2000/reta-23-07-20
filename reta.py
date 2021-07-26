@@ -665,7 +665,25 @@ class Program:
         } - {None, 0, 1}
 
         paraNdataMatrix = [
-            (Program.ParametersMain.wichtigste, (), {10, 5, 4, 8}),
+            (Program.ParametersMain.wichtigste, ("wichtigste",), {10, 5, 4, 8}),
+            (
+                Program.ParametersMain.wichtigste,
+                ("zweitwichtigste",),
+                {19, 64},
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                {"primMotivStern"},
+            ),
+            (Program.ParametersMain.wichtigste, ("drittwichtigste",),
+                {65,146,183},
+                set(),
+                set(),
+                set(),
+                {(10,)},
             (
                 Program.ParametersMain.operationen,
                 (
