@@ -665,10 +665,20 @@ class Program:
         } - {None, 0, 1}
 
         paraNdataMatrix = [
-            (Program.ParametersMain.wichtigste, ("wichtigste",), {10, 5, 4, 8}),
             (
                 Program.ParametersMain.wichtigste,
-                ("zweitwichtigste",),
+                (
+                    "Wichtigste",
+                    "wichtigste",
+                ),
+                {10, 5, 4, 8},
+            ),
+            (
+                Program.ParametersMain.wichtigste,
+                (
+                    "Zweitwichtigste",
+                    "zweitwichtigste",
+                ),
                 {19, 64},
                 set(),
                 set(),
@@ -680,7 +690,10 @@ class Program:
             ),
             (
                 Program.ParametersMain.wichtigste,
-                ("drittwichtigste",),
+                (
+                    "Drittwichtigste",
+                    "drittwichtigste",
+                ),
                 {65, 146, 183},
                 set(),
                 set(),
