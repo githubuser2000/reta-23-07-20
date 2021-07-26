@@ -694,6 +694,18 @@ class Program:
                 {64},
             ),
             (
+                Program.ParametersMain.wichtigste,
+                ("Motive_Sternpolygone", "viertwichtigste"),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                {"primMotivStern"},
+            ),
+            (
                 Program.ParametersMain.operationen,
                 (
                     "Halbierung",

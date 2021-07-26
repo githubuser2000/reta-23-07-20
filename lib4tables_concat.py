@@ -1281,12 +1281,13 @@ class Concat:
                                 ]
                                 for para in koord2Parameter[(zwei, nullBisDrei, brr)]
                             )
-                            x(
-                                "GIO",
-                                htmlTagParaClassWoerter["primMotivStern"][0][0][0][
-                                    1
-                                ],
-                            )
+                            if (
+                                "primMotivStern"
+                                in koord2Parameter[(zwei, nullBisDrei, brr)]
+                            ):
+                                kette = list(kette) + [
+                                    [("Wichtigste", "Viertwichtigste")]
+                                ]
 
                             self.tables.generatedSpaltenParameter[
                                 len(self.tables.generatedSpaltenParameter)
