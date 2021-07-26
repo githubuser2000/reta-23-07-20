@@ -678,13 +678,15 @@ class Program:
                 set(),
                 {"primMotivStern"},
             ),
-            (Program.ParametersMain.wichtigste, ("drittwichtigste",),
-                {65,146,183},
+            (
+                Program.ParametersMain.wichtigste,
+                ("drittwichtigste",),
+                {65, 146, 183},
                 set(),
                 set(),
                 set(),
                 {(10,)},
-            (
+            )(
                 Program.ParametersMain.operationen,
                 (
                     "Halbierung",
