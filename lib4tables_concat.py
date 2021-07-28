@@ -153,14 +153,23 @@ class Concat:
                     if i == 0:
                         into = [rowheading]
                     else:
-                        into = ["" if len(moonTypesOf1Num[0]) > 0 else "kein Mond"]
+                        into = [
+                            "[list]"
+                            if self.tables.bbcodeOutputYes
+                            else "<ul>"
+                            if self.tables.htmlOutputYes
+                            else "",
+                            "" if len(moonTypesOf1Num[0]) > 0 else "kein Mond",
+                        ]
                         for k, (basis, exponentMinus2) in enumerate(
                             zip(*moonTypesOf1Num)
                         ):
                             if k > 0:
                                 into += [" | "]
-                                if self.tables.htmlOutputYes:
-                                    into += ["<br>"]
+                            if self.tables.htmlOutputYes:
+                                into += ["<li>"]
+                            elif self.tables.bbcodeOutputYes:
+                                into += ["[*]"]
                             insert = re.sub(
                                 r"<SG>",
                                 self.relitable[i][4].strip(),
@@ -171,28 +180,27 @@ class Concat:
                                 " - ",
                                 self.relitable[exponentMinus2 + 2][10],
                                 " | ",
-                                "<br>" if self.tables.htmlOutputYes else "",
+                                "</li>" if self.tables.htmlOutputYes else "",
                                 self.relitable[i][10],
                                 " + ",
                                 self.relitable[i][11],
                                 ", ",
                                 self.relitable[exponentMinus2 + 2][85],
                             ]
+                    if self.tables.htmlOutputYes and i != 0:
+                        into += ["</ul>"]
                     self.relitable[i] += ["".join(into)]
-                if (
+                assert (
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.SpaltenVanillaAmount
                     in self.tables.generatedSpaltenParameter
-                ):
-                    raise ValueError
+                )
 
                 self.tables.generatedSpaltenParameter[
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.SpaltenVanillaAmount
                 ] = self.tables.dataDict[0][64]
-                # x("WIE2", self.tables.dataDict[0][64])
-                # x("bliu4", self.tables.dataDict[0][64])
-                # x("idiot", self.tables.generatedSpaltenParameter)
+
         return self.relitable, rowsAsNumbers
 
     def concatRowsOfConcepts(
@@ -225,7 +233,13 @@ class Concat:
                     # d.h. into füll wegen zip nur die Bereiche, die Bedacht
                     # sind und alles andere sind nicht ein mal leere Strings,
                     # sondern garn nichts: schlecht !
-                    into = [""]
+                    into = (
+                        ["[*]"]
+                        if self.tables.bbcodeOutputYes
+                        else ["<li>"]
+                        if self.tables.htmlOutputYes
+                        else [""]
+                    )
                     # i muss hier i > irgendwas sein weil mir sonst alles um die Ohren fliegt
                     # i ist die Zeile
                     if row1.strip() != "":
@@ -248,27 +262,37 @@ class Concat:
                         into += [concept[1][i + 1], "| "]
                     if into != [""]:
                         into += ["alles zur selben Strukturgröße einer ", cols[4]]
-                    if self.tables.htmlOutputYes:
-                        into += ["<br>"]
                 # einzeln, bis es eine ganze neue Spalte ist
                 self.relitable[i] += ["".split(into)]
-            # x(
-            #    "ddd",
-            #    len(self.tables.generatedSpaltenParameter)
-            #    + self.tables.SpaltenVanillaAmount,
-            # )
-            if (
+
+            assert (
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
                 in self.tables.generatedSpaltenParameter
-            ):
-                raise ValueError
+            )
             self.tables.generatedSpaltenParameter[
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
             ] = self.tables.dataDict[1][couplesNums[o]]
 
-            # x("idiot", self.tables.generatedSpaltenParameter)
+        if self.tables.bbcodeOutputYes or self.tables.htmlOutputYes:
+            for o, concept in enumerate(self.concepts):
+                for i, (cols, row1, row2) in enumerate(
+                    zip(deepcopy(self.relitable), concept[0], concept[1])
+                ):
+                    if (
+                        self.tables.htmlOutputYes
+                        and i != 0
+                        and self.relitable[i] != "<ul>"
+                    ):
+                        self.relitable[i] = "<ul>" + self.relitable[i] + "</ul>"
+                    elif (
+                        self.tables.bbcodeOutputYes
+                        and i != 0
+                        and self.relitable[i] != "[list]"
+                    ):
+                        self.relitable[i] = "[list]" + self.relitable[i]
+
         return self.relitable, rowsAsNumbers
 
     def concatVervielfacheZeile(self, relitable: list, rowsAsNumbers: set) -> tuple:
@@ -305,10 +329,12 @@ class Concat:
             for z, zeileninhalt in enumerate(relitable[2:], 2):
                 # alle spalten und zeilen
                 xx = False
-                if len(relitable[z][s].strip()) != 0:
+                if self.tables.htmlOutputYes:
+                    relitable[z][s] = ["<li>"]
+                elif self.tables.bbcodeOutputYes:
+                    relitable[z][s] = ["[*]"]
+                elif len(relitable[z][s].strip()) != 0:
                     relitable[z][s] = [relitable[z][s], " | "]
-                    if self.tables.htmlOutputYes:
-                        relitable[z][s] += ["<br>"]
                 else:
                     relitable[z][s] = [relitable[z][s]]
                 if z in multis:
@@ -318,12 +344,26 @@ class Concat:
                             and "".join(relitable[z][s]) != store[(UrZeile, s)]
                             and "".join(relitable[z][s] + [" | "])
                             != store[(UrZeile, s)]
+                            and "".join(["<li>"] + relitable[z][s] + ["</li>"])
+                            != store[(UrZeile, s)]
+                            and "".join(["[*]"] + relitable[z][s])
+                            != store[(UrZeile, s)]
                         ):
                             if len(store[(UrZeile, s)]) != 0:
-                                relitable[z][s] += [store[(UrZeile, s)], " | "]
-                            xx = True
-                            if self.tables.htmlOutputYes:
-                                relitable[z][s] += ["<br>"]
+                                if self.tables.htmlOutputYes:
+                                    relitable[z][s] += [store[(UrZeile, s)], "</li>"]
+                                else:
+                                    xx = (
+                                        True
+                                        if not self.tables.bbcodeOutputYes
+                                        else False
+                                    )
+                                    relitable[z][s] += [store[(UrZeile, s)], " | "]
+
+                if self.tables.htmlOutputYes:
+                    relitable[z][s] = ["<ul>"] + relitable[z][s] + ["</ul>"]
+                elif self.tables.bbcodeOutputYes:
+                    relitable[z][s] = ["[list]"] + relitable[z][s] + ["[/list]"]
                 if xx:
                     relitable[z][s] = "".join(relitable[z][s][:-1])
                 else:
