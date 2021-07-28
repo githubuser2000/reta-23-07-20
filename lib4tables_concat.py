@@ -361,6 +361,13 @@ class Concat:
                         )
                         # x("WSDRF", modalOperatoren[0] != self.relitable[1][97])
 
+                        into[i] += [
+                            "<li>"
+                            if self.tables.htmlOutputYes
+                            else "[*]"
+                            if self.tables.bbcodeOutputYes
+                            else ""
+                        ]
                         into[i] += (
                             [
                                 "mittelstark überdurchschnittlich: "
@@ -402,9 +409,14 @@ class Concat:
                                 if abs(distanceFromLine) % 2 == 1
                                 else [""]
                             )
-                            + [" | "]
-                            + (["<br>"] if self.tables.htmlOutputYes else [""])
+                            + [
+                                " | "
+                                if not self.tables.htmlOutputYes
+                                and not self.tables.bbcodeOutputYes
+                                else ""
+                            ]
                         )
+                        into[i] += ["</li>" if self.tables.htmlOutputYes else ""]
                     except (IndexError, KeyError):
                         pass
             except (IndexError, KeyError):
@@ -569,7 +581,12 @@ class Concat:
                         "alles nur bezogen auf die selbe Strukturgröße einer ",
                         zeileninhalte[4],
                     ]
+
             for w, cols in enumerate(reliTableCopy):
+                if self.tables.htmlOutputYes and "<li>" in into[w]:
+                    into[w] = ["<ul>"] + into[w] + ["</ul>"]
+                elif self.tables.bbcodeOutputYes and "[*]" in into[w]:
+                    into[w] = ["[list]"] + into[w] + ["[/list]"]
                 self.relitable[w] += ["".join(into[w])]
 
             rowsAsNumbers |= {len(self.relitable[0]) - 1}
