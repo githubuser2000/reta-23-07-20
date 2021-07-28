@@ -1282,7 +1282,7 @@ class Program:
                     "existenzialienreziproke",
                     "universalienreziproke",
                 ),
-                {131, 203},
+                {131, 201},
             ),
             (
                 Program.ParametersMain.universum,
@@ -1312,7 +1312,7 @@ class Program:
                     "model",
                     "abstraktion",
                 ),
-                {65, 75, 201},
+                {65, 75, 203},
             ),
             (
                 Program.ParametersMain.operationen,
