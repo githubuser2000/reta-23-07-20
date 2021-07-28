@@ -2882,9 +2882,6 @@ class Program:
         gebrUnivSpalten2 = CsvTheirsSpalten[4]
         gebrGalSpalten2 = CsvTheirsSpalten[5]
 
-        self.relitable, self.rowsAsNumbers = self.tables.getConcat.concatRowsOfConcepts(
-            self.relitable, self.tables.generRows, self.rowsAsNumbers
-        )
         (
             self.relitable,
             self.rowsAsNumbers,

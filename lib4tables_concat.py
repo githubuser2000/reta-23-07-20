@@ -190,7 +190,7 @@ class Concat:
                     if self.tables.htmlOutputYes and i != 0:
                         into += ["</ul>"]
                     self.relitable[i] += ["".join(into)]
-                assert (
+                assert not (
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.SpaltenVanillaAmount
                     in self.tables.generatedSpaltenParameter
@@ -200,98 +200,6 @@ class Concat:
                     len(self.tables.generatedSpaltenParameter)
                     + self.tables.SpaltenVanillaAmount
                 ] = self.tables.dataDict[0][64]
-
-        return self.relitable, rowsAsNumbers
-
-    def concatRowsOfConcepts(
-        self, relitable: list, conceptsRowsSetOfTuple: set, rowsAsNumbers: set
-    ) -> tuple:
-        self.relitable: list = relitable
-        return self.relitable, rowsAsNumbers
-        self.concepts: list = []
-        couplesNums = []
-        for i, paar in enumerate(conceptsRowsSetOfTuple):
-            first = []
-            second = []
-            self.concepts += [(first, second)]
-            for cols in self.relitable:
-                first += [cols[paar[0]]]
-                second += [cols[paar[1]]]
-            rowsAsNumbers |= {len(self.relitable[0]) + i}
-            self.tables.generatedSpaltenParameter_Tags[
-                len(rowsAsNumbers) - 1
-            ] = frozenset({ST.sternPolygon, ST.galaxie})
-            couplesNums += [paar]
-        # x("bla", self.tables.generatedSpaltenParameter_Tags)
-        for o, concept in enumerate(self.concepts):
-            for i, (cols, row1, row2) in enumerate(
-                zip(deepcopy(self.relitable), concept[0], concept[1])
-            ):
-                if i == 0:
-                    into = ["Generiert: "] + [row1]
-                else:
-                    # d.h. into füll wegen zip nur die Bereiche, die Bedacht
-                    # sind und alles andere sind nicht ein mal leere Strings,
-                    # sondern garn nichts: schlecht !
-                    into = (
-                        ["[*]"]
-                        if self.tables.bbcodeOutputYes
-                        else ["<li>"]
-                        if self.tables.htmlOutputYes
-                        else [""]
-                    )
-                    # i muss hier i > irgendwas sein weil mir sonst alles um die Ohren fliegt
-                    # i ist die Zeile
-                    if row1.strip() != "":
-                        into += ["sehr: ", row1, "| "]
-                    if i > 2 and concept[0][i - 2].strip() != "":
-                        into += ["ganz gut: ", concept[0][i - 2], "| "]
-                    if len(concept[0]) > i + 2 and concept[0][i + 2].strip() != "":
-                        into += ["ganz gut: ", concept[0][i + 2], "| "]
-                    if i > 4 and concept[0][i - 4].strip() != "":
-                        into += ["noch etwas: ", concept[0][i - 4], "| "]
-                    if len(concept[0]) > i + 4 and concept[0][i + 4].strip() != "":
-                        into += ["noch etwas: ", concept[0][i + 4], "| "]
-                    if i > 1 and concept[1][i - 1].strip() != "":
-                        into += [concept[1][i - 1], "| "]
-                    if i > 3 and concept[1][i - 3].strip() != "":
-                        into += ["ein wenig: ", concept[1][i - 3], "| "]
-                    if len(concept[1]) > i + 3 and concept[1][i + 3].strip() != "":
-                        into += ["ein wenig: ", concept[1][i + 3], "| "]
-                    if len(concept[1]) > i + 1 and concept[1][i + 1].strip() != "":
-                        into += [concept[1][i + 1], "| "]
-                    if into != [""]:
-                        into += ["alles zur selben Strukturgröße einer ", cols[4]]
-                # einzeln, bis es eine ganze neue Spalte ist
-                self.relitable[i] += ["".split(into)]
-
-            assert (
-                len(self.tables.generatedSpaltenParameter)
-                + self.tables.SpaltenVanillaAmount
-                in self.tables.generatedSpaltenParameter
-            )
-            self.tables.generatedSpaltenParameter[
-                len(self.tables.generatedSpaltenParameter)
-                + self.tables.SpaltenVanillaAmount
-            ] = self.tables.dataDict[1][couplesNums[o]]
-
-        if self.tables.bbcodeOutputYes or self.tables.htmlOutputYes:
-            for o, concept in enumerate(self.concepts):
-                for i, (cols, row1, row2) in enumerate(
-                    zip(deepcopy(self.relitable), concept[0], concept[1])
-                ):
-                    if (
-                        self.tables.htmlOutputYes
-                        and i != 0
-                        and self.relitable[i] != "<ul>"
-                    ):
-                        self.relitable[i] = "<ul>" + self.relitable[i] + "</ul>"
-                    elif (
-                        self.tables.bbcodeOutputYes
-                        and i != 0
-                        and self.relitable[i] != "[list]"
-                    ):
-                        self.relitable[i] = "[list]" + self.relitable[i]
 
         return self.relitable, rowsAsNumbers
 
@@ -330,13 +238,13 @@ class Concat:
                 # alle spalten und zeilen
                 xx = False
                 if self.tables.htmlOutputYes:
-                    relitable[z][s] = ["<li>"]
+                    relitable[z][s] += ["<li>"]
                 elif self.tables.bbcodeOutputYes:
-                    relitable[z][s] = ["[*]"]
+                    relitable[z][s] += ["[*]"]
                 elif len(relitable[z][s].strip()) != 0:
-                    relitable[z][s] = [relitable[z][s], " | "]
+                    relitable[z][s] += [relitable[z][s], " | "]
                 else:
-                    relitable[z][s] = [relitable[z][s]]
+                    relitable[z][s] += [relitable[z][s]]
                 if z in multis:
                     for UrZeile in multis[z]:
                         if (
