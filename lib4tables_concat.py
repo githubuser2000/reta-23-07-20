@@ -2044,7 +2044,11 @@ class Concat:
             self.oldPrimAmounts = 0
             self.lastPrimAnswers: dict = {}
             for i, cols in enumerate(relitable):
-                into = [""] if i != 0 else ["Primzahlwirkung ", spaltenNamen[kk]]
+                into = (
+                    [""]
+                    if i != 0
+                    else ["Primzahlwirkung (7, Richtung)", spaltenNamen[kk]]
+                )
 
                 self.oldPrimAmounts = self.primAmounts
                 if couldBePrimeNumberPrimzahlkreuz(i):

@@ -40,7 +40,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 --kreis=[list][*]tierkreiszeichen,thomasevangelium,analytischeontologie,offenbarungdesjohannes,chinesischeshoroskop,kugelnkreise,modallogik,innenaussenstrukur[/list]
 [*]--groessenordnung=[list][*]strukturgroesse, organisation, politischesysteme[/list]
 [*]--universum= oder
---kugel=[list][*]transzendentalien,komplexitaet,ontologie,kugelnkreise,gegentranszendentalien,systemsachen,transzendentalienreziproke,warumtranszendentaliegleichkomplexitaet,warumtranszendentaliezustrukturgroesseundcharakter[/list]
+--kugel=[list][*]transzendentalien,komplexitaet,ontologie,kugelnkreise,gegentranszendentalien,systemsachen,transzendentalienreziproke,warumtranszendentaliegleichkomplexitaet,warumtranszendentaliezustrukturgroesseundcharakter,metaparadigmareligion[/list]
 [*]--menschliches=[list][*]liebe,ethik,angreifbarkeit,motivation,erhalten,erwerben,benoetigen,krankheit,alpha,kreativ,chef,beruf,loesungen,musik,glaube,erkenntnis,dominierendesgeschlecht,incel,ausgangslage,sinndeslebens,emotionen,gleichheit,wirkung,egoismus,gegentranszendentalien,denkweise,intelligenzprobleme,manipulation,fachbereiche[/list]
 [*]--procontra=[list][*]pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit[/list]
 [*]--wirtschaft=[list][*]system,realistisch,funktioniert,erklaerung,maschinen,organisationsform,bwl,pflanzen,fachbereiche[/list]
@@ -53,7 +53,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--universummetakonkret=
 [list][*]konkret,meta,theorie,praxis,ganzheitlich,hinausgehend,management,veraendernd,unternehmung,wert,richtung,regieren[/list]
 [*]--primzahlwirkung
-[list][*]universum,absichtgalaxie,absichtgalaxiereziproke,universumreziproke,neutralegegentranszendentalie,richtungrichtung,metaparadigmareligion,dagegengegentranszendentalie[/list]
+[list][*]universum,absichtgalaxie,absichtgalaxiereziproke,universumreziproke,richtungrichtung,dagegengegenstrukturalie,neutralegegenstrukturalie[/list]
 [*]--multiplikationen
 [list][*]beschrieben,motivstern,strukturstern,motivgleichfoermig,strukturgleichfoermig,motivgebrstern,strukgebrstern,motivgebrgleichf,strukgebrgleichf[/list]
 [*]--gebrochengalaxie
