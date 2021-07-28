@@ -189,6 +189,7 @@ tableTags = {
         196,
         198,
         202,
+        205,
     },
     frozenset({ST.galaxie, ST.gleichfoermigesPolygon}): {
         16,
@@ -226,7 +227,7 @@ tableTags = {
         165,
         166,
     },
-    frozenset({ST.universum, ST.gleichfoermigesPolygon}): {37, 131, 197, 201, 203},
+    frozenset({ST.universum, ST.gleichfoermigesPolygon}): {37, 131, 197, 201, 203, 204},
 }
 
 # 65 = michael commons hauptspalte

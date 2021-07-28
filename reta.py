@@ -1294,6 +1294,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.universum,
+                ("Kategorie", "kategorie"),
+                {204, 205},
+            ),
+            (
+                Program.ParametersMain.universum,
                 (
                     "warum_Transzendentalie_=_Komplexität_von_Michael_Commons",
                     "warumtranszendentaliegleichkomplexitaet",
