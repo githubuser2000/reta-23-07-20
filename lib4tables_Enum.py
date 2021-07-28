@@ -226,12 +226,7 @@ tableTags = {
         165,
         166,
     },
-    frozenset({ST.universum, ST.gleichfoermigesPolygon}): {
-        37,
-        131,
-        197,
-        201,
-    },
+    frozenset({ST.universum, ST.gleichfoermigesPolygon}): {37, 131, 197, 201, 203},
 }
 
 # 65 = michael commons hauptspalte

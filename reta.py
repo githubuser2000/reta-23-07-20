@@ -1282,7 +1282,7 @@ class Program:
                     "existenzialienreziproke",
                     "universalienreziproke",
                 ),
-                {131, 201},
+                {131, 203},
             ),
             (
                 Program.ParametersMain.universum,
