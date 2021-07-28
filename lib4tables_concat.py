@@ -237,14 +237,17 @@ class Concat:
             for z, zeileninhalt in enumerate(relitable[2:], 2):
                 # alle spalten und zeilen
                 xx = False
-                if self.tables.htmlOutputYes:
-                    relitable[z][s] += ["<li>"]
-                elif self.tables.bbcodeOutputYes:
-                    relitable[z][s] += ["[*]"]
-                elif len(relitable[z][s].strip()) != 0:
-                    relitable[z][s] += [relitable[z][s], " | "]
+
+                if len(relitable[z][s].strip()) != 0:
+                    if self.tables.htmlOutputYes:
+                        relitable[z][s] = ["<li>", relitable[z][s], "</li>"]
+                    elif self.tables.bbcodeOutputYes:
+                        relitable[z][s] = ["[*]", relitable[z][s]]
+                    else:
+                        relitable[z][s] = [relitable[z][s], " | "]
                 else:
-                    relitable[z][s] += [relitable[z][s]]
+                    relitable[z][s] = [relitable[z][s]]
+
                 if z in multis:
                     for UrZeile in multis[z]:
                         if (
@@ -259,7 +262,13 @@ class Concat:
                         ):
                             if len(store[(UrZeile, s)]) != 0:
                                 if self.tables.htmlOutputYes:
-                                    relitable[z][s] += [store[(UrZeile, s)], "</li>"]
+                                    relitable[z][s] += [
+                                        "<li>",
+                                        store[(UrZeile, s)],
+                                        "</li>",
+                                    ]
+                                elif self.tables.bbcodeOutputYes:
+                                    relitable[z][s] += ["[*]", store[(UrZeile, s)]]
                                 else:
                                     xx = (
                                         True
