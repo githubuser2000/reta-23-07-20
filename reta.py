@@ -2420,6 +2420,7 @@ class Program:
                 "kombinierteswirtschaftssystem",
                 "kombiniertewirtschaftssysteme",
             ),
+            17: ("Maschinen", "maschinen", "geräte", "geraete"),
         }
 
         self.kombiReverseDict: dict = {}

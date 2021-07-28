@@ -62,7 +62,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [list][*]2,3,4,5,6,7,8,9,10,11,12,13,14,15, ..... usw.[/list]
 [/list]
 [*]-kombination
-[list][*]--was=[list][*]tiere,berufe,intelligenz,liebe,transzendentalien,strukturalien,primzahlkreuz,frauen,maenner,persoenlichkeit,religionen,motive,ontologie,emotionen,personen,wesen,gegentranszendentalien,wirtschaftssysteme[/list][/list]
+[list][*]--was=[list][*]tiere,berufe,intelligenz,liebe,transzendentalien,strukturalien,primzahlkreuz,frauen,maenner,persoenlichkeit,religionen,motive,ontologie,emotionen,personen,wesen,gegentranszendentalien,wirtschaftssysteme,maschinen[/list][/list]
 [*]-ausgabe
 [list][*]--nocolor
 [*]--art=
