@@ -2047,7 +2047,7 @@ class Concat:
                 into = (
                     [""]
                     if i != 0
-                    else ["Primzahlwirkung (7, Richtung)", spaltenNamen[kk]]
+                    else ["Primzahlwirkung (7, Richtung) ", spaltenNamen[kk]]
                 )
 
                 self.oldPrimAmounts = self.primAmounts
