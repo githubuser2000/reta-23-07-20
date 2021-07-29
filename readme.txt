@@ -32,7 +32,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [list]
 [*]--alles
 [*]--wichtigsteverstehen[list][*]wichtigste,zweitwichtigste,drittwichtigste,viertwichtigste[/list]
-[*]--wichtigsteeinordnen[list][*]wichtigste[/list]
+[*]--wichtigsteeinordnen[list][*]wichtigste,zweitwichtigste[/list]
 [*]--breite=[list][*]40[*]70[/list]
 [*]--breiten=[list][*]20,50,10,70[*]30,100,20[/list]
 [*]--keinenummerierung

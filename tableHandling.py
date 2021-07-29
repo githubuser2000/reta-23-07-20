@@ -1110,6 +1110,16 @@ class Tables:
                                                         "Wichtigste",
                                                     )
                                                 ]
+                                            elif elementParameter in [
+                                                "berufe",
+                                                "intelligenz",
+                                            ]:
+                                                into2 = [
+                                                    (
+                                                        "Wichtigstes_zum_gedanklich_einordnen",
+                                                        "Zweitwichtigste",
+                                                    )
+                                                ]
 
                                         self.tables.generatedSpaltenParameter[
                                             len(self.tables.generatedSpaltenParameter)

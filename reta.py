@@ -713,6 +713,11 @@ class Program:
                 {0, 1, 2, 36, 37},
             ),
             (
+                Program.ParametersMain.wichtigste2,
+                ("Zweitwichtigste", "zweitwichtigste"),
+                {30},
+            ),
+            (
                 Program.ParametersMain.operationen,
                 (
                     "Halbierung",
