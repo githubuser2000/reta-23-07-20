@@ -9,6 +9,7 @@ var tdStyleFontSizeKl = "80%";
 var tdStyleColorKl = "grey";
 var Enume = new Set([0, 1, 3, 4]);
 window.onload = function () {
+  /*
   if (
     navigator.userAgent.includes("Chrome") ||
     !navigator.userAgent.includes("Firefox")
@@ -16,6 +17,7 @@ window.onload = function () {
     window.alert(
       "Ihr Browser benötigt sehr lange zum Laden, ggf. 2 Minuten. Firefox lädt diese Seite sehr viel schneller!"
     );
+    */
   let div = document.createElement("div");
   let div2 = document.createElement("div");
   div.className = "headingsDiv";
@@ -29,7 +31,7 @@ window.onload = function () {
   document.body.insertBefore(div, document.getElementsByTagName("table")[0]);
 
   chk_spalten =
-    '<fieldset><label style="white-space: nowrap;"><input type="radio" id="spaltenWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);" checked="true">Spalten (Einheiten [9]) wählen</label> <label style="white-space: nowrap;"><input type="radio" id="zeilenWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);">Zeilen, welche ja nein, (6,13,14,15)</label> <label style="white-space: nowrap;"><input type="radio" id="keinsWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);">frei machen zur Tabellenansicht | Lädt schneller mit Firefox statt Chrome</label></fieldset>';
+    '<fieldset><label style="white-space: nowrap;"><input type="radio" id="spaltenWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);" checked="true">Spalten (Einheiten [9]) wählen</label> <label style="white-space: nowrap;"><input type="radio" id="zeilenWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);">Zeilen, welche ja nein, (6,13,14,15)</label> <label style="white-space: nowrap;"><input type="radio" id="keinsWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);">frei machen zur Tabellenansicht <!-- | Lädt schneller mit Firefox statt Chrome --> </label></fieldset>';
   radio_tags =
     '<fieldset><label style="white-space: nowrap;"><input type="radio" id="galaxieuniversum" name="galaxieuniversum" onchange="disEnAbleChks([3,4]);" checked="true">Galaxie und Universum</label> <label style="white-space: nowrap;"><input type="radio" id="galaxie" name="galaxieuniversum" onchange="disEnAbleChks([3]);">Galaxie (14)</label> <label style="white-space: nowrap;"><input type="radio" id="universum" name="galaxieuniversum" onchange="disEnAbleChks([4]);">Universum (15)</label></fieldset><fieldset><label style="white-space: nowrap;"><input type="radio" id="sternpolygongleichfoermigespolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([0,1]);" checked="true">Sternpolygon und gleichförmiges Polygon</label> <label style="white-space: nowrap;"><input type="radio" id="sternpolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([0]);">Sternpolygon (n)</label> <label style="white-space: nowrap;"><input type="radio" id="gleichfoermigespolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([1]);">gleichförmiges Polygon (1/n)</label></fieldset>';
   div.innerHTML = chk_spalten;
@@ -372,7 +374,7 @@ function disEnAbleChks(Enums) {
     if ((!enumi.has(0) && !enumi.has(1)) || (!enumi.has(3) && !enumi.has(4))) {
       for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
         spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "80%";
-        spaltenTags2 = spalten4spaltenTags[i][k].style.opacity = "0.5";
+        spaltenTags2 = spalten4spaltenTags[i][k].style.opacity = "0.4";
       }
     } else {
       for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
