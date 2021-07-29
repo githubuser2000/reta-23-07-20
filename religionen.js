@@ -254,6 +254,7 @@ for (i = 0; i < tdClasses1.length; i++)
 
   tabelle = document.getElementsByTagName("table")[1];
   tds = tabelle.getElementsByTagName("td");
+  /*
   for (var i = 0; i < tds.length; i++) {
     text = tds[i];
     text.innerHTML = [
@@ -262,7 +263,8 @@ for (i = 0; i < tdClasses1.length; i++)
       text.innerHTML,
       "</label>",
     ].join("");
-  }
+  } 
+  */
 
   trs = tabelle.getElementsByTagName("tr");
   tdsHeadlines = trs[0].getElementsByTagName("td");
@@ -272,10 +274,7 @@ for (i = 0; i < tdClasses1.length; i++)
   for (var k = 1; k < trs.length; k++) {
     tds = trs[k].getElementsByTagName("td");
     for (var i = 0; i < tds.length; i++)
-      tds[i].className = classnames[i].replace(
-        "z_0",
-        "z_" + tds[1].getElementsByTagName("label")[0].innerHTML
-      );
+      tds[i].className = classnames[i].replace("z_0", "z_" + tds[1].innerHTML);
   }
 
   for (var k = 0; k < trs.length; k++) {
@@ -372,14 +371,10 @@ function disEnAbleChks(Enums) {
 
     if ((!enumi.has(0) && !enumi.has(1)) || (!enumi.has(3) && !enumi.has(4))) {
       for (var k = 0; k < spalten4spaltenTags[i].length; k++)
-        spaltenTags2 = spalten4spaltenTags[i][k].getElementsByTagName(
-          "label"
-        )[0].style = "font-size: 80%;color: grey";
+        spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "80%";
     } else {
       for (var k = 0; k < spalten4spaltenTags[i].length; k++)
-        spaltenTags2 = spalten4spaltenTags[i][k].getElementsByTagName(
-          "label"
-        )[0].style = "";
+        spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "100%";
     }
   }
   var Achks = document.getElementsByClassName("chksA");
@@ -1023,9 +1018,7 @@ function makeAllowedZeilenFromZaehlung(zeilenAngaben) {
 
   for (i = 0; i < ersteSpalte.length; i++) {
     //window.alert(ersteSpalte[i].getElementsByTagName("label")[0].innerHTML);
-    zaehlung = parseInt(
-      ersteSpalte[i].getElementsByTagName("label")[0].innerHTML.trim()
-    );
+    zaehlung = parseInt(ersteSpalte[i].innerHTML.trim());
     if (zaehlung != "NaN" && erlaubteZaehlungen.has(zaehlung)) {
       wirklicheZeile = ersteSpalte[i].className.match(/z_\s*(\d+)/g);
       //window.alert(ersteSpalte[i].className);
