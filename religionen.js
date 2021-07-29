@@ -370,11 +370,15 @@ function disEnAbleChks(Enums) {
         if (spaltenTags[i][k] == Enums[l]) enumi.add(Enums[l]);
 
     if ((!enumi.has(0) && !enumi.has(1)) || (!enumi.has(3) && !enumi.has(4))) {
-      for (var k = 0; k < spalten4spaltenTags[i].length; k++)
+      for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
         spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "80%";
+        spaltenTags2 = spalten4spaltenTags[i][k].style.opacity = "0.5";
+      }
     } else {
-      for (var k = 0; k < spalten4spaltenTags[i].length; k++)
+      for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
         spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "100%";
+        spaltenTags2 = spalten4spaltenTags[i][k].style.opacity = "1.0";
+      }
     }
   }
   var Achks = document.getElementsByClassName("chksA");
