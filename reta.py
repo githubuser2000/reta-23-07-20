@@ -550,7 +550,7 @@ class Program:
         )
 
         Program.ParametersMain = Program.ParametersMain(
-            ("Wichtigstes_zum_Verstehen", "wichtigsteverstehen"),
+            ("Wichtigstes_zum_verstehen", "wichtigsteverstehen"),
             ("Wichtigstes_zum_gedanklich_einordnen", "wichtigsteeinordnen"),
             (
                 "Religionen",
