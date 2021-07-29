@@ -4,8 +4,8 @@ import math
 from enum import Enum
 from functools import lru_cache
 
-from center import (alxp, cliout, getTextWrapThings, infoLog, output,
-                    Multiplikationen, re, x)
+from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
+                    output, re, x)
 
 
 class OutputSyntax:
