@@ -258,6 +258,7 @@ tableTags_kombiTable = {
         12,
         13,
         16,
+        17,
     },
     frozenset({ST.universum, ST.galaxie, ST.sternPolygon, ST.gleichfoermigesPolygon}): {
         5,
