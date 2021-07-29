@@ -3,6 +3,10 @@ var selectedSpaltenMany1 = {};
 var selectedSpaltenMany2 = {};
 var labelstyle = "white-space: nowrap;font-size: 100%;";
 var labelstylekl = "white-space: nowrap;font-size: 80%;color: grey;";
+var tdStyleWhiteSpace = "nowrap";
+var tdStyleFontSize = "100%";
+var tdStyleFontSizeKl = "80%";
+var tdStyleColorKl = "grey";
 var Enume = new Set([0, 1, 3, 4]);
 window.onload = function () {
   let div = document.createElement("div");
@@ -134,7 +138,7 @@ for (i = 0; i < tdClasses1.length; i++)
           [p1keys[i], p2keys[k]] +
           "');\">" +
           makeSpacesOutOf_(p2keys[k]) +
-          '</label><label style="white-space: normal;">&nbsp; </label>';
+          '</input></label><label style="white-space: normal;">&nbsp; </label>';
         chk2s += chk2;
       }
     }
@@ -151,7 +155,11 @@ for (i = 0; i < tdClasses1.length; i++)
     //window.alert(mapsTagsif);
 
     checkbox =
-      '<div class="chksA"><input type="checkbox" ' + // class="chks c_' +
+      '<div class="chksA"><label class="chksA1 c1_' +
+      mapsTagsif.join(",") +
+      '" style="' +
+      labelstyle +
+      '"><input type="checkbox" ' + // class="chks c_' +
       //Array.from(mapMapMap[p1keys[i]][null]).join(",") +
       //'"  value="' +
       ' value="' +
@@ -160,13 +168,9 @@ for (i = 0; i < tdClasses1.length; i++)
       p1keys[i] +
       "');" +
       insertnull +
-      '"><label class="chksA1 c1_' +
-      mapsTagsif.join(",") +
-      '" style="' +
-      labelstyle +
       '">' +
       makeSpacesOutOf_(p1keys[i]) +
-      '</label><div id="' +
+      '</input></label><div id="' +
       p1keys[i] +
       '" style="display:none;white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">' +
       chk2s +
@@ -340,10 +344,16 @@ function disEnAbleChks(Enums) {
         if (chks2[i][k] == Enums[l]) enumi.add(Enums[l]);
     if ((!enumi.has(0) && !enumi.has(1)) || (!enumi.has(3) && !enumi.has(4))) {
       chks1[i].disabled = true;
-      chks1[i].style = labelstylekl;
+      //chks1[i].style = labelstylekl;
+      chks1[i].style.fontSize = tdStyleFontSizeKl;
+      chks1[i].style.color = tdStyleColorKl;
+      chks1[i].style.whiteSpace = tdStyleWhiteSpace;
     } else {
       chks1[i].disabled = false;
-      chks1[i].style = labelstyle;
+      //chks1[i].style = labelstyle;
+      chks1[i].style.fontSize = tdStyleFontSize;
+      chks1[i].style.color = "";
+      chks1[i].style.whiteSpace = tdStyleWhiteSpace;
     }
   }
 
@@ -372,9 +382,19 @@ function disEnAbleChks(Enums) {
       .getElementsByTagName("input");
     deakAmount = 0;
     for (var k = 0; k < Bchks.length; k++) if (Bchks[k].disabled) deakAmount++;
-    if (deakAmount == Bchks.length && deakAmount != 0)
-      Achks[i].getElementsByTagName("label")[0].style = labelstylekl;
-    else Achks[i].getElementsByTagName("label")[0].style = labelstyle;
+    if (deakAmount == Bchks.length && deakAmount != 0) {
+      Achks[i].getElementsByTagName("label")[0].style.fontSize =
+        tdStyleFontSizeKl;
+      Achks[i].getElementsByTagName("label")[0].style.color = tdStyleColorKl;
+      Achks[i].getElementsByTagName("label")[0].style.whiteSpace =
+        tdStyleWhiteSpace;
+    } else {
+      Achks[i].getElementsByTagName("label")[0].style.fontSize =
+        tdStyleFontSize;
+      Achks[i].getElementsByTagName("label")[0].style.color = "";
+      Achks[i].getElementsByTagName("label")[0].style.whiteSpace =
+        tdStyleWhiteSpace;
+    }
   }
   //'"><label class="chksA1 c1_' +
   chksA1label = document.getElementsByClassName("chksA1");
@@ -394,8 +414,11 @@ function disEnAbleChks(Enums) {
         if (
           (!enumo.has(0) && !enumo.has(1)) ||
           (!enumo.has(3) && !enumo.has(4))
-        )
-          chksA1label[i].style = labelstylekl;
+        ) {
+          chksA1label[i].style.fontSize = tdStyleFontSizeKl;
+          chksA1label[i].style.color = tdStyleColorKl;
+          chksA1label[i].style.whiteSpace = tdStyleWhiteSpace;
+        }
     }
   }
 }
