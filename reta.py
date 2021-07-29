@@ -325,7 +325,8 @@ class Program:
                                     cliout(
                                         'Die Kombispalte "'
                                         + oneKombiSpalte
-                                        + '" existiert so nicht als Befehl.'
+                                        + '" existiert so nicht als Befehl. Möglich sind die Parameter für --was= '
+                                        + str(self.kombiReverseDict.keys())[11:-1]
                                     )
 
                     else:
