@@ -765,6 +765,8 @@ class Tables:
                         .replace("(|", "(")
                         .replace("|)", ")")
                         .replace("||", "|")
+                        .replace("+|", "")
+                        .replace("-|", "")
                         + re.sub(r"[^\)]+\)(.*)", r"\1", zeile, count=1)
                     ).strip()
                 ]
