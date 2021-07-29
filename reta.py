@@ -546,11 +546,12 @@ class Program:
 
         Program.ParametersMain: namedtuple = namedtuple(
             "ParametersMain",
-            "wichtigste religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache alles",
+            "wichtigste wichtigste2 religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache alles",
         )
 
         Program.ParametersMain = Program.ParametersMain(
-            ("Wichtigste", "wichtigste"),
+            ("Wichtigstes_verstehen", "wichtigsteverstehen"),
+            ("Wichtigstes_einordnen", "wichtigsteeinordnen"),
             (
                 "Religionen",
                 "religionen",
@@ -705,6 +706,11 @@ class Program:
                 set(),
                 set(),
                 {"primMotivStern"},
+            ),
+            (
+                Program.ParametersMain.wichtigste2,
+                ("Wichtigste", "wichtigstes"),
+                {0, 1, 2, 36, 37},
             ),
             (
                 Program.ParametersMain.operationen,

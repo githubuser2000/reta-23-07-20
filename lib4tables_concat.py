@@ -1260,7 +1260,7 @@ class Concat:
                                 in koord2Parameter[(zwei, nullBisDrei, brr)]
                             ):
                                 kette = list(kette) + [
-                                    [("Wichtigste", "Viertwichtigste")]
+                                    [("Wichtigstes_verstehen", "Viertwichtigste")]
                                 ]
 
                             self.tables.generatedSpaltenParameter[

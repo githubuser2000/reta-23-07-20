@@ -1097,28 +1097,24 @@ class Tables:
                                         #    len(self.tables.generatedSpaltenParameter),
                                         # )
                                         into: list = []
+                                        into2: list = []
                                         for elementParameter in self.tables.dataDict[3][
                                             a
                                         ]:
                                             into += [("kombination", elementParameter)]
-                                        # try:
-                                        #   self.tables.generatedSpaltenParameter[
-                                        #       len(
-                                        #           self.tables.generatedSpaltenParameter
-                                        #       )
-                                        #       + self.tables.SpaltenVanillaAmount
-                                        #   ] |= [into]
-                                        # except KeyError:
-                                        #   self.tables.generatedSpaltenParameter[
-                                        #       len(
-                                        #           self.tables.generatedSpaltenParameter
-                                        #       )
-                                        #       + self.tables.SpaltenVanillaAmount
-                                        #   ] = [into]
+
+                                            if elementParameter == "tiere":
+                                                into2 = [
+                                                    (
+                                                        "Wichtigstes_einordnen",
+                                                        "Wichtigste",
+                                                    )
+                                                ]
+
                                         self.tables.generatedSpaltenParameter[
                                             len(self.tables.generatedSpaltenParameter)
                                             + self.tables.SpaltenVanillaAmount
-                                        ] = (into,)
+                                        ] = ((into,) if into2 == [] else (into, into2))
 
             else:
                 self.kombiTable = [[]]
