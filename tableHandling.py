@@ -1106,7 +1106,7 @@ class Tables:
                                             if elementParameter == "tiere":
                                                 into2 = [
                                                     (
-                                                        "Wichtigstes_einordnen",
+                                                        "Wichtigstes_zum_gedanklich_einordnen",
                                                         "Wichtigste",
                                                     )
                                                 ]
