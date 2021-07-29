@@ -9,7 +9,10 @@ var tdStyleFontSizeKl = "80%";
 var tdStyleColorKl = "grey";
 var Enume = new Set([0, 1, 3, 4]);
 window.onload = function () {
-  if (navigator.userAgent.includes("Chrome"))
+  if (
+    navigator.userAgent.includes("Chrome") ||
+    !navigator.userAgent.includes("Firefox")
+  )
     window.alert(
       "Ihr Browser benötigt sehr lange zum Laden, ggf. 2 Minuten. Firefox lädt diese Seite sehr viel schneller!"
     );
