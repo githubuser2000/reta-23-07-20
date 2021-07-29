@@ -469,8 +469,8 @@ primZahlen = [
 function makeSpacesOutOf_(text) {
   if (text.length == 10) if (text == "Wichtigste") return "<b>Wichtigste</b>";
   if (text.length == 25)
-    if (text == "Wichtigstes_zum_verstehen")
-      return "<b>Wichtigstes zum verstehen</b>";
+    if (text == "Wichtigstes_zum_Verstehen")
+      return "<b>Wichtigstes zum Verstehen</b>";
   if (text.length == 36)
     if (text == "Wichtigstes_zum_gedanklich_einordnen")
       return "<b>Wichtigstes zum gedanklich einordnen</b>";
