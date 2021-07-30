@@ -307,6 +307,30 @@ for (i = 0; i < tdClasses1.length; i++)
   }
   inputs[checkbox_i[1]].checked = true;
   inputs[checkbox_i[1]].onchange();
+
+  var sheets = document.styleSheets;
+  var sheet, rules, rule;
+  var i, j, k, l;
+
+  for (i = 0, iLen = sheets.length; i < iLen; i++) {
+    sheet = sheets[i];
+    // W3C model
+    if (sheet.cssRules) {
+      rules = sheet.cssRules;
+
+      for (j = 0, jLen = rules.length; j < jLen; j++) {
+        rule = rules[j];
+        if (rule.cssText == "table { display: none; }") {
+          //window.alert(rule.cssText);
+          if (typeof sheet.deleteRule == "function") {
+            sheet.deleteRule(rule);
+            jLen = rules.length;
+          }
+          //window.alert(rule.selectorText);
+        }
+      }
+    }
+  }
 };
 
 function makeMapsOfHeadLCheckB(p1, p2, num, tags) {
