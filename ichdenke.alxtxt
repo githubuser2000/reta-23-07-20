@@ -1,3 +1,22 @@
+
+
+Verlangsamer (Häufigkeit der Aufrufe):
+1. method 'get' of 'dict' objects  (380)
+2. methode len (60)
+3. tableHandling.py:330(determineRowWidth) (10)
+4. min (3)
+5. isinstance (2.5)
+6. isdecimal (2.3)
+7. texte colorieren (2.3)
+
+gesamtzeit
+1. get von dict (28)
+2.  ? (23)
+3. cliOut (1)
+
+
+
+
 Wie programmiere ich die Fkt um, damit sie gebr rat akzeptiert
 
 ich muss eine weitere for schleife einschachteln, die unterscheidet zwischen
