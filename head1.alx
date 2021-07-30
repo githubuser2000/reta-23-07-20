@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8"/><title>Religionstabellen durch ReTa generiert</title>
 		<style type="text/css">
-            table {
+            body {
                 display:none;
             }
 			label {

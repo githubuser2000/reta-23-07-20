@@ -312,6 +312,8 @@ for (i = 0; i < tdClasses1.length; i++)
   var sheet, rules, rule;
   var i, j, k, l;
 
+  document.body.style.display = "initial";
+  /*
   for (i = 0, iLen = sheets.length; i < iLen; i++) {
     sheet = sheets[i];
     // W3C model
@@ -320,7 +322,7 @@ for (i = 0; i < tdClasses1.length; i++)
 
       for (j = 0, jLen = rules.length; j < jLen; j++) {
         rule = rules[j];
-        if (rule.cssText == "table { display: none; }") {
+        if (rule.cssText == "body { display: none; }") {
           //window.alert(rule.cssText);
           if (typeof sheet.deleteRule == "function") {
             sheet.deleteRule(rule);
@@ -330,7 +332,7 @@ for (i = 0; i < tdClasses1.length; i++)
         }
       }
     }
-  }
+  }*/
 };
 
 function makeMapsOfHeadLCheckB(p1, p2, num, tags) {
