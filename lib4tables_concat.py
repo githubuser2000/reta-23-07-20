@@ -616,7 +616,7 @@ class Concat:
         for paar in paareSet:
             paar = tuple(paar)
             div = paar[0] / paar[1] if not gleichf else paar[1] / paar[0]
-            # x("fsd", div)
+            x("fsd", div)
             assert div == round(div)
             result[int(div)] |= {frozenset(paar)}
         # x("GHJ1A", dict(result))
