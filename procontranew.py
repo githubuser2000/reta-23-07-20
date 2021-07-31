@@ -20,7 +20,8 @@ for num in range(0, 50):
             list1 += [num]
             if num > 16:
                 if keinePrimzahl1:
-                    pass
+                    print("gegen " + str(list2[weiter1b + 1]))
+                    weiter1b += 1
                 else:
                     print("gegen " + str(list1[weiter1a]))
                     weiter1a += 1
@@ -31,7 +32,8 @@ for num in range(0, 50):
             list2 += [num]
             if num > 16:
                 if keinePrimzahl2:
-                    pass
+                    print("für " + str(list1[weiter2b + 1]))
+                    weiter2b += 1
                 else:
                     print("für " + str(list2[weiter2a]))
                     weiter2a += 1
