@@ -880,7 +880,7 @@ class Concat:
                                 into += [
                                     "pro " + str(int(couple[0]) * proPro[couple[1]])
                                 ]
-                self.relitable[num] += ["|".join(into)] if len(into) > 1 else [""]
+                self.relitable[num] += ["|".join(into)] if len(into) > 0 else [""]
             rowsAsNumbers |= {len(self.relitable[0]) - 1}
             self.tables.generatedSpaltenParameter_Tags[
                 len(rowsAsNumbers) - 1
