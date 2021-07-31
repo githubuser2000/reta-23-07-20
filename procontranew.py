@@ -43,4 +43,8 @@ for num in range(0, 50):
             keinePrimzahl1 = True
         elif couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num):
             keinePrimzahl2 = True
-        print(str(primMultiple(num)))
+        for couple in primMultiple(num):
+            couple = list(couple)
+            couple.sort()
+            if couple[0] > 1:
+                print(str(couple))
