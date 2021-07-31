@@ -1873,6 +1873,14 @@ class Program:
             (
                 Program.ParametersMain.bedeutung,
                 (
+                    "Primzahlkreuz",
+                    "primzahlkreuz",
+                ),
+                {206},
+            ),
+            (
+                Program.ParametersMain.bedeutung,
+                (
                     "Vorzeichen",
                     "vorzeichen",
                 ),
@@ -3056,6 +3064,9 @@ class Program:
             newTable, spaltenreihenfolgeundnurdiese
         )
         self.tables.getOut.cliOut(finallyDisplayLines, newTable, numlen, rowsRange)
+        alxp(
+            """neues Farbschema: für html aber besser nur: primzahlen pro außen und pro innen und ggf. dessen vielfacher; Farbschema mit durch 3 teilbarem außerdem"""
+        )
         alxp(
             """Ich könnte die <td> class parameter auf der ersten bzw. nullten Spalte belassen, anstelle diese Redundanz zu halten: deutlich kleinere html"""
         )
