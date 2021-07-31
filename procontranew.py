@@ -58,7 +58,7 @@ for num in range(0, 50):
             menge |= {tuple(couple)}
         paare = list(menge)
 
-        print(str(paare))
+        # print(str(paare))
         for couple in paare:
             if couple[1] > 16 and primCreativity(couple[1]) == 1:
                 flagX = True
