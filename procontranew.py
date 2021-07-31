@@ -3,7 +3,7 @@
 from lib4tables import (couldBePrimeNumberPrimzahlkreuz,
                         couldBePrimeNumberPrimzahlkreuz_fuer_aussen,
                         couldBePrimeNumberPrimzahlkreuz_fuer_innen,
-                        primCreativity)
+                        primCreativity, primMultiple)
 
 primAmounts = 0
 keinePrimzahl1, keinePrimzahl2 = True, True
@@ -43,3 +43,4 @@ for num in range(0, 50):
             keinePrimzahl1 = True
         elif couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num):
             keinePrimzahl2 = True
+        print(str(primMultiple(num)))
