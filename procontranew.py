@@ -6,9 +6,10 @@ from lib4tables import (couldBePrimeNumberPrimzahlkreuz,
                         primCreativity)
 
 primAmounts = 0
-flag1, flag2 = True, True
+keinePrimzahl1, keinePrimzahl2 = True, True
 start1, start2 = 1, 5
 list1, list2 = [], []
+weiter1a, weiter1b, weiter2a, weiter2b = 0, 0, 0, 0
 for num in range(0, 50):
     if couldBePrimeNumberPrimzahlkreuz(num):
         primAmounts += 1
@@ -18,18 +19,20 @@ for num in range(0, 50):
             print(str(num) + ": pro innen")
             list1 += [num]
             if num > 16:
-                if flag1:
+                if keinePrimzahl1:
                     pass
-            flag1 = False
+                else:
+                    weiter1a += 1
+            keinePrimzahl1 = False
         elif not couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num):
-            flag1 = True
+            keinePrimzahl1 = True
 
         if couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num):
             print(str(num) + ": pro außen")
             list1 += [num]
             if num > 16:
-                if flag2:
+                if keinePrimzahl2:
                     pass
-            flag2 = False
+            keinePrimzahl2 = False
         elif not couldBePrimeNumberPrimzahlkreuz_fuer_innen(num):
-            flag2 = True
+            keinePrimzahl2 = True
