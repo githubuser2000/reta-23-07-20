@@ -7,6 +7,7 @@ from lib4tables import (couldBePrimeNumberPrimzahlkreuz,
 
 primAmounts = 0
 flag1, flag2 = True, True
+start1, start2 = 1, 5
 for num in range(0, 20):
     if couldBePrimeNumberPrimzahlkreuz(num):
         primAmounts += 1
