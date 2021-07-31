@@ -13,7 +13,7 @@ weiter1a, weiter1b, weiter2a, weiter2b = 0, 0, 0, 0
 for num in range(0, 50):
     if couldBePrimeNumberPrimzahlkreuz(num):
         primAmounts += 1
-    if primCreativity(num) == 1:
+    if primCreativity(num) == 1 or num == 1:
 
         if couldBePrimeNumberPrimzahlkreuz_fuer_innen(num):
             print(str(num) + ": pro innen")
@@ -22,17 +22,22 @@ for num in range(0, 50):
                 if keinePrimzahl1:
                     pass
                 else:
+                    print("gegen " + str(list1[weiter1a]))
                     weiter1a += 1
             keinePrimzahl1 = False
-        elif not couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num):
-            keinePrimzahl1 = True
 
         if couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num):
             print(str(num) + ": pro außen")
-            list1 += [num]
+            list2 += [num]
             if num > 16:
                 if keinePrimzahl2:
                     pass
+                else:
+                    print("für " + str(list2[weiter2a]))
+                    weiter2a += 1
             keinePrimzahl2 = False
-        elif not couldBePrimeNumberPrimzahlkreuz_fuer_innen(num):
+    else:
+        if couldBePrimeNumberPrimzahlkreuz_fuer_innen(num):
+            keinePrimzahl1 = True
+        elif couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num):
             keinePrimzahl2 = True
