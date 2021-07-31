@@ -50,7 +50,16 @@ for num in range(0, 50):
             keinePrimzahl1 = True
         elif couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num):
             keinePrimzahl2 = True
+
+        menge: set = set()
         for couple in primMultiple(num):
+            couple = list(couple)
+            couple.sort()
+            menge |= {tuple(couple)}
+        paare = list(menge)
+
+        print(str(paare))
+        for couple in paare:
             if couple[1] > 16 and primCreativity(couple[1]) == 1:
                 flagX = True
             elif couple[0] > 16 and primCreativity(couple[0]) == 1:
