@@ -44,7 +44,13 @@ for num in range(0, 50):
         elif couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num):
             keinePrimzahl2 = True
         for couple in primMultiple(num):
-            couple = list(couple)
-            couple.sort()
-            if couple[0] > 1:
+            if couple[1] > 16 and primCreativity(couple[1]) == 1:
+                flagX = True
+            elif couple[0] > 16 and primCreativity(couple[0]) == 1:
+                flagX = True
+                couple = (couple[1], couple[0])
+            else:
+                flagX = False
+
+            if flagX:
                 print(str(couple))
