@@ -812,6 +812,7 @@ class Concat:
         proPro, contraContra = {}, {}
 
         if "primzahlkreuzprocontra" in generatedBefehle:
+
             for num, cols in enumerate(deepcopy(self.relitable)):
                 into: list = []
                 if couldBePrimeNumberPrimzahlkreuz(num):
@@ -880,7 +881,9 @@ class Concat:
                                 into += [
                                     "pro " + str(int(couple[0]) * proPro[couple[1]])
                                 ]
+
                 self.relitable[num] += ["|".join(into)] if len(into) > 0 else [""]
+
             rowsAsNumbers |= {len(self.relitable[0]) - 1}
             self.tables.generatedSpaltenParameter_Tags[
                 len(rowsAsNumbers) - 1

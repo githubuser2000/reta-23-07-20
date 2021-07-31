@@ -1876,7 +1876,14 @@ class Program:
                     "Primzahlkreuz",
                     "primzahlkreuz",
                 ),
-                {206},
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                {"primzahlkreuzprocontra"},
             ),
             (
                 Program.ParametersMain.bedeutung,
@@ -2944,6 +2951,15 @@ class Program:
             self.rowsAsNumbers,
             self.spaltenArtenKey_SpaltennummernValue[(0, 7)],
             paraTextNamen,
+        )
+
+        (
+            self.relitable,
+            self.rowsAsNumbers,
+        ) = self.tables.getConcat.concat1PrimzahlkreuzProContra(
+            self.relitable,
+            self.rowsAsNumbers,
+            self.spaltenArtenKey_SpaltennummernValue[(0, 7)],
         )
 
         (
