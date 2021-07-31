@@ -10,6 +10,7 @@ keinePrimzahl1, keinePrimzahl2 = True, True
 start1, start2 = 1, 5
 list1, list2 = [], []
 weiter1a, weiter1b, weiter2a, weiter2b = 0, 0, 0, 0
+proPro, contraContra = {}, {}
 for num in range(0, 50):
     if couldBePrimeNumberPrimzahlkreuz(num):
         primAmounts += 1
@@ -20,11 +21,14 @@ for num in range(0, 50):
             list1 += [num]
             if num > 16:
                 if keinePrimzahl1:
-                    print("gegen " + str(list2[weiter1b + 1]))
+                    gegen = list2[weiter1b + 1]
                     weiter1b += 1
                 else:
-                    print("gegen " + str(list1[weiter1a]))
+                    gegen = list1[weiter1a]
                     weiter1a += 1
+                contraContra[num] = gegen
+                print("gegen " + str(gegen))
+
             keinePrimzahl1 = False
 
         if couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num):
@@ -32,11 +36,14 @@ for num in range(0, 50):
             list2 += [num]
             if num > 16:
                 if keinePrimzahl2:
-                    print("für " + str(list1[weiter2b + 1]))
+                    pro = list1[weiter2b + 1]
                     weiter2b += 1
                 else:
-                    print("für " + str(list2[weiter2a]))
+                    pro = list2[weiter2a]
                     weiter2a += 1
+                proPro[num] = pro
+                print("für " + str(pro))
+
             keinePrimzahl2 = False
     else:
         if couldBePrimeNumberPrimzahlkreuz_fuer_innen(num):
@@ -53,4 +60,11 @@ for num in range(0, 50):
                 flagX = False
 
             if flagX:
-                print(str(couple))
+                if couldBePrimeNumberPrimzahlkreuz_fuer_innen(couple[1]):
+                    print(
+                        str(num)
+                        + " gegen "
+                        + str(int(couple[0]) * contraContra[couple[1]])
+                    )
+                elif couldBePrimeNumberPrimzahlkreuz_fuer_aussen(couple[1]):
+                    print(str(num) + " pro " + str(int(couple[0]) * proPro[couple[1]]))
