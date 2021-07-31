@@ -7,7 +7,6 @@ from lib4tables import (couldBePrimeNumberPrimzahlkreuz,
 
 primAmounts = 0
 keinePrimzahl1, keinePrimzahl2 = True, True
-start1, start2 = 1, 5
 list1, list2 = [], []
 weiter1a, weiter1b, weiter2a, weiter2b = 0, 0, 0, 0
 proPro, contraContra = {}, {}

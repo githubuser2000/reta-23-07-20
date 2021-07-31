@@ -11,7 +11,9 @@ from itertools import zip_longest
 from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
                     output, re, x)
 from lib4tables import (OutputSyntax, bbCodeSyntax,
-                        couldBePrimeNumberPrimzahlkreuz, csvSyntax,
+                        couldBePrimeNumberPrimzahlkreuz,
+                        couldBePrimeNumberPrimzahlkreuz_fuer_aussen,
+                        couldBePrimeNumberPrimzahlkreuz_fuer_innen, csvSyntax,
                         divisorGenerator, htmlSyntax, isPrimMultiple,
                         markdownSyntax, math, moonNumber, multiples,
                         primCreativity, primFak, primRepeat)
@@ -786,6 +788,99 @@ class Concat:
 
         return e
 
+    def concat1PrimzahlkreuzProContra(
+        self,
+        relitable: list,
+        rowsAsNumbers: set,
+        generatedBefehle: set,
+        # htmlTagParaClassWoerter: list,
+    ) -> tuple:
+        """Fügt eine Spalte ein, in der Primzahlen mit Vielfachern
+        auf dem Niveau des Universums nicht einfach nur aus einer
+        CSV Tabelle geladen werden, sondern durch Primzahlen und
+        deren Vielfachern generiert werden.
+
+        @type relitable: list
+        @param relitable: Haupttabelle self.relitable
+        @return: relitable + weitere Tabelle daneben
+        """
+        self.relitable = relitable
+        primAmounts = 0
+        keinePrimzahl1, keinePrimzahl2 = True, True
+        list1, list2 = [], []
+        weiter1a, weiter1b, weiter2a, weiter2b = 0, 0, 0, 0
+        proPro, contraContra = {}, {}
+
+        if "primzahlkreuzprocontra" in generatedBefehle:
+            into: list = []
+            for num, cols in enumerate(self.relitable):
+                if couldBePrimeNumberPrimzahlkreuz(num):
+                    primAmounts += 1
+                if primCreativity(num) == 1 or num == 1:
+
+                    if couldBePrimeNumberPrimzahlkreuz_fuer_innen(num):
+                        # print(str(num) + ": pro innen")
+                        list1 += [num]
+                        if num > 16:
+                            if keinePrimzahl1:
+                                gegen = list2[weiter1b + 1]
+                                weiter1b += 1
+                            else:
+                                gegen = list1[weiter1a]
+                                weiter1a += 1
+                            contraContra[num] = gegen
+                            into += ["gegen " + str(gegen)]
+
+                        keinePrimzahl1 = False
+
+                    if couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num):
+                        # print(str(num) + ": pro außen")
+                        list2 += [num]
+                        if num > 16:
+                            if keinePrimzahl2:
+                                pro = list1[weiter2b + 1]
+                                weiter2b += 1
+                            else:
+                                pro = list2[weiter2a]
+                                weiter2a += 1
+                            proPro[num] = pro
+                            into += ["für " + str(pro)]
+
+                        keinePrimzahl2 = False
+                else:
+                    if couldBePrimeNumberPrimzahlkreuz_fuer_innen(num):
+                        keinePrimzahl1 = True
+                    elif couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num):
+                        keinePrimzahl2 = True
+
+                    menge: set = set()
+                    for couple in primMultiple(num):
+                        couple = list(couple)
+                        couple.sort()
+                        menge |= {tuple(couple)}
+                    paare = list(menge)
+
+                    # print(str(paare))
+                    for couple in paare:
+                        if couple[1] > 16 and primCreativity(couple[1]) == 1:
+                            flagX = True
+                        elif couple[0] > 16 and primCreativity(couple[0]) == 1:
+                            flagX = True
+                            couple = (couple[1], couple[0])
+                        else:
+                            flagX = False
+
+                        if flagX:
+                            if couldBePrimeNumberPrimzahlkreuz_fuer_innen(couple[1]):
+                                into += [
+                                    "gegen "
+                                    + str(int(couple[0]) * contraContra[couple[1]])
+                                ]
+                            elif couldBePrimeNumberPrimzahlkreuz_fuer_aussen(couple[1]):
+                                into += [
+                                    "pro " + str(int(couple[0]) * proPro[couple[1]])
+                                ]
+
     def concat1RowPrimUniverse2(
         self,
         relitable: list,
@@ -802,7 +897,6 @@ class Concat:
         @param relitable: Haupttabelle self.relitable
         @return: relitable + weitere Tabelle daneben
         """
-        global originalLinesRange
         self.relitable = relitable
         # x("TZJ", htmlTagParaClassWoerter)
 
