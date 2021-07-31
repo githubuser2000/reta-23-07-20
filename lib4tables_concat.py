@@ -16,7 +16,7 @@ from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz_fuer_innen, csvSyntax,
                         divisorGenerator, htmlSyntax, isPrimMultiple,
                         markdownSyntax, math, moonNumber, multiples,
-                        primCreativity, primFak, primRepeat)
+                        primCreativity, primFak, primMultiple, primRepeat)
 from lib4tables_Enum import ST
 
 
@@ -814,7 +814,12 @@ class Concat:
         if "primzahlkreuzprocontra" in generatedBefehle:
 
             for num, cols in enumerate(deepcopy(self.relitable)):
-                into: list = []
+                if num == 0:
+                    into: list = [
+                        "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
+                    ]
+                else:
+                    into: list = []
                 if couldBePrimeNumberPrimzahlkreuz(num):
                     primAmounts += 1
                 if primCreativity(num) == 1 or num == 1:
