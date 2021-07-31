@@ -812,8 +812,8 @@ class Concat:
         proPro, contraContra = {}, {}
 
         if "primzahlkreuzprocontra" in generatedBefehle:
-            into: list = []
             for num, cols in enumerate(deepcopy(self.relitable)):
+                into: list = []
                 if couldBePrimeNumberPrimzahlkreuz(num):
                     primAmounts += 1
                 if primCreativity(num) == 1 or num == 1:
@@ -880,10 +880,11 @@ class Concat:
                                 into += [
                                     "pro " + str(int(couple[0]) * proPro[couple[1]])
                                 ]
+                self.relitable[num] += ["|".join(into)] if len(into) > 1 else [""]
             rowsAsNumbers |= {len(self.relitable[0]) - 1}
             self.tables.generatedSpaltenParameter_Tags[
                 len(rowsAsNumbers) - 1
-            ] = frozenset({ST.sternPolygon, ST.galaxie})
+            ] = frozenset({ST.sternPolygon, ST.universum})
             if (
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
