@@ -765,11 +765,21 @@ class Tables:
                     von: int = hineinStr.find("(")
                     substr = hineinStr[von + 1 : von - bis]
                     substrList = substr.split("|")
-                    newNumList: list = []
-                    for maybeZahl in substrList:
-                        if maybeZahl != str(colNum):
-                            newNumList += [maybeZahl]
-                    newNumListStr = "|".join(newNumList)
+                    substrListList = []
+                    for listEl in substrList:
+                        substrListList += [listEl.split("/")]
+                    newNumListList: list = []
+                    for liste in substrListList:
+                        numListPart = []
+                        for listEl in liste:
+                            if abs(int(colNum)) != abs(int(listEl)):
+                                numListPart += [listEl]
+                        newNumListList += [numListPart]
+                    newNumStrList: list = []
+                    for newNumListEl in newNumListList:
+                        newNumStrList += ["/".join(newNumListEl)]
+
+                    newNumListStr = "|".join(newNumStrList)
                     result = "(" + newNumListStr + hineinold[bis - von :]
 
                     result2: list = []
