@@ -751,7 +751,7 @@ class Tables:
             if len(hinein) > 0:
                 hinein3 = []
                 for zellenzeile in hinein:
-                    if zellenzeile[-1] == "-":
+                    if len(zellenzeile) > 0 and zellenzeile[-1] == "-":
                         zellenzeile = zellenzeile[:-1]
                     hinein3 += [zellenzeile]
                 hinein = hinein3
@@ -770,8 +770,7 @@ class Tables:
                         if maybeZahl != str(colNum):
                             newNumList += [maybeZahl]
                     newNumListStr = "|".join(newNumList)
-                    result = (
-                        "(" + newNumListStr + hineinold[bis - von :]
+                    result = "(" + newNumListStr + hineinold[bis - von :]
 
                     result2: list = []
                     result2 += self.tables.getPrepare.cellWork(
