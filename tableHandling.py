@@ -767,10 +767,17 @@ class Tables:
                         if maybeZahl != str(colNum):
                             newNumList += [maybeZahl]
                     newNumListStr = "|".join(newNumList)
-                    result = "(" + newNumListStr + hineinold[bis - von :]
-                    result2 = self.tables.getPrepare.wrapping(
-                        result, self.tables.getPrepare.certaintextwidth
+                    result = (
+                        "(" + newNumListStr + hineinold[bis - von :].replace("-", "")
                     )
+                    result2: list = []
+                    newLines: list = [[]] * self.getPrepare.headingsAmount
+                    for t, cell in enumerate(line):
+                        if t in self.getPrepare.rowsAsNumbers:
+                            result2 += self.tables.getPrepare.cellWork(
+                                result, self.tables.getPrepare.certaintextwidth
+                            )
+
                     return list(result) if result != None else [""]
 
             return hinein

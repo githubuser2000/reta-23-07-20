@@ -521,6 +521,7 @@ class Prepare:
         ) = self.prepare4out_beforeForLoop_SpaltenZeilenBestimmen(
             contentTable, paramLines, paramLinesNot
         )
+        self.headingsAmount = headingsAmount
         old2Rows: tuple = ({}, {})
         reliNumbersBool = False if self.religionNumbers != [] else True
         # x("XIX", rowsAsNumbers)
@@ -601,6 +602,7 @@ class Prepare:
         new2Lines: list = []
         rowToDisplay = 0
         h = 0
+        newLines: list = [[]] * headingsAmount
         for t, cell in enumerate(line):
             if t in rowsAsNumbers:
                 if u == 0:
@@ -617,7 +619,6 @@ class Prepare:
                     )
 
                 rowToDisplay += 1
-                newLines: list = [[]] * headingsAmount
                 certaintextwidth = self.setWidth(rowToDisplay, combiRows)
                 self.certaintextwidth = certaintextwidth
 
