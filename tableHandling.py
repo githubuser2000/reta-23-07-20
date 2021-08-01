@@ -748,40 +748,33 @@ class Tables:
             return KombiTables
 
         def removeOneNumber(self, hinein: list, colNum: int) -> list:
-            hineinNeu: list = []
-            for zeile in hinein:
-                x("UDF1", zeile)
-                x("UDF3", colNum)
-                hineinNeu += [
-                    (
-                        # re.sub(r"([^1]+)" + r"str(colNum)" + r"(.*\).*)", r"", zeile)
-                        re.sub(
-                            r"([^\/])" + str(colNum) + r"([^\/])",
-                            r"\1\2",
-                            re.sub(r"([^\)]+\)).*", r"\1", zeile, count=1),
-                            count=0,
+            if len(hinein) > 0:
+                hineinlen = len(hinein[0])
+                if hineinlen > 0:
+                    hineinNeu: list = []
+                    hineinStr = "".join(hinein)
+                    hineinold = hineinStr
+                    bis: int = hineinStr.find(")")
+                    von: int = hineinStr.find("(")
+                    substr = hineinStr[von + 1 : von - bis]
+                    substrList = substr.split("|")
+                    newNumList: list = []
+                    for maybeZahl in substrList:
+                        if maybeZahl != str(colNum):
+                            newNumList += [maybeZahl]
+                    newNumListStr = "|".join(newNumList)
+                    x = "(" + newNumListStr + hineinold[bis - von :]
+                    chunks, chunk_size = len(x), len(x) // hineinlen
+                    if chunk_size > 0:
+                        result = [
+                            x[i : i + chunk_size] for i in range(0, chunks, chunk_size)
+                        ]
+                        result[len(result) - 1] += " " * (
+                            len(result[0]) - len(result[len(result) - 1])
                         )
-                        .replace("()", "")
-                        .replace("(|", "(")
-                        .replace("|)", ")")
-                        .replace("||", "|")
-                        .replace("+|", "")
-                        .replace("-|", "")
-                        + re.sub(r"[^\)]+\)(.*)", r"\1", zeile, count=1)
-                    ).strip()
-                ]
-                x("UDF5", re.sub(r"([^\)]+).*", r"\1", zeile, count=1))
-                x(
-                    "UDF4",
-                    re.sub(
-                        r"([^\/])" + str(colNum) + r"([^\/])",
-                        r"\1\2",
-                        "(1)",
-                        count=0,
-                    ),
-                )
-                x("UDF2", hineinNeu)
-            return hineinNeu
+                        return result
+
+            return hinein
 
         def tableJoin(
             self,
