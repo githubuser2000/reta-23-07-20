@@ -1,14 +1,14 @@
-      19 text files.
-classified 19 files      19 unique files.                              
+      18 text files.
+classified 18 files      18 unique files.                              
        0 files ignored.
 
-github.com/AlDanial/cloc v 1.88  T=0.07 s (280.3 files/s, 148568.9 lines/s)
+github.com/AlDanial/cloc v 1.88  T=0.06 s (283.5 files/s, 157491.9 lines/s)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-Python                          11            511           1102           7060
+Python                          10            499           1099           7004
 JavaScript                       1             83            114           1028
 Bourne Shell                     7             19             35            118
 -------------------------------------------------------------------------------
-SUM:                            19            613           1251           8206
+SUM:                            18            601           1248           8150
 -------------------------------------------------------------------------------

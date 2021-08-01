@@ -934,11 +934,18 @@ class Tables:
                                 if oneLinePerLine and self.tables.htmlOutputYes:
                                     for z, cell in enumerate(table2[colNum][row]):
                                         table2[colNum][row][z] = "<ul>" + cell + "</ul>"
-                                if oneLinePerLine and self.tables.bbcodeOutputYes:
+                                elif oneLinePerLine and self.tables.bbcodeOutputYes:
                                     for z, cell in enumerate(table2[colNum][row]):
                                         table2[colNum][row][z] = (
                                             "[list]" + cell + "[/list]"
                                         )
+                                elif self.tables.textWidth == 0 and (
+                                    self.tables.getOut.oneTable
+                                    or self.tables.textWidth > shellRowsAmount - 6
+                                ):
+                                    table2[colNum][row] = [
+                                        " | ".join(table2[colNum][row])
+                                    ]
 
             return table2
 
