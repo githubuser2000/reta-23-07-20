@@ -784,6 +784,13 @@ class Concat:
                                 weiter1a += 1
                             contraContra[num] = gegen
                             into += ["gegen " + str(gegen)]
+                        elif num in (11, 5):
+                            if num == 5:
+                                gegen = 2
+                            elif num == 11:
+                                gegen = 3
+                            contraContra[num] = gegen
+                            into += ["gegen " + str(gegen)]
 
                         keinePrimzahl1 = False
 
@@ -799,11 +806,17 @@ class Concat:
                                 weiter2a += 1
                             proPro[num] = pro
                             into += ["für " + str(pro)]
+                        # elif num in (7, 13, 2, 3):
                         elif num in (7, 13):
                             if num == 7:
                                 pro = 2
                             elif num == 13:
                                 pro = 3
+                            """ Ich bin mir nicht genug sicher, nein es ist sogar falsch: """
+                            # elif num == 2:
+                            #    pro = 3
+                            # elif num == 3:
+                            #    pro = 2
                             proPro[num] = pro
                             into += ["für " + str(pro)]
 
@@ -821,11 +834,10 @@ class Concat:
                         menge |= {tuple(couple)}
                     paare = list(menge)
 
-                    # print(str(paare))
                     for couple in paare:
-                        if couple[1] > 6 and primCreativity(couple[1]) == 1:
+                        if primCreativity(couple[1]) == 1:
                             flagX = True
-                        elif couple[0] > 6 and primCreativity(couple[0]) == 1:
+                        elif primCreativity(couple[0]) == 1:
                             flagX = True
                             couple = (couple[1], couple[0])
                         else:
@@ -852,8 +864,14 @@ class Concat:
                                         ]
                                     except KeyError:
                                         pass
-                                elif couldBePrimeNumberPrimzahlkreuz_fuer_aussen(
-                                    couple[1]
+                                elif (
+                                    couldBePrimeNumberPrimzahlkreuz_fuer_aussen(
+                                        couple[1]
+                                    )
+                                    or couple[0] % 2 == 0
+                                    or couple[0] % 3 == 0
+                                    or couple[1] % 2 == 0
+                                    or couple[1] % 3 == 0
                                 ):
                                     try:
                                         into += [
