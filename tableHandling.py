@@ -783,7 +783,7 @@ class Tables:
                         numListPart = []
                         for listEl in liste:
                             # print(str(abs(int(colNum))) + " " + str(abs(int(listEl))))
-                            if abs(int(colNum)) != abs(int(listEl)):
+                            if abs(int(colNum)) != abs(int(listEl)) or len(liste) != 1:
                                 numListPart += [listEl]
                         newNumListList += [numListPart]
                     newNumStrList: list = []
