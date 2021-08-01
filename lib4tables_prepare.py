@@ -480,6 +480,7 @@ class Prepare:
                         numRange2.remove(n)
         if ifNachtraeglichAtAll:
             numRange = set(numRange2)
+
         return numRange
 
     def prepare4out(
@@ -521,6 +522,7 @@ class Prepare:
         ) = self.prepare4out_beforeForLoop_SpaltenZeilenBestimmen(
             contentTable, paramLines, paramLinesNot
         )
+
         self.headingsAmount = headingsAmount
         old2Rows: tuple = ({}, {})
         reliNumbersBool = False if self.religionNumbers != [] else True
@@ -579,6 +581,7 @@ class Prepare:
         finallyDisplayLines = set(finallyDisplayLines3)
         #    maxPartLineLen = 0
         numlen = len(str(finallyDisplayLines3[-1]))
+
         return finallyDisplayLines, headingsAmount, newerTable, numlen, rowsRange
 
     def prepare4out_LoopBody(

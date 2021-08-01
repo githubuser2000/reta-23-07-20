@@ -2916,6 +2916,19 @@ class Program:
         gebrGalSpalten2 = CsvTheirsSpalten[5]
 
         (
+            finallyDisplayLinesEarly,
+            headingsAmountEarly,
+            newerTableEarly,
+            numlenEarly,
+            rowsRangeEarly,
+        ) = self.tables.getPrepare.prepare4out_beforeForLoop_SpaltenZeilenBestimmen(
+            self.relitable, paramLines, paramLinesNot
+        )
+        zeilenliste = list(finallyDisplayLinesEarly)
+        zeilenliste.sort()
+        self.tables.lastLineNumber = zeilenliste[-1]
+
+        (
             self.relitable,
             self.rowsAsNumbers,
         ) = self.tables.getConcat.concatVervielfacheZeile(
@@ -2985,6 +2998,8 @@ class Program:
             self.relitable, self.rowsAsNumbers, couplesX
         )
 
+        self.tables.getMainTable.createSpalteGestirn(self.relitable, self.rowsAsNumbers)
+
         if len(self.rowsOfcombi) > 0:
             (
                 animalsProfessionsTable,
@@ -3042,7 +3057,7 @@ class Program:
             gebrUnivSpalten2,
             gebrGalSpalten2,
         ) = self.bringAllImportantBeginThings(argv)
-        self.tables.getMainTable.createSpalteGestirn(self.relitable, self.rowsAsNumbers)
+
         # x("2943", self.rowsAsNumbers)
         (
             finallyDisplayLines,
@@ -3061,9 +3076,10 @@ class Program:
             gebrUnivSpalten2=gebrUnivSpalten2,
             gebrGalSpalten2=gebrGalSpalten2,
         )
-        # x("2944", self.rowsAsNumbers)
-        # x("2944", self.relitable[0][92])
-        # x("2944", len(self.relitable[0]))
+        # lineslist = list(finallyDisplayLines)
+        # lineslist.sort()
+        # self.tables.lastLineNumber = lineslist[-1]
+
         if len(self.rowsOfcombi) > 0:
             newTable = self.combiTableWorkflow(
                 animalsProfessionsTable,

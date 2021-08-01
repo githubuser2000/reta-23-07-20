@@ -946,7 +946,6 @@ class Tables:
                                     table2[colNum][row] = [
                                         " | ".join(table2[colNum][row])
                                     ]
-
             return table2
 
         def prepare_kombi(

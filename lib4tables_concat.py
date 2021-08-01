@@ -94,7 +94,9 @@ class Concat:
             self.tables.generatedSpaltenParameter_Tags[
                 len(rowsAsNumbers) - 1
             ] = frozenset({ST.sternPolygon, ST.galaxie})
-            for i, cols in enumerate(deepcopy(self.relitable)):
+            for i, cols in enumerate(
+                deepcopy(self.relitable[: self.tables.lastLineNumber + 1])
+            ):
                 primCreativityType = primCreativity(i)
                 self.relitable[i] += [
                     "Evolutions-Züchtungs-Kreativität"
@@ -150,7 +152,9 @@ class Concat:
                     if rownum == 0
                     else frozenset({ST.gleichfoermigesPolygon, ST.universum})
                 )
-                for i, cols in enumerate(deepcopy(self.relitable)):
+                for i, cols in enumerate(
+                    deepcopy(self.relitable[: self.tables.lastLineNumber + 1])
+                ):
                     moonTypesOf1Num = moonNumber(i)
                     if i == 0:
                         into = [rowheading]
@@ -211,7 +215,9 @@ class Concat:
         spaltenToVervielfache: set = rowsAsNumbers & {90, 19}
         for s in spaltenToVervielfache:
             store = {}
-            for z, zeileninhalt in enumerate(relitable[2:], 2):
+            for z, zeileninhalt in enumerate(
+                relitable[2 : self.tables.lastLineNumber + 1], 2
+            ):
                 content = zeileninhalt[s]
                 if len(content.strip()) > 0:
                     store[(z, s)] = content  # interessant
@@ -236,7 +242,9 @@ class Concat:
                     except (IndexError, KeyError):
                         multis[ergebnis] = [coords[0]]  # interessant
             # x("iiii", store)
-            for z, zeileninhalt in enumerate(relitable[2:], 2):
+            for z, zeileninhalt in enumerate(
+                relitable[2 : self.tables.lastLineNumber + 1], 2
+            ):
                 # alle spalten und zeilen
                 xx = False
 
@@ -560,7 +568,9 @@ class Concat:
 
             # #x("d5g", vorkommenVielfacher)
             vorkommenVielfacher_B: dict = {}
-            for i, zeileninhalte in enumerate(reliTableCopy[1:], 1):
+            for i, zeileninhalte in enumerate(
+                reliTableCopy[1 : self.tables.lastLineNumber + 1], 1
+            ):
                 for distanceFromLine in distances:
                     prepareModalIntoTable(
                         distanceFromLine,
@@ -571,7 +581,9 @@ class Concat:
                         vorkommenVielfacher_B,
                     )
 
-            for i, zeileninhalte in enumerate(reliTableCopy[1:], 1):
+            for i, zeileninhalte in enumerate(
+                reliTableCopy[1 : self.tables.lastLineNumber + 1], 1
+            ):
                 # #x("_ö_", vorkommenVielfacher_B)
                 for distanceFromLine in distances:
                     ModalLogikIntoTable(
@@ -584,7 +596,7 @@ class Concat:
                         zeileninhalte[4],
                     ]
 
-            for w, cols in enumerate(reliTableCopy):
+            for w, cols in enumerate(reliTableCopy[: self.tables.lastLineNumber + 1]):
                 if self.tables.htmlOutputYes and "<li>" in into[w]:
                     into[w] = ["<ul>"] + into[w] + ["</ul>"]
                 elif self.tables.bbcodeOutputYes and "[*]" in into[w]:
@@ -706,72 +718,6 @@ class Concat:
         # x("GHJ2", dict(result2))
         return result
 
-    """
-    def convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-        self, fracs: set, gleichf=False
-    ) -> defaultdict:
-        result: defaultdict = defaultdict(set)
-        if not gleichf:
-            for frac in tuple(fracs):
-                for zusatzMul in range(1, 1025):
-                    paar = (frac, Fraction(frac.denominator) * zusatzMul)
-                    mul = paar[0] * paar[1]
-                    mulr = round(mul)
-                    assert mulr == mul
-                    if mul > 1024:
-                        break
-                    result[int(mul)] |= {paar}
-
-            for frac in tuple(fracs):
-                for zusatzMul in range(1024, 0, -1):
-                    faktor = Fraction(frac.denominator) / zusatzMul
-                    if (faktor in fracs) or faktor.numerator == 1:
-                        paar = (frac, faktor)
-                        x("GGG", paar)
-                        mul = paar[0] * paar[1]
-                        mulr = round(mul)
-                        if mul > 1024:
-                            break
-                        if mulr == mul:
-                            result[int(mul)] |= {paar}
-            x("IIL", result)
-
-        else:
-            for frac in tuple(fracs):
-                for zusatzDiv in range(1, 1025):
-                    x("HDF1", frac)
-                    paar = (frac, 1 / Fraction(frac.numerator) / zusatzDiv)
-                    x("HDF2", paar)
-                    x("HDF3", paar[0] * paar[1])
-                    div = 1 / (paar[1] * paar[0])
-                    x("HDF4", div)
-                    divr = round(div)
-                    assert divr == div
-                    if div > 1024:
-                        break
-                    result[int(divr)] |= {paar}
-
-            for frac in tuple(fracs):
-                for zusatzDiv in range(1, 1025):
-                    faktor = (1 / frac) / zusatzDiv
-                    if faktor in fracs or faktor.numerator == 1:
-                        paar = (frac, faktor)
-                        x("SOV", paar)
-                        mul = 1 / (paar[1] * paar[0])
-                        mulr = round(mul)
-                        assert mulr == mul
-                        if 1 / mul > 1024:
-                            break
-                        result[int(mulr)] |= {paar}
-
-        result2: defaultdict = defaultdict(list)
-        for key, value in result.items():
-            result2[key] = list(value)
-
-        # x("GHJ2", dict(result2))
-        return result2
-    """
-
     def combineDicts(self, a: defaultdict, b: defaultdict) -> defaultdict:
         e: defaultdict = defaultdict(set)
 
@@ -813,7 +759,9 @@ class Concat:
 
         if "primzahlkreuzprocontra" in generatedBefehle:
 
-            for num, cols in enumerate(deepcopy(self.relitable)):
+            for num, cols in enumerate(
+                deepcopy(self.relitable[: self.tables.lastLineNumber + 1])
+            ):
                 if num == 0:
                     into: list = [
                         "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
@@ -1119,7 +1067,7 @@ class Concat:
                 "gleichförmige Polygone": [],
             }
 
-            relitableCopy = deepcopy(self.relitable)
+            relitableCopy = deepcopy(self.relitable[: self.tables.lastLineNumber + 1])
             kombisNamen: tuple = (
                 "Motiv -> Motiv",
                 "Motiv -> Strukur",
