@@ -328,12 +328,14 @@ class Tables:
                 return maxCellTextLen
 
             def determineRowWidth(i, maxCellTextLen):
+                # print(str(i) + " " + str(self.breiten))
                 if i < len(self.breiten):
                     # if i + (1 if self.nummerierung else 0) <= len(self.breiten):
                     certaintextwidth = self.breiten[i]
                 else:
                     certaintextwidth = self.textwidth
-                if certaintextwidth > maxCellTextLen[i]:
+                # print(str(maxCellTextLen[i]))
+                if certaintextwidth > maxCellTextLen[i] or certaintextwidth == 0:
                     i_textwidth = maxCellTextLen[i]
                 else:
                     i_textwidth = certaintextwidth
