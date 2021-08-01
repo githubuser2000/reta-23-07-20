@@ -771,14 +771,16 @@ class Tables:
                         "(" + newNumListStr + hineinold[bis - von :].replace("-", "")
                     )
                     result2: list = []
-                    newLines: list = [[]] * self.getPrepare.headingsAmount
+                    newLines: list = [[]] * self.tables.getPrepare.headingsAmount
                     for t, cell in enumerate(line):
                         if t in self.getPrepare.rowsAsNumbers:
                             result2 += self.tables.getPrepare.cellWork(
-                                result, self.tables.getPrepare.certaintextwidth
+                                result,
+                                newLines,
+                                self.tables.getPrepare.certaintextwidth,
                             )
 
-                    return list(result) if result != None else [""]
+                    return result2
 
             return hinein
 

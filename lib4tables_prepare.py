@@ -747,6 +747,8 @@ class Prepare:
             for k, cellInCells in enumerate(cell2):
                 if k < len(newLines):
                     newLines[k] += [cellInCells]
+                    print(str(k))
+                    print(str(newLines[k]))
                 else:
                     pass
         return newLines[t]
