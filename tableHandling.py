@@ -799,10 +799,14 @@ class Tables:
                         result = hineinold[bis - von + 1 :]
 
                     result2: list = []
-                    result2 += self.tables.getPrepare.cellWork(
-                        result,
-                        self.tables.getPrepare.certaintextwidth,
-                    )
+                    # print(str(self.tables.textWidth))
+                    if self.tables.textWidth != 0:
+                        result2 += self.tables.getPrepare.cellWork(
+                            result,
+                            self.tables.getPrepare.certaintextwidth,
+                        )
+                    else:
+                        result2 = [result.replace("\n", "; ")]
 
                     return result2
 
