@@ -749,7 +749,7 @@ class Program:
                     "dertierkreiszeichen",
                     "babylon",
                 ),
-                {0, 36},
+                {0, 36, 207},
             ),
             (
                 Program.ParametersMain.religionen,
