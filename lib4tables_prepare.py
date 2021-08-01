@@ -623,7 +623,7 @@ class Prepare:
                 self.certaintextwidth = certaintextwidth
 
                 # x("AAAE", cell)
-                into = self.cellWork(cell, newLines, certaintextwidth, t)
+                into = self.cellWork(cell, certaintextwidth)
                 if into != [""] or True:
                     new2Lines += [into]
                 if u == 0:
@@ -712,7 +712,7 @@ class Prepare:
             except KeyError:
                 pass
 
-    def cellWork(self, cell: str, newLines, certaintextwidth: int, t: int) -> list:
+    def cellWork(self, cell: str, certaintextwidth: int) -> list:
         """aus String mach Liste aus Strings mit korrektem Zeilenumbruch
 
         @type cell: str
@@ -744,11 +744,7 @@ class Prepare:
                 isItNone = (rest[certaintextwidth:],)
         else:
             cell2 += (rest[0:certaintextwidth],)
+            newLines: list = []
             for k, cellInCells in enumerate(cell2):
-                if k < len(newLines):
-                    newLines[k] += [cellInCells]
-                    print(str(newLines[k]))
-                else:
-                    pass
-            print(" ||| " + str(newLines[t]))
-        return newLines[t]
+                newLines += [cellInCells]
+        return newLines

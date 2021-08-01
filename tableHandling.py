@@ -770,15 +770,12 @@ class Tables:
                     result = (
                         "(" + newNumListStr + hineinold[bis - von :].replace("-", "")
                     )
+
                     result2: list = []
-                    newLines: list = [[]] * self.tables.getPrepare.headingsAmount
-                    for t, cell in enumerate(line):
-                        if t in self.getPrepare.rowsAsNumbers:
-                            result2 += self.tables.getPrepare.cellWork(
-                                result,
-                                newLines,
-                                self.tables.getPrepare.certaintextwidth,
-                            )
+                    result2 += self.tables.getPrepare.cellWork(
+                        result,
+                        self.tables.getPrepare.certaintextwidth,
+                    )
 
                     return result2
 
