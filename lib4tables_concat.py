@@ -799,6 +799,13 @@ class Concat:
                                 weiter2a += 1
                             proPro[num] = pro
                             into += ["für " + str(pro)]
+                        elif num in (7, 13):
+                            if num == 7:
+                                pro = 2
+                            elif num == 13:
+                                pro = 3
+                            proPro[num] = pro
+                            into += ["für " + str(pro)]
 
                         keinePrimzahl2 = False
                 else:
