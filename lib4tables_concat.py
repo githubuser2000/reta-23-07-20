@@ -1624,7 +1624,7 @@ class Concat:
         # for i, row in enumerate(relitable[2:], 2):
         #    moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
         #    neue2KoordNeue2Vorwoerter: list = []
-        for i, row in enumerate(relitable[2:], 2):
+        for i, row in enumerate(relitable[2 : self.tables.lastLineNumber + 1], 2):
             self.gebrRatEtwaSchonMalDabeiGewesen = set()
             moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
             neue2KoordNeue2Vorwoerter: list = []
@@ -2087,7 +2087,7 @@ class Concat:
             self.primAmounts = 0
             self.oldPrimAmounts = 0
             self.lastPrimAnswers: dict = {}
-            for i, cols in enumerate(relitable):
+            for i, cols in enumerate(relitable[: self.tables.lastLineNumber + 1]):
                 into = (
                     [""]
                     if i != 0
