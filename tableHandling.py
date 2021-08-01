@@ -756,18 +756,28 @@ class Tables:
                     hinein3 += [zellenzeile]
                 hinein = hinein3
 
-                hineinlen = len(hinein[0])
-                if hineinlen > 0:
-                    hineinNeu: list = []
-                    hineinStr = "".join(hinein)
-                    hineinold = hineinStr
-                    bis: int = hineinStr.find(")")
-                    von: int = hineinStr.find("(")
-                    substr = hineinStr[von + 1 : von - bis]
-                    substrList = substr.split("|")
+                hineinNeu: list = []
+                hineinStr = "".join(hinein)
+                hineinold = hineinStr
+                bis: int = hineinStr.find(") ")
+                von: int = hineinStr.find("(")
+                substr = hineinStr[von + 1 : bis - von]
+                print(hineinStr)
+                print(str(colNum))
+                substrListA = substr.split("|")
+                if substrListA != [""]:
+                    substrList = []
+                    print(substrListA)
+                    for el in substrListA:
+                        if el[0] == "(":
+                            substrList += [el[1:-1]]
+                        else:
+                            substrList += [el]
+                    print(substrList)
                     substrListList = []
                     for listEl in substrList:
                         substrListList += [listEl.split("/")]
+                    print(substrListList)
                     newNumListList: list = []
                     for liste in substrListList:
                         numListPart = []
