@@ -748,16 +748,17 @@ class Tables:
             return KombiTables
 
         def removeOneNumber(self, hinein: list, colNum: int) -> list:
-            if len(hinein) > 0:
+            # print(str(self.tables.textWidth))
+            if len(hinein) > 0 and self.tables.textwidth == 0:
+                hinein4 = deepcopy(hinein)
                 hinein3 = []
                 for zellenzeile in hinein:
                     if len(zellenzeile) > 0 and zellenzeile[-1] == "-":
                         zellenzeile = zellenzeile[:-1]
                     hinein3 += [zellenzeile]
-                hinein = hinein3
 
                 hineinNeu: list = []
-                hineinStr = "".join(hinein)
+                hineinStr = "".join(hinein3)
                 hineinold = hineinStr
                 bis: int = hineinStr.find(") ")
                 von: int = hineinStr.find("(")
@@ -769,7 +770,7 @@ class Tables:
                     substrList = []
                     # print(substrListA)
                     for el in substrListA:
-                        if el[0] == "(":
+                        if len(el) > 0 and el[0] == "(":
                             substrList += [el[1:-1]]
                         else:
                             substrList += [el]
@@ -782,9 +783,15 @@ class Tables:
                     for liste in substrListList:
                         numListPart = []
                         for listEl in liste:
-                            # print(str(abs(int(colNum))) + " " + str(abs(int(listEl))))
-                            if abs(int(colNum)) != abs(int(listEl)) or len(liste) != 1:
+                            # print(str(((colNum))) + " " + str(((listEl))))
+                            assert len(listEl.strip()) != 0
+                            if (
+                                # len(listEl.strip()) == 0 or
+                                abs(int(colNum)) != abs(int(listEl))
+                                or len(liste) != 1
+                            ):
                                 numListPart += [listEl]
+
                         newNumListList += [numListPart]
                     newNumStrList: list = []
                     for newNumListEl in newNumListList:
