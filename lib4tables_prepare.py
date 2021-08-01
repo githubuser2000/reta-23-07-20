@@ -6,8 +6,8 @@ from enum import Enum
 from typing import Iterable, Union
 
 import lib4tables_Enum
-from center import (alxp, cliout, getTextWrapThings, infoLog, output,
-                    Multiplikationen, re, x)
+from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
+                    output, re, x)
 from lib4tables import isPrimMultiple, moonNumber
 from lib4tables_Enum import ST
 
@@ -619,6 +619,8 @@ class Prepare:
                 rowToDisplay += 1
                 newLines: list = [[]] * headingsAmount
                 certaintextwidth = self.setWidth(rowToDisplay, combiRows)
+                self.certaintextwidth = certaintextwidth
+
                 # x("AAAE", cell)
                 into = self.cellWork(cell, newLines, certaintextwidth, t)
                 if into != [""] or True:

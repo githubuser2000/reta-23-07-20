@@ -749,6 +749,10 @@ class Tables:
 
         def removeOneNumber(self, hinein: list, colNum: int) -> list:
             if len(hinein) > 0:
+                print("A")
+                for a in hinein:
+                    print(str(len(a)))
+                print("B")
                 hineinlen = len(hinein[0])
                 if hineinlen > 0:
                     hineinNeu: list = []
@@ -763,16 +767,10 @@ class Tables:
                         if maybeZahl != str(colNum):
                             newNumList += [maybeZahl]
                     newNumListStr = "|".join(newNumList)
-                    x = "(" + newNumListStr + hineinold[bis - von :]
-                    chunks, chunk_size = len(x), len(x) // hineinlen
-                    if chunk_size > 0:
-                        result = [
-                            x[i : i + chunk_size] for i in range(0, chunks, chunk_size)
-                        ]
-                        result[len(result) - 1] += " " * (
-                            len(result[0]) - len(result[len(result) - 1])
-                        )
-                        return result
+                    result = "(" + newNumListStr + hineinold[bis - von :]
+                    return self.tables.getPrepare.wrapping(
+                        result, self.tables.getPrepare.certaintextwidth
+                    )
 
             return hinein
 
