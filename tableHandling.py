@@ -749,10 +749,10 @@ class Tables:
 
         def removeOneNumber(self, hinein: list, colNum: int) -> list:
             if len(hinein) > 0:
-                print("A")
-                for a in hinein:
-                    print(str(len(a)))
-                print("B")
+                # print("A")
+                # for a in hinein:
+                #    print(str(len(a)))
+                # print("B")
                 hineinlen = len(hinein[0])
                 if hineinlen > 0:
                     hineinNeu: list = []
@@ -768,9 +768,10 @@ class Tables:
                             newNumList += [maybeZahl]
                     newNumListStr = "|".join(newNumList)
                     result = "(" + newNumListStr + hineinold[bis - von :]
-                    return self.tables.getPrepare.wrapping(
+                    result2 = self.tables.getPrepare.wrapping(
                         result, self.tables.getPrepare.certaintextwidth
                     )
+                    return list(result) if result != None else [""]
 
             return hinein
 
