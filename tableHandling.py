@@ -790,8 +790,11 @@ class Tables:
                     for newNumListEl in newNumListList:
                         newNumStrList += ["/".join(newNumListEl)]
 
-                    newNumListStr = "|".join(newNumStrList)
-                    result = "(" + newNumListStr + hineinold[bis - von :]
+                    if len(newNumStrList) > 0:
+                        newNumListStr = "|".join(newNumStrList)
+                        result = "(" + newNumListStr + hineinold[bis - von :]
+                    else:
+                        result = hineinold[bis - von + 1 :]
 
                     result2: list = []
                     result2 += self.tables.getPrepare.cellWork(
