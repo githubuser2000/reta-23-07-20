@@ -823,24 +823,52 @@ class Concat:
 
                     # print(str(paare))
                     for couple in paare:
-                        if couple[1] > 16 and primCreativity(couple[1]) == 1:
+                        if couple[1] > 6 and primCreativity(couple[1]) == 1:
                             flagX = True
-                        elif couple[0] > 16 and primCreativity(couple[0]) == 1:
+                        elif couple[0] > 6 and primCreativity(couple[0]) == 1:
                             flagX = True
                             couple = (couple[1], couple[0])
                         else:
                             flagX = False
 
                         if flagX:
-                            if couldBePrimeNumberPrimzahlkreuz_fuer_innen(couple[1]):
-                                into += [
-                                    "gegen "
-                                    + str(int(couple[0]) * contraContra[couple[1]])
-                                ]
-                            elif couldBePrimeNumberPrimzahlkreuz_fuer_aussen(couple[1]):
-                                into += [
-                                    "pro " + str(int(couple[0]) * proPro[couple[1]])
-                                ]
+                            for firstOrSecond in (
+                                (1, 0) if couple[0] != couple[1] else (1,)
+                            ):
+                                if couldBePrimeNumberPrimzahlkreuz_fuer_innen(
+                                    couple[firstOrSecond]
+                                ):
+                                    try:
+                                        into += [
+                                            "gegen "
+                                            + str(
+                                                int(
+                                                    couple[
+                                                        0 if firstOrSecond == 1 else 1
+                                                    ]
+                                                )
+                                                * contraContra[couple[firstOrSecond]]
+                                            )
+                                        ]
+                                    except KeyError:
+                                        pass
+                                elif couldBePrimeNumberPrimzahlkreuz_fuer_aussen(
+                                    couple[1]
+                                ):
+                                    try:
+                                        into += [
+                                            "pro "
+                                            + str(
+                                                int(
+                                                    couple[
+                                                        0 if firstOrSecond == 1 else 0
+                                                    ]
+                                                )
+                                                * proPro[couple[firstOrSecond]]
+                                            )
+                                        ]
+                                    except KeyError:
+                                        pass
 
                 text = cols[206]
                 if len(text) > 0:
