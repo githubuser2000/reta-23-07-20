@@ -762,26 +762,27 @@ class Tables:
                 bis: int = hineinStr.find(") ")
                 von: int = hineinStr.find("(")
                 substr = hineinStr[von + 1 : bis - von]
-                print(hineinStr)
-                print(str(colNum))
+                # print(hineinStr)
+                # print(str(colNum))
                 substrListA = substr.split("|")
                 if substrListA != [""]:
                     substrList = []
-                    print(substrListA)
+                    # print(substrListA)
                     for el in substrListA:
                         if el[0] == "(":
                             substrList += [el[1:-1]]
                         else:
                             substrList += [el]
-                    print(substrList)
+                    # print(substrList)
                     substrListList = []
                     for listEl in substrList:
                         substrListList += [listEl.split("/")]
-                    print(substrListList)
+                    # print(substrListList)
                     newNumListList: list = []
                     for liste in substrListList:
                         numListPart = []
                         for listEl in liste:
+                            print(str(abs(int(colNum))) + " " + str(abs(int(listEl))))
                             if abs(int(colNum)) != abs(int(listEl)):
                                 numListPart += [listEl]
                         newNumListList += [numListPart]
@@ -880,8 +881,8 @@ class Tables:
                                                 rowsOfcombi.index(subRowNum + 1)
                                             ]
                                         )
-                                        hinein = self.removeOneNumber(hinein, colNum)
-                                        x("VSG1", hinein)
+                                        hinein = self.removeOneNumber(hinein, reliNum)
+                                        # print(str(reliNum))
                                         if oneLinePerLine:
                                             if (
                                                 len(hinein) > 0
