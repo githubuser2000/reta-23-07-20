@@ -335,7 +335,11 @@ class Tables:
                 else:
                     certaintextwidth = self.textwidth
                 # print(str(maxCellTextLen[i]))
-                if certaintextwidth > maxCellTextLen[i] or certaintextwidth == 0:
+                if certaintextwidth > maxCellTextLen[i] or (
+                    certaintextwidth == 0
+                    and not self.tables.bbcodeOutputYes
+                    and not self.tables.htmlOutputYes
+                ):
                     i_textwidth = maxCellTextLen[i]
                 else:
                     i_textwidth = certaintextwidth
