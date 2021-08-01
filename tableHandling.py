@@ -1109,7 +1109,7 @@ class Tables:
                                                 into2 = [
                                                     (
                                                         "Wichtigstes_zum_gedanklich_einordnen",
-                                                        "Wichtigste",
+                                                        "Zweitwichtigste",
                                                     )
                                                 ]
                                             elif elementParameter in [

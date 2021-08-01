@@ -710,7 +710,7 @@ class Program:
             (
                 Program.ParametersMain.wichtigste2,
                 ("Wichtigste", "wichtigstes"),
-                {0, 1, 2, 36, 37},
+                {0, 1, 2, 36, 37, 207},
             ),
             (
                 Program.ParametersMain.wichtigste2,
