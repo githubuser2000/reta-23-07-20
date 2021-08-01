@@ -749,10 +749,13 @@ class Tables:
 
         def removeOneNumber(self, hinein: list, colNum: int) -> list:
             if len(hinein) > 0:
-                # print("A")
-                # for a in hinein:
-                #    print(str(len(a)))
-                # print("B")
+                hinein3 = []
+                for zellenzeile in hinein:
+                    if zellenzeile[-1] == "-":
+                        zellenzeile = zellenzeile[:-1]
+                    hinein3 += [zellenzeile]
+                hinein = hinein3
+
                 hineinlen = len(hinein[0])
                 if hineinlen > 0:
                     hineinNeu: list = []
@@ -768,8 +771,7 @@ class Tables:
                             newNumList += [maybeZahl]
                     newNumListStr = "|".join(newNumList)
                     result = (
-                        "(" + newNumListStr + hineinold[bis - von :].replace("-", "")
-                    )
+                        "(" + newNumListStr + hineinold[bis - von :]
 
                     result2: list = []
                     result2 += self.tables.getPrepare.cellWork(
