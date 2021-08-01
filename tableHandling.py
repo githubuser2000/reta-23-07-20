@@ -782,16 +782,18 @@ class Tables:
                     for liste in substrListList:
                         numListPart = []
                         for listEl in liste:
-                            print(str(abs(int(colNum))) + " " + str(abs(int(listEl))))
+                            # print(str(abs(int(colNum))) + " " + str(abs(int(listEl))))
                             if abs(int(colNum)) != abs(int(listEl)):
                                 numListPart += [listEl]
                         newNumListList += [numListPart]
                     newNumStrList: list = []
                     for newNumListEl in newNumListList:
-                        newNumStrList += ["/".join(newNumListEl)]
+                        into = "/".join(newNumListEl)
+                        if len(into) > 0:
+                            newNumStrList += [into]
 
+                    newNumListStr = "|".join(newNumStrList)
                     if len(newNumStrList) > 0:
-                        newNumListStr = "|".join(newNumStrList)
                         result = "(" + newNumListStr + hineinold[bis - von :]
                     else:
                         result = hineinold[bis - von + 1 :]
