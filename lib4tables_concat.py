@@ -882,12 +882,16 @@ class Concat:
                 try:
                     # print(str(num))
                     text = cols[206].split("|")[1]
+                except (KeyError, TypeError, IndexError):
+                    text = ""
+
+                try:
                     if len(text) > 0:
                         into += [text]
                     self.relitable[num] += (
                         [" | ".join(tuple(set(into)))] if len(into) > 0 else [""]
                     )
-                except (KeyError, TypeError, IndexError):
+                except (KeyError, TypeError):
                     self.relitable[num] += ["-"]
 
             rowsAsNumbers |= {len(self.relitable[0]) - 1, len(self.relitable[0])}
@@ -976,6 +980,20 @@ class Concat:
                     dahinter2len: int = len(dahinter2)
 
                     kette2 = [
+                        "[list]"
+                        if self.tables.bbcodeOutputYes
+                        else "<ul>"
+                        if self.tables.htmlOutputYes
+                        else "",
+                        (
+                            "[*]"
+                            if self.tables.bbcodeOutputYes
+                            else "<li>"
+                            if self.tables.htmlOutputYes
+                            else ""
+                        )
+                        if len(pro2) > 0
+                        else "",
                         "pro dieser Zahl sind: "
                         if len(pro2) > 1
                         else "pro dieser Zahl ist "
@@ -985,7 +1003,15 @@ class Concat:
                         " (" if dahinter1len > 0 else "",
                         dahinter1,
                         ")" if dahinter1len > 0 else "",
-                        " | " if len(pro2) > 0 and len(contra2) > 0 else "",
+                        (
+                            "<li>"
+                            if self.tables.htmlOutputYes and len(contra2) > 0
+                            else "[*]"
+                            if self.tables.bbcodeOutputYes and len(contra2) > 0
+                            else " | "
+                            if len(pro2) > 0 and len(contra2) > 0
+                            else ""
+                        ),
                         " contra dieser Zahl sind: "
                         if len(contra2) > 1
                         else " contra dieser Zahl ist "
@@ -995,6 +1021,14 @@ class Concat:
                         " (" if dahinter2len > 0 else "",
                         dahinter2,
                         ")" if dahinter2len > 0 else "",
+                        "</li>"
+                        if self.tables.htmlOutputYes and len(contra2) > 0
+                        else "",
+                        "[/list]"
+                        if self.tables.bbcodeOutputYes
+                        else "</li></ul>"
+                        if self.tables.htmlOutputYes
+                        else "",
                     ]
                 else:
                     kette2 = [
