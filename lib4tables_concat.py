@@ -954,7 +954,7 @@ class Concat:
                         if len(pro2) == 1
                         else "",
                         str(pro2)[1:-1],
-                        " | ",
+                        " | " if len(pro2) > 0 and len(contra2) > 0 else "",
                         " contra dieser Zahl sind "
                         if len(contra2) > 1
                         else " contra dieser Zahl ist "
@@ -963,7 +963,9 @@ class Concat:
                         str(contra2)[1:-1],
                     )
                 else:
-                    kette2 = ("",)
+                    kette2 = [
+                        "-",
+                    ]
 
                 self.relitable[num] += ["".join(kette2)]
 
