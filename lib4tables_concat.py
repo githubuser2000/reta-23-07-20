@@ -1098,7 +1098,7 @@ class Concat:
                             if self.tables.htmlOutputYes
                             else " ("
                         )
-                        if dahinter1len > 0
+                        if dahinter2len > 0
                         else "",
                         dahinter2,
                         (
