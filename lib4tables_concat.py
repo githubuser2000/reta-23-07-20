@@ -759,12 +759,11 @@ class Concat:
 
         if "primzahlkreuzprocontra" in generatedBefehle:
             dreli = deepcopy(self.relitable)
+            headline: str = "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
 
             for num, cols in enumerate(dreli):
                 if num == 0:
-                    into: list = [
-                        "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
-                    ]
+                    into: list = [headline]
                 else:
                     into: list = []
                 if couldBePrimeNumberPrimzahlkreuz(num):
@@ -945,9 +944,13 @@ class Concat:
                     contra2 = list(reverseContra[num])
                 except KeyError:
                     contra2 = []
-                if contra2 != [] or pro2 != []:
 
-                    kette2 = (
+                if num == 0:
+                    print(str(headline))
+                    kette2 = [headline]
+                elif contra2 != [] or pro2 != []:
+
+                    kette2 = [
                         "pro dieser Zahl sind: "
                         if len(pro2) > 1
                         else "pro dieser Zahl ist "
@@ -961,7 +964,7 @@ class Concat:
                         if len(contra2) == 1
                         else "",
                         str(contra2)[1:-1],
-                    )
+                    ]
                 else:
                     kette2 = [
                         "-",
