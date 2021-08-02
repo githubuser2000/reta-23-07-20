@@ -794,6 +794,14 @@ class Concat:
 
                         keinePrimzahl1 = False
 
+                    if num in (2, 3):
+                        if num == 2:
+                            pro = 3
+                        elif num == 3:
+                            pro = 2
+                        proPro[num] = pro
+                        into += ["pro " + str(pro)]
+
                     if couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num):
                         # print(str(num) + ": pro außen")
                         list2 += [num]
@@ -805,20 +813,14 @@ class Concat:
                                 pro = list2[weiter2a]
                                 weiter2a += 1
                             proPro[num] = pro
-                            into += ["für " + str(pro)]
-                        # elif num in (7, 13, 2, 3):
+                            into += ["pro " + str(pro)]
                         elif num in (7, 13):
                             if num == 7:
                                 pro = 2
                             elif num == 13:
                                 pro = 3
-                            """ Ich bin mir nicht genug sicher, nein es ist sogar falsch: """
-                            # elif num == 2:
-                            #    pro = 3
-                            # elif num == 3:
-                            #    pro = 2
                             proPro[num] = pro
-                            into += ["für " + str(pro)]
+                            into += ["pro " + str(pro)]
 
                         keinePrimzahl2 = False
                 else:
@@ -891,7 +893,9 @@ class Concat:
                 text = cols[206]
                 if len(text) > 0:
                     into += [text]
-                self.relitable[num] += [" | ".join(into)] if len(into) > 0 else [""]
+                self.relitable[num] += (
+                    [" | ".join(tuple(set(into)))] if len(into) > 0 else [""]
+                )
 
             rowsAsNumbers |= {len(self.relitable[0]) - 1}
             self.tables.generatedSpaltenParameter_Tags[
