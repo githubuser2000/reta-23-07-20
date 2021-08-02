@@ -951,7 +951,7 @@ class Concat:
                 except KeyError:
                     kette2 = tuple()
 
-                self.relitable[num] += "".join(kette2)
+                self.relitable[num] += ["".join(kette2)]
 
         return self.relitable, rowsAsNumbers
 
