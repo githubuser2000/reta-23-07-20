@@ -761,7 +761,7 @@ class Concat:
             dreli = deepcopy(self.relitable)
             headline: str = "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
 
-            for num, cols in enumerate(dreli):
+            for num, cols in zip_longest(range(2, 10100), dreli):
                 if num == 0:
                     into: list = [headline]
                 else:
@@ -888,14 +888,16 @@ class Concat:
                                     except KeyError:
                                         pass
 
-                text = cols[206]
-                if len(text) > 0:
-                    into += [text]
-                self.relitable[num] += (
-                    [" | ".join(tuple(set(into)))] if len(into) > 0 else [""]
-                )
+                if self.tables.lastLineNumber >= num:
+                    print(str(num))
+                    text = cols[206]
+                    if len(text) > 0:
+                        into += [text]
+                    self.relitable[num] += (
+                        [" | ".join(tuple(set(into)))] if len(into) > 0 else [""]
+                    )
 
-            rowsAsNumbers |= {len(self.relitable[0]) - 1, len(self.relitable[0])}
+            rowsAsNumbers |= {len(self.relitable[0]) + 1, len(self.relitable[0])}
             self.tables.generatedSpaltenParameter_Tags[
                 len(rowsAsNumbers) - 1
             ] = frozenset({ST.sternPolygon, ST.universum})
