@@ -954,7 +954,8 @@ class Concat:
                         if len(pro2) == 1
                         else "",
                         str(pro2)[1:-1],
-                        " | " + " contra dieser Zahl sind "
+                        " | ",
+                        " contra dieser Zahl sind "
                         if len(contra2) > 1
                         else " contra dieser Zahl ist "
                         if len(contra2) == 1
