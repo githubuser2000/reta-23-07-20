@@ -886,56 +886,63 @@ class Concat:
                     text = cols[206].split("|")[1]
                 except (KeyError, TypeError, IndexError):
                     text = ""
-                if True:
-                    if len(text) > 0:
-                        into += [text]
+                if len(text) > 0:
+                    into += [text]
 
-                    if self.tables.bbcodeOutputYes:
-                        into = [
-                            "<ul>",
-                            "<li>" if len(into1) > 0 else "",
-                            ", ".join(into1),
-                            "</li>" if len(into1) > 0 else "",
-                            "<li>" if len(into2) > 0 else "",
-                            ", ".join(into2),
-                            "</li>" if len(into2) > 0 else "",
-                            "<li>" if len(into) > 0 else "",
-                            ", ".join(into),
-                            "</li>" if len(into) > 0 else "",
-                            "</ul>",
-                        ]
-                    elif self.tables.bbcodeOutputYes:
-                        into = [
-                            "[list]",
-                            "[*]" if len(into1) > 0 else "",
-                            ", ".join(into1),
-                            "[*]" if len(into2) > 0 else "",
-                            ", ".join(into2),
-                            "[*]" if len(into) > 0 else "",
-                            ", ".join(into),
-                            "[/list]",
-                        ]
-                    else:
-                        into = [", ".join(into1), ", ".join(into2), ", ".join(into)]
-                    intoB = []
-                    for intoneu in into:
-                        if len(intoneu) > 0:
-                            intoB += [intoneu]
+                into1 = list(set(into1))
+                into2 = list(set(into2))
 
-                    self.relitable[num] += (
-                        [
-                            (
-                                " | "
-                                if not self.tables.htmlOutputYes
-                                and not self.tables.bbcodeOutputYes
-                                else ""
-                            ).join(tuple(set(intoB)))
-                        ]
-                        if len(into) > 0
-                        else [""]
-                    )
-                # except (KeyError, TypeError):
-                #    self.relitable[num] += ["-"]
+                if self.tables.htmlOutputYes:
+                    into = [
+                        "<ul>",
+                        "<li>" if len(into1) > 0 else "",
+                        ", ".join(into1),
+                        "</li>" if len(into1) > 0 else "",
+                        "<li>" if len(into2) > 0 else "",
+                        ", ".join(into2),
+                        "</li>" if len(into2) > 0 else "",
+                        "<li>" if len(into) > 0 else "",
+                        ", ".join(into),
+                        "</li>" if len(into) > 0 else "",
+                        "</ul>",
+                    ]
+                elif self.tables.bbcodeOutputYes:
+                    # print(str(len(into1)))
+                    # print(str(len(into2)))
+                    # print(str(len(into)))
+                    into = [
+                        "[list]",
+                        "[*]" if len(into1) > 0 else "",
+                        ", ".join(into1),
+                        "[*]" if len(into2) > 0 else "",
+                        ", ".join(into2),
+                        "[*]" if len(into) > 0 else "",
+                        ", ".join(into),
+                        "[/list]",
+                    ]
+                    # print(str(into))
+                else:
+                    into = [", ".join(into1), ", ".join(into2), ", ".join(into)]
+                intoB = []
+                for intoneu in into:
+                    if len(intoneu) > 0:
+                        intoB += [intoneu]
+                # print(str(intoB))
+
+                self.relitable[num] += (
+                    [
+                        (
+                            " | "
+                            if not self.tables.htmlOutputYes
+                            and not self.tables.bbcodeOutputYes
+                            else ""
+                        ).join(intoB)
+                    ]
+                    if len(into) > 0
+                    else [""]
+                )
+            # except (KeyError, TypeError):
+            #    self.relitable[num] += ["-"]
 
             rowsAsNumbers |= {len(self.relitable[0]) - 1, len(self.relitable[0])}
             self.tables.generatedSpaltenParameter_Tags[
