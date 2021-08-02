@@ -890,12 +890,12 @@ class Concat:
                 into1 = list(set(into1))
                 into2 = list(set(into2))
                 into_Str1[num] = (
-                    ", darin kann sich die ",
+                    "Darin kann sich die ",
                     str(num),
                     " am Besten hineinversetzten.",
                 )
                 into_Str2[num] = (
-                    ", darin kann sich die ",
+                    "Darin kann sich die ",
                     str(num),
                     " am Besten hineinversetzten.",
                 )
