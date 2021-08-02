@@ -746,16 +746,18 @@ class Concat:
         @param relitable: Haupttabelle self.relitable
         @return: relitable + weitere Tabelle daneben
         """
-        self.relitable = relitable
-        primAmounts = 0
-        keinePrimzahl1, keinePrimzahl2 = True, True
-        list1, list2 = [], []
-        weiter1a, weiter1b, weiter2a, weiter2b = 0, 0, 0, 0
-        proPro, contraContra = {}, {}
 
         if "primzahlkreuzprocontra" in generatedBefehle:
+            self.relitable = relitable
+            primAmounts = 0
+            keinePrimzahl1, keinePrimzahl2 = True, True
+            list1, list2 = [], []
+            weiter1a, weiter1b, weiter2a, weiter2b = 0, 0, 0, 0
+            proPro, contraContra = {}, {}
             dreli = deepcopy(self.relitable)
             headline: str = "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
+            into_Str1: dict = {}
+            into_Str2: dict = {}
 
             for num, cols in zip_longest(range(0, 1025), dreli):
                 if num == 0:
@@ -887,6 +889,16 @@ class Concat:
 
                 into1 = list(set(into1))
                 into2 = list(set(into2))
+                into_Str1[num] = (
+                    ", darin kann sich die ",
+                    str(num),
+                    " am Besten hineinversetzten.",
+                )
+                into_Str2[num] = (
+                    ", darin kann sich die ",
+                    str(num),
+                    " am Besten hineinversetzten.",
+                )
 
                 if num != 0:
                     if self.tables.htmlOutputYes:
@@ -894,10 +906,12 @@ class Concat:
                             "<ul>",
                             "<li>" if len(into1) > 0 else "",
                             ", ".join(into1),
+                            "".join(into_Str1[num]) if len(into1) > 0 else "",
                             "</li>" if len(into1) > 0 else "",
                             "<li>" if len(into2) > 0 else "",
                             ", ".join(into2),
                             "</li>" if len(into2) > 0 else "",
+                            "".join(into_Str2[num]) if len(into2) > 0 else "",
                             "<li>" if len(into) > 0 else "",
                             ", ".join(into),
                             "</li>" if len(into) > 0 else "",
@@ -911,15 +925,23 @@ class Concat:
                             "[list]",
                             "[*]" if len(into1) > 0 else "",
                             ", ".join(into1),
+                            "".join(into_Str1[num]) if len(into1) > 0 else "",
                             "[*]" if len(into2) > 0 else "",
                             ", ".join(into2),
+                            "".join(into_Str2[num]) if len(into2) > 0 else "",
                             "[*]" if len(into) > 0 else "",
                             ", ".join(into),
                             "[/list]",
                         ]
                         # print(str(into))
                     else:
-                        into = [", ".join(into1), ", ".join(into2), ", ".join(into)]
+                        into = [
+                            ", ".join(into1),
+                            "".join(into_Str1[num]) if len(into1) > 0 else "",
+                            ", ".join(into2),
+                            "".join(into_Str2[num]) if len(into2) > 0 else "",
+                            ", ".join(into),
+                        ]
                     intoB = []
                     for intoneu in into:
                         if len(intoneu) > 0:
@@ -1116,6 +1138,7 @@ class Concat:
                         else "</ul>"
                         if self.tables.htmlOutputYes
                         else "",
+                        " - Die Zahlen, für die für oder gegen diese Zahlen hier sind, können sich in diese am Besten gedanklich hineinversetzen.",
                     ]
                 else:
                     kette2 = [
