@@ -735,11 +735,7 @@ class Concat:
         return e
 
     def concat1PrimzahlkreuzProContra(
-        self,
-        relitable: list,
-        rowsAsNumbers: set,
-        generatedBefehle: set,
-        # htmlTagParaClassWoerter: list,
+        self, relitable: list, rowsAsNumbers: set, generatedBefehle: set, ParametersMain
     ) -> tuple:
         """Fügt eine Spalte ein, in der Primzahlen mit Vielfachern
         auf dem Niveau des Universums nicht einfach nur aus einer
@@ -961,7 +957,10 @@ class Concat:
                 in self.tables.generatedSpaltenParameter
             )
 
-            kette = [[("Bedeutung", "Primzahlkreuz_pro_contra")]]
+            kette = [
+                [(ParametersMain.bedeutung[0], "Primzahlkreuz_pro_contra")],
+                [(ParametersMain.procontra[0], "Primzahlkreuz_pro_contra")],
+            ]
             self.tables.generatedSpaltenParameter[
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount

@@ -1871,6 +1871,21 @@ class Program:
             ),
             (Program.ParametersMain.licht, (), {20, 27}),
             (
+                Program.ParametersMain.procontra,
+                (
+                    "Primzahlkreuz",
+                    "primzahlkreuz",
+                ),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                {"primzahlkreuzprocontra"},
+            ),
+            (
                 Program.ParametersMain.bedeutung,
                 (
                     "Primzahlkreuz",
@@ -2973,6 +2988,7 @@ class Program:
             self.relitable,
             self.rowsAsNumbers,
             self.spaltenArtenKey_SpaltennummernValue[(0, 7)],
+            Program.ParametersMain,
         )
 
         (
