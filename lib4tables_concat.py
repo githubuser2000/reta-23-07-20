@@ -758,10 +758,9 @@ class Concat:
         proPro, contraContra = {}, {}
 
         if "primzahlkreuzprocontra" in generatedBefehle:
+            dreli = deepcopy(self.relitable)
 
-            for num, cols in enumerate(
-                deepcopy(self.relitable[: self.tables.lastLineNumber + 1])
-            ):
+            for num, cols in enumerate(dreli):
                 if num == 0:
                     into: list = [
                         "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
@@ -912,6 +911,24 @@ class Concat:
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
             ] = kette
+
+            reverseContra: dict = {}
+            for key, value in contraContra.items():
+                try:
+                    reverseContra[value] |= {key}
+                except KeyError:
+                    reverseContra[value] = {key}
+            reversePro: dict = {}
+            for key, value in proPro.items():
+                try:
+                    reversePro[value] |= {key}
+                except KeyError:
+                    reversePro[value] = {key}
+
+            for num, cols in enumerate(
+                deepcopy(dreli[: self.tables.lastLineNumber + 1])
+            ):
+                pass
         return self.relitable, rowsAsNumbers
 
     def concat1RowPrimUniverse2(
