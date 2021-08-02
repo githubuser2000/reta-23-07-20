@@ -1087,7 +1087,6 @@ class Concat:
                         if len(contra2) == 1
                         else "",
                         str(contra2)[1:-1],
-                        " (" if dahinter2len > 0 else "",
                         "</li>"
                         if self.tables.htmlOutputYes and len(contra2) > 0
                         else "",
