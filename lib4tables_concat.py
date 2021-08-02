@@ -910,7 +910,6 @@ class Concat:
                             "</li>" if len(into1) > 0 else "",
                             "<li>" if len(into2) > 0 else "",
                             ", ".join(into2),
-                            "".join(into_Str2[num]) if len(into2) > 0 else "",
                             "</li>" if len(into2) > 0 else "",
                             "<li>" if len(into) > 0 else "",
                             ", ".join(into),
@@ -1138,7 +1137,7 @@ class Concat:
                         else "</ul>"
                         if self.tables.htmlOutputYes
                         else "",
-                        " - Die Zahlen, für die für oder gegen diese Zahlen hier sind, können sich in diese am Besten gedanklich hineinversetzen.",
+                        " - Die Zahlen, die für oder gegen diese Zahlen hier sind, können sich in diese am Besten gedanklich hineinversetzen.",
                     ]
                 else:
                     kette2 = [
