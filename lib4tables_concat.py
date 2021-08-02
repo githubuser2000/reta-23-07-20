@@ -761,7 +761,9 @@ class Concat:
             dreli = deepcopy(self.relitable)
             headline: str = "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
 
-            for num, cols in zip_longest(range(0, 100100), dreli):
+            for num, cols in zip_longest(
+                range(0, self.tables.lastLineNumber + 1), dreli
+            ):
                 if num == 0:
                     into: list = [headline]
                 else:
@@ -851,17 +853,12 @@ class Concat:
                                     couple[firstOrSecond]
                                 ):
                                     try:
-                                        into += [
-                                            "gegen "
-                                            + str(
-                                                int(
-                                                    couple[
-                                                        0 if firstOrSecond == 1 else 1
-                                                    ]
-                                                )
-                                                * contraContra[couple[firstOrSecond]]
-                                            )
-                                        ]
+                                        gegen3 = int(
+                                            couple[0 if firstOrSecond == 1 else 1]
+                                            * contraContra[couple[firstOrSecond]]
+                                        )
+                                        contraContra[num] = gegen3
+                                        into += ["gegen " + str(gegen3)]
                                     except KeyError:
                                         pass
                                 elif (
@@ -874,17 +871,12 @@ class Concat:
                                     or couple[1] % 3 == 0
                                 ):
                                     try:
-                                        into += [
-                                            "pro "
-                                            + str(
-                                                int(
-                                                    couple[
-                                                        0 if firstOrSecond == 1 else 0
-                                                    ]
-                                                )
-                                                * proPro[couple[firstOrSecond]]
-                                            )
-                                        ]
+                                        pro3 = (
+                                            int(couple[0 if firstOrSecond == 1 else 0])
+                                            * proPro[couple[firstOrSecond]]
+                                        )
+                                        proPro[num] = pro3
+                                        into += ["pro " + str(pro3)]
                                     except KeyError:
                                         pass
 
@@ -954,6 +946,29 @@ class Concat:
                     kette2 = [headline]
                 elif contra2 != [] or pro2 != []:
 
+                    dahinter1a = (
+                        dreli[c][206] if c <= self.tables.lastLineNumber else ""
+                        for c in pro2
+                    )
+                    dahinter1b = []
+                    for a in dahinter1a:
+                        if len(a) > 0:
+                            dahinter1b += [a]
+                    dahinter1: str = " , ".join(dahinter1b)
+
+                    dahinter2a = (
+                        dreli[c][206] if c <= self.tables.lastLineNumber else ""
+                        for c in contra2
+                    )
+                    dahinter2b = []
+                    for a in dahinter2a:
+                        if len(a) > 0:
+                            dahinter2b += [a]
+                    dahinter2: str = ", ".join(dahinter2b)
+
+                    dahinter1len: int = len(dahinter1)
+                    dahinter2len: int = len(dahinter2)
+
                     kette2 = [
                         "pro dieser Zahl sind: "
                         if len(pro2) > 1
@@ -961,6 +976,9 @@ class Concat:
                         if len(pro2) == 1
                         else "",
                         str(pro2)[1:-1],
+                        " (" if dahinter1len > 0 else "",
+                        dahinter1,
+                        ")" if dahinter1len > 0 else "",
                         " | " if len(pro2) > 0 and len(contra2) > 0 else "",
                         " contra dieser Zahl sind: "
                         if len(contra2) > 1
@@ -968,6 +986,9 @@ class Concat:
                         if len(contra2) == 1
                         else "",
                         str(contra2)[1:-1],
+                        " (" if dahinter2len > 0 else "",
+                        dahinter2,
+                        ")" if dahinter2len > 0 else "",
                     ]
                 else:
                     kette2 = [
