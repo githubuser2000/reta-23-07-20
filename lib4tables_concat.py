@@ -761,9 +761,7 @@ class Concat:
             dreli = deepcopy(self.relitable)
             headline: str = "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
 
-            for num, cols in zip_longest(
-                range(0, self.tables.lastLineNumber + 1), dreli
-            ):
+            for num, cols in zip_longest(range(0, 1025), dreli):
                 if num == 0:
                     into: list = [headline]
                 else:
@@ -883,14 +881,14 @@ class Concat:
                 # if self.tables.lastLineNumber >= num:
                 try:
                     # print(str(num))
-                    text = cols[206]
+                    text = cols[206].split("|")[1]
                     if len(text) > 0:
                         into += [text]
                     self.relitable[num] += (
                         [" | ".join(tuple(set(into)))] if len(into) > 0 else [""]
                     )
-                except (KeyError, TypeError):
-                    pass
+                except (KeyError, TypeError, IndexError):
+                    self.relitable[num] += ["-"]
 
             rowsAsNumbers |= {len(self.relitable[0]) - 1, len(self.relitable[0])}
             self.tables.generatedSpaltenParameter_Tags[
@@ -947,7 +945,11 @@ class Concat:
                 elif contra2 != [] or pro2 != []:
 
                     dahinter1a = (
-                        dreli[c][206] if c <= self.tables.lastLineNumber else ""
+                        dreli[c][206].split("|")[1]
+                        if c <= self.tables.lastLineNumber
+                        and len(dreli[c][206].split("|")) == 2
+                        and int(dreli[c][206].split("|")[0]) == num
+                        else ""
                         for c in pro2
                     )
                     dahinter1b = []
@@ -957,7 +959,11 @@ class Concat:
                     dahinter1: str = " , ".join(dahinter1b)
 
                     dahinter2a = (
-                        dreli[c][206] if c <= self.tables.lastLineNumber else ""
+                        dreli[c][206].split("|")[1]
+                        if c <= self.tables.lastLineNumber
+                        and len(dreli[c][206].split("|")) == 2
+                        and int(dreli[c][206].split("|")[0]) == num
+                        else ""
                         for c in contra2
                     )
                     dahinter2b = []
