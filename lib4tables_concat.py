@@ -766,6 +766,8 @@ class Concat:
                     into: list = [headline]
                 else:
                     into: list = []
+                into1: list = []
+                into2: list = []
                 if couldBePrimeNumberPrimzahlkreuz(num):
                     primAmounts += 1
                 if primCreativity(num) == 1 or num == 1:
@@ -781,14 +783,14 @@ class Concat:
                                 gegen = list1[weiter1a]
                                 weiter1a += 1
                             contraContra[num] = gegen
-                            into += ["gegen " + str(gegen)]
+                            into1 += ["gegen " + str(gegen)]
                         elif num in (11, 5):
                             if num == 5:
                                 gegen = 2
                             elif num == 11:
                                 gegen = 3
                             contraContra[num] = gegen
-                            into += ["gegen " + str(gegen)]
+                            into1 += ["gegen " + str(gegen)]
 
                         keinePrimzahl1 = False
 
@@ -798,7 +800,7 @@ class Concat:
                         elif num == 3:
                             pro = 2
                         proPro[num] = pro
-                        into += ["pro " + str(pro)]
+                        into2 += ["pro " + str(pro)]
 
                     if couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num):
                         # print(str(num) + ": pro außen")
@@ -811,14 +813,14 @@ class Concat:
                                 pro = list2[weiter2a]
                                 weiter2a += 1
                             proPro[num] = pro
-                            into += ["pro " + str(pro)]
+                            into2 += ["pro " + str(pro)]
                         elif num in (7, 13):
                             if num == 7:
                                 pro = 2
                             elif num == 13:
                                 pro = 3
                             proPro[num] = pro
-                            into += ["pro " + str(pro)]
+                            into2 += ["pro " + str(pro)]
 
                         keinePrimzahl2 = False
                 else:
@@ -856,7 +858,7 @@ class Concat:
                                             * contraContra[couple[firstOrSecond]]
                                         )
                                         contraContra[num] = gegen3
-                                        into += ["gegen " + str(gegen3)]
+                                        into1 += ["gegen " + str(gegen3)]
                                     except KeyError:
                                         pass
                                 elif (
@@ -874,7 +876,7 @@ class Concat:
                                             * proPro[couple[firstOrSecond]]
                                         )
                                         proPro[num] = pro3
-                                        into += ["pro " + str(pro3)]
+                                        into2 += ["pro " + str(pro3)]
                                     except KeyError:
                                         pass
 
@@ -884,15 +886,56 @@ class Concat:
                     text = cols[206].split("|")[1]
                 except (KeyError, TypeError, IndexError):
                     text = ""
-
-                try:
+                if True:
                     if len(text) > 0:
                         into += [text]
+
+                    if self.tables.bbcodeOutputYes:
+                        into = [
+                            "<ul>",
+                            "<li>" if len(into1) > 0 else "",
+                            ", ".join(into1),
+                            "</li>" if len(into1) > 0 else "",
+                            "<li>" if len(into2) > 0 else "",
+                            ", ".join(into2),
+                            "</li>" if len(into2) > 0 else "",
+                            "<li>" if len(into) > 0 else "",
+                            ", ".join(into),
+                            "</li>" if len(into) > 0 else "",
+                            "</ul>",
+                        ]
+                    elif self.tables.bbcodeOutputYes:
+                        into = [
+                            "[list]",
+                            "[*]" if len(into1) > 0 else "",
+                            ", ".join(into1),
+                            "[*]" if len(into2) > 0 else "",
+                            ", ".join(into2),
+                            "[*]" if len(into) > 0 else "",
+                            ", ".join(into),
+                            "[/list]",
+                        ]
+                    else:
+                        into = [", ".join(into1), ", ".join(into2), ", ".join(into)]
+                    intoB = []
+                    for intoneu in into:
+                        if len(intoneu) > 0:
+                            intoB += [intoneu]
+
                     self.relitable[num] += (
-                        [" | ".join(tuple(set(into)))] if len(into) > 0 else [""]
+                        [
+                            (
+                                " | "
+                                if not self.tables.htmlOutputYes
+                                and not self.tables.bbcodeOutputYes
+                                else ""
+                            ).join(tuple(set(intoB)))
+                        ]
+                        if len(into) > 0
+                        else [""]
                     )
-                except (KeyError, TypeError):
-                    self.relitable[num] += ["-"]
+                # except (KeyError, TypeError):
+                #    self.relitable[num] += ["-"]
 
             rowsAsNumbers |= {len(self.relitable[0]) - 1, len(self.relitable[0])}
             self.tables.generatedSpaltenParameter_Tags[
