@@ -892,42 +892,45 @@ class Concat:
                 into1 = list(set(into1))
                 into2 = list(set(into2))
 
-                if self.tables.htmlOutputYes:
-                    into = [
-                        "<ul>",
-                        "<li>" if len(into1) > 0 else "",
-                        ", ".join(into1),
-                        "</li>" if len(into1) > 0 else "",
-                        "<li>" if len(into2) > 0 else "",
-                        ", ".join(into2),
-                        "</li>" if len(into2) > 0 else "",
-                        "<li>" if len(into) > 0 else "",
-                        ", ".join(into),
-                        "</li>" if len(into) > 0 else "",
-                        "</ul>",
-                    ]
-                elif self.tables.bbcodeOutputYes:
-                    # print(str(len(into1)))
-                    # print(str(len(into2)))
-                    # print(str(len(into)))
-                    into = [
-                        "[list]",
-                        "[*]" if len(into1) > 0 else "",
-                        ", ".join(into1),
-                        "[*]" if len(into2) > 0 else "",
-                        ", ".join(into2),
-                        "[*]" if len(into) > 0 else "",
-                        ", ".join(into),
-                        "[/list]",
-                    ]
-                    # print(str(into))
+                if num != 0:
+                    if self.tables.htmlOutputYes:
+                        into = [
+                            "<ul>",
+                            "<li>" if len(into1) > 0 else "",
+                            ", ".join(into1),
+                            "</li>" if len(into1) > 0 else "",
+                            "<li>" if len(into2) > 0 else "",
+                            ", ".join(into2),
+                            "</li>" if len(into2) > 0 else "",
+                            "<li>" if len(into) > 0 else "",
+                            ", ".join(into),
+                            "</li>" if len(into) > 0 else "",
+                            "</ul>",
+                        ]
+                    elif self.tables.bbcodeOutputYes:
+                        # print(str(len(into1)))
+                        # print(str(len(into2)))
+                        # print(str(len(into)))
+                        into = [
+                            "[list]",
+                            "[*]" if len(into1) > 0 else "",
+                            ", ".join(into1),
+                            "[*]" if len(into2) > 0 else "",
+                            ", ".join(into2),
+                            "[*]" if len(into) > 0 else "",
+                            ", ".join(into),
+                            "[/list]",
+                        ]
+                        # print(str(into))
+                    else:
+                        into = [", ".join(into1), ", ".join(into2), ", ".join(into)]
+                    intoB = []
+                    for intoneu in into:
+                        if len(intoneu) > 0:
+                            intoB += [intoneu]
                 else:
-                    into = [", ".join(into1), ", ".join(into2), ", ".join(into)]
-                intoB = []
-                for intoneu in into:
-                    if len(intoneu) > 0:
-                        intoB += [intoneu]
-                # print(str(intoB))
+                    intoB = into
+                    # print(str(intoB))
 
                 self.relitable[num] += (
                     [
