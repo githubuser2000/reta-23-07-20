@@ -933,23 +933,36 @@ class Concat:
                 except KeyError:
                     reversePro[value] = {key}
 
-            pro2: tuple
-            contra2: tuple
-            kette2: tuple
-            for num, cols in enumerate(
-                deepcopy(dreli[: self.tables.lastLineNumber + 1])
-            ):
+            pro2: list
+            contra2: list
+            kette2: list
+            for num, cols in enumerate(dreli[: self.tables.lastLineNumber + 1]):
                 try:
-                    pro2 = tuple(reversePro[num])
-                    contra2 = tuple(reverseContra[num])
+                    pro2 = list(reversePro[num])
+                except KeyError:
+                    pro2 = []
+                try:
+                    contra2 = list(reverseContra[num])
+                except KeyError:
+                    contra2 = []
+                if contra2 != [] or pro2 != []:
+
                     kette2 = (
-                        "pro dieser Zahl sind: ",
+                        "pro dieser Zahl sind: "
+                        if len(pro2) > 1
+                        else "pro dieser Zahl ist "
+                        if len(pro2) == 1
+                        else "",
                         str(pro2)[1:-1],
-                        " | " + " contra dieser Zahl sind ",
+                        " | " + " contra dieser Zahl sind "
+                        if len(contra2) > 1
+                        else " contra dieser Zahl ist "
+                        if len(contra2) == 1
+                        else "",
                         str(contra2)[1:-1],
                     )
-                except KeyError:
-                    kette2 = tuple()
+                else:
+                    kette2 = ("",)
 
                 self.relitable[num] += ["".join(kette2)]
 
