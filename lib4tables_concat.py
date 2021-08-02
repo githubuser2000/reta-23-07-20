@@ -1050,9 +1050,28 @@ class Concat:
                         if len(pro2) == 1
                         else "",
                         str(pro2)[1:-1],
-                        " (" if dahinter1len > 0 else "",
+                        ("</li>" if self.tables.htmlOutputYes else "")
+                        if len(pro2) > 0
+                        else "",
+                        (
+                            "[*]"
+                            if self.tables.bbcodeOutputYes
+                            else "<li>"
+                            if self.tables.htmlOutputYes
+                            else " ("
+                        )
+                        if dahinter1len > 0
+                        else "",
                         dahinter1,
-                        ")" if dahinter1len > 0 else "",
+                        (
+                            "</li>"
+                            if self.tables.htmlOutputYes
+                            else ""
+                            if self.tables.bbcodeOutputYes
+                            else ")"
+                        )
+                        if dahinter1len > 0
+                        else "",
                         (
                             "<li>"
                             if self.tables.htmlOutputYes and len(contra2) > 0
@@ -1069,14 +1088,31 @@ class Concat:
                         else "",
                         str(contra2)[1:-1],
                         " (" if dahinter2len > 0 else "",
-                        dahinter2,
-                        ")" if dahinter2len > 0 else "",
                         "</li>"
                         if self.tables.htmlOutputYes and len(contra2) > 0
                         else "",
+                        (
+                            "[*]"
+                            if self.tables.bbcodeOutputYes
+                            else "<li>"
+                            if self.tables.htmlOutputYes
+                            else " ("
+                        )
+                        if dahinter1len > 0
+                        else "",
+                        dahinter2,
+                        (
+                            "</li>"
+                            if self.tables.htmlOutputYes
+                            else ""
+                            if self.tables.bbcodeOutputYes
+                            else ")"
+                        )
+                        if dahinter2len > 0
+                        else "",
                         "[/list]"
                         if self.tables.bbcodeOutputYes
-                        else "</li></ul>"
+                        else "</ul>"
                         if self.tables.htmlOutputYes
                         else "",
                     ]
