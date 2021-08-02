@@ -896,17 +896,25 @@ class Concat:
                     [" | ".join(tuple(set(into)))] if len(into) > 0 else [""]
                 )
 
-            rowsAsNumbers |= {len(self.relitable[0]) - 1}
+            rowsAsNumbers |= {len(self.relitable[0]) - 1, len(self.relitable[0])}
             self.tables.generatedSpaltenParameter_Tags[
                 len(rowsAsNumbers) - 1
             ] = frozenset({ST.sternPolygon, ST.universum})
-            if (
+            self.tables.generatedSpaltenParameter_Tags[len(rowsAsNumbers)] = frozenset(
+                {ST.sternPolygon, ST.universum}
+            )
+
+            assert not (
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
                 in self.tables.generatedSpaltenParameter
-            ):
-                raise ValueError
+            )
+
             kette = [[("Bedeutung", "Primzahlkreuz_pro_contra")]]
+            self.tables.generatedSpaltenParameter[
+                len(self.tables.generatedSpaltenParameter)
+                + self.tables.SpaltenVanillaAmount
+            ] = kette
             self.tables.generatedSpaltenParameter[
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
@@ -925,10 +933,26 @@ class Concat:
                 except KeyError:
                     reversePro[value] = {key}
 
+            pro2: tuple
+            contra2: tuple
+            kette2: tuple
             for num, cols in enumerate(
                 deepcopy(dreli[: self.tables.lastLineNumber + 1])
             ):
-                pass
+                try:
+                    pro2 = tuple(reversePro[num])
+                    contra2 = tuple(reverseContra[num])
+                    kette2 = (
+                        "pro dieser Zahl sind: ",
+                        str(pro2)[1:-1],
+                        " | " + " contra dieser Zahl sind ",
+                        str(contra2)[1:-1],
+                    )
+                except KeyError:
+                    kette2 = tuple()
+
+                self.relitable[num] += "".join(kette2)
+
         return self.relitable, rowsAsNumbers
 
     def concat1RowPrimUniverse2(
