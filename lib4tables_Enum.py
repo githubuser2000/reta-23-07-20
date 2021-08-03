@@ -149,6 +149,7 @@ tableTags = {
         199,
         200,
         207,
+        208,
     },
     frozenset({ST.universum, ST.sternPolygon}): {
         4,
