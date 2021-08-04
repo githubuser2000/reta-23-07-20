@@ -1,2 +1,3 @@
 reta -onetable | less -S
-macht, dass man nach rechts scollen kann
+reta -onetable | less -RS
+macht in einer Unix Shell, dass man nach rechts scollen kann
