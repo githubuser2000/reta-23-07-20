@@ -46,7 +46,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--procontra=[list][*]pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit,primzahlkreuz[/list]
 [*]--wirtschaft=[list][*]system,realistisch,funktioniert,erklaerung,maschinen,organisationsform,bwl,pflanzen,fachbereiche[/list]
 [*]--licht
-[*]--bedeutung=[list][*]primzahlen,anwendungdersonnen,zaehlungen,jura,geist,gestirn,wesen,zuechtung,konjunktiv,wurzel,vorzeichen[/list]
+[*]--bedeutung=[list][*]primzahlen,anwendungdersonnen,zaehlungen,jura,geist,gestirn,wesen,zuechtung,konjunktiv,wurzel,vorzeichen,inreta[/list]
 [*]--symbole
 [*]--eigenschaften=[list][*]weisheit,gut,zeit,ruf,selbstgerecht,egoismus,kausal,liebepolung,einheit,meinungsintelligenz,ursprungsintelligenz,sanft,hart,egalitaer,autoritaer,ueberheblich,foerdern,durchleuchten,sittlichkeit,fuehrung,sinn,familiaer,goettlich,wertvoll,gleich,ueberleben,abgeneigt,zugeneigt[/list]
 [*]--inkrementieren[list][*]um1,um2,um3,warumtranszendentaliezustrukturgroesseundcharakter,warumtranszendentaliegleichkomplexitaet[/list]

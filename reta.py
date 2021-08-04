@@ -1903,6 +1903,14 @@ class Program:
             (
                 Program.ParametersMain.bedeutung,
                 (
+                    "in_ReTa",
+                    "inreta",
+                ),
+                {209, 210},
+            ),
+            (
+                Program.ParametersMain.bedeutung,
+                (
                     "Vorzeichen",
                     "vorzeichen",
                 ),
