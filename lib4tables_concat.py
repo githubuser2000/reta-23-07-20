@@ -1562,7 +1562,6 @@ class Concat:
                                                         # self.CSVsAlreadRead[place][
                                                         #    multi[0].numerator - 1
                                                         # ][multi[0].denominator - 1],
-                                                        '"',
                                                         "<br>"
                                                         if self.tables.htmlOutputYes
                                                         and (
@@ -1570,13 +1569,13 @@ class Concat:
                                                             or len(bis) > 30
                                                         )
                                                         else " ",
-                                                        " (",
+                                                        '" (',
                                                         str(multi[0]),
                                                         ")",
                                                         "*",
                                                         "(",
                                                         str(multi[1]),
-                                                        ")",
+                                                        ')"',
                                                         "<br>"
                                                         if self.tables.htmlOutputYes
                                                         and (
@@ -1584,7 +1583,6 @@ class Concat:
                                                             or len(bis) > 30
                                                         )
                                                         else " ",
-                                                        ' "',
                                                         bis,
                                                         # self.CSVsAlreadRead[place][
                                                         #    multi[1].numerator - 1
