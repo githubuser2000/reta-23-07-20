@@ -1569,11 +1569,9 @@ class Concat:
                                                             or len(bis) > 30
                                                         )
                                                         else " ",
-                                                        '" (',
+                                                        '"(',
                                                         str(multi[0]),
-                                                        ")",
-                                                        "*",
-                                                        "(",
+                                                        ")*(",
                                                         str(multi[1]),
                                                         ')"',
                                                         "<br>"
