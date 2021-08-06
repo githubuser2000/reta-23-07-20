@@ -2060,7 +2060,7 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 ("Tragweite", "tragweite"),
-                set()
+                set(),
                 {(211, 212)},
             ),
             (
