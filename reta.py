@@ -2059,6 +2059,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept,
+                ("Tragweite", "tragweite"),
+                {211},
+            ),
+            (
+                Program.ParametersMain.konzept,
                 ("wertvoll", "wertlos"),
                 set(),
                 {(186, 187)},
