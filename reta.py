@@ -2004,7 +2004,7 @@ class Program:
             (
                 Program.ParametersMain.bedeutung,
                 (
-                    "Wesen_Züchten",
+                    "Mechanismen_der_Zuechtung" "mechanismen",
                     "wesen",
                     "zuechtung",
                     "züchtung",
@@ -2484,7 +2484,13 @@ class Program:
                 "gefühle",
             ),
             13: ("Personen", "personen", "berühmtheiten", "beruehmtheiten"),
-            14: ("Wesen_Züchten", "wesen", "zuechten", "züchten"),
+            14: (
+                "Mechanismen_der_Zuechtung",
+                "mechanismen",
+                "wesen",
+                "zuechten",
+                "züchten",
+            ),
             15: (
                 "Gegentranszendentalien",
                 "gegentranszendentalien",

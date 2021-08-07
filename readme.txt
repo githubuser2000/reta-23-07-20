@@ -46,7 +46,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--procontra=[list][*]pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit,primzahlkreuz[/list]
 [*]--wirtschaft=[list][*]system,realistisch,funktioniert,erklaerung,maschinen,organisationsform,bwl,pflanzen,fachbereiche[/list]
 [*]--licht
-[*]--bedeutung=[list][*]primzahlen,anwendungdersonnen,zaehlungen,jura,geist,gestirn,wesen,zuechtung,konjunktiv,wurzel,vorzeichen,inreta[/list]
+[*]--bedeutung=[list][*]primzahlen,anwendungdersonnen,zaehlungen,jura,geist,gestirn,mechanismen,zuechtung,konjunktiv,wurzel,vorzeichen,inreta[/list]
 [*]--symbole
 [*]--eigenschaften=[list][*]weisheit,gut,zeit,ruf,selbstgerecht,egoismus,kausal,liebepolung,einheit,meinungsintelligenz,ursprungsintelligenz,sanft,hart,egalitaer,autoritaer,ueberheblich,foerdern,durchleuchten,sittlichkeit,fuehrung,sinn,familiaer,goettlich,wertvoll,gleich,ueberleben,abgeneigt,zugeneigt,tragweite[/list]
 [*]--inkrementieren[list][*]um1,um2,um3,warumtranszendentaliezustrukturgroesseundcharakter,warumtranszendentaliegleichkomplexitaet[/list]
@@ -65,7 +65,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [list][*]komplexitaet,freiheit,gleichheit,mechanismen[/list]
 [/list]
 [*]-kombination
-[list][*]--was=[list][*]tiere,berufe,intelligenz,liebe,transzendentalien,strukturalien,primzahlkreuz,frauen,maenner,persoenlichkeit,religionen,motive,ontologie,emotionen,personen,wesen,gegentranszendentalien,wirtschaftssysteme,maschinen[/list][/list]
+[list][*]--was=[list][*]tiere,berufe,intelligenz,liebe,transzendentalien,strukturalien,primzahlkreuz,frauen,maenner,persoenlichkeit,religionen,motive,ontologie,emotionen,personen,mechanismen,gegentranszendentalien,wirtschaftssysteme,maschinen[/list][/list]
 [*]-ausgabe
 [list][*]--nocolor
 [*]--art=
