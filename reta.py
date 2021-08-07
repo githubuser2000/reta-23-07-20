@@ -687,6 +687,11 @@ class Program:
                 {213},
             ),
             (
+                Program.ParametersMain.planet,
+                ("Mechanismen", "mechanismen", "mechanismus"),
+                {107},
+            ),
+            (
                 Program.ParametersMain.wichtigste,
                 (
                     "Zweitwichtigste",
