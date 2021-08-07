@@ -233,6 +233,7 @@ tableTags = {
         157,
         165,
         166,
+        213,
     },
     frozenset({ST.universum, ST.gleichfoermigesPolygon}): {37, 131, 197, 201, 203, 204},
 }

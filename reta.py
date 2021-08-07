@@ -546,7 +546,7 @@ class Program:
 
         Program.ParametersMain: namedtuple = namedtuple(
             "ParametersMain",
-            "wichtigste wichtigste2 religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache alles",
+            "wichtigste wichtigste2 religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache planet alles",
         )
 
         Program.ParametersMain = Program.ParametersMain(
@@ -636,6 +636,7 @@ class Program:
             ("gebrochenuniversum",),
             ("gebrochengalaxie",),
             ("Multiplikationen", "multiplikationen"),
+            ("Planet", "planet"),
             ("alles",),
         )
 
@@ -674,6 +675,16 @@ class Program:
                     "wichtigste",
                 ),
                 {10, 5, 4, 8},
+            ),
+            (
+                Program.ParametersMain.planet,
+                ("Gleichheit_Freiheit", "gleichheit", "freiheit"),
+                {132},
+            ),
+            (
+                Program.ParametersMain.planet,
+                ("Komplexität", "komplexität", "komplexitaet"),
+                {213},
             ),
             (
                 Program.ParametersMain.wichtigste,
