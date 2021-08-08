@@ -12,6 +12,8 @@ class ST(Enum):
     keinPolygon = 2
     galaxie = 3
     universum = 4
+    gebrRat = 5
+    planet = 6
 
 
 tableTags = {
