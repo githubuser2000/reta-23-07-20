@@ -411,7 +411,10 @@ function disEnAbleChks(Enums) {
       for (var l = 0; l < Enums.length; l++)
         if (spaltenTags[i][k] == Enums[l]) enumi.add(Enums[l]);
 
-    if ((!enumi.has(0) && !enumi.has(1)) || (!enumi.has(3) && !enumi.has(4))) {
+    if (
+      (!enumi.has(0) && !enumi.has(1) && !enumi.has(6)) ||
+      (!enumi.has(3) && !enumi.has(4) && !enumi.has(5))
+    ) {
       for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
         spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "80%";
         spaltenTags2 = spalten4spaltenTags[i][k].style.opacity = "0.4";
