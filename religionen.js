@@ -380,7 +380,7 @@ function disEnAbleChks(Enums) {
   Enume = Set.union(Enums, Enume);
   for (var i = 0; i < abzug.length; i++) Enume.delete(abzug[i]);
   Enums = Array.from(Enume);
-  window.alert(Enums);
+  //window.alert(Enums);
 
   for (var i = 0; i < chks2.length; i++) {
     enumi = new Set();
@@ -389,7 +389,8 @@ function disEnAbleChks(Enums) {
         if (chks2[i][k] == Enums[l]) enumi.add(Enums[l]);
     if (
       (!enumi.has(0) && !enumi.has(1) && !enumi.has(6)) ||
-      (!enumi.has(3) && !enumi.has(4) && !enumi.has(5))
+      (!enumi.has(3) && !enumi.has(4) && !enumi.has(5)) ||
+      enumi.size == 0
     ) {
       chks1[i].disabled = true;
       //chks1[i].style = labelstylekl;
@@ -413,7 +414,8 @@ function disEnAbleChks(Enums) {
 
     if (
       (!enumi.has(0) && !enumi.has(1) && !enumi.has(6)) ||
-      (!enumi.has(3) && !enumi.has(4) && !enumi.has(5))
+      (!enumi.has(3) && !enumi.has(4) && !enumi.has(5)) ||
+      enumi.size == 0
     ) {
       for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
         spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "80%";
@@ -434,6 +436,9 @@ function disEnAbleChks(Enums) {
     deakAmount = 0;
     for (var k = 0; k < Bchks.length; k++) if (Bchks[k].disabled) deakAmount++;
     if (deakAmount == Bchks.length && deakAmount != 0) {
+      //window.alert("test");
+      //if (i == 13 || i == 12)
+      //window.alert(deakAmount + " " + Bchks.length + " " + deakAmount);
       Achks[i].getElementsByTagName("label")[0].style.fontSize =
         tdStyleFontSizeKl;
       Achks[i].getElementsByTagName("label")[0].style.color = tdStyleColorKl;
@@ -449,6 +454,7 @@ function disEnAbleChks(Enums) {
   }
   //'"><label class="chksA1 c1_' +
   chksA1label = document.getElementsByClassName("chksA1");
+  //window.alert(chksA1label[13].innerHTML);
   for (var i = 0; i < chksA1label.length; i++) {
     tagsPerA1Label = chksA1label[i].className.match(/c1_([\d,]+)/g);
     if (tagsPerA1Label == null) tagsPerA1Label = [];
@@ -461,16 +467,17 @@ function disEnAbleChks(Enums) {
       for (var k = 0; k < tagsPerA1Label.length; k++)
         for (var l = 0; l < Enums.length; l++)
           if (tagsPerA1Label[k] == Enums[l]) enumo.add(Enums[l]);
-      //if (i == 0) window.alert(Array.from(enumo));
-      if (enumo.size > 0)
-        if (
-          (!enumo.has(0) && !enumo.has(1) && !enumo.has(6)) ||
-          (!enumo.has(3) && !enumo.has(4) && !enumo.has(5))
-        ) {
-          chksA1label[i].style.fontSize = tdStyleFontSizeKl;
-          chksA1label[i].style.color = tdStyleColorKl;
-          chksA1label[i].style.whiteSpace = tdStyleWhiteSpace;
-        }
+      //window.alert(Array.from(enumo));
+      if (
+        (!enumo.has(0) && !enumo.has(1) && !enumo.has(6)) ||
+        (!enumo.has(3) && !enumo.has(4) && !enumo.has(5)) ||
+        enumo.size == 0
+      ) {
+        //window.alert(chksA1label[i].innerHTML);
+        chksA1label[i].style.fontSize = tdStyleFontSizeKl;
+        chksA1label[i].style.color = tdStyleColorKl;
+        chksA1label[i].style.whiteSpace = tdStyleWhiteSpace;
+      }
     }
   }
 }
