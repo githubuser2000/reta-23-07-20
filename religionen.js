@@ -9,15 +9,6 @@ var tdStyleFontSizeKl = "80%";
 var tdStyleColorKl = "grey";
 var Enume = new Set([0, 1, 3, 4, 5, 6]);
 window.onload = function () {
-  /*
-  if (
-    navigator.userAgent.includes("Chrome") ||
-    !navigator.userAgent.includes("Firefox")
-  )
-    window.alert(
-      "Ihr Browser benötigt sehr lange zum Laden, ggf. 2 Minuten. Firefox lädt diese Seite sehr viel schneller!"
-    );
-    */
   let div = document.createElement("div");
   let div2 = document.createElement("div");
   div.className = "headingsDiv";
@@ -161,7 +152,6 @@ for (i = 0; i < tdClasses1.length; i++)
     mapsTagsif = mapMapMapTags[p1keys[i]][null];
     if (typeof mapsTagsif == "undefined") mapsTagsif = [];
     else mapsTagsif = Array.from(mapMapMapTags[p1keys[i]][null]);
-    //window.alert(mapsTagsif);
 
     checkbox =
       '<div class="chksA"><label class="chksA1 c1_' +
@@ -343,7 +333,6 @@ function makeMapsOfHeadLCheckB(p1, p2, num, tags) {
     mapMapMapTags[p1][p2] = new Set();
   if (typeof tags != "undefined" && tags != "null")
     mapMapMapTags[p1][p2] = Set.union(mapMapMapTags[p1][p2], tags);
-  //window.alert(Array.from(mapMapMapTags[p1][p2]))
 }
 
 Set.union = function (s1, s2) {
@@ -375,12 +364,9 @@ function disEnAbleChks(Enums) {
   if (Enums.has(4) && !Enums.has(5)) abzug.push(5);
   if (Enums.has(5) && !Enums.has(3)) abzug.push(3);
   if (Enums.has(5) && !Enums.has(4)) abzug.push(4);
-  //window.alert(Enums);
-  //window.alert(abzug);
   Enume = Set.union(Enums, Enume);
   for (var i = 0; i < abzug.length; i++) Enume.delete(abzug[i]);
   Enums = Array.from(Enume);
-  //window.alert(Enums);
 
   for (var i = 0; i < chks2.length; i++) {
     enumi = new Set();
@@ -436,9 +422,6 @@ function disEnAbleChks(Enums) {
     deakAmount = 0;
     for (var k = 0; k < Bchks.length; k++) if (Bchks[k].disabled) deakAmount++;
     if (deakAmount == Bchks.length && deakAmount != 0) {
-      //window.alert("test");
-      //if (i == 13 || i == 12)
-      //window.alert(deakAmount + " " + Bchks.length + " " + deakAmount);
       Achks[i].getElementsByTagName("label")[0].style.fontSize =
         tdStyleFontSizeKl;
       Achks[i].getElementsByTagName("label")[0].style.color = tdStyleColorKl;
@@ -454,7 +437,6 @@ function disEnAbleChks(Enums) {
   }
   //'"><label class="chksA1 c1_' +
   chksA1label = document.getElementsByClassName("chksA1");
-  //window.alert(chksA1label[13].innerHTML);
   for (var i = 0; i < chksA1label.length; i++) {
     tagsPerA1Label = chksA1label[i].className.match(/c1_([\d,]+)/g);
     if (tagsPerA1Label == null) tagsPerA1Label = [];
@@ -467,13 +449,11 @@ function disEnAbleChks(Enums) {
       for (var k = 0; k < tagsPerA1Label.length; k++)
         for (var l = 0; l < Enums.length; l++)
           if (tagsPerA1Label[k] == Enums[l]) enumo.add(Enums[l]);
-      //window.alert(Array.from(enumo));
       if (
         (!enumo.has(0) && !enumo.has(1) && !enumo.has(6)) ||
         (!enumo.has(3) && !enumo.has(4) && !enumo.has(5)) ||
         enumo.size == 0
       ) {
-        //window.alert(chksA1label[i].innerHTML);
         chksA1label[i].style.fontSize = tdStyleFontSizeKl;
         chksA1label[i].style.color = tdStyleColorKl;
         chksA1label[i].style.whiteSpace = tdStyleWhiteSpace;
@@ -541,7 +521,6 @@ function makeSpacesOutOf_(text) {
 }
 
 function toggleP2(dasTag, spaltenNummern, para1u2) {
-  //window.alert('bla: '+dasTag.checked);
   spaltenNummern = spaltenNummern.split(",");
   existingParameterNamesArrayIndex = MatrixHasCouple(
     para1u2,
