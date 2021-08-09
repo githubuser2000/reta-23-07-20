@@ -2004,7 +2004,8 @@ class Program:
             (
                 Program.ParametersMain.bedeutung,
                 (
-                    "Mechanismen_der_Zuechtung" "mechanismen",
+                    "Mechanismen_der_Züchtung",
+                    "mechanismen",
                     "wesen",
                     "zuechtung",
                     "züchtung",
