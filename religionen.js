@@ -7,7 +7,7 @@ var tdStyleWhiteSpace = "nowrap";
 var tdStyleFontSize = "100%";
 var tdStyleFontSizeKl = "80%";
 var tdStyleColorKl = "grey";
-var Enume = new Set([0, 1, 3, 4]);
+var Enume = new Set([0, 1, 3, 4, 5, 6]);
 window.onload = function () {
   /*
   if (
@@ -375,9 +375,12 @@ function disEnAbleChks(Enums) {
   if (Enums.has(4) && !Enums.has(5)) abzug.push(5);
   if (Enums.has(5) && !Enums.has(3)) abzug.push(3);
   if (Enums.has(5) && !Enums.has(4)) abzug.push(4);
+  //window.alert(Enums);
+  //window.alert(abzug);
   Enume = Set.union(Enums, Enume);
   for (var i = 0; i < abzug.length; i++) Enume.delete(abzug[i]);
   Enums = Array.from(Enume);
+  //window.alert(Enums);
 
   for (var i = 0; i < chks2.length; i++) {
     enumi = new Set();
