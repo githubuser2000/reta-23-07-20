@@ -380,7 +380,7 @@ function disEnAbleChks(Enums) {
   Enume = Set.union(Enums, Enume);
   for (var i = 0; i < abzug.length; i++) Enume.delete(abzug[i]);
   Enums = Array.from(Enume);
-  //window.alert(Enums);
+  window.alert(Enums);
 
   for (var i = 0; i < chks2.length; i++) {
     enumi = new Set();
@@ -463,8 +463,8 @@ function disEnAbleChks(Enums) {
           if (tagsPerA1Label[k] == Enums[l]) enumo.add(Enums[l]);
       if (enumo.size > 0)
         if (
-          (!enumo.has(0) && !enumo.has(1)) ||
-          (!enumo.has(3) && !enumo.has(4))
+          (!enumo.has(0) && !enumo.has(1) && !enumo.has(6)) ||
+          (!enumo.has(3) && !enumo.has(4) && !enumo.has(5))
         ) {
           chksA1label[i].style.fontSize = tdStyleFontSizeKl;
           chksA1label[i].style.color = tdStyleColorKl;
