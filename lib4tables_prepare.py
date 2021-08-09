@@ -668,6 +668,7 @@ class Prepare:
                             ST.sternPolygon,
                             ST.galaxie,
                             ST.gleichfoermigesPolygon,
+                            ST.gebrRat,
                         }
                     )
                 elif gebrUnivSpalten2 is not None and t in gebrUnivSpalten2:
@@ -678,6 +679,7 @@ class Prepare:
                             ST.sternPolygon,
                             ST.universum,
                             ST.gleichfoermigesPolygon,
+                            ST.gebrRat,
                         }
                     )
 
@@ -689,6 +691,7 @@ class Prepare:
                             ST.sternPolygon,
                             ST.galaxie,
                             ST.gleichfoermigesPolygon,
+                            ST.gebrRat,
                         }
                     )
                 elif gebrUnivSpalten is not None and t in gebrUnivSpalten:
@@ -699,6 +702,7 @@ class Prepare:
                             ST.sternPolygon,
                             ST.universum,
                             ST.gleichfoermigesPolygon,
+                            ST.gebrRat,
                         }
                     )
 
