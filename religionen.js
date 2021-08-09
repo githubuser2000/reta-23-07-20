@@ -461,6 +461,7 @@ function disEnAbleChks(Enums) {
       for (var k = 0; k < tagsPerA1Label.length; k++)
         for (var l = 0; l < Enums.length; l++)
           if (tagsPerA1Label[k] == Enums[l]) enumo.add(Enums[l]);
+      //if (i == 0) window.alert(Array.from(enumo));
       if (enumo.size > 0)
         if (
           (!enumo.has(0) && !enumo.has(1) && !enumo.has(6)) ||
