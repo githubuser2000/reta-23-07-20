@@ -33,7 +33,7 @@ window.onload = function () {
   chk_spalten =
     '<fieldset><label style="white-space: nowrap;"><input type="radio" id="spaltenWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);" checked="true">Spalten (Einheiten [9]) wählen</label> <label style="white-space: nowrap;"><input type="radio" id="zeilenWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);">Zeilen, welche ja nein, (6,13,14,15)</label> <label style="white-space: nowrap;"><input type="radio" id="keinsWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);">frei machen zur Tabellenansicht <!-- | Lädt schneller mit Firefox statt Chrome --> </label></fieldset>';
   radio_tags =
-    '<fieldset><label style="white-space: nowrap;"><input type="radio" id="galaxieuniversum" name="galaxieuniversum" onchange="disEnAbleChks([3,4]);" checked="true">Galaxie und Universum</label> <label style="white-space: nowrap;"><input type="radio" id="galaxie" name="galaxieuniversum" onchange="disEnAbleChks([3]);">Galaxie (14)</label> <label style="white-space: nowrap;"><input type="radio" id="universum" name="galaxieuniversum" onchange="disEnAbleChks([4]);">Universum (15)</label></fieldset><fieldset><label style="white-space: nowrap;"><input type="radio" id="sternpolygongleichfoermigespolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([0,1]);" checked="true">Sternpolygon und gleichförmiges Polygon</label> <label style="white-space: nowrap;"><input type="radio" id="sternpolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([0]);">Sternpolygon (n)</label> <label style="white-space: nowrap;"><input type="radio" id="gleichfoermigespolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([1]);">gleichförmiges Polygon (1/n)</label></fieldset>';
+    '<fieldset><label style="white-space: nowrap;"><input type="radio" id="galaxieuniversum" name="galaxieuniversum" onchange="disEnAbleChks([3,4,5]);" checked="true">Galaxie und Universum und Planet</label> <label style="white-space: nowrap;"><input type="radio" id="planet" name="galaxieuniversum" onchange="disEnAbleChks([5]);">Planet (12)</label> <label style="white-space: nowrap;"><input type="radio" id="galaxie" name="galaxieuniversum" onchange="disEnAbleChks([3]);">Galaxie (14)</label> <label style="white-space: nowrap;"><input type="radio" id="universum" name="galaxieuniversum" onchange="disEnAbleChks([4]);">Universum (15)</label></fieldset><fieldset><label style="white-space: nowrap;"><input type="radio" id="sternpolygongleichfoermigespolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([0,1,6]);" checked="true">Sternpolygon und gleichförmiges Polygon und gebrochen-rational</label> <label style="white-space: nowrap;"><input type="radio" id="sternpolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([0]);">Sternpolygon (n)</label> <label style="white-space: nowrap;"><input type="radio" id="gleichfoermigespolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([1]);">gleichförmiges Polygon (1/n)</label> <label style="white-space: nowrap;"><input type="radio" id="gebrrat" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([6]);">gebrochen-rational (m/n)</label></fieldset>';
   div.innerHTML = chk_spalten;
   tdClasses = document.getElementsByClassName("z_0");
   /*tdClasses = []
@@ -363,10 +363,18 @@ Set.union = function (s1, s2) {
 function disEnAbleChks(Enums) {
   Enums = new Set(Enums);
   abzug = [];
+  if (Enums.has(6) && !Enums.has(0)) abzug.push(0);
+  if (Enums.has(6) && !Enums.has(1)) abzug.push(1);
   if (Enums.has(1) && !Enums.has(0)) abzug.push(0);
+  if (Enums.has(1) && !Enums.has(6)) abzug.push(6);
   if (Enums.has(0) && !Enums.has(1)) abzug.push(1);
+  if (Enums.has(0) && !Enums.has(6)) abzug.push(6);
   if (Enums.has(3) && !Enums.has(4)) abzug.push(4);
+  if (Enums.has(3) && !Enums.has(5)) abzug.push(5);
   if (Enums.has(4) && !Enums.has(3)) abzug.push(3);
+  if (Enums.has(4) && !Enums.has(5)) abzug.push(5);
+  if (Enums.has(5) && !Enums.has(3)) abzug.push(3);
+  if (Enums.has(5) && !Enums.has(4)) abzug.push(4);
   Enume = Set.union(Enums, Enume);
   for (var i = 0; i < abzug.length; i++) Enume.delete(abzug[i]);
   Enums = Array.from(Enume);
@@ -376,7 +384,10 @@ function disEnAbleChks(Enums) {
     for (var k = 0; k < chks2[i].length; k++)
       for (var l = 0; l < Enums.length; l++)
         if (chks2[i][k] == Enums[l]) enumi.add(Enums[l]);
-    if ((!enumi.has(0) && !enumi.has(1)) || (!enumi.has(3) && !enumi.has(4))) {
+    if (
+      (!enumi.has(0) && !enumi.has(1) && !enumi.has(6)) ||
+      (!enumi.has(3) && !enumi.has(4) && !enumi.has(5))
+    ) {
       chks1[i].disabled = true;
       //chks1[i].style = labelstylekl;
       chks1[i].style.fontSize = tdStyleFontSizeKl;

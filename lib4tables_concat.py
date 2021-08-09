@@ -968,9 +968,9 @@ class Concat:
             self.tables.generatedSpaltenParameter_Tags[
                 len(rowsAsNumbers) - 1
             ] = frozenset({ST.sternPolygon, ST.universum})
-            self.tables.generatedSpaltenParameter_Tags[len(rowsAsNumbers)] = frozenset(
-                {ST.sternPolygon, ST.universum}
-            )
+            self.tables.generatedSpaltenParameter_Tags[
+                len(rowsAsNumbers) - 2
+            ] = frozenset({ST.sternPolygon, ST.universum})
 
             assert not (
                 len(self.tables.generatedSpaltenParameter)
@@ -1176,22 +1176,60 @@ class Concat:
             # )
             forGeneratedSpaltenParameter_Tags: dict = {
                 "primMotivSternGebr": (
-                    (0, 0, frozenset({ST.sternPolygon, ST.galaxie}), 1),
-                    (0, 1, frozenset({ST.sternPolygon, ST.galaxie, ST.universum}), 1),
-                    (0, 2, frozenset({ST.sternPolygon, ST.galaxie, ST.universum}), 1),
+                    (0, 0, frozenset({ST.sternPolygon, ST.galaxie, ST.gebrRat}), 1),
+                    (
+                        0,
+                        1,
+                        frozenset(
+                            {ST.sternPolygon, ST.galaxie, ST.universum, ST.gebrRat}
+                        ),
+                        1,
+                    ),
+                    (
+                        0,
+                        2,
+                        frozenset(
+                            {ST.sternPolygon, ST.galaxie, ST.universum, ST.gebrRat}
+                        ),
+                        1,
+                    ),
                 ),
                 "primStrukSternGebr": (
-                    (0, 1, frozenset({ST.sternPolygon, ST.galaxie, ST.universum}), 1),
-                    (0, 2, frozenset({ST.sternPolygon, ST.galaxie, ST.universum}), 1),
-                    (0, 3, frozenset({ST.sternPolygon, ST.universum}), 1),
+                    (
+                        0,
+                        1,
+                        frozenset(
+                            {ST.sternPolygon, ST.galaxie, ST.universum, ST.gebrRat}
+                        ),
+                        1,
+                    ),
+                    (
+                        0,
+                        2,
+                        frozenset(
+                            {ST.sternPolygon, ST.galaxie, ST.universum, ST.gebrRat}
+                        ),
+                        1,
+                    ),
+                    (0, 3, frozenset({ST.sternPolygon, ST.universum, ST.gebrRat}), 1),
                 ),
                 "primMotivGleichfGebr": (
-                    (1, 0, frozenset({ST.gleichfoermigesPolygon, ST.galaxie}), 1),
+                    (
+                        1,
+                        0,
+                        frozenset({ST.gleichfoermigesPolygon, ST.galaxie, ST.gebrRat}),
+                        1,
+                    ),
                     (
                         1,
                         1,
                         frozenset(
-                            {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum}
+                            {
+                                ST.gleichfoermigesPolygon,
+                                ST.galaxie,
+                                ST.universum,
+                                ST.gebrRat,
+                            }
                         ),
                         1,
                     ),
@@ -1199,7 +1237,12 @@ class Concat:
                         1,
                         2,
                         frozenset(
-                            {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum}
+                            {
+                                ST.gleichfoermigesPolygon,
+                                ST.galaxie,
+                                ST.universum,
+                                ST.gebrRat,
+                            }
                         ),
                         1,
                     ),
@@ -1209,7 +1252,12 @@ class Concat:
                         1,
                         1,
                         frozenset(
-                            {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum}
+                            {
+                                ST.gleichfoermigesPolygon,
+                                ST.galaxie,
+                                ST.universum,
+                                ST.gebrRat,
+                            }
                         ),
                         1,
                     ),
@@ -1217,11 +1265,23 @@ class Concat:
                         1,
                         2,
                         frozenset(
-                            {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum}
+                            {
+                                ST.gleichfoermigesPolygon,
+                                ST.galaxie,
+                                ST.universum,
+                                ST.gebrRat,
+                            }
                         ),
                         1,
                     ),
-                    (1, 3, frozenset({ST.gleichfoermigesPolygon, ST.universum}), 1),
+                    (
+                        1,
+                        3,
+                        frozenset(
+                            {ST.gleichfoermigesPolygon, ST.universum, ST.gebrRat}
+                        ),
+                        1,
+                    ),
                 ),
                 "primMotivStern": (
                     (0, 0, frozenset({ST.sternPolygon, ST.galaxie}), 0),
@@ -2287,8 +2347,10 @@ class Concat:
         self, bothRows, ifInvers, metavariable, rowsAsNumbers
     ):
         rowsAsNumbers |= {len(self.relitable[0])}
-        self.tables.generatedSpaltenParameter_Tags[len(rowsAsNumbers) - 1] = frozenset(
-            {ST.sternPolygon, ST.universum}
+        self.tables.generatedSpaltenParameter_Tags[len(rowsAsNumbers) - 1] = (
+            frozenset({ST.sternPolygon, ST.universum})
+            if bothRows == 0
+            else frozenset({ST.sternPolygon, ST.universum, ST.gebrRat})
         )
         self.relitable[1] += [""]
         if bothRows == 0:

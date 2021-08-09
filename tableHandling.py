@@ -142,8 +142,6 @@ class Tables:
         self.rowNumDisplay2rowNumOrig = {}
         self.generatedSpaltenParameter = {}
         self.generatedSpaltenParameter_Tags = {}
-        self.generatedSpaltenParameter_Tags_concat1 = {}
-        # self.generatedSpaltenParameter_TagsKombi = {}
         self.getPrepare = Prepare(self, originalLinesRange, shellRowsAmount)
         self.getCombis = self.Combi(self)
         self.getConcat = Concat(self)
