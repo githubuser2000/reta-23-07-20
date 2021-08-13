@@ -3150,6 +3150,12 @@ class Program:
         )
         self.tables.getOut.cliOut(finallyDisplayLines, newTable, numlen, rowsRange)
         alxp(
+            """kombinationen sortiert ausgeben und als Hierarchiebaum den Zahlenkombinationen entlang"""
+        )
+        alxp(
+            """kombinationen filterbar machen, dass nicht alle kombinationen bei einer Zahl immer angezeigt werden"""
+        )
+        alxp(
             """neues Farbschema: für html aber besser nur: primzahlen pro außen und pro innen und ggf. dessen vielfacher; Farbschema mit durch 3 teilbarem außerdem"""
         )
         alxp(
