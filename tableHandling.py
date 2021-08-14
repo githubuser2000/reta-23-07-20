@@ -1186,6 +1186,7 @@ class Tables:
                                                         )
                                                     ]
                                         elif csvFileName == "kombi-meta.csv":
+                                            x("XxX", self.tables.dataDict[8])
                                             for (
                                                 elementParameter
                                             ) in self.tables.dataDict[8][a]:

@@ -2593,7 +2593,7 @@ class Program:
             )
 
         self.dataDict[3] = Program.kombiParaNdataMatrix
-        self.dataDict[7] = Program.kombiParaNdataMatrix
+        self.dataDict[8] = Program.kombiParaNdataMatrix
 
         # alxp(self.paraDictGenerated)
         # alxp("-|-|")
