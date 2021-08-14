@@ -1161,14 +1161,21 @@ class Tables:
                                         #    "sss",
                                         #    len(self.tables.generatedSpaltenParameter),
                                         # )
+
                                         into: list = []
                                         into2: list = []
-                                        for elementParameter in self.tables.dataDict[3][
-                                            a
-                                        ]:
-                                            into += [("kombination", elementParameter)]
 
-                                            if csvFileName == "kombi.csv":
+                                        if csvFileName == "kombi.csv":
+                                            for (
+                                                elementParameter
+                                            ) in self.tables.dataDict[3][a]:
+                                                into += [
+                                                    (
+                                                        "Kombination_(Galaxie)",
+                                                        elementParameter,
+                                                    )
+                                                ]
+
                                                 if elementParameter == "tiere":
                                                     into2 = [
                                                         (
@@ -1186,6 +1193,16 @@ class Tables:
                                                             "Zweitwichtigste",
                                                         )
                                                     ]
+                                        elif csvFileName == "kombi-meta.csv":
+                                            for (
+                                                elementParameter
+                                            ) in self.tables.dataDict[8][a]:
+                                                into += [
+                                                    (
+                                                        "Kombination_(Universum)",
+                                                        elementParameter,
+                                                    )
+                                                ]
 
                                         self.tables.generatedSpaltenParameter[
                                             len(self.tables.generatedSpaltenParameter)
