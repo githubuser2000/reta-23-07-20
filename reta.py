@@ -2551,7 +2551,7 @@ class Program:
         allValues[3] = set(Program.kombiParaNdataMatrix.keys())
         allValues[5] = set(range(2, 100))
         allValues[6] = set(range(2, 100))
-        allValues[7] = set(Program.kombiParaNdataMatrix.keys())
+        allValues[8] = set(Program.kombiParaNdataMatrix.keys())
 
         """
         self.paraDictGenerated = {}
