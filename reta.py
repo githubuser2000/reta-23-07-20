@@ -344,7 +344,7 @@ class Program:
 
                     else:
                         cliout(
-                            'kein Unter-Parameter "--galaxie=" oder "--universum=" angegeben für Hauptparameter --kombination'
+                            'kein Unter-Parameter "--galaxie=" oder "--universum=" angegeben für Hauptparameter -kombination'
                         )
                 elif lastMainCmd not in mainParaCmds.values():
                     cliout(
@@ -3084,12 +3084,27 @@ class Program:
                 kombiTable_Kombis,
                 maintable2subtable_Relation,
             ) = self.tables.getCombis.readKombiCsv(
-                self.relitable, self.rowsAsNumbers, self.rowsOfcombi
+                self.relitable, self.rowsAsNumbers, self.rowsOfcombi, "kombi.csv"
             )
         else:
             animalsProfessionsTable = []
             kombiTable_Kombis = []
             maintable2subtable_Relation = []
+
+        if len(self.rowsOfcombi2) > 0:
+            (
+                animalsProfessionsTable2,
+                self.relitable,
+                kombiTable_Kombis2,
+                maintable2subtable_Relation2,
+            ) = self.tables.getCombis.readKombiCsv(
+                self.relitable, self.rowsAsNumbers, self.rowsOfcombi, "kombi-meta.csv"
+            )
+        else:
+            animalsProfessionsTable2 = []
+            kombiTable_Kombis2 = []
+            maintable2subtable_Relation2 = []
+
         return (
             self.RowsLen,
             paramLines,

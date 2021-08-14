@@ -1020,7 +1020,11 @@ class Tables:
             return self.ChosenKombiLines
 
         def readKombiCsv(
-            self, relitable: list, rowsAsNumbers: set, rowsOfcombi: set
+            self,
+            relitable: list,
+            rowsAsNumbers: set,
+            rowsOfcombi: set,
+            csvFileName: str,
         ) -> tuple:
             """Fügt eine Tabelle neben der self.relitable nicht daneben sondern als join an, wie ein sql-join
             Hier wird aber noch nicht die join Operation durchgeführt
@@ -1041,13 +1045,18 @@ class Tables:
             global folder
             self.rowsOfcombi = rowsOfcombi
             place = os.path.join(
-                os.getcwd(), os.path.dirname(__file__), os.path.basename("./kombi.csv")
+                os.getcwd(),
+                os.path.dirname(__file__),
+                os.path.basename("./" + csvFileName),
             )
+
             self.sumOfAllCombiRowsAmount += len(self.rowsOfcombi)
             self.relitable = relitable
             headingsAmount = len(self.relitable[0])
             self.maintable2subtable_Relation: tuple = ({}, {})
-            if len(self.rowsOfcombi) > 0:
+            if (len(self.rowsOfcombi) > 0 and csvFileName == "kombi.csv") or (
+                len(self.rowsOfcombi2) > 0 and csvFileName == "kombi-meta.csv"
+            ):
                 with open(place, mode="r") as csv_file:
                     self.kombiTable: list = []
                     self.kombiTable_Kombis: list = []
@@ -1121,7 +1130,15 @@ class Tables:
                             )
                         if i == 0:
                             for u, heading in enumerate(self.relitable[0]):
-                                for a in self.rowsOfcombi:
+                                for a in (
+                                    self.rowsOfcombi
+                                    if csvFileName == "kombi.csv"
+                                    else (
+                                        self.rowsOfcombi2
+                                        if csvFileName == "kombi-meta.csv"
+                                        else set()
+                                    )
+                                ):
                                     if (
                                         u >= headingsAmount
                                         and u == headingsAmount + a - 1
@@ -1151,23 +1168,24 @@ class Tables:
                                         ]:
                                             into += [("kombination", elementParameter)]
 
-                                            if elementParameter == "tiere":
-                                                into2 = [
-                                                    (
-                                                        "Wichtigstes_zum_gedanklich_einordnen",
-                                                        "Zweitwichtigste",
-                                                    )
-                                                ]
-                                            elif elementParameter in [
-                                                "berufe",
-                                                "intelligenz",
-                                            ]:
-                                                into2 = [
-                                                    (
-                                                        "Wichtigstes_zum_gedanklich_einordnen",
-                                                        "Zweitwichtigste",
-                                                    )
-                                                ]
+                                            if csvFileName == "kombi.csv":
+                                                if elementParameter == "tiere":
+                                                    into2 = [
+                                                        (
+                                                            "Wichtigstes_zum_gedanklich_einordnen",
+                                                            "Zweitwichtigste",
+                                                        )
+                                                    ]
+                                                elif elementParameter in [
+                                                    "berufe",
+                                                    "intelligenz",
+                                                ]:
+                                                    into2 = [
+                                                        (
+                                                            "Wichtigstes_zum_gedanklich_einordnen",
+                                                            "Zweitwichtigste",
+                                                        )
+                                                    ]
 
                                         self.tables.generatedSpaltenParameter[
                                             len(self.tables.generatedSpaltenParameter)
