@@ -3316,6 +3316,8 @@ class Program:
             if csvFileName == "kombi.csv"
             else (self.rowsOfcombi2 if csvFileName == "kombi-meta.csv" else None)
         )
+        x("GASI", len(newTable[0]) - len(komb_rows))
+        x("NASOL", komb_rows)
         (
             finallyDisplayLines_kombi,
             newTable_kombi_1,
@@ -3335,12 +3337,14 @@ class Program:
         KombiTables = self.tables.getCombis.prepareTableJoin(
             ChosenKombiLines, newTable_kombi_1
         )
+        x("AAAE1 - leer ? ", KombiTables)
+        x("NSZ", komb_rows)
         newTable = self.tables.getCombis.tableJoin(
             newTable,
             KombiTables,
             maintable2subtable_Relation,
             old2newTable,
-            self.rowsOfcombi,
+            komb_rows,
         )
         x("HWS", newTable)
         return newTable

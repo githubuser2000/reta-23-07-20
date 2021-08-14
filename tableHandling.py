@@ -850,6 +850,7 @@ class Tables:
             table2 = mainTable
             """ Hätte ich mich gleich für SQL entschieden, oder hätte ich Pandas gewählt, dann hätte ich diesen Komplizierten Mist nicht programmieren müssen!
             """
+            x("rowsOfcombi", rowsOfcombi)
 
             # regex = re.compile(r"\s|\s+")
             # if self.tables.textWidth == 0 and type(self.tables.getOut.outType) in [
@@ -868,14 +869,14 @@ class Tables:
                 """geht die Zeilen der anzuzeigenden Haupttabelle durch
                 1. Zeilenummer, 2. richtige Nummer der Religion (z.B: 1-10), 3. anzuzeigende Haupttabellenzeile
                 """
-                x("GOA1", manySubTables)
+                # x("GOA1", manySubTables)
                 for subTable in manySubTables:
                     """Liste aus Tabellen: eine Untertabelle = was in Haupttabellenzeilennummer rein soll aus der Kombitabelle
                     Zusammen ist das die Matrix der Kombis, die an die Haupt+Anzeige Tabelle deneben ran soll
 
                     hier werden also alle Orginal-Haupt+Anzeige Zeilen durchgegangen
                     """
-                    x("GOA", [reliNum, subTable])
+                    # x("GOA", [reliNum, subTable])
                     if reliNum in subTable:
                         """Wenn z.B. Religion 2 als Spalte 2 auch als Spalte 2 drin ist als Zelle der kombis die als Zelle in die Haupt+Anzeige Tabelle rein soll
                         d.h. hier die Frage ob z.B. 2==2    viel mehr ist das nicht"""
@@ -883,6 +884,7 @@ class Tables:
                             """HauptTabellenzeilen werden durchIteriert"""
                             if old2newRows[1][row] in maintable2subtable_Relation[0]:
                                 """Wenn Haupttabellenzeile der Kombitabellenzeile entspricht"""
+                                x("NBW", maintable2subtable_Relation)
                                 subRowNum = maintable2subtable_Relation[0][
                                     old2newRows[1][row]
                                 ]
