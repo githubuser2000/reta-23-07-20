@@ -3178,6 +3178,8 @@ class Program:
         # lineslist.sort()
         # self.tables.lastLineNumber = lineslist[-1]
 
+        print(str(len(self.rowsOfcombi)))
+        x("NEWT1", newTable)
         if len(self.rowsOfcombi) > 0:
             newTable = self.combiTableWorkflow(
                 animalsProfessionsTable,
@@ -3189,6 +3191,8 @@ class Program:
                 paramLines,
                 "kombi.csv",
             )
+        # print(str(len(newTable[0])))
+        # x("NEWT2", newTable)
 
         if len(self.rowsOfcombi2) > 0:
             newTable = self.combiTableWorkflow(
@@ -3320,8 +3324,13 @@ class Program:
             self.rowsOfcombi,
             self.tables.getCombis.sumOfAllCombiRowsAmount,
             reliTableLenUntilNow=len(newTable[0])
-            - len(self.rowsOfcombi)
-            - len(self.rowsOfcombi2),
+            - (
+                len(self.rowsOfcombi)
+                if csvFileName == "kombi.csv"
+                else (
+                    len(self.rowsOfcombi2) if csvFileName == "kombi-meta.csv" else None
+                )
+            ),
         )
         # x("AAAD1", newTable_kombi_1)
         # x("AAAD2", "ENDDD")
