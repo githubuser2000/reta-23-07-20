@@ -3121,6 +3121,9 @@ class Program:
             gebrGalSpalten,
             gebrUnivSpalten2,
             gebrGalSpalten2,
+            animalsProfessionsTable2,
+            kombiTable_Kombis2,
+            maintable2subtable_Relation2,
         )
 
     def __init__(self, argv=[]):
@@ -3148,6 +3151,9 @@ class Program:
             gebrGalSpalten,
             gebrUnivSpalten2,
             gebrGalSpalten2,
+            animalsProfessionsTable2,
+            kombiTable_Kombis2,
+            maintable2subtable_Relation2,
         ) = self.bringAllImportantBeginThings(argv)
 
         # x("2943", self.rowsAsNumbers)
@@ -3182,6 +3188,18 @@ class Program:
                 old2newTable,
                 paramLines,
             )
+
+        if len(self.rowsOfcombi2) > 0:
+            newTable2 = self.combiTableWorkflow(
+                animalsProfessionsTable2,
+                finallyDisplayLines,
+                kombiTable_Kombis2,
+                maintable2subtable_Relation2,
+                newTable,
+                old2newTable,
+                paramLines,
+            )
+
         # rowAmounts = self.tables.getOut.oneTableToMany(newTable, True, rowsRange)
         # spaltenreihenfolgeundnurdiese
         newTable = self.tables.getOut.onlyThatColumns(
