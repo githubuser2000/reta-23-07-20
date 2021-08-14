@@ -313,7 +313,18 @@ class Program:
                                             set(),
                                             {
                                                 self.kombiReverseDict[oneKombiSpalte],
-                                            },
+                                            }
+                                            if cmd.find("=") == 9
+                                            else set(),
+                                            set(),
+                                            set(),
+                                            set(),
+                                            set(),
+                                            {
+                                                self.kombiReverseDict[oneKombiSpalte],
+                                            }
+                                            if cmd.find("=") == 11
+                                            else set(),
                                         ),
                                         neg,
                                         befehlName="kombinationen",
@@ -333,7 +344,7 @@ class Program:
 
                     else:
                         cliout(
-                            'kein Unter-Parameter "--galaxie=" angegeben für Hauptparameter --kombination'
+                            'kein Unter-Parameter "--galaxie=" oder "--universum=" angegeben für Hauptparameter --kombination'
                         )
                 elif lastMainCmd not in mainParaCmds.values():
                     cliout(
