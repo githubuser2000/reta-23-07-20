@@ -3311,6 +3311,11 @@ class Program:
         # self.tables.getCombis.
         # x("AAAC1", animalsProfessionsTable)
         x("AAAC2", [self.rowsOfcombi, self.rowsOfcombi2])
+        komb_rows = (
+            self.rowsOfcombi
+            if csvFileName == "kombi.csv"
+            else (self.rowsOfcombi2 if csvFileName == "kombi-meta.csv" else None)
+        )
         (
             finallyDisplayLines_kombi,
             newTable_kombi_1,
@@ -3321,18 +3326,9 @@ class Program:
             set(),
             set(),
             animalsProfessionsTable,
-            self.rowsOfcombi
-            if csvFileName == "kombi.csv"
-            else (self.rowsOfcombi2 if csvFileName == "kombi-meta.csv" else None),
+            komb_rows,
             self.tables.getCombis.sumOfAllCombiRowsAmount,
-            reliTableLenUntilNow=len(newTable[0])
-            - (
-                len(self.rowsOfcombi)
-                if csvFileName == "kombi.csv"
-                else (
-                    len(self.rowsOfcombi2) if csvFileName == "kombi-meta.csv" else None
-                )
-            ),
+            reliTableLenUntilNow=len(newTable[0]) - len(komb_rows),
         )
         x("AAAD1", newTable_kombi_1)
         x("AAAD2", ChosenKombiLines)

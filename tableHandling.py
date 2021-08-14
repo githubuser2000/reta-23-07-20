@@ -891,6 +891,7 @@ class Tables:
                                     und dessen zugehörige subTableZellen die als Zellen in die Haupt+Anzeige Tabelle rein sollen
                                     genomen
                                     """
+                                    x("SFG", rowsOfcombi)
                                     if rowsOfcombi.index(subRowNum + 1) < len(
                                         subTableCell
                                     ) and subTableCell != [[""]]:
