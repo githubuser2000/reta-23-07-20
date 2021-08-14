@@ -3187,6 +3187,7 @@ class Program:
                 newTable,
                 old2newTable,
                 paramLines,
+                "kombi.csv",
             )
 
         if len(self.rowsOfcombi2) > 0:
@@ -3198,6 +3199,7 @@ class Program:
                 newTable,
                 old2newTable,
                 paramLines,
+                "kombi-meta.csv",
             )
 
         # rowAmounts = self.tables.getOut.oneTableToMany(newTable, True, rowsRange)
@@ -3270,6 +3272,7 @@ class Program:
         newTable,
         old2newTable,
         paramLines,
+        csvFileName,
     ):
         """alle  Schritte für kombi:
         1. lesen: KombiTable und relation, was von kombitable zu haupt gehört
@@ -3316,7 +3319,9 @@ class Program:
             animalsProfessionsTable,
             self.rowsOfcombi,
             self.tables.getCombis.sumOfAllCombiRowsAmount,
-            reliTableLenUntilNow=len(newTable[0]) - len(self.rowsOfcombi),
+            reliTableLenUntilNow=len(newTable[0])
+            - len(self.rowsOfcombi)
+            - len(self.rowsOfcombi2),
         )
         # x("AAAD1", newTable_kombi_1)
         # x("AAAD2", "ENDDD")
