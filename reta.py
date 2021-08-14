@@ -297,8 +297,8 @@ class Program:
                             )
 
                 elif lastMainCmd == mainParaCmds[self.tables.getCombis.parameterName]:
-                    if cmd[:6] == "--was=":
-                        for oneKombiSpalte in cmd[6:].split(","):
+                    if cmd[:10] == "--galaxie=" or cmd[:12] == "--universum=":
+                        for oneKombiSpalte in cmd[cmd.find("=") + 1 :].split(","):
                             if len(oneKombiSpalte) > 0 and oneKombiSpalte[0] == "-":
                                 oneKombiSpalte = oneKombiSpalte[1:]
                                 yes1 = True if neg == "-" else False
@@ -325,13 +325,15 @@ class Program:
                                     cliout(
                                         'Die Kombispalte "'
                                         + oneKombiSpalte
-                                        + '" existiert so nicht als Befehl. Möglich sind die Parameter für --was= '
+                                        + '" existiert so nicht als Befehl. Möglich sind die Parameter für '
+                                        + cmd[: cmd.find("=") + 1]
+                                        + " "
                                         + str(self.kombiReverseDict.keys())[11:-1]
                                     )
 
                     else:
                         cliout(
-                            'kein Unter-Parameter "--was=" angegeben für Hauptparameter --kombination'
+                            'kein Unter-Parameter "--galaxie=" angegeben für Hauptparameter --kombination'
                         )
                 elif lastMainCmd not in mainParaCmds.values():
                     cliout(
@@ -2512,7 +2514,7 @@ class Program:
             for valuesInValuess in value:
                 self.kombiReverseDict[valuesInValuess] = key
 
-        allValues = [set(), set(), set(), set(), set(), set(), set(), set()]
+        allValues = [set(), set(), set(), set(), set(), set(), set(), set(), set()]
         for possibleCommands in paraNdataMatrix:
             for commandValue, aAllValue in zip(possibleCommands[2:], allValues):
                 try:
@@ -2538,6 +2540,7 @@ class Program:
         allValues[3] = set(Program.kombiParaNdataMatrix.keys())
         allValues[5] = set(range(2, 100))
         allValues[6] = set(range(2, 100))
+        allValues[7] = set(Program.kombiParaNdataMatrix.keys())
 
         """
         self.paraDictGenerated = {}
@@ -2579,6 +2582,7 @@ class Program:
             )
 
         self.dataDict[3] = Program.kombiParaNdataMatrix
+        self.dataDict[7] = Program.kombiParaNdataMatrix
 
         # alxp(self.paraDictGenerated)
         # alxp("-|-|")
@@ -2843,7 +2847,7 @@ class Program:
         self.dataDict: list = [{}, {}, {}, {}, {}, {}, {}, {}]
         self.spaltenTypeNaming: namedtuple = namedtuple(
             "SpaltenTyp",
-            "ordinary generated1 concat1 kombi1 boolAndTupleSet1 gebroUni1 gebrGal1 generated2 ordinaryNot generate1dNot concat1Not kombi1Not boolAndTupleSet1Not gebroUni1Not gebrGal1Not generated2Not",
+            "ordinary generated1 concat1 kombi1 boolAndTupleSet1 gebroUni1 gebrGal1 generated2 kombi2 ordinaryNot generate1dNot concat1Not kombi1Not boolAndTupleSet1Not gebroUni1Not gebrGal1Not generated2Not kombi2Not",
         )
         self.spaltenTypeNaming = self.spaltenTypeNaming(
             (0, 0),
@@ -2854,6 +2858,7 @@ class Program:
             (0, 5),
             (0, 6),
             (0, 7),
+            (0, 8),
             (1, 0),
             (1, 1),
             (1, 2),
@@ -2862,6 +2867,7 @@ class Program:
             (1, 5),
             (1, 6),
             (1, 7),
+            (1, 8),
         )
 
         # self.spaltenArtenNameKey_SpaltenArtenTupleVal_4Key4otherDict = {
@@ -2883,6 +2889,7 @@ class Program:
             (0, 5): set(),
             (0, 6): set(),
             (0, 7): set(),
+            (0, 8): set(),
             (1, 0): set(),
             (1, 1): set(),
             (1, 2): set(),
@@ -2891,6 +2898,7 @@ class Program:
             (1, 5): set(),
             (1, 6): set(),
             (1, 7): set(),
+            (1, 8): set(),
         }
 
         self.storeParamtersForColumns()
@@ -2913,6 +2921,9 @@ class Program:
         ]
         self.rowsOfcombi = self.spaltenArtenKey_SpaltennummernValue[
             self.spaltenTypeNaming.kombi1
+        ]
+        self.rowsOfcombi2 = self.spaltenArtenKey_SpaltennummernValue[
+            self.spaltenTypeNaming.kombi2
         ]
         self.onlyGenerated = self.spaltenArtenKey_SpaltennummernValue[
             self.spaltenTypeNaming.boolAndTupleSet1
@@ -2937,6 +2948,8 @@ class Program:
 
         if len(self.rowsOfcombi) > 0:
             paramLines.add("ka")
+        if len(self.rowsOfcombi2) > 0:
+            paramLines.add("ka2")
         self.tables.generRows = self.generRows
         self.tables.getPrepare.rowsAsNumbers = self.rowsAsNumbers
         self.tables.getOut.rowsAsNumbers = self.rowsAsNumbers

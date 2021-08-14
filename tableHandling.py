@@ -981,7 +981,7 @@ class Tables:
             # self.ChosenKombiLines: dict = {}
             # #x("AAA6", displayingZeilen)
             for condition in paramLines:
-                if "ka" == condition:
+                if condition in ("ka", "ka2"):
                     # kombitypes["displaying"] = True
                     # for ZeilennummerOfOnlyDisplayingOnes in displayingZeilen:
                     for kombiLineNumber, kombiLine in enumerate(kombiTable_Kombis):

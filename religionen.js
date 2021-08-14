@@ -508,7 +508,8 @@ function makeSpacesOutOf_(text) {
       return "<b>Wichtigstes zum gedanklich einordnen</b>";
   if (text.length == 8) if (text == "zaehlung") return "Zählung";
   if (text.length == 12) if (text == "nummerierung") return "Nummerierung";
-  if (text.length == 11) if (text == "kombination") return "Kombinationen";
+  if (text.length == 11)
+    if (text == "kombination") return "Kombinationen (Galaxie)";
   if (text.length == 18)
     if (text == "gebrochenuniversum") return "gebrochen-rational Universum n/m";
   if (text.length == 16)
