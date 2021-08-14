@@ -377,7 +377,7 @@ class Program:
                     paraDict[(name1, name2)] = datas
                 if len(parameterNames) == 0:
                     paraDict[(name1, "")] = datas
-            dataDicts: tuple = ({}, {}, {}, {}, {}, {}, {}, {})
+            dataDicts: tuple = ({}, {}, {}, {}, {}, {}, {}, {}, {})
 
             # datas sind nicht die Haupt-und-Neben-Parameter, sondern alles das diese enthalten und meinen können
             # ein datas Datensatz sind alle sets, die ein Haupt-Neben-Parameter Zusammenhang enthalten kann an sets
@@ -2844,7 +2844,7 @@ class Program:
             self.puniverseprimsNot,
             self.generRowsNot,
         ) = self.parametersToCommandsAndNumbers(argv, "-")
-        self.dataDict: list = [{}, {}, {}, {}, {}, {}, {}, {}]
+        self.dataDict: list = [{}, {}, {}, {}, {}, {}, {}, {}, {}]
         self.spaltenTypeNaming: namedtuple = namedtuple(
             "SpaltenTyp",
             "ordinary generated1 concat1 kombi1 boolAndTupleSet1 gebroUni1 gebrGal1 generated2 kombi2 ordinaryNot generate1dNot concat1Not kombi1Not boolAndTupleSet1Not gebroUni1Not gebrGal1Not generated2Not kombi2Not",
