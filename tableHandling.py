@@ -1043,20 +1043,20 @@ class Tables:
                 das mit Komma getrennt wurde , was zu was gehört als Info für den join später
             return kombiTable, self.relitable, kombiTable_Kombis, maintable2subtable_Relation
             """
+
             global folder
-            self.rowsOfcombi = rowsOfcombi
             place = os.path.join(
                 os.getcwd(),
                 os.path.dirname(__file__),
                 os.path.basename("./" + csvFileName),
             )
 
-            self.sumOfAllCombiRowsAmount += len(self.rowsOfcombi)
+            self.sumOfAllCombiRowsAmount += len(rowsOfcombi)
             self.relitable = relitable
             headingsAmount = len(self.relitable[0])
             self.maintable2subtable_Relation: tuple = ({}, {})
-            if (len(self.rowsOfcombi) > 0 and csvFileName == "kombi.csv") or (
-                len(self.rowsOfcombi2) > 0 and csvFileName == "kombi-meta.csv"
+            if (len(rowsOfcombi) > 0 and csvFileName == "kombi.csv") or (
+                len(rowsOfcombi) > 0 and csvFileName == "kombi-meta.csv"
             ):
                 with open(place, mode="r") as csv_file:
                     self.kombiTable: list = []
@@ -1132,10 +1132,10 @@ class Tables:
                         if i == 0:
                             for u, heading in enumerate(self.relitable[0]):
                                 for a in (
-                                    self.rowsOfcombi
+                                    rowsOfcombi
                                     if csvFileName == "kombi.csv"
                                     else (
-                                        self.rowsOfcombi2
+                                        rowsOfcombi2
                                         if csvFileName == "kombi-meta.csv"
                                         else set()
                                     )

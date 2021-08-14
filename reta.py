@@ -3190,7 +3190,7 @@ class Program:
             )
 
         if len(self.rowsOfcombi2) > 0:
-            newTable2 = self.combiTableWorkflow(
+            newTable = self.combiTableWorkflow(
                 animalsProfessionsTable2,
                 finallyDisplayLines,
                 kombiTable_Kombis2,
