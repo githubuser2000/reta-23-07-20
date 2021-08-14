@@ -3098,12 +3098,14 @@ class Program:
                 kombiTable_Kombis2,
                 maintable2subtable_Relation2,
             ) = self.tables.getCombis.readKombiCsv(
-                self.relitable, self.rowsAsNumbers, self.rowsOfcombi, "kombi-meta.csv"
+                self.relitable, self.rowsAsNumbers, self.rowsOfcombi2, "kombi-meta.csv"
             )
         else:
             animalsProfessionsTable2 = []
             kombiTable_Kombis2 = []
             maintable2subtable_Relation2 = []
+        x("NEWT4", self.rowsOfcombi2)
+        x("NEWT3b", self.rowsAsNumbers)
 
         return (
             self.RowsLen,
@@ -3157,6 +3159,7 @@ class Program:
         ) = self.bringAllImportantBeginThings(argv)
 
         # x("2943", self.rowsAsNumbers)
+        x("NEWT3", self.rowsAsNumbers)
         (
             finallyDisplayLines,
             newTable,
@@ -3178,7 +3181,7 @@ class Program:
         # lineslist.sort()
         # self.tables.lastLineNumber = lineslist[-1]
 
-        print(str(len(self.rowsOfcombi)))
+        alxp(str(len(self.rowsOfcombi)))
         x("NEWT1", newTable)
         if len(self.rowsOfcombi) > 0:
             newTable = self.combiTableWorkflow(

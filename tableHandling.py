@@ -1055,9 +1055,8 @@ class Tables:
             self.relitable = relitable
             headingsAmount = len(self.relitable[0])
             self.maintable2subtable_Relation: tuple = ({}, {})
-            if (len(rowsOfcombi) > 0 and csvFileName == "kombi.csv") or (
-                len(rowsOfcombi) > 0 and csvFileName == "kombi-meta.csv"
-            ):
+            if len(rowsOfcombi) > 0:
+                print("X")
                 with open(place, mode="r") as csv_file:
                     self.kombiTable: list = []
                     self.kombiTable_Kombis: list = []
@@ -1131,15 +1130,7 @@ class Tables:
                             )
                         if i == 0:
                             for u, heading in enumerate(self.relitable[0]):
-                                for a in (
-                                    rowsOfcombi
-                                    if csvFileName == "kombi.csv"
-                                    else (
-                                        rowsOfcombi2
-                                        if csvFileName == "kombi-meta.csv"
-                                        else set()
-                                    )
-                                ):
+                                for a in rowsOfcombi:
                                     if (
                                         u >= headingsAmount
                                         and u == headingsAmount + a - 1
