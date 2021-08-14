@@ -386,7 +386,6 @@ class Tables:
                     for iterWholeLine, OneWholeScreenLine_AllSubCells in enumerate(
                         rowsRange
                     ):  # eine Bildhschirm-Zeile immer
-                        # #x("abcde", self.tables.getPrepare.zaehlungen)
                         line = (
                             (
                                 (
@@ -576,6 +575,20 @@ class Tables:
                             else:
                                 rowsEmpty += 1
 
+                        x(
+                            "AUSGABE-3",
+                            [
+                                rowsEmpty,
+                                "!=",
+                                len(self.rowsAsNumbers),
+                                "and",
+                                iterWholeLine,
+                                "<",
+                                self.textheight,
+                                "or 0 ==",
+                                self.textheight,
+                            ],
+                        )
                         if rowsEmpty != len(self.rowsAsNumbers) and (
                             iterWholeLine < self.textheight or self.textheight == 0
                         ):  # and m < actualPartLineLen:
@@ -613,7 +626,9 @@ class Tables:
                                             ]
 
                                     line += ["\n"] + addionalLine
+                            alxp("AUSGABE-2")
                             if emptyEntries != entriesHere:
+                                alxp("AUSGABE-1")
                                 if type(self.__outType) is csvSyntax:
                                     writer.writerow(line)
                                 else:
@@ -622,7 +637,7 @@ class Tables:
                                         and filteredLineNumbersofOrignal == ""
                                     ):
                                         filteredLineNumbersofOrignal = 0
-
+                                    alxp("AUSGABE")
                                     cliout(
                                         "".join(
                                             [
