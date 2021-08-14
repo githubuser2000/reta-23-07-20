@@ -861,18 +861,21 @@ class Tables:
                 oneLinePerLine = True
             else:
                 oneLinePerLine = False
+
             for colNum, (reliNum, col) in enumerate(
                 zip(self.religionNumbers, mainTable)
             ):
                 """geht die Zeilen der anzuzeigenden Haupttabelle durch
                 1. Zeilenummer, 2. richtige Nummer der Religion (z.B: 1-10), 3. anzuzeigende Haupttabellenzeile
                 """
+                x("GOA1", manySubTables)
                 for subTable in manySubTables:
                     """Liste aus Tabellen: eine Untertabelle = was in Haupttabellenzeilennummer rein soll aus der Kombitabelle
                     Zusammen ist das die Matrix der Kombis, die an die Haupt+Anzeige Tabelle deneben ran soll
 
                     hier werden also alle Orginal-Haupt+Anzeige Zeilen durchgegangen
                     """
+                    x("GOA", [reliNum, subTable])
                     if reliNum in subTable:
                         """Wenn z.B. Religion 2 als Spalte 2 auch als Spalte 2 drin ist als Zelle der kombis die als Zelle in die Haupt+Anzeige Tabelle rein soll
                         d.h. hier die Frage ob z.B. 2==2    viel mehr ist das nicht"""
@@ -1056,7 +1059,6 @@ class Tables:
             headingsAmount = len(self.relitable[0])
             self.maintable2subtable_Relation: tuple = ({}, {})
             if len(rowsOfcombi) > 0:
-                print("X")
                 with open(place, mode="r") as csv_file:
                     self.kombiTable: list = []
                     self.kombiTable_Kombis: list = []
@@ -1186,7 +1188,6 @@ class Tables:
                                                         )
                                                     ]
                                         elif csvFileName == "kombi-meta.csv":
-                                            x("XxX", self.tables.dataDict[8])
                                             for (
                                                 elementParameter
                                             ) in self.tables.dataDict[8][a]:

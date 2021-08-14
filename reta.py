@@ -3104,8 +3104,6 @@ class Program:
             animalsProfessionsTable2 = []
             kombiTable_Kombis2 = []
             maintable2subtable_Relation2 = []
-        x("NEWT4", self.rowsOfcombi2)
-        x("NEWT3b", self.rowsAsNumbers)
 
         return (
             self.RowsLen,
@@ -3159,7 +3157,6 @@ class Program:
         ) = self.bringAllImportantBeginThings(argv)
 
         # x("2943", self.rowsAsNumbers)
-        x("NEWT3", self.rowsAsNumbers)
         (
             finallyDisplayLines,
             newTable,
@@ -3182,7 +3179,6 @@ class Program:
         # self.tables.lastLineNumber = lineslist[-1]
 
         alxp(str(len(self.rowsOfcombi)))
-        x("NEWT1", newTable)
         if len(self.rowsOfcombi) > 0:
             newTable = self.combiTableWorkflow(
                 animalsProfessionsTable,
@@ -3311,9 +3307,10 @@ class Program:
             finallyDisplayLines,
             kombiTable_Kombis,
         )
+        x("DFG", ChosenKombiLines)
         # self.tables.getCombis.
         # x("AAAC1", animalsProfessionsTable)
-        # x("AAAC2", "ENDDD")
+        x("AAAC2", [self.rowsOfcombi, self.rowsOfcombi2])
         (
             finallyDisplayLines_kombi,
             newTable_kombi_1,
@@ -3324,7 +3321,9 @@ class Program:
             set(),
             set(),
             animalsProfessionsTable,
-            self.rowsOfcombi,
+            self.rowsOfcombi
+            if csvFileName == "kombi.csv"
+            else (self.rowsOfcombi2 if csvFileName == "kombi-meta.csv" else None),
             self.tables.getCombis.sumOfAllCombiRowsAmount,
             reliTableLenUntilNow=len(newTable[0])
             - (
@@ -3335,8 +3334,8 @@ class Program:
                 )
             ),
         )
-        # x("AAAD1", newTable_kombi_1)
-        # x("AAAD2", "ENDDD")
+        x("AAAD1", newTable_kombi_1)
+        x("AAAD2", ChosenKombiLines)
         KombiTables = self.tables.getCombis.prepareTableJoin(
             ChosenKombiLines, newTable_kombi_1
         )
@@ -3347,6 +3346,7 @@ class Program:
             old2newTable,
             self.rowsOfcombi,
         )
+        x("HWS", newTable)
         return newTable
 
 

@@ -526,7 +526,7 @@ class Prepare:
         self.headingsAmount = headingsAmount
         old2Rows: tuple = ({}, {})
         reliNumbersBool = False if self.religionNumbers != [] else True
-        # x("XIX", rowsAsNumbers)
+        x("XIX", rowsAsNumbers)
         for u, line in enumerate(contentTable):
             # x("AAAF1", (contentTable[u], u, ))
             # x("AAAF2", "ENNDD")
@@ -607,6 +607,7 @@ class Prepare:
         h = 0
         newLines: list = [[]] * headingsAmount
         for t, cell in enumerate(line):
+            x("SDG", [t, rowsAsNumbers])
             if t in rowsAsNumbers:
                 if u == 0:
                     self.prepare4out_Tagging(
