@@ -683,7 +683,6 @@ class Tables:
 
     class Combi:
         def __init__(self, tables):
-            self.ChosenKombiLines: dict = {}
             self.sumOfAllCombiRowsAmount = 0
             self.tables = tables
             self.parameterName = "kombination"
@@ -980,6 +979,8 @@ class Tables:
             # kombitypes = {"displaying": False, "or": False, "and": False}
             # self.ChosenKombiLines: dict = {}
             # #x("AAA6", displayingZeilen)
+
+            ChosenKombiLines: dict = {}
             for condition in paramLines:
                 if condition in ("ka", "ka2"):
                     # kombitypes["displaying"] = True
@@ -1009,15 +1010,15 @@ class Tables:
                                     key = haupttabellenzeilennummer
                                     value = kombitabellenzeilennummer
                                     """
-                                    self.ChosenKombiLines[kombiNumber] |= {
+                                    ChosenKombiLines[kombiNumber] |= {
                                         kombiLineNumber + 1
                                     }
                                 except KeyError:
-                                    self.ChosenKombiLines[kombiNumber] = {
+                                    ChosenKombiLines[kombiNumber] = {
                                         kombiLineNumber + 1
                                     }
             # #x("AAA4", self.ChosenKombiLines)
-            return self.ChosenKombiLines
+            return ChosenKombiLines
 
         def readKombiCsv(
             self,

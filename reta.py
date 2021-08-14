@@ -3283,6 +3283,7 @@ class Program:
             finallyDisplayLines,
             kombiTable_Kombis,
         )
+        # self.tables.getCombis.
         # x("AAAC1", animalsProfessionsTable)
         # x("AAAC2", "ENDDD")
         (
