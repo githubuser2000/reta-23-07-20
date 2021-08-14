@@ -3191,7 +3191,7 @@ class Program:
                 "kombi.csv",
             )
         # print(str(len(newTable[0])))
-        # x("NEWT2", newTable)
+        x("NEWT2", newTable)
 
         if len(self.rowsOfcombi2) > 0:
             newTable = self.combiTableWorkflow(
@@ -3205,11 +3205,15 @@ class Program:
                 "kombi-meta.csv",
             )
 
+        x("NEWT3", newTable)
+
         # rowAmounts = self.tables.getOut.oneTableToMany(newTable, True, rowsRange)
         # spaltenreihenfolgeundnurdiese
         newTable = self.tables.getOut.onlyThatColumns(
             newTable, spaltenreihenfolgeundnurdiese
         )
+        x("NEWT4", [finallyDisplayLines, newTable, numlen, rowsRange])
+
         self.tables.getOut.cliOut(finallyDisplayLines, newTable, numlen, rowsRange)
         alxp(
             """kombinationen sortiert ausgeben und als Hierarchiebaum den Zahlenkombinationen entlang"""
