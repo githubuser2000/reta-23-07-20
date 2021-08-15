@@ -3334,8 +3334,16 @@ class Program:
             animalsProfessionsTable,
             komb_rows,
             self.tables.getCombis.sumOfAllCombiRowsAmount,
-            reliTableLenUntilNow=len(newTable[0]) - len(komb_rows),
+            reliTableLenUntilNow=len(newTable[0])
+            - (
+                len(self.rowsOfcombi) + len(self.rowsOfcombi2)
+                if csvFileName == "kombi.csv"
+                else len(self.rowsOfcombi2)
+                if csvFileName == "kombi-meta.csv"
+                else None
+            ),
         )
+        x("BSR", [len(newTable[0]), len(komb_rows)])
         x("AAAD1", newTable_kombi_1)
         x("AAAD2", ChosenKombiLines)
         KombiTables = self.tables.getCombis.prepareTableJoin(
