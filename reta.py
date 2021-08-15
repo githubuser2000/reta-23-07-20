@@ -321,7 +321,7 @@ class Program:
                                             set(),
                                             set(),
                                             {
-                                                self.kombiReverseDict[oneKombiSpalte],
+                                                self.kombiReverseDict2[oneKombiSpalte],
                                             }
                                             if cmd.find("=") == 11
                                             else set(),
@@ -331,7 +331,6 @@ class Program:
                                     )
                                     # alxp("geht 2:")
                                     # kombiSpalten |= {self.kombiReverseDict[oneKombiSpalte]}
-                                    pass
                                 except KeyError:
                                     cliout(
                                         'Die Kombispalte "'
@@ -339,7 +338,15 @@ class Program:
                                         + '" existiert so nicht als Befehl. Möglich sind die Parameter für '
                                         + cmd[: cmd.find("=") + 1]
                                         + " "
-                                        + str(self.kombiReverseDict.keys())[11:-1]
+                                        + (
+                                            str(self.kombiReverseDict.keys())[11:-1]
+                                            if cmd[: cmd.find("=")] == "--galaxie"
+                                            else str(self.kombiReverseDict2.keys())[
+                                                11:-1
+                                            ]
+                                            if cmd[: cmd.find("=")] == "--universum"
+                                            else ""
+                                        )
                                     )
 
                     else:
@@ -2460,6 +2467,63 @@ class Program:
                 "Liebe",
                 "liebe",
             ),
+            7: (
+                "Männer",
+                "männer",
+                "maenner",
+                "frauen",
+            ),
+            8: (
+                "Persönlichkeit_evolutionär_erwerben",
+                "evolution",
+                "erwerben",
+                "persoenlichkeit",
+                "persönlichkeit",
+            ),
+            9: (
+                "Religion",
+                "religion",
+                "religionen",
+            ),
+            10: ("Motive_Ziele", "motivation", "motive", "ziele", "ziel", "motive"),
+            12: (
+                "Emotionen",
+                "emotionen",
+                "gefuehle",
+                "gefühle",
+                "emotion",
+                "gefühl",
+                "gefühle",
+            ),
+            13: ("Personen", "personen", "berühmtheiten", "beruehmtheiten"),
+            16: (
+                "Wirtschaftssysteme",
+                "wirtschaftssystem",
+                "wirtschaftssysteme",
+                "kombinierteswirtschaftssystem",
+                "kombiniertewirtschaftssysteme",
+            ),
+            17: ("Maschinen", "maschinen", "geräte", "geraete"),
+        }
+
+        Program.kombiParaNdataMatrix2 = {
+            1: (
+                "Lebewesen",
+                "tiere",
+                "tier",
+                "lebewesen",
+            ),
+            2: ("Berufe", "berufe", "beruf"),
+            3: (
+                "Kreativität_und_Intelligenz",
+                "kreativität",
+                "intelligenz",
+                "kreativitaet",
+            ),
+            4: (
+                "Liebe",
+                "liebe",
+            ),
             5: (
                 "Transzendentalien_Strukturalien",
                 "transzendenz",
@@ -2525,6 +2589,11 @@ class Program:
             for valuesInValuess in value:
                 self.kombiReverseDict[valuesInValuess] = key
 
+        self.kombiReverseDict2: dict = {}
+        for key, value in Program.kombiParaNdataMatrix2.items():
+            for valuesInValuess in value:
+                self.kombiReverseDict2[valuesInValuess] = key
+
         allValues = [set(), set(), set(), set(), set(), set(), set(), set(), set()]
         for possibleCommands in paraNdataMatrix:
             for commandValue, aAllValue in zip(possibleCommands[2:], allValues):
@@ -2551,7 +2620,7 @@ class Program:
         allValues[3] = set(Program.kombiParaNdataMatrix.keys())
         allValues[5] = set(range(2, 100))
         allValues[6] = set(range(2, 100))
-        allValues[8] = set(Program.kombiParaNdataMatrix.keys())
+        allValues[8] = set(Program.kombiParaNdataMatrix2.keys())
 
         """
         self.paraDictGenerated = {}
@@ -2593,7 +2662,7 @@ class Program:
             )
 
         self.dataDict[3] = Program.kombiParaNdataMatrix
-        self.dataDict[8] = Program.kombiParaNdataMatrix
+        self.dataDict[8] = Program.kombiParaNdataMatrix2
 
         # alxp(self.paraDictGenerated)
         # alxp("-|-|")
