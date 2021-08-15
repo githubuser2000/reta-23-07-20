@@ -273,9 +273,9 @@ tableTags_kombiTable = {
         6,
         9,
         11,
-        14,
         15,
     },
+    frozenset({ST.universum, ST.planet, ST.sternPolygon}): {14},
 }
 
 
