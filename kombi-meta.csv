@@ -13,7 +13,7 @@
 9;;;;;;;;;;;;;;;;;
 7|12;;;;;Mengen, die Richtungs-Arten und Richtungskategorien definieren (, statt Mengen, die Zahlen definieren, wie z.B. rationale oder natürliche Zahlen) und Richtungen die von Mengen ausgehen;;;;;;;;;;;;
 7|6;;;;;das Wohl, mathematisch der Vektor (beides 100% sicher);;;;;;;;;;das Übel (Dagegen-Gegentranszendentalie);;
-7|5;;;;;Assent (Englisch, philosophisches Wort): Zulassung, Akzeptanz (alles größtenteils sicher);;;;;;;;;;;;
+7|5;;;;;Assent (Englisch, philosophisches Wort): Zulassung, Akzeptanz (alles größtenteils sicher);5. das Gute für sich wollen (Selbstsucht), 7. das Gute geben wollen (Selbstlosigkeit) ;;;;;;;;;;;
 7|9;;;;;;;;;;;;;;;;;
 7|8;;;;;sehr sicher: Realität, aber nicht unbedingt Wirklichkeit, d.h. z.B. u.a. (u.a. politische) Ideologien (nicht 100% sicher), die Direktive, die Weisung (nicht 100% sicher) (d.h. die Zustand einer Richtung wollen oder die Richtung eines Zustandes wollen), Ein Zustandsautomat mit gerichteten Kanten (nicht 100% sicher), mathematisch: Zustandsautomat mit gerichteten Kanten oder Graph mit Gerichteten Kanten oder ein Gametree (Spieltheorie und klassische Logik-KI) mit gerichteten Kanten (sehr sicher);;;;;;;;;;;;
 7|14;;;;;;;;;;;;;;;;;
@@ -38,8 +38,8 @@
 10|14|15;;;;;Ist eher falsch: kontextfreie Sprache und Grammatik, nicht deterministischer Kellerautomat, Negation (13) muss nicht gegeben sein, da es die Bedingung nicht gibt, dass bei Komplementbildung so genannte Abgeschlossenheit gelten müsse. ;;;;;;;;;;;;
 10|14|15|13;;;;;Ist eher falsch: die anderen 3 übrigen Grammatiken und Sprachen aus der Chomsky-Hierarchie, Turingmaschine, endlicher Automat, Negation (13) ist notwendig, da diese 3 Sachen bei Komplementbildung immer abgeschlossen sein müssen. Negation entspricht u.a. Komplementbildung. ;;;;;;;;;;;;
 4;;;;;;;;;;;;;;;;;
-11|13;;;;;;;;;;;;;;;;;
-17|19;;;;;;;;;;;;;;;;;
+11|13;;;;;;11. Fürsorge anwerben (so wie ein Kanarienvogel), 13. Fürsorge geben (als Helfer) ;;;;;;;;;;;
+17|19;;;;;;17. Motivation nehmen (als jemand, der einen anderen abgeneigt ist), 19. Motivation geben (als Fan) ;;;;;;;;;;;
 1|2|5|6|9|11|12|13|17|27|64|81|125;;;;;;;;;;;;;;;;;
 3|7|8|10|14|16|17|25|32|36|100|128;;;;;;;;;;;;;;;;;
 11|7;;;;;Systematik (halb sicher);;;;;;;;;;;;
