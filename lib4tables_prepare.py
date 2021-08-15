@@ -496,6 +496,7 @@ class Prepare:
         gebrGalSpalten: set = None,
         gebrUnivSpalten2: set = None,
         gebrGalSpalten2: set = None,
+        kombiCSVNumber: int = 0,
     ) -> tuple:
         """Aus einer Tabelle wird eine gemacht, bei der der Zeilenumbruch durchgeführt wird.
         Dabei werden alle Spalten und Zeilen entfernt die nicht ausgegeben werden sollen.
@@ -545,6 +546,7 @@ class Prepare:
                     reliTableLenUntilNow,
                     rowsAsNumbers,
                     u,
+                    kombiCSVNumber=kombiCSVNumber,
                 )
 
                 if new2Lines != []:
@@ -599,6 +601,7 @@ class Prepare:
         reliTableLenUntilNow,
         rowsAsNumbers,
         u,
+        kombiCSVNumber,
     ):
         if reliNumbersBool:
             self.religionNumbers += [int(u)]
@@ -620,6 +623,7 @@ class Prepare:
                         reliTableLenUntilNow,
                         rowToDisplay,
                         t,
+                        kombiCSVNumber=kombiCSVNumber,
                     )
 
                 rowToDisplay += 1
@@ -647,6 +651,7 @@ class Prepare:
         reliTableLenUntilNow,
         rowToDisplay,
         t,
+        kombiCSVNumber,
     ):
         if combiRows == 0:
             try:
@@ -712,10 +717,20 @@ class Prepare:
                 pass
 
         else:
+            assert kombiCSVNumber in (
+                0,
+                1,
+            )
             try:
                 self.tables.generatedSpaltenParameter_Tags[
                     reliTableLenUntilNow + rowToDisplay
-                ] = lib4tables_Enum.tableTags2_kombiTable[t]
+                ] = (
+                    lib4tables_Enum.tableTags2_kombiTable[t]
+                    if kombiCSVNumber == 0
+                    else lib4tables_Enum.tableTags2_kombiTable2[t]
+                    if kombiCSVNumber == 1
+                    else None
+                )
                 x("zz", [reliTableLenUntilNow, "+", rowToDisplay, t])
                 x("BSDS", self.tables.generatedSpaltenParameter_Tags)
             except KeyError:

@@ -3411,6 +3411,11 @@ class Program:
                 if csvFileName == "kombi-meta.csv"
                 else None
             ),
+            kombiCSVNumber=0
+            if csvFileName == "kombi.csv"
+            else 1
+            if csvFileName == "kombi-meta.csv"
+            else None,
         )
         x("BSR", [len(newTable[0]), len(komb_rows)])
         x("AAAD1", newTable_kombi_1)

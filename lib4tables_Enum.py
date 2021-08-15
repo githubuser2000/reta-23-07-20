@@ -262,6 +262,7 @@ tableTags_kombiTable = {
         4,
         7,
         8,
+        9,
         10,
         12,
         13,
@@ -271,11 +272,36 @@ tableTags_kombiTable = {
     frozenset({ST.universum, ST.galaxie, ST.sternPolygon, ST.gleichfoermigesPolygon}): {
         5,
         6,
-        9,
         11,
         15,
     },
-    frozenset({ST.universum, ST.planet, ST.sternPolygon}): {14},
+}
+
+
+tableTags_kombiTable2 = {
+    frozenset({ST.universum, ST.galaxie, ST.sternPolygon, ST.gleichfoermigesPolygon}): {
+        5
+    },
+    frozenset({ST.universum, ST.planet, ST.sternPolygon, ST.gleichfoermigesPolygon}): {
+        14
+    },
+    frozenset({ST.universum, ST.gleichfoermigesPolygon, ST.sternPolygon}): {
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+    },
 }
 
 
@@ -289,6 +315,7 @@ def dictViceversa(dic: dict) -> dict:
 
 tableTags2 = dictViceversa(tableTags)
 tableTags2_kombiTable = dictViceversa(tableTags_kombiTable)
+tableTags2_kombiTable2 = dictViceversa(tableTags_kombiTable2)
 
 
 """
