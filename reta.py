@@ -3285,6 +3285,9 @@ class Program:
 
         self.tables.getOut.cliOut(finallyDisplayLines, newTable, numlen, rowsRange)
         alxp(
+            """--breite und --breiten als Befehl auch für -ausgabe zur Verfügung stellen, also doppelt. Kein großer Aufwand das zu programmieren!"""
+        )
+        alxp(
             """kombinationen sortiert ausgeben und als Hierarchiebaum den Zahlenkombinationen entlang"""
         )
         alxp(
