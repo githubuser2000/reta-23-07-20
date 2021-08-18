@@ -115,6 +115,15 @@ class Tables:
 
     @textWidth.setter
     def textWidth(self, value: int):
+        value = (
+            value
+            if (shellRowsAmount > value + 6 or shellRowsAmount == 0)
+            and (
+                value != 0
+                or (self.bbcodeOutputYes or self.htmlOutputYes or self.getOut.oneTable)
+            )
+            else shellRowsAmount - 6
+        )
         self.getPrepare.textWidth = value
         self.getOut.textWidth = value
         self.textwidth = value
@@ -237,11 +246,7 @@ class Tables:
         @textWidth.setter
         def textWidth(self, value):
             global shellRowsAmount
-            self.textwidth = (
-                value
-                if shellRowsAmount > value + 6 or shellRowsAmount == 0
-                else shellRowsAmount - 6
-            )
+            self.textwidth = value
 
         def onlyThatColumns(self, table, onlyThatColumns):
             if len(onlyThatColumns) > 0:
@@ -767,7 +772,12 @@ class Tables:
 
         def removeOneNumber(self, hinein: list, colNum: int) -> list:
             # print(str(self.tables.textWidth))
-            if len(hinein) > 0 and self.tables.textwidth == 0:
+            if len(hinein) > 0 and (
+                (self.tables.textwidth == 0 and self.tables.getOut.oneTable)
+                or self.tables.htmlOutputYes
+                or self.tables.bbcodeOutputYes
+                or True
+            ):
                 hinein4 = deepcopy(hinein)
                 hinein3 = []
                 for zellenzeile in hinein:
