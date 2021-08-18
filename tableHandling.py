@@ -771,12 +771,26 @@ class Tables:
             return KombiTables
 
         def removeOneNumber(self, hinein: list, colNum: int) -> list:
+            """
+            Das hier muss noch mal umprogrammiert werden und anstelle den Text zu bearbeiten sollte
+            eine extra Datenstruktur eingebunden werden, damit dann so etwas wie SQL AND und OR möglich werden kann.
+
+            Wenn diese Datenstruktur bestehen wird, dann kann diese Algorithmus baumartig weiter geführt werden,
+            was bedeutet, dass wenn eine Zahl mehr mals vorkommt bei allen Kombinationen pro einer Hauptzahl,
+            dann soll das zusammen gefasst werden und dafür macht es auch Sinn,
+
+            all die Zahlen zu sortieren, seitlich und oben-unten
+            """
             # print(str(self.tables.textWidth))
-            if len(hinein) > 0 and (
-                (self.tables.textwidth == 0 and self.tables.getOut.oneTable)
-                or self.tables.htmlOutputYes
-                or self.tables.bbcodeOutputYes
-                or True
+            if (
+                len(hinein) > 0
+                and (
+                    (self.tables.textwidth == 0 and self.tables.getOut.oneTable)
+                    or self.tables.htmlOutputYes
+                    or self.tables.bbcodeOutputYes
+                    or True
+                )
+                and len(self.tables.breitenn) == 0
             ):
                 hinein4 = deepcopy(hinein)
                 hinein3 = []
