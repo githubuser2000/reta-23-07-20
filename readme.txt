@@ -68,6 +68,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [list][*]--galaxie=[list][*]tiere,berufe,intelligenz,liebe,frauen,maenner,persoenlichkeit,religionen,motive,emotionen,personen,wirtschaftssysteme,maschinen[/list]
 [list][*]--universum=[list][*]tiere,transzendentalien,strukturalien,primzahlkreuz,ontologie,mechanismen,gegentranszendentalien[/list]
 [/list]
+[/list]
 [*]-ausgabe
 [list][*]--nocolor
 [*]--art=
@@ -76,7 +77,6 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--onetable
 [*]--spaltenreihenfolgeundnurdiese=[list][*]3,5,1
 d.h. von z.B. 5 Spalten soll zuerst die 3., dann 5. und 1. angezeigt werden und die anderen nicht![/list]
-[/list]
 [/list]
 
 Umkehrungen:
