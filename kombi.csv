@@ -3,7 +3,7 @@
 5|9;Katze;Berufe für die Allgemeinheit;;jeden zum Fressen gern haben;;;;Anmut;;;;;;;;;
 5|9|13;Katze der Zukunft;Arzt, Krankenschwester, Pfleger, Sozialarbeiter, Volunteer z.B. für dritte Welt-Länder;;;;;;;;;;;;;;;
 10;"Rabe, Krähe, Greifvogel, Esel, Fledermaus; alle Tiere, die in der Lage sind Freundschaften aufzubauen";M.I.N.T.: Mathematiker, Informatiker, Naturwissenschaftler, Techniker;;;;;;;;;;;;;;;
-10|7;Pferd, Pfau, Schwan (alles 3: +7 mit +10), Delphin (vielleicht -7 mit +10, unbekannt);Philosoph, Laufsteg-Model, Architekt, Künstler, Schriftsteller, Musiker;mathematische Induktionsverfahren und aus der Informatik;Partnerschaftsliebe;;;;;;Liebesbeziehung, Schöngeistiges;;;;;;Wirtschaftssystem mit, anstelle von Geld aus Zahlen, Geld aus Richtungsvektoren mit Wahrheitswerten statt Zahlenwerten als Betrag;
+10|7;Pfau (+7 mit +10), Schwan (+7 mit +10), Delphin (vielleicht -7 mit +10, unbekannt);Philosoph, Laufsteg-Model, Architekt, Künstler, Schriftsteller, Musiker;mathematische Induktionsverfahren und aus der Informatik;Partnerschaftsliebe;;;;;;Liebesbeziehung, Schöngeistiges;;;;;;Wirtschaftssystem mit, anstelle von Geld aus Zahlen, Geld aus Richtungsvektoren mit Wahrheitswerten statt Zahlenwerten als Betrag;
 11;Kanarienvögel, die dich nachmachen, wie Pappagei oder Wellensittich;Systemtheoretiker, Darsteller, Schauspieler, Comedian;;;;;;;;;;;;;;;
 5|9|19;Katzenaußerirdische (haben aber noch höhere Zahlen);;;;;;;;;;;;;;;;
 5;Reptil;Lehrer, Professor, TV-Star, Musikstar, Influencer, Kommunist;;;;;;;;;;;;;;;
@@ -199,3 +199,5 @@
 12|20;;;;;;;;;;;;;;;;;
 16|19;;;;;;;;;;;;;;;;;
 4|1/5;;;;;;;;;;;Beharrlichkeit, Disziplin (kontinuierlich [1/5] und geduldig [4] oder ggf. fleißig [4]);;;;;;
++4|+7|+10;Pferde;;;;;;;;;;;;;;;;
+-3|-4|8|10|17|18;Menschen in höher entwickelten Kulturen als Ureinwohner, die von der Zivilisation nichts wissen;;;;;;;;;;;;;;;;
