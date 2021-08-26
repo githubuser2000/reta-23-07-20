@@ -698,6 +698,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.planet,
+                ("Intelligenz", "intelligenz"),
+                {214},
+            ),
+            (
+                Program.ParametersMain.planet,
                 ("Gleichheit_Freiheit", "gleichheit", "freiheit"),
                 {132},
             ),
