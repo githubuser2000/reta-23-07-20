@@ -8,7 +8,28 @@ from prompt_toolkit.completion import NestedCompleter, WordCompleter
 from prompt_toolkit.styles import Style
 
 retaProgram = reta.Program([sys.argv[0]])
-print(str(retaProgram.mainParaCmds))
+# print(str(retaProgram.mainParaCmds))
+# print(str(retaProgram.paraDict.keys()))
+# print(str(reta.Program.kombiParaNdataMatrix.values()))
+# print(str(reta.Program.kombiParaNdataMatrix2.values()))
+ausgabeParas = [
+    "--nocolor",
+    "--art",
+    "--onetable",
+    "--spaltenreihenfolgeundnurdiese",
+]
+kombiMainParas = ["--galaxie", "--universum"]
+zeilenParas = [
+    "--zeit",
+    "--zaehlung",
+    "--vorhervonausschnitt",
+    "--primzahlvielfache",
+    "--nachtraeglichdavon",
+    "--alles",
+    "--potenzenvonzahlen",
+    "--typ",
+]
+print(str(ausgabeParas))
 # Es gibt einen vi mode in dieser lib
 # html_completer = WordCompleter(["<html>", "<body>", "<head>", "<title>"])
 html_completer = NestedCompleter.from_nested_dict(
