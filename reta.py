@@ -133,7 +133,7 @@ class Program:
         #         tables.spalteGestirn = True
 
         # self.intoParameterDatatype
-        mainParaCmds: dict = {
+        self.mainParaCmds: dict = {
             "zeilen": 0,
             "spalten": 1,
             self.tables.getCombis.parameterName: 2,
@@ -142,7 +142,7 @@ class Program:
             "h": None,
             "help": None,
         }
-        # mainParaCmds2: dict = {
+        # self.mainParaCmds2: dict = {
         #    0: "zeilen",
         #    1: "spalten",
         #    2: "kombination",
@@ -153,8 +153,8 @@ class Program:
         # ordinarySpalten = set()
         for cmd in self.argv[1:]:
             if len(cmd) > 1 and cmd[0] == "-" and cmd[1] != "-":
-                if cmd[1:] in mainParaCmds.keys():
-                    lastMainCmd = mainParaCmds[cmd[1:]]
+                if cmd[1:] in self.mainParaCmds.keys():
+                    lastMainCmd = self.mainParaCmds[cmd[1:]]
                 elif len(neg) == 0:
                     # else:
                     cliout(
@@ -162,10 +162,10 @@ class Program:
                         + cmd
                         + '" existiert hier nich als Befehl!'
                         + " Es ist nur möglich: -"
-                        + str(", -".join(list(mainParaCmds.keys())))
+                        + str(", -".join(list(self.mainParaCmds.keys())))
                     )
             elif cmd[:2] == "--":
-                if lastMainCmd == mainParaCmds["spalten"]:
+                if lastMainCmd == self.mainParaCmds["spalten"]:
                     cmd = cmd[2:]
                     eq = cmd.find("=")
                     if cmd[:7] == "breite=" and len(neg) == 0:
@@ -296,7 +296,10 @@ class Program:
                                 + ", --keinenummerierung"
                             )
 
-                elif lastMainCmd == mainParaCmds[self.tables.getCombis.parameterName]:
+                elif (
+                    lastMainCmd
+                    == self.mainParaCmds[self.tables.getCombis.parameterName]
+                ):
                     if cmd[:10] == "--galaxie=" or cmd[:12] == "--universum=":
                         for oneKombiSpalte in cmd[cmd.find("=") + 1 :].split(","):
                             if len(oneKombiSpalte) > 0 and oneKombiSpalte[0] == "-":
@@ -353,13 +356,13 @@ class Program:
                         cliout(
                             'kein Unter-Parameter "--galaxie=" oder "--universum=" angegeben für Hauptparameter -kombination'
                         )
-                elif lastMainCmd not in mainParaCmds.values():
+                elif lastMainCmd not in self.mainParaCmds.values():
                     cliout(
                         "Es muss ein Hauptparameter, bzw. der richtige, gesetzt sein, damit ein"
                         + ' Nebenparameter, wie möglicherweise: "'
                         + cmd
                         + '" ausgeführt werden kann. Hauptparameter sind: -'
-                        + " -".join(mainParaCmds)
+                        + " -".join(self.mainParaCmds)
                     )
         if len(neg) == 0:
             self.produceAllSpaltenNumbers("-")
