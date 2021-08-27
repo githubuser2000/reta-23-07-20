@@ -11,7 +11,10 @@ from prompt_toolkit.styles import Style
 
 class MyCustomCompleter(Completer):
     def get_completions(self, document, complete_event):
-        yield Completion("abcd", start_position=0)
+        # yield Completion("abcd", start_position=0)
+        completer = WordCompleter([a for a in ["abcdef", "hijkl"]])
+        for c in completer.get_completions(document, complete_event):
+            yield c
 
 
 retaProgram = reta.Program([sys.argv[0]])
