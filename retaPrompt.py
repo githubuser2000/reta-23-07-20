@@ -4,8 +4,15 @@ import sys
 
 import reta
 from prompt_toolkit import print_formatted_text, prompt
-from prompt_toolkit.completion import NestedCompleter, WordCompleter
+from prompt_toolkit.completion import (Completer, Completion, NestedCompleter,
+                                       WordCompleter)
 from prompt_toolkit.styles import Style
+
+
+class MyCustomCompleter(Completer):
+    def get_completions(self, document, complete_event):
+        yield Completion("abcd", start_position=0)
+
 
 retaProgram = reta.Program([sys.argv[0]])
 # print(str(retaProgram.mainParaCmds))
@@ -35,7 +42,7 @@ print(str(ausgabeParas))
 html_completer = NestedCompleter.from_nested_dict(
     {
         "show": {"version": None, "clock": None, "ip": {"interface": {"brief"}}},
-        "exit": None,
+        "exit": MyCustomCompleter(),
     }
 )
 text = prompt(
