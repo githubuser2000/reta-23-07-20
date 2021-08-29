@@ -46,6 +46,12 @@ retaProgram = reta.Program([sys.argv[0]])
 # print(str(retaProgram.paraDict.keys()))
 # print(str(reta.Program.kombiParaNdataMatrix.values()))
 # print(str(reta.Program.kombiParaNdataMatrix2.values()))
+#
+#
+# DAS SOLLTE ICH BESSER ALLES ORDENTLICH IN RETA.PY PACKEN, STATT ES HIER AUSZUSCHREIBEN, WEIL SONST DOPPELT!
+# D.H. spezielle DatenTypen dafür in Reta.py anlegen!
+# DAS GEHT SCHNELL, FLEIßARBEIT, WEIL KAUM BUGGEFAHR
+#
 ausgabeParas = [
     "--nocolor",
     "--art",

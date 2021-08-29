@@ -26,17 +26,23 @@ class NestedCompleter(Completer):
     """
 
     def __init__(
-        self, options: Dict[str, Optional[Completer]], ignore_case: bool = True
+        self,
+        options: Dict[str, Optional[Completer]],
+        ignore_case: bool = True,
+        already: Dict[str, Optional[Completer]] = {},
     ) -> None:
 
         self.options = options
         self.ignore_case = ignore_case
+        self.already = already
 
     def __repr__(self) -> str:
         return "NestedCompleter(%r, ignore_case=%r)" % (self.options, self.ignore_case)
 
     @classmethod
-    def from_nested_dict(cls, data: NestedDict) -> "NestedCompleter":
+    def from_nested_dict(
+        cls, data: NestedDict, already: NestedDict
+    ) -> "NestedCompleter":
         """
         Create a `NestedCompleter`, starting from a nested dictionary data
         structure, like this:
@@ -60,10 +66,15 @@ class NestedCompleter(Completer):
 
         Values in this data structure can be a completers as well.
         """
+
+        def setDict(already: NestedDict, value):
+            already = value
+
         options: Dict[str, Optional[Completer]] = {}
         for key, value in data.items():
             if isinstance(value, Completer):
                 options[key] = value
+                setDict(self.already[key], value)
             elif isinstance(value, dict):
                 options[key] = cls.from_nested_dict(value)
             elif isinstance(value, set):
@@ -71,8 +82,9 @@ class NestedCompleter(Completer):
             else:
                 assert value is None
                 options[key] = None
+                setDict(self.already[key], None)
 
-        return cls(options)
+        return cls(options, self.already)
 
     def get_completions(
         self, document: Document, complete_event: CompleteEvent
