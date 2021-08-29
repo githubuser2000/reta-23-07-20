@@ -26,17 +26,21 @@ class NestedCompleter(Completer):
     """
 
     def __init__(
-        self, options: Dict[str, Optional[Completer]], ignore_case: bool = True
+        self,
+        options: Dict[str, Optional[Completer]],
+        ignore_case: bool = True,
+        already: set[str, Optional[Completer]] = {},
     ) -> None:
 
         self.options = options
         self.ignore_case = ignore_case
+        self.already = already
 
     def __repr__(self) -> str:
         return "NestedCompleter(%r, ignore_case=%r)" % (self.options, self.ignore_case)
 
-    @classmethod
-    def from_nested_dict(cls, data: NestedDict) -> "NestedCompleter":
+    # @classmethod
+    def from_nested_dict(self, data: NestedDict, already: set) -> "NestedCompleter":
         """
         Create a `NestedCompleter`, starting from a nested dictionary data
         structure, like this:
@@ -60,19 +64,53 @@ class NestedCompleter(Completer):
 
         Values in this data structure can be a completers as well.
         """
+
+        def setAufgeloestes(dic, key, value):
+            self.already[(key, value.keys())] = dic[key]
+
+        def setDict(key, value):
+            if type(value) is dict:
+                if type(self.already) is not dict:
+                    self.already = {}
+                try:
+                    if self.already[(key, value.keys())] is not None:
+                        return key, value, self.already[(key, value.keys())]
+                    else:
+                        return key, value, None
+                except KeyError:
+                    self.already[(key, value.keys())] = None
+                    return key, value, None
+
+            elif type(value) is Completer:
+                if type(self.already) is not dict:
+                    self.already = {}
+                if (key, value.keys()) not in self.already:
+                    self.already[(key, value)] = None
+                    return key, value, None
+                elif self.already[(key, value)] is not None:
+                    return key, value, self.already[(key, value.keys())]
+                else:
+                    pass
+            # for first, second in self.already:
+            #     pass
+
         options: Dict[str, Optional[Completer]] = {}
         for key, value in data.items():
             if isinstance(value, Completer):
+                key, value = setDict(self.already, key, value)
                 options[key] = value
             elif isinstance(value, dict):
-                options[key] = cls.from_nested_dict(value)
+                key, value = setDict(self.already, key, value)
+                options[key] = self.from_nested_dict(value)
+                setAufgeloestes(options, key, value)
             elif isinstance(value, set):
-                options[key] = cls.from_nested_dict({item: None for item in value})
+                key, value = setDict(self.already, key, {item: None for item in value})
+                options[key] = self.from_nested_dict({item: None for item in value})
             else:
                 assert value is None
                 options[key] = None
 
-        return cls(options)
+        return NestedCompleter(options, already=self.already)
 
     def get_completions(
         self, document: Document, complete_event: CompleteEvent
