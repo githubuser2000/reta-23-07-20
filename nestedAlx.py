@@ -65,26 +65,30 @@ class NestedCompleter(Completer):
         Values in this data structure can be a completers as well.
         """
 
-        def setDict(already: set, key, value):
-            try:
-                if (key, value) not in already:
-                    already |= {(key, value)}
-                    return value
-                else:
-                    pass
-            except:
-                already = {(key, value)}
-                return value
+        def setDict(key, value):
+            if type(value) is dict:
+                try:
+                    if (key, value.keys()) not in self.already:
+                        self.already |= {(key, value.keys())}
+                        return key, value
+                    else:
+                        pass
+                except:
+                    self.already = {(key, value.keys())}
+                    return key, value
+            elif type(value) is Completer:
+                for first, second in self.already
 
         options: Dict[str, Optional[Completer]] = {}
         for key, value in data.items():
             if isinstance(value, Completer):
+                key, value = setDict(self.already, key, value)
                 options[key] = value
             elif isinstance(value, dict):
-                value = setDict(self.already, key, value.keys())1
+                key, value = setDict(self.already, key, value)
                 options[key] = self.from_nested_dict(value)
             elif isinstance(value, set):
-                value = setDict(self.already, key, {item: None for item in value}.keys())
+                key, value = setDict(self.already, key, {item: None for item in value})
                 options[key] = self.from_nested_dict({item: None for item in value})
             else:
                 assert value is None
