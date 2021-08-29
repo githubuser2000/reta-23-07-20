@@ -72,21 +72,21 @@ class NestedCompleter(Completer):
                 else:
                     pass
             except:
-                already = set()
+                already = {(key, value)}
 
         options: Dict[str, Optional[Completer]] = {}
         for key, value in data.items():
             if isinstance(value, Completer):
-                setDict(self.already, key, value)
                 options[key] = value
             elif isinstance(value, dict):
-                options[key] = cls.from_nested_dict(value)
+                setDict(self.already, key, value)
+                options[key] = self.from_nested_dict(value)
             elif isinstance(value, set):
-                options[key] = cls.from_nested_dict({item: None for item in value})
+                setDict(self.already, key, {item: None for item in value})
+                options[key] = self.from_nested_dict({item: None for item in value})
             else:
                 assert value is None
                 options[key] = None
-                setDict(self.already, key, None)
 
         return NestedCompleter(options, already=self.already)
 
