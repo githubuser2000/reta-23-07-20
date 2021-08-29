@@ -72,13 +72,15 @@ class NestedCompleter(Completer):
             if type(value) is dict:
                 if type(self.already) is not dict:
                     self.already = {}
-                if (key, value.keys()) not in self.already:
+                try:
+                    if self.already[(key, value.keys())] is not None:
+                        return key, value, self.already[(key, value.keys())]
+                    else:
+                        return key, value, None
+                except KeyError:
                     self.already[(key, value.keys())] = None
                     return key, value, None
-                elif self.already[(key, value.keys())] is not None:
-                    return key, value, self.already[(key, value.keys())]
-                else:
-                    pass
+
             elif type(value) is Completer:
                 if type(self.already) is not dict:
                     self.already = {}
