@@ -39,9 +39,9 @@ class NestedCompleter(Completer):
     def __repr__(self) -> str:
         return "NestedCompleter(%r, ignore_case=%r)" % (self.options, self.ignore_case)
 
-    @classmethod
+    # @classmethod
     def from_nested_dict(
-        cls, data: NestedDict, already: NestedDict
+        self, data: NestedDict, already: NestedDict
     ) -> "NestedCompleter":
         """
         Create a `NestedCompleter`, starting from a nested dictionary data
@@ -67,14 +67,14 @@ class NestedCompleter(Completer):
         Values in this data structure can be a completers as well.
         """
 
-        def setDict(already: NestedDict, value):
-            already = value
+        def setDict(already: NestedDict, key, value):
+            already[key] = value
 
         options: Dict[str, Optional[Completer]] = {}
         for key, value in data.items():
             if isinstance(value, Completer):
                 options[key] = value
-                setDict(self.already[key], value)
+                setDict(self.already, key, value)
             elif isinstance(value, dict):
                 options[key] = cls.from_nested_dict(value)
             elif isinstance(value, set):
@@ -82,9 +82,9 @@ class NestedCompleter(Completer):
             else:
                 assert value is None
                 options[key] = None
-                setDict(self.already[key], None)
+                setDict(self.already, key, None)
 
-        return cls(options, self.already)
+        return NestedCompleter(options, already=self.already)
 
     def get_completions(
         self, document: Document, complete_event: CompleteEvent
