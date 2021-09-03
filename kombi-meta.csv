@@ -24,7 +24,7 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 10|8|3|7;;;;;keine Ahnung, ob das stimmt: Tatsächlichkeit;;;;;;;;;;;;
 10|6|5|5;;;;;die einzige, nicht nur das eine, aller wichtigste Sache, Ding, Lebewesen oder was es auch immer die einzige, nicht nur das eine, aller wichtigste Sache, Ding, Lebewesen oder was es auch immer ist, jedenfalls nur 1 ist es. Der monotheistische Gott selbst? (die 4 Buchstaben des jüdischen Gottes)?;;;;;;;;;;;;
 14|15;;;;;keine Ahnung, ob das stimmt: beliebig verzweigte Graph-Datenstruktur, Baumdatenstruktur;;;;;;;;;;;;
-10|14;;;;;Ist eher falsch: so genannte Prädikate aus der Prädikatenlogik und damit auch Relationen aus der Computerwissenschaft;;;;;;;;;;;;
+10|14;;;;;Aussagen-Logik ohne unäre Operation, d.h. ohne „nicht“ und ohne „ja“, nur mit binären Operationen, wie AND oder OR;;;;;;;;;;;;
 10|14|15;;;;;Ist eher falsch: kontextfreie Sprache und Grammatik, nicht deterministischer Kellerautomat, Negation (13) muss nicht gegeben sein, da es die Bedingung nicht gibt, dass bei Komplementbildung so genannte Abgeschlossenheit gelten müsse. ;;;;;;;;;;;;
 10|14|15|13;;;;;Ist eher falsch: die anderen 3 übrigen Grammatiken und Sprachen aus der Chomsky-Hierarchie, Turingmaschine, endlicher Automat, Negation (13) ist notwendig, da diese 3 Sachen bei Komplementbildung immer abgeschlossen sein müssen. Negation entspricht u.a. Komplementbildung. ;;;;;;;;;;;;
 11|13;;;;;;11. Fürsorge anwerben (so wie ein Kanarienvogel), 13. Fürsorge geben (als Helfer) ;;;;;;;;;;;
@@ -150,3 +150,7 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 1|1/5|2/3|14;Europide, Bio-Europäer;;;;;;;;;;;;;;;;
 1|1/5|2/3|14|1/15|19;US-Amerikaner;;;;;;;;;;;;;;;;
 11|14;;;;;vielleicht Systematik (Systeme auf systemähnliche Weise zu neuen Systemen kombinieren), aber Systematik kann wohl auch noch anderes meinen;;;;;;;;;;;;
+10|13;;;;;Die 2 Logik-Operationen: „Nicht“ bzw. NOT und „Ja“ bzw. „Nicht+Nicht=Yes“;;;;;;;;;;;;
+10|13|14;;;;;Aussagen-Logik bestehend aus allen n-stelligen Operationen, unäre und binäre Operationen;;;;;;;;;;;;
+6|10|13|14;;;;;Prädikatenlogik, bei der die Prädikate nur aus Zahlen (6) bestehen dürfen, es sei denn das hier ist eine Kombination mit etwas anderem als der 6, also dem Wert (6).;;;;;;;;;;;;
+6|9|10|13|14;;;;;Prädikatenlogik, bei der die Prädikate nur aus Einheiten (9) aus Zahlen (6) bestehen dürfen, so wie in der Physik Einheiten aus Zahlen bestehen;;;;;;;;;;;;
