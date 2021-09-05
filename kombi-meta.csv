@@ -154,11 +154,11 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 10|13|14;;;;;Aussagen-Logik bestehend aus allen n-stelligen Operationen, unäre und binäre Operationen (sicher);;;;;;;;;;;;
 6|10|13|14;;;;;Prädikatenlogik, bei der die Prädikate nur aus Zahlen (6) bestehen dürfen, es sei denn das hier ist eine Kombination mit etwas anderem als der 6, also dem Wert (6). (sicher);;;;;;;;;;;;
 6|9|10|13|14;;;;;Prädikatenlogik, bei der die Prädikate nur aus Einheiten (9) aus Zahlen (6) bestehen dürfen, so wie in der Physik Einheiten aus Zahlen bestehen (sicher);;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;
+(6)|8|10|13|14;;;;;;;;;;;;;;;;;"Prozessor bzw. Computer (6 in Klammern, weil Zahlen in Wirklichkeit aus Wahrheitswerten auf Prozessorebene bestehen), Zustände (8), weil nicht nur Automaten, sondern auch CPUs Zustände besitzen; Logik ist Wahrheit (10) und Kombination (14) und unäre Operation (13); Division (15) löst der Computer über Kombination (14) (Logik)"
+2|3;;;;;;;;;;;;;;;;;Gartengeräte, Handwerker-Gerätschaften
+4|6;;;;;;;;;;;;;;;;;Uhr
+6|8;;;;;;;;;;;;;;;;;Getränkeautomat oder Fahrstuhl
+2|7;;;;;;;;;;;;;;;;;Boot
 ;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;
