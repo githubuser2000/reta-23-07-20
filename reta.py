@@ -2511,7 +2511,6 @@ class Program:
                 "kombinierteswirtschaftssystem",
                 "kombiniertewirtschaftssysteme",
             ),
-            17: ("Maschinen", "maschinen", "geräte", "geraete"),
         }
 
         Program.kombiParaNdataMatrix2 = {
@@ -2589,7 +2588,7 @@ class Program:
             #    "kombinierteswirtschaftssystem",
             #    "kombiniertewirtschaftssysteme",
             # ),
-            # 17: ("Maschinen", "maschinen", "geräte", "geraete"),
+            17: ("Maschinen", "maschinen", "geräte", "geraete"),
         }
 
         self.kombiReverseDict: dict = {}

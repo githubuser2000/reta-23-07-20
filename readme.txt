@@ -65,8 +65,8 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [list][*]komplexitaet,freiheit,gleichheit,mechanismen,intelligenz[/list]
 [/list]
 [*]-kombination
-[list][*]--galaxie=[list][*]tiere,berufe,intelligenz,liebe,frauen,maenner,persoenlichkeit,religionen,motive,emotionen,personen,wirtschaftssysteme,maschinen[/list]
-[list][*]--universum=[list][*]tiere,transzendentalien,strukturalien,primzahlkreuz,ontologie,mechanismen,gegentranszendentalien[/list]
+[list][*]--galaxie=[list][*]tiere,berufe,intelligenz,liebe,frauen,maenner,persoenlichkeit,religionen,motive,emotionen,personen,wirtschaftssysteme[/list]
+[list][*]--universum=[list][*]tiere,transzendentalien,strukturalien,primzahlkreuz,ontologie,mechanismen,gegentranszendentalien,maschinen[/list]
 [/list]
 [/list]
 [*]-ausgabe
