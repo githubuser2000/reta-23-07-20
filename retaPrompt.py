@@ -3,9 +3,9 @@
 import sys
 
 import reta
+from nestedAlx import NestedCompleter
 from prompt_toolkit import print_formatted_text, prompt
-from prompt_toolkit.completion import (Completer, Completion, NestedCompleter,
-                                       WordCompleter)
+from prompt_toolkit.completion import Completer, Completion, WordCompleter
 from prompt_toolkit.styles import Style
 
 
@@ -75,6 +75,7 @@ print(str(ausgabeParas))
 html_completer = NestedCompleter.from_nested_dict(
     {
         "show": {"version": None, "clock": None, "ip": {"interface": {"brief"}}},
+        "bla": {"version": None, "ip": {"interface": {"brief"}}},
         "exit": MyCustomCompleter(),
     }
 )
