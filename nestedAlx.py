@@ -29,17 +29,25 @@ class NestedCompleter(Completer):
     """
 
     def __init__(
-        self, options: Dict[str, Optional[Completer]], ignore_case: bool = True
+        self,
+        options: Dict[str, Optional[Completer]],
+        ignore_case: bool = True,
+        notParameterValues=(),
     ) -> None:
 
         self.options = options
         self.ignore_case = ignore_case
+        self.notParameterValues = notParameterValues
 
     def __repr__(self) -> str:
         return "NestedCompleter(%r, ignore_case=%r)" % (self.options, self.ignore_case)
 
     @classmethod
-    def from_nested_dict(cls, data: NestedDict) -> "NestedCompleter":
+    def from_nested_dict(
+        cls,
+        data: NestedDict,
+        notParameterValues=(),
+    ) -> "NestedCompleter":
         """
         Create a `NestedCompleter`, starting from a nested dictionary data
         structure, like this:
@@ -75,7 +83,7 @@ class NestedCompleter(Completer):
                 assert value is None
                 options[key] = None
 
-        return cls(options)
+        return cls(options, notParameterValues)
 
     def matchTextAlx(self, first_term: str) -> Optional[Completer]:
         result = None
