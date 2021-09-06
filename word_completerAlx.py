@@ -77,7 +77,6 @@ class WordCompleter(Completer):
                 word = word.lower()
 
             if self.match_middle:
-                print(word)
                 return word_before_cursor[: len(word)] in word
             else:
                 return word.startswith(word_before_cursor[: len(word)])
