@@ -13,8 +13,8 @@ from word_completerAlx import WordCompleter
 retaProgram = reta.Program([sys.argv[0]])
 # print(str(retaProgram.mainParaCmds))
 # print(str(retaProgram.paraDict.keys()))
-spalten = ("--" + a[0] for a in retaProgram.paraDict.keys())
-print(str(list(spalten)))
+spalten = ["--" + a[0] for a in retaProgram.paraDict.keys()]
+# print(str(list(spalten)))
 # print(str(reta.Program.kombiParaNdataMatrix.values()))
 # print(str(reta.Program.kombiParaNdataMatrix2.values()))
 #
