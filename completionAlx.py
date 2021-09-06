@@ -1,14 +1,16 @@
 """
 """
 from __future__ import unicode_literals
+
 from abc import ABCMeta, abstractmethod
+
 from six import with_metaclass
 
 __all__ = (
-    'Completion',
-    'Completer',
-    'CompleteEvent',
-    'get_common_complete_suffix',
+    "Completion",
+    "Completer",
+    "CompleteEvent",
+    "get_common_complete_suffix",
 )
 
 
@@ -25,8 +27,15 @@ class Completion(object):
     :param get_display_meta: Lazy `display_meta`. Retrieve meta information
         only when meta is displayed.
     """
-    def __init__(self, text, start_position=0, display=None, display_meta=None,
-                 get_display_meta=None):
+
+    def __init__(
+        self,
+        text,
+        start_position=0,
+        display=None,
+        display_meta=None,
+        get_display_meta=None,
+    ):
         self.text = text
         self.start_position = start_position
         self._display_meta = display_meta
@@ -41,19 +50,26 @@ class Completion(object):
 
     def __repr__(self):
         if self.display == self.text:
-            return '%s(text=%r, start_position=%r)' % (
-                self.__class__.__name__, self.text, self.start_position)
+            return "%s(text=%r, start_position=%r)" % (
+                self.__class__.__name__,
+                self.text,
+                self.start_position,
+            )
         else:
-            return '%s(text=%r, start_position=%r, display=%r)' % (
-                self.__class__.__name__, self.text, self.start_position,
-                self.display)
+            return "%s(text=%r, start_position=%r, display=%r)" % (
+                self.__class__.__name__,
+                self.text,
+                self.start_position,
+                self.display,
+            )
 
     def __eq__(self, other):
         return (
-            self.text == other.text and
-            self.start_position == other.start_position and
-            self.display == other.display and
-            self.display_meta == other.display_meta)
+            self.text == other.text
+            and self.start_position == other.start_position
+            and self.display == other.display
+            and self.display_meta == other.display_meta
+        )
 
     def __hash__(self):
         return hash((self.text, self.start_position, self.display, self.display_meta))
@@ -69,7 +85,7 @@ class Completion(object):
             return self._display_meta
 
         else:
-            return ''
+            return ""
 
     def new_completion_from_position(self, position):
         """
@@ -81,10 +97,11 @@ class Completion(object):
         assert isinstance(position, int) and position - self.start_position >= 0
 
         return Completion(
-            text=self.text[position - self.start_position:],
+            text=self.text[position - self.start_position :],
             display=self.display,
             display_meta=self._display_meta,
-            get_display_meta=self._get_display_meta)
+            get_display_meta=self._get_display_meta,
+        )
 
 
 class CompleteEvent(object):
@@ -101,6 +118,7 @@ class CompleteEvent(object):
     automatically when the user presses a space. (Because of
     `complete_while_typing`.)
     """
+
     def __init__(self, text_inserted=False, completion_requested=False):
         assert not (text_inserted and completion_requested)
 
@@ -111,14 +129,18 @@ class CompleteEvent(object):
         self.completion_requested = completion_requested
 
     def __repr__(self):
-        return '%s(text_inserted=%r, completion_requested=%r)' % (
-            self.__class__.__name__, self.text_inserted, self.completion_requested)
+        return "%s(text_inserted=%r, completion_requested=%r)" % (
+            self.__class__.__name__,
+            self.text_inserted,
+            self.completion_requested,
+        )
 
 
 class Completer(with_metaclass(ABCMeta, object)):
     """
     Base class for completer implementations.
     """
+
     @abstractmethod
     def get_completions(self, document, complete_event):
         """
@@ -137,7 +159,7 @@ def get_common_complete_suffix(document, completions):
     """
     # Take only completions that don't change the text before the cursor.
     def doesnt_change_before_cursor(completion):
-        end = completion.text[:-completion.start_position]
+        end = completion.text[: -completion.start_position]
         return document.text_before_cursor.endswith(end)
 
     completions2 = [c for c in completions if doesnt_change_before_cursor(c)]
@@ -145,11 +167,11 @@ def get_common_complete_suffix(document, completions):
     # When there is at least one completion that changes the text before the
     # cursor, don't return any common part.
     if len(completions2) != len(completions):
-        return ''
+        return ""
 
     # Return the common prefix.
     def get_suffix(completion):
-        return completion.text[-completion.start_position:]
+        return completion.text[-completion.start_position :]
 
     return _commonprefix([get_suffix(c) for c in completions2])
 
@@ -157,7 +179,7 @@ def get_common_complete_suffix(document, completions):
 def _commonprefix(strings):
     # Similar to os.path.commonprefix
     if not strings:
-        return ''
+        return ""
 
     else:
         s1 = min(strings)

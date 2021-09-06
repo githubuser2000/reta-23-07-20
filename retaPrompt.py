@@ -5,8 +5,10 @@ import sys
 import reta
 from nestedAlx import NestedCompleter
 from prompt_toolkit import print_formatted_text, prompt
-from prompt_toolkit.completion import Completer, Completion, WordCompleter
+# from prompt_toolkit.completion import Completer, Completion, WordCompleter
+from prompt_toolkit.completion import Completer, Completion
 from prompt_toolkit.styles import Style
+from word_completerAlx import WordCompleter
 
 
 class MyCustomCompleter(Completer):
