@@ -114,6 +114,25 @@ class NestedCompleter(Completer):
                 for c in completer.get_completions(new_document, complete_event):
                     yield c
 
+        if "=" in text:
+            first_term = text.split("=")[0]
+            # completer = self.options.get(first_term)
+            completer = self.matchTextAlx(first_term)
+            # print(str(type(completer)))
+
+            # If we have a sub completer, use this for the completions.
+            if completer is not None:
+                remaining_text = text[len(first_term) :].lstrip()
+                move_cursor = len(text) - len(remaining_text) + stripped_len
+
+                new_document = Document(
+                    remaining_text,
+                    cursor_position=document.cursor_position - move_cursor,
+                )
+
+                for c in completer.get_completions(new_document, complete_event):
+                    yield c
+
         # No space in the input: behave exactly like `WordCompleter`.
         else:
             completer = WordCompleter(
