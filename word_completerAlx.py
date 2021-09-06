@@ -77,9 +77,10 @@ class WordCompleter(Completer):
                 word = word.lower()
 
             if self.match_middle:
-                return word_before_cursor in word
+                print(word)
+                return word_before_cursor[: len(word)] in word
             else:
-                return word.startswith(word_before_cursor)
+                return word.startswith(word_before_cursor[: len(word)])
 
         for a in words:
             if word_matches(a):
