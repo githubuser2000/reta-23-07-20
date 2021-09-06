@@ -85,10 +85,14 @@ class NestedCompleter(Completer):
 
         return cls(options, notParameterValues)
 
-    def matchTextAlx(self, first_term: str) -> Optional[Completer]:
+    def matchTextAlx(self, first_term: str, without=()) -> Optional[Completer]:
         result = None
         for i in range(len(first_term), -1, -1):
-            result = self.options.get(first_term[:i])
+            result = (
+                self.options.get(first_term[:i])
+                if first_term[:i] not in without
+                else None
+            )
             if result is not None:
                 break
 
@@ -125,7 +129,7 @@ class NestedCompleter(Completer):
         if "=" in text:
             first_term = text.split("=")[0]
             # completer = self.options.get(first_term)
-            completer = self.matchTextAlx(first_term)
+            completer = self.matchTextAlx(first_term, without=self.notParameterValues)
             # print(str(type(completer)))
 
             # If we have a sub completer, use this for the completions.
