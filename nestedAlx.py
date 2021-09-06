@@ -77,6 +77,15 @@ class NestedCompleter(Completer):
 
         return cls(options)
 
+    def matchTextAlx(self, first_term: str) -> Optional[Completer]:
+        result = None
+        for i in range(len(first_term), -1, -1):
+            result = self.options.get(first_term[:i])
+            if result is not None:
+                break
+
+        return result
+
     def get_completions(
         self, document: Document, complete_event: CompleteEvent
     ) -> Iterable[Completion]:
@@ -88,7 +97,9 @@ class NestedCompleter(Completer):
         # subcompleter.
         if " " in text:
             first_term = text.split()[0]
-            completer = self.options.get(first_term)
+            # completer = self.options.get(first_term)
+            completer = self.matchTextAlx(first_term)
+            # print(str(type(completer)))
 
             # If we have a sub completer, use this for the completions.
             if completer is not None:
