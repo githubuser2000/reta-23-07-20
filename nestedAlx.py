@@ -31,13 +31,14 @@ class NestedCompleter(Completer):
     def __init__(
         self,
         options: Dict[str, Optional[Completer]],
+        notParameterValues,
         ignore_case: bool = True,
-        notParameterValues=(),
     ) -> None:
 
         self.options = options
         self.ignore_case = ignore_case
         self.notParameterValues = notParameterValues
+        self.notParameterValues = {}
 
     def __repr__(self) -> str:
         return "NestedCompleter(%r, ignore_case=%r)" % (self.options, self.ignore_case)
@@ -69,14 +70,20 @@ class NestedCompleter(Completer):
 
         Values in this data structure can be a completers as well.
         """
+        # print(str(notParameterValues))
         options: Dict[str, Optional[Completer]] = {}
         for key, value in data.items():
             if isinstance(value, Completer):
                 options[key] = value
             elif isinstance(value, dict):
-                options[key] = cls.from_nested_dict(value)
+                options[key] = cls.from_nested_dict(
+                    value, notParameterValues=notParameterValues
+                )
             elif isinstance(value, set):
-                options[key] = cls.from_nested_dict({item: None for item in value})
+                options[key] = cls.from_nested_dict(
+                    {item: None for item in value},
+                    notParameterValues=notParameterValues,
+                )
             else:
                 assert value is None
                 options[key] = None
@@ -132,10 +139,13 @@ class NestedCompleter(Completer):
             # print(str(type(completer)))
 
             # If we have a sub completer, use this for the completions.
+            # print(str(self.notParameterValues))
             if completer is not None:
-                # print("AFAAG")
-                # for notParaVal in self.notParameterValues:
-                #    completer.options.pop(notParaVal, None)
+                for notParaVal in self.notParameterValues:
+                    # print(notParaVal)
+                    completer.ExOptions[notParaVal] = completer.options.pop(
+                        notParaVal, None
+                    )
                 remaining_text = text[len(first_term) + 1 :].lstrip()
                 # print("|" + remaining_text + "|")
                 move_cursor = len(text) - len(remaining_text) + stripped_len
