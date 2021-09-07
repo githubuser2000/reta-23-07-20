@@ -43,6 +43,17 @@ class NestedCompleter(Completer):
         self.notParameterValues = notParameterValues
         self.ExOptions: dict = {}
 
+    def optionen(
+        self,
+        options: Dict[str, Optional[Completer]] = None,
+        optionsStandard: Dict[str, Optional[Completer]] = None,
+    ):
+        if optionsStandard is not None:
+            self.options2 = optionsStandard
+        if options is not None:
+            self.options1 = options
+        self.options = {**self.options1, **self.options2}
+
     def __repr__(self) -> str:
         return "NestedCompleter(%r, ignore_case=%r)" % (self.options, self.ignore_case)
 
