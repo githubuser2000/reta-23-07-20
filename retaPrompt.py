@@ -161,18 +161,19 @@ def nochMalTraverse(startpunkt, anzahl):
                 if sd2.options.keys() == startpunkt.options.keys():
                     gleiche += [sd2]
             maxis = {}
-            for gleich1 in gleiche:
+            for k, gleich1 in enumerate(gleiche):
                 amount1 = 0
                 maxamount = 0
                 maxkey = None
-                for i, v1 in enumerate(gleich1.options.values()):
+                for v1 in gleich1.options.values():
                     if type(v1) == Optional[Completer]:
                         amount1 += 1
                 if maxamount < amount1:
                     maxamount = amount1
-                    maxkey = i
+                    maxkey = k
                 maxis[maxkey] = maxamount
             maxkey = max(maxis, key=maxis.get)
+            startpunkt.options = gleiche[k].options
 
             # for gleich2 in gleiche:
 
