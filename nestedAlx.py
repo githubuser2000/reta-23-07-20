@@ -109,9 +109,6 @@ class NestedCompleter(Completer):
         # If there is a space, check for the first term, and use a
         # subcompleter.
         if " " in text:
-            if "=" not in text and len(self.ExOptions) != 0:
-                for key, val in self.ExOptions.items():
-                    self.options[key] = val
             # print(str(type(text)))
             first_term = text.split()[0]
             # print(first_term)
@@ -121,6 +118,9 @@ class NestedCompleter(Completer):
 
             # If we have a sub completer, use this for the completions.
             if completer is not None:
+                if "=" not in text and len(completer.ExOptions) != 0:
+                    for key, val in completer.ExOptions.items():
+                        completer.options[key] = val
                 remaining_text = text[len(first_term) :].lstrip()
                 move_cursor = len(text) - len(remaining_text) + stripped_len
 
