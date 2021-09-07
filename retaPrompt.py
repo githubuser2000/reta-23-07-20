@@ -96,20 +96,19 @@ def nebenMainRekursiv(
 ) -> dict:
     if anzahl > 0:
         pp((startpunkt).values())
-        startpunkt = nebenUndMainParas(
+        startpunkt[key] = nebenUndMainParas(
             startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, exPara
         )
-        anzahl -= 1
         for key in deepcopy(tuple(startpunkt.keys())):
             nebenMainRekursiv(
-                startpunkt[key],
+                startpunkt,
                 key,
                 mainParas,
                 zeilen,
                 kombi,
                 spalten,
                 ausgabe,
-                anzahl,
+                anzahl - 1,
                 key,
             ),
     return startpunkt
@@ -124,7 +123,7 @@ startpunkt = nebenMainRekursiv(
     kombiMainParas,
     spalten,
     ausgabeParas,
-    5,
+    2,
     "reta",
 )
 pp(startpunkt)
@@ -142,15 +141,16 @@ html_completer = NestedCompleter.from_nested_dict(
 )
 # pp(ausgabeParas + zeilenParas + kombiMainParas + spalten)
 
-text = prompt(
-    # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
-    "Enter HTML: ",
-    completer=NestedCompleter.from_nested_dict(
-        startpunkt,
-        notParameterValues=ausgabeParas + zeilenParas + kombiMainParas + spalten,
-    ),
-    wrap_lines=False,
-    complete_while_typing=True,
-    vi_mode=True,
-)
-print("You said: %s" % text, end=" ")
+if False:
+    text = prompt(
+        # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
+        "Enter HTML: ",
+        completer=NestedCompleter.from_nested_dict(
+            startpunkt,
+            notParameterValues=ausgabeParas + zeilenParas + kombiMainParas + spalten,
+        ),
+        wrap_lines=False,
+        complete_while_typing=True,
+        vi_mode=True,
+    )
+    print("You said: %s" % text, end=" ")
