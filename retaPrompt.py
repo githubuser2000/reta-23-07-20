@@ -111,15 +111,17 @@ def nebenMainRekursiv(
 ) -> dict:
     if anzahl > 0:
         # pp(key)
+        if startpunkt.options[key] is None:
+            startpunkt.options[key] = NestedCompleter({}, notParameterValues)
         startpunkt = startpunkt.options[key]
-        pp(startpunkt.options.keys())
+        # pp(startpunkt.options.keys())
         startpunkt = nebenUndMainParas(
             startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, key
         )
         # pp((startpunkt).values())
         for key in deepcopy(tuple(startpunkt.options.keys())):
             nebenMainRekursiv(
-                startpunkt.options,
+                startpunkt,
                 key,
                 mainParas,
                 zeilen,
@@ -158,13 +160,14 @@ html_completer = NestedCompleter.from_nested_dict(
 # pp(ausgabeParas + zeilenParas + kombiMainParas + spalten)
 
 
-if False:
+if True:
     text = prompt(
         # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
         "Enter HTML: ",
-        completer=NestedCompleter.from_nested_dict(
-            startpunkt, notParameterValues=notParameterValues
-        ),
+        # completer=NestedCompleter.from_nested_dict(
+        #    startpunkt, notParameterValues=notParameterValues
+        # ),
+        completer=NestedCompleter(startpunkt, notParameterValues=notParameterValues),
         wrap_lines=False,
         complete_while_typing=True,
         vi_mode=True,
