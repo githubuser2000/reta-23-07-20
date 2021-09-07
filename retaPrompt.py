@@ -153,8 +153,8 @@ def nebenMainRekursiv(
 def nochMalTraverse(startpunkt, anzahl):
     if anzahl > 0:
         for key in startpunkt.options.keys():
-            startpunkt = startpunkt.options[key]
-            nochMalTraverse(startpunkt, anzahl - 1)
+            startpunkt2 = startpunkt.options[key]
+            nochMalTraverse(startpunkt2, anzahl - 1)
     return startpunkt
 
 
