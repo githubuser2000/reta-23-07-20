@@ -45,6 +45,9 @@ class NestedCompleter(Completer):
 
     completers: set = set()
 
+    def __eq__(self, obj) -> bool:
+        return self.options.keys() == obj.options.keys()
+
     @classmethod
     def from_nested_dict(
         cls, data: NestedDict, notParameterValues

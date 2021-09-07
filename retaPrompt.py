@@ -49,6 +49,7 @@ zeilenParas = [
     "--typ",
 ]
 
+schonDrin = set()
 
 notParameterValues = (
     ausgabeParas + zeilenParas + kombiMainParas + spalten + mainParas,
