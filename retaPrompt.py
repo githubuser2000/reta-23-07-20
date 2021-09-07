@@ -61,7 +61,7 @@ notParameterValues = (
 def setMainParas(startpunkt: dict, mainParas) -> dict:
     for mainPara1 in mainParas:
         merke = NestedCompleter({}, notParameterValues=notParameterValues)
-        if merke in schonDrin:
+        if merke in schonDrin and False:
             # op1 = set()
             # op2 = set()
             # for key, val in schonDrin[merke].options.items():
@@ -85,12 +85,14 @@ def setMainParas(startpunkt: dict, mainParas) -> dict:
 
 
 def nebenToMainPara(startpunkt: dict, zeilen, kombi, spalten, ausgabe, exPara) -> dict:
+    # pp(exPara)
     if exPara == "-zeilen":
         for nebenPara in zeilen:
             startpunkt.options[nebenPara] = NestedCompleter(
                 {}, notParameterValues=notParameterValues
             )
     elif exPara == "-spalten":
+        # pp(startpunkt.options.keys())
         for nebenPara in spalten:
             startpunkt.options[nebenPara] = NestedCompleter(
                 {}, notParameterValues=notParameterValues
@@ -135,6 +137,7 @@ def nebenMainRekursiv(
             startpunkt.options[key] = NestedCompleter({}, notParameterValues)
         startpunkt = startpunkt.options[key]
         # pp(startpunkt.options.keys())
+        # pp(key)
         startpunkt = nebenUndMainParas(
             startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, key
         )
@@ -183,7 +186,7 @@ def nochMalTraverse(startpunkt, anzahl):
     return startpunkt
 
 
-anzahl = 3
+anzahl = 4
 startpunkt1 = NestedCompleter({"reta": None}, notParameterValues)
 startpunkt = nebenMainRekursiv(
     startpunkt1,
@@ -211,7 +214,7 @@ html_completer = NestedCompleter.from_nested_dict(
 )
 # pp(ausgabeParas + zeilenParas + kombiMainParas + spalten)
 
-pp(len(schonDrin))
+# pp(len(schonDrin))
 if True:
     text = prompt(
         # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
