@@ -160,8 +160,7 @@ def nochMalTraverse(startpunkt, anzahl):
             for sd2 in schonDrin2:
                 if sd2.options.keys() == startpunkt.options.keys():
                     gleiche += [sd2]
-            amounts = []
-            keys = []
+            maxis = {}
             for gleich1 in gleiche:
                 amount1 = 0
                 maxamount = 0
@@ -172,10 +171,10 @@ def nochMalTraverse(startpunkt, anzahl):
                 if maxamount < amount1:
                     maxamount = amount1
                     maxkey = i
-                amounts += [maxamount]
-                keys += [maxkey]
+                maxis[maxkey] = maxamount
+            maxkey = max(maxis, key=maxis.get)
 
-                # for gleich2 in gleiche:
+            # for gleich2 in gleiche:
 
         for key in startpunkt.options.keys():
             startpunkt2 = startpunkt.options[key]
