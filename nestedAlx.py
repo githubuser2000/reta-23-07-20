@@ -146,9 +146,10 @@ class NestedCompleter(Completer):
             if completer is not None:
                 for notParaVal in self.notParameterValues:
                     # print(notParaVal)
-                    completer.ExOptions[notParaVal] = completer.options.pop(
-                        notParaVal, None
-                    )
+                    if notParaVal in completer.options:
+                        completer.ExOptions[notParaVal] = completer.options.pop(
+                            notParaVal, None
+                        )
                 remaining_text = text[len(first_term) + 1 :].lstrip()
                 # print("|" + remaining_text + "|")
                 move_cursor = len(text) - len(remaining_text) + stripped_len
