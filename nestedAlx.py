@@ -120,7 +120,7 @@ class NestedCompleter(Completer):
                 for c in completer.get_completions(new_document, complete_event):
                     yield c
 
-        elif "=" in text and False:
+        elif "=" in text:
             first_term = text.split("=")[0]
             # completer = self.options.get(first_term)
             completer = self.matchTextAlx(first_term)
