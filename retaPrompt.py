@@ -49,7 +49,7 @@ zeilenParas = [
     "--typ",
 ]
 
-schonDrin = set()
+schonDrin = {}
 
 notParameterValues = (
     ausgabeParas + zeilenParas + kombiMainParas + spalten + mainParas,
@@ -58,9 +58,12 @@ notParameterValues = (
 
 def setMainParas(startpunkt: dict, mainParas) -> dict:
     for mainPara1 in mainParas:
-        startpunkt.options[mainPara1] = NestedCompleter(
-            {}, notParameterValues=notParameterValues
-        )
+        merke = NestedCompleter({}, notParameterValues=notParameterValues)
+        if merke.options in schonDrin:
+            startpunkt.options[mainPara1] = merke
+        else:
+            startpunkt.options[mainPara1] = merke
+            schonDrin[merke.options] = merke.options
     return startpunkt
 
 

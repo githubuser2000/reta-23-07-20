@@ -48,6 +48,9 @@ class NestedCompleter(Completer):
     def __eq__(self, obj) -> bool:
         return self.options.keys() == obj.options.keys()
 
+    def __hash__(self):
+        return hash(str(self.options.keys()))
+
     @classmethod
     def from_nested_dict(
         cls, data: NestedDict, notParameterValues
