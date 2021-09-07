@@ -25,18 +25,18 @@ spalten = ["--" + a[0] for a in retaProgram.paraDict.keys()]
 # D.H. spezielle DatenTypen dafür in Reta.py anlegen!
 # DAS GEHT SCHNELL, FLEIßARBEIT, WEIL KAUM BUGGEFAHR
 #
-startpunkt: dict = {}
+# startpunkt: dict = {}
 
 
 def setMainParas(startpunkt: dict, mainParas) -> dict:
     for mainPara1 in mainParas:
         startpunkt[mainPara1] = {}
         for mainPara2 in mainParas:
-            startpunkt[mainPara1] |= {mainPara2: None}
+            startpunkt[mainPara1][mainPara2] = None
     return startpunkt
 
 
-startpunkt = setMainParas(startpunkt, mainParas)
+# startpunkt = setMainParas(startpunkt, mainParas)
 
 ausgabeParas = [
     "--nocolor",
@@ -59,19 +59,20 @@ zeilenParas = [
 
 def nebenToMainPara(startpunkt: dict, zeilen, kombi, spalten, ausgabe) -> dict:
     for nebenPara in zeilen:
-        startpunkt["-zeilen"] |= {nebenPara: None}
+        startpunkt["-zeilen"][nebenPara] = None
     for nebenPara in spalten:
-        startpunkt["-spalten"] |= {nebenPara: None}
+        startpunkt["-spalten"][nebenPara] = None
     for nebenPara in kombi:
-        startpunkt["-kombination"] |= {nebenPara: None}
+        startpunkt["-kombination"][nebenPara] = None
     for nebenPara in ausgabe:
-        startpunkt["-ausgabe"] |= {nebenPara: None}
+        startpunkt["-ausgabe"][nebenPara] = None
+
     return startpunkt
 
 
-startpunkt = nebenToMainPara(
-    startpunkt, zeilenParas, kombiMainParas, spalten, ausgabeParas
-)
+# startpunkt = nebenToMainPara(
+#    startpunkt, zeilenParas, kombiMainParas, spalten, ausgabeParas
+# )
 
 
 def nebenUndMainParas(startpunkt, mainParas, zeilen, kombi, spalten, ausgabe) -> dict:
@@ -93,7 +94,7 @@ def nebenMainRekursiv(
         for key, value in startpunkt.items():
             startpunkt[key] = nebenUndMainParas(
                 nebenMainRekursiv(
-                    startpunkt[key], mainParas, zeilen, kombi, spalten, ausgabe, anzahl
+                    {}, mainParas, zeilen, kombi, spalten, ausgabe, anzahl
                 ),
                 mainParas,
                 zeilen,
@@ -106,7 +107,10 @@ def nebenMainRekursiv(
 
 pp1 = pprint.PrettyPrinter(indent=2)
 pp = pp1.pprint
-# pp(startpunkt)
+startpunkt = nebenMainRekursiv(
+    {}, mainParas, zeilenParas, kombiMainParas, spalten, ausgabeParas, 5
+)
+pp(startpunkt)
 
 # print(str(ausgabeParas))
 # Es gibt einen vi mode in dieser lib
