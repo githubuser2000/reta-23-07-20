@@ -112,6 +112,7 @@ def nebenMainRekursiv(
     if anzahl > 0:
         # pp(key)
         startpunkt = startpunkt.options[key]
+        pp(startpunkt.options.keys())
         startpunkt = nebenUndMainParas(
             startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, key
         )
