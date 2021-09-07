@@ -150,6 +150,15 @@ def nebenMainRekursiv(
     return startpunkt
 
 
+def nochMalTraverse(startpunkt, anzahl):
+    if anzahl > 0:
+        for key in startpunkt.options.keys():
+            startpunkt = startpunkt.options[key]
+            nochMalTraverse(startpunkt, anzahl - 1)
+    return startpunkt
+
+
+anzahl = 3
 startpunkt1 = NestedCompleter({"reta": None}, notParameterValues)
 startpunkt = nebenMainRekursiv(
     startpunkt1,
@@ -159,8 +168,9 @@ startpunkt = nebenMainRekursiv(
     kombiMainParas,
     spalten,
     ausgabeParas,
-    3,
+    anzahl,
 )
+startpunkt = nochMalTraverse(startpunkt, anzahl)
 # pp(startpunkt)
 
 # print(str(ausgabeParas))
