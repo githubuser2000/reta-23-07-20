@@ -67,7 +67,9 @@ notParameterValues = (
 
 def setMainParas(startpunkt: dict, mainParas) -> dict:
     for mainPara1 in mainParas:
-        merke = NestedCompleter({}, notParameterValues=notParameterValues)
+        merke = NestedCompleter(
+            {}, notParameterValues=notParameterValues, optionsStandard={}
+        )
         if merke in schonDrin and False:
             # op1 = set()
             # op2 = set()
@@ -96,23 +98,23 @@ def nebenToMainPara(startpunkt: dict, zeilen, kombi, spalten, ausgabe, exPara) -
     if exPara == "-zeilen":
         for nebenPara in zeilen:
             startpunkt.options[nebenPara] = NestedCompleter(
-                {}, notParameterValues=notParameterValues
+                {}, notParameterValues=notParameterValues, optionsStandard={}
             )
     elif exPara == "-spalten":
         # pp(startpunkt.options.keys())
         for nebenPara in spalten:
             startpunkt.options[nebenPara] = NestedCompleter(
-                {}, notParameterValues=notParameterValues
+                {}, notParameterValues=notParameterValues, optionsStandard={}
             )
     elif exPara == "-kombination":
         for nebenPara in kombi:
             startpunkt.options[nebenPara] = NestedCompleter(
-                {}, notParameterValues=notParameterValues
+                {}, notParameterValues=notParameterValues, optionsStandard={}
             )
     elif exPara == "-ausgabe":
         for nebenPara in ausgabe:
             startpunkt.options[nebenPara] = NestedCompleter(
-                {}, notParameterValues=notParameterValues
+                {}, notParameterValues=notParameterValues, optionsStandard={}
             )
 
     return startpunkt
@@ -145,9 +147,10 @@ def valueToNebenPara(
                     for (key, value) in zip_longest(paraVals, (), fillvalue=None)
                 },
                 notParameterValues=notParameterValues,
+                optionsStandard={},
             )
         startpunkt.options["blub"] = NestedCompleter(
-            {}, notParameterValues=notParameterValues
+            {}, notParameterValues=notParameterValues, optionsStandard={}
         )
         merke = startpunkt.options["blub"]
         schonDrin[merke] = merke
@@ -188,7 +191,9 @@ def nebenMainRekursiv(
         # pp(key)
         schonDrin2 += [startpunkt]
         if startpunkt.options[key] is None:
-            startpunkt.options[key] = NestedCompleter({}, notParameterValues)
+            startpunkt.options[key] = NestedCompleter(
+                {}, notParameterValues, optionsStandard={}
+            )
         startpunkt = startpunkt.options[key]
         # pp(startpunkt.options.keys())
         # pp(key)
@@ -249,7 +254,7 @@ def nochMalTraverse(startpunkt, anzahl):
 
 
 anzahl = 3
-startpunkt1 = NestedCompleter({"reta": None}, notParameterValues)
+startpunkt1 = NestedCompleter({"reta": None}, notParameterValues, optionsStandard={})
 startpunkt = nebenMainRekursiv(
     startpunkt1,
     "reta",
@@ -265,14 +270,14 @@ startpunkt = nochMalTraverse(startpunkt, anzahl)
 
 # print(str(ausgabeParas))
 # html_completer = WordCompleter(["<html>", "<body>", "<head>", "<title>"])
-html_completer = NestedCompleter.from_nested_dict(
-    {
-        "show": {"version": None, "clock": None, "ip": {"interface": {"brief"}}},
-        "bla": {"version": None, "ip": {"interface": {"brief"}}},
-        "bla2": {"version": None, spalten[0]: None, "ip": {"interface": {"brief"}}},
-    },
-    notParameterValues=notParameterValues,
-)
+# html_completer = NestedCompleter.from_nested_dict(
+#    {
+#        "show": {"version": None, "clock": None, "ip": {"interface": {"brief"}}},
+#        "bla": {"version": None, "ip": {"interface": {"brief"}}},
+#        "bla2": {"version": None, spalten[0]: None, "ip": {"interface": {"brief"}}},
+#    },
+#    notParameterValues=notParameterValues,
+# )
 # pp(ausgabeParas + zeilenParas + kombiMainParas + spalten)
 
 # pp(len(schonDrin))

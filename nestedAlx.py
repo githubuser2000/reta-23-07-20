@@ -32,10 +32,13 @@ class NestedCompleter(Completer):
         self,
         options: Dict[str, Optional[Completer]],
         notParameterValues,
+        optionsStandard: Dict[str, Optional[Completer]],
         ignore_case: bool = True,
     ) -> None:
 
-        self.options = options
+        self.options2 = optionsStandard
+        self.options1 = options
+        self.options = {**options, **optionsStandard}
         self.ignore_case = ignore_case
         self.notParameterValues = notParameterValues
         self.ExOptions: dict = {}
@@ -159,6 +162,9 @@ class NestedCompleter(Completer):
             # If we have a sub completer, use this for the completions.
             # print(str(self.notParameterValues))
             if completer is not None:
+                # print("||" + first_term + "|")
+                # ES SIND EINFACH ZU VIELE, D.H.: ANDERS LÖSEN!
+                # ES GIBT AB SOFORT 2 options DATENSTRUKTUREN!
                 for notParaVal in self.notParameterValues:
                     # print(notParaVal)
                     if notParaVal in completer.options:
@@ -166,7 +172,7 @@ class NestedCompleter(Completer):
                             notParaVal, None
                         )
                 remaining_text = text[len(first_term) + 1 :].lstrip()
-                # print("|" + remaining_text + "|")
+                print("|" + remaining_text + "|")
                 move_cursor = len(text) - len(remaining_text) + stripped_len
 
                 new_document = Document(
