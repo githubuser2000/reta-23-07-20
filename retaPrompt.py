@@ -47,6 +47,7 @@ html_completer = NestedCompleter.from_nested_dict(
     {
         "show": {"version": None, "clock": None, "ip": {"interface": {"brief"}}},
         "bla": {"version": None, "ip": {"interface": {"brief"}}},
+        "bla2": {"version": None, spalten[0]: None, "ip": {"interface": {"brief"}}},
     },
     notParameterValues=ausgabeParas + zeilenParas + kombiMainParas + spalten,
 )
