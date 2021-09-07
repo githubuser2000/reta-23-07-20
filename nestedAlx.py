@@ -45,7 +45,7 @@ class NestedCompleter(Completer):
 
     @classmethod
     def from_nested_dict(
-        cls, data: NestedDict, notParameterValues=()
+        cls, data: NestedDict, notParameterValues
     ) -> "NestedCompleter":
         """
         Create a `NestedCompleter`, starting from a nested dictionary data

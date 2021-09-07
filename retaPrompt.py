@@ -57,7 +57,7 @@ zeilenParas = [
 ]
 
 
-def nebenToMainPara(data: dict, zeilen, kombi, spalten, ausgabe) -> dict:
+def nebenToMainPara(startpunkt: dict, zeilen, kombi, spalten, ausgabe) -> dict:
     for nebenPara in zeilen:
         startpunkt["-zeilen"] |= {nebenPara: None}
     for nebenPara in spalten:
@@ -74,9 +74,13 @@ startpunkt = nebenToMainPara(
 )
 
 
+def nebenUndMainParas(startpunkt, mainParas, zeilen, kombi, spalten, ausgabe) -> dict:
+    return data
+
+
 pp1 = pprint.PrettyPrinter(indent=4)
 pp = pp1.pprint
-pp(startpunkt)
+# pp(startpunkt)
 
 # print(str(ausgabeParas))
 # Es gibt einen vi mode in dieser lib
@@ -89,10 +93,15 @@ html_completer = NestedCompleter.from_nested_dict(
     },
     notParameterValues=ausgabeParas + zeilenParas + kombiMainParas + spalten,
 )
+# pp(ausgabeParas + zeilenParas + kombiMainParas + spalten)
+
 text = prompt(
     # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
     "Enter HTML: ",
-    completer=NestedCompleter.from_nested_dict(startpunkt),
+    completer=NestedCompleter.from_nested_dict(
+        startpunkt,
+        notParameterValues=ausgabeParas + zeilenParas + kombiMainParas + spalten,
+    ),
     wrap_lines=False,
     complete_while_typing=True,
     vi_mode=True,
