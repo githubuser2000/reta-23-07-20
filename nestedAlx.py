@@ -102,7 +102,9 @@ class NestedCompleter(Completer):
         # If there is a space, check for the first term, and use a
         # subcompleter.
         if " " in text:
+            # print(str(type(text)))
             first_term = text.split()[0]
+            # print(first_term)
             # completer = self.options.get(first_term)
             completer = self.matchTextAlx(first_term)
             # print(str(type(completer)))
@@ -121,16 +123,21 @@ class NestedCompleter(Completer):
                     yield c
 
         elif "=" in text:
+            text = str(text)
             first_term = text.split("=")[0]
+            # print("|" + first_term + "|")
+            # print(str(self.options.keys()))
             # completer = self.options.get(first_term)
             completer = self.matchTextAlx(first_term)
             # print(str(type(completer)))
 
             # If we have a sub completer, use this for the completions.
             if completer is not None:
-                for notParaVal in self.notParameterValues:
-                    completer.options.pop(notParaVal, None)
-                remaining_text = text[len(first_term) :].lstrip()
+                # print("AFAAG")
+                # for notParaVal in self.notParameterValues:
+                #    completer.options.pop(notParaVal, None)
+                remaining_text = text[len(first_term) + 1 :].lstrip()
+                # print("|" + remaining_text + "|")
                 move_cursor = len(text) - len(remaining_text) + stripped_len
 
                 new_document = Document(
