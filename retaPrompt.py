@@ -85,26 +85,26 @@ def nebenUndMainParas(startpunkt, mainParas, zeilen, kombi, spalten, ausgabe) ->
 def nebenMainRekursiv(
     startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, anzahl
 ) -> dict:
-    if anzahl == 0:
+    if anzahl > 0:
         startpunkt = nebenUndMainParas(
             startpunkt, mainParas, zeilen, kombi, spalten, ausgabe
         )
-    else:
         anzahl -= 1
-        startpunkt = nebenUndMainParas(
-            nebenMainRekursiv(
-                startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, anzahl
-            ),
-            mainParas,
-            zeilen,
-            kombi,
-            spalten,
-            ausgabe,
-        )
+        for key, value in startpunkt.items():
+            startpunkt[key] = nebenUndMainParas(
+                nebenMainRekursiv(
+                    startpunkt[key], mainParas, zeilen, kombi, spalten, ausgabe, anzahl
+                ),
+                mainParas,
+                zeilen,
+                kombi,
+                spalten,
+                ausgabe,
+            )
     return startpunkt
 
 
-pp1 = pprint.PrettyPrinter(indent=4)
+pp1 = pprint.PrettyPrinter(indent=2)
 pp = pp1.pprint
 # pp(startpunkt)
 
