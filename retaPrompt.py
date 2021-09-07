@@ -208,7 +208,6 @@ startpunkt = nochMalTraverse(startpunkt, anzahl)
 # pp(startpunkt)
 
 # print(str(ausgabeParas))
-# Es gibt einen vi mode in dieser lib
 # html_completer = WordCompleter(["<html>", "<body>", "<head>", "<title>"])
 html_completer = NestedCompleter.from_nested_dict(
     {
