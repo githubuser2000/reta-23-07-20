@@ -3,6 +3,7 @@
 import pprint
 import sys
 from copy import deepcopy
+from typing import Optional
 
 import reta
 from nestedAlx import NestedCompleter
@@ -126,8 +127,10 @@ def nebenUndMainParas(
 def nebenMainRekursiv(
     startpunkt, key, mainParas, zeilen, kombi, spalten, ausgabe, anzahl
 ) -> dict:
+    global schonDrin2
     if anzahl > 0:
         # pp(key)
+        schonDrin2 += [startpunkt]
         if startpunkt.options[key] is None:
             startpunkt.options[key] = NestedCompleter({}, notParameterValues)
         startpunkt = startpunkt.options[key]
@@ -151,11 +154,31 @@ def nebenMainRekursiv(
 
 
 def nochMalTraverse(startpunkt, anzahl):
-    global schonDrin2
     if anzahl > 0:
+        if True:
+            gleiche = []
+            for sd2 in schonDrin2:
+                if sd2.options.keys() == startpunkt.options.keys():
+                    gleiche += [sd2]
+            amounts = []
+            keys = []
+            for gleich1 in gleiche:
+                amount1 = 0
+                maxamount = 0
+                maxkey = None
+                for i, v1 in enumerate(gleich1.options.values()):
+                    if type(v1) == Optional[Completer]:
+                        amount1 += 1
+                if maxamount < amount1:
+                    maxamount = amount1
+                    maxkey = i
+                amounts += [maxamount]
+                keys += [maxkey]
+
+                # for gleich2 in gleiche:
+
         for key in startpunkt.options.keys():
             startpunkt2 = startpunkt.options[key]
-            schonDrin2 += [startpunkt]
             nochMalTraverse(startpunkt2, anzahl - 1)
     return startpunkt
 
