@@ -75,7 +75,33 @@ startpunkt = nebenToMainPara(
 
 
 def nebenUndMainParas(startpunkt, mainParas, zeilen, kombi, spalten, ausgabe) -> dict:
-    return data
+    startpunkt = setMainParas(startpunkt, mainParas)
+    startpunkt = nebenToMainPara(
+        startpunkt, zeilenParas, kombiMainParas, spalten, ausgabeParas
+    )
+    return startpunkt
+
+
+def nebenMainRekursiv(
+    startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, anzahl
+) -> dict:
+    if anzahl == 0:
+        startpunkt = nebenUndMainParas(
+            startpunkt, mainParas, zeilen, kombi, spalten, ausgabe
+        )
+    else:
+        anzahl -= 1
+        startpunkt = nebenUndMainParas(
+            nebenMainRekursiv(
+                startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, anzahl
+            ),
+            mainParas,
+            zeilen,
+            kombi,
+            spalten,
+            ausgabe,
+        )
+    return startpunkt
 
 
 pp1 = pprint.PrettyPrinter(indent=4)
