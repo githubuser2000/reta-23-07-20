@@ -108,6 +108,8 @@ class NestedCompleter(Completer):
 
         # If there is a space, check for the first term, and use a
         # subcompleter.
+        gleich: bool = "=" in text
+        komma: bool = "," in text
         if " " in text:
             # print(str(type(text)))
             first_term = text.split()[0]
@@ -132,9 +134,9 @@ class NestedCompleter(Completer):
                 for c in completer.get_completions(new_document, complete_event):
                     yield c
 
-        elif "=" in text:
+        elif gleich or komma:
             text = str(text)
-            first_term = text.split("=")[0]
+            first_term = text.split("=" if gleich else ",")[0]
             # print("|" + first_term + "|")
             # print(str(self.options.keys()))
             # completer = self.options.get(first_term)
