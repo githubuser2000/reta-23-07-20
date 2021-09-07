@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+import pprint
 import sys
 
 import reta
@@ -11,7 +12,8 @@ from prompt_toolkit.styles import Style
 from word_completerAlx import WordCompleter
 
 retaProgram = reta.Program([sys.argv[0]])
-# print(str(retaProgram.mainParaCmds))
+mainParas = ["-" + a for a in retaProgram.mainParaCmds]
+# print(str(mainParas))
 # print(str(retaProgram.paraDict.keys()))
 spalten = ["--" + a[0] for a in retaProgram.paraDict.keys()]
 # print(str(list(spalten)))
@@ -23,6 +25,19 @@ spalten = ["--" + a[0] for a in retaProgram.paraDict.keys()]
 # D.H. spezielle DatenTypen dafür in Reta.py anlegen!
 # DAS GEHT SCHNELL, FLEIßARBEIT, WEIL KAUM BUGGEFAHR
 #
+startpunkt: dict = {}
+
+
+def setMainParas(startpunkt: dict, mainParas) -> dict:
+    for mainPara1 in mainParas:
+        startpunkt[mainPara1] = {}
+        for mainPara2 in mainParas:
+            startpunkt[mainPara1] |= {mainPara2: None}
+    return startpunkt
+
+
+startpunkt = setMainParas(startpunkt, mainParas)
+
 ausgabeParas = [
     "--nocolor",
     "--art",
@@ -40,7 +55,30 @@ zeilenParas = [
     "--potenzenvonzahlen",
     "--typ",
 ]
-print(str(ausgabeParas))
+
+
+def nebenToMainPara(data: dict, zeilen, kombi, spalten, ausgabe) -> dict:
+    for nebenPara in zeilen:
+        startpunkt["-zeilen"] |= {nebenPara: None}
+    for nebenPara in spalten:
+        startpunkt["-spalten"] |= {nebenPara: None}
+    for nebenPara in kombi:
+        startpunkt["-kombination"] |= {nebenPara: None}
+    for nebenPara in ausgabe:
+        startpunkt["-ausgabe"] |= {nebenPara: None}
+    return startpunkt
+
+
+startpunkt = nebenToMainPara(
+    startpunkt, zeilenParas, kombiMainParas, spalten, ausgabeParas
+)
+
+
+pp1 = pprint.PrettyPrinter(indent=4)
+pp = pp1.pprint
+pp(startpunkt)
+
+# print(str(ausgabeParas))
 # Es gibt einen vi mode in dieser lib
 # html_completer = WordCompleter(["<html>", "<body>", "<head>", "<title>"])
 html_completer = NestedCompleter.from_nested_dict(
@@ -54,7 +92,7 @@ html_completer = NestedCompleter.from_nested_dict(
 text = prompt(
     # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
     "Enter HTML: ",
-    completer=html_completer,
+    completer=NestedCompleter.from_nested_dict(startpunkt),
     wrap_lines=False,
     complete_while_typing=True,
     vi_mode=True,
