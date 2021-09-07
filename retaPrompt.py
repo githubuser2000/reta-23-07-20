@@ -50,7 +50,7 @@ zeilenParas = [
 ]
 
 schonDrin = {}
-schonDrin2 = {}
+schonDrin2 = []
 
 notParameterValues = (
     ausgabeParas + zeilenParas + kombiMainParas + spalten + mainParas,
@@ -69,11 +69,11 @@ def setMainParas(startpunkt: dict, mainParas) -> dict:
             #    op2 |= val.options
 
             # if op1 == op2:
-            if schonDrin[merke].options == merke.options:
-                startpunkt.options[mainPara1] = schonDrin[merke]
-            else:
-                startpunkt.options[mainPara1] = schonDrin[merke]
-                # schonDrin2[merke] = merke, op2
+            # if schonDrin[merke].options == merke.options:
+            #    startpunkt.options[mainPara1] = schonDrin[merke]
+            # else:
+            startpunkt.options[mainPara1] = schonDrin[merke]
+            # schonDrin2[merke] = merke, op2
         else:
             startpunkt.options[mainPara1] = merke
             schonDrin[merke] = merke
@@ -151,9 +151,11 @@ def nebenMainRekursiv(
 
 
 def nochMalTraverse(startpunkt, anzahl):
+    global schonDrin2
     if anzahl > 0:
         for key in startpunkt.options.keys():
             startpunkt2 = startpunkt.options[key]
+            schonDrin2 += [startpunkt]
             nochMalTraverse(startpunkt2, anzahl - 1)
     return startpunkt
 
