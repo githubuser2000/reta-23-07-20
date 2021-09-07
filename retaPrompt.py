@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import pprint
 import sys
+from copy import deepcopy
 
 import reta
 from nestedAlx import NestedCompleter
@@ -84,17 +85,17 @@ def nebenUndMainParas(startpunkt, mainParas, zeilen, kombi, spalten, ausgabe) ->
 
 
 def nebenMainRekursiv(
-    startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, anzahl
+    startpunkt, key, mainParas, zeilen, kombi, spalten, ausgabe, anzahl
 ) -> dict:
     if anzahl > 0:
-        startpunkt = nebenUndMainParas(
-            startpunkt, mainParas, zeilen, kombi, spalten, ausgabe
+        startpunkt[key] = nebenUndMainParas(
+            {}, mainParas, zeilen, kombi, spalten, ausgabe
         )
         anzahl -= 1
-        for key, value in startpunkt.items():
-            startpunkt[key] = nebenUndMainParas(
+        for key in deepcopy(tuple(startpunkt.keys())):
+            nebenUndMainParas(
                 nebenMainRekursiv(
-                    {}, mainParas, zeilen, kombi, spalten, ausgabe, anzahl
+                    startpunkt, key, mainParas, zeilen, kombi, spalten, ausgabe, anzahl
                 ),
                 mainParas,
                 zeilen,
@@ -107,8 +108,9 @@ def nebenMainRekursiv(
 
 pp1 = pprint.PrettyPrinter(indent=2)
 pp = pp1.pprint
+startpunkt = {"reta": None}
 startpunkt = nebenMainRekursiv(
-    {"reta": None}, mainParas, zeilenParas, kombiMainParas, spalten, ausgabeParas, 5
+    startpunkt, "reta", mainParas, zeilenParas, kombiMainParas, spalten, ausgabeParas, 5
 )
 pp(startpunkt)
 
