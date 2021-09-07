@@ -2430,6 +2430,7 @@ class Program:
                 {"PrimCSV"},
             ),
         ]
+        Program.paraNdataMatrix = paraNdataMatrix
 
         """
         paraNdataMatrix4onlyGenerated: dict = {

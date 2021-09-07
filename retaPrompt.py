@@ -3,6 +3,7 @@
 import pprint
 import sys
 from copy import deepcopy
+from itertools import zip_longest
 from typing import Optional
 
 import reta
@@ -19,7 +20,7 @@ pp = pp1.pprint
 retaProgram = reta.Program([sys.argv[0]])
 mainParas = ["-" + a for a in retaProgram.mainParaCmds]
 # print(str(mainParas))
-# print(str(retaProgram.paraDict.keys()))
+# print(str(retaProgram.paraDict))
 spalten = ["--" + a[0] for a in retaProgram.paraDict.keys()]
 # print(str(list(spalten)))
 # print(str(reta.Program.kombiParaNdataMatrix.values()))
@@ -31,6 +32,11 @@ spalten = ["--" + a[0] for a in retaProgram.paraDict.keys()]
 # DAS GEHT SCHNELL, FLEIßARBEIT, WEIL KAUM BUGGEFAHR
 #
 # startpunkt: dict = {}
+spaltenDict = {}
+for tupel in retaProgram.paraNdataMatrix:
+    for haupt in tupel[0]:
+        spaltenDict[haupt] = tupel[1]
+# pp(spaltenDict)
 
 ausgabeParas = [
     "--nocolor",
@@ -112,17 +118,50 @@ def nebenToMainPara(startpunkt: dict, zeilen, kombi, spalten, ausgabe, exPara) -
     return startpunkt
 
 
+def valueToNebenPara(
+    startpunkt: dict, zeilen, kombi, spalten, ausgabe, newerKey, exPara
+) -> dict:
+    global spaltenDict
+    if exPara == "-spalten":
+        # pp(spaltenDict)
+        # pp(newerKey)
+        try:
+            paraVals = pp(spaltenDict[newerKey[2:]])
+        except KeyError:
+            paraVals = ()
+        if paraVals is None:
+            paraVals = ()
+        for nebenPara in spalten:
+            startpunkt.options[nebenPara] = NestedCompleter(
+                {
+                    key: value
+                    for (key, value) in zip_longest(paraVals, (), fillvalue=None)
+                },
+                notParameterValues=notParameterValues,
+            )
+    elif exPara == "-kombination":
+        for nebenPara in kombi:
+            startpunkt.options[nebenPara] = NestedCompleter(
+                {}, notParameterValues=notParameterValues
+            )
+
+    return startpunkt
+
+
 # startpunkt = nebenToMainPara(
 #    startpunkt, zeilenParas, kombiMainParas, spalten, ausgabeParas
 # )
 
 
 def nebenUndMainParas(
-    startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, exPara
+    startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, exPara, newerKey
 ) -> dict:
     startpunkt = setMainParas(startpunkt, mainParas)
     startpunkt = nebenToMainPara(
         startpunkt, zeilenParas, kombiMainParas, spalten, ausgabeParas, exPara
+    )
+    startpunkt = valueToNebenPara(
+        startpunkt, zeilenParas, kombiMainParas, spalten, ausgabeParas, newerKey, exPara
     )
     return startpunkt
 
@@ -139,12 +178,13 @@ def nebenMainRekursiv(
         startpunkt = startpunkt.options[key]
         # pp(startpunkt.options.keys())
         # pp(key)
+        newerKey = key
         if lastKey in hauptForNeben and key not in hauptForNeben:
             key = lastKey
         if key in hauptForNeben:
             lastKey = key
         startpunkt = nebenUndMainParas(
-            startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, key
+            startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, key, newerKey
         )
         # pp((startpunkt).values())
         for key2 in deepcopy(tuple(startpunkt.options.keys())):
