@@ -121,7 +121,7 @@ def nebenToMainPara(startpunkt: dict, zeilen, kombi, spalten, ausgabe, exPara) -
 def valueToNebenPara(
     startpunkt: dict, zeilen, kombi, spalten, ausgabe, newerKey, exPara
 ) -> dict:
-    global spaltenDict
+    global spaltenDict, schonDrin2
     if exPara == "-spalten" and newerKey in spalten:
         # pp(spaltenDict)
         # pp(newerKey)
@@ -146,9 +146,13 @@ def valueToNebenPara(
                 },
                 notParameterValues=notParameterValues,
             )
-        # startpunkt.options["blub"] = NestedCompleter(
-        #    {"bla": None, "blub": None}, notParameterValues=notParameterValues
-        # )
+        startpunkt.options["blub"] = NestedCompleter(
+            {}, notParameterValues=notParameterValues
+        )
+        merke = startpunkt.options["blub"]
+        schonDrin[merke] = merke
+        schonDrin[startpunkt] = startpunkt
+        schonDrin2 += [startpunkt]
     # elif exPara == "-kombination":
     #    for nebenPara in kombi:
     #        startpunkt.options[nebenPara] = NestedCompleter(
@@ -231,6 +235,8 @@ def nochMalTraverse(startpunkt, anzahl):
                     maxamount = amount1
                     maxkey = k
                 maxis[maxkey] = maxamount
+            if maxis == {}:
+                pp(startpunkt.options)
             maxkey = max(maxis, key=maxis.get)
             startpunkt.options = gleiche[k].options
 
