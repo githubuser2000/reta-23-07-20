@@ -31,15 +31,6 @@ spalten = ["--" + a[0] for a in retaProgram.paraDict.keys()]
 #
 # startpunkt: dict = {}
 
-
-def setMainParas(startpunkt: dict, mainParas) -> dict:
-    for mainPara1 in mainParas:
-        startpunkt[mainPara1] = {}
-    return startpunkt
-
-
-# startpunkt = setMainParas(startpunkt, mainParas)
-
 ausgabeParas = [
     "--nocolor",
     "--art",
@@ -59,10 +50,26 @@ zeilenParas = [
 ]
 
 
+notParameterValues = (
+    ausgabeParas + zeilenParas + kombiMainParas + spalten + mainParas,
+)
+
+
+def setMainParas(startpunkt: dict, mainParas) -> dict:
+    for mainPara1 in mainParas:
+        startpunkt[mainPara1] = {}
+    return startpunkt
+
+
+# startpunkt = setMainParas(startpunkt, mainParas)
+
+
 def nebenToMainPara(startpunkt: dict, zeilen, kombi, spalten, ausgabe, exPara) -> dict:
     if exPara == "-zeilen":
         for nebenPara in zeilen:
-            startpunkt[nebenPara] = {}
+            startpunkt[nebenPara] = NestedCompleter(
+                {},
+            )
     elif exPara == "-spalten":
         for nebenPara in spalten:
             startpunkt[nebenPara] = {}
@@ -95,11 +102,11 @@ def nebenMainRekursiv(
     startpunkt, key, mainParas, zeilen, kombi, spalten, ausgabe, anzahl
 ) -> dict:
     if anzahl > 0:
-        pp(key)
+        # pp(key)
         startpunkt = nebenUndMainParas(
             startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, key
         )
-        pp((startpunkt).values())
+        # pp((startpunkt).values())
         for key in deepcopy(tuple(startpunkt.keys())):
             nebenMainRekursiv(
                 startpunkt[key],
@@ -123,9 +130,9 @@ startpunkt = nebenMainRekursiv(
     kombiMainParas,
     spalten,
     ausgabeParas,
-    3,
+    5,
 )
-pp(startpunkt)
+# pp(startpunkt)
 
 # print(str(ausgabeParas))
 # Es gibt einen vi mode in dieser lib
@@ -136,17 +143,17 @@ html_completer = NestedCompleter.from_nested_dict(
         "bla": {"version": None, "ip": {"interface": {"brief"}}},
         "bla2": {"version": None, spalten[0]: None, "ip": {"interface": {"brief"}}},
     },
-    notParameterValues=ausgabeParas + zeilenParas + kombiMainParas + spalten,
+    notParameterValues=notParameterValues,
 )
 # pp(ausgabeParas + zeilenParas + kombiMainParas + spalten)
 
-if False:
+
+if True:
     text = prompt(
         # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
         "Enter HTML: ",
         completer=NestedCompleter.from_nested_dict(
-            startpunkt,
-            notParameterValues=ausgabeParas + zeilenParas + kombiMainParas + spalten,
+            startpunkt, notParameterValues=notParameterValues
         ),
         wrap_lines=False,
         complete_while_typing=True,

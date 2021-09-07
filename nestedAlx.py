@@ -43,6 +43,8 @@ class NestedCompleter(Completer):
     def __repr__(self) -> str:
         return "NestedCompleter(%r, ignore_case=%r)" % (self.options, self.ignore_case)
 
+    completers: set = set()
+
     @classmethod
     def from_nested_dict(
         cls, data: NestedDict, notParameterValues
@@ -73,8 +75,13 @@ class NestedCompleter(Completer):
         # print(str(notParameterValues))
         options: Dict[str, Optional[Completer]] = {}
         for key, value in data.items():
-            if isinstance(value, Completer):
+            if (
+                isinstance(value, Completer)
+                and Completer not in NestedCompleter.completers
+            ):
                 options[key] = value
+                NestedCompleter.completers |= value
+                print(str(len(NestedCompleter.completers)))
             elif isinstance(value, dict) and len(value) != 0:
                 options[key] = cls.from_nested_dict(
                     value, notParameterValues=notParameterValues

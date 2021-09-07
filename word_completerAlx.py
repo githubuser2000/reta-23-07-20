@@ -52,6 +52,9 @@ class WordCompleter(Completer):
         self.match_middle = match_middle
         self.pattern = pattern
 
+    def __eq__(self, obj) -> bool:
+        return self.words == obj.words
+
     def get_completions(
         self, document: Document, complete_event: CompleteEvent
     ) -> Iterable[Completion]:
