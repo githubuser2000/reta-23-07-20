@@ -61,7 +61,18 @@ def setMainParas(startpunkt: dict, mainParas) -> dict:
     for mainPara1 in mainParas:
         merke = NestedCompleter({}, notParameterValues=notParameterValues)
         if merke in schonDrin:
-            startpunkt.options[mainPara1] = schonDrin[merke]
+            op1 = set()
+            op2 = set()
+            for key, val in schonDrin[merke].options.items():
+                op1 |= val.options
+            for key, val in merke.options.items():
+                op2 |= val.options
+
+            if op1 == op2:
+                startpunkt.options[mainPara1] = schonDrin2[merke][0]
+            else:
+                startpunkt.options[mainPara1] = schonDrin[merke]
+                schonDrin2[merke] = merke, op1
         else:
             startpunkt.options[mainPara1] = merke
             schonDrin[merke] = merke
