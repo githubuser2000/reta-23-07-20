@@ -12,6 +12,9 @@ from prompt_toolkit.completion import Completer, Completion
 from prompt_toolkit.styles import Style
 from word_completerAlx import WordCompleter
 
+pp1 = pprint.PrettyPrinter(indent=2)
+pp = pp1.pprint
+
 retaProgram = reta.Program([sys.argv[0]])
 mainParas = ["-" + a for a in retaProgram.mainParaCmds]
 # print(str(mainParas))
@@ -31,9 +34,7 @@ spalten = ["--" + a[0] for a in retaProgram.paraDict.keys()]
 
 def setMainParas(startpunkt: dict, mainParas) -> dict:
     for mainPara1 in mainParas:
-        startpunkt[mainPara1] = {}
-        for mainPara2 in mainParas:
-            startpunkt[mainPara1][mainPara2] = None
+        startpunkt[mainPara1] = None
     return startpunkt
 
 
@@ -58,15 +59,19 @@ zeilenParas = [
 ]
 
 
-def nebenToMainPara(startpunkt: dict, zeilen, kombi, spalten, ausgabe) -> dict:
-    for nebenPara in zeilen:
-        startpunkt["-zeilen"][nebenPara] = None
-    for nebenPara in spalten:
-        startpunkt["-spalten"][nebenPara] = None
-    for nebenPara in kombi:
-        startpunkt["-kombination"][nebenPara] = None
-    for nebenPara in ausgabe:
-        startpunkt["-ausgabe"][nebenPara] = None
+def nebenToMainPara(startpunkt: dict, zeilen, kombi, spalten, ausgabe, exPara) -> dict:
+    if exPara == "-zeilen":
+        for nebenPara in zeilen:
+            startpunkt[nebenPara] = None
+    elif exPara == "-spalten":
+        for nebenPara in spalten:
+            startpunkt[nebenPara] = None
+    elif exPara == "-kombination":
+        for nebenPara in kombi:
+            startpunkt[nebenPara] = None
+    elif exPara == "-ausgabe":
+        for nebenPara in ausgabe:
+            startpunkt[nebenPara] = None
 
     return startpunkt
 
@@ -76,41 +81,51 @@ def nebenToMainPara(startpunkt: dict, zeilen, kombi, spalten, ausgabe) -> dict:
 # )
 
 
-def nebenUndMainParas(startpunkt, mainParas, zeilen, kombi, spalten, ausgabe) -> dict:
+def nebenUndMainParas(
+    startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, exPara
+) -> dict:
     startpunkt = setMainParas(startpunkt, mainParas)
     startpunkt = nebenToMainPara(
-        startpunkt, zeilenParas, kombiMainParas, spalten, ausgabeParas
+        startpunkt, zeilenParas, kombiMainParas, spalten, ausgabeParas, exPara
     )
     return startpunkt
 
 
 def nebenMainRekursiv(
-    startpunkt, key, mainParas, zeilen, kombi, spalten, ausgabe, anzahl
+    startpunkt, key, mainParas, zeilen, kombi, spalten, ausgabe, anzahl, exPara
 ) -> dict:
     if anzahl > 0:
-        startpunkt[key] = nebenUndMainParas(
-            {}, mainParas, zeilen, kombi, spalten, ausgabe
+        pp((startpunkt).values())
+        startpunkt = nebenUndMainParas(
+            startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, exPara
         )
         anzahl -= 1
         for key in deepcopy(tuple(startpunkt.keys())):
-            nebenUndMainParas(
-                nebenMainRekursiv(
-                    startpunkt, key, mainParas, zeilen, kombi, spalten, ausgabe, anzahl
-                ),
+            nebenMainRekursiv(
+                startpunkt[key],
+                key,
                 mainParas,
                 zeilen,
                 kombi,
                 spalten,
                 ausgabe,
-            )
+                anzahl,
+                key,
+            ),
     return startpunkt
 
 
-pp1 = pprint.PrettyPrinter(indent=2)
-pp = pp1.pprint
 startpunkt = {"reta": None}
 startpunkt = nebenMainRekursiv(
-    startpunkt, "reta", mainParas, zeilenParas, kombiMainParas, spalten, ausgabeParas, 5
+    startpunkt,
+    "reta",
+    mainParas,
+    zeilenParas,
+    kombiMainParas,
+    spalten,
+    ausgabeParas,
+    5,
+    "reta",
 )
 pp(startpunkt)
 
