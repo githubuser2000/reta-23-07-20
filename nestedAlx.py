@@ -38,7 +38,7 @@ class NestedCompleter(Completer):
         self.options = options
         self.ignore_case = ignore_case
         self.notParameterValues = notParameterValues
-        self.notParameterValues = {}
+        self.ExOptions: dict = {}
 
     def __repr__(self) -> str:
         return "NestedCompleter(%r, ignore_case=%r)" % (self.options, self.ignore_case)
@@ -109,6 +109,9 @@ class NestedCompleter(Completer):
         # If there is a space, check for the first term, and use a
         # subcompleter.
         if " " in text:
+            if "=" not in text and len(self.ExOptions) != 0:
+                for key, val in self.ExOptions.items():
+                    self.options[key] = val
             # print(str(type(text)))
             first_term = text.split()[0]
             # print(first_term)
