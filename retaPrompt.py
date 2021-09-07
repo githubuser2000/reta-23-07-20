@@ -59,11 +59,11 @@ notParameterValues = (
 def setMainParas(startpunkt: dict, mainParas) -> dict:
     for mainPara1 in mainParas:
         merke = NestedCompleter({}, notParameterValues=notParameterValues)
-        if merke.options in schonDrin:
-            startpunkt.options[mainPara1] = merke
+        if merke in schonDrin:
+            startpunkt.options[mainPara1] = schonDrin[merke]
         else:
             startpunkt.options[mainPara1] = merke
-            schonDrin[merke.options] = merke.options
+            schonDrin[merke] = merke
     return startpunkt
 
 
@@ -146,9 +146,9 @@ startpunkt = nebenMainRekursiv(
     kombiMainParas,
     spalten,
     ausgabeParas,
-    5,
+    3,
 )
-pp(startpunkt)
+# pp(startpunkt)
 
 # print(str(ausgabeParas))
 # Es gibt einen vi mode in dieser lib
@@ -163,7 +163,7 @@ html_completer = NestedCompleter.from_nested_dict(
 )
 # pp(ausgabeParas + zeilenParas + kombiMainParas + spalten)
 
-
+pp(len(schonDrin))
 if True:
     text = prompt(
         # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
