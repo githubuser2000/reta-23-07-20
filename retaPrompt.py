@@ -108,7 +108,7 @@ def nebenMainRekursiv(
 pp1 = pprint.PrettyPrinter(indent=2)
 pp = pp1.pprint
 startpunkt = nebenMainRekursiv(
-    {}, mainParas, zeilenParas, kombiMainParas, spalten, ausgabeParas, 5
+    {"reta": None}, mainParas, zeilenParas, kombiMainParas, spalten, ausgabeParas, 5
 )
 pp(startpunkt)
 
