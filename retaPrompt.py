@@ -34,7 +34,7 @@ spalten = ["--" + a[0] for a in retaProgram.paraDict.keys()]
 
 def setMainParas(startpunkt: dict, mainParas) -> dict:
     for mainPara1 in mainParas:
-        startpunkt[mainPara1] = None
+        startpunkt[mainPara1] = {}
     return startpunkt
 
 
@@ -62,16 +62,16 @@ zeilenParas = [
 def nebenToMainPara(startpunkt: dict, zeilen, kombi, spalten, ausgabe, exPara) -> dict:
     if exPara == "-zeilen":
         for nebenPara in zeilen:
-            startpunkt[nebenPara] = None
+            startpunkt[nebenPara] = {}
     elif exPara == "-spalten":
         for nebenPara in spalten:
-            startpunkt[nebenPara] = None
+            startpunkt[nebenPara] = {}
     elif exPara == "-kombination":
         for nebenPara in kombi:
-            startpunkt[nebenPara] = None
+            startpunkt[nebenPara] = {}
     elif exPara == "-ausgabe":
         for nebenPara in ausgabe:
-            startpunkt[nebenPara] = None
+            startpunkt[nebenPara] = {}
 
     return startpunkt
 
@@ -97,7 +97,7 @@ def nebenMainRekursiv(
     if anzahl > 0:
         pp((startpunkt).values())
         startpunkt[key] = nebenUndMainParas(
-            startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, exPara
+            startpunkt[key], mainParas, zeilen, kombi, spalten, ausgabe, exPara
         )
         for key in deepcopy(tuple(startpunkt.keys())):
             nebenMainRekursiv(
@@ -114,7 +114,7 @@ def nebenMainRekursiv(
     return startpunkt
 
 
-startpunkt = {"reta": None}
+startpunkt: dict = {"reta": {}}
 startpunkt = nebenMainRekursiv(
     startpunkt,
     "reta",

@@ -75,17 +75,17 @@ class NestedCompleter(Completer):
         for key, value in data.items():
             if isinstance(value, Completer):
                 options[key] = value
-            elif isinstance(value, dict):
+            elif isinstance(value, dict) and len(value) != 0:
                 options[key] = cls.from_nested_dict(
                     value, notParameterValues=notParameterValues
                 )
-            elif isinstance(value, set):
+            elif isinstance(value, set) and len(value) != 0:
                 options[key] = cls.from_nested_dict(
                     {item: None for item in value},
                     notParameterValues=notParameterValues,
                 )
             else:
-                assert value is None
+                assert value is None or value in ({}, set())
                 options[key] = None
 
         return cls(options, notParameterValues)
