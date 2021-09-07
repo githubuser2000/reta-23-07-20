@@ -69,22 +69,22 @@ def setMainParas(startpunkt: dict, mainParas) -> dict:
 def nebenToMainPara(startpunkt: dict, zeilen, kombi, spalten, ausgabe, exPara) -> dict:
     if exPara == "-zeilen":
         for nebenPara in zeilen:
-            startpunkt[nebenPara] = NestedCompleter(
+            startpunkt.options[nebenPara] = NestedCompleter(
                 {}, notParameterValues=notParameterValues
             )
     elif exPara == "-spalten":
         for nebenPara in spalten:
-            startpunkt[nebenPara] = NestedCompleter(
+            startpunkt.options[nebenPara] = NestedCompleter(
                 {}, notParameterValues=notParameterValues
             )
     elif exPara == "-kombination":
         for nebenPara in kombi:
-            startpunkt[nebenPara] = NestedCompleter(
+            startpunkt.options[nebenPara] = NestedCompleter(
                 {}, notParameterValues=notParameterValues
             )
     elif exPara == "-ausgabe":
         for nebenPara in ausgabe:
-            startpunkt[nebenPara] = NestedCompleter(
+            startpunkt.options[nebenPara] = NestedCompleter(
                 {}, notParameterValues=notParameterValues
             )
 
@@ -111,13 +111,14 @@ def nebenMainRekursiv(
 ) -> dict:
     if anzahl > 0:
         # pp(key)
+        startpunkt = startpunkt.options[key]
         startpunkt = nebenUndMainParas(
             startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, key
         )
         # pp((startpunkt).values())
         for key in deepcopy(tuple(startpunkt.options.keys())):
             nebenMainRekursiv(
-                startpunkt.options[key],
+                startpunkt.options,
                 key,
                 mainParas,
                 zeilen,
@@ -140,7 +141,7 @@ startpunkt = nebenMainRekursiv(
     ausgabeParas,
     5,
 )
-# pp(startpunkt)
+pp(startpunkt)
 
 # print(str(ausgabeParas))
 # Es gibt einen vi mode in dieser lib
@@ -156,7 +157,7 @@ html_completer = NestedCompleter.from_nested_dict(
 # pp(ausgabeParas + zeilenParas + kombiMainParas + spalten)
 
 
-if True:
+if False:
     text = prompt(
         # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
         "Enter HTML: ",
