@@ -92,16 +92,17 @@ def nebenUndMainParas(
 
 
 def nebenMainRekursiv(
-    startpunkt, key, mainParas, zeilen, kombi, spalten, ausgabe, anzahl, exPara
+    startpunkt, key, mainParas, zeilen, kombi, spalten, ausgabe, anzahl
 ) -> dict:
     if anzahl > 0:
-        pp((startpunkt).values())
-        startpunkt[key] = nebenUndMainParas(
-            startpunkt[key], mainParas, zeilen, kombi, spalten, ausgabe, exPara
+        pp(key)
+        startpunkt = nebenUndMainParas(
+            startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, key
         )
+        pp((startpunkt).values())
         for key in deepcopy(tuple(startpunkt.keys())):
             nebenMainRekursiv(
-                startpunkt,
+                startpunkt[key],
                 key,
                 mainParas,
                 zeilen,
@@ -109,7 +110,6 @@ def nebenMainRekursiv(
                 spalten,
                 ausgabe,
                 anzahl - 1,
-                key,
             ),
     return startpunkt
 
@@ -123,8 +123,7 @@ startpunkt = nebenMainRekursiv(
     kombiMainParas,
     spalten,
     ausgabeParas,
-    2,
-    "reta",
+    3,
 )
 pp(startpunkt)
 
