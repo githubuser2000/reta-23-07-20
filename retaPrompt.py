@@ -57,7 +57,9 @@ notParameterValues = (
 
 def setMainParas(startpunkt: dict, mainParas) -> dict:
     for mainPara1 in mainParas:
-        startpunkt[mainPara1] = {}
+        startpunkt.options[mainPara1] = NestedCompleter(
+            {}, notParameterValues=notParameterValues
+        )
     return startpunkt
 
 
@@ -68,17 +70,23 @@ def nebenToMainPara(startpunkt: dict, zeilen, kombi, spalten, ausgabe, exPara) -
     if exPara == "-zeilen":
         for nebenPara in zeilen:
             startpunkt[nebenPara] = NestedCompleter(
-                {},
+                {}, notParameterValues=notParameterValues
             )
     elif exPara == "-spalten":
         for nebenPara in spalten:
-            startpunkt[nebenPara] = {}
+            startpunkt[nebenPara] = NestedCompleter(
+                {}, notParameterValues=notParameterValues
+            )
     elif exPara == "-kombination":
         for nebenPara in kombi:
-            startpunkt[nebenPara] = {}
+            startpunkt[nebenPara] = NestedCompleter(
+                {}, notParameterValues=notParameterValues
+            )
     elif exPara == "-ausgabe":
         for nebenPara in ausgabe:
-            startpunkt[nebenPara] = {}
+            startpunkt[nebenPara] = NestedCompleter(
+                {}, notParameterValues=notParameterValues
+            )
 
     return startpunkt
 
@@ -107,9 +115,9 @@ def nebenMainRekursiv(
             startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, key
         )
         # pp((startpunkt).values())
-        for key in deepcopy(tuple(startpunkt.keys())):
+        for key in deepcopy(tuple(startpunkt.options.keys())):
             nebenMainRekursiv(
-                startpunkt[key],
+                startpunkt.options[key],
                 key,
                 mainParas,
                 zeilen,
@@ -121,7 +129,7 @@ def nebenMainRekursiv(
     return startpunkt
 
 
-startpunkt: dict = {"reta": {}}
+startpunkt = NestedCompleter({"reta": None}, notParameterValues)
 startpunkt = nebenMainRekursiv(
     startpunkt,
     "reta",
