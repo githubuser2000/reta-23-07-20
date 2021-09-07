@@ -133,9 +133,9 @@ def nebenMainRekursiv(
     return startpunkt
 
 
-startpunkt = NestedCompleter({"reta": None}, notParameterValues)
+startpunkt1 = NestedCompleter({"reta": None}, notParameterValues)
 startpunkt = nebenMainRekursiv(
-    startpunkt,
+    startpunkt1,
     "reta",
     mainParas,
     zeilenParas,
@@ -167,7 +167,7 @@ if True:
         # completer=NestedCompleter.from_nested_dict(
         #    startpunkt, notParameterValues=notParameterValues
         # ),
-        completer=NestedCompleter(startpunkt, notParameterValues=notParameterValues),
+        completer=startpunkt1,
         wrap_lines=False,
         complete_while_typing=True,
         vi_mode=True,
