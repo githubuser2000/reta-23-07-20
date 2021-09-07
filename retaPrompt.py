@@ -50,6 +50,7 @@ zeilenParas = [
 ]
 
 schonDrin = {}
+schonDrin2 = {}
 
 notParameterValues = (
     ausgabeParas + zeilenParas + kombiMainParas + spalten + mainParas,
