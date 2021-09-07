@@ -49,6 +49,7 @@ zeilenParas = [
     "--potenzenvonzahlen",
     "--typ",
 ]
+hauptForNeben = ("-zeilen", "-spalten", "-kombination", "-ausgabe")
 
 schonDrin = {}
 schonDrin2 = []
@@ -127,7 +128,7 @@ def nebenUndMainParas(
 
 
 def nebenMainRekursiv(
-    startpunkt, key, mainParas, zeilen, kombi, spalten, ausgabe, anzahl
+    startpunkt, key, mainParas, zeilen, kombi, spalten, ausgabe, anzahl, lastKey=None
 ) -> dict:
     global schonDrin2
     if anzahl > 0:
@@ -138,20 +139,25 @@ def nebenMainRekursiv(
         startpunkt = startpunkt.options[key]
         # pp(startpunkt.options.keys())
         # pp(key)
+        if lastKey in hauptForNeben and key not in hauptForNeben:
+            key = lastKey
+        if key in hauptForNeben:
+            lastKey = key
         startpunkt = nebenUndMainParas(
             startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, key
         )
         # pp((startpunkt).values())
-        for key in deepcopy(tuple(startpunkt.options.keys())):
+        for key2 in deepcopy(tuple(startpunkt.options.keys())):
             nebenMainRekursiv(
                 startpunkt,
-                key,
+                key2,
                 mainParas,
                 zeilen,
                 kombi,
                 spalten,
                 ausgabe,
                 anzahl - 1,
+                lastKey,
             ),
     return startpunkt
 
@@ -186,7 +192,7 @@ def nochMalTraverse(startpunkt, anzahl):
     return startpunkt
 
 
-anzahl = 4
+anzahl = 3
 startpunkt1 = NestedCompleter({"reta": None}, notParameterValues)
 startpunkt = nebenMainRekursiv(
     startpunkt1,
