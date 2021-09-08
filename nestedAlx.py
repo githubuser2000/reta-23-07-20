@@ -134,9 +134,6 @@ class NestedCompleter(Completer):
         gleich: bool = "=" in text
         komma: bool = "," in text
         if " " in text:
-            if self.ifGleichheitszeichen:
-                self.options = self.optionsPark
-            self.ifGleichheitszeichen = False
             # print(str(type(text)))
             first_term = text.split()[0]
             # print(first_term)
@@ -146,6 +143,9 @@ class NestedCompleter(Completer):
 
             # If we have a sub completer, use this for the completions.
             if completer is not None:
+                if self.ifGleichheitszeichen:
+                    completer.options = completer.optionsPark
+                self.ifGleichheitszeichen = False
                 # if "=" not in text and len(completer.ExOptions) != 0:
                 #    for key, val in completer.ExOptions.items():
                 #        completer.options[key] = val
@@ -163,9 +163,6 @@ class NestedCompleter(Completer):
         elif gleich or komma:
             text = str(text)
             first_term = text.split("=" if gleich else ",")[0]
-            self.ifGleichheitszeichen = True
-            self.optionsPark = self.options
-            self.options = self.options2
             # print("|" + first_term + "|")
             # print(str(self.options.keys()))
             # completer = self.options.get(first_term)
@@ -174,16 +171,21 @@ class NestedCompleter(Completer):
 
             # If we have a sub completer, use this for the completions.
             # print(str(self.notParameterValues))
+            # print("||" + first_term + "|")
+            # print(str(type(completer)))
             if completer is not None:
-                # print("||" + first_term + "|")
+                self.ifGleichheitszeichen = True
+                completer.optionsPark = self.options
+                completer.options = self.options2
                 # ES SIND EINFACH ZU VIELE, D.H.: ANDERS LÖSEN!
                 # ES GIBT AB SOFORT 2 options DATENSTRUKTUREN!
-                for notParaVal in self.notParameterValues:
-                    # print(notParaVal)
-                    if notParaVal in completer.options:
-                        completer.ExOptions[notParaVal] = completer.options.pop(
-                            notParaVal, None
-                        )
+                # for notParaVal in self.notParameterValues:
+                #    # print(notParaVal)
+                #    if notParaVal in completer.options:
+                #        completer.ExOptions[notParaVal] = completer.options.pop(
+                #            notParaVal, None
+                #        ||)
+                # print("|||" + remaining_text + "|")
                 remaining_text = text[len(first_term) + 1 :].lstrip()
                 print("|" + remaining_text + "|")
                 move_cursor = len(text) - len(remaining_text) + stripped_len
@@ -198,12 +200,11 @@ class NestedCompleter(Completer):
 
         # No space in the input: behave exactly like `WordCompleter`.
         else:
-            if self.ifGleichheitszeichen:
-                self.options = self.optionsPark
-            self.ifGleichheitszeichen = False
-
             completer = WordCompleter(
                 list(self.options.keys()), ignore_case=self.ignore_case
             )
+            if self.ifGleichheitszeichen:
+                completer.options = completer.optionsPark
+            self.ifGleichheitszeichen = False
             for c in completer.get_completions(document, complete_event):
                 yield c
