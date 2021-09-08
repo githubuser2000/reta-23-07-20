@@ -2521,7 +2521,7 @@ class Program:
                 "tier",
                 "lebewesen",
             ),
-            # 2: ("Berufe", "berufe", "beruf"),
+            2: ("Berufe", "berufe", "beruf"),
             # 3: (
             #    "Kreativität_und_Intelligenz",
             #    "kreativität",
