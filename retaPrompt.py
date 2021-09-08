@@ -128,7 +128,8 @@ def valueToNebenPara(
     if exPara == "-spalten" and newerKey in spalten:
         # pp(spaltenDict)
         # pp(newerKey)
-        for nebenPara in ():
+        # for nebenPara in spalten:
+        for nebenPara in ("--planet", "--Planet"):
             try:
                 paraVals = spaltenDict[nebenPara[2:]]
             except KeyError:
@@ -142,7 +143,7 @@ def valueToNebenPara(
                     for (key, value) in zip_longest(paraVals, (), fillvalue=None)
                 }
             )
-            startpunkt.options[nebenPara] = NestedCompleter(
+            startpunkt.options2[nebenPara] = NestedCompleter(
                 {
                     key: value
                     for (key, value) in zip_longest(paraVals, (), fillvalue=None)
@@ -150,13 +151,13 @@ def valueToNebenPara(
                 notParameterValues=notParameterValues,
                 optionsStandard={},
             )
-        startpunkt.options2["blub"] = NestedCompleter(
-            {}, notParameterValues=notParameterValues, optionsStandard={}
-        )
-        merke = startpunkt.options2["blub"]
-        schonDrin[merke] = merke
-        schonDrin[startpunkt] = startpunkt
-        schonDrin2 += [startpunkt]
+            # merke = startpunkt.options2[nebenPara]
+            # schonDrin[merke] = merke
+            schonDrin[startpunkt] = startpunkt
+            schonDrin2 += [startpunkt]
+        # startpunkt.options2["blub"] = NestedCompleter(
+        #    {}, notParameterValues=notParameterValues, optionsStandard={}
+        # )
     # elif exPara == "-kombination":
     #    for nebenPara in kombi:
     #        startpunkt.options[nebenPara] = NestedCompleter(
