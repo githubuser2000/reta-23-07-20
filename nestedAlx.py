@@ -42,16 +42,12 @@ class NestedCompleter(Completer):
         self.ignore_case = ignore_case
         self.notParameterValues = notParameterValues
         self.ExOptions: dict = {}
+        self.ifGleichheitszeichen = False
+        self.optionsPark: Dict[str, Optional[Completer]] = {}
 
-    def optionen(
+    def optionsSync(
         self,
-        options: Dict[str, Optional[Completer]] = None,
-        optionsStandard: Dict[str, Optional[Completer]] = None,
     ):
-        if optionsStandard is not None:
-            self.options2 = optionsStandard
-        if options is not None:
-            self.options1 = options
         self.options = {**self.options1, **self.options2}
 
     def __repr__(self) -> str:
@@ -138,6 +134,9 @@ class NestedCompleter(Completer):
         gleich: bool = "=" in text
         komma: bool = "," in text
         if " " in text:
+            if self.ifGleichheitszeichen:
+                self.options = self.optionsPark
+            self.ifGleichheitszeichen = False
             # print(str(type(text)))
             first_term = text.split()[0]
             # print(first_term)
@@ -147,9 +146,9 @@ class NestedCompleter(Completer):
 
             # If we have a sub completer, use this for the completions.
             if completer is not None:
-                if "=" not in text and len(completer.ExOptions) != 0:
-                    for key, val in completer.ExOptions.items():
-                        completer.options[key] = val
+                # if "=" not in text and len(completer.ExOptions) != 0:
+                #    for key, val in completer.ExOptions.items():
+                #        completer.options[key] = val
                 remaining_text = text[len(first_term) :].lstrip()
                 move_cursor = len(text) - len(remaining_text) + stripped_len
 
@@ -164,6 +163,9 @@ class NestedCompleter(Completer):
         elif gleich or komma:
             text = str(text)
             first_term = text.split("=" if gleich else ",")[0]
+            self.ifGleichheitszeichen = True
+            self.optionsPark = self.options
+            self.options = self.options2
             # print("|" + first_term + "|")
             # print(str(self.options.keys()))
             # completer = self.options.get(first_term)
@@ -196,6 +198,10 @@ class NestedCompleter(Completer):
 
         # No space in the input: behave exactly like `WordCompleter`.
         else:
+            if self.ifGleichheitszeichen:
+                self.options = self.optionsPark
+            self.ifGleichheitszeichen = False
+
             completer = WordCompleter(
                 list(self.options.keys()), ignore_case=self.ignore_case
             )

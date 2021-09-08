@@ -85,6 +85,7 @@ def setMainParas(startpunkt: dict, mainParas) -> dict:
             startpunkt.options[mainPara1] = schonDrin[merke]
             # schonDrin2[merke] = merke, op2
         else:
+            # startpunkt.options[mainPara1] = merke
             startpunkt.options[mainPara1] = merke
             schonDrin[merke] = merke
     return startpunkt
@@ -121,7 +122,7 @@ def nebenToMainPara(startpunkt: dict, zeilen, kombi, spalten, ausgabe, exPara) -
 
 
 def valueToNebenPara(
-    startpunkt: dict, zeilen, kombi, spalten, ausgabe, newerKey, exPara
+    startpunkt, zeilen, kombi, spalten, ausgabe, newerKey, exPara
 ) -> dict:
     global spaltenDict, schonDrin2
     if exPara == "-spalten" and newerKey in spalten:
@@ -149,10 +150,10 @@ def valueToNebenPara(
                 notParameterValues=notParameterValues,
                 optionsStandard={},
             )
-        startpunkt.options["blub"] = NestedCompleter(
+        startpunkt.options2["blub"] = NestedCompleter(
             {}, notParameterValues=notParameterValues, optionsStandard={}
         )
-        merke = startpunkt.options["blub"]
+        merke = startpunkt.options2["blub"]
         schonDrin[merke] = merke
         schonDrin[startpunkt] = startpunkt
         schonDrin2 += [startpunkt]

@@ -1,6 +1,6 @@
 #!/bin/sh
 cd ~/myRepos/reta
-file=`ls | grep -e '\.nvim$' | fzf`
+file=`ls -r | grep -e '\.nvim$' | fzf`
 if [ "$file" != "" ];then
   nvim -S $file
 fi
