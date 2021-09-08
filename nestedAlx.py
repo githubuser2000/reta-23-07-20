@@ -175,8 +175,8 @@ class NestedCompleter(Completer):
             # print(str(type(completer)))
             if completer is not None:
                 self.ifGleichheitszeichen = True
-                completer.optionsPark = self.options
-                completer.options = self.options2
+                completer.optionsPark = completer.options
+                completer.options = completer.options2
                 # ES SIND EINFACH ZU VIELE, D.H.: ANDERS LÖSEN!
                 # ES GIBT AB SOFORT 2 options DATENSTRUKTUREN!
                 # for notParaVal in self.notParameterValues:
@@ -186,8 +186,9 @@ class NestedCompleter(Completer):
                 #            notParaVal, None
                 #        ||)
                 # print("|||" + remaining_text + "|")
+                # print(str(completer.options))
                 remaining_text = text[len(first_term) + 1 :].lstrip()
-                print("|" + remaining_text + "|")
+                # print("|" + remaining_text + "|")
                 move_cursor = len(text) - len(remaining_text) + stripped_len
 
                 new_document = Document(
