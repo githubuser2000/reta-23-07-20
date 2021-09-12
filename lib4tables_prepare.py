@@ -396,7 +396,7 @@ class Prepare:
 
         # Sonnen über 114 immer entfernen
         for n in copy(numRange):
-            if (self.zaehlungen[4][n][0] == []) and (n > 114):
+            if (self.zaehlungen[4][n][0] == []) and (n > 121):
                 numRange.remove(n)
 
         primMultiples: list = []
