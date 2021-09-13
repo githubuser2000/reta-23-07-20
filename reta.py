@@ -1403,6 +1403,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
+                ("Moral", "moral", "warummoral"),
+                {215},
+            ),
+            (
+                Program.ParametersMain.menschliches,
                 ("Fachgebiete", "fachgebiete", "fachbereiche", "themen"),
                 {183},
             ),
