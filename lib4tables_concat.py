@@ -910,6 +910,7 @@ class Concat:
                             "</li>" if len(into1) > 0 else "",
                             "<li>" if len(into2) > 0 else "",
                             ", ".join(into2),
+                            "".join(into_Str2[num]) if len(into2) > 0 else "",
                             "</li>" if len(into2) > 0 else "",
                             "<li>" if len(into) > 0 else "",
                             ", ".join(into),
