@@ -1404,7 +1404,7 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 ("Moral", "moral", "warummoral"),
-                {215},
+                {215, 216},
             ),
             (
                 Program.ParametersMain.menschliches,
