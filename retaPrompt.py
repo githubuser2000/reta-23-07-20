@@ -272,7 +272,7 @@ def nochMalTraverse(startpunkt, anzahl):
 
 anzahl = 3
 startpunkt1 = NestedCompleter(
-    {"reta": None}, notParameterValues, {}, ComplSitua.retaAnfang, "", {"reta": []}
+    {"reta": None}, notParameterValues, {}, ComplSitua.retaAnfang, "", {"reta": None}
 )
 
 startpunkt = nebenMainRekursiv(

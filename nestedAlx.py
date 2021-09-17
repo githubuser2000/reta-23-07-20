@@ -45,7 +45,7 @@ class NestedCompleter(Completer):
         optionsStandard: Dict[str, Optional[Completer]],
         situation: ComplSitua,
         lastString: str,
-        optionsTypes: Dict[str, ComplSitua],
+        optionsTypes: Dict[str, Optional[ComplSitua]],
         ignore_case: bool = True,
     ) -> None:
         self.options2 = optionsStandard
