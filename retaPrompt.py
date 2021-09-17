@@ -65,10 +65,10 @@ notParameterValues = (
 )
 
 
-def setMainParas(startpunkt: dict, mainParas) -> dict:
+def setMainParas(startpunkt: dict, mainParas, complSit: ComplSitua = ComplSitua.unbekannt) -> dict:
     for mainPara1 in mainParas:
         merke = NestedCompleter(
-            {}, notParameterValues=notParameterValues, optionsStandard={}
+            {}, notParameterValues=notParameterValues, {}, startpunkt.situationsTyp,  
         )
         if merke in schonDrin and False:
             # op1 = set()
@@ -94,7 +94,7 @@ def setMainParas(startpunkt: dict, mainParas) -> dict:
 # startpunkt = setMainParas(startpunkt, mainParas)
 
 
-def nebenToMainPara(startpunkt: dict, zeilen, kombi, spalten, ausgabe, exPara) -> dict:
+def nebenToMainPara(startpunkt: dict, zeilen, kombi, spalten, ausgabe, exPara, complSit: ComplSitua = ComplSitua.unbekannt) -> dict:
     # pp(exPara)
     if exPara == "-zeilen":
         for nebenPara in zeilen:
@@ -122,7 +122,8 @@ def nebenToMainPara(startpunkt: dict, zeilen, kombi, spalten, ausgabe, exPara) -
 
 
 def valueToNebenPara(
-    startpunkt, zeilen, kombi, spalten, ausgabe, newerKey, exPara
+    startpunkt, zeilen, kombi, spalten, ausgabe, newerKey, exPara,
+    complSit: ComplSitua = ComplSitua.unbekannt
 ) -> dict:
     global spaltenDict, schonDrin2
     if exPara == "-spalten" and newerKey in spalten:
@@ -173,14 +174,14 @@ def valueToNebenPara(
 
 
 def nebenUndMainParas(
-    startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, exPara, newerKey
+    startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, exPara, newerKey, complSit: ComplSitua = ComplSitua.unbekannt,
 ) -> dict:
-    startpunkt = setMainParas(startpunkt, mainParas)
+    startpunkt = setMainParas(startpunkt, mainParas, complSit)
     startpunkt = nebenToMainPara(
-        startpunkt, zeilenParas, kombiMainParas, spalten, ausgabeParas, exPara
+        startpunkt, zeilenParas, kombiMainParas, spalten, ausgabeParas, exPara, complSit
     )
     startpunkt = valueToNebenPara(
-        startpunkt, zeilenParas, kombiMainParas, spalten, ausgabeParas, newerKey, exPara
+        startpunkt, zeilenParas, kombiMainParas, spalten, ausgabeParas, newerKey, exPara, complSit
     )
     return startpunkt
 
@@ -214,7 +215,7 @@ def nebenMainRekursiv(
         if key in hauptForNeben:
             lastKey = key
         startpunkt = nebenUndMainParas(
-            startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, key, newerKey
+            startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, key, newerKey, complSit
         )
         # pp((startpunkt).values())
         for key2, key3 in zip(
