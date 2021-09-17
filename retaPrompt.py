@@ -203,7 +203,7 @@ def nebenMainRekursiv(
         schonDrin2 += [startpunkt]
         if startpunkt.options[key] is None:
             startpunkt.options[key] = NestedCompleter(
-                {}, notParameterValues, optionsStandard, complSit, key, {}
+                {}, notParameterValues, {}, complSit, key, {}
             )
         startpunkt = startpunkt.options[key]
         # pp(startpunkt.options.keys())
