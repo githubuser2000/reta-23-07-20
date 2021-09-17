@@ -1,6 +1,7 @@
 """
 Nestedcompleter for completion of hierarchical data structures.
 """
+from enum import Enum
 from typing import Any, Dict, Iterable, Mapping, Optional, Set, Union
 
 # from baseAlx import WordCompleter
@@ -14,6 +15,15 @@ __all__ = ["NestedCompleter"]
 
 # NestedDict = Mapping[str, Union['NestedDict', Set[str], None, Completer]]
 NestedDict = Mapping[str, Union[Any, Set[str], None, Completer]]
+
+
+class ComplSitua(Enum):
+    hauptPara = 0
+    nebenPara = 1
+    value = 3
+    neitherNor = 4
+    retaAnfang = 5
+    unbekannt = 6
 
 
 class NestedCompleter(Completer):
@@ -33,9 +43,11 @@ class NestedCompleter(Completer):
         options: Dict[str, Optional[Completer]],
         notParameterValues,
         optionsStandard: Dict[str, Optional[Completer]],
+        situation: ComplSitua,
+        lastString: str,
+        optionsTypes: Dict[str, ComplSitua],
         ignore_case: bool = True,
     ) -> None:
-
         self.options2 = optionsStandard
         self.options1 = options
         self.options = {**options, **optionsStandard}
@@ -44,6 +56,8 @@ class NestedCompleter(Completer):
         self.ExOptions: dict = {}
         self.ifGleichheitszeichen = False
         self.optionsPark: Dict[str, Optional[Completer]] = {}
+        self.situationsTyp = situation
+        self.lastString = lastString
 
     def optionsSync(
         self,

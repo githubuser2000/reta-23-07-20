@@ -7,7 +7,7 @@ from itertools import zip_longest
 from typing import Optional
 
 import reta
-from nestedAlx import NestedCompleter
+from nestedAlx import ComplSitua, NestedCompleter
 from prompt_toolkit import print_formatted_text, prompt
 # from prompt_toolkit.completion import Completer, Completion, WordCompleter
 from prompt_toolkit.completion import Completer, Completion
@@ -186,7 +186,16 @@ def nebenUndMainParas(
 
 
 def nebenMainRekursiv(
-    startpunkt, key, mainParas, zeilen, kombi, spalten, ausgabe, anzahl, lastKey=None
+    startpunkt,
+    key,
+    mainParas,
+    zeilen,
+    kombi,
+    spalten,
+    ausgabe,
+    anzahl,
+    lastKey=None,
+    complSit: ComplSitua = ComplSitua.unbekannt,
 ) -> dict:
     global schonDrin2
     if anzahl > 0:
@@ -194,7 +203,7 @@ def nebenMainRekursiv(
         schonDrin2 += [startpunkt]
         if startpunkt.options[key] is None:
             startpunkt.options[key] = NestedCompleter(
-                {}, notParameterValues, optionsStandard={}
+                {}, notParameterValues, optionsStandard, complSit, key
             )
         startpunkt = startpunkt.options[key]
         # pp(startpunkt.options.keys())
@@ -262,7 +271,10 @@ def nochMalTraverse(startpunkt, anzahl):
 
 
 anzahl = 3
-startpunkt1 = NestedCompleter({"reta": None}, notParameterValues, optionsStandard={})
+startpunkt1 = NestedCompleter(
+    {"reta": None}, notParameterValues, {}, ComplSitua.retaAnfang, "", {"reta": []}
+)
+
 startpunkt = nebenMainRekursiv(
     startpunkt1,
     "reta",
@@ -272,6 +284,7 @@ startpunkt = nebenMainRekursiv(
     spalten,
     ausgabeParas,
     anzahl,
+    ComplSitua.retaAnfang,
 )
 startpunkt = nochMalTraverse(startpunkt, anzahl)
 # pp(startpunkt)
@@ -292,7 +305,7 @@ startpunkt = nochMalTraverse(startpunkt, anzahl)
 if True:
     text = prompt(
         # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
-        "Enter HTML: ",
+        "ReTa Prompt: ",
         # completer=NestedCompleter.from_nested_dict(
         #    startpunkt, notParameterValues=notParameterValues
         # ),
@@ -301,4 +314,4 @@ if True:
         complete_while_typing=True,
         vi_mode=True,
     )
-    print("You said: %s" % text, end=" ")
+    print("Du meintest: %s" % text, end=" ")
