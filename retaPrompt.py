@@ -217,7 +217,10 @@ def nebenMainRekursiv(
             startpunkt, mainParas, zeilen, kombi, spalten, ausgabe, key, newerKey
         )
         # pp((startpunkt).values())
-        for key2 in deepcopy(tuple(startpunkt.options.keys())):
+        for key2, key3 in zip(
+            deepcopy(tuple(startpunkt.options.keys())),
+            deepcopy(tuple(startpunkt.optionsTypes.keys())),
+        ):
             nebenMainRekursiv(
                 startpunkt,
                 key2,
@@ -228,6 +231,7 @@ def nebenMainRekursiv(
                 ausgabe,
                 anzahl - 1,
                 lastKey,
+                key3,
             ),
     return startpunkt
 
@@ -272,7 +276,12 @@ def nochMalTraverse(startpunkt, anzahl):
 
 anzahl = 3
 startpunkt1 = NestedCompleter(
-    {"reta": None}, notParameterValues, {}, ComplSitua.retaAnfang, "", {"reta": None}
+    {"reta": None},
+    notParameterValues,
+    {},
+    ComplSitua.retaAnfang,
+    "",
+    {"reta": ComplSitua.retaAnfang},
 )
 
 startpunkt = nebenMainRekursiv(
