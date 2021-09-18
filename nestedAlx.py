@@ -142,7 +142,7 @@ class NestedCompleter(Completer):
 
     def __setOptions(self, completer: NestedCompleter):
         if "reta" in self.options and self.situationsTyp == ComplSitua.retaAnfang:
-            completer.options = {}
+            completer.options = {key: None for key in hauptForNeben}
 
     def get_completions(
         self, document: Document, complete_event: CompleteEvent
