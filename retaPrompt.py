@@ -289,18 +289,18 @@ startpunkt1 = NestedCompleter(
     {"reta": ComplSitua.retaAnfang},
 )
 
-startpunkt = nebenMainRekursiv(
-    startpunkt1,
-    "reta",
-    mainParas,
-    zeilenParas,
-    kombiMainParas,
-    spalten,
-    ausgabeParas,
-    anzahl,
-    ComplSitua.retaAnfang,
-)
-startpunkt = nochMalTraverse(startpunkt, anzahl)
+# startpunkt = nebenMainRekursiv(
+# startpunkt1,
+# "reta",
+# mainParas,
+# zeilenParas,
+# kombiMainParas,
+# spalten,
+# ausgabeParas,
+# anzahl,
+# ComplSitua.retaAnfang,
+# )
+# startpunkt = nochMalTraverse(startpunkt, anzahl)
 # pp(startpunkt)
 
 # print(str(ausgabeParas))
