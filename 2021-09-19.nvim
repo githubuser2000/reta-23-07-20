@@ -1,0 +1,391 @@
+let SessionLoad = 1
+let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
+let v:this_session=expand("<sfile>:p")
+silent only
+silent tabonly
+cd ~/workspace-noneclipse/reta
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+badd +1 center.py
+badd +1 deleteDoubledLines.py
+badd +1 lib4tables.py
+badd +1 lib4tables_Enum.py
+badd +1 lib4tables_concat.py
+badd +1 lib4tables_prepare.py
+badd +1 reta.py
+badd +1 setup.py
+badd +1 tableHandling.py
+badd +1 religionen.js
+badd +1 2020-10-18-cloc-kloc.txt
+badd +1 2021-05-12-cloc-kloc.txt
+badd +1 2021-05-21-cloc-kloc.txt
+badd +1 info.txt
+badd +1 readme.txt
+badd +1 retaPrompt.py
+badd +1 nestedAlx.py
+badd +1 completionAlx.py
+badd +1 baseAlx.py
+badd +1 word_completerAlx.py
+badd +0 LibRetaPrompt.py
+argglobal
+%argdel
+$argadd center.py
+$argadd deleteDoubledLines.py
+$argadd lib4tables.py
+$argadd lib4tables_Enum.py
+$argadd lib4tables_concat.py
+$argadd lib4tables_prepare.py
+$argadd reta.py
+$argadd setup.py
+$argadd tableHandling.py
+$argadd religionen.js
+$argadd 2020-10-18-cloc-kloc.txt
+$argadd 2021-05-12-cloc-kloc.txt
+$argadd 2021-05-21-cloc-kloc.txt
+$argadd info.txt
+$argadd readme.txt
+set stal=2
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabrewind
+edit center.py
+argglobal
+setlocal fdm=expr
+setlocal fde=SimpylFold#FoldExpr(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 16 - ((12 * winheight(0) + 16) / 32)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 16
+normal! 0
+tabnext
+edit lib4tables.py
+argglobal
+3argu
+balt center.py
+setlocal fdm=expr
+setlocal fde=SimpylFold#FoldExpr(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 12 - ((9 * winheight(0) + 16) / 32)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 12
+normal! 09|
+tabnext
+edit lib4tables_Enum.py
+argglobal
+4argu
+balt lib4tables.py
+setlocal fdm=expr
+setlocal fde=SimpylFold#FoldExpr(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 105 - ((16 * winheight(0) + 16) / 32)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 105
+normal! 09|
+tabnext
+edit lib4tables_concat.py
+argglobal
+5argu
+balt lib4tables_Enum.py
+setlocal fdm=expr
+setlocal fde=SimpylFold#FoldExpr(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 1060 - ((16 * winheight(0) + 16) / 32)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1060
+normal! 021|
+tabnext
+edit lib4tables_prepare.py
+argglobal
+6argu
+balt lib4tables_concat.py
+setlocal fdm=expr
+setlocal fde=SimpylFold#FoldExpr(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 627 - ((22 * winheight(0) + 16) / 32)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 627
+normal! 013|
+tabnext
+edit reta.py
+argglobal
+7argu
+balt lib4tables_prepare.py
+setlocal fdm=expr
+setlocal fde=SimpylFold#FoldExpr(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 2709 - ((14 * winheight(0) + 16) / 32)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 2709
+normal! 013|
+tabnext
+edit tableHandling.py
+argglobal
+9argu
+balt reta.py
+setlocal fdm=expr
+setlocal fde=SimpylFold#FoldExpr(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 131 - ((16 * winheight(0) + 16) / 32)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 131
+normal! 09|
+tabnext
+edit religionen.js
+argglobal
+10argu
+balt tableHandling.py
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 1 - ((0 * winheight(0) + 16) / 32)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+tabnext
+edit retaPrompt.py
+argglobal
+1argu
+if bufexists("retaPrompt.py") | buffer retaPrompt.py | else | edit retaPrompt.py | endif
+if &buftype ==# 'terminal'
+  silent file retaPrompt.py
+endif
+balt religionen.js
+setlocal fdm=expr
+setlocal fde=SimpylFold#FoldExpr(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 44 - ((13 * winheight(0) + 16) / 32)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 44
+normal! 0
+tabnext
+edit LibRetaPrompt.py
+argglobal
+if bufexists("LibRetaPrompt.py") | buffer LibRetaPrompt.py | else | edit LibRetaPrompt.py | endif
+if &buftype ==# 'terminal'
+  silent file LibRetaPrompt.py
+endif
+balt retaPrompt.py
+setlocal fdm=expr
+setlocal fde=SimpylFold#FoldExpr(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 1 - ((0 * winheight(0) + 16) / 32)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+tabnext
+edit word_completerAlx.py
+argglobal
+if bufexists("word_completerAlx.py") | buffer word_completerAlx.py | else | edit word_completerAlx.py | endif
+if &buftype ==# 'terminal'
+  silent file word_completerAlx.py
+endif
+balt retaPrompt.py
+setlocal fdm=expr
+setlocal fde=SimpylFold#FoldExpr(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 5 - ((4 * winheight(0) + 16) / 32)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 5
+normal! 0
+tabnext
+edit nestedAlx.py
+argglobal
+if bufexists("nestedAlx.py") | buffer nestedAlx.py | else | edit nestedAlx.py | endif
+if &buftype ==# 'terminal'
+  silent file nestedAlx.py
+endif
+balt retaPrompt.py
+setlocal fdm=expr
+setlocal fde=SimpylFold#FoldExpr(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+29
+normal! zo
+let s:l = 13 - ((12 * winheight(0) + 16) / 32)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 13
+normal! 011|
+tabnext
+edit completionAlx.py
+argglobal
+if bufexists("completionAlx.py") | buffer completionAlx.py | else | edit completionAlx.py | endif
+if &buftype ==# 'terminal'
+  silent file completionAlx.py
+endif
+balt nestedAlx.py
+setlocal fdm=expr
+setlocal fde=SimpylFold#FoldExpr(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+17
+normal! zo
+90
+normal! zo
+let s:l = 40 - ((30 * winheight(0) + 16) / 32)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 40
+normal! 022|
+tabnext
+edit baseAlx.py
+argglobal
+if bufexists("baseAlx.py") | buffer baseAlx.py | else | edit baseAlx.py | endif
+if &buftype ==# 'terminal'
+  silent file baseAlx.py
+endif
+balt completionAlx.py
+setlocal fdm=expr
+setlocal fde=SimpylFold#FoldExpr(v:lnum)
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+11
+normal! zo
+38
+normal! zo
+let s:l = 41 - ((31 * winheight(0) + 16) / 32)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 41
+normal! 046|
+tabnext
+edit readme.txt
+argglobal
+15argu
+balt religionen.js
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 55 - ((12 * winheight(0) + 16) / 32)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 55
+normal! 0
+tabnext 10
+set stal=1
+if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 shortmess=filnxtToOFc
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if filereadable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &g:so = s:so_save | let &g:siso = s:siso_save
+set hlsearch
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :

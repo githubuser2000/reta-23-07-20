@@ -4,6 +4,9 @@ Nestedcompleter for completion of hierarchical data structures.
 from enum import Enum
 from typing import Any, Dict, Iterable, Mapping, Optional, Set, Union
 
+from LibRetaPrompt import (ausgabeParas, hauptForNeben, kombiMainParas,
+                           mainParas, reta, retaProgram, spalten, spaltenDict,
+                           zeilenParas)
 # from baseAlx import WordCompleter
 # from completionAlx import Completion
 from prompt_toolkit.completion import CompleteEvent, Completer, Completion
