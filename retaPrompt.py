@@ -65,9 +65,7 @@ notParameterValues = (
 )
 
 
-def setMainParas(
-    startpunkt: dict, mainParas, complSit: ComplSitua, exPara: str
-) -> dict:
+def setMainParas(startpunkt, mainParas, complSit: ComplSitua, exPara: str) -> dict:
     for mainPara1 in mainParas:
         merke = NestedCompleter({}, notParameterValues, {}, complSit, exPara, {})
         if merke in schonDrin and False:
@@ -87,6 +85,7 @@ def setMainParas(
         else:
             # startpunkt.options[mainPara1] = merke
             startpunkt.options[mainPara1] = merke
+            startpunkt.optionsTypes[mainPara1] = complSit
             schonDrin[merke] = merke
     return startpunkt
 
@@ -101,7 +100,7 @@ def nebenToMainPara(
     spalten,
     ausgabe,
     exPara,
-    complSit: ComplSitua = ComplSitua.unbekannt,
+    complSit: ComplSitua,
 ) -> dict:
     # pp(exPara)
     if exPara == "-zeilen":
