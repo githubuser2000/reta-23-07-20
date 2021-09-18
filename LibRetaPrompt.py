@@ -41,3 +41,7 @@ zeilenParas = [
     "--typ",
 ]
 hauptForNeben = ("-zeilen", "-spalten", "-kombination", "-ausgabe")
+
+notParameterValues = (
+    ausgabeParas + zeilenParas + kombiMainParas + spalten + mainParas,
+)

@@ -5,8 +5,8 @@ from enum import Enum
 from typing import Any, Dict, Iterable, Mapping, Optional, Set, Union
 
 from LibRetaPrompt import (ausgabeParas, hauptForNeben, kombiMainParas,
-                           mainParas, reta, retaProgram, spalten, spaltenDict,
-                           zeilenParas)
+                           mainParas, notParameterValues, reta, retaProgram,
+                           spalten, spaltenDict, zeilenParas)
 # from baseAlx import WordCompleter
 # from completionAlx import Completion
 from prompt_toolkit.completion import CompleteEvent, Completer, Completion
@@ -137,12 +137,19 @@ class NestedCompleter(Completer):
             result = self.options.get(first_term[:i])
             if result is not None:
                 break
-
+        if result is None:
+            result = NestedCompleter(
+                {}, notParameterValues, {}, self.situationsTyp, self.lastString, {}
+            )
+            self.__setOptions(result)
         return result
 
-    def __setOptions(self, completer: NestedCompleter):
+    def __setOptions(self, completer: Completer):
         if "reta" in self.options and self.situationsTyp == ComplSitua.retaAnfang:
             completer.options = {key: None for key in hauptForNeben}
+            completer.optionsTypes = {
+                key: ComplSitua.hauptPara for key in hauptForNeben
+            }
 
     def get_completions(
         self, document: Document, complete_event: CompleteEvent
@@ -165,7 +172,6 @@ class NestedCompleter(Completer):
 
             # If we have a sub completer, use this for the completions.
             if completer is not None:
-                self.__setOptions(completer)
                 if self.ifGleichheitszeichen:
                     completer.options = completer.optionsPark
                 self.ifGleichheitszeichen = False

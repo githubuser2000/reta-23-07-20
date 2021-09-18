@@ -8,8 +8,9 @@ from typing import Optional
 
 # import reta
 from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas,
-                       hauptForNeben, kombiMainParas, mainParas, reta,
-                       retaProgram, spalten, spaltenDict, zeilenParas)
+                       hauptForNeben, kombiMainParas, mainParas,
+                       notParameterValues, reta, retaProgram, spalten,
+                       spaltenDict, zeilenParas)
 from prompt_toolkit import print_formatted_text, prompt
 # from prompt_toolkit.completion import Completer, Completion, WordCompleter
 from prompt_toolkit.completion import Completer, Completion
@@ -21,10 +22,6 @@ pp = pp1.pprint
 
 schonDrin = {}
 schonDrin2 = []
-
-notParameterValues = (
-    ausgabeParas + zeilenParas + kombiMainParas + spalten + mainParas,
-)
 
 
 def setMainParas(
