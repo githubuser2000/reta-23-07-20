@@ -308,7 +308,7 @@ def nochMalTraverse(startpunkt, anzahl):
                 startpunkt.options = gleiche[k].options
             except ValueError:
                 pass
-
+            #
             # for gleich2 in gleiche:
 
         for key in startpunkt.options.keys():
