@@ -140,6 +140,10 @@ class NestedCompleter(Completer):
 
         return result
 
+    def __setOptions(self, completer: NestedCompleter):
+        if "reta" in self.options and self.situationsTyp == ComplSitua.retaAnfang:
+            completer.options = {}
+
     def get_completions(
         self, document: Document, complete_event: CompleteEvent
     ) -> Iterable[Completion]:
@@ -161,6 +165,7 @@ class NestedCompleter(Completer):
 
             # If we have a sub completer, use this for the completions.
             if completer is not None:
+                self.__setOptions(completer)
                 if self.ifGleichheitszeichen:
                     completer.options = completer.optionsPark
                 self.ifGleichheitszeichen = False
