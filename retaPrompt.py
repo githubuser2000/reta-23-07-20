@@ -65,7 +65,9 @@ notParameterValues = (
 )
 
 
-def setMainParas(startpunkt, mainParas, complSit: ComplSitua, exPara: str) -> dict:
+def setMainParas(
+    startpunkt: NestedCompleter, mainParas, complSit: ComplSitua, exPara: str
+) -> NestedCompleter:
     for mainPara1 in mainParas:
         merke = NestedCompleter({}, notParameterValues, {}, complSit, exPara, {})
         if merke in schonDrin and False:
@@ -94,35 +96,35 @@ def setMainParas(startpunkt, mainParas, complSit: ComplSitua, exPara: str) -> di
 
 
 def nebenToMainPara(
-    startpunkt: dict,
+    startpunkt: NestedCompleter,
     zeilen,
     kombi,
     spalten,
     ausgabe,
     exPara,
     complSit: ComplSitua,
-) -> dict:
+) -> NestedCompleter:
     # pp(exPara)
     if exPara == "-zeilen":
         for nebenPara in zeilen:
             startpunkt.options[nebenPara] = NestedCompleter(
-                {}, notParameterValues=notParameterValues, optionsStandard={}
+                {}, notParameterValues, {}, complSit, exPara, {}
             )
     elif exPara == "-spalten":
         # pp(startpunkt.options.keys())
         for nebenPara in spalten:
             startpunkt.options[nebenPara] = NestedCompleter(
-                {}, notParameterValues=notParameterValues, optionsStandard={}
+                {}, notParameterValues, {}, complSit, exPara, {}
             )
     elif exPara == "-kombination":
         for nebenPara in kombi:
             startpunkt.options[nebenPara] = NestedCompleter(
-                {}, notParameterValues=notParameterValues, optionsStandard={}
+                {}, notParameterValues, {}, complSit, exPara, {}
             )
     elif exPara == "-ausgabe":
         for nebenPara in ausgabe:
             startpunkt.options[nebenPara] = NestedCompleter(
-                {}, notParameterValues=notParameterValues, optionsStandard={}
+                {}, notParameterValues, {}, complSit, exPara, {}
             )
 
     return startpunkt
