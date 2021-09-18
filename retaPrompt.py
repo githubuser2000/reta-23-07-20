@@ -131,7 +131,7 @@ def nebenToMainPara(
 
 
 def valueToNebenPara(
-    startpunkt,
+    startpunkt: NestedCompleter,
     zeilen,
     kombi,
     spalten,
@@ -139,7 +139,7 @@ def valueToNebenPara(
     newerKey,
     exPara,
     complSit: ComplSitua = ComplSitua.unbekannt,
-) -> dict:
+) -> NestedCompleter:
     global spaltenDict, schonDrin2
     if exPara == "-spalten" and newerKey in spalten:
         # pp(spaltenDict)
