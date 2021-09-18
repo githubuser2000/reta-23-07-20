@@ -85,7 +85,7 @@ def setMainParas(startpunkt, mainParas, complSit: ComplSitua, exPara: str) -> di
         else:
             # startpunkt.options[mainPara1] = merke
             startpunkt.options[mainPara1] = merke
-            startpunkt.optionsTypes[mainPara1] = complSit
+            startpunkt.optionsTypes[mainPara1] = ComplSitua.hauptPara
             schonDrin[merke] = merke
     return startpunkt
 
