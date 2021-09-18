@@ -302,8 +302,12 @@ def nochMalTraverse(startpunkt, anzahl):
                 maxis[maxkey] = maxamount
             if maxis == {}:
                 pp(startpunkt.options)
-            maxkey = max(maxis, key=maxis.get)
-            startpunkt.options = gleiche[k].options
+
+            try:
+                maxkey = max(maxis, key=maxis.get)
+                startpunkt.options = gleiche[k].options
+            except ValueError:
+                pass
 
             # for gleich2 in gleiche:
 
