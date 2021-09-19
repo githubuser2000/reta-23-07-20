@@ -67,6 +67,7 @@ class NestedCompleter(Completer):
         self.situationsTyp: Optional[ComplSitua] = situation
         self.lastString: str = lastString
         self.optionsTypes: Dict[str, Optional[ComplSitua]] = optionsTypes
+        self.spaltenParaWort: Optional[str]
 
     def optionsSync(
         self,
@@ -194,19 +195,27 @@ class NestedCompleter(Completer):
                     }
                     completer.lastString = first_term
                     completer.situationsTyp = ComplSitua.komiPara
-        elif trennzeichen in (",", "="):
-            # print(str(self.situationsTyp == ComplSitua.spaltenPara))
-            if self.situationsTyp == ComplSitua.spaltenPara:
-                # first_term = first_term[2:]
-                # print(str(first_term) + "JJ")
-                # print(str(spaltenDict) + "JJ")
-                # print(str(spaltenDict[first_term]) + "JJ")
-                completer.options = {key: None for key in spaltenDict[first_term[2:]]}
-                completer.optionsTypes = {
-                    key: ComplSitua.spaltenValPara
-                    for key in spaltenDict[first_term[2:]]
-                }
-                completer.lastString = first_term
+        elif (trennzeichen == "=" and self.situationsTyp == ComplSitua.spaltenPara) or (
+            trennzeichen == "," and self.situationsTyp == ComplSitua.spaltenValPara
+        ):
+            # first_term = first_term[2:]
+            # if trennzeichen == ",":
+            #    print("JJ")
+            # print(str(spaltenDict) + "JJ")
+            # print(str(spaltenDict[first_term]) + "JJ")
+            completer.options = {key: None for key in spaltenDict[first_term[2:]]}
+            completer.optionsTypes = {
+                key: ComplSitua.spaltenValPara for key in spaltenDict[first_term[2:]]
+            }
+            completer.lastString = first_term
+            completer.situationsTyp = ComplSitua.spaltenValPara
+            completer.spaltenParaWort = (
+                first_term
+                if trennzeichen == "="
+                else self.spaltenParaWort
+                if trennzeichen == ","
+                else None
+            )
 
     def get_completions(
         self, document: Document, complete_event: CompleteEvent
