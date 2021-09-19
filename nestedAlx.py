@@ -162,7 +162,13 @@ class NestedCompleter(Completer):
             if "-zeilen" == first_term:
                 completer.options = {key: None for key in zeilenParas}
                 completer.optionsTypes = {
-                    key: ComplSitua.zeilenParas for key in zeilenParas
+                    key: ComplSitua.zeilenPara for key in zeilenParas
+                }
+                completer.lastString == first_term
+            elif "-spalten" == first_term:
+                completer.options = {key: None for key in spalten}
+                completer.optionsTypes = {
+                    key: ComplSitua.spaltenPara for key in spalten
                 }
                 completer.lastString == first_term
 
@@ -187,9 +193,9 @@ class NestedCompleter(Completer):
 
             # If we have a sub completer, use this for the completions.
             if completer is not None:
-                if self.ifGleichheitszeichen:
-                    completer.options = completer.optionsPark
-                self.ifGleichheitszeichen = False
+                # if self.ifGleichheitszeichen:
+                #    completer.options = completer.optionsPark
+                # self.ifGleichheitszeichen = False
                 # if "=" not in text and len(completer.ExOptions) != 0:
                 #    for key, val in completer.ExOptions.items():
                 #        completer.options[key] = val
@@ -218,9 +224,9 @@ class NestedCompleter(Completer):
             # print("||" + first_term + "|")
             # print(str(type(completer)))
             if completer is not None:
-                self.ifGleichheitszeichen = True
-                completer.optionsPark = completer.options
-                completer.options = completer.options2
+                # self.ifGleichheitszeichen = True
+                # completer.optionsPark = completer.options
+                # completer.options = completer.options2
                 # ES SIND EINFACH ZU VIELE, D.H.: ANDERS LÖSEN!
                 # ES GIBT AB SOFORT 2 options DATENSTRUKTUREN!
                 # for notParaVal in self.notParameterValues:
