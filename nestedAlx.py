@@ -154,14 +154,16 @@ class NestedCompleter(Completer):
             completer.optionsTypes = {
                 key: ComplSitua.hauptPara for key in hauptForNeben
             }
+            completer.lastString == "reta"
         elif self.situationsTyp in (ComplSitua.hauptPara, ComplSitua.retaAnfang):
-            print(self.lastString+"Ö")
+            print("______________" + self.lastString + "-zeilen")
             if "-zeilen" == self.lastString:
                 print("X")
                 completer.options = {key: None for key in zeilenParas}
                 completer.optionsTypes = {
                     key: ComplSitua.zeilenParas for key in zeilenParas
                 }
+                # completer.lastString ==
 
     def get_completions(
         self, document: Document, complete_event: CompleteEvent
