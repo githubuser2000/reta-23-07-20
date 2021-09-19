@@ -20,8 +20,11 @@ spalten = ["--" + a[0] for a in retaProgram.paraDict.keys()]
 spaltenDict = {}
 for tupel in retaProgram.paraNdataMatrix:
     for haupt in tupel[0]:
-        spaltenDict[haupt] = tupel[1]
-# pp(spaltenDict)
+        try:
+            spaltenDict[haupt] += list(tupel[1])
+        except KeyError:
+            spaltenDict[haupt] = list(tupel[1])
+# print(str((spaltenDict)))
 
 ausgabeParas = [
     "--nocolor",
@@ -45,3 +48,5 @@ hauptForNeben = ("-zeilen", "-spalten", "-kombination", "-ausgabe")
 notParameterValues = (
     ausgabeParas + zeilenParas + kombiMainParas + spalten + mainParas,
 )
+
+# print(str(retaProgram.paraNdataMatrix))
