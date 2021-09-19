@@ -64,9 +64,9 @@ class NestedCompleter(Completer):
         self.ExOptions: dict = {}
         self.ifGleichheitszeichen = False
         self.optionsPark: Dict[str, Optional[Completer]] = {}
-        self.situationsTyp = situation
-        self.lastString = lastString
-        self.optionsTypes = optionsTypes
+        self.situationsTyp: Optional[ComplSitua] = situation
+        self.lastString: str = lastString
+        self.optionsTypes: Dict[str, Optional[ComplSitua]] = optionsTypes
 
     def optionsSync(
         self,
