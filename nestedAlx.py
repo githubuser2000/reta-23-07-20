@@ -135,7 +135,9 @@ class NestedCompleter(Completer):
 
         return cls(options, notParameterValues)
 
-    def matchTextAlx(self, first_term: str) -> Optional[Completer]:
+    def matchTextAlx(
+        self, first_term: str, trennzeichen: str = " "
+    ) -> Optional[Completer]:
         result = None
         for i in range(len(first_term), -1, -1):
             result = self.options.get(first_term[:i])
@@ -145,44 +147,47 @@ class NestedCompleter(Completer):
             result = NestedCompleter(
                 {}, notParameterValues, {}, self.situationsTyp, first_term, {}
             )
-            self.__setOptions(result, first_term)
+            self.__setOptions(result, first_term, trennzeichen)
         return result
 
-    def __setOptions(self, completer: Completer, first_term: str):
-        if (
-            "reta" == tuple(self.options.keys())[0]
-            and self.situationsTyp == ComplSitua.retaAnfang
-        ):
-            completer.options = {key: None for key in hauptForNeben}
-            completer.optionsTypes = {
-                key: ComplSitua.hauptPara for key in hauptForNeben
-            }
-            completer.lastString == first_term
-        elif self.situationsTyp in (ComplSitua.hauptPara, ComplSitua.retaAnfang):
-            if "-zeilen" == first_term:
-                completer.options = {key: None for key in zeilenParas}
+    def __setOptions(
+        self, completer: "NestedCompleter", first_term: str, trennzeichen: str
+    ):
+        if trennzeichen == " ":
+            if (
+                "reta" == tuple(self.options.keys())[0]
+                and self.situationsTyp == ComplSitua.retaAnfang
+            ):
+                completer.options = {key: None for key in hauptForNeben}
                 completer.optionsTypes = {
-                    key: ComplSitua.zeilenPara for key in zeilenParas
+                    key: ComplSitua.hauptPara for key in hauptForNeben
                 }
                 completer.lastString == first_term
-            elif "-spalten" == first_term:
-                completer.options = {key: None for key in spalten}
-                completer.optionsTypes = {
-                    key: ComplSitua.spaltenPara for key in spalten
-                }
-                completer.lastString == first_term
-            elif "-ausgabe" == first_term:
-                completer.options = {key: None for key in ausgabeParas}
-                completer.optionsTypes = {
-                    key: ComplSitua.ausgabePara for key in ausgabeParas
-                }
-                completer.lastString == first_term
-            elif "-kombination" == first_term:
-                completer.options = {key: None for key in kombiMainParas}
-                completer.optionsTypes = {
-                    key: ComplSitua.spaltenPara for key in kombiMainParas
-                }
-                completer.lastString == first_term
+            elif self.situationsTyp in (ComplSitua.hauptPara, ComplSitua.retaAnfang):
+                if "-zeilen" == first_term:
+                    completer.options = {key: None for key in zeilenParas}
+                    completer.optionsTypes = {
+                        key: ComplSitua.zeilenPara for key in zeilenParas
+                    }
+                    completer.lastString == first_term
+                elif "-spalten" == first_term:
+                    completer.options = {key: None for key in spalten}
+                    completer.optionsTypes = {
+                        key: ComplSitua.spaltenPara for key in spalten
+                    }
+                    completer.lastString == first_term
+                elif "-ausgabe" == first_term:
+                    completer.options = {key: None for key in ausgabeParas}
+                    completer.optionsTypes = {
+                        key: ComplSitua.ausgabePara for key in ausgabeParas
+                    }
+                    completer.lastString == first_term
+                elif "-kombination" == first_term:
+                    completer.options = {key: None for key in kombiMainParas}
+                    completer.optionsTypes = {
+                        key: ComplSitua.spaltenPara for key in kombiMainParas
+                    }
+                    completer.lastString == first_term
 
     def get_completions(
         self, document: Document, complete_event: CompleteEvent
@@ -228,7 +233,7 @@ class NestedCompleter(Completer):
             # print("|" + first_term + "|")
             # print(str(self.options.keys()))
             # completer = self.options.get(first_term)
-            completer = self.matchTextAlx(first_term)
+            completer = self.matchTextAlx(first_term, "=" if gleich else ",")
             # print(str(type(completer)))
 
             # If we have a sub completer, use this for the completions.
