@@ -200,13 +200,13 @@ class NestedCompleter(Completer):
         ):
             # first_term = first_term[2:]
             # if trennzeichen == ",":
-            #    print("JJ")
+            #    print(self.spaltenParaWort)
             # print(str(spaltenDict) + "JJ")
             # print(str(spaltenDict[first_term]) + "JJ")
             suchWort = (
                 first_term[2:]
                 if trennzeichen == "="
-                else self.spaltenParaWort
+                else self.spaltenParaWort[2:]
                 if trennzeichen == ","
                 else None
             )
