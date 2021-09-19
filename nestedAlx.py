@@ -195,6 +195,7 @@ class NestedCompleter(Completer):
                     completer.lastString == first_term
                     completer.situationsTyp == ComplSitua.komiPara
             # elif trennzeichen in (",", "="):
+            print(str(self.situationsTyp))
             if self.situationsTyp == ComplSitua.spaltenPara:
                 print(str(spaltenDict[first_term]))
                 completer.options = {key: None for key in spaltenDict[first_term]}
