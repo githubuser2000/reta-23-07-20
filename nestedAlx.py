@@ -31,6 +31,7 @@ class ComplSitua(Enum):
     komiPara = 8
     kombiMetaPara = 9
     ausgabePara = 10
+    spaltenValPara = 11
 
 
 class NestedCompleter(Completer):
@@ -188,6 +189,13 @@ class NestedCompleter(Completer):
                         key: ComplSitua.spaltenPara for key in kombiMainParas
                     }
                     completer.lastString == first_term
+        elif trennzeichen in (",", "="):
+            if self.situationsTyp == ComplSitua.spaltenPara:
+                completer.options = {key: None for key in spaltenDict[first_term]}
+                completer.optionsTypes = {
+                    key: ComplSitua.spaltenValPara for key in spaltenDict[first_term]
+                }
+                completer.lastString == first_term
 
     def get_completions(
         self, document: Document, complete_event: CompleteEvent
