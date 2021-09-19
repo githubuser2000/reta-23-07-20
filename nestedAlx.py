@@ -145,25 +145,26 @@ class NestedCompleter(Completer):
             result = NestedCompleter(
                 {}, notParameterValues, {}, self.situationsTyp, first_term, {}
             )
-            self.__setOptions(result)
+            self.__setOptions(result, first_term)
         return result
 
-    def __setOptions(self, completer: Completer):
-        if "reta" in self.options and self.situationsTyp == ComplSitua.retaAnfang:
+    def __setOptions(self, completer: Completer, first_term: str):
+        if (
+            "reta" == tuple(self.options.keys())[0]
+            and self.situationsTyp == ComplSitua.retaAnfang
+        ):
             completer.options = {key: None for key in hauptForNeben}
             completer.optionsTypes = {
                 key: ComplSitua.hauptPara for key in hauptForNeben
             }
-            completer.lastString == "reta"
+            completer.lastString == first_term
         elif self.situationsTyp in (ComplSitua.hauptPara, ComplSitua.retaAnfang):
-            print("______________" + self.lastString + "-zeilen")
-            if "-zeilen" == self.lastString:
-                print("X")
+            if "-zeilen" == first_term:
                 completer.options = {key: None for key in zeilenParas}
                 completer.optionsTypes = {
                     key: ComplSitua.zeilenParas for key in zeilenParas
                 }
-                # completer.lastString ==
+                completer.lastString == first_term
 
     def get_completions(
         self, document: Document, complete_event: CompleteEvent
