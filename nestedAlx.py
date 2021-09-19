@@ -164,6 +164,7 @@ class NestedCompleter(Completer):
                     key: ComplSitua.hauptPara for key in hauptForNeben
                 }
                 completer.lastString == first_term
+                completer.situationsTyp == ComplSitua.hauptPara
             elif self.situationsTyp in (ComplSitua.hauptPara, ComplSitua.retaAnfang):
                 if "-zeilen" == first_term:
                     completer.options = {key: None for key in zeilenParas}
@@ -171,26 +172,31 @@ class NestedCompleter(Completer):
                         key: ComplSitua.zeilenPara for key in zeilenParas
                     }
                     completer.lastString == first_term
+                    completer.situationsTyp == ComplSitua.zeilenPara
                 elif "-spalten" == first_term:
                     completer.options = {key: None for key in spalten}
                     completer.optionsTypes = {
-                        key: ComplSitua.spaltenPara for key in spalten
+                        key: ComplSitua.spaltenValPara for key in spalten
                     }
                     completer.lastString == first_term
+                    completer.situationsTyp == ComplSitua.spaltenPara
                 elif "-ausgabe" == first_term:
                     completer.options = {key: None for key in ausgabeParas}
                     completer.optionsTypes = {
                         key: ComplSitua.ausgabePara for key in ausgabeParas
                     }
                     completer.lastString == first_term
+                    completer.situationsTyp == ComplSitua.ausgabePara
                 elif "-kombination" == first_term:
                     completer.options = {key: None for key in kombiMainParas}
                     completer.optionsTypes = {
                         key: ComplSitua.spaltenPara for key in kombiMainParas
                     }
                     completer.lastString == first_term
-        elif trennzeichen in (",", "="):
+                    completer.situationsTyp == ComplSitua.komiPara
+            # elif trennzeichen in (",", "="):
             if self.situationsTyp == ComplSitua.spaltenPara:
+                print(str(spaltenDict[first_term]))
                 completer.options = {key: None for key in spaltenDict[first_term]}
                 completer.optionsTypes = {
                     key: ComplSitua.spaltenValPara for key in spaltenDict[first_term]
