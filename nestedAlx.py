@@ -203,9 +203,16 @@ class NestedCompleter(Completer):
             #    print("JJ")
             # print(str(spaltenDict) + "JJ")
             # print(str(spaltenDict[first_term]) + "JJ")
-            completer.options = {key: None for key in spaltenDict[first_term[2:]]}
+            suchWort = (
+                first_term[2:]
+                if trennzeichen == "="
+                else self.spaltenParaWort
+                if trennzeichen == ","
+                else None
+            )
+            completer.options = {key: None for key in spaltenDict[suchWort]}
             completer.optionsTypes = {
-                key: ComplSitua.spaltenValPara for key in spaltenDict[first_term[2:]]
+                key: ComplSitua.spaltenValPara for key in spaltenDict[suchWort]]
             }
             completer.lastString = first_term
             completer.situationsTyp = ComplSitua.spaltenValPara
