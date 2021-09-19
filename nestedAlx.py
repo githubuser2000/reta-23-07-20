@@ -171,6 +171,18 @@ class NestedCompleter(Completer):
                     key: ComplSitua.spaltenPara for key in spalten
                 }
                 completer.lastString == first_term
+            elif "-ausgabe" == first_term:
+                completer.options = {key: None for key in ausgabeParas}
+                completer.optionsTypes = {
+                    key: ComplSitua.ausgabePara for key in ausgabeParas
+                }
+                completer.lastString == first_term
+            elif "-kombination" == first_term:
+                completer.options = {key: None for key in kombiMainParas}
+                completer.optionsTypes = {
+                    key: ComplSitua.spaltenPara for key in kombiMainParas
+                }
+                completer.lastString == first_term
 
     def get_completions(
         self, document: Document, complete_event: CompleteEvent
