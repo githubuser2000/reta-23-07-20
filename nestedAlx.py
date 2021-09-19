@@ -212,7 +212,7 @@ class NestedCompleter(Completer):
             )
             completer.options = {key: None for key in spaltenDict[suchWort]}
             completer.optionsTypes = {
-                key: ComplSitua.spaltenValPara for key in spaltenDict[suchWort]]
+                key: ComplSitua.spaltenValPara for key in spaltenDict[suchWort]
             }
             completer.lastString = first_term
             completer.situationsTyp = ComplSitua.spaltenValPara
