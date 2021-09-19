@@ -190,7 +190,9 @@ class NestedCompleter(Completer):
                     }
                     completer.lastString = first_term
                     completer.situationsTyp = ComplSitua.spaltenPara
-                    completer.NebenParaWort = first_term
+                    completer.NebenParaWort = (
+                        first_term if "-spalten" in first_term else self.NebenParaWort
+                    )
                 elif "-ausgabe" == first_term:
                     completer.options = {key: None for key in ausgabeParas}
                     completer.optionsTypes = {
