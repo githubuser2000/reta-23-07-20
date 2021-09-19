@@ -155,6 +155,8 @@ class NestedCompleter(Completer):
     def __setOptions(
         self, completer: "NestedCompleter", first_term: str, trennzeichen: str
     ):
+        gleich = trennzeichen == "=" and self.situationsTyp == ComplSitua.spaltenPara
+        komma = trennzeichen == "," and self.situationsTyp == ComplSitua.spaltenValPara
         if trennzeichen == " ":
             if (
                 "reta" == tuple(self.options.keys())[0]
@@ -195,9 +197,7 @@ class NestedCompleter(Completer):
                     }
                     completer.lastString = first_term
                     completer.situationsTyp = ComplSitua.komiPara
-        elif (trennzeichen == "=" and self.situationsTyp == ComplSitua.spaltenPara) or (
-            trennzeichen == "," and self.situationsTyp == ComplSitua.spaltenValPara
-        ):
+        elif gleich or komma:
             # first_term = first_term[2:]
             # if trennzeichen == ",":
             #    print(self.spaltenParaWort)
@@ -205,9 +205,9 @@ class NestedCompleter(Completer):
             # print(str(spaltenDict[first_term]) + "JJ")
             suchWort = (
                 first_term[2:]
-                if trennzeichen == "="
+                if gleich
                 else self.spaltenParaWort[2:]
-                if trennzeichen == ","
+                if komma and self.spaltenParaWort is not None
                 else None
             )
             completer.options = {key: None for key in spaltenDict[suchWort]}
@@ -217,11 +217,7 @@ class NestedCompleter(Completer):
             completer.lastString = first_term
             completer.situationsTyp = ComplSitua.spaltenValPara
             completer.spaltenParaWort = (
-                first_term
-                if trennzeichen == "="
-                else self.spaltenParaWort
-                if trennzeichen == ","
-                else None
+                first_term if gleich else self.spaltenParaWort if komma else None
             )
 
     def get_completions(
