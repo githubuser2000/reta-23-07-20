@@ -143,7 +143,7 @@ class NestedCompleter(Completer):
                 break
         if result is None:
             result = NestedCompleter(
-                {}, notParameterValues, {}, self.situationsTyp, self.lastString, {}
+                {}, notParameterValues, {}, self.situationsTyp, first_term, {}
             )
             self.__setOptions(result)
         return result
