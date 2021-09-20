@@ -279,7 +279,10 @@ class NestedCompleter(Completer):
                 if komma and var3 is not None
                 else None
             )
-            var1 = var4[suchWort]
+            try:
+                var1 = var4[suchWort]
+            except KeyError:
+                var1 = difflib.get_close_matches(suchWort, var4.keys())
             # print(suchWort)
             completer.options = {key: None for key in var1}
             completer.optionsTypes = {key: var2 for key in var1}

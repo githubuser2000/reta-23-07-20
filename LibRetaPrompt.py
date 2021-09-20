@@ -24,7 +24,8 @@ for tupel in retaProgram.paraNdataMatrix:
             spaltenDict[haupt] += list(tupel[1])
         except KeyError:
             spaltenDict[haupt] = list(tupel[1])
-# print(str((spaltenDict)))
+
+spalten += ["--breite", "--breiten", "--keinenummerierung"]
 
 ausgabeParas = [
     "--nocolor",

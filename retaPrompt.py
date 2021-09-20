@@ -11,11 +11,14 @@ from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas,
                        hauptForNeben, kombiMainParas, mainParas,
                        notParameterValues, reta, retaProgram, spalten,
                        spaltenDict, zeilenParas)
-from prompt_toolkit import print_formatted_text, prompt
+from prompt_toolkit import PromptSession, print_formatted_text, prompt
 # from prompt_toolkit.completion import Completer, Completion, WordCompleter
 from prompt_toolkit.completion import Completer, Completion
+from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
 from word_completerAlx import WordCompleter
+
+session = PromptSession(history=FileHistory(".ReTaPromptHistory"))
 
 pp1 = pprint.PrettyPrinter(indent=2)
 pp = pp1.pprint
@@ -314,9 +317,9 @@ startpunkt1 = NestedCompleter(
 # pp(ausgabeParas + zeilenParas + kombiMainParas + spalten)
 
 # pp(len(schonDrin))
-text = ""
-while text not in ("ende", "exit", "quit", "q"):
-    text = prompt(
+text = None
+while text not in ("ende", "exit", "quit", "q", ""):
+    text = session.prompt(
         # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
         "ReTa Prompt: ",
         # completer=NestedCompleter.from_nested_dict(
@@ -329,5 +332,5 @@ while text not in ("ende", "exit", "quit", "q"):
     )
     print("Du meintest: %s" % text, end=" ")
     stext = text.split()
-    if stext[0] == "reta":
+    if len(stext) > 0 and stext[0] == "reta":
         reta.Program(stext)
