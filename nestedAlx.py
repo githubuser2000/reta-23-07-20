@@ -169,11 +169,15 @@ class NestedCompleter(Completer):
                 }
                 completer.lastString = first_term
                 completer.situationsTyp = ComplSitua.hauptPara
-            elif self.situationsTyp in (
-                ComplSitua.hauptPara,
-                ComplSitua.retaAnfang,
-                ComplSitua.spaltenPara,
-                ComplSitua.spaltenValPara,
+            elif (
+                self.situationsTyp
+                in (
+                    ComplSitua.hauptPara,
+                    ComplSitua.retaAnfang,
+                    ComplSitua.spaltenPara,
+                    ComplSitua.spaltenValPara,
+                )
+                or True
             ):
                 if len({first_term, self.nebenParaWort} & hauptForNebenSet) > 0:
                     if "-zeilen" in (first_term, self.nebenParaWort):
