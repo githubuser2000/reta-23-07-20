@@ -59,6 +59,7 @@ class NestedCompleter(Completer):
         situation: ComplSitua,
         lastString: str,
         optionsTypes: Dict[str, Optional[ComplSitua]],
+        oldCompleter: Optional["NestedCompleter"],
         ignore_case: bool = True,
     ) -> None:
         self.options2 = optionsStandard
@@ -77,6 +78,7 @@ class NestedCompleter(Completer):
         self.ausgabeParaWort: Optional[str] = "  "
         self.zeilenParaWort: Optional[str] = "  "
         self.nebenParaWort: Optional[str] = "  "
+        self.oldCompleter: Optional["NestedCompleter"] = oldCompleter
 
     def optionsSync(
         self,
@@ -147,7 +149,10 @@ class NestedCompleter(Completer):
         return cls(options, notParameterValues)
 
     def matchTextAlx(
-        self, first_term: str, trennzeichen: str = " "
+        self,
+        first_term: str,
+        trennzeichen: str,
+        oldCompleter: Optional["NestedCompleter"],
     ) -> Optional[Completer]:
         result = None
         for i in range(len(first_term), -1, -1):
@@ -156,7 +161,13 @@ class NestedCompleter(Completer):
                 break
         if result is None:
             result = NestedCompleter(
-                {}, notParameterValues, {}, self.situationsTyp, first_term, {}
+                {},
+                notParameterValues,
+                {},
+                self.situationsTyp,
+                first_term,
+                {},
+                oldCompleter,
             )
             self.__setOptions(result, first_term, trennzeichen)
         return result
@@ -380,20 +391,26 @@ class NestedCompleter(Completer):
         komma: bool = "," in text
         if " " in text or gleich or komma:
             # a = document.get_word_before_cursor()
-            if komma or text:
+            if komma or gleich:
                 terms = text.split("=" if gleich else ",")
             else:
                 terms = text.split()
             # print("|" + first_term + "|")
             # oldtxtlen = len(document._text)
-            completer = self.matchTextAlx(terms[0])
-            first_term = terms[0]
+            completer = self.matchTextAlx(
+                terms[0], "=" if gleich else "," if komma else " ", self
+            )
+            # print("\n_" + terms[0] + "_\n")
+            # print("\n_" + completer.lastString + "_\n")
+            # print("\n_" + str(completer.options) + "_\n")
             # terms[0] = difflib.get_close_matches(terms[0])
             # document._text = ("=" if gleich else "," if komma else " ").join(terms)
+            first_term = terms[0]
 
         if " " in text:
             # print(str(type(text)))
-            # first_term = text.split()[0]
+            first_term = text.split()[0]
+            # print("\n_" + first_term + "_\n")
             # print(first_term)
             # completer = self.options.get(first_term)
             # completer = self.matchTextAlx(first_term)
