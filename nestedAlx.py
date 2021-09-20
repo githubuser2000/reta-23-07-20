@@ -248,6 +248,10 @@ class NestedCompleter(Completer):
                 var2, var3, var4 = self.gleichKommaKombi(
                     completer, first_term, gleich, komma
                 )
+            elif "-ausgabe" == first_term:
+                var2, var3, var4 = self.gleichKommaAusg(
+                    completer, first_term, gleich, komma
+                )
             elif "-spalten" == self.nebenParaWort:
                 var2, var3, var4 = self.gleichKommaSpalten(
                     completer, first_term, gleich, komma
@@ -258,6 +262,10 @@ class NestedCompleter(Completer):
                 )
             elif "-kombination" == self.nebenParaWort:
                 var2, var3, var4 = self.gleichKommaKombi(
+                    completer, first_term, gleich, komma
+                )
+            elif "-ausgabe" == self.nebenParaWort:
+                var2, var3, var4 = self.gleichKommaAusg(
                     completer, first_term, gleich, komma
                 )
 
@@ -307,6 +315,18 @@ class NestedCompleter(Completer):
         var2 = ComplSitua.zeilenPara
         var3 = self.zeilenParaWort
         completer.situationsTyp = ComplSitua.zeilenValPara
+        return var2, var3, var4
+
+    def gleichKommaAusg(self, completer, first_term, gleich, komma):
+        # print(str(self.spaltenParaWort) + "_")
+        completer.ausgabeParaWort = (
+            first_term if gleich else self.ausgabeParaWort if komma else None
+        )
+        var4 = {key: "" for key in ausgabeParas}
+        var2 = ComplSitua.ausgabeValPara
+        var3 = self.ausgabeParaWort
+        # print("|", var3, "|")
+        completer.situationsTyp = ComplSitua.ausgabeValPara
         return var2, var3, var4
 
     def gleichKommaSpalten(self, completer, first_term, gleich, komma):
