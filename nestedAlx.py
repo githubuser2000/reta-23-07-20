@@ -4,9 +4,9 @@ Nestedcompleter for completion of hierarchical data structures.
 from enum import Enum
 from typing import Any, Dict, Iterable, Mapping, Optional, Set, Union
 
-from LibRetaPrompt import (ausgabeParas, hauptForNeben, kombiMainParas,
-                           mainParas, notParameterValues, reta, retaProgram,
-                           spalten, spaltenDict, zeilenParas)
+from LibRetaPrompt import (ausgabeParas, hauptForNeben, hauptForNebenSet,
+                           kombiMainParas, mainParas, notParameterValues, reta,
+                           retaProgram, spalten, spaltenDict, zeilenParas)
 # from baseAlx import WordCompleter
 # from completionAlx import Completion
 from prompt_toolkit.completion import CompleteEvent, Completer, Completion
@@ -175,14 +175,16 @@ class NestedCompleter(Completer):
                 ComplSitua.spaltenPara,
                 ComplSitua.spaltenValPara,
             ):
-                if "-zeilen" == first_term:
+                if "-zeilen" in (first_term, self.nebenParaWort):
+
                     completer.options = {key: None for key in zeilenParas}
                     completer.optionsTypes = {
                         key: ComplSitua.zeilenPara for key in zeilenParas
                     }
                     completer.lastString = first_term
                     completer.situationsTyp = ComplSitua.zeilenPara
-                    completer.NebenParaWort = first_term
+                    # completer.nebenParaWort = first_term
+
                 elif "-spalten" in (first_term, self.nebenParaWort):
                     completer.options = {key: None for key in spalten}
                     completer.optionsTypes = {
@@ -190,10 +192,32 @@ class NestedCompleter(Completer):
                     }
                     completer.lastString = first_term
                     completer.situationsTyp = ComplSitua.spaltenPara
-                    completer.NebenParaWort = (
-                        first_term if "-spalten" in first_term else self.nebenParaWort
+                elif "-ausgabe" in (first_term, self.nebenParaWort):
+
+                    completer.options = {key: None for key in ausgabeParas}
+                    completer.optionsTypes = {
+                        key: ComplSitua.ausgabePara for key in ausgabeParas
+                    }
+                    completer.lastString = first_term
+                    completer.situationsTyp = ComplSitua.ausgabePara
+                    # completer.nebenParaWort = first_term
+                elif "-kombination" in (first_term, self.nebenParaWort):
+
+                    completer.options = {key: None for key in kombiMainParas}
+                    completer.optionsTypes = {
+                        key: ComplSitua.spaltenPara for key in kombiMainParas
+                    }
+                    completer.lastString = first_term
+                    completer.situationsTyp = ComplSitua.komiPara
+                    # completer.nebenParaWort = first_term
+                if len({first_term, self.nebenParaWort} & hauptForNebenSet) > 0:
+                    completer.nebenParaWort = (
+                        first_term
+                        if first_term in hauptForNeben
+                        else self.nebenParaWort
                     )
-                    if first_term != self.nebenParaWort:
+                    # if first_term != self.nebenParaWort:
+                    if first_term not in hauptForNeben:
                         completer.options = {
                             **completer.options,
                             **{key: None for key in hauptForNeben},
@@ -202,22 +226,6 @@ class NestedCompleter(Completer):
                             **completer.optionsTypes,
                             **{key: ComplSitua.hauptPara for key in hauptForNeben},
                         }
-                elif "-ausgabe" == first_term:
-                    completer.options = {key: None for key in ausgabeParas}
-                    completer.optionsTypes = {
-                        key: ComplSitua.ausgabePara for key in ausgabeParas
-                    }
-                    completer.lastString = first_term
-                    completer.situationsTyp = ComplSitua.ausgabePara
-                    completer.NebenParaWort = first_term
-                elif "-kombination" == first_term:
-                    completer.options = {key: None for key in kombiMainParas}
-                    completer.optionsTypes = {
-                        key: ComplSitua.spaltenPara for key in kombiMainParas
-                    }
-                    completer.lastString = first_term
-                    completer.situationsTyp = ComplSitua.komiPara
-                    completer.NebenParaWort = first_term
 
         elif gleich or komma:
             # first_term = first_term[2:]
@@ -241,7 +249,7 @@ class NestedCompleter(Completer):
             completer.spaltenParaWort = (
                 first_term if gleich else self.spaltenParaWort if komma else None
             )
-            completer.NebenParaWort = self.nebenParaWort
+            completer.nebenParaWort = self.nebenParaWort
 
     def get_completions(
         self, document: Document, complete_event: CompleteEvent

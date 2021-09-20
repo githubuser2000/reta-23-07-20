@@ -48,5 +48,5 @@ hauptForNeben = ("-zeilen", "-spalten", "-kombination", "-ausgabe")
 notParameterValues = (
     ausgabeParas + zeilenParas + kombiMainParas + spalten + mainParas,
 )
-
+hauptForNebenSet = set(hauptForNeben)
 # print(str(retaProgram.paraNdataMatrix))
