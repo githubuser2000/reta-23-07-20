@@ -20,6 +20,17 @@ __all__ = ["NestedCompleter"]
 NestedDict = Mapping[str, Union[Any, Set[str], None, Completer]]
 
 
+print(
+    str(
+        [
+            item
+            for sublist in retaProgram.kombiParaNdataMatrix.values()
+            for item in sublist
+        ]
+    )
+)
+
+
 class ComplSitua(Enum):
     hauptPara = 0
     zeilenPara = 1
@@ -32,6 +43,9 @@ class ComplSitua(Enum):
     kombiMetaPara = 9
     ausgabePara = 10
     spaltenValPara = 11
+    zeilenValPara = 12
+    kombiValPara = 13
+    ausgabeValPara = 14
 
 
 class NestedCompleter(Completer):
@@ -68,6 +82,9 @@ class NestedCompleter(Completer):
         self.lastString: str = lastString
         self.optionsTypes: Dict[str, Optional[ComplSitua]] = optionsTypes
         self.spaltenParaWort: Optional[str] = "  "
+        self.kombiParaWort: Optional[str] = "  "
+        self.ausgabeParaWort: Optional[str] = "  "
+        self.zeilenParaWort: Optional[str] = "  "
         self.nebenParaWort: Optional[str] = "  "
 
     def optionsSync(
@@ -225,6 +242,28 @@ class NestedCompleter(Completer):
                 var2 = ComplSitua.spaltenValPara
                 var3 = self.spaltenParaWort
                 completer.situationsTyp = ComplSitua.spaltenValPara
+            elif "-zeilen" in (self.nebenParaWort, first_term):
+                completer.zeilenParaWort = (
+                    first_term if gleich else self.zeilenParaWort if komma else None
+                )
+                var4 = {key: "=" for key in zeilenParas}
+                var2 = ComplSitua.zeilenPara
+                var3 = self.zeilenParaWort
+                completer.situationsTyp = ComplSitua.zeilenValPara
+            elif "-kombination" in (self.nebenParaWort, first_term):
+                completer.kombiParaWort = (
+                    first_term if gleich else self.kombiParaWort if komma else None
+                )
+                var4 = {
+                    "--galaxie": [
+                        item
+                        for sublist in retaProgram.kombiParaNdataMatrix.values()
+                        for item in sublist
+                    ]
+                }
+                var2 = ComplSitua.kombiValPara
+                var3 = self.kombiParaWort
+                completer.situationsTyp = ComplSitua.kombiValPara
 
             suchWort = (
                 first_term[2:]
