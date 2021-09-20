@@ -200,6 +200,7 @@ class NestedCompleter(Completer):
                     completer.options = {key: None for key in var1}
                     completer.optionsTypes = {key: var2 for key in var1}
                     completer.lastString = first_term
+
                     completer.nebenParaWort = (
                         first_term
                         if first_term in hauptForNeben
