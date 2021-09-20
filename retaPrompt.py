@@ -329,7 +329,7 @@ print("Tippe reta ein!")
 while text not in ("ende", "exit", "quit", "q", ""):
     text = session.prompt(
         # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
-        "ReTa Prompt: ",
+        ">",
         # completer=NestedCompleter.from_nested_dict(
         #    startpunkt, notParameterValues=notParameterValues
         # ),
@@ -338,7 +338,7 @@ while text not in ("ende", "exit", "quit", "q", ""):
         complete_while_typing=True,
         vi_mode=True if "-vi" in sys.argv else False,
     )
-    print("Du meintest: %s" % text, end=" ")
+    # print("Du meintest: %s" % text, end=" ")
     stext = text.split()
     if len(stext) > 0 and stext[0] == "reta":
         reta.Program(stext)
