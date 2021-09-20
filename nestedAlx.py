@@ -217,22 +217,26 @@ class NestedCompleter(Completer):
                         }
 
         elif gleich or komma:
+            if "-spalten" in (self.nebenParaWort, first_term):
+                completer.spaltenParaWort = (
+                    first_term if gleich else self.spaltenParaWort if komma else None
+                )
+                var4 = spaltenDict
+                var2 = ComplSitua.spaltenValPara
+                var3 = self.spaltenParaWort
+                completer.situationsTyp = ComplSitua.spaltenValPara
+
             suchWort = (
                 first_term[2:]
                 if gleich
-                else self.spaltenParaWort[2:]
-                if komma and self.spaltenParaWort is not None
+                else var3[2:]
+                if komma and var3 is not None
                 else None
             )
-            completer.options = {key: None for key in spaltenDict[suchWort]}
-            completer.optionsTypes = {
-                key: ComplSitua.spaltenValPara for key in spaltenDict[suchWort]
-            }
+            var1 = var4[suchWort]
+            completer.options = {key: None for key in var1}
+            completer.optionsTypes = {key: var2 for key in var1}
             completer.lastString = first_term
-            completer.situationsTyp = ComplSitua.spaltenValPara
-            completer.spaltenParaWort = (
-                first_term if gleich else self.spaltenParaWort if komma else None
-            )
             completer.nebenParaWort = self.nebenParaWort
 
     def paraKombination(self, completer):
