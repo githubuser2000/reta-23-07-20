@@ -396,20 +396,24 @@ class NestedCompleter(Completer):
             else:
                 terms = text.split()
             # print("|" + first_term + "|")
-            # oldtxtlen = len(document._text)
+            oldtxtlen = len(document._text)
             completer = self.matchTextAlx(
                 terms[0], "=" if gleich else "," if komma else " ", self
             )
             # print("\n_" + terms[0] + "_\n")
             # print("\n_" + completer.lastString + "_\n")
             # print("\n_" + str(completer.options) + "_\n")
-            # terms[0] = difflib.get_close_matches(terms[0])
-            # document._text = ("=" if gleich else "," if komma else " ").join(terms)
+            if completer is not None:
+                term = difflib.get_close_matches(
+                    terms[0], tuple(completer.options.keys())
+                )
+                print("_" + str(term) + "_")
+                # document._text = ("=" if gleich else "," if komma else " ").join(terms)
             first_term = terms[0]
 
         if " " in text:
             # print(str(type(text)))
-            first_term = text.split()[0]
+            # first_term = text.split()[0]
             # print("\n_" + first_term + "_\n")
             # print(first_term)
             # completer = self.options.get(first_term)
