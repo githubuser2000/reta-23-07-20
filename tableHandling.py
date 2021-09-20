@@ -146,11 +146,13 @@ class Tables:
             liste2 += [""]
         return liste1, liste2
 
-    def __init__(self):
-        global originalLinesRange
+    def __init__(self, alternativeShellRowsAmount):
+        global originalLinesRange, shellRowsAmount
         self.rowNumDisplay2rowNumOrig = {}
         self.generatedSpaltenParameter = {}
         self.generatedSpaltenParameter_Tags = {}
+        if alternativeShellRowsAmount is not None:
+            shellRowsAmount = alternativeShellRowsAmount
         self.getPrepare = Prepare(self, originalLinesRange, shellRowsAmount)
         self.getCombis = self.Combi(self)
         self.getConcat = Concat(self)

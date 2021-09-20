@@ -348,7 +348,7 @@ while text not in ("ende", "exit", "quit", "q", ""):
     if len(stext) > 0 and stext[0] == "reta":
         import reta
 
-        reta.Program(stext, ColumnsRowsAmount)
+        reta.Program(stext, int(shellRowsAmountStr))
 
         # process = subprocess.Popen(stext)
         # process.wait()

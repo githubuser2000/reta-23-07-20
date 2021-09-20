@@ -3,6 +3,7 @@
 import re
 from collections import namedtuple
 from itertools import zip_longest
+from typing import Optional
 
 import html2text
 
@@ -3211,13 +3212,12 @@ class Program:
             maintable2subtable_Relation2,
         )
 
-    def __init__(self, argv=[], alternativeShellRowsAmount: str = None):
+    def __init__(self, argv=[], alternativeShellRowsAmount: Optional[int] = None):
         global Tables, infoLog
         self.argv = argv
         self.allesParameters = 0
-        self.tables = Tables()
+        self.tables = Tables(alternativeShellRowsAmount)
         self.workflowEverything(argv)
-        setShellRowsAmount(alternativeShellRowsAmount)
 
     def workflowEverything(self, argv):
         global infoLog
