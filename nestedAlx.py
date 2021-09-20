@@ -1,6 +1,7 @@
 """
 Nestedcompleter for completion of hierarchical data structures.
 """
+import difflib
 from enum import Enum
 from typing import Any, Dict, Iterable, Mapping, Optional, Set, Union
 
@@ -377,12 +378,25 @@ class NestedCompleter(Completer):
         # subcompleter.
         gleich: bool = "=" in text
         komma: bool = "," in text
+        if " " in text or gleich or komma:
+            # a = document.get_word_before_cursor()
+            if komma or text:
+                terms = text.split("=" if gleich else ",")
+            else:
+                terms = text.split()
+            # print("|" + first_term + "|")
+            # oldtxtlen = len(document._text)
+            completer = self.matchTextAlx(terms[0])
+            first_term = terms[0]
+            # terms[0] = difflib.get_close_matches(terms[0])
+            # document._text = ("=" if gleich else "," if komma else " ").join(terms)
+
         if " " in text:
             # print(str(type(text)))
-            first_term = text.split()[0]
+            # first_term = text.split()[0]
             # print(first_term)
             # completer = self.options.get(first_term)
-            completer = self.matchTextAlx(first_term)
+            # completer = self.matchTextAlx(first_term)
             # print(str(type(completer)))
 
             # If we have a sub completer, use this for the completions.
@@ -406,11 +420,11 @@ class NestedCompleter(Completer):
 
         elif gleich or komma:
             text = str(text)
-            first_term = text.split("=" if gleich else ",")[0]
+            # first_term = text.split("=" if gleich else ",")[0]
             # print("|" + first_term + "|")
             # print(str(self.options.keys()))
             # completer = self.options.get(first_term)
-            completer = self.matchTextAlx(first_term, "=" if gleich else ",")
+            # completer = self.matchTextAlx(first_term, "=" if gleich else ",")
             # print(str(type(completer)))
 
             # If we have a sub completer, use this for the completions.
@@ -448,7 +462,9 @@ class NestedCompleter(Completer):
             # completer = WordCompleter(
             #    list(self.options.keys()), ignore_case=self.ignore_case
             # )
-            completer = FuzzyWordCompleter(list(self.options.keys()), WORD=True)
+            completer = FuzzyWordCompleter(list(self.options.keys()))
+
+            # document._text = document._text
             if self.ifGleichheitszeichen:
                 completer.options = completer.optionsPark
             self.ifGleichheitszeichen = False
