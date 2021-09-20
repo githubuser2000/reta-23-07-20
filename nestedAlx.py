@@ -9,7 +9,8 @@ from LibRetaPrompt import (ausgabeParas, hauptForNeben, hauptForNebenSet,
                            retaProgram, spalten, spaltenDict, zeilenParas)
 # from baseAlx import WordCompleter
 # from completionAlx import Completion
-from prompt_toolkit.completion import CompleteEvent, Completer, Completion
+from prompt_toolkit.completion import (CompleteEvent, Completer, Completion,
+                                       FuzzyWordCompleter)
 from prompt_toolkit.document import Document
 # from prompt_toolkit.completion.word_completer import WordCompleter
 from word_completerAlx import WordCompleter
@@ -444,9 +445,10 @@ class NestedCompleter(Completer):
 
         # No space in the input: behave exactly like `WordCompleter`.
         else:
-            completer = WordCompleter(
-                list(self.options.keys()), ignore_case=self.ignore_case
-            )
+            # completer = WordCompleter(
+            #    list(self.options.keys()), ignore_case=self.ignore_case
+            # )
+            completer = FuzzyWordCompleter(list(self.options.keys()), WORD=True)
             if self.ifGleichheitszeichen:
                 completer.options = completer.optionsPark
             self.ifGleichheitszeichen = False
