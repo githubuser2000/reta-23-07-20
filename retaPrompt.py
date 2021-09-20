@@ -333,17 +333,20 @@ if "-vi" not in sys.argv:
     )
     print("Tippe reta ein!")
 while text not in ("ende", "exit", "quit", "q", ""):
-    text = session.prompt(
-        # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
-        ">",
-        # completer=NestedCompleter.from_nested_dict(
-        #    startpunkt, notParameterValues=notParameterValues
-        # ),
-        completer=startpunkt1,
-        wrap_lines=False,
-        complete_while_typing=True,
-        vi_mode=True if "-vi" in sys.argv else False,
-    )
+    try:
+        text = session.prompt(
+            # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
+            ">",
+            # completer=NestedCompleter.from_nested_dict(
+            #    startpunkt, notParameterValues=notParameterValues
+            # ),
+            completer=startpunkt1,
+            wrap_lines=False,
+            complete_while_typing=True,
+            vi_mode=True if "-vi" in sys.argv else False,
+        )
+    except KeyboardInterrupt:
+        sys.exit()
     # print("Du meintest: %s" % text, end=" ")
     stext = text.split()
     if len(stext) > 0 and stext[0] == "reta":
