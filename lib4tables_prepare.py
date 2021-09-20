@@ -3,7 +3,7 @@
 import sys
 from copy import copy, deepcopy
 from enum import Enum
-from typing import Iterable, Union
+from typing import Iterable, Optional, Union
 
 import lib4tables_Enum
 from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
@@ -12,6 +12,11 @@ from lib4tables import isPrimMultiple, moonNumber
 from lib4tables_Enum import ST
 
 shellRowsAmount, h_de, dic, fill = getTextWrapThings()
+
+
+def setShellRowsAmount(shellRowsAmount2: Optional[str]):
+    global shellRowsAmount
+    shellRowsAmount = shellRowsAmount2
 
 
 class Wraptype(Enum):

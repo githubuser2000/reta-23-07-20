@@ -19,7 +19,7 @@ from lib4tables import (OutputSyntax, bbCodeSyntax,
                         primFak, primMultiple, primRepeat)
 from lib4tables_concat import Concat
 from lib4tables_Enum import ST
-from lib4tables_prepare import Prepare, shellRowsAmount
+from lib4tables_prepare import Prepare, setShellRowsAmount, shellRowsAmount
 
 originalLinesRange = range(1028)  # Maximale Zeilenanzahl
 

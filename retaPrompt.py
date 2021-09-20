@@ -20,6 +20,10 @@ from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
 from word_completerAlx import WordCompleter
 
+ColumnsRowsAmount, shellRowsAmountStr = (
+    os.popen("stty size", "r").read().split()
+)  # Wie viele Zeilen und Spalten hat die Shell ?
+
 session = PromptSession(
     history=FileHistory(os.path.expanduser("~") + os.sep + ".ReTaPromptHistory")
 )
@@ -342,9 +346,9 @@ while text not in ("ende", "exit", "quit", "q", ""):
     # print("Du meintest: %s" % text, end=" ")
     stext = text.split()
     if len(stext) > 0 and stext[0] == "reta":
-        # import reta
+        import reta
 
-        # reta.Program(stext)
+        reta.Program(stext, ColumnsRowsAmount)
 
-        process = subprocess.Popen(stext)
-        process.wait()
+        # process = subprocess.Popen(stext)
+        # process.wait()

@@ -23,7 +23,7 @@ badd +1 2021-05-12-cloc-kloc.txt
 badd +1 2021-05-21-cloc-kloc.txt
 badd +1 info.txt
 badd +1 readme.txt
-badd +32 retaPrompt.py
+badd +26 retaPrompt.py
 badd +1 nestedAlx.py
 badd +11 completionAlx.py
 badd +30 baseAlx.py
@@ -170,7 +170,7 @@ if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 2709
-normal! 013|
+normal! 01|
 tabnext
 edit tableHandling.py
 argglobal
@@ -253,7 +253,7 @@ if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 29
-normal! 012|
+normal! 0
 tabnext
 edit nestedAlx.py
 argglobal
@@ -270,11 +270,7 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-40
-normal! zo
-96
-normal! zo
-332
+42
 normal! zo
 let s:l = 36 - ((6 * winheight(0) + 16) / 32)
 if s:l < 1 | let s:l = 1 | endif

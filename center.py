@@ -16,7 +16,7 @@ for arg in sys.argv:
 Multiplikationen = [("Multiplikationen", "")]
 
 
-def getTextWrapThings() -> tuple:
+def getTextWrapThings(maxLen=None) -> tuple:
     if "Brython" not in sys.version.split():
         import html2text
         import pyphen
@@ -39,7 +39,7 @@ def getTextWrapThings() -> tuple:
         Hyphenator = None
         fill = None
         ColumnsRowsAmount, shellRowsAmountStr = "50", "50"
-    shellRowsAmount: int = int(shellRowsAmountStr)
+    shellRowsAmount: int = int(shellRowsAmountStr) if maxLen is None else int(maxLen)
     return shellRowsAmount, h_de, dic, fill
 
 

@@ -10,7 +10,8 @@ from tableHandling import (Enum, Iterable, Multiplikationen, OutputSyntax,
                            Tables, Union, alxp, bbcode, bbCodeSyntax, cliout,
                            copy, csv, csvSyntax, deepcopy, getTextWrapThings,
                            htmlSyntax, infoLog, markdownSyntax, math, os,
-                           output, primCreativity, re, shellRowsAmount, sys, x)
+                           output, primCreativity, re, setShellRowsAmount,
+                           shellRowsAmount, sys, x)
 
 parser = bbcode.Parser()
 parser.add_simple_formatter("hr", "<hr />", standalone=True)
@@ -3210,12 +3211,13 @@ class Program:
             maintable2subtable_Relation2,
         )
 
-    def __init__(self, argv=[]):
+    def __init__(self, argv=[], alternativeShellRowsAmount: str = None):
         global Tables, infoLog
         self.argv = argv
         self.allesParameters = 0
         self.tables = Tables()
         self.workflowEverything(argv)
+        setShellRowsAmount(alternativeShellRowsAmount)
 
     def workflowEverything(self, argv):
         global infoLog
