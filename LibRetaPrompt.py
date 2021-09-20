@@ -44,7 +44,7 @@ zeilenParas = [
     "--potenzenvonzahlen",
     "--typ",
 ]
-hauptForNeben = ("-zeilen", "-spalten", "-kombination", "-ausgabe")
+hauptForNeben = ("-zeilen", "-spalten", "-kombination", "-ausgabe", "-h", "-help")
 
 notParameterValues = (
     ausgabeParas + zeilenParas + kombiMainParas + spalten + mainParas,
