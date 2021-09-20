@@ -326,11 +326,12 @@ startpunkt1 = NestedCompleter(
 
 # pp(len(schonDrin))
 text = None
-print(
-    sys.argv[0].split(os.sep)[-1]
-    + " starten mit Parameter -vi für ViMode, beenden mit q, exit, quit"
-)
-print("Tippe reta ein!")
+if "-vi" not in sys.argv:
+    print(
+        sys.argv[0].split(os.sep)[-1]
+        + " starten mit Parameter -vi für ViMode, beenden mit q, exit, quit"
+    )
+    print("Tippe reta ein!")
 while text not in ("ende", "exit", "quit", "q", ""):
     text = session.prompt(
         # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
