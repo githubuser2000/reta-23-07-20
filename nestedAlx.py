@@ -5,9 +5,10 @@ import difflib
 from enum import Enum
 from typing import Any, Dict, Iterable, Mapping, Optional, Set, Union
 
-from LibRetaPrompt import (ausgabeParas, hauptForNeben, hauptForNebenSet,
-                           kombiMainParas, mainParas, notParameterValues, reta,
-                           retaProgram, spalten, spaltenDict, zeilenParas)
+from LibRetaPrompt import (ausgabeArt, ausgabeParas, hauptForNeben,
+                           hauptForNebenSet, kombiMainParas, mainParas,
+                           notParameterValues, reta, retaProgram, spalten,
+                           spaltenDict, zeilenParas)
 # from baseAlx import WordCompleter
 # from completionAlx import Completion
 from prompt_toolkit.completion import (CompleteEvent, Completer, Completion,
@@ -316,7 +317,7 @@ class NestedCompleter(Completer):
         completer.zeilenParaWort = (
             first_term if gleich else self.zeilenParaWort if komma else None
         )
-        var4 = {key: "=" for key in zeilenParas}
+        var4 = {key: [] for key in zeilenParas}
         var2 = ComplSitua.zeilenPara
         var3 = self.zeilenParaWort
         completer.situationsTyp = ComplSitua.zeilenValPara
@@ -327,7 +328,8 @@ class NestedCompleter(Completer):
         completer.ausgabeParaWort = (
             first_term if gleich else self.ausgabeParaWort if komma else None
         )
-        var4 = {key: "" for key in ausgabeParas}
+        var4 = {key: [] for key in ausgabeParas}
+        var4["art"] = ausgabeArt
         var2 = ComplSitua.ausgabeValPara
         var3 = self.ausgabeParaWort
         # print("|", var3, "|")

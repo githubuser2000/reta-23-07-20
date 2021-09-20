@@ -51,3 +51,5 @@ notParameterValues = (
 )
 hauptForNebenSet = set(hauptForNeben)
 # print(str(retaProgram.paraNdataMatrix))
+
+ausgabeArt = ["bbcode", "html", "csv", "shell", "markdown"]
