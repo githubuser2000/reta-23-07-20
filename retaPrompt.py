@@ -321,6 +321,10 @@ startpunkt1 = NestedCompleter(
 
 # pp(len(schonDrin))
 text = None
+print(
+    sys.argv[0].split(os.sep)[-1]
+    + " starten mit Parameter -vi für ViMode, beenden mit q, exit, quit"
+)
 print("Tippe reta ein!")
 while text not in ("ende", "exit", "quit", "q", ""):
     text = session.prompt(
@@ -332,7 +336,7 @@ while text not in ("ende", "exit", "quit", "q", ""):
         completer=startpunkt1,
         wrap_lines=False,
         complete_while_typing=True,
-        vi_mode=True,
+        vi_mode=True if "-vi" in sys.argv else False,
     )
     print("Du meintest: %s" % text, end=" ")
     stext = text.split()
