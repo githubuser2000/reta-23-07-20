@@ -341,4 +341,6 @@ while text not in ("ende", "exit", "quit", "q", ""):
     # print("Du meintest: %s" % text, end=" ")
     stext = text.split()
     if len(stext) > 0 and stext[0] == "reta":
+        import reta
+
         reta.Program(stext)
