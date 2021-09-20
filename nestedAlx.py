@@ -404,11 +404,12 @@ class NestedCompleter(Completer):
             # print("\n_" + completer.lastString + "_\n")
             # print("\n_" + str(completer.options) + "_\n")
             if completer is not None:
-                term = difflib.get_close_matches(
-                    terms[0], tuple(completer.options.keys())
-                )
-                print("_" + str(term) + "_")
-                # document._text = ("=" if gleich else "," if komma else " ").join(terms)
+                pass
+                # term = difflib.get_close_matches(
+                #    terms[0], tuple(completer.oldCompleter.options.keys())
+                # )
+                # print("_" + str(term) + "_")
+                # terms[0] = term
             first_term = terms[0]
 
         if " " in text:
