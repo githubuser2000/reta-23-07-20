@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+import os
 import pprint
 import sys
 from copy import deepcopy
@@ -18,7 +19,9 @@ from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
 from word_completerAlx import WordCompleter
 
-session = PromptSession(history=FileHistory(".ReTaPromptHistory"))
+session = PromptSession(
+    history=FileHistory(os.path.expanduser("~") + os.sep + ".ReTaPromptHistory")
+)
 
 pp1 = pprint.PrettyPrinter(indent=2)
 pp = pp1.pprint
