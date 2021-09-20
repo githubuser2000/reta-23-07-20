@@ -321,6 +321,7 @@ startpunkt1 = NestedCompleter(
 
 # pp(len(schonDrin))
 text = None
+print("Tippe reta ein!")
 while text not in ("ende", "exit", "quit", "q", ""):
     text = session.prompt(
         # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
