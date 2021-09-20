@@ -314,7 +314,8 @@ startpunkt1 = NestedCompleter(
 # pp(ausgabeParas + zeilenParas + kombiMainParas + spalten)
 
 # pp(len(schonDrin))
-if True:
+text = ""
+while text not in ("ende", "exit", "quit", "q"):
     text = prompt(
         # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
         "ReTa Prompt: ",
@@ -327,3 +328,6 @@ if True:
         vi_mode=True,
     )
     print("Du meintest: %s" % text, end=" ")
+    stext = text.split()
+    if stext[0] == "reta":
+        reta.Program(stext)

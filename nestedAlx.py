@@ -59,7 +59,6 @@ class NestedCompleter(Completer):
         situation: ComplSitua,
         lastString: str,
         optionsTypes: Dict[str, Optional[ComplSitua]],
-        oldCompleter: Optional["NestedCompleter"],
         ignore_case: bool = True,
     ) -> None:
         self.options2 = optionsStandard
@@ -78,7 +77,6 @@ class NestedCompleter(Completer):
         self.ausgabeParaWort: Optional[str] = "  "
         self.zeilenParaWort: Optional[str] = "  "
         self.nebenParaWort: Optional[str] = "  "
-        self.oldCompleter: Optional["NestedCompleter"] = oldCompleter
 
     def optionsSync(
         self,
@@ -149,10 +147,7 @@ class NestedCompleter(Completer):
         return cls(options, notParameterValues)
 
     def matchTextAlx(
-        self,
-        first_term: str,
-        trennzeichen: str,
-        oldCompleter: Optional["NestedCompleter"],
+        self, first_term: str, trennzeichen: str = " "
     ) -> Optional[Completer]:
         result = None
         for i in range(len(first_term), -1, -1):
@@ -161,13 +156,7 @@ class NestedCompleter(Completer):
                 break
         if result is None:
             result = NestedCompleter(
-                {},
-                notParameterValues,
-                {},
-                self.situationsTyp,
-                first_term,
-                {},
-                oldCompleter,
+                {}, notParameterValues, {}, self.situationsTyp, first_term, {}
             )
             self.__setOptions(result, first_term, trennzeichen)
         return result
@@ -389,36 +378,12 @@ class NestedCompleter(Completer):
         # subcompleter.
         gleich: bool = "=" in text
         komma: bool = "," in text
-        if " " in text or gleich or komma:
-            # a = document.get_word_before_cursor()
-            if komma or gleich:
-                terms = text.split("=" if gleich else ",")
-            else:
-                terms = text.split()
-            # print("|" + first_term + "|")
-            oldtxtlen = len(document._text)
-            completer = self.matchTextAlx(
-                terms[0], "=" if gleich else "," if komma else " ", self
-            )
-            # print("\n_" + terms[0] + "_\n")
-            # print("\n_" + completer.lastString + "_\n")
-            # print("\n_" + str(completer.options) + "_\n")
-            if completer is not None:
-                pass
-                # term = difflib.get_close_matches(
-                #    terms[0], tuple(completer.oldCompleter.options.keys())
-                # )
-                # print("_" + str(term) + "_")
-                # terms[0] = term
-            first_term = terms[0]
-
         if " " in text:
             # print(str(type(text)))
-            # first_term = text.split()[0]
-            # print("\n_" + first_term + "_\n")
+            first_term = text.split()[0]
             # print(first_term)
             # completer = self.options.get(first_term)
-            # completer = self.matchTextAlx(first_term)
+            completer = self.matchTextAlx(first_term)
             # print(str(type(completer)))
 
             # If we have a sub completer, use this for the completions.
@@ -442,11 +407,11 @@ class NestedCompleter(Completer):
 
         elif gleich or komma:
             text = str(text)
-            # first_term = text.split("=" if gleich else ",")[0]
+            first_term = text.split("=" if gleich else ",")[0]
             # print("|" + first_term + "|")
             # print(str(self.options.keys()))
             # completer = self.options.get(first_term)
-            # completer = self.matchTextAlx(first_term, "=" if gleich else ",")
+            completer = self.matchTextAlx(first_term, "=" if gleich else ",")
             # print(str(type(completer)))
 
             # If we have a sub completer, use this for the completions.
@@ -486,7 +451,7 @@ class NestedCompleter(Completer):
             # )
             completer = FuzzyWordCompleter(list(self.options.keys()))
 
-            # document._text = document._text
+            document._text = document._text
             if self.ifGleichheitszeichen:
                 completer.options = completer.optionsPark
             self.ifGleichheitszeichen = False

@@ -2,7 +2,7 @@ import sys
 
 import reta
 
-retaProgram = reta.Program([sys.argv[0]])
+retaProgram = reta.Program([sys.argv[0], "-nichts"])
 mainParas = ["-" + a for a in retaProgram.mainParaCmds]
 # print(str(mainParas))
 # print(str(retaProgram.paraDict))

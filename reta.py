@@ -155,6 +155,8 @@ class Program:
             if len(cmd) > 1 and cmd[0] == "-" and cmd[1] != "-":
                 if cmd[1:] in self.mainParaCmds.keys():
                     lastMainCmd = self.mainParaCmds[cmd[1:]]
+                elif cmd[1:] == "nichts":
+                    pass
                 elif len(neg) == 0:
                     # else:
                     cliout(
