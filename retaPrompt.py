@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 import pprint
+import subprocess
 import sys
 from copy import deepcopy
 from itertools import zip_longest
@@ -341,6 +342,9 @@ while text not in ("ende", "exit", "quit", "q", ""):
     # print("Du meintest: %s" % text, end=" ")
     stext = text.split()
     if len(stext) > 0 and stext[0] == "reta":
-        import reta
+        # import reta
 
-        reta.Program(stext)
+        # reta.Program(stext)
+
+        process = subprocess.Popen(stext)
+        process.wait()
