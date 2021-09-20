@@ -180,22 +180,22 @@ class NestedCompleter(Completer):
                 or True
             ):
                 if len({first_term, self.nebenParaWort} & hauptForNebenSet) > 0:
-                    if "-zeilen" in (first_term, self.nebenParaWort):
-                        var1 = zeilenParas
-                        var2 = ComplSitua.zeilenPara
-                        completer.situationsTyp = ComplSitua.zeilenPara
-                    elif "-spalten" in (first_term, self.nebenParaWort):
-                        var1 = spalten
-                        var2 = ComplSitua.spaltenValPara
-                        completer.situationsTyp = ComplSitua.spaltenPara
-                    elif "-ausgabe" in (first_term, self.nebenParaWort):
-                        var1 = ausgabeParas
-                        var2 = ComplSitua.ausgabePara
-                        completer.situationsTyp = ComplSitua.ausgabePara
-                    elif "-kombination" in (first_term, self.nebenParaWort):
-                        var1 = kombiMainParas
-                        var2 = ComplSitua.spaltenPara
-                        completer.situationsTyp = ComplSitua.komiPara
+                    if "-zeilen" == first_term:
+                        var1, var2 = self.paraZeilen(completer)
+                    elif "-spalten" == first_term:
+                        var1, var2 = self.paraSpalten(completer)
+                    elif "-ausgabe" == first_term:
+                        var1, var2 = self.paraAusgabe(completer)
+                    elif "-kombination" == first_term:
+                        var1, var2 = self.paraKombination(completer)
+                    elif "-zeilen" == self.nebenParaWort:
+                        var1, var2 = self.paraZeilen(completer)
+                    elif "-spalten" == self.nebenParaWort:
+                        var1, var2 = self.paraSpalten(completer)
+                    elif "-ausgabe" == self.nebenParaWort:
+                        var1, var2 = self.paraAusgabe(completer)
+                    elif "-kombination" == self.nebenParaWort:
+                        var1, var2 = self.paraKombination(completer)
 
                     completer.options = {key: None for key in var1}
                     completer.optionsTypes = {key: var2 for key in var1}
@@ -234,6 +234,30 @@ class NestedCompleter(Completer):
                 first_term if gleich else self.spaltenParaWort if komma else None
             )
             completer.nebenParaWort = self.nebenParaWort
+
+    def paraKombination(self, completer):
+        var1 = kombiMainParas
+        var2 = ComplSitua.spaltenPara
+        completer.situationsTyp = ComplSitua.komiPara
+        return var1, var2
+
+    def paraAusgabe(self, completer):
+        var1 = ausgabeParas
+        var2 = ComplSitua.ausgabePara
+        completer.situationsTyp = ComplSitua.ausgabePara
+        return var1, var2
+
+    def paraSpalten(self, completer):
+        var1 = spalten
+        var2 = ComplSitua.spaltenValPara
+        completer.situationsTyp = ComplSitua.spaltenPara
+        return var1, var2
+
+    def paraZeilen(self, completer):
+        var1 = zeilenParas
+        var2 = ComplSitua.zeilenPara
+        completer.situationsTyp = ComplSitua.zeilenPara
+        return var1, var2
 
     def get_completions(
         self, document: Document, complete_event: CompleteEvent
