@@ -324,7 +324,6 @@ startpunkt1 = NestedCompleter(
 # )
 # pp(ausgabeParas + zeilenParas + kombiMainParas + spalten)
 
-# pp(len(schonDrin))
 text = None
 if "-vi" not in sys.argv:
     print(
@@ -332,6 +331,7 @@ if "-vi" not in sys.argv:
         + " starten mit Parameter -vi für ViMode, beenden mit q, exit, quit"
     )
     print("Tippe reta ein!")
+
 while text not in ("ende", "exit", "quit", "q", ""):
     try:
         text = session.prompt(
