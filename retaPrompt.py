@@ -365,17 +365,22 @@ while text not in ("ende", "exit", "quit", "q", ""):
         reta.Program(stext, int(shellRowsAmountStr) - 15)
         # process = subprocess.Popen(stext)
         # process.wait()
-    else:
-        if len({"absicht", "absichten", "motiv", "motive"} & set(stext)) > 0 and b == 1:
+    elif b == 1:
+        if "vielfache" in stext and "einzeln" not in stext:
+            zeiln = "--vielfachevonzahlen=" + str(c).strip()
+        else:
+            zeiln = "--vorhervonausschnitt=" + str(c).strip()
+
+        if len({"absicht", "absichten", "motiv", "motive"} & set(stext)) > 0:
             import reta
 
             kette = [
                 "reta",
                 "-zeilen",
-                "--vorhervonausschnitt=" + str(c).strip(),
+                zeiln,
                 "-spalten",
                 "--menschliches=motivation",
-                "--breite=0",
+                "--breite=" + str(int(shellRowsAmountStr) - 10),
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=1",
             ]
@@ -390,10 +395,10 @@ while text not in ("ende", "exit", "quit", "q", ""):
             kette = [
                 "reta",
                 "-zeilen",
-                "--vorhervonausschnitt=" + str(c).strip(),
+                zeiln,
                 "-spalten",
                 "--galaxie=thomas",
-                "--breite=0",
+                "--breite=" + str(int(shellRowsAmountStr) - 10),
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=2",
             ]
@@ -408,10 +413,10 @@ while text not in ("ende", "exit", "quit", "q", ""):
             kette = [
                 "reta",
                 "-zeilen",
-                "--vorhervonausschnitt=" + str(c).strip(),
+                zeiln,
                 "-spalten",
                 "--universum=transzendentalien,komplexitaet,ontologie",
-                "--breite=0",
+                "--breite=" + str(int(shellRowsAmountStr) - 10),
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=1,3,4",
             ]
