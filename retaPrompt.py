@@ -296,9 +296,8 @@ startpunkt1 = NestedCompleter(
     "",
     {
         **{"reta": ComplSitua.retaAnfang},
-        **{a: ComplSitua.BefehleNichtReta for a in befehle2},
+        **{a: ComplSitua.befehleNichtReta for a in befehle2},
     },
-    None,
 )
 
 # startpunkt = nebenMainRekursiv(
