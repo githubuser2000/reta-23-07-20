@@ -78,6 +78,9 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--spaltenreihenfolgeundnurdiese=[list][*]3,5,1
 d.h. von z.B. 5 Spalten soll zuerst die 3., dann 5. und 1. angezeigt werden und die anderen nicht![/list]
 [/list]
+[/list]
+
+
 
 Umkehrungen:
 [list][*]statt 2-11

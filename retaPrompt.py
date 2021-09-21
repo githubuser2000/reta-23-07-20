@@ -9,7 +9,7 @@ from itertools import zip_longest
 from typing import Optional
 
 # import reta
-from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas,
+from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
                        hauptForNeben, kombiMainParas, mainParas,
                        notParameterValues, reta, retaProgram, spalten,
                        spaltenDict, zeilenParas)
@@ -289,7 +289,7 @@ def nochMalTraverse(startpunkt, anzahl):
 
 anzahl = 3
 startpunkt1 = NestedCompleter(
-    {"reta": None},
+    {a: None for a in befehle},
     notParameterValues,
     {},
     ComplSitua.retaAnfang,

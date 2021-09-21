@@ -5,7 +5,7 @@ import difflib
 from enum import Enum
 from typing import Any, Dict, Iterable, Mapping, Optional, Set, Union
 
-from LibRetaPrompt import (ausgabeArt, ausgabeParas, hauptForNeben,
+from LibRetaPrompt import (ausgabeArt, ausgabeParas, befehle, hauptForNeben,
                            hauptForNebenSet, kombiMainParas, mainParas,
                            notParameterValues, reta, retaProgram, spalten,
                            spaltenDict, zeilenParas)
