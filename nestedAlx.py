@@ -95,58 +95,6 @@ class NestedCompleter(Completer):
     def __hash__(self):
         return hash(str(self.options.keys()))
 
-    @classmethod
-    def from_nested_dict(
-        cls, data: NestedDict, notParameterValues
-    ) -> "NestedCompleter":
-        """
-        Create a `NestedCompleter`, starting from a nested dictionary data
-        structure, like this:
-
-        .. code::
-
-            data = {
-                'show': {
-                    'version': None,
-                    'interfaces': None,
-                    'clock': None,
-                    'ip': {'interface': {'brief'}}
-                },
-                'exit': None
-                'enable': None
-            }
-
-        The value should be `None` if there is no further completion at some
-        point. If all values in the dictionary are None, it is also possible to
-        use a set instead.
-
-        Values in this data structure can be a completers as well.
-        """
-        # print(str(notParameterValues))
-        options: Dict[str, Optional[Completer]] = {}
-        for key, value in data.items():
-            if (
-                isinstance(value, Completer)
-                and Completer not in NestedCompleter.completers
-            ):
-                options[key] = value
-                NestedCompleter.completers |= value
-                # print(str(len(NestedCompleter.completers)))
-            elif isinstance(value, dict) and len(value) != 0:
-                options[key] = cls.from_nested_dict(
-                    value, notParameterValues=notParameterValues
-                )
-            elif isinstance(value, set) and len(value) != 0:
-                options[key] = cls.from_nested_dict(
-                    {item: None for item in value},
-                    notParameterValues=notParameterValues,
-                )
-            else:
-                assert value is None or value in ({}, set())
-                options[key] = None
-
-        return cls(options, notParameterValues)
-
     def matchTextAlx(
         self, first_term: str, trennzeichen: str = " "
     ) -> Optional[Completer]:
