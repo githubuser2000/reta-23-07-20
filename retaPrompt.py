@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 import pprint
+import re
 import subprocess
 import sys
 from copy import deepcopy
@@ -353,11 +354,11 @@ while text not in ("ende", "exit", "quit", "q", ""):
     stext = text.split()
     b = 0
     for a in stext:
-        if a.isnumeric() or [b.isnumeric() for b in a.split("-")] == [True] * len(
-            a.split("-")
-        ):
+        d = re.split(",|-", a)
+        if a.isnumeric() or [b.isnumeric() for b in d] == [True] * len(d):
             b += 1
             c = a
+            print(str(c))
     if len(stext) > 0 and stext[0] == "reta":
         import reta
 
