@@ -128,18 +128,17 @@ class NestedCompleter(Completer):
         )
         # print(str(self.nebenParaWort) + "SDT" + trennzeichen + "|" + str(gleich))
         if trennzeichen == " ":
-            if (
-                "reta" in self.optionsTypes
-                and self.optionsTypes["reta"] == ComplSitua.retaAnfang
-                and self.situationsTyp == ComplSitua.retaAnfang
-            ):
+            if self.situationsTyp == ComplSitua.retaAnfang and first_term == "reta":
                 completer.options = {key: None for key in hauptForNeben}
                 completer.optionsTypes = {
                     key: ComplSitua.hauptPara for key in hauptForNeben
                 }
                 completer.lastString = first_term
                 completer.situationsTyp = ComplSitua.hauptPara
-            elif self.situationsTyp == ComplSitua.befehleNichtReta:
+            elif self.situationsTyp in (
+                ComplSitua.retaAnfang,
+                ComplSitua.befehleNichtReta,
+            ):
                 completer.options = {key: None for key in befehle2}
                 completer.optionsTypes = {
                     key: ComplSitua.befehleNichtReta for key in befehle2

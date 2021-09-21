@@ -351,10 +351,72 @@ while text not in ("ende", "exit", "quit", "q", ""):
         sys.exit()
     # print("Du meintest: %s" % text, end=" ")
     stext = text.split()
+    b = 0
+    for a in stext:
+        if a.isnumeric() or [b.isnumeric() for b in a.split("-")] == [True] * len(
+            a.split("-")
+        ):
+            b += 1
+            c = a
     if len(stext) > 0 and stext[0] == "reta":
         import reta
 
-        reta.Program(stext, int(shellRowsAmountStr))
-
+        print(str(stext))
+        reta.Program(stext, int(shellRowsAmountStr) - 15)
         # process = subprocess.Popen(stext)
         # process.wait()
+    else:
+        if len({"absicht", "absichten", "motiv", "motive"} & set(stext)) > 0 and b == 1:
+            import reta
+
+            kette = [
+                "reta",
+                "-zeilen",
+                "--vorhervonausschnitt=" + str(c).strip(),
+                "-spalten",
+                "--menschliches=motivation",
+                "--breite=0",
+                "-ausgabe",
+                "--spaltenreihenfolgeundnurdiese=1",
+            ]
+            # print(str(kette))
+            reta.Program(
+                kette,
+                int(shellRowsAmountStr),
+            )
+        if len({"thomas"} & set(stext)) > 0 and b == 1:
+            import reta
+
+            kette = [
+                "reta",
+                "-zeilen",
+                "--vorhervonausschnitt=" + str(c).strip(),
+                "-spalten",
+                "--galaxie=thomas",
+                "--breite=0",
+                "-ausgabe",
+                "--spaltenreihenfolgeundnurdiese=2",
+            ]
+            # print(str(kette))
+            reta.Program(
+                kette,
+                int(shellRowsAmountStr),
+            )
+        if len({"universum"} & set(stext)) > 0 and b == 1:
+            import reta
+
+            kette = [
+                "reta",
+                "-zeilen",
+                "--vorhervonausschnitt=" + str(c).strip(),
+                "-spalten",
+                "--universum=transzendentalien,komplexitaet,ontologie",
+                "--breite=0",
+                "-ausgabe",
+                "--spaltenreihenfolgeundnurdiese=1,3,4",
+            ]
+            # print(str(kette))
+            reta.Program(
+                kette,
+                int(shellRowsAmountStr),
+            )
