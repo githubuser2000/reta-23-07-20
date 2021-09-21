@@ -382,7 +382,8 @@ class Tables:
                 and lastSubCellIndex < len(newTable[0]) - 1
                 and lastSubCellIndex > lastlastSubCellIndex
             ):
-                cliout(self.__outType.beginTable)
+                if self.__outType in (htmlSyntax, bbCodeSyntax):
+                    cliout(self.__outType.beginTable)
                 lastlastSubCellIndex = lastSubCellIndex
                 for (
                     BigCellLineNumber,
@@ -656,7 +657,8 @@ class Tables:
                                             + [self.__outType.endZeile]
                                         )
                                     )
-                cliout(self.__outType.endTable)
+                if self.__outType in (htmlSyntax, bbCodeSyntax):
+                    cliout(self.__outType.endTable)
                 if self.__oneTable:
                     break
                 if type(self.__outType) is csvSyntax:
