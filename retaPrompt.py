@@ -407,6 +407,22 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 kette,
                 int(shellRowsAmountStr),
             )
+        if len({"multis"} & set(stext)) > 0 and b == 1:
+            import reta
+
+            kette = [
+                "reta",
+                "-zeilen",
+                zeiln,
+                "-spalten",
+                "--multiplikationen=motivstern",
+                "--breite=" + str(int(shellRowsAmountStr) - 10),
+            ]
+            # print(str(kette))
+            reta.Program(
+                kette,
+                int(shellRowsAmountStr),
+            )
         if len({"universum"} & set(stext)) > 0 and b == 1:
             import reta
 
