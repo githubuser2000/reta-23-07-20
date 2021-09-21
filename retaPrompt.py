@@ -83,7 +83,7 @@ while text not in ("ende", "exit", "quit", "q", ""):
         import reta
 
         reta.Program(stext, int(shellRowsAmountStr) - 15)
-        # process = subprocess.Popen(sos.getcwd() + os.sep + text)
+        # process = subprocess.Popen(sos.path.dirname(__file__) + os.sep + text)
         # process.wait()
     elif b == 1:
         if "vielfache" in stext and "einzeln" not in stext:
@@ -129,7 +129,9 @@ while text not in ("ende", "exit", "quit", "q", ""):
             )
         if len({"prim", "primfaktorzerlegung"} & set(stext)) > 0:
             try:
-                process = subprocess.Popen([os.getcwd() + os.sep + "prim", c])
+                process = subprocess.Popen(
+                    [os.path.dirname(__file__) + os.sep + "prim", c]
+                )
                 process.wait()
             except:
                 pass
@@ -150,12 +152,16 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 int(shellRowsAmountStr),
             )
             try:
-                process = subprocess.Popen([os.getcwd() + os.sep + "multis", c])
+                process = subprocess.Popen(
+                    [os.path.dirname(__file__) + os.sep + "multis", c]
+                )
                 process.wait()
             except:
                 pass
             try:
-                process = subprocess.Popen([os.getcwd() + os.sep + "prim", c])
+                process = subprocess.Popen(
+                    [os.path.dirname(__file__) + os.sep + "prim", c]
+                )
                 process.wait()
             except:
                 pass
@@ -179,7 +185,9 @@ while text not in ("ende", "exit", "quit", "q", ""):
             )
         if len({"modulo"} & set(stext)) > 0:
             try:
-                process = subprocess.Popen([os.getcwd() + os.sep + "modulo", c])
+                process = subprocess.Popen(
+                    [os.path.dirname(__file__) + os.sep + "modulo", c]
+                )
                 process.wait()
             except:
                 pass
