@@ -153,7 +153,6 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 process.wait()
             except:
                 pass
-    elif b == 1:
         if len({"universum"} & set(stext)) > 0 and b == 1:
             import reta
 
@@ -172,3 +171,9 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 kette,
                 int(shellRowsAmountStr),
             )
+        if len({"modulo"} & set(stext)) > 0 and b == 1:
+            try:
+                process = subprocess.Popen(["modulo", c])
+                process.wait()
+            except:
+                pass
