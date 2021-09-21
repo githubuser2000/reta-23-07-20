@@ -10,7 +10,7 @@ from typing import Optional
 
 # import reta
 from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
-                       hauptForNeben, kombiMainParas, mainParas,
+                       befehle2, hauptForNeben, kombiMainParas, mainParas,
                        notParameterValues, reta, retaProgram, spalten,
                        spaltenDict, zeilenParas)
 from prompt_toolkit import PromptSession, print_formatted_text, prompt
@@ -294,7 +294,10 @@ startpunkt1 = NestedCompleter(
     {},
     ComplSitua.retaAnfang,
     "",
-    {"reta": ComplSitua.retaAnfang},
+    {
+        **{"reta": ComplSitua.retaAnfang},
+        **{a: ComplSitua.BefehleNichtReta for a in befehle2},
+    },
     None,
 )
 

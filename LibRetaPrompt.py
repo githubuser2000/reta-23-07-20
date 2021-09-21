@@ -66,3 +66,5 @@ befehle = (
     "einzeln",
     "multis",
 )
+
+befehle2: set = set(befehle) - {"reta"}

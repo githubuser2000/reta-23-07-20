@@ -5,10 +5,10 @@ import difflib
 from enum import Enum
 from typing import Any, Dict, Iterable, Mapping, Optional, Set, Union
 
-from LibRetaPrompt import (ausgabeArt, ausgabeParas, befehle, hauptForNeben,
-                           hauptForNebenSet, kombiMainParas, mainParas,
-                           notParameterValues, reta, retaProgram, spalten,
-                           spaltenDict, zeilenParas)
+from LibRetaPrompt import (ausgabeArt, ausgabeParas, befehle, befehle2,
+                           hauptForNeben, hauptForNebenSet, kombiMainParas,
+                           mainParas, notParameterValues, reta, retaProgram,
+                           spalten, spaltenDict, zeilenParas)
 # from baseAlx import WordCompleter
 # from completionAlx import Completion
 from prompt_toolkit.completion import (CompleteEvent, Completer, Completion,
@@ -38,6 +38,7 @@ class ComplSitua(Enum):
     zeilenValPara = 12
     kombiValPara = 13
     ausgabeValPara = 14
+    BefehleNichtReta = 15
 
 
 class NestedCompleter(Completer):
@@ -137,6 +138,25 @@ class NestedCompleter(Completer):
                 }
                 completer.lastString = first_term
                 completer.situationsTyp = ComplSitua.hauptPara
+            elif (
+                (
+                    tuple(self.options.keys())[0] in befehle2
+                    or tuple(self.options.keys())[0].isnumeric()
+                )
+                and self.situationsTyp
+                in (
+                    ComplSitua.retaAnfang,
+                    ComplSitua.befehleNichtReta,
+                )
+                or self.situationsTyp == ComplSitua.befehleNichtReta
+            ):
+                completer.options = {key: None for key in befehle2}
+                completer.optionsTypes = {
+                    key: ComplSitua.befehleNichtReta for key in befehle2
+                }
+                completer.lastString = first_term
+                completer.situationsTyp = ComplSitua.befehleNichtReta
+
             else:
                 # elif (
                 # self.situationsTyp
@@ -220,46 +240,47 @@ class NestedCompleter(Completer):
                     completer, first_term, gleich, komma
                 )
 
-            # print("S" + var3 + "|" + first_term + "|" + self.nebenParaWort)
-            suchWort = (
-                first_term[2:]
-                if gleich
-                else var3[2:]
-                if komma and var3 is not None
-                else None
-            )
-            try:
-                var1 = var4[suchWort]
-            except KeyError:
-                var1 = difflib.get_close_matches(suchWort, var4.keys())
-            # print(suchWort)
-            completer.options = {key: None for key in var1}
-            completer.optionsTypes = {key: var2 for key in var1}
-            completer.lastString = first_term
-            completer.nebenParaWort = self.nebenParaWort
+            if self.situationsTyp != ComplSitua.BefehleNichtReta:
+                # print("S" + var3 + "|" + first_term + "|" + self.nebenParaWort)
+                suchWort = (
+                    first_term[2:]
+                    if gleich
+                    else var3[2:]
+                    if komma and var3 is not None
+                    else None
+                )
+                try:
+                    var1 = var4[suchWort]
+                except KeyError:
+                    var1 = difflib.get_close_matches(suchWort, var4.keys())
+                # print(suchWort)
+                completer.options = {key: None for key in var1}
+                completer.optionsTypes = {key: var2 for key in var1}
+                completer.lastString = first_term
+                completer.nebenParaWort = self.nebenParaWort
 
-    def gleichKommaKombi(self, completer, first_term, gleich, komma):
-        # print(str(self.kombiParaWort) + "_")
-        completer.kombiParaWort = (
-            first_term if gleich else self.kombiParaWort if komma else None
-        )
-        var4 = {
-            "galaxie": [
-                item
-                for sublist in retaProgram.kombiParaNdataMatrix.values()
-                for item in sublist
-            ],
-            "universum": [
-                item
-                for sublist in retaProgram.kombiParaNdataMatrix2.values()
-                for item in sublist
-            ],
-        }
-        var2 = ComplSitua.kombiValPara
-        var3 = self.kombiParaWort
-        completer.situationsTyp = ComplSitua.kombiValPara
-        # print(str(var4))
-        return var2, var3, var4
+        def gleichKommaKombi(self, completer, first_term, gleich, komma):
+            # print(str(self.kombiParaWort) + "_")
+            completer.kombiParaWort = (
+                first_term if gleich else self.kombiParaWort if komma else None
+            )
+            var4 = {
+                "galaxie": [
+                    item
+                    for sublist in retaProgram.kombiParaNdataMatrix.values()
+                    for item in sublist
+                ],
+                "universum": [
+                    item
+                    for sublist in retaProgram.kombiParaNdataMatrix2.values()
+                    for item in sublist
+                ],
+            }
+            var2 = ComplSitua.kombiValPara
+            var3 = self.kombiParaWort
+            completer.situationsTyp = ComplSitua.kombiValPara
+            # print(str(var4))
+            return var2, var3, var4
 
     def gleichKommaZeilen(self, completer, first_term, gleich, komma):
         completer.zeilenParaWort = (
