@@ -165,6 +165,30 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 process.wait()
             except:
                 pass
+        if len({"procontra"} & set(stext)) > 0:
+            import reta
+
+            kette = [
+                "reta",
+                "-zeilen",
+                zeiln,
+                "-spalten",
+                "--procontra=pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit",
+                "--breite=" + str(int(shellRowsAmountStr) - 10),
+            ]
+            # print(str(kette))
+            reta.Program(
+                kette,
+                int(shellRowsAmountStr),
+            )
+        if len({"modulo"} & set(stext)) > 0:
+            try:
+                process = subprocess.Popen(
+                    [os.path.dirname(__file__) + os.sep + "modulo", c]
+                )
+                process.wait()
+            except:
+                pass
         if len({"universum"} & set(stext)) > 0:
             import reta
 
