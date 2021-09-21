@@ -69,6 +69,8 @@ befehle = (
     "prim",
     "primfaktorzerlegung",
     "procontra",
+    "prim24",
+    "primfaktorzerlegungModulo24",
 )
 
 befehle2: set = set(befehle) - {"reta"}

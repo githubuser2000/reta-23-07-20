@@ -127,6 +127,14 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 kette,
                 int(shellRowsAmountStr),
             )
+        if len({"prim24", "primfaktorzerlegungModulo24"} & set(stext)) > 0:
+            try:
+                process = subprocess.Popen(
+                    [os.path.dirname(__file__) + os.sep + "prim24", c]
+                )
+                process.wait()
+            except:
+                pass
         if len({"prim", "primfaktorzerlegung"} & set(stext)) > 0:
             try:
                 process = subprocess.Popen(
