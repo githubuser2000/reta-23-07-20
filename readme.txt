@@ -17,7 +17,7 @@ bedeutet Religionen 1-9[*]=
 bedeutet nur Religion 10[*]>
 bedeutet Religionen >10
 [*]<,=,>
-bedeutet Religion 1-10 und höher als 10
+bedeutet Religion 1-10 und höher als 10,
 Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/list]
 [*]--zaehlung=
 [list][*]1,2,3,4,5,...[/list]

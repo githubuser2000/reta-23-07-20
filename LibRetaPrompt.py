@@ -6,7 +6,7 @@ retaProgram = reta.Program([sys.argv[0], "-nichts"])
 mainParas = ["-" + a for a in retaProgram.mainParaCmds]
 # print(str(mainParas))
 # print(str(retaProgram.paraDict))
-spalten = ["--" + a[0] for a in retaProgram.paraDict.keys()]
+spalten = ["--" + a[0] + "=" for a in retaProgram.paraDict.keys()]
 # print(str(list(spalten)))
 # print(str(reta.Program.kombiParaNdataMatrix.values()))
 # print(str(reta.Program.kombiParaNdataMatrix2.values()))
@@ -25,24 +25,24 @@ for tupel in retaProgram.paraNdataMatrix:
         except KeyError:
             spaltenDict[haupt] = list(tupel[1])
 
-spalten += ["--breite", "--breiten", "--keinenummerierung"]
+spalten += ["--breite=", "--breiten=", "--keinenummerierung"]
 
 ausgabeParas = [
     "--nocolor",
-    "--art",
+    "--art=",
     "--onetable",
-    "--spaltenreihenfolgeundnurdiese",
+    "--spaltenreihenfolgeundnurdiese=",
 ]
-kombiMainParas = ["--galaxie", "--universum"]
+kombiMainParas = ["--galaxie=", "--universum="]
 zeilenParas = [
-    "--zeit",
-    "--zaehlung",
-    "--vorhervonausschnitt",
-    "--primzahlvielfache",
-    "--nachtraeglichdavon",
+    "--zeit=",
+    "--zaehlung=",
+    "--vorhervonausschnitt=",
+    "--primzahlvielfache=",
+    "--nachtraeglichdavon=",
     "--alles",
-    "--potenzenvonzahlen",
-    "--typ",
+    "--potenzenvonzahlen=",
+    "--typ=",
 ]
 hauptForNeben = ("-zeilen", "-spalten", "-kombination", "-ausgabe", "-h", "-help")
 
