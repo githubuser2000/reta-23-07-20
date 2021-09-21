@@ -382,7 +382,7 @@ class Tables:
                 and lastSubCellIndex < len(newTable[0]) - 1
                 and lastSubCellIndex > lastlastSubCellIndex
             ):
-                if self.__outType in (htmlSyntax, bbCodeSyntax):
+                if type(self.__outType) in (htmlSyntax, bbCodeSyntax):
                     cliout(self.__outType.beginTable)
                 lastlastSubCellIndex = lastSubCellIndex
                 for (
@@ -657,7 +657,7 @@ class Tables:
                                             + [self.__outType.endZeile]
                                         )
                                     )
-                if self.__outType in (htmlSyntax, bbCodeSyntax):
+                if type(self.__outType) in (htmlSyntax, bbCodeSyntax):
                     cliout(self.__outType.endTable)
                 if self.__oneTable:
                     break
