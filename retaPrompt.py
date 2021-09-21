@@ -143,6 +143,17 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 kette,
                 int(shellRowsAmountStr),
             )
+            try:
+                process = subprocess.Popen(["multis", c])
+                process.wait()
+            except:
+                pass
+            try:
+                process = subprocess.Popen(["prim", c])
+                process.wait()
+            except:
+                pass
+    elif b == 1:
         if len({"universum"} & set(stext)) > 0 and b == 1:
             import reta
 
