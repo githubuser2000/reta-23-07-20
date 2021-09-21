@@ -127,6 +127,12 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 kette,
                 int(shellRowsAmountStr),
             )
+        if len({"prim", "primfaktorzerlegung"} & set(stext)) > 0:
+            try:
+                process = subprocess.Popen(["prim", c])
+                process.wait()
+            except:
+                pass
         if len({"multis"} & set(stext)) > 0:
             import reta
 

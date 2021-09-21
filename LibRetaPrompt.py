@@ -66,6 +66,8 @@ befehle = (
     "einzeln",
     "multis",
     "modulo",
+    "prim",
+    "primfaktorzerlegung",
 )
 
 befehle2: set = set(befehle) - {"reta"}
