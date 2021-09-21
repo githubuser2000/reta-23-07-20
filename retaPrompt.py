@@ -352,17 +352,18 @@ while text not in ("ende", "exit", "quit", "q", ""):
         sys.exit()
     # print("Du meintest: %s" % text, end=" ")
     stext = text.split()
-    b = 0
-    for a in stext:
-        d = re.split(",|-", a)
-        if a.isnumeric() or [b.isnumeric() for b in d] == [True] * len(d):
-            b += 1
-            c = a
-            print(str(c))
-    if len(stext) > 0 and stext[0] == "reta":
+    bedinung = len(stext) > 0 and stext[0] == "reta"
+    if not bedinung:
+        b = 0
+        for a in stext:
+            d = re.split(",|-", a)
+            if a.isnumeric() or [b.isnumeric() for b in d] == [True] * len(d):
+                b += 1
+                c = a
+
+    if bedinung:
         import reta
 
-        print(str(stext))
         reta.Program(stext, int(shellRowsAmountStr) - 15)
         # process = subprocess.Popen(stext)
         # process.wait()
