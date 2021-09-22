@@ -117,7 +117,7 @@
 15;Lebewesen, die ein stark ausgeprägtes Denken in den Kategorien: gut, schlecht, schön, wertvoll, einheitlich, wesentlich, richtig, falsch, böse usw. haben.;;;;;;;;;;;;;;;
 6|10;Bär;;;;;;;;;;;;;;;
 14;Lebewesen, die ein stark ausgeprägtes Denken in den Kategorien: nützlich, Absicht, Fähigkeit, Tätigkeit, Vorteil, Besitz, Eigentum, Selbstlosigkeit, Selbstsucht, Ehrlichkeit, Freundlichkeit, Vereinigungswillen haben;;;;;;;;;;;;;;;
-13;Lebewesen, die weniger die Themen unterscheiden, zwischen denen die 14 und 15 Unterscheidungen treffen, sondern sich vielmehr innerhalb so eines Themas bewegen;;;;;;;;;;;;;;;
+13;Lebewesen, die weniger die Themen unterscheiden, zwischen denen die 14 und 15 Unterscheidungen treffen, sondern sich vielmehr innerhalb so eines Themas bewegen (genauer: ein Paradigma, statt Thema);;;;;;;;;;;;;;;
 6|10;;;;;;;;;;;;;;;;
 7|10|12;;;;;;;;;;;;;;;;
 6|12;;;;;;;;;;;;;;;;
@@ -157,10 +157,10 @@
 3|7;;;;;;;;;;;;;;;;
 2|5;;;;;;;;;;;;;;;;
 +6|+2/7;;;;;;;;;Buddhismus;;;;;;;
-5|+1/7|-8|10|16|17;manche aus dem sogenannten nahen Osten (Perser, Araber, Osmanen);;;;;;;;;;;;;;;
+5|+1/7|-8|-10|+10|16|17;manche aus dem sogenannten nahen Osten (Perser, Araber, Osmanen);;;;;;;;;;;;;;;
 11|13|14;mehr bei Europiden (en. causasian), aber dennoch selten;;;;;;;;;;;;;;;
 24;was Milliardäre haben, Millionäre jedoch nicht im vergleichbarem Maß;Milliardär;;;;;;;;;;;;;;
-2|4|-6|-7|-10|10|17|18|21;Europide aus höheren Schichten;;;;;;;;;;;;;;;
+2|4|-6|-7|-10|+10|17|18|21;Europide aus höheren Schichten;;;;;;;;;;;;;;;
 3|8;;;;;;;;;;haben;;;;;;
 1/7|18|26;;Moderator (TV, Radio, etc.);;;;;;;;;;;;;;
 3|8|10;;;;;;;;;;;;;;;;
@@ -169,7 +169,7 @@
 4|6;;;;;;;;;;;;;;;;
 6|8;;;;;;;;;;;;;;;;
 2|7;;;;;;;;;;;;;;;;
-(2)|(4)|+6|+9|10|14|+18|+19;manche Inder;;;;;;;;;;;;;;;
+(2)|(4)|+6|+9|-10|+10|14|+18|+19;manche Inder;;;;;;;;;;;;;;;
 -1/5|+6;Honigdachs;;;;;;;;;;;;;;;
 7|8|10;;;;;;;;;;;;;;;;
 1/8|17;;;;;;;;;;urteilen;;;;;;
