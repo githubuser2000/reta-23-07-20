@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import os
+import platform
 import pprint
 import re
 import sys
@@ -30,9 +31,16 @@ def getTextWrapThings(maxLen=None) -> tuple:
             lang="de_DE"
         )  # Bibliothek für Worteilumbruch bei Zeilenumbruch
 
-        ColumnsRowsAmount, shellRowsAmountStr = (
-            os.popen("stty size", "r").read().split()
-        )  # Wie viele Zeilen und Spalten hat die Shell ?
+        try:
+            if platform.system() != "Windows":
+                ColumnsRowsAmount, shellRowsAmountStr = (
+                    os.popen("stty size", "r").read().split()
+                )  # Wie viele Zeilen und Spalten hat die Shell ?
+            else:
+                ColumnsRowsAmount, shellRowsAmountStr = "80", "80"
+        except Exception:
+            ColumnsRowsAmount, shellRowsAmountStr = "80", "80"
+
     else:
         html2text = None
         pyphen = None

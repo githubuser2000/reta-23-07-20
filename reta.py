@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+import platform
 import re
 from collections import namedtuple
 from itertools import zip_longest
@@ -2840,7 +2841,9 @@ class Program:
                             self.htmlOrBBcode = True
                         elif outputtype == "markdown":
                             self.tables.outType = markdownSyntax()
-                    elif arg[2:] in ["nocolor", "justtext"] and neg == "":
+                    elif (
+                        arg[2:] in ["nocolor", "justtext"] and neg == ""
+                    ) or platform.system() == "Windows":
                         self.tables.getOut.color = False
                     elif (
                         arg[2:] in ["endlessscreen", "endless", "dontwrap", "onetable"]

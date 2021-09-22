@@ -29,9 +29,13 @@ spalten += ["--breite=", "--breiten=", "--keinenummerierung"]
 
 ausgabeParas = [
     "--nocolor",
+    "--justtext",
     "--art=",
     "--onetable",
     "--spaltenreihenfolgeundnurdiese=",
+    "--endlessscreen",
+    "--endless",
+    "--dontwrap",
 ]
 kombiMainParas = ["--galaxie=", "--universum="]
 zeilenParas = [

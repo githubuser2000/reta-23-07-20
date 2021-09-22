@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import os
+import platform
 import pprint
 import re
 import subprocess
@@ -21,9 +22,15 @@ from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
 from word_completerAlx import WordCompleter
 
-ColumnsRowsAmount, shellRowsAmountStr = (
-    os.popen("stty size", "r").read().split()
-)  # Wie viele Zeilen und Spalten hat die Shell ?
+try:
+    if platform.system() != "Windows":
+        ColumnsRowsAmount, shellRowsAmountStr = (
+            os.popen("stty size", "r").read().split()
+        )  # Wie viele Zeilen und Spalten hat die Shell ?
+    else:
+        ColumnsRowsAmount, shellRowsAmountStr = "80", "80"
+except Exception:
+    ColumnsRowsAmount, shellRowsAmountStr = "80", "80"
 
 session = PromptSession(
     history=FileHistory(os.path.expanduser("~") + os.sep + ".ReTaPromptHistory")
