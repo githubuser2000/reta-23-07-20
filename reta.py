@@ -21,6 +21,7 @@ parser.add_simple_formatter("sub", "<sub>%(value)s</sub>")
 parser.add_simple_formatter("sup", "<sup>%(value)s</sup>")
 
 
+
 def render_color(tag_name, value, options, parent, context):
     return '<span style="color:%s;">%s</span>' % (tag_name, value)
 
@@ -2843,7 +2844,7 @@ class Program:
                             self.tables.outType = markdownSyntax()
                     elif (
                         arg[2:] in ["nocolor", "justtext"] and neg == ""
-                    ) or platform.system() == "Windows":
+                    ):
                         self.tables.getOut.color = False
                     elif (
                         arg[2:] in ["endlessscreen", "endless", "dontwrap", "onetable"]
@@ -2888,7 +2889,7 @@ class Program:
             )
         else:
             place = "readme.txt"
-        with open(place) as f:
+        with open(place, encoding='utf-8') as f:
             read_data = f.read()
         parser.REPLACE_COSMETIC = ()
         html = parser.format(read_data, replace_cosmetic=False)
@@ -2925,7 +2926,7 @@ class Program:
             )
         else:
             place = "religion.csv"
-        with open(place, mode="r") as csv_file:
+        with open(place, mode="r", encoding='utf-8') as csv_file:
             self.relitable: list = []
             for i, col in enumerate(csv.reader(csv_file, delimiter=";")):
                 self.relitable += [col]
@@ -3225,6 +3226,8 @@ class Program:
         self.argv = argv
         self.allesParameters = 0
         self.tables = Tables(alternativeShellRowsAmount)
+        if platform.system() == "Windows":
+            self.tables.getOut.color = False
         self.workflowEverything(argv)
 
     def workflowEverything(self, argv):

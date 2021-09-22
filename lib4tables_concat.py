@@ -2195,7 +2195,7 @@ class Concat:
         if place in self.CSVsAlreadRead:
             return self.CSVsAlreadRead[place]
         else:
-            with open(place, mode="r") as csv_file:
+            with open(place, mode="r", encoding='utf-8') as csv_file:
                 gebrRatTable = list(csv.reader(csv_file, delimiter=";"))
             self.CSVsAlreadRead[place] = gebrRatTable
             if wahl in (2, 4):
