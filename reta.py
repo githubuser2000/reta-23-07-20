@@ -787,6 +787,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.religionen,
+                ("Hinduismus", "hinduismus"),
+                {217},
+            ),
+            (
+                Program.ParametersMain.religionen,
                 ("Sternpolygon", "sternpolygon"),
                 {0, 6, 36},
             ),
@@ -3301,7 +3306,9 @@ class Program:
         x("NEWT4", [finallyDisplayLines, newTable, numlen, rowsRange])
 
         self.tables.getOut.cliOut(finallyDisplayLines, newTable, numlen, rowsRange)
-        alxp("""2021-09-21 spalte wird verschluckt immer noch, auf handy shell, wenn breite zu breit angegeben wird, verdammt!""")
+        alxp(
+            """2021-09-21 spalte wird verschluckt immer noch, auf handy shell, wenn breite zu breit angegeben wird, verdammt!"""
+        )
         alxp(
             """--breite und --breiten als Befehl auch für -ausgabe zur Verfügung stellen, also doppelt. Kein großer Aufwand das zu programmieren!"""
         )
