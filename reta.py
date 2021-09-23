@@ -164,9 +164,9 @@ class Program:
                 elif len(neg) == 0:
                     # else:
                     cliout(
-                        'Der Haupt-Paramaeter "'
+                        'Der Haupt-Parameter "'
                         + cmd
-                        + '" existiert hier nich als Befehl!'
+                        + '" existiert hier nicht als Befehl!'
                         + " Es ist nur möglich: -"
                         + str(", -".join(list(self.mainParaCmds.keys())))
                     )
