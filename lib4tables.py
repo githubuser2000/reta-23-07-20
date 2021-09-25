@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import math
+from collections import OrderedDict
 from enum import Enum
 from functools import lru_cache
 
@@ -167,10 +168,12 @@ class htmlSyntax(OutputSyntax):
                 if str(spalte).isdecimal():
                     raise ValueError
                 tupleOfListsOfCouples = (("?", "?"),)
-        things1: dict = {}
+        things1: OrderedDict[int, list] = OrderedDict()
         # x("ayu", SpaltenParameter)
         # x("azu", tupleOfListsOfCouples)
-        for c, couples in enumerate(tupleOfListsOfCouples):
+        listOfListsOfCouples: list = list(tupleOfListsOfCouples)
+        listOfListsOfCouples.sort()
+        for c, couples in enumerate(listOfListsOfCouples):
             for paraNum in (0, 1):
                 if len(couples[0]) > paraNum:
                     # x("azu" + str(paraNum), couples[0][paraNum])
@@ -189,11 +192,14 @@ class htmlSyntax(OutputSyntax):
                                 para1o2name = "".join(["p3_", str(c), "_", para1o2name])
                             try:
                                 things1[paraNum] += [para1o2name]
+                                things1[paraNum].sort()
+
                             except KeyError:
                                 things1[paraNum]: list = [
                                     para1o2name,
                                 ]
-        things: dict = {}
+
+        things: OrderedDict = OrderedDict()
         for key, values in things1.items():
             for i, el in enumerate(values):
                 if el != "alles":
