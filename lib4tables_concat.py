@@ -625,6 +625,7 @@ class Concat:
         self, paareSet: set, gleichf=False
     ) -> defaultdict:
         """Macht aus einem Set aus Paaren eins von verschiedenen möglichen dicts mit key int und value liste aus paaren"""
+        alxp(str(paareSet) + " " + str(gleichf))
         result: defaultdict = defaultdict(set)
         paareSet: tuple = tuple(paareSet)
         for paar in paareSet:
@@ -632,6 +633,7 @@ class Concat:
             div = paar[0] / paar[1] if not gleichf else paar[1] / paar[0]
             x("fsd", div)
             div = round(div * 1000) / 1000
+            alxp(str(div))
             assert div == round(div)
             result[int(div)] |= {frozenset(paar)}
         # x("GHJ1A", dict(result))
