@@ -625,15 +625,20 @@ class Concat:
         self, paareSet: set, gleichf=False
     ) -> defaultdict:
         """Macht aus einem Set aus Paaren eins von verschiedenen möglichen dicts mit key int und value liste aus paaren"""
-        alxp(str(paareSet) + " " + str(gleichf))
+        # px2 = list(paareSet)
+        # px2.sort()
+        # print(str(px2) + " " + str(gleichf))
         result: defaultdict = defaultdict(set)
         paareSet: tuple = tuple(paareSet)
         for paar in paareSet:
             paar = tuple(paar)
             div = paar[0] / paar[1] if not gleichf else paar[1] / paar[0]
-            x("fsd", div)
+            # x("fsd", div)
             div = round(div * 1000) / 1000
-            alxp(str(div))
+            # paar2 = list(paar)
+            # paar2.sort()
+            # x("_X1_", str(paar2) + " " + str(gleichf))
+            # x("_X2_", str(paar) + " " + str(gleichf))
             assert div == round(div)
             result[int(div)] |= {frozenset(paar)}
         # x("GHJ1A", dict(result))
@@ -2232,41 +2237,51 @@ class Concat:
             ("Gal", "Uni", "Gal", "Uni"),
         ):
             # x("DSK", GalOrUni1 + GalOrUni2)
+            # brueche1 = list(brueche1)
+            # brueche2 = list(brueche2)
+            # brueche1.sort()
+            # brueche2.sort()
+            # print(str(kombis2))
+            # print(str(brueche1x))
+            # print(str(brueche2x))
             for BruecheUn in brueche1:
                 for BruecheUn2 in brueche2:
                     if BruecheUn != BruecheUn2:
 
-                        couple = {frozenset({BruecheUn, BruecheUn2})}
-                        if round(BruecheUn * BruecheUn2) == (BruecheUn * BruecheUn2):
+                        couple = {(BruecheUn, BruecheUn2)}
+                        if (
+                            round(BruecheUn * BruecheUn2)
+                            == round(BruecheUn * BruecheUn2 * 1000) / 1000
+                        ):
                             gebrRatAllCombis[GalOrUni1 + GalOrUni2]["stern"][
                                 "mul"
                             ] |= deepcopy(couple)
-                            """
-                            x(
-                                "SDUG",
-                                (
-                                    list(list(couple)[0])[0] * list(list(couple)[0])[1],
-                                    GalOrUni1 + GalOrUni2,
-                                ),
-                            )"""
-                        if round(BruecheUn / BruecheUn2) == (BruecheUn / BruecheUn2):
+                            # print("A " + str((BruecheUn, BruecheUn2)))
+
+                        if round(BruecheUn / BruecheUn2) == round(
+                            BruecheUn / BruecheUn2 * 1000
+                        ):
                             gebrRatAllCombis[GalOrUni1 + GalOrUni2]["stern"][
                                 "div"
                             ] |= deepcopy(couple)
+                            # print("B " + str((BruecheUn, BruecheUn2)))
 
                         if round(1 / (BruecheUn * BruecheUn2)) == (
-                            1 / (BruecheUn * BruecheUn2)
+                            round(1000 / (BruecheUn * BruecheUn2)) / 1000
                         ):
                             gebrRatAllCombis[GalOrUni1 + GalOrUni2]["gleichf"][
                                 "mul"
                             ] |= deepcopy(couple)
-                            # x("SDZ", couple)
+                            # print("C " + str((BruecheUn, BruecheUn2)))
+
                         if round(1 / (BruecheUn / BruecheUn2)) == (
-                            1 / (BruecheUn / BruecheUn2)
+                            round(1000 / (BruecheUn / BruecheUn2)) / 1000
                         ):
                             gebrRatAllCombis[GalOrUni1 + GalOrUni2]["gleichf"][
                                 "div"
                             ] |= deepcopy(couple)
+                            # print("D " + str((BruecheUn, BruecheUn2)))
+
         """
         for a in gebrRatAllCombis["UniUni"]["stern"]["mul"]:
             a = list(a)
@@ -2276,6 +2291,8 @@ class Concat:
         """
 
         # x("XCGH2", gebrRatAllCombis["UniUni"]["stern"]["mul"])
+        # print(str(gebrRatAllCombis))
+        # print("----------------------------------------")
         return gebrRatAllCombis
 
     def spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
