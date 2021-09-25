@@ -168,11 +168,12 @@ class htmlSyntax(OutputSyntax):
                 if str(spalte).isdecimal():
                     raise ValueError
                 tupleOfListsOfCouples = (("?", "?"),)
-        things1: OrderedDict[int, list] = OrderedDict()
+        things1: OrderedDict[int, list] = OrderedDict()  # damit pypy3 == python3
+
         # x("ayu", SpaltenParameter)
         # x("azu", tupleOfListsOfCouples)
         listOfListsOfCouples: list = list(tupleOfListsOfCouples)
-        listOfListsOfCouples.sort()
+        listOfListsOfCouples.sort()  # damit pypy3 == python3
         for c, couples in enumerate(listOfListsOfCouples):
             for paraNum in (0, 1):
                 if len(couples[0]) > paraNum:
@@ -199,7 +200,8 @@ class htmlSyntax(OutputSyntax):
                                     para1o2name,
                                 ]
 
-        things: OrderedDict = OrderedDict()
+        things: OrderedDict = OrderedDict()  # damit pypy3 == python3
+
         for key, values in things1.items():
             for i, el in enumerate(values):
                 if el != "alles":
