@@ -631,6 +631,7 @@ class Concat:
             paar = tuple(paar)
             div = paar[0] / paar[1] if not gleichf else paar[1] / paar[0]
             x("fsd", div)
+            div = round(div * 1000) / 1000
             assert div == round(div)
             result[int(div)] |= {frozenset(paar)}
         # x("GHJ1A", dict(result))
@@ -648,6 +649,7 @@ class Concat:
             if gleichf:
                 mul = 1 / mul
             mulr = round(mul)
+            mul = round(mul * 1000) / 1000
             # x("jzd", [mul, mulr, gleichf])
             assert mul == mulr
             result[int(mulr)] |= {frozenset(paar)}
@@ -664,6 +666,7 @@ class Concat:
                     paar = (frac, Fraction(frac.denominator) * zusatzMul)
                     mul = paar[0] * paar[1]
                     mulr = round(mul)
+                    mul = round(mul * 1000) / 1000
                     assert mulr == mul
                     if mul > 1024:
                         break
@@ -693,6 +696,7 @@ class Concat:
                     div = 1 / (paar[1] * paar[0])
                     # x("HDF4", div)
                     divr = round(div)
+                    div = round(div * 1000) / 1000
                     assert divr == div
                     if div > 1024:
                         break
@@ -706,6 +710,7 @@ class Concat:
                         # x("SOV", paar)
                         mul = 1 / (paar[1] * paar[0])
                         mulr = round(mul)
+                        mul = round(mul * 1000) / 1000
                         assert mulr == mul
                         if 1 / mul > 1024:
                             break
@@ -2195,7 +2200,7 @@ class Concat:
         if place in self.CSVsAlreadRead:
             return self.CSVsAlreadRead[place]
         else:
-            with open(place, mode="r", encoding='utf-8') as csv_file:
+            with open(place, mode="r", encoding="utf-8") as csv_file:
                 gebrRatTable = list(csv.reader(csv_file, delimiter=";"))
             self.CSVsAlreadRead[place] = gebrRatTable
             if wahl in (2, 4):
