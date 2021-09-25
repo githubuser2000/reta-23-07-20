@@ -533,9 +533,12 @@ class Concat:
         self.relitable = relitable
 
         distances = (-4, -3, -2, -1, 0, 1, 2, 3, 4)
-        conceptsRowsSetOfTuple2: tuple = tuple(conceptsRowsSetOfTuple)
+        conceptsRowsSetOfTuple2: list = list(conceptsRowsSetOfTuple)
         # #x("wer", conceptsRowsSetOfTuple2)
         reliTableCopy = deepcopy(self.relitable)
+        x("DFE1", conceptsRowsSetOfTuple2)
+        conceptsRowsSetOfTuple2.sort()
+        x("DFE2", conceptsRowsSetOfTuple2)
         for o, concept in enumerate(conceptsRowsSetOfTuple2):
             into: dict = {}
             einMalVorkommen = set()

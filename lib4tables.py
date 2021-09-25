@@ -4,8 +4,8 @@ import math
 from enum import Enum
 from functools import lru_cache
 
-from center import (alxp, cliout, getTextWrapThings, infoLog, output,
-                    Multiplikationen, re, x)
+from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
+                    output, re, x)
 
 
 class OutputSyntax:
@@ -216,6 +216,7 @@ class htmlSyntax(OutputSyntax):
             p4: str
             try:
                 p4a = tables.generatedSpaltenParameter_Tags[spalte - 2]
+                p4a.sort()
                 p4b: list = []
                 for a in p4a:
                     p4b += [str(a.value)]

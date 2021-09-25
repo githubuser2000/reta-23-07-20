@@ -792,7 +792,6 @@ class Tables:
                     (self.tables.textwidth == 0 and self.tables.getOut.oneTable)
                     or self.tables.htmlOutputYes
                     or self.tables.bbcodeOutputYes
-                    or True
                 )
                 and len(self.tables.breitenn) == 0
             ):
@@ -1105,7 +1104,7 @@ class Tables:
             headingsAmount = len(self.relitable[0])
             self.maintable2subtable_Relation: tuple = ({}, {})
             if len(rowsOfcombi) > 0:
-                with open(place, mode="r", encoding='utf-8') as csv_file:
+                with open(place, mode="r", encoding="utf-8") as csv_file:
                     self.kombiTable: list = []
                     self.kombiTable_Kombis: list = []
                     for z, col in enumerate(csv.reader(csv_file, delimiter=";")):
