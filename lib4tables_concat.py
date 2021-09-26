@@ -8,8 +8,6 @@ from copy import copy, deepcopy
 from fractions import Fraction
 from itertools import zip_longest
 
-from orderedset import OrderedSet
-
 from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
                     output, re, x)
 from lib4tables import (OutputSyntax, bbCodeSyntax,
@@ -2279,7 +2277,7 @@ class Concat:
     def findAllBruecheAndTheirCombinations(self):
         self.readOneCSVAndReturn(2)
         self.readOneCSVAndReturn(3)
-        kombis2 = OrderedDict({"mul": OrderedSet(), "div": OrderedSet()})
+        kombis2 = OrderedDict({"mul": set(), "div": set()})
         kombis1 = OrderedDict(
             {"stern": deepcopy(kombis2), "gleichf": deepcopy(kombis2)}
         )

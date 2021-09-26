@@ -14,7 +14,6 @@ setup(
         "pyphen==0.9.5",
         "PyHyphen==3.0.1",
         "prompt_toolkit==3.0.19",
-        "orderedset==2.0.3"
     ],
     package_data={
         ".": [
