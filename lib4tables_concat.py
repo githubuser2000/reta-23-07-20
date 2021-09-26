@@ -1430,6 +1430,8 @@ class Concat:
                 for key2, value2 in value1.items():
                     for key3, value3 in value2.items():
                         for key4, value4 in value3.items():
+                            value4 = list(value4)
+                            value4.sort()
                             print("|" + str(value4))
             """
 
