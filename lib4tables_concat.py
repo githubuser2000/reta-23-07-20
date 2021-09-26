@@ -3,10 +3,12 @@
 import csv
 import os
 import sys
-from collections import defaultdict
+from collections import OrderedDict, defaultdict
 from copy import copy, deepcopy
 from fractions import Fraction
 from itertools import zip_longest
+
+from orderedset import OrderedSet
 
 from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
                     output, re, x)
@@ -733,6 +735,29 @@ class Concat:
         # x("GHJ2", dict(result2))
         return result
 
+    def combineDicts2(self, a: OrderedDict, b: OrderedDict) -> OrderedDict:
+        e: OrderedDict = OrderedDict()
+
+        for key, value in a.items():
+            try:
+                e[key] |= value
+            except KeyError:
+                e[key] = set()
+
+        for key, value in b.items():
+            try:
+                e[key] |= value
+            except KeyError:
+                e[key] = set()
+
+        for key, value in e.items():
+            newValue = set()
+            for v in value:
+                newValue |= {tuple(v)}
+            e[key] = newValue
+
+        return e
+
     def combineDicts(self, a: defaultdict, b: defaultdict) -> defaultdict:
         e: defaultdict = defaultdict(set)
 
@@ -1358,9 +1383,9 @@ class Concat:
             }
 
             self.gebrRatAllCombis = self.findAllBruecheAndTheirCombinations()
-            kombis2: dict = {"mul": {}, "div": {}}
+            # print(str(self.gebrRatAllCombis))
+            kombis2: dict = {"mul": OrderedDict(), "div": OrderedDict()}
             kombis1 = {"stern": deepcopy(kombis2), "gleichf": deepcopy(kombis2)}
-            # self.gebrRatAllCombis = {
             alleFractionErgebnisse2: dict = {
                 "UniUni": deepcopy(kombis1),
                 "UniGal": deepcopy(kombis1),
@@ -1375,7 +1400,7 @@ class Concat:
                         alleFractionErgebnisse2[KeyGalUniUniGal][KeySternOrGleichf][
                             KeyMulOrDiv
                         ] = (
-                            self.combineDicts(
+                            self.combineDicts2(
                                 self.convertSetOfPaarenToDictOfNumToPaareMul(
                                     Couples,
                                     True if KeySternOrGleichf == "gleichf" else False,
@@ -1391,17 +1416,28 @@ class Concat:
                                 ),
                             )
                             if KeyMulOrDiv == "mul"
-                            else self.combineDicts(
+                            else self.combineDicts2(
                                 self.convertSetOfPaarenToDictOfNumToPaareDiv(
                                     Couples,
                                     True if KeySternOrGleichf == "gleichf" else False,
                                 ),
-                                defaultdict(set),
+                                OrderedDict(),
                             )
                         )
 
+            # ALXP HIER NOCH NICHT FERTIG
+            # print(str(alleFractionErgebnisse2))
+
             # hier geht es um die html class Parameter und um Tagging ob Galaxie oder Polygon
-            koord2tag, koord2ParameterA, koord2Parameter = {}, {}, {}
+            koord2tag: OrderedDict
+            koord2ParameterA: OrderedDict
+            koord2Parameter: OrderedDict
+
+            koord2tag, koord2ParameterA, koord2Parameter = (
+                OrderedDict(),
+                OrderedDict(),
+                OrderedDict(),
+            )
 
             for name, mehrereEinraege in forGeneratedSpaltenParameter_Tags.items():
                 for drei in mehrereEinraege:
@@ -1429,10 +1465,12 @@ class Concat:
                 koord2Parameter[key] = list(value)
 
             # stern vs gleichf:
-            self.transzendentalien: dict = {
-                "Sternpolygone": [],
-                "gleichförmige Polygone": [],
-            }
+            self.transzendentalien: dict = OrderedDict(
+                {
+                    "Sternpolygone": [],
+                    "gleichförmige Polygone": [],
+                }
+            )
 
             relitableCopy = deepcopy(self.relitable[: self.tables.lastLineNumber + 1])
             kombisNamen: tuple = (
@@ -1449,7 +1487,9 @@ class Concat:
             )
 
             # self.rolle = []
-            self.motivation: dict = {"Sternpolygone": [], "gleichförmige Polygone": []}
+            self.motivation: dict = OrderedDict(
+                {"Sternpolygone": [], "gleichförmige Polygone": []}
+            )
             # self.ziel = []
             for zwei, (polytype, polytypename, transzType) in enumerate(
                 zip(
@@ -1506,11 +1546,15 @@ class Concat:
                         ]
                     kombis: tuple = tuple(kombi_)
                     # alle 2x2 kombis von motiven und struktur
+                    # print(str(kombisNamen))
+                    # print(str(kombisNamen2))
+                    # print(str(kombis))
 
                     for nullBisDrei, (kombiUeberschrift, GalUniKombis) in enumerate(
                         zip(kombisNamen, kombisNamen2)
                     ):
                         tag: frozenset = list(koord2tag[(zwei, nullBisDrei, brr)])[0]
+                        # print(str(tag))
 
                         self.tables.generatedSpaltenParameter_Tags[
                             len(rowsAsNumbers)
@@ -1519,6 +1563,7 @@ class Concat:
                             len(self.relitable[0]),
                         }
                         # x("HJM", len(self.relitable[0]))
+                        # print(str(koord2Parameter))
                         if (zwei, nullBisDrei, brr) in koord2Parameter:
                             for i, cols in enumerate(relitableCopy):
                                 if i == 0:
@@ -2224,14 +2269,18 @@ class Concat:
     def findAllBruecheAndTheirCombinations(self):
         self.readOneCSVAndReturn(2)
         self.readOneCSVAndReturn(3)
-        kombis2 = {"mul": set(), "div": set()}
-        kombis1 = {"stern": deepcopy(kombis2), "gleichf": deepcopy(kombis2)}
-        gebrRatAllCombis = {
-            "UniUni": deepcopy(kombis1),
-            "UniGal": deepcopy(kombis1),
-            "GalUni": deepcopy(kombis1),
-            "GalGal": deepcopy(kombis1),
-        }
+        kombis2 = OrderedDict({"mul": OrderedSet(), "div": OrderedSet()})
+        kombis1 = OrderedDict(
+            {"stern": deepcopy(kombis2), "gleichf": deepcopy(kombis2)}
+        )
+        gebrRatAllCombis = OrderedDict(
+            {
+                "UniUni": deepcopy(kombis1),
+                "UniGal": deepcopy(kombis1),
+                "GalUni": deepcopy(kombis1),
+                "GalGal": deepcopy(kombis1),
+            }
+        )
 
         for brueche1, brueche2, GalOrUni1, GalOrUni2 in zip(
             (self.BruecheGal, self.BruecheGal, self.BruecheUni, self.BruecheUni),
@@ -2240,10 +2289,10 @@ class Concat:
             ("Gal", "Uni", "Gal", "Uni"),
         ):
             # x("DSK", GalOrUni1 + GalOrUni2)
-            # brueche1 = list(brueche1)
-            # brueche2 = list(brueche2)
-            # brueche1.sort()
-            # brueche2.sort()
+            brueche1 = list(brueche1)
+            brueche2 = list(brueche2)
+            brueche1.sort()
+            brueche2.sort()
             # print(str(kombis2))
             # print(str(brueche1x))
             # print(str(brueche2x))

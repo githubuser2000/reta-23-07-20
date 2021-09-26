@@ -493,4 +493,5 @@ def multiples(a, mul1=True):
         menge = list(menge) + [(a, 1)]
     else:
         menge = list(menge)
+    # menge.sort()
     return menge
