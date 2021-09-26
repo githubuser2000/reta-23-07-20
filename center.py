@@ -77,3 +77,44 @@ def alxp(text):
 def cliout(text):
     if output:
         print(text)
+
+    # class AlxList(list):
+    # def __eq__(self, bla):
+    # return hash(str(super())) == hash(str(bla))
+
+    # def __gt__(self, bla):
+    # return hash(str(super())) > hash(str(bla))
+
+    # def __ge__(self, bla):
+    # return hash(str(super())) >= hash(str(bla))
+
+    # def __lt__(self, bla):
+    # return hash(str(super())) < hash(str(bla))
+
+    # def __le__(self, bla):
+    # return hash(str(super())) <= hash(str(bla))
+
+
+def sort(array):
+    less = []
+    equal = []
+    greater = []
+
+    if len(array) > 1:
+        pivot = array[0]
+        pivot2 = hash(str(pivot))
+        for x in array:
+            x2 = hash(str(x))
+            if x2 < pivot2:
+                less.append(x)
+            elif x2 == pivot2:
+                equal.append(x)
+            elif x2 > pivot2:
+                greater.append(x)
+        # Don't forget to return something!
+        return (
+            sort(less) + equal + sort(greater)
+        )  # Just use the + operator to join lists
+    # Note that you want equal ^^^^^ not pivot
+    else:  # You need to handle the part at the end of the recursion - when you only have one element in your array, just return the array.
+        return array

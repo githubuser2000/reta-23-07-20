@@ -9,7 +9,7 @@ from fractions import Fraction
 from itertools import zip_longest
 
 from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
-                    output, re, x)
+                    output, re, sort, x)
 from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz,
                         couldBePrimeNumberPrimzahlkreuz_fuer_aussen,
@@ -1429,7 +1429,7 @@ class Concat:
                     for key3, value3 in value2.items():
                         for key4, value4 in value3.items():
                             value4 = list(value4)
-                            value4.sort()
+                            value4 = sort(value4)
                             print("|" + str(value4))
             """
 
