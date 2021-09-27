@@ -8,8 +8,10 @@ from copy import copy, deepcopy
 from fractions import Fraction
 from itertools import zip_longest
 
-from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
-                    output, re, sort, x)
+from orderedset import OrderedSet
+
+from center import (DefaultOrderedDict, Multiplikationen, alxp, cliout,
+                    getTextWrapThings, infoLog, output, re, sort, x)
 from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz,
                         couldBePrimeNumberPrimzahlkreuz_fuer_aussen,
@@ -625,13 +627,13 @@ class Concat:
         return self.relitable, rowsAsNumbers
 
     def convertSetOfPaarenToDictOfNumToPaareDiv(
-        self, paareSet: set, gleichf=False
-    ) -> defaultdict:
+        self, paareSet: OrderedSet, gleichf=False
+    ) -> DefaultOrderedDict:
         """Macht aus einem Set aus Paaren eins von verschiedenen möglichen dicts mit key int und value liste aus paaren"""
         # px2 = list(paareSet)
         # px2.sort()
         # print(str(px2) + " " + str(gleichf))
-        result: defaultdict = defaultdict(set)
+        result: DefaultOrderedDict = DefaultOrderedDict(OrderedSet)
         paareSet: tuple = tuple(paareSet)
         for paar in paareSet:
             paar = tuple(paar)
@@ -643,15 +645,16 @@ class Concat:
             # x("_X1_", str(paar2) + " " + str(gleichf))
             # x("_X2_", str(paar) + " " + str(gleichf))
             assert div == round(div)
-            result[int(div)] |= {frozenset(paar)}
+            result[int(div)] |= {paar}
+            # print(paar)
         # x("GHJ1A", dict(result))
         return result
 
     def convertSetOfPaarenToDictOfNumToPaareMul(
         self, paareSet: set, gleichf=False
-    ) -> defaultdict:
+    ) -> DefaultOrderedDict:
         """Macht aus einem Set aus Paaren eins von verschiedenen möglichen dicts mit key int und value liste aus paaren"""
-        result: defaultdict = defaultdict(set)
+        result: DefaultOrderedDict = DefaultOrderedDict(OrderedSet)
 
         for paar in tuple(paareSet):
             paar = tuple(paar)
@@ -662,14 +665,14 @@ class Concat:
             mul = round(mul * 1000) / 1000
             # x("jzd", [mul, mulr, gleichf])
             assert mul == mulr
-            result[int(mulr)] |= {frozenset(paar)}
+            result[int(mulr)] |= {paar}
         # x("GHJ1B", dict(result))
         return result
 
     def convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
         self, fracs: set, fracs2: set, gleichf=False
-    ) -> defaultdict:
-        result: defaultdict = defaultdict(set)
+    ) -> DefaultOrderedDict:
+        result: DefaultOrderedDict = DefaultOrderedDict(OrderedSet)
         if not gleichf:
             for frac in tuple(fracs):
                 for zusatzMul in range(1, 1025):
@@ -680,7 +683,7 @@ class Concat:
                     assert mulr == mul
                     if mul > 1024:
                         break
-                    result[int(mul)] |= {frozenset(paar)}
+                    result[int(mul)] |= {paar}
 
             for frac in tuple(fracs):
                 for zusatzMul in range(1024, 0, -1):
@@ -693,7 +696,7 @@ class Concat:
                         if mul > 1024:
                             break
                         if mulr == mul:
-                            result[int(mul)] |= {frozenset(paar)}
+                            result[int(mul)] |= {paar}
             # x("IIL", result)
 
         else:
@@ -710,7 +713,7 @@ class Concat:
                     assert divr == div
                     if div > 1024:
                         break
-                    result[int(divr)] |= {frozenset(paar)}
+                    result[int(divr)] |= {paar}
 
             for frac in tuple(fracs):
                 for zusatzDiv in range(1, 1025):
@@ -724,40 +727,19 @@ class Concat:
                         assert mulr == mul
                         if 1 / mul > 1024:
                             break
-                        result[int(mulr)] |= {frozenset(paar)}
+                        result[int(mulr)] |= {paar}
 
-        ##result2: defaultdict = defaultdict(list)
+        ##result2: DefaultOrderedDict = DefaultOrderedDict(list)
         # for key, value in result.items():
         #    result2[key] = list(value)
 
         # x("GHJ2", dict(result2))
         return result
 
-    def combineDicts2(self, a: OrderedDict, b: OrderedDict) -> OrderedDict:
-        e: OrderedDict = OrderedDict()
-
-        for key, value in a.items():
-            try:
-                e[key] |= value
-            except KeyError:
-                e[key] = set()
-
-        for key, value in b.items():
-            try:
-                e[key] |= value
-            except KeyError:
-                e[key] = set()
-
-        for key, value in e.items():
-            newValue = set()
-            for v in value:
-                newValue |= {tuple(v)}
-            e[key] = newValue
-
-        return e
-
-    def combineDicts(self, a: defaultdict, b: defaultdict) -> defaultdict:
-        e: defaultdict = defaultdict(set)
+    def combineDicts(
+        self, a: DefaultOrderedDict, b: DefaultOrderedDict
+    ) -> DefaultOrderedDict:
+        e: DefaultOrderedDict = DefaultOrderedDict(OrderedSet)
 
         for key, value in a.items():
             e[key] |= value
@@ -765,7 +747,7 @@ class Concat:
             e[key] |= value
 
         for key, value in e.items():
-            newValue = set()
+            newValue = OrderedSet()
             for v in value:
                 newValue |= {tuple(v)}
             e[key] = newValue
@@ -1382,14 +1364,22 @@ class Concat:
 
             self.gebrRatAllCombis = self.findAllBruecheAndTheirCombinations()
             # print(str(self.gebrRatAllCombis))
-            kombis2: dict = {"mul": OrderedDict(), "div": OrderedDict()}
-            kombis1 = {"stern": deepcopy(kombis2), "gleichf": deepcopy(kombis2)}
-            alleFractionErgebnisse2: dict = {
-                "UniUni": deepcopy(kombis1),
-                "UniGal": deepcopy(kombis1),
-                "GalUni": deepcopy(kombis1),
-                "GalGal": deepcopy(kombis1),
-            }
+            kombis2: OrderedDict = OrderedDict(
+                {"mul": OrderedDict(), "div": OrderedDict()}
+            )
+            kombis1: OrderedDict = OrderedDict(
+                {"stern": deepcopy(kombis2), "gleichf": deepcopy(kombis2)}
+            )
+            alleFractionErgebnisse2: OrderedDict = OrderedDict(
+                {
+                    "UniUni": deepcopy(kombis1),
+                    "UniGal": deepcopy(kombis1),
+                    "GalUni": deepcopy(kombis1),
+                    "GalGal": deepcopy(kombis1),
+                }
+            )
+            # print(str(alleFractionErgebnisse2))
+            # print(str(self.gebrRatAllCombis))
 
             for KeyGalUniUniGal, ValueSternOrGleichf in self.gebrRatAllCombis.items():
                 for KeySternOrGleichf, ValueMulOrDiv in ValueSternOrGleichf.items():
@@ -1398,7 +1388,7 @@ class Concat:
                         alleFractionErgebnisse2[KeyGalUniUniGal][KeySternOrGleichf][
                             KeyMulOrDiv
                         ] = (
-                            self.combineDicts2(
+                            self.combineDicts(
                                 self.convertSetOfPaarenToDictOfNumToPaareMul(
                                     Couples,
                                     True if KeySternOrGleichf == "gleichf" else False,
@@ -1414,7 +1404,7 @@ class Concat:
                                 ),
                             )
                             if KeyMulOrDiv == "mul"
-                            else self.combineDicts2(
+                            else self.combineDicts(
                                 self.convertSetOfPaarenToDictOfNumToPaareDiv(
                                     Couples,
                                     True if KeySternOrGleichf == "gleichf" else False,
@@ -1422,7 +1412,40 @@ class Concat:
                                 OrderedDict(),
                             )
                         )
+                        # if KeyMulOrDiv == "mul":
+                        # print(
+                        # str(
+                        # self.combineDicts(
+                        # self.convertSetOfPaarenToDictOfNumToPaareMul(
+                        # Couples,
+                        # True
+                        # if KeySternOrGleichf == "gleichf"
+                        # else False,
+                        # ),
+                        # self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
+                        # self.BruecheUni
+                        # if KeyGalUniUniGal[:3] == "Uni"
+                        # else self.BruecheGal,
+                        # self.BruecheUni
+                        # if KeyGalUniUniGal[3:] == "Uni"
+                        # else self.BruecheGal,
+                        # True
+                        # if KeySternOrGleichf == "gleichf"
+                        # else False,
+                        # ),
+                        # )
+                        # )
+                        # )
+                    # # print(
+                    # "||"
+                    # + str(
+                    # alleFractionErgebnisse2[KeyGalUniUniGal][
+                    # KeySternOrGleichf
+                    # ][KeyMulOrDiv]
+                    # )
+                    # )
 
+            """Wegen pypy3 == python3"""
             """
             for key1, value1 in alleFractionErgebnisse2.items():
                 for key2, value2 in value1.items():
@@ -1430,7 +1453,9 @@ class Concat:
                         for key4, value4 in value3.items():
                             value4 = list(value4)
                             value4 = sort(value4)
-                            print("|" + str(value4))
+                            # value4.sort()
+                            # print("|" + str(value4))
+                            # print("|" + str(set(value4) == set(value4b)))
             """
 
             # ALXP HIER NOCH NICHT FERTIG
@@ -2248,7 +2273,7 @@ class Concat:
         ]
 
     def getAllBrueche(self, gebrUnivTable4metaKonkret):
-        menge = set()
+        menge = OrderedSet()
         for i, a in enumerate(gebrUnivTable4metaKonkret[1:]):
             for k, b in enumerate(a[1:]):
                 b = b.strip()
@@ -2277,7 +2302,7 @@ class Concat:
     def findAllBruecheAndTheirCombinations(self):
         self.readOneCSVAndReturn(2)
         self.readOneCSVAndReturn(3)
-        kombis2 = OrderedDict({"mul": set(), "div": set()})
+        kombis2 = OrderedDict({"mul": OrderedSet(), "div": OrderedSet()})
         kombis1 = OrderedDict(
             {"stern": deepcopy(kombis2), "gleichf": deepcopy(kombis2)}
         )
@@ -2302,8 +2327,8 @@ class Concat:
             brueche1.sort()
             brueche2.sort()
             # print(str(kombis2))
-            # print(str(brueche1x))
-            # print(str(brueche2x))
+            # print(str(brueche1))
+            # print(str(brueche2))
             for BruecheUn in brueche1:
                 for BruecheUn2 in brueche2:
                     if BruecheUn != BruecheUn2:
