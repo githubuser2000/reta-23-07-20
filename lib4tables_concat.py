@@ -1487,7 +1487,7 @@ class Concat:
                     try:
                         koord2tag[(drei[0], drei[1], drei[3])] |= {drei[2]}
                     except KeyError:
-                        koord2tag[(drei[0], drei[1], drei[3])] = {drei[2]}
+                        koord2tag[(drei[0], drei[1], drei[3])] = OrderedSet({drei[2]})
                 for befehl in generatedBefehle:
                     # x("BSA", [befehl, name])
                     if (
@@ -1500,7 +1500,9 @@ class Concat:
                                     befehl
                                 }
                             except KeyError:
-                                koord2ParameterA[(drei[0], drei[1], drei[3])] = {befehl}
+                                koord2ParameterA[
+                                    (drei[0], drei[1], drei[3])
+                                ] = OrderedSet({befehl})
 
             for key, value in koord2tag.items():
                 assert len(value) == 1
@@ -1626,6 +1628,7 @@ class Concat:
                                         into += ["[list]"]
                                     if brr == 0:
                                         multipless = multiples(i)
+                                        multipless.sort()
                                         for k, multi in enumerate(multipless):
                                             if (
                                                 k > 0
