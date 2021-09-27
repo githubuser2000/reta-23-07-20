@@ -11,7 +11,8 @@ from itertools import zip_longest
 from orderedset import OrderedSet
 
 from center import (DefaultOrderedDict, Multiplikationen, alxp, cliout,
-                    getTextWrapThings, infoLog, output, re, sort, x)
+                    getTextWrapThings, infoLog, output, re, sort,
+                    unique_everseen, x)
 from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz,
                         couldBePrimeNumberPrimzahlkreuz_fuer_aussen,
@@ -1446,17 +1447,18 @@ class Concat:
                     # )
 
             """Wegen pypy3 == python3"""
-            """
             for key1, value1 in alleFractionErgebnisse2.items():
                 for key2, value2 in value1.items():
                     for key3, value3 in value2.items():
                         for key4, value4 in value3.items():
-                            value4 = list(value4)
-                            value4 = sort(value4)
+                            alleFractionErgebnisse2[key1][key2][key3][key4] = tuple(
+                                unique_everseen(value4, key=frozenset)
+                            )
+                            # value4 = list(value4)
+                            # value4 = sort(value4)
                             # value4.sort()
                             # print("|" + str(value4))
                             # print("|" + str(set(value4) == set(value4b)))
-            """
 
             # ALXP HIER NOCH NICHT FERTIG
             # print(str(alleFractionErgebnisse2))
@@ -2530,13 +2532,13 @@ class Concat:
             None: "Richtung-Richtung",
         }
         tags = [
-            frozenset({ST.sternPolygon, ST.universum}),
-            frozenset({ST.sternPolygon, ST.galaxie}),
-            frozenset({ST.gleichfoermigesPolygon, ST.galaxie}),
-            frozenset({ST.gleichfoermigesPolygon, ST.universum}),
-            frozenset({ST.sternPolygon, ST.universum}),
-            frozenset({ST.sternPolygon, ST.universum}),
-            frozenset({ST.sternPolygon, ST.universum}),
+            (ST.sternPolygon, ST.universum),
+            (ST.sternPolygon, ST.galaxie),
+            (ST.gleichfoermigesPolygon, ST.galaxie),
+            (ST.gleichfoermigesPolygon, ST.universum),
+            (ST.sternPolygon, ST.universum),
+            (ST.sternPolygon, ST.universum),
+            (ST.sternPolygon, ST.universum),
         ]
 
         for r, kk in enumerate(extraSpalten):
@@ -2549,7 +2551,7 @@ class Concat:
         for kkk, kk in enumerate(extraSpalten):
             self.primAmounts = 0
             self.oldPrimAmounts = 0
-            self.lastPrimAnswers: dict = {}
+            self.lastPrimAnswers: OrderedDict = OrderedDict()
             for i, cols in enumerate(relitable[: self.tables.lastLineNumber + 1]):
                 into = (
                     [""]
