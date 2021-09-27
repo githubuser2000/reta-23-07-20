@@ -26,7 +26,7 @@ from lib4tables_Enum import ST
 class Concat:
     def __init__(self, tables):
         self.tables = tables
-        self.ones = set()
+        self.ones = OrderedSet()
         self.CSVsAlreadRead = {}
         self.CSVsSame = {1: (1,), 2: (2, 4), 3: (3, 5), 4: (2, 4), 5: (3, 5)}
         self.BruecheUni = set()
@@ -2520,17 +2520,23 @@ class Concat:
 
         self.relitable = relitable
         # extraSpalten = (5, 10, 42, 131, 138)
-        extraSpalten = self.ones
+        extraSpalten = deepcopy(self.ones)
+        extraSpalten = sorted(
+            extraSpalten,
+            key=lambda x: -1 * float("inf") if x is None else x,
+        )
         # x("OnEs", self.ones)
-        spaltenNamen = {
-            5: "Transzendentalien, Strukturalien, Universum n",
-            10: "Galaxie n",
-            42: "Galaxie 1/n",
-            131: "Transzendentalien, Strukturalien, Universum 1/n",
-            138: "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n",
-            202: "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n",
-            None: "Richtung-Richtung",
-        }
+        spaltenNamen = OrderedDict(
+            {
+                5: "Transzendentalien, Strukturalien, Universum n",
+                10: "Galaxie n",
+                42: "Galaxie 1/n",
+                131: "Transzendentalien, Strukturalien, Universum 1/n",
+                138: "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n",
+                202: "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n",
+                None: "Richtung-Richtung",
+            }
+        )
         tags = [
             (ST.sternPolygon, ST.universum),
             (ST.sternPolygon, ST.galaxie),
