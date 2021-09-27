@@ -3170,7 +3170,7 @@ class Program:
         for a in self.onlyGenerated:
             if len(a) == 2:
                 couplesX += [a]
-        print("||" + str(self.onlyGenerated))
+        # print("||" + str(self.onlyGenerated))
 
         (
             self.relitable,
