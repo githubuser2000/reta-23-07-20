@@ -27,18 +27,20 @@ class Concat:
     def __init__(self, tables):
         self.tables = tables
         self.ones = OrderedSet()
-        self.CSVsAlreadRead = {}
-        self.CSVsSame = {1: (1,), 2: (2, 4), 3: (3, 5), 4: (2, 4), 5: (3, 5)}
-        self.BruecheUni = set()
-        self.BruecheGal = set()
-        self.gebrRatMulSternUni = set()
-        self.gebrRatDivSternUni = set()
-        self.gebrRatMulGleichfUni = set()
-        self.gebrRatDivGleichfUni = set()
-        self.gebrRatMulSternGal = set()
-        self.gebrRatDivSternGal = set()
-        self.gebrRatMulGleichfGal = set()
-        self.gebrRatDivGleichfGal = set()
+        self.CSVsAlreadRead = OrderedDict()
+        self.CSVsSame = OrderedDict(
+            {1: (1,), 2: (2, 4), 3: (3, 5), 4: (2, 4), 5: (3, 5)}
+        )
+        self.BruecheUni = OrderedSet()
+        self.BruecheGal = OrderedSet()
+        self.gebrRatMulSternUni = OrderedSet()
+        self.gebrRatDivSternUni = OrderedSet()
+        self.gebrRatMulGleichfUni = OrderedSet()
+        self.gebrRatDivGleichfUni = OrderedSet()
+        self.gebrRatMulSternGal = OrderedSet()
+        self.gebrRatDivSternGal = OrderedSet()
+        self.gebrRatMulGleichfGal = OrderedSet()
+        self.gebrRatDivGleichfGal = OrderedSet()
 
     @property
     def gebrUnivSet(self):
@@ -481,14 +483,18 @@ class Concat:
                     dahinter: liste von der Sache
                 """
                 try:
-                    vorkommenVielfacher_B[i][distanceFromLine] = {
-                        "i_origS": Orginal_i_mehrere
-                        + vorkommenVielfacher_B[i][distanceFromLine]["i_origS"],
-                        "modalS": modalOperatorEnEn
-                        + vorkommenVielfacher_B[i][distanceFromLine]["modalS"],
-                        "vervielfachter": vervielFachter
-                        + vorkommenVielfacher_B[i][distanceFromLine]["vervielfachter"],
-                    }
+                    vorkommenVielfacher_B[i][distanceFromLine] = OrderedDict(
+                        {
+                            "i_origS": Orginal_i_mehrere
+                            + vorkommenVielfacher_B[i][distanceFromLine]["i_origS"],
+                            "modalS": modalOperatorEnEn
+                            + vorkommenVielfacher_B[i][distanceFromLine]["modalS"],
+                            "vervielfachter": vervielFachter
+                            + vorkommenVielfacher_B[i][distanceFromLine][
+                                "vervielfachter"
+                            ],
+                        }
+                    )
                     # x("DGS ", vorkommenVielfacher_B[i][distanceFromLine])
 
                 except (IndexError, KeyError):
@@ -502,7 +508,7 @@ class Concat:
                             vorkommenVielfacher_B,
                         )
                     except (IndexError, KeyError):
-                        vorkommenVielfacher_B[i] = {}
+                        vorkommenVielfacher_B[i] = OrderedDict()
                         storeModalNvervielfachter(
                             Orginal_i_mehrere,
                             distanceFromLine,
@@ -544,7 +550,7 @@ class Concat:
         x("DFE2", conceptsRowsSetOfTuple2)
         for o, concept in enumerate(conceptsRowsSetOfTuple2):
             into: dict = {}
-            einMalVorkommen = set()
+            einMalVorkommen = OrderedSet()
             for i, cols in enumerate(reliTableCopy):
                 into[i] = [""]
                 if i == 0:
@@ -552,7 +558,7 @@ class Concat:
                 elif cols[concept[0]].strip() != "":
                     einMalVorkommen |= {i}
 
-            vorkommenVielfacher: dict = {}
+            vorkommenVielfacher: OrderedDict = OrderedDict()
             einMalVorkommen = tuple(einMalVorkommen)
 
             for (
@@ -573,7 +579,7 @@ class Concat:
                     )
 
             # #x("d5g", vorkommenVielfacher)
-            vorkommenVielfacher_B: dict = {}
+            vorkommenVielfacher_B: OrderedDict = OrderedDict()
             for i, zeileninhalte in enumerate(
                 reliTableCopy[1 : self.tables.lastLineNumber + 1], 1
             ):
@@ -774,11 +780,11 @@ class Concat:
             keinePrimzahl1, keinePrimzahl2 = True, True
             list1, list2 = [], []
             weiter1a, weiter1b, weiter2a, weiter2b = 0, 0, 0, 0
-            proPro, contraContra = {}, {}
+            proPro, contraContra = OrderedDict(), OrderedDict()
             dreli = deepcopy(self.relitable)
             headline: str = "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
-            into_Str1: dict = {}
-            into_Str2: dict = {}
+            into_Str1: OrderedDict = OrderedDict()
+            into_Str2: OrderedDict = OrderedDict()
 
             for num, cols in zip_longest(range(0, 1025), dreli):
                 if num == 0:
@@ -848,7 +854,7 @@ class Concat:
                     elif couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num):
                         keinePrimzahl2 = True
 
-                    menge: set = set()
+                    menge: OrderedSet = OrderedSet()
                     for couple in primMultiple(num):
                         couple = list(couple)
                         couple.sort()
@@ -908,8 +914,8 @@ class Concat:
                 if len(text) > 0:
                     into += [text]
 
-                into1 = list(set(into1))
-                into2 = list(set(into2))
+                into1 = list(OrderedSet(into1))
+                into2 = list(OrderedSet(into2))
                 into_Str1[num] = (
                     " Darin kann sich die ",
                     str(num),
@@ -1013,18 +1019,18 @@ class Concat:
                 + self.tables.SpaltenVanillaAmount
             ] = kette
 
-            reverseContra: dict = {}
+            reverseContra: OrderedDict = OrderedDict()
             for key, value in contraContra.items():
                 try:
                     reverseContra[value] |= {key}
                 except KeyError:
-                    reverseContra[value] = {key}
-            reversePro: dict = {}
+                    reverseContra[value] = OrderedSet({key})
+            reversePro: OrderedDict = OrderedDict()
             for key, value in proPro.items():
                 try:
                     reversePro[value] |= {key}
                 except KeyError:
-                    reversePro[value] = {key}
+                    reversePro[value] = OrderedSet({key})
 
             pro2: list
             contra2: list
@@ -1356,12 +1362,14 @@ class Concat:
             }
             uni_ = (5, 131)
             gal_ = (10, 42)
-            GalOrUni_nOrInvers = {
-                0: (gal_, gal_),
-                1: (gal_, uni_),
-                2: (uni_, gal_),
-                3: (uni_, uni_),
-            }
+            GalOrUni_nOrInvers = OrderedDict(
+                {
+                    0: (gal_, gal_),
+                    1: (gal_, uni_),
+                    2: (uni_, gal_),
+                    3: (uni_, uni_),
+                }
+            )
 
             self.gebrRatAllCombis = self.findAllBruecheAndTheirCombinations()
             # print(str(self.gebrRatAllCombis))
@@ -2338,7 +2346,7 @@ class Concat:
                 for BruecheUn2 in brueche2:
                     if BruecheUn != BruecheUn2:
 
-                        couple = {(BruecheUn, BruecheUn2)}
+                        couple = OrderedSet({(BruecheUn, BruecheUn2)})
                         if (
                             round(BruecheUn * BruecheUn2)
                             == round(BruecheUn * BruecheUn2 * 1000) / 1000
@@ -2676,7 +2684,7 @@ class Concat:
             return t
 
         self.relitable = relitable
-        concatCSVspalten: set = set()
+        concatCSVspalten: set = OrderedSet()
         if len(concatTableSelection) > 0 and concatTable in range(1, 6):
             tableToAdd = self.readOneCSVAndReturn(concatTable)
             tableToAdd = self.readConcatCsv_ChangeTableToAddToTable(
