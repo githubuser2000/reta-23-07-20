@@ -165,8 +165,8 @@ class Tables:
         self.nummeriere = True
         self.spaltegGestirn = False
         self.breitenn: list = []
-        self.puniverseprims: set = set()  # welche Spalten von "primenumbers.csv"
-        self.gebrUniv: set = set()
+        self.puniverseprims: set = OrderedSet()  # welche Spalten von "primenumbers.csv"
+        self.gebrUniv: set = OrderedSet()
         self.getOut.primUniversePrimsSet = self.puniverseprims
         self.getConcat.primUniversePrimsSet = self.puniverseprims
         self.getConcat.gebrUnivSet = self.gebrUniv
@@ -175,9 +175,9 @@ class Tables:
         self.getPrepare.religionNumbers = self.religionNumbers
         self.getCombis.religionNumbers = self.religionNumbers
         self.getPrepare.ifprimmultis = False
-        self.getCombis.rowsOfcombi = set()
-        # self.getPrepare.rowsAsNumbers = set()
-        self.__generRows__: set = set()
+        self.getCombis.rowsOfcombi = OrderedSet()
+        # self.getPrepare.rowsAsNumbers = OrderedSet()
+        self.__generRows__: set = OrderedSet()
 
     class Output:
         def __init__(self, tables):
@@ -1064,9 +1064,9 @@ class Tables:
                                         kombiLineNumber + 1
                                     }
                                 except KeyError:
-                                    ChosenKombiLines[kombiNumber] = {
-                                        kombiLineNumber + 1
-                                    }
+                                    ChosenKombiLines[kombiNumber] = OrderedSet(
+                                        {kombiLineNumber + 1}
+                                    )
             # #x("AAA4", self.ChosenKombiLines)
             return ChosenKombiLines
 
