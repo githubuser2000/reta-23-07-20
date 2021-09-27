@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import platform
 import re
-from collections import namedtuple
+from collections import OrderedDict, namedtuple
 from itertools import zip_longest
 from typing import Optional
 
@@ -251,7 +251,7 @@ class Program:
                                             + str(
                                                 ", --".join(
                                                     tuple(
-                                                        set(
+                                                        OrderedSet(
                                                             key[0]
                                                             for key in self.paraDict.keys()
                                                         )
@@ -263,7 +263,7 @@ class Program:
                                             + str(
                                                 ",".join(
                                                     tuple(
-                                                        set(
+                                                        OrderedSet(
                                                             key[1]
                                                             for key in self.paraDict.keys()
                                                         )
@@ -295,7 +295,9 @@ class Program:
                                 + str(
                                     ", --".join(
                                         tuple(
-                                            set(key[0] for key in self.paraDict.keys())
+                                            OrderedSet(
+                                                key[0] for key in self.paraDict.keys()
+                                            )
                                         )
                                     )
                                 )
@@ -673,7 +675,7 @@ class Program:
             (
                 str(num)
                 for num in tuple(
-                    set(
+                    OrderedSet(
                         (
                             num if primCreativity(num) == 1 else None
                             for num in range(2, 32)
@@ -2060,24 +2062,24 @@ class Program:
             ),
             (
                 Program.ParametersMain.gebrochengalaxie,
-                set([str(a) for a in range(2, 100)]),
+                OrderedSet([str(a) for a in range(2, 100)]),
                 OrderedSet(),
                 OrderedSet(),
                 OrderedSet(),
                 OrderedSet(),
                 OrderedSet(),
                 OrderedSet(),
-                set([str(a) for a in range(2, 100)]),
+                OrderedSet([str(a) for a in range(2, 100)]),
             ),
             (
                 Program.ParametersMain.gebrochenuniversum,
-                set([str(a) for a in range(2, 100)]),
+                OrderedSet([str(a) for a in range(2, 100)]),
                 OrderedSet(),
                 OrderedSet(),
                 OrderedSet(),
                 OrderedSet(),
                 OrderedSet(),
-                set([str(a) for a in range(2, 100)]),
+                OrderedSet([str(a) for a in range(2, 100)]),
             ),
             (Program.ParametersMain.symbole, (), {36, 37}),
             # (
@@ -2474,139 +2476,143 @@ class Program:
         }
         """
 
-        Program.kombiParaNdataMatrix = {
-            1: (
-                "Lebewesen",
-                "tiere",
-                "tier",
-                "lebewesen",
-            ),
-            2: ("Berufe", "berufe", "beruf"),
-            3: (
-                "Kreativität_und_Intelligenz",
-                "kreativität",
-                "intelligenz",
-                "kreativitaet",
-            ),
-            4: (
-                "Liebe",
-                "liebe",
-            ),
-            7: (
-                "Männer",
-                "männer",
-                "maenner",
-                "frauen",
-            ),
-            8: (
-                "Persönlichkeit_evolutionär_erwerben",
-                "evolution",
-                "erwerben",
-                "persoenlichkeit",
-                "persönlichkeit",
-            ),
-            9: (
-                "Religion",
-                "religion",
-                "religionen",
-            ),
-            10: ("Motive_Ziele", "motivation", "motive", "ziele", "ziel", "motive"),
-            12: (
-                "Emotionen",
-                "emotionen",
-                "gefuehle",
-                "gefühle",
-                "emotion",
-                "gefühl",
-                "gefühle",
-            ),
-            13: ("Personen", "personen", "berühmtheiten", "beruehmtheiten"),
-            16: (
-                "Wirtschaftssysteme",
-                "wirtschaftssystem",
-                "wirtschaftssysteme",
-                "kombinierteswirtschaftssystem",
-                "kombiniertewirtschaftssysteme",
-            ),
-        }
+        Program.kombiParaNdataMatrix = OrderedDict(
+            {
+                1: (
+                    "Lebewesen",
+                    "tiere",
+                    "tier",
+                    "lebewesen",
+                ),
+                2: ("Berufe", "berufe", "beruf"),
+                3: (
+                    "Kreativität_und_Intelligenz",
+                    "kreativität",
+                    "intelligenz",
+                    "kreativitaet",
+                ),
+                4: (
+                    "Liebe",
+                    "liebe",
+                ),
+                7: (
+                    "Männer",
+                    "männer",
+                    "maenner",
+                    "frauen",
+                ),
+                8: (
+                    "Persönlichkeit_evolutionär_erwerben",
+                    "evolution",
+                    "erwerben",
+                    "persoenlichkeit",
+                    "persönlichkeit",
+                ),
+                9: (
+                    "Religion",
+                    "religion",
+                    "religionen",
+                ),
+                10: ("Motive_Ziele", "motivation", "motive", "ziele", "ziel", "motive"),
+                12: (
+                    "Emotionen",
+                    "emotionen",
+                    "gefuehle",
+                    "gefühle",
+                    "emotion",
+                    "gefühl",
+                    "gefühle",
+                ),
+                13: ("Personen", "personen", "berühmtheiten", "beruehmtheiten"),
+                16: (
+                    "Wirtschaftssysteme",
+                    "wirtschaftssystem",
+                    "wirtschaftssysteme",
+                    "kombinierteswirtschaftssystem",
+                    "kombiniertewirtschaftssysteme",
+                ),
+            }
+        )
 
-        Program.kombiParaNdataMatrix2 = {
-            1: (
-                "Lebewesen",
-                "tiere",
-                "tier",
-                "lebewesen",
-            ),
-            2: ("Berufe", "berufe", "beruf"),
-            # 3: (
-            #    "Kreativität_und_Intelligenz",
-            #    "kreativität",
-            #    "intelligenz",
-            #    "kreativitaet",
-            # ),
-            # 4: (
-            #    "Liebe",
-            #    "liebe",
-            # ),
-            5: (
-                "Transzendentalien_Strukturalien",
-                "transzendenz",
-                "transzendentalien",
-                "strukturalien",
-                "alien",
-            ),
-            6: ("Primzahlkreuz", "leibnitz", "primzahlkreuz"),
-            # 7: (
-            #    "Männer",
-            #    "männer",
-            #    "maenner",
-            #    "frauen",
-            # ),
-            # 8: (
-            #    "Persönlichkeit_evolutionär_erwerben",
-            #    "evolution",
-            #    "erwerben",
-            #    "persoenlichkeit",
-            #    "persönlichkeit",
-            # ),
-            # 9: (
-            #    "Religion",
-            #    "religion",
-            #    "religionen",
-            # ),
-            # 10: ("Motive_Ziele", "motivation", "motive", "ziele", "ziel", "motive"),
-            11: ("analytische_Ontologie", "analytischeontologie", "ontologie"),
-            # 12: (
-            #    "Emotionen",
-            #    "emotionen",
-            #    "gefuehle",
-            #    "gefühle",
-            #    "emotion",
-            #    "gefühl",
-            #    "gefühle",
-            # ),
-            # 13: ("Personen", "personen", "berühmtheiten", "beruehmtheiten"),
-            14: (
-                "Mechanismen_der_Zuechtung",
-                "mechanismen",
-                "wesen",
-                "zuechten",
-                "züchten",
-            ),
-            15: (
-                "Gegentranszendentalien",
-                "gegentranszendentalien",
-                "gegenstrukturalien",
-            ),
-            # 16: (
-            #    "Wirtschaftssysteme",
-            #    "wirtschaftssystem",
-            #    "wirtschaftssysteme",
-            #    "kombinierteswirtschaftssystem",
-            #    "kombiniertewirtschaftssysteme",
-            # ),
-            17: ("Maschinen", "maschinen", "geräte", "geraete"),
-        }
+        Program.kombiParaNdataMatrix2 = OrderedDict(
+            {
+                1: (
+                    "Lebewesen",
+                    "tiere",
+                    "tier",
+                    "lebewesen",
+                ),
+                2: ("Berufe", "berufe", "beruf"),
+                # 3: (
+                #    "Kreativität_und_Intelligenz",
+                #    "kreativität",
+                #    "intelligenz",
+                #    "kreativitaet",
+                # ),
+                # 4: (
+                #    "Liebe",
+                #    "liebe",
+                # ),
+                5: (
+                    "Transzendentalien_Strukturalien",
+                    "transzendenz",
+                    "transzendentalien",
+                    "strukturalien",
+                    "alien",
+                ),
+                6: ("Primzahlkreuz", "leibnitz", "primzahlkreuz"),
+                # 7: (
+                #    "Männer",
+                #    "männer",
+                #    "maenner",
+                #    "frauen",
+                # ),
+                # 8: (
+                #    "Persönlichkeit_evolutionär_erwerben",
+                #    "evolution",
+                #    "erwerben",
+                #    "persoenlichkeit",
+                #    "persönlichkeit",
+                # ),
+                # 9: (
+                #    "Religion",
+                #    "religion",
+                #    "religionen",
+                # ),
+                # 10: ("Motive_Ziele", "motivation", "motive", "ziele", "ziel", "motive"),
+                11: ("analytische_Ontologie", "analytischeontologie", "ontologie"),
+                # 12: (
+                #    "Emotionen",
+                #    "emotionen",
+                #    "gefuehle",
+                #    "gefühle",
+                #    "emotion",
+                #    "gefühl",
+                #    "gefühle",
+                # ),
+                # 13: ("Personen", "personen", "berühmtheiten", "beruehmtheiten"),
+                14: (
+                    "Mechanismen_der_Zuechtung",
+                    "mechanismen",
+                    "wesen",
+                    "zuechten",
+                    "züchten",
+                ),
+                15: (
+                    "Gegentranszendentalien",
+                    "gegentranszendentalien",
+                    "gegenstrukturalien",
+                ),
+                # 16: (
+                #    "Wirtschaftssysteme",
+                #    "wirtschaftssystem",
+                #    "wirtschaftssysteme",
+                #    "kombinierteswirtschaftssystem",
+                #    "kombiniertewirtschaftssysteme",
+                # ),
+                17: ("Maschinen", "maschinen", "geräte", "geraete"),
+            }
+        )
 
         self.kombiReverseDict: dict = {}
         for key, value in Program.kombiParaNdataMatrix.items():

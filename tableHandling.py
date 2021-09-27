@@ -4,11 +4,13 @@ import csv
 import io
 import os
 import sys
+from collections import OrderedDict
 from copy import copy, deepcopy
 from enum import Enum
 from typing import Iterable, Union
 
 import bbcode
+from orderedset import OrderedSet
 
 from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
                     output, re, x)
@@ -148,9 +150,9 @@ class Tables:
 
     def __init__(self, alternativeShellRowsAmount):
         global originalLinesRange, shellRowsAmount
-        self.rowNumDisplay2rowNumOrig = {}
-        self.generatedSpaltenParameter = {}
-        self.generatedSpaltenParameter_Tags = {}
+        self.rowNumDisplay2rowNumOrig = OrderedDict()
+        self.generatedSpaltenParameter = OrderedDict()
+        self.generatedSpaltenParameter_Tags = OrderedDict()
         if alternativeShellRowsAmount is not None:
             shellRowsAmount = alternativeShellRowsAmount
         self.getPrepare = Prepare(self, originalLinesRange, shellRowsAmount)
@@ -306,7 +308,7 @@ class Tables:
                 @rtype: dict[int,int]
                 @return: Zellbreiten
                 """
-                maxCellTextLen: dict = {}
+                maxCellTextLen: dict = OrderedDict()
                 # for k in finallyDisplayLines: # n Linien einer Zelle, d.h. 1 EL = n Zellen
                 for k, (f, r) in enumerate(
                     zip(newTable, finallyDisplayLines)
@@ -739,7 +741,7 @@ class Tables:
                 key = zeilennummer der kombi csv
                 value = alle n und m von n/m oder n
                 """
-                tables = {}
+                tables = OrderedDict()
                 for kombiLineNumber in value:
                     """
                     alle kombitabellenzeilennummern hier durchiterieren
@@ -751,7 +753,7 @@ class Tables:
                     """
 
                     into = self.tables.tableReducedInLinesByTypeSet(
-                        newTable_kombi_1, {kombiLineNumber}
+                        newTable_kombi_1, OrderedSet({kombiLineNumber})
                     )
                     """into = self.tabless.tableReducedInLinesByTypeSet(
                         animalsProfessionsTable, {kombiLineNumber}
@@ -1025,10 +1027,10 @@ class Tables:
                 value = kombitabellenzeilennummer
             """
             # kombitypes = {"displaying": False, "or": False, "and": False}
-            # self.ChosenKombiLines: dict = {}
+            # self.ChosenKombiLines: dict = OrderedDict()
             # #x("AAA6", displayingZeilen)
 
-            ChosenKombiLines: dict = {}
+            ChosenKombiLines: dict = OrderedDict()
             for condition in paramLines:
                 if condition in ("ka", "ka2"):
                     # kombitypes["displaying"] = True
@@ -1102,7 +1104,7 @@ class Tables:
             self.sumOfAllCombiRowsAmount += len(rowsOfcombi)
             self.relitable = relitable
             headingsAmount = len(self.relitable[0])
-            self.maintable2subtable_Relation: tuple = ({}, {})
+            self.maintable2subtable_Relation: tuple = (OrderedDict(), OrderedDict())
             if len(rowsOfcombi) > 0:
                 with open(place, mode="r", encoding="utf-8") as csv_file:
                     self.kombiTable: list = []
