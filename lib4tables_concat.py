@@ -1868,6 +1868,7 @@ class Concat:
 
         darin if bedingungen: ob spalte strukturalie oder reziproke strukturalie
         """
+        # print(str(metavariable))
 
         self.relitable = relitable
         # rowsAsNumbers |= {
@@ -1961,26 +1962,28 @@ class Concat:
 
             return newCol, moreAndLess
 
-        metaOrWhat = {
-            2: (("Meta-Thema: ", "Konkretes: "), ("Meta-", "Konkret-")),
-            3: (("Theorie-Thema: ", "Praxis: "), ("Theorie-", "Praxis-")),
-            4: (
-                ("Management-Thema: ", "Veränderungs-Thema: "),
-                ("Management-", "Veränderung-"),
-            ),
-            5: (
-                ("Ganzheitlich-Thema: ", "darüber-hinausgehend-: "),
-                ("ganzheitlich-", "darüber-hinausgehend-"),
-            ),
-            6: (
-                ("Unternehmung: ", "Wert-Thema: "),
-                ("unternehmend-", "Wert-"),
-            ),
-            7: (
-                ("Beherrschung: ", "Richtung-Thema: "),
-                ("beherrschend-", "Richtung-"),
-            ),
-        }
+        metaOrWhat = OrderedDict(
+            {
+                2: (("Meta-Thema: ", "Konkretes: "), ("Meta-", "Konkret-")),
+                3: (("Theorie-Thema: ", "Praxis: "), ("Theorie-", "Praxis-")),
+                4: (
+                    ("Management-Thema: ", "Veränderungs-Thema: "),
+                    ("Management-", "Veränderung-"),
+                ),
+                5: (
+                    ("Ganzheitlich-Thema: ", "darüber-hinausgehend-: "),
+                    ("ganzheitlich-", "darüber-hinausgehend-"),
+                ),
+                6: (
+                    ("Unternehmung: ", "Wert-Thema: "),
+                    ("unternehmend-", "Wert-"),
+                ),
+                7: (
+                    ("Beherrschung: ", "Richtung-Thema: "),
+                    ("beherrschend-", "Richtung-"),
+                ),
+            }
+        )
 
         def makeVorwort(
             wiederholungen: int, vorworte2: tuple, less1ormore2: int
@@ -2072,7 +2075,7 @@ class Concat:
         #    moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
         #    neue2KoordNeue2Vorwoerter: list = []
         for i, row in enumerate(relitable[2 : self.tables.lastLineNumber + 1], 2):
-            self.gebrRatEtwaSchonMalDabeiGewesen = set()
+            self.gebrRatEtwaSchonMalDabeiGewesen = OrderedSet()
             moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
             neue2KoordNeue2Vorwoerter: list = []
             # alxp("new while")
