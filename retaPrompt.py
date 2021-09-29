@@ -131,21 +131,27 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 int(shellRowsAmountStr),
             )
         if len({"prim24", "primfaktorzerlegungModulo24"} & set(stext)) > 0:
-            try:
-                process = subprocess.Popen(
-                    [os.path.dirname(__file__) + os.sep + "prim24", *(c.split(","))]
-                )
-                process.wait()
-            except:
-                pass
+            c2 = c.split(",")
+            if [x.isdecimal() for x in c2] == [True] * len(c2):
+                try:
+                    process = subprocess.Popen(
+                        [os.path.dirname(__file__) + os.sep + "prim24", *c2]
+                    )
+                    process.wait()
+                except:
+                    pass
+
         if len({"prim", "primfaktorzerlegung"} & set(stext)) > 0:
-            try:
-                process = subprocess.Popen(
-                    [os.path.dirname(__file__) + os.sep + "prim", *(c.split(","))]
-                )
-                process.wait()
-            except:
-                pass
+            c2 = c.split(",")
+            if [x.isdecimal() for x in c2] == [True] * len(c2):
+                try:
+                    process = subprocess.Popen(
+                        [os.path.dirname(__file__) + os.sep + "prim", *c2]
+                    )
+                    process.wait()
+                except:
+                    pass
+
         if len({"multis"} & set(stext)) > 0:
             import reta
 
@@ -161,20 +167,23 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 kette,
                 int(shellRowsAmountStr),
             )
-            try:
-                process = subprocess.Popen(
-                    [os.path.dirname(__file__) + os.sep + "multis", *(c.split(","))]
-                )
-                process.wait()
-            except:
-                pass
-            try:
-                process = subprocess.Popen(
-                    [os.path.dirname(__file__) + os.sep + "prim", *(c.split(","))]
-                )
-                process.wait()
-            except:
-                pass
+            c2 = c.split(",")
+            if [x.isdecimal() for x in c2] == [True] * len(c2):
+                try:
+                    process = subprocess.Popen(
+                        [os.path.dirname(__file__) + os.sep + "multis", *c2]
+                    )
+                    process.wait()
+                except:
+                    pass
+                try:
+                    process = subprocess.Popen(
+                        [os.path.dirname(__file__) + os.sep + "prim", *c2]
+                    )
+                    process.wait()
+                except:
+                    pass
+
         if len({"procontra"} & set(stext)) > 0:
             import reta
 
@@ -191,13 +200,16 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 int(shellRowsAmountStr),
             )
         if len({"modulo"} & set(stext)) > 0:
-            try:
-                process = subprocess.Popen(
-                    [os.path.dirname(__file__) + os.sep + "modulo", *(c.split(","))]
-                )
-                process.wait()
-            except:
-                pass
+            c2 = c.split(",")
+            if [x.isdecimal() for x in c2] == [True] * len(c2):
+                try:
+                    process = subprocess.Popen(
+                        [os.path.dirname(__file__) + os.sep + "modulo", *c2]
+                    )
+                    process.wait()
+                except:
+                    pass
+
         if len({"universum"} & set(stext)) > 0:
             import reta
 
