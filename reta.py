@@ -45,7 +45,6 @@ class Program:
         def resultingSpaltenFromTuple(
             tupl: tuple, neg, paraValue=None, befehlName=None
         ) -> tuple:
-            # x("SDH1", [befehlName in Program.ParametersMain.primvielfache, paraValue])
             for i, eineSpaltenArtmitSpaltenNummern in enumerate(tupl):
                 """
                 Die Variable self.tables.spalteGestirn braucht man gar nicht mehr !!!
@@ -54,14 +53,11 @@ class Program:
                     type(eineSpaltenArtmitSpaltenNummern) in [list, tuple]
                     and len(eineSpaltenArtmitSpaltenNummern) > 0
                 ):
-                    # alxp("1")
                     if type(eineSpaltenArtmitSpaltenNummern[0]) is bool:
-                        # alxp("2")
                         eineSpaltenArtmitSpaltenNummern = set(
                             eineSpaltenArtmitSpaltenNummern
                         )
                     elif type(eineSpaltenArtmitSpaltenNummern[0]) in [tuple, list]:
-                        # alxp("3")
                         eineSpaltenArtmitSpaltenNummern = set(
                             eineSpaltenArtmitSpaltenNummern[0]
                         )
@@ -75,23 +71,18 @@ class Program:
                     or befehlName in Program.ParametersMain.gebrochenuniversum[0]
                     or befehlName in Program.ParametersMain.gebrochengalaxie[0]
                 ):
-                    # alxp("4")
                     if befehlName == Program.ParametersMain.Multiplikationen[0]:
-                        # alxp("5")
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), 2)
                         ] |= Program.lambdaPrimGalax(paraValue)
                     elif befehlName in Program.ParametersMain.gebrochenuniversum[0]:
-                        # alxp("N6N")
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), 5)
                         ] |= Program.lambdaGebrUnivUndGalax(paraValue)
                     elif befehlName in Program.ParametersMain.gebrochengalaxie[0]:
-                        # alxp("N8N")
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), 6)
                         ] |= Program.lambdaGebrUnivUndGalax(paraValue)
-                        # alxp("N9N")
                     else:
                         print(befehlName)
                         raise ValueError
@@ -102,14 +93,11 @@ class Program:
                     self.spaltenArtenKey_SpaltennummernValue[(len(neg), 2)] |= {2}
                 else:
                     try:
-                        # alxp("N11N")
                         self.spaltenArtenKey_SpaltennummernValue[
                             (len(neg), i)
                         ] |= eineSpaltenArtmitSpaltenNummern
-                        # alxp("N12N")
                     except TypeError:
                         pass
-            # alxp("N10N")
             return self.spaltenArtenKey_SpaltennummernValue
 
         def spalten_removeDoublesNthenRemoveOneFromAnother():
@@ -211,7 +199,6 @@ class Program:
                                         oneOfThingsAfterEqSign,
                                         befehlName=cmd[:eq],
                                     )
-                                    # x("DFGH", self.spaltenArtenKey_SpaltennummernValue)
                                 except KeyError:
                                     nebenParameters: list = []
                                     nebenparameterWerte: list = []
@@ -340,8 +327,6 @@ class Program:
                                         neg,
                                         befehlName="kombinationen",
                                     )
-                                    # alxp("geht 2:")
-                                    # kombiSpalten |= {self.kombiReverseDict[oneKombiSpalte]}
                                 except KeyError:
                                     cliout(
                                         'Die Kombispalte "'
@@ -374,11 +359,7 @@ class Program:
                     )
         if len(neg) == 0:
             self.produceAllSpaltenNumbers("-")
-            # alxp("zusammen")
-            # alxp(self.spaltenArtenKey_SpaltennummernValue)
             spalten_removeDoublesNthenRemoveOneFromAnother()
-            # alxp("zusammen2")
-            # alxp(self.spaltenArtenKey_SpaltennummernValue)
 
     def storeParamtersForColumns(self):
         # global puniverseprims
@@ -439,17 +420,13 @@ class Program:
                                     )
                                 ]
                             elif i in (5, 6):  # and type(spaltenNummerOderEtc) is set:
-                                # x("SIC", [i, spaltenNummerOderEtc])
                                 case = 2
                                 into += [[(parameterMainName, parameterName)]]
-                                # x("mmm", into)
                                 parameterMainNamePerLoop += [parameterName]
                             elif i == 2 and callable(spaltenNummerOderEtc):
                                 case = 2
                                 parameterMainNamePerLoop += [parameterName]
                                 into += [[(parameterMainName, parameterName)]]
-                                # x("ooo", into)
-                                # x("ert", [parameterName, parameterMainName])
                             elif i == 4 and (
                                 type(spaltenNummerOderEtc) in (list, tuple)
                             ):
@@ -459,7 +436,6 @@ class Program:
                                 case = 4
                                 into += [(parameterMainName, parameterName)]
                                 spaltenNummerOderEtc = spaltenNummerOderEtc.pop()
-                            # elsif i ==7 and type(spaltenNummerOderEtc) is str:
                             else:
                                 case = 3
                                 try:
@@ -467,8 +443,6 @@ class Program:
                                 except KeyError:
                                     into = [(parameterMainName, parameterName)]
 
-                    # if i == 7:
-                    #    x("SDV", d)
                     index1 = i if case != 1 else 3
                     index2a = (
                         spaltenNummerOderEtc
@@ -504,9 +478,6 @@ class Program:
                             )
                         except KeyError:
                             dataDicts[index1][index2] = (into2,)
-            # if case == 2:
-            # x("dadaDick", dataDicts)
-            # x("PARA", paraDict)
             return paraMainDict, paraDict, dataDicts
 
         def mergeParameterDicts(
@@ -539,19 +510,10 @@ class Program:
             <em>
             Das beinhaltet das für alle Parameter und Ausgabe-Spalten-Nummern.</em>"""
 
-            # x("QARA", (paraMainDict1, paraMainDict2))
             paraMainDict1 = {**paraMainDict1, **paraMainDict2}
-            # x("QARA", (paraDict1, paraDict2))
             paraDict1 = {**paraDict1, **paraDict2}
-            # x("uofs1", dataDicts1)
-            # x("uofs2", dataDicts2)
             dataDicts3 = deepcopy(dataDicts1)
-            for i, (dict1, dict2) in enumerate(
-                # zip_longest(dataDicts1, dataDicts2, fillvalue=dict())
-                zip_longest(dataDicts1, dataDicts2)
-            ):
-                # if i == 4:
-                #    x("qqq", (dict1, dict2))
+            for i, (dict1, dict2) in enumerate(zip_longest(dataDicts1, dataDicts2)):
                 if type(dict1) is dict and type(dict2) is dict:
                     if len(dataDicts3[i].keys()) == 0:
                         dataDicts3[i] = dataDicts2[i]
@@ -559,20 +521,13 @@ class Program:
                         for key1, value1 in dict1.items():
                             for key2, value2 in dict2.items():
                                 if key2 == key1:
-                                    # x("DING1", dataDicts3[i][key1])
-                                    # x("DING2", value2)
                                     dataDicts3[i][key1] += value2
                                 elif key2 not in dataDicts3[i].keys():
-                                    # x("DONG", value2)
                                     dataDicts3[i][key2] = value2
                 elif type(dict1) is dict and dict2 is None:
                     dataDicts3[i] = dict1
                 elif dict1 is None and type(dict2) is dict:
-                    # x("234", i)
                     dataDicts3[i] = dict2
-            # x("uufs", dataDicts3)
-            # alxp(dataDicts3)
-            # x("QORA", (paraDict1))
             return paraDict1, dataDicts3
 
         Program.ParametersMain: namedtuple = namedtuple(
@@ -2641,8 +2596,6 @@ class Program:
                     aAllValue |= commandValue
                 except TypeError:
                     pass
-                    # alxp(type(commandValue))
-                    # alxp(commandValue)
 
         """
         Folgende Schleife ist eigentlich unnötig.
@@ -3059,7 +3012,6 @@ class Program:
             if len(a) == 1:
                 ones += a
         self.tables.getConcat.ones = ones
-        # x("OnEs", self.tables.getConcat.ones)
 
         for gebrUniva in self.gebrUni:
             self.tables.gebrUnivSet.add(gebrUniva)
@@ -3119,11 +3071,9 @@ class Program:
         ) = self.tables.getConcat.concatVervielfacheZeile(
             self.relitable, self.rowsAsNumbers
         )
-        # x("294", self.rowsAsNumbers)
         self.relitable, self.rowsAsNumbers = self.tables.getConcat.concatModallogik(
             self.relitable, self.tables.generRows, self.rowsAsNumbers
         )
-        # x("294", self.rowsAsNumbers)
         (
             self.relitable,
             self.rowsAsNumbers,
@@ -3176,7 +3126,6 @@ class Program:
         for a in self.onlyGenerated:
             if len(a) == 2:
                 couplesX += [a]
-        # print("||" + str(self.onlyGenerated))
 
         (
             self.relitable,
@@ -3268,7 +3217,6 @@ class Program:
             maintable2subtable_Relation2,
         ) = self.bringAllImportantBeginThings(argv)
 
-        # x("2943", self.rowsAsNumbers)
         (
             finallyDisplayLines,
             newTable,
@@ -3286,11 +3234,7 @@ class Program:
             gebrUnivSpalten2=gebrUnivSpalten2,
             gebrGalSpalten2=gebrGalSpalten2,
         )
-        # lineslist = list(finallyDisplayLines)
-        # lineslist.sort()
-        # self.tables.lastLineNumber = lineslist[-1]
 
-        alxp(str(len(self.rowsOfcombi)))
         if len(self.rowsOfcombi) > 0:
             newTable = self.combiTableWorkflow(
                 animalsProfessionsTable,
@@ -3302,8 +3246,6 @@ class Program:
                 paramLines,
                 "kombi.csv",
             )
-        # print(str(len(newTable[0])))
-        x("NEWT2", newTable)
 
         if len(self.rowsOfcombi2) > 0:
             newTable = self.combiTableWorkflow(
@@ -3317,14 +3259,9 @@ class Program:
                 "kombi-meta.csv",
             )
 
-        x("NEWT3", newTable)
-
-        # rowAmounts = self.tables.getOut.oneTableToMany(newTable, True, rowsRange)
-        # spaltenreihenfolgeundnurdiese
         newTable = self.tables.getOut.onlyThatColumns(
             newTable, spaltenreihenfolgeundnurdiese
         )
-        x("NEWT4", [finallyDisplayLines, newTable, numlen, rowsRange])
 
         self.tables.getOut.cliOut(finallyDisplayLines, newTable, numlen, rowsRange)
         alxp(
@@ -3349,11 +3286,7 @@ class Program:
             """Viele Routinen schreiben, die Codeteile immer dann überspringen, wenn man weiß, dass sie nicht benötigt werden, zur Geschwindigkeitssteigerung"""
         )
         alxp("""Ctrl+C kontrollierter abbrechen lassen!""")
-        # alxp("""2 mal pro seitlich = können (2) seitlich""")
         alxp("""Pytest verwenden wegen Geschwindigkeitstests.""")
-        # alxp(
-        #    "1. http://goexchange.de/viewtopic.php?f=13&t=2683#p17239 () \n    9. anderen etwas vormachen können (Bahai)\n    1/9. den anderen Strukturgrößen außer der Einheit (9, 1/9) etwas vormachen können"
-        # )
         alxp("""aus der ergebnis relitable ein dict machen !!!! bestes !!! """)
         alxp(
             """breiten geht nicht richtig und zeilenumbruch funktioniert oft nicht bei zu breit, warum nur"""
@@ -3386,7 +3319,6 @@ class Program:
         alxp(
             """Ich könnte die Klasse immer nur ein mal definieren und dann per js auf alle in der gleichen Reihe die gleichen Tags dazu machen. Das geht schnell, macht die html kleiner, aber eigentlich beschleunigt das nichts wirklich, außer langsames Internet"""
         )
-        # x("__", self.tables.htmlOutputYes)
 
     def combiTableWorkflow(
         self,
@@ -3429,17 +3361,11 @@ class Program:
             finallyDisplayLines,
             kombiTable_Kombis,
         )
-        x("DFG", ChosenKombiLines)
-        # self.tables.getCombis.
-        # x("AAAC1", animalsProfessionsTable)
-        x("AAAC2", [self.rowsOfcombi, self.rowsOfcombi2])
         komb_rows = (
             self.rowsOfcombi
             if csvFileName == "kombi.csv"
             else (self.rowsOfcombi2 if csvFileName == "kombi-meta.csv" else None)
         )
-        x("GASI", len(newTable[0]) - len(komb_rows))
-        x("NASOL", komb_rows)
         (
             finallyDisplayLines_kombi,
             newTable_kombi_1,
@@ -3466,14 +3392,9 @@ class Program:
             if csvFileName == "kombi-meta.csv"
             else None,
         )
-        x("BSR", [len(newTable[0]), len(komb_rows)])
-        x("AAAD1", newTable_kombi_1)
-        x("AAAD2", ChosenKombiLines)
         KombiTables = self.tables.getCombis.prepareTableJoin(
             ChosenKombiLines, newTable_kombi_1
         )
-        x("AAAE1 - leer ? ", KombiTables)
-        x("NSZ", komb_rows)
         newTable = self.tables.getCombis.tableJoin(
             newTable,
             KombiTables,
@@ -3481,7 +3402,6 @@ class Program:
             old2newTable,
             komb_rows,
         )
-        x("HWS", newTable)
         return newTable
 
 

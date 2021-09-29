@@ -112,7 +112,6 @@ def sort(array):
         for x in array:
             x = list(x)
             x2 = x
-            # print(str(x))
             if x2 < pivot2:
                 less.append(x)
             elif x2 == pivot2:
