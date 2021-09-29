@@ -133,7 +133,7 @@ while text not in ("ende", "exit", "quit", "q", ""):
         if len({"prim24", "primfaktorzerlegungModulo24"} & set(stext)) > 0:
             try:
                 process = subprocess.Popen(
-                    [os.path.dirname(__file__) + os.sep + "prim24", c]
+                    [os.path.dirname(__file__) + os.sep + "prim24", *(c.split(","))]
                 )
                 process.wait()
             except:
@@ -141,7 +141,7 @@ while text not in ("ende", "exit", "quit", "q", ""):
         if len({"prim", "primfaktorzerlegung"} & set(stext)) > 0:
             try:
                 process = subprocess.Popen(
-                    [os.path.dirname(__file__) + os.sep + "prim", c]
+                    [os.path.dirname(__file__) + os.sep + "prim", *(c.split(","))]
                 )
                 process.wait()
             except:
@@ -163,14 +163,14 @@ while text not in ("ende", "exit", "quit", "q", ""):
             )
             try:
                 process = subprocess.Popen(
-                    [os.path.dirname(__file__) + os.sep + "multis", c]
+                    [os.path.dirname(__file__) + os.sep + "multis", *(c.split(","))]
                 )
                 process.wait()
             except:
                 pass
             try:
                 process = subprocess.Popen(
-                    [os.path.dirname(__file__) + os.sep + "prim", c]
+                    [os.path.dirname(__file__) + os.sep + "prim", *(c.split(","))]
                 )
                 process.wait()
             except:
@@ -193,7 +193,7 @@ while text not in ("ende", "exit", "quit", "q", ""):
         if len({"modulo"} & set(stext)) > 0:
             try:
                 process = subprocess.Popen(
-                    [os.path.dirname(__file__) + os.sep + "modulo", c]
+                    [os.path.dirname(__file__) + os.sep + "modulo", *(c.split(","))]
                 )
                 process.wait()
             except:
@@ -215,11 +215,3 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 kette,
                 int(shellRowsAmountStr),
             )
-        if len({"modulo"} & set(stext)) > 0:
-            try:
-                process = subprocess.Popen(
-                    [os.path.dirname(__file__) + os.sep + "modulo", c]
-                )
-                process.wait()
-            except:
-                pass
