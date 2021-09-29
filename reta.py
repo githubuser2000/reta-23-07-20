@@ -2737,7 +2737,7 @@ class Program:
             cliout("Versuche Parameter -h")
         spaltenreihenfolgeundnurdiese: list = []
         puniverseprims_only: set = OrderedSet()
-        rowsAsNumbers: set = OrderedSet()
+        rowsAsNumbers: set = set()
         paramLines: set = OrderedSet()
         self.bigParamaeter: list = []
         self.__willBeOverwritten_rowsOfcombi: set = OrderedSet()

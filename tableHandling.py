@@ -1311,7 +1311,7 @@ class Tables:
             @return: nichts
             """
             self.relitable = relitable
-            if rowsAsNumbers >= {64}:
+            if set(rowsAsNumbers) >= {64}:
                 if len(self.relitable) > 0:
                     # self.tables.dataDict[0][len(self.relitable[0])] = [(), ()]
                     if (

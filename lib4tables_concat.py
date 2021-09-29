@@ -60,7 +60,7 @@ class Concat:
 
     def concatLovePolygon(self, relitable: list, rowsAsNumbers: set) -> tuple:
         self.relitable = relitable
-        if rowsAsNumbers >= {9}:
+        if set(rowsAsNumbers) >= {9}:
             rowsAsNumbers |= {len(self.relitable[0])}
             self.tables.generatedSpaltenParameter_Tags[
                 len(rowsAsNumbers) - 1
@@ -94,7 +94,7 @@ class Concat:
 
     def concatPrimCreativityType(self, relitable: list, rowsAsNumbers: set) -> tuple:
         self.relitable = relitable
-        if rowsAsNumbers >= {64}:
+        if set(rowsAsNumbers) >= {64}:
             rowsAsNumbers |= {len(self.relitable[0])}
             self.tables.generatedSpaltenParameter_Tags[
                 len(rowsAsNumbers) - 1
@@ -142,7 +142,7 @@ class Concat:
         self, relitable: list, rowsAsNumbers: set
     ) -> tuple:
         self.relitable = relitable
-        if rowsAsNumbers >= {64}:
+        if set(rowsAsNumbers) >= {64}:
             hardcodedCouple = (44, 56)
             for rownum, rowheading in zip(
                 hardcodedCouple,
