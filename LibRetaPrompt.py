@@ -4,12 +4,7 @@ import reta
 
 retaProgram = reta.Program([sys.argv[0], "-nichts"])
 mainParas = ["-" + a for a in retaProgram.mainParaCmds]
-# print(str(mainParas))
-# print(str(retaProgram.paraDict))
 spalten = ["--" + a[0] + "=" for a in retaProgram.paraDict.keys()]
-# print(str(list(spalten)))
-# print(str(reta.Program.kombiParaNdataMatrix.values()))
-# print(str(reta.Program.kombiParaNdataMatrix2.values()))
 #
 #
 # DAS SOLLTE ICH BESSER ALLES ORDENTLICH IN RETA.PY PACKEN, STATT ES HIER AUSZUSCHREIBEN, WEIL SONST DOPPELT!
@@ -54,7 +49,6 @@ notParameterValues = (
     ausgabeParas + zeilenParas + kombiMainParas + spalten + mainParas,
 )
 hauptForNebenSet = set(hauptForNeben)
-# print(str(retaProgram.paraNdataMatrix))
 
 ausgabeArt = ["bbcode", "html", "csv", "shell", "markdown"]
 

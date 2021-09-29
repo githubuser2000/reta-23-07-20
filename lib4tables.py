@@ -144,8 +144,6 @@ class htmlSyntax(OutputSyntax):
     ) -> str:
         if zeile == "":
             zeile = 0
-        # x("uzt", SpaltenParameter)
-        # x("qay", spalte)
         spalte = int(spalte)
         if spalte == -2:
             tupleOfListsOfCouples = (
@@ -163,21 +161,16 @@ class htmlSyntax(OutputSyntax):
             try:
                 tupleOfListsOfCouples = SpaltenParameter[spalte]
             except:
-                # x("NUM", SpaltenParameter)
-                # x("NUM", spalte)
                 if str(spalte).isdecimal():
                     raise ValueError
                 tupleOfListsOfCouples = (("?", "?"),)
         things1: OrderedDict[int, list] = OrderedDict()  # damit pypy3 == python3
 
-        # x("ayu", SpaltenParameter)
-        # x("azu", tupleOfListsOfCouples)
         listOfListsOfCouples: list = list(tupleOfListsOfCouples)
         listOfListsOfCouples.sort()  # damit pypy3 == python3
         for c, couples in enumerate(listOfListsOfCouples):
             for paraNum in (0, 1):
                 if len(couples[0]) > paraNum:
-                    # x("azu" + str(paraNum), couples[0][paraNum])
                     if len(couples[0]) > paraNum:
                         # i = 0
                         para1o2name = couples[0][paraNum]
@@ -233,9 +226,6 @@ class htmlSyntax(OutputSyntax):
                 p4 = ""
             except:
                 p4 = ""
-            # x("nix", tables.generatedSpaltenParameter_Tags)
-            # x("nüx", spalte - 2)
-            # x("nöx2", p4)
 
             return "".join(
                 ("<td",)

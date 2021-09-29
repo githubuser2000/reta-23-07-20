@@ -395,9 +395,7 @@ class Prepare:
                     if n % 2 == 0:
                         numRangeYesZ.add(n)
 
-        # x("_x3_", numRange)
         numRange = cutset(ifTypAtAll, numRange, numRangeYesZ)
-        # x("_x2_", numRange)
 
         # Sonnen über 114 immer entfernen
         for n in copy(numRange):
@@ -421,7 +419,6 @@ class Prepare:
                 numRangeYesZ.add(n)
         numRange = cutset(ifPrimAtAll, numRange, numRangeYesZ)
 
-        # x("_x1_", numRange)
 
         toPowerIt: list = []
         ifPowerAtall: bool = False
@@ -435,21 +432,17 @@ class Prepare:
                 toPowerIt += [int(condition[:-1])]
         if ifPowerAtall:
             numRangeYesZ = set()
-            # x("_y1_", (toPowerIt, numRange))
             lastEl = list(numRange)
             lastEl.sort()
             lastEl = lastEl[-1]
             for base in toPowerIt:
                 for n in range(lastEl):
                     onePower = pow(base, n)
-                    numRangeMax = ma  # x(numRange)
-                    # x("_y2_", (onePower, numRangeMax))
                     if onePower <= numRangeMax:
                         numRangeYesZ |= {onePower}
                     else:
                         break
             numRange = cutset(ifPowerAtall, numRange, numRangeYesZ)
-        # x("_x4_", numRange)
 
         numRangeYesZ = set()
 
@@ -532,10 +525,7 @@ class Prepare:
         self.headingsAmount = headingsAmount
         old2Rows: tuple = ({}, {})
         reliNumbersBool = False if self.religionNumbers != [] else True
-        # x("XIX", rowsAsNumbers)
         for u, line in enumerate(contentTable):
-            # x("AAAF1", (contentTable[u], u, ))
-            # x("AAAF2", "ENNDD")
             if u in finallyDisplayLines or combiRows != 0:
                 new2Lines = self.prepare4out_LoopBody(
                     combiRows,
@@ -615,7 +605,6 @@ class Prepare:
         h = 0
         newLines: list = [[]] * headingsAmount
         for t, cell in enumerate(line):
-            # x("SDG", [t, rowsAsNumbers])
             if t in rowsAsNumbers:
                 if u == 0:
                     self.prepare4out_Tagging(
@@ -635,7 +624,6 @@ class Prepare:
                 certaintextwidth = self.setWidth(rowToDisplay, combiRows)
                 self.certaintextwidth = certaintextwidth
 
-                # x("AAAE", cell)
                 into = self.cellWork(cell, certaintextwidth)
                 if into != [""] or True:
                     new2Lines += [into]
@@ -717,7 +705,6 @@ class Prepare:
                         }
                     )
 
-                # x("UIU2", [t, primSpalten, rowToDisplay])
             except KeyError:
                 pass
 
@@ -736,8 +723,6 @@ class Prepare:
                     if kombiCSVNumber == 1
                     else None
                 )
-                x("zz", [reliTableLenUntilNow, "+", rowToDisplay, t])
-                x("BSDS", self.tables.generatedSpaltenParameter_Tags)
             except KeyError:
                 pass
 

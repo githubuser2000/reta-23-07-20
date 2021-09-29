@@ -89,7 +89,6 @@ class Concat:
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
             ] = self.tables.dataDict[0][9]
-            # x("bliu3", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
 
     def concatPrimCreativityType(self, relitable: list, rowsAsNumbers: set) -> tuple:
@@ -132,10 +131,7 @@ class Concat:
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
             ] = self.tables.dataDict[0][64]
-            # x("WIE", self.tables.dataDict[0][64])
-            # x("JDG", self.tables.generatedSpaltenParameter)
 
-            # x("idiot", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
 
     def concatMondExponzierenLogarithmusTyp(
@@ -246,7 +242,6 @@ class Concat:
                         # spalten wo was hin soll = ursprungszeile1,2,3,...
                     except (IndexError, KeyError):
                         multis[ergebnis] = [coords[0]]  # interessant
-            # x("iiii", store)
             for z, zeileninhalt in enumerate(
                 relitable[2 : self.tables.lastLineNumber + 1], 2
             ):
@@ -363,8 +358,6 @@ class Concat:
                 vervielfachterEn = vorkommenVielfacher_B[i][distanceFromLine][
                     "vervielfachter"
                 ]
-                # x("ASD", vorkommenVielfacher_B[i][distanceFromLine]["modalS"][0][0])
-                # x("DSF", self.relitable[1][97])
                 for modalOperatoren, vervielfachter in zip(
                     modalOperatorenEn, vervielfachterEn
                 ):
@@ -374,7 +367,6 @@ class Concat:
                             if abs(distanceFromLine) % 2 == 0
                             else self.relitable[vervielfachter][concept[1]]
                         )
-                        # x("WSDRF", modalOperatoren[0] != self.relitable[1][97])
 
                         into[i] += [
                             "<li>"
@@ -450,7 +442,6 @@ class Concat:
                 "modalS": modalOperatorEnEn,
                 "vervielfachter": vervielFachter,
             }
-            # x("SDF ", vorkommenVielfacher_B[i][distanceFromLine])
 
         def prepareModalIntoTable(
             distanceFromLine,
@@ -495,7 +486,6 @@ class Concat:
                             ],
                         }
                     )
-                    # x("DGS ", vorkommenVielfacher_B[i][distanceFromLine])
 
                 except (IndexError, KeyError):
                     try:
@@ -545,9 +535,7 @@ class Concat:
         conceptsRowsSetOfTuple2: list = list(conceptsRowsSetOfTuple)
         # #x("wer", conceptsRowsSetOfTuple2)
         reliTableCopy = deepcopy(self.relitable)
-        x("DFE1", conceptsRowsSetOfTuple2)
         conceptsRowsSetOfTuple2.sort()
-        x("DFE2", conceptsRowsSetOfTuple2)
         for o, concept in enumerate(conceptsRowsSetOfTuple2):
             into: dict = {}
             einMalVorkommen = OrderedSet()
@@ -629,7 +617,6 @@ class Concat:
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
             ] = self.tables.dataDict[1][conceptsRowsSetOfTuple2[o]]
-            # x("bliu2", self.tables.dataDict[1][conceptsRowsSetOfTuple2[o]])
 
         return self.relitable, rowsAsNumbers
 
@@ -639,22 +626,16 @@ class Concat:
         """Macht aus einem Set aus Paaren eins von verschiedenen möglichen dicts mit key int und value liste aus paaren"""
         # px2 = list(paareSet)
         # px2.sort()
-        # print(str(px2) + " " + str(gleichf))
         result: DefaultOrderedDict = DefaultOrderedDict(OrderedSet)
         paareSet: tuple = tuple(paareSet)
         for paar in paareSet:
             paar = tuple(paar)
             div = paar[0] / paar[1] if not gleichf else paar[1] / paar[0]
-            # x("fsd", div)
             div = round(div * 1000) / 1000
             # paar2 = list(paar)
             # paar2.sort()
-            # x("_X1_", str(paar2) + " " + str(gleichf))
-            # x("_X2_", str(paar) + " " + str(gleichf))
             assert div == round(div)
             result[int(div)] |= {paar}
-            # print(paar)
-        # x("GHJ1A", dict(result))
         return result
 
     def convertSetOfPaarenToDictOfNumToPaareMul(
@@ -670,10 +651,8 @@ class Concat:
                 mul = 1 / mul
             mulr = round(mul)
             mul = round(mul * 1000) / 1000
-            # x("jzd", [mul, mulr, gleichf])
             assert mul == mulr
             result[int(mulr)] |= {paar}
-        # x("GHJ1B", dict(result))
         return result
 
     def convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
@@ -697,24 +676,18 @@ class Concat:
                     faktor = Fraction(frac.denominator) / zusatzMul
                     if (faktor in fracs2) or faktor.numerator == 1:
                         paar = (frac, faktor)
-                        # x("GGG", paar)
                         mul = paar[0] * paar[1]
                         mulr = round(mul)
                         if mul > 1024:
                             break
                         if mulr == mul:
                             result[int(mul)] |= {paar}
-            # x("IIL", result)
 
         else:
             for frac in tuple(fracs):
                 for zusatzDiv in range(1, 1025):
-                    # x("HDF1", frac)
                     paar = (frac, 1 / Fraction(frac.numerator) / zusatzDiv)
-                    # x("HDF2", paar)
-                    # x("HDF3", paar[0] * paar[1])
                     div = 1 / (paar[1] * paar[0])
-                    # x("HDF4", div)
                     divr = round(div)
                     div = round(div * 1000) / 1000
                     assert divr == div
@@ -727,7 +700,6 @@ class Concat:
                     faktor = (1 / frac) / zusatzDiv
                     if faktor in fracs2 or faktor.numerator == 1:
                         paar = (frac, faktor)
-                        # x("SOV", paar)
                         mul = 1 / (paar[1] * paar[0])
                         mulr = round(mul)
                         mul = round(mul * 1000) / 1000
@@ -740,7 +712,6 @@ class Concat:
         # for key, value in result.items():
         #    result2[key] = list(value)
 
-        # x("GHJ2", dict(result2))
         return result
 
     def combineDicts(
@@ -798,7 +769,6 @@ class Concat:
                 if primCreativity(num) == 1 or num == 1:
 
                     if couldBePrimeNumberPrimzahlkreuz_fuer_innen(num):
-                        # print(str(num) + ": pro innen")
                         list1 += [num]
                         if num > 16:
                             if keinePrimzahl1:
@@ -828,7 +798,6 @@ class Concat:
                         into2 += ["pro " + str(pro)]
 
                     if couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num):
-                        # print(str(num) + ": pro außen")
                         list2 += [num]
                         if num > 16:
                             if keinePrimzahl2:
@@ -907,7 +876,6 @@ class Concat:
 
                 # if self.tables.lastLineNumber >= num:
                 try:
-                    # print(str(num))
                     text = cols[206].split("|")[1]
                 except (KeyError, TypeError, IndexError):
                     text = ""
@@ -945,9 +913,6 @@ class Concat:
                             "</ul>",
                         ]
                     elif self.tables.bbcodeOutputYes:
-                        # print(str(len(into1)))
-                        # print(str(len(into2)))
-                        # print(str(len(into)))
                         into = [
                             "[list]",
                             "[*]" if len(into1) > 0 else "",
@@ -960,7 +925,6 @@ class Concat:
                             ", ".join(into),
                             "[/list]",
                         ]
-                        # print(str(into))
                     else:
                         into = [
                             ", ".join(into1),
@@ -975,7 +939,6 @@ class Concat:
                             intoB += [intoneu]
                 else:
                     intoB = into
-                    # print(str(intoB))
 
                 self.relitable[num] += (
                     [
@@ -1193,7 +1156,6 @@ class Concat:
         @return: relitable + weitere Tabelle daneben
         """
         self.relitable = relitable
-        # x("TZJ", htmlTagParaClassWoerter)
 
         hardCodedCouple = (10, 42)
         transzendentalienNrezi = (5, 131)
@@ -1372,7 +1334,6 @@ class Concat:
             )
 
             self.gebrRatAllCombis = self.findAllBruecheAndTheirCombinations()
-            # print(str(self.gebrRatAllCombis))
             kombis2: OrderedDict = OrderedDict(
                 {"mul": OrderedDict(), "div": OrderedDict()}
             )
@@ -1387,8 +1348,6 @@ class Concat:
                     "GalGal": deepcopy(kombis1),
                 }
             )
-            # print(str(alleFractionErgebnisse2))
-            # print(str(self.gebrRatAllCombis))
 
             for KeyGalUniUniGal, ValueSternOrGleichf in self.gebrRatAllCombis.items():
                 for KeySternOrGleichf, ValueMulOrDiv in ValueSternOrGleichf.items():
@@ -1465,11 +1424,8 @@ class Concat:
                             # value4 = list(value4)
                             # value4 = sort(value4)
                             # value4.sort()
-                            # print("|" + str(value4))
-                            # print("|" + str(set(value4) == set(value4b)))
 
             # ALXP HIER NOCH NICHT FERTIG
-            # print(str(alleFractionErgebnisse2))
 
             # hier geht es um die html class Parameter und um Tagging ob Galaxie oder Polygon
             koord2tag: OrderedDict
@@ -1489,12 +1445,10 @@ class Concat:
                     except KeyError:
                         koord2tag[(drei[0], drei[1], drei[3])] = OrderedSet({drei[2]})
                 for befehl in generatedBefehle:
-                    # x("BSA", [befehl, name])
                     if (
                         name == befehl
                     ):  # ob der Befehl des Users mit den jeweils vorhandenen übereinstimmt
                         for drei in mehrereEinraege:
-                            # x("VGA", drei)
                             try:
                                 koord2ParameterA[(drei[0], drei[1], drei[3])] |= {
                                     befehl
@@ -1591,15 +1545,11 @@ class Concat:
                         ]
                     kombis: tuple = tuple(kombi_)
                     # alle 2x2 kombis von motiven und struktur
-                    # print(str(kombisNamen))
-                    # print(str(kombisNamen2))
-                    # print(str(kombis))
 
                     for nullBisDrei, (kombiUeberschrift, GalUniKombis) in enumerate(
                         zip(kombisNamen, kombisNamen2)
                     ):
                         tag: frozenset = list(koord2tag[(zwei, nullBisDrei, brr)])[0]
-                        # print(str(tag))
 
                         self.tables.generatedSpaltenParameter_Tags[
                             len(rowsAsNumbers)
@@ -1607,8 +1557,6 @@ class Concat:
                         rowsAsNumbers |= {
                             len(self.relitable[0]),
                         }
-                        # x("HJM", len(self.relitable[0]))
-                        # print(str(koord2Parameter))
                         if (zwei, nullBisDrei, brr) in koord2Parameter:
                             for i, cols in enumerate(relitableCopy):
                                 if i == 0:
@@ -1619,7 +1567,6 @@ class Concat:
                                         kombiUeberschrift,
                                         ganzOrGebr,
                                     ]
-                                    # x("GSJ", "".join(into))
                                 else:
                                     into = []
                                     if self.tables.htmlOutputYes:
@@ -1669,7 +1616,6 @@ class Concat:
                                         multipless = alleFractionErgebnisse2[
                                             GalUniKombis
                                         ][sternOrGleichf]["mul"]
-                                        # x("HFG", multipless.items())
                                         for k, multi in enumerate(
                                             zip_longest(
                                                 multipless[i],
@@ -1683,9 +1629,7 @@ class Concat:
                                             except:
                                                 continue
 
-                                            # alxp("BBB")
 
-                                            # x("HIX", [multi1, multi2])
                                             von = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                                                 multi[0],
                                                 GalOrUni_nOrInvers[nullBisDrei][zwei],
@@ -1696,7 +1640,6 @@ class Concat:
                                                 if nullBisDrei in (2, 3)
                                                 else True,
                                             )
-                                            # alxp("BBB2")
                                             bis = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                                                 multi[1],
                                                 GalOrUni_nOrInvers[nullBisDrei][zwei],
@@ -1879,7 +1822,6 @@ class Concat:
 
         darin if bedingungen: ob spalte strukturalie oder reziproke strukturalie
         """
-        # print(str(metavariable))
 
         self.relitable = relitable
         # rowsAsNumbers |= {
@@ -1895,7 +1837,6 @@ class Concat:
             """2 neue Koordinaten der Tabelle durch 3 Parameter, d.h. einer, newCol, gilt für beide
             Immer eine halbierung und dopplung oder verdreifachung und ..., etc.
             und wechsel der Spalte von den 2 Spalten"""
-            # x("MORE", moreAndLess)
             spaltenWahl: int
             newCol, spaltenWahl = (
                 (self.transzendentalienSpalten[0], 0)
@@ -1918,7 +1859,6 @@ class Concat:
                 and moreAndLess[1] > 0.01
             ):
                 divresult = moreAndLess[1] / metavariable
-                # alxp("a " + str(divresult))
 
                 if (
                     newCol == self.transzendentalienSpalten[ifInvers]
@@ -1956,15 +1896,12 @@ class Concat:
                 # )
 
             else:
-                # alxp("c1 None")
                 b = None
-            # alxp("b " + str(b))
             # if newCol == self.transzendentalienSpalten[ifInvers]:
             #    b = 11
 
             if b is not None:
                 if Fraction(b) in self.gebrRatEtwaSchonMalDabeiGewesen:
-                    # alxp("c2 None")
                     b = None
                 else:
                     self.gebrRatEtwaSchonMalDabeiGewesen |= {Fraction(b)}
@@ -2044,7 +1981,6 @@ class Concat:
                     lower1greater2both3, metavariable
                 )
 
-        # x("r_wt", self.tables.generatedSpaltenParameter)
         return self.relitable, rowsAsNumbers
 
     def spalteMetaKonkretTheorieAbstrakt_SetHtmlParameters(
@@ -2089,7 +2025,6 @@ class Concat:
             self.gebrRatEtwaSchonMalDabeiGewesen = OrderedSet()
             moreAndLess = (i, i)  # 1. wert "*2" und 2. "/3"
             neue2KoordNeue2Vorwoerter: list = []
-            # alxp("new while")
             newCol = self.transzendentalienSpalten[0]
             neue2KoordNeue2Vorwoerter = (
                 self.spalteMetaKonkretTheorieAbstrakt_VorwortBehandlungWieVorwortMeta(
@@ -2226,7 +2161,6 @@ class Concat:
                 # and self.struktAndInversSpalten == transzendentalienSpalten
             ):
 
-                # alxp("CCC")
                 gebrStrukWort = (
                     self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                         vier[0][1],
@@ -2267,7 +2201,6 @@ class Concat:
                     # vier[0] = (vier[0][0], None)
                     # intoList = [None]
             thema = "Thema: "
-        # alxp(intoList)
         self.relitable[i] += [
             "".join(
                 (
@@ -2337,14 +2270,10 @@ class Concat:
             ("Gal", "Gal", "Uni", "Uni"),
             ("Gal", "Uni", "Gal", "Uni"),
         ):
-            # x("DSK", GalOrUni1 + GalOrUni2)
             brueche1 = list(brueche1)
             brueche2 = list(brueche2)
             brueche1.sort()
             brueche2.sort()
-            # print(str(kombis2))
-            # print(str(brueche1))
-            # print(str(brueche2))
             for BruecheUn in brueche1:
                 for BruecheUn2 in brueche2:
                     if BruecheUn != BruecheUn2:
@@ -2357,7 +2286,6 @@ class Concat:
                             gebrRatAllCombis[GalOrUni1 + GalOrUni2]["stern"][
                                 "mul"
                             ] |= deepcopy(couple)
-                            # print("A " + str((BruecheUn, BruecheUn2)))
 
                         if round(BruecheUn / BruecheUn2) == round(
                             BruecheUn / BruecheUn2 * 1000
@@ -2365,7 +2293,6 @@ class Concat:
                             gebrRatAllCombis[GalOrUni1 + GalOrUni2]["stern"][
                                 "div"
                             ] |= deepcopy(couple)
-                            # print("B " + str((BruecheUn, BruecheUn2)))
 
                         if round(1 / (BruecheUn * BruecheUn2)) == (
                             round(1000 / (BruecheUn * BruecheUn2)) / 1000
@@ -2373,7 +2300,6 @@ class Concat:
                             gebrRatAllCombis[GalOrUni1 + GalOrUni2]["gleichf"][
                                 "mul"
                             ] |= deepcopy(couple)
-                            # print("C " + str((BruecheUn, BruecheUn2)))
 
                         if round(1 / (BruecheUn / BruecheUn2)) == (
                             round(1000 / (BruecheUn / BruecheUn2)) / 1000
@@ -2381,19 +2307,14 @@ class Concat:
                             gebrRatAllCombis[GalOrUni1 + GalOrUni2]["gleichf"][
                                 "div"
                             ] |= deepcopy(couple)
-                            # print("D " + str((BruecheUn, BruecheUn2)))
 
         """
         for a in gebrRatAllCombis["UniUni"]["stern"]["mul"]:
             a = list(a)
             a = a[0] * a[1]
-            x("FGD", a)
             assert a == round(a)
         """
 
-        # x("XCGH2", gebrRatAllCombis["UniUni"]["stern"]["mul"])
-        # print(str(gebrRatAllCombis))
-        # print("----------------------------------------")
         return gebrRatAllCombis
 
     def spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
@@ -2539,7 +2460,6 @@ class Concat:
             extraSpalten,
             key=lambda x: -1 * float("inf") if x is None else x,
         )
-        # x("OnEs", self.ones)
         spaltenNamen = OrderedDict(
             {
                 5: "Transzendentalien, Strukturalien, Universum n",
@@ -2618,7 +2538,6 @@ class Concat:
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
             ] = self.tables.dataDict[4][(extraSpalten[r],)]
-            # x("HFT", self.tables.dataDict[4][(extraSpalten[r],)])
 
         return self.relitable, rowsAsNumbers
 
@@ -2636,7 +2555,6 @@ class Concat:
                 Fraction(zeilenNr, i) if not ifTransponiert else Fraction(i, zeilenNr)
             )
 
-            # alxp("AAA")
             cellNeu = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                 gebrRatZahl,
                 self.struktAndInversSpalten,
@@ -2760,7 +2678,6 @@ class Concat:
                 self.relitable[i] += dazu
                 if i == 0:
                     for u, heading in enumerate(dazu):
-                        # x("SBm", [concatTable, u, headingsAmount])
                         self.readConcatCsv_LoopBody(
                             concatCSVspalten,
                             concatTable,
@@ -2847,8 +2764,6 @@ class Concat:
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
             ] = self.tables.dataDict[5 + ((concatTable - 2) % 2)][u + 2]
-            # x("nnn", self.tables.dataDict[5 + ((concatTable - 2) % 2)][u + 2])
-            # x("nnn", u)
         if concatTable == 1:
             intoHtmlPara = (
                 [
@@ -2859,7 +2774,6 @@ class Concat:
                 ],
             )
 
-            # x("EDS", self.tables.dataDict[2][int(heading)])
             self.tables.generatedSpaltenParameter[
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount

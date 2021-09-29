@@ -20,5 +20,3 @@ def multiples(a):
 
 
 for i in range(1, 13):
-    # x(str(i), [multiples(i), primMultiple(i), lib4tables.multiples(i)])
-    x(str(i), [lib4tables.multiples(i)])

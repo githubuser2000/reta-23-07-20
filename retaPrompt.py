@@ -58,7 +58,6 @@ if "-vi" not in sys.argv:
         sys.argv[0].split(os.sep)[-1]
         + " starten mit Parameter -vi für ViMode, beenden mit q, exit, quit"
     )
-    print("Tippe reta ein!")
 
 while text not in ("ende", "exit", "quit", "q", ""):
     try:
@@ -75,7 +74,6 @@ while text not in ("ende", "exit", "quit", "q", ""):
         )
     except KeyboardInterrupt:
         sys.exit()
-    # print("Du meintest: %s" % text, end=" ")
     stext = text.split()
     bedinung = len(stext) > 0 and stext[0] == "reta"
     if not bedinung:
@@ -111,7 +109,6 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=1",
             ]
-            # print(str(kette))
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -129,7 +126,6 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=2",
             ]
-            # print(str(kette))
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -161,7 +157,6 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 "--multiplikationen=motivstern",
                 "--breite=" + str(int(shellRowsAmountStr) - 10),
             ]
-            # print(str(kette))
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -191,7 +186,6 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 "--procontra=pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit",
                 "--breite=" + str(int(shellRowsAmountStr) - 10),
             ]
-            # print(str(kette))
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -217,7 +211,6 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=1,3,4",
             ]
-            # print(str(kette))
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),

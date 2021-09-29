@@ -126,7 +126,6 @@ class NestedCompleter(Completer):
             ComplSitua.kombiValPara,
             ComplSitua.ausgabeValPara,
         )
-        # print(str(self.nebenParaWort) + "SDT" + trennzeichen + "|" + str(gleich))
         if trennzeichen == " ":
             if self.situationsTyp == ComplSitua.retaAnfang and first_term == "reta":
                 completer.options = {key: None for key in hauptForNeben}
@@ -195,7 +194,6 @@ class NestedCompleter(Completer):
                         }
 
         elif gleich or komma:
-            # print(str(self.nebenParaWort) + "SDG")
             if "-spalten" == first_term:
                 var2, var3, var4 = self.gleichKommaSpalten(
                     completer, first_term, gleich, komma
@@ -229,7 +227,6 @@ class NestedCompleter(Completer):
                     completer, first_term, gleich, komma
                 )
 
-            # print("S" + var3 + "|" + first_term + "|" + self.nebenParaWort)
             suchWort = (
                 first_term[2:]
                 if gleich
@@ -241,14 +238,12 @@ class NestedCompleter(Completer):
                 var1 = var4[suchWort]
             except KeyError:
                 var1 = difflib.get_close_matches(suchWort, var4.keys())
-            # print(suchWort)
             completer.options = {key: None for key in var1}
             completer.optionsTypes = {key: var2 for key in var1}
             completer.lastString = first_term
             completer.nebenParaWort = self.nebenParaWort
 
     def gleichKommaKombi(self, completer, first_term, gleich, komma):
-        # print(str(self.kombiParaWort) + "_")
         completer.kombiParaWort = (
             first_term if gleich else self.kombiParaWort if komma else None
         )
@@ -267,7 +262,6 @@ class NestedCompleter(Completer):
         var2 = ComplSitua.kombiValPara
         var3 = self.kombiParaWort
         completer.situationsTyp = ComplSitua.kombiValPara
-        # print(str(var4))
         return var2, var3, var4
 
     def gleichKommaZeilen(self, completer, first_term, gleich, komma):
@@ -281,7 +275,6 @@ class NestedCompleter(Completer):
         return var2, var3, var4
 
     def gleichKommaAusg(self, completer, first_term, gleich, komma):
-        # print(str(self.spaltenParaWort) + "_")
         completer.ausgabeParaWort = (
             first_term if gleich else self.ausgabeParaWort if komma else None
         )
@@ -289,19 +282,16 @@ class NestedCompleter(Completer):
         var4["art"] = ausgabeArt
         var2 = ComplSitua.ausgabeValPara
         var3 = self.ausgabeParaWort
-        # print("|", var3, "|")
         completer.situationsTyp = ComplSitua.ausgabeValPara
         return var2, var3, var4
 
     def gleichKommaSpalten(self, completer, first_term, gleich, komma):
-        # print(str(self.spaltenParaWort) + "_")
         completer.spaltenParaWort = (
             first_term if gleich else self.spaltenParaWort if komma else None
         )
         var4 = spaltenDict
         var2 = ComplSitua.spaltenValPara
         var3 = self.spaltenParaWort
-        # print("|", var3, "|")
         completer.situationsTyp = ComplSitua.spaltenValPara
         return var2, var3, var4
 
@@ -341,12 +331,9 @@ class NestedCompleter(Completer):
         gleich: bool = "=" in text
         komma: bool = "," in text
         if " " in text:
-            # print(str(type(text)))
             first_term = text.split()[0]
-            # print(first_term)
             # completer = self.options.get(first_term)
             completer = self.matchTextAlx(first_term)
-            # print(str(type(completer)))
 
             # If we have a sub completer, use this for the completions.
             if completer is not None:
@@ -370,16 +357,10 @@ class NestedCompleter(Completer):
         elif gleich or komma:
             text = str(text)
             first_term = text.split("=" if gleich else ",")[0]
-            # print("|" + first_term + "|")
-            # print(str(self.options.keys()))
             # completer = self.options.get(first_term)
             completer = self.matchTextAlx(first_term, "=" if gleich else ",")
-            # print(str(type(completer)))
 
             # If we have a sub completer, use this for the completions.
-            # print(str(self.notParameterValues))
-            # print("||" + first_term + "|")
-            # print(str(type(completer)))
             if completer is not None:
                 # self.ifGleichheitszeichen = True
                 # completer.optionsPark = completer.options
@@ -387,15 +368,11 @@ class NestedCompleter(Completer):
                 # ES SIND EINFACH ZU VIELE, D.H.: ANDERS LÖSEN!
                 # ES GIBT AB SOFORT 2 options DATENSTRUKTUREN!
                 # for notParaVal in self.notParameterValues:
-                #    # print(notParaVal)
                 #    if notParaVal in completer.options:
                 #        completer.ExOptions[notParaVal] = completer.options.pop(
                 #            notParaVal, None
                 #        ||)
-                # print("|||" + remaining_text + "|")
-                # print(str(completer.options))
                 remaining_text = text[len(first_term) + 1 :].lstrip()
-                # print("|" + remaining_text + "|")
                 move_cursor = len(text) - len(remaining_text) + stripped_len
 
                 new_document = Document(

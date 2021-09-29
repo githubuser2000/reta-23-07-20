@@ -289,7 +289,6 @@ class Tables:
             @return: nichts
             """
             global output, shellRowsAmount
-            # x("hce", self.tables.generatedSpaltenParameter)
 
             def findMaxCellTextLen(
                 finallyDisplayLines: set, newTable: list, rowsRange: range
@@ -335,13 +334,11 @@ class Tables:
                 return maxCellTextLen
 
             def determineRowWidth(i, maxCellTextLen):
-                # print(str(i) + " " + str(self.breiten))
                 if i < len(self.breiten):
                     # if i + (1 if self.nummerierung else 0) <= len(self.breiten):
                     certaintextwidth = self.breiten[i]
                 else:
                     certaintextwidth = self.textwidth
-                # print(str(maxCellTextLen[i]))
                 if certaintextwidth > maxCellTextLen[i] or (
                     certaintextwidth == 0
                     and not self.tables.bbcodeOutputYes
@@ -365,7 +362,6 @@ class Tables:
                 if len(self.finallyDisplayLines) > 0 and shellRowsAmount != 0
                 else 0
             )
-            # x("NIXX", self.tables.dataDict)
             self.finallyDisplayLines[0] = ""
             lastSubCellIndex = -1
             lastlastSubCellIndex = -2
@@ -636,9 +632,7 @@ class Tables:
                                             ]
 
                                     line += ["\n"] + addionalLine
-                            alxp("AUSGABE-2")
                             if emptyEntries != entriesHere:
-                                alxp("AUSGABE-1")
                                 if type(self.__outType) is csvSyntax:
                                     writer.writerow(line)
                                 else:
@@ -647,7 +641,6 @@ class Tables:
                                         and filteredLineNumbersofOrignal == ""
                                     ):
                                         filteredLineNumbersofOrignal = 0
-                                    alxp("AUSGABE")
                                     cliout(
                                         "".join(
                                             [
@@ -730,7 +723,6 @@ class Tables:
 
         def prepareTableJoin(self, ChosenKombiLines, newTable_kombi_1):
             KombiTables = []
-            # x("AAAB", (ChosenKombiLines, newTable_kombi_1,))
             for key, value in ChosenKombiLines.items():
                 """Zeilennummern der kombi, die hinten dran kommen sollen
                 an die Haupt- und Anzeigetabelle
@@ -787,7 +779,6 @@ class Tables:
 
             all die Zahlen zu sortieren, seitlich und oben-unten
             """
-            # print(str(self.tables.textWidth))
             if (
                 len(hinein) > 0
                 and (
@@ -810,27 +801,21 @@ class Tables:
                 bis: int = hineinStr.find(") ")
                 von: int = hineinStr.find("(")
                 substr = hineinStr[von + 1 : bis - von]
-                # print(hineinStr)
-                # print(str(colNum))
                 substrListA = substr.split("|")
                 if substrListA != [""]:
                     substrList = []
-                    # print(substrListA)
                     for el in substrListA:
                         if len(el) > 0 and el[0] == "(":
                             substrList += [el[1:-1]]
                         else:
                             substrList += [el]
-                    # print(substrList)
                     substrListList = []
                     for listEl in substrList:
                         substrListList += [listEl.split("/")]
-                    # print(substrListList)
                     newNumListList: list = []
                     for liste in substrListList:
                         numListPart = []
                         for listEl in liste:
-                            # print(str(((colNum))) + " " + str(((listEl))))
                             assert len(listEl.strip()) != 0
                             if (
                                 # len(listEl.strip()) == 0 or
@@ -853,7 +838,6 @@ class Tables:
                         result = hineinold[bis - von + 1 :]
 
                     result2: list = []
-                    # print(str(self.tables.textWidth))
                     if self.tables.textWidth != 0:
                         result2 += self.tables.getPrepare.cellWork(
                             result,
@@ -894,11 +878,9 @@ class Tables:
             table2 = mainTable
             """ Hätte ich mich gleich für SQL entschieden, oder hätte ich Pandas gewählt, dann hätte ich diesen Komplizierten Mist nicht programmieren müssen!
             """
-            x("rowsOfcombi", rowsOfcombi)
 
             # regex = re.compile(r"\s|\s+")
             # if self.tables.textWidth == 0 and type(self.tables.getOut.outType) in [
-            # x("AAAA", manySubTables)
             if type(self.tables.getOut.outType) in [
                 htmlSyntax,
                 bbCodeSyntax,
@@ -913,14 +895,12 @@ class Tables:
                 """geht die Zeilen der anzuzeigenden Haupttabelle durch
                 1. Zeilenummer, 2. richtige Nummer der Religion (z.B: 1-10), 3. anzuzeigende Haupttabellenzeile
                 """
-                # x("GOA1", manySubTables)
                 for subTable in manySubTables:
                     """Liste aus Tabellen: eine Untertabelle = was in Haupttabellenzeilennummer rein soll aus der Kombitabelle
                     Zusammen ist das die Matrix der Kombis, die an die Haupt+Anzeige Tabelle deneben ran soll
 
                     hier werden also alle Orginal-Haupt+Anzeige Zeilen durchgegangen
                     """
-                    # x("GOA", [reliNum, subTable])
                     if reliNum in subTable:
                         """Wenn z.B. Religion 2 als Spalte 2 auch als Spalte 2 drin ist als Zelle der kombis die als Zelle in die Haupt+Anzeige Tabelle rein soll
                         d.h. hier die Frage ob z.B. 2==2    viel mehr ist das nicht"""
@@ -928,7 +908,6 @@ class Tables:
                             """HauptTabellenzeilen werden durchIteriert"""
                             if old2newRows[1][row] in maintable2subtable_Relation[0]:
                                 """Wenn Haupttabellenzeile der Kombitabellenzeile entspricht"""
-                                x("NBW", maintable2subtable_Relation)
                                 subRowNum = maintable2subtable_Relation[0][
                                     old2newRows[1][row]
                                 ]
@@ -937,7 +916,6 @@ class Tables:
                                     und dessen zugehörige subTableZellen die als Zellen in die Haupt+Anzeige Tabelle rein sollen
                                     genomen
                                     """
-                                    x("SFG", rowsOfcombi)
                                     if rowsOfcombi.index(subRowNum + 1) < len(
                                         subTableCell
                                     ) and subTableCell != [[""]]:
@@ -951,7 +929,6 @@ class Tables:
                                             ]
                                         )
                                         hinein = self.removeOneNumber(hinein, reliNum)
-                                        # print(str(reliNum))
                                         if oneLinePerLine:
                                             if (
                                                 len(hinein) > 0
@@ -1123,7 +1100,6 @@ class Tables:
                                 )
                         self.kombiTable += [col]
                         self.kombiTable_Kombis_Col: list = []
-                        # x("EEE1", self.kombiTable)
                         if len(col) > 0 and z > 0:
                             """die Behandlung des Auslesens von Religionsnummern in Kombination
                             in der ersten Spalte der kombi.csv"""
@@ -1255,9 +1231,6 @@ class Tables:
                 self.kombiTable_Kombis = [[]]
             # #x("idiot", self.tables.generatedSpaltenParameter)
 
-            # x("AAA1", self.kombiTable)
-            # x("AAA2", self.kombiTable_Kombis)
-            # x("AAA3", self.maintable2subtable_Relation)
 
             return (
                 self.kombiTable,
