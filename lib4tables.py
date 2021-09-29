@@ -217,10 +217,11 @@ class htmlSyntax(OutputSyntax):
             p4: str
             try:
                 p4a = tables.generatedSpaltenParameter_Tags[spalte - 2]
-                p4a.sort()
+                # print(str(p4a))
                 p4b: list = []
                 for a in p4a:
                     p4b += [str(a.value)]
+                p4b.sort()
                 p4 = ",".join(p4b)
             except KeyError:
                 p4 = ""
