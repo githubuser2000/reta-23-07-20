@@ -592,7 +592,7 @@ class Concat:
                 # wenn i>0
                 if into[i] != [""]:
                     into[i] += [
-                        "alles nur bezogen auf die selbe Strukturgröße einer ",
+                        ", alles nur bezogen auf die selbe Strukturgröße einer ",
                         zeileninhalte[4],
                     ]
 
