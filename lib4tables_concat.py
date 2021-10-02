@@ -592,8 +592,14 @@ class Concat:
                 # wenn i>0
                 if into[i] != [""]:
                     into[i] += [
-                        ", alles nur bezogen auf die selbe Strukturgröße einer ",
+                        "<li>"
+                        if self.tables.htmlOutputYes
+                        else "[*]"
+                        if self.tables.bbcodeOutputYes
+                        else "",
+                        "Alles nur bezogen auf die selbe Strukturgröße einer ",
                         zeileninhalte[4],
+                        "</li>" if self.tables.htmlOutputYes else "",
                     ]
 
             for w, cols in enumerate(reliTableCopy[: self.tables.lastLineNumber + 1]):
@@ -1628,7 +1634,6 @@ class Concat:
                                                 multi[1]
                                             except:
                                                 continue
-
 
                                             von = self.spalteMetaKonkretTheorieAbstrakt_getGebrRatUnivStrukturalie(
                                                 multi[0],
