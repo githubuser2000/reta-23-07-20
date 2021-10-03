@@ -165,3 +165,7 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 8|1/8;;;;;das Szenario, die Vorstellung eines Anwendungsfalls (ungefähr das ist es), aber ohne die Wirklichkeit (10) ist es ein Gespinnst, also etwas das man sich ausgesponnen hat und das bis hin gedanklich abwegig ist, bis hin realitätsfern ist;;;;;;;;;;;;
 4|1/8;;;;;der Grundsatz, die Devise, das Motto;;;;;;;;;;;;
 8|1/8|10;;;;;das Szenario, das es wirklich geben kann und die Vorstellung eines Anwendungsfalls, den es wirklich geben kann;;;;;;;;;;;;
+10|10;;;;;eine einzige binäre logische Operation;;;;;;;;;;;;
+10|10|10;;;;;Nur 2 binäre logische Operationen aus 3 Operanden oder auch ein dreistelliges Prädikat;;;;;;;;;;;;
+6|6;;;;;eine einzige Rechenoperation aus 2 Zahlen als Operanden und einem Operator;;;;;;;;;;;;
+7|7;;;;;eine einzige Rechenoperation aus 2 Richtungen als Operanden ohne Betrag und ohne Zahlen als Werte und einem Operator;;;;;;;;;;;;
