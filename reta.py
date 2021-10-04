@@ -1321,6 +1321,8 @@ class Program:
                 ("Kategorie", "kategorie"),
                 {204, 205},
             ),
+            (Program.ParametersMain.universum, ("Raum-Missionen", "weltall"), {218}),
+            (Program.ParametersMain.galaxie, ("Raum-Missionen", "weltall"), {218}),
             (
                 Program.ParametersMain.universum,
                 (
