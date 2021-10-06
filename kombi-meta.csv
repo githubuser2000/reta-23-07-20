@@ -36,7 +36,7 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 6/8|+2|+1/5|+1/6|+7|-10|(14)|(15)|(17)|(18);;;;;;;;;;;;;;;;;
 6|7|8;;;;;Nicht sehr sicher: Tensor und Matrix, aber vielleicht braucht man dafür gar nicht die 7, die Richtung, sondern 6 und 8 reicht womöglich;;;;;;;;;;;;
 1|2|(3)|4|5;;;;;;;;;;;Determinismus und Indeterminismus;;;;;;
-1|2;;;;;nicht Vergleich, aber tatsächliche Gleichheit / Ungleichheit (1-4 ist Welt und nicht Analyse der Welt) (größtenteils sicher);;;;;;;;;;;;
+1|2;;;;;Gleichheit der gleichen Art auf die gleiche Art konkret zu sein (fast total sicher);;;;;;;;;;;;
 -2|(+7)|-8|-13|-16|-17;;;;;;;;;;;;;;;;;
 +7|10|12|14|(15);;;;;;;;;;;;;;;;;
 -4|+7|+10|+13|+14;;;;;;;;;;;;;;;;;
@@ -126,7 +126,7 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 7|16;;;;;der Baum der Branchen, nicht nur Wirtschaftszweige (Zweige von Funktionstätigkeiten) (größtenteils sicher);;;;;;;;;;;;
 4|6;;;;;das Zeitmaß und die Wertveränderung;;;;;;;;;;;;
 6|13;;;;;Zahlen mit Vorzeichen, Plus oder Minus;;;;;;;;;;;;
-2|6;;;;;genaue Zahlen, keine diffusen Zahlen, keine irrationalen Zahlen, aber deshalb nicht automatisch rationale Zahlen;;;;;;;;;;;;
+2|6;;;;;genaue Zahlen, keine diffusen Zahlen, keine irrationalen Zahlen, aber deshalb nicht nur rationale Zahlen;;;;;;;;;;;;
 3|6;;;;;Wertsachen: in der Welt vorhandener, nicht fiktiver Wert;;;;;;;;;;;;
 6|11;;;;;Zahlensystem;;;;;;;;;;;;
 6|14;;;;;Zahlen Addieren, Multiplizieren, Zahl zu Menge oder Tupel  hinzufügen;;;;;;;;;;;;
@@ -172,3 +172,4 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 7|1/7;;;;;Friedfertigkeit (Galaxie oder Universum?);;;;;;;;;;;;
 7|1/8|10;;;;;"korrekte (10) Verallgemeinerungen (7) von grundsätzlichen Funktionsweisen (Prinzipien [1/8]): [b]Beispiel[/b] 1: Rekursion ist ein Prinzip von mehreren möglichen und somit ist strukturelle Induktion (die aus Rekursion besteht und ein Verallgemeinerungsbeweis ist) eine von mehreren möglichen Typen der Kombination ""7 mit 1/8 mit 10"". [b]Beispiel[/b] 2: Beweise auf Basis von iterativen Schleifen durch Schleifeninvarianten sind außerdem die Umsetzung einer korrekten (10) Verallgemeinerung (7) eines Prinzips (1/8). Das Prinzip ist hier die iterative Schleife. (For instance, the passing from Galois Groups to Weil Groups, is a generalisation of some kind, which can be seen as just a base change once the Langlands conjecture is proved, but historically it's not the case.)";;;;;;;;;;;;
 4|10;;;;;Änderung der Wirklichkeitsgesetze (in Physik fast unmöglich) (z.B. durch Wettersteuerung, Heizen, etc.) (nicht zu verwechseln mit der Änderung der Realität durch Drogen);;;;;;;;;;;;
+1|3;;;;;existenzielle Gleichheit, Gleichheit in der Existenz;;;;;;;;;;;;
