@@ -13,7 +13,7 @@ import bbcode
 from orderedset import OrderedSet
 
 from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
-                    output, re, x)
+                    originalLinesRange, output, re, x)
 from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz, csvSyntax,
                         divisorGenerator, htmlSyntax, isPrimMultiple,
@@ -22,8 +22,6 @@ from lib4tables import (OutputSyntax, bbCodeSyntax,
 from lib4tables_concat import Concat
 from lib4tables_Enum import ST
 from lib4tables_prepare import Prepare, setShellRowsAmount, shellRowsAmount
-
-originalLinesRange = range(1028)  # Maximale Zeilenanzahl
 
 
 class Tables:
@@ -1230,7 +1228,6 @@ class Tables:
                 self.kombiTable = [[]]
                 self.kombiTable_Kombis = [[]]
             # #x("idiot", self.tables.generatedSpaltenParameter)
-
 
             return (
                 self.kombiTable,

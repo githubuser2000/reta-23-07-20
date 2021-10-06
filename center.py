@@ -11,6 +11,8 @@ from itertools import filterfalse
 
 from orderedset import OrderedSet
 
+originalLinesRange = range(1028)  # Maximale Zeilenanzahl
+
 infoLog = False
 output = True
 pp = pprint.PrettyPrinter(indent=4)

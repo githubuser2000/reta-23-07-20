@@ -42,6 +42,7 @@ zeilenParas = [
     "--alles",
     "--potenzenvonzahlen=",
     "--typ=",
+    "--vielfachevonzahlen=",
 ]
 hauptForNeben = ("-zeilen", "-spalten", "-kombination", "-ausgabe", "-h", "-help")
 

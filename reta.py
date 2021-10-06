@@ -2745,15 +2745,20 @@ class Program:
                             ):
                                 paramLines.add(str(abs(int(word))) + "^")
                     elif arg[2:21] == "vielfachevonzahlen=":
-                        for word in arg[21:].split(","):
-                            if (
-                                word.isdecimal()
-                                or (word[1:].isdecimal() and word[0] == neg)
-                            ) and (
-                                (int(word) > 0 and neg == "")
-                                or (int(word) < 0 and neg != "")
-                            ):
-                                paramLines.add(str(abs(int(word))) + "v")
+                        paramLines |= (
+                            self.tables.getPrepare.parametersCmdWithSomeBereich(
+                                arg[21:], "b", neg
+                            )
+                        )
+                        # for word in arg[21:].split(","):
+                        # if (
+                        # word.isdecimal()
+                        # or (word[1:].isdecimal() and word[0] == neg)
+                        # ) and (
+                        # (int(word) > 0 and neg == "")
+                        # or (int(word) < 0 and neg != "")
+                        # ):
+                        # paramLines.add(str(abs(int(word))) + "v")
                     elif arg[2:20] == "primzahlvielfache=":
                         for word in arg[20:].split(","):
                             if (

@@ -7,7 +7,7 @@ from typing import Iterable, Optional, Union
 
 import lib4tables_Enum
 from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
-                    output, re, x)
+                    originalLinesRange, output, re, x)
 from lib4tables import isPrimMultiple, moonNumber
 from lib4tables_Enum import ST
 
@@ -316,6 +316,31 @@ class Prepare:
         numRangeYesZ = set()
         if_a_AtAll = False
         for condition in paramLines:
+            if "-b-" in condition:
+                if_a_AtAll = True
+                a = self.fromUntil(condition.split("-b-"))
+                for n in numRange.copy():
+                    iterate = 1
+                    a2 = (a[0] * iterate, a[1] * iterate)
+                    n2 = n * iterate
+                    while (
+                        a2[0] <= n2
+                        and a2[1] >= n2
+                        and a2[0] <= originalLinesRange[-1]
+                        and a2[1] <= originalLinesRange[-1]
+                    ):
+                        numRangeYesZ.add(n2)
+                        iterate += 1
+                        a2 = (a[0] * iterate, a[1] * iterate)
+                        n2 = n * iterate
+
+        numRange = cutset(if_a_AtAll, numRange, numRangeYesZ)
+        numRangeYesZ = set()
+        ifZeitAtAll = False
+
+        numRangeYesZ = set()
+        if_a_AtAll = False
+        for condition in paramLines:
             if "-a-" in condition:
                 if_a_AtAll = True
                 a = self.fromUntil(condition.split("-a-"))
@@ -418,7 +443,6 @@ class Prepare:
             if isPrimMultiple(n, primMultiples):
                 numRangeYesZ.add(n)
         numRange = cutset(ifPrimAtAll, numRange, numRangeYesZ)
-
 
         toPowerIt: list = []
         ifPowerAtall: bool = False
