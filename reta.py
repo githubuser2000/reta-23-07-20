@@ -162,22 +162,8 @@ class Program:
                 if lastMainCmd == self.mainParaCmds["spalten"]:
                     cmd = cmd[2:]
                     eq = cmd.find("=")
-                    if cmd[:7] == "breite=" and len(neg) == 0:
-                        if cmd[7:].isdecimal():
-                            breite = abs(int(cmd[7:]))
-                            if breite == 0:
-                                shellRowsAmount = 0
-                            elif shellRowsAmount > 6 and breite > shellRowsAmount - 6:
-                                breite = shellRowsAmount - 6
-                            self.tables.textWidth = breite
-                            self.breiteORbreiten = True
-                    elif cmd[:8] == "breiten=" and len(neg) == 0:
-                        self.tables.breitenn = []
-                        for breite in cmd[8:].split(","):
-                            if breite.isdecimal():
-                                self.tables.breitenn += [int(breite)]
-                                self.breiteORbreiten = True
-                    elif cmd == "keinenummerierung" and len(neg) == 0:
+                    self.breiteBreitenSysArgvPara(cmd, neg)
+                    if cmd == "keinenummerierung" and len(neg) == 0:
                         self.tables.nummeriere = False
                     elif eq != -1:
                         for oneOfThingsAfterEqSign in cmd[eq + 1 :].split(","):
@@ -360,6 +346,27 @@ class Program:
         if len(neg) == 0:
             self.produceAllSpaltenNumbers("-")
             spalten_removeDoublesNthenRemoveOneFromAnother()
+
+    def breiteBreitenSysArgvPara(self, cmd, neg) -> bool:
+        global shellRowsAmount
+        if cmd[:7] == "breite=" and len(neg) == 0:
+            if cmd[7:].isdecimal():
+                breite = abs(int(cmd[7:]))
+                if breite == 0:
+                    shellRowsAmount = 0
+                elif shellRowsAmount > 6 and breite > shellRowsAmount - 6:
+                    breite = shellRowsAmount - 6
+                self.tables.textWidth = breite
+                self.breiteORbreiten = True
+            return True
+        elif cmd[:8] == "breiten=" and len(neg) == 0:
+            self.tables.breitenn = []
+            for breite in cmd[8:].split(","):
+                if breite.isdecimal():
+                    self.tables.breitenn += [int(breite)]
+                    self.breiteORbreiten = True
+            return True
+        return False
 
     def storeParamtersForColumns(self):
         # global puniverseprims
@@ -2795,7 +2802,9 @@ class Program:
                     and len(self.bigParamaeter) > 0
                     and self.bigParamaeter[-1] == "ausgabe"
                 ):  # unteres Kommando
-                    if (
+                    if self.breiteBreitenSysArgvPara(arg[2:], neg):
+                        pass
+                    elif (
                         arg[2 : 2 + len("spaltenreihenfolgeundnurdiese=")]
                         == "spaltenreihenfolgeundnurdiese="
                     ):

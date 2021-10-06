@@ -31,6 +31,8 @@ ausgabeParas = [
     "--endlessscreen",
     "--endless",
     "--dontwrap",
+    "--breite=",
+    "--breiten=",
 ]
 kombiMainParas = ["--galaxie=", "--universum="]
 zeilenParas = [
