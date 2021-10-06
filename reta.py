@@ -162,8 +162,9 @@ class Program:
                 if lastMainCmd == self.mainParaCmds["spalten"]:
                     cmd = cmd[2:]
                     eq = cmd.find("=")
-                    self.breiteBreitenSysArgvPara(cmd, neg)
-                    if cmd == "keinenummerierung" and len(neg) == 0:
+                    if self.breiteBreitenSysArgvPara(cmd, neg):
+                        pass
+                    elif cmd == "keinenummerierung" and len(neg) == 0:
                         self.tables.nummeriere = False
                     elif eq != -1:
                         for oneOfThingsAfterEqSign in cmd[eq + 1 :].split(","):
