@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
 import os
 import platform
 import pprint
@@ -11,6 +10,17 @@ from itertools import filterfalse
 from typing import Optional
 
 from orderedset import OrderedSet
+
+try:
+    from numba import jit
+except:
+
+    def jit(nopython=None):
+        def _jit(f):
+            return f
+
+        return _jit
+
 
 originalLinesRange = range(1028)  # Maximale Zeilenanzahl
 
@@ -193,6 +203,7 @@ def unique_everseen(iterable, key=None):
                 yield element
 
 
+@jit(nopython=True)
 def BereichToNumbers(MehrereBereiche: str) -> set:
 
     Bereiche: list[str] = MehrereBereiche.split(",")
