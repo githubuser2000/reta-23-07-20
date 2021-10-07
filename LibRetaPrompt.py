@@ -72,6 +72,8 @@ befehle = (
     "procontra",
     "prim24",
     "primfaktorzerlegungModulo24",
+    "help",
+    "hilfe",
 )
 
 befehle2: set = set(befehle) - {"reta"}
