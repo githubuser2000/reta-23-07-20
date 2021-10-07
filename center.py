@@ -15,7 +15,7 @@ try:
     from numba import jit
 except:
 
-    def jit(nopython=None):
+    def jit(nopython=None, parallel=True):
         def _jit(f):
             return f
 
@@ -203,7 +203,7 @@ def unique_everseen(iterable, key=None):
                 yield element
 
 
-@jit(nopython=True)
+@jit(nopython=True, parallel=True)
 def BereichToNumbers(MehrereBereiche: str) -> set:
 
     Bereiche: list[str] = MehrereBereiche.split(",")
