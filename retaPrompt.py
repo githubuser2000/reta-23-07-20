@@ -89,8 +89,8 @@ while text not in ("ende", "exit", "quit", "q", ""):
         )
     except KeyboardInterrupt:
         sys.exit()
-    stext = text.split()
-    bedinung = len(stext) > 0 and stext[0] == "reta"
+    stext: Optional[list] = text.split()
+    bedinung: bool = len(stext) > 0 and stext[0] == "reta"
     if not bedinung:
         EineZahlenFolgeJa: dict = {}
         for g, a in enumerate(stext):
@@ -114,10 +114,29 @@ while text not in ("ende", "exit", "quit", "q", ""):
             # b += 1
             # c = a
 
-    if "help" in stext or "hilfe" in stext:
-        print("Alle Befehle außer reta können beliebig kombiniert werden.")
+    if "abc" in stext or "abcd" in stext and len(stext) == 2:
+        buchstabe: str
+        if stext[0] == "abc" or stext[0] == "abcd":
+            buchstaben = stext[1]
+        else:
+            buchstaben = stext[0]
         print(
-            "Dabei muss exakt eine Zahleninformation vorliegen, die innerhalb Leerzeichen steht. Was ist eine Zahleninformation?"
+            str(
+                " ".join(
+                    [
+                        "".join(str(ord(buchstabe.lower()) - 96))
+                        for buchstabe in buchstaben
+                    ]
+                )
+            )
+        )
+
+    if "help" in stext or "hilfe" in stext:
+        print(
+            "Alle Befehle außer reta, abc und abcd können beliebig kombiniert werden."
+        )
+        print(
+            "Bei den kombinierbaren muss exakt eine Zahleninformation vorliegen, die innerhalb Leerzeichen steht. Was ist eine Zahleninformation?"
         )
         print(
             "Eine Zahleninformation ist entweder eine natürliche Zahl z.B. 4, oder ein Zahlenbereich z.B. 3-6 oder eines oder beides dieser Zahleninformationen mehrmals mit Kommas getrennt z.B. 3,6-9,11. Hinter jedem Komma oder vor einer Zahl oder einem Zahlenbereich kann auch ein Minus stehen, was wieder Zahlen entfernt z.B. 1-10,-2,-5-9 entspricht 1,3,4,10."
