@@ -193,33 +193,20 @@ def unique_everseen(iterable, key=None):
                 yield element
 
 
-def BereichToNumbers(self, MehrereBereiche: str) -> set:
-    """Erstellen des Befehls: Bereich
+def BereichToNumbers(MehrereBereiche: str) -> set:
 
-    @type MehrereBereiche: str
-    @param MehrereBereiche: der Bereich von bis
-    @type symbol: str
-    @param symbol: welche Art Bereich soll es werden, symbol typisiert den Bereich
-    @type neg: string
-    @param neg: Vorzeichen, wenn es darum geht dass diese Zeilen nicht angezeigt werden sollen
-    @rtype: set
-    @return: Alle Zeilen die dann ausgegeben werden sollen
-    """
-    negativ: list[Optional[bool]] = []
-    Bereiche = MehrereBereiche.split(",")
+    Bereiche: list[str] = MehrereBereiche.split(",")
     dazu: set[int] = set()
     hinfort: set[int] = set()
     menge: Optional[set[int]]
+
     for EinBereich in Bereiche:
-        if len(EinBereich) > 1 and EinBereich[0] == "-" and EinBereich[1:].isdecimal():
-            negativ += [False]
+        if len(EinBereich) > 1 and EinBereich[0] == "-":
             EinBereich = EinBereich[1:]
             menge = hinfort
-        elif len(EinBereich) > 0 and EinBereich[0] != "-" and EinBereich[0].isdecimal():
-            negativ += [True]
+        elif len(EinBereich) > 0 and EinBereich[0] != "-":
             menge = dazu
         else:
-            negativ += [None]
             menge = None
 
         if menge is not None:

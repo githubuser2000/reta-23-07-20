@@ -10,6 +10,7 @@ from copy import deepcopy
 from itertools import zip_longest
 from typing import Optional
 
+from center import BereichToNumbers
 # import reta
 from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
                        befehle2, hauptForNeben, kombiMainParas, mainParas,
@@ -60,14 +61,17 @@ if "-vi" not in sys.argv:
     )
 
 
-def externCommand(cmd: str):
-    c2 = c.split(",")
-    if [x.isdecimal() for x in c2] == [True] * len(c2):
-        try:
-            process = subprocess.Popen([os.path.dirname(__file__) + os.sep + cmd, *c2])
-            process.wait()
-        except:
-            pass
+def externCommand(cmd: str, StrNummern: str):
+    nummern: list[int] = list(BereichToNumbers(StrNummern))
+    nummern.sort()
+    nummernStr: list[str] = [str(nummer) for nummer in nummern]
+    try:
+        process = subprocess.Popen(
+            [os.path.dirname(__file__) + os.sep + cmd, *nummernStr]
+        )
+        process.wait()
+    except:
+        pass
 
 
 while text not in ("ende", "exit", "quit", "q", ""):
@@ -88,12 +92,27 @@ while text not in ("ende", "exit", "quit", "q", ""):
     stext = text.split()
     bedinung = len(stext) > 0 and stext[0] == "reta"
     if not bedinung:
-        b = 0
-        for a in stext:
-            d = re.split(",|-", a)
-            if a.isnumeric() or [b.isnumeric() for b in d] == [True] * len(d):
-                b += 1
-                c = a
+        EineZahlenFolgeJa: dict = {}
+        for g, a in enumerate(stext):
+            for innerKomma in a.split(","):
+                innerKommaList = innerKomma.split("-")
+                for k, innerMinus in enumerate(innerKommaList):
+                    if k == 0 and len(innerMinus) == 0:
+                        pass
+                    elif innerMinus.isdecimal():
+                        c = a
+                        try:
+                            EineZahlenFolgeJa[g]
+                        except KeyError:
+                            EineZahlenFolgeJa[g] = True
+
+                    else:
+                        EineZahlenFolgeJa[g] = False
+
+            # d = re.split(",|-", a)
+            # if a.isnumeric() or [b.isnumeric() for b in d] == [True] * len(d):
+            # b += 1
+            # c = a
 
     if bedinung:
         import reta
@@ -101,7 +120,7 @@ while text not in ("ende", "exit", "quit", "q", ""):
         reta.Program(stext, int(shellRowsAmountStr) - 15)
         # process = subprocess.Popen(sos.path.dirname(__file__) + os.sep + text)
         # process.wait()
-    elif b == 1:
+    elif list(EineZahlenFolgeJa.values()).count(True) == 1:
         if "vielfache" in stext and "einzeln" not in stext:
             zeiln = "--vielfachevonzahlen=" + str(c).strip()
         else:
@@ -142,10 +161,10 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 int(shellRowsAmountStr),
             )
         if len({"prim24", "primfaktorzerlegungModulo24"} & set(stext)) > 0:
-            externCommand("prim24")
+            externCommand("prim24", c)
 
         if len({"prim", "primfaktorzerlegung"} & set(stext)) > 0:
-            externCommand("prim")
+            externCommand("prim", c)
 
         if len({"multis"} & set(stext)) > 0:
             import reta
@@ -163,8 +182,8 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 int(shellRowsAmountStr),
             )
 
-            externCommand("multis")
-            externCommand("prim")
+            externCommand("multis", c)
+            externCommand("prim", c)
 
         if len({"procontra"} & set(stext)) > 0:
             import reta
@@ -182,7 +201,7 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 int(shellRowsAmountStr),
             )
         if len({"modulo"} & set(stext)) > 0:
-            externCommand("modulo")
+            externCommand("modulo", c)
 
         if len({"universum"} & set(stext)) > 0:
             import reta
