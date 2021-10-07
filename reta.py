@@ -4,7 +4,7 @@ import platform
 import re
 from collections import OrderedDict, namedtuple
 from itertools import zip_longest
-from typing import Optional
+from typing import Optional, Union
 
 import html2text
 from orderedset import OrderedSet
@@ -538,12 +538,12 @@ class Program:
                     dataDicts3[i] = dict2
             return paraDict1, dataDicts3
 
-        Program.ParametersMain: namedtuple = namedtuple(
+        Program.ParametersMain: namedtuple[str, str] = namedtuple(
             "ParametersMain",
             "wichtigste wichtigste2 religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache planet alles",
         )
 
-        Program.ParametersMain = Program.ParametersMain(
+        Program.ParametersMain: namedtuple[tuple[str]] = Program.ParametersMain(
             ("Wichtigstes_zum_verstehen", "wichtigsteverstehen"),
             ("Wichtigstes_zum_gedanklich_einordnen", "wichtigsteeinordnen"),
             (
@@ -634,7 +634,7 @@ class Program:
             ("alles",),
         )
 
-        allowedPrimNumbersForCommand = tuple(
+        allowedPrimNumbersForCommand: tuple[str] = tuple(
             (
                 str(num)
                 for num in tuple(
@@ -661,7 +661,19 @@ class Program:
             for chosen in [value for value in (paraValues.split(","))]
         } - {None, 0, 1}
 
-        paraNdataMatrix = [
+        paraNdataMatrix: list[
+            tuple[
+                tuple[str],
+                set[int],
+                set[tuple[int]],
+                set,
+                set,
+                set[tuple[Optional[int], Optional[int]]],
+                set,
+                set[list[str]],
+                set[str],
+            ]
+        ] = [
             (
                 Program.ParametersMain.wichtigste,
                 (
@@ -697,9 +709,9 @@ class Program:
                     "zweitwichtigste",
                 ),
                 {19, 65, 183},
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
                 {(10,)},
             ),
             (
@@ -713,13 +725,13 @@ class Program:
             (
                 Program.ParametersMain.wichtigste,
                 ("Motive_Sternpolygone", "viertwichtigste"),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {"primMotivStern"},
             ),
             (
@@ -962,10 +974,10 @@ class Program:
             (
                 Program.ParametersMain.universummetakonkret,
                 ("meta",),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {
                     (
                         2,
@@ -976,10 +988,10 @@ class Program:
             (
                 Program.ParametersMain.universummetakonkret,
                 ("konkret",),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {
                     (
                         2,
@@ -990,10 +1002,10 @@ class Program:
             (
                 Program.ParametersMain.universummetakonkret,
                 ("Theorie", "theorie"),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {
                     (
                         3,
@@ -1004,10 +1016,10 @@ class Program:
             (
                 Program.ParametersMain.universummetakonkret,
                 ("Praxis", "praxis"),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {
                     (
                         3,
@@ -1022,10 +1034,10 @@ class Program:
                     "management",
                     "stau",
                 ),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {
                     (
                         4,
@@ -1040,10 +1052,10 @@ class Program:
                     "veraendernd",
                     "fluss",
                 ),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {
                     (
                         4,
@@ -1054,10 +1066,10 @@ class Program:
             (
                 Program.ParametersMain.universummetakonkret,
                 ("ganzheitlich", "mathematisch_diskret", "diskret"),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {
                     (
                         5,
@@ -1072,10 +1084,10 @@ class Program:
                     "hinausgehend",
                     "kontinuierlich",
                 ),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {
                     (
                         5,
@@ -1093,10 +1105,10 @@ class Program:
                     "transzendentalien",
                     "transzendentalie",
                 ),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {(5,)},
             ),
             (
@@ -1105,10 +1117,10 @@ class Program:
                     "Richtung_als_Richtung",
                     "richtungrichtung",
                 ),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {(None,)},
             ),
             (
@@ -1122,10 +1134,10 @@ class Program:
                     "absichten",
                     "galaxie",
                 ),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {(10,)},
             ),
             (
@@ -1139,10 +1151,10 @@ class Program:
                     "absichtenreziproke",
                     "galaxiereziproke",
                 ),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {(42,)},
             ),
             (
@@ -1155,10 +1167,10 @@ class Program:
                     "transzendentalienreziproke",
                     "transzendentaliereziproke",
                 ),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {(131,)},
             ),
             (
@@ -1170,10 +1182,10 @@ class Program:
                     "dagegengegenstrukturalien",
                     "dagegengegenstrukturalie",
                 ),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {(138,)},
             ),
             (
@@ -1185,10 +1197,10 @@ class Program:
                     "neutralegegenstrukturalien",
                     "neutralegegenstrukturalie",
                 ),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {(202,)},
             ),
             (
@@ -1200,10 +1212,10 @@ class Program:
                     "geschaeft",
                     "geschäft",
                 ),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {
                     (
                         6,
@@ -1214,10 +1226,10 @@ class Program:
             (
                 Program.ParametersMain.universummetakonkret,
                 ("wertvoll", "wert"),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {
                     (
                         6,
@@ -1232,10 +1244,10 @@ class Program:
                     "regieren",
                     "beherrschen",
                 ),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {
                     (
                         7,
@@ -1250,10 +1262,10 @@ class Program:
                     "richtung",
                     "gut",
                 ),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {
                     (
                         7,
@@ -1903,13 +1915,13 @@ class Program:
                     "Primzahlkreuz",
                     "primzahlkreuz",
                 ),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {"primzahlkreuzprocontra"},
             ),
             (
@@ -1918,13 +1930,13 @@ class Program:
                     "Primzahlkreuz",
                     "primzahlkreuz",
                 ),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {"primzahlkreuzprocontra"},
             ),
             (
@@ -2003,9 +2015,9 @@ class Program:
                     "planet",
                 ),
                 {64, 154},
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
             ),
             (
                 Program.ParametersMain.bedeutung,
@@ -2027,31 +2039,31 @@ class Program:
             ),
             (
                 Program.ParametersMain.gebrochengalaxie,
-                OrderedSet([str(a) for a in range(2, 100)]),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet([str(a) for a in range(2, 100)]),
+                set([str(a) for a in range(2, 100)]),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set([str(a) for a in range(2, 100)]),
             ),
             (
                 Program.ParametersMain.gebrochenuniversum,
-                OrderedSet([str(a) for a in range(2, 100)]),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet([str(a) for a in range(2, 100)]),
+                set([str(a) for a in range(2, 100)]),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set([str(a) for a in range(2, 100)]),
             ),
             (Program.ParametersMain.symbole, (), {36, 37}),
             # (
             #    Program.ParametersMain.Multiplikationen,
             #    allowedPrimNumbersForCommand,
-            #    OrderedSet(),
-            #    OrderedSet(),
+            #    set(),
+            #    set(),
             #    (
             #        lambda: {  # nur noch ein Platzhalter
             #            None,
@@ -2082,19 +2094,19 @@ class Program:
                     "reserviert",
                     "zugeneigt",
                 ),
-                OrderedSet(),
+                set(),
                 {(199, 200)},
             ),
             (
                 Program.ParametersMain.konzept,
                 ("Tragweite", "tragweite"),
-                OrderedSet(),
+                set(),
                 {(211, 212)},
             ),
             (
                 Program.ParametersMain.konzept,
                 ("wertvoll", "wertlos"),
-                OrderedSet(),
+                set(),
                 {(186, 187)},
             ),
             (
@@ -2106,7 +2118,7 @@ class Program:
                     "freunde",
                     "propheten",
                 ),
-                OrderedSet(),
+                set(),
                 {(184, 185)},
             ),
             (
@@ -2116,7 +2128,7 @@ class Program:
                     "sanft",
                     "hart",
                 ),
-                OrderedSet(),
+                set(),
                 {(159, 160), (161, 162)},
             ),
             (
@@ -2129,7 +2141,7 @@ class Program:
                     "einheit",
                     "verbindung",
                 ),
-                OrderedSet(),
+                set(),
                 {(133, 134)},
             ),
             (
@@ -2160,7 +2172,7 @@ class Program:
                     "zeitlich",
                     "räumlich",
                 ),
-                OrderedSet(),
+                set(),
                 {(49, 50)},
             ),
             (
@@ -2173,7 +2185,7 @@ class Program:
                     "egalitär",
                     "autoritär",
                 ),
-                OrderedSet(),
+                set(),
                 {(163, 164)},
             ),
             (
@@ -2184,7 +2196,7 @@ class Program:
                     "anderemenschen",
                     "ruf",
                 ),
-                OrderedSet(),
+                set(),
                 {(60, 61)},
             ),
             (
@@ -2194,31 +2206,31 @@ class Program:
                     "selbstgerechtigkeit",
                     "selbstgerecht",
                 ),
-                OrderedSet(),
+                set(),
                 {(62, 63)},
             ),
             (
                 Program.ParametersMain.konzept,
                 ("Meinungsintelligenz", "meinungsintelligenz", "ursprungsintelligenz"),
-                OrderedSet(),
+                set(),
                 {(151, 152)},
             ),
             (
                 Program.ParametersMain.konzept,
                 ("Sittlichkeit", "sittlichkeit", "annaehrerung"),
-                OrderedSet(),
+                set(),
                 {(179, 180)},
             ),
             (
                 Program.ParametersMain.konzept,
                 ("Führung", "führung", "fuehrung"),
-                OrderedSet(),
+                set(),
                 {(173, 174)},
             ),
             (
                 Program.ParametersMain.konzept,
                 ("Durchleuchten", "durchleuchten", "erleuchten"),
-                OrderedSet(),
+                set(),
                 {(177, 178)},
             ),
             (
@@ -2232,7 +2244,7 @@ class Program:
                     "gedeihen",
                     "verderben",
                 ),
-                OrderedSet(),
+                set(),
                 {(175, 176)},
             ),
             (
@@ -2244,7 +2256,7 @@ class Program:
                     "ueberheblich",
                     "überheblichkeit",
                 ),
-                OrderedSet(),
+                set(),
                 {(171, 172)},
             ),
             (
@@ -2253,7 +2265,7 @@ class Program:
                     "Polung_der_Liebe",
                     "liebepolung",
                 ),
-                OrderedSet(),
+                set(),
                 {(121, 122)},
             ),
             (
@@ -2268,20 +2280,20 @@ class Program:
                 {136},
                 {(66, 67)},
             ),
-            (Program.ParametersMain.konzept, ("kausal",), OrderedSet(), {(110, 111)}),
+            (Program.ParametersMain.konzept, ("kausal",), set(), {(110, 111)}),
             (
                 Program.ParametersMain.konzept,
                 ("Gleichheit", "gleich"),
-                OrderedSet(),
+                set(),
                 {(192, 193)},
             ),
             (
                 Program.ParametersMain.konzept,
                 ("Überleben", "ueberleben"),
-                OrderedSet(),
+                set(),
                 {(194, 195)},
             ),
-            (Program.ParametersMain.inkrementieren, OrderedSet(), {43, 54, 74, 95}),
+            (Program.ParametersMain.inkrementieren, set(), {43, 54, 74, 95}),
             (Program.ParametersMain.inkrementieren, ("um1",), {155}),
             (Program.ParametersMain.inkrementieren, ("um2",), {156}),
             (Program.ParametersMain.inkrementieren, ("um3",), {157}),
@@ -2304,85 +2316,85 @@ class Program:
             (
                 Program.ParametersMain.primvielfache,
                 ("Motive_gleichförmige_Polygone", "motivgleichfoermig"),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {"primMotivGleichf"},
             ),
             (
                 Program.ParametersMain.primvielfache,
                 ("Struktur_gleichförmige_Polygone", "strukturgleichfoermig"),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {"primStrukGleichf"},
             ),
             (
                 Program.ParametersMain.primvielfache,
                 ("Motive_Sternpolygone", "motivstern"),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {"primMotivStern"},
             ),
             (
                 Program.ParametersMain.primvielfache,
                 ("Struktur_Sternpolygone", "strukturstern"),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {"primStrukStern"},
             ),
             (
                 Program.ParametersMain.primvielfache,
                 ("Motiv_Sternpolygon_gebrochen-rational", "motivgebrstern"),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {"primMotivSternGebr"},
             ),
             (
                 Program.ParametersMain.primvielfache,
                 ("Struktur_Sternpolyon_gebrochen-rational", "strukgebrstern"),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {"primStrukSternGebr"},
             ),
             (
                 Program.ParametersMain.primvielfache,
                 ("Motiv_gleichförmige_Polygone_gebrochen-rational", "motivgebrgleichf"),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {"primMotivGleichfGebr"},
             ),
             (
@@ -2391,25 +2403,25 @@ class Program:
                     "Struktur_gleichförmige_Polygone_gebrochen-rational",
                     "strukgebrgleichf",
                 ),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {"primStrukGleichfGebr"},
             ),
             (
                 Program.ParametersMain.primvielfache,
                 ("beschrieben",),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
-                OrderedSet(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
                 {"PrimCSV"},
             ),
         ]
@@ -2441,7 +2453,7 @@ class Program:
         }
         """
 
-        Program.kombiParaNdataMatrix = OrderedDict(
+        Program.kombiParaNdataMatrix: OrderedDict[int, tuple[str]] = OrderedDict(
             {
                 1: (
                     "Lebewesen",
@@ -2499,7 +2511,7 @@ class Program:
             }
         )
 
-        Program.kombiParaNdataMatrix2 = OrderedDict(
+        Program.kombiParaNdataMatrix2: OrderedDict[int, tuple[str]] = OrderedDict(
             {
                 1: (
                     "Lebewesen",

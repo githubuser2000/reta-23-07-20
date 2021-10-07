@@ -11,8 +11,7 @@ from itertools import zip_longest
 from orderedset import OrderedSet
 
 from center import (DefaultOrderedDict, Multiplikationen, alxp, cliout,
-                    getTextWrapThings, infoLog, output, re, sort,
-                    unique_everseen, x)
+                    getTextWrapThings, infoLog, output, re, unique_everseen, x)
 from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz,
                         couldBePrimeNumberPrimzahlkreuz_fuer_aussen,

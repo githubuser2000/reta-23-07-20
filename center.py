@@ -113,31 +113,31 @@ def cliout(text):
     # return hash(str(super())) <= hash(str(bla))
 
 
-def sort(array):
-    less = []
-    equal = []
-    greater = []
+# def sort(array):
+# less: list = []
+# equal: list = []
+# greater: list = []
 
-    if len(array) > 1:
-        pivot = array[0]
-        pivot = list(pivot)
-        pivot2 = pivot
-        for x in array:
-            x = list(x)
-            x2 = x
-            if x2 < pivot2:
-                less.append(x)
-            elif x2 == pivot2:
-                equal.append(x)
-            elif x2 > pivot2:
-                greater.append(x)
-        # Don't forget to return something!
-        return (
-            sort(less) + equal + sort(greater)
-        )  # Just use the + operator to join lists
-    # Note that you want equal ^^^^^ not pivot
-    else:  # You need to handle the part at the end of the recursion - when you only have one element in your array, just return the array.
-        return array
+# if len(array) > 1:
+# pivot = array[0]
+# pivot: list = list(pivot)
+# pivot2: list = pivot
+# for x in array:
+# x = list(x)
+# x2 = x
+# if x2 < pivot2:
+# less.append(x)
+# elif x2 == pivot2:
+# equal.append(x)
+# elif x2 > pivot2:
+# greater.append(x)
+# # Don't forget to return something!
+# return (
+# sort(less) + equal + sort(greater)
+# )  # Just use the + operator to join lists
+# # Note that you want equal ^^^^^ not pivot
+# else:  # You need to handle the part at the end of the recursion - when you only have one element in your array, just return the array.
+# return array
 
 
 class DefaultOrderedDict(OrderedDict):
