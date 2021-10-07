@@ -8,6 +8,7 @@ import re
 import sys
 from collections import Callable, OrderedDict
 from itertools import filterfalse
+from typing import Optional
 
 from orderedset import OrderedSet
 
@@ -190,3 +191,49 @@ def unique_everseen(iterable, key=None):
             if k not in seen:
                 seen_add(k)
                 yield element
+
+
+def BereichToNumbers(self, MehrereBereiche: str) -> set:
+    """Erstellen des Befehls: Bereich
+
+    @type MehrereBereiche: str
+    @param MehrereBereiche: der Bereich von bis
+    @type symbol: str
+    @param symbol: welche Art Bereich soll es werden, symbol typisiert den Bereich
+    @type neg: string
+    @param neg: Vorzeichen, wenn es darum geht dass diese Zeilen nicht angezeigt werden sollen
+    @rtype: set
+    @return: Alle Zeilen die dann ausgegeben werden sollen
+    """
+    negativ: list[Optional[bool]] = []
+    Bereiche = MehrereBereiche.split(",")
+    dazu: set[int] = set()
+    hinfort: set[int] = set()
+    menge: Optional[set[int]]
+    for EinBereich in Bereiche:
+        if len(EinBereich) > 1 and EinBereich[0] == "-" and EinBereich[1:].isdecimal():
+            negativ += [False]
+            EinBereich = EinBereich[1:]
+            menge = hinfort
+        elif len(EinBereich) > 0 and EinBereich[0] != "-" and EinBereich[0].isdecimal():
+            negativ += [True]
+            menge = dazu
+        else:
+            negativ += [None]
+            menge = None
+
+        if menge is not None:
+            if EinBereich.isdecimal():
+                EinBereich = EinBereich + "-" + EinBereich
+            BereichCouple: list[str] = EinBereich.split("-")
+            if (
+                len(BereichCouple) == 2
+                and BereichCouple[0].isdecimal()
+                and BereichCouple[0] != "0"
+                and BereichCouple[1].isdecimal()
+                and BereichCouple[1] != "0"
+            ):
+                for number in range(int(BereichCouple[0]), int(BereichCouple[1]) + 1):
+                    menge |= {number}
+
+    return dazu - hinfort
