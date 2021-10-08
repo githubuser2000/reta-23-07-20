@@ -231,6 +231,23 @@ while text not in ("ende", "exit", "quit", "q", ""):
         if len({"modulo"} & set(stext)) > 0:
             externCommand("modulo", c)
 
+        if len({"alles"} & set(stext)) > 0:
+            import reta
+
+            kette = [
+                "reta",
+                "-zeilen",
+                zeiln,
+                "-spalten",
+                "--alles",
+                "--breite=" + str(int(shellRowsAmountStr) - 10),
+                "-ausgabe",
+            ]
+            reta.Program(
+                kette,
+                int(shellRowsAmountStr),
+            )
+
         if len({"universum"} & set(stext)) > 0:
             import reta
 

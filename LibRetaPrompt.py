@@ -76,6 +76,7 @@ befehle = (
     "hilfe",
     "abc",
     "abcd",
+    "alles",
 )
 
 befehle2: set = set(befehle) - {"reta"}
