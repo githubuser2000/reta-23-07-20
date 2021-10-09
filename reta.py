@@ -847,6 +847,16 @@ class Program:
                 {90},
             ),
             (
+                Program.ParametersMain.inkrementieren,
+                ("Addition", "addition", "identitaet", "Identität"),
+                {219},
+            ),
+            (
+                Program.ParametersMain.universum,
+                ("Addition", "addition", "identitaet", "Identität"),
+                {219},
+            ),
+            (
                 Program.ParametersMain.universum,
                 ("keine_Nur-Paradigma-Religionen", "metaparadigmareligion"),
                 {190, 191, 196},

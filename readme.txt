@@ -49,7 +49,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--bedeutung=[list][*]primzahlen,anwendungdersonnen,zaehlungen,jura,geist,gestirn,mechanismen,zuechtung,konjunktiv,wurzel,vorzeichen,inreta[/list]
 [*]--symbole
 [*]--eigenschaften=[list][*]weisheit,gut,zeit,ruf,selbstgerecht,egoismus,kausal,liebepolung,einheit,meinungsintelligenz,ursprungsintelligenz,sanft,hart,egalitaer,autoritaer,ueberheblich,foerdern,durchleuchten,sittlichkeit,fuehrung,sinn,familiaer,goettlich,wertvoll,gleich,ueberleben,abgeneigt,zugeneigt,tragweite[/list]
-[*]--inkrementieren[list][*]um1,um2,um3,warumtranszendentaliezustrukturgroesseundcharakter,warumtranszendentaliegleichkomplexitaet[/list]
+[*]--inkrementieren[list][*]um1,um2,um3,warumtranszendentaliezustrukturgroesseundcharakter,warumtranszendentaliegleichkomplexitaet,addition[/list]
 [*]--operationen=[list][*]halbierungen,2,3,4,5,9,multiplikation[/list]
 [*]--universummetakonkret=
 [list][*]konkret,meta,theorie,praxis,ganzheitlich,hinausgehend,management,veraendernd,unternehmung,wert,richtung,regieren[/list]
@@ -66,7 +66,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [/list]
 [*]-kombination
 [list][*]--galaxie=[list][*]tiere,berufe,intelligenz,liebe,frauen,maenner,persoenlichkeit,religionen,motive,emotionen,personen,wirtschaftssysteme[/list]
-[list][*]--universum=[list][*]tiere,berufe,transzendentalien,strukturalien,primzahlkreuz,ontologie,mechanismen,gegentranszendentalien,maschinen[/list]
+[list][*]--universum=[list][*]tiere,berufe,transzendentalien,strukturalien,primzahlkreuz,ontologie,mechanismen,gegentranszendentalien,maschinen,addition[/list]
 [/list]
 [/list]
 [*]-ausgabe

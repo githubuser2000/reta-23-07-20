@@ -200,6 +200,7 @@ tableTags = {
         206,
         209,
         210,
+        219,
     },
     frozenset({ST.galaxie, ST.gleichfoermigesPolygon}): {
         16,
