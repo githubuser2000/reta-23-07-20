@@ -7,7 +7,7 @@ from fractions import Fraction
 from functools import lru_cache
 
 from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
-                    numba, output, re, x)
+                    jit, output, re, x)
 
 
 class OutputSyntax:
