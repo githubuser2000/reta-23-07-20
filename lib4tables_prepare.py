@@ -138,7 +138,7 @@ class Prepare:
 
         for i in range(int(self.zaehlungen[0]) + 1, num + 1):
             wasMoon = isMoon
-            moonType = moonNumber(i)
+            moonType = moonNumber(int(i))
             isMoon = moonType[0] != []
             if wasMoon and not isMoon:
                 isMoon = False

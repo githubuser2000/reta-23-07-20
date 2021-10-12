@@ -3,10 +3,11 @@
 import math
 from collections import OrderedDict
 from enum import Enum
+from fractions import Fraction
 from functools import lru_cache
 
 from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
-                    output, re, x)
+                    numba, output, re, x)
 
 
 class OutputSyntax:
@@ -273,7 +274,7 @@ class htmlSyntax(OutputSyntax):
     endZeile = "</tr>\n"
 
 
-@lru_cache(maxsize=10489)
+@jit(nopython=True, parallel=False, cache=True)
 def moonNumber(num: int):
     """Hier wird der Zeilenumbruch umgesetzt
 
@@ -282,20 +283,20 @@ def moonNumber(num: int):
     @rtype: tuple(list[int],list[int])
     @return: () wenn keine Mondzahl, sonst 2 Listen mit gleicher Länge aus Elementen: Liste1: Basis der Mondzahl, Liste2: Exponent der Mondzahl
     """
-    results: list = []
-    exponent: list = []
+    results: list = [1]
+    exponent: list = [1]
+    exponent.pop()
+    results.pop()
     for i in range(2, num):
-        oneResult = math.pow(num, 1 / i)
-        """"sehr unsauber von mir gelöst!!!! , aber reicht für das was es soll
-            vorher war 125 nicht mit dabei, bei sehr großen Zahlen wird dieser
-            Algo wieder Mist bauen! """
+        oneResult: float = num ** (1 / i)
         if round(oneResult) * 100000 == round(oneResult * 100000):
-            results += [int(oneResult)]
-            exponent += [i - 2]
+            results += [int(round(oneResult))]
+            exponent += [int(i - 2)]
+
     return results, exponent
 
 
-@lru_cache(maxsize=10489)
+@jit(nopython=True, parallel=False, cache=True)
 def primFak(n: int) -> list:
     """Alle Primfaktoren einer Zahl als Liste mit mehrfachvorkommen, sofern ja
 
