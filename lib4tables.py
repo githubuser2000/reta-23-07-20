@@ -47,7 +47,6 @@ class markdownSyntax(OutputSyntax):
 
 
 class bbCodeSyntax(OutputSyntax):
-    @jit(nopython=True, parallel=True, cache=True)
     def coloredBeginCol(self, num: int, rest: bool = False):
         num = int(num) if str(num).isdecimal() else 0
         numberType = primCreativity(num)
@@ -79,7 +78,6 @@ class bbCodeSyntax(OutputSyntax):
         elif num == 0:
             return '[tr="background-color:#ff2222;color:#002222;"]'
 
-    @jit(nopython=True, parallel=True, cache=True)
     def generateCell(
         self, spalte: int, SpaltenParameter: dict, content=None, zeile=None, tables=None
     ) -> str:
@@ -108,11 +106,9 @@ class bbCodeSyntax(OutputSyntax):
 
 
 class htmlSyntax(OutputSyntax):
-    @jit(nopython=True, parallel=True, cache=True)
     def __init__(self):
         self.zeile = 0
 
-    @jit(nopython=True, parallel=True, cache=True)
     def coloredBeginCol(self, num: int, rest: bool = False) -> str:
         num = int(num) if str(num).isdecimal() else 0
         numberType = primCreativity(num)
@@ -144,7 +140,6 @@ class htmlSyntax(OutputSyntax):
         elif num == 0:
             return '<tr style="background-color:#ff2222;color:#002222;">\n'
 
-    @jit(nopython=True, parallel=True, cache=True)
     def generateCell(
         self, spalte: int, SpaltenParameter: dict, content=None, zeile=None, tables=None
     ) -> str:
@@ -279,7 +274,7 @@ class htmlSyntax(OutputSyntax):
     endZeile = "</tr>\n"
 
 
-@jit(nopython=True, parallel=True, cache=True)
+@jit(nopython=True, parallel=False, cache=True)
 def moonNumber(num: int):
     """Hier wird der Zeilenumbruch umgesetzt
 
@@ -301,7 +296,7 @@ def moonNumber(num: int):
     return results, exponent
 
 
-@jit(nopython=True, parallel=True, cache=True)
+@jit(nopython=True, parallel=False, cache=True)
 def primFak(n: int) -> list:
     """Alle Primfaktoren einer Zahl als Liste mit mehrfachvorkommen, sofern ja
 
@@ -310,7 +305,8 @@ def primFak(n: int) -> list:
     @rtype: list
     @return: alle Primfaktoren, ggf. mit Mehrfachvorkommen
     """
-    faktoren: list = []
+    faktoren: list = [1]
+    faktoren.pop()
     z = n
     while z > 1:
         i = 2
@@ -328,7 +324,6 @@ def primFak(n: int) -> list:
     return faktoren
 
 
-@jit(nopython=True, parallel=True, cache=True)
 def divisorGenerator(n):
     large_divisors = []
     for i in range(1, int(math.sqrt(n) + 1)):
@@ -340,7 +335,7 @@ def divisorGenerator(n):
         yield divisor
 
 
-@jit(nopython=True, parallel=True, cache=True)
+@lru_cache(maxsize=10489)
 def primCreativity(num: int):
     if num == 0:
         return 0
@@ -384,7 +379,7 @@ def primCreativity(num: int):
 #        return None
 
 
-@jit(nopython=True, parallel=True, cache=True)
+@lru_cache(maxsize=10489)
 def primRepeat(n: tuple) -> tuple:
     """Primfaktoren werden zusammengefasst in Liste aus Primfaktor hoch n
 
@@ -418,7 +413,6 @@ def primRepeat(n: tuple) -> tuple:
     return tuple(f)
 
 
-@jit(nopython=True, parallel=True, cache=True)
 def primMultiple(n: int) -> list:
     """Gibt Liste aus geordneten Paaren aus mit Primzahl und Vielfacher der Primzahl aus denen die Zahl n besteht
 
@@ -433,7 +427,6 @@ def primMultiple(n: int) -> list:
     return multiples
 
 
-@jit(nopython=True, parallel=True, cache=True)
 def isPrimMultiple(isIt: int, multiples1: list, dontReturnList=True):
     """Ist die Zahl der Vielfache in überhaupt irgendeiner Primzahl
 
@@ -458,25 +451,22 @@ def isPrimMultiple(isIt: int, multiples1: list, dontReturnList=True):
     return areThey
 
 
-@jit(nopython=True, parallel=True, cache=True)
 def couldBePrimeNumberPrimzahlkreuz(num: int) -> bool:
     Under24 = (1, 5, 7, 11, 13, 17, 19, 23)
     return num % 24 in Under24
 
 
-@jit(nopython=True, parallel=True, cache=True)
 def couldBePrimeNumberPrimzahlkreuz_fuer_innen(num: int) -> bool:
     Under24 = (5, 11, 17, 23)
     return num % 24 in Under24
 
 
-@jit(nopython=True, parallel=True, cache=True)
 def couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num: int) -> bool:
     Under24 = (1, 7, 13, 19)
     return num % 24 in Under24
 
 
-@jit(nopython=True, parallel=True, cache=True)
+@lru_cache(maxsize=10489)
 def multiples(a, mul1=True):
     """
     findet für eine Zahl alle Kombinationen aus möglichen Multiplikationen aus ganzen Zahlen, die diese Zahl ergibt
