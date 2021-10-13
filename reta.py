@@ -2157,6 +2157,14 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 (
+                    "ähnlich",
+                    "aehnlich",
+                ),
+                {220},
+            ),
+            (
+                Program.ParametersMain.konzept,
+                (
                     "gut_böse_lieb_schlecht",
                     "gut",
                     "böse",
