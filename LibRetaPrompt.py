@@ -80,6 +80,7 @@ befehle = (
     "a",
     "u",
     "befehle",
+    "t",
 )
 
 befehle2: set = set(befehle) - {"reta"}

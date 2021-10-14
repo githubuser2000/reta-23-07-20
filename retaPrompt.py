@@ -176,7 +176,9 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 kette,
                 int(shellRowsAmountStr),
             )
-        if len({"thomas"} & set(stext)) > 0:
+        if (len({"thomas"} & set(stext)) > 0) or (
+            "t" in stext and "abc" not in stext and "abcd" not in stext
+        ):
             import reta
 
             kette = [
