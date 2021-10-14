@@ -131,6 +131,9 @@ while text not in ("ende", "exit", "quit", "q", ""):
             )
         )
 
+    if len({"befehle"} & set(stext)) > 0:
+        print("Befehle: " + str(befehle)[1:-1])
+
     if "help" in stext or "hilfe" in stext:
         print(
             "Alle Befehle außer reta, abc und abcd können beliebig kombiniert werden."
