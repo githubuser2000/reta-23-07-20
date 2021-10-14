@@ -11,6 +11,9 @@ from typing import Optional
 
 from orderedset import OrderedSet
 
+from rich.console import Console
+from rich.syntax import Syntax
+
 try:
     from numba import jit
 except:
@@ -21,6 +24,8 @@ except:
 
         return _jit
 
+
+console = Console()
 
 originalLinesRange = range(1028)  # Maximale Zeilenanzahl
 
@@ -92,9 +97,12 @@ def alxp(text):
             pp.pprint(text)
 
 
-def cliout(text):
+def cliout(text, bbcode=False):
     if output:
-        print(text)
+        if bbcode:
+            console.print(Syntax(text, "bbcode"))
+        else:
+            print(text)
 
     # class AlxList(list):
     # def __eq__(self, bla):

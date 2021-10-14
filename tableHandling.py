@@ -379,7 +379,10 @@ class Tables:
                 and lastSubCellIndex > lastlastSubCellIndex
             ):
                 if type(self.__outType) in (htmlSyntax, bbCodeSyntax):
-                    cliout(self.__outType.beginTable)
+                    cliout(
+                        self.__outType.beginTable,
+                        self.tables.bbcodeOutputYes and self.color,
+                    )
                 lastlastSubCellIndex = lastSubCellIndex
                 for (
                     BigCellLineNumber,
@@ -648,14 +651,18 @@ class Tables:
                                             ]
                                             + line
                                             + [self.__outType.endZeile]
-                                        )
+                                        ),
+                                        self.tables.bbcodeOutputYes and self.color,
                                     )
                 if type(self.__outType) in (htmlSyntax, bbCodeSyntax):
-                    cliout(self.__outType.endTable)
+                    cliout(
+                        self.__outType.endTable,
+                        self.tables.bbcodeOutputYes and self.color,
+                    )
                 if self.__oneTable:
                     break
                 if type(self.__outType) is csvSyntax:
-                    cliout(strio.getvalue())
+                    cliout(strio.getvalue(), self.tables.bbcodeOutputYes and self.color)
 
         def colorize(self, text, num: int, rest=False) -> str:
 
