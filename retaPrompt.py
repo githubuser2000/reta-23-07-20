@@ -144,6 +144,7 @@ while text not in ("ende", "exit", "quit", "q", ""):
         print(
             "Eine Zahleninformation ist entweder eine natürliche Zahl z.B. 4, oder ein Zahlenbereich z.B. 3-6 oder eines oder beides dieser Zahleninformationen mehrmals mit Kommas getrennt z.B. 3,6-9,11. Hinter jedem Komma oder vor einer Zahl oder einem Zahlenbereich kann auch ein Minus stehen, was wieder Zahlen entfernt z.B. 1-10,-2,-5-9 entspricht 1,3,4,10."
         )
+        print("Der Befehl 'befehle' gibt die Liste der möglichen Befehle aus.")
 
     if bedinung:
         import reta
