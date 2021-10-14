@@ -97,10 +97,10 @@ def alxp(text):
             pp.pprint(text)
 
 
-def cliout(text, bbcode=False):
+def cliout(text, color=False, stype=""):
     if output:
-        if bbcode:
-            console.print(Syntax(text, "bbcode"))
+        if color:
+            console.print(Syntax(text, stype))
         else:
             print(text)
 

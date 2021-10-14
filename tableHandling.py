@@ -36,6 +36,10 @@ class Tables:
         }
 
     @property
+    def markdownOutputYes(self) -> bool:
+        return type(self.getOut.outType) is markdownSyntax
+
+    @property
     def bbcodeOutputYes(self) -> bool:
         return type(self.getOut.outType) is bbCodeSyntax
 
@@ -381,7 +385,14 @@ class Tables:
                 if type(self.__outType) in (htmlSyntax, bbCodeSyntax):
                     cliout(
                         self.__outType.beginTable,
-                        self.tables.bbcodeOutputYes and self.color,
+                        self.color,
+                        "bbcode"
+                        if self.tables.bbcodeOutputYes
+                        else "html"
+                        if self.tables.htmlOutputYes
+                        else "markdown"
+                        if self.tables.markdownOutputYes
+                        else "",
                     )
                 lastlastSubCellIndex = lastSubCellIndex
                 for (
@@ -652,17 +663,35 @@ class Tables:
                                             + line
                                             + [self.__outType.endZeile]
                                         ),
-                                        self.tables.bbcodeOutputYes and self.color,
+                                        self.color,
+                                        "bbcode"
+                                        if self.tables.bbcodeOutputYes
+                                        else "html"
+                                        if self.tables.htmlOutputYes
+                                        else "markdown"
+                                        if self.tables.markdownOutputYes
+                                        else "",
                                     )
                 if type(self.__outType) in (htmlSyntax, bbCodeSyntax):
                     cliout(
                         self.__outType.endTable,
-                        self.tables.bbcodeOutputYes and self.color,
+                        self.color,
+                        "bbcode"
+                        if self.tables.bbcodeOutputYes
+                        else "html"
+                        if self.tables.htmlOutputYes
+                        else "markdown"
+                        if self.tables.markdownOutputYes
+                        else "",
                     )
                 if self.__oneTable:
                     break
                 if type(self.__outType) is csvSyntax:
-                    cliout(strio.getvalue(), self.tables.bbcodeOutputYes and self.color)
+                    cliout(
+                        strio.getvalue(),
+                        self.tables.bbcodeOutputYes,
+                        self.color,
+                    )
 
         def colorize(self, text, num: int, rest=False) -> str:
 
