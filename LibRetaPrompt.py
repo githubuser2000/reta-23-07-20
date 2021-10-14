@@ -77,6 +77,8 @@ befehle = (
     "abc",
     "abcd",
     "alles",
+    "a",
+    "u",
 )
 
 befehle2: set = set(befehle) - {"reta"}

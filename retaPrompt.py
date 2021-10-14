@@ -154,7 +154,9 @@ while text not in ("ende", "exit", "quit", "q", ""):
         else:
             zeiln = "--vorhervonausschnitt=" + str(c).strip()
 
-        if len({"absicht", "absichten", "motiv", "motive"} & set(stext)) > 0:
+        if len({"absicht", "absichten", "motiv", "motive"} & set(stext)) > 0 or (
+            "a" in stext and "abc" not in stext and "abcd" not in stext
+        ):
             import reta
 
             kette = [
@@ -248,7 +250,9 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 int(shellRowsAmountStr),
             )
 
-        if len({"universum"} & set(stext)) > 0:
+        if len({"universum"} & set(stext)) > 0 or (
+            "u" in stext and "abc" not in stext and "abcd" not in stext
+        ):
             import reta
 
             kette = [
