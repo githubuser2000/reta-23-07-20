@@ -383,17 +383,7 @@ class Tables:
                 and lastSubCellIndex > lastlastSubCellIndex
             ):
                 if type(self.__outType) in (htmlSyntax, bbCodeSyntax):
-                    cliout(
-                        self.__outType.beginTable,
-                        self.color,
-                        "bbcode"
-                        if self.tables.bbcodeOutputYes
-                        else "html"
-                        if self.tables.htmlOutputYes
-                        else "markdown"
-                        if self.tables.markdownOutputYes
-                        else "",
-                    )
+                    self.cliout2(self.__outType.beginTable)
                 lastlastSubCellIndex = lastSubCellIndex
                 for (
                     BigCellLineNumber,
@@ -653,7 +643,7 @@ class Tables:
                                         and filteredLineNumbersofOrignal == ""
                                     ):
                                         filteredLineNumbersofOrignal = 0
-                                    cliout(
+                                    self.cliout2(
                                         "".join(
                                             [
                                                 self.__outType.coloredBeginCol(
@@ -662,36 +652,32 @@ class Tables:
                                             ]
                                             + line
                                             + [self.__outType.endZeile]
-                                        ),
-                                        self.color,
-                                        "bbcode"
-                                        if self.tables.bbcodeOutputYes
-                                        else "html"
-                                        if self.tables.htmlOutputYes
-                                        else "markdown"
-                                        if self.tables.markdownOutputYes
-                                        else "",
+                                        )
                                     )
                 if type(self.__outType) in (htmlSyntax, bbCodeSyntax):
-                    cliout(
+                    self.cliout2(
                         self.__outType.endTable,
-                        self.color,
-                        "bbcode"
-                        if self.tables.bbcodeOutputYes
-                        else "html"
-                        if self.tables.htmlOutputYes
-                        else "markdown"
-                        if self.tables.markdownOutputYes
-                        else "",
                     )
                 if self.__oneTable:
                     break
                 if type(self.__outType) is csvSyntax:
-                    cliout(
+                    self.cliout2(
                         strio.getvalue(),
-                        self.tables.bbcodeOutputYes,
-                        self.color,
                     )
+
+        def cliout2(self, text):
+            janee : tuple[bool,str] = ((True,"bbcode") if self.tables.bbcodeOutputYes
+                else (True, "html")
+                if self.tables.htmlOutputYes
+                else (True,"markdown")
+                if self.tables.markdownOutputYes
+                else (False,"")
+            )
+            cliout(
+                text,
+                self.color and janee[0],
+                janee[1]
+            )
 
         def colorize(self, text, num: int, rest=False) -> str:
 
