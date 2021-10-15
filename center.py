@@ -38,9 +38,11 @@ for arg in sys.argv:
         infoLog = True
 
 Multiplikationen = [("Multiplikationen", "")]
+shellRowsAmount: int
 
 
 def getTextWrapThings(maxLen=None) -> tuple:
+    global shellRowsAmount
     if "Brython" not in sys.version.split():
         import html2text
         import pyphen
@@ -70,7 +72,7 @@ def getTextWrapThings(maxLen=None) -> tuple:
         Hyphenator = None
         fill = None
         ColumnsRowsAmount, shellRowsAmountStr = "50", "50"
-    shellRowsAmount: int = int(shellRowsAmountStr) if maxLen is None else int(maxLen)
+    shellRowsAmount = int(shellRowsAmountStr) if maxLen is None else int(maxLen)
     return shellRowsAmount, h_de, dic, fill
 
 
@@ -97,10 +99,19 @@ def alxp(text):
             pp.pprint(text)
 
 
+def chunks(lst, n):
+    """Yield successive n-sized chunks from lst."""
+    for i in range(0, len(lst), n):
+        yield lst[i : i + n]
+
+
 def cliout(text, color=False, stype=""):
     if output:
         if color:
-            console.print(Syntax(text, stype))
+            for chunk in chunks(text, shellRowsAmount):
+                console.print(
+                    Syntax(chunk, stype),
+                )
         else:
             print(text)
 
