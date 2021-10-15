@@ -108,10 +108,9 @@ def chunks(lst, n):
 def cliout(text, color=False, stype=""):
     if output:
         if color and False:
-            for chunk in chunks(text, shellRowsAmount):
-                console.print(
-                    Syntax(chunk, stype),
-                )
+            console.print(
+                Syntax(text, stype, word_wrap=True, indent_guides=True), end=""
+            )
         else:
             print(text)
 
