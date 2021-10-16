@@ -4,6 +4,12 @@ from sys import argv
 
 from lib4tables import multiples
 
-for arg in argv[1:]:
-    if arg.isdecimal():
-        zahl = int(arg)
+
+def mult(liste: list):
+    for arg in liste:
+        if type(arg) is int or arg.isdecimal():
+            print(str(multiples(int(arg))))
+
+
+if __name__ == "__main__":
+    mult(argv[1:])

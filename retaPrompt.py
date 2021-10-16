@@ -218,7 +218,15 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 int(shellRowsAmountStr),
             )
 
-            externCommand("multis", c)
+            # externCommand("multis", c)
+            listeStrWerte = c.split(",")
+            try:
+                mult(listeStrWerte)
+            except NameError:
+                from multis import mult
+
+                mult(listeStrWerte)
+
             externCommand("prim", c)
 
         if len({"procontra"} & set(stext)) > 0:
