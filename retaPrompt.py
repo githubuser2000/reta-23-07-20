@@ -162,7 +162,9 @@ while text not in ("ende", "exit", "quit", "q", ""):
             zeiln = "--vorhervonausschnitt=" + str(c).strip()
 
         if len({"absicht", "absichten", "motiv", "motive"} & set(stext)) > 0 or (
-            "a" in stext and "abc" not in stext and "abcd" not in stext
+            (("a" in stext) != ("m" in stext))
+            and "abc" not in stext
+            and "abcd" not in stext
         ):
             import reta
 
