@@ -114,6 +114,9 @@ while text not in ("ende", "exit", "quit", "q", ""):
             # b += 1
             # c = a
 
+    if "--art=bbcode" in stext and "reta" == stext[0]:
+        print("[code]" + text + "[/code]")
+
     if "abc" in stext or "abcd" in stext and len(stext) == 2:
         buchstabe: str
         if stext[0] == "abc" or stext[0] == "abcd":
