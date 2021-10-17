@@ -1909,7 +1909,7 @@ class Program:
                     "Gegenteil",
                     "gegenteil",
                 ),
-                {100, 101},
+                {100, 101, 222},
             ),
             (
                 Program.ParametersMain.procontra,
