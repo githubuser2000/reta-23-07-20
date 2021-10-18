@@ -210,18 +210,18 @@ while text not in ("ende", "exit", "quit", "q", ""):
         if len({"multis"} & set(stext)) > 0:
             import reta
 
-            kette = [
-                "reta",
-                "-zeilen",
-                zeiln,
-                "-spalten",
-                "--multiplikationen=motivstern",
-                "--breite=" + str(int(shellRowsAmountStr) - 10),
-            ]
-            reta.Program(
-                kette,
-                int(shellRowsAmountStr),
-            )
+            # kette = [
+            # "reta",
+            # "-zeilen",
+            # zeiln,
+            # "-spalten",
+            # "--multiplikationen=motivstern",
+            # "--breite=" + str(int(shellRowsAmountStr) - 10),
+            # ]
+            # reta.Program(
+            # kette,
+            # int(shellRowsAmountStr),
+            # )
 
             # externCommand("multis", c)
             listeStrWerte = c.split(",")
