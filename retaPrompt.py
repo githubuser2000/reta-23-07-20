@@ -182,6 +182,7 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 kette,
                 int(shellRowsAmountStr),
             )
+
         if (len({"thomas"} & set(stext)) > 0) or (
             "t" in stext and "abc" not in stext and "abcd" not in stext
         ):
@@ -201,6 +202,7 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 kette,
                 int(shellRowsAmountStr),
             )
+
         if len({"prim24", "primfaktorzerlegungModulo24"} & set(stext)) > 0:
             externCommand("prim24", c)
 
@@ -283,6 +285,23 @@ while text not in ("ende", "exit", "quit", "q", ""):
                 "--breite=" + str(int(shellRowsAmountStr) - 10),
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=1,3,4",
+            ]
+            reta.Program(
+                kette,
+                int(shellRowsAmountStr),
+            )
+        if (len({"richtung"} & set(stext)) > 0) or (
+            "r" in stext and "abc" not in stext and "abcd" not in stext
+        ):
+            import reta
+
+            kette = [
+                "reta",
+                "-zeilen",
+                zeiln,
+                "-spalten",
+                "--primzahlwirkung=Galaxieabsicht",
+                "--breite=" + str(int(shellRowsAmountStr) - 10),
             ]
             reta.Program(
                 kette,
