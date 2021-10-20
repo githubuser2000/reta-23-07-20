@@ -213,7 +213,9 @@ while text not in ("ende", "exit", "quit", "q", ""):
         if len({"prim24", "primfaktorzerlegungModulo24"} & set(stext)) > 0:
             externCommand("prim24", c)
 
-        if len({"prim", "primfaktorzerlegung"} & set(stext)) > 0:
+        if (len({"prim", "primfaktorzerlegung"} & set(stext)) > 0) or (
+            "p" in stext and "abc" not in stext and "abcd" not in stext
+        ):
             externCommand("prim", c)
 
         if len({"multis"} & set(stext)) > 0:
