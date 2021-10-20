@@ -18,13 +18,24 @@
 			    border-collapse: separate;
 			}
             */
+
 			table td {
+                hyphens: auto; 
+				font-size: 100%;
+                font-family: Arial, Helvetica, sans-serif; 
+			    border-radius: 15px;
+			    background-color: white;
+			    border: 0px solid gray;
+                padding: 10px;
+			}
+
+			table tr:not(:first-child) td:nth-child(2) {
                 hyphens: auto; 
 				font-size: 100%;
                 font-family: Arial, Helvetica, sans-serif; 
                 /* font-family: Terminus, monospace, Arial, Helvetica, sans-serif; */
                 /* text-align: justify; */
-			    border-radius: 55px;
+			    border-radius: 170px;
 			    background-color: white;
 			    border: 0px solid gray;
                 padding: 10px;
