@@ -218,7 +218,9 @@ while text not in ("ende", "exit", "quit", "q", ""):
         ):
             externCommand("prim", c)
 
-        if len({"multis"} & set(stext)) > 0:
+        if len({"multis"} & set(stext)) > 0 or (
+            "mu" in stext and "abc" not in stext and "abcd" not in stext
+        ):
             import reta
 
             # kette = [
