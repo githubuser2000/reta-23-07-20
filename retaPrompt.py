@@ -137,7 +137,10 @@ while text not in ("ende", "exit", "quit", "q", ""):
     if len({"befehle"} & set(stext)) > 0:
         print("Befehle: " + str(befehle)[1:-1])
 
-    if "help" in stext or "hilfe" in stext:
+    if len({"help", "hilfe"} & set(stext)) > 0 or (
+        "h" in stext and "abc" not in stext and "abcd" not in stext
+    ):
+
         print(
             "Alle Befehle außer reta, abc und abcd können beliebig kombiniert werden."
         )
@@ -156,7 +159,11 @@ while text not in ("ende", "exit", "quit", "q", ""):
         # process = subprocess.Popen(sos.path.dirname(__file__) + os.sep + text)
         # process.wait()
     elif list(EineZahlenFolgeJa.values()).count(True) == 1:
-        if "vielfache" in stext and "einzeln" not in stext:
+        if "einzeln" not in stext and (
+            ("vielfache" in stext)
+            or ("v" in stext and "abc" not in stext and "abcd" not in stext)
+        ):
+
             zeiln = "--vielfachevonzahlen=" + str(c).strip()
         else:
             zeiln = "--vorhervonausschnitt=" + str(c).strip()
