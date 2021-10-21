@@ -849,12 +849,12 @@ class Program:
             (
                 Program.ParametersMain.inkrementieren,
                 ("Addition", "addition", "identitaet", "Identität"),
-                {219},
+                {219, 223},
             ),
             (
                 Program.ParametersMain.universum,
                 ("Addition", "addition", "identitaet", "Identität"),
-                {219},
+                {219, 223},
             ),
             (
                 Program.ParametersMain.universum,
