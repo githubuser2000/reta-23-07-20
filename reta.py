@@ -3367,6 +3367,7 @@ class Program:
         alxp(
             """Ich könnte die Klasse immer nur ein mal definieren und dann per js auf alle in der gleichen Reihe die gleichen Tags dazu machen. Das geht schnell, macht die html kleiner, aber eigentlich beschleunigt das nichts wirklich, außer langsames Internet"""
         )
+        alxp("""Ich sollte eine Option einführen, dass man wahlweise auch höher als 120 und 1024 gehen kann, wenn man das mag.""")
 
     def combiTableWorkflow(
         self,
