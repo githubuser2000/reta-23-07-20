@@ -88,6 +88,11 @@ befehle = (
     "p",
     "mo",
     "mu",
+    "ende",
+    "exit",
+    "quit",
+    "q",
+    ":q",
 )
 
 befehle2: set = set(befehle) - {"reta"}

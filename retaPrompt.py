@@ -74,18 +74,20 @@ def externCommand(cmd: str, StrNummern: str):
         pass
 
 
-while text not in ("ende", "exit", "quit", "q", ""):
+while text not in ("ende", "exit", "quit", "q", ":q"):
     try:
         text = session.prompt(
             # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
-            ">",
+            # ">",
+            [("class:bla", ">")],
             # completer=NestedCompleter.from_nested_dict(
             #    startpunkt, notParameterValues=notParameterValues
             # ),
             completer=startpunkt1,
-            wrap_lines=False,
+            wrap_lines=True,
             complete_while_typing=True,
             vi_mode=True if "-vi" in sys.argv else False,
+            style=Style.from_dict({"bla": "#0000ff bg:#ff0000"}),
         )
     except KeyboardInterrupt:
         sys.exit()
