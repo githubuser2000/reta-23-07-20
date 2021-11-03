@@ -3,7 +3,7 @@
 5|9;Katze;Berufe für die Allgemeinheit;;jeden zum Fressen gern haben;;;;Anmut;;für die Allgemeinheit pro eingestellt zu sein;;;;;;
 5|9|13;Katze der Zukunft;Arzt, Krankenschwester, Pfleger, Sozialarbeiter, Volunteer z.B. für dritte Welt-Länder;;;;;;;;;;;;;;
 10;"Rabe, Krähe, Greifvogel, Esel, Fledermaus; alle Tiere, die in der Lage sind Freundschaften aufzubauen";M.I.N.T.: Mathematiker, Informatiker, Naturwissenschaftler, Techniker;;;;;;;;;;;;;;
-10|7;Pfau (+7 mit +10), Schwan (+7 mit +10), Delphin (vielleicht -7 mit +10, unbekannt);Philosoph, Laufsteg-Model, Architekt, Künstler, Schriftsteller, Musiker;mathematische Induktionsverfahren und aus der Informatik;Partnerschaftsliebe;;;;;;Liebesbeziehung, Schöngeistiges;;;;;;Wirtschaftssystem mit, anstelle von Geld aus Zahlen, Geld aus Richtungsvektoren mit Wahrheitswerten statt Zahlenwerten als Betrag
+10|7;Pfau (+7 mit +10), Schwan (+7 mit +10), Delphin (vielleicht -7 mit +10, unbekannt welche Vorzeichen);Laufsteg-Model, Architekt, Künstler, Musiker;mathematische Induktionsverfahren und aus der Informatik (die aber auch noch Kombination [14] [z.B. Rechenarten oder Logikrechnungen] und unäre Operation [13] benötigen würden);Partnerschaftsliebe;;;;;;Liebesbeziehung, Schöngeistiges;;;;;;Wirtschaftssystem mit, anstelle von Geld aus Zahlen, Geld aus Richtungsvektoren mit Wahrheitswerten statt Zahlenwerten als Betrag
 11;Kanarienvögel, die dich nachmachen, wie Pappagei oder Wellensittich;Systemtheoretiker, Darsteller, Schauspieler, Comedian;;;;;;;;;;;;;;
 5|9|19;Katzenaußerirdische (haben aber noch höhere Zahlen);;;;;;;;;;;;;;;
 5;"wahrscheinlich alle Tiere mit Hörnern, wie Hirsch; manche Reptilien, wie das Krokodil";Lehrer, Professor, TV-Star, Musikstar, Influencer, Kommunist;;;;;;;;;;;;;;
@@ -139,9 +139,9 @@
 +6|+7|+10|-12|+13|+17|-18;;Psychologe (im Besten Fall);;;;;;;;;;;;;;
 2|4/3;Biber (noch andere Zahlen aber auch) (4/3 = verwenden);;;;;;;;;;;;;;;
 17|18;;Schriftsteller, Linguist;;;;;;;;;;;;;;
--3|-6|-8|-10|+10|12|17|18|1/20|(22)|(29);Einige Juden;;;;;;;;;;;;;;;
+-3|-6|-8|-10|+10|12|17|18|1/20|(22)|(29);Einige Juden, nicht alle Juden sind Forscher (22) oder hoch intellektuelle Geisteswissenschaftler (29);;;;;;;;;;;;;;;
 +6|-8|+1/8|-10|+10|12|14|17|18|20;Einige Fern-Ost-Asiaten wie Chinesen, Japaner, Koreaner, Vietnamesen, Thailänder;;;;;;;;;;;;;;;
--3|2|-4|-7|-10|+10|12|17|(18)|(21)|(25);Einige Europide;;;;;;;;;;;;;;;
+-3|2|-4|-7|-10|+10|12|17|(18)|(1/20)|21|(25);Einige Europide bzw. „Weiße“, Typ 18 und 1/20 ist schwächer als bei Juden ausgeprägt, Typ 25 ist ein wenig typisch für Europide;;;;;;;;;;;;;;;
 1|5|-8|-10|15|17|32;Einige Afrikaner (haben Verstand, aber nicht immer Vernunft);;;;;;;;;;;;;;;
 15|17;;;;;;;;;;;;introvertierte Menschen;;;;
 5|9|10|13|26|1/6;;Notarzt;;;;;;;;;;;;;;
@@ -215,4 +215,4 @@
 25;Durchschnittsmensch, der nicht zur Mittelschicht oder Oberschicht zählt und einen moderaten Bildungsgrad hat;;;;;;;;;;;;;;;
 17;hat jeder Mensch und könnte noch bei manchen Menschenaffen leicht ausgeprägt sein;;;;;;;;;;;;;;;
 23;ist bei wenigen Eliten vertreten und selten;;;;;;;;;;;;;;;
-1/3;;;;;;;;;;;;;Olaf Scholz;;;
++10|-10|10|+7;;Philosoph, Schriftsteller, Schöngeist;;;;;;;;;;;Olaf Scholz;;;
