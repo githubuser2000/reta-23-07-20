@@ -2835,7 +2835,7 @@ class Program:
                             + self.bigParamaeter[-1]
                             + '".'
                             + " Möglich sind: "
-                            + ", ".join(zeilenParas)[1:-1]
+                            + ", ".join(zeilenParas)
                         )
                 elif (
                     len(arg) > 1
