@@ -667,7 +667,7 @@ class Concat:
         if not gleichf:
             for frac in tuple(fracs):
                 # for zusatzMul in range(1, 1025):
-                for zusatzMul in range(1, self.tables.hoechsteZeile + 1):
+                for zusatzMul in range(1, self.tables.hoechsteZeile[1024] + 1):
                     paar = (frac, Fraction(frac.denominator) * zusatzMul)
                     mul = paar[0] * paar[1]
                     mulr = round(mul)
@@ -680,7 +680,7 @@ class Concat:
 
             for frac in tuple(fracs):
                 # for zusatzMul in range(1024, 0, -1):
-                for zusatzMul in range(self.tables.hoechsteZeile, 0, -1):
+                for zusatzMul in range(self.tables.hoechsteZeile[1024], 0, -1):
                     faktor = Fraction(frac.denominator) / zusatzMul
                     if (faktor in fracs2) or faktor.numerator == 1:
                         paar = (frac, faktor)
@@ -695,7 +695,7 @@ class Concat:
         else:
             for frac in tuple(fracs):
                 # for zusatzDiv in range(1, 1025):
-                for zusatzDiv in range(1, self.tables.hoechsteZeile + 1):
+                for zusatzDiv in range(1, self.tables.hoechsteZeile[1024] + 1):
                     paar = (frac, 1 / Fraction(frac.numerator) / zusatzDiv)
                     div = 1 / (paar[1] * paar[0])
                     divr = round(div)
@@ -708,7 +708,7 @@ class Concat:
 
             for frac in tuple(fracs):
                 # for zusatzDiv in range(1, 1025):
-                for zusatzDiv in range(1, self.tables.hoechsteZeile + 1):
+                for zusatzDiv in range(1, self.tables.hoechsteZeile[1024] + 1):
                     faktor = (1 / frac) / zusatzDiv
                     if faktor in fracs2 or faktor.numerator == 1:
                         paar = (frac, faktor)
@@ -772,7 +772,7 @@ class Concat:
 
             # for num, cols in zip_longest(range(0, 1025), dreli):
             for num, cols in zip_longest(
-                range(0, self.tables.hoechsteZeile + 1), dreli
+                range(0, self.tables.hoechsteZeile[1024] + 1), dreli
             ):
                 if num == 0:
                     into: list = [headline]
