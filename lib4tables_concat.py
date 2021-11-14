@@ -771,9 +771,14 @@ class Concat:
             into_Str2: OrderedDict = OrderedDict()
 
             # for num, cols in zip_longest(range(0, 1025), dreli):
-            for num, cols in zip_longest(
-                range(0, self.tables.hoechsteZeile[1024] + 1), dreli
-            ):
+            if self.tables.hoechsteZeile[1024] >= len(dreli):
+                bereich = zip_longest(
+                    range(0, self.tables.hoechsteZeile[1024] + 1), dreli
+                )
+            else:
+                bereich = zip(range(0, self.tables.hoechsteZeile[1024] + 1), dreli)
+
+            for num, cols in bereich:
                 if num == 0:
                     into: list = [headline]
                 else:
