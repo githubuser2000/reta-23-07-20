@@ -9,7 +9,6 @@ from typing import Optional, Union
 import html2text
 from orderedset import OrderedSet
 
-import center
 from tableHandling import (Enum, Iterable, Multiplikationen, OutputSyntax,
                            Tables, Union, alxp, bbcode, bbCodeSyntax, cliout,
                            copy, csv, csvSyntax, deepcopy, getTextWrapThings,

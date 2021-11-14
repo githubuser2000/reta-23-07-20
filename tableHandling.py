@@ -13,7 +13,7 @@ import bbcode
 from orderedset import OrderedSet
 
 from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
-                    originalLinesRange, output, re, x)
+                    output, re, x)
 from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz, csvSyntax,
                         divisorGenerator, htmlSyntax, isPrimMultiple,
@@ -160,14 +160,14 @@ class Tables:
         return liste1, liste2
 
     def __init__(self, alternativeShellRowsAmount):
-        global originalLinesRange, shellRowsAmount
+        global shellRowsAmount
         self.__hoechsteZeile = {1024: 1024, 114: 120}
         self.rowNumDisplay2rowNumOrig = OrderedDict()
         self.generatedSpaltenParameter = OrderedDict()
         self.generatedSpaltenParameter_Tags = OrderedDict()
         if alternativeShellRowsAmount is not None:
             shellRowsAmount = alternativeShellRowsAmount
-        self.getPrepare = Prepare(self, originalLinesRange, shellRowsAmount)
+        self.getPrepare = Prepare(self, shellRowsAmount, self.hoechsteZeile)
         self.getCombis = self.Combi(self)
         self.getConcat = Concat(self)
         self.getOut = self.Output(self)

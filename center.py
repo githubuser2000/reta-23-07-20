@@ -27,7 +27,7 @@ except:
 
 console = Console()
 
-originalLinesRange = range(1028)  # Maximale Zeilenanzahl
+# originalLinesRange = range(1028)  # Maximale Zeilenanzahl
 
 infoLog = False
 output = True
@@ -251,5 +251,3 @@ def BereichToNumbers(MehrereBereiche: str) -> set:
             ):
                 for number in range(int(BereichCouple[0]), int(BereichCouple[1]) + 1):
                     menge |= {number}
-
-    return dazu - hinfort

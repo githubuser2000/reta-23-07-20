@@ -7,7 +7,7 @@ from typing import Iterable, Optional, Union
 
 import lib4tables_Enum
 from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
-                    originalLinesRange, output, re, x)
+                    output, re, x)
 from lib4tables import isPrimMultiple, moonNumber
 from lib4tables_Enum import ST
 
@@ -93,9 +93,10 @@ def alxwrap(text: str, len_: int):
 
 
 class Prepare:
-    def __init__(self, tables, originalLinesRange, shellRowsAmount):
+    def __init__(self, tables, shellRowsAmount, hoechsteZeile):
         self.tables = tables
-        self.originalLinesRange = originalLinesRange
+        self.hoechsteZeile = tables.hoechsteZeile
+        self.originalLinesRange = range(tables.hoechsteZeile[1024] + 4)
         self.shellRowsAmount = shellRowsAmount
         self.zaehlungen = [
             0,
@@ -326,8 +327,8 @@ class Prepare:
                     while (
                         a2[0] <= n2
                         and a2[1] >= n2
-                        and a2[0] <= originalLinesRange[-1]
-                        and a2[1] <= originalLinesRange[-1]
+                        and a2[0] <= self.originalLinesRange[-1]
+                        and a2[1] <= self.originalLinesRange[-1]
                     ):
                         numRangeYesZ.add(n2)
                         iterate += 1
