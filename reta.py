@@ -248,7 +248,7 @@ class Program:
 
                     else:
                         try:
-                            if (cmd[-1] == "-" and neg == "-") != (
+                            if len(cmd) > 0 and (cmd[-1] == "-" and neg == "-") != (
                                 len(neg) == 0 and cmd[-1] != "-"
                             ):
                                 if len(cmd) > 0 and cmd[-1] == "-" and len(neg) > 0:
