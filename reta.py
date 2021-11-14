@@ -2826,12 +2826,16 @@ class Program:
                             )
                         )
                     elif len(neg) > 0:
+                        from LibRetaPrompt import zeilenParas
+
                         cliout(
                             'Den Neben-Parameter "'
                             + arg
                             + '" gibt es hier nicht für den Hauptparameter "-'
                             + self.bigParamaeter[-1]
                             + '".'
+                            + " Möglich sind: "
+                            + ", ".join(zeilenParas)[1:-1]
                         )
                 elif (
                     len(arg) > 1
