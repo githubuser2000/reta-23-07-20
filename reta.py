@@ -2809,7 +2809,7 @@ class Program:
                             ):
                                 paramLines.add(str(abs(int(word))) + "p")
 
-                    elif self.oberesMaximum():
+                    elif self.oberesMaximum(arg):
                         pass
                     elif arg[2:22] == "vorhervonausschnitt=":
                         paramLines |= (
