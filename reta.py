@@ -2809,9 +2809,8 @@ class Program:
                             ):
                                 paramLines.add(str(abs(int(word))) + "p")
 
-                    elif arg[2:16] == "oberesmaximum=" and arg[16:].isdecimal:
-                        self.tables.hoechsteZeile = int(arg[16:])
-
+                    elif self.oberesMaximum():
+                        pass
                     elif arg[2:22] == "vorhervonausschnitt=":
                         paramLines |= (
                             self.tables.getPrepare.parametersCmdWithSomeBereich(
@@ -2955,6 +2954,12 @@ class Program:
                 self.relitable += [col]
                 if i == 0:
                     self.RowsLen = len(col)
+            for arg in self.argv[1:]:
+                self.oberesMaximum(arg)
+            for egal in range(
+                len(self.relitable) + 1, self.tables.hoechsteZeile[1024] + 1 + 1
+            ):
+                self.relitable += [[""] * len(self.relitable[0])]
         self.htmlOrBBcode = False
         self.breiteORbreiten = False
         (
@@ -3240,6 +3245,13 @@ class Program:
             kombiTable_Kombis2,
             maintable2subtable_Relation2,
         )
+
+    def oberesMaximum(self, arg):
+        if arg[2:16] == "oberesmaximum=" and arg[16:].isdecimal:
+            self.tables.hoechsteZeile = int(arg[16:])
+            return True
+        else:
+            return False
 
     def __init__(self, argv=[], alternativeShellRowsAmount: Optional[int] = None):
         global Tables, infoLog

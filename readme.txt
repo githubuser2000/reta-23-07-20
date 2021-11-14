@@ -27,7 +27,8 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--vorhervonausschnitt=[list=][*]1-5,7-10,14,20[/list]
 [*]--nachtraeglichdavon=[list][*]3-6,8[/list]
 [*]--potenzenvonzahlen=[list][*]2,3[/list]
-[*][/list]
+[*]--oberesmaximum=[list][*]2000,1500[/list]
+[/list]
 [*]-spalten
 [list]
 [*]--alles
