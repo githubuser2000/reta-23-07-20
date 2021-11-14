@@ -2811,7 +2811,7 @@ class Program:
                                 paramLines.add(str(abs(int(word))) + "p")
 
                     elif arg[2:16] == "oberesmaximum=" and arg[16:].isdecimal:
-                        self.tables.hoechsteZeile(int(arg[16:]))
+                        self.tables.hoechsteZeile = int(arg[16:])
 
                     elif arg[2:22] == "vorhervonausschnitt=":
                         paramLines |= (

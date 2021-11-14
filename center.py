@@ -14,9 +14,6 @@ from orderedset import OrderedSet
 from rich.console import Console
 from rich.syntax import Syntax
 
-hoechsteZeile = {114: 120, 1024: 1024}
-
-
 try:
     from numba import jit
 except:
