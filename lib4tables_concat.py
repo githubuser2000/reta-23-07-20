@@ -666,42 +666,49 @@ class Concat:
         result: DefaultOrderedDict = DefaultOrderedDict(OrderedSet)
         if not gleichf:
             for frac in tuple(fracs):
-                for zusatzMul in range(1, 1025):
+                # for zusatzMul in range(1, 1025):
+                for zusatzMul in range(1, self.tables.hoechsteZeile + 1):
                     paar = (frac, Fraction(frac.denominator) * zusatzMul)
                     mul = paar[0] * paar[1]
                     mulr = round(mul)
                     mul = round(mul * 1000) / 1000
                     assert mulr == mul
-                    if mul > 1024:
+                    # if mul > 1024:
+                    if mul > self.tables.hoechsteZeile[1024]:
                         break
                     result[int(mul)] |= {paar}
 
             for frac in tuple(fracs):
-                for zusatzMul in range(1024, 0, -1):
+                # for zusatzMul in range(1024, 0, -1):
+                for zusatzMul in range(self.tables.hoechsteZeile, 0, -1):
                     faktor = Fraction(frac.denominator) / zusatzMul
                     if (faktor in fracs2) or faktor.numerator == 1:
                         paar = (frac, faktor)
                         mul = paar[0] * paar[1]
                         mulr = round(mul)
-                        if mul > 1024:
+                        # if mul > 1024:
+                        if mul > self.tables.hoechsteZeile[1024]:
                             break
                         if mulr == mul:
                             result[int(mul)] |= {paar}
 
         else:
             for frac in tuple(fracs):
-                for zusatzDiv in range(1, 1025):
+                # for zusatzDiv in range(1, 1025):
+                for zusatzDiv in range(1, self.tables.hoechsteZeile + 1):
                     paar = (frac, 1 / Fraction(frac.numerator) / zusatzDiv)
                     div = 1 / (paar[1] * paar[0])
                     divr = round(div)
                     div = round(div * 1000) / 1000
                     assert divr == div
-                    if div > 1024:
+                    # if div > 1024:
+                    if div > self.tables.hoechsteZeile[1024]:
                         break
                     result[int(divr)] |= {paar}
 
             for frac in tuple(fracs):
-                for zusatzDiv in range(1, 1025):
+                # for zusatzDiv in range(1, 1025):
+                for zusatzDiv in range(1, self.tables.hoechsteZeile + 1):
                     faktor = (1 / frac) / zusatzDiv
                     if faktor in fracs2 or faktor.numerator == 1:
                         paar = (frac, faktor)
@@ -709,7 +716,8 @@ class Concat:
                         mulr = round(mul)
                         mul = round(mul * 1000) / 1000
                         assert mulr == mul
-                        if 1 / mul > 1024:
+                        # if 1 / mul > 1024:
+                        if 1 / mul > self.tables.hoechsteZeile[1024]:
                             break
                         result[int(mulr)] |= {paar}
 
@@ -762,7 +770,10 @@ class Concat:
             into_Str1: OrderedDict = OrderedDict()
             into_Str2: OrderedDict = OrderedDict()
 
-            for num, cols in zip_longest(range(0, 1025), dreli):
+            # for num, cols in zip_longest(range(0, 1025), dreli):
+            for num, cols in zip_longest(
+                range(0, self.tables.hoechsteZeile + 1), dreli
+            ):
                 if num == 0:
                     into: list = [headline]
                 else:
