@@ -9,6 +9,7 @@ from typing import Optional, Union
 import html2text
 from orderedset import OrderedSet
 
+import center
 from tableHandling import (Enum, Iterable, Multiplikationen, OutputSyntax,
                            Tables, Union, alxp, bbcode, bbCodeSyntax, cliout,
                            copy, csv, csvSyntax, deepcopy, getTextWrapThings,
@@ -2808,6 +2809,12 @@ class Program:
                                 or (int(word) < 0 and neg != "")
                             ):
                                 paramLines.add(str(abs(int(word))) + "p")
+                    elif arg[2:16] == "oberesmaximum=":
+                        if arg[16:].isdecimal:
+                            center.hoechsteZeile = {
+                                114: int(arg[16:]),
+                                1024: int(arg[16:]),
+                            }
                     elif arg[2:22] == "vorhervonausschnitt=":
                         paramLines |= (
                             self.tables.getPrepare.parametersCmdWithSomeBereich(

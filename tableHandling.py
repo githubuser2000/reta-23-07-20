@@ -56,6 +56,15 @@ class Tables:
         self.getOut.outType = value
 
     @property
+    def hoechsteZeile(self):
+        return self.__hoechsteZeile
+
+    @hoechsteZeile.setter
+    def hoechsteZeile(self, value: int):
+        if type(value) is int or (type(value) is str and str(value).isdecimal):
+            self.__hoechsteZeile = {1024: value, 114: value}
+
+    @property
     def generRows(self):
         return self.__generRows__
 
@@ -152,6 +161,7 @@ class Tables:
 
     def __init__(self, alternativeShellRowsAmount):
         global originalLinesRange, shellRowsAmount
+        self.__hoechsteZeile = {1024: 1024, 114: 120}
         self.rowNumDisplay2rowNumOrig = OrderedDict()
         self.generatedSpaltenParameter = OrderedDict()
         self.generatedSpaltenParameter_Tags = OrderedDict()
@@ -666,18 +676,16 @@ class Tables:
                     )
 
         def cliout2(self, text):
-            janee : tuple[bool,str] = ((True,"bbcode") if self.tables.bbcodeOutputYes
+            janee: tuple[bool, str] = (
+                (True, "bbcode")
+                if self.tables.bbcodeOutputYes
                 else (True, "html")
                 if self.tables.htmlOutputYes
-                else (True,"markdown")
+                else (True, "markdown")
                 if self.tables.markdownOutputYes
-                else (False,"")
+                else (False, "")
             )
-            cliout(
-                text,
-                self.color and janee[0],
-                janee[1]
-            )
+            cliout(text, self.color and janee[0], janee[1])
 
         def colorize(self, text, num: int, rest=False) -> str:
 
