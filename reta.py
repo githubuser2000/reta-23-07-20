@@ -2809,12 +2809,10 @@ class Program:
                                 or (int(word) < 0 and neg != "")
                             ):
                                 paramLines.add(str(abs(int(word))) + "p")
-                    elif arg[2:16] == "oberesmaximum=":
-                        if arg[16:].isdecimal:
-                            center.hoechsteZeile = {
-                                114: int(arg[16:]),
-                                1024: int(arg[16:]),
-                            }
+
+                    elif arg[2:16] == "oberesmaximum=" and arg[16:].isdecimal:
+                        self.tables.hoechsteZeile(int(arg[16:]))
+
                     elif arg[2:22] == "vorhervonausschnitt=":
                         paramLines |= (
                             self.tables.getPrepare.parametersCmdWithSomeBereich(

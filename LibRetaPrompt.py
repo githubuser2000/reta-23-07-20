@@ -45,6 +45,7 @@ zeilenParas = [
     "--potenzenvonzahlen=",
     "--typ=",
     "--vielfachevonzahlen=",
+    "--oberesmaximum=",
 ]
 hauptForNeben = ("-zeilen", "-spalten", "-kombination", "-ausgabe", "-h", "-help")
 
