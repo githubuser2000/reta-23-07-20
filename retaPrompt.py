@@ -104,7 +104,7 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
         s_2: list
         for s_ in tuple(deepcopy(stext)):
             textDazu = []
-            for n in (1, 2):
+            for n in (1, 2, 3):
                 s_2 = s_[n:].split(",")
                 if len(s_) > n and [strInt.isdecimal() for strInt in s_2] == [
                     True
@@ -116,6 +116,12 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
                             textDazu += ["a", str(s_[n:])]
                     if n == 2 and s_[:2] in ("at", "ta"):
                         textDazu += ["a", "t", str(s_[n:])]
+                    if n == 2 and s_[:2] in ("av", "va"):
+                        textDazu += ["a", "v", str(s_[n:])]
+                    if n == 2 and s_[:2] in ("vt", "tv"):
+                        textDazu += ["v", "t", str(s_[n:])]
+                    if n == 3 and len(set(s_[:3]) & {"a", "t", "v"}) == 3:
+                        textDazu += ["a", "t", "v", str(s_[n:])]
             if len(textDazu) > 0:
                 stext2 += textDazu
             else:
