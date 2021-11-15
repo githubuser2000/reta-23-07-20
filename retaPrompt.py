@@ -203,7 +203,7 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
         ):
             zeiln1 = "--vielfachevonzahlen=" + str(c).strip()
 
-            zeiln2 = "--oberesmaximum=" + str(maxNum)
+            zeiln2 = ""
         else:
             zeiln1 = "--vorhervonausschnitt=" + str(c).strip()
             zeiln2 = "--oberesmaximum=" + str(maxNum)
