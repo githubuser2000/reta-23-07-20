@@ -112,7 +112,7 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
                     buchst = set(s_[:n]) & {"a", "t", "v", "u", "p", "r", "U"}
                     if n == len(buchst):
                         buchst2: list = [a if a != "U" else "mu" for a in buchst]
-                        textDazu += list(buchst2) + [str(s_[n:])]
+                        textDazu += buchst2 + [str(s_[n:])]
 
             if len(textDazu) > 0:
                 stext2 += textDazu
