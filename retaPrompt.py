@@ -92,6 +92,17 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
     except KeyboardInterrupt:
         sys.exit()
     stext: Optional[list] = text.split()
+
+    if stext is not None:
+        nstextnum: list = []
+        for astext in stext:
+            if astext.isdecimal():
+                nstextnum += [int(astext)]
+        if len(nstextnum) > 0:
+            maxNum = max(nstextnum)
+        else:
+            maxNum = 1024
+
     bedinung: bool = len(stext) > 0 and stext[0] == "reta"
     if not bedinung:
         EineZahlenFolgeJa: dict = {}
@@ -165,10 +176,12 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
             ("vielfache" in stext)
             or ("v" in stext and "abc" not in stext and "abcd" not in stext)
         ):
+            zeiln1 = "--vielfachevonzahlen=" + str(c).strip()
 
-            zeiln = "--vielfachevonzahlen=" + str(c).strip()
+            zeiln2 = "--oberesmaximum=" + str(maxNum)
         else:
-            zeiln = "--vorhervonausschnitt=" + str(c).strip()
+            zeiln1 = "--vorhervonausschnitt=" + str(c).strip()
+            zeiln2 = "--oberesmaximum=" + str(maxNum)
 
         if len({"absicht", "absichten", "motiv", "motive"} & set(stext)) > 0 or (
             (("a" in stext) != ("mo" in stext))
@@ -180,7 +193,8 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
             kette = [
                 "reta",
                 "-zeilen",
-                zeiln,
+                zeiln1,
+                zeiln2,
                 "-spalten",
                 "--menschliches=motivation",
                 "--breite=" + str(int(shellRowsAmountStr) - 10),
@@ -200,7 +214,8 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
             kette = [
                 "reta",
                 "-zeilen",
-                zeiln,
+                zeiln1,
+                zeiln2,
                 "-spalten",
                 "--galaxie=thomas",
                 "--breite=" + str(int(shellRowsAmountStr) - 10),
@@ -255,7 +270,8 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
             kette = [
                 "reta",
                 "-zeilen",
-                zeiln,
+                zeiln1,
+                zeiln2,
                 "-spalten",
                 "--procontra=pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit",
                 "--breite=" + str(int(shellRowsAmountStr) - 10),
@@ -273,7 +289,8 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
             kette = [
                 "reta",
                 "-zeilen",
-                zeiln,
+                zeiln1,
+                zeiln2,
                 "-spalten",
                 "--alles",
                 "--breite=" + str(int(shellRowsAmountStr) - 10),
@@ -292,7 +309,8 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
             kette = [
                 "reta",
                 "-zeilen",
-                zeiln,
+                zeiln1,
+                zeiln2,
                 "-spalten",
                 "--universum=transzendentalien,komplexitaet,ontologie",
                 "--breite=" + str(int(shellRowsAmountStr) - 10),
@@ -311,11 +329,13 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
             kette = [
                 "reta",
                 "-zeilen",
-                zeiln,
+                zeiln1,
+                zeiln2,
                 "-spalten",
                 "--primzahlwirkung=Galaxieabsicht",
                 "--breite=" + str(int(shellRowsAmountStr) - 10),
             ]
+            print(str(kette))
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
