@@ -2955,7 +2955,7 @@ class Program:
                 if i == 0:
                     self.RowsLen = len(col)
             for egal in range(
-                len(self.relitable) + 1, self.tables.hoechsteZeile[1024] + 1
+                len(self.relitable) + 1, self.tables.hoechsteZeile[1024] + 2
             ):
                 self.relitable += [[""] * len(self.relitable[0])]
         self.htmlOrBBcode = False
