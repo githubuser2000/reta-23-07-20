@@ -224,6 +224,7 @@ def unique_everseen(iterable, key=None):
 @jit(nopython=True, parallel=True, cache=True)
 def BereichToNumbers(MehrereBereiche: str) -> set:
 
+    print(str(MehrereBereiche))
     Bereiche: list[str] = MehrereBereiche.split(",")
     dazu: set[int] = set()
     hinfort: set[int] = set()
