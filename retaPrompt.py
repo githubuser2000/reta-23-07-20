@@ -6,7 +6,7 @@ import pprint
 import re
 import subprocess
 import sys
-from copy import deepcopy
+from copy import copy, deepcopy
 from itertools import zip_longest
 from typing import Optional
 
@@ -91,7 +91,32 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
         )
     except KeyboardInterrupt:
         sys.exit()
-    stext: Optional[list] = text.split()
+    # stext: Optional[list[str]] = str(text).split()
+    # stext2: list[str] = str(text).split()
+    if text is not None:
+        stext: list = text.split()
+    else:
+        stext: list = []
+
+    if len(stext) > 0:
+        textDazu: list
+        stext2: list = []
+        for s_ in tuple(deepcopy(stext)):
+            textDazu = []
+            for n in (1, 2):
+                if len(s_) > n and s_[n:].isdecimal():
+                    if n == 1:
+                        if s_[0] == "t":
+                            textDazu += ["t", str(s_[n:])]
+                        if s_[0] == "a":
+                            textDazu += ["a", str(s_[n:])]
+                    if n == 2 and s_[:2] in ("at", "ta"):
+                        textDazu += ["a", "t", str(s_[n:])]
+            if len(textDazu) > 0:
+                stext2 += textDazu
+            else:
+                stext2 += [str(s_)]
+        stext = stext2
 
     if stext is not None:
         nstextnum: list = []
