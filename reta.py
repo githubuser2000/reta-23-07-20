@@ -2954,10 +2954,8 @@ class Program:
                 self.relitable += [col]
                 if i == 0:
                     self.RowsLen = len(col)
-            for arg in self.argv[1:]:
-                self.oberesMaximum(arg)
             for egal in range(
-                len(self.relitable) + 1, self.tables.hoechsteZeile[1024] + 1 + 1
+                len(self.relitable) + 1, self.tables.hoechsteZeile[1024] + 1
             ):
                 self.relitable += [[""] * len(self.relitable[0])]
         self.htmlOrBBcode = False
@@ -3246,7 +3244,13 @@ class Program:
             maintable2subtable_Relation2,
         )
 
-    def oberesMaximum(self, arg):
+    def oberesMaximum2(self, argv2) -> Optional[int]:
+        for arg in argv2:
+            if arg[2:16] == "oberesmaximum=" and arg[16:].isdecimal:
+                return int(arg[16:])
+        return None
+
+    def oberesMaximum(self, arg) -> bool:
         if arg[2:16] == "oberesmaximum=" and arg[16:].isdecimal:
             self.tables.hoechsteZeile = int(arg[16:])
             return True
@@ -3257,7 +3261,7 @@ class Program:
         global Tables, infoLog
         self.argv = argv
         self.allesParameters = 0
-        self.tables = Tables(alternativeShellRowsAmount)
+        self.tables = Tables(alternativeShellRowsAmount, self.oberesMaximum2(argv[1:]))
         if platform.system() == "Windows":
             self.tables.getOut.color = False
         self.workflowEverything(argv)

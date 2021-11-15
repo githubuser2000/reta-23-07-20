@@ -159,9 +159,12 @@ class Tables:
             liste2 += [""]
         return liste1, liste2
 
-    def __init__(self, alternativeShellRowsAmount):
+    def __init__(self, alternativeShellRowsAmount, hoechstZeil=None):
         global shellRowsAmount
-        self.__hoechsteZeile = {1024: 1024, 114: 120}
+        if hoechstZeil is None:
+            self.__hoechsteZeile = {1024: 1024, 114: 120}
+        else:
+            self.__hoechsteZeile = {1024: hoechstZeil, 114: hoechstZeil}
         self.rowNumDisplay2rowNumOrig = OrderedDict()
         self.generatedSpaltenParameter = OrderedDict()
         self.generatedSpaltenParameter_Tags = OrderedDict()

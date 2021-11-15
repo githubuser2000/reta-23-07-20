@@ -587,6 +587,7 @@ class Prepare:
         else:
             headingsAmount = 0
             rowsRange = range(0)
+        # print("__" + str(self.originalLinesRange) + "_" + str(paramLines))
         finallyDisplayLines: set = self.FilterOriginalLines(
             set(self.originalLinesRange), paramLines
         )
