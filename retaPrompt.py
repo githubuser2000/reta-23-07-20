@@ -335,7 +335,6 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
                 "--primzahlwirkung=Galaxieabsicht",
                 "--breite=" + str(int(shellRowsAmountStr) - 10),
             ]
-            print(str(kette))
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
