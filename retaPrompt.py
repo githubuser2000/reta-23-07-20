@@ -101,10 +101,14 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
     if len(stext) > 0:
         textDazu: list
         stext2: list = []
+        s_2: list
         for s_ in tuple(deepcopy(stext)):
             textDazu = []
             for n in (1, 2):
-                if len(s_) > n and s_[n:].isdecimal():
+                s_2 = s_[n:].split(",")
+                if len(s_) > n and [strInt.isdecimal() for strInt in s_2] == [
+                    True
+                ] * len(s_2):
                     if n == 1:
                         if s_[0] == "t":
                             textDazu += ["t", str(s_[n:])]
