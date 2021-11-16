@@ -104,18 +104,20 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
         s_2: list
         for s_ in tuple(deepcopy(stext)):
             textDazu = []
+            n: Optional[int] = None
             for ii, s_3 in enumerate(s_):
                 if s_3.isdecimal():
                     n = ii
                     break
-            s_2 = s_[n:].split(",")
-            if len(s_) > n and [strInt.isdecimal() for strInt in s_2] == [True] * len(
-                s_2
-            ):
-                buchst = set(s_[:n]) & {"a", "t", "v", "u", "p", "r", "U"}
-                if n == len(buchst):
-                    buchst2: list = [a if a != "U" else "mu" for a in buchst]
-                    textDazu += buchst2 + [str(s_[n:])]
+            if n is not None:
+                s_2 = s_[n:].split(",")
+                if len(s_) > n and [strInt.isdecimal() for strInt in s_2] == [
+                    True
+                ] * len(s_2):
+                    buchst = set(s_[:n]) & {"a", "t", "v", "u", "p", "r", "U"}
+                    if n == len(buchst):
+                        buchst2: list = [a if a != "U" else "mu" for a in buchst]
+                        textDazu += buchst2 + [str(s_[n:])]
 
             if len(textDazu) > 0:
                 stext2 += textDazu
@@ -376,6 +378,7 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
             process.wait()
         except:
             pass
+
     if len(stext) > 0 and "math" == stext[0]:
         try:
             process = subprocess.Popen(
