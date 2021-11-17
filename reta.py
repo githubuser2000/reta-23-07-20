@@ -3340,9 +3340,6 @@ class Program:
             """2021-09-21 spalte wird verschluckt immer noch, auf handy shell, wenn breite zu breit angegeben wird, verdammt!"""
         )
         alxp(
-            """--breite und --breiten als Befehl auch für -ausgabe zur Verfügung stellen, also doppelt. Kein großer Aufwand das zu programmieren!"""
-        )
-        alxp(
             """kombinationen sortiert ausgeben und als Hierarchiebaum den Zahlenkombinationen entlang"""
         )
         alxp(
@@ -3352,23 +3349,15 @@ class Program:
             """neues Farbschema: für html aber besser nur: primzahlen pro außen und pro innen und ggf. dessen vielfacher; Farbschema mit durch 3 teilbarem außerdem"""
         )
         alxp(
-            """Ich könnte die <td> class parameter auf der ersten bzw. nullten Spalte belassen, anstelle diese Redundanz zu halten: deutlich kleinere html"""
-        )
-        alxp(
             """Viele Routinen schreiben, die Codeteile immer dann überspringen, wenn man weiß, dass sie nicht benötigt werden, zur Geschwindigkeitssteigerung"""
         )
         alxp("""Ctrl+C kontrollierter abbrechen lassen!""")
         alxp("""Pytest verwenden wegen Geschwindigkeitstests.""")
-        alxp("""aus der ergebnis relitable ein dict machen !!!! bestes !!! """)
-        alxp(
-            """breiten geht nicht richtig und zeilenumbruch funktioniert oft nicht bei zu breit, warum nur"""
-        )
         alxp(
             """In einigen GenerierungsSpalten werden Teile aus der Reli dings kopiert, was unnötig ist.
              Außerem, dass dann die relitable ganz geklont werden muss. Und die Einzelsachen
              müssten nur selbst geklont werden und mehr nicht."""
         )
-        alxp
         alxp(
             """Immer dann wenn ich die ganze relitable matrix deepcopy geklont habe, hätte ich das gar nicht tun müssen, da ich einfach nur die werte, die ich vorher raus genommen habe, einfach nur per copy oder deepcopy hätte nur rausnehmen müssen"""
         )
@@ -3377,9 +3366,6 @@ class Program:
         )
         alxp("vim: iIaAoOjJ mit Registern arbeiten wegen Löschen ohne ausschneiden")
         alxp(
-            """ Überlegen wo ich besser Hashmaps statt Listen verwenden sollte oder Tuple. Die meisten Listen durch Dicts ersetzen: fast immer schneller! """
-        )
-        alxp(
             "Die Geschwindigkeitsteigerugnen entstehn meist durch anschließndes Zusammenfügen zu einer dann festen Größe."
         )
         alxp(
@@ -3387,12 +3373,6 @@ class Program:
         )
         alxp(
             """Ich müsste wirklich noch total überall schauen und zu jedem Punkt im Forum zu gleichförmiges-Polygon-Religionen"""
-        )
-        alxp(
-            """Ich könnte die Klasse immer nur ein mal definieren und dann per js auf alle in der gleichen Reihe die gleichen Tags dazu machen. Das geht schnell, macht die html kleiner, aber eigentlich beschleunigt das nichts wirklich, außer langsames Internet"""
-        )
-        alxp(
-            """Ich sollte eine Option einführen, dass man wahlweise auch höher als 120 und 1024 gehen kann, wenn man das mag."""
         )
 
     def combiTableWorkflow(
