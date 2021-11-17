@@ -111,9 +111,10 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
                     break
             if n is not None:
                 s_2 = s_[n:].split(",")
-                if len(s_) > n and [strInt.isdecimal() for strInt in s_2] == [
-                    True
-                ] * len(s_2):
+                s_4 = [s_5.split("-") for s_5 in s_2]
+                if len(s_) > n and [
+                    [strInt.isdecimal() for strInt in strA] for strA in s_4
+                ] == [[True for strInt in strA] for strA in s_4]:
                     buchst = set(s_[:n]) & {"a", "t", "v", "u", "p", "r", "U"}
                     if n == len(buchst):
                         buchst2: list = [a if a != "U" else "mu" for a in buchst]
