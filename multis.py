@@ -8,7 +8,7 @@ from lib4tables import multiples
 def mult(liste: list):
     for arg in liste:
         if type(arg) is int or arg.isdecimal():
-            print(str(multiples(int(arg))))
+            print(str(arg) + ": " + str(multiples(int(arg))))
 
 
 if __name__ == "__main__":
