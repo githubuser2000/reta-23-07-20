@@ -74,7 +74,11 @@ def externCommand(cmd: str, StrNummern: str):
         pass
 
 
-while text not in ("ende", "exit", "quit", "q", ":q"):
+warBefehl: bool
+befehleBeenden = ("ende", "exit", "quit", "q", ":q")
+
+while text not in befehleBeenden:
+    warBefehl = False
     try:
         text = session.prompt(
             # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
@@ -164,6 +168,7 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
         print("[code]" + text + "[/code]")
 
     if "abc" in stext or "abcd" in stext and len(stext) == 2:
+        warBefehl = True
         buchstabe: str
         if stext[0] == "abc" or stext[0] == "abcd":
             buchstaben = stext[1]
@@ -181,11 +186,13 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
         )
 
     if len({"befehle"} & set(stext)) > 0:
+        warBefehl = True
         print("Befehle: " + str(befehle)[1:-1])
 
     if len({"help", "hilfe"} & set(stext)) > 0 or (
         "h" in stext and "abc" not in stext and "abcd" not in stext
     ):
+        warBefehl = True
 
         print(
             "Alle Befehle außer reta, abc und abcd können beliebig kombiniert werden."
@@ -199,6 +206,7 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
         print("Der Befehl 'befehle' gibt die Liste der möglichen Befehle aus.")
 
     if bedinung:
+        warBefehl = True
         import reta
 
         reta.Program(stext, int(shellRowsAmountStr) - 15)
@@ -221,6 +229,7 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
             and "abc" not in stext
             and "abcd" not in stext
         ):
+            warBefehl = True
             import reta
 
             kette = [
@@ -242,6 +251,7 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
         if (len({"thomas"} & set(stext)) > 0) or (
             "t" in stext and "abc" not in stext and "abcd" not in stext
         ):
+            warBefehl = True
             import reta
 
             kette = [
@@ -261,16 +271,19 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
             )
 
         if len({"prim24", "primfaktorzerlegungModulo24"} & set(stext)) > 0:
+            warBefehl = True
             externCommand("prim24", c)
 
         if (len({"prim", "primfaktorzerlegung"} & set(stext)) > 0) or (
             "p" in stext and "abc" not in stext and "abcd" not in stext
         ):
+            warBefehl = True
             externCommand("prim", c)
 
         if len({"multis"} & set(stext)) > 0 or (
             "mu" in stext and "abc" not in stext and "abcd" not in stext
         ):
+            warBefehl = True
             import reta
 
             # kette = [
@@ -298,6 +311,7 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
             externCommand("prim", c)
 
         if len({"procontra"} & set(stext)) > 0:
+            warBefehl = True
             import reta
 
             kette = [
@@ -314,9 +328,11 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
                 int(shellRowsAmountStr),
             )
         if len({"modulo"} & set(stext)) > 0:
+            warBefehl = True
             externCommand("modulo", c)
 
         if len({"alles"} & set(stext)) > 0:
+            warBefehl = True
             import reta
 
             kette = [
@@ -337,6 +353,7 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
         if len({"universum"} & set(stext)) > 0 or (
             "u" in stext and "abc" not in stext and "abcd" not in stext
         ):
+            warBefehl = True
             import reta
 
             kette = [
@@ -357,6 +374,7 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
         if (len({"richtung"} & set(stext)) > 0) or (
             "r" in stext and "abc" not in stext and "abcd" not in stext
         ):
+            warBefehl = True
             import reta
 
             kette = [
@@ -374,6 +392,7 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
             )
 
     if len(stext) > 0 and "shell" == stext[0]:
+        warBefehl = True
         try:
             process = subprocess.Popen([*stext[1:]])
             process.wait()
@@ -381,6 +400,7 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
             pass
 
     if len(stext) > 0 and "math" == stext[0]:
+        warBefehl = True
         try:
             process = subprocess.Popen(
                 ["python", "-c", "print(" + " ".join(stext[1:]) + ")"]
@@ -388,3 +408,12 @@ while text not in ("ende", "exit", "quit", "q", ":q"):
             process.wait()
         except:
             pass
+    if not warBefehl and stext[0] not in befehleBeenden:
+        if stext[0] in befehle:
+            print(
+                "Dies ('"
+                + stext[0].strip()
+                + "') ist tatsächlich ein Befehl (oder es sind mehrere), aber es gibt nichts auszugeben.",
+            )
+        else:
+            print("Das ist kein Befehl!")
