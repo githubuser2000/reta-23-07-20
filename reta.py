@@ -3336,6 +3336,7 @@ class Program:
         )
 
         self.tables.getOut.cliOut(finallyDisplayLines, newTable, numlen, rowsRange)
+        alxp("""bei Kurzbefehlen ohne leerzeichen noch -1-2 und -6 möglich machen""")
         alxp(
             """2021-09-21 spalte wird verschluckt immer noch, auf handy shell, wenn breite zu breit angegeben wird, verdammt!"""
         )
