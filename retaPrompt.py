@@ -408,7 +408,7 @@ while text not in befehleBeenden:
             process.wait()
         except:
             pass
-    if not warBefehl and stext[0] not in befehleBeenden:
+    if not warBefehl and len(stext) > 0 and stext[0] not in befehleBeenden:
         if stext[0] in befehle:
             print(
                 "Dies ('"
