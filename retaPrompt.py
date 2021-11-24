@@ -106,6 +106,7 @@ while text not in befehleBeenden:
         textDazu: list
         stext2: list = []
         s_2: list
+
         for s_ in tuple(deepcopy(stext)):
             textDazu = []
             n: Optional[int] = None
@@ -113,11 +114,18 @@ while text not in befehleBeenden:
                 if s_3.isdecimal():
                     n = ii
                     break
+            try:
+                if s_[int(n) - 1] == "-":
+                    n -= 1
+            except:
+                pass
+
             if n is not None:
                 s_2 = s_[n:].split(",")
                 s_4 = [s_5.split("-") for s_5 in s_2]
                 if len(s_) > n and [
-                    [strInt.isdecimal() for strInt in strA] for strA in s_4
+                    [strInt.isdecimal() or len(strInt) == 0 for strInt in strA]
+                    for strA in s_4
                 ] == [[True for strInt in strA] for strA in s_4]:
                     buchst = set(s_[:n]) & {"a", "t", "v", "u", "p", "r", "U"}
                     if n == len(buchst):
