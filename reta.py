@@ -2109,6 +2109,18 @@ class Program:
                 {(199, 200)},
             ),
             (
+                Program.ParametersMain.menschliches,
+                ("ehrlich vs höflich", "ehrlich", "höflich", "hoeflich"),
+                set(),
+                {(224, 225)},
+            ),
+            (
+                Program.ParametersMain.konzept,
+                ("ehrlich vs höflich", "ehrlich", "höflich", "hoeflich"),
+                set(),
+                {(224, 225)},
+            ),
+            (
                 Program.ParametersMain.konzept,
                 ("Tragweite", "tragweite"),
                 set(),
