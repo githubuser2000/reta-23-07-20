@@ -1340,6 +1340,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.universum,
+                ("Netzwerk", "netzwerk"),
+                {25},
+            ),
+            (
+                Program.ParametersMain.universum,
                 (
                     "warum_Transzendentalie_=_Strukturgroesse_=_Charakter",
                     "warumtranszendentaliezustrukturgroesseundcharakter",
