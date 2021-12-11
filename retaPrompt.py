@@ -411,7 +411,7 @@ while text not in befehleBeenden:
         warBefehl = True
         try:
             process = subprocess.Popen(
-                ["python", "-c", "print(" + " ".join(stext[1:]) + ")"]
+                ["python3", "-c", "print(" + " ".join(stext[1:]) + ")"]
             )
             process.wait()
         except:

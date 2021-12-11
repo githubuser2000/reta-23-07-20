@@ -2316,7 +2316,12 @@ class Program:
                 {136},
                 {(66, 67)},
             ),
-            (Program.ParametersMain.konzept, ("kausal",), set(), {(110, 111)}),
+            (
+                Program.ParametersMain.konzept,
+                ("kausal", "geltung", "genese"),
+                set(),
+                {(110, 111)},
+            ),
             (
                 Program.ParametersMain.konzept,
                 ("Gleichheit", "gleich"),
