@@ -409,13 +409,13 @@ while text not in befehleBeenden:
 
     if len(stext) > 0 and "math" == stext[0]:
         warBefehl = True
-        # try:
-        process = subprocess.Popen(
-            ["python3", "-c", "print(" + " ".join(stext[1:]) + ")"]
-        )
-        process.wait()
-        # except:
-        #    pass
+        try:
+            process = subprocess.Popen(
+                ["python3", "-c", "print(" + " ".join(stext[1:]) + ")"]
+            )
+            process.wait()
+        except:
+            pass
     if not warBefehl and len(stext) > 0 and stext[0] not in befehleBeenden:
         if stext[0] in befehle:
             print(
