@@ -57,7 +57,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--primzahlwirkung
 [list][*]universum,absichtgalaxie,absichtgalaxiereziproke,universumreziproke,richtungrichtung,dagegengegenstrukturalie,neutralegegenstrukturalie[/list]
 [*]--multiplikationen
-[list][*]beschrieben,motivstern,strukturstern,motivgleichfoermig,strukturgleichfoermig,motivgebrstern,strukgebrstern,motivgebrgleichf,strukgebrgleichf[/list]
+[list][*]beschrieben,motivstern,strukturstern,motivgleichfoermig,strukturgleichfoermig,motivgebrstern,strukgebrstern,motivgebrgleichf,strukgebrgleichf,rahmen[/list]
 [*]--gebrochengalaxie
 [list][*]2,3,4,5,6,7,8,9,10,11,12,13,14,15, ..... usw.[/list]
 [*]--gebrochenuniversum

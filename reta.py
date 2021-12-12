@@ -2356,6 +2356,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.primvielfache,
+                ("Rahmen-Bedingungen", "rahmen"),
+                {226},
+            ),
+            (
+                Program.ParametersMain.primvielfache,
                 ("Motive_gleichförmige_Polygone", "motivgleichfoermig"),
                 set(),
                 set(),
