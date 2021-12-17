@@ -2121,6 +2121,12 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept,
+                ("delegieren", "ansammlung"),
+                set(),
+                {(227, 228)},
+            ),
+            (
+                Program.ParametersMain.konzept,
                 ("ehrlich vs höflich", "ehrlich", "höflich", "hoeflich"),
                 set(),
                 {(224, 225)},
