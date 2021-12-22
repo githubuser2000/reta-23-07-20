@@ -34,7 +34,7 @@ except Exception:
     ColumnsRowsAmount, shellRowsAmountStr = "80", "80"
 
 session = PromptSession(
-    history=FileHistory(os.path.expanduser("~") + os.sep + ".ReTaPromptHistory")
+    #history=FileHistory(os.path.expanduser("~") + os.sep + ".ReTaPromptHistory")
 )
 
 pp1 = pprint.PrettyPrinter(indent=2)
