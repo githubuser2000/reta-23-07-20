@@ -1548,7 +1548,7 @@ class Program:
                     "gefühl",
                     "gefuehl",
                 ),
-                {105},
+                {105, 230},
             ),
             (
                 Program.ParametersMain.menschliches,
