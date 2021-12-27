@@ -2608,7 +2608,7 @@ class Program:
                 #    "religion",
                 #    "religionen",
                 # ),
-                # 10: ("Motive_Ziele", "motivation", "motive", "ziele", "ziel", "motive"),
+                10: ("Motive_Ziele", "motivation", "motive", "ziele", "ziel", "motive"),
                 11: ("analytische_Ontologie", "analytischeontologie", "ontologie"),
                 # 12: (
                 #    "Emotionen",
