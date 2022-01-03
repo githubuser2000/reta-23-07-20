@@ -1,0 +1,6 @@
+#!/bin/sh
+cd ~/myRepos/reta
+file=`ls -S | grep -e '\.csv$' | fzf`
+if [ "$file" != "" ];then
+    libreoffice $file
+fi
