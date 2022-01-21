@@ -2465,9 +2465,9 @@ class Concat:
                 else:
                     return ""
             elif i == 2:
-                return "für seitlich"
+                return "für seitlich und gegen Schwächlinge innen"
             elif i == 3:
-                return "gegen seitlich"
+                return "gegen seitlich und für Schwächlinge innen"
             elif i == 1:
                 return "für außen"
             else:
