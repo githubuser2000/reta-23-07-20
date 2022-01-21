@@ -89,6 +89,7 @@ befehle = (
     "p",
     "mo",
     "mu",
+    "primzahlkreuz",
     "ende",
     "exit",
     "quit",

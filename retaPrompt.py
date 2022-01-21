@@ -358,6 +358,26 @@ while text not in befehleBeenden:
                 int(shellRowsAmountStr),
             )
 
+        if len({"primzahlkreuz"} & set(stext)) > 0 or (
+            "u" in stext and "abc" not in stext and "abcd" not in stext
+        ):
+            warBefehl = True
+            import reta
+
+            kette = [
+                "reta",
+                "-zeilen",
+                zeiln1,
+                zeiln2,
+                "-spalten",
+                "--bedeutung=primzahlkreuz",
+                "--breite=" + str(int(shellRowsAmountStr) - 10),
+            ]
+            reta.Program(
+                kette,
+                int(shellRowsAmountStr),
+            )
+
         if len({"universum"} & set(stext)) > 0 or (
             "u" in stext and "abc" not in stext and "abcd" not in stext
         ):
