@@ -358,9 +358,7 @@ while text not in befehleBeenden:
                 int(shellRowsAmountStr),
             )
 
-        if len({"primzahlkreuz"} & set(stext)) > 0 or (
-            "u" in stext and "abc" not in stext and "abcd" not in stext
-        ):
+        if len({"primzahlkreuz"} & set(stext)) > 0:
             warBefehl = True
             import reta
 
