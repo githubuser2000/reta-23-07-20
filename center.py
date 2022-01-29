@@ -5,7 +5,11 @@ import platform
 import pprint
 import re
 import sys
-from collections import Callable, OrderedDict
+from collections import OrderedDict
+try:
+    from collections import Callable
+except ImportError:
+    from typing import Callable
 from itertools import filterfalse
 from typing import Optional
 
