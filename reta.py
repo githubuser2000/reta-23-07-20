@@ -3369,6 +3369,7 @@ class Program:
         )
 
         self.tables.getOut.cliOut(finallyDisplayLines, newTable, numlen, rowsRange)
+        alxp("""Kurzbefehl n/m einprogrammieren, ggf. mit Kommata trennbar und mit a u auswechselbar und Befehl vorher ggf. noch weiter designen.""")
         alxp(
             """bei Kurzbefehlen ohne leerzeichen noch -1-2 und -6 möglich machen, auch für Multis Ranges und bindestrich vor zahlen und bereichen ermöglichen - für so etwas externe funktionen nutzen, die ich in ReTa bereits programmiert hatte und maximal suchen, weil das schon programmiert wurde und nicht gleich wieder drauf los programmieren!"""
         )
