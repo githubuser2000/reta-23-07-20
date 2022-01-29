@@ -407,7 +407,7 @@ class Concat:
                                         ", nicht: ",
                                         ", ".join(modalOperatoren[2:]),
                                         " (das alles nicht): ",
-                                        self.relitable[vervielfachter][concept[0]],
+                                        self.relitable[vervielfachter][concept[0]].replace("extrinsisch", "als zweites").replace("intrinsisch", "zuerst"),
                                     ]
                                     if len(modalOperatoren) > 2
                                     else [""]
