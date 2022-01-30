@@ -13,7 +13,10 @@ except ImportError:
 from itertools import filterfalse
 from typing import Optional
 
-from orderedset import OrderedSet
+try:
+    from orderedset import OrderedSet
+except:
+    OrderedSet = set
 
 from rich.console import Console
 from rich.syntax import Syntax

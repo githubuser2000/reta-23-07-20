@@ -10,7 +10,10 @@ from enum import Enum
 from typing import Iterable, Union
 
 import bbcode
-from orderedset import OrderedSet
+try:
+    from orderedset import OrderedSet
+except:
+    OrderedSet = set
 
 from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
                     output, re, x)

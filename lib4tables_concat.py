@@ -8,7 +8,10 @@ from copy import copy, deepcopy
 from fractions import Fraction
 from itertools import zip_longest
 
-from orderedset import OrderedSet
+try:
+    from orderedset import OrderedSet
+except:
+    OrderedSet = set
 
 from center import (DefaultOrderedDict, Multiplikationen, alxp, cliout,
                     getTextWrapThings, infoLog, output, re, unique_everseen, x)

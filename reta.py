@@ -7,7 +7,11 @@ from itertools import zip_longest
 from typing import Optional, Union
 
 import html2text
-from orderedset import OrderedSet
+
+try:
+    from orderedset import OrderedSet
+except:
+    OrderedSet = set
 
 from tableHandling import (Enum, Iterable, Multiplikationen, OutputSyntax,
                            Tables, Union, alxp, bbcode, bbCodeSyntax, cliout,
