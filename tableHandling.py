@@ -708,10 +708,10 @@ class Tables:
             """
             # \033[0;34mblaues Huhn\033[0m.
             num = int(num) if str(num).isdecimal() else 0
-            if rest:
-                if num == 0:
-                    return "\033[41m" + "\033[30m" + "\033[1m" + text + "\033[0m"
-                elif num % 2 == 0:
+            if num == 0:
+                return "\033[41m" + "\033[30m" + "\033[4m" + text + "\033[0m"
+            elif rest:
+                if num % 2 == 0:
                     return "\033[47m" + "\033[30m" + text + "\033[0m" + "\033[0m"
                 else:
                     return "\033[40m" + "\033[37m" + text + "\033[0m" + "\033[0m"
@@ -727,10 +727,7 @@ class Tables:
                 else:
                     return "\033[43m" + "\033[30m" + text + "\033[0m" + "\033[0m"
             elif num % 2 == 0:
-                if num == 0:
-                    return "\033[41m" + "\033[30m" + "\033[1m" + text + "\033[0m"
-                else:
-                    return "\033[47m" + "\033[30m" + text + "\033[0m" + "\033[0m"
+                return "\033[47m" + "\033[30m" + text + "\033[0m" + "\033[0m"
             else:
                 return "\033[100m" + "\033[37m" + text + "\033[0m" + "\033[0m"
 
