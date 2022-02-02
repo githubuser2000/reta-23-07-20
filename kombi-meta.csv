@@ -23,7 +23,6 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 10|8|9;;;;;keine Ahnung, ob das stimmt: Modelle;;;;;;;;;;;;
 10|8|3|7;;;;;keine Ahnung, ob das stimmt: Tatsächlichkeit;;;;;;;;;;;;
 10|6|5|5;;;;;die einzige, nicht nur das eine, aller wichtigste Sache, Ding, Lebewesen oder was es auch immer die einzige, nicht nur das eine, aller wichtigste Sache, Ding, Lebewesen oder was es auch immer ist, jedenfalls nur 1 ist es. Der monotheistische Gott selbst? (die 4 Buchstaben des jüdischen Gottes)?;;;;;;;;;;;;
-14|15;;;;;keine Ahnung, ob das stimmt: beliebig verzweigte Graph-Datenstruktur, Baumdatenstruktur;;;;;;;;;;;;
 10|14;;;;;Aussagen-Logik ohne unäre Operation, d.h. ohne „nicht“ und ohne „ja“, nur mit binären Operationen, wie AND oder OR;;;;;;;;;;;;
 11|13;;;;;;11. Fürsorge anwerben (so wie ein Kanarienvogel), 13. Fürsorge geben (als Helfer) ;;;;;;;;;;;
 17|19;;;;;;17. Motivation nehmen (als jemand, der einen anderen abgeneigt ist), 19. Motivation geben (als Fan) ;;;;;;;;;;;
@@ -126,7 +125,7 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 2|6;;;;;genaue Zahlen, keine diffusen Zahlen, keine irrationalen Zahlen, aber deshalb nicht nur rationale Zahlen;;;;;;;;;;;;
 3|6;;;;;Wertsachen: in der Welt vorhandener, nicht fiktiver Wert;;;;;;;;;;;;
 6|11;;;;;Zahlensystem;;;;;;;;;;;;
-6|14;;;;;Operation mit Zahlen (6) aus mindestens 2 Operanden. Das praktisch nur das Addieren (14), weil beispielsweise erst die Wiederholung (15) die Multiplikation (14 mit 15) bildet und die unäre (13) Operation die Subtraktion (13 mit 14). Dennoch meint „6 mit 14“ jegliche mehrstellige Operation von Zahlen.;;;;;;;;;;;;
+6|14;;;;;Operation mit Zahlen (6) aus mindestens 2 Operanden. Das ist praktisch nur das Addieren (14), weil beispielsweise erst die Wiederholung (15) die Multiplikation (14 mit 15) bildet und die unäre (13) Operation die Subtraktion (13 mit 14). Dennoch meint „6 mit 14“ jegliche mehrstellige Operation von Zahlen.;;;;;;;;;;;;
 6|16;;;;;eine Analysis-Funktion oder allgemeine Funktion aus Zahlenwerten in Definitionsmenge und Wertemenge;;;;;;;;;;;;
 6|17;;;;;Positionsangaben aus Zahlenwerte;;;;;;;;;;;;
 6|18;;;;;Vergleiche von Zahlen, die nicht auf einen Wert wie richtig oder falsch reduziert werden können, also ob eine Zahl größer als die andere ist, sondern, die im Verhältnis relativ bleiben;;;;;;;;;;;;
