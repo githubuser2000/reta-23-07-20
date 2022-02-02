@@ -121,7 +121,7 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 7|15;;;;;Rekursionssystematik;;;;;;;;;;;;
 7|16;;;;;der Baum der Branchen, nicht nur Wirtschaftszweige (Zweige von Funktionstätigkeiten) (größtenteils sicher);;;;;;;;;;;;
 4|6;;;;;das Zeitmaß und die Wertveränderung;;;;;;;;;;;;
-6|13;;;;;Zahlen mit Vorzeichen, Plus oder Minus;;;;;;;;;;;;
+6|13;;;;;Zahlen mit Vorzeichen, Plus oder Minus, d.h. ganze Zahlen;;;;;;;;;;;;
 2|6;;;;;genaue Zahlen, keine diffusen Zahlen, keine irrationalen Zahlen, aber deshalb nicht nur rationale Zahlen;;;;;;;;;;;;
 3|6;;;;;Wertsachen: in der Welt vorhandener, nicht fiktiver Wert;;;;;;;;;;;;
 6|11;;;;;Zahlensystem;;;;;;;;;;;;
@@ -212,3 +212,4 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 13|14|15|15;;;;;"Zwei mal wiederholende (15 mit 15) Addition (14) ist die Potenzierung (14 mit 15 mit 15) und dessen Negierung (13) ist die Wurzel (13 mit 14 mit 15 mit 15) oder der Logarithmus; (Addition ist aber nur ein Beispiel für mögliche Kombinationen [14].)";;;;;;;;;;;;
 14|15|15|15;;;;;Drei mal wiederholende (15 mit 15 mit 15) Addition (14) ist der Potenzbaum (14 mit 15 mit 15 mit 15), Addition ist aber nur ein Beispiel für mögliche Kombinationen;;;;;;;;;;;;
 13|15;;;;;Wiederholungen oder Traversierungen oder Rekursionen in beide entgegengesetze Richtungen möglich (größtenteils sicher);;;;;;;;;;;;
+6|13|13|14|15;;;;;rationale Zahlen (13 macht aus“ natürlichen Zahlen“ [6] ganze Zahlen und aus der Multiplikation [14 mit 15] die Division [13 mit 14 mit 15]);;;;;;;;;;;;
