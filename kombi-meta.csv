@@ -102,7 +102,7 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 2|4;;;;;Zeitpunkt oder Zeitspanne im Bezug zu Veränderung (größtenteils sicher);;;;;;;;;;;;
 14|20;;;;;unbekannt welche Strukturalie, aber schön (7 mit 10) sein können (2) (2*7 mit 2*10 = 14 mit 20), wenn man schön wäre;;;;;;;;;;;;
 4|14;;;;;unbekannt welche Strukturalie, aber entscheiden (7 mit 2) können (2), wenn man entscheiden würde = 7*2 mit 2*2 = 14 mit 4;;;;;;;;;;;;
-12|14;;;;;"die Mengenoperation mit mindestens 2 Operanden, z.B. Vereinigung, darunter alle Rechenoperationen, die nicht aus Wiederholungen (wie Multiplikation bei Zahlen oder Potenzmenge bei Mengen) oder unären Operationen (wie inverse Menge bestimmen) bestehen; Das Wohl (7 mit 6) haben können (2) oder dafür sorgen können, wenn man es wollte = 2*7 mit 2*6 = 14 mit 12";;;;;;;;;;;;
+12|14;;;;;"die Mengenoperation mit mindestens 2 Operanden, z.B. Vereinigung, darunter alle Rechenoperationen, die nicht aus Wiederholungen (wie Multiplikation [14 mit 15] bei Zahlen oder Potenzmenge bei Mengen) oder unären Operationen (wie „inverse Menge“ [12 mit 13] bestimmen) bestehen; Das Wohl (7 mit 6) haben können (2) oder dafür sorgen können, wenn man es wollte = 2*7 mit 2*6 = 14 mit 12. Dennoch meint „12 mit 14“ jegliche mehrstellige Operation von Megen.";;;;;;;;;;;;
 3|7;;;;;Bezug im Sinne von Bezogenheit;;;;;;;;;;;;
 2|5;;;;;"Anatomie eines Ganzen mit ihren Konkreten Teilen, Betrachtungen, Elementen, Bereichen, Räumen, etc. zusammen; und ggf. der Kontext zu dem, das größer als das Ganze ist.";;;;;;;;;;;;
 +6|+2/7;;;;;;;;;;;;;;;;;
@@ -126,7 +126,7 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 2|6;;;;;genaue Zahlen, keine diffusen Zahlen, keine irrationalen Zahlen, aber deshalb nicht nur rationale Zahlen;;;;;;;;;;;;
 3|6;;;;;Wertsachen: in der Welt vorhandener, nicht fiktiver Wert;;;;;;;;;;;;
 6|11;;;;;Zahlensystem;;;;;;;;;;;;
-6|14;;;;;Zahlen (6) Addieren (14);;;;;;;;;;;;
+6|14;;;;;Operation mit Zahlen (6) aus mindestens 2 Operanden. Das praktisch nur das Addieren (14), weil beispielsweise erst die Wiederholung (15) die Multiplikation (14 mit 15) bildet und die unäre (13) Operation die Subtraktion (13 mit 14). Dennoch meint „6 mit 14“ jegliche mehrstellige Operation von Zahlen.;;;;;;;;;;;;
 6|16;;;;;eine Analysis-Funktion oder allgemeine Funktion aus Zahlenwerten in Definitionsmenge und Wertemenge;;;;;;;;;;;;
 6|17;;;;;Positionsangaben aus Zahlenwerte;;;;;;;;;;;;
 6|18;;;;;Vergleiche von Zahlen, die nicht auf einen Wert wie richtig oder falsch reduziert werden können, also ob eine Zahl größer als die andere ist, sondern, die im Verhältnis relativ bleiben;;;;;;;;;;;;
