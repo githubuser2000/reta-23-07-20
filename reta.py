@@ -688,6 +688,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.planet,
+                ("Meta-Systeme","metasysteme","metasystem","meta-systeme","meta-system"),
+                {232},
+            ),
+            (
+                Program.ParametersMain.planet,
                 ("Intelligenz", "intelligenz"),
                 {214},
             ),

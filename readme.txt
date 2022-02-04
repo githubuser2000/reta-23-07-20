@@ -63,7 +63,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--gebrochenuniversum
 [list][*]2,3,4,5,6,7,8,9,10,11,12,13,14,15, ..... usw.[/list]
 [*]--planet
-[list][*]komplexitaet,freiheit,gleichheit,mechanismen,intelligenz[/list]
+[list][*]komplexitaet,freiheit,gleichheit,mechanismen,intelligenz,metasysteme[/list]
 [/list]
 [*]-kombination
 [list][*]--galaxie=[list][*]tiere,berufe,intelligenz,liebe,frauen,maenner,persoenlichkeit,religionen,motive,emotionen,personen,wirtschaftssysteme[/list]
