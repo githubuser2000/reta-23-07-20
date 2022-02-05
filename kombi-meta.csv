@@ -86,9 +86,9 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 +5|-10|13;;;;;;;;;;;;;;;;;
 1|8;;;;;Kongruenz (halb bis größtenteils sicher);;;;;;;;;;;;
 2|7;;;;;Die Entscheidung (sehr sicher) (das Konkrete [2] impliziert u.a. Entscheidungen [2] überhaupt, aber dazu muss man eine Richtung [7] gehen, Fähigkeiten [2] bestehen aus einer Sequenz von Entscheidungen [2], aber auch hier muss man eine Richtung [7] gehen);;;;;;;;;;;;
-4|7|10;;;;;größtenteils sicher: Mode, Stil von Epochen;;;;;;;;;;;;
+4|7|10;;;;;größtenteils sicher: Mode, Stil von Epochen (ist hier aber Paradigma, statt Meta-Paradigma);;;;;;;;;;;;
 2|3|-1/4;;;;;;;;;;;;;;;;;
-1/7|1/10;;;;;das Robuste (unsicher, ob das stimmt, aber mein Gefühl sagt, dass das sehr wohl richtig sein kann);;;;;;;;;;;;
+1/7|1/10;;;;;das Robuste (größtenteils sicher);;;;;;;;;;;;
 +6|+7|+10|-12|+13|+17|-18;;;;;;;;;;;;;;;;;
 -3|-6|-8|-10|12|17|18|(22)|(29);;;;;;;;;;;;;;;;;
 +6|-8|+1/8|10|(12)|14|17|18|20;;;;;;;;;;;;;;;;;
@@ -98,10 +98,10 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 6|(7)|(8)|28;;;;;wahrscheinlich: Geometrie (unsicher);;;;;;;;;;;;
 -2|-5|9|13;;;;;;;;;;;;;;;;;
 2|-8;;;;;;;;;;;;;;;;;
-2|4;;;;;Zeitpunkt oder Zeitspanne im Bezug zu Veränderung (größtenteils sicher);;;;;;;;;;;;
+2|4;;;;;Zeitpunkt im Bezug zu Veränderung (größtenteils sicher);;;;;;;;;;;;
 14|20;;;;;unbekannt welche Strukturalie, aber schön (7 mit 10) sein können (2) (2*7 mit 2*10 = 14 mit 20), wenn man schön wäre;;;;;;;;;;;;
 4|14;;;;;unbekannt welche Strukturalie, aber entscheiden (7 mit 2) können (2), wenn man entscheiden würde = 7*2 mit 2*2 = 14 mit 4;;;;;;;;;;;;
-12|14;;;;;"die Mengenoperation mit mindestens 2 Operanden, z.B. Vereinigung, darunter alle Rechenoperationen, die nicht aus Wiederholungen (wie Multiplikation [14 mit 15] bei Zahlen oder Potenzmenge bei Mengen) oder unären Operationen (wie „inverse Menge“ [12 mit 13] bestimmen) bestehen; Das Wohl (7 mit 6) haben können (2) oder dafür sorgen können, wenn man es wollte = 2*7 mit 2*6 = 14 mit 12. Dennoch meint „12 mit 14“ jegliche mehrstellige Operation von Megen.";;;;;;;;;;;;
+12|14;;;;;"die Mengenoperation mit mindestens 2 Operanden, z.B. Vereinigung (, aber nicht die Schnittmenge), darunter alle Rechenoperationen, die nicht aus Wiederholungen (wie Multiplikation [14 mit 15] bei Zahlen oder Potenzmenge bei Mengen) oder unären Operationen (wie „inverse Menge“ [12 mit 13] bestimmen) bestehen; Das Wohl (7 mit 6) haben können (2) oder dafür sorgen können, wenn man es wollte = 2*7 mit 2*6 = 14 mit 12. Dennoch meint „12 mit 14“ jegliche mehrstellige Operation von Megen.";;;;;;;;;;;;
 3|7;;;;;Bezug im Sinne von Bezogenheit;;;;;;;;;;;;
 2|5;;;;;"Anatomie eines Ganzen mit ihren Konkreten Teilen, Betrachtungen, Elementen, Bereichen, Räumen, etc. zusammen; und ggf. der Kontext zu dem, das größer als das Ganze ist.";;;;;;;;;;;;
 +6|+2/7;;;;;;;;;;;;;;;;;
@@ -130,7 +130,7 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 6|17;;;;;Positionsangaben aus Zahlenwerte;;;;;;;;;;;;
 6|18;;;;;Vergleiche von Zahlen, die nicht auf einen Wert wie richtig oder falsch reduziert werden können, also ob eine Zahl größer als die andere ist, sondern, die im Verhältnis relativ bleiben;;;;;;;;;;;;
 16|17;;;;;"die Positionen der Elemente von Wertebereich und Definitionsbereich in einer Analysis-Funkion; 17 allein kann auch andere Positionen meinen, als die von Funktionen.";;;;;;;;;;;;
-4|1/7|8;;;;;wahrscheinlich: die Kultur (halb sicher);;;;;;;;;;;;
+4|1/7|8;;;;;wahrscheinlich: die Kultur (halb sicher) (ist wohl Paradigma hier, statt Meta-Paradigma);;;;;;;;;;;;
 2|10;;;;;Die Tatsache oder Tatsachen, der Fakt oder die Fakten (größtenteils sicher);;;;;;;;;;;;
 3|10;;;;;die vorhandene Wirklichkeit (größtenteils sicher) (das heißt nicht solche Sachen der Wirklichkeit, wie die sogenannte Berechenbarkeit und Entscheidbarkeit);;;;;;;;;;;;
 1/2|10;;;;;die Gestaltung der Wirklichkeit und die mögliche Wirklichkeit (größtenteils sicher);;;;;;;;;;;;
@@ -138,7 +138,7 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 12|20;;;;;z.B. sogenannte Restklassen aus der Mathematik (größtenteils sicher);;;;;;;;;;;;
 16|19;;;;;"die Extremalwerte und Sattelpunkte, etc. von einer Analysis-Funkion; 19 allein kann auch andere Extreme meinen, als die von Funktionen. (sicher)";;;;;;;;;;;;
 10|16;;;;;die Funktionsgleichung oder Funktionsungleichung (größtenteils sicher);;;;;;;;;;;;
-5|8;;;;;Ein einzigiger einzelner (unteilbarer) Zustand (sicher) (ganz einfach und ganz allgemein);;;;;;;;;;;;
+5|8;;;;;Ein einzigiger einzelner (unteilbarer oder zumindest nicht kaputter) Zustand (sicher) (ganz einfach und ganz allgemein);;;;;;;;;;;;
 8|9|14;;;;;z.B. sogenannte formale Grammatiken aus der Informatik (bestehen aus Kombinationen [14] von Einheiten [9], die aus Zuständen [8] bestehen) (sicher);;;;;;;;;;;;
 8|9|12;;;;;z.B. von Symbolen die Symbolmengen (d.h. Vokabular) (aus sogenannten formalen Grammatiken, die wie Variablen, bzw. Einheiten [9] von Zuständen [8] fungieren):  (sicher);;;;;;;;;;;;
 1|1/5|2/3|14;Europide, Bio-Europäer;;;;;;;;;;;;;;;;
@@ -161,7 +161,7 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 4|1/8;;;;;der Grundsatz, die Devise, das Motto;;;;;;;;;;;;
 8|1/8|10;;;;;das Szenario, das es wirklich geben kann und die Vorstellung eines Anwendungsfalls, den es wirklich geben kann;;;;;;;;;;;;
 10|10;;;;;eine einzige binäre logische Operation;;;;;;;;;;;;
-10|10|10;;;;;Nur 2 binäre logische Operationen aus 3 Operanden oder auch ein dreistelliges Prädikat;;;;;;;;;;;;
+10|10|10;;;;;Nur 2 binäre logische Operationen aus zusammen 3 Operanden oder auch ein dreistelliges Prädikat;;;;;;;;;;;;
 6|6;;;;;eine einzige Rechenoperation aus 2 Zahlen als Operanden und einem Operator;;;;;;;;;;;;
 7|7;;;;;eine einzige Rechenoperation aus 2 Richtungen als Operanden ohne Betrag und ohne Zahlen als Werte und einem Operator;;;;;;;;;;;;
 7|1/7;;;;;"die Perspektive (weil: besteht aus Richtung und Position) (Universum); Friedfertigkeit (Galaxie oder Universum?)";;;;;;;;;;;;
@@ -216,3 +216,4 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 10|12|13|14;;;;;boolsche Mengenoperationen Schnittmenge mit mindestens 2 Operanden (größtenteils sicher);;;;;;;;;;;;
 10|12|14|15;;;;;boolsche Mengenoperationen Potenzmenge mit mindestens 2 Operanden (größtenteils sicher);;;;;;;;;;;;
 10|12|13;;;;;boolsche Mengenoperationenen, sowohl die inverse Menge als auch die gleiche Menge ohne Unterschied (größtenteils sicher);;;;;;;;;;;;
+4|8;;;;;Zeitspanne (größtenteils sicher);;;;;;;;;;;;
