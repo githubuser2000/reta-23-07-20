@@ -9,7 +9,7 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 7|5;;;;;"solche „ganze Richtungen“ wie z.B. Fachgebiete, Denkrichtungen, Agendas, Hauptstrategierichtungen eines Landes (größtenteils sicher); Assent (Englisch, philosophisches Wort): Zulassung, Akzeptanz (halb sicher)";5. das Gute für sich wollen (Selbstsucht), 7. das Gute geben wollen (Selbstlosigkeit) ;;;;;;;;;;;
 7|8;;;;;sehr sicher: Realität, aber nicht unbedingt Wirklichkeit, d.h. z.B. u.a. (u.a. politische) Ideologien (nicht 100% sicher), die Direktive, die Weisung (nicht 100% sicher) (d.h. die Zustand einer Richtung wollen oder die Richtung eines Zustandes wollen), Ein Zustandsautomat mit gerichteten Kanten (nicht 100% sicher), mathematisch: Zustandsautomat mit gerichteten Kanten oder Graph mit Gerichteten Kanten oder ein Gametree (Spieltheorie und klassische Logik-KI) mit gerichteten Kanten (sehr sicher);;;;;;;;;;;;
 9|10;;;;;"fertig-bekommen (größtenteils sicher) (weil Zweck [9] + Wirklichkeit [10]) (ist eine Form der Vollkommenheit); mathematisch so etwas wie die Physik oder BWL: Ein Gebilde aus Einheiten (9) und Gleichungen (10). (Die Rechenweise in der BWL und Physik ist genau so: Das Ergebnis fertig zu bekommen. Es ist jedes Mal der gleiche Prozess.)";;;;;;;;;;;;
-5|6;;;;;das Besondere, mathematisch: ganze Zahlen und natürliche Zahlen und alle einfachen diskreten Werte, z.B. die n Apostel oder die n Todsünden oder n Stämme Israels (d.h. das Besondere!) (alles das größtenteils sicher);;;;;;;;;;;;
+5|6;;;;;das Besondere, mathematisch: natürliche Zahlen, z.B. die n Apostel oder die n Todsünden oder n Stämme Israels (weil diese durch die Zahlennennung besonders sind, d.h. „5 mit 6“ ist das „das Besondere“) (alles das größtenteils sicher);;;;;;;;;;;;
 5|11;;;;;"Holismus (=jegliche Ganzheitslehren [Ganzes als System]) (nicht auf der Ebene von Strukturalien, sondern von Michael Commons Komplexitätsstufen, also der Vermenschlichung der Strukturalien) (sicher); das Sonderbare (halbwegs sicher)";;;;;;;;;;;;
 6|8;;;;;"Der dimensionale, „metrische oder normierte“  Raum (sicher); die Bestimmung im Sinne von Schicksal (größtenteils sicher); die Norm und die Metrik (größtenteils sicher)";;;;;;;;;;;;
 5|5;;;;;Einzigartigkeit (größtenteils sicher);;;;;;;;;;;;
@@ -73,7 +73,7 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 10|17;;;;;Die womöglich richtige (10) Meinung (17) haben entspricht, eine Überzeugung (10 mit 17) zu besitzen. (sicher);;;;;;;;;;;;
 7|16|17;;;;;Sehr sicher: eine gut (7) gesinnte Meinung (17) und Funktion (16) zu haben, entspricht einer Mathe Analysis Funktion mit „einer Richtung“, d.h. statt Werte aus Zahlen (6), aus Vektoren (6 mit 7) ohne Zahlen darin, also nur Winkel (7) im Defintionsbereich und Wertebereich;;;;;;;;;;;;
 3|(4);;;;;;;;;;;;;;;;;
-10|12;;;;;Sehr sicher: boolsche Mengenoperationen im 3D Raum in 3D Modellierprogrammen und in allem (noch komplexerem), als Raum aus Dimensionen;;;;;;;;;;;;
+10|12;;;;;halb sicher: boolsche Mengenoperationen im 3D Raum in 3D Modellierprogrammen und in allem (noch komplexerem), als Raum aus Dimensionen;;;;;;;;;;;;
 6|10;;;;;"Abduktion (sicher); Größtenteils sicher: die Wichtigkeit: Die Relation (gibt die Wichtigkeit an)  (Wert definiert Wahrheit) und der Rang von Wahrheiten (Wahrheit definiert Wert), Relation synonym zu zweistelligem Prädikat, d.h. also auch dies hier mehrstelliges Prädikat aus Werten";;;;;;;;;;das Unwichtige (neutrale Gegentranszendentalie);;
 7|10|12;;;;;Nicht sehr sicher: Arten (genauer: Mengen) von Wahrheitsvektoren, Vektoren, die statt Zahlen Wahrheitswerte haben und davon verschiedene Arten (so wie es verschiedene Zahlenarten gibt, basierend auf der Menge, d.h. Restklassen nicht, da die Klasse die 20 ist);;;;;;;;;;;;
 6|12;;;;;Größtenteils sicher: Mengen, die Zahlen definieren (wie z.B. rationale oder natürliche Zahlen) und Zahlen über Mengen, z.B. die Kardinalzahlen oder die Anzahl der Elemente einer Menge;;;;;;;;;;;;
@@ -121,7 +121,7 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 7|15;;;;;Rekursionssystematik;;;;;;;;;;;;
 7|16;;;;;der Baum der Branchen, nicht nur Wirtschaftszweige (Zweige von Funktionstätigkeiten) (größtenteils sicher);;;;;;;;;;;;
 4|6;;;;;das Zeitmaß und die Wertveränderung;;;;;;;;;;;;
-6|13;;;;;Zahlen mit Vorzeichen, Plus oder Minus, d.h. ganze Zahlen;;;;;;;;;;;;
+5|6|13;;;;;Sogenannte ganze Zahlen;;;;;;;;;;;;
 2|6;;;;;genaue Zahlen, keine diffusen Zahlen, keine irrationalen Zahlen, aber deshalb nicht nur rationale Zahlen;;;;;;;;;;;;
 3|6;;;;;Wertsachen: in der Welt vorhandener, nicht fiktiver Wert;;;;;;;;;;;;
 6|11;;;;;Zahlensystem;;;;;;;;;;;;
@@ -212,4 +212,4 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 13|14|15|15;;;;;"Zwei mal wiederholende (15 mit 15) Addition (14) ist die Potenzierung (14 mit 15 mit 15) und dessen Negierung (13) ist die Wurzel (13 mit 14 mit 15 mit 15) oder der Logarithmus; (Addition ist aber nur ein Beispiel für mögliche Kombinationen [14].)";;;;;;;;;;;;
 14|15|15|15;;;;;Drei mal wiederholende (15 mit 15 mit 15) Addition (14) ist der Potenzbaum (14 mit 15 mit 15 mit 15), Addition ist aber nur ein Beispiel für mögliche Kombinationen;;;;;;;;;;;;
 13|15;;;;;Wiederholungen oder Traversierungen oder Rekursionen in beide entgegengesetze Richtungen möglich (größtenteils sicher);;;;;;;;;;;;
-6|13|13|14|15;;;;;rationale Zahlen (13 macht aus“ natürlichen Zahlen“ [6] ganze Zahlen und aus der Multiplikation [14 mit 15] die Division [13 mit 14 mit 15]);;;;;;;;;;;;
+5|6|13|13|14|15;;;;;rationale Zahlen (13 macht aus „natürlichen Zahlen“ [5 mit 6] ganze Zahlen [13|5|6] und aus der Multiplikation [14 mit 15] die Division [13 mit 14 mit 15]);;;;;;;;;;;;
