@@ -70,10 +70,10 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 1/8|10;;;;;die (u.a. wissenschaftliche, aber nicht ausschließlich wissenschaftliche) Theorie (fast sicher);;;;;;;;;;;;
 1/8|1/10;;;;;halbwegs sicher: sogenannte mathematische Modellierung oder auch theoretische Grundlagen der Computerwissenschaften (beides ist fast das gleiche): mit Prinzipien Wahrheitsobjekte gestalten oder aus Wahrheitsobjekten Prinzipien gewinnen (Universum) (ich bin mir sicher);;;;;;;;;;;;
 3|8|10|17;;;;;die Position des Dinges an sich und oder für sich, nicht aus Zahlen, sondern aus allerlei Dingen an sich und für sich aus der Philosophie;;;;;;;;;;;;
-10|17;;;;;Die womöglich richtige (10) Meinung (17) haben entspricht, eine Überzeugung (10 mit 17) zu besitzen. (sicher);;;;;;;;;;;;
-7|16|17;;;;;Sehr sicher: eine gut (7) gesinnte Meinung (17) und Funktion (16) zu haben, entspricht einer Mathe Analysis Funktion mit „einer Richtung“, d.h. statt Werte aus Zahlen (6), aus Vektoren (6 mit 7) ohne Zahlen darin, also nur Winkel (7) im Defintionsbereich und Wertebereich;;;;;;;;;;;;
+10|17;;;;;Die womöglich richtige (10) Meinung (17) haben entspricht, eine Überzeugung (10 mit 17) zu besitzen. (größtenteils sicher) (ist hier aber Paradigma und nicht Strukturalie alias Meta-Paradigma und es ist die menschliche Perspektive davon.);;;;;;;;;;;;
+7|16|17;;;;;"Sehr sicher: eine gut (7) gesinnte Meinung (17) und Funktion (16) zu haben, entspricht einer Mathe Analysis Funktion mit „einer Richtung“, d.h. statt Werte aus Zahlen (6), aus Vektoren (6 mit 7) ohne Zahlen darin, also nur Winkel (7) im Defintionsbereich und Wertebereich;  (ist hier aber Paradigma und nicht Strukturalie alias Meta-Paradigma und es ist die menschliche Perspektive davon.)";;;;;;;;;;;;
 3|(4);;;;;;;;;;;;;;;;;
-10|12;;;;;halb sicher: boolsche Mengenoperationen im 3D Raum in 3D Modellierprogrammen und in allem (noch komplexerem), als Raum aus Dimensionen;;;;;;;;;;;;
+10|12|14;;;;;boolsche Mengenoperationen Vereinigung mit mindestens 2 Operanden (größtenteils sicher);;;;;;;;;;;;
 6|10;;;;;"Abduktion (sicher, obwohl dafür vielleicht noch u.a. die Kombination [14] nötig wäre); Größtenteils sicher: die Wichtigkeit: Die Relation (gibt die Wichtigkeit an)  (Wert definiert Wahrheit) und der Rang von Wahrheiten (Wahrheit definiert Wert), Relation synonym zu zweistelligem Prädikat, d.h. also auch dies hier mehrstelliges Prädikat aus Werten";;;;;;;;;;das Unwichtige (neutrale Gegentranszendentalie);;
 7|10|12;;;;;Nicht sehr sicher: Arten (genauer: Mengen) von Wahrheitsvektoren, Vektoren, die statt Zahlen Wahrheitswerte haben und davon verschiedene Arten (so wie es verschiedene Zahlenarten gibt, basierend auf der Menge, d.h. Restklassen nicht, da die Klasse die 20 ist);;;;;;;;;;;;
 6|12;;;;;Größtenteils sicher: Mengen, die Zahlen definieren (wie z.B. rationale oder natürliche Zahlen) und Zahlen über Mengen, z.B. die Kardinalzahlen oder die Anzahl der Elemente einer Menge;;;;;;;;;;;;
@@ -213,3 +213,6 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 14|15|15|15;;;;;Drei mal wiederholende (15 mit 15 mit 15) Addition (14) ist der Potenzbaum (14 mit 15 mit 15 mit 15), Addition ist aber nur ein Beispiel für mögliche Kombinationen;;;;;;;;;;;;
 13|15;;;;;Wiederholungen oder Traversierungen oder Rekursionen in beide entgegengesetze Richtungen möglich (größtenteils sicher);;;;;;;;;;;;
 5|6|13|13|14|15;;;;;rationale Zahlen (13 macht aus „natürlichen Zahlen“ [5 mit 6] ganze Zahlen [13|5|6] und aus der Multiplikation [14 mit 15] die Division [13 mit 14 mit 15]);;;;;;;;;;;;
+10|12|13|14;;;;;boolsche Mengenoperationen Schnittmenge mit mindestens 2 Operanden (größtenteils sicher);;;;;;;;;;;;
+10|12|14|15;;;;;boolsche Mengenoperationen Potenzmenge mit mindestens 2 Operanden (größtenteils sicher);;;;;;;;;;;;
+10|12|13;;;;;boolsche Mengenoperationenen, sowohl die inverse Menge als auch die gleiche Menge ohne Unterschied (größtenteils sicher);;;;;;;;;;;;
