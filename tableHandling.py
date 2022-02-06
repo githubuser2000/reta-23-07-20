@@ -1219,7 +1219,7 @@ class Tables:
                                             ) in self.tables.dataDict[3][a]:
                                                 into += [
                                                     (
-                                                        "Kombination_(Galaxie)_(14_mit_13)",
+                                                        "Kombination_(Galaxie_schwarzes Loch)_(14_mit_13)",
                                                         elementParameter,
                                                     )
                                                 ]
@@ -1247,7 +1247,7 @@ class Tables:
                                             ) in self.tables.dataDict[8][a]:
                                                 into += [
                                                     (
-                                                        "Kombination_(Universum)_(14_mit_15)",
+                                                        "Kombination_(Universum_und_Galaxie)_(14_mit_15)",
                                                         elementParameter,
                                                     )
                                                 ]

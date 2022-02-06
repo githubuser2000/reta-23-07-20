@@ -634,7 +634,7 @@ class Program:
             ("gebrochenuniversum",),
             ("gebrochengalaxie",),
             ("Multiplikationen", "multiplikationen"),
-            ("Planet", "planet"),
+            ("Planet_(10_und_oder_12)", "planet"),
             ("alles",),
         )
 
@@ -685,6 +685,16 @@ class Program:
                     "wichtigste",
                 ),
                 {10, 5, 4, 8},
+            ),
+            (
+                Program.ParametersMain.planet,
+                ("Zustände_(8)_(kleiner_als_Planet)","zustaende","zustände"),
+                {234},
+            ),
+            (
+                Program.ParametersMain.planet,
+                ("Wirklichkeiten", "wirklichkeit", "wirklichkeiten"),
+                {233},
             ),
             (
                 Program.ParametersMain.planet,
