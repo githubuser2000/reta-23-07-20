@@ -768,6 +768,7 @@ class Concat:
             list1, list2 = [], []
             weiter1a, weiter1b, weiter2a, weiter2b = 0, 0, 0, 0
             proPro, contraContra = OrderedDict(), OrderedDict()
+            proPro2, contraContra2 = OrderedDict(), OrderedDict()
             dreli = deepcopy(self.relitable)
             headline: str = "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
             into_Str1: OrderedDict = OrderedDict()
@@ -782,6 +783,9 @@ class Concat:
                 bereich = zip(range(0, self.tables.hoechsteZeile[1024] + 1), dreli)
 
             for num, cols in bereich:
+                contraContra2[num]=OrderedSet()
+                proPro2[num]=OrderedSet()
+
                 if num == 0:
                     into: list = [headline]
                 else:
@@ -802,6 +806,7 @@ class Concat:
                                 gegen = list1[weiter1a]
                                 weiter1a += 1
                             contraContra[num] = gegen
+                            contraContra2[num] |= {gegen}
                             into1 += ["gegen " + str(gegen)]
                         elif num in (11, 5):
                             if num == 5:
@@ -809,6 +814,7 @@ class Concat:
                             elif num == 11:
                                 gegen = 3
                             contraContra[num] = gegen
+                            contraContra2[num] |= {gegen}
                             into1 += ["gegen " + str(gegen)]
 
                         keinePrimzahl1 = False
@@ -819,6 +825,7 @@ class Concat:
                         elif num == 3:
                             pro = 2
                         proPro[num] = pro
+                        proPro2[num] |= {pro}
                         into2 += ["pro " + str(pro)]
 
                     if couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num):
@@ -831,6 +838,7 @@ class Concat:
                                 pro = list2[weiter2a]
                                 weiter2a += 1
                             proPro[num] = pro
+                            proPro2[num] |= {pro}
                             into2 += ["pro " + str(pro)]
                         elif num in (7, 13):
                             if num == 7:
@@ -838,10 +846,12 @@ class Concat:
                             elif num == 13:
                                 pro = 3
                             proPro[num] = pro
+                            proPro2[num] |= {pro}
                             into2 += ["pro " + str(pro)]
 
                         keinePrimzahl2 = False
                 else:
+
                     if couldBePrimeNumberPrimzahlkreuz_fuer_innen(num):
                         keinePrimzahl1 = True
                     elif couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num):
@@ -876,6 +886,7 @@ class Concat:
                                             * contraContra[couple[firstOrSecond]]
                                         )
                                         contraContra[num] = gegen3
+                                        contraContra2[num] |= {gegen3}
                                         into1 += ["gegen " + str(gegen3)]
                                     except KeyError:
                                         pass
@@ -894,6 +905,7 @@ class Concat:
                                             * proPro[couple[firstOrSecond]]
                                         )
                                         proPro[num] = pro3
+                                        proPro2[num] |= {pro3}
                                         into2 += ["pro " + str(pro3)]
                                     except KeyError:
                                         pass
@@ -1007,17 +1019,19 @@ class Concat:
             ] = kette
 
             reverseContra: OrderedDict = OrderedDict()
-            for key, value in contraContra.items():
-                try:
-                    reverseContra[value] |= {key}
-                except KeyError:
-                    reverseContra[value] = OrderedSet({key})
+            for key, value in contraContra2.items():
+                for value2 in value:
+                    try:
+                        reverseContra[value2] |= {key}
+                    except KeyError:
+                        reverseContra[value2] = OrderedSet({key})
             reversePro: OrderedDict = OrderedDict()
-            for key, value in proPro.items():
-                try:
-                    reversePro[value] |= {key}
-                except KeyError:
-                    reversePro[value] = OrderedSet({key})
+            for key, value in proPro2.items():
+                for value2 in value:
+                    try:
+                        reversePro[value2] |= {key}
+                    except KeyError:
+                        reversePro[value2] = OrderedSet({key})
 
             pro2: list
             contra2: list
