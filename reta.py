@@ -636,7 +636,7 @@ class Program:
             ("Multiplikationen", "multiplikationen"),
             #("kleinere_Strukturen",),
             ("Planet_(10_und_oder_12)", "planet"),
-            ("Strukutren_(1_bis_9)", "strukturen"),
+            ("Strukturen_(1_bis_9)", "strukturkleinerzehn"),
             ("alles",),
         )
 
