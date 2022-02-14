@@ -688,11 +688,6 @@ class Program:
                 {10, 5, 4, 8},
             ),
             (
-                Program.ParametersMain.planet,
-                ("Zustände_(8)_(kleiner_als_Planet)","zustaende","zustände"),
-                {234},
-            ),
-            (
                 Program.ParametersMain.strukturenkleinere,
                 ("Zustände_(8)_(kleiner_als_Planet)","zustaende","zustände"),
                 {234},
@@ -704,12 +699,12 @@ class Program:
             ),
             (
                 Program.ParametersMain.planet,
-                ("Wirklichkeiten", "wirklichkeit", "wirklichkeiten"),
+                ("Wirklichkeiten_(10)", "wirklichkeit", "wirklichkeiten"),
                 {233},
             ),
             (
                 Program.ParametersMain.planet,
-                ("Meta-Systeme","metasysteme","metasystem","meta-systeme","meta-system"),
+                ("Meta-Systeme_(12)","metasysteme","metasystem","meta-systeme","meta-system"),
                 {232},
             ),
             (
