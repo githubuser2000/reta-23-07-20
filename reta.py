@@ -634,8 +634,9 @@ class Program:
             ("gebrochenuniversum",),
             ("gebrochengalaxie",),
             ("Multiplikationen", "multiplikationen"),
+            #("kleinere_Strukturen",),
             ("Planet_(10_und_oder_12)", "planet"),
-            ("kleinere_Strukturen_als_10","strukturkleiner","kleinerestruktur"),
+            ("Strukutren_(1_bis_9)", "strukturen"),
             ("alles",),
         )
 
