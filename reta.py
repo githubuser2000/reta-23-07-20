@@ -544,7 +544,7 @@ class Program:
 
         Program.ParametersMain: namedtuple[str, str] = namedtuple(
             "ParametersMain",
-            "wichtigste wichtigste2 religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache planet alles",
+            "wichtigste wichtigste2 religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache planet strukturenkleinere alles",
         )
 
         Program.ParametersMain: namedtuple[tuple[str]] = Program.ParametersMain(
@@ -635,6 +635,7 @@ class Program:
             ("gebrochengalaxie",),
             ("Multiplikationen", "multiplikationen"),
             ("Planet_(10_und_oder_12)", "planet"),
+            ("kleinere_Strukturen_als_10","strukturkleiner","kleinerestruktur"),
             ("alles",),
         )
 
@@ -690,6 +691,16 @@ class Program:
                 Program.ParametersMain.planet,
                 ("Zustände_(8)_(kleiner_als_Planet)","zustaende","zustände"),
                 {234},
+            ),
+            (
+                Program.ParametersMain.strukturenkleinere,
+                ("Zustände_(8)_(kleiner_als_Planet)","zustaende","zustände"),
+                {234},
+            ),
+            (
+                Program.ParametersMain.strukturenkleinere,
+                ("(politische)_Richtungen_(7)","richtungen","politische"),
+                {235},
             ),
             (
                 Program.ParametersMain.planet,
@@ -2119,6 +2130,15 @@ class Program:
                 ),
                 {112},
                 {(40, 41)},
+            ),
+            (
+                Program.ParametersMain.konzept,
+                (
+                    "variationsreich_eintönig",
+                    "eintönig","eintoenig","variationsreich"
+                ),
+                set(),
+                {(236, 237)},
             ),
             (
                 Program.ParametersMain.konzept,
