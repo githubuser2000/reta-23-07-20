@@ -689,7 +689,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.strukturenkleinere,
-                ("Zustände_(8)_(kleiner_als_Planet)","zustaende","zustände"),
+                ("Zustände_(8)","zustaende","zustände"),
                 {234},
             ),
             (
