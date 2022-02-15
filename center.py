@@ -12,6 +12,7 @@ except ImportError:
     from typing import Callable
 from itertools import filterfalse
 from typing import Optional
+import html
 
 try:
     from orderedset import OrderedSet
@@ -114,7 +115,7 @@ def chunks(lst, n):
 
 def cliout(text, color=False, stype=""):
     if stype == "html":
-        text = text.replace("<","&lt;").replace(">","&gt;")
+        text = html.escape(text, quote=True)
     if output:
         if color and False:
             console.print(
