@@ -114,8 +114,6 @@ def chunks(lst, n):
 
 
 def cliout(text, color=False, stype=""):
-    if stype == "html":
-        text = html.escape(text, quote=True)
     if output:
         if color and False:
             console.print(

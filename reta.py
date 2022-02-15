@@ -1,5 +1,6 @@
 #!/usr/bin/env pypy3
 # -*- coding: utf-8 -*-
+import html
 import platform
 import re
 from collections import OrderedDict, namedtuple
@@ -3018,6 +3019,7 @@ class Program:
         with open(place, mode="r", encoding="utf-8") as csv_file:
             self.relitable: list = []
             for i, col in enumerate(csv.reader(csv_file, delimiter=";")):
+                col = [html.escape(ccc,quote=True) for ccc in col] if "--art=html" in self.argv else col
                 self.relitable += [col]
                 if i == 0:
                     self.RowsLen = len(col)
