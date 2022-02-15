@@ -113,6 +113,8 @@ def chunks(lst, n):
 
 
 def cliout(text, color=False, stype=""):
+    if stype == "html":
+        text = text.replace("<","&lt;").replace(">","&gt;")
     if output:
         if color and False:
             console.print(
