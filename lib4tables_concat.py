@@ -821,12 +821,15 @@ class Concat:
 
                     if num in (2, 3):
                         if num == 2:
-                            pro = 3
+                            gegen = 1
+                            contraContra[num] = gegen
+                            contraContra2[num] |= {gegen}
+                            into1 += ["gegen " + str(gegen)]
                         elif num == 3:
-                            pro = 2
-                        proPro[num] = pro
-                        proPro2[num] |= {pro}
-                        into2 += ["pro " + str(pro)]
+                            pro = 1
+                            proPro[num] = pro
+                            proPro2[num] |= {pro}
+                            into2 += ["pro " + str(pro)]
 
                     if couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num):
                         list2 += [num]
