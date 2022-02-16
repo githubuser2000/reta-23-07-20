@@ -116,6 +116,8 @@ def cliout(text, color=False, stype=""):
     if output:
         if color and len(text) > 0:
             text = " ".join(text.split())
+            #if stype == "html":
+            #    text = text.replace("<tr","\n  <tr").replace("<td","\n    <td")
             console=Console(width=len(text))
             console.print(
                 Syntax(text.strip(), stype, word_wrap=True, indent_guides=True), end=""
