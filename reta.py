@@ -2130,6 +2130,14 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 (
+                    "Selbstlosigkeit_Ichlosigkeit_etc","selbstlos","ichlos"
+                ),
+                set(),
+                {(238, 239)},
+            ),
+            (
+                Program.ParametersMain.konzept,
+                (
                     "variationsreich_eintönig",
                     "eintönig","eintoenig","variationsreich"
                 ),
