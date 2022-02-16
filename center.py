@@ -33,7 +33,6 @@ except:
         return _jit
 
 
-console = Console()
 
 # originalLinesRange = range(1028)  # Maximale Zeilenanzahl
 
@@ -115,9 +114,11 @@ def chunks(lst, n):
 
 def cliout(text, color=False, stype=""):
     if output:
-        if color and False:
+        if color and len(text) > 0:
+            text = " ".join(text.split())
+            console=Console(width=len(text))
             console.print(
-                Syntax(text, stype, word_wrap=True, indent_guides=True), end=""
+                Syntax(text.strip(), stype, word_wrap=True, indent_guides=True), end=""
             )
         else:
             print(text)
