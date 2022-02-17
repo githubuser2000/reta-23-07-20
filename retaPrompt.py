@@ -10,6 +10,7 @@ from copy import copy, deepcopy
 from itertools import zip_longest
 from typing import Optional
 
+from center import cliout
 from center import BereichToNumbers
 # import reta
 from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
@@ -173,7 +174,10 @@ while text not in befehleBeenden:
             # c = a
 
     if "--art=bbcode" in stext and "reta" == stext[0]:
-        print("[code]" + text + "[/code]")
+        if "--nocolor" in stext:
+            print("[code]" + text + "[/code]")
+        else:
+            cliout("[code]" + text + "[/code]", True, "bbcode")
 
     if ("abc" in stext or "abcd" in stext) and len(stext) == 2:
         warBefehl = True
