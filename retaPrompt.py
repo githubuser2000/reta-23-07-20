@@ -370,7 +370,7 @@ while text not in befehleBeenden:
                 "reta",
                 "-zeilen",
                 zeiln1,
-                zeiln2,
+                "--oberesmaximum=1028",
                 "-spalten",
                 "--bedeutung=primzahlkreuz",
                 "--breite=" + str(int(shellRowsAmountStr) - 10),
