@@ -34,9 +34,13 @@ try:
 except Exception:
     ColumnsRowsAmount, shellRowsAmountStr = "80", "80"
 
-session = PromptSession(
-    #history=FileHistory(os.path.expanduser("~") + os.sep + ".ReTaPromptHistory")
-)
+
+def newSession(history=False):
+    if history:
+        return PromptSession(history=FileHistory(os.path.expanduser("~") + os.sep + ".ReTaPromptHistory"))
+    else:
+        return PromptSession()
+
 
 pp1 = pprint.PrettyPrinter(indent=2)
 pp = pp1.pprint
@@ -77,9 +81,10 @@ def externCommand(cmd: str, StrNummern: str):
 
 warBefehl: bool
 befehleBeenden = ("ende", "exit", "quit", "q", ":q")
-
+loggingSwitch = False
 while text not in befehleBeenden:
     warBefehl = False
+    session = newSession(loggingSwitch)
     try:
         text = session.prompt(
             # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
@@ -92,7 +97,7 @@ while text not in befehleBeenden:
             wrap_lines=True,
             complete_while_typing=True,
             vi_mode=True if "-vi" in sys.argv else False,
-            style=Style.from_dict({"bla": "#0000ff bg:#ff0000"}),
+            style=Style.from_dict({"bla": "#0000ff bg:#ffff00"}) if loggingSwitch else Style.from_dict({"bla": "#0000ff bg:#ff0000"}),
         )
     except KeyboardInterrupt:
         sys.exit()
@@ -438,6 +443,13 @@ while text not in befehleBeenden:
             process.wait()
         except:
             pass
+    if "loggen" == stext[0]:
+        warBefehl = True
+        loggingSwitch = True
+    elif "nichtloggen" == stext[0]:
+        warBefehl = True
+        loggingSwitch = False
+
     if not warBefehl and len(stext) > 0 and stext[0] not in befehleBeenden:
         if stext[0] in befehle:
             print(

@@ -97,6 +97,8 @@ befehle = (
     ":q",
     "shell",
     "math",
+    "loggen",
+    "nichtloggen"
 )
 
 befehle2: set = set(befehle) - {"reta"}
