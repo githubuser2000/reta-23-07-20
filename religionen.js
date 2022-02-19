@@ -19,7 +19,7 @@ window.onload = function () {
     galaxie = 3
     universum = 4
 */
-  document.body.insertBefore(div, document.getElementsByTagName("table")[0]);
+  document.body.insertBefore(div, document.getElementById("bigtable"));
 
   chk_spalten =
     '<fieldset><label style="white-space: nowrap;"><input type="radio" id="spaltenWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);" checked="true">Spalten (Einheiten [9]) wählen</label> <label style="white-space: nowrap;"><input type="radio" id="zeilenWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);">Zeilen, welche ja nein, (6,13,14,15) (wenig: 7,8,10,12)</label> <label style="white-space: nowrap;"><input type="radio" id="keinsWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);">frei machen zur Tabellenansicht <!-- | Lädt schneller mit Firefox statt Chrome --> </label></fieldset>';
@@ -228,7 +228,7 @@ for (i = 0; i < tdClasses1.length; i++)
     str4 + str5 + str6 + str8 + str9 + str10 + str11 + str12 + str13 + str7;
   // Spaltenreihenfolge
   tableHeadline = document
-    .getElementsByTagName("table")[1]
+    .getElementById("bigtable")
     .getElementsByTagName("tr")[0]
     .getElementsByTagName("td");
   for (var u = 0; u < tableHeadline.length; u++) {
@@ -244,7 +244,7 @@ for (i = 0; i < tdClasses1.length; i++)
   }
   toggleChkSpalten();
 
-  tabelle = document.getElementsByTagName("table")[1];
+  tabelle = document.getElementById("bigtable");
   tds = tabelle.getElementsByTagName("td");
   /*
   for (var i = 0; i < tds.length; i++) {
@@ -767,7 +767,7 @@ var sichtbareSpaltenNummern;
 
 function sortedKeysOfHeadingNumbersByVisibility() {
   tableHeadline = document
-    .getElementsByTagName("table")[1]
+    .getElementById("bigtable")
     .getElementsByTagName("tr")[0]
     .getElementsByTagName("td");
   sichtbareSpaltenNummern = [];
@@ -1022,7 +1022,7 @@ function makeAllowedZeilenFromPrimVielfacher(zeilenAngaben) {
   zeilenAngaben = Array.from(zeilenAngaben);
   erlaubteZeilen = new Set();
   ersteSpalte = document
-    .getElementsByTagName("table")[1]
+    .getElementById("bigtable")
     .getElementsByClassName("r_0");
   for (var i = 0; i < 1025; i++)
     for (var k = 0; k < zeilenAngaben.length; k++)
@@ -1046,7 +1046,7 @@ function makeAllowedZeilenFromZaehlung(zeilenAngaben) {
   zeilenAngaben = Array.from(zeilenAngaben);
   erlaubteZeilen = new Set();
   ersteSpalte = document
-    .getElementsByTagName("table")[1]
+    .getElementById("bigtable")
     .getElementsByClassName("r_0");
   erlaubteZaehlungen = new Set();
   for (var i = 0; i < zeilenAngaben.length; i++)
@@ -1127,7 +1127,7 @@ function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which) {
   dazuEinschraenkend =
     document.getElementsByClassName("dazuEinschraenkend")[which].checked;
   //window.alert(neuErlauben+" "+neuHinfort+" "+dazuErlauben+" "+dazuHinfort);
-  spalte = document.getElementsByTagName("table")[1].getElementsByTagName("tr");
+  spalte = document.getElementById("bigtable").getElementsByTagName("tr");
   for (var s = 1; s < spalte.length; s++) {
     tabellenZelle = spalte[s];
     if (s < 115)

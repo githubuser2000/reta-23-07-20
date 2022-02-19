@@ -1,5 +1,6 @@
 #!/usr/bin/env pypy3
 # -*- coding: utf-8 -*-
+import json
 import html
 import platform
 import re
@@ -3027,7 +3028,14 @@ class Program:
         with open(place, mode="r", encoding="utf-8") as csv_file:
             self.relitable: list = []
             for i, col in enumerate(csv.reader(csv_file, delimiter=";")):
-                col = [html.escape(ccc,quote=True) for ccc in col] if "--art=html" in self.argv else col
+
+                if "--art=bbcode" in self.argv:
+                        col = [json.loads(ccc[1:-1])["bbcode"] if ccc[:2] == "|{" and ccc[-2:] == "}|" else ccc for ccc in col]
+                elif "--art=html" in self.argv:
+                        col = [json.loads(ccc[1:-1])["html"] if ccc[:2] == "|{" and ccc[-2:] == "}|" else html.escape(ccc,quote=True) for ccc in col]
+                else:
+                        col = [json.loads(ccc[1:-1])[""] if ccc[:2] == "|{" and ccc[-2:] == "}|" else ccc for ccc in col]
+
                 self.relitable += [col]
                 if i == 0:
                     self.RowsLen = len(col)
