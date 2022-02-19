@@ -875,12 +875,12 @@ class Program:
             ),
             (
                 Program.ParametersMain.inkrementieren,
-                ("Addition", "addition", "identitaet", "Identität"),
+                ("Teilchen-Meta-Physik", "addition", "identitaet", "Identität"),
                 {219, 223},
             ),
             (
                 Program.ParametersMain.universum,
-                ("Addition", "addition", "identitaet", "Identität"),
+                ("Teilchen-Meta-Physik", "addition", "identitaet", "Identität"),
                 {219, 223},
             ),
             (
