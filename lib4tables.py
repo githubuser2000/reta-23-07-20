@@ -265,7 +265,7 @@ class htmlSyntax(OutputSyntax):
                 + (">\n",)
             )
 
-    beginTable = "<table border=0>"
+    beginTable = "<table border=0 id=\"bigtable\">"
     endTable = "</table>\n"
     beginCell = "<td>\n"
     endCell = "\n</td>\n"
