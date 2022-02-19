@@ -43,10 +43,10 @@ for (i = 0; i < tdClasses1.length; i++)
 
   trStyles = [];
 
-  TRs = document.getElementsByTagName("tr");
+  TRs = document.getElementById("bigtable").rows;
   for (var i = 0; i < TRs.length; i++) {
     trStyles.push(TRs[i].style.cssText);
-    TDs = TRs[i].getElementsByTagName("td");
+    TDs = TRs[i].cells;
     for (var k = 0; k < TDs.length; k++) {
       if (typeof spalten4spaltenTags[k] == "undefined")
         spalten4spaltenTags[k] = [];
@@ -229,8 +229,8 @@ for (i = 0; i < tdClasses1.length; i++)
   // Spaltenreihenfolge
   tableHeadline = document
     .getElementById("bigtable")
-    .getElementsByTagName("tr")[0]
-    .getElementsByTagName("td");
+    .rows[0]
+    .cells;
   for (var u = 0; u < tableHeadline.length; u++) {
     tableHeadline[u].innerHTML =
       '<select id="hselec_' +
@@ -245,7 +245,7 @@ for (i = 0; i < tdClasses1.length; i++)
   toggleChkSpalten();
 
   tabelle = document.getElementById("bigtable");
-  tds = tabelle.getElementsByTagName("td");
+  tds = tabelle.cells;
   /*
   for (var i = 0; i < tds.length; i++) {
     text = tds[i];
@@ -258,19 +258,19 @@ for (i = 0; i < tdClasses1.length; i++)
   } 
   */
 
-  trs = tabelle.getElementsByTagName("tr");
-  tdsHeadlines = trs[0].getElementsByTagName("td");
+  trs = tabelle.rows;
+  tdsHeadlines = trs[0].cells;
   classnames = [];
   for (var i = 0; i < tdsHeadlines.length; i++)
     classnames.push(tdsHeadlines[i].className);
   for (var k = 1; k < trs.length; k++) {
-    tds = trs[k].getElementsByTagName("td");
+    tds = trs[k].cells;
     for (var i = 0; i < tds.length; i++)
       tds[i].className = classnames[i].replace("z_0", "z_" + tds[1].innerHTML);
   }
 
   for (var k = 0; k < trs.length; k++) {
-    tds = trs[k].getElementsByTagName("td");
+    tds = trs[k].cells;
     tds[0].style.cssText += "display:none;";
     for (var i = 1; i < tds.length; i++)
       tds[i].style.cssText = [
@@ -284,7 +284,7 @@ for (i = 0; i < tdClasses1.length; i++)
   }
   /*
   for (var k = 0; k < trs.length; k++) {
-    tds = trs[k].getElementsByTagName("td");
+    tds = trs[k].cells;
     for (var i = 2; i < tds.length; i++)
       tds[i].style.cssText = tds[1].style.cssText;
   }*/
@@ -768,8 +768,8 @@ var sichtbareSpaltenNummern;
 function sortedKeysOfHeadingNumbersByVisibility() {
   tableHeadline = document
     .getElementById("bigtable")
-    .getElementsByTagName("tr")[0]
-    .getElementsByTagName("td");
+    .rows[0]
+    .cells;
   sichtbareSpaltenNummern = [];
   for (var i = 0; i < tableHeadline.length; i++) {
     if (tableHeadline[i].style.display == "table-cell") {
@@ -1127,7 +1127,7 @@ function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which) {
   dazuEinschraenkend =
     document.getElementsByClassName("dazuEinschraenkend")[which].checked;
   //window.alert(neuErlauben+" "+neuHinfort+" "+dazuErlauben+" "+dazuHinfort);
-  spalte = document.getElementById("bigtable").getElementsByTagName("tr");
+  spalte = document.getElementById("bigtable").rows;
   for (var s = 1; s < spalte.length; s++) {
     tabellenZelle = spalte[s];
     if (s < 115)
@@ -1142,7 +1142,7 @@ function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which) {
       );
     else {
       echteZeilenNummer = spalte[s]
-        .getElementsByTagName("td")[0]
+        .cells[0]
         .className.match(/z_\s*(\d+)/g);
       if (echteZeilenNummer != null && echteZeilenNummer.length > 0) {
         echteZeilenNummer = parseInt(echteZeilenNummer[0].substr(2));
