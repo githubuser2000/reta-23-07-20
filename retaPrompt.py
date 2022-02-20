@@ -443,10 +443,10 @@ while text not in befehleBeenden:
             process.wait()
         except:
             pass
-    if "loggen" == stext[0]:
+    if "loggen" == text:
         warBefehl = True
         loggingSwitch = True
-    elif "nichtloggen" == stext[0]:
+    elif "nichtloggen" == text:
         warBefehl = True
         loggingSwitch = False
 
