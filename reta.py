@@ -1730,11 +1730,11 @@ class Program:
             (
                 Program.ParametersMain.strukturenkleinere,
                 (
-                    "Anführer",
+                    "Anführer_(7)",
                     "anfuehrer",
                     "chef",
                 ),
-                {29, 170},
+                {29},
             ),
             (
                 Program.ParametersMain.menschliches,
