@@ -15,7 +15,8 @@ setup(
         "PyHyphen==3.0.1",
         "prompt_toolkit==3.0.19",
         #"orderedset==2.0.3",
-        "rich==10.12.0"
+        "rich==10.12.0",
+        #"numpy"
     ],
     package_data={
         ".": [
