@@ -1728,7 +1728,7 @@ class Program:
                 {46},
             ),
             (
-                Program.ParametersMain.strukturkleinerzehn,
+                Program.ParametersMain.strukturenkleinere,
                 (
                     "Anführer",
                     "anfuehrer",
