@@ -691,6 +691,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.strukturenkleinere,
+                ("Ansichten_(7)","ansichten"),
+                {240},
+            ),
+            (
+                Program.ParametersMain.strukturenkleinere,
                 ("Zustände_(8)","zustaende","zustände"),
                 {234},
             ),

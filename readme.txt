@@ -49,7 +49,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--licht
 [*]--bedeutung=[list][*]primzahlen,anwendungdersonnen,zaehlungen,jura,geist,gestirn,mechanismen,zuechtung,konjunktiv,wurzel,vorzeichen,inreta[/list]
 [*]--symbole
-[*]--strukturkleinerzehn[list][*]richtungen,zustaende[/list]
+[*]--strukturkleinerzehn[list][*]richtungen,zustaende,ansichten[/list]
 [*]--eigenschaften=[list][*]weisheit,gut,zeit,ruf,selbstgerecht,egoismus,kausal,liebepolung,einheit,meinungsintelligenz,ursprungsintelligenz,sanft,hart,egalitaer,autoritaer,ueberheblich,foerdern,durchleuchten,sittlichkeit,fuehrung,sinn,familiaer,goettlich,wertvoll,gleich,ueberleben,abgeneigt,zugeneigt,tragweite,aehnlich,ehrlich,hoeflich,delegieren,variationsreich,selbstlos[/list]
 [*]--inkrementieren[list][*]um1,um2,um3,warumtranszendentaliezustrukturgroesseundcharakter,warumtranszendentaliegleichkomplexitaet,addition[/list]
 [*]--operationen=[list][*]halbierungen,2,3,4,5,9,multiplikation[/list]
@@ -64,7 +64,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--gebrochenuniversum
 [list][*]2,3,4,5,6,7,8,9,10,11,12,13,14,15, ..... usw.[/list]
 [*]--planet
-[list][*]komplexitaet,freiheit,gleichheit,mechanismen,intelligenz,metasysteme,wirklichkeiten,zustaende[/list]
+[list][*]komplexitaet,freiheit,gleichheit,mechanismen,intelligenz,metasysteme,wirklichkeiten[/list]
 [/list]
 [*]-kombination
 [list][*]--galaxie=[list][*]tiere,berufe,intelligenz,liebe,frauen,maenner,persoenlichkeit,religionen,motive,emotionen,personen,wirtschaftssysteme[/list]
