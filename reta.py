@@ -1728,6 +1728,15 @@ class Program:
                 {46},
             ),
             (
+                Program.ParametersMain.strukturkleinerzehn,
+                (
+                    "Anführer",
+                    "anfuehrer",
+                    "chef",
+                ),
+                {29, 170},
+            ),
+            (
                 Program.ParametersMain.menschliches,
                 (
                     "Anführer",
