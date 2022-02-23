@@ -1441,6 +1441,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
+                ("Gesellschaftsschicht", "klasse"),
+                {241},
+            ),
+            (
+                Program.ParametersMain.menschliches,
                 ("Moral", "moral", "warummoral"),
                 {215, 216},
                 {(216, 221)},
