@@ -63,22 +63,24 @@ def getTextWrapThings(maxLen=None) -> tuple:
             lang="de_DE"
         )  # Bibliothek für Worteilumbruch bei Zeilenumbruch
 
-        try:
-            if platform.system() != "Windows":
+        if platform.system() != "Windows":
+            try:
                 ColumnsRowsAmount, shellRowsAmountStr = (
                     os.popen("stty size", "r").read().split()
                 )  # Wie viele Zeilen und Spalten hat die Shell ?
-            else:
+            except Exception:
                 ColumnsRowsAmount, shellRowsAmountStr = "80", "80"
-        except Exception:
-            ColumnsRowsAmount, shellRowsAmountStr = "80", "80"
+        else:
+            SiZe = os.get_terminal_size()
+            ColumnsRowsAmount, shellRowsAmountStr = SiZe.columns, SiZe.lines
 
     else:
         html2text = None
         pyphen = None
         Hyphenator = None
         fill = None
-        ColumnsRowsAmount, shellRowsAmountStr = "50", "50"
+        SiZe = os.get_terminal_size()
+        ColumnsRowsAmount, shellRowsAmountStr = SiZe.columns, SiZe.lines
     shellRowsAmount = int(shellRowsAmountStr) if maxLen is None else int(maxLen)
     return shellRowsAmount, h_de, dic, fill
 

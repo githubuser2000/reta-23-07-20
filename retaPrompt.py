@@ -24,15 +24,17 @@ from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
 from word_completerAlx import WordCompleter
 
-try:
-    if platform.system() != "Windows":
+if platform.system() != "Windows":
+    try:
         ColumnsRowsAmount, shellRowsAmountStr = (
             os.popen("stty size", "r").read().split()
         )  # Wie viele Zeilen und Spalten hat die Shell ?
-    else:
+    except Exception:
         ColumnsRowsAmount, shellRowsAmountStr = "80", "80"
-except Exception:
-    ColumnsRowsAmount, shellRowsAmountStr = "80", "80"
+else:
+    SiZe = os.get_terminal_size()
+    ColumnsRowsAmount, shellRowsAmountStr = SiZe.columns, SiZe.lines
+
 
 
 def newSession(history=False):
@@ -226,7 +228,7 @@ while text not in befehleBeenden:
         warBefehl = True
         import reta
 
-        reta.Program(stext, int(shellRowsAmountStr) - 15)
+        reta.Program(stext, int(shellRowsAmountStr) - 10)
         # process = subprocess.Popen(sos.path.dirname(__file__) + os.sep + text)
         # process.wait()
     elif list(EineZahlenFolgeJa.values()).count(True) == 1:
