@@ -179,6 +179,8 @@ while text not in befehleBeenden:
             # if a.isnumeric() or [b.isnumeric() for b in d] == [True] * len(d):
             # b += 1
             # c = a
+    if "mulpri" in stext:
+        stext += ["multis","prim"]
 
     if "--art=bbcode" in stext and "reta" == stext[0]:
         if "--nocolor" in stext:
@@ -327,7 +329,7 @@ while text not in befehleBeenden:
 
                 mult(listeStrWerte)
 
-            externCommand("prim", c)
+            # externCommand("prim", c)
 
         if len({"procontra"} & set(stext)) > 0:
             warBefehl = True

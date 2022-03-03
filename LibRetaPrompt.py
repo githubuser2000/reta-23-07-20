@@ -98,7 +98,8 @@ befehle = (
     "shell",
     "math",
     "loggen",
-    "nichtloggen"
+    "nichtloggen",
+    "mulpri"
 )
 
 befehle2: set = set(befehle) - {"reta"}
