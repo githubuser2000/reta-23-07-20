@@ -156,8 +156,8 @@ while text not in befehleBeenden:
         else:
             maxNum = 1024
 
-    bedinung: bool = len(stext) > 0 and stext[0] == "reta"
-    if not bedinung:
+    bedingung: bool = len(stext) > 0 and stext[0] == "reta"
+    if not bedingung:
         EineZahlenFolgeJa: dict = {}
         for g, a in enumerate(stext):
             for innerKomma in a.split(","):
@@ -226,11 +226,11 @@ while text not in befehleBeenden:
         )
         print("Der Befehl 'befehle' gibt die Liste der möglichen Befehle aus.")
 
-    if bedinung:
+    if bedingung:
         warBefehl = True
         import reta
 
-        reta.Program(stext, int(shellRowsAmountStr) - 10)
+        reta.Program(stext, int(shellRowsAmountStr) - 2)
         # process = subprocess.Popen(sos.path.dirname(__file__) + os.sep + text)
         # process.wait()
     elif list(EineZahlenFolgeJa.values()).count(True) == 1:
@@ -260,7 +260,7 @@ while text not in befehleBeenden:
                 zeiln2,
                 "-spalten",
                 "--menschliches=motivation",
-                "--breite=" + str(int(shellRowsAmountStr) - 10),
+                "--breite=" + str(int(shellRowsAmountStr) - 2),
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=1",
             ]
@@ -282,7 +282,7 @@ while text not in befehleBeenden:
                 zeiln2,
                 "-spalten",
                 "--galaxie=thomas",
-                "--breite=" + str(int(shellRowsAmountStr) - 10),
+                "--breite=" + str(int(shellRowsAmountStr) - 2),
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=2",
             ]
@@ -313,7 +313,7 @@ while text not in befehleBeenden:
             # zeiln,
             # "-spalten",
             # "--multiplikationen=motivstern",
-            # "--breite=" + str(int(shellRowsAmountStr) - 10),
+            # "--breite=" + str(int(shellRowsAmountStr) - 2),
             # ]
             # reta.Program(
             # kette,
@@ -342,7 +342,7 @@ while text not in befehleBeenden:
                 zeiln2,
                 "-spalten",
                 "--procontra=pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit",
-                "--breite=" + str(int(shellRowsAmountStr) - 10),
+                "--breite=" + str(int(shellRowsAmountStr) - 2),
             ]
             reta.Program(
                 kette,
@@ -363,7 +363,7 @@ while text not in befehleBeenden:
                 zeiln2,
                 "-spalten",
                 "--alles",
-                "--breite=" + str(int(shellRowsAmountStr) - 10),
+                "--breite=" + str(int(shellRowsAmountStr) - 2),
                 "-ausgabe",
             ]
             reta.Program(
@@ -382,7 +382,7 @@ while text not in befehleBeenden:
                 "--oberesmaximum=1028",
                 "-spalten",
                 "--bedeutung=primzahlkreuz",
-                "--breite=" + str(int(shellRowsAmountStr) - 10),
+                "--breite=" + str(int(shellRowsAmountStr) - 2),
             ]
             reta.Program(
                 kette,
@@ -402,7 +402,7 @@ while text not in befehleBeenden:
                 zeiln2,
                 "-spalten",
                 "--universum=transzendentalien,komplexitaet,ontologie",
-                "--breite=" + str(int(shellRowsAmountStr) - 10),
+                "--breite=" + str(int(shellRowsAmountStr) - 2),
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=1,3,4",
             ]
@@ -423,7 +423,7 @@ while text not in befehleBeenden:
                 zeiln2,
                 "-spalten",
                 "--primzahlwirkung=Galaxieabsicht",
-                "--breite=" + str(int(shellRowsAmountStr) - 10),
+                "--breite=" + str(int(shellRowsAmountStr) - 2),
             ]
             reta.Program(
                 kette,
