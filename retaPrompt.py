@@ -158,8 +158,9 @@ while text not in befehleBeenden:
 
     bedingung: bool = len(stext) > 0 and stext[0] == "reta"
     brueche = []
+    c = ""
+    EineZahlenFolgeJa: dict = {}
     if not bedingung:
-        EineZahlenFolgeJa: dict = {}
         for g, a in enumerate(stext):
 
             innerKomma3 = []
@@ -246,6 +247,7 @@ while text not in befehleBeenden:
         )
         print("Der Befehl 'befehle' gibt die Liste der möglichen Befehle aus.")
 
+    bedingungZahl, bedingungBrueche = list(EineZahlenFolgeJa.values()).count(True) == 1, len(brueche) > 0
     if bedingung:
         warBefehl = True
         import reta
@@ -253,7 +255,7 @@ while text not in befehleBeenden:
         reta.Program(stext, int(shellRowsAmountStr) - 2)
         # process = subprocess.Popen(sos.path.dirname(__file__) + os.sep + text)
         # process.wait()
-    elif list(EineZahlenFolgeJa.values()).count(True) == 1:
+    if bedingungZahl or bedingungBrueche:
         if "einzeln" not in stext and (
             ("vielfache" in stext)
             or ("v" in stext and "abc" not in stext and "abcd" not in stext)
@@ -273,21 +275,22 @@ while text not in befehleBeenden:
             warBefehl = True
             import reta
 
-            kette = [
-                "reta",
-                "-zeilen",
-                zeiln1,
-                zeiln2,
-                "-spalten",
-                "--menschliches=motivation",
-                "--breite=" + str(int(shellRowsAmountStr) - 2),
-                "-ausgabe",
-                "--spaltenreihenfolgeundnurdiese=1",
-            ]
-            reta.Program(
-                kette,
-                int(shellRowsAmountStr),
-            )
+            if len(c) > 0:
+                kette = [
+                        "reta",
+                        "-zeilen",
+                        zeiln1,
+                        zeiln2,
+                        "-spalten",
+                        "--menschliches=motivation",
+                        "--breite=" + str(int(shellRowsAmountStr) - 2),
+                        "-ausgabe",
+                        "--spaltenreihenfolgeundnurdiese=1",
+                ]
+                reta.Program(
+                        kette,
+                        int(shellRowsAmountStr),
+                )
             for bruch in brueche:
                 import reta
 
@@ -307,6 +310,50 @@ while text not in befehleBeenden:
                         int(shellRowsAmountStr),
                 )
 
+        if len({"universum"} & set(stext)) > 0 or (
+            "u" in stext and "abc" not in stext and "abcd" not in stext
+        ):
+            warBefehl = True
+            if len(c) > 0:
+                import reta
+
+                kette = [
+                        "reta",
+                        "-zeilen",
+                        zeiln1,
+                        zeiln2,
+                        "-spalten",
+                        "--universum=transzendentalien,komplexitaet,ontologie",
+                        "--breite=" + str(int(shellRowsAmountStr) - 2),
+                        "-ausgabe",
+                        "--spaltenreihenfolgeundnurdiese=1,3,4",
+                ]
+                reta.Program(
+                        kette,
+                        int(shellRowsAmountStr),
+                )
+
+            for bruch in brueche:
+                import reta
+
+                kette = [
+                        "reta",
+                        "-zeilen",
+                        "--vorhervonausschnitt="+bruch[0],
+                        "-spalten",
+                        "--gebrochenuniversum="+bruch[1],
+                        "--breite=" + str(int(shellRowsAmountStr) - 2),
+                        "-kombination",
+                        "-ausgabe",
+                        "--spaltenreihenfolgeundnurdiese=1",
+                ]
+                reta.Program(
+                        kette,
+                        int(shellRowsAmountStr),
+                )
+
+
+    if bedingungZahl:
 
         if (len({"thomas"} & set(stext)) > 0) or (
             "t" in stext and "abc" not in stext and "abcd" not in stext
@@ -427,46 +474,6 @@ while text not in befehleBeenden:
                 kette,
                 int(shellRowsAmountStr),
             )
-
-        if len({"universum"} & set(stext)) > 0 or (
-            "u" in stext and "abc" not in stext and "abcd" not in stext
-        ):
-            warBefehl = True
-            import reta
-
-            kette = [
-                "reta",
-                "-zeilen",
-                zeiln1,
-                zeiln2,
-                "-spalten",
-                "--universum=transzendentalien,komplexitaet,ontologie",
-                "--breite=" + str(int(shellRowsAmountStr) - 2),
-                "-ausgabe",
-                "--spaltenreihenfolgeundnurdiese=1,3,4",
-            ]
-            reta.Program(
-                kette,
-                int(shellRowsAmountStr),
-            )
-            for bruch in brueche:
-                import reta
-
-                kette = [
-                        "reta",
-                        "-zeilen",
-                        "--vorhervonausschnitt="+bruch[0],
-                        "-spalten",
-                        "--gebrochenuniversum="+bruch[1],
-                        "--breite=" + str(int(shellRowsAmountStr) - 2),
-                        "-kombination",
-                        "-ausgabe",
-                        "--spaltenreihenfolgeundnurdiese=1",
-                ]
-                reta.Program(
-                        kette,
-                        int(shellRowsAmountStr),
-                )
 
 
 
