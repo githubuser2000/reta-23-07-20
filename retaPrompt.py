@@ -189,6 +189,9 @@ while text not in befehleBeenden:
                 bruch = [bruch for bruch in innerKomma.split("/")]
                 if [bruch1.isdecimal() for bruch1 in bruch] == [True, True]:
                     brueche += [bruch]
+            if "b" in stext:
+                brueche += [[bruch[1],bruch[0]] for bruch in brueche]
+
             # d = re.split(",|-", a)
             # if a.isnumeric() or [b.isnumeric() for b in d] == [True] * len(d):
             # b += 1
