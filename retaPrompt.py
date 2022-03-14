@@ -157,16 +157,24 @@ while text not in befehleBeenden:
             maxNum = 1024
 
     bedingung: bool = len(stext) > 0 and stext[0] == "reta"
+    brueche = []
     if not bedingung:
         EineZahlenFolgeJa: dict = {}
         for g, a in enumerate(stext):
-            for innerKomma in a.split(","):
+
+            innerKomma3 = []
+            innerKomma4 = a.split(",");
+            for innerKomma2 in innerKomma4:
+                if innerKomma2.isdecimal():
+                    innerKomma3 += [innerKomma2]
+
+            for innerKomma in innerKomma3:
                 innerKommaList = innerKomma.split("-")
                 for k, innerMinus in enumerate(innerKommaList):
                     if k == 0 and len(innerMinus) == 0:
                         pass
                     elif innerMinus.isdecimal():
-                        c = a
+                        c = ",".join(innerKomma3)
                         try:
                             EineZahlenFolgeJa[g]
                         except KeyError:
@@ -175,10 +183,22 @@ while text not in befehleBeenden:
                     else:
                         EineZahlenFolgeJa[g] = False
 
+            for innerKomma in innerKomma4:
+                # print(str(innerKomma))
+                bruch = [bruch for bruch in innerKomma.split("/")]
+                if [bruch1.isdecimal() for bruch1 in bruch] == [True, True]:
+                    brueche += [bruch]
             # d = re.split(",|-", a)
             # if a.isnumeric() or [b.isnumeric() for b in d] == [True] * len(d):
             # b += 1
             # c = a
+        #try:
+        #    print(str(c))
+        #    print("--")
+        #    print(str(brueche))
+        #except:
+        #    pass
+
     if "mulpri" in stext:
         stext += ["multis","prim"]
 
@@ -268,6 +288,25 @@ while text not in befehleBeenden:
                 kette,
                 int(shellRowsAmountStr),
             )
+            for bruch in brueche:
+                import reta
+
+                kette = [
+                        "reta",
+                        "-zeilen",
+                        "--vorhervonausschnitt="+bruch[0],
+                        "-spalten",
+                        "--gebrochengalaxie="+bruch[1],
+                        "--breite=" + str(int(shellRowsAmountStr) - 2),
+                        "-kombination",
+                        "-ausgabe",
+                        "--spaltenreihenfolgeundnurdiese=1",
+                ]
+                reta.Program(
+                        kette,
+                        int(shellRowsAmountStr),
+                )
+
 
         if (len({"thomas"} & set(stext)) > 0) or (
             "t" in stext and "abc" not in stext and "abcd" not in stext
@@ -410,6 +449,27 @@ while text not in befehleBeenden:
                 kette,
                 int(shellRowsAmountStr),
             )
+            for bruch in brueche:
+                import reta
+
+                kette = [
+                        "reta",
+                        "-zeilen",
+                        "--vorhervonausschnitt="+bruch[0],
+                        "-spalten",
+                        "--gebrochenuniversum="+bruch[1],
+                        "--breite=" + str(int(shellRowsAmountStr) - 2),
+                        "-kombination",
+                        "-ausgabe",
+                        "--spaltenreihenfolgeundnurdiese=1",
+                ]
+                reta.Program(
+                        kette,
+                        int(shellRowsAmountStr),
+                )
+
+
+
         if (len({"richtung"} & set(stext)) > 0) or (
             "r" in stext and "abc" not in stext and "abcd" not in stext
         ):
