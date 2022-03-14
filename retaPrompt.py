@@ -237,7 +237,7 @@ while text not in befehleBeenden:
         warBefehl = True
 
         print(
-            "Alle Befehle außer reta, shell, math, abc und abcd können beliebig kombiniert werden."
+            "Alle Befehle außer reta, shell, math, loggen, nichtloggen, abc und abcd können beliebig kombiniert werden."
         )
         print(
             "Bei den meisten Kombinierbaren muss exakt eine Zahleninformation vorliegen, die innerhalb Leerzeichen steht.  Jedoch funktioniert der Befehl shell und math anders. 'shell' ist dazu da, Shellbefehle auszuführen und 'math' um Mathe-Formeln auszurechnen in Python-Syntax. \nWas ist eine Zahleninformation?"
@@ -245,6 +245,7 @@ while text not in befehleBeenden:
         print(
             "Eine Zahleninformation ist entweder eine natürliche Zahl z.B. 4, oder ein Zahlenbereich z.B. 3-6 oder eines oder beides dieser Zahleninformationen mehrmals mit Kommas getrennt z.B. 3,6-9,11. Hinter jedem Komma oder vor einer Zahl oder einem Zahlenbereich kann auch ein Minus stehen, was wieder Zahlen entfernt z.B. 1-10,-2,-5-9 entspricht 1,3,4,10."
         )
+        print("Der Befehl um Absichten, d.h. Paradigmen, auszugeben und Meta-Paradigmen bzw. Strukturalien bzw. Transzendentalien kann auch Brüche akzeptieren, z.B. Befehl 'a u 1/2,3/4' ")
         print("Der Befehl 'befehle' gibt die Liste der möglichen Befehle aus.")
 
     bedingungZahl, bedingungBrueche = list(EineZahlenFolgeJa.values()).count(True) == 1, len(brueche) > 0
