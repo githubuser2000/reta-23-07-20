@@ -240,7 +240,7 @@ while text not in befehleBeenden:
         warBefehl = True
 
         print(
-            "Alle Befehle außer reta, shell, math, loggen, nichtloggen, abc und abcd können beliebig kombiniert werden."
+            "Alle Befehle außer reta, shell, python, math, loggen, nichtloggen, abc und abcd können beliebig kombiniert werden."
         )
         print(
             "Bei den meisten Kombinierbaren muss exakt eine Zahleninformation vorliegen, die innerhalb Leerzeichen steht.  Jedoch funktioniert der Befehl shell und math anders. 'shell' ist dazu da, Shellbefehle auszuführen und 'math' um Mathe-Formeln auszurechnen in Python-Syntax. \nWas ist eine Zahleninformation?"
@@ -505,6 +505,14 @@ while text not in befehleBeenden:
         warBefehl = True
         try:
             process = subprocess.Popen([*stext[1:]])
+            process.wait()
+        except:
+            pass
+
+    if len(stext) > 0 and "python" == stext[0]:
+        warBefehl = True
+        try:
+            process = subprocess.Popen(["python3", "-c", " ".join(stext[1:])])
             process.wait()
         except:
             pass
