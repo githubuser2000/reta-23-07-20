@@ -24,6 +24,35 @@ from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
 from word_completerAlx import WordCompleter
 
+def nummernStringzuNummern(text: str) -> str:
+    def toNummernSet(text: list[list[str]]) -> set[int]:
+        menge = set()
+        for t1 in text:
+            for t2 in t1:
+                menge |= {int(t2)}
+        return menge
+
+    listen = [kommatiert.split("-") for kommatiert in text.split(",")]
+    results = []
+    abzug = []
+    for insideKomma in listen:
+        if len(insideKomma) == 1 and insideKomma[0].isdecimal():
+            results += [[int(insideKomma[0])]]
+        elif len(insideKomma) == 2:
+            if insideKomma[0].isdecimal() and insideKomma[1].isdecimal():
+                raeinsch = range(int(insideKomma[0]),int(insideKomma[1])+1)
+                if len(raeinsch) > 0:
+                    results += [range(int(insideKomma[0]),int(insideKomma[1])+1)]
+            if insideKomma[0] == "" and insideKomma[1].isdecimal():
+                abzug += [[insideKomma[1]]]
+        elif len(insideKomma) == 3:
+            if insideKomma[0] == "" and insideKomma[1].isdecimal() and insideKomma[2].isdecimal():
+                abzug += [range(int(insideKomma[1]),int(insideKomma[2])+1)]
+        else:
+            return text
+
+    return ",".join(map(str ,toNummernSet(results) - toNummernSet(abzug)))
+
 if platform.system() != "Windows":
     try:
         ColumnsRowsAmount, shellRowsAmountStr = (
@@ -155,6 +184,11 @@ while text not in befehleBeenden:
             maxNum = max(nstextnum)
         else:
             maxNum = 1024
+
+    stextb = []
+    for s in stext:
+        stextb += [nummernStringzuNummern(s)]
+    stext = stextb
 
     bedingung: bool = len(stext) > 0 and stext[0] == "reta"
     brueche = []
