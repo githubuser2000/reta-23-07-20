@@ -25,7 +25,7 @@ from prompt_toolkit.styles import Style
 from word_completerAlx import WordCompleter
 
 def nummernStringzuNummern(text: str) -> str:
-    def toNummernSet(text: list[list[str]]) -> set[int]:
+    def toNummernSet(text: list) -> set:
         menge = set()
         for t1 in text:
             for t2 in t1:
