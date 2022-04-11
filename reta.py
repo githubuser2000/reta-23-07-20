@@ -736,7 +736,7 @@ class Program:
                 {107},
             ),
             (
-                Program.ParametersMain.planet,
+                Program.ParametersMain.strukturenkleinere,
                 ("Gefühle_(7)","gefuehle","gefühle"),
                 {243},
             ),
