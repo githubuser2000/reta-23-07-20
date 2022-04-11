@@ -736,6 +736,11 @@ class Program:
                 {107},
             ),
             (
+                Program.ParametersMain.planet,
+                ("Gefühle_(7)","gefuehle","gefühle"),
+                {243},
+            ),
+            (
                 Program.ParametersMain.wichtigste,
                 (
                     "Zweitwichtigste",
@@ -1391,6 +1396,13 @@ class Program:
             ),
             (Program.ParametersMain.universum, ("Raum-Missionen", "weltall"), {218}),
             (Program.ParametersMain.galaxie, ("Raum-Missionen", "weltall"), {218}),
+            (
+                Program.ParametersMain.universum,
+                (
+                    "Geist_(15)", "geist"
+                ),
+                {242, 244},
+            ),
             (
                 Program.ParametersMain.universum,
                 (
@@ -2147,6 +2159,22 @@ class Program:
                 ),
                 {112},
                 {(40, 41)},
+            ),
+            (
+                Program.ParametersMain.konzept,
+                (
+                    "Kooperation_vs_Arsch", "arschloch", "kooperation","arsch"
+                ),
+                set(),
+                {(245, 246)},
+            ),
+            (
+                Program.ParametersMain.konzept,
+                (
+                    "Liebe_usw","liebe","zuneigung"
+                ),
+                set(),
+                {(247, 248)},
             ),
             (
                 Program.ParametersMain.konzept,

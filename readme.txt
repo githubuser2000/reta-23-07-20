@@ -42,7 +42,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 --kreis=[list][*]tierkreiszeichen,thomasevangelium,analytischeontologie,offenbarungdesjohannes,chinesischeshoroskop,kugelnkreise,modallogik,innenaussenstrukur,weltall[/list]
 [*]--groessenordnung=[list][*]strukturgroesse, organisation, politischesysteme[/list]
 [*]--universum= oder
---kugel=[list][*]transzendentalien,komplexitaet,ontologie,kugelnkreise,gegentranszendentalien,systemsachen,transzendentalienreziproke,warumtranszendentaliegleichkomplexitaet,warumtranszendentaliezustrukturgroesseundcharakter,metaparadigmareligion,kategorie,weltall,netzwerk[/list]
+--kugel=[list][*]transzendentalien,komplexitaet,ontologie,kugelnkreise,gegentranszendentalien,systemsachen,transzendentalienreziproke,warumtranszendentaliegleichkomplexitaet,warumtranszendentaliezustrukturgroesseundcharakter,metaparadigmareligion,kategorie,weltall,netzwerk,geist[/list]
 [*]--menschliches=[list][*]liebe,ethik,angreifbarkeit,motivation,erhalten,erwerben,benoetigen,krankheit,alpha,kreativ,chef,beruf,loesungen,musik,glaube,erkenntnis,dominierendesgeschlecht,incel,ausgangslage,sinndeslebens,emotionen,gleichheit,wirkung,egoismus,gegentranszendentalien,denkweise,intelligenzprobleme,manipulation,fachbereiche,moral,ehrlich,hoeflich,klasse[/list]
 [*]--procontra=[list][*]pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit,primzahlkreuz[/list]
 [*]--wirtschaft=[list][*]system,realistisch,funktioniert,erklaerung,maschinen,organisationsform,bwl,pflanzen,fachbereiche[/list]
@@ -50,7 +50,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--bedeutung=[list][*]primzahlen,anwendungdersonnen,zaehlungen,jura,geist,gestirn,mechanismen,zuechtung,konjunktiv,wurzel,vorzeichen,inreta[/list]
 [*]--symbole
 [*]--strukturkleinerzehn[list][*]richtungen,zustaende,ansichten,anfuehrer[/list]
-[*]--eigenschaften=[list][*]weisheit,gut,zeit,ruf,selbstgerecht,egoismus,kausal,liebepolung,einheit,meinungsintelligenz,ursprungsintelligenz,sanft,hart,egalitaer,autoritaer,ueberheblich,foerdern,durchleuchten,sittlichkeit,fuehrung,sinn,familiaer,goettlich,wertvoll,gleich,ueberleben,abgeneigt,zugeneigt,tragweite,aehnlich,ehrlich,hoeflich,delegieren,variationsreich,selbstlos[/list]
+[*]--eigenschaften=[list][*]weisheit,gut,zeit,ruf,selbstgerecht,egoismus,kausal,liebepolung,einheit,meinungsintelligenz,ursprungsintelligenz,sanft,hart,egalitaer,autoritaer,ueberheblich,foerdern,durchleuchten,sittlichkeit,fuehrung,sinn,familiaer,goettlich,wertvoll,gleich,ueberleben,abgeneigt,zugeneigt,tragweite,aehnlich,ehrlich,hoeflich,delegieren,variationsreich,selbstlos,kooperation,arsch,liebe[/list]
 [*]--inkrementieren[list][*]um1,um2,um3,warumtranszendentaliezustrukturgroesseundcharakter,warumtranszendentaliegleichkomplexitaet,addition[/list]
 [*]--operationen=[list][*]halbierungen,2,3,4,5,9,multiplikation[/list]
 [*]--universummetakonkret=
@@ -64,7 +64,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--gebrochenuniversum
 [list][*]2,3,4,5,6,7,8,9,10,11,12,13,14,15, ..... usw.[/list]
 [*]--planet
-[list][*]komplexitaet,freiheit,gleichheit,mechanismen,intelligenz,metasysteme,wirklichkeiten[/list]
+[list][*]komplexitaet,freiheit,gleichheit,mechanismen,intelligenz,metasysteme,wirklichkeiten,gefuehle[/list]
 [/list]
 [*]-kombination
 [list][*]--galaxie=[list][*]tiere,berufe,intelligenz,liebe,frauen,maenner,persoenlichkeit,religionen,motive,emotionen,personen,wirtschaftssysteme[/list]

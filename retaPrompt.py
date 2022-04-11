@@ -187,7 +187,10 @@ while text not in befehleBeenden:
 
     stextb = []
     for s in stext:
-        stextb += [nummernStringzuNummern(s)]
+        if len(s) > 0 and s[0].isdecimal() and ("," in s or "-" in s):
+            stextb += [nummernStringzuNummern(s)]
+        else:
+            stextb += [s]
     stext = stextb
 
     bedingung: bool = len(stext) > 0 and stext[0] == "reta"
