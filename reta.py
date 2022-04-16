@@ -547,7 +547,7 @@ class Program:
 
         Program.ParametersMain: namedtuple[str, str] = namedtuple(
             "ParametersMain",
-            "wichtigste wichtigste2 religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache planet strukturenkleinere alles",
+            "wichtigste wichtigste2 religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache planet strukturenkleinere grundstrukturen alles",
         )
 
         Program.ParametersMain: namedtuple[tuple[str]] = Program.ParametersMain(
@@ -639,6 +639,7 @@ class Program:
             ("Multiplikationen", "multiplikationen"),
             ("Planet_(10_und_oder_12)", "planet"),
             ("Strukturen_1_bis_9", "strukturkleinerzehn"),
+            ("Grundstrukturen","grundstrukturen"),
             ("alles",),
         )
 
@@ -1598,7 +1599,7 @@ class Program:
                     "gefühl",
                     "gefuehl",
                 ),
-                {105, 230},
+                {105, 230, 243},
             ),
             (
                 Program.ParametersMain.menschliches,
@@ -1671,6 +1672,76 @@ class Program:
                     "angreifbar",
                 ),
                 {58, 57},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
+                    "Strukturalien_bzw_Meta-Paradigmen_(15)"
+                    "Transzendentalien",
+                    "transzendentalien",
+                    "transzendentalie",
+                    "strukturalien",
+                    "alien",
+                    "existenzialien",
+                    "universalien",
+                    "meta-paradigmen"
+                ),
+                {5}
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
+                    "Geist_(15)", "geist"
+                ),
+                {242, 244},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
+                    "Paradigmen_(13)",
+                    "paradigmen",
+                ),
+                {10}
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                ("Wirklichkeiten_(10)", "wirklichkeit", "wirklichkeiten"),
+                {233},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                ("Meta-Systeme_(12)","metasysteme","metasystem","meta-systeme","meta-system"),
+                {232},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                ("Konkreta_(2)","konkreta"),
+                {250},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                ("Gefühle_(7)","gefuehle","emotionen","gefühle"),
+                {243},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                ("Positionen_(17)","positionen"),
+                {249},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                ("Verbundenheiten_(18)","verbundenheiten"),
+                {252},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                ("Impulse_(5)","impulse"),
+                {251},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                ("Zustände_(8)","zustaende","zustände"),
+                {234},
             ),
             (
                 Program.ParametersMain.menschliches,
@@ -3522,8 +3593,11 @@ class Program:
             """py datei erstellen, die dafür da ist datenstrukturen für die js zu bilden, die für die Zeilenangelegenheiten da sind, so dass die js die nicht jedes Mal berechnen muss."""
         )
         alxp(
+
             """Ich müsste wirklich noch total überall schauen und zu jedem Punkt im Forum zu gleichförmiges-Polygon-Religionen"""
         )
+        alxp("""Irgendeine Art Funktionalität, dass man sich durch die Grundstrukturen hangeln kann: Uni/Geist (15) > Uni / Geist (15) > Paradigmen (13) wie Egoismus > speziellere Paradigmen wie materieller Egoismus, etc.""")
+        alxp("""rp Parameterangabe, dass loggen ja nein""")
 
     def combiTableWorkflow(
         self,

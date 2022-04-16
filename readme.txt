@@ -50,6 +50,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [*]--bedeutung=[list][*]primzahlen,anwendungdersonnen,zaehlungen,jura,geist,gestirn,mechanismen,zuechtung,konjunktiv,wurzel,vorzeichen,inreta[/list]
 [*]--symbole
 [*]--strukturkleinerzehn[list][*]richtungen,zustaende,ansichten,anfuehrer,gefuehle[/list]
+[*]--grundstrukturen[list][*]konkreta,impulse,gefuehle,zustaende,wirklichkeiten,metasysteme,paradigmen,meta-paradigmen,positionen,geist,verbundenheiten[/list]
 [*]--eigenschaften=[list][*]weisheit,gut,zeit,ruf,selbstgerecht,egoismus,kausal,liebepolung,einheit,meinungsintelligenz,ursprungsintelligenz,sanft,hart,egalitaer,autoritaer,ueberheblich,foerdern,durchleuchten,sittlichkeit,fuehrung,sinn,familiaer,goettlich,wertvoll,gleich,ueberleben,abgeneigt,zugeneigt,tragweite,aehnlich,ehrlich,hoeflich,delegieren,variationsreich,selbstlos,kooperation,arsch,liebe[/list]
 [*]--inkrementieren[list][*]um1,um2,um3,warumtranszendentaliezustrukturgroesseundcharakter,warumtranszendentaliegleichkomplexitaet,addition[/list]
 [*]--operationen=[list][*]halbierungen,2,3,4,5,9,multiplikation[/list]

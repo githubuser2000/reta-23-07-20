@@ -17,7 +17,7 @@ class ST(Enum):
 
 
 tableTags = {
-    frozenset({ST.sternPolygon, ST.planet, ST.universum}): {132, 213, 107, 214, 232,233,234,235,240,243},
+    frozenset({ST.sternPolygon, ST.planet, ST.universum}): {132, 213, 107, 214, 232,233,234,235,240,243,230,249,250,251,252},
     frozenset({ST.sternPolygon, ST.galaxie}): {
         0,
         1,
