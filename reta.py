@@ -738,6 +738,16 @@ class Program:
             ),
             (
                 Program.ParametersMain.strukturenkleinere,
+                ("Impulse_(5)","impulse"),
+                {251},
+            ),
+            (
+                Program.ParametersMain.strukturenkleinere,
+                ("Konkreta_(2)","konkreta"),
+                {250},
+            ),
+            (
+                Program.ParametersMain.strukturenkleinere,
                 ("Gefühle_(7)","gefuehle","gefühle"),
                 {243},
             ),
@@ -1686,14 +1696,14 @@ class Program:
                     "universalien",
                     "meta-paradigmen"
                 ),
-                {5}
+                {5,229}
             ),
             (
                 Program.ParametersMain.grundstrukturen,
                 (
                     "Geist_(15)", "geist"
                 ),
-                {242, 244},
+                {229,242, 244},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
