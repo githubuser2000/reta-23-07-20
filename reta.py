@@ -1686,7 +1686,7 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 (
-                    "Strukturalien_bzw_Meta-Paradigmen_(15)"
+                    "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15)",
                     "Transzendentalien",
                     "transzendentalien",
                     "transzendentalie",
