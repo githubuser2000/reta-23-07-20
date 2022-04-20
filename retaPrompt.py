@@ -95,6 +95,10 @@ if "-vi" not in sys.argv:
         sys.argv[0].split(os.sep)[-1]
         + " starten mit Parameter -vi für ViMode (Ansonsten gelten Emacs-Tastenkürzel.), beenden mit q, exit, quit"
     )
+if "-log" in sys.argv:
+    loggingSwitch = True
+else:
+    loggingSwitch = False
 
 
 def externCommand(cmd: str, StrNummern: str):
@@ -112,7 +116,6 @@ def externCommand(cmd: str, StrNummern: str):
 
 warBefehl: bool
 befehleBeenden = ("ende", "exit", "quit", "q", ":q")
-loggingSwitch = False
 while text not in befehleBeenden:
     warBefehl = False
     session = newSession(loggingSwitch)
