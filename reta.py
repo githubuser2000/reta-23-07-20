@@ -1706,6 +1706,22 @@ class Program:
                 {229,242, 244},
             ),
             (
+                Program.ParametersMain.strukturenkleinere,
+                (
+                    "Lust_(9)",
+                    "lust",
+                ),
+                {255}
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
+                    "Lust_(9)",
+                    "lust",
+                ),
+                {255}
+            ),
+            (
                 Program.ParametersMain.grundstrukturen,
                 (
                     "Paradigmen_(13)",

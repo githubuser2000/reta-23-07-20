@@ -12,13 +12,13 @@ class ST(Enum):
     keinPolygon = 2
     galaxie = 3
     universum = 4
-    planet = 5
+    keinParaOdMetaP = 5
     gebrRat = 6
 
 
 tableTags = {
-    frozenset({ST.sternPolygon, ST.planet, ST.universum}): {132, 213, 107, 214,235,240,230},
-    frozenset({ST.sternPolygon, ST.planet}): {232,233,234,243,249,250,251,252,253,254},
+    frozenset({ST.sternPolygon, ST.keinParaOdMetaP, ST.universum}): {132, 213, 107, 214,235,240,230},
+    frozenset({ST.sternPolygon, ST.keinParaOdMetaP}): {232,233,234,243,249,250,251,252,253,254,255},
     frozenset({ST.sternPolygon, ST.galaxie}): {
         0,
         1,
@@ -299,7 +299,7 @@ tableTags_kombiTable2 = {
     frozenset({ST.universum, ST.galaxie, ST.sternPolygon, ST.gleichfoermigesPolygon}): {
         5
     },
-    frozenset({ST.universum, ST.planet, ST.sternPolygon, ST.gleichfoermigesPolygon}): {
+    frozenset({ST.universum, ST.keinParaOdMetaP, ST.sternPolygon, ST.gleichfoermigesPolygon}): {
         14
     },
     frozenset({ST.universum, ST.gleichfoermigesPolygon, ST.sternPolygon}): {
