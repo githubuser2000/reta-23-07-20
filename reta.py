@@ -1750,7 +1750,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Triebe_und_Bedürfnisse_(6)","trieb","triebe","bedürfnis","bedürfnisse"},
+                ("Triebe_und_Bedürfnisse_(6)","trieb","triebe","bedürfnis","bedürfnisse"),
                 {254},
             ),
             (
@@ -1833,7 +1833,7 @@ class Program:
             ),
             (
                 Program.ParametersMain,strukturenkleinere,
-                ("Triebe_und_Bedürfnisse_(6)","trieb","triebe","bedürfnis","bedürfnisse"},
+                ("Triebe_und_Bedürfnisse_(6)","trieb","triebe","bedürfnis","bedürfnisse"),
                 {254},
             ),
             (
