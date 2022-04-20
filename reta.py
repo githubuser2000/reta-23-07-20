@@ -739,7 +739,7 @@ class Program:
             (
                 Program.ParametersMain.strukturenkleinere,
                 ("Impulse_(5)","impulse"),
-                {251},
+                {251,253},
             ),
             (
                 Program.ParametersMain.strukturenkleinere,
@@ -1746,7 +1746,12 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 ("Impulse_(5)","impulse"),
-                {251},
+                {251,253},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                ("Triebe_und_Bedürfnisse_(6)","trieb","triebe","bedürfnis","bedürfnisse"},
+                {254},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
@@ -1825,6 +1830,11 @@ class Program:
                     "sigma",
                 ),
                 {46},
+            ),
+            (
+                Program.ParametersMain,strukturenkleinere,
+                ("Triebe_und_Bedürfnisse_(6)","trieb","triebe","bedürfnis","bedürfnisse"},
+                {254},
             ),
             (
                 Program.ParametersMain.strukturenkleinere,
