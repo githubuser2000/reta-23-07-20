@@ -1832,7 +1832,7 @@ class Program:
                 {46},
             ),
             (
-                Program.ParametersMain,strukturenkleinere,
+                Program.ParametersMain.strukturenkleinere,
                 ("Triebe_und_Bedürfnisse_(6)","trieb","triebe","bedürfnis","bedürfnisse"),
                 {254},
             ),
