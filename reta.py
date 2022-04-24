@@ -1701,6 +1701,27 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 (
+                    "Absicht_6","absicht6"
+                ),
+                {262},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
+                    "Absicht_7","absicht7"
+                ),
+                {261},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
+                    "Absicht_10","absicht10"
+                ),
+                {260},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
                     "Geist_(15)", "geist"
                 ),
                 {229,242, 244},
