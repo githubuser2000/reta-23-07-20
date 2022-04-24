@@ -1706,6 +1706,24 @@ class Program:
                 {229,242, 244},
             ),
             (
+                Program.ParametersMain.grundstrukturen,
+                (
+                    "Reflexe_(3)",
+                    "reflex",
+                    "reflexe",
+                ),
+                {256}
+            ),
+            (
+                Program.ParametersMain.strukturenkleinere,
+                (
+                    "Reflexe_(3)",
+                    "reflex",
+                    "reflexe",
+                ),
+                {256}
+            ),
+            (
                 Program.ParametersMain.strukturenkleinere,
                 (
                     "Lust_(9)",
@@ -1794,7 +1812,7 @@ class Program:
                     "ziele",
                     "erhalten",
                 ),
-                {11},
+                {11,257},
             ),
             (
                 Program.ParametersMain.menschliches,
