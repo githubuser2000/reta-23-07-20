@@ -2288,6 +2288,14 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 (
+                "Wissenschaft_(22*n)","wissenschaft","forschen","einklinken"
+                ),
+                set(),
+                {(258, 259)},
+            ),
+            (
+                Program.ParametersMain.konzept,
+                (
                     "Kooperation_vs_Arsch", "arschloch", "kooperation","arsch"
                 ),
                 set(),
