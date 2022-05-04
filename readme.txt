@@ -69,7 +69,7 @@ Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole![/li
 [/list]
 [*]-kombination
 [list][*]--galaxie=[list][*]tiere,berufe,intelligenz,liebe,frauen,maenner,persoenlichkeit,religionen,motive,emotionen,personen,wirtschaftssysteme[/list]
-[list][*]--universum=[list][*]tiere,berufe,transzendentalien,strukturalien,primzahlkreuz,persoenlichkeit,ontologie,mechanismen,gegentranszendentalien,maschinen,addition,motive[/list]
+[list][*]--universum=[list][*]tiere,berufe,transzendentalien,strukturalien,primzahlkreuz,persoenlichkeit,ontologie,mechanismen,gegentranszendentalien,maschinen,addition,motive,geist[/list]
 [/list]
 [/list]
 [*]-ausgabe

@@ -319,6 +319,7 @@ tableTags_kombiTable2 = {
         15,
         16,
         17,
+        18
     },
 }
 
