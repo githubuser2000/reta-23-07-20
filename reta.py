@@ -1703,7 +1703,7 @@ class Program:
                 (
                    "Zeit_(4)_als_Wirklichkeit","zeit" 
                 ),
-                {265,266},
+                {266,267},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
