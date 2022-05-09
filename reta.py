@@ -1701,6 +1701,20 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 (
+                   "Zeit_(4)_als_Wirklichkeit","zeit" 
+                ),
+                {265,266},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
+                    "Funktionen_und_Vorstellungen_(16)","funktionen","vorstellungen"
+                ),
+                {264},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
                     "Absicht_17","absicht17"
                 ),
                 {263},
@@ -1777,8 +1791,8 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Wirklichkeiten_(10)", "wirklichkeit", "wirklichkeiten"),
-                {233},
+                ("Wirklichkeiten_Wahrheit_Wahrnehmung_(10)", "wirklichkeit", "wirklichkeiten","wahrheit","wahrnehmung"),
+                {233,265},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
