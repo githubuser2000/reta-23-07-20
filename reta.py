@@ -709,7 +709,7 @@ class Program:
             (
                 Program.ParametersMain.planet,
                 ("Wirklichkeiten_(10)", "wirklichkeit", "wirklichkeiten"),
-                {233},
+                {233,265,268},
             ),
             (
                 Program.ParametersMain.planet,
@@ -1792,7 +1792,7 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 ("Wirklichkeiten_Wahrheit_Wahrnehmung_(10)", "wirklichkeit", "wirklichkeiten","wahrheit","wahrnehmung"),
-                {233,265},
+                {233,265,268},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
