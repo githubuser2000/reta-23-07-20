@@ -743,8 +743,8 @@ class Program:
             ),
             (
                 Program.ParametersMain.strukturenkleinere,
-                ("Konkreta_(2)","konkreta"),
-                {250},
+                ("Konkreta_und_Focus_(2)","konkreta","focus","fokus"),
+                {250, 269},
             ),
             (
                 Program.ParametersMain.strukturenkleinere,
@@ -1701,6 +1701,13 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 (
+                   "Achtung_(4)","achtung","achten"
+                ),
+                {270},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
                    "Zeit_(4)_als_Wirklichkeit","zeit" 
                 ),
                 {266,267},
@@ -1801,8 +1808,8 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Konkreta_(2)","konkreta"),
-                {250},
+                ("Konkreta_und_Focus_(2)","konkreta","focus","fokus"),
+                {250, 269},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
