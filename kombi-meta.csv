@@ -226,3 +226,7 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 9|13;;;;;;;;;;;;;;;;;;Begierde oder Wollust
 13|15;;;;;;;;;;;;;;;;;;die bewusste Absicht oder das absichtsvolle Bewusstsein, z.B.  der Wille (konkret [2] mit Absicht [1])
 7|14;;;;;;;;;;;;;;;;;;Laune
+32|33;;;;;Funktorkategorie;;;;;;;;;;;;;
+30|33;;;;;universeller Funktor;;;;;;;;;;;;;
+31|33;;;;;natürliche Transformation (Morphismen zwischen Funktoren);;;;;;;;;;;;;
+33|14;;;;;Multifunktoren;;;;;;;;;;;;;
