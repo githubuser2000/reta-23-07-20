@@ -1808,6 +1808,16 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
+                ("Prinzipien_(1/8)","prinzipien"),
+                {272},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                ("gemeinsame_Höhenvorstellungen_(19)","maxima","höhenvorstellungen"),
+                {271},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
                 ("Konkreta_und_Focus_(2)","konkreta","focus","fokus"),
                 {250, 269},
             ),
