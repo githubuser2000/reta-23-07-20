@@ -1732,7 +1732,7 @@ class Program:
                 (
                     "Geist_(15)", "geist"
                 ),
-                {229,242, 244},
+                {229,242, 244, 273},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
