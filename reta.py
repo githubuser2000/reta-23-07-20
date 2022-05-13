@@ -1743,10 +1743,6 @@ class Program:
                 ),
                 {256}
             ),
-                    "lust",
-                ),
-                {255}
-            ),
             (
                 Program.ParametersMain.grundstrukturen,
                 (
