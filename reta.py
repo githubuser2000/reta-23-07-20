@@ -692,17 +692,12 @@ class Program:
                 {10, 5, 4, 8},
             ),
             (
-                Program.ParametersMain.strukturenkleinere,
+                Program.ParametersMain.menschliches,
                 ("Ansichten_(7)","ansichten"),
                 {240},
             ),
             (
-                Program.ParametersMain.strukturenkleinere,
-                ("Zustände_(8)","zustaende","zustände"),
-                {234},
-            ),
-            (
-                Program.ParametersMain.strukturenkleinere,
+                Program.ParametersMain.menschliches,
                 ("(politische)_Richtungen_(7)","richtungen","politische"),
                 {235},
             ),
@@ -735,21 +730,6 @@ class Program:
                 Program.ParametersMain.planet,
                 ("Mechanismen", "mechanismen", "mechanismus"),
                 {107},
-            ),
-            (
-                Program.ParametersMain.strukturenkleinere,
-                ("Impulse_(5)","impulse"),
-                {251,253},
-            ),
-            (
-                Program.ParametersMain.strukturenkleinere,
-                ("Konkreta_und_Focus_(2)","konkreta","focus","fokus"),
-                {250, 269},
-            ),
-            (
-                Program.ParametersMain.strukturenkleinere,
-                ("Gefühle_(7)","gefuehle","gefühle"),
-                {243},
             ),
             (
                 Program.ParametersMain.wichtigste,
@@ -1763,19 +1743,6 @@ class Program:
                 ),
                 {256}
             ),
-            (
-                Program.ParametersMain.strukturenkleinere,
-                (
-                    "Reflexe_(3)",
-                    "reflex",
-                    "reflexe",
-                ),
-                {256}
-            ),
-            (
-                Program.ParametersMain.strukturenkleinere,
-                (
-                    "Lust_(9)",
                     "lust",
                 ),
                 {255}
@@ -1808,7 +1775,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Prinzipien_(1/8)","prinzipien"),
+                ("Absicht(1/8)","absicht1pro8"),
                 {272},
             ),
             (
@@ -1923,20 +1890,6 @@ class Program:
                     "sigma",
                 ),
                 {46},
-            ),
-            (
-                Program.ParametersMain.strukturenkleinere,
-                ("Triebe_und_Bedürfnisse_(6)","trieb","triebe","bedürfnis","bedürfnisse"),
-                {254},
-            ),
-            (
-                Program.ParametersMain.strukturenkleinere,
-                (
-                    "Anführer_(7)",
-                    "anfuehrer",
-                    "chef",
-                ),
-                {29},
             ),
             (
                 Program.ParametersMain.menschliches,
