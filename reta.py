@@ -1754,8 +1754,9 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 (
-                    "Paradigmen_(13)",
+                    "Paradigmen_sind_Absichten_(13)",
                     "paradigmen",
+                    "absichten",
                 ),
                 {10}
             ),
@@ -1771,7 +1772,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Absicht(1/8)","absicht1pro8"),
+                ("Absicht_1/8","absicht1pro8","absicht1/8"),
                 {272},
             ),
             (
