@@ -1676,7 +1676,14 @@ class Program:
                     "universalien",
                     "meta-paradigmen"
                 ),
-                {5,229}
+                {5,229,131}
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
+                   "Reziporkes","reziproke","reziprokes",
+                ),
+                {42, 131,  204, 231, 273},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
@@ -1732,7 +1739,7 @@ class Program:
                 (
                     "Geist_(15)", "geist"
                 ),
-                {229,242, 244, 273},
+                {229, 242, 231, 244, 273},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
@@ -1758,7 +1765,7 @@ class Program:
                     "paradigmen",
                     "absichten",
                 ),
-                {10}
+                {10, 42}
             ),
             (
                 Program.ParametersMain.grundstrukturen,
