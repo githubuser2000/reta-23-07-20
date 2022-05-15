@@ -2304,6 +2304,14 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 (
+                    "Selbstsucht_Ichsucht_etc","selbstsucht","ichsucht"
+                ),
+                set(),
+                {(274, 275)},
+            ),
+            (
+                Program.ParametersMain.konzept,
+                (
                 "Wissenschaft_(22*n)","wissenschaft","forschen","einklinken"
                 ),
                 set(),
