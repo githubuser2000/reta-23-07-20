@@ -1836,6 +1836,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
+                ("Gedanken_sind_Positionen_(17)","positionen","gedanken"),
+                {249, 276},
+            ),
+            (
+                Program.ParametersMain.menschliches,
                 (
                     "Errungenschaften",
                     "errungenschaften",
