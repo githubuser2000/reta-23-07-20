@@ -1832,12 +1832,21 @@ class Program:
                     "absicht",
                     "absichten",
                 ),
-                {10, 18, 42, 167, 168, 149, 229, 230, 231}
+                {10, 18, 42, 167, 168, 149,  230}
             ),
             (
                 Program.ParametersMain.menschliches,
                 ("Gedanken_sind_Positionen_(17)","positionen","gedanken"),
                 {249, 276},
+            ),
+            (
+                Program.ParametersMain.menschliches,
+                (
+                    "Bewusstsein_und_Wahrnehmung",
+                    "bewusstsein",
+                    "wahrnehmung"
+                ),
+                {265, 229, 231}
             ),
             (
                 Program.ParametersMain.menschliches,
