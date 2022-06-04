@@ -2318,6 +2318,14 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 (
+                    "ego","bescheiden"
+                ),
+                set(),
+                {(277, 278)},
+            ),
+            (
+                Program.ParametersMain.konzept,
+                (
                     "Selbstsucht_Ichsucht_etc","selbstsucht","ichsucht"
                 ),
                 set(),
