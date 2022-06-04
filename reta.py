@@ -1383,7 +1383,7 @@ class Program:
             (
                 Program.ParametersMain.universum,
                 ("Kategorie", "kategorie"),
-                {204, 205},
+                {204, 205, 281},
             ),
             (Program.ParametersMain.universum, ("Raum-Missionen", "weltall"), {218}),
             (Program.ParametersMain.galaxie, ("Raum-Missionen", "weltall"), {218}),
@@ -1846,7 +1846,7 @@ class Program:
                     "bewusstsein",
                     "wahrnehmung"
                 ),
-                {265, 229, 231}
+                {265, 229, 231, 281}
             ),
             (
                 Program.ParametersMain.menschliches,
