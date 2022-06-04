@@ -1730,6 +1730,13 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 (
+                    "Regungen_(1)","regung","regungen"
+                ),
+                {282},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
                     "Absicht_10","absicht10"
                 ),
                 {260},
