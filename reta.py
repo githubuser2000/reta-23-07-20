@@ -1819,6 +1819,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
+                ("Wachbewusstsein_und_Kategorien_(1/15)","wachbewusstsein","kategorien"),
+                {204,205,281},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
                 ("Zustände_(8)","zustaende","zustände"),
                 {234},
             ),
