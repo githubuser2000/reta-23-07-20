@@ -2318,6 +2318,14 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 (
+                    "familiebrauchen",
+                ),
+                set(),
+                {(279, 280)},
+            ),
+            (
+                Program.ParametersMain.konzept,
+                (
                     "ego","bescheiden"
                 ),
                 set(),
