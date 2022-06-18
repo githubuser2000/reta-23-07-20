@@ -1589,7 +1589,7 @@ class Program:
                     "gefühl",
                     "gefuehl",
                 ),
-                {105, 230, 243},
+                {105, 230, 243,283,284,285,286},
             ),
             (
                 Program.ParametersMain.menschliches,
@@ -1802,7 +1802,7 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 ("Gefühle_(7)","gefuehle","emotionen","gefühle"),
-                {243},
+                {243,283,284,285,286},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
