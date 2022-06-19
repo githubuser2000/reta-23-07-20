@@ -921,7 +921,7 @@ class Program:
                     "thomasevangelium",
                     "thomas",
                 ),
-                {0, 3},
+                {0, 3, 303},
             ),
             (
                 Program.ParametersMain.galaxie,
@@ -1793,9 +1793,9 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 (
-                    "Geist_(15)", "geist"
+                    "Geist_(15)", "geist", "bewusstsein",
                 ),
-                {229, 231, 242, 244, 273, 297},
+                {229, 231, 242, 244, 273, 297, 304},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
@@ -1917,7 +1917,7 @@ class Program:
                     "bewusstsein",
                     "wahrnehmung"
                 ),
-                {265, 229, 231, 281}
+                {265, 229, 231, 281, 304}
             ),
             (
                 Program.ParametersMain.menschliches,
