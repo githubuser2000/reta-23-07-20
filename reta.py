@@ -1683,7 +1683,7 @@ class Program:
                 (
                    "Reziporkes","reziproke","reziprokes",
                 ),
-                {42, 131,  204, 231, 273},
+                {42, 131,  204, 231, 273, 257},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
