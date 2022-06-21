@@ -1788,8 +1788,18 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
+                ("Stimmungen_(14)","stimmung","stimmungen"),
+                {290},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                ("Klassen_(20)","klasse","klassen"),
+                {241,289},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
                 ("Meta-Systeme_(12)","metasysteme","metasystem","meta-systeme","meta-system"),
-                {232},
+                {232,288},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
