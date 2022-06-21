@@ -1834,7 +1834,7 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 ("Impulse_(5)","impulse"),
-                {251,253},
+                {251,253,257},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
