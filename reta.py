@@ -1798,7 +1798,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Meta-Systeme_(12)","metasysteme","metasystem","meta-systeme","meta-system"),
+                ("Meta-Systeme_(12)","metasysteme","metasystem","meta-systeme","meta-system","menge","mengen"),
                 {232,288},
             ),
             (
