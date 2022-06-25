@@ -1885,7 +1885,7 @@ class Program:
                     "ziele",
                     "erhalten",
                 ),
-                {11,257},
+                {11,257,251},
             ),
             (
                 Program.ParametersMain.menschliches,
@@ -2343,6 +2343,14 @@ class Program:
                 ),
                 {112},
                 {(40, 41)},
+            ),
+            (
+                Program.ParametersMain.konzept,
+                (
+                    "Dein_Recht_bekommen","rechte","recht"
+                ),
+                set(),
+                {(291, 292)},
             ),
             (
                 Program.ParametersMain.konzept,
