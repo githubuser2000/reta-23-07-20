@@ -1737,9 +1737,16 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 (
-                    "Energie_und_universelle_Eigenschaften_(30)","energie","universelleeigenschaften"
+                    "Energie_und_universelle_Eigenschaften_(30)","energie","universelleeigenschaften","lebensenergie"
                 ),
-                {287},
+                {287, 293},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
+                    "Empathie_Garben_(31)","empathie","garben","garbe","mitgefuehl"
+                ),
+                {294,295},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
@@ -1788,8 +1795,8 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Stimmungen_(14)","stimmung","stimmungen"),
-                {290},
+                ("Stimmungen_Kombinationen_(14)","stimmung","stimmungen","kombination","kombinationen"),
+                {290, 296},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
