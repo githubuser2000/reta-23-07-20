@@ -1815,7 +1815,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("gemeinsame_Höhenvorstellungen_(19)","maxima","höhenvorstellungen"),
+                ("Ziele_(19)","ziele","maxima","höhenvorstellungen"),
                 {271},
             ),
             (
