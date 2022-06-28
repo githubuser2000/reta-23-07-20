@@ -1744,9 +1744,30 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 (
-                    "Empathie_Garben_(31)","empathie","garben","garbe","mitgefuehl"
+                    "Garben_und_Verhalten_nachfühlen(31)","garben","verhaltenfuehlen","verhaltenfühlen",
                 ),
-                {294,295},
+                {295},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
+                    "nachvollziehen_emotional_oder_geistig_und_PrimzahlkreuzAlgorithmus_(15)","nachvollziehen",
+                ),
+                {297},
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                set(),
+                {"primzahlkreuzprocontra"},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
+                    "Empathie_(31)","empathie","mitgefuehl"
+                ),
+                {294},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
