@@ -1753,7 +1753,7 @@ class Program:
                 (
                     "nachvollziehen_emotional_oder_geistig_und_PrimzahlkreuzAlgorithmus_(15)","nachvollziehen",
                 ),
-                {297},
+                {242, 244, 297},
                 set(),
                 set(),
                 set(),
@@ -1781,7 +1781,7 @@ class Program:
                 (
                     "Geist_(15)", "geist"
                 ),
-                {229, 242, 231, 244, 273},
+                {229, 231, 242, 244, 273},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
