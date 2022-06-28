@@ -1765,7 +1765,7 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 (
-                    "Empathie_(31)","empathie","mitgefuehl"
+                    "Empathie_(37)","empathie","mitgefuehl"
                 ),
                 {294},
             ),
