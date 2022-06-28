@@ -1751,7 +1751,7 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 (
-                    "nachvollziehen_emotional_oder_geistig_und_PrimzahlkreuzAlgorithmus_(15)","nachvollziehen",
+                    "nachvollziehen_emotional_oder_geistig_und_Primzahlkreuz_Algorithmus_(15)","nachvollziehen",
                 ),
                 {242, 244, 297},
                 set(),
