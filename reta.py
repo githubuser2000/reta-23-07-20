@@ -2378,7 +2378,7 @@ class Program:
                     "Dein_Recht_bekommen","rechte","recht","selbstgerecht",
                 ),
                 set(),
-                {(291, 292),(62, 63)},
+                {(291, 292)},
             ),
             (
                 Program.ParametersMain.konzept,
