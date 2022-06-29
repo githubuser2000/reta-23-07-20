@@ -885,8 +885,13 @@ class Concat:
                             for firstOrSecond in (
                                 (1, 0) if couple[0] != couple[1] else (1,)
                             ):
-                                if couldBePrimeNumberPrimzahlkreuz_fuer_innen(
+                                #if num == 4:
+                                #    print("bla")
+                                if (couldBePrimeNumberPrimzahlkreuz_fuer_innen(
                                     couple[firstOrSecond]
+                                )
+                                    or couple[0] % 2 == 0
+                                    or couple[1] % 2 == 0
                                 ):
                                     try:
                                         gegen3 = int(
@@ -902,14 +907,14 @@ class Concat:
                                     couldBePrimeNumberPrimzahlkreuz_fuer_aussen(
                                         couple[1]
                                     )
-                                    or couple[0] % 2 == 0
-                                    or couple[0] % 3 == 0
-                                    or couple[1] % 2 == 0
                                     or couple[1] % 3 == 0
+                                    or couple[0] % 3 == 0
                                 ):
                                     try:
+                                        if num == 4:
+                                            print(f"{couple} _ {firstOrSecond} | {proPro[couple[firstOrSecond]]}")
                                         pro3 = (
-                                            int(couple[0 if firstOrSecond == 1 else 0])
+                                            int(couple[0 if firstOrSecond == 1 else 1])
                                             * proPro[couple[firstOrSecond]]
                                         )
                                         proPro[num] = pro3
