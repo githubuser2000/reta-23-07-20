@@ -2375,10 +2375,10 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 (
-                    "Dein_Recht_bekommen","rechte","recht"
+                    "Dein_Recht_bekommen","rechte","recht","selbstgerecht",
                 ),
                 set(),
-                {(291, 292)},
+                {(291, 292),(62, 63)},
             ),
             (
                 Program.ParametersMain.konzept,
@@ -2584,16 +2584,6 @@ class Program:
                 ),
                 set(),
                 {(60, 61)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                (
-                    "Selbstgerechtigkeit",
-                    "selbstgerechtigkeit",
-                    "selbstgerecht",
-                ),
-                set(),
-                {(62, 63)},
             ),
             (
                 Program.ParametersMain.konzept,
