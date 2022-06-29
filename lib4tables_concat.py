@@ -1965,12 +1965,12 @@ class Concat:
                 2: (("Meta-Thema: ", "Konkretes: "), ("Meta-", "Konkret-")),
                 3: (("Theorie-Thema: ", "Praxis: "), ("Theorie-", "Praxis-")),
                 4: (
-                    ("Management-Thema: ", "Veränderungs-Thema: "),
-                    ("Management-", "Veränderung-"),
+                    ("Planungs-Thema: ", "Umsetzungs-Thema: "),
+                    ("Planung-", "Umsetzung-"),
                 ),
                 5: (
-                    ("Ganzheitlich-Thema: ", "darüber-hinausgehend-: "),
-                    ("ganzheitlich-", "darüber-hinausgehend-"),
+                    ("Anlass-Thema: ", "Wirkungs-Thema: "),
+                    ("Anlass-", "wirkung-"),
                 ),
                 6: (
                     ("Unternehmung: ", "Wert-Thema: "),
