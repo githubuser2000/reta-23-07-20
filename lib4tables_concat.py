@@ -1973,8 +1973,8 @@ class Concat:
                     ("Anlass-", "wirkung-"),
                 ),
                 6: (
-                    ("Unternehmung: ", "Wert-Thema: "),
-                    ("unternehmend-", "Wert-"),
+                    ("Kraft-Gebung: ", "Verstärkungs-Thema: "),
+                    ("Kraft-geben-", "Verstärkung-"),
                 ),
                 7: (
                     ("Beherrschung: ", "Richtung-Thema: "),
