@@ -1003,7 +1003,7 @@ class Program:
             (
                 Program.ParametersMain.strukturgroesse,
                 ("Organisationen", "organisationen", "organisation"),
-                {82},
+                {30, 82},
             ),
             (
                 Program.ParametersMain.strukturgroesse,
@@ -1772,6 +1772,13 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 (
+                    "Absicht_1/6","absicht1/6","absicht1pro6"
+                ),
+                {298},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
                     "Absicht_10","absicht10"
                 ),
                 {260},
@@ -1857,7 +1864,7 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 ("Verbundenheiten_(18)","verbundenheiten"),
-                {252},
+                {252,299,300},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
