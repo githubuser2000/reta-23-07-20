@@ -872,56 +872,58 @@ class Concat:
                         menge |= {tuple(couple)}
                     paare = list(menge)
 
-                    for couple in paare:
-                        if primCreativity(couple[1]) == 1:
-                            flagX = True
-                        elif primCreativity(couple[0]) == 1:
-                            flagX = True
-                            couple = (couple[1], couple[0])
-                        else:
-                            flagX = False
+                    for coupleA in paare:
+                        #if primCreativity(couple[1]) == 1:
+                        #    flagX = True
+                        #elif primCreativity(couple[0]) == 1:
+                        #    flagX = True
+                        #    couple = (couple[1], couple[0])
+                        #else:
+                        #    flagX = False
 
-                        if flagX:
-                            for firstOrSecond in (
-                                (1, 0) if couple[0] != couple[1] else (1,)
-                            ):
-                                #if num == 4:
-                                #    print("bla")
-                                if (couldBePrimeNumberPrimzahlkreuz_fuer_innen(
-                                    couple[firstOrSecond]
-                                )
-                                    or couple[0] % 2 == 0
-                                    or couple[1] % 2 == 0
+                        #if flagX:
+                        if coupleA[1] != 1 and coupleA[0] != 1:
+                            for couple in (coupleA,(coupleA[1],coupleA[0])):
+                                for firstOrSecond in (
+                                    (1, 0) if couple[0] != couple[1] else (1,)
                                 ):
-                                    try:
-                                        gegen3 = int(
-                                            couple[0 if firstOrSecond == 1 else 1]
-                                            * contraContra[couple[firstOrSecond]]
-                                        )
-                                        contraContra[num] = gegen3
-                                        contraContra2[num] |= {gegen3}
-                                        into1 += ["gegen " + str(gegen3)]
-                                    except KeyError:
-                                        pass
-                                elif (
-                                    couldBePrimeNumberPrimzahlkreuz_fuer_aussen(
-                                        couple[1]
+                                    #if num == 4:
+                                    #    print("bla")
+                                    if (couldBePrimeNumberPrimzahlkreuz_fuer_innen(
+                                        couple[firstOrSecond]
                                     )
-                                    or couple[1] % 3 == 0
-                                    or couple[0] % 3 == 0
-                                ):
-                                    try:
-                                        if num == 4:
-                                            print(f"{couple} _ {firstOrSecond} | {proPro[couple[firstOrSecond]]}")
-                                        pro3 = (
-                                            int(couple[0 if firstOrSecond == 1 else 1])
-                                            * proPro[couple[firstOrSecond]]
+                                        or couple[0] % 2 == 0
+                                        or couple[1] % 2 == 0
+                                    ):
+                                        try:
+                                            gegen3 = int(
+                                                couple[0 if firstOrSecond == 1 else 1]
+                                                * contraContra[couple[firstOrSecond]]
+                                            )
+                                            contraContra[num] = gegen3
+                                            contraContra2[num] |= {gegen3}
+                                            into1 += ["gegen " + str(gegen3)]
+                                        except KeyError:
+                                            pass
+                                    if (
+                                        couldBePrimeNumberPrimzahlkreuz_fuer_aussen(
+                                            couple[1]
                                         )
-                                        proPro[num] = pro3
-                                        proPro2[num] |= {pro3}
-                                        into2 += ["pro " + str(pro3)]
-                                    except KeyError:
-                                        pass
+                                        or couple[1] % 3 == 0
+                                        or couple[0] % 3 == 0
+                                    ):
+                                        try:
+                                            if num == 4:
+                                                print(f"{couple} _ {firstOrSecond} | {proPro[couple[firstOrSecond]]}")
+                                            pro3 = (
+                                                int(couple[0 if firstOrSecond == 1 else 1])
+                                                * proPro[couple[firstOrSecond]]
+                                            )
+                                            proPro[num] = pro3
+                                            proPro2[num] |= {pro3}
+                                            into2 += ["pro " + str(pro3)]
+                                        except KeyError:
+                                            pass
 
                 # if self.tables.lastLineNumber >= num:
                 try:
