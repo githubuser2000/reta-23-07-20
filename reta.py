@@ -1737,6 +1737,13 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 (
+                    "Verhalten_(11)","verhalten"
+                ),
+                {301,302},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
                     "Energie_und_universelle_Eigenschaften_(30)","energie","universelleeigenschaften","lebensenergie"
                 ),
                 {287, 293},
