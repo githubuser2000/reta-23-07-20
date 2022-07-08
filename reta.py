@@ -878,12 +878,12 @@ class Program:
             (
                 Program.ParametersMain.inkrementieren,
                 ("Teilchen-Meta-Physik", "addition", "identitaet", "Identität"),
-                {219, 223},
+                {219, 223, 307, 308},
             ),
             (
                 Program.ParametersMain.universum,
                 ("Teilchen-Meta-Physik", "addition", "identitaet", "Identität"),
-                {219, 223},
+                {219, 223, 307, 308},
             ),
             (
                 Program.ParametersMain.universum,
