@@ -56,7 +56,10 @@ hauptForNebenSet = set(hauptForNeben)
 
 ausgabeArt = ["bbcode", "html", "csv", "shell", "markdown"]
 
-befehle = (
+#[*]--grundstrukturen[list][*]konkreta,impulse,gefuehle,zustaende,wirklichkeiten,metasysteme,paradigmen,meta-paradigmen,positionen,geist,verbundenheiten,triebe,lust,reflexe,absicht6,absicht7,absicht10,absicht17,zeit,funktionen,vorstellungen,wahrheit,wahrnehmung,achtung,focus,absicht1pro8,ziele,wachbewusstsein,kategorien,regung,energie,universelleeigenschaften,stimmungen,klassen,kombinationen,empathie,energie,garben,nachvollziehen,absicht1pro6,verhalten[/list]
+wahl15 = {"_": "meta-paradigmen,geist", "_15": "meta-paradigmen,geist,nachvollziehen", "_2": "konkreta,focus", "_5": "impulse", "_7": "gefuehle", "_8": "zustaende", "_10": "wirklichkeiten,wahrheit,wahrnehmung", "_12": "metasysteme", "_13": "paradigmen", "_17": "positionen", "_18": "verbundenheiten", "_6": "triebe", "_9": "lust", "_3": "reflexe", "_13_6": "absicht6", "_13_7": "absicht7", "_13_10": "absicht10", "_13_17": "absicht17", "_10_4": "zeit", "_16": "funktionen,vorstellungen", "_4": "achtung", "_13_1pro8": "absicht1pro8", "_13_1pro6": "absicht1pro6", "_19": "ziele", "_1pro15":"wachbewusstsein,kategorien", "_1": "regung", "_30": "energie,universelleeigenschaften", "_14": "stimmungen,kombinationen", "_20": "klassen", "_37": "empathie", "_31": "garben", "_11": "verhalten", "_5_10": "bedeutung"}
+
+befehle = ["15"+a for a in wahl15.keys()] + [
     "reta",
     "absicht",
     "motiv",
@@ -96,13 +99,14 @@ befehle = (
     "q",
     ":q",
     "shell",
+    "s",
     "math",
     "loggen",
     "nichtloggen",
     "mulpri",
     "b",
     "python",
-)
+]
 
 befehle2: set = set(befehle) - {"reta"}
 

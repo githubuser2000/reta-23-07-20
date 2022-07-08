@@ -23,6 +23,7 @@ from prompt_toolkit.completion import Completer, Completion
 from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
 from word_completerAlx import WordCompleter
+from LibRetaPrompt import wahl15
 
 def nummernStringzuNummern(text: str) -> str:
     def toNummernSet(text: list) -> set:
@@ -541,7 +542,33 @@ while text not in befehleBeenden:
                 int(shellRowsAmountStr),
             )
 
-    if len(stext) > 0 and "shell" == stext[0]:
+        if len(stext) > 0 and any([token[:3] == "15_" for token in stext]):
+            warBefehl = True
+            import reta
+
+            try:
+                befehle15 = []
+                for token in stext:
+                    if token[:3] == "15_":
+                        befehle15 += [wahl15[token[2:]]]
+                grundstruk = ",".join(befehle15)
+                kette = [
+                    "reta",
+                    "-zeilen",
+                    zeiln1,
+                    zeiln2,
+                    "-spalten",
+                    "--grundstrukturen="+ grundstruk,
+                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                ]
+                reta.Program(
+                    kette,
+                    int(shellRowsAmountStr),
+                )
+            except:
+                pass
+
+    if len(stext) > 0 and stext[0] in ("shell", "s"):
         warBefehl = True
         try:
             process = subprocess.Popen([*stext[1:]])
