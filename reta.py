@@ -986,6 +986,7 @@ class Program:
                 ),
                 {92, 93},
             ),
+            (Program.ParametersMain.strukturgroesse, ("Licht","licht",), {20, 27}),
             (
                 Program.ParametersMain.strukturgroesse,
                 (
@@ -1444,7 +1445,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("Gesellschaftsschicht", "klasse"),
+                ("Gesellschaftsschicht", "klasse","klassen"),
                 {241},
             ),
             (
@@ -1589,7 +1590,7 @@ class Program:
                     "gefühl",
                     "gefuehl",
                 ),
-                {105, 230, 243,283,284,285,286},
+                {105, 230, 243,283,284,285,286, 305},
             ),
             (
                 Program.ParametersMain.menschliches,
@@ -1677,6 +1678,13 @@ class Program:
                     "meta-paradigmen"
                 ),
                 {5,229,131}
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
+                    "Bedeutung_(10)","bedeutung",
+                ),
+                {306},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
@@ -1845,6 +1853,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
+                ("Meta-Systeme_(12)","metasysteme","metasystem","meta-systeme","meta-system","menge","mengen"),
+                {232,288},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
                 ("Absicht_1/8","absicht1pro8","absicht1/8"),
                 {272},
             ),
@@ -1861,7 +1874,7 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 ("Gefühle_(7)","gefuehle","emotionen","gefühle"),
-                {243,283,284,285,286},
+                {243,283,284,285,286, 305},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
