@@ -1682,6 +1682,20 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 (
+                  "Optimierung_(10)", "optimierung", 
+                ),
+                {310},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
+                   "Themen_(6)","themen","thema",
+                ),
+                {309},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
                     "Bedeutung_(10)","bedeutung",
                 ),
                 {306},
