@@ -1,10 +1,16 @@
-;;;;;;
-;;Kunde;;;;
-;Behörde oder Exekutive;;Personal;;;
-;;Bürger;;;;
-;;;;;;
-allein;;;;;;Empfänger von Spenden und ggf. Sozialhilfeempfänger
-Raum;;;;;Spender;
-Straße;;;;;;
-Dorf;;;;;;
-Stadt;;;;;;
+inneres Licht;;;;;;
+äußeres Licht;;Kunde;;;;
+nahes Licht;Behörde oder Exekutive;;Personal;;;
+allgegenwärtiges Licht;;Bürger;;;;
+Nachttisch-Licht;;;;;;
+Raumlicht;;;;;;Empfänger von Spenden und ggf. Sozialhilfeempfänger
+Laternenlicht;;;;;Spender;
+Dorflicht;;;;;;
+Stadtlicht;;;;;;
+Tageslicht (der Sonne);;;;;;
+Nachtlicht des Mondes;;;;;;
+Nachtlicht der Planeten;;;;;;
+totale Finsternis des Schwarzes Loches: Licht absaugen;;;;;;
+Nachtlicht des Galaxielichts;;;;;;
+Nacht und Dunkelheit des Universumlichts;;;;;;
+Licht oder nicht vorhandenes Licht des Multiversums;;;;;;
