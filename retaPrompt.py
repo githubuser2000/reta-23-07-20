@@ -73,6 +73,12 @@ def newSession(history=False):
     else:
         return PromptSession()
 
+def returnOnlyParasAsList(textList: str):
+    liste = []
+    for t in textList:
+        if len(t) > 0 and t[0]=='-':
+            liste += [t]
+    return liste
 
 pp1 = pprint.PrettyPrinter(indent=2)
 pp = pp1.pprint
@@ -331,7 +337,8 @@ while text not in befehleBeenden:
                         "--breite=" + str(int(shellRowsAmountStr) - 2),
                         "-ausgabe",
                         "--spaltenreihenfolgeundnurdiese=1",
-                ]
+
+                ] + returnOnlyParasAsList(stext)
                 reta.Program(
                         kette,
                         int(shellRowsAmountStr),
@@ -349,7 +356,7 @@ while text not in befehleBeenden:
                         "-kombination",
                         "-ausgabe",
                         "--spaltenreihenfolgeundnurdiese=1",
-                ]
+                ] + returnOnlyParasAsList(stext)
                 reta.Program(
                         kette,
                         int(shellRowsAmountStr),
@@ -372,7 +379,7 @@ while text not in befehleBeenden:
                         "--breite=" + str(int(shellRowsAmountStr) - 2),
                         "-ausgabe",
                         "--spaltenreihenfolgeundnurdiese=1,3,4",
-                ]
+                ] + returnOnlyParasAsList(stext)
                 reta.Program(
                         kette,
                         int(shellRowsAmountStr),
@@ -391,7 +398,7 @@ while text not in befehleBeenden:
                         "-kombination",
                         "-ausgabe",
                         "--spaltenreihenfolgeundnurdiese=1",
-                ]
+                ] + returnOnlyParasAsList(stext)
                 reta.Program(
                         kette,
                         int(shellRowsAmountStr),
@@ -416,7 +423,7 @@ while text not in befehleBeenden:
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=2",
-            ]
+                ] + returnOnlyParasAsList(stext)
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -474,7 +481,7 @@ while text not in befehleBeenden:
                 "-spalten",
                 "--procontra=pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
-            ]
+                ] + returnOnlyParasAsList(stext)
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -496,7 +503,7 @@ while text not in befehleBeenden:
                 "--alles",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
                 "-ausgabe",
-            ]
+                ] + returnOnlyParasAsList(stext)
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -514,7 +521,7 @@ while text not in befehleBeenden:
                 "-spalten",
                 "--bedeutung=primzahlkreuz",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
-            ]
+                ] + returnOnlyParasAsList(stext)
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -536,13 +543,13 @@ while text not in befehleBeenden:
                 "-spalten",
                 "--primzahlwirkung=Galaxieabsicht",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
-            ]
+                ] + returnOnlyParasAsList(stext)
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
             )
 
-        if len(stext) > 0 and any([token[:3] == "15_" for token in stext]):
+        if len(stext) > 0 and any([token[:3] == "15_" for token in stext]) and "abc" not in stext and "abcd" not in stext:
             warBefehl = True
             import reta
 
@@ -560,7 +567,7 @@ while text not in befehleBeenden:
                     "-spalten",
                     "--grundstrukturen="+ grundstruk,
                     "--breite=" + str(int(shellRowsAmountStr) - 2),
-                ]
+                ] + returnOnlyParasAsList(stext)
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
