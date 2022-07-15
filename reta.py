@@ -1682,6 +1682,13 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 (
+                  "Attraktionen_(36)","attraktionen"
+                ),
+                {311},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
                   "Optimierung_(10)", "optimierung", 
                 ),
                 {310},
