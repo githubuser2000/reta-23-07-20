@@ -178,6 +178,8 @@ while text not in befehleBeenden:
                     if n == len(buchst):
                         buchst2: list = [a if a != "U" else "mu" for a in buchst]
                         textDazu += buchst2 + [str(s_[n:])]
+                    if len(stext) == 1 and len(buchst) == 0:
+                        textDazu += ["mulpri", "a", "t"]
 
             if len(textDazu) > 0:
                 stext2 += textDazu
