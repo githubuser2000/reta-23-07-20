@@ -986,7 +986,7 @@ class Program:
                 ),
                 {92, 93},
             ),
-            (Program.ParametersMain.strukturgroesse, ("Licht","licht",), {20, 27}),
+            (Program.ParametersMain.strukturgroesse, ("Licht","licht",), {20, 27, 313}),
             (
                 Program.ParametersMain.strukturgroesse,
                 (
@@ -1738,6 +1738,13 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 (
+                    "Absicht_16","absicht16"
+                ),
+                {312},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
                     "Absicht_17","absicht17"
                 ),
                 {263},
@@ -2243,7 +2250,7 @@ class Program:
                 ),
                 {102, 103},
             ),
-            (Program.ParametersMain.licht, (), {20, 27}),
+            (Program.ParametersMain.licht, (), {20, 27, 313}),
             (
                 Program.ParametersMain.procontra,
                 (
