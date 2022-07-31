@@ -693,6 +693,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
+                ("Mensch-zu-Tier", "menschtier", "tiermensch"),
+                {314},
+            ),
+            (
+                Program.ParametersMain.menschliches,
                 ("Ansichten_(7)","ansichten"),
                 {240},
             ),
