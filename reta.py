@@ -989,7 +989,7 @@ class Program:
                     "dreier",
                     "dreierstruktur",
                 ),
-                {92, 93},
+                {92, 93, 315, 316},
             ),
             (Program.ParametersMain.strukturgroesse, ("Licht","licht",), {20, 27, 313}),
             (
