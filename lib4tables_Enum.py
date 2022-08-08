@@ -39,7 +39,6 @@ tableTags = {
         19,
         22,
         23,
-
         24,
         26,
         27,
@@ -161,6 +160,8 @@ tableTags = {
         275,
         303,
         307,
+        315,
+        316
     },
     frozenset({ST.universum, ST.sternPolygon}): {
         4,
