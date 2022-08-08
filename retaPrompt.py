@@ -176,7 +176,7 @@ while text not in befehleBeenden:
                 ] == [[True for strInt in strA] for strA in s_4]:
                     buchst = set(s_[:n]) & {"a", "t", "v", "u", "p", "r", "U"}
                     if n == len(buchst):
-                        buchst2: list = [a if a != "U" else "mu" for a in buchst]
+                        buchst2: list = [a if a != "U" else "mulpri" for a in buchst]
                         textDazu += buchst2 + [str(s_[n:])]
                     if len(stext) == 1 and len(buchst) == 0:
                         textDazu += ["mulpri", "a", "t"]
