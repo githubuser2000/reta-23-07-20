@@ -1912,7 +1912,7 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 ("Gedanken_sind_Positionen_(17)","positionen","gedanken"),
-                {249},
+                {249, 317},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
