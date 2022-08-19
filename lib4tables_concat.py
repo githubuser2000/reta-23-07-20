@@ -187,7 +187,7 @@ class Concat:
                             insert = re.sub(
                                 r"&lt;SG&gt;",
                                 self.relitable[i][4].strip(),
-                                self.relitable[basis][rownum].rstrip(),
+                                insert, 
                             )
                             into += [
                                 insert,
