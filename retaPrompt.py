@@ -471,6 +471,26 @@ while text not in befehleBeenden:
 
             # externCommand("prim", c)
 
+        if len({"mond"} & set(stext)) > 0:
+            warBefehl = True
+            import reta
+
+            kette = [
+                "reta",
+                "-zeilen",
+                zeiln1,
+                zeiln2,
+                "-spalten",
+                "--bedeutung=gestirn",
+                "-ausgabe",
+                "--spaltenreihenfolgeundnurdiese=3,4,5,6",
+                "--breite=" + str(int(shellRowsAmountStr) - 2),
+                ] + returnOnlyParasAsList(stext)
+            reta.Program(
+                kette,
+                int(shellRowsAmountStr),
+            )
+
         if len({"procontra"} & set(stext)) > 0:
             warBefehl = True
             import reta
