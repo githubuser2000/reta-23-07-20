@@ -886,6 +886,16 @@ class Program:
                 {219, 223, 307, 308},
             ),
             (
+                Program.ParametersMain.galaxie,
+                ("Hochzüchten", "hochzüchten", "hochzuechten"), 
+                {318, 319},
+            ),
+            (
+                Program.ParametersMain.universum,
+                ("Hochzüchten", "hochzüchten", "hochzuechten"), 
+                {318, 319},
+            ),
+            (
                 Program.ParametersMain.universum,
                 ("Teilchen-Meta-Physik", "addition", "identitaet", "Identität"),
                 {219, 223, 307, 308},
@@ -1715,9 +1725,9 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 (
-                   "Reziporkes","reziproke","reziprokes",
+                   "Reziprokes","reziproke","reziprokes",
                 ),
-                {42, 131,  204, 231, 273, 257},
+                {42, 131,  204, 231, 273, 257, 284, 285, 257, 204,205,281},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
