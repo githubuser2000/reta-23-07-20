@@ -1697,7 +1697,7 @@ class Program:
                     "universalien",
                     "meta-paradigmen"
                 ),
-                {5,229,131,320}
+                {5,229,131}
             ),
             (
                 Program.ParametersMain.grundstrukturen,
