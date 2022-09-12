@@ -892,6 +892,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.universum,
+                ("sowas_wie_Kombinieren_Verknüpfen","kombinierenetc"),
+                {320},
+            ),
+            (
+                Program.ParametersMain.universum,
                 ("Hochzüchten", "hochzüchten", "hochzuechten"), 
                 {318, 319},
             ),
@@ -1692,7 +1697,7 @@ class Program:
                     "universalien",
                     "meta-paradigmen"
                 ),
-                {5,229,131}
+                {5,229,131,320}
             ),
             (
                 Program.ParametersMain.grundstrukturen,
