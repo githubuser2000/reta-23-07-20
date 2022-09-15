@@ -1936,6 +1936,17 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
+                ("Liebe_(7)","liebe"),
+                {8, 9, 28, 208, 221},
+                {(121, 122)},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                ("Koalitionen_(10)","koalitionen"),
+                {321},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
                 ("Impulse_(5)","impulse"),
                 {251,253,257},
             ),
