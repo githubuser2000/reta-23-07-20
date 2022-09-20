@@ -1927,7 +1927,7 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 ("Gedanken_sind_Positionen_(17)","positionen","gedanken"),
-                {249, 317},
+                {249, 317, 323},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
