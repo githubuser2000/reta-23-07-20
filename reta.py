@@ -1882,7 +1882,7 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 ("Wirklichkeiten_Wahrheit_Wahrnehmung_(10)", "wirklichkeit", "wirklichkeiten","wahrheit","wahrnehmung"),
-                {233,265,268},
+                {233,265,268,322},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
