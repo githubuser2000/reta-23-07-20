@@ -713,11 +713,6 @@ class Program:
             ),
             (
                 Program.ParametersMain.planet,
-                ("Ordnung_(12)","ordnung"),
-                {324},
-            ),
-            (
-                Program.ParametersMain.planet,
                 ("Meta-Systeme_(12)","metasysteme","metasystem","meta-systeme","meta-system"),
                 {232,288},
             ),
@@ -728,8 +723,8 @@ class Program:
             ),
             (
                 Program.ParametersMain.planet,
-                ("Gleichheit_Freiheit", "gleichheit", "freiheit"),
-                {132},
+                ("Gleichheit_Freiheit_Ordnung", "gleichheit", "freiheit", "ordnung"),
+                {132, 324},
             ),
             (
                 Program.ParametersMain.planet,
