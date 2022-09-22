@@ -709,12 +709,17 @@ class Program:
             (
                 Program.ParametersMain.planet,
                 ("Wirklichkeiten_(10)", "wirklichkeit", "wirklichkeiten"),
-                {233,265,268},
+                {233,265,268,322},
+            ),
+            (
+                Program.ParametersMain.planet,
+                ("Ordnung_(12)","ordnung")
+                {324},
             ),
             (
                 Program.ParametersMain.planet,
                 ("Meta-Systeme_(12)","metasysteme","metasystem","meta-systeme","meta-system"),
-                {232},
+                {232,288},
             ),
             (
                 Program.ParametersMain.planet,
@@ -1893,11 +1898,6 @@ class Program:
                 Program.ParametersMain.grundstrukturen,
                 ("Klassen_(20)","klasse","klassen"),
                 {241,289},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Meta-Systeme_(12)","metasysteme","metasystem","meta-systeme","meta-system","menge","mengen"),
-                {232,288},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
