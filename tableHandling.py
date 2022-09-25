@@ -101,8 +101,8 @@ class Tables:
         for i, v in enumerate(copy(value)):
             value[i] = (
                 v
-                if shellRowsAmount > v + 6 or shellRowsAmount == 0
-                else shellRowsAmount - 6
+                if shellRowsAmount > v + 7 or shellRowsAmount == 0
+                else shellRowsAmount - 7
             )
         self.getPrepare.breiten = value
         self.getOut.breiten = value
@@ -133,12 +133,12 @@ class Tables:
     def textWidth(self, value: int):
         value = (
             value
-            if (shellRowsAmount > value + 6 or shellRowsAmount == 0)
+            if (shellRowsAmount > value + 7 or shellRowsAmount == 0)
             and (
                 value != 0
                 or (self.bbcodeOutputYes or self.htmlOutputYes or self.getOut.oneTable)
             )
-            else shellRowsAmount - 6
+            else shellRowsAmount - 7
         )
         self.getPrepare.textWidth = value
         self.getOut.textWidth = value
@@ -516,7 +516,8 @@ class Tables:
                                     subCellIndexRightLeft, maxCellTextLen
                                 )
                                 sumWidths += subCellWidth + 1
-                                if sumWidths < shellRowsAmount or self.__oneTable:
+                                #if sumWidths < shellRowsAmount or self.__oneTable:
+                                if True:
                                     lastSubCellIndex = subCellIndexRightLeft
                                     try:
                                         entry = newTable[BigCellLineNumber][
@@ -1000,7 +1001,7 @@ class Tables:
                                         )
                                 elif self.tables.textWidth == 0 and (
                                     self.tables.getOut.oneTable
-                                    or self.tables.textWidth > shellRowsAmount - 6
+                                    or self.tables.textWidth > shellRowsAmount - 7
                                 ):
                                     table2[colNum][row] = [
                                         " | ".join(table2[colNum][row])
