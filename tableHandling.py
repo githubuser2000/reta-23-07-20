@@ -516,8 +516,8 @@ class Tables:
                                     subCellIndexRightLeft, maxCellTextLen
                                 )
                                 sumWidths += subCellWidth + 1
-                                #if sumWidths < shellRowsAmount or self.__oneTable:
-                                if True:
+                                #if True:
+                                if sumWidths < shellRowsAmount or self.__oneTable:
                                     lastSubCellIndex = subCellIndexRightLeft
                                     try:
                                         entry = newTable[BigCellLineNumber][
