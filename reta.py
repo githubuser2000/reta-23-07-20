@@ -3851,6 +3851,7 @@ class Program:
         )
         alxp("""Irgendeine Art Funktionalität, dass man sich durch die Grundstrukturen hangeln kann: Uni/Geist (15) > Uni / Geist (15) > Paradigmen (13) wie Egoismus > speziellere Paradigmen wie materieller Egoismus, etc.""")
         alxp("""rp Parameterangabe, dass loggen ja nein""")
+        alxp("""cli out: org mode , und für shell lib als pretty print für tabellen, schöner""")
 
     def combiTableWorkflow(
         self,
