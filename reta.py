@@ -1887,7 +1887,7 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 ("Stimmungen_Kombinationen_(14)","stimmung","stimmungen","kombination","kombinationen"),
-                {290, 296},
+                {290, 296,325,326,327},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
