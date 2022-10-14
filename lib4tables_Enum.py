@@ -17,13 +17,85 @@ class ST(Enum):
 
 
 tableTags = {
-    frozenset({ST.universum, ST.keinParaOdMetaP, ST.sternPolygon, ST.gleichfoermigesPolygon}): {14},
+    frozenset(
+        {ST.universum, ST.keinParaOdMetaP, ST.sternPolygon, ST.gleichfoermigesPolygon}
+    ): {14},
     frozenset({ST.sternPolygon, ST.galaxie, ST.universum, ST.keinParaOdMetaP}): {318},
-    frozenset({ST.gleichfoermigesPolygon, ST.galaxie, ST.universum, ST.keinParaOdMetaP}): {319},
-    frozenset({ST.gleichfoermigesPolygon, ST.sternPolygon, ST.keinParaOdMetaP}): {284, 285},
+    frozenset(
+        {ST.gleichfoermigesPolygon, ST.galaxie, ST.universum, ST.keinParaOdMetaP}
+    ): {319, 328},
+    frozenset({ST.gleichfoermigesPolygon, ST.sternPolygon, ST.keinParaOdMetaP}): {
+        284,
+        285,
+    },
     frozenset({ST.gleichfoermigesPolygon, ST.galaxie, ST.keinParaOdMetaP}): {272},
-    frozenset({ST.sternPolygon, ST.keinParaOdMetaP, ST.universum}): {132, 213, 107, 214,235,240,230,264, 314},
-    frozenset({ST.sternPolygon, ST.keinParaOdMetaP}): {232,233,234,243,249,250,251,252,253,254,255,256,260,261,262,263,265,266,267,268,269,270,271,272,276,281,282,283,286,287,288,289,290,293,294,295,296,298,299,300,301,302,305,306,309,310,311,312, 317, 321, 322, 323, 324, 325},
+    frozenset({ST.sternPolygon, ST.keinParaOdMetaP, ST.universum}): {
+        132,
+        213,
+        107,
+        214,
+        235,
+        240,
+        230,
+        264,
+        314,
+    },
+    frozenset({ST.sternPolygon, ST.keinParaOdMetaP}): {
+        232,
+        233,
+        234,
+        243,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255,
+        256,
+        260,
+        261,
+        262,
+        263,
+        265,
+        266,
+        267,
+        268,
+        269,
+        270,
+        271,
+        272,
+        276,
+        281,
+        282,
+        283,
+        286,
+        287,
+        288,
+        289,
+        290,
+        293,
+        294,
+        295,
+        296,
+        298,
+        299,
+        300,
+        301,
+        302,
+        305,
+        306,
+        309,
+        310,
+        311,
+        312,
+        317,
+        321,
+        322,
+        323,
+        324,
+        325,
+    },
     frozenset({ST.sternPolygon, ST.galaxie}): {
         0,
         1,
@@ -166,7 +238,7 @@ tableTags = {
         303,
         307,
         315,
-        316
+        316,
     },
     frozenset({ST.universum, ST.sternPolygon}): {
         4,
@@ -222,7 +294,7 @@ tableTags = {
         297,
         304,
         308,
-        320
+        320,
     },
     frozenset({ST.galaxie, ST.gleichfoermigesPolygon}): {
         16,
@@ -234,7 +306,7 @@ tableTags = {
         257,
         313,
         326,
-        237
+        237,
     },
     frozenset({ST.universum, ST.gleichfoermigesPolygon, ST.sternPolygon}): {
         20,
@@ -268,7 +340,16 @@ tableTags = {
         222,
         226,
     },
-    frozenset({ST.universum, ST.gleichfoermigesPolygon}): {37, 131, 197, 201, 203, 204, 231, 273},
+    frozenset({ST.universum, ST.gleichfoermigesPolygon}): {
+        37,
+        131,
+        197,
+        201,
+        203,
+        204,
+        231,
+        273,
+    },
     frozenset({ST.universum, ST.galaxie, ST.gleichfoermigesPolygon, ST.sternPolygon}): {
         216
     },
@@ -334,7 +415,7 @@ tableTags_kombiTable2 = {
         15,
         16,
         17,
-        18
+        18,
     },
 }
 
