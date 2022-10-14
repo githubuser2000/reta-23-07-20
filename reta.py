@@ -1,8 +1,8 @@
 #!/usr/bin/env pypy3
 # -*- coding: utf-8 -*-
-#import numpy as np
-import json
+# import numpy as np
 import html
+import json
 import platform
 import re
 from collections import OrderedDict, namedtuple
@@ -639,7 +639,7 @@ class Program:
             ("Multiplikationen", "multiplikationen"),
             ("Planet_(10_und_oder_12)", "planet"),
             ("Strukturen_1_bis_9", "strukturkleinerzehn"),
-            ("Grundstrukturen","grundstrukturen"),
+            ("Grundstrukturen", "grundstrukturen"),
             ("alles",),
         )
 
@@ -698,23 +698,29 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("Ansichten_(7)","ansichten"),
+                ("Ansichten_(7)", "ansichten"),
                 {240},
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("(politische)_Richtungen_(7)","richtungen","politische"),
+                ("(politische)_Richtungen_(7)", "richtungen", "politische"),
                 {235},
             ),
             (
                 Program.ParametersMain.planet,
                 ("Wirklichkeiten_(10)", "wirklichkeit", "wirklichkeiten"),
-                {233,265,268,322},
+                {233, 265, 268, 322},
             ),
             (
                 Program.ParametersMain.planet,
-                ("Meta-Systeme_(12)","metasysteme","metasystem","meta-systeme","meta-system"),
-                {232,288},
+                (
+                    "Meta-Systeme_(12)",
+                    "metasysteme",
+                    "metasystem",
+                    "meta-systeme",
+                    "meta-system",
+                ),
+                {232, 288},
             ),
             (
                 Program.ParametersMain.planet,
@@ -724,7 +730,7 @@ class Program:
             (
                 Program.ParametersMain.planet,
                 ("Gleichheit_Freiheit_Ordnung", "gleichheit", "freiheit", "ordnung"),
-                {132, 324},
+                {132, 324, 328},
             ),
             (
                 Program.ParametersMain.planet,
@@ -887,17 +893,17 @@ class Program:
             ),
             (
                 Program.ParametersMain.galaxie,
-                ("Hochzüchten", "hochzüchten", "hochzuechten"), 
+                ("Hochzüchten", "hochzüchten", "hochzuechten"),
                 {318, 319},
             ),
             (
                 Program.ParametersMain.universum,
-                ("sowas_wie_Kombinieren_Verknüpfen","kombinierenetc"),
+                ("sowas_wie_Kombinieren_Verknüpfen", "kombinierenetc"),
                 {320},
             ),
             (
                 Program.ParametersMain.universum,
-                ("Hochzüchten", "hochzüchten", "hochzuechten"), 
+                ("Hochzüchten", "hochzüchten", "hochzuechten"),
                 {318, 319},
             ),
             (
@@ -1006,7 +1012,14 @@ class Program:
                 ),
                 {92, 93, 315, 316},
             ),
-            (Program.ParametersMain.strukturgroesse, ("Licht","licht",), {20, 27, 313}),
+            (
+                Program.ParametersMain.strukturgroesse,
+                (
+                    "Licht",
+                    "licht",
+                ),
+                {20, 27, 313},
+            ),
             (
                 Program.ParametersMain.strukturgroesse,
                 (
@@ -1410,9 +1423,7 @@ class Program:
             (Program.ParametersMain.galaxie, ("Raum-Missionen", "weltall"), {218}),
             (
                 Program.ParametersMain.universum,
-                (
-                    "Geist_(15)", "geist"
-                ),
+                ("Geist_(15)", "geist"),
                 {242, 244},
             ),
             (
@@ -1465,7 +1476,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("Gesellschaftsschicht", "klasse","klassen"),
+                ("Gesellschaftsschicht", "klasse", "klassen"),
                 {241},
             ),
             (
@@ -1597,7 +1608,7 @@ class Program:
                     "gleichheit",
                     "freiheit",
                 ),
-                {132},
+                {132, 328},
             ),
             (
                 Program.ParametersMain.menschliches,
@@ -1610,7 +1621,7 @@ class Program:
                     "gefühl",
                     "gefuehl",
                 ),
-                {105, 230, 243,283,284,285,286, 305},
+                {105, 230, 243, 283, 284, 285, 286, 305},
             ),
             (
                 Program.ParametersMain.menschliches,
@@ -1695,126 +1706,119 @@ class Program:
                     "alien",
                     "existenzialien",
                     "universalien",
-                    "meta-paradigmen"
+                    "meta-paradigmen",
                 ),
-                {5,229,131}
+                {5, 229, 131},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                (
-                  "Attraktionen_(36)","attraktionen"
-                ),
+                ("Attraktionen_(36)", "attraktionen"),
                 {311},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
                 (
-                  "Optimierung_(10)", "optimierung", 
+                    "Optimierung_(10)",
+                    "optimierung",
                 ),
                 {310},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
                 (
-                   "Themen_(6)","themen","thema",
+                    "Themen_(6)",
+                    "themen",
+                    "thema",
                 ),
                 {309},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
                 (
-                    "Bedeutung_(10)","bedeutung",
+                    "Bedeutung_(10)",
+                    "bedeutung",
                 ),
                 {306},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
                 (
-                   "Reziprokes","reziproke","reziprokes",
+                    "Reziprokes",
+                    "reziproke",
+                    "reziprokes",
                 ),
-                {42, 131,  204, 231, 273, 257, 284, 285, 257, 204, 205, 281, 326, 327},
+                {42, 131, 204, 231, 273, 257, 284, 285, 257, 204, 205, 281, 326, 327},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                (
-                   "Achtung_(4)","achtung","achten"
-                ),
+                ("Achtung_(4)", "achtung", "achten"),
                 {270},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                (
-                   "Zeit_(4)_als_Wirklichkeit","zeit" 
-                ),
-                {266,267},
+                ("Zeit_(4)_als_Wirklichkeit", "zeit"),
+                {266, 267},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                (
-                    "Funktionen_und_Vorstellungen_(16)","funktionen","vorstellungen"
-                ),
+                ("Funktionen_und_Vorstellungen_(16)", "funktionen", "vorstellungen"),
                 {264},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                (
-                    "Absicht_16","absicht16"
-                ),
+                ("Absicht_16", "absicht16"),
                 {312},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                (
-                    "Absicht_17","absicht17"
-                ),
+                ("Absicht_17", "absicht17"),
                 {263},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                (
-                    "Absicht_6","absicht6"
-                ),
+                ("Absicht_6", "absicht6"),
                 {262},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                (
-                    "Absicht_7","absicht7"
-                ),
+                ("Absicht_7", "absicht7"),
                 {261},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                (
-                    "Regungen_(1)","regung","regungen"
-                ),
+                ("Regungen_(1)", "regung", "regungen"),
                 {282},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                (
-                    "Verhalten_(11)","verhalten"
-                ),
-                {301,302},
+                ("Verhalten_(11)", "verhalten"),
+                {301, 302},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
                 (
-                    "Energie_und_universelle_Eigenschaften_(30)","energie","universelleeigenschaften","lebensenergie"
+                    "Energie_und_universelle_Eigenschaften_(30)",
+                    "energie",
+                    "universelleeigenschaften",
+                    "lebensenergie",
                 ),
                 {287, 293},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
                 (
-                    "Garben_und_Verhalten_nachfühlen(31)","garben","verhaltenfuehlen","verhaltenfühlen",
+                    "Garben_und_Verhalten_nachfühlen(31)",
+                    "garben",
+                    "verhaltenfuehlen",
+                    "verhaltenfühlen",
                 ),
                 {295},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
                 (
-                    "nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)","nachvollziehen",
+                    "nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)",
+                    "nachvollziehen",
                 ),
                 {242, 244, 297},
                 set(),
@@ -1827,29 +1831,25 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                (
-                    "Empathie_(37)","empathie","mitgefuehl"
-                ),
+                ("Empathie_(37)", "empathie", "mitgefuehl"),
                 {294},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                (
-                    "Absicht_1/6","absicht1/6","absicht1pro6"
-                ),
+                ("Absicht_1/6", "absicht1/6", "absicht1pro6"),
                 {298},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                (
-                    "Absicht_10","absicht10"
-                ),
+                ("Absicht_10", "absicht10"),
                 {260},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
                 (
-                    "Geist_(15)", "geist", "bewusstsein",
+                    "Geist_(15)",
+                    "geist",
+                    "bewusstsein",
                 ),
                 {229, 231, 242, 244, 273, 297, 304},
             ),
@@ -1860,7 +1860,7 @@ class Program:
                     "reflex",
                     "reflexe",
                 ),
-                {256}
+                {256},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
@@ -1868,7 +1868,7 @@ class Program:
                     "Lust_(9)",
                     "lust",
                 ),
-                {255}
+                {255},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
@@ -1877,87 +1877,117 @@ class Program:
                     "paradigmen",
                     "absichten",
                 ),
-                {10, 42}
+                {10, 42},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Wirklichkeiten_Wahrheit_Wahrnehmung_(10)", "wirklichkeit", "wirklichkeiten","wahrheit","wahrnehmung"),
-                {233,265,268,322},
+                (
+                    "Wirklichkeiten_Wahrheit_Wahrnehmung_(10)",
+                    "wirklichkeit",
+                    "wirklichkeiten",
+                    "wahrheit",
+                    "wahrnehmung",
+                ),
+                {233, 265, 268, 322},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Stimmungen_Kombinationen_(14)","stimmung","stimmungen","kombination","kombinationen"),
-                {290, 296,325,326,327},
+                (
+                    "Stimmungen_Kombinationen_(14)",
+                    "stimmung",
+                    "stimmungen",
+                    "kombination",
+                    "kombinationen",
+                ),
+                {290, 296, 325, 326, 327},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Klassen_(20)","klasse","klassen"),
-                {241,289},
+                ("Klassen_(20)", "klasse", "klassen"),
+                {241, 289},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Meta-Systeme_(12)","metasysteme","metasystem","meta-systeme","meta-system","menge","mengen"),
-                {232,288},
+                (
+                    "Meta-Systeme_(12)",
+                    "metasysteme",
+                    "metasystem",
+                    "meta-systeme",
+                    "meta-system",
+                    "menge",
+                    "mengen",
+                ),
+                {232, 288},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Absicht_1/8","absicht1pro8","absicht1/8"),
+                ("Absicht_1/8", "absicht1pro8", "absicht1/8"),
                 {272},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Ziele_(19)","ziele","maxima","höhenvorstellungen"),
+                ("Ziele_(19)", "ziele", "maxima", "höhenvorstellungen"),
                 {271},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Konkreta_und_Focus_(2)","konkreta","focus","fokus"),
+                ("Konkreta_und_Focus_(2)", "konkreta", "focus", "fokus"),
                 {250, 269},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Gefühle_(7)","gefuehle","emotionen","gefühle"),
-                {243,283,284,285,286, 305},
+                ("Gefühle_(7)", "gefuehle", "emotionen", "gefühle"),
+                {243, 283, 284, 285, 286, 305},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Gedanken_sind_Positionen_(17)","positionen","gedanken"),
+                ("Gedanken_sind_Positionen_(17)", "positionen", "gedanken"),
                 {249, 317, 323},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Verbundenheiten_(18)","verbundenheiten"),
-                {252,299,300},
+                ("Verbundenheiten_(18)", "verbundenheiten"),
+                {252, 299, 300},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Liebe_(7)","liebe"),
+                ("Liebe_(7)", "liebe"),
                 {8, 9, 28, 208, 221},
                 {(121, 122)},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Koalitionen_(10)","koalitionen"),
+                ("Koalitionen_(10)", "koalitionen"),
                 {321},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Impulse_(5)","impulse"),
-                {251,253,257},
+                ("Impulse_(5)", "impulse"),
+                {251, 253, 257},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Triebe_und_Bedürfnisse_(6)","trieb","triebe","bedürfnis","bedürfnisse"),
+                (
+                    "Triebe_und_Bedürfnisse_(6)",
+                    "trieb",
+                    "triebe",
+                    "bedürfnis",
+                    "bedürfnisse",
+                ),
                 {254},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Wachbewusstsein_und_Kategorien_(1/15)","wachbewusstsein","kategorien"),
-                {204,205,281},
+                (
+                    "Wachbewusstsein_und_Kategorien_(1/15)",
+                    "wachbewusstsein",
+                    "kategorien",
+                ),
+                {204, 205, 281},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Zustände_(8)","zustaende","zustände"),
+                ("Zustände_(8)", "zustaende", "zustände"),
                 {234},
             ),
             (
@@ -1970,21 +2000,17 @@ class Program:
                     "absicht",
                     "absichten",
                 ),
-                {10, 18, 42, 167, 168, 149,  230}
+                {10, 18, 42, 167, 168, 149, 230},
             ),
             (
                 Program.ParametersMain.menschliches,
-                ("Gedanken_sind_Positionen_(17)","positionen","gedanken"),
+                ("Gedanken_sind_Positionen_(17)", "positionen", "gedanken"),
                 {249, 276},
             ),
             (
                 Program.ParametersMain.menschliches,
-                (
-                    "Bewusstsein_und_Wahrnehmung",
-                    "bewusstsein",
-                    "wahrnehmung"
-                ),
-                {265, 229, 231, 281, 304}
+                ("Bewusstsein_und_Wahrnehmung", "bewusstsein", "wahrnehmung"),
+                {265, 229, 231, 281, 304},
             ),
             (
                 Program.ParametersMain.menschliches,
@@ -1994,7 +2020,7 @@ class Program:
                     "ziele",
                     "erhalten",
                 ),
-                {11,257,251},
+                {11, 257, 251},
             ),
             (
                 Program.ParametersMain.menschliches,
@@ -2456,64 +2482,53 @@ class Program:
             (
                 Program.ParametersMain.konzept,
                 (
-                    "Dein_Recht_bekommen","rechte","recht","selbstgerecht",
+                    "Dein_Recht_bekommen",
+                    "rechte",
+                    "recht",
+                    "selbstgerecht",
                 ),
                 set(),
                 {(291, 292)},
             ),
             (
                 Program.ParametersMain.konzept,
-                (
-                    "familiebrauchen",
-                ),
+                ("familiebrauchen",),
                 set(),
                 {(279, 280)},
             ),
             (
                 Program.ParametersMain.konzept,
-                (
-                    "ego","bescheiden"
-                ),
+                ("ego", "bescheiden"),
                 set(),
                 {(277, 278)},
             ),
             (
                 Program.ParametersMain.konzept,
-                (
-                    "Selbstsucht_Ichsucht_etc","selbstsucht","ichsucht"
-                ),
+                ("Selbstsucht_Ichsucht_etc", "selbstsucht", "ichsucht"),
                 set(),
                 {(274, 275)},
             ),
             (
                 Program.ParametersMain.konzept,
-                (
-                "Wissenschaft_(22*n)","wissenschaft","forschen","einklinken"
-                ),
+                ("Wissenschaft_(22*n)", "wissenschaft", "forschen", "einklinken"),
                 set(),
                 {(258, 259)},
             ),
             (
                 Program.ParametersMain.konzept,
-                (
-                    "Kooperation_vs_Arsch", "arschloch", "kooperation","arsch"
-                ),
+                ("Kooperation_vs_Arsch", "arschloch", "kooperation", "arsch"),
                 set(),
                 {(245, 246)},
             ),
             (
                 Program.ParametersMain.konzept,
-                (
-                    "Liebe_usw","liebe","zuneigung"
-                ),
+                ("Liebe_usw", "liebe", "zuneigung"),
                 set(),
                 {(247, 248)},
             ),
             (
                 Program.ParametersMain.konzept,
-                (
-                    "Selbstlosigkeit_Ichlosigkeit_etc","selbstlos","ichlos"
-                ),
+                ("Selbstlosigkeit_Ichlosigkeit_etc", "selbstlos", "ichlos"),
                 set(),
                 {(238, 239)},
             ),
@@ -2521,7 +2536,9 @@ class Program:
                 Program.ParametersMain.konzept,
                 (
                     "variationsreich_eintönig",
-                    "eintönig","eintoenig","variationsreich"
+                    "eintönig",
+                    "eintoenig",
+                    "variationsreich",
                 ),
                 set(),
                 {(236, 237)},
@@ -2544,12 +2561,12 @@ class Program:
                 set(),
                 {(224, 225)},
             ),
-            #(
+            # (
             #    Program.ParametersMain.konzept,
             #    ("delegieren", "ansammlung"),
             #    set(),
             #    {(227, 228)},
-            #),
+            # ),
             (
                 Program.ParametersMain.konzept,
                 ("ehrlich vs höflich", "ehrlich", "höflich", "hoeflich"),
@@ -3055,7 +3072,7 @@ class Program:
                 #    "kombiniertewirtschaftssysteme",
                 # ),
                 17: ("Maschinen", "maschinen", "geräte", "geraete"),
-                18: ("Geist","geist")
+                18: ("Geist", "geist"),
             }
         )
 
@@ -3399,29 +3416,44 @@ class Program:
             place = "religion.csv"
         with open(place, mode="r", encoding="utf-8") as csv_file:
             self.relitable: list = []
-            #maxi: dict = {}
-            #tabneu = np.chararray((len(self.relitable) + 1, self.tables.hoechsteZeile[1024] + 3), itemsize=5000, unicode = True)
+            # maxi: dict = {}
+            # tabneu = np.chararray((len(self.relitable) + 1, self.tables.hoechsteZeile[1024] + 3), itemsize=5000, unicode = True)
             # self.relitable = np.chararray((len(self.relitable) + 1, self.tables.hoechsteZeile[1024] + 3), itemsize=5000, unicode = True)
             for i, col in enumerate(csv.reader(csv_file, delimiter=";")):
 
                 if "--art=bbcode" in self.argv:
-                        col = [json.loads(ccc[1:-1])["bbcode"] if ccc[:2] == "|{" and ccc[-2:] == "}|" else ccc for ccc in col]
+                    col = [
+                        json.loads(ccc[1:-1])["bbcode"]
+                        if ccc[:2] == "|{" and ccc[-2:] == "}|"
+                        else ccc
+                        for ccc in col
+                    ]
                 elif "--art=html" in self.argv:
-                        col = [json.loads(ccc[1:-1])["html"] if ccc[:2] == "|{" and ccc[-2:] == "}|" else html.escape(ccc,quote=True) for ccc in col]
+                    col = [
+                        json.loads(ccc[1:-1])["html"]
+                        if ccc[:2] == "|{" and ccc[-2:] == "}|"
+                        else html.escape(ccc, quote=True)
+                        for ccc in col
+                    ]
                 else:
-                        col = [json.loads(ccc[1:-1])[""] if ccc[:2] == "|{" and ccc[-2:] == "}|" else ccc for ccc in col]
-                #try:
+                    col = [
+                        json.loads(ccc[1:-1])[""]
+                        if ccc[:2] == "|{" and ccc[-2:] == "}|"
+                        else ccc
+                        for ccc in col
+                    ]
+                # try:
                 #    maxi = { u : max(len(c_),maxi[u]) for u,c_ in enumerate(col)}
-                #except:
+                # except:
                 #    maxi = { u : len(c_) for u,c_ in enumerate(col)}
                 self.relitable += [col]
-                #self.relitable[i] = np.array(col, dtype=str)
+                # self.relitable[i] = np.array(col, dtype=str)
                 if i == 0:
                     self.RowsLen = len(col)
 
-            #avg = maxi.values()
-            #avg = sum(avg) / len(avg)
-            #x("maxI",avg)
+            # avg = maxi.values()
+            # avg = sum(avg) / len(avg)
+            # x("maxI",avg)
             for egal in range(
                 len(self.relitable) + 1, self.tables.hoechsteZeile[1024] + 2
             ):
@@ -3846,12 +3878,15 @@ class Program:
             """py datei erstellen, die dafür da ist datenstrukturen für die js zu bilden, die für die Zeilenangelegenheiten da sind, so dass die js die nicht jedes Mal berechnen muss."""
         )
         alxp(
-
             """Ich müsste wirklich noch total überall schauen und zu jedem Punkt im Forum zu gleichförmiges-Polygon-Religionen"""
         )
-        alxp("""Irgendeine Art Funktionalität, dass man sich durch die Grundstrukturen hangeln kann: Uni/Geist (15) > Uni / Geist (15) > Paradigmen (13) wie Egoismus > speziellere Paradigmen wie materieller Egoismus, etc.""")
+        alxp(
+            """Irgendeine Art Funktionalität, dass man sich durch die Grundstrukturen hangeln kann: Uni/Geist (15) > Uni / Geist (15) > Paradigmen (13) wie Egoismus > speziellere Paradigmen wie materieller Egoismus, etc."""
+        )
         alxp("""rp Parameterangabe, dass loggen ja nein""")
-        alxp("""cli out: org mode , und für shell lib als pretty print für tabellen, schöner""")
+        alxp(
+            """cli out: org mode , und für shell lib als pretty print für tabellen, schöner"""
+        )
 
     def combiTableWorkflow(
         self,
