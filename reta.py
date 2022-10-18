@@ -1712,6 +1712,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
+                ("Reziproke_Prinzipien(1/8)", "reziprokeprinzipien"),
+                {329},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
                 ("Attraktionen_(36)", "attraktionen"),
                 {311},
             ),
