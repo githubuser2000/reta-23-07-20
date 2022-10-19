@@ -28,7 +28,7 @@ tableTags = {
         284,
         285,
     },
-    frozenset({ST.gleichfoermigesPolygon, ST.galaxie, ST.keinParaOdMetaP}): {272},
+    frozenset({ST.gleichfoermigesPolygon, ST.galaxie, ST.keinParaOdMetaP}): {272, 330},
     frozenset({ST.sternPolygon, ST.keinParaOdMetaP, ST.universum}): {
         132,
         213,
