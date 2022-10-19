@@ -1673,7 +1673,7 @@ class Program:
                     "liebe",
                     "ethik",
                 ),
-                {8, 9, 28, 208},
+                {8, 9, 28, 208, 330},
                 {(121, 122)},
             ),
             (
@@ -1957,7 +1957,7 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 ("Liebe_(7)", "liebe"),
-                {8, 9, 28, 208, 221},
+                {8, 9, 28, 208, 221, 330},
                 {(121, 122)},
             ),
             (
