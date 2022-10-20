@@ -730,7 +730,7 @@ class Program:
             (
                 Program.ParametersMain.planet,
                 ("Gleichheit_Freiheit_Ordnung", "gleichheit", "freiheit", "ordnung"),
-                {132, 324, 328},
+                {132, 324, 328, 79, 80, 331},
             ),
             (
                 Program.ParametersMain.planet,
@@ -1459,7 +1459,7 @@ class Program:
                     "alternierend",
                     "zweierstruktur",
                 ),
-                {78, 79, 80},
+                {78, 79, 80, 331},
             ),
             (
                 Program.ParametersMain.operationen,
