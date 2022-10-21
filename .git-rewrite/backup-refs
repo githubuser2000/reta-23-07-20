@@ -1,7 +1,0 @@
-43a6786044a245ef064e3700520d440676a727f7 commit	refs/heads/master
-e75045b65d4dabbd7fe0d76ff4e964dab45282be commit	refs/original/refs/heads/master
-e75045b65d4dabbd7fe0d76ff4e964dab45282be commit	refs/original/refs/remotes/origin/master
-c28ba8fb6f0fe3d74796a9d1adfb0565ce5b6add commit	refs/original/refs/stash
-4b8d5a05feb8350be2a7da225e0c02ce88ea84d1 commit	refs/remotes/origin/HEAD
-4b8d5a05feb8350be2a7da225e0c02ce88ea84d1 commit	refs/remotes/origin/master
-a73d44bd17d957518f0b06ff86f15034bc12c28a commit	refs/stash
