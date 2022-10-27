@@ -98,6 +98,7 @@ wahl15 = {
     "_18_7": "liebe",
     "_18_10": "koalitionen",
     "_1pro8": "reziprokeprinzipien",
+    "_1pro5": "bestrebungen",
 }
 
 befehle = ["15" + a for a in wahl15.keys()] + [
