@@ -1712,7 +1712,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Bestrebungen (1/5)", "bestrebung", "bestrebungen"),
+                ("Bestrebungen(1/5)", "bestrebung", "bestrebungen"),
                 {332},
             ),
             (
