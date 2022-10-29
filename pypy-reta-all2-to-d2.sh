@@ -13,7 +13,8 @@ fi
 #$geschafft && cp ~/religionen.html ~/myRepos/reta/religionen.html 
 if [ "$1" == 'htmld2' ] || [ "$2" == 'htmld2' ] || [ "$3" == 'htmld2' ] || [ "$4" == 'htmld2' ]; then
 	if $geschafft; then
-		cd ~;tar -c religionen.html | plzip -1 - | ssh root@d2 'plzip -d - | tar --overwrite -xf - -C /media/2TB/data/www/forum/' && echo html gesendet || echo html konnte nicht gesendet werden
+		cd ~;tar -c religionen.html | plzip -1 - | ssh root@d2 'plzip -d - | tar --overwrite -xf - -C /media/2TB/data/www/forum/' && echo html zu d2 gesendet || echo html konnte nicht zu d2 gesendet werden
+		tar -c religionen.html | ssh root@ppp 'tar --overwrite -xf - -C /srv/http/forum' && echo html zu ppp gesendet || echo html konnte nicht zu ppp gesendet werden
 		cd -
 	fi
 fi
@@ -28,6 +29,7 @@ if [ "$1" == 'tar' ] || [ "$2" == 'tar' ] || [ "$3" == 'tar' ] || [ "$4" == 'tar
 	tar -c {*.{csv,txt,py,js},reta,pypy-reta-all2-to-d2.sh,pypy-reta-all2.sh} > /home/alex/myRepos/religions-tabelle-releasses/reta.tar
 	cd -
 	cd /home/alex/myRepos/religions-tabelle-releasses/; tar -c reta.tar | plzip -1 - | ssh root@d2 'plzip -d - | tar --overwrite -xf - -C /media/2TB/data/www/forum/'
+	cd /home/alex/myRepos/religions-tabelle-releasses/; tar -c reta.tar | ssh root@ppp 'tar --overwrite -xf - -C /srv/http/forum'
 	git add -A;git commit -m "$(date)";git push
 	cd -
 fi
