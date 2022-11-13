@@ -65,7 +65,7 @@ wahl15 = {
     "_7": "gefuehle",
     "_8": "zustaende",
     "_10": "wirklichkeiten,wahrheit,wahrnehmung",
-    "_12": "metasysteme",
+    "_12": "metasysteme,ordnenundfiltern",
     "_13": "paradigmen",
     "_17": "positionen",
     "_18": "verbundenheiten",
