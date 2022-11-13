@@ -730,7 +730,7 @@ class Program:
             (
                 Program.ParametersMain.planet,
                 ("Gleichheit_Freiheit_Ordnung", "gleichheit", "freiheit", "ordnung"),
-                {132, 324, 328, 79, 80, 331},
+                {132, 324, 328, 79, 80, 331, 335},
             ),
             (
                 Program.ParametersMain.planet,
@@ -1608,7 +1608,7 @@ class Program:
                     "gleichheit",
                     "freiheit",
                 ),
-                {132, 328},
+                {132, 328, 331, 335},
             ),
             (
                 Program.ParametersMain.menschliches,
@@ -1778,6 +1778,7 @@ class Program:
                     331,
                     332,
                     334,
+                    335,
                 },
             ),
             (
@@ -1936,6 +1937,16 @@ class Program:
                 Program.ParametersMain.grundstrukturen,
                 ("Klassen_(20)", "klasse", "klassen"),
                 {241, 289},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                (
+                    "Ordnung_und_Filterung_12_und_1pro12",
+                    "ordnen",
+                    "ordnenundfiltern",
+                    "filtern",
+                ),
+                {132, 328, 331, 335},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
