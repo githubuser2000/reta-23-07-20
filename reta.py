@@ -1723,12 +1723,12 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("relativer Zeit-Betrag (15_10_4_18_6)", "relativerzeitbetrag"),
+                ("relativer_Zeit-Betrag_(15_10_4_18_6)", "relativerzeitbetrag"),
                 {339},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Zahlenvergleich (15_18_6)", "zahlenvergleich"),
+                ("Zahlenvergleich_(15_18_6)", "zahlenvergleich"),
                 {340},
             ),
             (
@@ -1800,6 +1800,7 @@ class Program:
                     332,
                     334,
                     335,
+                    338,
                 },
             ),
             (
