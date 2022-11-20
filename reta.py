@@ -2029,8 +2029,8 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Zustände_(8)", "zustaende", "zustände"),
-                {234},
+                ("Modus_und_Sein_(8)", "zustaende", "zustände", "modus", "modi", "sein"),
+                {234, 337},
             ),
             (
                 Program.ParametersMain.menschliches,
