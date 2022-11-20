@@ -1712,6 +1712,17 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
+                (
+                    "Bedingung_und_Auslöser_(1/3)",
+                    "bedingung",
+                    "bedingungen",
+                    "auslöser",
+                    "ausloeser",
+                ),
+                {338},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
                 ("Bestrebungen(1/5)", "bestrebung", "bestrebungen"),
                 {332},
             ),
@@ -2029,7 +2040,14 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Modus_und_Sein_(8)", "zustaende", "zustände", "modus", "modi", "sein"),
+                (
+                    "Modus_und_Sein_(8)",
+                    "zustaende",
+                    "zustände",
+                    "modus",
+                    "modi",
+                    "sein",
+                ),
                 {234, 337},
             ),
             (
