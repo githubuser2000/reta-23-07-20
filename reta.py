@@ -1989,7 +1989,7 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 ("Verbundenheiten_(18)", "verbundenheiten"),
-                {252, 299, 300},
+                {252, 299, 300, 336},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
