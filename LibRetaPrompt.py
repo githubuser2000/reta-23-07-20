@@ -100,6 +100,8 @@ wahl15 = {
     "_1pro8": "reziprokeprinzipien",
     "_1pro5": "bestrebungen",
     "_1pro3": "bedingung",
+    "_10_4_18_6": "relativerzeitbetrag",
+    "_18_6": "zahlenvergleich",
 }
 
 befehle = ["15" + a for a in wahl15.keys()] + [

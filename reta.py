@@ -1723,6 +1723,16 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
+                ("relativer Zeit-Betrag (15_10_4_18_6)", "relativerzeitbetrag"),
+                {339},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                ("Zahlenvergleich (15_18_6)", "zahlenvergleich"),
+                {340},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
                 ("Bestrebungen(1/5)", "bestrebung", "bestrebungen"),
                 {332},
             ),
