@@ -2,7 +2,10 @@
 :ID:       b9a1580b-5dbb-4e54-b3d7-6fa53c7008c2
 :END:
 #+title: ReTa und ReTaPrompt readme in Emacs Org Mode - Entwickler-Notizen
-[[/symbole.png]]
+
+#+CAPTION: R10-Symbole
+#+NAME:   fig:R10-Symbole
+[[./symbole.png]]
 ** viele Programmier-Notizen aus altem Selfblog zusammen-gefasst :programmieren:dev:development:reta:features:bugs:csv:debugging:refactoring:@Programmieren:
 :PROPERTIES:
 :CLOSED: [2022-11-17T18:20]
