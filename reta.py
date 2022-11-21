@@ -3442,12 +3442,13 @@ class Program:
 
     def helpPage(self):
         global folder
+        readMe = "readme.bbcode"
         if "Brython" not in sys.version.split():
             place = os.path.join(
-                os.getcwd(), os.path.dirname(__file__), os.path.basename("./readme.txt")
+                os.getcwd(), os.path.dirname(__file__), os.path.basename("./" + readMe)
             )
         else:
-            place = "readme.txt"
+            place = readMe
         with open(place, encoding="utf-8") as f:
             read_data = f.read()
         parser.REPLACE_COSMETIC = ()
