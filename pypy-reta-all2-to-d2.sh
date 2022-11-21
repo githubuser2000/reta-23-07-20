@@ -21,12 +21,12 @@ fi
 if [ "$1" == 'tar' ] || [ "$2" == 'tar' ] || [ "$3" == 'tar' ] || [ "$4" == 'tar' ]; then
 	echo sende auch tar
 	cd /home/alex/myRepos/reta
-	cp -ax {*.{csv,txt,py,js,bbcode},head*.alx,foot*.alx,reta,rpl,rp,pypy-reta-all2-to-d2.sh,pypy-reta-all2.sh} /home/alex/myRepos/religions-tabelle-releasses/31
+	cp -ax {*.{csv,txt,py,js,bbcode,org},head*.alx,foot*.alx,reta,rpl,rp,pypy-reta-all2-to-d2.sh,pypy-reta-all2.sh,math,modulo,prim,prim24,generate_html,out1csv.sh} /home/alex/myRepos/religions-tabelle-releasses/31
 	cp -ax pypy-reta-all2-to-d2.sh /home/alex/myRepos/religions-tabelle-releasses/31
 	cp -ax pypy-reta-all2.sh /home/alex/myRepos/religions-tabelle-releasses/31
 	cd -
 	cd /home/alex/myRepos/religions-tabelle-releasses/31
-	tar -c {*.{csv,txt,py,js,bbcode},head*.alx,foot*.alx,reta,rpl,rp,pypy-reta-all2-to-d2.sh,pypy-reta-all2.sh} > /home/alex/myRepos/religions-tabelle-releasses/reta.tar
+	tar -c {*.{csv,txt,py,js,bbcode,org},head*.alx,foot*.alx,reta,rpl,rp,pypy-reta-all2-to-d2.sh,pypy-reta-all2.sh,math,modulo,prim,prim24,generate_html,out1csv.sh}  > /home/alex/myRepos/religions-tabelle-releasses/reta.tar
 	cd -
 	cd /home/alex/myRepos/religions-tabelle-releasses/; tar -c reta.tar | plzip -1 - | ssh root@d2 'plzip -d - | tar --overwrite -xf - -C /media/2TB/data/www/forum/'
 	cd /home/alex/myRepos/religions-tabelle-releasses/; tar -c reta.tar | ssh root@ppp 'tar --overwrite -xf - -C /srv/http/forum'
