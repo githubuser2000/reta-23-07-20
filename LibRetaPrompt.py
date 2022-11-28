@@ -152,6 +152,7 @@ befehle = ["15" + a for a in wahl15.keys()] + [
     "mulpri",
     "b",
     "python",
+    "w",
 ]
 
 befehle2: set = set(befehle) - {"reta"}
