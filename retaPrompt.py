@@ -186,9 +186,9 @@ while text not in befehleBeenden:
                     [strInt.isdecimal() or len(strInt) == 0 for strInt in strA]
                     for strA in s_4
                 ] == [[True for strInt in strA] for strA in s_4]:
-                    buchst = set(s_[:n]) & {"a", "t", "v", "u", "p", "r", "U", "w"}
+                    buchst = set(s_[:n]) & {"a", "t", "v", "u", "p", "r", "w"}
                     if n == len(buchst):
-                        buchst2: list = [a if a != "U" else "mulpri" for a in buchst]
+                        buchst2: list = [a if a != "p" else "mulpri" for a in buchst]
                         textDazu += buchst2 + [str(s_[n:])]
                     if len(stext) == 1 and len(buchst) == 0:
                         textDazu += ["mulpri", "a", "t", "w"]
@@ -271,7 +271,7 @@ while text not in befehleBeenden:
         # except:
         #    pass
 
-    if "mulpri" in stext:
+    if "mulpri" in stext or "p" in stext:
         stext += ["multis", "prim"]
 
     if "--art=bbcode" in stext and "reta" == stext[0]:
@@ -457,9 +457,7 @@ while text not in befehleBeenden:
             warBefehl = True
             externCommand("prim24", c)
 
-        if (len({"prim", "primfaktorzerlegung"} & set(stext)) > 0) or (
-            "p" in stext and "abc" not in stext and "abcd" not in stext
-        ):
+        if len({"prim", "primfaktorzerlegung"} & set(stext)) > 0:
             warBefehl = True
             externCommand("prim", c)
 
