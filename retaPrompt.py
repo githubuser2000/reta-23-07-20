@@ -10,20 +10,22 @@ from copy import copy, deepcopy
 from itertools import zip_longest
 from typing import Optional
 
-from center import cliout
-from center import BereichToNumbers
-# import reta
-from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
-                       befehle2, hauptForNeben, kombiMainParas, mainParas,
-                       notParameterValues, reta, retaProgram, spalten,
-                       spaltenDict, zeilenParas)
 from prompt_toolkit import PromptSession, print_formatted_text, prompt
 # from prompt_toolkit.completion import Completer, Completion, WordCompleter
 from prompt_toolkit.completion import Completer, Completion
 from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
-from word_completerAlx import WordCompleter
+
+from center import BereichToNumbers, cliout
+from lib4tables import multiples
 from LibRetaPrompt import wahl15
+# import reta
+from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
+                       befehle2, hauptForNeben, kombiMainParas, mainParas,
+                       notParameterValues, reta, retaProgram, spalten,
+                       spaltenDict, zeilenParas)
+from word_completerAlx import WordCompleter
+
 
 def nummernStringzuNummern(text: str) -> str:
     def toNummernSet(text: list) -> set:
@@ -41,18 +43,23 @@ def nummernStringzuNummern(text: str) -> str:
             results += [[int(insideKomma[0])]]
         elif len(insideKomma) == 2:
             if insideKomma[0].isdecimal() and insideKomma[1].isdecimal():
-                raeinsch = range(int(insideKomma[0]),int(insideKomma[1])+1)
+                raeinsch = range(int(insideKomma[0]), int(insideKomma[1]) + 1)
                 if len(raeinsch) > 0:
-                    results += [range(int(insideKomma[0]),int(insideKomma[1])+1)]
+                    results += [range(int(insideKomma[0]), int(insideKomma[1]) + 1)]
             if insideKomma[0] == "" and insideKomma[1].isdecimal():
                 abzug += [[insideKomma[1]]]
         elif len(insideKomma) == 3:
-            if insideKomma[0] == "" and insideKomma[1].isdecimal() and insideKomma[2].isdecimal():
-                abzug += [range(int(insideKomma[1]),int(insideKomma[2])+1)]
+            if (
+                insideKomma[0] == ""
+                and insideKomma[1].isdecimal()
+                and insideKomma[2].isdecimal()
+            ):
+                abzug += [range(int(insideKomma[1]), int(insideKomma[2]) + 1)]
         else:
             return text
 
-    return ",".join(map(str ,toNummernSet(results) - toNummernSet(abzug)))
+    return ",".join(map(str, toNummernSet(results) - toNummernSet(abzug)))
+
 
 if platform.system() != "Windows":
     try:
@@ -66,19 +73,22 @@ else:
     ColumnsRowsAmount, shellRowsAmountStr = SiZe.columns, SiZe.lines
 
 
-
 def newSession(history=False):
     if history:
-        return PromptSession(history=FileHistory(os.path.expanduser("~") + os.sep + ".ReTaPromptHistory"))
+        return PromptSession(
+            history=FileHistory(os.path.expanduser("~") + os.sep + ".ReTaPromptHistory")
+        )
     else:
         return PromptSession()
+
 
 def returnOnlyParasAsList(textList: str):
     liste = []
     for t in textList:
-        if len(t) > 0 and t[0]=='-':
+        if len(t) > 0 and t[0] == "-":
             liste += [t]
     return liste
+
 
 pp1 = pprint.PrettyPrinter(indent=2)
 pp = pp1.pprint
@@ -138,7 +148,9 @@ while text not in befehleBeenden:
             wrap_lines=True,
             complete_while_typing=True,
             vi_mode=True if "-vi" in sys.argv else False,
-            style=Style.from_dict({"bla": "#0000ff bg:#ffff00"}) if loggingSwitch else Style.from_dict({"bla": "#0000ff bg:#ff0000"}),
+            style=Style.from_dict({"bla": "#0000ff bg:#ffff00"})
+            if loggingSwitch
+            else Style.from_dict({"bla": "#0000ff bg:#ff0000"}),
         )
     except KeyboardInterrupt:
         sys.exit()
@@ -174,12 +186,12 @@ while text not in befehleBeenden:
                     [strInt.isdecimal() or len(strInt) == 0 for strInt in strA]
                     for strA in s_4
                 ] == [[True for strInt in strA] for strA in s_4]:
-                    buchst = set(s_[:n]) & {"a", "t", "v", "u", "p", "r", "U"}
+                    buchst = set(s_[:n]) & {"a", "t", "v", "u", "p", "r", "U", "w"}
                     if n == len(buchst):
                         buchst2: list = [a if a != "U" else "mulpri" for a in buchst]
                         textDazu += buchst2 + [str(s_[n:])]
                     if len(stext) == 1 and len(buchst) == 0:
-                        textDazu += ["mulpri", "a", "t"]
+                        textDazu += ["mulpri", "a", "t", "w"]
 
             if len(textDazu) > 0:
                 stext2 += textDazu
@@ -213,10 +225,17 @@ while text not in befehleBeenden:
         for g, a in enumerate(stext):
 
             innerKomma3 = []
-            innerKomma4 = a.split(",");
+            innerKomma4 = a.split(",")
             for innerKomma2 in innerKomma4:
                 if innerKomma2.isdecimal():
                     innerKomma3 += [innerKomma2]
+            if "w" in stext:
+                innerKomma5: set[int] = set()
+                for each1 in innerKomma3:
+                    for each2 in set(multiples(int(each1))):
+                        innerKomma5 |= set(each2)
+                innerKomma5 -= {1}
+                innerKomma3 = [str(each2) for each2 in innerKomma5]
 
             for innerKomma in innerKomma3:
                 innerKommaList = innerKomma.split("-")
@@ -239,21 +258,21 @@ while text not in befehleBeenden:
                 if [bruch1.isdecimal() for bruch1 in bruch] == [True, True]:
                     brueche += [bruch]
             if "b" in stext:
-                brueche += [[bruch[1],bruch[0]] for bruch in brueche]
+                brueche += [[bruch[1], bruch[0]] for bruch in brueche]
 
             # d = re.split(",|-", a)
             # if a.isnumeric() or [b.isnumeric() for b in d] == [True] * len(d):
             # b += 1
             # c = a
-        #try:
+        # try:
         #    print(str(c))
         #    print("--")
         #    print(str(brueche))
-        #except:
+        # except:
         #    pass
 
     if "mulpri" in stext:
-        stext += ["multis","prim"]
+        stext += ["multis", "prim"]
 
     if "--art=bbcode" in stext and "reta" == stext[0]:
         if "--nocolor" in stext:
@@ -297,10 +316,15 @@ while text not in befehleBeenden:
         print(
             "Eine Zahleninformation ist entweder eine natürliche Zahl z.B. 4, oder ein Zahlenbereich z.B. 3-6 oder eines oder beides dieser Zahleninformationen mehrmals mit Kommas getrennt z.B. 3,6-9,11. Hinter jedem Komma oder vor einer Zahl oder einem Zahlenbereich kann auch ein Minus stehen, was wieder Zahlen entfernt z.B. 1-10,-2,-5-9 entspricht 1,3,4,10."
         )
-        print("Der Befehl um Absichten, d.h. Paradigmen, auszugeben und Meta-Paradigmen bzw. Strukturalien bzw. Transzendentalien kann auch Brüche akzeptieren, z.B. Befehl 'a u 1/2,3/4' ")
+        print(
+            "Der Befehl um Absichten, d.h. Paradigmen, auszugeben und Meta-Paradigmen bzw. Strukturalien bzw. Transzendentalien kann auch Brüche akzeptieren, z.B. Befehl 'a u 1/2,3/4' "
+        )
         print("Der Befehl 'befehle' gibt die Liste der möglichen Befehle aus.")
 
-    bedingungZahl, bedingungBrueche = list(EineZahlenFolgeJa.values()).count(True) == 1, len(brueche) > 0
+    bedingungZahl, bedingungBrueche = (
+        list(EineZahlenFolgeJa.values()).count(True) == 1,
+        len(brueche) > 0,
+    )
     if bedingung:
         warBefehl = True
         import reta
@@ -330,38 +354,37 @@ while text not in befehleBeenden:
 
             if len(c) > 0:
                 kette = [
-                        "reta",
-                        "-zeilen",
-                        zeiln1,
-                        zeiln2,
-                        "-spalten",
-                        "--menschliches=motivation",
-                        "--breite=" + str(int(shellRowsAmountStr) - 2),
-                        "-ausgabe",
-                        "--spaltenreihenfolgeundnurdiese=1",
-
+                    "reta",
+                    "-zeilen",
+                    zeiln1,
+                    zeiln2,
+                    "-spalten",
+                    "--menschliches=motivation",
+                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                    "-ausgabe",
+                    "--spaltenreihenfolgeundnurdiese=1",
                 ] + returnOnlyParasAsList(stext)
                 reta.Program(
-                        kette,
-                        int(shellRowsAmountStr),
+                    kette,
+                    int(shellRowsAmountStr),
                 )
             for bruch in brueche:
                 import reta
 
                 kette = [
-                        "reta",
-                        "-zeilen",
-                        "--vorhervonausschnitt="+bruch[0],
-                        "-spalten",
-                        "--gebrochengalaxie="+bruch[1],
-                        "--breite=" + str(int(shellRowsAmountStr) - 2),
-                        "-kombination",
-                        "-ausgabe",
-                        "--spaltenreihenfolgeundnurdiese=1",
+                    "reta",
+                    "-zeilen",
+                    "--vorhervonausschnitt=" + bruch[0],
+                    "-spalten",
+                    "--gebrochengalaxie=" + bruch[1],
+                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                    "-kombination",
+                    "-ausgabe",
+                    "--spaltenreihenfolgeundnurdiese=1",
                 ] + returnOnlyParasAsList(stext)
                 reta.Program(
-                        kette,
-                        int(shellRowsAmountStr),
+                    kette,
+                    int(shellRowsAmountStr),
                 )
 
         if len({"universum"} & set(stext)) > 0 or (
@@ -372,40 +395,39 @@ while text not in befehleBeenden:
                 import reta
 
                 kette = [
-                        "reta",
-                        "-zeilen",
-                        zeiln1,
-                        zeiln2,
-                        "-spalten",
-                        "--universum=transzendentalien,komplexitaet,ontologie",
-                        "--breite=" + str(int(shellRowsAmountStr) - 2),
-                        "-ausgabe",
-                        "--spaltenreihenfolgeundnurdiese=1,3,4",
+                    "reta",
+                    "-zeilen",
+                    zeiln1,
+                    zeiln2,
+                    "-spalten",
+                    "--universum=transzendentalien,komplexitaet,ontologie",
+                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                    "-ausgabe",
+                    "--spaltenreihenfolgeundnurdiese=1,3,4",
                 ] + returnOnlyParasAsList(stext)
                 reta.Program(
-                        kette,
-                        int(shellRowsAmountStr),
+                    kette,
+                    int(shellRowsAmountStr),
                 )
 
             for bruch in brueche:
                 import reta
 
                 kette = [
-                        "reta",
-                        "-zeilen",
-                        "--vorhervonausschnitt="+bruch[0],
-                        "-spalten",
-                        "--gebrochenuniversum="+bruch[1],
-                        "--breite=" + str(int(shellRowsAmountStr) - 2),
-                        "-kombination",
-                        "-ausgabe",
-                        "--spaltenreihenfolgeundnurdiese=1",
+                    "reta",
+                    "-zeilen",
+                    "--vorhervonausschnitt=" + bruch[0],
+                    "-spalten",
+                    "--gebrochenuniversum=" + bruch[1],
+                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                    "-kombination",
+                    "-ausgabe",
+                    "--spaltenreihenfolgeundnurdiese=1",
                 ] + returnOnlyParasAsList(stext)
                 reta.Program(
-                        kette,
-                        int(shellRowsAmountStr),
+                    kette,
+                    int(shellRowsAmountStr),
                 )
-
 
     if bedingungZahl:
 
@@ -425,7 +447,7 @@ while text not in befehleBeenden:
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=2",
-                ] + returnOnlyParasAsList(stext)
+            ] + returnOnlyParasAsList(stext)
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -459,7 +481,6 @@ while text not in befehleBeenden:
             # kette,
             # int(shellRowsAmountStr),
             # )
-
             # externCommand("multis", c)
             listeStrWerte = c.split(",")
             try:
@@ -485,7 +506,7 @@ while text not in befehleBeenden:
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=3,4,5,6",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
-                ] + returnOnlyParasAsList(stext)
+            ] + returnOnlyParasAsList(stext)
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -503,7 +524,7 @@ while text not in befehleBeenden:
                 "-spalten",
                 "--procontra=pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
-                ] + returnOnlyParasAsList(stext)
+            ] + returnOnlyParasAsList(stext)
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -525,7 +546,7 @@ while text not in befehleBeenden:
                 "--alles",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
                 "-ausgabe",
-                ] + returnOnlyParasAsList(stext)
+            ] + returnOnlyParasAsList(stext)
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -543,13 +564,11 @@ while text not in befehleBeenden:
                 "-spalten",
                 "--bedeutung=primzahlkreuz",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
-                ] + returnOnlyParasAsList(stext)
+            ] + returnOnlyParasAsList(stext)
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
             )
-
-
 
         if (len({"richtung"} & set(stext)) > 0) or (
             "r" in stext and "abc" not in stext and "abcd" not in stext
@@ -565,13 +584,18 @@ while text not in befehleBeenden:
                 "-spalten",
                 "--primzahlwirkung=Galaxieabsicht",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
-                ] + returnOnlyParasAsList(stext)
+            ] + returnOnlyParasAsList(stext)
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
             )
 
-        if len(stext) > 0 and any([token[:3] == "15_" for token in stext]) and "abc" not in stext and "abcd" not in stext:
+        if (
+            len(stext) > 0
+            and any([token[:3] == "15_" for token in stext])
+            and "abc" not in stext
+            and "abcd" not in stext
+        ):
             warBefehl = True
             import reta
 
@@ -587,7 +611,7 @@ while text not in befehleBeenden:
                     zeiln1,
                     zeiln2,
                     "-spalten",
-                    "--grundstrukturen="+ grundstruk,
+                    "--grundstrukturen=" + grundstruk,
                     "--breite=" + str(int(shellRowsAmountStr) - 2),
                 ] + returnOnlyParasAsList(stext)
                 reta.Program(
