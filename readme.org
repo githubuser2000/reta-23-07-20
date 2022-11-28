@@ -16,6 +16,7 @@
 :EXPORT_OPTIONS: toc:5.
 :END:
 *** 1. Feature Ideen
++ Dass auch die Teiler als Tabellenzellen ausgegeben werden
 + Syntax highlighting
 + dinge bei zsh abschauen
 + schöneres UTF
