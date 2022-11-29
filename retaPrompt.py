@@ -230,7 +230,7 @@ while text not in befehleBeenden:
                 if innerKomma2.isdecimal():
                     innerKomma3 += [innerKomma2]
             if "w" in stext:
-                innerKomma5: set[int] = set()
+                innerKomma5 = set()
                 for each1 in innerKomma3:
                     for each2 in set(multiples(int(each1))):
                         innerKomma5 |= set(each2)
