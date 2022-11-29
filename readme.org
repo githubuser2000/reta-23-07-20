@@ -16,7 +16,7 @@
 :EXPORT_OPTIONS: toc:5.
 :END:
 *** 1. Feature Ideen
-+ Dass auch die Teiler als Tabellenzellen ausgegeben werden
++ Ein Feature wäre schon ganz nett, wenn man zumindestens wenigstens die Kurzbefehle im Prompt speichern kann und die Zahlenliste
 + Syntax highlighting
 + dinge bei zsh abschauen
 + schöneres UTF
