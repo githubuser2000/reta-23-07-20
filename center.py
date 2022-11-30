@@ -6,13 +6,15 @@ import pprint
 import re
 import sys
 from collections import OrderedDict
+
 try:
     from collections import Callable
 except ImportError:
     from typing import Callable
+
+import html
 from itertools import filterfalse
 from typing import Optional
-import html
 
 try:
     from orderedset import OrderedSet
@@ -22,6 +24,10 @@ except:
 from rich.console import Console
 from rich.syntax import Syntax
 
+Primzahlkreuz_pro_contra_strs = (
+    "Primzahlkreuz pro contra",
+    "nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)",
+)
 try:
     from numba import jit
 except:
@@ -31,7 +37,6 @@ except:
             return f
 
         return _jit
-
 
 
 # originalLinesRange = range(1028)  # Maximale Zeilenanzahl
@@ -53,7 +58,6 @@ def getTextWrapThings(maxLen=None) -> tuple:
     if "Brython" not in sys.version.split():
         import html2text
         import pyphen
-
         # from hyphen import Hyphenator
         from textwrap2 import fill
 
@@ -118,9 +122,9 @@ def cliout(text, color=False, stype=""):
     if output:
         if color and len(text) > 0:
             text = " ".join(text.split())
-            #if stype == "html":
+            # if stype == "html":
             #    text = text.replace("<tr","\n  <tr").replace("<td","\n    <td")
-            console=Console(width=len(text))
+            console = Console(width=len(text))
             console.print(
                 Syntax(text.strip(), stype, word_wrap=True, indent_guides=True), end=""
             )
