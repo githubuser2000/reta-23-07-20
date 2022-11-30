@@ -206,9 +206,9 @@ def speichern(ketten, platzhalter, text):
                             if not zeichen.isspace():
                                 if zeichen in [",", "-"] or zeichen.isdecimal():
                                     if i == alt_i:
-                                        zahlenBereich += zeichen
-                                    else:
                                         zahlenBereich += " " + zeichen + " "
+                                    else:
+                                        zahlenBereich += zeichen
                                 else:
                                     zeichenKette += [zeichen]
                         alt_i = i
