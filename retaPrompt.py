@@ -176,7 +176,19 @@ while text not in befehleBeenden:
         except KeyboardInterrupt:
             sys.exit()
         if promptMode == PromptModus.speichern:
-            platzhalter = "" if text is None else str(text)
+            if len(platzhalter) > 0:
+                ifJoinReTaBefehle = True
+                rpBefehlE = ""
+                for rpBefehl in (text, platzhalter):
+                    rpBefehlSplitted = str(rpBefehl).split()
+                    if len(rpBefehlSplitted) > 0 and rpBefehlSplitted[0] == "reta":
+                        rpBefehlE += " ".join(rpBefehlSplitted[1:]) + " "
+                    else:
+                        ifJoinReTaBefehle = False
+                if ifJoinReTaBefehle:
+                    platzhalter = "reta " + rpBefehlE
+            else:
+                platzhalter = "" if text is None else str(text)
             text = ""
     else:
         if text == "s" or text == "BefehlSpeichern":
