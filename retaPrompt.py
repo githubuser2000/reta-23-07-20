@@ -188,7 +188,8 @@ def speichern(ketten, platzhalter, text):
                     stilbruch = False
                     zeichenKette = []
                     zahlenBereich = " "
-                    for rpBefehl in textUndPlatzHalterNeu:
+                    alt_i = -1
+                    for i, rpBefehl in enumerate(textUndPlatzHalterNeu):
                         for zeichen in rpBefehl:
                             charTuepDavor = charTuep
                             if zeichen.isalpha():
@@ -204,13 +205,18 @@ def speichern(ketten, platzhalter, text):
                                 stilbruch = True
                             if not zeichen.isspace():
                                 if zeichen in [",", "-"] or zeichen.isdecimal():
-                                    zahlenBereich += zeichen
+                                    if i == alt_i:
+                                        zahlenBereich += zeichen
+                                    else:
+                                        zahlenBereich += " " + zeichen + " "
                                 else:
                                     zeichenKette += [zeichen]
+                        alt_i = i
                     if stilbruch:
                         rpBefehle2 = " ".join(zeichenKette) + zahlenBereich
                     platzhalter = rpBefehle2 + " " + (" ".join(langKurzBefehle))
 
+        # vielleicht programmier ich hier noch weiter
         if bedingung2 and False:
             ifJoinReTaBefehle = True
             rpBefehlE = ""
