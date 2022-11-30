@@ -149,6 +149,78 @@ def externCommand(cmd: str, StrNummern: str):
         pass
 
 
+def speichern(ketten, platzhalter, text):
+    bedingung1 = len(platzhalter) > 0
+    bedingung2 = len(ketten) > 0
+    if bedingung1 or bedingung2:
+        if bedingung1:
+            ifJoinReTaBefehle = True
+            rpBefehlE = ""
+            for rpBefehl in (text, platzhalter):
+                rpBefehlSplitted = str(rpBefehl).split()
+                if len(rpBefehlSplitted) > 0 and rpBefehlSplitted[0] == "reta":
+                    rpBefehlE += " ".join(rpBefehlSplitted[1:]) + " "
+                else:
+                    ifJoinReTaBefehle = False
+            if ifJoinReTaBefehle:
+                platzhalter = "reta " + rpBefehlE
+            else:
+                # nochmal für nicht Kurzbefehle befehle, also ohne "reta" am Anfang
+                ifJoinReTaBefehle = True
+                rpBefehlE = ""
+                for rpBefehl in (text, platzhalter):
+                    rpBefehlSplitted = str(rpBefehl).split()
+                    if len(rpBefehlSplitted) > 0 and rpBefehlSplitted[0] != "reta":
+                        rpBefehlE += " ".join(rpBefehlSplitted) + " "
+                    else:
+                        ifJoinReTaBefehle = False
+                if ifJoinReTaBefehle:
+                    rpBefehle2 = ""
+                    charTuep = CharType.begin
+                    stilbruch = False
+                    zeichenKette = []
+                    zahlenBereich = " "
+                    for rpBefehl in (text, platzhalter):
+                        for zeichen in rpBefehl:
+                            charTuepDavor = charTuep
+                            if zeichen.isalpha():
+                                charTuep = CharType.alpha
+                            elif zeichen.isdecimal():
+                                charTuep = CharType.decimal
+                            else:
+                                charTuep = CharType.neithernor
+                            if (
+                                charTuep != charTuepDavor
+                                and charTuepDavor != CharType.begin
+                            ):
+                                stilbruch = True
+                            if not zeichen.isspace():
+                                if zeichen in [",", "-"] or zeichen.isdecimal():
+                                    zahlenBereich += zeichen
+                                else:
+                                    zeichenKette += [zeichen]
+                    if stilbruch:
+                        rpBefehle2 = " ".join(zeichenKette) + zahlenBereich
+                    platzhalter = rpBefehle2
+
+        if bedingung2 and False:
+            ifJoinReTaBefehle = True
+            rpBefehlE = ""
+            for rpBefehl in ketten:
+                rpBefehlSplitted = rpBefehl
+                if len(rpBefehl) > 0 and rpBefehl[0] == "reta":
+                    rpBefehlE += " ".join(rpBefehl[1:]) + " "
+                else:
+                    ifJoinReTaBefehle = False
+            if ifJoinReTaBefehle:
+                platzhalter = "reta " + rpBefehlE
+
+    else:
+        platzhalter = "" if text is None else str(text)
+    text = ""
+    return ketten, platzhalter, text
+
+
 warBefehl: bool
 befehleBeenden = ("ende", "exit", "quit", "q", ":q")
 platzhalter = ""
@@ -184,80 +256,9 @@ while text not in befehleBeenden:
         except KeyboardInterrupt:
             sys.exit()
         if promptMode == PromptModus.speichern:
-            bedingung1 = len(platzhalter) > 0
-            bedingung2 = len(ketten) > 0
-            if bedingung1 or bedingung2:
-                if bedingung1:
-                    ifJoinReTaBefehle = True
-                    rpBefehlE = ""
-                    for rpBefehl in (text, platzhalter):
-                        rpBefehlSplitted = str(rpBefehl).split()
-                        if len(rpBefehlSplitted) > 0 and rpBefehlSplitted[0] == "reta":
-                            rpBefehlE += " ".join(rpBefehlSplitted[1:]) + " "
-                        else:
-                            ifJoinReTaBefehle = False
-                    if ifJoinReTaBefehle:
-                        platzhalter = "reta " + rpBefehlE
-                    else:
-                        # nochmal für nicht Kurzbefehle befehle, also ohne "reta" am Anfang
-                        ifJoinReTaBefehle = True
-                        rpBefehlE = ""
-                        for rpBefehl in (text, platzhalter):
-                            rpBefehlSplitted = str(rpBefehl).split()
-                            if (
-                                len(rpBefehlSplitted) > 0
-                                and rpBefehlSplitted[0] != "reta"
-                            ):
-                                rpBefehlE += " ".join(rpBefehlSplitted) + " "
-                            else:
-                                ifJoinReTaBefehle = False
-                        if ifJoinReTaBefehle:
-                            rpBefehle2 = ""
-                            print(text + " " + platzhalter)
-                            charTuep = CharType.begin
-                            stilbruch = False
-                            zeichenKette = []
-                            zahlenBereich = " "
-                            for rpBefehl in (text, platzhalter):
-                                for zeichen in rpBefehl:
-                                    charTuepDavor = charTuep
-                                    if zeichen.isalpha():
-                                        charTuep = CharType.alpha
-                                    elif zeichen.isdecimal():
-                                        charTuep = CharType.decimal
-                                    else:
-                                        charTuep = CharType.neithernor
-                                    if (
-                                        charTuep != charTuepDavor
-                                        and charTuepDavor != CharType.begin
-                                    ):
-                                        stilbruch = True
-                                    if not zeichen.isspace():
-                                        if zeichen in [",", "-"] or zeichen.isdecimal():
-                                            zahlenBereich += zeichen
-                                        else:
-                                            zeichenKette += [zeichen]
-                            if stilbruch:
-                                rpBefehle2 = " ".join(zeichenKette) + zahlenBereich
-                            platzhalter = rpBefehle2
-
-                if bedingung2 and False:
-                    ifJoinReTaBefehle = True
-                    rpBefehlE = ""
-                    for rpBefehl in ketten:
-                        rpBefehlSplitted = rpBefehl
-                        if len(rpBefehl) > 0 and rpBefehl[0] == "reta":
-                            rpBefehlE += " ".join(rpBefehl[1:]) + " "
-                        else:
-                            ifJoinReTaBefehle = False
-                    if ifJoinReTaBefehle:
-                        platzhalter = "reta " + rpBefehlE
-
-            else:
-                platzhalter = "" if text is None else str(text)
-            text = ""
+            ketten, platzhalter, text = speichern(ketten, platzhalter, text)
     else:
-        if text == "s" or text == "BefehlSpeichern":
+        if text == "S" or text == "BefehlSpeichern":
             text = ""
         else:
             text = platzhalter
@@ -265,8 +266,12 @@ while text not in befehleBeenden:
 
     # stext: Optional[list[str]] = str(text).split()
     # stext2: list[str] = str(text).split()
-    if text == "s" or text == "BefehlSpeichern":
+    if text == "S" or text == "BefehlSpeichern":
         promptMode = PromptModus.speichern
+        continue
+    if text == "s" or text == "BefehlSpeichernDavor":
+        ketten, platzhalter, text = speichern(ketten, platzhalter, text)
+        promptMode = PromptModus.normal
         continue
     elif text == "o" or text == "BefehlSpeicherungAusgeben":
         promptMode = PromptModus.speicherungAusgaben
@@ -374,7 +379,6 @@ while text not in befehleBeenden:
                         EineZahlenFolgeJa[g] = False
 
             for innerKomma in innerKomma4:
-                # print(str(innerKomma))
                 bruch = [bruch for bruch in innerKomma.split("/")]
                 if [bruch1.isdecimal() for bruch1 in bruch] == [True, True]:
                     brueche += [bruch]
@@ -751,7 +755,7 @@ while text not in befehleBeenden:
             except:
                 pass
 
-    if len(stext) > 0 and stext[0] in ("shell", "s"):
+    if len(stext) > 0 and stext[0] in ("shell"):
         warBefehl = True
         try:
             process = subprocess.Popen([*stext[1:]])
