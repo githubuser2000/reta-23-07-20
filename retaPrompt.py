@@ -225,6 +225,7 @@ warBefehl: bool
 befehleBeenden = ("ende", "exit", "quit", "q", ":q")
 platzhalter = ""
 ketten = []
+text = ""
 while text not in befehleBeenden:
     warBefehl = False
 
@@ -236,6 +237,7 @@ while text not in befehleBeenden:
                 if promptMode != PromptModus.speichern
                 else [("class:bla", "speichern>")]
             )
+            befehlDavor = text
             text = session.prompt(
                 # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
                 # ">",
@@ -266,11 +268,11 @@ while text not in befehleBeenden:
 
     # stext: Optional[list[str]] = str(text).split()
     # stext2: list[str] = str(text).split()
-    if text == "S" or text == "BefehlSpeichern":
+    if text == "S" or text == "BefehlSpeichernDanach":
         promptMode = PromptModus.speichern
         continue
     if text == "s" or text == "BefehlSpeichernDavor":
-        ketten, platzhalter, text = speichern(ketten, platzhalter, text)
+        ketten, platzhalter, text = speichern(ketten, platzhalter, befehlDavor)
         promptMode = PromptModus.normal
         continue
     elif text == "o" or text == "BefehlSpeicherungAusgeben":
