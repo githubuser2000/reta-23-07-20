@@ -232,7 +232,8 @@ while text not in befehleBeenden:
             for innerKomma2 in innerKomma4:
                 if innerKomma2.isdecimal():
                     innerKomma3 += [innerKomma2]
-            if "w" in stext:
+            innerKomma6 = innerKomma3
+            if "w" in stext or "teiler" in stext:
                 innerKomma5 = set()
                 for each1 in innerKomma3:
                     for each2 in set(multiples(int(each1))):
@@ -247,6 +248,7 @@ while text not in befehleBeenden:
                         pass
                     elif innerMinus.isdecimal():
                         c = ",".join(innerKomma3)
+                        c2 = ",".join(innerKomma6)
                         try:
                             EineZahlenFolgeJa[g]
                         except KeyError:
@@ -458,11 +460,11 @@ while text not in befehleBeenden:
 
         if len({"prim24", "primfaktorzerlegungModulo24"} & set(stext)) > 0:
             warBefehl = True
-            externCommand("prim24", c)
+            externCommand("prim24", c2)
 
         if len({"prim", "primfaktorzerlegung"} & set(stext)) > 0:
             warBefehl = True
-            externCommand("prim", c)
+            externCommand("prim", c2)
 
         if len({"multis"} & set(stext)) > 0 or (
             "mu" in stext and "abc" not in stext and "abcd" not in stext
@@ -483,7 +485,7 @@ while text not in befehleBeenden:
             # int(shellRowsAmountStr),
             # )
             # externCommand("multis", c)
-            listeStrWerte = c.split(",")
+            listeStrWerte = c2.split(",")
             try:
                 mult(listeStrWerte)
             except NameError:
