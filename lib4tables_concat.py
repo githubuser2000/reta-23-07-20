@@ -187,7 +187,7 @@ class Concat:
                             insert = re.sub(
                                 r"&lt;SG&gt;",
                                 self.relitable[i][4].strip(),
-                                insert, 
+                                insert,
                             )
                             into += [
                                 insert,
@@ -415,7 +415,9 @@ class Concat:
                                         ", nicht: ",
                                         ", ".join(modalOperatoren[2:]),
                                         " (das alles nicht): ",
-                                        self.relitable[vervielfachter][concept[0]].replace("extrinsisch", "als zweites").replace("intrinsisch", "zuerst"),
+                                        self.relitable[vervielfachter][concept[0]]
+                                        .replace("extrinsisch", "als zweites")
+                                        .replace("intrinsisch", "zuerst"),
                                     ]
                                     if len(modalOperatoren) > 2
                                     else [""]
@@ -788,8 +790,8 @@ class Concat:
                 bereich = zip(range(0, self.tables.hoechsteZeile[1024] + 1), dreli)
 
             for num, cols in bereich:
-                contraContra2[num]=OrderedSet()
-                proPro2[num]=OrderedSet()
+                contraContra2[num] = OrderedSet()
+                proPro2[num] = OrderedSet()
 
                 if num == 0:
                     into: list = [headline]
@@ -873,25 +875,26 @@ class Concat:
                     paare = list(menge)
 
                     for coupleA in paare:
-                        #if primCreativity(couple[1]) == 1:
+                        # if primCreativity(couple[1]) == 1:
                         #    flagX = True
-                        #elif primCreativity(couple[0]) == 1:
+                        # elif primCreativity(couple[0]) == 1:
                         #    flagX = True
                         #    couple = (couple[1], couple[0])
-                        #else:
+                        # else:
                         #    flagX = False
 
-                        #if flagX:
+                        # if flagX:
                         if coupleA[1] != 1 and coupleA[0] != 1:
-                            for couple in (coupleA,(coupleA[1],coupleA[0])):
+                            for couple in (coupleA, (coupleA[1], coupleA[0])):
                                 for firstOrSecond in (
                                     (1, 0) if couple[0] != couple[1] else (1,)
                                 ):
-                                    #if num == 4:
+                                    # if num == 4:
                                     #    print("bla")
-                                    if (couldBePrimeNumberPrimzahlkreuz_fuer_innen(
-                                        couple[firstOrSecond]
-                                    )
+                                    if (
+                                        couldBePrimeNumberPrimzahlkreuz_fuer_innen(
+                                            couple[firstOrSecond]
+                                        )
                                         or couple[0] % 2 == 0
                                         or couple[1] % 2 == 0
                                     ):
@@ -914,9 +917,15 @@ class Concat:
                                     ):
                                         try:
                                             if num == 4:
-                                                print(f"{couple} _ {firstOrSecond} | {proPro[couple[firstOrSecond]]}")
+                                                print(
+                                                    f"{couple} _ {firstOrSecond} | {proPro[couple[firstOrSecond]]}"
+                                                )
                                             pro3 = (
-                                                int(couple[0 if firstOrSecond == 1 else 1])
+                                                int(
+                                                    couple[
+                                                        0 if firstOrSecond == 1 else 1
+                                                    ]
+                                                )
                                                 * proPro[couple[firstOrSecond]]
                                             )
                                             proPro[num] = pro3
@@ -1023,6 +1032,7 @@ class Concat:
             kette = [
                 [(ParametersMain.bedeutung[0], "Primzahlkreuz_pro_contra")],
                 [(ParametersMain.procontra[0], "Primzahlkreuz_pro_contra")],
+                [(ParametersMain.grundstrukturen[0], "Primzahlkreuz_pro_contra")],
             ]
             self.tables.generatedSpaltenParameter[
                 len(self.tables.generatedSpaltenParameter)
@@ -2497,9 +2507,9 @@ class Concat:
                 else:
                     return ""
             elif i == 2:
-                return "\"für seitlich und gegen Schwächlinge innen\""
+                return '"für seitlich und gegen Schwächlinge innen"'
             elif i == 3:
-                return "\"gegen seitlich und für Schwächlinge innen\""
+                return '"gegen seitlich und für Schwächlinge innen"'
             elif i == 1:
                 return "für außen"
             else:
