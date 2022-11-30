@@ -166,9 +166,17 @@ def speichern(ketten, platzhalter, text):
                 platzhalter = "reta " + rpBefehlE
             else:
                 # nochmal für nicht Kurzbefehle befehle, also ohne "reta" am Anfang
+                textUndPlatzHalterNeu = []
+                langKurzBefehle = []
+                for rpBefehl in text.split() + platzhalter.split():
+                    if rpBefehl in befehle and len(rpBefehl) > 1:
+                        langKurzBefehle += [rpBefehl]
+                    else:
+                        textUndPlatzHalterNeu += [rpBefehl]
+                print(str(textUndPlatzHalterNeu))
                 ifJoinReTaBefehle = True
                 rpBefehlE = ""
-                for rpBefehl in (text, platzhalter):
+                for rpBefehl in textUndPlatzHalterNeu:
                     rpBefehlSplitted = str(rpBefehl).split()
                     if len(rpBefehlSplitted) > 0 and rpBefehlSplitted[0] != "reta":
                         rpBefehlE += " ".join(rpBefehlSplitted) + " "
@@ -180,7 +188,7 @@ def speichern(ketten, platzhalter, text):
                     stilbruch = False
                     zeichenKette = []
                     zahlenBereich = " "
-                    for rpBefehl in (text, platzhalter):
+                    for rpBefehl in textUndPlatzHalterNeu:
                         for zeichen in rpBefehl:
                             charTuepDavor = charTuep
                             if zeichen.isalpha():
@@ -201,7 +209,7 @@ def speichern(ketten, platzhalter, text):
                                     zeichenKette += [zeichen]
                     if stilbruch:
                         rpBefehle2 = " ".join(zeichenKette) + zahlenBereich
-                    platzhalter = rpBefehle2
+                    platzhalter = rpBefehle2 + " " + (" ".join(langKurzBefehle))
 
         if bedingung2 and False:
             ifJoinReTaBefehle = True
