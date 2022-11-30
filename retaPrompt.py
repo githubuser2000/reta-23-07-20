@@ -136,6 +136,7 @@ befehleBeenden = ("ende", "exit", "quit", "q", ":q")
 while text not in befehleBeenden:
     warBefehl = False
     session = newSession(loggingSwitch)
+    platzhalter = ""
     try:
         text = session.prompt(
             # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
@@ -151,6 +152,8 @@ while text not in befehleBeenden:
             style=Style.from_dict({"bla": "#0000ff bg:#ffff00"})
             if loggingSwitch
             else Style.from_dict({"bla": "#0000ff bg:#ff0000"}),
+            # placeholder="reta",
+            placeholder=platzhalter,
         )
     except KeyboardInterrupt:
         sys.exit()
