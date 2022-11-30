@@ -151,10 +151,15 @@ while text not in befehleBeenden:
     if promptMode != PromptModus.speicherungAusgaben:
         session = newSession(loggingSwitch)
         try:
+            promptDavorZeichen = (
+                [("class:bla", ">")]
+                if promptMode != PromptModus.speichern
+                else [("class:bla", "speichern>")]
+            )
             text = session.prompt(
                 # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
                 # ">",
-                [("class:bla", ">")],
+                promptDavorZeichen,
                 # completer=NestedCompleter.from_nested_dict(
                 #    startpunkt, notParameterValues=notParameterValues
                 # ),
