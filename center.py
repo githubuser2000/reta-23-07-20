@@ -25,7 +25,7 @@ from rich.console import Console
 from rich.syntax import Syntax
 
 Primzahlkreuz_pro_contra_strs = (
-    "Primzahlkreuz pro contra",
+    "Primzahlkreuz_pro_contra",
     "nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)",
 )
 try:
