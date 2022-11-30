@@ -35,6 +35,13 @@ class PromptModus(Enum):
     speicherungAusgaben = 3
 
 
+class CharType(Enum):
+    decimal = 0
+    alpha = 1
+    neithernor = 2
+    begin = 3
+
+
 promptMode = PromptModus.normal
 
 
@@ -145,6 +152,7 @@ def externCommand(cmd: str, StrNummern: str):
 warBefehl: bool
 befehleBeenden = ("ende", "exit", "quit", "q", ":q")
 platzhalter = ""
+ketten = []
 while text not in befehleBeenden:
     warBefehl = False
 
@@ -176,17 +184,71 @@ while text not in befehleBeenden:
         except KeyboardInterrupt:
             sys.exit()
         if promptMode == PromptModus.speichern:
-            if len(platzhalter) > 0:
-                ifJoinReTaBefehle = True
-                rpBefehlE = ""
-                for rpBefehl in (text, platzhalter):
-                    rpBefehlSplitted = str(rpBefehl).split()
-                    if len(rpBefehlSplitted) > 0 and rpBefehlSplitted[0] == "reta":
-                        rpBefehlE += " ".join(rpBefehlSplitted[1:]) + " "
+            bedingung1 = len(platzhalter) > 0
+            bedingung2 = len(ketten) > 0
+            if bedingung1 or bedingung2:
+                if bedingung1:
+                    ifJoinReTaBefehle = True
+                    rpBefehlE = ""
+                    for rpBefehl in (text, platzhalter):
+                        rpBefehlSplitted = str(rpBefehl).split()
+                        if len(rpBefehlSplitted) > 0 and rpBefehlSplitted[0] == "reta":
+                            rpBefehlE += " ".join(rpBefehlSplitted[1:]) + " "
+                        else:
+                            ifJoinReTaBefehle = False
+                    if ifJoinReTaBefehle:
+                        platzhalter = "reta " + rpBefehlE
                     else:
-                        ifJoinReTaBefehle = False
-                if ifJoinReTaBefehle:
-                    platzhalter = "reta " + rpBefehlE
+                        # nochmal für nicht Kurzbefehle befehle, also ohne "reta" am Anfang
+                        ifJoinReTaBefehle = True
+                        rpBefehlE = ""
+                        for rpBefehl in (text, platzhalter):
+                            rpBefehlSplitted = str(rpBefehl).split()
+                            if (
+                                len(rpBefehlSplitted) > 0
+                                and rpBefehlSplitted[0] != "reta"
+                            ):
+                                rpBefehlE += " ".join(rpBefehlSplitted) + " "
+                            else:
+                                ifJoinReTaBefehle = False
+                        if ifJoinReTaBefehle:
+                            rpBefehle2 = ""
+                            print(text + " " + platzhalter)
+                            charTuep = CharType.begin
+                            stilbruch = False
+                            zeichenKette = []
+                            for rpBefehl in (text, platzhalter):
+                                for zeichen in rpBefehl:
+                                    charTuepDavor = charTuep
+                                    if zeichen.isalpha():
+                                        charTuep = CharType.alpha
+                                    elif zeichen.isdecimal():
+                                        charTuep = CharType.decimal
+                                    else:
+                                        charTuep = CharType.neithernor
+                                    if (
+                                        charTuep != charTuepDavor
+                                        and charTuepDavor != CharType.begin
+                                    ):
+                                        stilbruch = True
+                                    if not zeichen.isspace():
+                                        zeichenKette += [zeichen]
+                            if stilbruch:
+                                rpBefehle2 = " ".join(zeichenKette)
+                            platzhalter = rpBefehle2
+
+                if bedingung2 and False:
+                    ifJoinReTaBefehle = True
+                    rpBefehlE = ""
+                    for rpBefehl in ketten:
+                        rpBefehlSplitted = rpBefehl
+                        if len(rpBefehl) > 0 and rpBefehl[0] == "reta":
+                            rpBefehlE += " ".join(rpBefehl[1:]) + " "
+                        else:
+                            ifJoinReTaBefehle = False
+                    if ifJoinReTaBefehle:
+                        platzhalter = "reta " + rpBefehlE
+
             else:
                 platzhalter = "" if text is None else str(text)
             text = ""
@@ -213,6 +275,8 @@ while text not in befehleBeenden:
         stext: list = text.split()
     else:
         stext: list = []
+
+    ketten = []
 
     if len(stext) > 0:
         textDazu: list
@@ -417,6 +481,7 @@ while text not in befehleBeenden:
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1",
                 ] + returnOnlyParasAsList(stext)
+                kette += [ketten]
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
@@ -435,6 +500,7 @@ while text not in befehleBeenden:
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1",
                 ] + returnOnlyParasAsList(stext)
+                kette += [ketten]
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
@@ -458,6 +524,7 @@ while text not in befehleBeenden:
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1,3,4",
                 ] + returnOnlyParasAsList(stext)
+                kette += [ketten]
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
@@ -477,6 +544,7 @@ while text not in befehleBeenden:
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1",
                 ] + returnOnlyParasAsList(stext)
+                kette += [ketten]
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
@@ -501,6 +569,7 @@ while text not in befehleBeenden:
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=2",
             ] + returnOnlyParasAsList(stext)
+            kette += [ketten]
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -558,6 +627,7 @@ while text not in befehleBeenden:
                 "--spaltenreihenfolgeundnurdiese=3,4,5,6",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
             ] + returnOnlyParasAsList(stext)
+            kette += [ketten]
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -576,6 +646,7 @@ while text not in befehleBeenden:
                 "--procontra=pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
             ] + returnOnlyParasAsList(stext)
+            kette += [ketten]
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -598,6 +669,7 @@ while text not in befehleBeenden:
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
                 "-ausgabe",
             ] + returnOnlyParasAsList(stext)
+            kette += [ketten]
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -616,6 +688,7 @@ while text not in befehleBeenden:
                 "--bedeutung=primzahlkreuz",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
             ] + returnOnlyParasAsList(stext)
+            kette += [ketten]
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -636,6 +709,7 @@ while text not in befehleBeenden:
                 "--primzahlwirkung=Galaxieabsicht",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
             ] + returnOnlyParasAsList(stext)
+            kette += [ketten]
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -665,6 +739,7 @@ while text not in befehleBeenden:
                     "--grundstrukturen=" + grundstruk,
                     "--breite=" + str(int(shellRowsAmountStr) - 2),
                 ] + returnOnlyParasAsList(stext)
+                kette += [ketten]
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
