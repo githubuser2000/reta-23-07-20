@@ -217,6 +217,7 @@ while text not in befehleBeenden:
                             charTuep = CharType.begin
                             stilbruch = False
                             zeichenKette = []
+                            zahlenBereich = " "
                             for rpBefehl in (text, platzhalter):
                                 for zeichen in rpBefehl:
                                     charTuepDavor = charTuep
@@ -232,9 +233,12 @@ while text not in befehleBeenden:
                                     ):
                                         stilbruch = True
                                     if not zeichen.isspace():
-                                        zeichenKette += [zeichen]
+                                        if zeichen in [",", "-"] or zeichen.isdecimal():
+                                            zahlenBereich += zeichen
+                                        else:
+                                            zeichenKette += [zeichen]
                             if stilbruch:
-                                rpBefehle2 = " ".join(zeichenKette)
+                                rpBefehle2 = " ".join(zeichenKette) + zahlenBereich
                             platzhalter = rpBefehle2
 
                 if bedingung2 and False:
