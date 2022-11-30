@@ -7,6 +7,7 @@ import re
 import subprocess
 import sys
 from copy import copy, deepcopy
+from enum import Enum
 from itertools import zip_longest
 from typing import Optional
 
@@ -25,6 +26,16 @@ from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
                        notParameterValues, reta, retaProgram, spalten,
                        spaltenDict, zeilenParas)
 from word_completerAlx import WordCompleter
+
+
+class PromptModus(Enum):
+    normal = 0
+    speichern = 1
+    löschen = 2
+    speicherungAusgaben = 3
+
+
+promptMode = PromptModus.normal
 
 
 def nummernStringzuNummern(text: str) -> str:
@@ -133,32 +144,47 @@ def externCommand(cmd: str, StrNummern: str):
 
 warBefehl: bool
 befehleBeenden = ("ende", "exit", "quit", "q", ":q")
+platzhalter = ""
 while text not in befehleBeenden:
     warBefehl = False
-    session = newSession(loggingSwitch)
-    platzhalter = ""
-    try:
-        text = session.prompt(
-            # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
-            # ">",
-            [("class:bla", ">")],
-            # completer=NestedCompleter.from_nested_dict(
-            #    startpunkt, notParameterValues=notParameterValues
-            # ),
-            completer=startpunkt1,
-            wrap_lines=True,
-            complete_while_typing=True,
-            vi_mode=True if "-vi" in sys.argv else False,
-            style=Style.from_dict({"bla": "#0000ff bg:#ffff00"})
-            if loggingSwitch
-            else Style.from_dict({"bla": "#0000ff bg:#ff0000"}),
-            # placeholder="reta",
-            placeholder=platzhalter,
-        )
-    except KeyboardInterrupt:
-        sys.exit()
+
+    if promptMode != PromptModus.speicherungAusgaben:
+        session = newSession(loggingSwitch)
+        try:
+            text = session.prompt(
+                # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
+                # ">",
+                [("class:bla", ">")],
+                # completer=NestedCompleter.from_nested_dict(
+                #    startpunkt, notParameterValues=notParameterValues
+                # ),
+                completer=startpunkt1,
+                wrap_lines=True,
+                complete_while_typing=True,
+                vi_mode=True if "-vi" in sys.argv else False,
+                style=Style.from_dict({"bla": "#0000ff bg:#ffff00"})
+                if loggingSwitch
+                else Style.from_dict({"bla": "#0000ff bg:#ff0000"}),
+                # placeholder="reta",
+                placeholder=platzhalter,
+            )
+        except KeyboardInterrupt:
+            sys.exit()
+        if promptMode == PromptModus.speichern:
+            platzhalter = "" if text is None else str(text)
+    else:
+        text = platzhalter
+    promptMode = PromptModus.normal
+
     # stext: Optional[list[str]] = str(text).split()
     # stext2: list[str] = str(text).split()
+    if text == "s" or text == "BefehlSpeichern":
+        promptMode = PromptModus.speichern
+        continue
+    elif text == "o" or text == "BefehlSpeicherungAusgeben":
+        promptMode = PromptModus.speicherungAusgaben
+        continue
+
     if text is not None:
         stext: list = text.split()
     else:
