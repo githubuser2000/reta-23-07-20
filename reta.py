@@ -28,6 +28,8 @@ parser.add_simple_formatter("hr", "<hr />", standalone=True)
 parser.add_simple_formatter("sub", "<sub>%(value)s</sub>")
 parser.add_simple_formatter("sup", "<sup>%(value)s</sup>")
 
+from center import Primzahlkreuz_pro_contra_strs
+
 
 def render_color(tag_name, value, options, parent, context):
     return '<span style="color:%s;">%s</span>' % (tag_name, value)
@@ -1871,7 +1873,7 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 (
-                    "nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)",
+                    Primzahlkreuz_pro_contra_strs[1],
                     "nachvollziehen",
                 ),
                 {242, 244, 297},
@@ -2377,7 +2379,7 @@ class Program:
             (
                 Program.ParametersMain.procontra,
                 (
-                    "Primzahlkreuz",
+                    Primzahlkreuz_pro_contra_strs[0],
                     "primzahlkreuz",
                 ),
                 set(),
@@ -2392,7 +2394,7 @@ class Program:
             (
                 Program.ParametersMain.bedeutung,
                 (
-                    "Primzahlkreuz",
+                    Primzahlkreuz_pro_contra_strs[0],
                     "primzahlkreuz",
                 ),
                 set(),

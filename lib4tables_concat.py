@@ -13,7 +13,8 @@ try:
 except:
     OrderedSet = set
 
-from center import (DefaultOrderedDict, Multiplikationen, alxp, cliout,
+from center import (DefaultOrderedDict, Multiplikationen,
+                    Primzahlkreuz_pro_contra_strs, alxp, cliout,
                     getTextWrapThings, infoLog, output, re, unique_everseen, x)
 from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz,
@@ -23,6 +24,11 @@ from lib4tables import (OutputSyntax, bbCodeSyntax,
                         markdownSyntax, math, moonNumber, multiples,
                         primCreativity, primFak, primMultiple, primRepeat)
 from lib4tables_Enum import ST
+
+# Primzahlkreuz_pro_contra_strs = (
+#    "Primzahlkreuz pro contra",
+#    "nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)",
+# )
 
 
 class Concat:
@@ -767,6 +773,7 @@ class Concat:
         @param relitable: Haupttabelle self.relitable
         @return: relitable + weitere Tabelle daneben
         """
+        global Primzahlkreuz_pro_contra_strs
 
         if "primzahlkreuzprocontra" in generatedBefehle:
             self.relitable = relitable
@@ -1030,9 +1037,9 @@ class Concat:
             )
 
             kette = [
-                [(ParametersMain.bedeutung[0], "Primzahlkreuz_pro_contra")],
-                [(ParametersMain.procontra[0], "Primzahlkreuz_pro_contra")],
-                [(ParametersMain.grundstrukturen[0], "Primzahlkreuz_pro_contra")],
+                [(ParametersMain.bedeutung[0], Primzahlkreuz_pro_contra_strs[0])],
+                [(ParametersMain.procontra[0], Primzahlkreuz_pro_contra_strs[0])],
+                [(ParametersMain.grundstrukturen[0], Primzahlkreuz_pro_contra_strs[1])],
             ]
             self.tables.generatedSpaltenParameter[
                 len(self.tables.generatedSpaltenParameter)
