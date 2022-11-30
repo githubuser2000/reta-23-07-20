@@ -172,8 +172,12 @@ while text not in befehleBeenden:
             sys.exit()
         if promptMode == PromptModus.speichern:
             platzhalter = "" if text is None else str(text)
+            text = ""
     else:
-        text = platzhalter
+        if text == "s" or text == "BefehlSpeichern":
+            text = ""
+        else:
+            text = platzhalter
     promptMode = PromptModus.normal
 
     # stext: Optional[list[str]] = str(text).split()
@@ -183,6 +187,9 @@ while text not in befehleBeenden:
         continue
     elif text == "o" or text == "BefehlSpeicherungAusgeben":
         promptMode = PromptModus.speicherungAusgaben
+        continue
+    elif text == "l" or text == "BefehlSpeicherungLöschen":
+        platzhalter = ""
         continue
 
     if text is not None:
