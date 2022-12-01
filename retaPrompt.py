@@ -282,7 +282,7 @@ while text not in befehleBeenden:
 
     if promptMode == PromptModus.loeschenSelect:
         zuloeschen = BereichToNumbers(text)
-        loeschbares = {i: a for i, a in enumerate(platzhalter.split())}
+        loeschbares = {i + 1: a for i, a in enumerate(platzhalter.split())}
         for todel in zuloeschen:
             try:
                 del loeschbares[todel]
@@ -307,7 +307,7 @@ while text not in befehleBeenden:
         promptMode = PromptModus.speicherungAusgaben
         continue
     elif text in ("l", "BefehlSpeicherungLöschen"):
-        print(str([{i, a} for i, a in enumerate(platzhalter.split())]))
+        print(str([{i + 1, a} for i, a in enumerate(platzhalter.split())]))
         promptMode = PromptModus.loeschenSelect
         continue
 
