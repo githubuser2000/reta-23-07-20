@@ -242,8 +242,8 @@ platzhalter = ""
 ketten = []
 text = ""
 promptDavorDict = defaultdict(lambda: ">")
-promptDavorDict[PromptModus.speichern] = "speichern>"
-promptDavorDict[PromptModus.loeschenSelect] = "löschen: Zahlenbereiche Angeben>"
+promptDavorDict[PromptModus.speichern] = "was speichern>"
+promptDavorDict[PromptModus.loeschenSelect] = "was löschen>"
 while text not in befehleBeenden:
     warBefehl = False
 
@@ -281,14 +281,25 @@ while text not in befehleBeenden:
             text = platzhalter
 
     if promptMode == PromptModus.loeschenSelect:
-        zuloeschen = BereichToNumbers(text)
-        loeschbares = {i + 1: a for i, a in enumerate(platzhalter.split())}
-        for todel in zuloeschen:
-            try:
-                del loeschbares[todel]
-            except:
-                pass
-        platzhalter = " ".join(loeschbares.values())
+        text = str(text)
+        if bool(re.match(r"^[1234567890,-]+$", text)):
+            zuloeschen = BereichToNumbers(text)
+            loeschbares = {i + 1: a for i, a in enumerate(platzhalter.split())}
+            for todel in zuloeschen:
+                try:
+                    del loeschbares[todel]
+                except:
+                    pass
+            platzhalter = " ".join(loeschbares.values())
+        else:
+            loeschbares = {a: i + 1 for i, a in enumerate(platzhalter.split())}
+            for wort in text.split():
+                try:
+                    del loeschbares[wort]
+                except:
+                    pass
+            platzhalter = " ".join(loeschbares.keys())
+
         promptMode = PromptModus.normal
         continue
 
