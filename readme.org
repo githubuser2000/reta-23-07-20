@@ -20,19 +20,12 @@
 + Syntax highlighting
 + dinge bei zsh abschauen
 + schöneres UTF
-+ Man gibt nicht beides ein, sondern nur eins von beidem.
-Dieses merkt sich das Prompt und zeigt es als Text im Prompt vor der Befehlsausgabe an.
-Dann gibt man als jeden neuen Befehl nur noch immer das jeweils andere des beiden an.
-Damit gibt es dann immer die Tabelle, die gesucht ist.
-
-Als Drittes könnte sich das Prompt auch andere Parameter merken, die es so bei ReTa gibt.
-Es gibt nicht nur Spaltenbefehle und Zeilenbefehle.
-+  csv diff und insert geht schnell zu programmieren.
++ csv diff und insert geht schnell zu programmieren.
 Kann man ncurses einfach zu web konvertieren, ohne viel Aufwand oder wurde das nicht erfunden?
 +  ReTa besser ausführlicher, detaillierter, dokumentieren und auf viele Bereiche und Teile gedanklich eingehen.
 +  Option für nur temporäres Logging
 nicht loggen, bei befehlen über Logging
-+  Dass man Kurzbefehlen auch die ReTa-Programm-Argumente mitgeben kann.
++  Dass man Kurzbefehlen auch die ReTa-Programm-Argumente mitgeben kann: geht schon, nur fehlt autocomplete intellisense dafür
 + Wie programmiere ich, dass nachträgliches Resizen der CLI App geht?
 + --parameter=* könnte alle Unter-Parameter meinen, als Kommandozeilenargument.
 + Kurzform für Zeile und Spalte einführen, statt die langen Befehlsketten immer.
@@ -61,7 +54,6 @@ Geht einfach und schnell zu programmieren durch Rekursion.
 Es ist ja schön, wenn ich weiß, was ich tippen muss, aber ich darf das nicht so lassen.
 Es reicht nicht, wenn ich ReTa nur so programmiere, dass es mir passt.
 Es muss auch für manche DAUs funktionieren.
-+  Primzahlkreuz-Algorithmus geht einzeln abzurufen, aber wird bei allem nur bei einem der beiden angezeigt, aber wenn man eines der beiden einzeln abruft, dann geht es, aber in der html nicht.
 *** 3. ReTa content
 + Ich müsste mal die gebrochen-rationalen Gefühle probieren zu machen.
 Das würde mir gut woanders weiterhelfen.
