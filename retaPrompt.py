@@ -35,8 +35,8 @@ class PromptModus(Enum):
     loeschenStart = 2
     speicherungAusgaben = 3
     loeschenSelect = 4
-    speicherungAusgabenMitZusatz = 4
-    AusgabeSelektiv = 5
+    speicherungAusgabenMitZusatz = 5
+    AusgabeSelektiv = 6
 
 
 promptMode2 = PromptModus.normal
