@@ -259,7 +259,9 @@ while text not in befehleBeenden:
                 # completer=NestedCompleter.from_nested_dict(
                 #    startpunkt, notParameterValues=notParameterValues
                 # ),
-                completer=startpunkt1 if not promptMode.loeschenSelect else None,
+                completer=startpunkt1
+                if not promptMode == PromptModus.loeschenSelect
+                else None,
                 wrap_lines=True,
                 complete_while_typing=True,
                 vi_mode=True if "-vi" in sys.argv else False,
