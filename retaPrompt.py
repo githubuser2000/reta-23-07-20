@@ -6,6 +6,7 @@ import pprint
 import re
 import subprocess
 import sys
+from collections import defaultdict
 from copy import copy, deepcopy
 from enum import Enum
 from itertools import zip_longest
@@ -31,8 +32,9 @@ from word_completerAlx import WordCompleter
 class PromptModus(Enum):
     normal = 0
     speichern = 1
-    löschen = 2
+    loeschenStart = 2
     speicherungAusgaben = 3
+    loeschenSelect = 4
 
 
 class CharType(Enum):
@@ -240,26 +242,24 @@ befehleBeenden = ("ende", "exit", "quit", "q", ":q")
 platzhalter = ""
 ketten = []
 text = ""
+promptDavorDict = defaultdict(lambda: ">")
+promptDavorDict[PromptModus.speichern] = "speichern>"
+promptDavorDict[PromptModus.loeschenSelect] = "löschen: Zahlenbereiche Angeben>"
 while text not in befehleBeenden:
     warBefehl = False
 
     if promptMode != PromptModus.speicherungAusgaben:
         session = newSession(loggingSwitch)
         try:
-            promptDavorZeichen = (
-                [("class:bla", ">")]
-                if promptMode != PromptModus.speichern
-                else [("class:bla", "speichern>")]
-            )
             befehlDavor = text
             text = session.prompt(
                 # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
                 # ">",
-                promptDavorZeichen,
+                [("class:bla", promptDavorDict[promptMode])],
                 # completer=NestedCompleter.from_nested_dict(
                 #    startpunkt, notParameterValues=notParameterValues
                 # ),
-                completer=startpunkt1,
+                completer=startpunkt1 if not promptMode.loeschenSelect else None,
                 wrap_lines=True,
                 complete_while_typing=True,
                 vi_mode=True if "-vi" in sys.argv else False,
@@ -278,6 +278,19 @@ while text not in befehleBeenden:
             text = ""
         else:
             text = platzhalter
+
+    if promptMode == PromptModus.loeschenSelect:
+        zuloeschen = BereichToNumbers(text)
+        loeschbares = {i: a for i, a in enumerate(platzhalter.split())}
+        for todel in zuloeschen:
+            try:
+                del loeschbares[todel]
+            except:
+                pass
+        platzhalter = " ".join(loeschbares.values())
+        promptMode = PromptModus.normal
+        continue
+
     promptMode = PromptModus.normal
 
     # stext: Optional[list[str]] = str(text).split()
@@ -292,8 +305,9 @@ while text not in befehleBeenden:
     elif text == "o" or text == "BefehlSpeicherungAusgeben":
         promptMode = PromptModus.speicherungAusgaben
         continue
-    elif text == "l" or text == "BefehlSpeicherungLöschen":
-        platzhalter = ""
+    elif text in ("l", "BefehlSpeicherungLöschen"):
+        print(str([{i, a} for i, a in enumerate(platzhalter.split())]))
+        promptMode = PromptModus.loeschenSelect
         continue
 
     if text is not None:
