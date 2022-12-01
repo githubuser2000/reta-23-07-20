@@ -36,6 +36,10 @@ class PromptModus(Enum):
     speicherungAusgaben = 3
     loeschenSelect = 4
     speicherungAusgabenMitZusatz = 4
+    AusgabeSelektiv = 5
+
+
+promptMode2 = PromptModus.normal
 
 
 class CharType(Enum):
@@ -153,6 +157,7 @@ def externCommand(cmd: str, StrNummern: str):
 
 
 def speichern(ketten, platzhalter, text):
+    global promptMode2, textDazu0
     bedingung1 = len(platzhalter) > 0
     bedingung2 = len(ketten) > 0
     if bedingung1 or bedingung2:
@@ -234,6 +239,8 @@ def speichern(ketten, platzhalter, text):
     else:
         platzhalter = "" if text is None else str(text)
     text = ""
+    promptMode2 = PromptModus.AusgabeSelektiv
+    textDazu0 = platzhalter.split()
     return ketten, platzhalter, text
 
 
@@ -246,8 +253,10 @@ promptDavorDict = defaultdict(lambda: ">")
 promptDavorDict[PromptModus.speichern] = "was speichern>"
 promptDavorDict[PromptModus.loeschenSelect] = "was löschen>"
 nochAusageben = ""
+textDazu0 = []
 while text not in befehleBeenden:
     warBefehl = False
+    promptModeLast = promptMode
 
     if promptMode not in (
         PromptModus.speicherungAusgaben,
@@ -280,8 +289,9 @@ while text not in befehleBeenden:
             sys.exit()
         if promptMode == PromptModus.speichern:
             ketten, platzhalter, text = speichern(ketten, platzhalter, text)
+
     else:
-        stext = text.split()
+        # stext = text.split()
         # if promptMode in (
         #    PromptModus.speicherungAusgaben,
         #    PromptModus.speicherungAusgabenMitZusatz,
@@ -313,6 +323,9 @@ while text not in befehleBeenden:
             platzhalter = " ".join(loeschbares.keys())
 
         promptMode = PromptModus.normal
+        if len(platzhalter.strip()) == 0:
+            promptMode2 = PromptModus.normal
+            textDazu0 = []
         continue
 
     promptMode = PromptModus.normal
@@ -353,6 +366,7 @@ while text not in befehleBeenden:
 
     ketten = []
 
+    AusgabeSelektiv = 5
     if len(stext) > 0:
         textDazu: list
         stext2: list = []
@@ -393,7 +407,11 @@ while text not in befehleBeenden:
                     if n == len(buchst):
                         buchst2: list = [a if a != "p" else "mulpri" for a in buchst]
                         textDazu += buchst2 + [str(s_[n:])]
-                    if len(stext) == 1 and len(buchst) == 0:
+                    if (
+                        len(stext) == 1
+                        and len(buchst) == 0
+                        and promptMode2 != PromptModus.AusgabeSelektiv
+                    ):
                         textDazu += ["mulpri", "a", "t", "w"]
 
             if len(textDazu) > 0:
@@ -419,6 +437,12 @@ while text not in befehleBeenden:
         else:
             stextb += [s]
     stext = stextb
+
+    if (
+        promptMode2 == PromptModus.AusgabeSelektiv
+        and promptModeLast == PromptModus.normal
+    ):
+        stext += textDazu0
 
     bedingung: bool = len(stext) > 0 and stext[0] == "reta"
     brueche = []
@@ -874,4 +898,4 @@ while text not in befehleBeenden:
                 + "') ist tatsächlich ein Befehl (oder es sind mehrere), aber es gibt nichts auszugeben.",
             )
         else:
-            print("Das ist kein Befehl!")
+            print("Das ist kein Befehl! -> " + str(stext))
