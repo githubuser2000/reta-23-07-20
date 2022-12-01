@@ -35,6 +35,7 @@ class PromptModus(Enum):
     loeschenStart = 2
     speicherungAusgaben = 3
     loeschenSelect = 4
+    speicherungAusgabenMitZusatz = 4
 
 
 class CharType(Enum):
@@ -244,10 +245,14 @@ text = ""
 promptDavorDict = defaultdict(lambda: ">")
 promptDavorDict[PromptModus.speichern] = "was speichern>"
 promptDavorDict[PromptModus.loeschenSelect] = "was löschen>"
+nochAusageben = ""
 while text not in befehleBeenden:
     warBefehl = False
 
-    if promptMode != PromptModus.speicherungAusgaben:
+    if promptMode not in (
+        PromptModus.speicherungAusgaben,
+        PromptModus.speicherungAusgabenMitZusatz,
+    ):
         session = newSession(loggingSwitch)
         try:
             befehlDavor = text
@@ -270,15 +275,22 @@ while text not in befehleBeenden:
                 # placeholder="reta",
                 placeholder=platzhalter,
             )
+            text: str = str(text)
         except KeyboardInterrupt:
             sys.exit()
         if promptMode == PromptModus.speichern:
             ketten, platzhalter, text = speichern(ketten, platzhalter, text)
     else:
-        if text == "S" or text == "BefehlSpeichern":
-            text = ""
-        else:
+        stext = text.split()
+        # if promptMode in (
+        #    PromptModus.speicherungAusgaben,
+        #    PromptModus.speicherungAusgabenMitZusatz,
+        # ):
+
+        if promptMode == PromptModus.speicherungAusgaben:
             text = platzhalter
+        elif promptMode == PromptModus.speicherungAusgabenMitZusatz:
+            text = platzhalter + " " + nochAusageben
 
     if promptMode == PromptModus.loeschenSelect:
         text = str(text)
@@ -305,6 +317,11 @@ while text not in befehleBeenden:
 
     promptMode = PromptModus.normal
 
+    if text is not None:
+        stext: list = text.split()
+    else:
+        stext: list = []
+
     # stext: Optional[list[str]] = str(text).split()
     # stext2: list[str] = str(text).split()
     if text == "S" or text == "BefehlSpeichernDanach":
@@ -314,8 +331,15 @@ while text not in befehleBeenden:
         ketten, platzhalter, text = speichern(ketten, platzhalter, befehlDavor)
         promptMode = PromptModus.normal
         continue
+
     elif text == "o" or text == "BefehlSpeicherungAusgeben":
         promptMode = PromptModus.speicherungAusgaben
+        continue
+    elif ("o" in stext or "BefehlSpeicherungAusgeben" in stext) and len(stext) > 1:
+        nochAusageben = " ".join(
+            tuple(set(stext) - {"o"} - {"BefehlSpeicherungAusgeben"})
+        )
+        promptMode = PromptModus.speicherungAusgabenMitZusatz
         continue
     elif text in ("l", "BefehlSpeicherungLöschen"):
         print(str([{i + 1, a} for i, a in enumerate(platzhalter.split())]))
@@ -354,7 +378,18 @@ while text not in befehleBeenden:
                     [strInt.isdecimal() or len(strInt) == 0 for strInt in strA]
                     for strA in s_4
                 ] == [[True for strInt in strA] for strA in s_4]:
-                    buchst = set(s_[:n]) & {"a", "t", "v", "u", "p", "r", "w"}
+                    buchst = set(s_[:n]) & {
+                        "a",
+                        "t",
+                        "v",
+                        "u",
+                        "p",
+                        "r",
+                        "w",
+                        "s",
+                        "o",
+                        "S",
+                    }
                     if n == len(buchst):
                         buchst2: list = [a if a != "p" else "mulpri" for a in buchst]
                         textDazu += buchst2 + [str(s_[n:])]
