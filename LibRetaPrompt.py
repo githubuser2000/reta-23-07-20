@@ -154,6 +154,16 @@ befehle = ["15" + a for a in wahl15.keys()] + [
     "python",
     "w",
     "teiler",
+    "BefehlSpeichernDanach",
+    "S",
+    "BefehlSpeicherungLöschen",
+    "l",
+    "BefehlSpeicherungAusgeben",
+    "o",
+    "BefehlsSpeicherungsModusAus",
+    "x",
+    "BefehlSpeichernDavor",
+    "s",
 ]
 
 befehle2: set = set(befehle) - {"reta"}
