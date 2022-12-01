@@ -6,7 +6,9 @@ import pprint
 import re
 import subprocess
 import sys
+from collections import defaultdict
 from copy import copy, deepcopy
+from enum import Enum
 from itertools import zip_longest
 from typing import Optional
 
@@ -25,6 +27,24 @@ from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
                        notParameterValues, reta, retaProgram, spalten,
                        spaltenDict, zeilenParas)
 from word_completerAlx import WordCompleter
+
+
+class PromptModus(Enum):
+    normal = 0
+    speichern = 1
+    loeschenStart = 2
+    speicherungAusgaben = 3
+    loeschenSelect = 4
+
+
+class CharType(Enum):
+    decimal = 0
+    alpha = 1
+    neithernor = 2
+    begin = 3
+
+
+promptMode = PromptModus.normal
 
 
 def nummernStringzuNummern(text: str) -> str:
@@ -131,38 +151,172 @@ def externCommand(cmd: str, StrNummern: str):
         pass
 
 
+def speichern(ketten, platzhalter, text):
+    bedingung1 = len(platzhalter) > 0
+    bedingung2 = len(ketten) > 0
+    if bedingung1 or bedingung2:
+        if bedingung1:
+            ifJoinReTaBefehle = True
+            rpBefehlE = ""
+            for rpBefehl in (text, platzhalter):
+                rpBefehlSplitted = str(rpBefehl).split()
+                if len(rpBefehlSplitted) > 0 and rpBefehlSplitted[0] == "reta":
+                    rpBefehlE += " ".join(rpBefehlSplitted[1:]) + " "
+                else:
+                    ifJoinReTaBefehle = False
+            if ifJoinReTaBefehle:
+                platzhalter = "reta " + rpBefehlE
+            else:
+                # nochmal für nicht Kurzbefehle befehle, also ohne "reta" am Anfang
+                textUndPlatzHalterNeu = []
+                langKurzBefehle = []
+                for rpBefehl in text.split() + platzhalter.split():
+                    if rpBefehl in befehle and len(rpBefehl) > 1:
+                        langKurzBefehle += [rpBefehl]
+                    else:
+                        textUndPlatzHalterNeu += [rpBefehl]
+                ifJoinReTaBefehle = True
+                rpBefehlE = ""
+                for rpBefehl in textUndPlatzHalterNeu:
+                    rpBefehlSplitted = str(rpBefehl).split()
+                    if len(rpBefehlSplitted) > 0 and rpBefehlSplitted[0] != "reta":
+                        rpBefehlE += " ".join(rpBefehlSplitted) + " "
+                    else:
+                        ifJoinReTaBefehle = False
+                if ifJoinReTaBefehle:
+                    rpBefehle2 = ""
+                    charTuep = CharType.begin
+                    stilbruch = False
+                    zeichenKette = []
+                    zahlenBereich = " "
+                    alt_i = -1
+                    for i, rpBefehl in enumerate(textUndPlatzHalterNeu):
+                        for zeichen in rpBefehl:
+                            charTuepDavor = charTuep
+                            if zeichen.isalpha():
+                                charTuep = CharType.alpha
+                            elif zeichen.isdecimal():
+                                charTuep = CharType.decimal
+                            else:
+                                charTuep = CharType.neithernor
+                            if (
+                                charTuep != charTuepDavor
+                                and charTuepDavor != CharType.begin
+                            ):
+                                stilbruch = True
+                            if not zeichen.isspace():
+                                if zeichen in [",", "-"] or zeichen.isdecimal():
+                                    if i == alt_i:
+                                        zahlenBereich += " " + zeichen + " "
+                                    else:
+                                        zahlenBereich += zeichen
+                                else:
+                                    zeichenKette += [zeichen]
+                        alt_i = i
+                    if stilbruch:
+                        rpBefehle2 = " ".join(zeichenKette) + zahlenBereich
+                    platzhalter = rpBefehle2 + " " + (" ".join(langKurzBefehle))
+
+        # vielleicht programmier ich hier noch weiter
+        if bedingung2 and False:
+            ifJoinReTaBefehle = True
+            rpBefehlE = ""
+            for rpBefehl in ketten:
+                rpBefehlSplitted = rpBefehl
+                if len(rpBefehl) > 0 and rpBefehl[0] == "reta":
+                    rpBefehlE += " ".join(rpBefehl[1:]) + " "
+                else:
+                    ifJoinReTaBefehle = False
+            if ifJoinReTaBefehle:
+                platzhalter = "reta " + rpBefehlE
+
+    else:
+        platzhalter = "" if text is None else str(text)
+    text = ""
+    return ketten, platzhalter, text
+
+
 warBefehl: bool
 befehleBeenden = ("ende", "exit", "quit", "q", ":q")
+platzhalter = ""
+ketten = []
+text = ""
+promptDavorDict = defaultdict(lambda: ">")
+promptDavorDict[PromptModus.speichern] = "speichern>"
+promptDavorDict[PromptModus.loeschenSelect] = "löschen: Zahlenbereiche Angeben>"
 while text not in befehleBeenden:
     warBefehl = False
-    session = newSession(loggingSwitch)
-    platzhalter = ""
-    try:
-        text = session.prompt(
-            # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
-            # ">",
-            [("class:bla", ">")],
-            # completer=NestedCompleter.from_nested_dict(
-            #    startpunkt, notParameterValues=notParameterValues
-            # ),
-            completer=startpunkt1,
-            wrap_lines=True,
-            complete_while_typing=True,
-            vi_mode=True if "-vi" in sys.argv else False,
-            style=Style.from_dict({"bla": "#0000ff bg:#ffff00"})
-            if loggingSwitch
-            else Style.from_dict({"bla": "#0000ff bg:#ff0000"}),
-            # placeholder="reta",
-            placeholder=platzhalter,
-        )
-    except KeyboardInterrupt:
-        sys.exit()
+
+    if promptMode != PromptModus.speicherungAusgaben:
+        session = newSession(loggingSwitch)
+        try:
+            befehlDavor = text
+            text = session.prompt(
+                # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
+                # ">",
+                [("class:bla", promptDavorDict[promptMode])],
+                # completer=NestedCompleter.from_nested_dict(
+                #    startpunkt, notParameterValues=notParameterValues
+                # ),
+                completer=startpunkt1
+                if not promptMode == PromptModus.loeschenSelect
+                else None,
+                wrap_lines=True,
+                complete_while_typing=True,
+                vi_mode=True if "-vi" in sys.argv else False,
+                style=Style.from_dict({"bla": "#0000ff bg:#ffff00"})
+                if loggingSwitch
+                else Style.from_dict({"bla": "#0000ff bg:#ff0000"}),
+                # placeholder="reta",
+                placeholder=platzhalter,
+            )
+        except KeyboardInterrupt:
+            sys.exit()
+        if promptMode == PromptModus.speichern:
+            ketten, platzhalter, text = speichern(ketten, platzhalter, text)
+    else:
+        if text == "S" or text == "BefehlSpeichern":
+            text = ""
+        else:
+            text = platzhalter
+
+    if promptMode == PromptModus.loeschenSelect:
+        zuloeschen = BereichToNumbers(text)
+        loeschbares = {i: a for i, a in enumerate(platzhalter.split())}
+        for todel in zuloeschen:
+            try:
+                del loeschbares[todel]
+            except:
+                pass
+        platzhalter = " ".join(loeschbares.values())
+        promptMode = PromptModus.normal
+        continue
+
+    promptMode = PromptModus.normal
+
     # stext: Optional[list[str]] = str(text).split()
     # stext2: list[str] = str(text).split()
+    if text == "S" or text == "BefehlSpeichernDanach":
+        promptMode = PromptModus.speichern
+        continue
+    if text == "s" or text == "BefehlSpeichernDavor":
+        ketten, platzhalter, text = speichern(ketten, platzhalter, befehlDavor)
+        promptMode = PromptModus.normal
+        continue
+    elif text == "o" or text == "BefehlSpeicherungAusgeben":
+        promptMode = PromptModus.speicherungAusgaben
+        continue
+    elif text in ("l", "BefehlSpeicherungLöschen"):
+        print(str([{i, a} for i, a in enumerate(platzhalter.split())]))
+        promptMode = PromptModus.loeschenSelect
+        continue
+
     if text is not None:
         stext: list = text.split()
     else:
         stext: list = []
+
+    ketten = []
 
     if len(stext) > 0:
         textDazu: list
@@ -258,7 +412,6 @@ while text not in befehleBeenden:
                         EineZahlenFolgeJa[g] = False
 
             for innerKomma in innerKomma4:
-                # print(str(innerKomma))
                 bruch = [bruch for bruch in innerKomma.split("/")]
                 if [bruch1.isdecimal() for bruch1 in bruch] == [True, True]:
                     brueche += [bruch]
@@ -369,6 +522,7 @@ while text not in befehleBeenden:
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1",
                 ] + returnOnlyParasAsList(stext)
+                kette += [ketten]
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
@@ -387,6 +541,7 @@ while text not in befehleBeenden:
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1",
                 ] + returnOnlyParasAsList(stext)
+                kette += [ketten]
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
@@ -410,6 +565,7 @@ while text not in befehleBeenden:
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1,3,4",
                 ] + returnOnlyParasAsList(stext)
+                kette += [ketten]
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
@@ -429,6 +585,7 @@ while text not in befehleBeenden:
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1",
                 ] + returnOnlyParasAsList(stext)
+                kette += [ketten]
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
@@ -453,6 +610,7 @@ while text not in befehleBeenden:
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=2",
             ] + returnOnlyParasAsList(stext)
+            kette += [ketten]
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -510,6 +668,7 @@ while text not in befehleBeenden:
                 "--spaltenreihenfolgeundnurdiese=3,4,5,6",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
             ] + returnOnlyParasAsList(stext)
+            kette += [ketten]
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -528,6 +687,7 @@ while text not in befehleBeenden:
                 "--procontra=pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
             ] + returnOnlyParasAsList(stext)
+            kette += [ketten]
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -550,6 +710,7 @@ while text not in befehleBeenden:
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
                 "-ausgabe",
             ] + returnOnlyParasAsList(stext)
+            kette += [ketten]
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -568,6 +729,7 @@ while text not in befehleBeenden:
                 "--bedeutung=primzahlkreuz",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
             ] + returnOnlyParasAsList(stext)
+            kette += [ketten]
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -588,6 +750,7 @@ while text not in befehleBeenden:
                 "--primzahlwirkung=Galaxieabsicht",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
             ] + returnOnlyParasAsList(stext)
+            kette += [ketten]
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -617,6 +780,7 @@ while text not in befehleBeenden:
                     "--grundstrukturen=" + grundstruk,
                     "--breite=" + str(int(shellRowsAmountStr) - 2),
                 ] + returnOnlyParasAsList(stext)
+                kette += [ketten]
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
@@ -624,7 +788,7 @@ while text not in befehleBeenden:
             except:
                 pass
 
-    if len(stext) > 0 and stext[0] in ("shell", "s"):
+    if len(stext) > 0 and stext[0] in ("shell"):
         warBefehl = True
         try:
             process = subprocess.Popen([*stext[1:]])
