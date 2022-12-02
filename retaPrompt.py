@@ -485,10 +485,11 @@ while text not in befehleBeenden:
 
         if len({"w", "teiler"} & set(stext)) > 0:
             print("bla " + str(zahlenBereichNeu[True]))
-            zahlenBereichMenge = teiler(zahlenBereichNeu[True])[1]
+            BereichMenge = BereichToNumbers(zahlenBereichNeu[True])
+            BereichMengeNeu = teiler(BereichMenge)[1]
             zahlenBereichNeu[True] = ""
-            print("bla " + str(zahlenBereichMenge))
-            for a in zahlenBereichMenge:
+            print("bla " + str(BereichMengeNeu))
+            for a in BereichMengeNeu:
                 print(str(a))
                 zahlenBereichNeu[True] += str(a) + ","
             zahlenBereichNeu[True] = zahlenBereichNeu[True][:-1]
