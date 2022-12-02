@@ -28,7 +28,7 @@ parser.add_simple_formatter("hr", "<hr />", standalone=True)
 parser.add_simple_formatter("sub", "<sub>%(value)s</sub>")
 parser.add_simple_formatter("sup", "<sup>%(value)s</sup>")
 
-from center import Primzahlkreuz_pro_contra_strs
+from center import Primzahlkreuz_pro_contra_strs, retaHilfe
 
 
 def render_color(tag_name, value, options, parent, context):
@@ -3444,30 +3444,7 @@ class Program:
 
     def helpPage(self):
         global folder
-        readMe = "readme.bbcode"
-        if "Brython" not in sys.version.split():
-            place = os.path.join(
-                os.getcwd(), os.path.dirname(__file__), os.path.basename("./" + readMe)
-            )
-        else:
-            place = readMe
-        with open(place, encoding="utf-8") as f:
-            read_data = f.read()
-        parser.REPLACE_COSMETIC = ()
-        html = parser.format(read_data, replace_cosmetic=False)
-        if "Brython" not in sys.version.split():
-            h = html2text.HTML2Text()
-            h.style = "compact"
-            plaintext = h.handle(html)
-            plaintext = re.sub(r"\\--", "--", plaintext)
-            plaintext = re.sub(r"(\*\s+[^\-])", r"\t\1", plaintext)
-            plaintext = re.sub(r" \*\*", r"", plaintext)
-            plaintext = re.sub(r"\*\s\*", r"", plaintext)
-            plaintext = re.sub(r"(\n)([^\s])", r"\1\t\t\2", plaintext)
-            plaintext = re.sub(r".*(\* -spalten)", r" \1", plaintext)
-            cliout(plaintext)
-        else:
-            print(html)
+        retaHilfe()
 
     def bringAllImportantBeginThings(self, argv) -> tuple:
         """Einlesen der ersten Tabelle "religion.csv" zu self.relitable

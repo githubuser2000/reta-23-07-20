@@ -69,6 +69,18 @@ def retaPromptHilfe():
     console.print(md)
 
 
+def retaHilfe():
+    readMe = "readme-reta.md"
+    place = os.path.join(
+        os.getcwd(), os.path.dirname(__file__), os.path.basename("./" + readMe)
+    )
+    with open(place, encoding="utf-8") as f:
+        markdownText = f.read()
+    console = Console()
+    md = Markdown(markdownText)
+    console.print(md)
+
+
 def getTextWrapThings(maxLen=None) -> tuple:
     global shellRowsAmount
     if "Brython" not in sys.version.split():
