@@ -9,13 +9,12 @@ from collections import OrderedDict, namedtuple
 from itertools import zip_longest
 from typing import Optional, Union
 
-
 try:
     from orderedset import OrderedSet
 except:
     OrderedSet = set
 
-from tableHandling import (Enum, Iterable, Multiplikationen, OutputSyntax,
+from tableHandling import (Enum, Iterable, Multiplikationen, OutputSyntax, bbCodeSyntax,
                            Tables, Union, alxp, cliout,
                            copy, csv, csvSyntax, deepcopy, getTextWrapThings,
                            htmlSyntax, infoLog, markdownSyntax, math, os,
