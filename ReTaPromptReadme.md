@@ -1,5 +1,5 @@
 +++
-title = "Readme für retaPrmopt in Markdown"
+title = "Readme für retaPrompt in Markdown"
 author = ["tracehugo"]
 date = 2022-12-02T00:00:00+01:00
 tags = ["reta", "retaprompt", "readme"]
