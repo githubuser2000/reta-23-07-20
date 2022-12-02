@@ -8,8 +8,10 @@ Hauptparameter beginnen mit einem Minus -.
 Nebenparameter beginnen mit 2 Minus --.
 
 # Hauptparameter
+
 ## -debug
 *    hat keine Nebenparameter, ist nur für mich als Programmierer relevant und interesssant
+
 ## -zeilen
 
 * --alles
