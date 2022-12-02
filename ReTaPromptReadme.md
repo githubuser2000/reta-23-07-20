@@ -86,6 +86,7 @@ weight = -7
     Normalerweise, ohne Speicherung, kann man in der Befehlseingabe ausschließlich eine Zeilenangabe tippen und damit sind das die Befehle w a t p.
 -   "o" bzw. "BefehlSpeicherungAusgeben" gibt den gespeicherten Befehl aus.
 -   "x" bzw. "BefehlsSpeicherungsModusAus" ist noch nicht einprogrammiert als Befehl.
+-   Es ist nun Möglich einen reta Befehl zu speichern, also z.B. "reta -spalten --licht" und dann bei der Nächsten Befehlseingabe kann man eine Zeilenangabe machen, z.B. 4,7-10 und dann werden von den Spalten über Licht Zeilen 4,7,8,9,10 ausgegen. So kann man schneller alles tippen. Außerdem lässt sich das mit den Kurzbefehlen w und v Kombinieren, also kann man tippen "3,7-10 v w".
 
 
 ## retaPrompt starten {#retaprompt-starten}
