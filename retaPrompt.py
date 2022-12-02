@@ -52,6 +52,16 @@ class CharType(Enum):
 promptMode = PromptModus.normal
 
 
+def teiler(innerKomma3):
+    innerKomma5 = set()
+    for each1 in innerKomma3:
+        for each2 in set(multiples(int(each1))):
+            innerKomma5 |= set(each2)
+    innerKomma5 -= {1}
+    innerKomma3 = [str(each2) for each2 in innerKomma5]
+    return innerKomma3, innerKomma5
+
+
 def nummernStringzuNummern(text: str) -> str:
     def toNummernSet(text: list) -> set:
         menge = set()
@@ -441,6 +451,76 @@ while text not in befehleBeenden:
     ):
         stext += textDazu0
 
+    zahlenBereichMatch = [
+        bool(re.match(r"^[1234567890,-]+$", swort)) for swort in stext
+    ]
+    # print(str(any(zahlenBereichMatch)))
+    # print(str(platzhalter[:4] == "reta"))
+    # print(str(promptMode == PromptModus.normal))
+    if (
+        promptMode == PromptModus.normal
+        and len(platzhalter) > 1
+        and platzhalter[:4] == "reta"
+        # and not any([("--vorhervonausschnitt" in a or "--vielfachevonzahlen" in a) for a in stext])
+        and any(zahlenBereichMatch)
+        and zahlenBereichMatch.count(True) == 1
+    ):
+        print("ja")
+        zeilenn = False
+        woerterToDel = []
+        zahlenBereichNeu = {i: a for i, a in zip(zahlenBereichMatch, stext)}
+        # print(str(zahlenBereichNeu[True]))
+        for i, wort in enumerate(stext):
+            if len(wort) > 1 and wort[0] == "-" and wort[1] != "-":
+                zeilenn = False
+            if zeilenn is True or wort == zahlenBereichNeu[True]:
+                woerterToDel += [i]
+            if wort == "-zeilen":
+                zeilenn = True
+                woerterToDel += [i]
+        stextDict = {i: swort for i, swort in enumerate(stext)}
+        for todel in woerterToDel:
+            del stextDict[todel]
+        stext = list(stextDict.values())
+
+        if len({"w", "teiler"} & set(stext)) > 0:
+            print("bla " + str(zahlenBereichNeu[True]))
+            zahlenBereichMenge = teiler(zahlenBereichNeu[True])[1]
+            zahlenBereichNeu[True] = ""
+            print("bla " + str(zahlenBereichMenge))
+            for a in zahlenBereichMenge:
+                print(str(a))
+                zahlenBereichNeu[True] += str(a) + ","
+            zahlenBereichNeu[True] = zahlenBereichNeu[True][:-1]
+            print("bla " + zahlenBereichNeu[True])
+
+            try:
+                stext.remove("w")
+            except:
+                pass
+            try:
+                stext.remove("teiler")
+            except:
+                pass
+
+        if len({"v", "vielfache"} & set(stext)) == 0:
+            stext += ["-zeilen", "--vorhervonausschnitt=" + zahlenBereichNeu[True]]
+
+        else:
+            stext += [
+                "-zeilen",
+                "--vielfachevonzahlen=" + zahlenBereichNeu[True],
+            ]
+            try:
+                stext.remove("v")
+            except:
+                pass
+            try:
+                stext.remove("vielfache")
+            except:
+                pass
+        print(str(stext))
+
     bedingung: bool = len(stext) > 0 and stext[0] == "reta"
     brueche = []
     c = ""
@@ -454,13 +534,9 @@ while text not in befehleBeenden:
                 if innerKomma2.isdecimal():
                     innerKomma3 += [innerKomma2]
             innerKomma6 = innerKomma3
+
             if "w" in stext or "teiler" in stext:
-                innerKomma5 = set()
-                for each1 in innerKomma3:
-                    for each2 in set(multiples(int(each1))):
-                        innerKomma5 |= set(each2)
-                innerKomma5 -= {1}
-                innerKomma3 = [str(each2) for each2 in innerKomma5]
+                innerKomma3, innerKomma5 = teiler(innerKomma3)
 
             for innerKomma in innerKomma3:
                 innerKommaList = innerKomma.split("-")
