@@ -1,4 +1,5 @@
 Hauptprogramm ist reta oder reta.py
+Bequemer ist retaPrompt, was es mit Voreinstellungen noch als rp und rpl gibt.
 
 Bedienungsanleitung:
 Es gibt 4 Hauptparameter.
@@ -7,15 +8,15 @@ Hauptparameter beginnen mit einem Minus -.
 Nebenparameter beginnen mit 2 Minus --.
 
 # Hauptparameter
-* -debug
-hat keine Nebenparameter, ist nur für mich als Programmierer relevant und interesssant
-* -zeilen
+## -debug
+*    hat keine Nebenparameter, ist nur für mich als Programmierer relevant und interesssant
+## -zeilen
 
 * --alles
 * --zeit=
-    * "<"
-        bedeutet Religionen 1-9
-    * "="
+* "<"
+    bedeutet Religionen 1-9
+* "="
         bedeutet nur Religion 10
     * ">"
         bedeutet Religionen > 10
@@ -39,7 +40,7 @@ hat keine Nebenparameter, ist nur für mich als Programmierer relevant und inter
 * --oberesmaximum=
     * 2000,1500
 
-* -spalten
+## -spalten
 
 * --alles
 * --wichtigsteverstehen
@@ -94,15 +95,15 @@ hat keine Nebenparameter, ist nur für mich als Programmierer relevant und inter
 * --planet=
     * komplexitaet,freiheit,gleichheit,mechanismen,intelligenz,metasysteme,wirklichkeiten,ordnung
 
-* -kombination
+## -kombination
     * --galaxie=
         * tiere,berufe,intelligenz,liebe,frauen,maenner,persoenlichkeit,religionen,motive,emotionen,personen,wirtschaftssysteme
     * --universum=
         * tiere,berufe,transzendentalien,strukturalien,primzahlkreuz,persoenlichkeit,ontologie,mechanismen,gegentranszendentalien,maschinen,addition,motive,geist
 
 
-* -ausgabe
-    * --nocolor
+## -ausgabe
+* --nocolor
 * --art=
     * (nur eins erlaubt)
     * shell,html,csv,markdown,bbcode

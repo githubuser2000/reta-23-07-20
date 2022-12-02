@@ -9,7 +9,6 @@ from collections import OrderedDict, namedtuple
 from itertools import zip_longest
 from typing import Optional, Union
 
-import html2text
 
 try:
     from orderedset import OrderedSet
@@ -17,16 +16,11 @@ except:
     OrderedSet = set
 
 from tableHandling import (Enum, Iterable, Multiplikationen, OutputSyntax,
-                           Tables, Union, alxp, bbcode, bbCodeSyntax, cliout,
+                           Tables, Union, alxp, cliout,
                            copy, csv, csvSyntax, deepcopy, getTextWrapThings,
                            htmlSyntax, infoLog, markdownSyntax, math, os,
                            output, primCreativity, re, setShellRowsAmount,
                            shellRowsAmount, sys, x)
-
-parser = bbcode.Parser()
-parser.add_simple_formatter("hr", "<hr />", standalone=True)
-parser.add_simple_formatter("sub", "<sub>%(value)s</sub>")
-parser.add_simple_formatter("sup", "<sup>%(value)s</sup>")
 
 from center import Primzahlkreuz_pro_contra_strs, retaHilfe
 
@@ -34,17 +28,6 @@ from center import Primzahlkreuz_pro_contra_strs, retaHilfe
 def render_color(tag_name, value, options, parent, context):
     return '<span style="color:%s;">%s</span>' % (tag_name, value)
 
-
-# print(os.path.dirname(__file__))
-for color in ("red", "blue", "green", "yellow", "black", "white"):
-    parser.add_formatter(color, render_color)
-# puniverseprims = {
-#     couldBePrimeNumber if primCreativity(couldBePrimeNumber) == 1 else None
-#     for couldBePrimeNumber in range(2, 1025)
-# } - {
-#     None,
-# }
-#
 
 
 class Program:
