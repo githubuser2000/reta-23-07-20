@@ -17,6 +17,8 @@ from prompt_toolkit import PromptSession, print_formatted_text, prompt
 from prompt_toolkit.completion import Completer, Completion
 from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
+from rich.console import Console
+from rich.markdown import Markdown
 
 from center import BereichToNumbers, cliout
 from lib4tables import multiples
@@ -135,7 +137,7 @@ text: Optional[str] = None
 if "-vi" not in sys.argv:
     print(
         sys.argv[0].split(os.sep)[-1]
-        + " starten mit Parameter -vi für ViMode (Ansonsten gelten Emacs-Tastenkürzel.), beenden mit q, exit, quit"
+        + " starten mit Parameter -vi für ViMode (Ansonsten gelten Emacs-Tastenkürzel.), beenden mit q, exit, quit und Hilfe aufrufen mit h oder help oder hilfe"
     )
 if "-log" in sys.argv:
     loggingSwitch = True
@@ -534,20 +536,18 @@ while text not in befehleBeenden:
         "h" in stext and "abc" not in stext and "abcd" not in stext
     ):
         warBefehl = True
-
-        print(
-            "Alle Befehle außer reta, shell, python, math, loggen, nichtloggen, abc und abcd können beliebig kombiniert werden."
+        readMe = "ReTaPrmoptReadme.md"
+        place = os.path.join(
+            os.getcwd(), os.path.dirname(__file__), os.path.basename("./" + readMe)
         )
-        print(
-            "Bei den meisten Kombinierbaren muss exakt eine Zahleninformation vorliegen, die innerhalb Leerzeichen steht.  Jedoch funktioniert der Befehl shell und math anders. 'shell' ist dazu da, Shellbefehle auszuführen und 'math' um Mathe-Formeln auszurechnen in Python-Syntax. \nWas ist eine Zahleninformation?"
-        )
-        print(
-            "Eine Zahleninformation ist entweder eine natürliche Zahl z.B. 4, oder ein Zahlenbereich z.B. 3-6 oder eines oder beides dieser Zahleninformationen mehrmals mit Kommas getrennt z.B. 3,6-9,11. Hinter jedem Komma oder vor einer Zahl oder einem Zahlenbereich kann auch ein Minus stehen, was wieder Zahlen entfernt z.B. 1-10,-2,-5-9 entspricht 1,3,4,10."
-        )
-        print(
-            "Der Befehl um Absichten, d.h. Paradigmen, auszugeben und Meta-Paradigmen bzw. Strukturalien bzw. Transzendentalien kann auch Brüche akzeptieren, z.B. Befehl 'a u 1/2,3/4' "
-        )
-        print("Der Befehl 'befehle' gibt die Liste der möglichen Befehle aus.")
+        with open(place, encoding="utf-8") as f:
+            markdownText = f.read()
+        abDa = markdownText.find("+++", 2)
+        pattern = r"{#.*}"
+        markdownText = re.sub(pattern, "", markdownText)
+        console = Console()
+        md = Markdown(markdownText[abDa + 3 :])
+        console.print(md)
 
     bedingungZahl, bedingungBrueche = (
         list(EineZahlenFolgeJa.values()).count(True) == 1,
