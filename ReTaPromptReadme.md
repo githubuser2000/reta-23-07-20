@@ -62,7 +62,7 @@ weight = -7
 
 ### Die Befehle 15\_.... {#die-befehle-15-dot-dot-dot-dot}
 
--   Die Befehle, die mit 15\_ beginnen, bilden zusammen eine Baumstruktur und sind Ausgabe-Befehle des Geistes (15), wie "u" oder "a" Ausgabe-Befehle sind. Eine Zeilenangabe wird benötigt. Dann kann etwas ausgeben werden.
+-   Die Befehle, die mit 15\_ beginnen, bilden zusammen eine Baumstruktur und sind Ausgabe-Befehle der Grundstrukuren und des Geistes (15), wie "u" oder "a" Ausgabe-Befehle sind. Eine Zeilenangabe wird benötigt. Dann kann etwas ausgeben werden.
 
 
 ### sonstige Befehle {#sonstige-befehle}
