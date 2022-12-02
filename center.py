@@ -55,7 +55,7 @@ shellRowsAmount: int
 
 
 def retaPromptHilfe():
-    readMe = "ReTaPrmoptReadme.md"
+    readMe = "ReTaPromptReadme.md"
     place = os.path.join(
         os.getcwd(), os.path.dirname(__file__), os.path.basename("./" + readMe)
     )
