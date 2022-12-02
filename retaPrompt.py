@@ -454,9 +454,6 @@ while text not in befehleBeenden:
     zahlenBereichMatch = [
         bool(re.match(r"^[1234567890,-]+$", swort)) for swort in stext
     ]
-    # print(str(any(zahlenBereichMatch)))
-    # print(str(platzhalter[:4] == "reta"))
-    # print(str(promptMode == PromptModus.normal))
     if (
         promptMode == PromptModus.normal
         and len(platzhalter) > 1
@@ -465,11 +462,9 @@ while text not in befehleBeenden:
         and any(zahlenBereichMatch)
         and zahlenBereichMatch.count(True) == 1
     ):
-        print("ja")
         zeilenn = False
         woerterToDel = []
         zahlenBereichNeu = {i: a for i, a in zip(zahlenBereichMatch, stext)}
-        # print(str(zahlenBereichNeu[True]))
         for i, wort in enumerate(stext):
             if len(wort) > 1 and wort[0] == "-" and wort[1] != "-":
                 zeilenn = False
@@ -484,16 +479,12 @@ while text not in befehleBeenden:
         stext = list(stextDict.values())
 
         if len({"w", "teiler"} & set(stext)) > 0:
-            print("bla " + str(zahlenBereichNeu[True]))
             BereichMenge = BereichToNumbers(zahlenBereichNeu[True])
             BereichMengeNeu = teiler(BereichMenge)[1]
             zahlenBereichNeu[True] = ""
-            print("bla " + str(BereichMengeNeu))
             for a in BereichMengeNeu:
-                print(str(a))
                 zahlenBereichNeu[True] += str(a) + ","
             zahlenBereichNeu[True] = zahlenBereichNeu[True][:-1]
-            print("bla " + zahlenBereichNeu[True])
 
             try:
                 stext.remove("w")
@@ -520,7 +511,6 @@ while text not in befehleBeenden:
                 stext.remove("vielfache")
             except:
                 pass
-        print(str(stext))
 
     bedingung: bool = len(stext) > 0 and stext[0] == "reta"
     brueche = []
@@ -561,17 +551,6 @@ while text not in befehleBeenden:
                     brueche += [bruch]
             if "b" in stext:
                 brueche += [[bruch[1], bruch[0]] for bruch in brueche]
-
-            # d = re.split(",|-", a)
-            # if a.isnumeric() or [b.isnumeric() for b in d] == [True] * len(d):
-            # b += 1
-            # c = a
-        # try:
-        #    print(str(c))
-        #    print("--")
-        #    print(str(brueche))
-        # except:
-        #    pass
 
     if "mulpri" in stext or "p" in stext:
         stext += ["multis", "prim"]
