@@ -18,6 +18,7 @@ weight = -7
     - [Die Befehle 15\_....](#die-befehle-15-dot-dot-dot-dot)
     - [sonstige Befehle](#sonstige-befehle)
     - [Speicher-Befehle](#speicher-befehle)
+- [retaPrompt starten](#retaprompt-starten)
 
 </div>
 <!--endtoc-->
@@ -85,3 +86,12 @@ weight = -7
     Normalerweise, ohne Speicherung, kann man in der Befehlseingabe ausschließlich eine Zeilenangabe tippen und damit sind das die Befehle w a t p.
 -   "o" bzw. "BefehlSpeicherungAusgeben" gibt den gespeicherten Befehl aus.
 -   "x" bzw. "BefehlsSpeicherungsModusAus" ist noch nicht einprogrammiert als Befehl.
+
+
+## retaPrompt starten {#retaprompt-starten}
+
+-   retaPrompt starten mit Parameter -vi für ViMode (Ansonsten gelten Emacs-Tastenkürzel.),
+-   beenden mit q, exit, quit und
+-   Hilfe aufrufen mit h oder help oder hilfe,
+-   rp (statt retaPrompt zu starten) ist retaPrompt mit vi mode, rpl ist retaPrompt mit vi mode und aktiviertem logging bei Programmstart.
+-   retaPrompt Parameter -log aktiviert logging bei Programmstart.

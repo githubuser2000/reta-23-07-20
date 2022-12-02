@@ -134,11 +134,6 @@ startpunkt1 = NestedCompleter(
 text: Optional[str] = None
 if "-vi" not in sys.argv:
     retaPromptHilfe()
-    print(
-        "\n\n\n "
-        + sys.argv[0].split(os.sep)[-1]
-        + " starten mit Parameter -vi für ViMode (Ansonsten gelten Emacs-Tastenkürzel.),\n beenden mit q, exit, quit und\n Hilfe aufrufen mit h oder help oder hilfe,\n rp (statt retaPrompt zu starten) ist retaPrompt mit vi mode, rpl ist retaPrompt mit vi mode und aktiviertem logging bei Programmstart."
-    )
 if "-log" in sys.argv:
     loggingSwitch = True
 else:
