@@ -1,5 +1,11 @@
 #!/bin/sh
 cd ~/myRepos/reta
+echo aktueller Branch: `git branch | grep '*' | awk '{print $2}'`
+echo In den Feature Branch wechseln oder Master ? m für master und f für feature, alles andere ändert nichts
+echo Es wird empfohlen Programmierungen im Feature-Branch durchzuführen und csvs input im master branch
+read branchwechslung
+[ $branchwechslung == "m" ] && git switch master && sleep 2
+[ $branchwechslung == "f" ] && git switch feature && sleep 2
 file=`ls -r | grep -e '\.nvim$' | fzf`
 if [ "$file" != "" ];then
   nvim -S $file
