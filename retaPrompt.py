@@ -17,10 +17,8 @@ from prompt_toolkit import PromptSession, print_formatted_text, prompt
 from prompt_toolkit.completion import Completer, Completion
 from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
-from rich.console import Console
-from rich.markdown import Markdown
 
-from center import BereichToNumbers, cliout
+from center import BereichToNumbers, cliout, retaPromptHilfe
 from lib4tables import multiples
 from LibRetaPrompt import wahl15
 # import reta
@@ -135,9 +133,11 @@ startpunkt1 = NestedCompleter(
 
 text: Optional[str] = None
 if "-vi" not in sys.argv:
+    retaPromptHilfe()
     print(
-        sys.argv[0].split(os.sep)[-1]
-        + " starten mit Parameter -vi für ViMode (Ansonsten gelten Emacs-Tastenkürzel.), beenden mit q, exit, quit und Hilfe aufrufen mit h oder help oder hilfe"
+        "\n\n\n "
+        + sys.argv[0].split(os.sep)[-1]
+        + " starten mit Parameter -vi für ViMode (Ansonsten gelten Emacs-Tastenkürzel.),\n beenden mit q, exit, quit und\n Hilfe aufrufen mit h oder help oder hilfe,\n rp (statt retaPrompt zu starten) ist retaPrompt mit vi mode, rpl ist retaPrompt mit vi mode und aktiviertem logging bei Programmstart."
     )
 if "-log" in sys.argv:
     loggingSwitch = True
@@ -536,18 +536,7 @@ while text not in befehleBeenden:
         "h" in stext and "abc" not in stext and "abcd" not in stext
     ):
         warBefehl = True
-        readMe = "ReTaPrmoptReadme.md"
-        place = os.path.join(
-            os.getcwd(), os.path.dirname(__file__), os.path.basename("./" + readMe)
-        )
-        with open(place, encoding="utf-8") as f:
-            markdownText = f.read()
-        abDa = markdownText.find("+++", 2)
-        pattern = r"{#.*}"
-        markdownText = re.sub(pattern, "", markdownText)
-        console = Console()
-        md = Markdown(markdownText[abDa + 3 :])
-        console.print(md)
+        retaPromptHilfe()
 
     bedingungZahl, bedingungBrueche = (
         list(EineZahlenFolgeJa.values()).count(True) == 1,

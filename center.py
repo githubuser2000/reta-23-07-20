@@ -22,6 +22,7 @@ except:
     OrderedSet = set
 
 from rich.console import Console
+from rich.markdown import Markdown
 from rich.syntax import Syntax
 
 Primzahlkreuz_pro_contra_strs = (
@@ -51,6 +52,21 @@ for arg in sys.argv:
 
 Multiplikationen = [("Multiplikationen", "")]
 shellRowsAmount: int
+
+
+def retaPromptHilfe():
+    readMe = "ReTaPrmoptReadme.md"
+    place = os.path.join(
+        os.getcwd(), os.path.dirname(__file__), os.path.basename("./" + readMe)
+    )
+    with open(place, encoding="utf-8") as f:
+        markdownText = f.read()
+    abDa = markdownText.find("+++", 2)
+    pattern = r"{#.*}"
+    markdownText = re.sub(pattern, "", markdownText)
+    console = Console()
+    md = Markdown(markdownText[abDa + 3 :])
+    console.print(md)
 
 
 def getTextWrapThings(maxLen=None) -> tuple:
