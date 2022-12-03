@@ -1,6 +1,12 @@
 #!/bin/sh
 cd ~/myRepos/reta
-git switch master
+echo aktueller Branch: `git branch | grep '*' | awk '{print $2}'`
+echo In den Feature Branch wechseln oder Master ? m für master und f für feature, alles andere wechselt zum Master Branch !!!!!!
+echo Es wird empfohlen Programmierungen im Feature-Branch durchzuführen und csvs input im master branch
+read branchwechslung
+[ $branchwechslung = "m" ] && git switch master
+[ $branchwechslung = "f" ] && git switch feature || git switch master
+sleep 2
 file=`ls -S | grep -e '\.csv$' | fzf`
 if [ "$file" != "" ];then
     libreoffice $file
