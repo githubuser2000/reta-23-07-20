@@ -1,0 +1,8 @@
+#!/bin/sh
+SCRIPT_PATH="${BASH_SOURCE:-$0}"
+ABS_SCRIPT_PATH="$(realpath "${SCRIPT_PATH}")"
+ABS_DIRECTORY="$(dirname "${ABS_SCRIPT_PATH}")"
+GIT_DIRECTORY="${ABS_DIRECTORY}/.git"
+
+[ "$branchwechslung" = "m" ] && git --git-dir ${GIT_DIRECTORY} switch master
+[ "$branchwechslung" = "f" ] && git --git-dir ${GIT_DIRECTORY} switch feature || git --git-dir ${GIT_DIRECTORY} switch master
