@@ -3,6 +3,11 @@ SCRIPT_PATH="${BASH_SOURCE:-$0}"
 ABS_SCRIPT_PATH="$(realpath "${SCRIPT_PATH}")"
 ABS_DIRECTORY="$(dirname "${ABS_SCRIPT_PATH}")"
 GIT_DIRECTORY="${ABS_DIRECTORY}/.git"
+if [ "$5" == '' ]; then
+	commitstring="$(date)"
+else
+	commitstring="${5}"
+fi 
 if [ "$1" == 'reta' ] || [ "$2" == 'reta' ]  || [ "$3" == 'reta' ] || [ "$4" == 'reta' ]; then
 	bla=reta
 fi 
@@ -34,6 +39,6 @@ if [ "$1" == 'tar' ] || [ "$2" == 'tar' ] || [ "$3" == 'tar' ] || [ "$4" == 'tar
 	cd -
 	cd /home/alex/myRepos/religions-tabelle-releasses/; tar -c reta.tar | plzip -1 - | ssh root@d2 'plzip -d - | tar --overwrite -xf - -C /media/2TB/data/www/forum/'
 	cd /home/alex/myRepos/religions-tabelle-releasses/; tar -c reta.tar | ssh root@ppp 'tar --overwrite -xf - -C /srv/http/forum'
-	git --git-dir ${GIT_DIRECTORY} --work-tree=${ABS_DIRECTORY} add -A;git --git-dir ${GIT_DIRECTORY} --work-tree=${ABS_DIRECTORY} commit -m "$(date)";git --git-dir ${GIT_DIRECTORY} --work-tree=${ABS_DIRECTORY} push;git --git-dir ${GIT_DIRECTORY} --work-tree=${ABS_DIRECTORY} pushall
+	git --git-dir ${GIT_DIRECTORY} --work-tree=${ABS_DIRECTORY} add -A;git --git-dir ${GIT_DIRECTORY} --work-tree=${ABS_DIRECTORY} commit -m "${commitstring}";git --git-dir ${GIT_DIRECTORY} --work-tree=${ABS_DIRECTORY} push;git --git-dir ${GIT_DIRECTORY} --work-tree=${ABS_DIRECTORY} pushall
 	cd -
 fi
