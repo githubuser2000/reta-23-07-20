@@ -116,7 +116,6 @@ def externCommand(cmd: str, StrNummern: str):
     except:
         pass
 
-
 def speichern(ketten, platzhalter, text):
     global promptMode2, textDazu0
     bedingung1 = len(platzhalter) > 0
@@ -207,10 +206,8 @@ def speichern(ketten, platzhalter, text):
     textDazu0 = platzhalter.split()
     return ketten, platzhalter, text
 
-
 pp1 = pprint.PrettyPrinter(indent=2)
 pp = pp1.pprint
-
 
 startpunkt1 = NestedCompleter(
     {a: None for a in befehle},
