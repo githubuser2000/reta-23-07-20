@@ -38,19 +38,11 @@ class PromptModus(Enum):
     speicherungAusgabenMitZusatz = 5
     AusgabeSelektiv = 6
 
-
-promptMode2 = PromptModus.normal
-
-
 class CharType(Enum):
     decimal = 0
     alpha = 1
     neithernor = 2
     begin = 3
-
-
-promptMode = PromptModus.normal
-
 
 def teiler(innerKomma3):
     innerKomma5 = set()
@@ -60,7 +52,6 @@ def teiler(innerKomma3):
     innerKomma5 -= {1}
     innerKomma3 = [str(each2) for each2 in innerKomma5]
     return innerKomma3, innerKomma5
-
 
 def nummernStringzuNummern(text: str) -> str:
     def toNummernSet(text: list) -> set:
@@ -96,16 +87,6 @@ def nummernStringzuNummern(text: str) -> str:
     return ",".join(map(str, toNummernSet(results) - toNummernSet(abzug)))
 
 
-if platform.system() != "Windows":
-    try:
-        ColumnsRowsAmount, shellRowsAmountStr = (
-            os.popen("stty size", "r").read().split()
-        )  # Wie viele Zeilen und Spalten hat die Shell ?
-    except Exception:
-        ColumnsRowsAmount, shellRowsAmountStr = "80", "80"
-else:
-    SiZe = os.get_terminal_size()
-    ColumnsRowsAmount, shellRowsAmountStr = SiZe.columns, SiZe.lines
 
 
 def newSession(history=False):
@@ -116,39 +97,12 @@ def newSession(history=False):
     else:
         return PromptSession()
 
-
 def returnOnlyParasAsList(textList: str):
     liste = []
     for t in textList:
         if len(t) > 0 and t[0] == "-":
             liste += [t]
     return liste
-
-
-pp1 = pprint.PrettyPrinter(indent=2)
-pp = pp1.pprint
-
-
-startpunkt1 = NestedCompleter(
-    {a: None for a in befehle},
-    notParameterValues,
-    {},
-    ComplSitua.retaAnfang,
-    "",
-    {
-        **{"reta": ComplSitua.retaAnfang},
-        **{a: ComplSitua.befehleNichtReta for a in befehle2},
-    },
-)
-
-text: Optional[str] = None
-if "-vi" not in sys.argv:
-    retaPromptHilfe()
-if "-log" in sys.argv:
-    loggingSwitch = True
-else:
-    loggingSwitch = False
-
 
 def externCommand(cmd: str, StrNummern: str):
     nummern: list[int] = list(BereichToNumbers(StrNummern))
@@ -246,11 +200,50 @@ def speichern(ketten, platzhalter, text):
     else:
         platzhalter = "" if text is None else str(text)
     text = ""
-    promptMode2 = PromptModus.AusgabeSelektiv
+    if platzhalter != "":
+        promptMode2 = PromptModus.AusgabeSelektiv
+    else:
+        promptMode2 = PromptModus.normal
     textDazu0 = platzhalter.split()
     return ketten, platzhalter, text
 
 
+pp1 = pprint.PrettyPrinter(indent=2)
+pp = pp1.pprint
+
+
+startpunkt1 = NestedCompleter(
+    {a: None for a in befehle},
+    notParameterValues,
+    {},
+    ComplSitua.retaAnfang,
+    "",
+    {
+        **{"reta": ComplSitua.retaAnfang},
+        **{a: ComplSitua.befehleNichtReta for a in befehle2},
+    },
+)
+
+text: Optional[str] = None
+if "-vi" not in sys.argv:
+    retaPromptHilfe()
+if "-log" in sys.argv:
+    loggingSwitch = True
+else:
+    loggingSwitch = False
+
+if platform.system() != "Windows":
+    try:
+        ColumnsRowsAmount, shellRowsAmountStr = (
+            os.popen("stty size", "r").read().split()
+        )  # Wie viele Zeilen und Spalten hat die Shell ?
+    except Exception:
+        ColumnsRowsAmount, shellRowsAmountStr = "80", "80"
+else:
+    SiZe = os.get_terminal_size()
+    ColumnsRowsAmount, shellRowsAmountStr = SiZe.columns, SiZe.lines
+promptMode = PromptModus.normal
+promptMode2 = PromptModus.normal
 warBefehl: bool
 befehleBeenden = ("ende", "exit", "quit", "q", ":q")
 platzhalter = ""
@@ -310,7 +303,12 @@ while text not in befehleBeenden:
             text = platzhalter + " " + nochAusageben
 
     if promptMode == PromptModus.loeschenSelect:
+        print("text vorher: {}".format(text))
+        print("platzhalter vorher: {}".format(platzhalter))
+        print("promptmode vorher: {} , {}".format(promptMode, promptMode2))
+        print("textDazu0 vorher: {} ".format(textDazu0))
         text = str(text)
+        print("text nachher: {}".format(text))
         if bool(re.match(r"^[1234567890,-]+$", text)):
             zuloeschen = BereichToNumbers(text)
             loeschbares = {i + 1: a for i, a in enumerate(platzhalter.split())}
@@ -333,6 +331,9 @@ while text not in befehleBeenden:
         if len(platzhalter.strip()) == 0:
             promptMode2 = PromptModus.normal
             textDazu0 = []
+        print("platzhalter nachher: {}".format(platzhalter))
+        print("promptmode nachher: {} , {}".format(promptMode, promptMode2))
+        print("textDazu0 nachher: {} ".format(textDazu0))
         continue
 
     promptMode = PromptModus.normal
@@ -363,6 +364,7 @@ while text not in befehleBeenden:
         continue
     elif text in ("l", "BefehlSpeicherungLöschen"):
         print(str([{i + 1, a} for i, a in enumerate(platzhalter.split())]))
+        print("promptmode vorher: {} , {}".format(promptMode, promptMode2))
         promptMode = PromptModus.loeschenSelect
         continue
 
