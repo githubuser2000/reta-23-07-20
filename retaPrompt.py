@@ -206,53 +206,10 @@ def speichern(ketten, platzhalter, text):
     textDazu0 = platzhalter.split()
     return ketten, platzhalter, text
 
-pp1 = pprint.PrettyPrinter(indent=2)
-pp = pp1.pprint
 
-startpunkt1 = NestedCompleter(
-    {a: None for a in befehle},
-    notParameterValues,
-    {},
-    ComplSitua.retaAnfang,
-    "",
-    {
-        **{"reta": ComplSitua.retaAnfang},
-        **{a: ComplSitua.befehleNichtReta for a in befehle2},
-    },
-)
-
-
-def promptLoopScope():
+def PromptScope():
     global promptMode2, textDazu0
-    text: Optional[str] = None
-    if "-vi" not in sys.argv:
-        retaPromptHilfe()
-    if "-log" in sys.argv:
-        loggingSwitch = True
-    else:
-        loggingSwitch = False
-    if platform.system() != "Windows":
-        try:
-            ColumnsRowsAmount, shellRowsAmountStr = (
-                os.popen("stty size", "r").read().split()
-            )  # Wie viele Zeilen und Spalten hat die Shell ?
-        except Exception:
-            ColumnsRowsAmount, shellRowsAmountStr = "80", "80"
-    else:
-        SiZe = os.get_terminal_size()
-        ColumnsRowsAmount, shellRowsAmountStr = SiZe.columns, SiZe.lines
-    promptMode = PromptModus.normal
-    promptMode2 = PromptModus.normal
-    warBefehl: bool
-    befehleBeenden = ("ende", "exit", "quit", "q", ":q")
-    platzhalter = ""
-    ketten = []
-    text = ""
-    promptDavorDict = defaultdict(lambda: ">")
-    promptDavorDict[PromptModus.speichern] = "was speichern>"
-    promptDavorDict[PromptModus.loeschenSelect] = "was löschen>"
-    nochAusageben = ""
-    textDazu0 = []
+    befehleBeenden, ketten, loggingSwitch, nochAusageben, platzhalter, promptDavorDict, promptMode, shellRowsAmountStr, startpunkt1, text = PromptAllesVorGroesserSchleife()
     while text not in befehleBeenden:
         warBefehl = False
         promptModeLast = promptMode
@@ -261,78 +218,14 @@ def promptLoopScope():
                 PromptModus.speicherungAusgaben,
                 PromptModus.speicherungAusgabenMitZusatz,
         ):
-            session = newSession(loggingSwitch)
-            try:
-                befehlDavor = text
-                text = session.prompt(
-                    # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
-                    # ">",
-                    [("class:bla", promptDavorDict[promptMode])],
-                    # completer=NestedCompleter.from_nested_dict(
-                    #    startpunkt, notParameterValues=notParameterValues
-                    # ),
-                    completer=startpunkt1
-                    if not promptMode == PromptModus.loeschenSelect
-                    else None,
-                    wrap_lines=True,
-                    complete_while_typing=True,
-                    vi_mode=True if "-vi" in sys.argv else False,
-                    style=Style.from_dict({"bla": "#0000ff bg:#ffff00"})
-                    if loggingSwitch
-                    else Style.from_dict({"bla": "#0000ff bg:#ff0000"}),
-                    # placeholder="reta",
-                    placeholder=platzhalter,
-                )
-                text: str = str(text)
-            except KeyboardInterrupt:
-                sys.exit()
-            if promptMode == PromptModus.speichern:
-                ketten, platzhalter, text = speichern(ketten, platzhalter, text)
+            befehlDavor, text = promptInput(loggingSwitch, platzhalter, promptDavorDict, promptMode, startpunkt1, text)
+            ketten, platzhalter, text = promptOutputA(ketten, platzhalter, promptMode, text)
 
         else:
-            # stext = text.split()
-            # if promptMode in (
-            #    PromptModus.speicherungAusgaben,
-            #    PromptModus.speicherungAusgabenMitZusatz,
-            # ):
-
-            if promptMode == PromptModus.speicherungAusgaben:
-                text = platzhalter
-            elif promptMode == PromptModus.speicherungAusgabenMitZusatz:
-                text = platzhalter + " " + nochAusageben
+            text = promptOutputB(nochAusageben, platzhalter, promptMode, text)
 
         if promptMode == PromptModus.loeschenSelect:
-            print("text vorher: {}".format(text))
-            print("platzhalter vorher: {}".format(platzhalter))
-            print("promptmode vorher: {} , {}".format(promptMode, promptMode2))
-            print("textDazu0 vorher: {} ".format(textDazu0))
-            text = str(text)
-            print("text nachher: {}".format(text))
-            if bool(re.match(r"^[1234567890,-]+$", text)):
-                zuloeschen = BereichToNumbers(text)
-                loeschbares = {i + 1: a for i, a in enumerate(platzhalter.split())}
-                for todel in zuloeschen:
-                    try:
-                        del loeschbares[todel]
-                    except:
-                        pass
-                platzhalter = " ".join(loeschbares.values())
-            else:
-                loeschbares = {a: i + 1 for i, a in enumerate(platzhalter.split())}
-                for wort in text.split():
-                    try:
-                        del loeschbares[wort]
-                    except:
-                        pass
-                platzhalter = " ".join(loeschbares.keys())
-
-            promptMode = PromptModus.normal
-            if len(platzhalter.strip()) == 0:
-                promptMode2 = PromptModus.normal
-                textDazu0 = []
-            print("platzhalter nachher: {}".format(platzhalter))
-            print("promptmode nachher: {} , {}".format(promptMode, promptMode2))
-            print("textDazu0 nachher: {} ".format(textDazu0))
+            platzhalter, promptMode, text = PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text)
             continue
 
         promptMode = PromptModus.normal
@@ -367,156 +260,13 @@ def promptLoopScope():
             promptMode = PromptModus.loeschenSelect
             continue
 
-        if text is not None:
-            stext: list = text.split()
-        else:
-            stext: list = []
-
-        ketten = []
-
-        AusgabeSelektiv = 5
-        if len(stext) > 0:
-            textDazu: list
-            stext2: list = []
-            s_2: list
-
-            for s_ in tuple(deepcopy(stext)):
-                textDazu = []
-                n: Optional[int] = None
-                for ii, s_3 in enumerate(s_):
-                    if s_3.isdecimal():
-                        n = ii
-                        break
-                try:
-                    if s_[int(n) - 1] == "-":
-                        n -= 1
-                except:
-                    pass
-
-                if n is not None:
-                    s_2 = s_[n:].split(",")
-                    s_4 = [s_5.split("-") for s_5 in s_2]
-                    if len(s_) > n and [
-                        [strInt.isdecimal() or len(strInt) == 0 for strInt in strA]
-                        for strA in s_4
-                    ] == [[True for strInt in strA] for strA in s_4]:
-                        buchst = set(s_[:n]) & {
-                            "a",
-                            "t",
-                            "v",
-                            "u",
-                            "p",
-                            "r",
-                            "w",
-                            "s",
-                            "o",
-                            "S",
-                        }
-                        if n == len(buchst):
-                            buchst2: list = [a if a != "p" else "mulpri" for a in buchst]
-                            textDazu += buchst2 + [str(s_[n:])]
-                        if (
-                                len(stext) == 1
-                                and len(buchst) == 0
-                                and promptMode2 != PromptModus.AusgabeSelektiv
-                        ):
-                            textDazu += ["mulpri", "a", "t", "w"]
-
-                if len(textDazu) > 0:
-                    stext2 += textDazu
-                else:
-                    stext2 += [str(s_)]
-            stext = stext2
-
-        if stext is not None:
-            nstextnum: list = []
-            for astext in stext:
-                if astext.isdecimal():
-                    nstextnum += [int(astext)]
-            if len(nstextnum) > 0:
-                maxNum = max(nstextnum)
-            else:
-                maxNum = 1024
-
-        stextb = []
-        for s in stext:
-            if len(s) > 0 and s[0].isdecimal() and ("," in s or "-" in s):
-                stextb += [nummernStringzuNummern(s)]
-            else:
-                stextb += [s]
-        stext = stextb
-
-        if (
-                promptMode2 == PromptModus.AusgabeSelektiv
-                and promptModeLast == PromptModus.normal
-        ):
-            stext += textDazu0
-
-        zahlenBereichMatch = [
-            bool(re.match(r"^[1234567890,-]+$", swort)) for swort in stext
-        ]
-        if (
-                promptMode == PromptModus.normal
-                and len(platzhalter) > 1
-                and platzhalter[:4] == "reta"
-                # and not any([("--vorhervonausschnitt" in a or "--vielfachevonzahlen" in a) for a in stext])
-                and any(zahlenBereichMatch)
-                and zahlenBereichMatch.count(True) == 1
-        ):
-            zeilenn = False
-            woerterToDel = []
-            zahlenBereichNeu = {i: a for i, a in zip(zahlenBereichMatch, stext)}
-            for i, wort in enumerate(stext):
-                if len(wort) > 1 and wort[0] == "-" and wort[1] != "-":
-                    zeilenn = False
-                if zeilenn is True or wort == zahlenBereichNeu[True]:
-                    woerterToDel += [i]
-                if wort == "-zeilen":
-                    zeilenn = True
-                    woerterToDel += [i]
-            stextDict = {i: swort for i, swort in enumerate(stext)}
-            for todel in woerterToDel:
-                del stextDict[todel]
-            stext = list(stextDict.values())
-
-            if len({"w", "teiler"} & set(stext)) > 0:
-                BereichMenge = BereichToNumbers(zahlenBereichNeu[True])
-                BereichMengeNeu = teiler(BereichMenge)[1]
-                zahlenBereichNeu[True] = ""
-                for a in BereichMengeNeu:
-                    zahlenBereichNeu[True] += str(a) + ","
-                zahlenBereichNeu[True] = zahlenBereichNeu[True][:-1]
-
-                try:
-                    stext.remove("w")
-                except:
-                    pass
-                try:
-                    stext.remove("teiler")
-                except:
-                    pass
-
-            if len({"v", "vielfache"} & set(stext)) == 0:
-                stext += ["-zeilen", "--vorhervonausschnitt=" + zahlenBereichNeu[True]]
-
-            else:
-                stext += [
-                    "-zeilen",
-                    "--vielfachevonzahlen=" + zahlenBereichNeu[True],
-                ]
-                try:
-                    stext.remove("v")
-                except:
-                    pass
-                try:
-                    stext.remove("vielfache")
-                except:
-                    pass
-
-        bedingung: bool = len(stext) > 0 and stext[0] == "reta"
-        brueche = []
-        c = ""
-        EineZahlenFolgeJa: dict = {}
+        EineZahlenFolgeJa, bedingung, brueche, c, ketten, maxNum, stext = promptVorbereitungGrosseAusgabe(ketten,
+                                                                                                          platzhalter,
+                                                                                                          promptMode,
+                                                                                                          promptMode2,
+                                                                                                          promptModeLast,
+                                                                                                          text,
+                                                                                                          textDazu0)
         if not bedingung:
             for g, a in enumerate(stext):
 
@@ -942,4 +692,273 @@ def promptLoopScope():
                 print("Das ist kein Befehl! -> " + str(stext))
 
 
-promptLoopScope()
+def promptVorbereitungGrosseAusgabe(ketten, platzhalter, promptMode, promptMode2, promptModeLast, text, textDazu0):
+    if text is not None:
+        stext: list = text.split()
+    else:
+        stext: list = []
+    ketten = []
+    AusgabeSelektiv = 5
+    if len(stext) > 0:
+        textDazu: list
+        stext2: list = []
+        s_2: list
+
+        for s_ in tuple(deepcopy(stext)):
+            textDazu = []
+            n: Optional[int] = None
+            for ii, s_3 in enumerate(s_):
+                if s_3.isdecimal():
+                    n = ii
+                    break
+            try:
+                if s_[int(n) - 1] == "-":
+                    n -= 1
+            except:
+                pass
+
+            if n is not None:
+                s_2 = s_[n:].split(",")
+                s_4 = [s_5.split("-") for s_5 in s_2]
+                if len(s_) > n and [
+                    [strInt.isdecimal() or len(strInt) == 0 for strInt in strA]
+                    for strA in s_4
+                ] == [[True for strInt in strA] for strA in s_4]:
+                    buchst = set(s_[:n]) & {
+                        "a",
+                        "t",
+                        "v",
+                        "u",
+                        "p",
+                        "r",
+                        "w",
+                        "s",
+                        "o",
+                        "S",
+                    }
+                    if n == len(buchst):
+                        buchst2: list = [a if a != "p" else "mulpri" for a in buchst]
+                        textDazu += buchst2 + [str(s_[n:])]
+                    if (
+                            len(stext) == 1
+                            and len(buchst) == 0
+                            and promptMode2 != PromptModus.AusgabeSelektiv
+                    ):
+                        textDazu += ["mulpri", "a", "t", "w"]
+
+            if len(textDazu) > 0:
+                stext2 += textDazu
+            else:
+                stext2 += [str(s_)]
+        stext = stext2
+    if stext is not None:
+        nstextnum: list = []
+        for astext in stext:
+            if astext.isdecimal():
+                nstextnum += [int(astext)]
+        if len(nstextnum) > 0:
+            maxNum = max(nstextnum)
+        else:
+            maxNum = 1024
+    stextb = []
+    for s in stext:
+        if len(s) > 0 and s[0].isdecimal() and ("," in s or "-" in s):
+            stextb += [nummernStringzuNummern(s)]
+        else:
+            stextb += [s]
+    stext = stextb
+    if (
+            promptMode2 == PromptModus.AusgabeSelektiv
+            and promptModeLast == PromptModus.normal
+    ):
+        stext += textDazu0
+    zahlenBereichMatch = [
+        bool(re.match(r"^[1234567890,-]+$", swort)) for swort in stext
+    ]
+    if (
+            promptMode == PromptModus.normal
+            and len(platzhalter) > 1
+            and platzhalter[:4] == "reta"
+            # and not any([("--vorhervonausschnitt" in a or "--vielfachevonzahlen" in a) for a in stext])
+            and any(zahlenBereichMatch)
+            and zahlenBereichMatch.count(True) == 1
+    ):
+        zeilenn = False
+        woerterToDel = []
+        zahlenBereichNeu = {i: a for i, a in zip(zahlenBereichMatch, stext)}
+        for i, wort in enumerate(stext):
+            if len(wort) > 1 and wort[0] == "-" and wort[1] != "-":
+                zeilenn = False
+            if zeilenn is True or wort == zahlenBereichNeu[True]:
+                woerterToDel += [i]
+            if wort == "-zeilen":
+                zeilenn = True
+                woerterToDel += [i]
+        stextDict = {i: swort for i, swort in enumerate(stext)}
+        for todel in woerterToDel:
+            del stextDict[todel]
+        stext = list(stextDict.values())
+
+        if len({"w", "teiler"} & set(stext)) > 0:
+            BereichMenge = BereichToNumbers(zahlenBereichNeu[True])
+            BereichMengeNeu = teiler(BereichMenge)[1]
+            zahlenBereichNeu[True] = ""
+            for a in BereichMengeNeu:
+                zahlenBereichNeu[True] += str(a) + ","
+            zahlenBereichNeu[True] = zahlenBereichNeu[True][:-1]
+
+            try:
+                stext.remove("w")
+            except:
+                pass
+            try:
+                stext.remove("teiler")
+            except:
+                pass
+
+        if len({"v", "vielfache"} & set(stext)) == 0:
+            stext += ["-zeilen", "--vorhervonausschnitt=" + zahlenBereichNeu[True]]
+
+        else:
+            stext += [
+                "-zeilen",
+                "--vielfachevonzahlen=" + zahlenBereichNeu[True],
+            ]
+            try:
+                stext.remove("v")
+            except:
+                pass
+            try:
+                stext.remove("vielfache")
+            except:
+                pass
+    bedingung: bool = len(stext) > 0 and stext[0] == "reta"
+    brueche = []
+    c = ""
+    EineZahlenFolgeJa: dict = {}
+    return EineZahlenFolgeJa, bedingung, brueche, c, ketten, maxNum, stext
+
+
+def PromptAllesVorGroesserSchleife():
+    global promptMode2, textDazu0
+    pp1 = pprint.PrettyPrinter(indent=2)
+    pp = pp1.pprint
+    startpunkt1 = NestedCompleter(
+        {a: None for a in befehle},
+        notParameterValues,
+        {},
+        ComplSitua.retaAnfang,
+        "",
+        {
+            **{"reta": ComplSitua.retaAnfang},
+            **{a: ComplSitua.befehleNichtReta for a in befehle2},
+        },
+    )
+    text: Optional[str] = None
+    if "-vi" not in sys.argv:
+        retaPromptHilfe()
+    if "-log" in sys.argv:
+        loggingSwitch = True
+    else:
+        loggingSwitch = False
+    if platform.system() != "Windows":
+        try:
+            ColumnsRowsAmount, shellRowsAmountStr = (
+                os.popen("stty size", "r").read().split()
+            )  # Wie viele Zeilen und Spalten hat die Shell ?
+        except Exception:
+            ColumnsRowsAmount, shellRowsAmountStr = "80", "80"
+    else:
+        SiZe = os.get_terminal_size()
+        ColumnsRowsAmount, shellRowsAmountStr = SiZe.columns, SiZe.lines
+    promptMode = PromptModus.normal
+    promptMode2 = PromptModus.normal
+    warBefehl: bool
+    befehleBeenden = ("ende", "exit", "quit", "q", ":q")
+    platzhalter = ""
+    ketten = []
+    text = ""
+    promptDavorDict = defaultdict(lambda: ">")
+    promptDavorDict[PromptModus.speichern] = "was speichern>"
+    promptDavorDict[PromptModus.loeschenSelect] = "was löschen>"
+    nochAusageben = ""
+    textDazu0 = []
+    return befehleBeenden, ketten, loggingSwitch, nochAusageben, platzhalter, promptDavorDict, promptMode, shellRowsAmountStr, startpunkt1, text
+
+
+def PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text):
+    global promptMode2, textDazu0
+    text = str(text)
+    if bool(re.match(r"^[1234567890,-]+$", text)):
+        zuloeschen = BereichToNumbers(text)
+        loeschbares = {i + 1: a for i, a in enumerate(platzhalter.split())}
+        for todel in zuloeschen:
+            try:
+                del loeschbares[todel]
+            except:
+                pass
+        platzhalter = " ".join(loeschbares.values())
+    else:
+        loeschbares = {a: i + 1 for i, a in enumerate(platzhalter.split())}
+        for wort in text.split():
+            try:
+                del loeschbares[wort]
+            except:
+                pass
+        platzhalter = " ".join(loeschbares.keys())
+    promptMode = PromptModus.normal
+    if len(platzhalter.strip()) == 0:
+        promptMode2 = PromptModus.normal
+        textDazu0 = []
+    return platzhalter, promptMode, text
+
+
+def promptOutputB(nochAusageben, platzhalter, promptMode, text):
+    # stext = text.split()
+    # if promptMode in (
+    #    PromptModus.speicherungAusgaben,
+    #    PromptModus.speicherungAusgabenMitZusatz,
+    # ):
+    if promptMode == PromptModus.speicherungAusgaben:
+        text = platzhalter
+    elif promptMode == PromptModus.speicherungAusgabenMitZusatz:
+        text = platzhalter + " " + nochAusageben
+    return text
+
+
+def promptOutputA(ketten, platzhalter, promptMode, text):
+    if promptMode == PromptModus.speichern:
+        ketten, platzhalter, text = speichern(ketten, platzhalter, text)
+    return ketten, platzhalter, text
+
+
+def promptInput(loggingSwitch, platzhalter, promptDavorDict, promptMode, startpunkt1, text):
+    session = newSession(loggingSwitch)
+    try:
+        befehlDavor = text
+        text = session.prompt(
+            # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
+            # ">",
+            [("class:bla", promptDavorDict[promptMode])],
+            # completer=NestedCompleter.from_nested_dict(
+            #    startpunkt, notParameterValues=notParameterValues
+            # ),
+            completer=startpunkt1
+            if not promptMode == PromptModus.loeschenSelect
+            else None,
+            wrap_lines=True,
+            complete_while_typing=True,
+            vi_mode=True if "-vi" in sys.argv else False,
+            style=Style.from_dict({"bla": "#0000ff bg:#ffff00"})
+            if loggingSwitch
+            else Style.from_dict({"bla": "#0000ff bg:#ff0000"}),
+            # placeholder="reta",
+            placeholder=platzhalter,
+        )
+        text: str = str(text)
+    except KeyboardInterrupt:
+        sys.exit()
+    return befehlDavor, text
+
+
+PromptScope()
