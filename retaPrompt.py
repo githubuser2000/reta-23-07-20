@@ -38,11 +38,13 @@ class PromptModus(Enum):
     speicherungAusgabenMitZusatz = 5
     AusgabeSelektiv = 6
 
+
 class CharType(Enum):
     decimal = 0
     alpha = 1
     neithernor = 2
     begin = 3
+
 
 def teiler(innerKomma3):
     innerKomma5 = set()
@@ -52,6 +54,7 @@ def teiler(innerKomma3):
     innerKomma5 -= {1}
     innerKomma3 = [str(each2) for each2 in innerKomma5]
     return innerKomma3, innerKomma5
+
 
 def nummernStringzuNummern(text: str) -> str:
     def toNummernSet(text: list) -> set:
@@ -87,8 +90,6 @@ def nummernStringzuNummern(text: str) -> str:
     return ",".join(map(str, toNummernSet(results) - toNummernSet(abzug)))
 
 
-
-
 def newSession(history=False):
     if history:
         return PromptSession(
@@ -97,12 +98,14 @@ def newSession(history=False):
     else:
         return PromptSession()
 
+
 def returnOnlyParasAsList(textList: str):
     liste = []
     for t in textList:
         if len(t) > 0 and t[0] == "-":
             liste += [t]
     return liste
+
 
 def externCommand(cmd: str, StrNummern: str):
     nummern: list[int] = list(BereichToNumbers(StrNummern))
@@ -115,6 +118,7 @@ def externCommand(cmd: str, StrNummern: str):
         process.wait()
     except:
         pass
+
 
 def speichern(ketten, platzhalter, text):
     global promptMode2, textDazu0
@@ -209,23 +213,45 @@ def speichern(ketten, platzhalter, text):
 
 def PromptScope():
     global promptMode2, textDazu0
-    befehleBeenden, ketten, loggingSwitch, nochAusageben, platzhalter, promptDavorDict, promptMode, shellRowsAmountStr, startpunkt1, text = PromptAllesVorGroesserSchleife()
+    (
+        befehleBeenden,
+        ketten,
+        loggingSwitch,
+        nochAusageben,
+        platzhalter,
+        promptDavorDict,
+        promptMode,
+        shellRowsAmountStr,
+        startpunkt1,
+        text,
+    ) = PromptAllesVorGroesserSchleife()
     while text not in befehleBeenden:
         warBefehl = False
         promptModeLast = promptMode
 
         if promptMode not in (
-                PromptModus.speicherungAusgaben,
-                PromptModus.speicherungAusgabenMitZusatz,
+            PromptModus.speicherungAusgaben,
+            PromptModus.speicherungAusgabenMitZusatz,
         ):
-            befehlDavor, text = promptInput(loggingSwitch, platzhalter, promptDavorDict, promptMode, startpunkt1, text)
-            ketten, platzhalter, text = promptOutputA(ketten, platzhalter, promptMode, text)
+            befehlDavor, text = promptInput(
+                loggingSwitch,
+                platzhalter,
+                promptDavorDict,
+                promptMode,
+                startpunkt1,
+                text,
+            )
+            ketten, platzhalter, text = promptSpeicherungA(
+                ketten, platzhalter, promptMode, text
+            )
 
         else:
-            text = promptOutputB(nochAusageben, platzhalter, promptMode, text)
+            text = promptSpeicherungB(nochAusageben, platzhalter, promptMode, text)
 
         if promptMode == PromptModus.loeschenSelect:
-            platzhalter, promptMode, text = PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text)
+            platzhalter, promptMode, text = PromptLoescheVorSpeicherungBefehle(
+                platzhalter, promptMode, text
+            )
             continue
 
         promptMode = PromptModus.normal
@@ -260,19 +286,53 @@ def PromptScope():
             promptMode = PromptModus.loeschenSelect
             continue
 
-        EineZahlenFolgeJa, bedingung, brueche, c, ketten, maxNum, stext = promptVorbereitungGrosseAusgabe(ketten,
-                                                                                                          platzhalter,
-                                                                                                          promptMode,
-                                                                                                          promptMode2,
-                                                                                                          promptModeLast,
-                                                                                                          text,
-                                                                                                          textDazu0)
-        loggingSwitch = PromptGrosseAusgabe(EineZahlenFolgeJa, bedingung, befehleBeenden, brueche, c, ketten,
-                                            loggingSwitch, maxNum, shellRowsAmountStr, stext, text, warBefehl)
+        (
+            EineZahlenFolgeJa,
+            bedingung,
+            brueche,
+            c,
+            ketten,
+            maxNum,
+            stext,
+        ) = promptVorbereitungGrosseAusgabe(
+            ketten,
+            platzhalter,
+            promptMode,
+            promptMode2,
+            promptModeLast,
+            text,
+            textDazu0,
+        )
+        loggingSwitch = PromptGrosseAusgabe(
+            EineZahlenFolgeJa,
+            bedingung,
+            befehleBeenden,
+            brueche,
+            c,
+            ketten,
+            loggingSwitch,
+            maxNum,
+            shellRowsAmountStr,
+            stext,
+            text,
+            warBefehl,
+        )
 
 
-def PromptGrosseAusgabe(EineZahlenFolgeJa, bedingung, befehleBeenden, brueche, c, ketten, loggingSwitch, maxNum,
-                        shellRowsAmountStr, stext, text, warBefehl):
+def PromptGrosseAusgabe(
+    EineZahlenFolgeJa,
+    bedingung,
+    befehleBeenden,
+    brueche,
+    c,
+    ketten,
+    loggingSwitch,
+    maxNum,
+    shellRowsAmountStr,
+    stext,
+    text,
+    warBefehl,
+):
     if not bedingung:
         for g, a in enumerate(stext):
 
@@ -336,7 +396,7 @@ def PromptGrosseAusgabe(EineZahlenFolgeJa, bedingung, befehleBeenden, brueche, c
         warBefehl = True
         print("Befehle: " + str(befehle)[1:-1])
     if len({"help", "hilfe"} & set(stext)) > 0 or (
-            "h" in stext and "abc" not in stext and "abcd" not in stext
+        "h" in stext and "abc" not in stext and "abcd" not in stext
     ):
         warBefehl = True
         retaPromptHilfe()
@@ -353,8 +413,8 @@ def PromptGrosseAusgabe(EineZahlenFolgeJa, bedingung, befehleBeenden, brueche, c
         # process.wait()
     if bedingungZahl or bedingungBrueche:
         if "einzeln" not in stext and (
-                ("vielfache" in stext)
-                or ("v" in stext and "abc" not in stext and "abcd" not in stext)
+            ("vielfache" in stext)
+            or ("v" in stext and "abc" not in stext and "abcd" not in stext)
         ):
             zeiln1 = "--vielfachevonzahlen=" + str(c).strip()
 
@@ -364,25 +424,25 @@ def PromptGrosseAusgabe(EineZahlenFolgeJa, bedingung, befehleBeenden, brueche, c
             zeiln2 = "--oberesmaximum=" + str(maxNum)
 
         if len({"absicht", "absichten", "motiv", "motive"} & set(stext)) > 0 or (
-                (("a" in stext) != ("mo" in stext))
-                and "abc" not in stext
-                and "abcd" not in stext
+            (("a" in stext) != ("mo" in stext))
+            and "abc" not in stext
+            and "abcd" not in stext
         ):
             warBefehl = True
             import reta
 
             if len(c) > 0:
                 kette = [
-                            "reta",
-                            "-zeilen",
-                            zeiln1,
-                            zeiln2,
-                            "-spalten",
-                            "--menschliches=motivation",
-                            "--breite=" + str(int(shellRowsAmountStr) - 2),
-                            "-ausgabe",
-                            "--spaltenreihenfolgeundnurdiese=1",
-                        ] + returnOnlyParasAsList(stext)
+                    "reta",
+                    "-zeilen",
+                    zeiln1,
+                    zeiln2,
+                    "-spalten",
+                    "--menschliches=motivation",
+                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                    "-ausgabe",
+                    "--spaltenreihenfolgeundnurdiese=1",
+                ] + returnOnlyParasAsList(stext)
                 kette += [ketten]
                 reta.Program(
                     kette,
@@ -392,16 +452,16 @@ def PromptGrosseAusgabe(EineZahlenFolgeJa, bedingung, befehleBeenden, brueche, c
                 import reta
 
                 kette = [
-                            "reta",
-                            "-zeilen",
-                            "--vorhervonausschnitt=" + bruch[0],
-                            "-spalten",
-                            "--gebrochengalaxie=" + bruch[1],
-                            "--breite=" + str(int(shellRowsAmountStr) - 2),
-                            "-kombination",
-                            "-ausgabe",
-                            "--spaltenreihenfolgeundnurdiese=1",
-                        ] + returnOnlyParasAsList(stext)
+                    "reta",
+                    "-zeilen",
+                    "--vorhervonausschnitt=" + bruch[0],
+                    "-spalten",
+                    "--gebrochengalaxie=" + bruch[1],
+                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                    "-kombination",
+                    "-ausgabe",
+                    "--spaltenreihenfolgeundnurdiese=1",
+                ] + returnOnlyParasAsList(stext)
                 kette += [ketten]
                 reta.Program(
                     kette,
@@ -409,23 +469,23 @@ def PromptGrosseAusgabe(EineZahlenFolgeJa, bedingung, befehleBeenden, brueche, c
                 )
 
         if len({"universum"} & set(stext)) > 0 or (
-                "u" in stext and "abc" not in stext and "abcd" not in stext
+            "u" in stext and "abc" not in stext and "abcd" not in stext
         ):
             warBefehl = True
             if len(c) > 0:
                 import reta
 
                 kette = [
-                            "reta",
-                            "-zeilen",
-                            zeiln1,
-                            zeiln2,
-                            "-spalten",
-                            "--universum=transzendentalien,komplexitaet,ontologie",
-                            "--breite=" + str(int(shellRowsAmountStr) - 2),
-                            "-ausgabe",
-                            "--spaltenreihenfolgeundnurdiese=1,3,4",
-                        ] + returnOnlyParasAsList(stext)
+                    "reta",
+                    "-zeilen",
+                    zeiln1,
+                    zeiln2,
+                    "-spalten",
+                    "--universum=transzendentalien,komplexitaet,ontologie",
+                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                    "-ausgabe",
+                    "--spaltenreihenfolgeundnurdiese=1,3,4",
+                ] + returnOnlyParasAsList(stext)
                 kette += [ketten]
                 reta.Program(
                     kette,
@@ -436,16 +496,16 @@ def PromptGrosseAusgabe(EineZahlenFolgeJa, bedingung, befehleBeenden, brueche, c
                 import reta
 
                 kette = [
-                            "reta",
-                            "-zeilen",
-                            "--vorhervonausschnitt=" + bruch[0],
-                            "-spalten",
-                            "--gebrochenuniversum=" + bruch[1],
-                            "--breite=" + str(int(shellRowsAmountStr) - 2),
-                            "-kombination",
-                            "-ausgabe",
-                            "--spaltenreihenfolgeundnurdiese=1",
-                        ] + returnOnlyParasAsList(stext)
+                    "reta",
+                    "-zeilen",
+                    "--vorhervonausschnitt=" + bruch[0],
+                    "-spalten",
+                    "--gebrochenuniversum=" + bruch[1],
+                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                    "-kombination",
+                    "-ausgabe",
+                    "--spaltenreihenfolgeundnurdiese=1",
+                ] + returnOnlyParasAsList(stext)
                 kette += [ketten]
                 reta.Program(
                     kette,
@@ -454,22 +514,22 @@ def PromptGrosseAusgabe(EineZahlenFolgeJa, bedingung, befehleBeenden, brueche, c
     if bedingungZahl:
 
         if (len({"thomas"} & set(stext)) > 0) or (
-                "t" in stext and "abc" not in stext and "abcd" not in stext
+            "t" in stext and "abc" not in stext and "abcd" not in stext
         ):
             warBefehl = True
             import reta
 
             kette = [
-                        "reta",
-                        "-zeilen",
-                        zeiln1,
-                        zeiln2,
-                        "-spalten",
-                        "--galaxie=thomas",
-                        "--breite=" + str(int(shellRowsAmountStr) - 2),
-                        "-ausgabe",
-                        "--spaltenreihenfolgeundnurdiese=2",
-                    ] + returnOnlyParasAsList(stext)
+                "reta",
+                "-zeilen",
+                zeiln1,
+                zeiln2,
+                "-spalten",
+                "--galaxie=thomas",
+                "--breite=" + str(int(shellRowsAmountStr) - 2),
+                "-ausgabe",
+                "--spaltenreihenfolgeundnurdiese=2",
+            ] + returnOnlyParasAsList(stext)
             kette += [ketten]
             reta.Program(
                 kette,
@@ -485,7 +545,7 @@ def PromptGrosseAusgabe(EineZahlenFolgeJa, bedingung, befehleBeenden, brueche, c
             externCommand("prim", c2)
 
         if len({"multis"} & set(stext)) > 0 or (
-                "mu" in stext and "abc" not in stext and "abcd" not in stext
+            "mu" in stext and "abc" not in stext and "abcd" not in stext
         ):
             warBefehl = True
             import reta
@@ -518,16 +578,16 @@ def PromptGrosseAusgabe(EineZahlenFolgeJa, bedingung, befehleBeenden, brueche, c
             import reta
 
             kette = [
-                        "reta",
-                        "-zeilen",
-                        zeiln1,
-                        zeiln2,
-                        "-spalten",
-                        "--bedeutung=gestirn",
-                        "-ausgabe",
-                        "--spaltenreihenfolgeundnurdiese=3,4,5,6",
-                        "--breite=" + str(int(shellRowsAmountStr) - 2),
-                    ] + returnOnlyParasAsList(stext)
+                "reta",
+                "-zeilen",
+                zeiln1,
+                zeiln2,
+                "-spalten",
+                "--bedeutung=gestirn",
+                "-ausgabe",
+                "--spaltenreihenfolgeundnurdiese=3,4,5,6",
+                "--breite=" + str(int(shellRowsAmountStr) - 2),
+            ] + returnOnlyParasAsList(stext)
             kette += [ketten]
             reta.Program(
                 kette,
@@ -539,14 +599,14 @@ def PromptGrosseAusgabe(EineZahlenFolgeJa, bedingung, befehleBeenden, brueche, c
             import reta
 
             kette = [
-                        "reta",
-                        "-zeilen",
-                        zeiln1,
-                        zeiln2,
-                        "-spalten",
-                        "--procontra=pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit",
-                        "--breite=" + str(int(shellRowsAmountStr) - 2),
-                    ] + returnOnlyParasAsList(stext)
+                "reta",
+                "-zeilen",
+                zeiln1,
+                zeiln2,
+                "-spalten",
+                "--procontra=pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit",
+                "--breite=" + str(int(shellRowsAmountStr) - 2),
+            ] + returnOnlyParasAsList(stext)
             kette += [ketten]
             reta.Program(
                 kette,
@@ -561,15 +621,15 @@ def PromptGrosseAusgabe(EineZahlenFolgeJa, bedingung, befehleBeenden, brueche, c
             import reta
 
             kette = [
-                        "reta",
-                        "-zeilen",
-                        zeiln1,
-                        zeiln2,
-                        "-spalten",
-                        "--alles",
-                        "--breite=" + str(int(shellRowsAmountStr) - 2),
-                        "-ausgabe",
-                    ] + returnOnlyParasAsList(stext)
+                "reta",
+                "-zeilen",
+                zeiln1,
+                zeiln2,
+                "-spalten",
+                "--alles",
+                "--breite=" + str(int(shellRowsAmountStr) - 2),
+                "-ausgabe",
+            ] + returnOnlyParasAsList(stext)
             kette += [ketten]
             reta.Program(
                 kette,
@@ -581,14 +641,14 @@ def PromptGrosseAusgabe(EineZahlenFolgeJa, bedingung, befehleBeenden, brueche, c
             import reta
 
             kette = [
-                        "reta",
-                        "-zeilen",
-                        zeiln1,
-                        "--oberesmaximum=1028",
-                        "-spalten",
-                        "--bedeutung=primzahlkreuz",
-                        "--breite=" + str(int(shellRowsAmountStr) - 2),
-                    ] + returnOnlyParasAsList(stext)
+                "reta",
+                "-zeilen",
+                zeiln1,
+                "--oberesmaximum=1028",
+                "-spalten",
+                "--bedeutung=primzahlkreuz",
+                "--breite=" + str(int(shellRowsAmountStr) - 2),
+            ] + returnOnlyParasAsList(stext)
             kette += [ketten]
             reta.Program(
                 kette,
@@ -596,20 +656,20 @@ def PromptGrosseAusgabe(EineZahlenFolgeJa, bedingung, befehleBeenden, brueche, c
             )
 
         if (len({"richtung"} & set(stext)) > 0) or (
-                "r" in stext and "abc" not in stext and "abcd" not in stext
+            "r" in stext and "abc" not in stext and "abcd" not in stext
         ):
             warBefehl = True
             import reta
 
             kette = [
-                        "reta",
-                        "-zeilen",
-                        zeiln1,
-                        zeiln2,
-                        "-spalten",
-                        "--primzahlwirkung=Galaxieabsicht",
-                        "--breite=" + str(int(shellRowsAmountStr) - 2),
-                    ] + returnOnlyParasAsList(stext)
+                "reta",
+                "-zeilen",
+                zeiln1,
+                zeiln2,
+                "-spalten",
+                "--primzahlwirkung=Galaxieabsicht",
+                "--breite=" + str(int(shellRowsAmountStr) - 2),
+            ] + returnOnlyParasAsList(stext)
             kette += [ketten]
             reta.Program(
                 kette,
@@ -617,10 +677,10 @@ def PromptGrosseAusgabe(EineZahlenFolgeJa, bedingung, befehleBeenden, brueche, c
             )
 
         if (
-                len(stext) > 0
-                and any([token[:3] == "15_" for token in stext])
-                and "abc" not in stext
-                and "abcd" not in stext
+            len(stext) > 0
+            and any([token[:3] == "15_" for token in stext])
+            and "abc" not in stext
+            and "abcd" not in stext
         ):
             warBefehl = True
             import reta
@@ -632,14 +692,14 @@ def PromptGrosseAusgabe(EineZahlenFolgeJa, bedingung, befehleBeenden, brueche, c
                         befehle15 += [wahl15[token[2:]]]
                 grundstruk = ",".join(befehle15)
                 kette = [
-                            "reta",
-                            "-zeilen",
-                            zeiln1,
-                            zeiln2,
-                            "-spalten",
-                            "--grundstrukturen=" + grundstruk,
-                            "--breite=" + str(int(shellRowsAmountStr) - 2),
-                        ] + returnOnlyParasAsList(stext)
+                    "reta",
+                    "-zeilen",
+                    zeiln1,
+                    zeiln2,
+                    "-spalten",
+                    "--grundstrukturen=" + grundstruk,
+                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                ] + returnOnlyParasAsList(stext)
                 kette += [ketten]
                 reta.Program(
                     kette,
@@ -647,7 +707,9 @@ def PromptGrosseAusgabe(EineZahlenFolgeJa, bedingung, befehleBeenden, brueche, c
                 )
             except:
                 pass
-    loggingSwitch, warBefehl = PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, stext, text, warBefehl)
+    loggingSwitch, warBefehl = PromptVonGrosserAusgabeSonderBefehlAusgaben(
+        loggingSwitch, stext, text, warBefehl
+    )
     if not warBefehl and len(stext) > 0 and stext[0] not in befehleBeenden:
         if stext[0] in befehle:
             print(
@@ -693,7 +755,9 @@ def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, stext, text, warB
     return loggingSwitch, warBefehl
 
 
-def promptVorbereitungGrosseAusgabe(ketten, platzhalter, promptMode, promptMode2, promptModeLast, text, textDazu0):
+def promptVorbereitungGrosseAusgabe(
+    ketten, platzhalter, promptMode, promptMode2, promptModeLast, text, textDazu0
+):
     if text is not None:
         stext: list = text.split()
     else:
@@ -741,9 +805,9 @@ def promptVorbereitungGrosseAusgabe(ketten, platzhalter, promptMode, promptMode2
                         buchst2: list = [a if a != "p" else "mulpri" for a in buchst]
                         textDazu += buchst2 + [str(s_[n:])]
                     if (
-                            len(stext) == 1
-                            and len(buchst) == 0
-                            and promptMode2 != PromptModus.AusgabeSelektiv
+                        len(stext) == 1
+                        and len(buchst) == 0
+                        and promptMode2 != PromptModus.AusgabeSelektiv
                     ):
                         textDazu += ["mulpri", "a", "t", "w"]
 
@@ -769,20 +833,20 @@ def promptVorbereitungGrosseAusgabe(ketten, platzhalter, promptMode, promptMode2
             stextb += [s]
     stext = stextb
     if (
-            promptMode2 == PromptModus.AusgabeSelektiv
-            and promptModeLast == PromptModus.normal
+        promptMode2 == PromptModus.AusgabeSelektiv
+        and promptModeLast == PromptModus.normal
     ):
         stext += textDazu0
     zahlenBereichMatch = [
         bool(re.match(r"^[1234567890,-]+$", swort)) for swort in stext
     ]
     if (
-            promptMode == PromptModus.normal
-            and len(platzhalter) > 1
-            and platzhalter[:4] == "reta"
-            # and not any([("--vorhervonausschnitt" in a or "--vielfachevonzahlen" in a) for a in stext])
-            and any(zahlenBereichMatch)
-            and zahlenBereichMatch.count(True) == 1
+        promptMode == PromptModus.normal
+        and len(platzhalter) > 1
+        and platzhalter[:4] == "reta"
+        # and not any([("--vorhervonausschnitt" in a or "--vielfachevonzahlen" in a) for a in stext])
+        and any(zahlenBereichMatch)
+        and zahlenBereichMatch.count(True) == 1
     ):
         zeilenn = False
         woerterToDel = []
@@ -884,7 +948,18 @@ def PromptAllesVorGroesserSchleife():
     promptDavorDict[PromptModus.loeschenSelect] = "was löschen>"
     nochAusageben = ""
     textDazu0 = []
-    return befehleBeenden, ketten, loggingSwitch, nochAusageben, platzhalter, promptDavorDict, promptMode, shellRowsAmountStr, startpunkt1, text
+    return (
+        befehleBeenden,
+        ketten,
+        loggingSwitch,
+        nochAusageben,
+        platzhalter,
+        promptDavorDict,
+        promptMode,
+        shellRowsAmountStr,
+        startpunkt1,
+        text,
+    )
 
 
 def PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text):
@@ -914,7 +989,7 @@ def PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text):
     return platzhalter, promptMode, text
 
 
-def promptOutputB(nochAusageben, platzhalter, promptMode, text):
+def promptSpeicherungB(nochAusageben, platzhalter, promptMode, text):
     # stext = text.split()
     # if promptMode in (
     #    PromptModus.speicherungAusgaben,
@@ -927,13 +1002,15 @@ def promptOutputB(nochAusageben, platzhalter, promptMode, text):
     return text
 
 
-def promptOutputA(ketten, platzhalter, promptMode, text):
+def promptSpeicherungA(ketten, platzhalter, promptMode, text):
     if promptMode == PromptModus.speichern:
         ketten, platzhalter, text = speichern(ketten, platzhalter, text)
     return ketten, platzhalter, text
 
 
-def promptInput(loggingSwitch, platzhalter, promptDavorDict, promptMode, startpunkt1, text):
+def promptInput(
+    loggingSwitch, platzhalter, promptDavorDict, promptMode, startpunkt1, text
+):
     session = newSession(loggingSwitch)
     try:
         befehlDavor = text
