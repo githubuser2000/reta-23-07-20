@@ -16,6 +16,7 @@
 :EXPORT_OPTIONS: toc:5.
 :END:
 *** 1. Feature Ideen
++ Dass man die Anzahl der Spalten bestimmt, anstelle die Breite pro Spalte, was nur geht wenn --spalte und --spalten nicht angegeben wird. Das auch als Kurzbefehl machen. sqrt(bytes spalte 1)/sqrt(textbytes_spalte_1)+sqrt(auch spalte 2)= Anteil der Spalte von 100% der gesamten Spaltenbreite.
 + Ein Feature wäre schon ganz nett, wenn man zumindestens wenigstens die Kurzbefehle im Prompt speichern kann und die Zahlenliste
 + Syntax highlighting
 + dinge bei zsh abschauen
