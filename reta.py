@@ -14,19 +14,40 @@ try:
 except:
     OrderedSet = set
 
-from tableHandling import (Enum, Iterable, Multiplikationen, OutputSyntax, bbCodeSyntax,
-                           Tables, Union, alxp, cliout,
-                           copy, csv, csvSyntax, deepcopy, getTextWrapThings,
-                           htmlSyntax, infoLog, markdownSyntax, math, os,
-                           output, primCreativity, re, setShellRowsAmount,
-                           shellRowsAmount, sys, x)
+from tableHandling import (
+    Enum,
+    Iterable,
+    Multiplikationen,
+    OutputSyntax,
+    bbCodeSyntax,
+    Tables,
+    Union,
+    alxp,
+    cliout,
+    copy,
+    csv,
+    csvSyntax,
+    deepcopy,
+    getTextWrapThings,
+    htmlSyntax,
+    infoLog,
+    markdownSyntax,
+    math,
+    os,
+    output,
+    primCreativity,
+    re,
+    setShellRowsAmount,
+    shellRowsAmount,
+    sys,
+    x,
+)
 
 from center import Primzahlkreuz_pro_contra_strs, retaHilfe
 
 
 def render_color(tag_name, value, options, parent, context):
     return '<span style="color:%s;">%s</span>' % (tag_name, value)
-
 
 
 class Program:
@@ -1926,7 +1947,7 @@ class Program:
                     "wahrheit",
                     "wahrnehmung",
                 ),
-                {233, 265, 268, 322},
+                {233, 265, 268, 322, 342},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
@@ -2065,7 +2086,7 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 ("Bewusstsein_und_Wahrnehmung", "bewusstsein", "wahrnehmung"),
-                {265, 229, 231, 281, 304},
+                {265, 229, 231, 281, 304, 342},
             ),
             (
                 Program.ParametersMain.menschliches,
