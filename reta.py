@@ -14,36 +14,13 @@ try:
 except:
     OrderedSet = set
 
-from tableHandling import (
-    Enum,
-    Iterable,
-    Multiplikationen,
-    OutputSyntax,
-    bbCodeSyntax,
-    Tables,
-    Union,
-    alxp,
-    cliout,
-    copy,
-    csv,
-    csvSyntax,
-    deepcopy,
-    getTextWrapThings,
-    htmlSyntax,
-    infoLog,
-    markdownSyntax,
-    math,
-    os,
-    output,
-    primCreativity,
-    re,
-    setShellRowsAmount,
-    shellRowsAmount,
-    sys,
-    x,
-)
-
 from center import Primzahlkreuz_pro_contra_strs, retaHilfe
+from tableHandling import (Enum, Iterable, Multiplikationen, OutputSyntax,
+                           Tables, Union, alxp, bbCodeSyntax, cliout, copy,
+                           csv, csvSyntax, deepcopy, getTextWrapThings,
+                           htmlSyntax, infoLog, markdownSyntax, math, os,
+                           output, primCreativity, re, setShellRowsAmount,
+                           shellRowsAmount, sys, x)
 
 
 def render_color(tag_name, value, options, parent, context):
@@ -1725,6 +1702,11 @@ class Program:
                     "ausloeser",
                 ),
                 {338},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
+                ("Leidenschaften_(21)", "leidenschaft", "leidenschaften"),
+                {343},
             ),
             (
                 Program.ParametersMain.grundstrukturen,

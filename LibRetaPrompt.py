@@ -102,6 +102,7 @@ wahl15 = {
     "_1pro3": "bedingung",
     "_10_4_18_6": "relativerzeitbetrag",
     "_18_6": "zahlenvergleich",
+    "_21": "leidenschaften",
 }
 
 befehle = ["15" + a for a in wahl15.keys()] + [
