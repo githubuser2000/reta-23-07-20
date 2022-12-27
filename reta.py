@@ -2002,6 +2002,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
+                ("Vorstellungen_(16)", "vorstellungen", "vorstellung"),
+                {345},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
                 ("Ansichten_Standpunkte_(18_17)", "ansichten"),
                 {252, 299, 300, 336, 240},
             ),
