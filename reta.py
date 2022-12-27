@@ -1705,6 +1705,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
+                ("Erwartungshaltungen_(26)", "erwartungen", "erwartungshaltungen"),
+                {344},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
                 ("Leidenschaften_(21)", "leidenschaft", "leidenschaften"),
                 {343},
             ),

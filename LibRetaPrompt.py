@@ -103,6 +103,7 @@ wahl15 = {
     "_10_4_18_6": "relativerzeitbetrag",
     "_18_6": "zahlenvergleich",
     "_21": "leidenschaften",
+    "_26": "erwartungen",
 }
 
 befehle = ["15" + a for a in wahl15.keys()] + [
