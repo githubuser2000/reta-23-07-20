@@ -97,6 +97,7 @@ wahl15 = {
     "_13_16": "absicht16",
     "_18_7": "liebe",
     "_18_10": "koalitionen",
+    "_18_17": "ansichten",
     "_1pro8": "reziprokeprinzipien",
     "_1pro5": "bestrebungen",
     "_1pro3": "bedingung",
