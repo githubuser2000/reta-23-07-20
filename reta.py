@@ -681,7 +681,7 @@ class Program:
             (
                 Program.ParametersMain.menschliches,
                 ("Ansichten_Standpunkte_(18_17)", "ansichten"),
-                {240},
+                {240, 346},
             ),
             (
                 Program.ParametersMain.menschliches,
@@ -2008,12 +2008,12 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 ("Ansichten_Standpunkte_(18_17)", "ansichten"),
-                {252, 299, 300, 336, 240},
+                {240, 346},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
                 ("Verbundenheiten_(18)", "verbundenheiten"),
-                {252, 299, 300, 336, 240},
+                {252, 299, 300, 336},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
