@@ -1705,6 +1705,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
+                ("Extremalien (19)", "extremalien"),
+                {347},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
                 ("Erwartungshaltungen_(26)", "erwartungen", "erwartungshaltungen"),
                 {344},
             ),

@@ -106,6 +106,7 @@ wahl15 = {
     "_21": "leidenschaften",
     "_26": "erwartungen",
     "_16": "vorstellungen",
+    "_19": "extremalien",
 }
 
 befehle = ["15" + a for a in wahl15.keys()] + [
