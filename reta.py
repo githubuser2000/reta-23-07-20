@@ -1705,7 +1705,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Extremalien (19)", "extremalien"),
+                ("Extremalien_(19)", "extremalien"),
                 {347},
             ),
             (
