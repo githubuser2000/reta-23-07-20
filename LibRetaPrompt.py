@@ -71,7 +71,7 @@ wahl15 = {
     "_18": "verbundenheiten",
     "_6": "triebe",
     "_9": "lust",
-    "_3": "reflexe",
+    "_3": "reflexe,existenzialien",
     "_13_6": "absicht6",
     "_13_7": "absicht7",
     "_13_10": "absicht10",
