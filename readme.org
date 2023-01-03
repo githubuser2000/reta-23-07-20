@@ -16,8 +16,7 @@
 :EXPORT_OPTIONS: toc:5.
 :END:
 *** 1. Feature Ideen
-+ Dass man die Anzahl der Spalten bestimmt, anstelle die Breite pro Spalte, was nur geht wenn --spalte und --spalten nicht angegeben wird. Das auch als Kurzbefehl machen. sqrt(bytes spalte 1)/sqrt(textbytes_spalte_1)+sqrt(auch spalte 2)= Anteil der Spalte von 100% der gesamten Spaltenbreite.
-+ Ein Feature wäre schon ganz nett, wenn man zumindestens wenigstens die Kurzbefehle im Prompt speichern kann und die Zahlenliste
++ alle Features von retaPrompt und der von reta ausgegebenen html bei beiden haben, weil nicht ganz beide ganz alles von beiden können, sondern nur fast
 + Syntax highlighting
 + dinge bei zsh abschauen
 + schöneres UTF
@@ -26,7 +25,7 @@ Kann man ncurses einfach zu web konvertieren, ohne viel Aufwand oder wurde das n
 +  ReTa besser ausführlicher, detaillierter, dokumentieren und auf viele Bereiche und Teile gedanklich eingehen.
 +  Option für nur temporäres Logging
 nicht loggen, bei befehlen über Logging
-+  Dass man Kurzbefehlen auch die ReTa-Programm-Argumente mitgeben kann: geht schon, nur fehlt autocomplete intellisense dafür
++  Dass man Kurzbefehlen auch die ReTa-Programm-Argumente mitgeben kann. geht schon: aber autocomplete oder intellisense fehlt dafür
 + Wie programmiere ich, dass nachträgliches Resizen der CLI App geht?
 + --parameter=* könnte alle Unter-Parameter meinen, als Kommandozeilenargument.
 + Kurzform für Zeile und Spalte einführen, statt die langen Befehlsketten immer.
@@ -36,6 +35,7 @@ python print(str((1,*(2,3))))
 (1, 2, 3)
 Geht einfach und schnell zu programmieren durch Rekursion.
 + machen, dass alles Kurze mit Fragezeichen oder Minus oder nur Whitespace in RetaPrompt einfach nicht ausgegeben wird
+  ggf. ab das: mit reta Parameter bestimmen!
 + Programmieren, dass man die Konsole beliebig resizen kann, und dass es dann immernoch die richtige Größe ermöglicht.
   + Teil A
     1. Sortierte Ausgabe
@@ -175,12 +175,3 @@ Sollte ich das umsetzen wollen, dann sollte ich unbedingt einen neuen eigenen Br
 + Oder statische Klassen, statt Instanzen verwenden.
 + Aufhören damit, weg machen: mehrfache Art gleichzeitig Variablen zu übergeben und zu referenzieren: Das ist liederlich, unordentlich.
 + Vielleicht mal besser doch Clean Code umsetzen, obwohl mir das den Spaß wegnimmt.
-+ aufbesser:
-  + Antipattern
-  + Code Smells
-  + Clean Code umsetzen
-  + Entwurfsmuster umsetzen
-  + Lesbarkeit verbessern
-  + Code und Funktionen ausführlich kommentieren
-+ Unit-Tests einbauen
-+ Die gleiche Variable nicht auf dutzende Arten mehrfach vorhanden zu haben
