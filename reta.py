@@ -1701,6 +1701,14 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
+                (
+                    "Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)",
+                    "relativreziprokuniversell",
+                ),
+                {350},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
                 ("universeller_Komperativ_(18→15)", "universellerkomperativ"),
                 {349},
             ),
