@@ -1701,7 +1701,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("universeller Komperativ (18->15)", "universellerkomperativ"),
+                ("universeller_Komperativ_(18→15)", "universellerkomperativ"),
                 {349},
             ),
             (
