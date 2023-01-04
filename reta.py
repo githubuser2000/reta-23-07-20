@@ -1701,6 +1701,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
+                ("universeller Komperativ (18->15)", "universellerkomperativ"),
+                {349},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
                 ("Existenzialien_(3)", "existenzialien"),
                 {348},
             ),
