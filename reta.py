@@ -1826,11 +1826,6 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Funktionen_und_Vorstellungen_(16)", "funktionen", "vorstellungen"),
-                {264},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
                 ("Absicht_16", "absicht16"),
                 {312},
             ),
@@ -2021,8 +2016,13 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Vorstellungen_(16)", "vorstellungen", "vorstellung"),
-                {345},
+                (
+                    "Funktionen_Vorstellungen_(16)",
+                    "vorstellungen",
+                    "vorstellung",
+                    "funktionen",
+                ),
+                {345, 264},
             ),
             (
                 Program.ParametersMain.grundstrukturen,

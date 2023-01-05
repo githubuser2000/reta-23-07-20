@@ -47,10 +47,10 @@ Nebenparameter beginnen mit 2 Minus --.
 * --alles
 * --wichtigsteverstehen
     * wichtigste,zweitwichtigste,drittwichtigste,viertwichtigste
-* --wichtigsteeinordnen 
+* --wichtigsteeinordnen
     * wichtigste,zweitwichtigste
 * --breite=
-    * 40 
+    * 40
     * 70
 * --breiten=
     * 20,50,10,70
@@ -77,7 +77,7 @@ Nebenparameter beginnen mit 2 Minus --.
     * primzahlen,anwendungdersonnen,zaehlungen,jura,geist,gestirn,mechanismen,zuechtung,konjunktiv,wurzel,vorzeichen,inreta
 * --symbole
 * --grundstrukturen
-    * konkreta,impulse,gefuehle,modus,wirklichkeiten,metasysteme,paradigmen,meta-paradigmen,positionen,geist,verbundenheiten,triebe,lust,reflexe,absicht6,absicht7,absicht10,absicht17,zeit,funktionen,vorstellungen,wahrheit,wahrnehmung,achtung,focus,absicht1pro8,ziele,wachbewusstsein,kategorien,regung,energie,universelleeigenschaften,stimmungen,klassen,kombinationen,empathie,energie,garben,nachvollziehen,absicht1pro6,verhalten,bedeutung,optimierung,themen,attraktionen,absicht16,liebe,koalitionen,reziprokeprinzipien,ordnenundfiltern,bedingung,ausloeser,relativerzeitbetrag,zahlenvergleich
+    * konkreta,impulse,gefuehle,modus,wirklichkeiten,metasysteme,paradigmen,meta-paradigmen,positionen,geist,verbundenheiten,triebe,lust,reflexe,absicht6,absicht7,absicht10,absicht17,zeit,funktionen,vorstellungen,wahrheit,wahrnehmung,achtung,focus,absicht1pro8,ziele,wachbewusstsein,kategorien,regung,energie,universelleeigenschaften,stimmungen,klassen,kombinationen,empathie,energie,garben,nachvollziehen,absicht1pro6,verhalten,bedeutung,optimierung,themen,attraktionen,absicht16,liebe,koalitionen,reziprokeprinzipien,ordnenundfiltern,bedingung,ausloeser,relativerzeitbetrag,zahlenvergleich,erwartungen,vorstellungen,ansichten,extremalien,existenzialien,universellerkomperativ,relativreziprokuniversell
 * --eigenschaften=
     * weisheit,gut,zeit,ruf,egoismus,kausal,liebepolung,einheit,meinungsintelligenz,ursprungsintelligenz,sanft,hart,egalitaer,autoritaer,ueberheblich,foerdern,durchleuchten,sittlichkeit,fuehrung,sinn,familiaer,goettlich,wertvoll,gleich,ueberleben,abgeneigt,zugeneigt,tragweite,aehnlich,ehrlich,hoeflich,variationsreich,selbstlos,kooperation,arsch,liebe,wissenschaft,einklinken,selbstsucht,ichsucht,ego,familiebrauchen,recht
 * --inkrementieren=
