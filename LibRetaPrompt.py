@@ -81,7 +81,7 @@ wahl15 = {
     "_4": "achtung",
     "_13_1pro8": "absicht1pro8",
     "_13_1pro6": "absicht1pro6",
-    "_1pro15": "wachbewusstsein,kategorien",
+    "_1pro15": "reflektion,kategorien",
     "_1": "regung",
     "_30": "energie,universelleeigenschaften",
     "_14": "stimmungen,kombinationen",

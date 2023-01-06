@@ -2064,8 +2064,8 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 (
-                    "Wachbewusstsein_und_Kategorien_(1/15)",
-                    "wachbewusstsein",
+                    "Reflektion_und_Kategorien_(1/15)",
+                    "reflektion",
                     "kategorien",
                 ),
                 {204, 205, 281},
