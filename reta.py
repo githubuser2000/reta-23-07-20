@@ -1399,6 +1399,11 @@ class Program:
                 {204, 205, 281},
             ),
             (Program.ParametersMain.universum, ("Raum-Missionen", "weltall"), {218}),
+            (
+                Program.ParametersMain.universum,
+                ("Programmier-Paradigmen", "programmierparadigmen"),
+                {351},
+            ),
             (Program.ParametersMain.galaxie, ("Raum-Missionen", "weltall"), {218}),
             (
                 Program.ParametersMain.universum,

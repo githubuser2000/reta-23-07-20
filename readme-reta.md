@@ -63,9 +63,8 @@ Nebenparameter beginnen mit 2 Minus --.
     * tierkreiszeichen,thomasevangelium,analytischeontologie,offenbarungdesjohannes,chinesischeshoroskop,kugelnkreise,modallogik,innenaussenstrukur,weltall,hochzuechten
 * --groessenordnung=
     * strukturgroesse, organisation, politischesysteme, licht
-* --universum= oder
---kugel=
-    * transzendentalien,komplexitaet,ontologie,kugelnkreise,gegentranszendentalien,systemsachen,transzendentalienreziproke,warumtranszendentaliegleichkomplexitaet,warumtranszendentaliezustrukturgroesseundcharakter,metaparadigmareligion,kategorie,weltall,netzwerk,geist,hochzuechten,kombinierenetc
+* --universum= oder --kugel=
+    * transzendentalien,komplexitaet,ontologie,kugelnkreise,gegentranszendentalien,systemsachen,transzendentalienreziproke,warumtranszendentaliegleichkomplexitaet,warumtranszendentaliezustrukturgroesseundcharakter,metaparadigmareligion,kategorie,weltall,netzwerk,geist,hochzuechten,kombinierenetc,programmierparadigmen
 * --menschliches=
     * liebe,ethik,angreifbarkeit,motivation,erhalten,erwerben,benoetigen,krankheit,alpha,kreativ,chef,beruf,loesungen,musik,glaube,erkenntnis,dominierendesgeschlecht,incel,ausgangslage,sinndeslebens,emotionen,gleichheit,wirkung,egoismus,gegentranszendentalien,denkweise,intelligenzprobleme,manipulation,fachbereiche,moral,ehrlich,hoeflich,klasse,wahrnehmung,bewusstsein,menschtier
 * --procontra=
