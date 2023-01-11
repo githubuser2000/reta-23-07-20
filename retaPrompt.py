@@ -411,7 +411,8 @@ def PromptGrosseAusgabe(
         reta.Program(stext, int(shellRowsAmountStr) - 2)
         # process = subprocess.Popen(sos.path.dirname(__file__) + os.sep + text)
         # process.wait()
-    if bedingungZahl or bedingungBrueche:
+
+    if bedingungZahl:
         if "einzeln" not in stext and (
             ("vielfache" in stext)
             or ("v" in stext and "abc" not in stext and "abcd" not in stext)
@@ -423,12 +424,37 @@ def PromptGrosseAusgabe(
             zeiln1 = "--vorhervonausschnitt=" + str(c).strip()
             zeiln2 = "--oberesmaximum=" + str(maxNum)
 
+        if (len({"thomas"} & set(stext)) > 0) or (
+            "t" in stext and "abc" not in stext and "abcd" not in stext
+        ):
+            warBefehl = True
+            import reta
+
+            kette = [
+                "reta",
+                "-zeilen",
+                zeiln1,
+                zeiln2,
+                "-spalten",
+                "--galaxie=thomas",
+                "--breite=" + str(int(shellRowsAmountStr) - 2),
+                "-ausgabe",
+                "--spaltenreihenfolgeundnurdiese=2",
+            ] + returnOnlyParasAsList(stext)
+            kette += [ketten]
+            reta.Program(
+                kette,
+                int(shellRowsAmountStr),
+            )
+
+    if bedingungZahl or bedingungBrueche:
         if len({"absicht", "absichten", "motiv", "motive"} & set(stext)) > 0 or (
             (("a" in stext) != ("mo" in stext))
             and "abc" not in stext
             and "abcd" not in stext
         ):
             warBefehl = True
+
             import reta
 
             if len(c) > 0:
@@ -512,29 +538,6 @@ def PromptGrosseAusgabe(
                     int(shellRowsAmountStr),
                 )
     if bedingungZahl:
-
-        if (len({"thomas"} & set(stext)) > 0) or (
-            "t" in stext and "abc" not in stext and "abcd" not in stext
-        ):
-            warBefehl = True
-            import reta
-
-            kette = [
-                "reta",
-                "-zeilen",
-                zeiln1,
-                zeiln2,
-                "-spalten",
-                "--galaxie=thomas",
-                "--breite=" + str(int(shellRowsAmountStr) - 2),
-                "-ausgabe",
-                "--spaltenreihenfolgeundnurdiese=2",
-            ] + returnOnlyParasAsList(stext)
-            kette += [ketten]
-            reta.Program(
-                kette,
-                int(shellRowsAmountStr),
-            )
 
         if len({"prim24", "primfaktorzerlegungModulo24"} & set(stext)) > 0:
             warBefehl = True
