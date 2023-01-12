@@ -107,6 +107,7 @@ wahl15 = {
     "_19": "extremalien,ziele",
     "_18_15": "universellerkomperativ",
     "_18_15_n_vs_1pro_n": "relativreziprokuniversell",
+    "_1pro13": "sollen",
 }
 
 befehle = ["15" + a for a in wahl15.keys()] + [

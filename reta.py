@@ -2031,6 +2031,16 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
+                (
+                    "Sollen_Frage_Vorgehensweise_(1/13)",
+                    "sollen",
+                    "frage",
+                    "vorgehensweise",
+                ),
+                {353, 354, 355},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
                 ("Ansichten_Standpunkte_(18_17)", "ansichten"),
                 {240, 346},
             ),
