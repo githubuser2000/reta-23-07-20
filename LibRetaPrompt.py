@@ -109,6 +109,7 @@ wahl15 = {
     "_18_15_n_vs_1pro_n": "relativreziprokuniversell",
     "_1pro13": "sollen",
     "_1pro19": "fundament",
+    "_90": "abhaengigkeit",
 }
 
 befehle = ["15" + a for a in wahl15.keys()] + [

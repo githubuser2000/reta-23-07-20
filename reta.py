@@ -2016,6 +2016,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
+                ("abhängige_Verbundenheit_(90)", "abhaengigkeit", "abhängigkeit"),
+                {357},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
                 ("Fundament_(1/19)", "fundament"),
                 {356},
             ),
