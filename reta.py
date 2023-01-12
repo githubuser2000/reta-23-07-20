@@ -2016,6 +2016,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
+                ("Fundament_(1/19)", "fundament"),
+                {356},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
                 ("Gedanken_sind_Positionen_(17)", "positionen", "gedanken"),
                 {249, 317, 323},
             ),
