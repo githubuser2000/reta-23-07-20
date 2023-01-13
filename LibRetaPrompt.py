@@ -58,7 +58,7 @@ hauptForNebenSet = set(hauptForNeben)
 ausgabeArt = ["bbcode", "html", "csv", "shell", "markdown"]
 
 wahl15 = {
-    "_": "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15)",
+    #    "_": "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15)",
     "_15": "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15),"
     + Primzahlkreuz_pro_contra_strs[1],
     "_2": "Konkreta_und_Focus_(2)",
@@ -98,19 +98,19 @@ wahl15 = {
     "_18_7": "Liebe_(7)",
     "_18_10": "Koalitionen_(10)",
     "_18_17": "Ansichten_Standpunkte_(18_17)",
-    "_1pro8": "reziprokeprinzipien",
-    "_1pro5": "bestrebungen",
-    "_1pro3": "bedingung",
-    "_10_4_18_6": "relativerzeitbetrag",
-    "_18_6": "zahlenvergleich",
-    "_21": "leidenschaften",
-    "_26": "erwartungen",
-    "_19": "extremalien,ziele",
-    "_18_15": "universellerkomperativ",
-    "_18_15_n_vs_1pro_n": "relativreziprokuniversell",
-    "_1pro13": "sollen",
-    "_1pro19": "fundament",
-    "_90": "abhaengigkeit",
+    "_1pro8": "Reziproke_Prinzipien(1/8)",
+    "_1pro5": "Bestrebungen(1/5)",
+    "_1pro3": "Bedingung_und_Auslöser_(1/3)",
+    "_10_4_18_6": "relativer_Zeit-Betrag_(15_10_4_18_6)",
+    "_18_6": "Zahlenvergleich_(15_18_6)",
+    "_21": "Leidenschaften_(21)",
+    "_26": "Erwartungshaltungen_(26)",
+    "_19": "Extremalien_(19),Ziele_(19)",
+    "_18_15": "universeller_Komperativ_(18→15)",
+    "_18_15_n-vs-1pro-n": "Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)",
+    "_1pro13": "Sollen_Frage_Vorgehensweise_(1/13)",
+    "_1pro19": "Fundament_(1/19)",
+    "_90": "abhängige_Verbundenheit_(90)",
 }
 
 zumVergleich = []
