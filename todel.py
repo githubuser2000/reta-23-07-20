@@ -21,8 +21,8 @@ for key, value in wahl15.items():
             if thing != {}:
                 try:
                     if type(wahl) is dict and wahl[el] == value:
-                        thing = {el: value}
-                        thing |= {el: thing}
+                        thing = {el: thing}
+                        thing |= {el: value}
                         wahl = wahl[el]
                     else:
                         thing = {el: thing}
