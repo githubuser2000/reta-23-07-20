@@ -107,7 +107,7 @@ wahl15 = {
     "_26": "Erwartungshaltungen_(26)",
     "_19": "Extremalien_(19),Ziele_(19)",
     "_18_15": "universeller_Komperativ_(18→15)",
-    "_18_15_n-vs-1pro-n": "Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)",
+    "_18_15_n-vs-1pron": "Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)",
     "_1pro13": "Sollen_Frage_Vorgehensweise_(1/13)",
     "_1pro19": "Fundament_(1/19)",
     "_90": "abhängige_Verbundenheit_(90)",
