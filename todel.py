@@ -15,6 +15,7 @@ for key, value in wahl15.items():
         thing: dict[str, dict] = {}
         # wahl: dict[str, dict] = wahlNeu
         adresse1 = []
+        adresse2 = []
         for el in reversed(liste):
             adresse1 += [el]
             el = el.replace("pro", "/")
@@ -22,18 +23,22 @@ for key, value in wahl15.items():
             vorherSchonDrin = deepcopy(thing)
             # print(adresse1)
             flag = False
-            for adresse in adresse1[:-1]:
+            for adresse in adresse1:
                 if vorherSchonDrin is not None and type(vorherSchonDrin) is not str:
+                    # print(adresse)
+                    # print(adresse1)
                     try:
                         vorherSchonDrin = vorherSchonDrin[adresse]
+                        adresse2 += [adresse]
                     except KeyError:
                         if flag:
                             vorherSchonDrin = None
                 flag = True
             if type(vorherSchonDrin) is str:
                 vorherSchonDrin = None
-            if vorherSchonDrin is not None:
-                print(vorherSchonDrin.items())
+            print(adresse2)
+            # if vorherSchonDrin is not None:
+            # print(vorherSchonDrin.items())
 
             if thing == {}:
                 thing: dict[dict, str]
