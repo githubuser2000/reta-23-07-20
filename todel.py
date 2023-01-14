@@ -70,15 +70,16 @@ def merge_dicts(dict1, dict2):
 
 
 def traverseHierarchy(liste, thing, listenIndex):
-    print(listenIndex)
-    print(liste[listenIndex:])
+    # print(listenIndex)
+    # print(liste[listenIndex:])
+    print(tuple(reversed(liste))[listenIndex:])
     for knoten in tuple(reversed(liste))[listenIndex:]:
         knoten = knoten.replace("pro", "/")
-        print(liste)
-        print(knoten)
-        print(thing.keys())
+        # print(liste)
+        # print(knoten)
+        # print(thing.keys())
         if knoten not in thing or type(thing[knoten]) is not str:
-            print("SDASDFGGFGFSGSDFG")
+            # print("SDASDFGGFGFSGSDFG")
             thing = {knoten: thing}
             thing = traverseHierarchy(liste, thing, listenIndex + 1)
         else:
