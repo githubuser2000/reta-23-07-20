@@ -78,20 +78,15 @@ def traverseHierarchy(liste, thing, listenIndex, value):
     # print(liste)
     # print(knoten)
     # print(thing.keys())
-    if len(liste) > listenIndex + 1 and (
-        len(thing) == 0 or (knoten in thing and type(thing[knoten]) is not str)
-    ):
+    if len(liste) > listenIndex + 1:
         # print("SDASDFGGFGFSGSDFG")
-        thing = {knoten: thing}
-        thing = traverseHierarchy(liste, thing, listenIndex + 1, value)
-    elif len(liste) > listenIndex + 1 and knoten not in thing:
         thing = {knoten: thing}
         thing = traverseHierarchy(liste, thing, listenIndex + 1, value)
     else:
         thing: dict[dict, list]
         newKeys = value.split(",")
         newValues = [None] * len(newKeys)
-        thing = {knoten: OrderedDict(zip(newKeys, newValues))}
+        thing = {knoten: OrderedDict(zip(newKeys, newValues)) | thing}
     return thing
 
 
