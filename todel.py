@@ -109,8 +109,8 @@ wahlNeu2["15"] = OrderedDict(sorted(wahlNeu.items(), key=cmp_to_key(cmpx)))
 
 
 # pprint(json.dumps(wahlNeu2))
-print("-------------------")
-pprint(wahlNeu2)
+#print("-------------------")
+#pprint(wahlNeu2)
 
 
 # print("<br>BLAAAAAAAAAAAAAAAAA<br>")
@@ -130,4 +130,4 @@ def myprint(d):
         print("</div>", end="")
 
 
-# myprint(wahlNeu2)
+myprint(wahlNeu2)
