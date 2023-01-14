@@ -77,7 +77,7 @@ def traverseHierarchy(liste, thing, listenIndex):
         print(liste)
         print(knoten)
         print(thing.keys())
-        if type(thing[knoten]) is not str:
+        if knoten not in thing or type(thing[knoten]) is not str:
             print("SDASDFGGFGFSGSDFG")
             thing = {knoten: thing}
             thing = traverseHierarchy(liste, thing, listenIndex + 1)
