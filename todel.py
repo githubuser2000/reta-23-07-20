@@ -24,6 +24,7 @@ def cmp_before(value):
         isNumber = False
     if not isNumber:
         toSort = value
+        # print("value: " + str(toSort))
     return isNumber, toSort
 
 
@@ -42,10 +43,14 @@ def cmpx(erster, zweiter):
                 return 0
         else:
             return value1 - value2
+    # else:
+    #    print(str(isNumber1) + "-" + str(isNumber2))
+    #    print(str(erster) + "-" + str(zweiter))
     elif isNumber1 and not isNumber2:
-        return -1
-    elif not isNumber1 and isNumber2:
         return 1
+    elif not isNumber1 and isNumber2:
+        # print(str(erster) + "+" + str(zweiter))
+        return -1
     else:
         return value1 > value2
 
@@ -64,10 +69,13 @@ def merge_dicts(dict1, dict2):
                     dict1[key], OrderedDict
                 ):
                     # print(str(type(dict1[key])))
-                    dict1[key] = dict2[key] | OrderedDict({dict1[key]: None})
+                    dict1[key] = OrderedDict(
+                        sorted(dict2[key] | {dict1[key]: None}, key=cmp_to_key(cmpx))
+                    )
             else:
                 dict1[key] = dict2[key]
-    return dict1
+
+    return OrderedDict(sorted(dict1.items(), key=cmp_to_key(cmpx)))
 
 
 def traverseHierarchy(liste, thing, listenIndex, value):
@@ -86,7 +94,7 @@ def traverseHierarchy(liste, thing, listenIndex, value):
         thing: dict[dict, list]
         newKeys = value.split(",")
         newValues = [None] * len(newKeys)
-        thing |= OrderedDict(zip(newKeys, newValues))
+        thing |= OrderedDict(sorted(zip(newKeys, newValues), key=cmp_to_key(cmpx)))
         # if "relativer_Zeit-Betrag_(15_10_4_18_6)" == value:
         #    print(thing)
     thing = OrderedDict(sorted({knoten: thing}.items(), key=cmp_to_key(cmpx)))
@@ -109,15 +117,16 @@ for key, value in wahl15.items():
         wahlNeu = merge_dicts(thing, wahlNeu)
 
 
-wahlNeu2: OrderedDict[str, dict] = OrderedDict()
+wahlNeu2: OrderedDict[str, dict] = OrderedDict(sorted({}, key=cmp_to_key(cmpx)))
 wahlNeu2["15"] = merge_dicts(
-    OrderedDict(sorted(wahlNeu.items(), key=cmp_to_key(cmpx))), wahlNeu["15"]
+    OrderedDict(sorted(wahlNeu["15"].items(), key=cmp_to_key(cmpx))),
+    OrderedDict(sorted(wahlNeu.items(), key=cmp_to_key(cmpx))),
 )
 
 
 # pprint(json.dumps(wahlNeu2))
 # print("-------------------")
-# pprint(wahlNeu2)
+pprint(wahlNeu2)
 
 
 # print("<br>BLAAAAAAAAAAAAAAAAA<br>")
@@ -139,4 +148,4 @@ def myprint(d):
         print("</div>", end="")
 
 
-myprint(wahlNeu2)
+# myprint(wahlNeu2)
