@@ -1,6 +1,7 @@
 #!/usr/bin/env pypy3
 # -*- coding: utf-8 -*-
 import json
+from collections import OrderedDict
 from copy import deepcopy
 from pprint import pprint
 
@@ -11,26 +12,29 @@ def merge_dicts(dict1, dict2):
     for key in dict2:
         if (
             key in dict1
-            and isinstance(dict1[key], dict)
-            and isinstance(dict2[key], dict)
+            and isinstance(dict1[key], OrderedDict)
+            and isinstance(dict2[key], OrderedDict)
         ):
             merge_dicts(dict1[key], dict2[key])
         else:
             if key in dict1:
-                if isinstance(dict2[key], dict) and not isinstance(dict1[key], dict):
+                if isinstance(dict2[key], OrderedDict) and not isinstance(
+                    dict1[key], OrderedDict
+                ):
                     dict1[key] = dict2[key]
             else:
                 dict1[key] = dict2[key]
     return dict1
 
 
-wahlNeu: dict[str, dict] = {}
+wahlNeu: dict[str, dict] = OrderedDict()
 liste: list[str]
 for key, value in wahl15.items():
     liste = key.split("_")
     liste = list(filter(None, liste))
     if len(liste) > 0:
-        thing: dict[str, dict] = {}
+        thing: dict[str, dict] = OrderedDict()
+
         # wahl: dict[str, dict] = wahlNeu
         # adresse1 = []
         # adresse2 = []
@@ -58,9 +62,9 @@ for key, value in wahl15.items():
             # if vorherSchonDrin is not None:
             # print(vorherSchonDrin.items())
 
-            if thing == {}:
+            if thing == OrderedDict():
                 thing: dict[dict, str]
-                thing = {el: {value: None}}
+                thing = {el: OrderedDict({value: None})}
             else:
                 thing = {el: thing}
 
@@ -69,8 +73,9 @@ for key, value in wahl15.items():
 
     # wahlNeu[liste[0]] = value
 
-# wahlNeu2: dict[str, dict] = {}
-# wahlNeu2["15"] = wahlNeu
+wahlNeu2: OrderedDict[str, dict] = OrderedDict()
+wahlNeu2["15"] = OrderedDict(sorted(wahlNeu.items(), key=lambda t: t))
+
 
 # pprint(json.dumps(wahlNeu2))
-pprint(wahlNeu)
+pprint(wahlNeu2)
