@@ -110,7 +110,9 @@ for key, value in wahl15.items():
 
 
 wahlNeu2: OrderedDict[str, dict] = OrderedDict()
-wahlNeu2["15"] = OrderedDict(sorted(wahlNeu.items(), key=cmp_to_key(cmpx)))
+wahlNeu2["15"] = merge_dicts(
+    OrderedDict(sorted(wahlNeu.items(), key=cmp_to_key(cmpx))), wahlNeu["15"]
+)
 
 
 # pprint(json.dumps(wahlNeu2))
@@ -127,11 +129,13 @@ def myprint(d):
             '<div  style="white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">',
             end="",
         )
-        print('<input type="checkbox">', end="")
+        if v is None:
+            print('<input type="checkbox">', end="")
         print("{0}".format(k), end="")
+        if v is None:
+            print("</input>", end="")
         if v is not None:
             myprint(v)
-        print("</input>", end="")
         print("</div>", end="")
 
 
