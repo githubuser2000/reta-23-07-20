@@ -95,4 +95,23 @@ wahlNeu2["15"] = OrderedDict(sorted(wahlNeu.items(), key=cmp_to_key(cmpx)))
 
 
 # pprint(json.dumps(wahlNeu2))
-pprint(wahlNeu2)
+# pprint(wahlNeu2)
+
+
+def myprint(d):
+    for k, v in d.items():
+        if isinstance(v, dict):
+            print("<div>", end="")
+            print('<input type="checkbox">', end="")
+            print("{0}".format(k), end="")
+            myprint(v)
+            print("</input>", end="")
+            print("</div>", end="")
+        else:
+            if v is None:
+                print("{0}".format(k), end="")
+            else:
+                print("{0} : {1}".format(k, v), end="")
+
+
+myprint(wahlNeu2)
