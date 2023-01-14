@@ -69,19 +69,19 @@ def merge_dicts(dict1, dict2):
     return dict1
 
 
-def traverseHierarchy(liste, thing, listenIndex):
-    # print(listenIndex)
+def traverseHierarchy(liste, thing, listenIndex, value):
+    print(listenIndex)
     # print(liste[listenIndex:])
-    print(tuple(reversed(liste))[listenIndex:])
-    for knoten in tuple(reversed(liste))[listenIndex:]:
+    # print(tuple(reversed(liste[listenIndex:])))
+    for knoten in reversed(liste[listenIndex:]):
         knoten = knoten.replace("pro", "/")
         # print(liste)
-        # print(knoten)
+        print(knoten)
         # print(thing.keys())
-        if knoten not in thing or type(thing[knoten]) is not str:
+        if len(thing) == 0 or type(thing[knoten]) is not str:
             # print("SDASDFGGFGFSGSDFG")
             thing = {knoten: thing}
-            thing = traverseHierarchy(liste, thing, listenIndex + 1)
+            thing = traverseHierarchy(liste, thing, listenIndex + 1, value)
         else:
             thing: dict[dict, list]
             newKeys = value.split(",")
@@ -98,7 +98,7 @@ for key, value in wahl15.items():
     liste = list(filter(None, liste))
     thing: dict[str, dict] = OrderedDict(sorted({}.items(), key=cmp_to_key(cmpx)))
     if len(liste) > 0:
-        thing = traverseHierarchy(liste, thing, 0)
+        thing = traverseHierarchy(liste, thing, 0, value)
         wahlNeu = merge_dicts(thing, wahlNeu)
 
 
