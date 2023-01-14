@@ -63,7 +63,7 @@ def merge_dicts(dict1, dict2):
                 if isinstance(dict2[key], OrderedDict) and not isinstance(
                     dict1[key], OrderedDict
                 ):
-                    print(str(type(dict1[key])))
+                    # print(str(type(dict1[key])))
                     dict1[key] = dict2[key] | OrderedDict({dict1[key]: None})
             else:
                 dict1[key] = dict2[key]
@@ -79,15 +79,20 @@ def traverseHierarchy(liste, thing, listenIndex, value):
     # print(liste)
     # print(knoten)
     # print(thing.keys())
-    if len(liste) > listenIndex + 1:
-        # print("SDASDFGGFGFSGSDFG")
-        thing = OrderedDict(sorted({knoten: thing}.items(), key=cmp_to_key(cmpx)))
-        thing = traverseHierarchy(liste, thing, listenIndex + 1, value)
-    else:
+    # if "relativer_Zeit-Betrag_(15_10_4_18_6)" == value:
+    #    print(liste)
+    #    print(listenIndex)
+    if listenIndex == 0:
         thing: dict[dict, list]
         newKeys = value.split(",")
         newValues = [None] * len(newKeys)
-        thing = {knoten: OrderedDict(zip(newKeys, newValues)) | thing}
+        thing |= OrderedDict(zip(newKeys, newValues))
+        # if "relativer_Zeit-Betrag_(15_10_4_18_6)" == value:
+        #    print(thing)
+    thing = OrderedDict(sorted({knoten: thing}.items(), key=cmp_to_key(cmpx)))
+    if len(liste) > listenIndex + 1:
+        # print("SDASDFGGFGFSGSDFG")
+        thing = traverseHierarchy(liste, thing, listenIndex + 1, value)
         # print(thing[knoten])
     return thing
 
@@ -109,8 +114,8 @@ wahlNeu2["15"] = OrderedDict(sorted(wahlNeu.items(), key=cmp_to_key(cmpx)))
 
 
 # pprint(json.dumps(wahlNeu2))
-#print("-------------------")
-#pprint(wahlNeu2)
+# print("-------------------")
+# pprint(wahlNeu2)
 
 
 # print("<br>BLAAAAAAAAAAAAAAAAA<br>")
