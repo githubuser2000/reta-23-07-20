@@ -100,9 +100,11 @@ def cmpx(erster, zweiter):
         value1 = int(value1)
         value2 = int(value2)
         if value1 == value2:
-            if "/" in erster:
+            if "/" in erster[0]:
+                print("A")
                 return 1
-            elif "/" in zweiter:
+            elif "/" in zweiter[0]:
+                print("B")
                 return -1
             else:
                 return 0
