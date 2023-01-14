@@ -126,18 +126,21 @@ wahlNeu2["15"] = merge_dicts(
 
 # pprint(json.dumps(wahlNeu2))
 # print("-------------------")
-pprint(wahlNeu2)
+# pprint(wahlNeu2)
 
 
 # print("<br>BLAAAAAAAAAAAAAAAAA<br>")
 
 
 def myprint(d):
-    for k, v in d.items():
-        print(
-            '<div  style="white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">',
-            end="",
-        )
+    bereich = d.items()
+    for k, v in bereich:
+        bereichLen = v is not None
+        if bereichLen:
+            print(
+                '<div  style="white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">',
+                end="",
+            )
         if v is None:
             print('<input type="checkbox">', end="")
         print("{0}".format(k), end="")
@@ -145,7 +148,8 @@ def myprint(d):
             print("</input>", end="")
         if v is not None:
             myprint(v)
-        print("</div>", end="")
+        if bereichLen:
+            print("</div>", end="")
 
 
-# myprint(wahlNeu2)
+myprint(wahlNeu2)
