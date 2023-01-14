@@ -3,6 +3,7 @@
 import json
 from collections import OrderedDict
 from copy import deepcopy
+from functools import cmp_to_key
 from pprint import pprint
 
 from LibRetaPrompt import wahl15
@@ -73,8 +74,40 @@ for key, value in wahl15.items():
 
     # wahlNeu[liste[0]] = value
 
+
+def cmp_before(value):
+    value = value[0]
+    isNumber: bool = True
+    if "/" in value:
+        a = value.split("/")[-1]
+        if a.isdecimal():
+            toSort = a
+        else:
+            isNumber = False
+    elif value.isdecimal():
+        toSort = value
+    else:
+        isNumber = False
+    if not isNumber:
+        toSort = value
+    return isNumber, toSort
+
+
+def cmpx(erster, zweiter):
+    isNumber1, value1 = cmp_before(erster)
+    isNumber2, value2 = cmp_before(zweiter)
+    if isNumber1 and isNumber2:
+        return int(value1) - int(value2)
+    elif isNumber1 and not isNumber2:
+        return 1
+    elif not isNumber1 and isNumber2:
+        return -1
+    else:
+        return value1 > value2
+
+
 wahlNeu2: OrderedDict[str, dict] = OrderedDict()
-wahlNeu2["15"] = OrderedDict(sorted(wahlNeu.items(), key=lambda t: t))
+wahlNeu2["15"] = OrderedDict(sorted(wahlNeu.items(), key=cmp_to_key(cmpx)))
 
 
 # pprint(json.dumps(wahlNeu2))
