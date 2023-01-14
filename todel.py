@@ -63,7 +63,8 @@ def merge_dicts(dict1, dict2):
                 if isinstance(dict2[key], OrderedDict) and not isinstance(
                     dict1[key], OrderedDict
                 ):
-                    dict1[key] = dict2[key]
+                    print(str(type(dict1[key])))
+                    dict1[key] = dict2[key] | OrderedDict({dict1[key]: None})
             else:
                 dict1[key] = dict2[key]
     return dict1
@@ -75,18 +76,19 @@ def traverseHierarchy(liste, thing, listenIndex, value):
     # print(tuple(reversed(liste[listenIndex:])))
     knoten = liste[listenIndex]
     knoten = knoten.replace("pro", "/")
-    print(liste)
-    print(knoten)
+    # print(liste)
+    # print(knoten)
     # print(thing.keys())
     if len(liste) > listenIndex + 1:
         # print("SDASDFGGFGFSGSDFG")
-        thing = {knoten: thing}
+        thing = OrderedDict(sorted({knoten: thing}.items(), key=cmp_to_key(cmpx)))
         thing = traverseHierarchy(liste, thing, listenIndex + 1, value)
     else:
         thing: dict[dict, list]
         newKeys = value.split(",")
         newValues = [None] * len(newKeys)
         thing = {knoten: OrderedDict(zip(newKeys, newValues)) | thing}
+        # print(thing[knoten])
     return thing
 
 
