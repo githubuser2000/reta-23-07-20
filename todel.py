@@ -75,8 +75,8 @@ def traverseHierarchy(liste, thing, listenIndex, value):
     # print(tuple(reversed(liste[listenIndex:])))
     knoten = liste[listenIndex]
     knoten = knoten.replace("pro", "/")
-    # print(liste)
-    # print(knoten)
+    print(liste)
+    print(knoten)
     # print(thing.keys())
     if len(liste) > listenIndex + 1:
         # print("SDASDFGGFGFSGSDFG")
