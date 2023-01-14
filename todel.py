@@ -97,7 +97,17 @@ def cmpx(erster, zweiter):
     isNumber1, value1 = cmp_before(erster)
     isNumber2, value2 = cmp_before(zweiter)
     if isNumber1 and isNumber2:
-        return int(value1) - int(value2)
+        value1 = int(value1)
+        value2 = int(value2)
+        if value1 == value2:
+            if "/" in erster:
+                return 1
+            elif "/" in zweiter:
+                return -1
+            else:
+                return 0
+        else:
+            return value1 - value2
     elif isNumber1 and not isNumber2:
         return 1
     elif not isNumber1 and isNumber2:
