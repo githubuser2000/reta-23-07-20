@@ -73,23 +73,25 @@ def traverseHierarchy(liste, thing, listenIndex, value):
     # print(listenIndex)
     # print(liste[listenIndex:])
     # print(tuple(reversed(liste[listenIndex:])))
-    for knoten in reversed(liste[listenIndex:]):
-        knoten = knoten.replace("pro", "/")
-        # print(liste)
-        # print(knoten)
-        # print(thing.keys())
-        if len(thing) == 0 or (knoten in thing and type(thing[knoten]) is not str):
-            # print("SDASDFGGFGFSGSDFG")
-            thing = {knoten: thing}
-            thing = traverseHierarchy(liste, thing, listenIndex + 1, value)
-        elif knoten not in thing:
-            thing = {knoten: thing}
-            thing = traverseHierarchy(liste, thing, listenIndex + 1, value)
-        else:
-            thing: dict[dict, list]
-            newKeys = value.split(",")
-            newValues = [None] * len(newKeys)
-            thing = {knoten: OrderedDict(zip(newKeys, newValues))}
+    knoten = liste[listenIndex]
+    knoten = knoten.replace("pro", "/")
+    # print(liste)
+    # print(knoten)
+    # print(thing.keys())
+    if len(liste) > listenIndex + 1 and (
+        len(thing) == 0 or (knoten in thing and type(thing[knoten]) is not str)
+    ):
+        # print("SDASDFGGFGFSGSDFG")
+        thing = {knoten: thing}
+        thing = traverseHierarchy(liste, thing, listenIndex + 1, value)
+    elif len(liste) > listenIndex + 1 and knoten not in thing:
+        thing = {knoten: thing}
+        thing = traverseHierarchy(liste, thing, listenIndex + 1, value)
+    else:
+        thing: dict[dict, list]
+        newKeys = value.split(",")
+        newValues = [None] * len(newKeys)
+        thing = {knoten: OrderedDict(zip(newKeys, newValues))}
     return thing
 
 
@@ -101,7 +103,7 @@ for key, value in wahl15.items():
     liste = list(filter(None, liste))
     thing: dict[str, dict] = OrderedDict(sorted({}.items(), key=cmp_to_key(cmpx)))
     if len(liste) > 0:
-        thing = traverseHierarchy(liste, thing, 0, value)
+        thing = traverseHierarchy(tuple(reversed(liste)), thing, 0, value)
         wahlNeu = merge_dicts(thing, wahlNeu)
 
 
