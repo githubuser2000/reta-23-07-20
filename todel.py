@@ -69,24 +69,29 @@ def merge_dicts(dict1, dict2):
     return dict1
 
 
+def traverseHierarchy(liste, thing):
+    for knoten in reversed(liste):
+        knoten = knoten.replace("pro", "/")
+        knotenHier = knoten
+        while type(thing[knotenHier]) is not str:
+            thing = {knotenHier: thing}
+        else:
+            thing: dict[dict, list]
+            newKeys = value.split(",")
+            newValues = [None] * len(newKeys)
+            thing = {knoten: OrderedDict(zip(newKeys, newValues))}
+    return thing
+
+
 wahlNeu: dict[str, dict] = OrderedDict(sorted({}.items(), key=cmp_to_key(cmpx)))
 
 liste: list[str]
 for key, value in wahl15.items():
     liste = key.split("_")
     liste = list(filter(None, liste))
+    thing: dict[str, dict] = OrderedDict(sorted({}.items(), key=cmp_to_key(cmpx)))
     if len(liste) > 0:
-        thing: dict[str, dict] = OrderedDict(sorted({}.items(), key=cmp_to_key(cmpx)))
-        for el in reversed(liste):
-            el = el.replace("pro", "/")
-            if thing == OrderedDict(sorted({}.items(), key=cmp_to_key(cmpx))):
-                thing: dict[dict, list]
-                newKeys = value.split(",")
-                newValues = [None] * len(newKeys)
-                thing = {el: OrderedDict(zip(newKeys, newValues))}
-            else:
-                thing = {el: thing}
-
+        thing = traverseHierarchy(liste, thing)
         wahlNeu = merge_dicts(thing, wahlNeu)
 
 
@@ -95,26 +100,24 @@ wahlNeu2["15"] = OrderedDict(sorted(wahlNeu.items(), key=cmp_to_key(cmpx)))
 
 
 # pprint(json.dumps(wahlNeu2))
-# pprint(wahlNeu2)
+pprint(wahlNeu2)
 
 
-print("<br>BLAAAAAAAAAAAAAAAAA<br>")
+# print("<br>BLAAAAAAAAAAAAAAAAA<br>")
 
 
 def myprint(d):
     for k, v in d.items():
-        if isinstance(v, dict):
-            print(
-                '<div  style="white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">',
-                end="",
-            )
-            print('<input type="checkbox">', end="")
-            print("{0}".format(k), end="")
-            if v is not None:
-                print("<br>BLAAAAAAAAAAAAAAAAA<br>")
-                myprint(v)
-            print("</input>", end="")
-            print("</div>", end="")
+        print(
+            '<div  style="white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">',
+            end="",
+        )
+        print('<input type="checkbox">', end="")
+        print("{0}".format(k), end="")
+        if v is not None:
+            myprint(v)
+        print("</input>", end="")
+        print("</div>", end="")
 
 
-myprint(wahlNeu2)
+# myprint(wahlNeu2)
