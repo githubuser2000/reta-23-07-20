@@ -43,9 +43,9 @@ def cmpx(erster, zweiter):
         else:
             return value1 - value2
     elif isNumber1 and not isNumber2:
-        return 1
-    elif not isNumber1 and isNumber2:
         return -1
+    elif not isNumber1 and isNumber2:
+        return 1
     else:
         return value1 > value2
 
