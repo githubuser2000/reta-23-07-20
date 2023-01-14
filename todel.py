@@ -98,20 +98,23 @@ wahlNeu2["15"] = OrderedDict(sorted(wahlNeu.items(), key=cmp_to_key(cmpx)))
 # pprint(wahlNeu2)
 
 
+print("<br>BLAAAAAAAAAAAAAAAAA<br>")
+
+
 def myprint(d):
     for k, v in d.items():
         if isinstance(v, dict):
-            print("<div>", end="")
+            print(
+                '<div  style="white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">',
+                end="",
+            )
             print('<input type="checkbox">', end="")
             print("{0}".format(k), end="")
-            myprint(v)
+            if v is not None:
+                print("<br>BLAAAAAAAAAAAAAAAAA<br>")
+                myprint(v)
             print("</input>", end="")
             print("</div>", end="")
-        else:
-            if v is None:
-                print("{0}".format(k), end="")
-            else:
-                print("{0} : {1}".format(k, v), end="")
 
 
 myprint(wahlNeu2)
