@@ -174,11 +174,17 @@ for (i = 0; i < tdClasses1.length; i++)
       insertnull +
       '">' +
       makeSpacesOutOf_(p1keys[i]) +
-      '</input></label><div id="' +
+      "</input></label>" +
+      '<div id="' +
       p1keys[i] +
       '" style="display:none;white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">' +
+      (p1keys[i] === "Grundstrukturen"
+        ? '<input type="radio" class="grundRadio" id="grundRadioChaos" checked>chaotisch</input> <input type="radio" class="grundRadio" id="grundRadioOrdnung">ordentlich</input><div>'
+        : "bla") +
       chk2s +
-      "</div></div>";
+      (p1keys[i] === "Grundstrukturen" ? "</div>" : "") +
+      "</div>" +
+      +"</div>";
     checkboxes += checkbox;
   }
   str2 = checkboxes + "</span></div>";
