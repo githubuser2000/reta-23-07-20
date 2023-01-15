@@ -166,10 +166,7 @@ def myprint(d, tiefe):
                         (
                             "".join(
                                 (
-                                    ' class="chks c_" id="',
-                                    k,
-                                    '"',
-                                    ' onchange="toggleP2(this,0,',
+                                    ' onchange="toggleP2(this,-10,',
                                     "'Grundstrukturen,",
                                     k,
                                     "');\"",

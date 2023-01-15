@@ -8,6 +8,7 @@ var tdStyleFontSize = "100%";
 var tdStyleFontSizeKl = "80%";
 var tdStyleColorKl = "grey";
 var Enume = new Set([0, 1, 3, 4, 5, 6]);
+var ready0 = false;
 window.onload = function () {
   let div = document.createElement("div");
   let div2 = document.createElement("div");
@@ -324,6 +325,7 @@ for (i = 0; i < tdClasses1.length; i++)
       }
     }
   }*/
+  ready0 = true;
 };
 
 function makeMapsOfHeadLCheckB(p1, p2, num, tags) {
@@ -524,14 +526,17 @@ function makeSpacesOutOf_(text) {
 
 function toggleP2(dasTag, spaltenNummern, para1u2) {
   try {
-    //window.alert(String(spaltenNummern));
-    pa1u2 = para1u2.split(",");
-    /*window.alert(String(pa1u2[0]));
-    window.alert(String(pa1u2[1]));
-    window.alert(String(Array.from(mapMapMap[pa1u2[0]][pa1u2[1]])));*/
-    spaltenNummern = Array.from(mapMapMap[pa1u2[0]][pa1u2[1]]);
-    //window.alert(String(spaltenNummern));
-  } catch (error) {}
+    if (true) {
+      pa1u2 = para1u2.split(",");
+      /*window.alert(String(pa1u2[0]));
+      window.alert(String(pa1u2[1]));
+      window.alert(String(Array.from(mapMapMap[pa1u2[0]][pa1u2[1]])));*/
+      spaltenNummern = Array.from(mapMapMap[pa1u2[0]][pa1u2[1]]);
+      //window.alert(String(spaltenNummern));
+    } else spaltenNummern = spaltenNummern.split(",");
+  } catch (error) {
+    spaltenNummern = spaltenNummern.split(",");
+  }
   existingParameterNamesArrayIndex = MatrixHasCouple(
     para1u2,
     selectedSpaltenMany2
