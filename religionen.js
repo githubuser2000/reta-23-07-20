@@ -531,7 +531,7 @@ function makeSpacesOutOf_(text) {
   return forNewString.join("");
 }
 
-function grundSDivToggleBeachte(para = "") {
+function grundSDivToggleBeachte(para = "", dasTag = false) {
   checkboxesOrdnung = document.getElementsByClassName("ordGru");
   checkboxesChaos = document.getElementsByClassName("chks");
   for (var k = 0; k < checkboxesOrdnung.length; k++) {
@@ -564,7 +564,7 @@ function grundSDivToggleBeachte(para = "") {
       }
     }
   }
-  if (para !== "" && flag) {
+  if (para !== "" && !dasTag.checked) {
     for (var i = 0; i < checkboxesChaos.length; i++) {
       for (var k = 0; k < checkboxesOrdnung.length; k++) {
         if (typeof checkboxesChaos[i].value !== "undefined") {
@@ -600,7 +600,7 @@ function grundSDivToggle(id_) {
     //  checkbox.checked = false;
     //}
   }
-  grundSDivToggleBeachte();
+  grundSDivToggleBeachte("", false);
   //window.alert(String(checkboxesOrdnung.length));
   //
 }
@@ -608,9 +608,9 @@ function grundSDivToggle(id_) {
 function toggleP2(dasTag, spaltenNummern, para1u2) {
   pa1u2 = para1u2.split(",");
   try {
-    /*window.alert(String(pa1u2[0]));
-      window.alert(String(pa1u2[1]));
-      window.alert(String(Array.from(mapMapMap[pa1u2[0]][pa1u2[1]])));*/
+    /*window.alert(String();
+    window.alert(String(pa1u2[1]));
+    window.alert(String(Array.from(mapMapMap[pa1u2[0]][pa1u2[1]])));*/
     spaltenNummern = Array.from(mapMapMap[pa1u2[0]][pa1u2[1]]);
     //window.alert(String(spaltenNummern));
   } catch (error) {
@@ -642,7 +642,7 @@ function toggleP2(dasTag, spaltenNummern, para1u2) {
       else selectedSpaltenMany2[spaltenNummern[i]] = [para1u2];
     toggleForNums(spaltenNummern);
   }
-  grundSDivToggleBeachte(pa1u2[1]);
+  grundSDivToggleBeachte(pa1u2[1], dasTag);
 }
 
 function MatrixHasCouple(couple, SpaltenNumberToParameters) {
