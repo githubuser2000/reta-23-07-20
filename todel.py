@@ -143,7 +143,15 @@ def myprint(d, tiefe):
         )
         if bereichLen:
             print(
-                '<div style="white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">',
+                "".join(
+                    (
+                        '<div style="',
+                        ("display:none;" if tiefe == 0 and False else ""),
+                        'white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);" ',
+                        ("id=grundstrukturen" if tiefe == 0 and False else ""),
+                        ">",
+                    )
+                ),
                 end="",
             )
         if v is None:
