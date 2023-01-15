@@ -4,6 +4,7 @@ function ctrl_c() {
     cat religionen.js
     cat head2.alx
     cat middle.alx
+    ./grundStrukHtml.py blank
     cat footer.alx
 }
 trap ctrl_c INT
