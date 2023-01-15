@@ -118,9 +118,9 @@ for key, value in wahl15.items():
 
 
 wahlNeu2: OrderedDict[str, dict] = OrderedDict(sorted({}, key=cmp_to_key(cmpx)))
-wahlNeu2["15"] = merge_dicts(
-    OrderedDict(sorted(wahlNeu["15"].items(), key=cmp_to_key(cmpx))),
-    OrderedDict(sorted(wahlNeu.items(), key=cmp_to_key(cmpx))),
+wahlNeu2["15"] = OrderedDict(sorted(wahlNeu.items(), key=cmp_to_key(cmpx)))
+wahlNeu2 = merge_dicts(
+    wahlNeu2, OrderedDict(sorted(wahlNeu["15"].items(), key=cmp_to_key(cmpx)))
 )
 
 
