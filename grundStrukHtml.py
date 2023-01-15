@@ -184,7 +184,11 @@ def myprint(d, tiefe):
             )
 
         if v is None or listenVergleich:
-            print("{0} ".format(k), end="")
+            if v is None:
+                kkk = k.replace("_", " ")
+            else:
+                kkk = k
+            print("{0} ".format(kkk), end="")
         if v is None:
             print("</input>", end="")
         if v is not None:
