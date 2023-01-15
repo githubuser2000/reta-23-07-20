@@ -148,7 +148,7 @@ def myprint(d, tiefe):
             print('<input type="checkbox">', end="")
 
         if v is None or listenVergleich:
-            print("{0}".format(k), end="")
+            print("{0} ".format(k), end="")
         if v is None:
             print("</input>", end="")
         if v is not None:
