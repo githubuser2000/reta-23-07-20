@@ -136,8 +136,10 @@ def myprint(d, tiefe):
     bereich = d.items()
     for k, v in bereich if tiefe < 2 else reversed(bereich):
         bereichLen = (v is not None and len(v.items()) > 1) or tiefe < 2
-        listenVergleich = v is not None and any(
-            [vValue is not None for vKey, vValue in v.items()]
+        listenVergleich = (
+            v is not None
+            and any([vValue is not None for vKey, vValue in v.items()])
+            and len(v.items()) > 1
         )
         if bereichLen:
             print(
