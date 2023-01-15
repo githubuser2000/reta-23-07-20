@@ -185,7 +185,7 @@ def myprint(d, tiefe):
 
         if v is None or listenVergleich:
             if v is None:
-                kkk = k.replace("_", " ")
+                kkk = "".join(("<label>", k.replace("_", " "), "</label>"))
             else:
                 kkk = k
             print("{0} ".format(kkk), end="")
