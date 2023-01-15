@@ -135,7 +135,7 @@ wahlNeu2["15"] = merge_dicts(
 def myprint(d, tiefe):
     bereich = d.items()
     for k, v in bereich:
-        bereichLen = (v is not None and len(v.items()) > 1) or tiefe == 0
+        bereichLen = (v is not None and len(v.items()) > 1) or tiefe < 2
         listenVergleich = v is not None and any(
             [vValue is not None for vKey, vValue in v.items()]
         )
