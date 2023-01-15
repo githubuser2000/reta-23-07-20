@@ -136,6 +136,9 @@ def myprint(d):
     bereich = d.items()
     for k, v in bereich:
         bereichLen = v is not None and len(v.items()) > 1
+        listenVergleich = v is not None and any(
+            [vValue is not None for vKey, vValue in v.items()]
+        )
         if bereichLen:
             print(
                 '<div  style="white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">',
@@ -144,7 +147,7 @@ def myprint(d):
         if v is None:
             print('<input type="checkbox">', end="")
 
-        if v is None or any([vValue is not None for vKey, vValue in v.items()]):
+        if v is None or listenVergleich:
             print("{0}".format(k), end="")
         if v is None:
             print("</input>", end="")
