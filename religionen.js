@@ -532,8 +532,9 @@ function makeSpacesOutOf_(text) {
 }
 
 function grundSDivToggle(id_) {
-  checkboxesChaos = document.getElementsByClassName("ordentlicheGrundStrukChk");
-  checkboxesOrdnung = document.getElementsByClassName("chk");
+  //checkboxesChaos = document.getElementsByTagName("input");
+  checkboxesOrdnung = document.getElementsByClassName("ordGru");
+  checkboxesChaos = document.getElementsByClassName("chks");
   if (id_ == 1) {
     document.getElementById("grundRadioChaos").checked = false;
     document.getElementById("grundRadioOrdnung").checked = true;
@@ -549,9 +550,26 @@ function grundSDivToggle(id_) {
     //  checkbox.checked = false;
     //}
   }
-  for (var checkboxChaos in checkboxesChaos) {
+  //window.alert(String(checkboxesOrdnung.length));
+  //
+  for (var i = 0; i < checkboxesChaos.length; i++) {
+    for (var k = 0; k < checkboxesOrdnung.length; k++) {
+      if (typeof checkboxesChaos[i].value !== "undefined") {
+        //window.alert(String(checkboxesChaos[i].value));
+        if (
+          checkboxesOrdnung[k].value == checkboxesChaos[i].value &&
+          checkboxesOrdnung[k].checked != checkboxesChaos[i].checked
+        ) {
+          if (checkboxesOrdnung[k].checked == false)
+            checkboxesOrdnung[k].checked = true;
+          if (checkboxesChaos[i].checked == false)
+            checkboxesChaos[i].checked = true;
+        }
+      }
+    }
+  }
+  /*  for (var checkboxChaos in checkboxesChaos) {
     for (var checkboxOrdnung in checkboxesOrdnung) {
-      window.alert(String(checkboxChaos.value));
       if (
         checkboxOrdnung.value == checkboxChaos.value &&
         checkboxOrdnung.checked != checkboxChaos.checked
@@ -560,8 +578,9 @@ function grundSDivToggle(id_) {
         if (checkboxChaos.checked == false) checkboxChaos.checked = true;
       }
     }
-  }
+  }*/
 }
+
 function toggleP2(dasTag, spaltenNummern, para1u2) {
   try {
     if (true) {
