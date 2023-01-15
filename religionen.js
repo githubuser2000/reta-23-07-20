@@ -12,7 +12,7 @@ window.onload = function () {
   let div = document.createElement("div");
   let div2 = document.createElement("div");
   div.className = "headingsDiv";
-  /* 
+  /*
     sternPolygon = 0
     gleichfoermigesPolygon = 1
     keinPolygon = 2
@@ -28,7 +28,7 @@ window.onload = function () {
   div.innerHTML = chk_spalten;
   tdClasses = document.getElementsByClassName("z_0");
   /*tdClasses = []
-for (i = 0; i < tdClasses1.length; i++) 
+for (i = 0; i < tdClasses1.length; i++)
 	if (tdClasses1[i].className.includes("z_0"))
 		tdClasses.push(tdClasses1[i]);*/
   (p1map = {}),
@@ -123,6 +123,10 @@ for (i = 0; i < tdClasses1.length; i++)
     for (k = 0; k < p2keys.length; k++) {
       numbers = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
       if (p2keys[k] != null && p2keys[k] != "null") {
+        // window.alert(p1keys[i]); 'Grundstrukturen'
+        // window.alert(p2keys[i]); klar
+        // window.alert(numbers); // ach einfach die und daraus!
+        // window.alert(Array.from(mapMapMapTags[p1keys[i]][p2keys[k]]).join(",")); // diese Zahlen
         chk2 =
           '<label style="' +
           labelstyle +
@@ -227,10 +231,7 @@ for (i = 0; i < tdClasses1.length; i++)
   div.innerHTML +=
     str4 + str5 + str6 + str8 + str9 + str10 + str11 + str12 + str13 + str7;
   // Spaltenreihenfolge
-  tableHeadline = document
-    .getElementById("bigtable")
-    .rows[0]
-    .cells;
+  tableHeadline = document.getElementById("bigtable").rows[0].cells;
   for (var u = 0; u < tableHeadline.length; u++) {
     tableHeadline[u].innerHTML =
       '<select id="hselec_' +
@@ -255,7 +256,7 @@ for (i = 0; i < tdClasses1.length; i++)
       text.innerHTML,
       "</label>",
     ].join("");
-  } 
+  }
   */
 
   trs = tabelle.rows;
@@ -694,7 +695,7 @@ function makeSpalteUnsichtbar(
     for (var i = 0; i < len; i++) spalteToUnsichtbar[i].style.display = "none";
     delete visibleHeadingsSelectUnsorted[momentaneSpalte_als_r_];
   } /*else {
-        for (var i=0; i<len; i++) 
+        for (var i=0; i<len; i++)
             spalteToUnsichtbar[i].style.display = 'table-cell'
         visibleHeadingsSelectUnsorted['r_'+momentaneSpalte_als_r_]=spalteToUnsichtbar;
     }*/
@@ -766,10 +767,7 @@ var optionsS = [];
 var sichtbareSpaltenNummern;
 
 function sortedKeysOfHeadingNumbersByVisibility() {
-  tableHeadline = document
-    .getElementById("bigtable")
-    .rows[0]
-    .cells;
+  tableHeadline = document.getElementById("bigtable").rows[0].cells;
   sichtbareSpaltenNummern = [];
   for (var i = 0; i < tableHeadline.length; i++) {
     if (tableHeadline[i].style.display == "table-cell") {
@@ -1141,9 +1139,7 @@ function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which) {
         dazuEinschraenkend
       );
     else {
-      echteZeilenNummer = spalte[s]
-        .cells[0]
-        .className.match(/z_\s*(\d+)/g);
+      echteZeilenNummer = spalte[s].cells[0].className.match(/z_\s*(\d+)/g);
       if (echteZeilenNummer != null && echteZeilenNummer.length > 0) {
         echteZeilenNummer = parseInt(echteZeilenNummer[0].substr(2));
         zeilenLetztendlichZeigenVerstecken(

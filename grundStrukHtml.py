@@ -1,6 +1,7 @@
 #!/usr/bin/env pypy3
 # -*- coding: utf-8 -*-
 import json
+import sys
 from collections import OrderedDict
 from copy import deepcopy
 from functools import cmp_to_key
@@ -131,8 +132,11 @@ wahlNeu2 = merge_dicts(
 
 # print("<br>BLAAAAAAAAAAAAAAAAA<br>")
 
+blank = len(sys.argv) > 1 and sys.argv[1] == "blank"
+
 
 def myprint(d, tiefe):
+    global blank
     bereich = d.items()
     for k, v in bereich if tiefe < 2 else reversed(bereich):
         bereichLen = (v is not None and len(v.items()) > 1) or tiefe < 2
@@ -146,16 +150,42 @@ def myprint(d, tiefe):
                 "".join(
                     (
                         '<div style="',
-                        ("display:none;" if tiefe == 0 and False else ""),
+                        ("display:none;" if tiefe == 0 and blank else ""),
                         'white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);" ',
-                        ("id=grundstrukturen" if tiefe == 0 and False else ""),
+                        ("id=grundstrukturen" if tiefe == 0 and blank else ""),
                         ">",
                     )
                 ),
                 end="",
             )
         if v is None:
-            print('<input type="checkbox">', end="")
+            print(
+                "".join(
+                    (
+                        '<input type="checkbox"',
+                        (
+                            "".join(
+                                (
+                                    " class=\"chks c_',Array.from(mapMapMapTags[\\'Grundstrukturen\\'][\\'",
+                                    k,
+                                    '\']).join(\\",\\")" value="',
+                                    k,
+                                    '"',
+                                    " onchange=\"toggleP2(this,'Array.from(mapMapMap[\\'Grundstrukturen\\'][\\'",
+                                    k,
+                                    "\\'])','[\\'Grundstrukturen\\',\\'",
+                                    k,
+                                    "\\']');\"",
+                                ),
+                            )
+                            if blank or True
+                            else ""
+                        ),
+                        ">",
+                    )
+                ),
+                end="",
+            )
 
         if v is None or listenVergleich:
             print("{0} ".format(k), end="")
