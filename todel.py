@@ -52,7 +52,7 @@ def cmpx(erster, zweiter):
         # print(str(erster) + "+" + str(zweiter))
         return -1
     else:
-        return value1 > value2
+        return value1 < value2
 
 
 def merge_dicts(dict1, dict2):
@@ -134,7 +134,7 @@ wahlNeu2 = merge_dicts(
 
 def myprint(d, tiefe):
     bereich = d.items()
-    for k, v in bereich:
+    for k, v in bereich if tiefe < 2 else reversed(bereich):
         bereichLen = (v is not None and len(v.items()) > 1) or tiefe < 2
         listenVergleich = v is not None and any(
             [vValue is not None for vKey, vValue in v.items()]
