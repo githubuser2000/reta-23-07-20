@@ -144,6 +144,7 @@ def myprint(d, tiefe):
             v is not None
             and any([vValue is not None for vKey, vValue in v.items()])
             and len(v.items()) > 1
+            or tiefe < 2
         )
         if bereichLen:
             print(
