@@ -12,7 +12,7 @@ window.onload = function () {
   let div = document.createElement("div");
   let div2 = document.createElement("div");
   div.className = "headingsDiv";
-  /* 
+  /*
     sternPolygon = 0
     gleichfoermigesPolygon = 1
     keinPolygon = 2
@@ -28,7 +28,7 @@ window.onload = function () {
   div.innerHTML = chk_spalten;
   tdClasses = document.getElementsByClassName("z_0");
   /*tdClasses = []
-for (i = 0; i < tdClasses1.length; i++) 
+for (i = 0; i < tdClasses1.length; i++)
 	if (tdClasses1[i].className.includes("z_0"))
 		tdClasses.push(tdClasses1[i]);*/
   (p1map = {}),
@@ -123,6 +123,10 @@ for (i = 0; i < tdClasses1.length; i++)
     for (k = 0; k < p2keys.length; k++) {
       numbers = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
       if (p2keys[k] != null && p2keys[k] != "null") {
+        // window.alert(p1keys[i]); 'Grundstrukturen'
+        // window.alert(p2keys[i]); klar
+        // window.alert(numbers); // ach einfach die und daraus!
+        // window.alert(Array.from(mapMapMapTags[p1keys[i]][p2keys[k]]).join(",")); // diese Zahlen
         chk2 =
           '<label style="' +
           labelstyle +
@@ -162,17 +166,24 @@ for (i = 0; i < tdClasses1.length; i++)
       //Array.from(mapMapMap[p1keys[i]][null]).join(",") +
       //'"  value="' +
       ' value="' +
-      p1keys[i] +
+      String(p1keys[i]) +
       '" onchange="toggleP1(\'' +
-      p1keys[i] +
+      String(p1keys[i]) +
       "');" +
-      insertnull +
+      String(insertnull) +
       '">' +
-      makeSpacesOutOf_(p1keys[i]) +
-      '</input></label><div id="' +
-      p1keys[i] +
+      String(makeSpacesOutOf_(p1keys[i])) +
+      "</input></label>" +
+      '<div id="' +
+      String(p1keys[i]) +
       '" style="display:none;white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">' +
-      chk2s +
+      (p1keys[i] === "Grundstrukturen"
+        ? '<input type="radio" class="grundRadio" id="grundRadioChaos" checked onchange="grundSDivToggle(0)"><label>unübersichtlich</label></input> <input type="radio" class="grundRadio" id="grundRadioOrdnung" onchange="grundSDivToggle(1)"><label>ordentlich</label></input><div id="grundSDiv0">'
+        : "") +
+      String(chk2s) +
+      (p1keys[i] === "Grundstrukturen"
+        ? '</div><div id="grundSDiv1" style="display:none;"></div>'
+        : "") +
       "</div></div>";
     checkboxes += checkbox;
   }
@@ -227,10 +238,7 @@ for (i = 0; i < tdClasses1.length; i++)
   div.innerHTML +=
     str4 + str5 + str6 + str8 + str9 + str10 + str11 + str12 + str13 + str7;
   // Spaltenreihenfolge
-  tableHeadline = document
-    .getElementById("bigtable")
-    .rows[0]
-    .cells;
+  tableHeadline = document.getElementById("bigtable").rows[0].cells;
   for (var u = 0; u < tableHeadline.length; u++) {
     tableHeadline[u].innerHTML =
       '<select id="hselec_' +
@@ -255,7 +263,7 @@ for (i = 0; i < tdClasses1.length; i++)
       text.innerHTML,
       "</label>",
     ].join("");
-  } 
+  }
   */
 
   trs = tabelle.rows;
@@ -323,6 +331,8 @@ for (i = 0; i < tdClasses1.length; i++)
       }
     }
   }*/
+  document.getElementById("grundSDiv1").innerHTML =
+    document.getElementById("grundstrukturenDiv").innerHTML;
 };
 
 function makeMapsOfHeadLCheckB(p1, p2, num, tags) {
@@ -521,8 +531,92 @@ function makeSpacesOutOf_(text) {
   return forNewString.join("");
 }
 
+function grundSDivToggleBeachte(para = "", dasTag = false) {
+  checkboxesOrdnung = document.getElementsByClassName("ordGru");
+  checkboxesChaos = document.getElementsByClassName("chks");
+  if (para !== "" && !dasTag.checked) {
+    for (var i = 0; i < checkboxesChaos.length; i++) {
+      for (var k = 0; k < checkboxesOrdnung.length; k++) {
+        if (typeof checkboxesChaos[i].value !== "undefined") {
+          //window.alert(String(checkboxesChaos[i].value));
+          if (
+            checkboxesOrdnung[k].value === checkboxesChaos[i].value &&
+            checkboxesOrdnung[k].checked != checkboxesChaos[i].checked
+          ) {
+            if (checkboxesOrdnung[k].value === para) {
+              checkboxesOrdnung[k].checked = false;
+              checkboxesChaos[i].checked = false;
+            }
+          }
+        }
+      }
+    }
+  } else {
+    for (var k = 0; k < checkboxesOrdnung.length; k++) {
+      for (var k2 = 0; k2 < checkboxesOrdnung.length; k2++) {
+        if (k != k2) {
+          //window.alert(String(checkboxesChaos[i].value));
+          if (
+            checkboxesOrdnung[k2].value === checkboxesOrdnung[k].value &&
+            checkboxesOrdnung[k2].checked != checkboxesOrdnung[k].checked
+          ) {
+            if (checkboxesOrdnung[k2].checked == false)
+              checkboxesOrdnung[k2].checked = true;
+          }
+        }
+      }
+    }
+    for (var i = 0; i < checkboxesChaos.length; i++) {
+      for (var k = 0; k < checkboxesOrdnung.length; k++) {
+        if (typeof checkboxesChaos[i].value !== "undefined" && k != k2) {
+          //window.alert(String(checkboxesChaos[i].value));
+          if (
+            checkboxesOrdnung[k].value === checkboxesChaos[i].value &&
+            checkboxesOrdnung[k].checked != checkboxesChaos[i].checked
+          ) {
+            if (checkboxesOrdnung[k].checked == false)
+              checkboxesOrdnung[k].checked = true;
+            if (checkboxesChaos[i].checked == false)
+              checkboxesChaos[i].checked = true;
+          }
+        }
+      }
+    }
+  }
+}
+function grundSDivToggle(id_) {
+  //checkboxesChaos = document.getElementsByTagName("input");
+  if (id_ == 1) {
+    document.getElementById("grundRadioChaos").checked = false;
+    document.getElementById("grundRadioOrdnung").checked = true;
+    document.getElementById("grundSDiv0").style.display = "none";
+    document.getElementById("grundSDiv1").style.display = "inline";
+  } else {
+    document.getElementById("grundRadioChaos").checked = true;
+    document.getElementById("grundRadioOrdnung").checked = false;
+    document.getElementById("grundSDiv0").style.display = "inline";
+    document.getElementById("grundSDiv1").style.display = "none";
+    //checkboxes = document.getElementsByClassName("ordentlicheGrundStrukChk");
+    //for (var checkbox in checkboxes) {
+    //  checkbox.checked = false;
+    //}
+  }
+  grundSDivToggleBeachte("", false);
+  //window.alert(String(checkboxesOrdnung.length));
+  //
+}
+
 function toggleP2(dasTag, spaltenNummern, para1u2) {
-  spaltenNummern = spaltenNummern.split(",");
+  pa1u2 = para1u2.split(",");
+  try {
+    /*window.alert(String();
+    window.alert(String(pa1u2[1]));
+    window.alert(String(Array.from(mapMapMap[pa1u2[0]][pa1u2[1]])));*/
+    spaltenNummern = Array.from(mapMapMap[pa1u2[0]][pa1u2[1]]);
+    //window.alert(String(spaltenNummern));
+  } catch (error) {
+    spaltenNummern = spaltenNummern.split(",");
+  }
   existingParameterNamesArrayIndex = MatrixHasCouple(
     para1u2,
     selectedSpaltenMany2
@@ -549,6 +643,7 @@ function toggleP2(dasTag, spaltenNummern, para1u2) {
       else selectedSpaltenMany2[spaltenNummern[i]] = [para1u2];
     toggleForNums(spaltenNummern);
   }
+  grundSDivToggleBeachte(pa1u2[1], dasTag);
 }
 
 function MatrixHasCouple(couple, SpaltenNumberToParameters) {
@@ -694,7 +789,7 @@ function makeSpalteUnsichtbar(
     for (var i = 0; i < len; i++) spalteToUnsichtbar[i].style.display = "none";
     delete visibleHeadingsSelectUnsorted[momentaneSpalte_als_r_];
   } /*else {
-        for (var i=0; i<len; i++) 
+        for (var i=0; i<len; i++)
             spalteToUnsichtbar[i].style.display = 'table-cell'
         visibleHeadingsSelectUnsorted['r_'+momentaneSpalte_als_r_]=spalteToUnsichtbar;
     }*/
@@ -766,10 +861,7 @@ var optionsS = [];
 var sichtbareSpaltenNummern;
 
 function sortedKeysOfHeadingNumbersByVisibility() {
-  tableHeadline = document
-    .getElementById("bigtable")
-    .rows[0]
-    .cells;
+  tableHeadline = document.getElementById("bigtable").rows[0].cells;
   sichtbareSpaltenNummern = [];
   for (var i = 0; i < tableHeadline.length; i++) {
     if (tableHeadline[i].style.display == "table-cell") {
@@ -1141,9 +1233,7 @@ function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which) {
         dazuEinschraenkend
       );
     else {
-      echteZeilenNummer = spalte[s]
-        .cells[0]
-        .className.match(/z_\s*(\d+)/g);
+      echteZeilenNummer = spalte[s].cells[0].className.match(/z_\s*(\d+)/g);
       if (echteZeilenNummer != null && echteZeilenNummer.length > 0) {
         echteZeilenNummer = parseInt(echteZeilenNummer[0].substr(2));
         zeilenLetztendlichZeigenVerstecken(
