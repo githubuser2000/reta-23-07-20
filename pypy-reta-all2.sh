@@ -1,7 +1,8 @@
 #!/bin/bash
 SCRIPT_PATH="${BASH_SOURCE:-$0}"
 ABS_SCRIPT_PATH="$(realpath "${SCRIPT_PATH}")"
-ABS_DIRECTORY="$(dirname "${ABS_SCRIPT_PATH}")"
+#ABS_DIRECTORY="$(dirname "${ABS_SCRIPT_PATH}")"
+ABS_DIRECTORY="/home/alex/myRepos/reta"
 GIT_DIRECTORY="${ABS_DIRECTORY}/.git"
 function ctrl_c() {
     cat ${ABS_DIRECTORY}/head1.alx
@@ -15,5 +16,5 @@ trap ctrl_c INT
 if [ "$1" == 'reta' ]; then
 	pypy3 ${ABS_DIRECTORY}/reta -spalten --alles --breite=0 -ausgabe --art=html --onetable --nocolor >  ~/middle1.alx
 fi
-chown -R alex:alex ${ABS_DIRECTORY}
+#chown -R alex:alex ${ABS_DIRECTORY}
 ctrl_c
