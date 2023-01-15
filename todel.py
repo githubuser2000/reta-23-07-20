@@ -132,16 +132,16 @@ wahlNeu2["15"] = merge_dicts(
 # print("<br>BLAAAAAAAAAAAAAAAAA<br>")
 
 
-def myprint(d):
+def myprint(d, tiefe):
     bereich = d.items()
     for k, v in bereich:
-        bereichLen = v is not None and len(v.items()) > 1
+        bereichLen = (v is not None and len(v.items()) > 1) or tiefe == 0
         listenVergleich = v is not None and any(
             [vValue is not None for vKey, vValue in v.items()]
         )
         if bereichLen:
             print(
-                '<div  style="white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">',
+                '<div style="white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">',
                 end="",
             )
         if v is None:
@@ -152,9 +152,9 @@ def myprint(d):
         if v is None:
             print("</input>", end="")
         if v is not None:
-            myprint(v)
+            myprint(v, tiefe + 1)
         if bereichLen:
             print("</div>", end="")
 
 
-myprint(wahlNeu2)
+myprint(wahlNeu2, 0)
