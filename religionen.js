@@ -534,36 +534,6 @@ function makeSpacesOutOf_(text) {
 function grundSDivToggleBeachte(para = "", dasTag = false) {
   checkboxesOrdnung = document.getElementsByClassName("ordGru");
   checkboxesChaos = document.getElementsByClassName("chks");
-  for (var k = 0; k < checkboxesOrdnung.length; k++) {
-    for (var k2 = 0; k2 < checkboxesOrdnung.length; k2++) {
-      if (k != k2) {
-        //window.alert(String(checkboxesChaos[i].value));
-        if (
-          checkboxesOrdnung[k2].value === checkboxesOrdnung[k].value &&
-          checkboxesOrdnung[k2].checked != checkboxesOrdnung[k].checked
-        ) {
-          if (checkboxesOrdnung[k2].checked == false)
-            checkboxesOrdnung[k2].checked = true;
-        }
-      }
-    }
-  }
-  for (var i = 0; i < checkboxesChaos.length; i++) {
-    for (var k = 0; k < checkboxesOrdnung.length; k++) {
-      if (typeof checkboxesChaos[i].value !== "undefined" && k != k2) {
-        //window.alert(String(checkboxesChaos[i].value));
-        if (
-          checkboxesOrdnung[k].value === checkboxesChaos[i].value &&
-          checkboxesOrdnung[k].checked != checkboxesChaos[i].checked
-        ) {
-          if (checkboxesOrdnung[k].checked == false)
-            checkboxesOrdnung[k].checked = true;
-          if (checkboxesChaos[i].checked == false)
-            checkboxesChaos[i].checked = true;
-        }
-      }
-    }
-  }
   if (para !== "" && !dasTag.checked) {
     for (var i = 0; i < checkboxesChaos.length; i++) {
       for (var k = 0; k < checkboxesOrdnung.length; k++) {
@@ -577,6 +547,37 @@ function grundSDivToggleBeachte(para = "", dasTag = false) {
               checkboxesOrdnung[k].checked = false;
               checkboxesChaos[i].checked = false;
             }
+          }
+        }
+      }
+    }
+  } else {
+    for (var k = 0; k < checkboxesOrdnung.length; k++) {
+      for (var k2 = 0; k2 < checkboxesOrdnung.length; k2++) {
+        if (k != k2) {
+          //window.alert(String(checkboxesChaos[i].value));
+          if (
+            checkboxesOrdnung[k2].value === checkboxesOrdnung[k].value &&
+            checkboxesOrdnung[k2].checked != checkboxesOrdnung[k].checked
+          ) {
+            if (checkboxesOrdnung[k2].checked == false)
+              checkboxesOrdnung[k2].checked = true;
+          }
+        }
+      }
+    }
+    for (var i = 0; i < checkboxesChaos.length; i++) {
+      for (var k = 0; k < checkboxesOrdnung.length; k++) {
+        if (typeof checkboxesChaos[i].value !== "undefined" && k != k2) {
+          //window.alert(String(checkboxesChaos[i].value));
+          if (
+            checkboxesOrdnung[k].value === checkboxesChaos[i].value &&
+            checkboxesOrdnung[k].checked != checkboxesChaos[i].checked
+          ) {
+            if (checkboxesOrdnung[k].checked == false)
+              checkboxesOrdnung[k].checked = true;
+            if (checkboxesChaos[i].checked == false)
+              checkboxesChaos[i].checked = true;
           }
         }
       }
