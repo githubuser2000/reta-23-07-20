@@ -150,9 +150,7 @@ def myprint(d, tiefe):
                 "".join(
                     (
                         '<div style="',
-                        ("display:none;" if tiefe == 0 and blank else ""),
                         'white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);" ',
-                        ("id=grundstrukturen" if tiefe == 0 and blank else ""),
                         ">",
                     )
                 ),
@@ -191,4 +189,18 @@ def myprint(d, tiefe):
             print("</div>", end="")
 
 
+print(
+    "".join(
+        (
+            '<div style="',
+            ("display:none;" if blank else ""),
+            'white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);" ',
+            ("id='grundstrukturenDiv'" if blank else ""),
+            ">",
+        )
+    ),
+    end="",
+)
+
 myprint(wahlNeu2, 0)
+print("</div>")

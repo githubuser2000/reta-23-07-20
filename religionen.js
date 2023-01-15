@@ -8,7 +8,6 @@ var tdStyleFontSize = "100%";
 var tdStyleFontSizeKl = "80%";
 var tdStyleColorKl = "grey";
 var Enume = new Set([0, 1, 3, 4, 5, 6]);
-var ready0 = false;
 window.onload = function () {
   let div = document.createElement("div");
   let div2 = document.createElement("div");
@@ -167,24 +166,25 @@ for (i = 0; i < tdClasses1.length; i++)
       //Array.from(mapMapMap[p1keys[i]][null]).join(",") +
       //'"  value="' +
       ' value="' +
-      p1keys[i] +
+      String(p1keys[i]) +
       '" onchange="toggleP1(\'' +
-      p1keys[i] +
+      String(p1keys[i]) +
       "');" +
-      insertnull +
+      String(insertnull) +
       '">' +
-      makeSpacesOutOf_(p1keys[i]) +
+      String(makeSpacesOutOf_(p1keys[i])) +
       "</input></label>" +
       '<div id="' +
-      p1keys[i] +
+      String(p1keys[i]) +
       '" style="display:none;white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">' +
       (p1keys[i] === "Grundstrukturen"
-        ? '<input type="radio" class="grundRadio" id="grundRadioChaos" checked>chaotisch</input> <input type="radio" class="grundRadio" id="grundRadioOrdnung">ordentlich</input><div>'
+        ? '<input type="radio" class="grundRadio" id="grundRadioChaos" checked onchange="grundSDivToggle(0)"><label>unübersichtlich</label></input> <input type="radio" class="grundRadio" id="grundRadioOrdnung" onchange="grundSDivToggle(1)"><label>ordentlich</label></input><div id="grundSDiv0">'
         : "bla") +
-      chk2s +
-      (p1keys[i] === "Grundstrukturen" ? "</div>" : "") +
-      "</div>" +
-      +"</div>";
+      String(chk2s) +
+      (p1keys[i] === "Grundstrukturen"
+        ? '</div><div id="grundSDiv1" style="display:none;"></div>'
+        : "") +
+      "</div></div>";
     checkboxes += checkbox;
   }
   str2 = checkboxes + "</span></div>";
@@ -331,7 +331,8 @@ for (i = 0; i < tdClasses1.length; i++)
       }
     }
   }*/
-  ready0 = true;
+  document.getElementById("grundSDiv1").innerHTML =
+    document.getElementById("grundstrukturenDiv").innerHTML;
 };
 
 function makeMapsOfHeadLCheckB(p1, p2, num, tags) {
@@ -530,6 +531,19 @@ function makeSpacesOutOf_(text) {
   return forNewString.join("");
 }
 
+function grundSDivToggle(id_) {
+  if (id_ == 1) {
+    document.getElementById("grundRadioChaos").checked = false;
+    document.getElementById("grundRadioOrdnung").checked = true;
+    document.getElementById("grundSDiv0").style.display = "none";
+    document.getElementById("grundSDiv1").style.display = "inline";
+  } else {
+    document.getElementById("grundRadioChaos").checked = true;
+    document.getElementById("grundRadioOrdnung").checked = false;
+    document.getElementById("grundSDiv0").style.display = "inline";
+    document.getElementById("grundSDiv1").style.display = "none";
+  }
+}
 function toggleP2(dasTag, spaltenNummern, para1u2) {
   try {
     if (true) {
