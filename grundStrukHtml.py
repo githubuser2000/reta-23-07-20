@@ -166,7 +166,7 @@ def myprint(d, tiefe):
                         (
                             "".join(
                                 (
-                                    ' class="chks c_2" id="',
+                                    ' class="chks c_" id="',
                                     k,
                                     '"',
                                     ' onchange="toggleP2(this,0,',
