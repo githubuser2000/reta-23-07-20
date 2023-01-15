@@ -523,7 +523,15 @@ function makeSpacesOutOf_(text) {
 }
 
 function toggleP2(dasTag, spaltenNummern, para1u2) {
-  spaltenNummern = spaltenNummern.split(",");
+  try {
+    //window.alert(String(spaltenNummern));
+    pa1u2 = para1u2.split(",");
+    /*window.alert(String(pa1u2[0]));
+    window.alert(String(pa1u2[1]));
+    window.alert(String(Array.from(mapMapMap[pa1u2[0]][pa1u2[1]])));*/
+    spaltenNummern = Array.from(mapMapMap[pa1u2[0]][pa1u2[1]]);
+    //window.alert(String(spaltenNummern));
+  } catch (error) {}
   existingParameterNamesArrayIndex = MatrixHasCouple(
     para1u2,
     selectedSpaltenMany2

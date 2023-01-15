@@ -166,16 +166,13 @@ def myprint(d, tiefe):
                         (
                             "".join(
                                 (
-                                    " class=\"chks c_',Array.from(mapMapMapTags[\\'Grundstrukturen\\'][\\'",
-                                    k,
-                                    '\']).join(\\",\\")" value="',
+                                    ' class="chks c_2" id="',
                                     k,
                                     '"',
-                                    " onchange=\"toggleP2(this,'Array.from(mapMapMap[\\'Grundstrukturen\\'][\\'",
+                                    ' onchange="toggleP2(this,0,',
+                                    "'Grundstrukturen,",
                                     k,
-                                    "\\'])','[\\'Grundstrukturen\\',\\'",
-                                    k,
-                                    "\\']');\"",
+                                    "');\"",
                                 ),
                             )
                             if blank or True
