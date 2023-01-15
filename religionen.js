@@ -179,7 +179,7 @@ for (i = 0; i < tdClasses1.length; i++)
       '" style="display:none;white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">' +
       (p1keys[i] === "Grundstrukturen"
         ? '<input type="radio" class="grundRadio" id="grundRadioChaos" checked onchange="grundSDivToggle(0)"><label>unübersichtlich</label></input> <input type="radio" class="grundRadio" id="grundRadioOrdnung" onchange="grundSDivToggle(1)"><label>ordentlich</label></input><div id="grundSDiv0">'
-        : "bla") +
+        : "") +
       String(chk2s) +
       (p1keys[i] === "Grundstrukturen"
         ? '</div><div id="grundSDiv1" style="display:none;"></div>'
@@ -532,6 +532,8 @@ function makeSpacesOutOf_(text) {
 }
 
 function grundSDivToggle(id_) {
+  checkboxesChaos = document.getElementsByClassName("ordentlicheGrundStrukChk");
+  checkboxesOrdnung = document.getElementsByClassName("chk");
   if (id_ == 1) {
     document.getElementById("grundRadioChaos").checked = false;
     document.getElementById("grundRadioOrdnung").checked = true;
@@ -542,6 +544,22 @@ function grundSDivToggle(id_) {
     document.getElementById("grundRadioOrdnung").checked = false;
     document.getElementById("grundSDiv0").style.display = "inline";
     document.getElementById("grundSDiv1").style.display = "none";
+    //checkboxes = document.getElementsByClassName("ordentlicheGrundStrukChk");
+    //for (var checkbox in checkboxes) {
+    //  checkbox.checked = false;
+    //}
+  }
+  for (var checkboxChaos in checkboxesChaos) {
+    for (var checkboxOrdnung in checkboxesOrdnung) {
+      window.alert(String(checkboxChaos.value));
+      if (
+        checkboxOrdnung.value == checkboxChaos.value &&
+        checkboxOrdnung.checked != checkboxChaos.checked
+      ) {
+        if (checkboxOrdnung.checked == false) checkboxOrdnung.checked = true;
+        if (checkboxChaos.checked == false) checkboxChaos.checked = true;
+      }
+    }
   }
 }
 function toggleP2(dasTag, spaltenNummern, para1u2) {

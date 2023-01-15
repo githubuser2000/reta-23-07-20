@@ -165,7 +165,7 @@ def myprint(d, tiefe):
                         (
                             "".join(
                                 (
-                                    ' onchange="toggleP2(this,-10,',
+                                    'class="ordentlicheGrundStrukChk" onchange="toggleP2(this,-10,',
                                     "'Grundstrukturen,",
                                     k,
                                     "');\"",
