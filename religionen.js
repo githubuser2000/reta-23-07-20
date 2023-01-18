@@ -534,18 +534,71 @@ function makeSpacesOutOf_(text) {
 function grundSDivToggleBeachte(para = "", dasTag = false) {
   checkboxesOrdnung = document.getElementsByClassName("ordGru");
   checkboxesChaos = document.getElementsByClassName("chks");
-  if (para !== "" && !dasTag.checked) {
-    for (var i = 0; i < checkboxesChaos.length; i++) {
-      for (var k = 0; k < checkboxesOrdnung.length; k++) {
-        if (typeof checkboxesChaos[i].value !== "undefined") {
-          //window.alert(String(checkboxesChaos[i].value));
-          if (
-            checkboxesOrdnung[k].value === checkboxesChaos[i].value &&
-            checkboxesOrdnung[k].checked != checkboxesChaos[i].checked
-          ) {
-            if (checkboxesOrdnung[k].value === para) {
-              checkboxesOrdnung[k].checked = false;
-              checkboxesChaos[i].checked = false;
+  if (para !== "") {
+    if (!dasTag.checked) {
+      for (var i = 0; i < checkboxesOrdnung.length; i++) {
+        for (var k = 0; k < checkboxesOrdnung.length; k++) {
+          if (typeof checkboxesChaos[i].value !== "undefined" && k != i) {
+            //window.alert(String(checkboxesChaos[i].value));
+            if (
+              checkboxesOrdnung[k].value === checkboxesOrdnung[i].value
+              // checkboxesOrdnung[k].checked != checkboxesOrdnung[i].checked
+            ) {
+              if (checkboxesOrdnung[k].value === para) {
+                checkboxesOrdnung[k].checked = false;
+                checkboxesOrdnung[i].checked = false;
+              }
+            }
+          }
+        }
+      }
+      for (var i = 0; i < checkboxesChaos.length; i++) {
+        for (var k = 0; k < checkboxesOrdnung.length; k++) {
+          if (typeof checkboxesChaos[i].value !== "undefined") {
+            //window.alert(String(checkboxesChaos[i].value));
+            if (
+              checkboxesOrdnung[k].value === checkboxesChaos[i].value
+              //checkboxesOrdnung[k].checked != checkboxesChaos[i].checked
+            ) {
+              if (checkboxesOrdnung[k].value === para) {
+                checkboxesOrdnung[k].checked = false;
+                checkboxesChaos[i].checked = false;
+              }
+            }
+          }
+        }
+      }
+    } else {
+      if (dasTag.checked) {
+        for (var i = 0; i < checkboxesOrdnung.length; i++) {
+          for (var k = 0; k < checkboxesOrdnung.length; k++) {
+            if (typeof checkboxesChaos[i].value !== "undefined" && k != i) {
+              //window.alert(String(checkboxesChaos[i].value));
+              if (
+                checkboxesOrdnung[k].value === checkboxesOrdnung[i].value
+                //checkboxesOrdnung[k].checked != checkboxesOrdnung[i].checked
+              ) {
+                if (checkboxesOrdnung[k].value === para) {
+                  checkboxesOrdnung[k].checked = true;
+                  checkboxesOrdnung[i].checked = true;
+                }
+              }
+            }
+          }
+        }
+        for (var i = 0; i < checkboxesChaos.length; i++) {
+          for (var k = 0; k < checkboxesOrdnung.length; k++) {
+            if (typeof checkboxesChaos[i].value !== "undefined") {
+              //window.alert(String(checkboxesChaos[i].value));
+              if (
+                checkboxesOrdnung[k].value === checkboxesChaos[i].value
+                // checkboxesOrdnung[k].checked != checkboxesChaos[i].checked
+              ) {
+                if (checkboxesOrdnung[k].value === para) {
+                  checkboxesOrdnung[k].checked = true;
+                  checkboxesChaos[i].checked = true;
+                }
+              }
             }
           }
         }
