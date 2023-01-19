@@ -12,9 +12,9 @@ function ctrl_c() {
     pypy3 ${ABS_DIRECTORY}/grundStrukHtml.py blank
     cat ${ABS_DIRECTORY}/footer.alx
 }
-trap ctrl_c INT
 if [ "$1" == 'reta' ]; then
 	pypy3 ${ABS_DIRECTORY}/reta -spalten --alles --breite=0 -ausgabe --art=html --onetable --nocolor >  ~/middle.alx
 fi
 #chown -R alex:alex ${ABS_DIRECTORY}
+trap ctrl_c INT
 ctrl_c
