@@ -529,7 +529,7 @@ class Program:
 
         Program.ParametersMain: namedtuple[str, str] = namedtuple(
             "ParametersMain",
-            "wichtigste wichtigste2 religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache planet strukturenkleinere grundstrukturen alles",
+            "wichtigste wichtigste2 religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept konzept2 inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache planet strukturenkleinere grundstrukturen alles",
         )
 
         Program.ParametersMain: namedtuple[tuple[str]] = Program.ParametersMain(
@@ -594,12 +594,13 @@ class Program:
             ),
             tuple(a[0] for a in Multiplikationen),
             (
-                "Eigenschaften",
+                "Eigenschaften_n",
                 "eigenschaften",
                 "eigenschaft",
                 "konzept",
                 "konzepte",
             ),
+            ("Eigenschaften_1/n",),
             (
                 "Inkrementieren",
                 "inkrementieren",
@@ -2047,7 +2048,7 @@ class Program:
                     "frage",
                     "vorgehensweise",
                 ),
-                {353, 354, 355},
+                {353, 354},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
@@ -2606,6 +2607,19 @@ class Program:
                 ),
                 set(),
                 {(291, 292)},
+            ),
+            (
+                Program.ParametersMain.konzept2,
+                (
+                    "Toleranz_Respekt_Akzeptanz_Willkommen",
+                    "toleranz",
+                    "respekt",
+                    "akzeptanz",
+                    "willkommen",
+                ),
+                set(),
+                # {(359, 360)},
+                {(62, 63)},
             ),
             (
                 Program.ParametersMain.konzept,
