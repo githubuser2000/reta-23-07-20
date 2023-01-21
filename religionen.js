@@ -303,6 +303,8 @@ for (i = 0; i < tdClasses1.length; i++)
     if (inputs[i].type == "checkbox") checkbox_i.push(i);
     if (checkbox_i.length > 1) i = inputs.length;
   }
+  //window.alert(String(checkbox_i[1]));
+  //window.alert(String(inputs[checkbox_i[1]].value));
   inputs[checkbox_i[1]].checked = true;
   inputs[checkbox_i[1]].onchange();
 
