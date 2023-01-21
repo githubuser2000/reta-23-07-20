@@ -605,6 +605,20 @@ class Concat:
                         concept, distanceFromLine, i, into, vorkommenVielfacher_B
                     )
                 # wenn i>0
+                if (
+                    len(
+                        {
+                            62,
+                            63,
+                        }
+                        & {concept[0]}
+                    )
+                    > 0
+                ):
+                    fill_ = zeileninhalte[197]
+                else:
+                    fill_ = zeileninhalte[4]
+
                 if into[i] != [""]:
                     into[i] += [
                         "<li>"
@@ -613,7 +627,7 @@ class Concat:
                         if self.tables.bbcodeOutputYes
                         else "",
                         "Alles nur bezogen auf die selbe Strukturgröße einer ",
-                        zeileninhalte[4],
+                        fill_,
                         "</li>" if self.tables.htmlOutputYes else "",
                     ]
 
