@@ -162,7 +162,7 @@ for (i = 0; i < tdClasses1.length; i++)
       mapsTagsif.join(",") +
       '" style="' +
       labelstyle +
-      '"><input type="checkbox" ' + // class="chks c_' +
+      '"><input class="chksA2" type="checkbox" ' + // class="chks c_' +
       //Array.from(mapMapMap[p1keys[i]][null]).join(",") +
       //'"  value="' +
       ' value="' +
@@ -303,8 +303,12 @@ for (i = 0; i < tdClasses1.length; i++)
     if (inputs[i].type == "checkbox") checkbox_i.push(i);
     if (checkbox_i.length > 1) i = inputs.length;
   }
-  //window.alert(String(checkbox_i[1]));
+  //window.alert(String(checkbox_i.length));
   //window.alert(String(inputs[checkbox_i[1]].value));
+  //checkx = document.getElementsByClassName("r_1");
+  //window.alert(String(checkx.innerHTML));
+  //checkx.checked = true;
+  //checkx.onchange();
   inputs[checkbox_i[1]].checked = true;
   inputs[checkbox_i[1]].onchange();
 
@@ -335,6 +339,42 @@ for (i = 0; i < tdClasses1.length; i++)
   }*/
   document.getElementById("grundSDiv1").innerHTML =
     document.getElementById("grundstrukturenDiv").innerHTML;
+  //window.alert(String(checkbox_i.length));
+  // Grundstrukturen
+  // chksss = chks1 + Achks;
+  var Achks = document.getElementsByClassName("chksA2");
+  var dinge = [
+    "Grundstrukturen",
+    "Universum",
+    "Geist__(15)",
+    "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15)",
+  ];
+  /*window.alert(String(Achks[1].value));
+  window.alert(String(Achks[1].id));
+  window.alert(String(Achks[1].className));
+  window.alert(String(Achks[10].id));
+  window.alert(String(Achks[10].value));
+  window.alert(String(Achks[10].className));*/
+  var dinge2 = [Achks, Achks, chks1, chks1];
+  //chksss = chks1 + Achks;
+  for (var x = 0; x < dinge.length; x++) {
+    var checkx = [];
+    for (var k = 0; k < dinge2[x].length; k++)
+      if (dinge2[x][k].value == dinge[x]) checkx.push(dinge2[x][k]);
+    if (checkx.length > 0) {
+      checkx[0].checked = true;
+      checkx[0].onchange();
+    }
+  }
+  //window.alert(String(results.length));
+  //chks c_1,3
+  //window.alert(String(inputs[checkbox_i[1]].value));
+  //checkx = document.getElementsByClassName("r_1");
+  //window.alert(String(checkx.innerHTML));
+  //checkx.checked = true;
+  //checkx.onchange();
+  //inputs[checkbox_i[1]].checked = true;
+  //inputs[checkbox_i[1]].onchange();
 };
 
 function makeMapsOfHeadLCheckB(p1, p2, num, tags) {

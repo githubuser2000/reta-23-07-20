@@ -201,7 +201,7 @@ print(
     "".join(
         (
             '<div style="',
-            ("display:none;" if blank else ""),
+            ("display:none;" if blank and False else ""),
             'white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);" ',
             ("id='grundstrukturenDiv'" if blank else ""),
             ">",

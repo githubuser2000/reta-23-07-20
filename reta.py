@@ -1407,7 +1407,7 @@ class Program:
             (Program.ParametersMain.galaxie, ("Raum-Missionen", "weltall"), {218}),
             (
                 Program.ParametersMain.universum,
-                ("Geist_(15)", "geist"),
+                ("Geist__(15)", "geist"),
                 {242, 244},
             ),
             (
