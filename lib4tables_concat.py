@@ -605,16 +605,12 @@ class Concat:
                         concept, distanceFromLine, i, into, vorkommenVielfacher_B
                     )
                 # wenn i>0
-                conditionNvs1perN = (
-                    len(
-                        {
-                            62,
-                            63,
-                        }
-                        & {concept[0]}
-                    )
-                    > 0
-                )
+                conditionNvs1perN = concept[0] in {
+                    62,
+                    63,
+                    358,
+                    359,
+                }
 
                 if conditionNvs1perN:
                     fill_ = zeileninhalte[197]

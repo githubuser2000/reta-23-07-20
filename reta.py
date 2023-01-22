@@ -2611,6 +2611,16 @@ class Program:
             (
                 Program.ParametersMain.konzept2,
                 (
+                    "Ausrichten_Einrichten",
+                    "einrichten",
+                    "ausrichten",
+                ),
+                set(),
+                {(358, 359)},
+            ),
+            (
+                Program.ParametersMain.konzept2,
+                (
                     "Toleranz_Respekt_Akzeptanz_Willkommen",
                     "toleranz",
                     "respekt",
