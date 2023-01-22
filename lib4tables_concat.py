@@ -605,7 +605,7 @@ class Concat:
                         concept, distanceFromLine, i, into, vorkommenVielfacher_B
                     )
                 # wenn i>0
-                if (
+                conditionNvs1perN = (
                     len(
                         {
                             62,
@@ -614,7 +614,9 @@ class Concat:
                         & {concept[0]}
                     )
                     > 0
-                ):
+                )
+
+                if conditionNvs1perN:
                     fill_ = zeileninhalte[197]
                 else:
                     fill_ = zeileninhalte[4]
@@ -639,16 +641,7 @@ class Concat:
                 self.relitable[w] += ["".join(into[w])]
 
             rowsAsNumbers |= {len(self.relitable[0]) - 1}
-            if (
-                len(
-                    {
-                        62,
-                        63,
-                    }
-                    & {concept[0]}
-                )
-                > 0
-            ):
+            if conditionNvs1perN:
                 self.tables.generatedSpaltenParameter_Tags[
                     len(rowsAsNumbers) - 1
                 ] = frozenset({ST.gleichfoermigesPolygon, ST.galaxie})
