@@ -2611,6 +2611,15 @@ class Program:
             (
                 Program.ParametersMain.konzept2,
                 (
+                    "Werte",
+                    "werte",
+                ),
+                set(),
+                {(360, 361)},
+            ),
+            (
+                Program.ParametersMain.konzept2,
+                (
                     "Ausrichten_Einrichten",
                     "einrichten",
                     "ausrichten",
