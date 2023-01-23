@@ -2619,6 +2619,12 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept2,
+                ("Gutartigkeits-Egoismus", "position", "gutesreziprok"),
+                set(),
+                {(362, 363)},
+            ),
+            (
+                Program.ParametersMain.konzept2,
                 (
                     "Ausrichten_Einrichten",
                     "einrichten",
