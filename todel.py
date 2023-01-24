@@ -45,12 +45,27 @@ for a in j.values():
     for b in a:
         l |= {*b}
 
-pp(l)
-pp(len(l - t))
-pp("ungefähr Nicht-Primzahlen innerhalb 1 bis 60")
+
+pp(l - t)
+pp(
+    'ungefähr Nicht-Primzahlen innerhalb 1 bis 30 ohne "Primzahlen zwischen 1 bis 30 aber mit 2,3,5"'
+)
+
+pp("das sind " + str(len(l - t)) + " Stück")
 pp(
     "Diese setzen sich aus einem Polynom zusammen f(x1,x2,x3) = a + b*2^x1 + c*3^x2 + d*5^x3"
 )
 pp(
     "Die Potenzen könnte man noch raus-bekommen, zur Vereinfachung, indem man sie ausrechnet, sodas man keinen Exponenten mehr braucht. So sparrt man 3 Zahlen bei so einer Schreibweise."
+)
+u = {}
+for a in l:
+    u[a] = primMultiple(a)[1:]
+
+pp(u)
+pp(
+    "Das wurde oben gemacht und deshalb sind diese 22 Zeichen so: f(x1,x2,x3) = a + b*2+c*2 + d*3 + e*5"
+)
+pp(
+    "Das sind also 5 Zahlen, um eine Zahl darzustellen, um nur 22 Zeichen zu benötigen, wenn man eine Basis 60 haben möchte, statt 10, wie es bei unseren alltäglichen Dezimalzahlen wäre."
 )
