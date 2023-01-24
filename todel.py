@@ -14,6 +14,8 @@ try:
 except:
     OrderedSet = set
 
+import pprint
+
 from center import Primzahlkreuz_pro_contra_strs, retaHilfe
 
 a = {a: {a / 2, a / 5, a / 3} for a in range(61)}
@@ -26,5 +28,5 @@ for i, d in a.items():
             flag = True
     if flag:
         c[i] = b
-
-print(str(c))
+pp = pprint.PrettyPrinter(indent=4)
+pp(str(c))
