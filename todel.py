@@ -1,22 +1,8 @@
 #!/usr/bin/env pypy3
 # -*- coding: utf-8 -*-
-# import numpy as np
-import html
-import json
-import platform
-import re
-from collections import OrderedDict, namedtuple
-from itertools import zip_longest
-from typing import Optional, Union
-
-try:
-    from orderedset import OrderedSet
-except:
-    OrderedSet = set
-
 import pprint
 
-from center import Primzahlkreuz_pro_contra_strs, retaHilfe
+from lib4tables import primMultiple
 
 a = {a: {a / 2, a / 5, a / 3} for a in range(61)}
 
@@ -28,5 +14,24 @@ for i, d in a.items():
             flag = True
     if flag:
         c[i] = b
-pp = pprint.PrettyPrinter(indent=4)
-pp(str(c))
+pp = pprint.PrettyPrinter(indent=4).pprint
+a1 = 0
+f = []
+for a in c.keys():
+    f += [a - a1]
+    a1 = a
+
+f3 = f.count(1)
+f4 = f.count(2)
+
+pp(str(f))
+pp(str(f3))
+pp(str(f4))
+t = set(c.keys()) ^ set(range(61))
+pp(str(t))
+pp(str(len(t)))
+
+
+a = {a: {a / 2, a / 5, a / 3} for a in range(61)}
+k = {a: primMultiple(a) for a in range(61)}
+pp(k)
