@@ -600,7 +600,7 @@ class Program:
                 "konzept",
                 "konzepte",
             ),
-            ("Eigenschaften_1/n",),
+            ("Eigenschaften_1/n", "konzept2", "konzepte2"),
             (
                 "Inkrementieren",
                 "inkrementieren",
@@ -2607,6 +2607,15 @@ class Program:
                 ),
                 set(),
                 {(291, 292)},
+            ),
+            (
+                Program.ParametersMain.konzept2,
+                (
+                    "Filterart_Widrigkeit",
+                    "filterart",
+                    "widrigkeit",
+                ),
+                {331, 335},
             ),
             (
                 Program.ParametersMain.konzept2,
