@@ -579,7 +579,7 @@ function copyClassNameToOrderedGrunstruk(
   grunSi,
   grunp2Keys
 ) {
-  checkboxesOrdnung = document.getElementsByClassName("ordGru");
+  //checkboxesOrdnung = document.getElementsByClassName("ordGru");
   //checkboxesChaos = document.getElementsByClassName("chks");
 
   //var p1keysB = Object.keys(mapMapMap);
@@ -596,12 +596,31 @@ function copyClassNameToOrderedGrunstruk(
   //var thingsB = Array.from(mapMapMapTags[p1keyGrund]);
   for (var i = 0; i < grunp2Keys.length; i++) {
     bla = Array.from(mapMapMapTags[p1keys[grunSi]][grunp2Keys[i]]).join(",");
-    window.alert(
-      //String(mapMapMapTags[p1keys[grunSi]][grunp2Keys[i]].join(","))
-      // String(p1keys[grunSi]) ===== "Grund...."
-      // String(grunp2Keys[i]) === diese dinge da drin
-      String(bla)
-    );
+    bla2 = document.getElementById("ordGru" + grunp2Keys[i]);
+    bla3 = document
+      .getElementById("Grundstrukturen")
+      .getElementsByClassName("chks c_" + bla);
+
+    //'" ><input type="checkbox" class="chks c_' +
+    //Array.from(mapMapMapTags[p1keys[i]][p2keys[k]]).join(",") +
+    /*window.alert(String();
+    window.alert(String(pa1u2[1]));
+    window.alert(String(Array.from(mapMapMap[pa1u2[0]][pa1u2[1]])));*/
+    //spaltenNummern = Array.from(mapMapMap[pa1u2[0]][pa1u2[1]]);
+    //window.alert(String(spaltenNummern));
+
+    //  try {
+    for (var k = 0; k < bla3.length; k++) {
+      if (typeof bla3[k].value !== "undefined") {
+        window.alert(
+          //String(mapMapMapTags[p1keys[grunSi]][grunp2Keys[i]].join(","))
+          // String(p1keys[grunSi]) ===== "Grund...."
+          // String(grunp2Keys[i]) === diese dinge da drin
+          String(bla3[k].value)
+        );
+      }
+    }
+    //} catch (error) {}
   }
   // Der Klassen-Inhalt setzt sich zusammen aus:
   //       '" ><input type="checkbox" class="chks c_' +
