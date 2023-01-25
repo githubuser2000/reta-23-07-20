@@ -80,7 +80,7 @@ Nebenparameter beginnen mit 2 Minus --.
 * --eigenschaften=
     * weisheit,gut,zeit,ruf,egoismus,kausal,liebepolung,einheit,meinungsintelligenz,ursprungsintelligenz,sanft,hart,egalitaer,autoritaer,ueberheblich,foerdern,durchleuchten,sittlichkeit,fuehrung,sinn,familiaer,goettlich,wertvoll,gleich,ueberleben,abgeneigt,zugeneigt,tragweite,aehnlich,ehrlich,hoeflich,variationsreich,selbstlos,kooperation,arsch,liebe,wissenschaft,einklinken,selbstsucht,ichsucht,ego,familiebrauchen,recht
 * --Eigenschaften_1/n=
-    * akzeptanz,toleranz,respekt,einrichten,ausrichten,werte,gutesreziprok
+    * akzeptanz,toleranz,respekt,einrichten,ausrichten,werte,gutesreziproke,reflektieren
 * --inkrementieren=
     * um1,um2,um3,warumtranszendentaliezustrukturgroesseundcharakter,warumtranszendentaliegleichkomplexitaet,addition
 * --operationen=

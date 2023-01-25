@@ -2625,6 +2625,12 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept2,
+                ("Reflektieren_Erkenntnis-Erkennen", "reflektieren", "erkenntnis"),
+                set(),
+                {(364, 365)},
+            ),
+            (
+                Program.ParametersMain.konzept2,
                 (
                     "Ausrichten_Einrichten",
                     "einrichten",
