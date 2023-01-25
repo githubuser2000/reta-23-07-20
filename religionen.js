@@ -146,6 +146,10 @@ for (i = 0; i < tdClasses1.length; i++)
         chk2s += chk2;
       }
     }
+    if (p1keys[i] === "Grundstrukturen") {
+      grunSi = i;
+      grunp2Keys = p2keys;
+    }
     if (mapMapMap[p1keys[i]][null] !== undefined) {
       numbers = Array.from(mapMapMap[p1keys[i]][null]);
       insertnull =
@@ -185,6 +189,7 @@ for (i = 0; i < tdClasses1.length; i++)
         ? '</div><div id="grundSDiv1" style="display:none;"></div>'
         : "") +
       "</div></div>";
+
     checkboxes += checkbox;
   }
   str2 = checkboxes + "</span></div>";
@@ -360,6 +365,14 @@ for (i = 0; i < tdClasses1.length; i++)
       }
     }
   }
+  /*copyClassNameToOrderedGrunstruk(
+    mapMapMap,
+    mapMapMapTags,
+    p1keys,
+    p2keys,
+    grunSi,
+    grunp2Keys
+  );*/
 };
 
 function makeMapsOfHeadLCheckB(p1, p2, num, tags) {
@@ -556,6 +569,43 @@ function makeSpacesOutOf_(text) {
     if (text[i] == "_") forNewString.push(" ");
     else forNewString.push(text[i]);
   return forNewString.join("");
+}
+
+function copyClassNameToOrderedGrunstruk(
+  mapMapMap,
+  mapMapMapTags,
+  p1keys,
+  p2keys,
+  grunSi,
+  grunp2Keys
+) {
+  checkboxesOrdnung = document.getElementsByClassName("ordGru");
+  //checkboxesChaos = document.getElementsByClassName("chks");
+
+  //var p1keysB = Object.keys(mapMapMap);
+  //var p2keysB = Object.keys(mapMapMap["Grundstrukturen"]);
+  //numbers = Array.from(mapMapMap["Grundstrukturen"][p2keys[0]]);
+  //grundstrukThings = Array.from(mapMapMap["Grundstrukturen"]);
+  //window.alert(String(numbers.join(",")));
+  //window.alert(String(grundstrukThings[0].join(",")));
+  // (p1keys[i] === "Grundstrukturen"
+  // var p1keys = Object.keys(mapMapMap);
+  //var p1keyGrund = Object.keys(mapMapMap["Grundstrukturen"]);
+  //var p2keys = Object.keys(mapMapMap[p1);
+  // var thingsB = Array.from(mapMapMapTags[p2keyGrund][p2keys[k]]).join(",");
+  //var thingsB = Array.from(mapMapMapTags[p1keyGrund]);
+  for (var i = 0; i < grunp2Keys.length; i++) {
+    bla = Array.from(mapMapMapTags[p1keys[grunSi]][grunp2Keys[i]]).join(",");
+    window.alert(
+      //String(mapMapMapTags[p1keys[grunSi]][grunp2Keys[i]].join(","))
+      // String(p1keys[grunSi]) ===== "Grund...."
+      // String(grunp2Keys[i]) === diese dinge da drin
+      String(bla)
+    );
+  }
+  // Der Klassen-Inhalt setzt sich zusammen aus:
+  //       '" ><input type="checkbox" class="chks c_' +
+  //       Array.from(mapMapMapTags[p1keys[i]][p2keys[k]]).join(",") +
 }
 
 function grundSDivToggleBeachte(para = "", dasTag = false) {
