@@ -187,7 +187,9 @@ def myprint(d, tiefe):
 
         if v is None or listenVergleich:
             if v is None:
-                kkk = "".join(("<label>", k.replace("_", " "), "</label>"))
+                kkk = "".join(
+                    ('<label id="ordGruB', k, '">', k.replace("_", " "), "</label>")
+                )
             else:
                 kkk = k
             print("{0} ".format(kkk), end="")

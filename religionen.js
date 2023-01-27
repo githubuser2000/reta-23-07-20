@@ -365,14 +365,14 @@ for (i = 0; i < tdClasses1.length; i++)
       }
     }
   }
-  /*copyClassNameToOrderedGrunstruk(
+  copyClassNameToOrderedGrunstruk(
     mapMapMap,
     mapMapMapTags,
     p1keys,
     p2keys,
     grunSi,
     grunp2Keys
-  );*/
+  );
 };
 
 function makeMapsOfHeadLCheckB(p1, p2, num, tags) {
@@ -594,23 +594,50 @@ function copyClassNameToOrderedGrunstruk(
   //var p2keys = Object.keys(mapMapMap[p1);
   // var thingsB = Array.from(mapMapMapTags[p2keyGrund][p2keys[k]]).join(",");
   //var thingsB = Array.from(mapMapMapTags[p1keyGrund]);
+  TagIdGrustruk = document.getElementById("Grundstrukturen");
+  chaotische = [];
+  ordentliche = [];
+  ordentliche2 = [];
   for (var i = 0; i < grunp2Keys.length; i++) {
-    bla = Array.from(mapMapMapTags[p1keys[grunSi]][grunp2Keys[i]]).join(",");
-    bla2 = document.getElementById("ordGru" + grunp2Keys[i]);
-    bla3 = document
-      .getElementById("Grundstrukturen")
-      .getElementsByClassName("chks c_" + bla);
+    nummern = Array.from(mapMapMapTags[p1keys[grunSi]][grunp2Keys[i]]).join(
+      ","
+    );
+    ordentlich = document.getElementById("ordGru" + grunp2Keys[i]);
+    ordentlich2 = document.getElementById("ordGruB" + grunp2Keys[i]);
+    chaotisch = TagIdGrustruk.getElementsByClassName("chks c_" + nummern);
+    if (typeof chaotisch !== "undefined" && chaotisch !== null)
+      chaotische.push(chaotisch);
+    if (typeof ordentlich !== "undefined" && ordentlich !== null)
+      ordentliche.push(ordentlich);
+    if (typeof ordentlich2 !== "undefined" && ordentlich2 !== null)
+      ordentliche2.push(ordentlich2);
+    /*
+    if (ordentlich !== null) {
+      blax = ordentlich.parentElement.getElementsByClassName("OrdGru2");
+      if (blax !== null && typeof blax !== "undefined") {
+        try {
+          //blay = blax.getElementsByTagName("label");
+
+          window.alert(String(blax.innerHTML));
+        } catch (error) {}
+        //window.alert(String(blay.length));
+      }
+    }*/
+    //bla3[zahl 0 bis n] value sind richtige Namen der checkboxen
 
     //'" ><input type="checkbox" class="chks c_' +
     //Array.from(mapMapMapTags[p1keys[i]][p2keys[k]]).join(",") +
-    /*window.alert(String();
-    window.alert(String(pa1u2[1]));
-    window.alert(String(Array.from(mapMapMap[pa1u2[0]][pa1u2[1]])));*/
-    //spaltenNummern = Array.from(mapMapMap[pa1u2[0]][pa1u2[1]]);
-    //window.alert(String(spaltenNummern));
 
+    /*if (
+      ordentlich !== null &&
+      //typeof ordentlich.value !== "undefined" //&&
+      //ordentlich.getElementsByTagName("label").length > 0
+      ordentlich.innerHTML != ""
+    )
+      window.alert(String(ordentlich.innerHTML));
+*/
     //  try {
-    for (var k = 0; k < bla3.length; k++) {
+    /*for (var k = 0; k < bla3.length; k++) {
       if (typeof bla3[k].value !== "undefined") {
         window.alert(
           //String(mapMapMapTags[p1keys[grunSi]][grunp2Keys[i]].join(","))
@@ -619,14 +646,35 @@ function copyClassNameToOrderedGrunstruk(
           String(bla3[k].value)
         );
       }
-    }
+    }*/
     //} catch (error) {}
+    //
   }
-  // Der Klassen-Inhalt setzt sich zusammen aus:
-  //       '" ><input type="checkbox" class="chks c_' +
-  //       Array.from(mapMapMapTags[p1keys[i]][p2keys[k]]).join(",") +
+  //window.alert(String(chaotische.length));
+  //window.alert(String(ordentliche.length));
+  for (var i = 0; i < chaotische.length; i++) {
+    chaotisch = chaotische[i];
+    for (var m = 0; m < chaotisch.length; m++) {
+      for (var k = 0; k < ordentliche.length; k++) {
+        if (
+          typeof ordentliche[k].value !== "undefined" &&
+          typeof chaotisch[m].value !== "undefined" &&
+          chaotisch[m].className.substring(0, 4) === "chks" &&
+          ordentliche[k].value === chaotisch[m].value
+        ) {
+          ordentliche[k].className =
+            "chks " + chaotisch[m].className.substring(4);
+          ordentliche2[k].className =
+            "chks " + chaotisch[m].className.substring(4);
+          //window.alert(String(ordentliche[k].className));
+        }
+      }
+      // Der Klassen-Inhalt setzt sich zusammen aus:
+      //       '" ><input type="checkbox" class="chks c_' +
+      //       Array.from(mapMapMapTags[p1keys[i]][p2keys[k]]).join(",") +
+    }
+  }
 }
-
 function grundSDivToggleBeachte(para = "", dasTag = false) {
   checkboxesOrdnung = document.getElementsByClassName("ordGru");
   checkboxesChaos = document.getElementsByClassName("chks");
