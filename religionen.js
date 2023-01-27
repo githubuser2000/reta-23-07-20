@@ -365,14 +365,14 @@ for (i = 0; i < tdClasses1.length; i++)
       }
     }
   }
-  copyClassNameToOrderedGrunstruk(
+  /*copyClassNameToOrderedGrunstruk(
     mapMapMap,
     mapMapMapTags,
     p1keys,
     p2keys,
     grunSi,
     grunp2Keys
-  );
+  );*/
 };
 
 function makeMapsOfHeadLCheckB(p1, p2, num, tags) {
