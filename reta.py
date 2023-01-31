@@ -2062,6 +2062,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
+                ("Helfen_(13)", "absicht13", "helfen"),
+                {370},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
                 ("Liebe_(7)", "liebe"),
                 {8, 9, 28, 208, 221, 330},
                 {(121, 122)},
@@ -2637,6 +2642,23 @@ class Program:
                 ("Reflektieren_Erkenntnis-Erkennen", "reflektieren", "erkenntnis"),
                 set(),
                 {(364, 365)},
+            ),
+            (
+                Program.ParametersMain.konzept2,
+                ("Vertrauen_wollen", "vertrauenwollen"),
+                set(),
+                {(366, 367)},
+            ),
+            (
+                Program.ParametersMain.konzept,
+                (
+                    "einklinken_vertrauen_anprangern",
+                    "einklinken",
+                    "vertrauenerhalten",
+                    "anprangern",
+                ),
+                set(),
+                {(368, 369)},
             ),
             (
                 Program.ParametersMain.konzept2,

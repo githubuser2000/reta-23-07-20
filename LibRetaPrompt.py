@@ -111,6 +111,7 @@ wahl15 = {
     "_1pro13": "Sollen_Frage_Vorgehensweise_(1/13)",
     "_1pro19": "Fundament_(1/19)",
     "_90": "abhängige_Verbundenheit_(90)",
+    "_13_13": "Helfen_(13)",
 }
 
 zumVergleich = []
