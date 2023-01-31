@@ -1832,22 +1832,22 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Absicht_16", "absicht16"),
+                ("Absicht_16_ist_zu_genügen", "absicht16"),
                 {312},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Absicht_17", "absicht17"),
+                ("Absicht_17_ist_zu_meinen", "absicht17"),
                 {263},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Absicht_6", "absicht6"),
+                ("Absicht_6_ist_Vorteilsmaximierung", "absicht6"),
                 {262},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Absicht_7", "absicht7"),
+                ("Absicht_7_ist_Selbstlosigkeit", "absicht7"),
                 {261},
             ),
             (
@@ -1902,12 +1902,16 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Absicht_1/6", "absicht1/6", "absicht1pro6"),
+                (
+                    "Absicht_1/6_ist_Reinigung_und_Klarheit",
+                    "absicht1/6",
+                    "absicht1pro6",
+                ),
                 {298},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Absicht_10", "absicht10"),
+                ("Absicht_10_ist_Wirklichkeit_erkennen", "absicht10"),
                 {260},
             ),
             (
@@ -2062,7 +2066,7 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Helfen_(13)", "absicht13", "helfen"),
+                ("Absicht_13_ist_Helfen", "absicht13", "helfen"),
                 {370},
             ),
             (
