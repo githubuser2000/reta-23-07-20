@@ -2707,7 +2707,13 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept,
-                ("Wissenschaft_(22*n)", "wissenschaft", "forschen", "einklinken"),
+                (
+                    "Forschen_Erfinden_Einklinken",
+                    "wissenschaft",
+                    "forschen",
+                    "einklinken",
+                    "erfinden",
+                ),
                 set(),
                 {(258, 259)},
             ),

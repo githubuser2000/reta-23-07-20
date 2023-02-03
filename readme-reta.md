@@ -78,8 +78,12 @@ Nebenparameter beginnen mit 2 Minus --.
 * --grundstrukturen
     * konkreta,impulse,gefuehle,modus,wirklichkeiten,metasysteme,paradigmen,meta-paradigmen,positionen,geist,verbundenheiten,triebe,lust,reflexe,absicht6,absicht7,absicht10,absicht17,zeit,funktionen,vorstellungen,wahrheit,wahrnehmung,achtung,focus,absicht1pro8,ziele,reflektion,kategorien,regung,energie,universelleeigenschaften,stimmungen,klassen,kombinationen,empathie,energie,garben,nachvollziehen,absicht1pro6,verhalten,bedeutung,optimierung,themen,attraktionen,absicht16,liebe,koalitionen,reziprokeprinzipien,ordnenundfiltern,bedingung,ausloeser,relativerzeitbetrag,zahlenvergleich,erwartungen,vorstellungen,ansichten,extremalien,existenzialien,universellerkomperativ,relativreziprokuniversell,sollen,grundstrukturen,abhaengigkeit,helfen
 * --eigenschaften=
-    * weisheit,gut,zeit,ruf,egoismus,kausal,liebepolung,einheit,meinungsintelligenz,ursprungsintelligenz,sanft,hart,egalitaer,autoritaer,ueberheblich,foerdern,durchleuchten,sittlichkeit,fuehrung,sinn,familiaer,goettlich,wertvoll,gleich,ueberleben,abgeneigt,zugeneigt,tragweite,aehnlich,ehrlich,hoeflich,variationsreich,selbstlos,kooperation,arsch,liebe,wissenschaft,einklinken,selbstsucht,ichsucht,ego,familiebrauchen,recht,einklinken,anprangern,vertrauenerhalten
+* oder
+* --konzept
+    * weisheit,gut,zeit,ruf,egoismus,kausal,liebepolung,einheit,meinungsintelligenz,ursprungsintelligenz,sanft,hart,egalitaer,autoritaer,ueberheblich,foerdern,durchleuchten,sittlichkeit,fuehrung,sinn,familiaer,goettlich,wertvoll,gleich,ueberleben,abgeneigt,zugeneigt,tragweite,aehnlich,ehrlich,hoeflich,variationsreich,selbstlos,kooperation,arsch,liebe,wissenschaft,einklinken,selbstsucht,ichsucht,ego,familiebrauchen,recht,einklinken,anprangern,vertrauenerhalten,forschen,erfinden
 * --Eigenschaften_1/n=
+* oder
+* --konzept2
     * akzeptanz,toleranz,respekt,einrichten,ausrichten,werte,gutesreziproke,reflektieren,vertrauenwollen
 * --inkrementieren=
     * um1,um2,um3,warumtranszendentaliezustrukturgroesseundcharakter,warumtranszendentaliegleichkomplexitaet,addition
