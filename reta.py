@@ -2619,6 +2619,12 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept2,
+                ("Würdig", "wuerdig", "würdig"),
+                set(),
+                {(373, 374)},
+            ),
+            (
+                Program.ParametersMain.konzept2,
                 ("Regel_vs_Ausnahme", "regel", "ausnahme"),
                 set(),
                 {(371, 372)},

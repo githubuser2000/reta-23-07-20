@@ -84,7 +84,7 @@ Nebenparameter beginnen mit 2 Minus --.
 * --Eigenschaften_1/n=
 * oder
 * --konzept2
-    * akzeptanz,toleranz,respekt,einrichten,ausrichten,werte,gutesreziproke,reflektieren,vertrauenwollen,regel,ausnahme
+    * akzeptanz,toleranz,respekt,einrichten,ausrichten,werte,gutesreziproke,reflektieren,vertrauenwollen,regel,ausnahme,würdig
 * --inkrementieren=
     * um1,um2,um3,warumtranszendentaliezustrukturgroesseundcharakter,warumtranszendentaliegleichkomplexitaet,addition
 * --operationen=

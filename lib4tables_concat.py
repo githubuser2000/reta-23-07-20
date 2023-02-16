@@ -609,8 +609,7 @@ class Concat:
                     62,
                     63,
                     *range(358, 367 + 1),
-                    371,
-                    372,
+                    *range(371, 374 + 1),
                 }
 
                 if conditionNvs1perN:
