@@ -440,6 +440,7 @@ def PromptGrosseAusgabe(
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=2",
+                *["--keineleereninhalte" if "e" in stext else ""],
             ] + returnOnlyParasAsList(stext)
             kette += [ketten]
             reta.Program(
@@ -468,6 +469,7 @@ def PromptGrosseAusgabe(
                     "--breite=" + str(int(shellRowsAmountStr) - 2),
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1",
+                    *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
                 kette += [ketten]
                 reta.Program(
@@ -487,6 +489,7 @@ def PromptGrosseAusgabe(
                     "-kombination",
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1",
+                    *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
                 kette += [ketten]
                 reta.Program(
@@ -511,6 +514,7 @@ def PromptGrosseAusgabe(
                     "--breite=" + str(int(shellRowsAmountStr) - 2),
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1,3,4",
+                    *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
                 kette += [ketten]
                 reta.Program(
@@ -531,6 +535,7 @@ def PromptGrosseAusgabe(
                     "-kombination",
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1",
+                    *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
                 kette += [ketten]
                 reta.Program(
@@ -590,6 +595,7 @@ def PromptGrosseAusgabe(
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=3,4,5,6",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
+                *["--keineleereninhalte" if "e" in stext else ""],
             ] + returnOnlyParasAsList(stext)
             kette += [ketten]
             reta.Program(
@@ -609,6 +615,8 @@ def PromptGrosseAusgabe(
                 "-spalten",
                 "--procontra=pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
+                "-ausgabe",
+                *["--keineleereninhalte" if "e" in stext else ""],
             ] + returnOnlyParasAsList(stext)
             kette += [ketten]
             reta.Program(
@@ -632,6 +640,7 @@ def PromptGrosseAusgabe(
                 "--alles",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
                 "-ausgabe",
+                *["--keineleereninhalte" if "e" in stext else ""],
             ] + returnOnlyParasAsList(stext)
             kette += [ketten]
             reta.Program(
@@ -651,6 +660,8 @@ def PromptGrosseAusgabe(
                 "-spalten",
                 "--bedeutung=primzahlkreuz",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
+                "-ausgabe",
+                *["--keineleereninhalte" if "e" in stext else ""],
             ] + returnOnlyParasAsList(stext)
             kette += [ketten]
             reta.Program(
@@ -672,6 +683,8 @@ def PromptGrosseAusgabe(
                 "-spalten",
                 "--primzahlwirkung=Galaxieabsicht",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
+                "-ausgabe",
+                *["--keineleereninhalte" if "e" in stext else ""],
             ] + returnOnlyParasAsList(stext)
             kette += [ketten]
             reta.Program(
@@ -702,6 +715,8 @@ def PromptGrosseAusgabe(
                     "-spalten",
                     "--grundstrukturen=" + grundstruk,
                     "--breite=" + str(int(shellRowsAmountStr) - 2),
+                    "-ausgabe",
+                    *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
                 kette += [ketten]
                 reta.Program(
@@ -803,6 +818,7 @@ def promptVorbereitungGrosseAusgabe(
                         "s",
                         "o",
                         "S",
+                        "e",
                     }
                     if n == len(buchst):
                         buchst2: list = [a if a != "p" else "mulpri" for a in buchst]

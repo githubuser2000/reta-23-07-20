@@ -49,7 +49,7 @@ weight = -7
 -   "r" bzw. "richtung" gibt, zusammen mit einer Zeilenangabe, die Spalten an, die ausgeben, inwiefern eine Zeile pro außen, pro innen, pro seitlich, gegen seitlich funktioniert.
 -   "b" zusammen mit einer Zeilenangabe aus Brüchen, Befehl "u" und "a", also "universum" und "absicht", gibt auch das Reziproke der angebenen Brüche aus, z.B. bei 2/3,3/4 auch 3/2,4/3.
 -   Einige der Kurzbefehle aus Buchstaben wie "a" oder "u" lassen sich auch ohne Leerzeichen dazwischen als Befehl verwenden. Beispiel: statt "a u 1,2" geht auch "au1,2".
-
+-   Kurzbefehl "e" macht, dass Zeilen mit fast keiner Information nicht angezeigt werden, also Zeilen mit nur einem Minus oder Fragezeichen
 
 ### mathematisch Ausgabe-Befehle {#mathematisch-ausgabe-befehle}
 

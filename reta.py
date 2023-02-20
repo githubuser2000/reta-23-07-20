@@ -3524,6 +3524,9 @@ class Program:
                 ):  # unteres Kommando
                     if self.breiteBreitenSysArgvPara(arg[2:], neg):
                         pass
+                    elif arg[2 : 2 + len("keineleereninhalte")] == "keineleereninhalte":
+                        self.keineleereninhalte = True
+                        self.tables.keineleereninhalte = True
                     elif (
                         arg[2 : 2 + len("spaltenreihenfolgeundnurdiese=")]
                         == "spaltenreihenfolgeundnurdiese="
@@ -3656,6 +3659,8 @@ class Program:
 
         self.htmlOrBBcode = False
         self.breiteORbreiten = False
+        self.keineleereninhalte = False
+        self.tables.keineleereninhalte = False
         (
             paramLines,
             self.rowsAsNumbers,

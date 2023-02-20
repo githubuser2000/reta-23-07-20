@@ -34,6 +34,7 @@ ausgabeParas = [
     "--dontwrap",
     "--breite=",
     "--breiten=",
+    "--keineleereninhalte",
 ]
 kombiMainParas = ["--galaxie=", "--universum="]
 zeilenParas = [

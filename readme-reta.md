@@ -118,7 +118,8 @@ Nebenparameter beginnen mit 2 Minus --.
 * --spaltenreihenfolgeundnurdiese=
     * 3,5,1
     d.h. von z.B. 5 Spalten soll zuerst die 3., dann 5. und 1. angezeigt werden und die anderen nicht!
-
+* --keineleereninhalte
+    Das macht, dass Zeilen nicht ausgegeben werden, die nur ein Minus oder Fragezeichen oder sonst fast keine Information enthalten
 
 
 

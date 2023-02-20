@@ -10,6 +10,7 @@ from enum import Enum
 from typing import Iterable, Union
 
 import bbcode
+
 try:
     from orderedset import OrderedSet
 except:
@@ -516,7 +517,7 @@ class Tables:
                                     subCellIndexRightLeft, maxCellTextLen
                                 )
                                 sumWidths += subCellWidth + 1
-                                #if True:
+                                # if True:
                                 if sumWidths < shellRowsAmount or self.__oneTable:
                                     lastSubCellIndex = subCellIndexRightLeft
                                     try:
@@ -524,7 +525,10 @@ class Tables:
                                             subCellIndexRightLeft
                                         ][OneWholeScreenLine_AllSubCells]
                                         entriesHere += 1
-                                        if len(entry.strip()) == 0:
+                                        if len(entry.strip()) == 0 or (
+                                            self.tables.keineleereninhalte
+                                            and len(entry.strip()) < 2
+                                        ):
                                             emptyEntries += 1
                                         if (
                                             self.color

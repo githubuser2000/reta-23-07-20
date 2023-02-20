@@ -465,10 +465,10 @@ class Prepare:
             for base in toPowerIt:
                 for n in range(lastEl):
                     onePower = pow(base, n)
-                    if onePower <= numRangeMax:
-                        numRangeYesZ |= {onePower}
-                    else:
-                        break
+                    #if onePower <= numRangeMax:
+                    numRangeYesZ |= {onePower}
+                    #else:
+                    #    break
             numRange = cutset(ifPowerAtall, numRange, numRangeYesZ)
 
         numRangeYesZ = set()
