@@ -16,7 +16,6 @@
 :EXPORT_OPTIONS: toc:5.
 :END:
 *** 1. Feature Ideen
-+ Vollkommen neuer JavaScript Code, um die Hierarchie der Grundstrukturen abzubilden. Würde nicht extrem lange dauern, das einzuprogrammieren.
 + SQL like Relationen, z.B. 2:1, d.h. 3 Spalten, und auch alles wie bei SQL, d.h. z.B. n Spalten nach oben/unten: bei z.B. Abstand 1: Gegenspieler. Warum nicht gleich eine SQL (like) Sprache übernehmen, statt das Rad neu zu erfinden!
 + alle Features von retaPrompt und der von reta ausgegebenen html bei beiden haben, weil nicht ganz beide ganz alles von beiden können, sondern nur fast
 + Syntax highlighting
@@ -24,8 +23,7 @@
 + schöneres UTF
 + csv diff und insert geht schnell zu programmieren.
 Kann man ncurses einfach zu web konvertieren, ohne viel Aufwand oder wurde das nicht erfunden?
-+  ReTa besser ausführlicher, detaillierter, dokumentieren und auf viele Bereiche und Teile gedanklich eingehen.
-+  Option für nur temporäres Logging
++ Option für nur temporäres Logging
 nicht loggen, bei befehlen über Logging
 +  Dass man Kurzbefehlen auch die ReTa-Programm-Argumente mitgeben kann. geht schon: aber autocomplete oder intellisense fehlt dafür
 + Wie programmiere ich, dass nachträgliches Resizen der CLI App geht?
