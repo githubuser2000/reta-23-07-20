@@ -56,9 +56,9 @@ def teiler(innerKomma3):
     return innerKomma3, innerKomma5
 
 
-def nummernStringzuNummern(text: str, isV) -> str:
+def nummernStringzuNummern(text: str, isV: bool = False, until: int = 1028) -> str:
     print(BereichToNumbers2(text))
-    return ",".join([str(a) for a in BereichToNumbers2(text, isV)])
+    return ",".join([str(a) for a in BereichToNumbers2(text, isV, until)])
 
 
 #    def toNummernSet(text: list) -> set:
@@ -421,7 +421,8 @@ def PromptGrosseAusgabe(
             ("vielfache" in stext)
             or ("v" in stext and "abc" not in stext and "abcd" not in stext)
         ):
-            zeiln1 = "--vielfachevonzahlen=" + str(c).strip()
+            # zeiln1 = "--vielfachevonzahlen=" + str(c).strip()
+            zeiln1 = "--vorhervonausschnitt=" + str(c).strip()
 
             zeiln2 = ""
         else:
@@ -850,12 +851,17 @@ def promptVorbereitungGrosseAusgabe(
             maxNum = 1024
     stextb = []
     zahlenBereichMatch = [
-        bool(re.match(r"^[1234567890,-]+$", swort)) for swort in stext
+        bool(re.match(r"^[\+1234567890,-]+$", swort)) for swort in stext
     ]
     zahlenBereichNeu = {i: a for i, a in zip(zahlenBereichMatch, stext)}
     for s in stext:
-        if len(s) > 0 and s[0].isdecimal() and ("," in s or "-" in s or "+" in s):
-            stextb += [nummernStringzuNummern(s, "v" in stext, zahlenBereichNeu[True])]
+        if (
+            len(s) > 0
+            and s[0].isdecimal()
+            and ("," in s or "-" in s or "+" in s)
+            and s == zahlenBereichNeu[True]
+        ):
+            stextb += [nummernStringzuNummern(s, "v" in stext)]
         else:
             stextb += [s]
     stext = stextb
@@ -989,7 +995,7 @@ def PromptAllesVorGroesserSchleife():
 def PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text):
     global promptMode2, textDazu0
     text = str(text)
-    if bool(re.match(r"^[1234567890,-+]+$", text)):
+    if bool(re.match(r"^[\+1234567890,-]+$", text)):
         zuloeschen = BereichToNumbers2(text)
         loeschbares = {i + 1: a for i, a in enumerate(platzhalter.split())}
         for todel in zuloeschen:
