@@ -117,22 +117,48 @@ Nebenparameter beginnen mit 2 Minus --.
 * --onetable
 * --spaltenreihenfolgeundnurdiese=
     * 3,5,1
-    d.h. von z.B. 5 Spalten soll zuerst die 3., dann 5. und 1. angezeigt werden und die anderen nicht!
+    * d.h. von z.B. 5 Spalten soll zuerst die 3., dann 5. und 1. angezeigt werden und die anderen nicht!
 * --keineleereninhalte
-    Das macht, dass Zeilen nicht ausgegeben werden, die nur ein Minus oder Fragezeichen oder sonst fast keine Information enthalten
+    * Das macht, dass Zeilen nicht ausgegeben werden, die nur ein Minus oder Fragezeichen oder sonst fast keine Information enthalten
 
 
 
 
 ## Umkehrungen
 * statt 2-11
-    -2-11
+  *  -2-11
 * statt 7
-    -7
+  *  -7
 * statt --symbole
-    --symbole-
+  *  --symbole-
 * statt --religionen=sternpolygon
-    --religionen=-sternpolygon
+  *  --religionen=-sternpolygon
+
+## Die Plus Synax: gemeint sind Nachbarn
+* 7+1
+  * ergibt
+  * 6 und 8
+  * Das bedeutet, dass beide Nachbarn der 7 verwendet werden
+  * Bei Vielfachern wären das dann immer die Nachbarn der 7 also
+  * 6,8,13,15,20,22, usw.
+* 9-11+3
+  * Im Bereich 9 bis 11 wird der dritte Nachbar verwendet, also:
+  * 9 bis 11 wären zunächst die Zahlen 9,10,11
+  * Weil es nicht heißt
+  * 9-11+0
+  * sind es nicht diese Zahlen 9,10,11, sondern
+  * statt 9 ist es die 6 und 12, wegen der +3 in der Syntax bei 9-11+3
+  * statt 10 die 7 und 13
+  * statt 11 die 8 und 14
+
+  * Bei Vielfachen werden die Vielfacher von 9,10,11 gebildet und davon dann die Nachbarn vom Abstand +3 durch Subtraktion und Addition verwendet
+
+* 10+0+2+5
+  * 10,12,8,5,15
+  * Die 10 mit Abstand Null ist die 10 selbst.
+  * Abstand 2 zur 10 ist 8 und 12
+  * Abstand 5 zur 10 ist 5 und 15
+
 
 ### Beispiel (eine Zeile, nicht mehrere):
         `reta -zeilen --vorhervonausschnitt=1-9 -spalten --religionen=sternpolygon,gleichfoermigespolygon --galaxie=babylon --breite=50`

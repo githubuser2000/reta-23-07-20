@@ -59,6 +59,16 @@ weight = -7
 -   "p" bzw. mulpri" bedeutet, dass beide Befehle gemeint sind: "prim" und "multis".
 -   "modulo" gibt für eine Zahl die Reste bei Divisionen aus.
 
+### Zahlenbereiche, Zeilenangaben
+
+-   Zeilenangaben oder Zahlenbereiche für andere Angaben können sein (ohne Anführungszeichen):
+    - "2" das wäre dann Zeile 2
+    - "3-5" das wäre Zeile 3,4,5
+    - "4,9" das wäre Zeile 4 und 9
+    - "2,3-5" das wäre Zeile 2,3,4,5
+    - "5+2+4" das wären die Nachbarn der 5 mit Abstand 2 und 4, also 1,3,7,9
+    - "10+2" Als Angabe, wenn die Vielfacher gemeint wären, dann wäre das nicht nur 8 und 12, sondern auch 18 und 22, und 28 und 32, usw.
+    - In der Readme von reta, statt retaPrompt, wird das nochmal erklärt
 
 ### Die Befehle 15\_.... {#die-befehle-15-dot-dot-dot-dot}
 
