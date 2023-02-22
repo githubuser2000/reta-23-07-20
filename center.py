@@ -299,18 +299,45 @@ def BereichToNumbers(MehrereBereiche: str) -> set:
     return dazu - hinfort
 
 
-def vielfacherAngabentoContainer(text):
-    text = text.split(",")
-    numList2 = []
-    for t in text:
-        text2 = t.split("+")
-        richtig = True
-        numList = []
-        for t2 in text2:
-            if t2.isdecimal():
-                numList += [int(t2)]
-            else:
-                richtig = False
-        if richtig:
-            numList2 += [numList]
-    return numList2
+@jit(nopython=True, parallel=True, cache=True)
+def BereichToNumbers2(MehrereBereiche: str) -> set:
+
+    Bereiche: list[str] = MehrereBereiche.split(",")
+    dazu: set[int] = set()
+    hinfort: set[int] = set()
+    menge: Optional[set[int]]
+
+    for EinBereich in Bereiche:
+        if len(EinBereich) > 1 and EinBereich[0] == "-":
+            EinBereich = EinBereich[1:]
+            menge = hinfort
+        elif len(EinBereich) > 0 and EinBereich[0] != "-":
+            menge = dazu
+        else:
+            menge = None
+
+        around = []
+        if menge is not None:
+            if EinBereich.isdecimal():
+                EinBereich = EinBereich + "-" + EinBereich
+            BereichCouple: list[str] = EinBereich.split("-")
+            if (
+                len(BereichCouple) == 2
+                and BereichCouple[0].isdecimal()
+                and BereichCouple[0] != "0"
+                # and BereichCouple[1].isdecimal()
+                # and BereichCouple[1] != "0"
+            ):
+                BereichPlusTuples = BereichCouple[1].split("+")
+                richtig = True
+                numList = []
+                for t2 in BereichPlusTuples:
+                    if t2.isdecimal():
+                        numList += [int(t2)]
+                    else:
+                        richtig = False
+                if richtig:
+                    around = numList
+                for number in range(int(BereichCouple[0]), int(BereichCouple[1]) + 1):
+                    menge |= {number}
+    return dazu - hinfort
