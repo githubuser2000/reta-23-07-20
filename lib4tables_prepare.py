@@ -365,23 +365,16 @@ class Prepare:
         numRangeYesZ = set()
         if_a_AtAll = False
         for condition in paramLines:
-            if "-b-" in condition:
+            if (
+                "_b_" in condition[:3]
+                and len(condition) > 3
+                and condition[3].isdecimal()
+            ):
                 if_a_AtAll = True
-                a = self.fromUntil(condition.split("-b-"))
-                for n in numRange.copy():
-                    iterate = 1
-                    a2 = (a[0] * iterate, a[1] * iterate)
-                    n2 = n * iterate
-                    while (
-                        a2[0] <= n2
-                        and a2[1] >= n2
-                        and a2[0] <= self.originalLinesRange[-1]
-                        and a2[1] <= self.originalLinesRange[-1]
-                    ):
-                        numRangeYesZ.add(n2)
-                        iterate += 1
-                        a2 = (a[0] * iterate, a[1] * iterate)
-                        n2 = n * iterate
+
+                numRangeYesZ = BereichToNumbers2(
+                    condition[3:], True, self.hoechsteZeile[1024]
+                )
 
         numRange = cutset(if_a_AtAll, numRange, numRangeYesZ)
         numRangeYesZ = set()
@@ -390,13 +383,15 @@ class Prepare:
         numRangeYesZ = set()
         if_a_AtAll = False
         for condition in paramLines:
-            if "-a-" in condition:
+            if (
+                "_a_" in condition[:3]
+                and len(condition) > 3
+                and condition[3].isdecimal()
+            ):
                 if_a_AtAll = True
-                a = self.fromUntil(condition.split("-a-"))
-                for n in numRange.copy():
-                    if a[0] <= n and a[1] >= n:
-                        # numRange.remove(n)
-                        numRangeYesZ.add(n)
+                numRangeYesZ = BereichToNumbers2(
+                    condition[3:], False, self.hoechsteZeile[1024]
+                )
 
         numRange = cutset(if_a_AtAll, numRange, numRangeYesZ)
         numRangeYesZ = set()
