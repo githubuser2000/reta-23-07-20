@@ -360,10 +360,10 @@ def BereichToNumbers2(
                             int(BereichCouple[0]), int(BereichCouple[1]) + 1
                         ):
                             for a in around:
-                                c = number * i + a
+                                c = (number * i) + a
                                 if c <= maxZahl:
                                     menge |= {c}
-                                d = number * i - a
+                                d = (number * i) - a
                                 if d > 0 and d < maxZahl:
                                     menge |= {d}
                 else:
@@ -377,4 +377,5 @@ def BereichToNumbers2(
                             d = number - a
                             if d > 0 and d < maxZahl:
                                 menge |= {d}
+    # print(str(dazu - hinfort))
     return dazu - hinfort
