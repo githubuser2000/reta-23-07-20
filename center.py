@@ -320,9 +320,15 @@ def BereichToNumbers2(
 
         around = []
         if menge is not None:
+            BereichTuple2: list[str] = EinBereich.split("+")
             if EinBereich.isdecimal():
                 EinBereich = EinBereich + "-" + EinBereich
+            elif len(BereichTuple2) > 0 and BereichTuple2[0].isdecimal():
+                EinBereich = BereichTuple2[0] + "-" + BereichTuple2[0]
+                if len(BereichTuple2) > 1:
+                    EinBereich += "+" + "+".join(BereichTuple2[1:])
             BereichCouple: list[str] = EinBereich.split("-")
+
             if (
                 len(BereichCouple) == 2
                 and BereichCouple[0].isdecimal()
@@ -330,10 +336,12 @@ def BereichToNumbers2(
                 # and BereichCouple[1].isdecimal()
                 # and BereichCouple[1] != "0"
             ):
+                print(BereichCouple)
                 BereichPlusTuples = BereichCouple[1].split("+")
-                if len(BereichPlusTuples) == 0:
+                if len(BereichPlusTuples) < 2:
                     around = [0]
                 else:
+                    print("X")
                     richtig = True
                     numList = []
                     for t2 in BereichPlusTuples:
@@ -341,8 +349,10 @@ def BereichToNumbers2(
                             numList += [int(t2)]
                         else:
                             richtig = False
-                    if richtig:
-                        around = numList
+                    if richtig and len(numList) > 0:
+                        around = numList[1:]
+                        BereichCouple[1] = numList[0]
+                print(around)
                 if vielfache:
                     i = 0
                     while all(
@@ -353,11 +363,17 @@ def BereichToNumbers2(
                             int(BereichCouple[0]), int(BereichCouple[1]) + 1
                         ):
                             for a in around:
-                                menge |= {number * i - a, number * i + a}
+                                menge |= {number * i + a}
+                                d = number * i - a
+                                if d > 0:
+                                    menge |= {d}
                 else:
                     for number in range(
                         int(BereichCouple[0]), int(BereichCouple[1]) + 1
                     ):
                         for a in around:
-                            menge |= {number - a, number + a}
+                            menge |= {number + a}
+                            d = number - a
+                            if d > 0:
+                                menge |= {d}
     return dazu - hinfort
