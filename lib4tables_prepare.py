@@ -6,8 +6,8 @@ from enum import Enum
 from typing import Iterable, Optional, Union
 
 import lib4tables_Enum
-from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
-                    output, re, x)
+from center import (BereichToNumbers2, Multiplikationen, alxp, cliout,
+                    getTextWrapThings, infoLog, output, re, x)
 from lib4tables import isPrimMultiple, moonNumber
 from lib4tables_Enum import ST
 
@@ -219,6 +219,7 @@ class Prepare:
         @rtype: set
         @return: Alle Zeilen die dann ausgegeben werden sollen
         """
+
         results = set()
         for EinBereich in MehrereBereiche.split(","):
             if (
@@ -230,21 +231,68 @@ class Prepare:
                     if neg == EinBereich[: len(neg)]
                     else EinBereich
                 )
-                if EinBereich.isdecimal():
-                    EinBereich = EinBereich + "-" + EinBereich
-                BereichCouple = EinBereich.split("-")
-                if (
-                    len(BereichCouple) == 2
-                    and BereichCouple[0].isdecimal()
-                    and BereichCouple[0] != "0"
-                    and BereichCouple[1].isdecimal()
-                    and BereichCouple[1] != "0"
-                ):
-                    results.add(
-                        "".join([BereichCouple[0], "-", symbol, "-", BereichCouple[1]])
-                    )
+                #                if EinBereich.isdecimal():
+                #                    EinBereich = EinBereich + "-" + EinBereich
+                #                BereichCouple = EinBereich.split("-")
+                #                if (
+                #                    len(BereichCouple) == 2
+                #                    and BereichCouple[0].isdecimal()
+                #                    and BereichCouple[0] != "0"
+                #                    and BereichCouple[1].isdecimal()
+                #                    and BereichCouple[1] != "0"
+                #                ):
+
+                matchedJa = re.match(r"^[\+1234567890,-]+$", EinBereich)
+                # zahlenBereichNeu = {matchedJa : EinBereich}
+                if matchedJa and len(EinBereich) > 0 and EinBereich[0].isdecimal():
+                    # results.add(
+                    #    "".join([BereichCouple[0], "-", symbol, "-", BereichCouple[1]])
+                    # )
+                    results.add("".join(["_", symbol, "_", EinBereich]))
 
         return results
+
+    #    def parametersCmdWithSomeBereich(
+    #        self, MehrereBereiche: str, symbol: str, neg: str
+    #    ) -> set:
+    #        """Erstellen des Befehls: Bereich
+    #
+    #        @type MehrereBereiche: str
+    #        @param MehrereBereiche: der Bereich von bis
+    #        @type symbol: str
+    #        @param symbol: welche Art Bereich soll es werden, symbol typisiert den Bereich
+    #        @type neg: string
+    #        @param neg: Vorzeichen, wenn es darum geht dass diese Zeilen nicht angezeigt werden sollen
+    #        @rtype: set
+    #        @return: Alle Zeilen die dann ausgegeben werden sollen
+    #        """
+    #
+    #        results = set()
+    #        for EinBereich in MehrereBereiche.split(","):
+    #            if (
+    #                (neg == "" and len(EinBereich) > 0 and EinBereich[0].isdecimal())
+    #                or (neg == EinBereich[: len(neg)] and len(neg) > 0)
+    #            ) and len(EinBereich) > 0:
+    #                EinBereich = (
+    #                    EinBereich[len(neg) :]
+    #                    if neg == EinBereich[: len(neg)]
+    #                    else EinBereich
+    #                )
+    #                if EinBereich.isdecimal():
+    #                    EinBereich = EinBereich + "-" + EinBereich
+    #                BereichCouple = EinBereich.split("-")
+    #                if (
+    #                    len(BereichCouple) == 2
+    #                    and BereichCouple[0].isdecimal()
+    #                    and BereichCouple[0] != "0"
+    #                    and BereichCouple[1].isdecimal()
+    #                    and BereichCouple[1] != "0"
+    #                ):
+    #                    results.add(
+    #                        "".join([BereichCouple[0], "-", symbol, "-", BereichCouple[1]])
+    #                    )
+    #
+    #        return results
 
     def deleteDoublesInSets(self, set1: set, set2: set) -> Iterable[Union[set, set]]:
         """Wenn etwas in 2 Mengen doppelt vorkommt wird es gelöscht
@@ -465,9 +513,9 @@ class Prepare:
             for base in toPowerIt:
                 for n in range(lastEl):
                     onePower = pow(base, n)
-                    #if onePower <= numRangeMax:
+                    # if onePower <= numRangeMax:
                     numRangeYesZ |= {onePower}
-                    #else:
+                    # else:
                     #    break
             numRange = cutset(ifPowerAtall, numRange, numRangeYesZ)
 
@@ -493,18 +541,14 @@ class Prepare:
             numRange = cutset(ifMultiplesFromAnyAtAll, numRange, numRangeYesZ)
 
         ifNachtraeglichAtAll = False
-        for condition in paramLines:
-            if "-z-" in condition:
-                if not ifNachtraeglichAtAll:
-                    numRange2: list = list(numRange)
-                    numRange2.sort()
-                    ifNachtraeglichAtAll = True
-                a = self.fromUntil(condition.split("-z-"))
-                for i, n in enumerate(numRange2.copy()):
-                    if a[0] - 1 > i or a[1] - 1 < i:
-                        numRange2.remove(n)
         if ifNachtraeglichAtAll:
-            numRange = set(numRange2)
+            for condition in paramLines:
+                if (
+                    "_z_" in condition[:3]
+                    and len(condition) > 3
+                    and condition[3].isdecimal()
+                ):
+                    numRange &= BereichToNumbers2(condition[3:])
 
         return numRange
 
