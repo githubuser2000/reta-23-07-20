@@ -422,13 +422,15 @@ class Prepare:
         numRangeYesZ = set()
         ifZaehlungenAtAll = False
         for condition in paramLines:
-            if "-n-" in condition:
+            if (
+                "_n_" in condition[:3]
+                and len(condition) > 3
+                and condition[3].isdecimal()
+            ):
+                numRangeYesZ = BereichToNumbers2(
+                    condition[3:], False, self.hoechsteZeile[1024]
+                )
                 ifZaehlungenAtAll = True
-                a = self.fromUntil(condition.split("-n-"))
-                for n in numRange.copy():
-                    if a[0] <= n and a[1] >= n:
-                        # numRange.remove(n)
-                        numRangeYesZ.add(n)
         if ifZaehlungenAtAll or True:
             self.setZaehlungen(self.originalLinesRange[-1])
         if ifZaehlungenAtAll:
@@ -540,15 +542,15 @@ class Prepare:
                         numRangeYesZ.add(n)
             numRange = cutset(ifMultiplesFromAnyAtAll, numRange, numRangeYesZ)
 
-        ifNachtraeglichAtAll = False
-        if ifNachtraeglichAtAll:
-            for condition in paramLines:
-                if (
-                    "_z_" in condition[:3]
-                    and len(condition) > 3
-                    and condition[3].isdecimal()
-                ):
-                    numRange &= BereichToNumbers2(condition[3:])
+        for condition in paramLines:
+            if (
+                "_z_" in condition[:3]
+                and len(condition) > 3
+                and condition[3].isdecimal()
+            ):
+                numRange &= BereichToNumbers2(
+                    condition[3:], False, self.hoechsteZeile[1024]
+                )
 
         return numRange
 
