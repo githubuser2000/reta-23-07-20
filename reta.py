@@ -3463,7 +3463,13 @@ class Program:
                                 (int(word) > 0 and neg == "")
                                 or (int(word) < 0 and neg != "")
                             ):
-                                paramLines.add(str(abs(int(word))) + "^")
+                                infragekommend = tuple(
+                                    BereichToNumbers2(
+                                        word, False, self.tables.hoechsteZeile[1024] + 2
+                                    )
+                                )
+                                for number in infragekommend:
+                                    paramLines.add(str(number) + "^")
                     elif arg[2:21] == "vielfachevonzahlen=":
                         paramLines |= (
                             self.tables.getPrepare.parametersCmdWithSomeBereich(
