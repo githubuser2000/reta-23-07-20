@@ -301,7 +301,7 @@ def BereichToNumbers(MehrereBereiche: str) -> set:
 
 @jit(nopython=True, parallel=True, cache=True)
 def BereichToNumbers2(
-    MehrereBereiche: str, maxZahl: int = 1028, vielfache=False
+    MehrereBereiche: str, vielfache=False, maxZahl: int = 1028
 ) -> set:
 
     Bereiche: list[str] = MehrereBereiche.split(",")
@@ -336,12 +336,10 @@ def BereichToNumbers2(
                 # and BereichCouple[1].isdecimal()
                 # and BereichCouple[1] != "0"
             ):
-                print(BereichCouple)
                 BereichPlusTuples = BereichCouple[1].split("+")
                 if len(BereichPlusTuples) < 2:
                     around = [0]
                 else:
-                    print("X")
                     richtig = True
                     numList = []
                     for t2 in BereichPlusTuples:
@@ -352,7 +350,6 @@ def BereichToNumbers2(
                     if richtig and len(numList) > 0:
                         around = numList[1:]
                         BereichCouple[1] = numList[0]
-                print(around)
                 if vielfache:
                     i = 0
                     while all(
@@ -363,17 +360,21 @@ def BereichToNumbers2(
                             int(BereichCouple[0]), int(BereichCouple[1]) + 1
                         ):
                             for a in around:
-                                menge |= {number * i + a}
+                                c = number * i + a
+                                if c <= maxZahl:
+                                    menge |= {c}
                                 d = number * i - a
-                                if d > 0:
+                                if d > 0 and d < maxZahl:
                                     menge |= {d}
                 else:
                     for number in range(
                         int(BereichCouple[0]), int(BereichCouple[1]) + 1
                     ):
                         for a in around:
-                            menge |= {number + a}
+                            c = number + a
+                            if c < maxZahl:
+                                menge |= {c}
                             d = number - a
-                            if d > 0:
+                            if d > 0 and d < maxZahl:
                                 menge |= {d}
     return dazu - hinfort
