@@ -3456,12 +3456,8 @@ class Program:
                                 paramLines.add("mond")
                     elif arg[2 : 2 + len("potenzenvonzahlen=")] == "potenzenvonzahlen=":
                         for word in arg[2 + len("potenzenvonzahlen=") :].split(","):
-                            if (
-                                word.isdecimal()
-                                or (word[1:].isdecimal() and word[0] == neg)
-                            ) and (
-                                (int(word) > 0 and neg == "")
-                                or (int(word) < 0 and neg != "")
+                            if len(word) > 0 and (
+                                bool(re.match(r"^[\+1234567890,-]+$", word))
                             ):
                                 infragekommend = tuple(
                                     BereichToNumbers2(
@@ -3469,7 +3465,10 @@ class Program:
                                     )
                                 )
                                 for number in infragekommend:
-                                    paramLines.add(str(number) + "^")
+                                    if (word[0] != "-" and neg == "") or (
+                                        word[0] == "-" and neg != ""
+                                    ):
+                                        paramLines.add(str(number) + "^")
                     elif arg[2:21] == "vielfachevonzahlen=":
                         paramLines |= (
                             self.tables.getPrepare.parametersCmdWithSomeBereich(
