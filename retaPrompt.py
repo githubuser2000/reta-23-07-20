@@ -18,7 +18,7 @@ from prompt_toolkit.completion import Completer, Completion
 from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
 
-from center import BereichToNumbers, cliout, retaPromptHilfe
+from center import BereichToNumbers2, cliout, retaPromptHilfe
 from lib4tables import multiples
 from LibRetaPrompt import wahl15
 # import reta
@@ -56,38 +56,42 @@ def teiler(innerKomma3):
     return innerKomma3, innerKomma5
 
 
-def nummernStringzuNummern(text: str) -> str:
-    def toNummernSet(text: list) -> set:
-        menge = set()
-        for t1 in text:
-            for t2 in t1:
-                menge |= {int(t2)}
-        return menge
+def nummernStringzuNummern(text: str, isV) -> str:
+    print(BereichToNumbers2(text))
+    return ",".join([str(a) for a in BereichToNumbers2(text, isV)])
 
-    listen = [kommatiert.split("-") for kommatiert in text.split(",")]
-    results = []
-    abzug = []
-    for insideKomma in listen:
-        if len(insideKomma) == 1 and insideKomma[0].isdecimal():
-            results += [[int(insideKomma[0])]]
-        elif len(insideKomma) == 2:
-            if insideKomma[0].isdecimal() and insideKomma[1].isdecimal():
-                raeinsch = range(int(insideKomma[0]), int(insideKomma[1]) + 1)
-                if len(raeinsch) > 0:
-                    results += [range(int(insideKomma[0]), int(insideKomma[1]) + 1)]
-            if insideKomma[0] == "" and insideKomma[1].isdecimal():
-                abzug += [[insideKomma[1]]]
-        elif len(insideKomma) == 3:
-            if (
-                insideKomma[0] == ""
-                and insideKomma[1].isdecimal()
-                and insideKomma[2].isdecimal()
-            ):
-                abzug += [range(int(insideKomma[1]), int(insideKomma[2]) + 1)]
-        else:
-            return text
 
-    return ",".join(map(str, toNummernSet(results) - toNummernSet(abzug)))
+#    def toNummernSet(text: list) -> set:
+#        menge = set()
+#        for t1 in text:
+#            for t2 in t1:
+#                menge |= {int(t2)}
+#        return menge
+#
+#    listen = [kommatiert.split("-") for kommatiert in text.split(",")]
+#    results = []
+#    abzug = []
+#    for insideKomma in listen:
+#        if len(insideKomma) == 1 and insideKomma[0].isdecimal():
+#            results += [[int(insideKomma[0])]]
+#        elif len(insideKomma) == 2:
+#            if insideKomma[0].isdecimal() and insideKomma[1].isdecimal():
+#                raeinsch = range(int(insideKomma[0]), int(insideKomma[1]) + 1)
+#                if len(raeinsch) > 0:
+#                    results += [range(int(insideKomma[0]), int(insideKomma[1]) + 1)]
+#            if insideKomma[0] == "" and insideKomma[1].isdecimal():
+#                abzug += [[insideKomma[1]]]
+#        elif len(insideKomma) == 3:
+#            if (
+#                insideKomma[0] == ""
+#                and insideKomma[1].isdecimal()
+#                and insideKomma[2].isdecimal()
+#            ):
+#                abzug += [range(int(insideKomma[1]), int(insideKomma[2]) + 1)]
+#        else:
+#            return text
+#
+#    return ",".join(map(str, toNummernSet(results) - toNummernSet(abzug)))
 
 
 def newSession(history=False):
@@ -108,7 +112,7 @@ def returnOnlyParasAsList(textList: str):
 
 
 def externCommand(cmd: str, StrNummern: str):
-    nummern: list[int] = list(BereichToNumbers(StrNummern))
+    nummern: list[int] = list(BereichToNumbers2(StrNummern))
     nummern.sort()
     nummernStr: list[str] = [str(nummer) for nummer in nummern]
     try:
@@ -845,9 +849,13 @@ def promptVorbereitungGrosseAusgabe(
         else:
             maxNum = 1024
     stextb = []
+    zahlenBereichMatch = [
+        bool(re.match(r"^[1234567890,-]+$", swort)) for swort in stext
+    ]
+    zahlenBereichNeu = {i: a for i, a in zip(zahlenBereichMatch, stext)}
     for s in stext:
-        if len(s) > 0 and s[0].isdecimal() and ("," in s or "-" in s):
-            stextb += [nummernStringzuNummern(s)]
+        if len(s) > 0 and s[0].isdecimal() and ("," in s or "-" in s or "+" in s):
+            stextb += [nummernStringzuNummern(s, "v" in stext, zahlenBereichNeu[True])]
         else:
             stextb += [s]
     stext = stextb
@@ -856,9 +864,6 @@ def promptVorbereitungGrosseAusgabe(
         and promptModeLast == PromptModus.normal
     ):
         stext += textDazu0
-    zahlenBereichMatch = [
-        bool(re.match(r"^[1234567890,-]+$", swort)) for swort in stext
-    ]
     if (
         promptMode == PromptModus.normal
         and len(platzhalter) > 1
@@ -869,7 +874,6 @@ def promptVorbereitungGrosseAusgabe(
     ):
         zeilenn = False
         woerterToDel = []
-        zahlenBereichNeu = {i: a for i, a in zip(zahlenBereichMatch, stext)}
         for i, wort in enumerate(stext):
             if len(wort) > 1 and wort[0] == "-" and wort[1] != "-":
                 zeilenn = False
@@ -884,7 +888,7 @@ def promptVorbereitungGrosseAusgabe(
         stext = list(stextDict.values())
 
         if len({"w", "teiler"} & set(stext)) > 0:
-            BereichMenge = BereichToNumbers(zahlenBereichNeu[True])
+            BereichMenge = BereichToNumbers2(zahlenBereichNeu[True])
             BereichMengeNeu = teiler(BereichMenge)[1]
             zahlenBereichNeu[True] = ""
             for a in BereichMengeNeu:
@@ -904,10 +908,11 @@ def promptVorbereitungGrosseAusgabe(
             stext += ["-zeilen", "--vorhervonausschnitt=" + zahlenBereichNeu[True]]
 
         else:
-            stext += [
-                "-zeilen",
-                "--vielfachevonzahlen=" + zahlenBereichNeu[True],
-            ]
+            stext += ["-zeilen", "--vorhervonausschnitt=" + zahlenBereichNeu[True]]
+            # stext += [
+            #    "-zeilen",
+            #    "--vielfachevonzahlen=" + zahlenBereichNeu[True],
+            # ]
             try:
                 stext.remove("v")
             except:
@@ -984,8 +989,8 @@ def PromptAllesVorGroesserSchleife():
 def PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text):
     global promptMode2, textDazu0
     text = str(text)
-    if bool(re.match(r"^[1234567890,-]+$", text)):
-        zuloeschen = BereichToNumbers(text)
+    if bool(re.match(r"^[1234567890,-+]+$", text)):
+        zuloeschen = BereichToNumbers2(text)
         loeschbares = {i + 1: a for i, a in enumerate(platzhalter.split())}
         for todel in zuloeschen:
             try:
