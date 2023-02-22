@@ -300,7 +300,9 @@ def BereichToNumbers(MehrereBereiche: str) -> set:
 
 
 @jit(nopython=True, parallel=True, cache=True)
-def BereichToNumbers2(MehrereBereiche: str) -> set:
+def BereichToNumbers2(
+    MehrereBereiche: str, maxZahl: int = 1028, vielfache=False
+) -> set:
 
     Bereiche: list[str] = MehrereBereiche.split(",")
     dazu: set[int] = set()
@@ -329,15 +331,33 @@ def BereichToNumbers2(MehrereBereiche: str) -> set:
                 # and BereichCouple[1] != "0"
             ):
                 BereichPlusTuples = BereichCouple[1].split("+")
-                richtig = True
-                numList = []
-                for t2 in BereichPlusTuples:
-                    if t2.isdecimal():
-                        numList += [int(t2)]
-                    else:
-                        richtig = False
-                if richtig:
-                    around = numList
-                for number in range(int(BereichCouple[0]), int(BereichCouple[1]) + 1):
-                    menge |= {number}
+                if len(BereichPlusTuples) == 0:
+                    around = [0]
+                else:
+                    richtig = True
+                    numList = []
+                    for t2 in BereichPlusTuples:
+                        if t2.isdecimal():
+                            numList += [int(t2)]
+                        else:
+                            richtig = False
+                    if richtig:
+                        around = numList
+                if vielfache:
+                    i = 0
+                    while all(
+                        [int(BereichCouple[0]) * i < maxZahl - a for a in around]
+                    ):
+                        i += 1
+                        for number in range(
+                            int(BereichCouple[0]), int(BereichCouple[1]) + 1
+                        ):
+                            for a in around:
+                                menge |= {number * i - a, number * i + a}
+                else:
+                    for number in range(
+                        int(BereichCouple[0]), int(BereichCouple[1]) + 1
+                    ):
+                        for a in around:
+                            menge |= {number - a, number + a}
     return dazu - hinfort
