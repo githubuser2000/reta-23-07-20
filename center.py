@@ -297,3 +297,20 @@ def BereichToNumbers(MehrereBereiche: str) -> set:
                 for number in range(int(BereichCouple[0]), int(BereichCouple[1]) + 1):
                     menge |= {number}
     return dazu - hinfort
+
+
+def vielfacherAngabentoContainer(text):
+    text = text.split(",")
+    numList2 = []
+    for t in text:
+        text2 = t.split("+")
+        richtig = True
+        numList = []
+        for t2 in text2:
+            if t2.isdecimal():
+                numList += [int(t2)]
+            else:
+                richtig = False
+        if richtig:
+            numList2 += [numList]
+    return numList2
