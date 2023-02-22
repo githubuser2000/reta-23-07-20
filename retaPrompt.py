@@ -57,7 +57,8 @@ def teiler(innerKomma3):
 
 
 def nummernStringzuNummern(text: str, isV: bool = False, until: int = 1028) -> str:
-    print(BereichToNumbers2(text))
+    # print(BereichToNumbers2(text, isV, until))
+    # print(",".join([str(a) for a in BereichToNumbers2(text, isV, until)]))
     return ",".join([str(a) for a in BereichToNumbers2(text, isV, until)])
 
 

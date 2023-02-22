@@ -249,7 +249,6 @@ class Prepare:
                     #    "".join([BereichCouple[0], "-", symbol, "-", BereichCouple[1]])
                     # )
                     results.add("".join(["_", symbol, "_", EinBereich]))
-
         return results
 
     #    def parametersCmdWithSomeBereich(
@@ -372,7 +371,7 @@ class Prepare:
             ):
                 if_a_AtAll = True
 
-                numRangeYesZ = BereichToNumbers2(
+                numRangeYesZ |= BereichToNumbers2(
                     condition[3:], True, self.hoechsteZeile[1024]
                 )
 
@@ -389,7 +388,7 @@ class Prepare:
                 and condition[3].isdecimal()
             ):
                 if_a_AtAll = True
-                numRangeYesZ = BereichToNumbers2(
+                numRangeYesZ |= BereichToNumbers2(
                     condition[3:], False, self.hoechsteZeile[1024]
                 )
 
@@ -422,7 +421,7 @@ class Prepare:
                 and len(condition) > 3
                 and condition[3].isdecimal()
             ):
-                numRangeYesZ = BereichToNumbers2(
+                numRangeYesZ |= BereichToNumbers2(
                     condition[3:], False, self.hoechsteZeile[1024]
                 )
                 ifZaehlungenAtAll = True
