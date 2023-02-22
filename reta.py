@@ -14,7 +14,7 @@ try:
 except:
     OrderedSet = set
 
-from center import Primzahlkreuz_pro_contra_strs, retaHilfe
+from center import BereichToNumbers2, Primzahlkreuz_pro_contra_strs, retaHilfe
 from tableHandling import (Enum, Iterable, Multiplikationen, OutputSyntax,
                            Tables, Union, alxp, bbCodeSyntax, cliout, copy,
                            csv, csvSyntax, deepcopy, getTextWrapThings,
@@ -3410,7 +3410,7 @@ class Program:
         global infoLog, shellRowsAmount  # , puniverseprims
         if len(argv) == 1 and neg == "":
             cliout("Versuche Parameter -h")
-        spaltenreihenfolgeundnurdiese: list = []
+        spaltenreihenfolgeundnurdiese: tuple = ()
         puniverseprims_only: set = OrderedSet()
         rowsAsNumbers: set = set()
         paramLines: set = OrderedSet()
@@ -3531,11 +3531,11 @@ class Program:
                         arg[2 : 2 + len("spaltenreihenfolgeundnurdiese=")]
                         == "spaltenreihenfolgeundnurdiese="
                     ):
-                        for number in arg[
-                            2 + len("spaltenreihenfolgeundnurdiese=") :
-                        ].split(","):
-                            if str(number).isdecimal():
-                                spaltenreihenfolgeundnurdiese += [int(number)]
+                        spaltenreihenfolgeundnurdiese = tuple(
+                            BereichToNumbers2(
+                                arg[2 + len("spaltenreihenfolgeundnurdiese=") :]
+                            )
+                        )
                     elif arg[2:6] == "art=":
                         outputtype = arg[(arg.find("=") + 1) :]
                         if outputtype == "shell":
