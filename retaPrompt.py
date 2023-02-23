@@ -240,6 +240,7 @@ def speichern(ketten, platzhalter, text):
     else:
         promptMode2 = PromptModus.normal
     textDazu0 = platzhalter.split()
+    # print("____" + str(platzhalter.split()))
     return ketten, platzhalter, text
 
 
@@ -318,6 +319,10 @@ def PromptScope():
             promptMode = PromptModus.loeschenSelect
             continue
 
+        print(ketten)
+        print(platzhalter)
+        print(text)
+        print(textDazu0)
         (
             EineZahlenFolgeJa,
             bedingung,
@@ -335,6 +340,7 @@ def PromptScope():
             text,
             textDazu0,
         )
+        print(" ".join(stext))
         loggingSwitch = PromptGrosseAusgabe(
             EineZahlenFolgeJa,
             bedingung,
@@ -919,11 +925,13 @@ def promptVorbereitungGrosseAusgabe(
     #    else:
     #        stextb += [s]
     # stext = stextb
+    print("__" + str(textDazu0))
     if (
         promptMode2 == PromptModus.AusgabeSelektiv
         and promptModeLast == PromptModus.normal
     ):
         stext += textDazu0
+    # print("__" + str(stext))
     if (
         promptMode == PromptModus.normal
         and len(platzhalter) > 1
@@ -1070,6 +1078,7 @@ def PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text):
     if len(platzhalter.strip()) == 0:
         promptMode2 = PromptModus.normal
         textDazu0 = []
+    # print([platzhalter, promptMode, text])
     return platzhalter, promptMode, text
 
 
@@ -1118,11 +1127,6 @@ def promptInput(
             placeholder=platzhalter,
         )
         text: str = str(text).strip()
-        # text.replace(" 15_ ", " 15_15 ")
-        # if text[:4] == "15_ ":
-        #    text = "15_15 " + text[4:]
-        # if text[-4:] == " 15_":
-        #    text = text[:-4] + " 15_15"
     except KeyboardInterrupt:
         sys.exit()
     return befehlDavor, text
