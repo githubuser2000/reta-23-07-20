@@ -46,6 +46,13 @@ def isZeilenAngabe(g):
     )
 
 
+def anotherOberesMaximum(c, maxNum):
+    maximizing = list(BereichToNumbers2(c, False, 0))
+    maximizing.sort()
+    maxNum2 = maximizing[-1]
+    return "--oberesmaximum=" + str(max(maxNum, maxNum2) + 1)
+
+
 class PromptModus(Enum):
     normal = 0
     speichern = 1
@@ -451,10 +458,8 @@ def PromptGrosseAusgabe(
             zeiln2 = ""
         else:
             zeiln1 = "--vorhervonausschnitt=" + str(c).strip()
-            maximizing = list(BereichToNumbers2(c, False, 0))
-            maximizing.sort()
-            maxNum2 = maximizing[-1]
-            zeiln2 = "--oberesmaximum=" + str(max(maxNum, maxNum2) + 1)
+
+            zeiln2 = anotherOberesMaximum(c, maxNum)
 
         if (len({"thomas"} & set(stext)) > 0) or (
             "t" in stext and "abc" not in stext and "abcd" not in stext
@@ -696,7 +701,7 @@ def PromptGrosseAusgabe(
                 "reta",
                 "-zeilen",
                 zeiln1,
-                "--oberesmaximum=1028",
+                anotherOberesMaximum(c, 1028),
                 "-spalten",
                 "--bedeutung=primzahlkreuz",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
