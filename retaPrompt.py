@@ -240,7 +240,6 @@ def speichern(ketten, platzhalter, text):
     else:
         promptMode2 = PromptModus.normal
     textDazu0 = platzhalter.split()
-    # print("____" + str(platzhalter.split()))
     return ketten, platzhalter, text
 
 
@@ -319,10 +318,6 @@ def PromptScope():
             promptMode = PromptModus.loeschenSelect
             continue
 
-        print(ketten)
-        print(platzhalter)
-        print(text)
-        print(textDazu0)
         (
             EineZahlenFolgeJa,
             bedingung,
@@ -340,7 +335,6 @@ def PromptScope():
             text,
             textDazu0,
         )
-        print(" ".join(stext))
         loggingSwitch = PromptGrosseAusgabe(
             EineZahlenFolgeJa,
             bedingung,
@@ -925,13 +919,12 @@ def promptVorbereitungGrosseAusgabe(
     #    else:
     #        stextb += [s]
     # stext = stextb
-    print("__" + str(textDazu0))
+    # print("__" + str(textDazu0))
     if (
         promptMode2 == PromptModus.AusgabeSelektiv
         and promptModeLast == PromptModus.normal
     ):
         stext += textDazu0
-    # print("__" + str(stext))
     if (
         promptMode == PromptModus.normal
         and len(platzhalter) > 1
@@ -1056,29 +1049,37 @@ def PromptAllesVorGroesserSchleife():
 
 def PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text):
     global promptMode2, textDazu0
-    text = str(text)
-    if bool(isZeilenAngabe(text)):
-        zuloeschen = text
-        loeschbares = {i + 1: a for i, a in enumerate(platzhalter.split())}
-        for todel in zuloeschen:
-            try:
-                del loeschbares[todel]
-            except:
-                pass
-        platzhalter = " ".join(loeschbares.values())
+    text = str(text).strip()
+    s_text = text.split()
+    zuloeschen = text
+    loeschbares1 = {i + 1: a for i, a in enumerate(platzhalter.split())}
+    loeschbares2 = {a: i + 1 for i, a in enumerate(platzhalter.split())}
+    flag = False
+    if isZeilenAngabe(zuloeschen):
+        if zuloeschen not in loeschbares2.keys():
+            zuloeschen2 = BereichToNumbers2(zuloeschen, False, 0)
+            for todel in zuloeschen2:
+                try:
+                    del loeschbares1[todel]
+                except:
+                    pass
+            platzhalter = " ".join(loeschbares1.values())
+        else:
+            flag = True
     else:
-        loeschbares = {a: i + 1 for i, a in enumerate(platzhalter.split())}
-        for wort in text.split():
+        flag = True
+    if flag:
+        for wort in s_text:
             try:
-                del loeschbares[wort]
+                del loeschbares2[wort]
             except:
                 pass
-        platzhalter = " ".join(loeschbares.keys())
+        platzhalter = " ".join(loeschbares2.keys())
     promptMode = PromptModus.normal
     if len(platzhalter.strip()) == 0:
         promptMode2 = PromptModus.normal
         textDazu0 = []
-    # print([platzhalter, promptMode, text])
+    textDazu0 = platzhalter.split()
     return platzhalter, promptMode, text
 
 
