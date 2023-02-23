@@ -358,7 +358,7 @@ def PromptGrosseAusgabe(
 ):
     if not bedingung:
         for g, a in enumerate(stext):
-            EineZahlenFolgeJa[g] = isZeilenAngabe(g)
+            EineZahlenFolgeJa[g] = isZeilenAngabe(a)
 
             # innerKomma3 = []
             # innerKomma4 = a.split(",")
@@ -386,10 +386,11 @@ def PromptGrosseAusgabe(
             #
             #        else:
             #            EineZahlenFolgeJa[g] = False
-            c2 = BereichToNumbers2(g, False, 0)
-            c = teiler(g)
+            if EineZahlenFolgeJa[g]:
+                c = a
+                c2 = teiler(a)[0]
 
-            for innerKomma in innerKomma4:
+            for innerKomma in a.split(","):
                 bruch = [bruch for bruch in innerKomma.split("/")]
                 if [bruch1.isdecimal() for bruch1 in bruch] == [True, True]:
                     brueche += [bruch]
@@ -500,6 +501,7 @@ def PromptGrosseAusgabe(
                     *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
                 kette += [ketten]
+                print(kette)
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
