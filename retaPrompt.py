@@ -832,11 +832,19 @@ def promptVorbereitungGrosseAusgabe(
 
             if n is not None:
                 s_2 = s_[n:].split(",")
-                s_4 = [s_5.split("-") for s_5 in s_2]
-                if len(s_) > n and [
-                    [strInt.isdecimal() or len(strInt) == 0 for strInt in strA]
-                    for strA in s_4
-                ] == [[True for strInt in strA] for strA in s_4]:
+                s_4 = [s_5.split("/") for s_5 in s_2]
+                if (
+                    len(s_) > n
+                    and (
+                        [
+                            [strInt.isdecimal() or len(strInt) == 0 for strInt in strA]
+                            for strA in s_4
+                        ]
+                        == [[True for strInt in strA] for strA in s_4]
+                        and "-" not in s_
+                    )
+                    or isZeilenAngabe(s_[n:])
+                ):
                     buchst = set(s_[:n]) & {
                         "a",
                         "t",
