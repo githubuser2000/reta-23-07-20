@@ -56,10 +56,10 @@ def teiler(innerKomma3):
     return innerKomma3, innerKomma5
 
 
-def nummernStringzuNummern(text: str, isV: bool = False, until: int = 1028) -> str:
-    # print(BereichToNumbers2(text, isV, until))
-    # print(",".join([str(a) for a in BereichToNumbers2(text, isV, until)]))
-    return ",".join([str(a) for a in BereichToNumbers2(text, isV, until)])
+# def nummernStringzuNummern(text: str, isV: bool = False, until: int = 1028) -> str:
+#    # print(BereichToNumbers2(text, isV, until))
+#    # print(",".join([str(a) for a in BereichToNumbers2(text, isV, until)]))
+#    return ",".join([str(a) for a in BereichToNumbers2(text, isV, until)])
 
 
 #    def toNummernSet(text: list) -> set:
@@ -422,13 +422,13 @@ def PromptGrosseAusgabe(
             ("vielfache" in stext)
             or ("v" in stext and "abc" not in stext and "abcd" not in stext)
         ):
-            # zeiln1 = "--vielfachevonzahlen=" + str(c).strip()
-            zeiln1 = "--vorhervonausschnitt=" + str(c).strip()
+            zeiln1 = "--vielfachevonzahlen=" + str(c).strip()
+            # zeiln1 = "--vorhervonausschnitt=" + str(c).strip()
 
             zeiln2 = ""
         else:
             zeiln1 = "--vorhervonausschnitt=" + str(c).strip()
-            zeiln2 = "--oberesmaximum=" + str(maxNum)
+            zeiln2 = "--oberesmaximum=" + str(maxNum + 1)
 
         if (len({"thomas"} & set(stext)) > 0) or (
             "t" in stext and "abc" not in stext and "abcd" not in stext
@@ -478,6 +478,7 @@ def PromptGrosseAusgabe(
                     *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
                 kette += [ketten]
+                print(kette)
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
@@ -854,18 +855,18 @@ def promptVorbereitungGrosseAusgabe(
     zahlenBereichMatch = [
         bool(re.match(r"^[\+1234567890,-]+$", swort)) for swort in stext
     ]
-    zahlenBereichNeu = {i: a for i, a in zip(zahlenBereichMatch, stext)}
-    for s in stext:
-        if (
-            len(s) > 0
-            and s[0].isdecimal()
-            and ("," in s or "-" in s or "+" in s)
-            and s == zahlenBereichNeu[True]
-        ):
-            stextb += [nummernStringzuNummern(s, "v" in stext)]
-        else:
-            stextb += [s]
-    stext = stextb
+    # zahlenBereichNeu = {i: a for i, a in zip(zahlenBereichMatch, stext)}
+    # for s in stext:
+    #    if (
+    #        len(s) > 0
+    #        and s[0].isdecimal()
+    #        and ("," in s or "-" in s or "+" in s)
+    #        and s == zahlenBereichNeu[True]
+    #    ):
+    #        stextb += [nummernStringzuNummern(s, "v" in stext)]
+    #    else:
+    #        stextb += [s]
+    # stext = stextb
     if (
         promptMode2 == PromptModus.AusgabeSelektiv
         and promptModeLast == PromptModus.normal
@@ -915,11 +916,11 @@ def promptVorbereitungGrosseAusgabe(
             stext += ["-zeilen", "--vorhervonausschnitt=" + zahlenBereichNeu[True]]
 
         else:
-            stext += ["-zeilen", "--vorhervonausschnitt=" + zahlenBereichNeu[True]]
-            # stext += [
-            #    "-zeilen",
-            #    "--vielfachevonzahlen=" + zahlenBereichNeu[True],
-            # ]
+            # stext += ["-zeilen", "--vorhervonausschnitt=" + zahlenBereichNeu[True]]
+            stext += [
+                "-zeilen",
+                "--vielfachevonzahlen=" + zahlenBereichNeu[True],
+            ]
             try:
                 stext.remove("v")
             except:
