@@ -15,6 +15,7 @@ weight = -7
 - [Befehle](#befehle)
     - [Ausgabe-Befehle](#ausgabe-befehle)
     - [mathematisch Ausgabe-Befehle](#mathematisch-ausgabe-befehle)
+    - [Zahlenbereiche, Zeilenangaben](#zahlenbereiche-zeilenangaben)
     - [Die Befehle 15\_....](#die-befehle-15-dot-dot-dot-dot)
     - [sonstige Befehle](#sonstige-befehle)
     - [Speicher-Befehle](#speicher-befehle)
@@ -51,6 +52,7 @@ weight = -7
 -   Einige der Kurzbefehle aus Buchstaben wie "a" oder "u" lassen sich auch ohne Leerzeichen dazwischen als Befehl verwenden. Beispiel: statt "a u 1,2" geht auch "au1,2".
 -   Kurzbefehl "e" macht, dass Zeilen mit fast keiner Information nicht angezeigt werden, also Zeilen mit nur einem Minus oder Fragezeichen
 
+
 ### mathematisch Ausgabe-Befehle {#mathematisch-ausgabe-befehle}
 
 -   "prim" bzw. "primfaktorzerlegung" gibt die Primfaktoren einer angegeben Zahl aus.
@@ -59,16 +61,19 @@ weight = -7
 -   "p" bzw. mulpri" bedeutet, dass beide Befehle gemeint sind: "prim" und "multis".
 -   "modulo" gibt für eine Zahl die Reste bei Divisionen aus.
 
-### Zahlenbereiche, Zeilenangaben
 
--   Zeilenangaben oder Zahlenbereiche für andere Angaben können sein (ohne Anführungszeichen):
-    - "2" das wäre dann Zeile 2
-    - "3-5" das wäre Zeile 3,4,5
-    - "4,9" das wäre Zeile 4 und 9
-    - "2,3-5" das wäre Zeile 2,3,4,5
-    - "5+2+4" das wären die Nachbarn der 5 mit Abstand 2 und 4, also 1,3,7,9
-    - "10+2" Als Angabe, wenn die Vielfacher gemeint wären, dann wäre das nicht nur 8 und 12, sondern auch 18 und 22, und 28 und 32, usw.
-    - In der Readme von reta, statt retaPrompt, wird das nochmal erklärt
+### Zahlenbereiche, Zeilenangaben {#zahlenbereiche-zeilenangaben}
+
+Zeilenangaben oder Zahlenbereiche für andere Angaben können sein (ohne Anführungszeichen):
+
+-   "2" das wäre dann Zeile 2
+-   "3-5" das wäre Zeile 3,4,5
+-   "4,9" das wäre Zeile 4 und 9
+-   "2,3-5" das wäre Zeile 2,3,4,5
+-   "5+2+4" das wären die Nachbarn der 5 mit Abstand 2 und 4, also 1,3,7,9
+-   "10+2" Als Angabe, wenn die Vielfacher gemeint wären, dann wäre das nicht nur 8 und 12, sondern auch 18 und 22, und 28 und 32, usw.
+-   In der Readme von reta, statt retaPrompt, wird das nochmal erklärt
+
 
 ### Die Befehle 15\_.... {#die-befehle-15-dot-dot-dot-dot}
 
