@@ -1115,12 +1115,12 @@ def promptInput(
             # placeholder="reta",
             placeholder=platzhalter,
         )
-        text: str = str(text)
+        text: str = str(text).strip()
         text.replace(" 15_ ", " 15_15 ")
-        if text.strip()[:4] == "15_ ":
-            text = "15_15 " + text.strip()[4:]
-        if text.strip()[-4:] == " 15_":
-            text = text.strip()[:-4] + " 15_15"
+        if text[:4] == "15_ ":
+            text = "15_15 " + text[4:]
+        if text[-4:] == " 15_":
+            text = text[:-4] + " 15_15"
     except KeyboardInterrupt:
         sys.exit()
     return befehlDavor, text
