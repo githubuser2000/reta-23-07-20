@@ -2618,6 +2618,12 @@ class Program:
                 {(291, 292)},
             ),
             (
+                Program.ParametersMain.konzept,
+                ("Ehrlichkeit_und_Streit", "streit", "ehrlichkeit"),
+                set(),
+                {(375, 376)},
+            ),
+            (
                 Program.ParametersMain.konzept2,
                 ("Würdig", "wuerdig", "würdig"),
                 set(),

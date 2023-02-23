@@ -80,7 +80,7 @@ Nebenparameter beginnen mit 2 Minus --.
 * --eigenschaften=
 * oder
 * --konzept
-    * weisheit,gut,zeit,ruf,egoismus,kausal,liebepolung,einheit,meinungsintelligenz,ursprungsintelligenz,sanft,hart,egalitaer,autoritaer,ueberheblich,foerdern,durchleuchten,sittlichkeit,fuehrung,sinn,familiaer,goettlich,wertvoll,gleich,ueberleben,abgeneigt,zugeneigt,tragweite,aehnlich,ehrlich,hoeflich,variationsreich,selbstlos,kooperation,arsch,liebe,wissenschaft,einklinken,selbstsucht,ichsucht,ego,familiebrauchen,recht,einklinken,anprangern,vertrauenerhalten,forschen,erfinden
+    * weisheit,gut,zeit,ruf,egoismus,kausal,liebepolung,einheit,meinungsintelligenz,ursprungsintelligenz,sanft,hart,egalitaer,autoritaer,ueberheblich,foerdern,durchleuchten,sittlichkeit,fuehrung,sinn,familiaer,goettlich,wertvoll,gleich,ueberleben,abgeneigt,zugeneigt,tragweite,aehnlich,ehrlich,hoeflich,variationsreich,selbstlos,kooperation,arsch,liebe,wissenschaft,einklinken,selbstsucht,ichsucht,ego,familiebrauchen,recht,einklinken,anprangern,vertrauenerhalten,forschen,erfinden,ehrlichkeit,streit
 * --Eigenschaften_1/n=
 * oder
 * --konzept2
