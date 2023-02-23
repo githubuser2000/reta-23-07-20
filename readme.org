@@ -16,6 +16,7 @@
 :EXPORT_OPTIONS: toc:5.
 :END:
 *** 1. Feature Ideen
++ Kurzbefehle für alle Eigenschaften n und 1/n machen: Deren Name ist einfach ENeigenschaftsname oder EN2eigenschaftsname für die Reziproken Eigenschaften: Geht schnell zu programmieren!
 + SQL like Relationen, z.B. 2:1, d.h. 3 Spalten, und auch alles wie bei SQL, d.h. z.B. n Spalten nach oben/unten: bei z.B. Abstand 1: Gegenspieler. Warum nicht gleich eine SQL (like) Sprache übernehmen, statt das Rad neu zu erfinden!
 + alle Features von retaPrompt und der von reta ausgegebenen html bei beiden haben, weil nicht ganz beide ganz alles von beiden können, sondern nur fast
 + Syntax highlighting
