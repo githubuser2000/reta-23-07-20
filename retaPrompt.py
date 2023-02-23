@@ -478,7 +478,6 @@ def PromptGrosseAusgabe(
                     *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
                 kette += [ketten]
-                print(kette)
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
