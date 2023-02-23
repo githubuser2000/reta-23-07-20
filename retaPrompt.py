@@ -394,8 +394,11 @@ def PromptGrosseAusgabe(
             #        else:
             #            EineZahlenFolgeJa[g] = False
             if EineZahlenFolgeJa[g]:
-                c = a
-                c2 = teiler(a)[0]
+                if "w" in stext or "teiler" in stext:
+                    c: str = ",".join(teiler(a)[0])
+                    c2 = c
+                else:
+                    c = a
 
             for innerKomma in a.split(","):
                 bruch = [bruch for bruch in innerKomma.split("/")]
