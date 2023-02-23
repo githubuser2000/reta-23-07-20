@@ -29,6 +29,23 @@ from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
 from word_completerAlx import WordCompleter
 
 
+def isZeilenAngabe(g):
+    return (
+        True
+        if bool(re.match(r"^[\+1234567890,-]+$", g))  # len(g) > 0 and
+        and g[0].isdecimal()
+        and g[-1] not in ["-", "+"]
+        and "--" not in g
+        and "++" not in g
+        and "+-" not in g
+        and "-+" not in g
+        and ",+" not in g
+        and "+," not in g
+        and "-," not in g
+        else False
+    )
+
+
 class PromptModus(Enum):
     normal = 0
     speichern = 1
@@ -46,14 +63,15 @@ class CharType(Enum):
     begin = 3
 
 
-def teiler(innerKomma3):
-    innerKomma5 = set()
-    for each1 in innerKomma3:
+def teiler(zahlenBereichsAngabe):
+    ZahlenBereichMenge = BereichToNumbers2(zahlenBereichsAngabe, False, 0)
+    ZahlenWbereichMenge = set()
+    for each1 in ZahlenBereichMenge:
         for each2 in set(multiples(int(each1))):
-            innerKomma5 |= set(each2)
-    innerKomma5 -= {1}
-    innerKomma3 = [str(each2) for each2 in innerKomma5]
-    return innerKomma3, innerKomma5
+            ZahlenWbereichMenge |= set(each2)
+    ZahlenWbereichMenge -= {1}
+    zahlenWBereichStringListe = [str(each2) for each2 in ZahlenWbereichMenge]
+    return zahlenWBereichStringListe, ZahlenWbereichMenge
 
 
 # def nummernStringzuNummern(text: str, isV: bool = False, until: int = 1028) -> str:
@@ -113,7 +131,7 @@ def returnOnlyParasAsList(textList: str):
 
 
 def externCommand(cmd: str, StrNummern: str):
-    nummern: list[int] = list(BereichToNumbers2(StrNummern))
+    nummern: list[int] = list(BereichToNumbers2(StrNummern, False, 0))
     nummern.sort()
     nummernStr: list[str] = [str(nummer) for nummer in nummern]
     try:
@@ -340,32 +358,36 @@ def PromptGrosseAusgabe(
 ):
     if not bedingung:
         for g, a in enumerate(stext):
+            EineZahlenFolgeJa[g] = isZeilenAngabe(g)
 
-            innerKomma3 = []
-            innerKomma4 = a.split(",")
-            for innerKomma2 in innerKomma4:
-                if innerKomma2.isdecimal():
-                    innerKomma3 += [innerKomma2]
-            innerKomma6 = innerKomma3
+            # innerKomma3 = []
+            # innerKomma4 = a.split(",")
+            # for innerKomma2 in innerKomma4:
+            #    if innerKomma2.isdecimal():
+            #        innerKomma3 += [innerKomma2]
+            # innerKomma6 = innerKomma3
 
-            if "w" in stext or "teiler" in stext:
-                innerKomma3, innerKomma5 = teiler(innerKomma3)
+            # if "w" in stext or "teiler" in stext:
+            #    innerKomma3, innerKomma5 = teiler(innerKomma3)
 
-            for innerKomma in innerKomma3:
-                innerKommaList = innerKomma.split("-")
-                for k, innerMinus in enumerate(innerKommaList):
-                    if k == 0 and len(innerMinus) == 0:
-                        pass
-                    elif innerMinus.isdecimal():
-                        c = ",".join(innerKomma3)
-                        c2 = ",".join(innerKomma6)
-                        try:
-                            EineZahlenFolgeJa[g]
-                        except KeyError:
-                            EineZahlenFolgeJa[g] = True
-
-                    else:
-                        EineZahlenFolgeJa[g] = False
+            # print(innerKomma3)
+            # for innerKomma in innerKomma3:
+            #    innerKommaList = innerKomma.split("-")
+            #    for k, innerMinus in enumerate(innerKommaList):
+            #        if k == 0 and len(innerMinus) == 0:
+            #            pass
+            #        elif innerMinus.isdecimal():
+            #            c = ",".join(innerKomma3)
+            #            c2 = ",".join(innerKomma6)
+            #            try:
+            #                EineZahlenFolgeJa[g]
+            #            except KeyError:
+            #                EineZahlenFolgeJa[g] = True
+            #
+            #        else:
+            #            EineZahlenFolgeJa[g] = False
+            c2 = BereichToNumbers2(g, False, 0)
+            c = teiler(g)
 
             for innerKomma in innerKomma4:
                 bruch = [bruch for bruch in innerKomma.split("/")]
@@ -851,9 +873,7 @@ def promptVorbereitungGrosseAusgabe(
         else:
             maxNum = 1024
     stextb = []
-    zahlenBereichMatch = [
-        bool(re.match(r"^[\+1234567890,-]+$", swort)) for swort in stext
-    ]
+    zahlenBereichMatch = [bool(isZeilenAngabe(swort)) for swort in stext]
     # zahlenBereichNeu = {i: a for i, a in zip(zahlenBereichMatch, stext)}
     # for s in stext:
     #    if (
@@ -895,7 +915,7 @@ def promptVorbereitungGrosseAusgabe(
         stext = list(stextDict.values())
 
         if len({"w", "teiler"} & set(stext)) > 0:
-            BereichMenge = BereichToNumbers2(zahlenBereichNeu[True])
+            BereichMenge = BereichToNumbers2(zahlenBereichNeu[True], False, 0)
             BereichMengeNeu = teiler(BereichMenge)[1]
             zahlenBereichNeu[True] = ""
             for a in BereichMengeNeu:
@@ -996,8 +1016,8 @@ def PromptAllesVorGroesserSchleife():
 def PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text):
     global promptMode2, textDazu0
     text = str(text)
-    if bool(re.match(r"^[\+1234567890,-]+$", text)):
-        zuloeschen = BereichToNumbers2(text)
+    if bool(isZeilenAngabe(text)):
+        zuloeschen = text
         loeschbares = {i + 1: a for i, a in enumerate(platzhalter.split())}
         for todel in zuloeschen:
             try:

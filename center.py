@@ -304,6 +304,9 @@ def BereichToNumbers2(
     MehrereBereiche: str, vielfache=False, maxZahl: int = 1028
 ) -> set:
 
+    if not vielfache and maxZahl == 0:
+        maxZahl = float("inf")
+
     Bereiche: list[str] = MehrereBereiche.split(",")
     dazu: set[int] = set()
     hinfort: set[int] = set()
