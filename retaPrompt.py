@@ -28,6 +28,8 @@ from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
                        spaltenDict, zeilenParas)
 from word_completerAlx import WordCompleter
 
+wahl15["_"] = wahl15["_15"]
+
 
 def isZeilenAngabe(g):
     return (
@@ -1116,11 +1118,11 @@ def promptInput(
             placeholder=platzhalter,
         )
         text: str = str(text).strip()
-        text.replace(" 15_ ", " 15_15 ")
-        if text[:4] == "15_ ":
-            text = "15_15 " + text[4:]
-        if text[-4:] == " 15_":
-            text = text[:-4] + " 15_15"
+        # text.replace(" 15_ ", " 15_15 ")
+        # if text[:4] == "15_ ":
+        #    text = "15_15 " + text[4:]
+        # if text[-4:] == " 15_":
+        #    text = text[:-4] + " 15_15"
     except KeyboardInterrupt:
         sys.exit()
     return befehlDavor, text
