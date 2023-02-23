@@ -451,7 +451,10 @@ def PromptGrosseAusgabe(
             zeiln2 = ""
         else:
             zeiln1 = "--vorhervonausschnitt=" + str(c).strip()
-            zeiln2 = "--oberesmaximum=" + str(maxNum + 1)
+            maximizing = list(BereichToNumbers2(c, False, 0))
+            maximizing.sort()
+            maxNum2 = maximizing[-1]
+            zeiln2 = "--oberesmaximum=" + str(max(maxNum, maxNum2) + 1)
 
         if (len({"thomas"} & set(stext)) > 0) or (
             "t" in stext and "abc" not in stext and "abcd" not in stext
@@ -471,7 +474,8 @@ def PromptGrosseAusgabe(
                 "--spaltenreihenfolgeundnurdiese=2",
                 *["--keineleereninhalte" if "e" in stext else ""],
             ] + returnOnlyParasAsList(stext)
-            kette += [ketten]
+            kette += ketten
+            print(" ".join(kette))
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -500,8 +504,8 @@ def PromptGrosseAusgabe(
                     "--spaltenreihenfolgeundnurdiese=1",
                     *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
-                kette += [ketten]
-                print(kette)
+                kette += ketten
+                print(" ".join(kette))
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
@@ -521,7 +525,8 @@ def PromptGrosseAusgabe(
                     "--spaltenreihenfolgeundnurdiese=1",
                     *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
-                kette += [ketten]
+                kette += ketten
+                print(" ".join(kette))
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
@@ -546,7 +551,8 @@ def PromptGrosseAusgabe(
                     "--spaltenreihenfolgeundnurdiese=1,3,4",
                     *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
-                kette += [ketten]
+                kette += ketten
+                print(" ".join(kette))
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
@@ -567,7 +573,8 @@ def PromptGrosseAusgabe(
                     "--spaltenreihenfolgeundnurdiese=1",
                     *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
-                kette += [ketten]
+                kette += ketten
+                print(" ".join(kette))
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
@@ -627,7 +634,8 @@ def PromptGrosseAusgabe(
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
                 *["--keineleereninhalte" if "e" in stext else ""],
             ] + returnOnlyParasAsList(stext)
-            kette += [ketten]
+            kette += ketten
+            print(" ".join(kette))
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -648,7 +656,8 @@ def PromptGrosseAusgabe(
                 "-ausgabe",
                 *["--keineleereninhalte" if "e" in stext else ""],
             ] + returnOnlyParasAsList(stext)
-            kette += [ketten]
+            kette += ketten
+            print(" ".join(kette))
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -672,7 +681,8 @@ def PromptGrosseAusgabe(
                 "-ausgabe",
                 *["--keineleereninhalte" if "e" in stext else ""],
             ] + returnOnlyParasAsList(stext)
-            kette += [ketten]
+            kette += ketten
+            print(" ".join(kette))
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -693,7 +703,8 @@ def PromptGrosseAusgabe(
                 "-ausgabe",
                 *["--keineleereninhalte" if "e" in stext else ""],
             ] + returnOnlyParasAsList(stext)
-            kette += [ketten]
+            kette += ketten
+            print(" ".join(kette))
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -716,7 +727,8 @@ def PromptGrosseAusgabe(
                 "-ausgabe",
                 *["--keineleereninhalte" if "e" in stext else ""],
             ] + returnOnlyParasAsList(stext)
-            kette += [ketten]
+            kette += ketten
+            print(" ".join(kette))
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -748,7 +760,8 @@ def PromptGrosseAusgabe(
                     "-ausgabe",
                     *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
-                kette += [ketten]
+                kette += ketten
+                print(" ".join(kette))
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
