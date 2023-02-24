@@ -359,16 +359,26 @@ def BereichToNumbers2(
                         [int(BereichCouple[0]) * i < maxZahl - a for a in around]
                     ):
                         i += 1
-                        for number in range(
-                            int(BereichCouple[0]), int(BereichCouple[1]) + 1
-                        ):
-                            for a in around:
-                                c = (number * i) + a
-                                if c <= maxZahl:
-                                    menge |= {c}
-                                d = (number * i) - a
-                                if d > 0 and d < maxZahl:
-                                    menge |= {d}
+                        if len(around) == 0 or len(set(around) & {0}) == 1:
+
+                            for number in range(
+                                int(BereichCouple[0]), int(BereichCouple[1]) + 1
+                            ):
+                                for a in around:
+                                    c = number * i
+                                    if c <= maxZahl:
+                                        menge |= {c}
+                        else:
+                            for number in range(
+                                int(BereichCouple[0]), int(BereichCouple[1]) + 1
+                            ):
+                                for a in around:
+                                    c = (number * i) + a
+                                    if c <= maxZahl:
+                                        menge |= {c}
+                                    d = (number * i) - a
+                                    if d > 0 and d < maxZahl:
+                                        menge |= {d}
                 else:
                     for number in range(
                         int(BereichCouple[0]), int(BereichCouple[1]) + 1
