@@ -29,6 +29,7 @@ from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
 from word_completerAlx import WordCompleter
 
 wahl15["_"] = wahl15["_15"]
+befehleBeenden = {"ende", "exit", "quit", "q", ":q"}
 
 
 def isZeilenAngabe(g):
@@ -154,6 +155,7 @@ def externCommand(cmd: str, StrNummern: str):
 
 def speichern(ketten, platzhalter, text):
     global promptMode2, textDazu0
+    print([ketten, platzhalter, text, textDazu0, promptMode2, "begin"])
     bedingung1 = len(platzhalter) > 0
     bedingung2 = len(ketten) > 0
     if bedingung1 or bedingung2:
@@ -240,6 +242,7 @@ def speichern(ketten, platzhalter, text):
     else:
         promptMode2 = PromptModus.normal
     textDazu0 = platzhalter.split()
+    print([ketten, platzhalter, text, textDazu0, promptMode2, "end"])
     return ketten, platzhalter, text
 
 
@@ -986,11 +989,13 @@ def promptVorbereitungGrosseAusgabe(
     brueche = []
     c = ""
     EineZahlenFolgeJa: dict = {}
+    if len(set(stext) & befehleBeenden) > 0:
+        stext = tuple(befehleBeenden)[0]
     return EineZahlenFolgeJa, bedingung, brueche, c, ketten, maxNum, stext
 
 
 def PromptAllesVorGroesserSchleife():
-    global promptMode2, textDazu0
+    global promptMode2, textDazu0, befehleBeenden
     pp1 = pprint.PrettyPrinter(indent=2)
     pp = pp1.pprint
     startpunkt1 = NestedCompleter(
@@ -1024,7 +1029,6 @@ def PromptAllesVorGroesserSchleife():
     promptMode = PromptModus.normal
     promptMode2 = PromptModus.normal
     warBefehl: bool
-    befehleBeenden = ("ende", "exit", "quit", "q", ":q")
     platzhalter = ""
     ketten = []
     text = ""
