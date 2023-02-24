@@ -54,6 +54,23 @@ Multiplikationen = [("Multiplikationen", "")]
 shellRowsAmount: int
 
 
+def isZeilenAngabe(g):
+    return (
+        True
+        if bool(re.match(r"^[\+1234567890,-]+$", g))  # len(g) > 0 and
+        and g[0].isdecimal()
+        and g[-1] not in ["-", "+"]
+        and "--" not in g
+        and "++" not in g
+        and "+-" not in g
+        and "-+" not in g
+        and ",+" not in g
+        and "+," not in g
+        and "-," not in g
+        else False
+    )
+
+
 def retaPromptHilfe():
     readMe = "ReTaPromptReadme.md"
     place = os.path.join(
@@ -303,6 +320,9 @@ def BereichToNumbers(MehrereBereiche: str) -> set:
 def BereichToNumbers2(
     MehrereBereiche: str, vielfache=False, maxZahl: int = 1028
 ) -> set:
+
+    if not isZeilenAngabe(MehrereBereiche):
+        return set()
 
     if not vielfache and maxZahl == 0:
         maxZahl = float("inf")

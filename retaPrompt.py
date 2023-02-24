@@ -18,7 +18,7 @@ from prompt_toolkit.completion import Completer, Completion
 from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
 
-from center import BereichToNumbers2, cliout, retaPromptHilfe
+from center import BereichToNumbers2, cliout, isZeilenAngabe, retaPromptHilfe
 from lib4tables import multiples
 from LibRetaPrompt import wahl15
 # import reta
@@ -30,23 +30,6 @@ from word_completerAlx import WordCompleter
 
 wahl15["_"] = wahl15["_15"]
 befehleBeenden = {"ende", "exit", "quit", "q", ":q"}
-
-
-def isZeilenAngabe(g):
-    return (
-        True
-        if bool(re.match(r"^[\+1234567890,-]+$", g))  # len(g) > 0 and
-        and g[0].isdecimal()
-        and g[-1] not in ["-", "+"]
-        and "--" not in g
-        and "++" not in g
-        and "+-" not in g
-        and "-+" not in g
-        and ",+" not in g
-        and "+," not in g
-        and "-," not in g
-        else False
-    )
 
 
 def anotherOberesMaximum(c, maxNum):

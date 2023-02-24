@@ -3491,15 +3491,21 @@ class Program:
                         # ):
                         # paramLines.add(str(abs(int(word))) + "v")
                     elif arg[2:20] == "primzahlvielfache=":
-                        for word in arg[20:].split(","):
-                            if (
-                                word.isdecimal()
-                                or (word[1:].isdecimal() and word[0] == neg)
-                            ) and (
-                                (int(word) > 0 and neg == "")
-                                or (int(word) < 0 and neg != "")
-                            ):
-                                paramLines.add(str(abs(int(word))) + "p")
+                        if neg == "":
+                            zahlenMenge = BereichToNumbers2(
+                                arg[2 + len("primzahlvielfache=") :]
+                            )
+                            for zahl in zahlenMenge:
+                                paramLines.add(str(zahl) + "p")
+                        # for word in arg[20:].split(","):
+                        #    if (
+                        #        word.isdecimal()
+                        #        or (word[1:].isdecimal() and word[0] == neg)
+                        #    ) and (
+                        #        (int(word) > 0 and neg == "")
+                        #        or (int(word) < 0 and neg != "")
+                        #    ):
+                        #        paramLines.add(str(abs(int(word))) + "p")
 
                     elif self.oberesMaximum(arg):
                         pass
