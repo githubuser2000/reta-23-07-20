@@ -1147,6 +1147,18 @@ function potenzenAngabenToContainer() {
 */
 
 function isZeilenAngabe(g) {
+  const x = (g.match(/[0-9]+\-[0-9]+/g) || []).length;
+  const y = (g.match(/[0-9]+\-[0-9]+\-[0-9]+/g) || []).length;
+  return (
+    /^(v?[0-9-]+[\+0-9,-]*)$/.test(g) &&
+    !["-", "+"].includes(g.slice(-1)) &&
+    ((x < 2 && y == 0) || (/^v?\-?[0-9]+[\+0-9,]*$/.test(g) && x == 0)) &&
+    !/--|\+\+|\+\-|\-\+|,\+|\+,|-,/.test(g)
+  );
+}
+
+/*
+function isZeilenAngabe(g) {
   let pattern = new RegExp("^v?[0-9-]+[\\+0-9,-]*$");
   return (
     pattern.test(g) &&
@@ -1160,7 +1172,7 @@ function isZeilenAngabe(g) {
     !g.includes("-,")
   );
 }
-
+*/
 function BereichToNumbers2(MehrereBereiche, vielfache = false, maxZahl = 1028) {
   if (MehrereBereiche.length > 0 && MehrereBereiche[0] === "v") {
     MehrereBereiche = MehrereBereiche.slice(1);

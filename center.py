@@ -55,10 +55,16 @@ shellRowsAmount: int
 
 
 def isZeilenAngabe(g):
+    x = len(re.findall(r"[0-9]+\-[0-9]+", g))
+    y = len(re.findall(r"[0-9]+\-[0-9]+\-[0-9]+", g))
     return (
         True
-        if bool(re.match(r"^v?[0-9-]+[\+0-9,-]*$", g))  # len(g) > 0 and
+        if bool(re.match(r"^v?[0-9-]+[\+0-9,]*$", g))  # len(g) > 0 and
         and g[-1] not in ["-", "+"]
+        and (
+            (x < 2 and y == 0)
+            or (bool(re.match(r"^v?\-?[0-9]+[\+0-9,]*$", g)) and x == 0)
+        )
         and "--" not in g
         and "++" not in g
         and "+-" not in g
