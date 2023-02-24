@@ -57,8 +57,7 @@ shellRowsAmount: int
 def isZeilenAngabe(g):
     return (
         True
-        if bool(re.match(r"^[\+1234567890,-]+$", g))  # len(g) > 0 and
-        and g[0].isdecimal()
+        if bool(re.match(r"^v?[0-9-]+[\+0-9,-]*$", g))  # len(g) > 0 and
         and g[-1] not in ["-", "+"]
         and "--" not in g
         and "++" not in g
@@ -320,6 +319,9 @@ def BereichToNumbers(MehrereBereiche: str) -> set:
 def BereichToNumbers2(
     MehrereBereiche: str, vielfache=False, maxZahl: int = 1028
 ) -> set:
+    if len(MehrereBereiche) > 0 and MehrereBereiche[0] == "v":
+        MehrereBereiche = MehrereBereiche[1:]
+        vielfache = True
 
     if not isZeilenAngabe(MehrereBereiche):
         return set()

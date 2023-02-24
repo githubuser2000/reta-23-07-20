@@ -7,7 +7,7 @@ from typing import Iterable, Optional, Union
 
 import lib4tables_Enum
 from center import (BereichToNumbers2, Multiplikationen, alxp, cliout,
-                    getTextWrapThings, infoLog, output, re, x)
+                    getTextWrapThings, infoLog, isZeilenAngabe, output, re, x)
 from lib4tables import isPrimMultiple, moonNumber
 from lib4tables_Enum import ST
 
@@ -219,11 +219,10 @@ class Prepare:
         @rtype: set
         @return: Alle Zeilen die dann ausgegeben werden sollen
         """
-
         results = set()
         for EinBereich in MehrereBereiche.split(","):
             if (
-                (neg == "" and len(EinBereich) > 0 and EinBereich[0].isdecimal())
+                (neg == "" and len(EinBereich) > 0)
                 or (neg == EinBereich[: len(neg)] and len(neg) > 0)
             ) and len(EinBereich) > 0:
                 EinBereich = (
@@ -242,9 +241,8 @@ class Prepare:
                 #                    and BereichCouple[1] != "0"
                 #                ):
 
-                matchedJa = re.match(r"^[\+1234567890,-]+$", EinBereich)
                 # zahlenBereichNeu = {matchedJa : EinBereich}
-                if matchedJa and len(EinBereich) > 0 and EinBereich[0].isdecimal():
+                if isZeilenAngabe(EinBereich):
                     # results.add(
                     #    "".join([BereichCouple[0], "-", symbol, "-", BereichCouple[1]])
                     # )
@@ -382,11 +380,7 @@ class Prepare:
         numRangeYesZ = set()
         if_a_AtAll = False
         for condition in paramLines:
-            if (
-                "_a_" in condition[:3]
-                and len(condition) > 3
-                and condition[3].isdecimal()
-            ):
+            if "_a_" in condition[:3] and len(condition) > 3:
                 if_a_AtAll = True
                 numRangeYesZ |= BereichToNumbers2(
                     condition[3:], False, self.hoechsteZeile[1024]
@@ -416,11 +410,7 @@ class Prepare:
         numRangeYesZ = set()
         ifZaehlungenAtAll = False
         for condition in paramLines:
-            if (
-                "_n_" in condition[:3]
-                and len(condition) > 3
-                and condition[3].isdecimal()
-            ):
+            if "_n_" in condition[:3] and len(condition) > 3:
                 numRangeYesZ |= BereichToNumbers2(
                     condition[3:], False, self.hoechsteZeile[1024]
                 )
@@ -477,11 +467,7 @@ class Prepare:
         primMultiples: list = []
         ifPrimAtAll = False
         for condition in paramLines:
-            if (
-                len(condition) > 1
-                and condition[-1] == "p"
-                and condition[:-1].isdecimal()
-            ):
+            if len(condition) > 1 and condition[-1] == "p":
                 ifPrimAtAll = True
                 primMultiples += [int(condition[:-1])]
 
@@ -537,11 +523,7 @@ class Prepare:
             numRange = cutset(ifMultiplesFromAnyAtAll, numRange, numRangeYesZ)
 
         for condition in paramLines:
-            if (
-                "_z_" in condition[:3]
-                and len(condition) > 3
-                and condition[3].isdecimal()
-            ):
+            if "_z_" in condition[:3] and len(condition) > 3:
                 numRange &= BereichToNumbers2(
                     condition[3:], False, self.hoechsteZeile[1024]
                 )
