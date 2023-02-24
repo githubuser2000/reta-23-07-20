@@ -405,9 +405,9 @@ def PromptGrosseAusgabe(
             #        else:
             #            EineZahlenFolgeJa[g] = False
             if EineZahlenFolgeJa[g]:
+                c2 = ",".join([str(zahl) for zahl in BereichToNumbers2(a, False, 0)])
                 if "w" in stext or "teiler" in stext:
                     c: str = ",".join(teiler(a)[0])
-                    c2 = c
                 else:
                     c = a
 
@@ -555,11 +555,11 @@ def PromptGrosseAusgabe(
                 )
 
         eigN, eigR = [], []
-        for a in stext:
-            if "EIGN" == a[:4]:
-                eigN += [a[4:]]
-            if "EIGR" == a[:4]:
-                eigR += [a[4:]]
+        for aa in stext:
+            if "EIGN" == aa[:4]:
+                eigN += [aa[4:]]
+            if "EIGR" == aa[:4]:
+                eigR += [aa[4:]]
 
         if len(eigN) > 0:
             warBefehl = True
