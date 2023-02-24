@@ -222,7 +222,7 @@ class Prepare:
         results = set()
         for EinBereich in MehrereBereiche.split(","):
             if (
-                (neg == "" and len(EinBereich) > 0)
+                (neg == "" and len(EinBereich) > 0 and EinBereich[0] != "-")
                 or (neg == EinBereich[: len(neg)] and len(neg) > 0)
             ) and len(EinBereich) > 0:
                 EinBereich = (
