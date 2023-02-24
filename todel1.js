@@ -1,10 +1,17 @@
-
+console.log("Hello World!");
 function isZeilenAngabe(g) {
-    let pattern = new RegExp("^v?[0-9-]+[\\+0-9,-]*$");
-    return pattern.test(g) && !["-", "+"].includes(g.slice(-1))
-        && !g.includes("--") && !g.includes("++") && !g.includes("+-")
-        && !g.includes("-+") && !g.includes(",+") && !g.includes("+,")
-        && !g.includes("-,");
+  let pattern = new RegExp("^v?[0-9-]+[\\+0-9,-]*$");
+  return (
+    pattern.test(g) &&
+    !["-", "+"].includes(g.slice(-1)) &&
+    !g.includes("--") &&
+    !g.includes("++") &&
+    !g.includes("+-") &&
+    !g.includes("-+") &&
+    !g.includes(",+") &&
+    !g.includes("+,") &&
+    !g.includes("-,")
+  );
 }
 
 function BereichToNumbers2(MehrereBereiche, vielfache = false, maxZahl = 1028) {
@@ -127,7 +134,7 @@ function BereichToNumbers2_EinBereich_Menge_vielfache(
 ) {
   let i = 0;
   if (around.length === 0 || new Set(around).has(0)) {
-    while (around.every((a) => int(BereichCouple[0]) * i < maxZahl - a)) {
+    while (around.every((a) => parseInt(BereichCouple[0]) * i < maxZahl - a)) {
       i += 1;
       for (
         let number = parseInt(BereichCouple[0]);
@@ -143,7 +150,7 @@ function BereichToNumbers2_EinBereich_Menge_vielfache(
       }
     }
   } else {
-    while (around.every((a) => int(BereichCouple[0]) * i < maxZahl - a)) {
+    while (around.every((a) => parseInt(BereichCouple[0]) * i < maxZahl - a)) {
       i += 1;
       for (
         let number = parseInt(BereichCouple[0]);
@@ -164,7 +171,6 @@ function BereichToNumbers2_EinBereich_Menge_vielfache(
     }
   }
 }
-
 function BereichToNumbers2_EinBereich_Menge_nichtVielfache(
   BereichCouple,
   around,
@@ -188,3 +194,13 @@ function BereichToNumbers2_EinBereich_Menge_nichtVielfache(
     }
   }
 }
+module.exports = {
+  isZeilenAngabe: isZeilenAngabe,
+  BereichToNumbers2: BereichToNumbers2,
+  BereichToNumbers2_EinBereich: BereichToNumbers2_EinBereich,
+  BereichToNumbers2_EinBereich_Menge: BereichToNumbers2_EinBereich_Menge,
+  BereichToNumbers2_EinBereich_Menge_vielfache:
+    BereichToNumbers2_EinBereich_Menge_vielfache,
+  BereichToNumbers2_EinBereich_Menge_nichtVielfache:
+    BereichToNumbers2_EinBereich_Menge_nichtVielfache,
+};

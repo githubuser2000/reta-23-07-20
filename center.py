@@ -359,16 +359,20 @@ def BereichToNumbers2_EinBereich(EinBereich, dazu, hinfort, maxZahl, vielfache):
                 EinBereich += "+" + "+".join(BereichTuple2[1:])
         BereichCouple: list[str] = EinBereich.split("-")
 
-        BereichToNumbers2_EinBereich_Menge(BereichCouple, around, maxZahl, menge, vielfache)
+        BereichToNumbers2_EinBereich_Menge(
+            BereichCouple, around, maxZahl, menge, vielfache
+        )
 
 
-def BereichToNumbers2_EinBereich_Menge(BereichCouple, around, maxZahl, menge, vielfache):
+def BereichToNumbers2_EinBereich_Menge(
+    BereichCouple, around, maxZahl, menge, vielfache
+):
     if (
-            len(BereichCouple) == 2
-            and BereichCouple[0].isdecimal()
-            and BereichCouple[0] != "0"
-            # and BereichCouple[1].isdecimal()
-            # and BereichCouple[1] != "0"
+        len(BereichCouple) == 2
+        and BereichCouple[0].isdecimal()
+        and BereichCouple[0] != "0"
+        # and BereichCouple[1].isdecimal()
+        # and BereichCouple[1] != "0"
     ):
         BereichPlusTuples = BereichCouple[1].split("+")
         if len(BereichPlusTuples) < 2:
@@ -385,15 +389,19 @@ def BereichToNumbers2_EinBereich_Menge(BereichCouple, around, maxZahl, menge, vi
                 around = numList[1:]
                 BereichCouple[1] = numList[0]
         if vielfache:
-            BereichToNumbers2_EinBereich_Menge_vielfache(BereichCouple, around, maxZahl, menge)
+            BereichToNumbers2_EinBereich_Menge_vielfache(
+                BereichCouple, around, maxZahl, menge
+            )
         else:
-            BereichToNumbers2_EinBereich_Menge_nichtVielfache(BereichCouple, around, maxZahl, menge)
+            BereichToNumbers2_EinBereich_Menge_nichtVielfache(
+                BereichCouple, around, maxZahl, menge
+            )
 
 
-def BereichToNumbers2_EinBereich_Menge_nichtVielfache(BereichCouple, around, maxZahl, menge):
-    for number in range(
-            int(BereichCouple[0]), int(BereichCouple[1]) + 1
-    ):
+def BereichToNumbers2_EinBereich_Menge_nichtVielfache(
+    BereichCouple, around, maxZahl, menge
+):
+    for number in range(int(BereichCouple[0]), int(BereichCouple[1]) + 1):
         for a in around:
             c = number + a
             if c < maxZahl:
@@ -406,25 +414,17 @@ def BereichToNumbers2_EinBereich_Menge_nichtVielfache(BereichCouple, around, max
 def BereichToNumbers2_EinBereich_Menge_vielfache(BereichCouple, around, maxZahl, menge):
     i = 0
     if len(around) == 0 or len(set(around) & {0}) == 1:
-        while all(
-                [int(BereichCouple[0]) * i < maxZahl - a for a in around]
-        ):
+        while all([int(BereichCouple[0]) * i < maxZahl - a for a in around]):
             i += 1
-            for number in range(
-                    int(BereichCouple[0]), int(BereichCouple[1]) + 1
-            ):
+            for number in range(int(BereichCouple[0]), int(BereichCouple[1]) + 1):
                 for a in around:
                     c = number * i
                     if c <= maxZahl:
                         menge |= {c}
     else:
-        while all(
-                [int(BereichCouple[0]) * i < maxZahl - a for a in around]
-        ):
+        while all([int(BereichCouple[0]) * i < maxZahl - a for a in around]):
             i += 1
-            for number in range(
-                    int(BereichCouple[0]), int(BereichCouple[1]) + 1
-            ):
+            for number in range(int(BereichCouple[0]), int(BereichCouple[1]) + 1):
                 for a in around:
                     c = (number * i) + a
                     if c <= maxZahl:
