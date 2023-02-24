@@ -575,7 +575,6 @@ def PromptGrosseAusgabe(
                     "--konzept=" + ",".join(eigN),
                     "--breite=" + str(int(shellRowsAmountStr) - 2),
                     "-ausgabe",
-                    "--spaltenreihenfolgeundnurdiese=1,3,4",
                     *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
                 kette += ketten
@@ -600,7 +599,6 @@ def PromptGrosseAusgabe(
                     "--konzept2=" + ",".join(eigR),
                     "--breite=" + str(int(shellRowsAmountStr) - 2),
                     "-ausgabe",
-                    "--spaltenreihenfolgeundnurdiese=1,3,4",
                     *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
                 kette += ketten
