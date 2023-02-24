@@ -3463,18 +3463,18 @@ class Program:
                     elif arg[2 : 2 + len("potenzenvonzahlen=")] == "potenzenvonzahlen=":
                         for word in arg[2 + len("potenzenvonzahlen=") :].split(","):
                             if len(word) > 0 and (
-                                bool(re.match(r"^[\+1234567890,-]+$", word))
+                                (word[0] != "-" and neg == "")
+                                or (word[0] == "-" and neg != "")
                             ):
+                                if word[0] == "-" and neg != "":
+                                    word = word[1:]
                                 infragekommend = tuple(
                                     BereichToNumbers2(
                                         word, False, self.tables.hoechsteZeile[1024] + 2
                                     )
                                 )
                                 for number in infragekommend:
-                                    if (word[0] != "-" and neg == "") or (
-                                        word[0] == "-" and neg != ""
-                                    ):
-                                        paramLines.add(str(number) + "^")
+                                    paramLines.add(str(number) + "^")
                     elif arg[2:21] == "vielfachevonzahlen=":
                         paramLines |= (
                             self.tables.getPrepare.parametersCmdWithSomeBereich(
