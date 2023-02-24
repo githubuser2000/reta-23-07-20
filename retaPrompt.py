@@ -511,7 +511,8 @@ def PromptGrosseAusgabe(
                 *["--keineleereninhalte" if "e" in stext else ""],
             ] + returnOnlyParasAsList(stext)
             kette += ketten
-            print(" ".join(kette))
+            if "e" not in stext:
+                print(" ".join(kette))
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -541,7 +542,8 @@ def PromptGrosseAusgabe(
                     *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
                 kette += ketten
-                print(" ".join(kette))
+                if "e" not in stext:
+                    print(" ".join(kette))
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
@@ -562,7 +564,8 @@ def PromptGrosseAusgabe(
                     *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
                 kette += ketten
-                print(" ".join(kette))
+                if "e" not in stext:
+                    print(" ".join(kette))
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
@@ -588,7 +591,8 @@ def PromptGrosseAusgabe(
                     *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
                 kette += ketten
-                print(" ".join(kette))
+                if "e" not in stext:
+                    print(" ".join(kette))
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
@@ -610,7 +614,8 @@ def PromptGrosseAusgabe(
                     *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
                 kette += ketten
-                print(" ".join(kette))
+                if "e" not in stext:
+                    print(" ".join(kette))
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
@@ -671,7 +676,8 @@ def PromptGrosseAusgabe(
                 *["--keineleereninhalte" if "e" in stext else ""],
             ] + returnOnlyParasAsList(stext)
             kette += ketten
-            print(" ".join(kette))
+            if "e" not in stext:
+                print(" ".join(kette))
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -693,7 +699,8 @@ def PromptGrosseAusgabe(
                 *["--keineleereninhalte" if "e" in stext else ""],
             ] + returnOnlyParasAsList(stext)
             kette += ketten
-            print(" ".join(kette))
+            if "e" not in stext:
+                print(" ".join(kette))
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -718,7 +725,8 @@ def PromptGrosseAusgabe(
                 *["--keineleereninhalte" if "e" in stext else ""],
             ] + returnOnlyParasAsList(stext)
             kette += ketten
-            print(" ".join(kette))
+            if "e" not in stext:
+                print(" ".join(kette))
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -740,7 +748,8 @@ def PromptGrosseAusgabe(
                 *["--keineleereninhalte" if "e" in stext else ""],
             ] + returnOnlyParasAsList(stext)
             kette += ketten
-            print(" ".join(kette))
+            if "e" not in stext:
+                print(" ".join(kette))
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -764,7 +773,8 @@ def PromptGrosseAusgabe(
                 *["--keineleereninhalte" if "e" in stext else ""],
             ] + returnOnlyParasAsList(stext)
             kette += ketten
-            print(" ".join(kette))
+            if "e" not in stext:
+                print(" ".join(kette))
             reta.Program(
                 kette,
                 int(shellRowsAmountStr),
@@ -797,7 +807,8 @@ def PromptGrosseAusgabe(
                     *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
                 kette += ketten
-                print(" ".join(kette))
+                if "e" not in stext:
+                    print(" ".join(kette))
                 reta.Program(
                     kette,
                     int(shellRowsAmountStr),
@@ -915,7 +926,7 @@ def promptVorbereitungGrosseAusgabe(
                         and len(buchst) == 0
                         and promptMode2 != PromptModus.AusgabeSelektiv
                     ):
-                        textDazu += ["mulpri", "a", "t", "w"]
+                        textDazu += ["mulpri", "a", "t", "w", "e"]
 
             if len(textDazu) > 0:
                 stext2 += textDazu
