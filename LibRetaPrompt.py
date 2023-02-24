@@ -6,6 +6,13 @@ from center import Primzahlkreuz_pro_contra_strs
 retaProgram = reta.Program([sys.argv[0], "-nichts"])
 mainParas = ["-" + a for a in retaProgram.mainParaCmds]
 spalten = ["--" + a[0] + "=" for a in retaProgram.paraDict.keys()]
+eigsN, eigsR = [], []
+for pp in retaProgram.paraDict.keys():
+    if pp[0] == "konzept":
+        eigsN += [pp[1]]
+    elif pp[0] == "konzept2":
+        eigsR += [pp[1]]
+
 #
 #
 # DAS SOLLTE ICH BESSER ALLES ORDENTLICH IN RETA.PY PACKEN, STATT ES HIER AUSZUSCHREIBEN, WEIL SONST DOPPELT!
@@ -186,5 +193,6 @@ befehle = ["15" + a for a in wahl15.keys()] + [
     "BefehlSpeichernDavor",
     "s",
 ]
+befehle += ["EIGN" + a for a in eigsN] + ["EIGR" + a for a in eigsR]
 
 befehle2: set = set(befehle) - {"reta"}

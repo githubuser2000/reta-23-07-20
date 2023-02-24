@@ -554,6 +554,63 @@ def PromptGrosseAusgabe(
                     int(shellRowsAmountStr),
                 )
 
+        eigN, eigR = [], []
+        for a in stext:
+            if "EIGN" == a[:4]:
+                eigN += [a[4:]]
+            if "EIGR" == a[:4]:
+                eigR += [a[4:]]
+
+        if len(eigN) > 0:
+            warBefehl = True
+            if len(c) > 0:
+                import reta
+
+                kette = [
+                    "reta",
+                    "-zeilen",
+                    zeiln1,
+                    zeiln2,
+                    "-spalten",
+                    "--konzept=" + ",".join(eigN),
+                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                    "-ausgabe",
+                    "--spaltenreihenfolgeundnurdiese=1,3,4",
+                    *["--keineleereninhalte" if "e" in stext else ""],
+                ] + returnOnlyParasAsList(stext)
+                kette += ketten
+                if "e" not in stext:
+                    print(" ".join(kette))
+                reta.Program(
+                    kette,
+                    int(shellRowsAmountStr),
+                )
+
+        if len(eigR) > 0:
+            warBefehl = True
+            if len(c) > 0:
+                import reta
+
+                kette = [
+                    "reta",
+                    "-zeilen",
+                    zeiln1,
+                    zeiln2,
+                    "-spalten",
+                    "--konzept2=" + ",".join(eigR),
+                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                    "-ausgabe",
+                    "--spaltenreihenfolgeundnurdiese=1,3,4",
+                    *["--keineleereninhalte" if "e" in stext else ""],
+                ] + returnOnlyParasAsList(stext)
+                kette += ketten
+                if "e" not in stext:
+                    print(" ".join(kette))
+                reta.Program(
+                    kette,
+                    int(shellRowsAmountStr),
+                )
+
         if len({"universum"} & set(stext)) > 0 or (
             "u" in stext and "abc" not in stext and "abcd" not in stext
         ):
