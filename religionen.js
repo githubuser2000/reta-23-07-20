@@ -1133,6 +1133,7 @@ function toggleChkSpalten(radiobutton) {
   else if (!spaltenWahl.checked) chk_spalten.style.display = "none";
 }
 
+/*
 function potenzenAngabenToContainer() {
   text = document.getElementById("potenzenErlaubtText").value;
   var zeilenAngaben = new Set();
@@ -1143,6 +1144,7 @@ function potenzenAngabenToContainer() {
   }
   return zeilenAngaben;
 }
+*/
 
 function isZeilenAngabe(g) {
   let pattern = new RegExp("^v?[0-9-]+[\\+0-9,-]*$");
@@ -1357,12 +1359,15 @@ function zeilenAngabenToMengeDirekt(welches = 0, v = false) {
     case 5:
       text = document.getElementById("VielfacheErlaubtText").value;
       break;
+    case 6:
+      text = document.getElementById("potenzenErlaubtText").value;
+      break;
     default:
       text = "Ungültige Auswahl";
       break;
   }
   erlaubteZeilen = BereichToNumbers2(text, v);
-  window.alert(Array.from(erlaubteZeilen).join(" "));
+  //window.alert(Array.from(erlaubteZeilen).join(" "));
   return erlaubteZeilen;
 }
 
@@ -1537,8 +1542,8 @@ function makeAllowedZeilenFromPrimVielfacher(zeilenAngaben) {
     .getElementsByClassName("r_0");
   for (var i = 0; i < 1025; i++)
     for (var k = 0; k < zeilenAngaben.length; k++)
-      for (var l = zeilenAngaben[k][0]; l <= zeilenAngaben[k][1]; l++)
-        if (zahlIstVielfacherEinerPrimzahl(i, l)) erlaubteZeilen.add(i);
+      if (zahlIstVielfacherEinerPrimzahl(i, zeilenAngaben[k]))
+        erlaubteZeilen.add(i);
   return erlaubteZeilen;
 }
 
@@ -1595,8 +1600,8 @@ function makeAllowedZeilenFromPrimZahlKreuzRadius(zeilenAngaben) {
   erlaubteZeilen = new Set();
   for (var i = 1; i < 1025; i++)
     for (var k = 0; k < zeilenAngaben.length; k++)
-      for (var l = zeilenAngaben[k][0]; l <= zeilenAngaben[k][1]; l++)
-        if (l == Math.floor((i - 1) / 24) + 1) erlaubteZeilen.add(i);
+      if (zeilenAngaben[k] == Math.floor((i - 1) / 24) + 1)
+        erlaubteZeilen.add(i);
 
   return zeilenAngaben;
 }
@@ -1692,7 +1697,7 @@ function zeilenLetztendlichZeigenVerstecken(
 }
 
 function clickPotenzenErlaubenUsw() {
-  makeAllerlaubteZeilenPotenzen(potenzenAngabenToContainer());
+  makeAllerlaubteZeilenPotenzen(zeilenAngabenToMengeDirekt(6));
   get_r__SpaltenNummern();
   erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(2);
 }
@@ -1722,7 +1727,8 @@ function clickZaehlungenErlaubenUsw() {
   erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(4);
 }
 function clickPrimVielfacheErlaubenUsw() {
-  makeAllowedZeilenFromPrimVielfacher(zeilenAngabenToContainer(3));
+  //makeAllowedZeilenFromPrimVielfacher(zeilenAngabenToContainer(3));
+  makeAllowedZeilenFromPrimVielfacher(zeilenAngabenToMengeDirekt(3));
   get_r__SpaltenNummern();
   erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(5);
 }
@@ -1733,7 +1739,7 @@ function clickPrimRichtungenErlaubenUsw() {
 }
 
 function clickPrimZahlKreuzRadiusErlaubenUsw() {
-  makeAllowedZeilenFromPrimZahlKreuzRadius(zeilenAngabenToContainer(4));
+  makeAllowedZeilenFromPrimZahlKreuzRadius(zeilenAngabenToMengeDirekt(4));
   get_r__SpaltenNummern();
   erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(7);
 }
