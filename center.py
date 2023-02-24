@@ -335,85 +335,100 @@ def BereichToNumbers2(
     menge: Optional[set[int]]
 
     for EinBereich in Bereiche:
-        if len(EinBereich) > 1 and EinBereich[0] == "-":
-            EinBereich = EinBereich[1:]
-            menge = hinfort
-        elif len(EinBereich) > 0 and EinBereich[0] != "-":
-            menge = dazu
-        else:
-            menge = None
-
-        around = []
-        if menge is not None:
-            BereichTuple2: list[str] = EinBereich.split("+")
-            if EinBereich.isdecimal():
-                EinBereich = EinBereich + "-" + EinBereich
-            elif len(BereichTuple2) > 0 and BereichTuple2[0].isdecimal():
-                EinBereich = BereichTuple2[0] + "-" + BereichTuple2[0]
-                if len(BereichTuple2) > 1:
-                    EinBereich += "+" + "+".join(BereichTuple2[1:])
-            BereichCouple: list[str] = EinBereich.split("-")
-
-            if (
-                len(BereichCouple) == 2
-                and BereichCouple[0].isdecimal()
-                and BereichCouple[0] != "0"
-                # and BereichCouple[1].isdecimal()
-                # and BereichCouple[1] != "0"
-            ):
-                BereichPlusTuples = BereichCouple[1].split("+")
-                if len(BereichPlusTuples) < 2:
-                    around = [0]
-                else:
-                    richtig = True
-                    numList = []
-                    for t2 in BereichPlusTuples:
-                        if t2.isdecimal():
-                            numList += [int(t2)]
-                        else:
-                            richtig = False
-                    if richtig and len(numList) > 0:
-                        around = numList[1:]
-                        BereichCouple[1] = numList[0]
-                if vielfache:
-                    i = 0
-                    if len(around) == 0 or len(set(around) & {0}) == 1:
-                        while all(
-                            [int(BereichCouple[0]) * i < maxZahl - a for a in around]
-                        ):
-                            i += 1
-                            for number in range(
-                                int(BereichCouple[0]), int(BereichCouple[1]) + 1
-                            ):
-                                for a in around:
-                                    c = number * i
-                                    if c <= maxZahl:
-                                        menge |= {c}
-                    else:
-                        while all(
-                            [int(BereichCouple[0]) * i < maxZahl - a for a in around]
-                        ):
-                            i += 1
-                            for number in range(
-                                int(BereichCouple[0]), int(BereichCouple[1]) + 1
-                            ):
-                                for a in around:
-                                    c = (number * i) + a
-                                    if c <= maxZahl:
-                                        menge |= {c}
-                                    d = (number * i) - a
-                                    if d > 0 and d < maxZahl:
-                                        menge |= {d}
-                else:
-                    for number in range(
-                        int(BereichCouple[0]), int(BereichCouple[1]) + 1
-                    ):
-                        for a in around:
-                            c = number + a
-                            if c < maxZahl:
-                                menge |= {c}
-                            d = number - a
-                            if d > 0 and d < maxZahl:
-                                menge |= {d}
+        BereichToNumbers2_EinBereich(EinBereich, dazu, hinfort, maxZahl, vielfache)
     # print(str(dazu - hinfort))
     return dazu - hinfort
+
+
+def BereichToNumbers2_EinBereich(EinBereich, dazu, hinfort, maxZahl, vielfache):
+    if len(EinBereich) > 1 and EinBereich[0] == "-":
+        EinBereich = EinBereich[1:]
+        menge = hinfort
+    elif len(EinBereich) > 0 and EinBereich[0] != "-":
+        menge = dazu
+    else:
+        menge = None
+    around = []
+    if menge is not None:
+        BereichTuple2: list[str] = EinBereich.split("+")
+        if EinBereich.isdecimal():
+            EinBereich = EinBereich + "-" + EinBereich
+        elif len(BereichTuple2) > 0 and BereichTuple2[0].isdecimal():
+            EinBereich = BereichTuple2[0] + "-" + BereichTuple2[0]
+            if len(BereichTuple2) > 1:
+                EinBereich += "+" + "+".join(BereichTuple2[1:])
+        BereichCouple: list[str] = EinBereich.split("-")
+
+        BereichToNumbers2_EinBereich_Menge(BereichCouple, around, maxZahl, menge, vielfache)
+
+
+def BereichToNumbers2_EinBereich_Menge(BereichCouple, around, maxZahl, menge, vielfache):
+    if (
+            len(BereichCouple) == 2
+            and BereichCouple[0].isdecimal()
+            and BereichCouple[0] != "0"
+            # and BereichCouple[1].isdecimal()
+            # and BereichCouple[1] != "0"
+    ):
+        BereichPlusTuples = BereichCouple[1].split("+")
+        if len(BereichPlusTuples) < 2:
+            around = [0]
+        else:
+            richtig = True
+            numList = []
+            for t2 in BereichPlusTuples:
+                if t2.isdecimal():
+                    numList += [int(t2)]
+                else:
+                    richtig = False
+            if richtig and len(numList) > 0:
+                around = numList[1:]
+                BereichCouple[1] = numList[0]
+        if vielfache:
+            BereichToNumbers2_EinBereich_Menge_vielfache(BereichCouple, around, maxZahl, menge)
+        else:
+            BereichToNumbers2_EinBereich_Menge_nichtVielfache(BereichCouple, around, maxZahl, menge)
+
+
+def BereichToNumbers2_EinBereich_Menge_nichtVielfache(BereichCouple, around, maxZahl, menge):
+    for number in range(
+            int(BereichCouple[0]), int(BereichCouple[1]) + 1
+    ):
+        for a in around:
+            c = number + a
+            if c < maxZahl:
+                menge |= {c}
+            d = number - a
+            if d > 0 and d < maxZahl:
+                menge |= {d}
+
+
+def BereichToNumbers2_EinBereich_Menge_vielfache(BereichCouple, around, maxZahl, menge):
+    i = 0
+    if len(around) == 0 or len(set(around) & {0}) == 1:
+        while all(
+                [int(BereichCouple[0]) * i < maxZahl - a for a in around]
+        ):
+            i += 1
+            for number in range(
+                    int(BereichCouple[0]), int(BereichCouple[1]) + 1
+            ):
+                for a in around:
+                    c = number * i
+                    if c <= maxZahl:
+                        menge |= {c}
+    else:
+        while all(
+                [int(BereichCouple[0]) * i < maxZahl - a for a in around]
+        ):
+            i += 1
+            for number in range(
+                    int(BereichCouple[0]), int(BereichCouple[1]) + 1
+            ):
+                for a in around:
+                    c = (number * i) + a
+                    if c <= maxZahl:
+                        menge |= {c}
+                    d = (number * i) - a
+                    if d > 0 and d < maxZahl:
+                        menge |= {d}
