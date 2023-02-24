@@ -375,12 +375,11 @@ def BereichToNumbers2(
                         BereichCouple[1] = numList[0]
                 if vielfache:
                     i = 0
-                    while all(
-                        [int(BereichCouple[0]) * i < maxZahl - a for a in around]
-                    ):
-                        i += 1
-                        if len(around) == 0 or len(set(around) & {0}) == 1:
-
+                    if len(around) == 0 or len(set(around) & {0}) == 1:
+                        while all(
+                            [int(BereichCouple[0]) * i < maxZahl - a for a in around]
+                        ):
+                            i += 1
                             for number in range(
                                 int(BereichCouple[0]), int(BereichCouple[1]) + 1
                             ):
@@ -388,7 +387,11 @@ def BereichToNumbers2(
                                     c = number * i
                                     if c <= maxZahl:
                                         menge |= {c}
-                        else:
+                    else:
+                        while all(
+                            [int(BereichCouple[0]) * i < maxZahl - a for a in around]
+                        ):
+                            i += 1
                             for number in range(
                                 int(BereichCouple[0]), int(BereichCouple[1]) + 1
                             ):
