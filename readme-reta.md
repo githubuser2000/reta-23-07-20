@@ -158,7 +158,8 @@ Nebenparameter beginnen mit 2 Minus --.
   * Die 10 mit Abstand Null ist die 10 selbst.
   * Abstand 2 zur 10 ist 8 und 12
   * Abstand 5 zur 10 ist 5 und 15
-
+* v5
+  * Bei (fast) sämtlichen solchen Zahlenangaben kann ein v davor geschrieben werden: Das führt dazu, dass Vielfacher, statt nur die Zahl, verwendet werden: in dem Beispiel v5 ist es damit statt der Zahl 5 nun auch die Zahlen 5,10,15,20,25, usw.
 
 ### Beispiel (eine Zeile, nicht mehrere):
         `reta -zeilen --vorhervonausschnitt=1-9 -spalten --religionen=sternpolygon,gleichfoermigespolygon --galaxie=babylon --breite=50`
