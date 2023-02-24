@@ -1366,11 +1366,11 @@ function zeilenAngabenToMengeDirekt(welches = 0, v = false) {
       text = "Ungültige Auswahl";
       break;
   }
-  erlaubteZeilen = BereichToNumbers2(text, v);
+  erlaubteZeilen = BereichToNumbers2(text, welches == 5 || v ? true : false);
   //window.alert(Array.from(erlaubteZeilen).join(" "));
   return erlaubteZeilen;
 }
-
+/*
 function zeilenAngabenToContainer(welches) {
   if (welches == 1) text = document.getElementById("zeilenErlaubtText").value;
   if (welches == 2) text = document.getElementById("zaehlungErlaubtText").value;
@@ -1396,7 +1396,8 @@ function zeilenAngabenToContainer(welches) {
   }
   return zeilenAngaben;
 }
-
+*/
+/*
 function vielfacherAngabentoContainer() {
   text = document.getElementById("VielfacheErlaubtText").value;
   var vielfacherAngaben = new Set();
@@ -1411,7 +1412,7 @@ function vielfacherAngabentoContainer() {
   }
   return vielfacherAngaben;
 }
-
+*/
 var erlaubteZeilen = new Set();
 
 function makeAllerlaubteZeilenVielfacher(zeilenAngaben) {
