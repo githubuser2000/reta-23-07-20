@@ -1540,7 +1540,6 @@ function zeilenAngabenToMengeDirekt(welches) {
   if (welches == 3) text = document.getElementById("primVielfache").value;
   if (welches == 4) text = document.getElementById("primZahlKreuzRadius").value;
   erlaubteZeilen = BereichToNumbers2(text);
-  window.alert(Array.from(erlaubteZeilen).join(" "));
   return erlaubteZeilen;
 }
 
@@ -1731,20 +1730,19 @@ function zahlIstVielfacherEinerPrimzahl(zahl, vielfacher) {
   return stimmt;
 }
 
-function makeAllowedZeilenFromZaehlung(zeilenAngaben) {
-  zeilenAngaben = Array.from(zeilenAngaben);
-  erlaubteZeilen = new Set();
+function makeAllowedZeilenFromZaehlung(zeilenMenge) {
   ersteSpalte = document
     .getElementById("bigtable")
     .getElementsByClassName("r_0");
-  erlaubteZaehlungen = new Set();
-  for (var i = 0; i < zeilenAngaben.length; i++)
-    for (var k = zeilenAngaben[i][0]; k <= zeilenAngaben[i][1]; k++)
-      erlaubteZaehlungen.add(k);
+  erlaubteZaehlungen = zeilenMenge;
+  erlaubteZeilen = new Set();
+  //window.alert(Array.from(erlaubteZaehlungen).join(" "));
+  //window.alert(ersteSpalte.length.toString());
 
   for (i = 0; i < ersteSpalte.length; i++) {
     //window.alert(ersteSpalte[i].getElementsByTagName("label")[0].innerHTML);
     zaehlung = parseInt(ersteSpalte[i].innerHTML.trim());
+    //window.alert(zaehlung.toString());
     if (zaehlung != "NaN" && erlaubteZaehlungen.has(zaehlung)) {
       wirklicheZeile = ersteSpalte[i].className.match(/z_\s*(\d+)/g);
       //window.alert(ersteSpalte[i].className);
@@ -1895,7 +1893,7 @@ function clickZeilenErlaubenUsw() {
 }
 
 function clickZaehlungenErlaubenUsw() {
-  makeAllowedZeilenFromZaehlung(zeilenAngabenToContainer(2));
+  makeAllowedZeilenFromZaehlung(zeilenAngabenToMengeDirekt(2));
   get_r__SpaltenNummern();
   erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(4);
 }
