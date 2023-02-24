@@ -51,8 +51,11 @@ def isZeilenAngabe(g):
 
 def anotherOberesMaximum(c, maxNum):
     maximizing = list(BereichToNumbers2(c, False, 0))
-    maximizing.sort()
-    maxNum2 = maximizing[-1]
+    if len(maximizing) > 0:
+        maximizing.sort()
+        maxNum2 = maximizing[-1]
+    else:
+        maxNum2 = maxNum
     return "--oberesmaximum=" + str(max(maxNum, maxNum2) + 1)
 
 
@@ -79,7 +82,8 @@ def teiler(zahlenBereichsAngabe):
     for each1 in ZahlenBereichMenge:
         for each2 in set(multiples(int(each1))):
             ZahlenWbereichMenge |= set(each2)
-    ZahlenWbereichMenge -= {1}
+    if ZahlenWbereichMenge != {1}:
+        ZahlenWbereichMenge -= {1}
     zahlenWBereichStringListe = [str(each2) for each2 in ZahlenWbereichMenge]
     return zahlenWBereichStringListe, ZahlenWbereichMenge
 
@@ -155,7 +159,7 @@ def externCommand(cmd: str, StrNummern: str):
 
 def speichern(ketten, platzhalter, text):
     global promptMode2, textDazu0
-    print([ketten, platzhalter, text, textDazu0, promptMode2, "begin"])
+    # print([ketten, platzhalter, text, textDazu0, promptMode2, "begin"])
     bedingung1 = len(platzhalter) > 0
     bedingung2 = len(ketten) > 0
     if bedingung1 or bedingung2:
@@ -241,8 +245,27 @@ def speichern(ketten, platzhalter, text):
         promptMode2 = PromptModus.AusgabeSelektiv
     else:
         promptMode2 = PromptModus.normal
-    textDazu0 = platzhalter.split()
-    print([ketten, platzhalter, text, textDazu0, promptMode2, "end"])
+    (
+        EineZahlenFolgeJaX,
+        bedingungX,
+        bruecheX,
+        cX,
+        ketten2X,
+        maxNum2X,
+        stextX,
+    ) = promptVorbereitungGrosseAusgabe(
+        ketten,
+        platzhalter,
+        PromptModus.normal,
+        PromptModus.normal,
+        PromptModus.normal,
+        platzhalter,
+        [],
+    )
+
+    # textDazu0 = platzhalter.split()
+    textDazu0 = stextX
+    # print([ketten, platzhalter, text, textDazu0, promptMode2, "end"])
     return ketten, platzhalter, text
 
 
@@ -792,7 +815,7 @@ def PromptGrosseAusgabe(
                 + "') ist tatsächlich ein Befehl (oder es sind mehrere), aber es gibt nichts auszugeben.",
             )
         else:
-            print("Das ist kein Befehl! -> " + str(stext))
+            print("Das ist kein Befehl! -> '{}''".format(" ".join(stext)))
     return loggingSwitch
 
 
@@ -991,6 +1014,7 @@ def promptVorbereitungGrosseAusgabe(
     EineZahlenFolgeJa: dict = {}
     if len(set(stext) & befehleBeenden) > 0:
         stext = tuple(befehleBeenden)[0]
+    # print([EineZahlenFolgeJa, bedingung, brueche, c, ketten, maxNum, stext])
     return EineZahlenFolgeJa, bedingung, brueche, c, ketten, maxNum, stext
 
 
