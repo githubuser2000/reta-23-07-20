@@ -29,15 +29,15 @@ Primzahlkreuz_pro_contra_strs = (
     "Primzahlkreuz_pro_contra",
     "nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)",
 )
-try:
-    from numba import jit
-except:
-
-    def jit(nopython=None, parallel=True, cache=True):
-        def _jit(f):
-            return f
-
-        return _jit
+#try:
+#    from numba import jit
+#except:
+#
+#    def jit(nopython=None, parallel=True, cache=True):
+#        def _jit(f):
+#            return f
+#
+#        return _jit
 
 
 # originalLinesRange = range(1028)  # Maximale Zeilenanzahl
@@ -288,7 +288,7 @@ def unique_everseen(iterable, key=None):
                 yield element
 
 
-@jit(nopython=True, parallel=True, cache=True)
+#@jit(nopython=True, parallel=True, cache=True)
 def BereichToNumbers(MehrereBereiche: str) -> set:
 
     Bereiche: list[str] = MehrereBereiche.split(",")
@@ -321,7 +321,7 @@ def BereichToNumbers(MehrereBereiche: str) -> set:
     return dazu - hinfort
 
 
-@jit(nopython=True, parallel=True, cache=True)
+#@jit(nopython=True, parallel=True, cache=True)
 def BereichToNumbers2(
     MehrereBereiche: str, vielfache=False, maxZahl: int = 1028
 ) -> set:
