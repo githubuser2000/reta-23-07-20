@@ -524,7 +524,9 @@ class Prepare:
 
         for condition in paramLines:
             if "_z_" in condition[:3] and len(condition) > 3:
-                numRange2Map = {i: a for i, a in enumerate(numRange)}
+                numRangeList = list(numRange)
+                numRangeList.sort()
+                numRange2Map = {i: a for i, a in enumerate(numRangeList)}
                 NumRangeNeu = set(numRange2Map.keys()) & BereichToNumbers2(
                     condition[3:], False, self.hoechsteZeile[1024]
                 )
@@ -533,7 +535,9 @@ class Prepare:
                     numRange |= {numRange2Map[a]}
         for condition in paramLines:
             if "_y_" in condition[:3] and len(condition) > 3:
-                numRange2Map = {i: a for i, a in enumerate(numRange)}
+                numRangeList = list(numRange)
+                numRangeList.sort()
+                numRange2Map = {i: a for i, a in enumerate(numRangeList)}
                 NumRangeNeu = set(numRange2Map.keys()) & BereichToNumbers2(
                     condition[3:], True, self.hoechsteZeile[1024]
                 )
