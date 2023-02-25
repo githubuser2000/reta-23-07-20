@@ -35,7 +35,9 @@ Nebenparameter beginnen mit 2 Minus --.
     * 1,2,3,4,5,...
 * --vorhervonausschnitt=
     * 1-5,7-10,14,20
-* --nachtraeglichdavon=
+* --nachtraeglichneuabzaehlungvielfache=
+    * 3-6,8
+* --nachtraeglichneuabzaehlung=
     * 3-6,8
 * --potenzenvonzahlen=
     * 2,3

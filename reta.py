@@ -3515,10 +3515,16 @@ class Program:
                                 arg[22:], "a", neg
                             )
                         )
-                    elif arg[2:21] == "nachtraeglichdavon=":
+                    elif arg[2:38] == "nachtraeglichneuabzaehlungvielfache=":
                         paramLines |= (
                             self.tables.getPrepare.parametersCmdWithSomeBereich(
-                                arg[21:], "z", neg
+                                arg[38:], "y", neg
+                            )
+                        )
+                    elif arg[2:29] == "nachtraeglichneuabzaehlung=":
+                        paramLines |= (
+                            self.tables.getPrepare.parametersCmdWithSomeBereich(
+                                arg[29:], "z", neg
                             )
                         )
                     elif len(neg) > 0:
