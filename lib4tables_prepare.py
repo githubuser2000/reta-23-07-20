@@ -522,28 +522,33 @@ class Prepare:
                         numRangeYesZ.add(n)
             numRange = cutset(ifMultiplesFromAnyAtAll, numRange, numRangeYesZ)
 
+        numRangeList = list(numRange)
+        numRangeList.sort()
+        numRange2Map = {i: a for i, a in enumerate(numRangeList)}
+        zJa = False
         for condition in paramLines:
             if "_z_" in condition[:3] and len(condition) > 3:
-                numRangeList = list(numRange)
-                numRangeList.sort()
-                numRange2Map = {i: a for i, a in enumerate(numRangeList)}
+                zJa = True
                 NumRangeNeu = set(numRange2Map.keys()) & BereichToNumbers2(
                     condition[3:], False, self.hoechsteZeile[1024]
                 )
-                numRange = set()
+                numRangeNeu2 = set()
                 for a in NumRangeNeu:
-                    numRange |= {numRange2Map[a]}
+                    numRangeNeu2 |= {numRange2Map[a]}
+        if zJa:
+            numRange &= numRangeNeu2
+        yJa = False
         for condition in paramLines:
             if "_y_" in condition[:3] and len(condition) > 3:
-                numRangeList = list(numRange)
-                numRangeList.sort()
-                numRange2Map = {i: a for i, a in enumerate(numRangeList)}
+                yJa = True
                 NumRangeNeu = set(numRange2Map.keys()) & BereichToNumbers2(
                     condition[3:], True, self.hoechsteZeile[1024]
                 )
-                numRange = set()
+                numRangeNeu2 = set()
                 for a in NumRangeNeu:
-                    numRange |= {numRange2Map[a]}
+                    numRangeNeu2 |= {numRange2Map[a]}
+        if yJa:
+            numRange &= numRangeNeu2
 
         return numRange
 
