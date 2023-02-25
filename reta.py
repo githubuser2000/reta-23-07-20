@@ -3968,18 +3968,37 @@ class Program:
             maintable2subtable_Relation2,
         )
 
+    def oberesMaximumArg(self, arg) -> tuple[list[int], bool]:
+        werte: list[int] = []
+        if arg[2:16] == "oberesmaximum=" and arg[16:].isdecimal():
+            werte = [int(arg[16:])]
+            return werte, True
+        elif arg[2:22] == "vorhervonausschnitt=":
+            werteList: list[int] = [
+                a + 1 for a in BereichToNumbers2(arg[22:], False, 0)
+            ]
+            werte = werteList
+            return werte, False
+        else:
+            return werte, False
+
     def oberesMaximum2(self, argv2) -> Optional[int]:
+        try:
+            werte: list[int] = [self.tables.hoechsteZeile[1024]]
+        except:
+            werte: list[int] = []
         for arg in argv2:
-            if arg[2:16] == "oberesmaximum=" and arg[16:].isdecimal:
-                return int(arg[16:])
-        return None
+            werte += self.oberesMaximumArg(arg)[0]
+
+        return max(werte) if len(werte) > 0 else None
 
     def oberesMaximum(self, arg) -> bool:
-        if arg[2:16] == "oberesmaximum=" and arg[16:].isdecimal:
-            self.tables.hoechsteZeile = int(arg[16:])
-            return True
-        else:
+        liste, wahrheitswert = self.oberesMaximumArg(arg)
+        if len(liste) == 0 or not wahrheitswert:
             return False
+        max_ = max(liste + [self.tables.hoechsteZeile[1024]])
+        self.tables.hoechsteZeile = max_
+        return True
 
     def __init__(self, argv=[], alternativeShellRowsAmount: Optional[int] = None):
         global Tables, infoLog

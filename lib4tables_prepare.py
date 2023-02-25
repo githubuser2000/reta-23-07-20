@@ -526,25 +526,25 @@ class Prepare:
         numRangeList.sort()
         numRange2Map = {i: a for i, a in enumerate(numRangeList)}
         zJa = False
+        numRangeNeu2 = set()
         for condition in paramLines:
             if "_z_" in condition[:3] and len(condition) > 3:
                 zJa = True
                 NumRangeNeu = set(numRange2Map.keys()) & BereichToNumbers2(
                     condition[3:], False, self.hoechsteZeile[1024]
                 )
-                numRangeNeu2 = set()
                 for a in NumRangeNeu:
                     numRangeNeu2 |= {numRange2Map[a]}
         if zJa:
             numRange &= numRangeNeu2
         yJa = False
+        numRangeNeu2 = set()
         for condition in paramLines:
             if "_y_" in condition[:3] and len(condition) > 3:
                 yJa = True
                 NumRangeNeu = set(numRange2Map.keys()) & BereichToNumbers2(
                     condition[3:], True, self.hoechsteZeile[1024]
                 )
-                numRangeNeu2 = set()
                 for a in NumRangeNeu:
                     numRangeNeu2 |= {numRange2Map[a]}
         if yJa:
