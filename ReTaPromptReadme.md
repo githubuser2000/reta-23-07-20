@@ -48,7 +48,7 @@ weight = -7
 -   "alles" gibt, zusammen mit einer Zeilenangabe einfach alle Spalten aus. Das dauert.
 -   "primzahlkreuz" gibt, zusammen mit einer Zeilenangabe die Spalten des Primzahlkreuz-Algorithmusses aus. Diese stehen im Zusammenhang mit den Spalten über Geist (15). Das dauert.
 -   "r" bzw. "richtung" gibt, zusammen mit einer Zeilenangabe, die Spalten an, die ausgeben, inwiefern eine Zeile pro außen, pro innen, pro seitlich, gegen seitlich funktioniert.
--   "b" zusammen mit einer Zeilenangabe aus Brüchen, Befehl "u" und "a", also "universum" und "absicht", gibt auch das Reziproke der angebenen Brüche aus, z.B. bei 2/3,3/4 auch 3/2,4/3.
+-   Befehl "u" und "a", also "universum" und "absicht", gibt auch das Reziproke der angebenen Brüche aus, z.B. bei 2/3,3/4 auch 3/2,4/3.
 -   Einige der Kurzbefehle aus Buchstaben wie "a" oder "u" lassen sich auch ohne Leerzeichen dazwischen als Befehl verwenden. Beispiel: statt "a u 1,2" geht auch "au1,2".
 -   Kurzbefehl "e" macht, dass Zeilen mit fast keiner Information nicht angezeigt werden, also Zeilen mit nur einem Minus oder Fragezeichen
 
@@ -73,6 +73,7 @@ Zeilenangaben oder Zahlenbereiche für andere Angaben können sein (ohne Anführ
 -   "5+2+4" das wären die Nachbarn der 5 mit Abstand 2 und 4, also 1,3,7,9
 -   "10+2" Als Angabe, wenn die Vielfacher gemeint wären, dann wäre das nicht nur 8 und 12, sondern auch 18 und 22, und 28 und 32, usw.
 -   In der Readme von reta, statt retaPrompt, wird das nochmal erklärt
+-  "1/2,3" meint Zeile 3 für Sternpolygone n und 1/2 meint hier Zeile 2 für gleichförmige Polygone 1/n
 
 
 ### Die Befehle 15\_.... {#die-befehle-15-dot-dot-dot-dot}
