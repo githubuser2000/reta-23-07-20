@@ -236,6 +236,7 @@ def speichern(ketten, platzhalter, text):
         ketten2X,
         maxNum2X,
         stextX,
+        zahlenAngaben_X,
     ) = promptVorbereitungGrosseAusgabe(
         ketten,
         platzhalter,
@@ -335,6 +336,7 @@ def PromptScope():
             ketten,
             maxNum,
             stext,
+            zahlenAngaben_,
         ) = promptVorbereitungGrosseAusgabe(
             ketten,
             platzhalter,
@@ -357,6 +359,7 @@ def PromptScope():
             stext,
             text,
             warBefehl,
+            zahlenAngaben_,
         )
 
 
@@ -373,6 +376,7 @@ def PromptGrosseAusgabe(
     stext,
     text,
     warBefehl,
+    zahlenAngaben_,
 ):
     if not bedingung:
         for g, a in enumerate(stext):
@@ -404,19 +408,18 @@ def PromptGrosseAusgabe(
             #
             #        else:
             #            EineZahlenFolgeJa[g] = False
-            if EineZahlenFolgeJa[g]:
+            (
+                brueche,
+                zahlenAngaben_,
+                fullBlockIsZahlenbereichAndBruch,
+            ) = getFromZahlenBereichBruchAndZahlenbereich(a, brueche, zahlenAngaben_)
+            if len(zahlenAngaben_) > 0:
+                a = ",".join(zahlenAngaben_)
                 c2 = ",".join([str(zahl) for zahl in BereichToNumbers2(a, False, 0)])
                 if "w" in stext or "teiler" in stext:
                     c: str = ",".join(teiler(a)[0])
                 else:
                     c = a
-
-            for innerKomma in a.split(","):
-                bruch = [bruch for bruch in innerKomma.split("/")]
-                if [bruch1.isdecimal() for bruch1 in bruch] == [True, True]:
-                    brueche += [bruch]
-            if "b" in stext:
-                brueche += [[bruch[1], bruch[0]] for bruch in brueche]
     if "mulpri" in stext or "p" in stext:
         stext += ["multis", "prim"]
     if "--art=bbcode" in stext and "reta" == stext[0]:
@@ -450,7 +453,8 @@ def PromptGrosseAusgabe(
         warBefehl = True
         retaPromptHilfe()
     bedingungZahl, bedingungBrueche = (
-        list(EineZahlenFolgeJa.values()).count(True) == 1,
+        # list(EineZahlenFolgeJa.values()).count(True) == 1,
+        len(zahlenAngaben_) > 0,
         len(brueche) > 0,
     )
     if bedingung:
@@ -501,7 +505,8 @@ def PromptGrosseAusgabe(
                 int(shellRowsAmountStr),
             )
 
-    if bedingungZahl or bedingungBrueche:
+    # if bedingungZahl or bedingungBrueche:
+    if fullBlockIsZahlenbereichAndBruch and (bedingungZahl or bedingungBrueche):
         if len({"absicht", "absichten", "motiv", "motive"} & set(stext)) > 0 or (
             (("a" in stext) != ("mo" in stext))
             and "abc" not in stext
@@ -868,6 +873,23 @@ def PromptGrosseAusgabe(
     return loggingSwitch
 
 
+def getFromZahlenBereichBruchAndZahlenbereich(a, brueche, zahlenAngaben_):
+    ifAllTrue = []
+    for innerKomma in a.split(","):
+        bruch = [bruch for bruch in innerKomma.split("/")]
+        isBruch_ = [bruch1.isdecimal() for bruch1 in bruch] == [True, True]
+        isZahlenangabe_ = isZeilenAngabe(innerKomma)
+        if isBruch_ or isZahlenangabe_:
+            ifAllTrue += [True]
+            if isBruch_:
+                brueche += [bruch]
+            if isZahlenangabe_:
+                zahlenAngaben_ += [innerKomma]
+        else:
+            ifAllTrue += [True]
+    return brueche, zahlenAngaben_, all(ifAllTrue)
+
+
 def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, stext, text, warBefehl):
     if len(stext) > 0 and stext[0] in ("shell"):
         warBefehl = True
@@ -1059,12 +1081,22 @@ def promptVorbereitungGrosseAusgabe(
                 pass
     bedingung: bool = len(stext) > 0 and stext[0] == "reta"
     brueche = []
+    zahlenAngaben_ = []
     c = ""
     EineZahlenFolgeJa: dict = {}
     if len(set(stext) & befehleBeenden) > 0:
         stext = tuple(befehleBeenden)[0]
     # print([EineZahlenFolgeJa, bedingung, brueche, c, ketten, maxNum, stext])
-    return EineZahlenFolgeJa, bedingung, brueche, c, ketten, maxNum, stext
+    return (
+        EineZahlenFolgeJa,
+        bedingung,
+        brueche,
+        c,
+        ketten,
+        maxNum,
+        stext,
+        zahlenAngaben_,
+    )
 
 
 def PromptAllesVorGroesserSchleife():

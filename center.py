@@ -29,9 +29,9 @@ Primzahlkreuz_pro_contra_strs = (
     "Primzahlkreuz_pro_contra",
     "nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)",
 )
-#try:
+# try:
 #    from numba import jit
-#except:
+# except:
 #
 #    def jit(nopython=None, parallel=True, cache=True):
 #        def _jit(f):
@@ -54,26 +54,34 @@ Multiplikationen = [("Multiplikationen", "")]
 shellRowsAmount: int
 
 
-def isZeilenAngabe(g):
+def isZeilenAngabe(text):
+    if len(text) > 0 and text[0] == "v":
+        text = text[1:]
+    a = []
+    for g in text.split(","):
+        a += [isZeilenAngabe_betweenKommas(a, g)]
+    return all(a)
+
+
+def isZeilenAngabe_betweenKommas(a, g):
     x = len(re.findall(r"[0-9]+\-[0-9]+", g))
     y = len(re.findall(r"[0-9]+\-[0-9]+\-[0-9]+", g))
     return (
         True
-        if bool(re.match(r"^v?[0-9-]+[\+0-9,]*$", g))  # len(g) > 0 and
-        and g[-1] not in ["-", "+"]
-        and (
-            (x < 2 and y == 0)
-            or (bool(re.match(r"^v?\-?[0-9]+[\+0-9,]*$", g)) and x == 0)
-        )
-        and "--" not in g
-        and "++" not in g
-        and "+-" not in g
-        and "-+" not in g
-        and ",+" not in g
-        and "+," not in g
-        and "-," not in g
-        else False
-    )
+        if bool(re.match(r"^\-?[0-9-]+[\+0-9,]*$", g))  # len(g) > 0 and
+           and g[-1] not in ["-", "+"]
+           and (
+                   (x < 2 and y == 0)
+                   or (bool(re.match(r"^\-?[0-9]+[\+0-9,]*$", g)) and x == 0)
+           )
+           and "--" not in g
+           and "++" not in g
+           and "+-" not in g
+           and "-+" not in g
+           and ",+" not in g
+           and "+," not in g
+           and "-," not in g
+        else False)
 
 
 def retaPromptHilfe():
@@ -288,7 +296,7 @@ def unique_everseen(iterable, key=None):
                 yield element
 
 
-#@jit(nopython=True, parallel=True, cache=True)
+# @jit(nopython=True, parallel=True, cache=True)
 def BereichToNumbers(MehrereBereiche: str) -> set:
 
     Bereiche: list[str] = MehrereBereiche.split(",")
@@ -321,7 +329,7 @@ def BereichToNumbers(MehrereBereiche: str) -> set:
     return dazu - hinfort
 
 
-#@jit(nopython=True, parallel=True, cache=True)
+# @jit(nopython=True, parallel=True, cache=True)
 def BereichToNumbers2(
     MehrereBereiche: str, vielfache=False, maxZahl: int = 1028
 ) -> set:

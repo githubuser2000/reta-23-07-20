@@ -7,7 +7,7 @@ from fractions import Fraction
 from functools import lru_cache
 
 from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
-                    jit, output, re, x)
+                    output, re, x)
 
 
 class OutputSyntax:
@@ -265,7 +265,7 @@ class htmlSyntax(OutputSyntax):
                 + (">\n",)
             )
 
-    beginTable = "<table border=0 id=\"bigtable\">"
+    beginTable = '<table border=0 id="bigtable">'
     endTable = "</table>\n"
     beginCell = "<td>\n"
     endCell = "\n</td>\n"
@@ -274,7 +274,7 @@ class htmlSyntax(OutputSyntax):
     endZeile = "</tr>\n"
 
 
-@jit(nopython=True, parallel=False, cache=True)
+# @jit(nopython=True, parallel=False, cache=True)
 def moonNumber(num: int):
     """Hier wird der Zeilenumbruch umgesetzt
 
@@ -296,7 +296,7 @@ def moonNumber(num: int):
     return results, exponent
 
 
-@jit(nopython=True, parallel=False, cache=True)
+# @jit(nopython=True, parallel=False, cache=True)
 def primFak(n: int) -> list:
     """Alle Primfaktoren einer Zahl als Liste mit mehrfachvorkommen, sofern ja
 
