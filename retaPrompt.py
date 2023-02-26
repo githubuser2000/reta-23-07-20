@@ -382,6 +382,7 @@ def PromptGrosseAusgabe(
 
     bruch_GanzZahlReziproke = []
     bruch_KeinGanzZahlReziproke = []
+    fullBlockIsZahlenbereichAndBruch = True
     if not bedingung:
         for g, a in enumerate(stext):
             EineZahlenFolgeJa[g] = isZeilenAngabe(a)
@@ -498,6 +499,7 @@ def PromptGrosseAusgabe(
         zeiln1 = ""
         zeiln2 = ""
 
+    if bedingungZahl:
         if (len({"thomas"} & set(stext)) > 0) or (
             "t" in stext and "abc" not in stext and "abcd" not in stext
         ):
@@ -1009,13 +1011,22 @@ def promptVorbereitungGrosseAusgabe(
 
         for s_ in tuple(deepcopy(stext)):
             textDazu = []
+            nn: Optional[int] = 0
+            for iii, s_3 in enumerate(s_[::-1]):
+                if s_3.isdecimal():
+                    nn = iii
+                    break
+            if nn > 0:
+                s_b = s_[-nn:] + s_[:-nn]
+            else:
+                s_b = s_
             n: Optional[int] = None
-            for ii, s_3 in enumerate(s_):
+            for ii, s_3 in enumerate(s_b):
                 if s_3.isdecimal():
                     n = ii
                     break
             try:
-                if s_[int(n) - 1] == "-":
+                if s_b[int(n) - 1] == "-":
                     n -= 1
             except:
                 pass
@@ -1027,8 +1038,9 @@ def promptVorbereitungGrosseAusgabe(
                     brueche_Z,
                     zahlenAngaben__Z,
                     fullBlockIsZahlenbereichAndBruch_Z,
-                ) = getFromZahlenBereichBruchAndZahlenbereich(s_[n:], [], [])
+                ) = getFromZahlenBereichBruchAndZahlenbereich(s_b[n:], [], [])
                 if fullBlockIsZahlenbereichAndBruch_Z:
+                    s_ = s_b
                     # if (
                     #    len(s_) > n
                     #    and (
