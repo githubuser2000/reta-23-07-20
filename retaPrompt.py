@@ -579,29 +579,28 @@ def PromptGrosseAusgabe(
                     int(shellRowsAmountStr),
                 )
 
-            else:
-                for bruch in bruch_KeinGanzZahlReziproke:
-                    import reta
+            for bruch in bruch_KeinGanzZahlReziproke:
+                import reta
 
-                    kette = [
-                        "reta",
-                        "-zeilen",
-                        "--vorhervonausschnitt=" + bruch[0],
-                        "-spalten",
-                        "--gebrochengalaxie=" + bruch[1],
-                        "--breite=" + str(int(shellRowsAmountStr) - 2),
-                        "-kombination",
-                        "-ausgabe",
-                        "--spaltenreihenfolgeundnurdiese=1",
-                        *["--keineleereninhalte" if "e" in stext else ""],
-                    ] + returnOnlyParasAsList(stext)
-                    kette += ketten
-                    if "e" not in stext:
-                        print(" ".join(kette))
-                    reta.Program(
-                        kette,
-                        int(shellRowsAmountStr),
-                    )
+                kette = [
+                    "reta",
+                    "-zeilen",
+                    "--vorhervonausschnitt=" + bruch[0],
+                    "-spalten",
+                    "--gebrochengalaxie=" + bruch[1],
+                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                    "-kombination",
+                    "-ausgabe",
+                    "--spaltenreihenfolgeundnurdiese=1",
+                    *["--keineleereninhalte" if "e" in stext else ""],
+                ] + returnOnlyParasAsList(stext)
+                kette += ketten
+                if "e" not in stext:
+                    print(" ".join(kette))
+                reta.Program(
+                    kette,
+                    int(shellRowsAmountStr),
+                )
 
         eigN, eigR = [], []
         for aa in stext:
@@ -707,29 +706,28 @@ def PromptGrosseAusgabe(
                     kette,
                     int(shellRowsAmountStr),
                 )
-            else:
-                for bruch in bruch_KeinGanzZahlReziproke:
-                    import reta
+            for bruch in bruch_KeinGanzZahlReziproke:
+                import reta
 
-                    kette = [
-                        "reta",
-                        "-zeilen",
-                        "--vorhervonausschnitt=" + bruch[0],
-                        "-spalten",
-                        "--gebrochenuniversum=" + bruch[1],
-                        "--breite=" + str(int(shellRowsAmountStr) - 2),
-                        "-kombination",
-                        "-ausgabe",
-                        "--spaltenreihenfolgeundnurdiese=1",
-                        *["--keineleereninhalte" if "e" in stext else ""],
-                    ] + returnOnlyParasAsList(stext)
-                    kette += ketten
-                    if "e" not in stext:
-                        print(" ".join(kette))
-                    reta.Program(
-                        kette,
-                        int(shellRowsAmountStr),
-                    )
+                kette = [
+                    "reta",
+                    "-zeilen",
+                    "--vorhervonausschnitt=" + bruch[0],
+                    "-spalten",
+                    "--gebrochenuniversum=" + bruch[1],
+                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                    "-kombination",
+                    "-ausgabe",
+                    "--spaltenreihenfolgeundnurdiese=1",
+                    *["--keineleereninhalte" if "e" in stext else ""],
+                ] + returnOnlyParasAsList(stext)
+                kette += ketten
+                if "e" not in stext:
+                    print(" ".join(kette))
+                reta.Program(
+                    kette,
+                    int(shellRowsAmountStr),
+                )
     if bedingungZahl:
 
         if len({"prim24", "primfaktorzerlegungModulo24"} & set(stext)) > 0:
