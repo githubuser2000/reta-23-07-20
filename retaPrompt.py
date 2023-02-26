@@ -1010,71 +1010,74 @@ def promptVorbereitungGrosseAusgabe(
         s_2: list
 
         for s_ in tuple(deepcopy(stext)):
-            textDazu = []
-            nn: Optional[int] = 0
-            for iii, s_3 in enumerate(s_[::-1]):
-                if s_3.isdecimal():
-                    nn = iii
-                    break
-            if nn > 0:
-                s_b = s_[-nn:] + s_[:-nn]
-            else:
-                s_b = s_
-            n: Optional[int] = None
-            for ii, s_3 in enumerate(s_b):
-                if s_3.isdecimal():
-                    n = ii
-                    break
-            try:
-                if s_b[int(n) - 1] == "-":
-                    n -= 1
-            except:
-                pass
+            if s_ not in wahl15:
+                textDazu = []
+                nn: Optional[int] = 0
+                for iii, s_3 in enumerate(s_[::-1]):
+                    if s_3.isdecimal():
+                        nn = iii
+                        break
+                if nn > 0:
+                    s_b = s_[-nn:] + s_[:-nn]
+                else:
+                    s_b = s_
+                n: Optional[int] = None
+                for ii, s_3 in enumerate(s_b):
+                    if s_3.isdecimal():
+                        n = ii
+                        break
+                try:
+                    if s_b[int(n) - 1] == "-":
+                        n -= 1
+                except:
+                    pass
 
-            if n is not None:
-                # s_2 = s_[n:].split(",")
-                # s_4 = [s_5.split("/") for s_5 in s_2]
-                (
-                    brueche_Z,
-                    zahlenAngaben__Z,
-                    fullBlockIsZahlenbereichAndBruch_Z,
-                ) = getFromZahlenBereichBruchAndZahlenbereich(s_b[n:], [], [])
-                if fullBlockIsZahlenbereichAndBruch_Z:
-                    s_ = s_b
-                    # if (
-                    #    len(s_) > n
-                    #    and (
-                    #        [
-                    #            [strInt.isdecimal() or len(strInt) == 0 for strInt in strA]
-                    #            for strA in s_4
-                    #        ]
-                    #        == [[True for strInt in strA] for strA in s_4]
-                    #        and "-" not in s_
-                    #    )
-                    #    or isZeilenAngabe(s_[n:])
-                    # ):
-                    buchst = set(s_[:n]) & {
-                        "a",
-                        "t",
-                        "v",
-                        "u",
-                        "p",
-                        "r",
-                        "w",
-                        "s",
-                        "o",
-                        "S",
-                        "e",
-                    }
-                    if n == len(buchst):
-                        buchst2: list = [a if a != "p" else "mulpri" for a in buchst]
-                        textDazu += buchst2 + [str(s_[n:])]
-                    if (
-                        len(stext) == 1
-                        and len(buchst) == 0
-                        and promptMode2 != PromptModus.AusgabeSelektiv
-                    ):
-                        textDazu += ["mulpri", "a", "t", "w", "e"]
+                if n is not None:
+                    # s_2 = s_[n:].split(",")
+                    # s_4 = [s_5.split("/") for s_5 in s_2]
+                    (
+                        brueche_Z,
+                        zahlenAngaben__Z,
+                        fullBlockIsZahlenbereichAndBruch_Z,
+                    ) = getFromZahlenBereichBruchAndZahlenbereich(s_b[n:], [], [])
+                    if fullBlockIsZahlenbereichAndBruch_Z:
+                        s_ = s_b
+                        # if (
+                        #    len(s_) > n
+                        #    and (
+                        #        [
+                        #            [strInt.isdecimal() or len(strInt) == 0 for strInt in strA]
+                        #            for strA in s_4
+                        #        ]
+                        #        == [[True for strInt in strA] for strA in s_4]
+                        #        and "-" not in s_
+                        #    )
+                        #    or isZeilenAngabe(s_[n:])
+                        # ):
+                        buchst = set(s_[:n]) & {
+                            "a",
+                            "t",
+                            "v",
+                            "u",
+                            "p",
+                            "r",
+                            "w",
+                            "s",
+                            "o",
+                            "S",
+                            "e",
+                        }
+                        if n == len(buchst):
+                            buchst2: list = [
+                                a if a != "p" else "mulpri" for a in buchst
+                            ]
+                            textDazu += buchst2 + [str(s_[n:])]
+                        if (
+                            len(stext) == 1
+                            and len(buchst) == 0
+                            and promptMode2 != PromptModus.AusgabeSelektiv
+                        ):
+                            textDazu += ["mulpri", "a", "t", "w", "e"]
 
             if len(textDazu) > 0:
                 stext2 += textDazu
