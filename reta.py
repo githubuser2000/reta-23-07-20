@@ -2026,6 +2026,16 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
+                (
+                    "Karte_Filter_und_Unterscheidung_(1/12)",
+                    "karte",
+                    "filter",
+                    "unterscheidung",
+                ),
+                {377},
+            ),
+            (
+                Program.ParametersMain.grundstrukturen,
                 ("Fundament_(1/19)", "fundament"),
                 {356},
             ),

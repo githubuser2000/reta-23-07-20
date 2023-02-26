@@ -121,6 +121,7 @@ wahl15 = {
     "_1pro19": "Fundament_(1/19)",
     "_90": "abhängige_Verbundenheit_(90)",
     "_13_13": "Absicht_13_ist_Helfen",
+    "_1pro12": "Karte_Filter_und_Unterscheidung_(1/12)",
 }
 
 zumVergleich = []
