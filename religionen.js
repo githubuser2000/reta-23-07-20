@@ -1145,22 +1145,29 @@ function potenzenAngabenToContainer() {
   return zeilenAngaben;
 }
 */
+function isZeilenAngabe_betweenKommas(a, g) {
+  const x = (g.match(/[0-9]+-[0-9]+/g) || []).length;
+  const y = (g.match(/[0-9]+-[0-9]+-[0-9]+/g) || []).length;
+  return (
+    /^([0-9-]+[\+0-9,-]*)$/.test(g) &&
+    !["-", "+"].includes(g.slice(-1)) &&
+    ((x < 2 && y == 0) || (/^\-?[0-9]+[\+0-9,]*$/.test(g) && x == 0)) &&
+    !/--|\+\+|\+\-|\-\+|,\+|\+,|-,/.test(g)
+  );
+}
 function isZeilenAngabe(text) {
-  let a = [];
-  const regex1 = /[0-9]+\-[0-9]+/g;
-  const regex2 = /[0-9]+\-[0-9]+\-[0-9]+/g;
-  const regex3 = /^v?[\-0-9]+[\+0-9,]*$/g;
-  for (let g of text.split(",")) {
-    let x = (g.match(regex1) || []).length;
-    let y = (g.match(regex2) || []).length;
-    a.push(
-      regex3.test(g) &&
-        !["-", "+"].includes(g.slice(-1)) &&
-        ((x < 2 && y === 0) || (regex3.test(g) && x === 0)) &&
-        !/--|\+\+|\+\-|\-\+|,\+|\+,|-,/.test(g)
-    );
+  if (text.length > 0 && text[0] === "v") {
+    text = text.substring(1);
   }
-  return a.every((xx) => xx);
+  var a = [];
+  var splittedText = text.split(",");
+  for (var i = 0; i < splittedText.length; i++) {
+    a.push(isZeilenAngabe_betweenKommas(a, splittedText[i]));
+  }
+
+  return a.every(function (x) {
+    return x;
+  });
 }
 /*
 function isZeilenAngabe(g) {
