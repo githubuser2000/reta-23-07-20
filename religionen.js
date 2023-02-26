@@ -1145,7 +1145,7 @@ function potenzenAngabenToContainer() {
   return zeilenAngaben;
 }
 */
-function isZeilenAngabe_betweenKommas(a, g) {
+/*function isZeilenAngabe_betweenKommas(g) {
   const x = (g.match(/[0-9]+-[0-9]+/g) || []).length;
   const y = (g.match(/[0-9]+-[0-9]+-[0-9]+/g) || []).length;
   return (
@@ -1154,6 +1154,18 @@ function isZeilenAngabe_betweenKommas(a, g) {
     ((x < 2 && y == 0) || (/^\-?[0-9]+[\+0-9,]*$/.test(g) && x == 0)) &&
     !/--|\+\+|\+\-|\-\+|,\+|\+,|-,/.test(g)
   );
+}*/
+function isZeilenAngabe_betweenKommas(g) {
+  const pattern = /^(-?\d+)(-\d+)?((\+)(\d+))*$/;
+  return g.match(pattern);
+  /*const x = (g.match(/[0-9]+-[0-9]+/g) || []).length;
+  const y = (g.match(/[0-9]+-[0-9]+-[0-9]+/g) || []).length;
+  return (
+    /^([0-9-]+[\+0-9,-]*)$/.test(g) &&
+    !["-", "+"].includes(g.slice(-1)) &&
+    ((x < 2 && y == 0) || (/^\-?[0-9]+[\+0-9,]*$/.test(g) && x == 0)) &&
+    !/--|\+\+|\+\-|\-\+|,\+|\+,|-,/.test(g)
+  );*/
 }
 function isZeilenAngabe(text) {
   if (text.length > 0 && text[0] === "v") {
@@ -1162,7 +1174,7 @@ function isZeilenAngabe(text) {
   var a = [];
   var splittedText = text.split(",");
   for (var i = 0; i < splittedText.length; i++) {
-    a.push(isZeilenAngabe_betweenKommas(a, splittedText[i]));
+    a.push(isZeilenAngabe_betweenKommas(splittedText[i]));
   }
 
   return a.every(function (x) {

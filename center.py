@@ -64,25 +64,26 @@ def isZeilenAngabe(text):
 
 
 def isZeilenAngabe_betweenKommas(g):
-    x = len(re.findall(r"[0-9]+\-[0-9]+", g))
-    y = len(re.findall(r"[0-9]+\-[0-9]+\-[0-9]+", g))
-    return (
-        True
-        if bool(re.match(r"^\-?[0-9-]+[\+0-9,]*$", g))  # len(g) > 0 and
-        and g[-1] not in ["-", "+"]
-        and (
-            (x < 2 and y == 0)
-            or (bool(re.match(r"^\-?[0-9]+[\+0-9,]*$", g)) and x == 0)
-        )
-        and "--" not in g
-        and "++" not in g
-        and "+-" not in g
-        and "-+" not in g
-        and ",+" not in g
-        and "+," not in g
-        and "-," not in g
-        else False
-    )
+    pattern = r"^(-?\d+)(-\d+)?((\+)(\d+))*$"
+    return bool(re.fullmatch(pattern, g))
+    #    x = len(re.findall(r"[0-9]+\-[0-9]+", g))
+    #    y = len(re.findall(r"[0-9]+\-[0-9]+\-[0-9]+", g))
+    #    return (
+    #        True
+    #        if bool(re.match(r"^\-?[0-9-]+[\+0-9,]*$", g))  # len(g) > 0 and
+    #        and g[-1] not in ["-", "+"]
+    #        and (
+    #            (x < 2 and y == 0)
+    #            or (bool(re.match(r"^\-?[0-9]+[\+0-9,]*$", g)) and x == 0)
+    #        )
+    #        and "--" not in g
+    #        and "++" not in g
+    #        and "+-" not in g
+    #        and "-+" not in g
+    #        and ",+" not in g
+    #        and "+," not in g
+    #        and "-," not in g
+    #        else False
 
 
 def retaPromptHilfe():
