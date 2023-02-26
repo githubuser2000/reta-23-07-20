@@ -64,7 +64,7 @@ def isZeilenAngabe(text):
 
 
 def isZeilenAngabe_betweenKommas(g):
-    pattern = r"^(-?\d+)(-\d+)?((\+)(\d+))*$"
+    pattern = r"^(v?-?\d+)(-\d+)?((\+)(\d+))*$"
     return bool(re.fullmatch(pattern, g))
     #    x = len(re.findall(r"[0-9]+\-[0-9]+", g))
     #    y = len(re.findall(r"[0-9]+\-[0-9]+\-[0-9]+", g))
@@ -335,10 +335,6 @@ def BereichToNumbers(MehrereBereiche: str) -> set:
 def BereichToNumbers2(
     MehrereBereiche: str, vielfache=False, maxZahl: int = 1028
 ) -> set:
-    if len(MehrereBereiche) > 0 and MehrereBereiche[0] == "v":
-        MehrereBereiche = MehrereBereiche[1:]
-        vielfache = True
-
     if not isZeilenAngabe(MehrereBereiche):
         return set()
 
@@ -351,7 +347,14 @@ def BereichToNumbers2(
     menge: Optional[set[int]]
 
     for EinBereich in Bereiche:
-        BereichToNumbers2_EinBereich(EinBereich, dazu, hinfort, maxZahl, vielfache)
+        if len(MehrereBereiche) > 0 and MehrereBereiche[0] == "v":
+            EinBereich = EinBereich[1:]
+            vielfache2 = True
+        else:
+            vielfache2 = False
+        BereichToNumbers2_EinBereich(
+            EinBereich, dazu, hinfort, maxZahl, vielfache or vielfache2
+        )
     # print(str(dazu - hinfort))
     return dazu - hinfort
 

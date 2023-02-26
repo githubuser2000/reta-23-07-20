@@ -1156,7 +1156,7 @@ function potenzenAngabenToContainer() {
   );
 }*/
 function isZeilenAngabe_betweenKommas(g) {
-  const pattern = /^(-?\d+)(-\d+)?((\+)(\d+))*$/;
+  const pattern = /^(v?-?\d+)(-\d+)?((\+)(\d+))*$/;
   return g.match(pattern);
   /*const x = (g.match(/[0-9]+-[0-9]+/g) || []).length;
   const y = (g.match(/[0-9]+-[0-9]+-[0-9]+/g) || []).length;
@@ -1210,11 +1210,6 @@ function isZeilenAngabe(g) {
 }
 */
 function BereichToNumbers2(MehrereBereiche, vielfache = false, maxZahl = 1028) {
-  if (MehrereBereiche.length > 0 && MehrereBereiche[0] === "v") {
-    MehrereBereiche = MehrereBereiche.slice(1);
-    vielfache = true;
-  }
-
   if (!isZeilenAngabe(MehrereBereiche)) {
     return new Set();
   }
@@ -1229,7 +1224,22 @@ function BereichToNumbers2(MehrereBereiche, vielfache = false, maxZahl = 1028) {
   let menge;
 
   for (const EinBereich of Bereiche) {
-    BereichToNumbers2_EinBereich(EinBereich, dazu, hinfort, maxZahl, vielfache);
+    if (EinBereich.length > 0 && EinBereich[0] === "v") {
+      EinBereich2 = EinBereich.slice(1);
+      vielfache2 = true;
+    } else {
+      EinBereich2 = EinBereich;
+      vielfache2 = false;
+    }
+    //window.alert(EinBereich);
+    //window.alert([vielfache, vielfache2].toString());
+    BereichToNumbers2_EinBereich(
+      EinBereich2,
+      dazu,
+      hinfort,
+      maxZahl,
+      vielfache || vielfache2
+    );
   }
 
   return new Set([...dazu].filter((x) => !hinfort.has(x)));
