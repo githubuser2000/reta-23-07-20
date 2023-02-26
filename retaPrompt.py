@@ -18,7 +18,8 @@ from prompt_toolkit.completion import Completer, Completion
 from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
 
-from center import BereichToNumbers2, cliout, isZeilenAngabe, retaPromptHilfe
+from center import (BereichToNumbers2, cliout, isZeilenAngabe,
+                    isZeilenAngabe_betweenKommas, retaPromptHilfe)
 from lib4tables import multiples
 from LibRetaPrompt import wahl15
 # import reta
@@ -875,10 +876,14 @@ def PromptGrosseAusgabe(
 
 def getFromZahlenBereichBruchAndZahlenbereich(a, brueche, zahlenAngaben_):
     ifAllTrue = []
+    first = True
     for innerKomma in a.split(","):
         bruch = [bruch for bruch in innerKomma.split("/")]
         isBruch_ = [bruch1.isdecimal() for bruch1 in bruch] == [True, True]
-        isZahlenangabe_ = isZeilenAngabe(innerKomma)
+        if first:
+            isZahlenangabe_ = isZeilenAngabe(innerKomma)
+        else:
+            isZahlenangabe_ = isZeilenAngabe_betweenKommas(innerKomma)
         if isBruch_ or isZahlenangabe_:
             ifAllTrue += [True]
             if isBruch_:
@@ -887,6 +892,7 @@ def getFromZahlenBereichBruchAndZahlenbereich(a, brueche, zahlenAngaben_):
                 zahlenAngaben_ += [innerKomma]
         else:
             ifAllTrue += [True]
+        first = False
     return brueche, zahlenAngaben_, all(ifAllTrue)
 
 
@@ -951,20 +957,26 @@ def promptVorbereitungGrosseAusgabe(
                 pass
 
             if n is not None:
-                s_2 = s_[n:].split(",")
-                s_4 = [s_5.split("/") for s_5 in s_2]
-                if (
-                    len(s_) > n
-                    and (
-                        [
-                            [strInt.isdecimal() or len(strInt) == 0 for strInt in strA]
-                            for strA in s_4
-                        ]
-                        == [[True for strInt in strA] for strA in s_4]
-                        and "-" not in s_
-                    )
-                    or isZeilenAngabe(s_[n:])
-                ):
+                # s_2 = s_[n:].split(",")
+                # s_4 = [s_5.split("/") for s_5 in s_2]
+                (
+                    brueche_Z,
+                    zahlenAngaben__Z,
+                    fullBlockIsZahlenbereichAndBruch_Z,
+                ) = getFromZahlenBereichBruchAndZahlenbereich(s_[n:], [], [])
+                if fullBlockIsZahlenbereichAndBruch_Z:
+                    # if (
+                    #    len(s_) > n
+                    #    and (
+                    #        [
+                    #            [strInt.isdecimal() or len(strInt) == 0 for strInt in strA]
+                    #            for strA in s_4
+                    #        ]
+                    #        == [[True for strInt in strA] for strA in s_4]
+                    #        and "-" not in s_
+                    #    )
+                    #    or isZeilenAngabe(s_[n:])
+                    # ):
                     buchst = set(s_[:n]) & {
                         "a",
                         "t",
