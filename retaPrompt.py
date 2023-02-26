@@ -421,6 +421,13 @@ def PromptGrosseAusgabe(
                     c: str = ",".join(teiler(a)[0])
                 else:
                     c = a
+            bruch_GanzZahlReziproke = []
+            bruch_KeinGanzZahlReziproke = []
+            for bruch_ in brueche:
+                if bruch_[0] in (1, "1"):
+                    bruch_GanzZahlReziproke += [bruch_]
+                else:
+                    bruch_KeinGanzZahlReziproke += [bruch_]
     if "mulpri" in stext or "p" in stext:
         stext += ["multis", "prim"]
     if "--art=bbcode" in stext and "reta" == stext[0]:
@@ -466,6 +473,13 @@ def PromptGrosseAusgabe(
         # process = subprocess.Popen(sos.path.dirname(__file__) + os.sep + text)
         # process.wait()
 
+    if len(bruch_GanzZahlReziproke) > 0:
+        zeiln3 = (
+            "--vorhervonausschnitt="
+            + ",".join([bruchA[1] for bruchA in bruch_GanzZahlReziproke]).strip()
+        )
+    else:
+        zeiln3 = ""
     if bedingungZahl:
         if "einzeln" not in stext and (
             ("vielfache" in stext)
@@ -479,6 +493,9 @@ def PromptGrosseAusgabe(
             zeiln1 = "--vorhervonausschnitt=" + str(c).strip()
 
             zeiln2 = anotherOberesMaximum(c, maxNum)
+    else:
+        zeiln1 = ""
+        zeiln2 = ""
 
         if (len({"thomas"} & set(stext)) > 0) or (
             "t" in stext and "abc" not in stext and "abcd" not in stext
@@ -515,9 +532,9 @@ def PromptGrosseAusgabe(
         ):
             warBefehl = True
 
-            import reta
-
             if len(c) > 0:
+                import reta
+
                 kette = [
                     "reta",
                     "-zeilen",
@@ -537,19 +554,20 @@ def PromptGrosseAusgabe(
                     kette,
                     int(shellRowsAmountStr),
                 )
-            for bruch in brueche:
+
+            if len(bruch_GanzZahlReziproke) > 0 and zeiln3 != "":
                 import reta
 
                 kette = [
                     "reta",
                     "-zeilen",
-                    "--vorhervonausschnitt=" + bruch[0],
+                    zeiln3,
+                    zeiln2,
                     "-spalten",
-                    "--gebrochengalaxie=" + bruch[1],
+                    "--menschliches=motivation",
                     "--breite=" + str(int(shellRowsAmountStr) - 2),
-                    "-kombination",
                     "-ausgabe",
-                    "--spaltenreihenfolgeundnurdiese=1",
+                    "--spaltenreihenfolgeundnurdiese=3",
                     *["--keineleereninhalte" if "e" in stext else ""],
                 ] + returnOnlyParasAsList(stext)
                 kette += ketten
@@ -559,6 +577,30 @@ def PromptGrosseAusgabe(
                     kette,
                     int(shellRowsAmountStr),
                 )
+
+            else:
+                for bruch in bruch_KeinGanzZahlReziproke:
+                    import reta
+
+                    kette = [
+                        "reta",
+                        "-zeilen",
+                        "--vorhervonausschnitt=" + bruch[0],
+                        "-spalten",
+                        "--gebrochengalaxie=" + bruch[1],
+                        "--breite=" + str(int(shellRowsAmountStr) - 2),
+                        "-kombination",
+                        "-ausgabe",
+                        "--spaltenreihenfolgeundnurdiese=1",
+                        *["--keineleereninhalte" if "e" in stext else ""],
+                    ] + returnOnlyParasAsList(stext)
+                    kette += ketten
+                    if "e" not in stext:
+                        print(" ".join(kette))
+                    reta.Program(
+                        kette,
+                        int(shellRowsAmountStr),
+                    )
 
         eigN, eigR = [], []
         for aa in stext:
