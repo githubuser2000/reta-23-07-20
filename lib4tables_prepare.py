@@ -486,8 +486,8 @@ class Prepare:
                 ifPowerAtall = True
                 mehrere += [condition[3:]]
         toPowerIt = list(BereichToNumbers2(",".join(mehrere)))
-        print(",".join(mehrere))
-        print(toPowerIt)
+        # print(",".join(mehrere))
+        # print(toPowerIt)
         if ifPowerAtall:
             numRangeYesZ = set()
             lastEl = list(numRange)
