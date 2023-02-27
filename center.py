@@ -345,7 +345,7 @@ def BereichToNumbers2(
     menge: Optional[set[int]]
 
     for EinBereich in Bereiche:
-        if len(MehrereBereiche) > 0 and MehrereBereiche[0] == "v":
+        if len(EinBereich) > 0 and EinBereich[0] == "v":
             EinBereich = EinBereich[1:]
             vielfache2 = True
         else:
