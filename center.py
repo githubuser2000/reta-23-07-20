@@ -351,7 +351,11 @@ def BereichToNumbers2(
         else:
             vielfache2 = False
         BereichToNumbers2_EinBereich(
-            EinBereich, dazu, hinfort, maxZahl, vielfache or vielfache2
+            EinBereich,
+            dazu,
+            hinfort,
+            1028 if (vielfache or vielfache2) and maxZahl == float("inf") else maxZahl,
+            vielfache or vielfache2,
         )
     # print(str(dazu - hinfort))
     return dazu - hinfort
@@ -434,10 +438,9 @@ def BereichToNumbers2_EinBereich_Menge_vielfache(BereichCouple, around, maxZahl,
         while all([int(BereichCouple[0]) * i < maxZahl - a for a in around]):
             i += 1
             for number in range(int(BereichCouple[0]), int(BereichCouple[1]) + 1):
-                for a in around:
-                    c = number * i
-                    if c <= maxZahl:
-                        menge |= {c}
+                c = number * i
+                if c <= maxZahl:
+                    menge |= {c}
     else:
         while all([int(BereichCouple[0]) * i < maxZahl - a for a in around]):
             i += 1
