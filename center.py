@@ -55,8 +55,6 @@ shellRowsAmount: int
 
 
 def isZeilenAngabe(text):
-    if len(text) > 0 and text[0] == "v":
-        text = text[1:]
     a = []
     for g in text.split(","):
         a += [isZeilenAngabe_betweenKommas(g)]
