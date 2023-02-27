@@ -366,9 +366,10 @@ class Prepare:
                 #    condition[3:], True, self.hoechsteZeile[1024]
                 # )
         # print(",".join(mehrere))
-        numRangeYesZ |= BereichToNumbers2(
-            ",".join(mehrere), True, self.hoechsteZeile[1024]
-        )
+        if if_a_AtAll:
+            numRangeYesZ |= BereichToNumbers2(
+                ",".join(mehrere), True, self.hoechsteZeile[1024]
+            )
 
         numRange = cutset(if_a_AtAll, numRange, numRangeYesZ)
         numRangeYesZ = set()
@@ -376,12 +377,15 @@ class Prepare:
 
         numRangeYesZ = set()
         if_a_AtAll = False
+        mehrere: list = []
         for condition in paramLines:
             if "_a_" in condition[:3] and len(condition) > 3:
                 if_a_AtAll = True
-                numRangeYesZ |= BereichToNumbers2(
-                    condition[3:], False, self.hoechsteZeile[1024]
-                )
+                mehrere += [condition[3:]]
+        if if_a_AtAll:
+            numRangeYesZ |= BereichToNumbers2(
+                ",".join(mehrere), False, self.hoechsteZeile[1024]
+            )
 
         numRange = cutset(if_a_AtAll, numRange, numRangeYesZ)
         numRangeYesZ = set()
@@ -482,6 +486,8 @@ class Prepare:
                 ifPowerAtall = True
                 mehrere += [condition[3:]]
         toPowerIt = list(BereichToNumbers2(",".join(mehrere)))
+        print(",".join(mehrere))
+        print(toPowerIt)
         if ifPowerAtall:
             numRangeYesZ = set()
             lastEl = list(numRange)

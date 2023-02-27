@@ -357,6 +357,7 @@ def BereichToNumbers2(
             1028 if (vielfache or vielfache2) and maxZahl == float("inf") else maxZahl,
             vielfache or vielfache2,
         )
+    # print([dazu, hinfort])
     # print(str(dazu - hinfort))
     return dazu - hinfort
 

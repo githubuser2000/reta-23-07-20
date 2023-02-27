@@ -3495,11 +3495,12 @@ class Program:
                     elif self.oberesMaximum(arg):
                         pass
                     elif arg[2:22] == "vorhervonausschnitt=":
-                        paramLines |= (
-                            self.tables.getPrepare.parametersCmdWithSomeBereich(
-                                arg[22:], "a", neg
+                        if neg == "":
+                            paramLines |= (
+                                self.tables.getPrepare.parametersCmdWithSomeBereich(
+                                    arg[22:], "a", neg, keineNegBeruecksichtigung=True
+                                )
                             )
-                        )
                     elif arg[2:38] == "nachtraeglichneuabzaehlungvielfache=":
                         paramLines |= (
                             self.tables.getPrepare.parametersCmdWithSomeBereich(
