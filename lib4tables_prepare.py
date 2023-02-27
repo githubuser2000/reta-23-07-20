@@ -206,7 +206,11 @@ class Prepare:
         return certaintextwidth
 
     def parametersCmdWithSomeBereich(
-        self, MehrereBereiche: str, symbol: str, neg: str
+        self,
+        MehrereBereiche: str,
+        symbol: str,
+        neg: str,
+        keineNegBeruecksichtigung: bool = False,
     ) -> set:
         """Erstellen des Befehls: Bereich
 
@@ -220,33 +224,22 @@ class Prepare:
         @return: Alle Zeilen die dann ausgegeben werden sollen
         """
         results = set()
-        for EinBereich in MehrereBereiche.split(","):
-            if (
-                (neg == "" and len(EinBereich) > 0 and EinBereich[0] != "-")
-                or (neg == EinBereich[: len(neg)] and len(neg) > 0)
-            ) and len(EinBereich) > 0:
-                EinBereich = (
-                    EinBereich[len(neg) :]
-                    if neg == EinBereich[: len(neg)]
-                    else EinBereich
-                )
-                #                if EinBereich.isdecimal():
-                #                    EinBereich = EinBereich + "-" + EinBereich
-                #                BereichCouple = EinBereich.split("-")
-                #                if (
-                #                    len(BereichCouple) == 2
-                #                    and BereichCouple[0].isdecimal()
-                #                    and BereichCouple[0] != "0"
-                #                    and BereichCouple[1].isdecimal()
-                #                    and BereichCouple[1] != "0"
-                #                ):
-
-                # zahlenBereichNeu = {matchedJa : EinBereich}
-                if isZeilenAngabe(EinBereich):
-                    # results.add(
-                    #    "".join([BereichCouple[0], "-", symbol, "-", BereichCouple[1]])
-                    # )
-                    results.add("".join(["_", symbol, "_", EinBereich]))
+        if keineNegBeruecksichtigung:
+            if isZeilenAngabe(MehrereBereiche):
+                results.add("".join(["_", symbol, "_", MehrereBereiche]))
+        else:
+            for EinBereich in MehrereBereiche.split(","):
+                if (
+                    (neg == "" and len(EinBereich) > 0 and EinBereich[0] != "-")
+                    or (neg == EinBereich[: len(neg)] and len(neg) > 0)
+                ) and len(EinBereich) > 0:
+                    EinBereich = (
+                        EinBereich[len(neg) :]
+                        if neg == EinBereich[: len(neg)]
+                        else EinBereich
+                    )
+                    if isZeilenAngabe(EinBereich):
+                        results.add("".join(["_", symbol, "_", EinBereich]))
         return results
 
     #    def parametersCmdWithSomeBereich(
@@ -361,17 +354,21 @@ class Prepare:
 
         numRangeYesZ = set()
         if_a_AtAll = False
+        mehrere: list = []
+        # print(paramLines)
         for condition in paramLines:
-            if (
-                "_b_" in condition[:3]
-                and len(condition) > 3
-                and condition[3].isdecimal()
-            ):
+            if "_b_" in condition[:3] and len(condition) > 3:
                 if_a_AtAll = True
 
-                numRangeYesZ |= BereichToNumbers2(
-                    condition[3:], True, self.hoechsteZeile[1024]
-                )
+                # print("_-_" + condition[3:])
+                mehrere += [condition[3:]]
+                # numRangeYesZ |= BereichToNumbers2(
+                #    condition[3:], True, self.hoechsteZeile[1024]
+                # )
+        # print(",".join(mehrere))
+        numRangeYesZ |= BereichToNumbers2(
+            ",".join(mehrere), True, self.hoechsteZeile[1024]
+        )
 
         numRange = cutset(if_a_AtAll, numRange, numRangeYesZ)
         numRangeYesZ = set()
@@ -479,14 +476,12 @@ class Prepare:
 
         toPowerIt: list = []
         ifPowerAtall: bool = False
+
         for condition in paramLines:
-            if (
-                len(condition) > 1
-                and condition[-1] == "^"
-                and condition[:-1].isdecimal()
-            ):
+            if "_^_" in condition[:3] and len(condition) > 3:
                 ifPowerAtall = True
-                toPowerIt += [int(condition[:-1])]
+                mehrere += [condition[3:]]
+        toPowerIt = list(BereichToNumbers2(",".join(mehrere)))
         if ifPowerAtall:
             numRangeYesZ = set()
             lastEl = list(numRange)
@@ -499,7 +494,7 @@ class Prepare:
                     numRangeYesZ |= {onePower}
                     # else:
                     #    break
-            numRange = cutset(ifPowerAtall, numRange, numRangeYesZ)
+            numRange = cutset(ifPowerAtall, numRange, numRangeYesZ) - {1}
 
         numRangeYesZ = set()
 

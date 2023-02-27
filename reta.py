@@ -3471,35 +3471,20 @@ class Program:
                             elif word == neg + "mond":
                                 paramLines.add("mond")
                     elif arg[2 : 2 + len("potenzenvonzahlen=")] == "potenzenvonzahlen=":
-                        for word in arg[2 + len("potenzenvonzahlen=") :].split(","):
-                            if len(word) > 0 and (
-                                (word[0] != "-" and neg == "")
-                                or (word[0] == "-" and neg != "")
-                            ):
-                                if word[0] == "-" and neg != "":
-                                    word = word[1:]
-                                infragekommend = tuple(
-                                    BereichToNumbers2(
-                                        word, False, self.tables.hoechsteZeile[1024] + 2
-                                    )
+                        if neg == "" or True:
+                            angabe = arg[2 + len("potenzenvonzahlen=") :]
+                            paramLines |= (
+                                self.tables.getPrepare.parametersCmdWithSomeBereich(
+                                    angabe, "^", neg, keineNegBeruecksichtigung=False
                                 )
-                                for number in infragekommend:
-                                    paramLines.add(str(number) + "^")
-                    elif arg[2:21] == "vielfachevonzahlen=":
-                        paramLines |= (
-                            self.tables.getPrepare.parametersCmdWithSomeBereich(
-                                arg[21:], "b", neg
                             )
-                        )
-                        # for word in arg[21:].split(","):
-                        # if (
-                        # word.isdecimal()
-                        # or (word[1:].isdecimal() and word[0] == neg)
-                        # ) and (
-                        # (int(word) > 0 and neg == "")
-                        # or (int(word) < 0 and neg != "")
-                        # ):
-                        # paramLines.add(str(abs(int(word))) + "v")
+                    elif arg[2:21] == "vielfachevonzahlen=":
+                        if neg == "":
+                            paramLines |= (
+                                self.tables.getPrepare.parametersCmdWithSomeBereich(
+                                    arg[21:], "b", neg, keineNegBeruecksichtigung=True
+                                )
+                            )
                     elif arg[2:20] == "primzahlvielfache=":
                         if neg == "":
                             zahlenMenge = BereichToNumbers2(
@@ -3507,16 +3492,6 @@ class Program:
                             )
                             for zahl in zahlenMenge:
                                 paramLines.add(str(zahl) + "p")
-                        # for word in arg[20:].split(","):
-                        #    if (
-                        #        word.isdecimal()
-                        #        or (word[1:].isdecimal() and word[0] == neg)
-                        #    ) and (
-                        #        (int(word) > 0 and neg == "")
-                        #        or (int(word) < 0 and neg != "")
-                        #    ):
-                        #        paramLines.add(str(abs(int(word))) + "p")
-
                     elif self.oberesMaximum(arg):
                         pass
                     elif arg[2:22] == "vorhervonausschnitt=":
