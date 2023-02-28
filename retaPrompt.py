@@ -1005,12 +1005,12 @@ def promptVorbereitungGrosseAusgabe(
     ketten = []
     AusgabeSelektiv = 5
     if len(stext) > 0:
-        textDazu: list
+        textDazu: list = []
         stext2: list = []
         s_2: list
 
         for s_ in tuple(deepcopy(stext)):
-            if s_ not in wahl15:
+            if s_[2:] not in wahl15:
                 textDazu = []
                 nn: Optional[int] = 0
                 for iii, s_3 in enumerate(s_[::-1]):
