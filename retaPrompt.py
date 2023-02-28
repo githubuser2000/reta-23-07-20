@@ -1010,7 +1010,7 @@ def promptVorbereitungGrosseAusgabe(
         s_2: list
 
         for s_ in tuple(deepcopy(stext)):
-            if s_[2:] not in wahl15:
+            if s_[2:] not in wahl15 and s_ not in befehle:
                 textDazu = []
                 nn: Optional[int] = 0
                 for iii, s_3 in enumerate(s_[::-1]):
