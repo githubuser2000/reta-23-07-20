@@ -3954,7 +3954,7 @@ class Program:
             maintable2subtable_Relation2,
         )
 
-    def oberesMaximumArg(self, arg) -> tuple[list[int], bool]:
+    def oberesMaximumArg(self, arg) -> tuple:
         werte: list[int] = []
         if arg[2:16] == "oberesmaximum=" and arg[16:].isdecimal():
             werte = [int(arg[16:])]
