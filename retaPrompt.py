@@ -1010,7 +1010,7 @@ def promptVorbereitungGrosseAusgabe(
         s_2: list
 
         for s_ in tuple(deepcopy(stext)):
-            if s_[2:] not in wahl15 and s_ not in befehle:
+            if s_[2:] not in wahl15 and s_ not in befehle and stext[0] != "reta":
                 textDazu = []
                 nn: Optional[int] = 0
                 for iii, s_3 in enumerate(s_[::-1]):
@@ -1033,8 +1033,6 @@ def promptVorbereitungGrosseAusgabe(
                     pass
 
                 if n is not None:
-                    # s_2 = s_[n:].split(",")
-                    # s_4 = [s_5.split("/") for s_5 in s_2]
                     (
                         brueche_Z,
                         zahlenAngaben__Z,
@@ -1042,18 +1040,6 @@ def promptVorbereitungGrosseAusgabe(
                     ) = getFromZahlenBereichBruchAndZahlenbereich(s_b[n:], [], [])
                     if fullBlockIsZahlenbereichAndBruch_Z:
                         s_ = s_b
-                        # if (
-                        #    len(s_) > n
-                        #    and (
-                        #        [
-                        #            [strInt.isdecimal() or len(strInt) == 0 for strInt in strA]
-                        #            for strA in s_4
-                        #        ]
-                        #        == [[True for strInt in strA] for strA in s_4]
-                        #        and "-" not in s_
-                        #    )
-                        #    or isZeilenAngabe(s_[n:])
-                        # ):
                         buchst = set(s_[:n]) & {
                             "a",
                             "t",
@@ -1078,7 +1064,8 @@ def promptVorbereitungGrosseAusgabe(
                             and promptMode2 != PromptModus.AusgabeSelektiv
                         ):
                             textDazu += ["mulpri", "a", "t", "w", "e"]
-
+            else:
+                textDazu += [s_]
             if len(textDazu) > 0:
                 stext2 += textDazu
             else:
