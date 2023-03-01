@@ -1010,6 +1010,7 @@ def promptVorbereitungGrosseAusgabe(
         s_2: list
 
         for s_ in tuple(deepcopy(stext)):
+            s_m = s_
             if s_[2:] not in wahl15 and s_ not in befehle and stext[0] != "reta":
                 textDazu = []
                 nn: Optional[int] = 0
@@ -1053,17 +1054,21 @@ def promptVorbereitungGrosseAusgabe(
                             "S",
                             "e",
                         }
-                        if n == len(buchst):
-                            buchst2: list = [
-                                a if a != "p" else "mulpri" for a in buchst
-                            ]
-                            textDazu += buchst2 + [str(s_[n:])]
-                        if (
-                            len(stext) == 1
-                            and len(buchst) == 0
-                            and promptMode2 != PromptModus.AusgabeSelektiv
-                        ):
-                            textDazu += ["mulpri", "a", "t", "w", "e"]
+                        if len(buchst) != len(s_[:n]):
+                            s_ = s_m
+                        else:
+                            # erst hier passiert wirklich etwas
+                            if n == len(buchst):
+                                buchst2: list = [
+                                    a if a != "p" else "mulpri" for a in buchst
+                                ]
+                                textDazu += buchst2 + [str(s_[n:])]
+                            if (
+                                len(stext) == 1
+                                and len(buchst) == 0
+                                and promptMode2 != PromptModus.AusgabeSelektiv
+                            ):
+                                textDazu += ["mulpri", "a", "t", "w", "e"]
             else:
                 textDazu += [s_]
             if len(textDazu) > 0:
