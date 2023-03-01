@@ -1078,7 +1078,7 @@ def promptVorbereitungGrosseAusgabe(
                             # "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
                         }
                         if (len(buchst) != len(s_[:n]) or len(buchst) == 0) and not (
-                            len(stext) == 1 and isZeilenAngabe(*stext[0])
+                            len(stext) == 1 and isZeilenAngabe(stext[0])
                         ):
                             s_ = s_m
                         else:
