@@ -1232,12 +1232,11 @@ function BereichToNumbers2(MehrereBereiche, vielfache = false, maxZahl = 1028) {
       vielfache2 = false;
     }
     //window.alert(EinBereich);
-    //window.alert([vielfache, vielfache2].toString());
     BereichToNumbers2_EinBereich(
       EinBereich2,
       dazu,
       hinfort,
-      maxZahl,
+      (vielfache || vielfache2) && maxZahl == Infinity ? 1028 : maxZahl,
       vielfache || vielfache2
     );
   }
