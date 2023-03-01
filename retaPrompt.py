@@ -238,6 +238,7 @@ def speichern(ketten, platzhalter, text):
         maxNum2X,
         stextX,
         zahlenAngaben_X,
+        ifKurzKurz_X,
     ) = promptVorbereitungGrosseAusgabe(
         ketten,
         platzhalter,
@@ -338,6 +339,7 @@ def PromptScope():
             maxNum,
             stext,
             zahlenAngaben_,
+            ifKurzKurz,
         ) = promptVorbereitungGrosseAusgabe(
             ketten,
             platzhalter,
@@ -361,6 +363,7 @@ def PromptScope():
             text,
             warBefehl,
             zahlenAngaben_,
+            ifKurzKurz,
         )
 
 
@@ -378,6 +381,7 @@ def PromptGrosseAusgabe(
     text,
     warBefehl,
     zahlenAngaben_,
+    ifKurzKurz,
 ):
 
     bruch_GanzZahlReziproke = []
@@ -437,6 +441,15 @@ def PromptGrosseAusgabe(
             print("[code]" + text + "[/code]")
         else:
             cliout("[code]" + text + "[/code]", True, "bbcode")
+    if (
+        ifKurzKurz
+        and "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stext
+    ):
+        print(
+            "'{}' ergibt sich aus '{}' und ergibt danach reta-Befehl:".format(
+                " ".join(stext), text
+            )
+        )
     if ("abc" in stext or "abcd" in stext) and len(stext) == 2:
         warBefehl = True
         buchstabe: str
@@ -516,10 +529,15 @@ def PromptGrosseAusgabe(
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=2",
-                *["--keineleereninhalte" if "e" in stext else ""],
+                *[
+                    "--keineleereninhalte"
+                    if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                    in stext
+                    else ""
+                ],
             ] + returnOnlyParasAsList(stext)
             kette += ketten
-            if "e" not in stext:
+            if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stext:
                 print(" ".join(kette))
             reta.Program(
                 kette,
@@ -548,10 +566,18 @@ def PromptGrosseAusgabe(
                     "--breite=" + str(int(shellRowsAmountStr) - 2),
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1",
-                    *["--keineleereninhalte" if "e" in stext else ""],
+                    *[
+                        "--keineleereninhalte"
+                        if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                        in stext
+                        else ""
+                    ],
                 ] + returnOnlyParasAsList(stext)
                 kette += ketten
-                if "e" not in stext:
+                if (
+                    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                    not in stext
+                ):
                     print(" ".join(kette))
                 reta.Program(
                     kette,
@@ -571,10 +597,18 @@ def PromptGrosseAusgabe(
                     "--breite=" + str(int(shellRowsAmountStr) - 2),
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=3",
-                    *["--keineleereninhalte" if "e" in stext else ""],
+                    *[
+                        "--keineleereninhalte"
+                        if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                        in stext
+                        else ""
+                    ],
                 ] + returnOnlyParasAsList(stext)
                 kette += ketten
-                if "e" not in stext:
+                if (
+                    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                    not in stext
+                ):
                     print(" ".join(kette))
                 reta.Program(
                     kette,
@@ -594,10 +628,18 @@ def PromptGrosseAusgabe(
                     "-kombination",
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1",
-                    *["--keineleereninhalte" if "e" in stext else ""],
+                    *[
+                        "--keineleereninhalte"
+                        if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                        in stext
+                        else ""
+                    ],
                 ] + returnOnlyParasAsList(stext)
                 kette += ketten
-                if "e" not in stext:
+                if (
+                    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                    not in stext
+                ):
                     print(" ".join(kette))
                 reta.Program(
                     kette,
@@ -625,10 +667,18 @@ def PromptGrosseAusgabe(
                     "--konzept=" + ",".join(eigN),
                     "--breite=" + str(int(shellRowsAmountStr) - 2),
                     "-ausgabe",
-                    *["--keineleereninhalte" if "e" in stext else ""],
+                    *[
+                        "--keineleereninhalte"
+                        if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                        in stext
+                        else ""
+                    ],
                 ] + returnOnlyParasAsList(stext)
                 kette += ketten
-                if "e" not in stext:
+                if (
+                    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                    not in stext
+                ):
                     print(" ".join(kette))
                 reta.Program(
                     kette,
@@ -649,10 +699,18 @@ def PromptGrosseAusgabe(
                     "--konzept2=" + ",".join(eigR),
                     "--breite=" + str(int(shellRowsAmountStr) - 2),
                     "-ausgabe",
-                    *["--keineleereninhalte" if "e" in stext else ""],
+                    *[
+                        "--keineleereninhalte"
+                        if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                        in stext
+                        else ""
+                    ],
                 ] + returnOnlyParasAsList(stext)
                 kette += ketten
-                if "e" not in stext:
+                if (
+                    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                    not in stext
+                ):
                     print(" ".join(kette))
                 reta.Program(
                     kette,
@@ -676,10 +734,18 @@ def PromptGrosseAusgabe(
                     "--breite=" + str(int(shellRowsAmountStr) - 2),
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1,3,4",
-                    *["--keineleereninhalte" if "e" in stext else ""],
+                    *[
+                        "--keineleereninhalte"
+                        if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                        in stext
+                        else ""
+                    ],
                 ] + returnOnlyParasAsList(stext)
                 kette += ketten
-                if "e" not in stext:
+                if (
+                    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                    not in stext
+                ):
                     print(" ".join(kette))
                 reta.Program(
                     kette,
@@ -699,10 +765,18 @@ def PromptGrosseAusgabe(
                     "--breite=" + str(int(shellRowsAmountStr) - 2),
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1",
-                    *["--keineleereninhalte" if "e" in stext else ""],
+                    *[
+                        "--keineleereninhalte"
+                        if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                        in stext
+                        else ""
+                    ],
                 ] + returnOnlyParasAsList(stext)
                 kette += ketten
-                if "e" not in stext:
+                if (
+                    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                    not in stext
+                ):
                     print(" ".join(kette))
                 reta.Program(
                     kette,
@@ -721,10 +795,18 @@ def PromptGrosseAusgabe(
                     "-kombination",
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1",
-                    *["--keineleereninhalte" if "e" in stext else ""],
+                    *[
+                        "--keineleereninhalte"
+                        if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                        in stext
+                        else ""
+                    ],
                 ] + returnOnlyParasAsList(stext)
                 kette += ketten
-                if "e" not in stext:
+                if (
+                    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                    not in stext
+                ):
                     print(" ".join(kette))
                 reta.Program(
                     kette,
@@ -783,10 +865,15 @@ def PromptGrosseAusgabe(
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=3,4,5,6",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
-                *["--keineleereninhalte" if "e" in stext else ""],
+                *[
+                    "--keineleereninhalte"
+                    if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                    in stext
+                    else ""
+                ],
             ] + returnOnlyParasAsList(stext)
             kette += ketten
-            if "e" not in stext:
+            if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stext:
                 print(" ".join(kette))
             reta.Program(
                 kette,
@@ -806,10 +893,15 @@ def PromptGrosseAusgabe(
                 "--procontra=pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
                 "-ausgabe",
-                *["--keineleereninhalte" if "e" in stext else ""],
+                *[
+                    "--keineleereninhalte"
+                    if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                    in stext
+                    else ""
+                ],
             ] + returnOnlyParasAsList(stext)
             kette += ketten
-            if "e" not in stext:
+            if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stext:
                 print(" ".join(kette))
             reta.Program(
                 kette,
@@ -832,10 +924,15 @@ def PromptGrosseAusgabe(
                 "--alles",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
                 "-ausgabe",
-                *["--keineleereninhalte" if "e" in stext else ""],
+                *[
+                    "--keineleereninhalte"
+                    if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                    in stext
+                    else ""
+                ],
             ] + returnOnlyParasAsList(stext)
             kette += ketten
-            if "e" not in stext:
+            if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stext:
                 print(" ".join(kette))
             reta.Program(
                 kette,
@@ -855,10 +952,15 @@ def PromptGrosseAusgabe(
                 "--bedeutung=primzahlkreuz",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
                 "-ausgabe",
-                *["--keineleereninhalte" if "e" in stext else ""],
+                *[
+                    "--keineleereninhalte"
+                    if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                    in stext
+                    else ""
+                ],
             ] + returnOnlyParasAsList(stext)
             kette += ketten
-            if "e" not in stext:
+            if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stext:
                 print(" ".join(kette))
             reta.Program(
                 kette,
@@ -880,10 +982,15 @@ def PromptGrosseAusgabe(
                 "--primzahlwirkung=Galaxieabsicht",
                 "--breite=" + str(int(shellRowsAmountStr) - 2),
                 "-ausgabe",
-                *["--keineleereninhalte" if "e" in stext else ""],
+                *[
+                    "--keineleereninhalte"
+                    if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                    in stext
+                    else ""
+                ],
             ] + returnOnlyParasAsList(stext)
             kette += ketten
-            if "e" not in stext:
+            if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stext:
                 print(" ".join(kette))
             reta.Program(
                 kette,
@@ -914,10 +1021,18 @@ def PromptGrosseAusgabe(
                     "--grundstrukturen=" + grundstruk,
                     "--breite=" + str(int(shellRowsAmountStr) - 2),
                     "-ausgabe",
-                    *["--keineleereninhalte" if "e" in stext else ""],
+                    *[
+                        "--keineleereninhalte"
+                        if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                        in stext
+                        else ""
+                    ],
                 ] + returnOnlyParasAsList(stext)
                 kette += ketten
-                if "e" not in stext:
+                if (
+                    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                    not in stext
+                ):
                     print(" ".join(kette))
                 reta.Program(
                     kette,
@@ -1004,6 +1119,7 @@ def promptVorbereitungGrosseAusgabe(
         stext: list = []
     ketten = []
     AusgabeSelektiv = 5
+    ifKurzKurz = False
     if len(stext) > 0:
         textDazu: list = []
         stext2: list = []
@@ -1053,10 +1169,12 @@ def promptVorbereitungGrosseAusgabe(
                             "o",
                             "S",
                             "e",
+                            # "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
                         }
-                        if len(buchst) != len(s_[:n]):
+                        if len(buchst) != len(s_[:n]) or len(buchst) == 0:
                             s_ = s_m
                         else:
+                            ifKurzKurz = True
                             # erst hier passiert wirklich etwas
                             if n == len(buchst):
                                 buchst2: list = [
@@ -1068,7 +1186,13 @@ def promptVorbereitungGrosseAusgabe(
                                 and len(buchst) == 0
                                 and promptMode2 != PromptModus.AusgabeSelektiv
                             ):
-                                textDazu += ["mulpri", "a", "t", "w", "e"]
+                                textDazu += [
+                                    "mulpri",
+                                    "a",
+                                    "t",
+                                    "w",
+                                    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
+                                ]
             else:
                 textDazu += [s_]
             if len(textDazu) > 0:
@@ -1087,19 +1211,6 @@ def promptVorbereitungGrosseAusgabe(
             maxNum = 1024
     stextb = []
     zahlenBereichMatch = [bool(isZeilenAngabe(swort)) for swort in stext]
-    # zahlenBereichNeu = {i: a for i, a in zip(zahlenBereichMatch, stext)}
-    # for s in stext:
-    #    if (
-    #        len(s) > 0
-    #        and s[0].isdecimal()
-    #        and ("," in s or "-" in s or "+" in s)
-    #        and s == zahlenBereichNeu[True]
-    #    ):
-    #        stextb += [nummernStringzuNummern(s, "v" in stext)]
-    #    else:
-    #        stextb += [s]
-    # stext = stextb
-    # print("__" + str(textDazu0))
     if (
         promptMode2 == PromptModus.AusgabeSelektiv
         and promptModeLast == PromptModus.normal
@@ -1168,8 +1279,27 @@ def promptVorbereitungGrosseAusgabe(
     c = ""
     EineZahlenFolgeJa: dict = {}
     if len(set(stext) & befehleBeenden) > 0:
-        stext = tuple(befehleBeenden)[0]
+        stext = [tuple(befehleBeenden)[0]]
     # print([EineZahlenFolgeJa, bedingung, brueche, c, ketten, maxNum, stext])
+    replacements = {
+        "e": "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
+        "a": "absicht",
+        "u": "universum",
+        "t": "thomas",
+        "r": "richtung",
+        "v": "vielfache",
+        "h": "help",
+        "w": "teiler",
+        "S": "BefehlSpeichernDanach",
+        "s": "BefehlSpeichernDavor",
+        "l": "BefehlSpeicherungLöschen",
+        "o": "BefehlSpeicherungAusgeben",
+    }
+    for i, token in enumerate(stext):
+        try:
+            stext[i] = replacements[token]
+        except KeyError:
+            pass
     return (
         EineZahlenFolgeJa,
         bedingung,
@@ -1179,6 +1309,7 @@ def promptVorbereitungGrosseAusgabe(
         maxNum,
         stext,
         zahlenAngaben_,
+        ifKurzKurz,
     )
 
 

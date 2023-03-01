@@ -180,7 +180,6 @@ befehle = ["15" + a for a in wahl15.keys()] + [
     "loggen",
     "nichtloggen",
     "mulpri",
-    "b",
     "python",
     "w",
     "teiler",
@@ -191,9 +190,9 @@ befehle = ["15" + a for a in wahl15.keys()] + [
     "BefehlSpeicherungAusgeben",
     "o",
     "BefehlsSpeicherungsModusAus",
-    "x",
+    # "x",
     "BefehlSpeichernDavor",
-    "s",
+    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
 ]
 befehle += ["EIGN" + a for a in eigsN] + ["EIGR" + a for a in eigsR]
 
