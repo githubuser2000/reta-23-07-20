@@ -35,10 +35,15 @@ Nebenparameter beginnen mit 2 Minus --.
     * 1,2,3,4,5,...
 * --vorhervonausschnitt=
     * 1-5,7-10,14,20
-* --nachtraeglichneuabzaehlungvielfache=
-    * 3-6,8
+* --vorhervonausschnittteiler
+    * bewirkt, dass die Teiler aller Zahlen, die sich aus der Angabe von "--vorhervonausschnitt=" ergeben, zusätzlich dazu kommen
+    * z.B. wird aus 12: 2,3,4,6,12
 * --nachtraeglichneuabzaehlung=
     * 3-6,8
+    * Dafür werden die Ergebniszeilen neu gezählt. Wurden Zeilen "5 bis 7" zuvor bestimmt und wird nun Zeile 2 hiermit gewählt, wäre das Zeile 6.
+* --nachtraeglichneuabzaehlungvielfache=
+    * 3-6,8
+    * Dafür werden die Ergebniszeilen neu gezählt. Wurden Zeilen "5 bis 8" zuvor bestimmt und wird nun Zeile 2 hiermit gewählt, wäre das Zeile 6,8, denn bei Neuzählung der Zeilen "5 bis 8" ergeben sich Zeilen "1 bis 4". Davon ist jeder zweite Zeile 2 und 4. Zurückgerechnet auf Zeilen "5 bis 8" sind das Zeilen 6 und 8.
 * --potenzenvonzahlen=
     * 2,3
 * --oberesmaximum=
