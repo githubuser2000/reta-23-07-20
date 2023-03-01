@@ -48,6 +48,7 @@ zeilenParas = [
     "--zeit=",
     "--zaehlung=",
     "--vorhervonausschnitt=",
+    "--vorhervonausschnittteiler",
     "--primzahlvielfache=",
     "--nachtraeglichneuabzaehlung=",
     "--nachtraeglichneuabzaehlungvielfache=",

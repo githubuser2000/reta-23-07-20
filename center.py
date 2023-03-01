@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+import math
 import os
 import platform
 import pprint
@@ -453,3 +454,39 @@ def BereichToNumbers2_EinBereich_Menge_vielfache(BereichCouple, around, maxZahl,
                     d = (number * i) - a
                     if d > 0 and d < maxZahl:
                         menge |= {d}
+
+
+# @lru_cache(maxsize=10489)
+def multiples(a, mul1=True):
+    """
+    findet für eine Zahl alle Kombinationen aus möglichen Multiplikationen aus ganzen Zahlen, die diese Zahl ergibt
+    @type a: int
+    @param a: Produkt von mehreren möglichen Faktoren
+    @type mul1: bool
+    @param mul1: ob auch 1 * a als Faktor als geordnetes Paar mit am Ende dazu kommen soll
+    @return: gibt Liste an Paaren von Faktoren aus
+    """
+    menge = set()
+    for b in range(2, math.floor(math.sqrt(a) + 1)):
+        c = a / b * 1000
+        c = round(c) / 1000
+        if c == round(c):
+            menge |= {(int(c), b)}
+    if mul1:
+        menge = list(menge) + [(a, 1)]
+    else:
+        menge = list(menge)
+    # menge.sort()
+    return menge
+
+
+def teiler(zahlenBereichsAngabe):
+    ZahlenBereichMenge = BereichToNumbers2(zahlenBereichsAngabe, False, 0)
+    ZahlenWbereichMenge = set()
+    for each1 in ZahlenBereichMenge:
+        for each2 in set(multiples(int(each1))):
+            ZahlenWbereichMenge |= set(each2)
+    if ZahlenWbereichMenge != {1}:
+        ZahlenWbereichMenge -= {1}
+    zahlenWBereichStringListe = [str(each2) for each2 in ZahlenWbereichMenge]
+    return zahlenWBereichStringListe, ZahlenWbereichMenge

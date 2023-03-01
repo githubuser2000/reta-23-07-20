@@ -15,14 +15,15 @@ except:
 
 from center import (DefaultOrderedDict, Multiplikationen,
                     Primzahlkreuz_pro_contra_strs, alxp, cliout,
-                    getTextWrapThings, infoLog, output, re, unique_everseen, x)
+                    getTextWrapThings, infoLog, multiples, output, re,
+                    unique_everseen, x)
 from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz,
                         couldBePrimeNumberPrimzahlkreuz_fuer_aussen,
                         couldBePrimeNumberPrimzahlkreuz_fuer_innen, csvSyntax,
                         divisorGenerator, htmlSyntax, isPrimMultiple,
-                        markdownSyntax, math, moonNumber, multiples,
-                        primCreativity, primFak, primMultiple, primRepeat)
+                        markdownSyntax, math, moonNumber, primCreativity,
+                        primFak, primMultiple, primRepeat)
 from lib4tables_Enum import ST
 
 # Primzahlkreuz_pro_contra_strs = (

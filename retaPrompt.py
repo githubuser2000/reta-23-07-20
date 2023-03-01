@@ -19,8 +19,7 @@ from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
 
 from center import (BereichToNumbers2, cliout, isZeilenAngabe,
-                    isZeilenAngabe_betweenKommas, retaPromptHilfe)
-from lib4tables import multiples
+                    isZeilenAngabe_betweenKommas, multiples, retaPromptHilfe)
 from LibRetaPrompt import wahl15
 # import reta
 from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,

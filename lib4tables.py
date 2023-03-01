@@ -7,7 +7,7 @@ from fractions import Fraction
 from functools import lru_cache
 
 from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
-                    output, re, x)
+                    multiples, output, re, x)
 
 
 class OutputSyntax:
@@ -466,25 +466,25 @@ def couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num: int) -> bool:
     return num % 24 in Under24
 
 
-@lru_cache(maxsize=10489)
-def multiples(a, mul1=True):
-    """
-    findet für eine Zahl alle Kombinationen aus möglichen Multiplikationen aus ganzen Zahlen, die diese Zahl ergibt
-    @type a: int
-    @param a: Produkt von mehreren möglichen Faktoren
-    @type mul1: bool
-    @param mul1: ob auch 1 * a als Faktor als geordnetes Paar mit am Ende dazu kommen soll
-    @return: gibt Liste an Paaren von Faktoren aus
-    """
-    menge = set()
-    for b in range(2, math.floor(math.sqrt(a) + 1)):
-        c = a / b * 1000
-        c = round(c) / 1000
-        if c == round(c):
-            menge |= {(int(c), b)}
-    if mul1:
-        menge = list(menge) + [(a, 1)]
-    else:
-        menge = list(menge)
-    # menge.sort()
-    return menge
+# @lru_cache(maxsize=10489)
+# def multiples(a, mul1=True):
+#    """
+#    findet für eine Zahl alle Kombinationen aus möglichen Multiplikationen aus ganzen Zahlen, die diese Zahl ergibt
+#    @type a: int
+#    @param a: Produkt von mehreren möglichen Faktoren
+#    @type mul1: bool
+#    @param mul1: ob auch 1 * a als Faktor als geordnetes Paar mit am Ende dazu kommen soll
+#    @return: gibt Liste an Paaren von Faktoren aus
+#    """
+#    menge = set()
+#    for b in range(2, math.floor(math.sqrt(a) + 1)):
+#        c = a / b * 1000
+#        c = round(c) / 1000
+#        if c == round(c):
+#            menge |= {(int(c), b)}
+#    if mul1:
+#        menge = list(menge) + [(a, 1)]
+#    else:
+#        menge = list(menge)
+#    # menge.sort()
+#    return menge

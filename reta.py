@@ -3494,6 +3494,13 @@ class Program:
                                 paramLines.add(str(zahl) + "p")
                     elif self.oberesMaximum(arg):
                         pass
+                    elif arg[2:27] == "vorhervonausschnittteiler":
+                        if neg == "":
+                            paramLines |= (
+                                self.tables.getPrepare.parametersCmdWithSomeBereich(
+                                    "1", "w", neg, keineNegBeruecksichtigung=True
+                                )
+                            )
                     elif arg[2:22] == "vorhervonausschnitt=":
                         if neg == "":
                             paramLines |= (

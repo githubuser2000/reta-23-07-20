@@ -7,7 +7,8 @@ from typing import Iterable, Optional, Union
 
 import lib4tables_Enum
 from center import (BereichToNumbers2, Multiplikationen, alxp, cliout,
-                    getTextWrapThings, infoLog, isZeilenAngabe, output, re, x)
+                    getTextWrapThings, infoLog, isZeilenAngabe, output, re,
+                    teiler, x)
 from lib4tables import isPrimMultiple, moonNumber
 from lib4tables_Enum import ST
 
@@ -378,14 +379,19 @@ class Prepare:
         numRangeYesZ = set()
         if_a_AtAll = False
         mehrere: list = []
+        ifTeiler = False
         for condition in paramLines:
             if "_a_" in condition[:3] and len(condition) > 3:
                 if_a_AtAll = True
                 mehrere += [condition[3:]]
+            if condition[:3] == "_w_":
+                ifTeiler = True
         if if_a_AtAll:
-            numRangeYesZ |= BereichToNumbers2(
+            numRangeYesZ = BereichToNumbers2(
                 ",".join(mehrere), False, self.hoechsteZeile[1024]
             )
+            if ifTeiler:
+                numRangeYesZ = teiler(",".join([str(c) for c in numRangeYesZ]))[1]
 
         numRange = cutset(if_a_AtAll, numRange, numRangeYesZ)
         numRangeYesZ = set()

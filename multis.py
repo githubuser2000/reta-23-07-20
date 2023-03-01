@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from sys import argv
 
-from lib4tables import multiples
+from center import multiples
 
 
 def mult(liste: list):
