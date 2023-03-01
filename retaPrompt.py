@@ -19,7 +19,7 @@ from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
 
 from center import (BereichToNumbers2, cliout, isZeilenAngabe,
-                    isZeilenAngabe_betweenKommas, multiples, retaPromptHilfe)
+                    isZeilenAngabe_betweenKommas, retaPromptHilfe, teiler)
 from LibRetaPrompt import wahl15
 # import reta
 from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
@@ -59,57 +59,6 @@ class CharType(Enum):
     begin = 3
 
 
-def teiler(zahlenBereichsAngabe):
-    ZahlenBereichMenge = BereichToNumbers2(zahlenBereichsAngabe, False, 0)
-    ZahlenWbereichMenge = set()
-    for each1 in ZahlenBereichMenge:
-        for each2 in set(multiples(int(each1))):
-            ZahlenWbereichMenge |= set(each2)
-    if ZahlenWbereichMenge != {1}:
-        ZahlenWbereichMenge -= {1}
-    zahlenWBereichStringListe = [str(each2) for each2 in ZahlenWbereichMenge]
-    return zahlenWBereichStringListe, ZahlenWbereichMenge
-
-
-# def nummernStringzuNummern(text: str, isV: bool = False, until: int = 1028) -> str:
-#    # print(BereichToNumbers2(text, isV, until))
-#    # print(",".join([str(a) for a in BereichToNumbers2(text, isV, until)]))
-#    return ",".join([str(a) for a in BereichToNumbers2(text, isV, until)])
-
-
-#    def toNummernSet(text: list) -> set:
-#        menge = set()
-#        for t1 in text:
-#            for t2 in t1:
-#                menge |= {int(t2)}
-#        return menge
-#
-#    listen = [kommatiert.split("-") for kommatiert in text.split(",")]
-#    results = []
-#    abzug = []
-#    for insideKomma in listen:
-#        if len(insideKomma) == 1 and insideKomma[0].isdecimal():
-#            results += [[int(insideKomma[0])]]
-#        elif len(insideKomma) == 2:
-#            if insideKomma[0].isdecimal() and insideKomma[1].isdecimal():
-#                raeinsch = range(int(insideKomma[0]), int(insideKomma[1]) + 1)
-#                if len(raeinsch) > 0:
-#                    results += [range(int(insideKomma[0]), int(insideKomma[1]) + 1)]
-#            if insideKomma[0] == "" and insideKomma[1].isdecimal():
-#                abzug += [[insideKomma[1]]]
-#        elif len(insideKomma) == 3:
-#            if (
-#                insideKomma[0] == ""
-#                and insideKomma[1].isdecimal()
-#                and insideKomma[2].isdecimal()
-#            ):
-#                abzug += [range(int(insideKomma[1]), int(insideKomma[2]) + 1)]
-#        else:
-#            return text
-#
-#    return ",".join(map(str, toNummernSet(results) - toNummernSet(abzug)))
-
-
 def newSession(history=False):
     if history:
         return PromptSession(
@@ -142,7 +91,6 @@ def externCommand(cmd: str, StrNummern: str):
 
 def speichern(ketten, platzhalter, text):
     global promptMode2, textDazu0
-    # print([ketten, platzhalter, text, textDazu0, promptMode2, "begin"])
     bedingung1 = len(platzhalter) > 0
     bedingung2 = len(ketten) > 0
     if bedingung1 or bedingung2:
@@ -304,8 +252,6 @@ def PromptScope():
         else:
             stext: list = []
 
-        # stext: Optional[list[str]] = str(text).split()
-        # stext2: list[str] = str(text).split()
         if text == "S" or text == "BefehlSpeichernDanach":
             promptMode = PromptModus.speichern
             continue
@@ -390,32 +336,6 @@ def PromptGrosseAusgabe(
         for g, a in enumerate(stext):
             EineZahlenFolgeJa[g] = isZeilenAngabe(a)
 
-            # innerKomma3 = []
-            # innerKomma4 = a.split(",")
-            # for innerKomma2 in innerKomma4:
-            #    if innerKomma2.isdecimal():
-            #        innerKomma3 += [innerKomma2]
-            # innerKomma6 = innerKomma3
-
-            # if "w" in stext or "teiler" in stext:
-            #    innerKomma3, innerKomma5 = teiler(innerKomma3)
-
-            # print(innerKomma3)
-            # for innerKomma in innerKomma3:
-            #    innerKommaList = innerKomma.split("-")
-            #    for k, innerMinus in enumerate(innerKommaList):
-            #        if k == 0 and len(innerMinus) == 0:
-            #            pass
-            #        elif innerMinus.isdecimal():
-            #            c = ",".join(innerKomma3)
-            #            c2 = ",".join(innerKomma6)
-            #            try:
-            #                EineZahlenFolgeJa[g]
-            #            except KeyError:
-            #                EineZahlenFolgeJa[g] = True
-            #
-            #        else:
-            #            EineZahlenFolgeJa[g] = False
             (
                 brueche,
                 zahlenAngaben_,
@@ -827,19 +747,6 @@ def PromptGrosseAusgabe(
             warBefehl = True
             import reta
 
-            # kette = [
-            # "reta",
-            # "-zeilen",
-            # zeiln,
-            # "-spalten",
-            # "--multiplikationen=motivstern",
-            # "--breite=" + str(int(shellRowsAmountStr) - 2),
-            # ]
-            # reta.Program(
-            # kette,
-            # int(shellRowsAmountStr),
-            # )
-            # externCommand("multis", c)
             listeStrWerte = c2.split(",")
             try:
                 mult(listeStrWerte)
@@ -1170,7 +1077,9 @@ def promptVorbereitungGrosseAusgabe(
                             "e",
                             # "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
                         }
-                        if len(buchst) != len(s_[:n]) or len(buchst) == 0:
+                        if (len(buchst) != len(s_[:n]) or len(buchst) == 0) and not (
+                            len(stext) == 1 and isZeilenAngabe(*stext[0])
+                        ):
                             s_ = s_m
                         else:
                             ifKurzKurz = True
@@ -1406,11 +1315,6 @@ def PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text):
 
 
 def promptSpeicherungB(nochAusageben, platzhalter, promptMode, text):
-    # stext = text.split()
-    # if promptMode in (
-    #    PromptModus.speicherungAusgaben,
-    #    PromptModus.speicherungAusgabenMitZusatz,
-    # ):
     if promptMode == PromptModus.speicherungAusgaben:
         text = platzhalter
     elif promptMode == PromptModus.speicherungAusgabenMitZusatz:
