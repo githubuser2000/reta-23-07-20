@@ -60,9 +60,7 @@ zeilenParas = [
 ]
 hauptForNeben = ("-zeilen", "-spalten", "-kombination", "-ausgabe", "-h", "-help")
 
-notParameterValues = (
-    ausgabeParas + zeilenParas + kombiMainParas + spalten + mainParas,
-)
+notParameterValues = ausgabeParas + zeilenParas + kombiMainParas + spalten + mainParas
 hauptForNebenSet = set(hauptForNeben)
 
 ausgabeArt = ["bbcode", "html", "csv", "shell", "markdown"]

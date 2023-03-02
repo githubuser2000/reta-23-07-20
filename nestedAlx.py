@@ -5,15 +5,16 @@ import difflib
 from enum import Enum
 from typing import Any, Dict, Iterable, Mapping, Optional, Set, Union
 
-from LibRetaPrompt import (ausgabeArt, ausgabeParas, befehle, befehle2,
-                           hauptForNeben, hauptForNebenSet, kombiMainParas,
-                           mainParas, notParameterValues, reta, retaProgram,
-                           spalten, spaltenDict, zeilenParas)
 # from baseAlx import WordCompleter
 # from completionAlx import Completion
 from prompt_toolkit.completion import (CompleteEvent, Completer, Completion,
                                        FuzzyWordCompleter)
 from prompt_toolkit.document import Document
+
+from LibRetaPrompt import (ausgabeArt, ausgabeParas, befehle, befehle2,
+                           hauptForNeben, hauptForNebenSet, kombiMainParas,
+                           mainParas, reta, retaProgram, spalten, spaltenDict,
+                           zeilenParas)
 # from prompt_toolkit.completion.word_completer import WordCompleter
 from word_completerAlx import WordCompleter
 
@@ -56,7 +57,6 @@ class NestedCompleter(Completer):
     def __init__(
         self,
         options: Dict[str, Optional[Completer]],
-        notParameterValues,
         optionsStandard: Dict[str, Optional[Completer]],
         situation: ComplSitua,
         lastString: str,
@@ -67,7 +67,6 @@ class NestedCompleter(Completer):
         self.options1 = options
         self.options = {**options, **optionsStandard}
         self.ignore_case = ignore_case
-        self.notParameterValues = notParameterValues
         self.ExOptions: dict = {}
         self.ifGleichheitszeichen = False
         self.optionsPark: Dict[str, Optional[Completer]] = {}
@@ -105,9 +104,7 @@ class NestedCompleter(Completer):
             if result is not None:
                 break
         if result is None:
-            result = NestedCompleter(
-                {}, notParameterValues, {}, self.situationsTyp, first_term, {}
-            )
+            result = NestedCompleter({}, {}, self.situationsTyp, first_term, {})
             self.__setOptions(result, first_term, trennzeichen)
         return result
 
