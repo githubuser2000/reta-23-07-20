@@ -1,4 +1,7 @@
 import sys
+from copy import copy, deepcopy
+from enum import Enum
+from typing import Optional
 
 import reta
 from center import Primzahlkreuz_pro_contra_strs, isZeilenAngabe
@@ -12,6 +15,17 @@ for pp in retaProgram.paraDict.keys():
         eigsN += [pp[1]]
     elif pp[0] == "konzept2":
         eigsR += [pp[1]]
+
+
+class PromptModus(Enum):
+    normal = 0
+    speichern = 1
+    loeschenStart = 2
+    speicherungAusgaben = 3
+    loeschenSelect = 4
+    speicherungAusgabenMitZusatz = 5
+    AusgabeSelektiv = 6
+
 
 #
 #
@@ -205,3 +219,106 @@ def isReTaParameter(t: str):
         and not isZeilenAngabe(t)
         and t.split("=")[0] in [str(c).split("=")[0] for c in notParameterValues]
     )
+
+
+def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, stext2, textDazu):
+    for s_ in tuple(deepcopy(stext)):
+        s_m = s_
+        if s_[2:] not in wahl15 and s_ not in befehle and stext[0] != "reta":
+            textDazu = []
+            nn: Optional[int] = 0
+            for iii, s_3 in enumerate(s_[::-1]):
+                if s_3.isdecimal():
+                    nn = iii
+                    break
+            if nn > 0:
+                s_b = s_[-nn:] + s_[:-nn]
+            else:
+                s_b = s_
+            n: Optional[int] = None
+            for ii, s_3 in enumerate(s_b):
+                if s_3.isdecimal():
+                    n = ii
+                    break
+            try:
+                if s_b[int(n) - 1] == "-":
+                    n -= 1
+            except:
+                pass
+
+            if n is not None:
+                (
+                    brueche_Z,
+                    zahlenAngaben__Z,
+                    fullBlockIsZahlenbereichAndBruch_Z,
+                ) = getFromZahlenBereichBruchAndZahlenbereich(s_b[n:], [], [])
+                if fullBlockIsZahlenbereichAndBruch_Z:
+                    s_ = s_b
+                    buchst = set(s_[:n]) & {
+                        "a",
+                        "t",
+                        "v",
+                        "u",
+                        "p",
+                        "r",
+                        "w",
+                        "s",
+                        "o",
+                        "S",
+                        "e",
+                        # "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
+                    }
+                    if (len(buchst) != len(s_[:n]) or len(buchst) == 0) and not (
+                        len(stext) == 1 and isZeilenAngabe(stext[0])
+                    ):
+                        s_ = s_m
+                    else:
+                        ifKurzKurz = True
+                        # erst hier passiert wirklich etwas
+                        if n == len(buchst):
+                            buchst2: list = [
+                                a if a != "p" else "mulpri" for a in buchst
+                            ]
+                            textDazu += buchst2 + [str(s_[n:])]
+                        if (
+                            len(stext) == 1
+                            and len(buchst) == 0
+                            and promptMode2 != PromptModus.AusgabeSelektiv
+                        ):
+                            textDazu += [
+                                "mulpri",
+                                "a",
+                                "t",
+                                "w",
+                                "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
+                            ]
+        else:
+            textDazu += [s_]
+        if len(textDazu) > 0:
+            stext2 += textDazu
+        else:
+            stext2 += [str(s_)]
+    stext = stext2
+    return ifKurzKurz, stext
+
+
+def getFromZahlenBereichBruchAndZahlenbereich(a, brueche, zahlenAngaben_):
+    ifAllTrue = []
+    first = True
+    for innerKomma in a.split(","):
+        bruch = [bruch for bruch in innerKomma.split("/")]
+        isBruch_ = [bruch1.isdecimal() for bruch1 in bruch] == [True, True]
+        if first:
+            isZahlenangabe_ = isZeilenAngabe(innerKomma)
+        else:
+            isZahlenangabe_ = isZeilenAngabe_betweenKommas(innerKomma)
+        if isBruch_ or isZahlenangabe_:
+            ifAllTrue += [True]
+            if isBruch_:
+                brueche += [bruch]
+            if isZahlenangabe_:
+                zahlenAngaben_ += [innerKomma]
+        else:
+            ifAllTrue += [True]
+        first = False
+    return brueche, zahlenAngaben_, all(ifAllTrue)
