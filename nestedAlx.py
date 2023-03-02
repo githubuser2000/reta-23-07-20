@@ -12,9 +12,9 @@ from prompt_toolkit.completion import (CompleteEvent, Completer, Completion,
 from prompt_toolkit.document import Document
 
 from LibRetaPrompt import (ausgabeArt, ausgabeParas, befehle, befehle2,
-                           hauptForNeben, hauptForNebenSet, kombiMainParas,
-                           mainParas, reta, retaProgram, spalten, spaltenDict,
-                           zeilenParas)
+                           hauptForNeben, hauptForNebenSet, isReTaParameter,
+                           kombiMainParas, mainParas, reta, retaProgram,
+                           spalten, spaltenDict, zeilenParas)
 # from prompt_toolkit.completion.word_completer import WordCompleter
 from word_completerAlx import WordCompleter
 
@@ -78,6 +78,7 @@ class NestedCompleter(Completer):
         self.ausgabeParaWort: Optional[str] = "  "
         self.zeilenParaWort: Optional[str] = "  "
         self.nebenParaWort: Optional[str] = "  "
+        self.lastCommands: set = set()
 
     def optionsSync(
         self,
@@ -123,6 +124,9 @@ class NestedCompleter(Completer):
             ComplSitua.kombiValPara,
             ComplSitua.ausgabeValPara,
         )
+        self.lastCommands |= {first_term}
+
+        # print([first_term in hauptForNeben, completer.lastString in hauptForNeben])
         if trennzeichen == " ":
             if self.situationsTyp == ComplSitua.retaAnfang and first_term == "reta":
                 completer.options = {key: None for key in hauptForNeben}
@@ -131,13 +135,44 @@ class NestedCompleter(Completer):
                 }
                 completer.lastString = first_term
                 completer.situationsTyp = ComplSitua.hauptPara
-            elif self.situationsTyp in (
-                ComplSitua.retaAnfang,
-                ComplSitua.befehleNichtReta,
+            elif (
+                self.situationsTyp
+                in (
+                    ComplSitua.retaAnfang,
+                    ComplSitua.befehleNichtReta,
+                )
+                # and len(self.lastCommands & befehle2) > 0
+                and first_term in hauptForNeben
+                and False
             ):
-                completer.options = {key: None for key in befehle2}
+                print(first_term)
+                completer.options = {
+                    key: None for key in tuple(befehle2) + hauptForNeben
+                }
+                schluessel = ComplSitua.hauptPara
                 completer.optionsTypes = {
-                    key: ComplSitua.befehleNichtReta for key in befehle2
+                    key: schluessel for key in tuple(befehle2) + hauptForNeben
+                }
+                completer.situationsTyp = schluessel
+                completer.lastString = first_term
+                # completer.situationsTyp = ComplSitua.befehleNichtReta
+
+            elif (
+                self.situationsTyp
+                in (
+                    ComplSitua.retaAnfang,
+                    ComplSitua.befehleNichtReta,
+                )
+                and first_term not in hauptForNeben
+            ):
+
+                # if len(self.lastCommands & befehle2) > 0:
+                liste = tuple(befehle2) + hauptForNeben
+                # else:
+                #    liste = tuple(befehle2)
+                completer.options = {key: None for key in liste}
+                completer.optionsTypes = {
+                    key: ComplSitua.befehleNichtReta for key in liste
                 }
                 completer.lastString = first_term
                 completer.situationsTyp = ComplSitua.befehleNichtReta

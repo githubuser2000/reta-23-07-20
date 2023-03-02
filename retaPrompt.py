@@ -20,7 +20,7 @@ from prompt_toolkit.styles import Style
 
 from center import (BereichToNumbers2, cliout, isZeilenAngabe,
                     isZeilenAngabe_betweenKommas, retaPromptHilfe, teiler)
-from LibRetaPrompt import notParameterValues, wahl15
+from LibRetaPrompt import isReTaParameter, notParameterValues, wahl15
 # import reta
 from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
                        befehle2, hauptForNeben, kombiMainParas, mainParas,
@@ -70,12 +70,7 @@ def newSession(history=False):
 def returnOnlyParasAsList(textList: str):
     liste = []
     for t in textList:
-        if (
-            len(t) > 0
-            and t[0] == "-"
-            and not isZeilenAngabe(t)
-            and t.split("=")[0] in [str(c).split("=")[0] for c in notParameterValues]
-        ):
+        if isReTaParameter(t):
             liste += [t]
     return liste
 

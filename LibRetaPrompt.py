@@ -1,7 +1,7 @@
 import sys
 
 import reta
-from center import Primzahlkreuz_pro_contra_strs
+from center import Primzahlkreuz_pro_contra_strs, isZeilenAngabe
 
 retaProgram = reta.Program([sys.argv[0], "-nichts"])
 mainParas = ["-" + a for a in retaProgram.mainParaCmds]
@@ -196,3 +196,12 @@ befehle = ["15" + a for a in wahl15.keys()] + [
 befehle += ["EIGN" + a for a in eigsN] + ["EIGR" + a for a in eigsR]
 
 befehle2: set = set(befehle) - {"reta"}
+
+
+def isReTaParameter(t: str):
+    return (
+        len(t) > 0
+        and t[0] == "-"
+        and not isZeilenAngabe(t)
+        and t.split("=")[0] in [str(c).split("=")[0] for c in notParameterValues]
+    )
