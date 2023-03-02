@@ -18,8 +18,8 @@ from prompt_toolkit.completion import Completer, Completion
 from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
 
-from center import (BereichToNumbers2, cliout, isZeilenAngabe,
-                    isZeilenAngabe_betweenKommas, retaPromptHilfe, teiler)
+from center import (BereichToNumbers2, cliout, isZeilenAngabe, retaPromptHilfe,
+                    teiler)
 from LibRetaPrompt import (PromptModus,
                            getFromZahlenBereichBruchAndZahlenbereich,
                            isReTaParameter, notParameterValues,

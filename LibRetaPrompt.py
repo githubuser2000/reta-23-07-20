@@ -4,7 +4,8 @@ from enum import Enum
 from typing import Optional
 
 import reta
-from center import Primzahlkreuz_pro_contra_strs, isZeilenAngabe
+from center import (Primzahlkreuz_pro_contra_strs, isZeilenAngabe,
+                    isZeilenAngabe_betweenKommas)
 
 retaProgram = reta.Program([sys.argv[0], "-nichts"])
 mainParas = ["-" + a for a in retaProgram.mainParaCmds]
