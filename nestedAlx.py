@@ -13,8 +13,8 @@ from prompt_toolkit.document import Document
 
 from LibRetaPrompt import (PromptModus, ausgabeArt, ausgabeParas, befehle,
                            befehle2, hauptForNeben, hauptForNebenSet,
-                           isReTaParameter, kombiMainParas, mainParas, reta,
-                           retaProgram, spalten, spaltenDict,
+                           isReTaParameter, isZeilenAngabe, kombiMainParas,
+                           mainParas, reta, retaProgram, spalten, spaltenDict,
                            stextFromKleinKleinKleinBefehl, zeilenParas)
 # from prompt_toolkit.completion.word_completer import WordCompleter
 from word_completerAlx import WordCompleter
@@ -169,10 +169,12 @@ class NestedCompleter(Completer):
 
                 if (
                     len(self.lastCommands & befehle2) > 0
-                    or stextFromKleinKleinKleinBefehl(
-                        False, PromptModus.normal, list(self.lastCommands), [], []
-                    )[0]
-                ):
+                    and any([isZeilenAngabe(txt) for txt in self.lastCommands])
+                ) or stextFromKleinKleinKleinBefehl(
+                    False, PromptModus.normal, list(self.lastCommands), [], []
+                )[
+                    0
+                ]:
                     liste = tuple(befehle2) + hauptForNeben
                 else:
                     liste = tuple(befehle2)
