@@ -642,7 +642,7 @@ class Prepare:
         finallyDisplayLines: set = self.FilterOriginalLines(
             set(self.originalLinesRange), paramLines
         )
-        if not len(paramLinesNot) == 0:
+        if len(paramLinesNot) != 0:
             finallyDisplayLines2 = self.FilterOriginalLines(
                 deepcopy(finallyDisplayLines), paramLinesNot
             )
@@ -651,6 +651,9 @@ class Prepare:
             )
             if len(hasAnythingCanged) > 0:
                 finallyDisplayLines -= finallyDisplayLines2
+        if len(finallyDisplayLines) == 0:
+            finallyDisplayLines = set(range(self.hoechsteZeile[1024]))
+
         finallyDisplayLines.add(0)
         finallyDisplayLines3: list = list(finallyDisplayLines)
         finallyDisplayLines3.sort()

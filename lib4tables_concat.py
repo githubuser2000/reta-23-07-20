@@ -530,6 +530,7 @@ class Concat:
         def vorkommenNvielfacherPerItsProduct(
             einVorkommen, ergebnis, vielfacher, vorkommenVielfacher
         ):
+            # print([einVorkommen, ergebnis, vielfacher])
             try:
                 vorkommenVielfacher[ergebnis] += [
                     (

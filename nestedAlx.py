@@ -24,6 +24,8 @@ __all__ = ["NestedCompleter"]
 # NestedDict = Mapping[str, Union['NestedDict', Set[str], None, Completer]]
 NestedDict = Mapping[str, Union[Any, Set[str], None, Completer]]
 
+ifRetaAnfang = False
+
 
 class ComplSitua(Enum):
     hauptPara = 0
@@ -113,6 +115,7 @@ class NestedCompleter(Completer):
     def __setOptions(
         self, completer: "NestedCompleter", first_term: str, trennzeichen: str
     ):
+        global ifRetaAnfang
         gleich = trennzeichen == "=" and self.situationsTyp in (
             ComplSitua.spaltenPara,
             ComplSitua.zeilenPara,
@@ -126,10 +129,10 @@ class NestedCompleter(Completer):
             ComplSitua.ausgabeValPara,
         )
         self.lastCommands |= {first_term}
-
         # print([first_term in hauptForNeben, completer.lastString in hauptForNeben])
         if trennzeichen == " ":
             if self.situationsTyp == ComplSitua.retaAnfang and first_term == "reta":
+                ifRetaAnfang = True
                 completer.options = {key: None for key in hauptForNeben}
                 completer.optionsTypes = {
                     key: ComplSitua.hauptPara for key in hauptForNeben
@@ -142,42 +145,23 @@ class NestedCompleter(Completer):
                     ComplSitua.retaAnfang,
                     ComplSitua.befehleNichtReta,
                 )
-                # and len(self.lastCommands & befehle2) > 0
-                and first_term in hauptForNeben
-                and False
-            ):
-                print(first_term)
-                completer.options = {
-                    key: None for key in tuple(befehle2) + hauptForNeben
-                }
-                schluessel = ComplSitua.hauptPara
-                completer.optionsTypes = {
-                    key: schluessel for key in tuple(befehle2) + hauptForNeben
-                }
-                completer.situationsTyp = schluessel
-                completer.lastString = first_term
-                # completer.situationsTyp = ComplSitua.befehleNichtReta
-
-            elif (
-                self.situationsTyp
-                in (
-                    ComplSitua.retaAnfang,
-                    ComplSitua.befehleNichtReta,
-                )
                 and first_term not in hauptForNeben
             ):
 
                 if (
-                    len(self.lastCommands & befehle2) > 0
-                    and any([isZeilenAngabe(txt) for txt in self.lastCommands])
-                ) or stextFromKleinKleinKleinBefehl(
-                    False, PromptModus.normal, list(self.lastCommands), [], []
-                )[
-                    0
-                ]:
+                    (
+                        len(self.lastCommands & befehle2) > 0
+                        and any([isZeilenAngabe(txt) for txt in self.lastCommands])
+                    )
+                    or stextFromKleinKleinKleinBefehl(
+                        False, PromptModus.normal, list(self.lastCommands), [], []
+                    )[0]
+                    or not ifRetaAnfang
+                ):
                     liste = tuple(befehle2) + hauptForNeben
                 else:
                     liste = tuple(befehle2)
+                    ifRetaAnfang = False
                 completer.options = {key: None for key in liste}
                 completer.optionsTypes = {
                     key: ComplSitua.befehleNichtReta for key in liste
@@ -214,6 +198,11 @@ class NestedCompleter(Completer):
                     elif "-kombination" == self.nebenParaWort:
                         var1, var2 = self.paraKombination(completer)
 
+                    if not ifRetaAnfang:
+                        try:
+                            var1 += tuple(befehle2)
+                        except:
+                            var1 = []
                     completer.options = {key: None for key in var1}
                     completer.optionsTypes = {key: var2 for key in var1}
                     completer.lastString = first_term

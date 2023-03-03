@@ -3970,7 +3970,7 @@ class Program:
             werteList: list[int] = [
                 a + 1 for a in BereichToNumbers2(arg[22:], False, 0)
             ]
-            werte = werteList
+            werte = [max(w, 1024) for w in werteList]
             return werte, False
         else:
             return werte, False
