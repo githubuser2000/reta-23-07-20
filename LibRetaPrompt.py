@@ -88,7 +88,7 @@ wahl15 = {
     "_5": "Impulse_(5)",
     "_7": "Gefühle_(7)",
     "_8": "Modus_und_Sein_(8)",
-    "_10": "Wirklichkeiten_(10),Wirklichkeiten_Wahrheit_Wahrnehmung_(10)",
+    "_10": "Wirklichkeiten_Wahrheit_Wahrnehmung_(10)",
     "_12": "Meta-Systeme_(12),Ordnung_und_Filterung_12_und_1pro12",
     "_13": "Paradigmen_sind_Absichten_(13)",
     "_17": "Gedanken_sind_Positionen_(17)",
