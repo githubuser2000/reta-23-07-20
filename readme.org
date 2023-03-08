@@ -16,41 +16,38 @@
 :EXPORT_OPTIONS: toc:5.
 :END:
 *** 1. Feature Ideen
-+ Kurzbefehle für alle Eigenschaften n und 1/n machen: Deren Name ist einfach ENeigenschaftsname oder EN2eigenschaftsname für die Reziproken Eigenschaften: Geht schnell zu programmieren!
 + SQL like Relationen, z.B. 2:1, d.h. 3 Spalten, und auch alles wie bei SQL, d.h. z.B. n Spalten nach oben/unten: bei z.B. Abstand 1: Gegenspieler. Warum nicht gleich eine SQL (like) Sprache übernehmen, statt das Rad neu zu erfinden!
-+ alle Features von retaPrompt und der von reta ausgegebenen html bei beiden haben, weil nicht ganz beide ganz alles von beiden können, sondern nur fast
-+ Syntax highlighting
-+ dinge bei zsh abschauen
-+ schöneres UTF
-+ csv diff und insert geht schnell zu programmieren.
++ alle Features von retaPrompt und der von reta ausgegebenen html bei beiden haben, weil nicht ganz beide ganz alles von beiden können, sondern nur fast: was fehlt da eigentlich noch? Aufgabe: herausfinden, was noch ungleich ist: detailliert austesten
++ Syntax highlighting: hä?
++ dinge bei zsh abschauen: was kann zsh alles?
++ schöneres UTF: Ideen? Keine!
++ csv diff und insert geht schnell zu programmieren: die app ins git mogeln: recherche und KI
 Kann man ncurses einfach zu web konvertieren, ohne viel Aufwand oder wurde das nicht erfunden?
-+ Option für nur temporäres Logging
-nicht loggen, bei befehlen über Logging
-+  Dass man Kurzbefehlen auch die ReTa-Programm-Argumente mitgeben kann. geht schon: aber autocomplete oder intellisense fehlt dafür
-+ Wie programmiere ich, dass nachträgliches Resizen der CLI App geht?
-+ --parameter=* könnte alle Unter-Parameter meinen, als Kommandozeilenargument.
++ nicht loggen, bei befehlen über Logging
 + Kurzform für Zeile und Spalte einführen, statt die langen Befehlsketten immer.
 + Die Spaltennummer direkt als Zahl wählen können.
 + Multiplikation aus 3 Faktoren, oder mehr, statt nur aus 2:
 python print(str((1,*(2,3))))
 (1, 2, 3)
 Geht einfach und schnell zu programmieren durch Rekursion.
-+ machen, dass alles Kurze mit Fragezeichen oder Minus oder nur Whitespace in RetaPrompt einfach nicht ausgegeben wird
-  ggf. ab das: mit reta Parameter bestimmen!
-+ Programmieren, dass man die Konsole beliebig resizen kann, und dass es dann immernoch die richtige Größe ermöglicht.
-  + Teil A
-    1. Sortierte Ausgabe
-    2. Option begrenzter Auswahl von Zahlen.
-    3. Intern die Zahlenkombi in eigene Datenstruktur packen, anstelle gleich in den String verwursten.
-  + Teil B
-    1. Parameteroption hinzufügen
-    2. später in Readme, try catch fehlerausgabe und befehlliste für retaPrompt, oder ggf. etc., dazu bauen
-    3. statt String Zahlenliste machen
-    4. Zahlen vorher ordnen und dann hinzufügen
-    5. nach Zahlen filtern durch diesen Programm-Parameter.
-    6. 2. durchführen.
-+ Um bessere Farben für die html zu finden, sollte ich einen screenshot davon machen und diesen mit gimp so bearbeiten, dass ich exakt eine Farbe in eine andere ändere. In Gimp kann ich viele Farben ausprobieren.
++ --parameter=* könnte alle Unter-Parameter meinen, als Kommandozeilenargument. Dürfte nicht so lange dauern einprogrammiert zu werden
++ Wie programmiere ich, dass nachträgliches Resizen der CLI App geht?
+  + Programmieren, dass man die Konsole beliebig resizen kann, und dass es dann immernoch die richtige Größe ermöglicht.
+    + Teil A
+      1. Sortierte Ausgabe
+      2. Option begrenzter Auswahl von Zahlen.
+      3. Intern die Zahlenkombi in eigene Datenstruktur packen, anstelle gleich in den String verwursten.
+    + Teil B
+      1. Parameteroption hinzufügen
+      2. später in Readme, try catch fehlerausgabe und befehlliste für retaPrompt, oder ggf. etc., dazu bauen
+      3. statt String Zahlenliste machen
+      4. Zahlen vorher ordnen und dann hinzufügen
+      5. nach Zahlen filtern durch diesen Programm-Parameter.
+      6. 2. durchführen.
 + neues Farbschema: für html aber besser nur: primzahlen pro außen und pro innen und ggf. dessen vielfacher; Farbschema mit durch 3 teilbarem außerdem
+  + Farbschema der Helligkeiten aus welchen Primzahlen welche Zahl besteht
+  + Um bessere Farben für die html zu finden, sollte ich einen screenshot davon machen und diesen mit gimp so bearbeiten, dass ich exakt eine Farbe in eine andere ändere. In Gimp kann ich viele Farben ausprobieren.
++ retaPrompt skriptingfähig machen: nein, das muss nicht bald sein
 *** 2. Bugs
 + Bei ReTaPrompt gibt es das Problem, dass Textvorschläge gemacht werden, bei denen das nicht richtig ist.
 Es ist ja schön, wenn ich weiß, was ich tippen muss, aber ich darf das nicht so lassen.
