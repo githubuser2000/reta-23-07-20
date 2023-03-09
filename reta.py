@@ -3304,6 +3304,7 @@ class Program:
                 # ),
                 17: ("Maschinen", "maschinen", "geräte", "geraete"),
                 18: ("Geist", "geist"),
+                19: ("Bewusstsein", "bewusstsein"),
             }
         )
 
