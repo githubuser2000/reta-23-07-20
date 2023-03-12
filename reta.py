@@ -2002,7 +2002,7 @@ class Program:
             (
                 Program.ParametersMain.grundstrukturen,
                 ("Absicht_1/8", "absicht1pro8", "absicht1/8"),
-                {272},
+                {272, 379},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
