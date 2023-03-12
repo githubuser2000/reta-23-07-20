@@ -121,7 +121,7 @@ wahl15 = {
     "_18_7": "Liebe_(7)",
     "_18_10": "Koalitionen_(10)",
     "_18_17": "Ansichten_Standpunkte_(18_17)",
-    "_1pro8": "Reziproke_Prinzipien(1/8)",
+    "_1pro8": "Prinzipien(1/8)",
     "_1pro5": "Bestrebungen(1/5)",
     "_1pro3": "Bedingung_und_Auslöser_(1/3)",
     "_10_4_18_6": "relativer_Zeit-Betrag_(15_10_4_18_6)",

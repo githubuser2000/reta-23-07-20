@@ -83,7 +83,7 @@ Nebenparameter beginnen mit 2 Minus --.
     * primzahlen,anwendungdersonnen,zaehlungen,jura,geist,gestirn,mechanismen,zuechtung,konjunktiv,wurzel,vorzeichen,inreta
 * --symbole
 * --grundstrukturen
-    * konkreta,impulse,gefuehle,modus,wirklichkeiten,metasysteme,paradigmen,meta-paradigmen,positionen,geist,verbundenheiten,triebe,lust,reflexe,absicht6,absicht7,absicht10,absicht17,zeit,funktionen,vorstellungen,wahrheit,wahrnehmung,achtung,focus,absicht1pro8,ziele,reflektion,kategorien,regung,energie,universelleeigenschaften,stimmungen,klassen,kombinationen,empathie,energie,garben,nachvollziehen,absicht1pro6,verhalten,bedeutung,optimierung,themen,attraktionen,absicht16,liebe,koalitionen,reziprokeprinzipien,ordnenundfiltern,bedingung,ausloeser,relativerzeitbetrag,zahlenvergleich,erwartungen,vorstellungen,ansichten,extremalien,existenzialien,universellerkomperativ,relativreziprokuniversell,sollen,grundstrukturen,abhaengigkeit,helfen
+    * konkreta,impulse,gefuehle,modus,wirklichkeiten,metasysteme,paradigmen,meta-paradigmen,positionen,geist,verbundenheiten,triebe,lust,reflexe,absicht6,absicht7,absicht10,absicht17,zeit,funktionen,vorstellungen,wahrheit,wahrnehmung,achtung,focus,absicht1pro8,ziele,reflektion,kategorien,regung,energie,universelleeigenschaften,stimmungen,klassen,kombinationen,empathie,energie,garben,nachvollziehen,absicht1pro6,verhalten,bedeutung,optimierung,themen,attraktionen,absicht16,liebe,koalitionen,prinzipien,ordnenundfiltern,bedingung,ausloeser,relativerzeitbetrag,zahlenvergleich,erwartungen,vorstellungen,ansichten,extremalien,existenzialien,universellerkomperativ,relativreziprokuniversell,sollen,grundstrukturen,abhaengigkeit,helfen
 * --eigenschaften=
 * oder
 * --konzept

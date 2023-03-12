@@ -1755,8 +1755,8 @@ class Program:
             ),
             (
                 Program.ParametersMain.grundstrukturen,
-                ("Reziproke_Prinzipien(1/8)", "reziprokeprinzipien"),
-                {329},
+                ("Prinzipien(1/8)", "prinzipien"),
+                {329, 378},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
