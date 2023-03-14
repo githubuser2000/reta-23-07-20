@@ -15,6 +15,30 @@
 :draft: false
 :EXPORT_OPTIONS: toc:5.
 :END:
+*** 0. ReTa-Content-Baustellen
+**** Was sollte baldigst anstehen
+***** wegen höheren Organisationen <50, bis 49:
++ Stimmungen
++ Wahrnehmung als Geist
++ Organisationen 37 bis 49 vervollständigen, was diese sind und wofür diese sind.
++ und auch Spalten 1/5 und 1/6 bis 49 höher werden lassen
++ Prinzipien
+***** bisher zu sehr vernachlässigt
++ Verhalten (11)
++ Modus (8)
++ Eigs 1/n
+***** alles ungewöhlichere (weniger wichtig)
++ Organisationen der Art n/m, wie 2/3 wären mittlerweile relevant herauszufinden
+  + Dadurch weiß ich besser, welchen Grad Wichtigkeit das n/m hat.
++ a und u n/m sollte ich noch mal anschauen: nicht höheres neues, nur das alte wieder überprüfen
++ Gefühle n/m
++ Alle Brucherweiterungen, überall, also nicht nur bei n/m, sondern auch bei n und 1/n bei allen Grundstrukturen
+***** noch mal überprüfen (weniger wichtig)
++ höherer Geist n und 1/n
++ Kombinationen und n/m
++ Sicherheitsgrad höherer Absichten noch mal neu (habe ich schon unzählige Male neu gemacht.)
+***** unwichtiges
++ Ich könnte erweitern aus welchen Dingen ich noch bestehe, der höheren Art, wie höhere Gefühle und Impulse, etc. Denn das gabs vorher nicht.
 *** 1. Feature Ideen
 + Zeilen-Befehle für Primzahlen und deren Vielfachern (und welche) und der Primzahlart von 4
 + SQL like Relationen, z.B. 2:1, d.h. 3 Spalten, und auch alles wie bei SQL, d.h. z.B. n Spalten nach oben/unten: bei z.B. Abstand 1: Gegenspieler. Warum nicht gleich eine SQL (like) Sprache übernehmen, statt das Rad neu zu erfinden!
