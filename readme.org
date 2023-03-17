@@ -15,7 +15,7 @@
 :draft: false
 :EXPORT_OPTIONS: toc:5.
 :END:
-*** 0. ReTa-Content-Baustellen
+*** 1. ReTa-Content-Baustellen
 **** Was sollte baldigst anstehen
 ***** wegen höheren Organisationen <50, bis 49:
 + Stimmungen
@@ -23,6 +23,10 @@
 + Organisationen 37 bis 49 vervollständigen, was diese sind und wofür diese sind.
 + und auch Spalten 1/5 und 1/6 bis 49 höher werden lassen
 + Prinzipien
+***** neu machen
++ M-Teilchen-P über:
+  + Kombinationen
+  + Brüche und damit 1/n
 ***** bisher zu sehr vernachlässigt
 + Verhalten (11)
 + Modus (8)
@@ -39,7 +43,7 @@
 + Sicherheitsgrad höherer Absichten noch mal neu (habe ich schon unzählige Male neu gemacht.)
 ***** unwichtiges
 + Ich könnte erweitern aus welchen Dingen ich noch bestehe, der höheren Art, wie höhere Gefühle und Impulse, etc. Denn das gabs vorher nicht.
-*** 1. Feature Ideen
+*** 2. Feature Ideen
 + Zeilen-Befehle für Primzahlen und deren Vielfachern (und welche) und der Primzahlart von 4
 + SQL like Relationen, z.B. 2:1, d.h. 3 Spalten, und auch alles wie bei SQL, d.h. z.B. n Spalten nach oben/unten: bei z.B. Abstand 1: Gegenspieler. Warum nicht gleich eine SQL (like) Sprache übernehmen, statt das Rad neu zu erfinden!
 + alle Features von retaPrompt und der von reta ausgegebenen html bei beiden haben, weil nicht ganz beide ganz alles von beiden können, sondern nur fast: was fehlt da eigentlich noch? Aufgabe: herausfinden, was noch ungleich ist: detailliert austesten
@@ -73,15 +77,15 @@ Geht einfach und schnell zu programmieren durch Rekursion.
   + Farbschema der Helligkeiten aus welchen Primzahlen welche Zahl besteht
   + Um bessere Farben für die html zu finden, sollte ich einen screenshot davon machen und diesen mit gimp so bearbeiten, dass ich exakt eine Farbe in eine andere ändere. In Gimp kann ich viele Farben ausprobieren.
 + retaPrompt skriptingfähig machen: nein, das muss nicht bald sein
-*** 2. Bugs
+*** 3. Bugs
 + Bei ReTaPrompt gibt es das Problem, dass Textvorschläge gemacht werden, bei denen das nicht richtig ist.
 Es ist ja schön, wenn ich weiß, was ich tippen muss, aber ich darf das nicht so lassen.
 Es reicht nicht, wenn ich ReTa nur so programmiere, dass es mir passt.
 Es muss auch für manche DAUs funktionieren.
-*** 3. ReTa content
+*** 4. ReTa content
 + Ich müsste mal die gebrochen-rationalen Gefühle probieren zu machen.
 Das würde mir gut woanders weiterhelfen.
-*** 4. Feature - Geschwindigkeit
+*** 5. Feature - Geschwindigkeit
 +  Wo ist Verbesserung der Geschwindigkeit möglich:
 + bei der Ausgabe
 + Parallelisierung
@@ -109,7 +113,7 @@ Deshalb programmiere ich ReTa als Proof-of-Work, als ein Programm, das dennoch a
 Was ansonsten noch für deutlich fernere Zukunft noch für RetaPrompt gebrauchbar ist, wäre Skriptingfähigkeit. Dann kann man Skripten, mit einer Schleife oder Rekursion, welche Zeilennummern man möchte und was einem sonst noch so einfällt. Dann kann man Variablen verwenden und wiederverwenden, usw.
 
 Irgendjemand kann sich vielleicht noch eine eigene SQL-ähnliche Syntax einfallen lassen, wenn es darum gehen soll, diese Tabellen wie SQL Tabellen zu verschachteln.
-*** 5. Feature: Mathe
+*** 6. Feature: Mathe
 + z.B. ggT & kgV
 Vielfacher einer Zahl für einen Bereich
 Distanzen einer Zahl zu einem Bereich
@@ -137,7 +141,7 @@ z.B. beliebig geskriptete Zeilennummern, z.B.: alle modulo 24 + pro außen primz
 
 EDIT:
 In ReTA-Prompt anfangs texten, dass gerade vi-mode oder emacs-mode aktiv ist.
-*** 6. Überlegungen
+*** 7. Überlegungen
 + Meine Stabilität Policy ist eine Schande
        https://doc.pypy.org/en/latest/cpython_differences.html
   + endlich mal unit tests machen
@@ -192,7 +196,7 @@ Ich hätte das gleich so machen sollen, aber ich konnte nicht wissen, wie riesig
 
 Sollte ich das umsetzen wollen, dann sollte ich unbedingt einen neuen eigenen Branch dafür anlegen, komme was wolle.
 
-*** 7. Refacturing
+*** 8. Refacturing
 + Aus Objektorientiertem Prozedurales machen, es sei denn es ist besser wie es war in wenigen Fällen.
 + Vorher planen, viel Durchdenken.
 + Oder statische Klassen, statt Instanzen verwenden.
