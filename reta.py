@@ -2629,6 +2629,12 @@ class Program:
             ),
             (
                 Program.ParametersMain.konzept,
+                ("unterlegen_überlegen", "unterlegen", "ueberlegen"),
+                set(),
+                {(380, 381)},
+            ),
+            (
+                Program.ParametersMain.konzept,
                 ("Ehrlichkeit_und_Streit", "streit", "ehrlichkeit"),
                 set(),
                 {(375, 376)},
