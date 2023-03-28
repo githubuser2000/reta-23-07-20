@@ -881,6 +881,14 @@ class Program:
             ),
             (
                 Program.ParametersMain.universum,
+                (
+                    "universelles_Recht",
+                    "recht",
+                ),
+                {382},
+            ),
+            (
+                Program.ParametersMain.universum,
                 ("sowas_wie_Kombinieren_Verknüpfen", "kombinierenetc"),
                 {320},
             ),
