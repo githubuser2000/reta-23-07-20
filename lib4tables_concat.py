@@ -845,7 +845,7 @@ class Concat:
                             if num == 5:
                                 gegen = 2
                             elif num == 11:
-                                gegen = 1
+                                gegen = 2
                             contraContra[num] = gegen
                             contraContra2[num] |= {gegen}
                             into1 += ["gegen " + str(gegen)]
@@ -878,9 +878,9 @@ class Concat:
                             into2 += ["pro " + str(pro)]
                         elif num in (7, 13):
                             if num == 7:
-                                pro = 2
+                                pro = 3
                             elif num == 13:
-                                pro = 1
+                                pro = 3
                             proPro[num] = pro
                             proPro2[num] |= {pro}
                             into2 += ["pro " + str(pro)]

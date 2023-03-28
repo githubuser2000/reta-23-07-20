@@ -76,7 +76,7 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 10|12|14;;;;;boolsche Mengenoperationen Vereinigung mit mindestens 2 Operanden (größtenteils sicher);;;;;;;;;;;;;;
 6|10;;;;;"Ein Rechteck mit Länge als einen Wert (z.B. eine Zahl) und als Breite einen Wahrheitswert, z.B. Fuzzy Logic. Dieses Rechteck nennt sich ""die Frage nach der Wichtigkeit und Relevanz“ ; Abduktion (sicher, obwohl dafür sicherlich noch u.a. die Kombination [14] nötig wäre); Größtenteils sicher: die Wichtigkeit: Die Relation (gibt die Wichtigkeit an)  (Wert definiert Wahrheit) und der Rang von Wahrheiten (Wahrheit definiert Wert), Relation synonym zu zweistelligem Prädikat, d.h. also auch dies hier mehrstelliges Prädikat aus Werten";;;;;;;;;;das Unwichtige (neutrale Gegentranszendentalie);;;;
 7|10|12;;;;;Nicht sehr sicher: Arten (genauer: Mengen) von Wahrheitsvektoren, Vektoren, die statt Zahlen Wahrheitswerte haben und davon verschiedene Arten (so wie es verschiedene Zahlenarten gibt, basierend auf der Menge, d.h. Restklassen nicht, da die Klasse die 20 ist);;;;;;;;;;;;;;
-6|12;;;;;Größtenteils sicher: Mengen, die Zahlen definieren (wie z.B. rationale oder natürliche Zahlen) und Zahlen über Mengen, z.B. die Kardinalzahlen oder die Anzahl der Elemente einer Menge;;;;;;;;;;;;;;
+6|12;;;;;"die Priorität (Zahlen der Priorität, die Hierarchiestufen zugeordnet werden);Größtenteils sicher: Mengen, die Zahlen definieren (wie z.B. rationale oder natürliche Zahlen) und Zahlen über Mengen, z.B. die Kardinalzahlen oder die Anzahl der Elemente einer Menge";;;;;;;;;;;;;;
 -2|-4;;;;;;;;;;;;;;;;;;;
 -2;;;;;;;;;;;;;;;;;;;
 +10|+17;;;;;;;;;;;;;;;;;;;
@@ -242,3 +242,4 @@ Vorzeichen: das bedeutet nicht Gutartigkeit oder Bösartigkeit anderen Religione
 28|8;;;;;topologischer Raum;;;;;;;;;;;;;;
 28|8|6;;;;;metrische Topologie = topologischer Raum mit Metrik = Geometrie mit Topologie;;;;;;;;;;;;;;
 14|1/14;;;;;Rekonstruktion und Reverse-Engineering: Analyse und Kombination in Kombination zusammen ermöglichen vollkommene Neustrukturrierung, wie dass man mit Lego alles immer wieder neu Kombinieren kann.;;;;;;;;;;;;;;
+4|6|12;;;;;die Prioritäts-Warte-Schlange;;;;;;;;;;;;;;
