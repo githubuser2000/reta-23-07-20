@@ -881,11 +881,8 @@ class Program:
             ),
             (
                 Program.ParametersMain.universum,
-                (
-                    "universelles_Recht",
-                    "recht",
-                ),
-                {382},
+                ("universelles_Recht", "recht", "jura"),
+                {382, 34, 65},
             ),
             (
                 Program.ParametersMain.universum,
