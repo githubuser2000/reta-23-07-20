@@ -881,6 +881,11 @@ class Program:
             ),
             (
                 Program.ParametersMain.universum,
+                ("Universelles_Verhältnis_gleicher_Zahlen", "verhaeltnisgleicherzahl"),
+                {383},
+            ),
+            (
+                Program.ParametersMain.universum,
                 ("universelles_Recht", "recht", "jura"),
                 {382, 34, 65},
             ),
