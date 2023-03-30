@@ -18,8 +18,8 @@ from prompt_toolkit.completion import Completer, Completion
 from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
 
-from center import (BereichToNumbers2, cliout, isZeilenAngabe, retaPromptHilfe,
-                    teiler)
+from center import (BereichToNumbers2, cliout, isZeilenAngabe,
+                    isZeilenAngabe_betweenKommas, retaPromptHilfe, teiler)
 from LibRetaPrompt import (PromptModus,
                            getFromZahlenBereichBruchAndZahlenbereich,
                            isReTaParameter, notParameterValues,
@@ -520,6 +520,7 @@ def PromptGrosseAusgabe(
     bruch_GanzZahlReziproke = []
     bruch_KeinGanzZahlReziproke = []
     fullBlockIsZahlenbereichAndBruch = True
+    bruchRanges2 = []
     if not bedingung:
         for g, a in enumerate(stext):
             EineZahlenFolgeJa[g] = isZeilenAngabe(a)
@@ -529,14 +530,30 @@ def PromptGrosseAusgabe(
             #    zahlenAngaben_,
             #    fullBlockIsZahlenbereichAndBruch,
             # ) = getFromZahlenBereichBruchAndZahlenbereich(a, brueche, zahlenAngaben_)
+            bruchAndGanzZahlEtwaKorrekterBereich = []
             bruchBereichsAngaben = []
             bruchRanges = []
             for etwaBruch in a.split(","):
                 bruchRange, bruchBereichsAngabe = createRangesForBruchLists(
                     bruchSpalt(etwaBruch)
                 )
-                bruchRanges += [bruchRange]
-                bruchBereichsAngaben += [bruchBereichsAngabe]
+                isBruch, isGanzZahl = isZeilenAngabe(
+                    bruchBereichsAngabe
+                ), isZeilenAngabe(etwaBruch)
+                if isBruch != isGanzZahl:
+                    bruchAndGanzZahlEtwaKorrekterBereich += [True]
+                    if isBruch:
+                        bruchRanges += [bruchRange]
+                        bruchBereichsAngaben += [bruchBereichsAngabe]
+                else:
+                    bruchAndGanzZahlEtwaKorrekterBereich += [False]
+                if isZeilenAngabe_betweenKommas(etwaBruch):
+                    zahlenAngaben_ += [etwaBruch]
+                if all(bruchAndGanzZahlEtwaKorrekterBereich):
+                    fullBlockIsZahlenbereichAndBruch = (
+                        fullBlockIsZahlenbereichAndBruch
+                        and all(bruchAndGanzZahlEtwaKorrekterBereich)
+                    )
 
             if len(zahlenAngaben_) > 0:
                 a = ",".join(zahlenAngaben_)
@@ -545,19 +562,18 @@ def PromptGrosseAusgabe(
                     c: str = ",".join(teiler(a)[0])
                 else:
                     c = a
-            for bruchBereichsAngabe in bruchBereichsAngaben:
-                dasWarenBrueche = True
+            for bruchBereichsAngabe, bruchRange in zip(
+                bruchBereichsAngaben, bruchRanges
+            ):
                 if isZeilenAngabe(bruchBereichsAngabe):
                     if "1" in bruchRange:
                         bruch_GanzZahlReziproke += [bruchBereichsAngabe]
                     if len(bruchRange) > 1 or "1" not in bruchRange:
                         bruch_KeinGanzZahlReziproke += [bruchBereichsAngabe]
-                else:
-                    dasWarenBrueche = False
-                fullBlockIsZahlenbereichAndBruch = (
-                    fullBlockIsZahlenbereichAndBruch and dasWarenBrueche
-                )
-            # print(fullBlockIsZahlenbereichAndBruch)
+                        bruchRanges2 += [bruchRange]
+            bruchRanges = bruchRanges2
+            del bruchRange
+            del bruchBereichsAngabe
     if "mulpri" in stext or "p" in stext:
         stext += ["multis", "prim"]
     if "--art=bbcode" in stext and "reta" == stext[0]:
@@ -602,7 +618,7 @@ def PromptGrosseAusgabe(
     bedingungZahl, bedingungBrueche = (
         # list(EineZahlenFolgeJa.values()).count(True) == 1,
         len(zahlenAngaben_) > 0,
-        len(brueche) > 0,
+        (len(bruch_GanzZahlReziproke) > 0 or len(bruch_KeinGanzZahlReziproke) > 0),
     )
     if bedingung:
         warBefehl = True
@@ -706,7 +722,6 @@ def PromptGrosseAusgabe(
                 )
 
             if len(bruch_GanzZahlReziproke) > 0 and zeiln3 != "":
-                print(bruchBereichsAngabe)
                 import reta
 
                 kette = [
@@ -737,36 +752,41 @@ def PromptGrosseAusgabe(
                     int(shellRowsAmountStr),
                 )
 
-            for bruchRangeElement in bruchRange:
-                import reta
-
-                kette = [
-                    "reta",
-                    "-zeilen",
-                    "--vorhervonausschnitt=" + ",".join(bruch_KeinGanzZahlReziproke),
-                    "-spalten",
-                    "--gebrochengalaxie=" + bruchRangeElement,
-                    "--breite=" + str(int(shellRowsAmountStr) - 2),
-                    "-kombination",
-                    "-ausgabe",
-                    "--spaltenreihenfolgeundnurdiese=1",
-                    *[
-                        "--keineleereninhalte"
-                        if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                        in stext
-                        else ""
-                    ],
-                ] + returnOnlyParasAsList(stext)
-                kette += ketten
-                if (
-                    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                    not in stext
+            if len(bruch_KeinGanzZahlReziproke) > 0:
+                for bruchRange, bruch_KeinGanzZahlReziprok_ in zip(
+                    bruchRanges, bruch_KeinGanzZahlReziproke
                 ):
-                    print(" ".join(kette))
-                reta.Program(
-                    kette,
-                    int(shellRowsAmountStr),
-                )
+                    for bruchRangeElement in set(bruchRange) - {1}:
+                        import reta
+
+                        kette = [
+                            "reta",
+                            "-zeilen",
+                            "--vorhervonausschnitt="
+                            + ",".join(bruch_KeinGanzZahlReziprok_),
+                            "-spalten",
+                            "--gebrochengalaxie=" + bruchRangeElement,
+                            "--breite=" + str(int(shellRowsAmountStr) - 2),
+                            "-kombination",
+                            "-ausgabe",
+                            "--spaltenreihenfolgeundnurdiese=1",
+                            *[
+                                "--keineleereninhalte"
+                                if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                                in stext
+                                else ""
+                            ],
+                        ] + returnOnlyParasAsList(stext)
+                        kette += ketten
+                        if (
+                            "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                            not in stext
+                        ):
+                            print(" ".join(kette))
+                        reta.Program(
+                            kette,
+                            int(shellRowsAmountStr),
+                        )
 
         eigN, eigR = [], []
         for aa in stext:
@@ -904,36 +924,42 @@ def PromptGrosseAusgabe(
                     kette,
                     int(shellRowsAmountStr),
                 )
-            for bruchRangeElement in bruchRange:
-                import reta
 
-                kette = [
-                    "reta",
-                    "-zeilen",
-                    "--vorhervonausschnitt=" + ",".join(bruch_KeinGanzZahlReziproke),
-                    "-spalten",
-                    "--gebrochenuniversum=" + bruchRangeElement,
-                    "--breite=" + str(int(shellRowsAmountStr) - 2),
-                    "-kombination",
-                    "-ausgabe",
-                    "--spaltenreihenfolgeundnurdiese=1",
-                    *[
-                        "--keineleereninhalte"
-                        if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                        in stext
-                        else ""
-                    ],
-                ] + returnOnlyParasAsList(stext)
-                kette += ketten
-                if (
-                    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                    not in stext
+            if len(bruch_KeinGanzZahlReziproke) > 0:
+                for bruchRange, bruch_KeinGanzZahlReziprok_ in zip(
+                    bruchRanges, bruch_KeinGanzZahlReziproke
                 ):
-                    print(" ".join(kette))
-                reta.Program(
-                    kette,
-                    int(shellRowsAmountStr),
-                )
+                    for bruchRangeElement in set(bruchRange) - {1}:
+                        import reta
+
+                        kette = [
+                            "reta",
+                            "-zeilen",
+                            "--vorhervonausschnitt="
+                            + ",".join(bruch_KeinGanzZahlReziprok_),
+                            "-spalten",
+                            "--gebrochenuniversum=" + bruchRangeElement,
+                            "--breite=" + str(int(shellRowsAmountStr) - 2),
+                            "-kombination",
+                            "-ausgabe",
+                            "--spaltenreihenfolgeundnurdiese=1",
+                            *[
+                                "--keineleereninhalte"
+                                if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                                in stext
+                                else ""
+                            ],
+                        ] + returnOnlyParasAsList(stext)
+                        kette += ketten
+                        if (
+                            "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                            not in stext
+                        ):
+                            print(" ".join(kette))
+                        reta.Program(
+                            kette,
+                            int(shellRowsAmountStr),
+                        )
     if bedingungZahl:
 
         if len({"prim24", "primfaktorzerlegungModulo24"} & set(stext)) > 0:
