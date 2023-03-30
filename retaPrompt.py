@@ -6,7 +6,7 @@ import pprint
 import re
 import subprocess
 import sys
-from collections import defaultdict
+from collections import OrderedDict, defaultdict
 from copy import copy, deepcopy
 from enum import Enum
 from itertools import zip_longest
@@ -79,6 +79,202 @@ def externCommand(cmd: str, StrNummern: str):
         process.wait()
     except:
         pass
+
+
+def grKl(A: set, B: set) -> tuple[set, set]:
+    """
+    Gibt 2 Mengen zurück: eine Menge aus allem, das größer ist als im ersten Parameter aus dem zweiten Parameter
+    und in die zweite Menge kommt alles, das kleiner ist, als in der ersten Menge aus der zweiten Menge
+    """
+    C = set()
+    D = set()
+    if len(B) == 0:
+        return A, A
+    for a in A:
+        if a > max(B):
+            C.add(a)
+        elif a < min(B):
+            D.add(a)
+    return C, D
+
+
+def getDictLimtedByKeyList(d: dict, keys) -> dict:
+    """
+    Gibt ein dict zurück, das aus einem dict gebildet wird, aber davon nur das nimmt, was an mehreren keys genommen werden soll.
+    """
+    return OrderedDict({k: d[k] for k in keys if k in d})
+
+
+def bruchSpalt(text) -> list:
+    """
+    Gibt eine Liste aus Tupeln zurück, die entweder einen bis mehrere oder zwei Werte enthalten.
+    Eingabe sind Brüche gemischt mit Textwerten
+    Das Ergebnis bei zwei Werten ist der Bruch
+    Bei ein bis mehreren Werten, also auch 2 handelt es sich um die Textwerte, welche zwischen den Brüchen waren.
+    Die Reihenfolge vom Ergebnis ist die Gleiche, wie bei dem Eingabe-Text
+    """
+    if type(text) is not str:
+        return []
+    bruchSpalten: list[str] = text.split("/")
+    bruchSpaltenNeu = []
+    bruchSpaltenNeu2 = []
+    if len(bruchSpalten) < 2:
+        """Ein Bruch hat immer mindestens 2 Zahlen"""
+        return []
+    keineZahl = OrderedDict()
+    for k, bS in enumerate(bruchSpalten):
+        keineZahlBefore = keineZahl
+        zahl, keineZahl, bsNeu = OrderedDict(), OrderedDict(), []
+        for i, char in enumerate(bS):
+            if char.isdecimal():
+                """alles was Zahlen sind"""
+                zahl[i] = char
+            else:
+                """alles was keine Zahlen sind"""
+                keineZahl[i] = char
+        flag: bool = False
+        allVergleich: list[bool] = [
+            zahl > c for c, zahl in zip(keineZahl.keys(), zahl.keys())
+        ]
+        """bool Liste wann es keine ist und wann eine zahl im string"""
+        zahlSet: set = set(zahl.keys())
+        keineZahlSet: set = set(keineZahl.keys())
+        if len(zahlSet) == 0:
+            return []
+        anfang, ende = k == 0, k == len(bruchSpalten) - 1
+        if anfang and all(allVergleich):
+            flag = True
+        elif ende and not any(allVergleich):
+            flag = True
+        elif (
+            not anfang
+            and not ende
+            and keineZahlSet.issubset(range(min(zahlSet) + 1, max(zahlSet)))
+        ):
+            flag = True
+        else:
+            flag = False
+        if flag is False:
+            return []
+        # bsAlt = bsNeu
+        if len(keineZahlSet) > 0:
+            zahlenGroesserSet, zahlenKleinerSet = grKl(zahlSet, keineZahlSet)
+            """siehe erklärung der Fkt in Fkt"""
+            zahlenKleinerDict: dict = getDictLimtedByKeyList(zahl, zahlenKleinerSet)
+            zahlenGroesserDict: dict = getDictLimtedByKeyList(zahl, zahlenGroesserSet)
+            """siehe erklärung der Fkt in Fkt"""
+            if k == len(bruchSpalten) - 1 and len(zahlenGroesserDict) > 0:
+                return []
+            bsNeu = [zahlenKleinerDict, keineZahl, zahlenGroesserDict]
+        elif k == 0 or k == len(bruchSpalten) - 1:
+            bsNeu = [zahl]
+        else:
+            return []
+        bruchSpaltenNeu += [bsNeu]
+        if k == 1:
+            vorZahl1 = (
+                () if len(bruchSpaltenNeu[0]) == 1 else bruchSpaltenNeu[0][1].values()
+            )
+            vorZahl1 = tuple(vorZahl1)
+            zahl1 = (
+                bruchSpaltenNeu[0][0].values()
+                if len(bruchSpaltenNeu[0]) == 1
+                else bruchSpaltenNeu[0][2].values()
+            )
+            zahl2 = bruchSpaltenNeu[1][0].values()
+            zahl1 = tuple(zahl1)
+            zahl2 = tuple(zahl2)
+            if k == len(bruchSpalten) - 1:
+                nachZahl2 = (
+                    ()
+                    if len(bruchSpaltenNeu[-1]) == 1
+                    else bruchSpaltenNeu[-1][1].values()
+                )
+                nachZahl2 = tuple(nachZahl2)
+                bruchSpaltenNeu2 += [vorZahl1, zahl1 + zahl2, nachZahl2]
+            else:
+                bruchSpaltenNeu2 += [vorZahl1, zahl1 + zahl2]
+        elif k == len(bruchSpalten) - 1 and k > 1:
+            vorZahl1 = (
+                () if len(bruchSpaltenNeu[-2]) == 1 else bruchSpaltenNeu[-2][1].values()
+            )
+            vorZahl1 = tuple(vorZahl1)
+            zahl1 = (
+                bruchSpaltenNeu[-2][0].values()
+                if len(bruchSpaltenNeu[-2]) == 1
+                else bruchSpaltenNeu[-2][2].values()
+            )
+            zahl2 = bruchSpaltenNeu[-1][0].values()
+            zahl1 = tuple(zahl1)
+            zahl2 = tuple(zahl2)
+            nachZahl2 = (
+                () if len(bruchSpaltenNeu[-1]) == 1 else bruchSpaltenNeu[-1][1].values()
+            )
+            nachZahl2 = tuple(nachZahl2)
+            bruchSpaltenNeu2 += [vorZahl1, zahl1 + zahl2, nachZahl2]
+        elif k > 1:
+            vorZahl1 = (
+                () if len(bruchSpaltenNeu[-2]) == 1 else bruchSpaltenNeu[-2][1].values()
+            )
+            vorZahl1 = tuple(vorZahl1)
+            zahl1 = (
+                bruchSpaltenNeu[-2][0].values()
+                if len(bruchSpaltenNeu[-2]) == 1
+                else bruchSpaltenNeu[-2][2].values()
+            )
+            zahl2 = bruchSpaltenNeu[-1][0].values()
+            zahl1 = tuple(zahl1)
+            zahl2 = tuple(zahl2)
+            bruchSpaltenNeu2 += [vorZahl1, zahl1 + zahl2]
+            # return bruchSpaltenNeu, bruchSpaltenNeu2
+    return bruchSpaltenNeu2
+
+
+def dictToList(dict_: dict) -> list:
+    liste = []
+    for key, value in dict_.items():
+        liste += [value]
+    return liste
+
+
+def createRangesForBruchLists(bruchList: list) -> tuple:
+    n1, n2 = [], []
+    listenRange: range = range(0)
+    flag = 0
+    # ergebnis: list[tuple[range | str]] = []
+    ergebnis = []
+    if (
+        len(bruchList) == 3
+        and len(bruchList[0]) == 0
+        and len(bruchList[1]) == 2
+        and len(bruchList[2]) == 0
+        and (bruchList[1][0] + bruchList[1][1]).isdecimal()
+    ):
+        return bruchList[1][0], bruchList[1][1]
+    for b in bruchList:
+        if flag == -1:
+            return []
+        if flag > 3:
+            """illegal"""
+            return []
+        elif flag == 3:
+            """Es war ein Bruch"""
+            ergebnis += [str(n2[-2]), "-", str(n2[-1])]
+            listenRange = range(int(n1[-2]), int(n1[-1]) + 1)
+            flag = -1
+        if len(b) == 2 and (b[0] + b[1]).isdecimal():
+            """Es ist ein Bruch"""
+            n1 += [int(b[0])]
+            n2 += [int(b[1])]
+            flag += 1
+        elif len(b) == 1 and b[0] == "-" and flag > 0:
+            flag += 1
+        else:
+            """Es ist kein Bruch"""
+            flag = 0
+            ergebnis += [*b]
+    ergebnis2 = "".join(ergebnis)
+    return listenRange, ergebnis2
 
 
 def speichern(ketten, platzhalter, text):
@@ -328,11 +524,20 @@ def PromptGrosseAusgabe(
         for g, a in enumerate(stext):
             EineZahlenFolgeJa[g] = isZeilenAngabe(a)
 
-            (
-                brueche,
-                zahlenAngaben_,
-                fullBlockIsZahlenbereichAndBruch,
-            ) = getFromZahlenBereichBruchAndZahlenbereich(a, brueche, zahlenAngaben_)
+            # (
+            #    brueche,
+            #    zahlenAngaben_,
+            #    fullBlockIsZahlenbereichAndBruch,
+            # ) = getFromZahlenBereichBruchAndZahlenbereich(a, brueche, zahlenAngaben_)
+            bruchBereichsAngaben = []
+            bruchRanges = []
+            for etwaBruch in a.split(","):
+                bruchRange, bruchBereichsAngabe = createRangesForBruchLists(
+                    bruchSpalt(etwaBruch)
+                )
+                bruchRanges += [bruchRange]
+                bruchBereichsAngaben += [bruchBereichsAngabe]
+
             if len(zahlenAngaben_) > 0:
                 a = ",".join(zahlenAngaben_)
                 c2 = ",".join([str(zahl) for zahl in BereichToNumbers2(a, False, 0)])
@@ -340,11 +545,19 @@ def PromptGrosseAusgabe(
                     c: str = ",".join(teiler(a)[0])
                 else:
                     c = a
-            for bruch_ in brueche:
-                if bruch_[0] in (1, "1"):
-                    bruch_GanzZahlReziproke += [bruch_]
+            for bruchBereichsAngabe in bruchBereichsAngaben:
+                dasWarenBrueche = True
+                if isZeilenAngabe(bruchBereichsAngabe):
+                    if "1" in bruchRange:
+                        bruch_GanzZahlReziproke += [bruchBereichsAngabe]
+                    if len(bruchRange) > 1 or "1" not in bruchRange:
+                        bruch_KeinGanzZahlReziproke += [bruchBereichsAngabe]
                 else:
-                    bruch_KeinGanzZahlReziproke += [bruch_]
+                    dasWarenBrueche = False
+                fullBlockIsZahlenbereichAndBruch = (
+                    fullBlockIsZahlenbereichAndBruch and dasWarenBrueche
+                )
+            # print(fullBlockIsZahlenbereichAndBruch)
     if "mulpri" in stext or "p" in stext:
         stext += ["multis", "prim"]
     if "--art=bbcode" in stext and "reta" == stext[0]:
@@ -400,10 +613,7 @@ def PromptGrosseAusgabe(
         # process.wait()
 
     if len(bruch_GanzZahlReziproke) > 0:
-        zeiln3 = (
-            "--vorhervonausschnitt="
-            + ",".join([bruchA[1] for bruchA in bruch_GanzZahlReziproke]).strip()
-        )
+        zeiln3 = "--vorhervonausschnitt=" + ",".join(bruch_GanzZahlReziproke)
     else:
         zeiln3 = ""
     if bedingungZahl:
@@ -496,6 +706,7 @@ def PromptGrosseAusgabe(
                 )
 
             if len(bruch_GanzZahlReziproke) > 0 and zeiln3 != "":
+                print(bruchBereichsAngabe)
                 import reta
 
                 kette = [
@@ -526,15 +737,15 @@ def PromptGrosseAusgabe(
                     int(shellRowsAmountStr),
                 )
 
-            for bruch in bruch_KeinGanzZahlReziproke:
+            for bruchRangeElement in bruchRange:
                 import reta
 
                 kette = [
                     "reta",
                     "-zeilen",
-                    "--vorhervonausschnitt=" + bruch[0],
+                    "--vorhervonausschnitt=" + ",".join(bruch_KeinGanzZahlReziproke),
                     "-spalten",
-                    "--gebrochengalaxie=" + bruch[1],
+                    "--gebrochengalaxie=" + bruchRangeElement,
                     "--breite=" + str(int(shellRowsAmountStr) - 2),
                     "-kombination",
                     "-ausgabe",
@@ -693,15 +904,15 @@ def PromptGrosseAusgabe(
                     kette,
                     int(shellRowsAmountStr),
                 )
-            for bruch in bruch_KeinGanzZahlReziproke:
+            for bruchRangeElement in bruchRange:
                 import reta
 
                 kette = [
                     "reta",
                     "-zeilen",
-                    "--vorhervonausschnitt=" + bruch[0],
+                    "--vorhervonausschnitt=" + ",".join(bruch_KeinGanzZahlReziproke),
                     "-spalten",
-                    "--gebrochenuniversum=" + bruch[1],
+                    "--gebrochenuniversum=" + bruchRangeElement,
                     "--breite=" + str(int(shellRowsAmountStr) - 2),
                     "-kombination",
                     "-ausgabe",
