@@ -250,7 +250,7 @@ def createRangesForBruchLists(bruchList: list) -> tuple:
         and len(bruchList[2]) == 0
         and (bruchList[1][0] + bruchList[1][1]).isdecimal()
     ):
-        return bruchList[1][0], bruchList[1][1]
+        return [int(bruchList[1][0])], bruchList[1][1]
     for i, b in enumerate(bruchList):
         if flag == -1:
             return []

@@ -286,7 +286,7 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, stext2, textD
                         # "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
                     }
                     if (len(buchst) != len(s_[:n]) or len(buchst) == 0) and not (
-                        len(stext) == 1 and isZeilenAngabe(stext[0])
+                        len(stext) == 1 and fullBlockIsZahlenbereichAndBruch_Z
                     ):
                         s_ = s_m
                     else:
@@ -309,6 +309,8 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, stext2, textD
                                 "w",
                                 "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
                             ]
+                            if "/" in stext[0]:
+                                textDazu += ["u"]
         else:
             textDazu += [s_]
         if len(textDazu) > 0:
