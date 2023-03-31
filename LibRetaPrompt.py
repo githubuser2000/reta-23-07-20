@@ -248,11 +248,27 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, stext2, textD
                 pass
 
             if n is not None:
+                # (
+                #    brueche_Z,
+                #    zahlenAngaben__Z,
+                #    fullBlockIsZahlenbereichAndBruch_Z,
+                # ) = getFromZahlenBereichBruchAndZahlenbereich(s_b[n:], [], [])
                 (
-                    brueche_Z,
+                    bruchAndGanzZahlEtwaKorrekterBereich,
+                    bruchBereichsAngaben,
+                    bruchRanges,
                     zahlenAngaben__Z,
                     fullBlockIsZahlenbereichAndBruch_Z,
-                ) = getFromZahlenBereichBruchAndZahlenbereich(s_b[n:], [], [])
+                ) = verifyBruchNganzZahlCommaList(
+                    [],
+                    "",
+                    [],
+                    [],
+                    [],
+                    s_b[n:],
+                    [],
+                )
+
                 if fullBlockIsZahlenbereichAndBruch_Z:
                     s_ = s_b
                     buchst = set(s_[:n]) & {
@@ -309,19 +325,68 @@ def verifyBruchNganzZahlCommaList(
     bruchBereichsAngaben,
     bruchRange,
     bruchRanges,
+    commaListe,
+    zahlenAngaben_,
+):
+    _bruchAndGanzZahlEtwaKorrekterBereich = []
+    _bruchBereichsAngaben = []
+    _bruchRanges = []
+    _zahlenAngaben_ = []
+    _etwaAllTrue = []
+
+    for etwaBruch in commaListe.split(","):
+        (
+            bruchAndGanzZahlEtwaKorrekterBereich1,
+            bruchBereichsAngaben1,
+            bruchRanges1,
+            zahlenAngaben_1,
+            etwaAllTrue1,
+        ) = verifyBruchNganzZahlBetweenCommas(
+            bruchAndGanzZahlEtwaKorrekterBereich,
+            bruchBereichsAngabe,
+            bruchBereichsAngaben,
+            bruchRange,
+            bruchRanges,
+            etwaBruch,
+            zahlenAngaben_,
+        )
+        _bruchAndGanzZahlEtwaKorrekterBereich += [bruchAndGanzZahlEtwaKorrekterBereich1]
+        _bruchBereichsAngaben += [bruchBereichsAngaben1]
+        _bruchRanges += [bruchRanges1]
+        _zahlenAngaben_ += [zahlenAngaben_1]
+        _etwaAllTrue += [etwaAllTrue1]
+    return (
+        _bruchAndGanzZahlEtwaKorrekterBereich,
+        _bruchBereichsAngaben,
+        _bruchRanges,
+        _zahlenAngaben_,
+        all(_bruchAndGanzZahlEtwaKorrekterBereich),
+    )
+
+
+def verifyBruchNganzZahlBetweenCommas(
+    bruchAndGanzZahlEtwaKorrekterBereich,
+    bruchBereichsAngabe,
+    bruchBereichsAngaben,
+    bruchRange,
+    bruchRanges,
     etwaBruch,
     zahlenAngaben_,
 ):
-    isBruch, isGanzZahl = isZeilenAngabe(bruchBereichsAngabe), isZeilenAngabe(etwaBruch)
+    isBruch, isGanzZahl = isZeilenAngabe_betweenKommas(
+        bruchBereichsAngabe
+    ), isZeilenAngabe_betweenKommas(etwaBruch)
     if isBruch != isGanzZahl:
         bruchAndGanzZahlEtwaKorrekterBereich += [True]
         if isBruch:
             bruchRanges += [bruchRange]
             bruchBereichsAngaben += [bruchBereichsAngabe]
+        elif isGanzZahl:
+            zahlenAngaben_ += [etwaBruch]
     else:
         bruchAndGanzZahlEtwaKorrekterBereich += [False]
-    if isZeilenAngabe_betweenKommas(etwaBruch):
-        zahlenAngaben_ += [etwaBruch]
+    # if isZeilenAngabe_betweenKommas(etwaBruch):
+    #    zahlenAngaben_ += [etwaBruch]
     return (
         bruchAndGanzZahlEtwaKorrekterBereich,
         bruchBereichsAngaben,

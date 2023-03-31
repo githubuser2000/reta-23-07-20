@@ -20,11 +20,9 @@ from prompt_toolkit.styles import Style
 
 from center import (BereichToNumbers2, cliout, isZeilenAngabe,
                     isZeilenAngabe_betweenKommas, retaPromptHilfe, teiler)
-from LibRetaPrompt import (PromptModus,
-                           getFromZahlenBereichBruchAndZahlenbereich,
-                           isReTaParameter, notParameterValues,
+from LibRetaPrompt import (PromptModus, isReTaParameter, notParameterValues,
                            stextFromKleinKleinKleinBefehl,
-                           verifyBruchNganzZahlCommaList, wahl15)
+                           verifyBruchNganzZahlBetweenCommas, wahl15)
 # import reta
 from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
                        befehle2, hauptForNeben, kombiMainParas, mainParas,
@@ -536,12 +534,6 @@ def PromptGrosseAusgabe(
     if not bedingung:
         for g, a in enumerate(stext):
             EineZahlenFolgeJa[g] = isZeilenAngabe(a)
-
-            # (
-            #    brueche,
-            #    zahlenAngaben_,
-            #    fullBlockIsZahlenbereichAndBruch,
-            # ) = getFromZahlenBereichBruchAndZahlenbereich(a, brueche, zahlenAngaben_)
             bruchAndGanzZahlEtwaKorrekterBereich = []
             bruchBereichsAngaben = []
             bruchRanges = []
@@ -555,7 +547,7 @@ def PromptGrosseAusgabe(
                     bruchRanges,
                     zahlenAngaben_,
                     etwaAllTrue,
-                ) = verifyBruchNganzZahlCommaList(
+                ) = verifyBruchNganzZahlBetweenCommas(
                     bruchAndGanzZahlEtwaKorrekterBereich,
                     bruchBereichsAngabe,
                     bruchBereichsAngaben,
