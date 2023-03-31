@@ -303,6 +303,34 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, stext2, textD
     return ifKurzKurz, stext
 
 
+def verifyBruchNganzZahlCommaList(
+    bruchAndGanzZahlEtwaKorrekterBereich,
+    bruchBereichsAngabe,
+    bruchBereichsAngaben,
+    bruchRange,
+    bruchRanges,
+    etwaBruch,
+    zahlenAngaben_,
+):
+    isBruch, isGanzZahl = isZeilenAngabe(bruchBereichsAngabe), isZeilenAngabe(etwaBruch)
+    if isBruch != isGanzZahl:
+        bruchAndGanzZahlEtwaKorrekterBereich += [True]
+        if isBruch:
+            bruchRanges += [bruchRange]
+            bruchBereichsAngaben += [bruchBereichsAngabe]
+    else:
+        bruchAndGanzZahlEtwaKorrekterBereich += [False]
+    if isZeilenAngabe_betweenKommas(etwaBruch):
+        zahlenAngaben_ += [etwaBruch]
+    return (
+        bruchAndGanzZahlEtwaKorrekterBereich,
+        bruchBereichsAngaben,
+        bruchRanges,
+        zahlenAngaben_,
+        all(bruchAndGanzZahlEtwaKorrekterBereich),
+    )
+
+
 def getFromZahlenBereichBruchAndZahlenbereich(a, brueche, zahlenAngaben_):
     ifAllTrue = []
     first = True

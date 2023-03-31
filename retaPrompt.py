@@ -23,7 +23,8 @@ from center import (BereichToNumbers2, cliout, isZeilenAngabe,
 from LibRetaPrompt import (PromptModus,
                            getFromZahlenBereichBruchAndZahlenbereich,
                            isReTaParameter, notParameterValues,
-                           stextFromKleinKleinKleinBefehl, wahl15)
+                           stextFromKleinKleinKleinBefehl,
+                           verifyBruchNganzZahlCommaList, wahl15)
 # import reta
 from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
                        befehle2, hauptForNeben, kombiMainParas, mainParas,
@@ -548,19 +549,22 @@ def PromptGrosseAusgabe(
                 bruchRange, bruchBereichsAngabe = createRangesForBruchLists(
                     bruchSpalt(etwaBruch)
                 )
-                isBruch, isGanzZahl = isZeilenAngabe(
-                    bruchBereichsAngabe
-                ), isZeilenAngabe(etwaBruch)
-                if isBruch != isGanzZahl:
-                    bruchAndGanzZahlEtwaKorrekterBereich += [True]
-                    if isBruch:
-                        bruchRanges += [bruchRange]
-                        bruchBereichsAngaben += [bruchBereichsAngabe]
-                else:
-                    bruchAndGanzZahlEtwaKorrekterBereich += [False]
-                if isZeilenAngabe_betweenKommas(etwaBruch):
-                    zahlenAngaben_ += [etwaBruch]
-                if all(bruchAndGanzZahlEtwaKorrekterBereich):
+                (
+                    bruchAndGanzZahlEtwaKorrekterBereich,
+                    bruchBereichsAngaben,
+                    bruchRanges,
+                    zahlenAngaben_,
+                    etwaAllTrue,
+                ) = verifyBruchNganzZahlCommaList(
+                    bruchAndGanzZahlEtwaKorrekterBereich,
+                    bruchBereichsAngabe,
+                    bruchBereichsAngaben,
+                    bruchRange,
+                    bruchRanges,
+                    etwaBruch,
+                    zahlenAngaben_,
+                )
+                if etwaAllTrue:
                     fullBlockIsZahlenbereichAndBruch = (
                         fullBlockIsZahlenbereichAndBruch
                         and all(bruchAndGanzZahlEtwaKorrekterBereich)
@@ -582,9 +586,23 @@ def PromptGrosseAusgabe(
                     if len(bruchRange) > 1 or "1" not in bruchRange:
                         bruch_KeinGanzZahlReziproke += [bruchBereichsAngabe]
                         bruchRanges2 += [bruchRange]
-            bruchRanges = bruchRanges2
+            bruchDict = {}
+            for bruchRange, bruch_KeinGanzZahlReziprok_ in zip(
+                bruchRanges2, bruch_KeinGanzZahlReziproke
+            ):
+                for rangePunkt in bruchRange:
+                    try:
+                        bruchDict[rangePunkt] += [bruch_KeinGanzZahlReziprok_]
+                    except KeyError:
+                        bruchDict[rangePunkt] = [bruch_KeinGanzZahlReziprok_]
+            bruchRanges = []
+            bruch_KeinGanzZahlReziprokeEn = []
+            for key, value in bruchDict.items():
+                bruchRanges += [key]
+                bruch_KeinGanzZahlReziprokeEn += [value]
             del bruchRange
             del bruchBereichsAngabe
+            bruch_GanzZahlReziproke = list(set(bruch_GanzZahlReziproke))
     if "mulpri" in stext or "p" in stext:
         stext += ["multis", "prim"]
     if "--art=bbcode" in stext and "reta" == stext[0]:
@@ -629,7 +647,7 @@ def PromptGrosseAusgabe(
     bedingungZahl, bedingungBrueche = (
         # list(EineZahlenFolgeJa.values()).count(True) == 1,
         len(zahlenAngaben_) > 0,
-        (len(bruch_GanzZahlReziproke) > 0 or len(bruch_KeinGanzZahlReziproke) > 0),
+        (len(bruch_GanzZahlReziproke) > 0 or len(bruch_KeinGanzZahlReziprokeEn) > 0),
     )
     if bedingung:
         warBefehl = True
@@ -765,7 +783,7 @@ def PromptGrosseAusgabe(
 
             if len(bruch_KeinGanzZahlReziproke) > 0:
                 for bruchRange, bruch_KeinGanzZahlReziprok_ in zip(
-                    bruchRanges, bruch_KeinGanzZahlReziproke
+                    bruchRanges, bruch_KeinGanzZahlReziprokeEn
                 ):
                     for bruchRangeElement in set(bruchRange) - {1}:
                         import reta
@@ -774,7 +792,7 @@ def PromptGrosseAusgabe(
                             "reta",
                             "-zeilen",
                             "--vorhervonausschnitt="
-                            + "".join(bruch_KeinGanzZahlReziprok_),
+                            + ",".join(bruch_KeinGanzZahlReziprok_),
                             "-spalten",
                             "--gebrochengalaxie=" + str(bruchRangeElement),
                             "--breite=" + str(int(shellRowsAmountStr) - 2),
@@ -938,7 +956,7 @@ def PromptGrosseAusgabe(
 
             if len(bruch_KeinGanzZahlReziproke) > 0:
                 for bruchRange, bruch_KeinGanzZahlReziprok_ in zip(
-                    bruchRanges, bruch_KeinGanzZahlReziproke
+                    bruchRanges, bruch_KeinGanzZahlReziprokeEn
                 ):
                     for bruchRangeElement in set(bruchRange) - {1}:
                         import reta
@@ -947,7 +965,7 @@ def PromptGrosseAusgabe(
                             "reta",
                             "-zeilen",
                             "--vorhervonausschnitt="
-                            + "".join(bruch_KeinGanzZahlReziprok_),
+                            + ",".join(bruch_KeinGanzZahlReziprok_),
                             "-spalten",
                             "--gebrochenuniversum=" + str(bruchRangeElement),
                             "--breite=" + str(int(shellRowsAmountStr) - 2),
