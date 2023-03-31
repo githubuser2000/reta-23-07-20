@@ -4,8 +4,8 @@ from enum import Enum
 from typing import Optional
 
 import reta
-from center import (Primzahlkreuz_pro_contra_strs, isZeilenAngabe,
-                    isZeilenAngabe_betweenKommas)
+from center import (BereichToNumbers2, Primzahlkreuz_pro_contra_strs,
+                    isZeilenAngabe, isZeilenAngabe_betweenKommas)
 
 retaProgram = reta.Program([sys.argv[0], "-nichts"])
 mainParas = ["-" + a for a in retaProgram.mainParaCmds]
@@ -396,23 +396,23 @@ def verifyBruchNganzZahlBetweenCommas(
     )
 
 
-def getFromZahlenBereichBruchAndZahlenbereich(a, brueche, zahlenAngaben_):
-    ifAllTrue = []
-    first = True
-    for innerKomma in a.split(","):
-        bruch = [bruch for bruch in innerKomma.split("/")]
-        isBruch_ = [bruch1.isdecimal() for bruch1 in bruch] == [True, True]
-        if first:
-            isZahlenangabe_ = isZeilenAngabe(innerKomma)
-        else:
-            isZahlenangabe_ = isZeilenAngabe_betweenKommas(innerKomma)
-        if isBruch_ or isZahlenangabe_:
-            ifAllTrue += [True]
-            if isBruch_:
-                brueche += [bruch]
-            if isZahlenangabe_:
-                zahlenAngaben_ += [innerKomma]
-        else:
-            ifAllTrue += [True]
-        first = False
-    return brueche, zahlenAngaben_, all(ifAllTrue)
+# def getFromZahlenBereichBruchAndZahlenbereich(a, brueche, zahlenAngaben_):
+#    ifAllTrue = []
+#    first = True
+#    for innerKomma in a.split(","):
+#        bruch = [bruch for bruch in innerKomma.split("/")]
+#        isBruch_ = [bruch1.isdecimal() for bruch1 in bruch] == [True, True]
+#        if first:
+#            isZahlenangabe_ = isZeilenAngabe(innerKomma)
+#        else:
+#            isZahlenangabe_ = isZeilenAngabe_betweenKommas(innerKomma)
+#        if isBruch_ or isZahlenangabe_:
+#            ifAllTrue += [True]
+#            if isBruch_:
+#                brueche += [bruch]
+#            if isZahlenangabe_:
+#                zahlenAngaben_ += [innerKomma]
+#        else:
+#            ifAllTrue += [True]
+#        first = False
+#    return brueche, zahlenAngaben_, all(ifAllTrue)
