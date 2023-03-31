@@ -266,10 +266,15 @@ def createRangesForBruchLists(bruchList: list) -> tuple:
         if len(b) == 2 and (b[0] + b[1]).isdecimal():
             """Es ist ein Bruch"""
             if (
-                i + 1 in bruchList
+                len(bruchList) >= i
                 and len(bruchList[i + 1]) == 1
                 and bruchList[i + 1][0] == "-"
                 and flag == 0
+            ) or (
+                i > 0
+                and len(bruchList[i - 1]) == 1
+                and bruchList[i - 1][0] == "-"
+                and flag == 2
             ):
                 n1 += [int(b[0])]
                 n2 += [int(b[1])]
@@ -286,7 +291,7 @@ def createRangesForBruchLists(bruchList: list) -> tuple:
                     for lr in listenRangeUrsprung:
                         listenRange2 += [lr + int(b[0]), lr - int(b[0])]
                     listenRange = listenRange2
-                else:
+                elif len(listenRange) == 0:
                     listenRange = [int(b[0])]
                     listenRangeUrsprung = listenRange
         elif len(b) == 1 and b[0] == "-" and flag > 0:
@@ -588,9 +593,9 @@ def PromptGrosseAusgabe(
                 bruchBereichsAngaben, bruchRanges
             ):
                 if isZeilenAngabe(bruchBereichsAngabe):
-                    if "1" in bruchRange:
+                    if 1 in bruchRange:
                         bruch_GanzZahlReziproke += [bruchBereichsAngabe]
-                    if len(bruchRange) > 1 or "1" not in bruchRange:
+                    if len(bruchRange) > 1 or 1 not in bruchRange:
                         bruch_KeinGanzZahlReziproke += [bruchBereichsAngabe]
                         bruchRanges2 += [bruchRange]
             bruchDict = {}
