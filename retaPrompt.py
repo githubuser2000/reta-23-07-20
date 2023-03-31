@@ -20,9 +20,11 @@ from prompt_toolkit.styles import Style
 
 from center import (cliout, isZeilenAngabe, isZeilenAngabe_betweenKommas,
                     retaPromptHilfe, teiler)
-from LibRetaPrompt import (BereichToNumbers2, PromptModus, isReTaParameter,
+from LibRetaPrompt import (BereichToNumbers2, PromptModus,
+                           gebrochenErlaubteZahlen, isReTaParameter,
                            notParameterValues, stextFromKleinKleinKleinBefehl,
-                           verifyBruchNganzZahlBetweenCommas, wahl15)
+                           verifyBruchNganzZahlBetweenCommas, verkuerze_dict,
+                           wahl15)
 # import reta
 from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
                        befehle2, hauptForNeben, kombiMainParas, mainParas,
@@ -604,17 +606,66 @@ def PromptGrosseAusgabe(
             ):
                 for rangePunkt in bruchRange:
                     try:
-                        bruchDict[rangePunkt] += [bruch_KeinGanzZahlReziprok_]
+                        bruchDict[rangePunkt] |= {bruch_KeinGanzZahlReziprok_}
                     except KeyError:
-                        bruchDict[rangePunkt] = [bruch_KeinGanzZahlReziprok_]
+                        bruchDict[rangePunkt] = {bruch_KeinGanzZahlReziprok_}
             bruchRanges = []
             bruch_KeinGanzZahlReziprokeEn = []
             bruchRange = []
             for key, value in bruchDict.items():
-                if key != 1:
+                if key != 1 and (
+                    (key not in bruchRange)
+                    and (value not in bruch_KeinGanzZahlReziprokeEn)
+                ):
                     bruchRange += [key]
                     bruch_KeinGanzZahlReziprokeEn += [value]
             bruch_GanzZahlReziproke = list(set(bruch_GanzZahlReziproke))
+            if ("v" in stext) or ("vielfache" in stext):
+                bruchRanges3 = {}
+                bruch_KeinGanzZahlReziprokeEnDict = {}
+                for k, (br, no1brueche) in enumerate(
+                    zip(bruchRange, bruch_KeinGanzZahlReziprokeEn)
+                ):
+                    i = 1
+                    rechnung = br * i
+                    while rechnung in gebrochenErlaubteZahlen:
+                        rechnung = br * i
+                        try:
+                            bruchRanges3[k] += [rechnung]
+                        except KeyError:
+                            bruchRanges3[k] = [rechnung]
+                        i += 1
+                    for no1bruch in no1brueche:
+                        i = 1
+                        no1bruch = int(no1bruch)
+                        rechnung2 = no1bruch * i
+                        print(rechnung2)
+                        while rechnung2 in gebrochenErlaubteZahlen:
+                            rechnung2 = no1bruch * i
+                            print(rechnung2)
+                            if (
+                                rechnung2
+                                not in bruch_KeinGanzZahlReziprokeEnDict.values()
+                            ):
+                                try:
+                                    bruch_KeinGanzZahlReziprokeEnDict[k] += [rechnung2]
+                                except KeyError:
+                                    bruch_KeinGanzZahlReziprokeEnDict[k] = [rechnung2]
+                            i += 1
+                    bruchRange = []
+                    bruch_KeinGanzZahlReziprokeEn = []
+                    print(bruch_KeinGanzZahlReziprokeEnDict)
+                    print(bruchRanges3)
+                    for b1 in bruchRanges3.values():
+                        for b2 in bruch_KeinGanzZahlReziprokeEnDict.values():
+                            for c1 in b1:
+                                for c2 in b2:
+                                    # if (c1 not in bruchRange) and (
+                                    #    c2 not in bruch_KeinGanzZahlReziprokeEn
+                                    # ):
+                                    bruchRange += [c1]
+                                    bruch_KeinGanzZahlReziprokeEn += [str(c2)]
+
     if "mulpri" in stext or "p" in stext:
         stext += ["multis", "prim"]
     if "--art=bbcode" in stext and "reta" == stext[0]:
@@ -793,6 +844,7 @@ def PromptGrosseAusgabe(
                     int(shellRowsAmountStr),
                 )
 
+            print(bruchRange)
             if len(bruch_KeinGanzZahlReziproke) > 0:
                 for bruchRangeElement, bruch_KeinGanzZahlReziprok_ in zip(
                     bruchRange, bruch_KeinGanzZahlReziprokeEn
@@ -1380,6 +1432,7 @@ def promptVorbereitungGrosseAusgabe(
             stext[i] = replacements[token]
         except KeyError:
             pass
+    stext = list(set(stext))
     return (
         EineZahlenFolgeJa,
         bedingung,

@@ -139,9 +139,13 @@ wahl15 = {
 }
 
 zumVergleich = []
+gebrochenErlaubteZahlen: set = set()
 for a in reta.Program(["reta", "-zeilen"]).paraNdataMatrix:
     for b in a[1]:
         zumVergleich += [b]
+        if len(set(a[0]) & {"gebrochenuniversum", "gebrochengalaxie"}) > 0:
+            gebrochenErlaubteZahlen |= {int(b)}
+gebrochenErlaubteZahlen -= {max(gebrochenErlaubteZahlen)}
 
 for a in wahl15.values():
     for b in a.split(","):
@@ -418,3 +422,9 @@ def verifyBruchNganzZahlBetweenCommas(
 #            ifAllTrue += [True]
 #        first = False
 #    return brueche, zahlenAngaben_, all(ifAllTrue)
+def verkuerze_dict(dictionary: dict) -> dict:
+    dict2: dict = {}
+    for key, value in dictionary.items():
+        if value not in dict2.values():
+            dict2[key] = value
+    return dict2
