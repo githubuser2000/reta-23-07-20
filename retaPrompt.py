@@ -251,7 +251,7 @@ def createRangesForBruchLists(bruchList: list) -> tuple:
         and (bruchList[1][0] + bruchList[1][1]).isdecimal()
     ):
         return bruchList[1][0], bruchList[1][1]
-    for b in bruchList:
+    for i, b in enumerate(bruchList):
         if flag == -1:
             return []
         if flag > 3:
@@ -264,11 +264,21 @@ def createRangesForBruchLists(bruchList: list) -> tuple:
             flag = -1
         if len(b) == 2 and (b[0] + b[1]).isdecimal():
             """Es ist ein Bruch"""
-            n1 += [int(b[0])]
-            n2 += [int(b[1])]
-            flag += 1
+            if (
+                i + 1 in bruchList
+                and len(bruchList[i + 1]) == 1
+                and bruchList[i + 1][0] == "-"
+                and flag == 0
+            ):
+                n1 += [int(b[0])]
+                n2 += [int(b[1])]
+                flag += 1
+            else:
+                ergebnis += [b[1]]
+                listenRange = b[0]
         elif len(b) == 1 and b[0] == "-" and flag > 0:
             flag += 1
+
         else:
             """Es ist kein Bruch"""
             flag = 0
@@ -519,6 +529,7 @@ def PromptGrosseAusgabe(
 
     bruch_GanzZahlReziproke = []
     bruch_KeinGanzZahlReziproke = []
+    bruch_KeinGanzZahlReziprok_ = []
     fullBlockIsZahlenbereichAndBruch = True
     bruchRanges2 = []
     if not bedingung:
@@ -763,9 +774,9 @@ def PromptGrosseAusgabe(
                             "reta",
                             "-zeilen",
                             "--vorhervonausschnitt="
-                            + ",".join(bruch_KeinGanzZahlReziprok_),
+                            + "".join(bruch_KeinGanzZahlReziprok_),
                             "-spalten",
-                            "--gebrochengalaxie=" + bruchRangeElement,
+                            "--gebrochengalaxie=" + str(bruchRangeElement),
                             "--breite=" + str(int(shellRowsAmountStr) - 2),
                             "-kombination",
                             "-ausgabe",
@@ -936,9 +947,9 @@ def PromptGrosseAusgabe(
                             "reta",
                             "-zeilen",
                             "--vorhervonausschnitt="
-                            + ",".join(bruch_KeinGanzZahlReziprok_),
+                            + "".join(bruch_KeinGanzZahlReziprok_),
                             "-spalten",
-                            "--gebrochenuniversum=" + bruchRangeElement,
+                            "--gebrochenuniversum=" + str(bruchRangeElement),
                             "--breite=" + str(int(shellRowsAmountStr) - 2),
                             "-kombination",
                             "-ausgabe",
