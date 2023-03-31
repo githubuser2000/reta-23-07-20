@@ -74,7 +74,10 @@ Zeilenangaben oder Zahlenbereiche für andere Angaben können sein (ohne Anführ
 -   "10+2" Als Angabe, wenn die Vielfacher gemeint wären, dann wäre das nicht nur 8 und 12, sondern auch 18 und 22, und 28 und 32, usw.
 -   In der Readme von reta, statt retaPrompt, wird das nochmal erklärt
 -  "1/2,3" meint Zeile 3 für Sternpolygone n und 1/2 meint hier Zeile 2 für gleichförmige Polygone 1/n
-
+-  "1/2-3/3" zieht sozusagen ein Quadrat und meint damit die Brüche 1/2,2/2,3/2,1/3,2/3,3/3, also den Bereich zwichen den Brüchen.
+-  "4/5+2/2" wählt den Bruch 2/3,2/7,6/3,6/7: bildet also den Abstand 2 hin und zurück für den Zähler und Nenner
+-  Die Syntax, bei der ein Minus und Plus vorkommt, lässt sich zusammen auch kombinieren. Für Ganz-Zahlwerte wie für Brüche.
+-  Diese Syntax kann mehrfach hintereinader eingesetzt werden, wenn sie mit Kommas voneinader getrennt wird.
 
 ### Die Befehle 15\_.... {#die-befehle-15-dot-dot-dot-dot}
 
