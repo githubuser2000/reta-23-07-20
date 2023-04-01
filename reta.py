@@ -3460,7 +3460,9 @@ class Program:
                 ):
                     if arg[2:7] == "alles" and len(neg) == 0:
                         paramLines.add("all")
+                        self.obZeilenBereicheAngegeben = True
                     elif arg[2:7] == "zeit=":
+                        self.obZeilenBereicheAngegeben = True
                         for subpara in arg[7:].split(","):
                             if neg + "=" == subpara:
                                 paramLines.add("=")
@@ -3469,6 +3471,7 @@ class Program:
                             elif neg + ">" == subpara:
                                 paramLines.add(">")
                     elif arg[2:11] == "zaehlung=":
+                        self.obZeilenBereicheAngegeben = True
                         paramLines |= (
                             self.tables.getPrepare.parametersCmdWithSomeBereich(
                                 arg[11:], "n", neg
@@ -3478,6 +3481,7 @@ class Program:
                         if arg[15:].isdecimal():
                             self.tables.textHeight = abs(int(arg[15:]))
                     elif arg[2:6] == "typ=":
+                        self.obZeilenBereicheAngegeben = True
                         for word in arg[6:].split(","):
                             if word == neg + "sonne":
                                 paramLines.add("sonne")
@@ -3488,6 +3492,7 @@ class Program:
                             elif word == neg + "mond":
                                 paramLines.add("mond")
                     elif arg[2 : 2 + len("potenzenvonzahlen=")] == "potenzenvonzahlen=":
+                        self.obZeilenBereicheAngegeben = True
                         if neg == "" or True:
                             angabe = arg[2 + len("potenzenvonzahlen=") :]
                             paramLines |= (
@@ -3496,6 +3501,7 @@ class Program:
                                 )
                             )
                     elif arg[2:21] == "vielfachevonzahlen=":
+                        self.obZeilenBereicheAngegeben = True
                         if neg == "":
                             paramLines |= (
                                 self.tables.getPrepare.parametersCmdWithSomeBereich(
@@ -3503,6 +3509,7 @@ class Program:
                                 )
                             )
                     elif arg[2:20] == "primzahlvielfache=":
+                        self.obZeilenBereicheAngegeben = True
                         if neg == "":
                             zahlenMenge = BereichToNumbers2(
                                 arg[2 + len("primzahlvielfache=") :]
@@ -3512,6 +3519,7 @@ class Program:
                     elif self.oberesMaximum(arg):
                         pass
                     elif arg[2:27] == "vorhervonausschnittteiler":
+                        self.obZeilenBereicheAngegeben = True
                         if neg == "":
                             paramLines |= (
                                 self.tables.getPrepare.parametersCmdWithSomeBereich(
@@ -3519,6 +3527,7 @@ class Program:
                                 )
                             )
                     elif arg[2:22] == "vorhervonausschnitt=":
+                        self.obZeilenBereicheAngegeben = True
                         if neg == "":
                             paramLines |= (
                                 self.tables.getPrepare.parametersCmdWithSomeBereich(
@@ -3526,12 +3535,14 @@ class Program:
                                 )
                             )
                     elif arg[2:38] == "nachtraeglichneuabzaehlungvielfache=":
+                        self.obZeilenBereicheAngegeben = True
                         paramLines |= (
                             self.tables.getPrepare.parametersCmdWithSomeBereich(
                                 arg[38:], "y", neg
                             )
                         )
                     elif arg[2:29] == "nachtraeglichneuabzaehlung=":
+                        self.obZeilenBereicheAngegeben = True
                         paramLines |= (
                             self.tables.getPrepare.parametersCmdWithSomeBereich(
                                 arg[29:], "z", neg
@@ -3611,6 +3622,7 @@ class Program:
                 if shellRowsAmount > self.tables.textWidth + 7 or shellRowsAmount <= 0
                 else shellRowsAmount - 7
             )
+        self.tables.ifZeilenSetted = self.obZeilenBereicheAngegeben
         return (
             paramLines,
             rowsAsNumbers,
@@ -4015,6 +4027,7 @@ class Program:
         self.argv = argv
         self.allesParameters = 0
         self.tables = Tables(alternativeShellRowsAmount, self.oberesMaximum2(argv[1:]))
+        self.obZeilenBereicheAngegeben = False
         if platform.system() == "Windows":
             self.tables.getOut.color = False
         self.workflowEverything(argv)

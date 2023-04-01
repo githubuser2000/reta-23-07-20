@@ -80,6 +80,14 @@ class Tables:
     def ifPrimMultis(self):
         return self.getPrepare.ifprimmultis
 
+    @property
+    def ifZeilenSetted(self):
+        return self.getPrepare.ifZeilenSetted
+
+    @ifZeilenSetted.setter
+    def ifZeilenSetted(self, value: bool):
+        self.getPrepare.ifZeilenSetted = value
+
     @ifPrimMultis.setter
     def ifPrimMultis(self, value: bool):
         self.getPrepare.ifprimmultis = value

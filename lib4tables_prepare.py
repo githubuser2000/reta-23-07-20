@@ -108,6 +108,7 @@ class Prepare:
         ]  # Strukturangaben zur Zeile wegen Mondzahlen und Sonnenzahlen
         self.religionNumbers = 0
         self.gezaehlt = False
+        self.ifZeilenSetted = False
 
     def setZaehlungen(
         self, num: int
@@ -652,7 +653,10 @@ class Prepare:
             if len(hasAnythingCanged) > 0:
                 finallyDisplayLines -= finallyDisplayLines2
         if len(finallyDisplayLines) == 0:
-            finallyDisplayLines = set(range(self.hoechsteZeile[1024]))
+            if self.ifZeilenSetted:
+                finallyDisplayLines = set()
+            else:
+                finallyDisplayLines = set(range(self.hoechsteZeile[1024]))
 
         finallyDisplayLines.add(0)
         finallyDisplayLines3: list = list(finallyDisplayLines)

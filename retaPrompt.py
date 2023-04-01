@@ -601,15 +601,21 @@ def PromptGrosseAusgabe(
                     if len(bruchRange) > 1 or 1 not in bruchRange:
                         bruch_KeinGanzZahlReziproke += [bruchBereichsAngabe]
                         bruchRanges2 += [bruchRange]
+            # print(bruch_GanzZahlReziproke)
+            # print(bruch_KeinGanzZahlReziproke)
+            # print(bruchRanges2)
             bruchDict = {}
             for bruchRange, bruch_KeinGanzZahlReziprok_ in zip(
                 bruchRanges2, bruch_KeinGanzZahlReziproke
             ):
                 for rangePunkt in bruchRange:
-                    try:
-                        bruchDict[rangePunkt] |= {bruch_KeinGanzZahlReziprok_}
-                    except KeyError:
-                        bruchDict[rangePunkt] = {bruch_KeinGanzZahlReziprok_}
+                    if rangePunkt != 1:
+                        try:
+                            bruchDict[rangePunkt] |= {bruch_KeinGanzZahlReziprok_}
+                        except KeyError:
+                            bruchDict[rangePunkt] = {bruch_KeinGanzZahlReziprok_}
+            # print("X")
+            # print(bruchDict)
             bruchRanges = []
             bruch_KeinGanzZahlReziprokeEn = []
             bruchRange = []
@@ -620,7 +626,12 @@ def PromptGrosseAusgabe(
                 ):
                     bruchRange += [key]
                     bruch_KeinGanzZahlReziprokeEn += [value]
+            # print(bruch_KeinGanzZahlReziprokeEn)
             bruch_GanzZahlReziproke = list(set(bruch_GanzZahlReziproke))
+            # print("BBB")
+            # print(bruchRange)
+            # print(bruch_KeinGanzZahlReziproke)
+            # print(bruch_KeinGanzZahlReziprokeEn)
             if ("v" in stext) or ("vielfache" in stext):
                 bruchRanges3 = {}
                 bruch_KeinGanzZahlReziprokeEnDict = {}
@@ -670,8 +681,12 @@ def PromptGrosseAusgabe(
                                     except KeyError:
                                         rangesBruecheDict[eineRange] = [str(einBruch)]
             else:
-                for nenner, zaehlers in zip(bruchRange, bruch_KeinGanzZahlReziprokeEn):
-                    rangesBruecheDict[nenner] = list(zaehlers)
+                # print(bruchRange)
+                # print(bruch_KeinGanzZahlReziprokeEn)
+                # for nenner, zaehlers in zip(bruchRange, bruch_KeinGanzZahlReziprokeEn):
+                #    rangesBruecheDict[nenner] = list(zaehlers)
+                # print(rangesBruecheDict)
+                rangesBruecheDict = bruchDict
     if "mulpri" in stext or "p" in stext:
         stext += ["multis", "prim"]
     if "--art=bbcode" in stext and "reta" == stext[0]:

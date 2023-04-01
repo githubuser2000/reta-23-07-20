@@ -77,7 +77,8 @@ Zeilenangaben oder Zahlenbereiche für andere Angaben können sein (ohne Anführ
 -  "1/2-3/3" zieht sozusagen ein Quadrat und meint damit die Brüche 1/2,2/2,3/2,1/3,2/3,3/3, also den Bereich zwichen den Brüchen.
 -  "4/5+2/2" wählt den Bruch 2/3,2/7,6/3,6/7: bildet also den Abstand 2 hin und zurück für den Zähler und Nenner
 -  Die Syntax, bei der ein Minus und Plus vorkommt, lässt sich zusammen auch kombinieren. Für Ganz-Zahlwerte wie für Brüche.
--  Diese Syntax kann mehrfach hintereinader eingesetzt werden, wenn sie mit Kommas voneinader getrennt wird.
+-  Diese Syntax kann mehrfach hintereinader eingesetzt werden, wenn sie mit Kommas voneinader getrennt wird. Innerhalb dieser Kommas dürfen entweder Brüche oder ganze Zahlen als Bereichsangabe enthalten sein und dadurch zusammen angegeben werden durch viele Kommas.
+-  Diese Syntax für Brüche und ganze Zahlen funktioniert mit dem "v" oder "vielfache" Befehl und mit dieser Minus Syntax, welche für das Herausnehmen von Bereichen da ist.
 
 ### Die Befehle 15\_.... {#die-befehle-15-dot-dot-dot-dot}
 
