@@ -553,6 +553,7 @@ def PromptGrosseAusgabe(
     fullBlockIsZahlenbereichAndBruch = True
     bruchRanges2 = []
     bruch_KeinGanzZahlReziprokeEn = []
+    rangesBruecheDict = {}
     if not bedingung:
         for g, a in enumerate(stext):
             EineZahlenFolgeJa[g] = isZeilenAngabe(a)
@@ -629,19 +630,18 @@ def PromptGrosseAusgabe(
                     i = 1
                     rechnung = br * i
                     while rechnung in gebrochenErlaubteZahlen:
-                        rechnung = br * i
                         try:
                             bruchRanges3[k] += [rechnung]
                         except KeyError:
                             bruchRanges3[k] = [rechnung]
                         i += 1
+                        rechnung = br * i
                     for no1bruch in no1brueche:
                         i = 1
                         no1bruch = int(no1bruch)
                         rechnung2 = no1bruch * i
                         print(rechnung2)
                         while rechnung2 in gebrochenErlaubteZahlen:
-                            rechnung2 = no1bruch * i
                             print(rechnung2)
                             if (
                                 rechnung2
@@ -652,20 +652,26 @@ def PromptGrosseAusgabe(
                                 except KeyError:
                                     bruch_KeinGanzZahlReziprokeEnDict[k] = [rechnung2]
                             i += 1
-                    bruchRange = []
-                    bruch_KeinGanzZahlReziprokeEn = []
-                    print(bruch_KeinGanzZahlReziprokeEnDict)
-                    print(bruchRanges3)
-                    for b1 in bruchRanges3.values():
-                        for b2 in bruch_KeinGanzZahlReziprokeEnDict.values():
-                            for c1 in b1:
-                                for c2 in b2:
-                                    # if (c1 not in bruchRange) and (
-                                    #    c2 not in bruch_KeinGanzZahlReziprokeEn
-                                    # ):
-                                    bruchRange += [c1]
-                                    bruch_KeinGanzZahlReziprokeEn += [str(c2)]
-
+                            rechnung2 = no1bruch * i
+                bruchRange = []
+                bruch_KeinGanzZahlReziprokeEn = []
+                for keyRanges, valueRanges in bruchRanges3.items():
+                    for (
+                        keyBrueche,
+                        valueBrueche,
+                    ) in bruch_KeinGanzZahlReziprokeEnDict.items():
+                        for eineRange in valueRanges:
+                            for einBruch in valueBrueche:
+                                if keyRanges == keyBrueche:
+                                    # bruchRange += [eineRange]
+                                    # bruch_KeinGanzZahlReziprokeEn += [str(einBruch)]
+                                    try:
+                                        rangesBruecheDict[eineRange] += [str(einBruch)]
+                                    except KeyError:
+                                        rangesBruecheDict[eineRange] = [str(einBruch)]
+            else:
+                for nenner, zaehlers in zip(bruchRange, bruch_KeinGanzZahlReziprokeEn):
+                    rangesBruecheDict[nenner] = list(zaehlers)
     if "mulpri" in stext or "p" in stext:
         stext += ["multis", "prim"]
     if "--art=bbcode" in stext and "reta" == stext[0]:
@@ -710,7 +716,7 @@ def PromptGrosseAusgabe(
     bedingungZahl, bedingungBrueche = (
         # list(EineZahlenFolgeJa.values()).count(True) == 1,
         len(zahlenAngaben_) > 0,
-        (len(bruch_GanzZahlReziproke) > 0 or len(bruch_KeinGanzZahlReziprokeEn) > 0),
+        (len(bruch_GanzZahlReziproke) > 0 or len(rangesBruecheDict) > 0),
     )
     if bedingung:
         warBefehl = True
@@ -844,20 +850,16 @@ def PromptGrosseAusgabe(
                     int(shellRowsAmountStr),
                 )
 
-            print(bruchRange)
-            if len(bruch_KeinGanzZahlReziproke) > 0:
-                for bruchRangeElement, bruch_KeinGanzZahlReziprok_ in zip(
-                    bruchRange, bruch_KeinGanzZahlReziprokeEn
-                ):
+            if len(rangesBruecheDict) > 0:
+                for nenner, zaehler in rangesBruecheDict.items():
                     import reta
 
                     kette = [
                         "reta",
                         "-zeilen",
-                        "--vorhervonausschnitt="
-                        + ",".join(bruch_KeinGanzZahlReziprok_),
+                        "--vorhervonausschnitt=" + ",".join(zaehler),
                         "-spalten",
-                        "--gebrochengalaxie=" + str(bruchRangeElement),
+                        "--gebrochengalaxie=" + str(nenner),
                         "--breite=" + str(int(shellRowsAmountStr) - 2),
                         "-kombination",
                         "-ausgabe",
@@ -1017,19 +1019,16 @@ def PromptGrosseAusgabe(
                     int(shellRowsAmountStr),
                 )
 
-            if len(bruch_KeinGanzZahlReziproke) > 0:
-                for bruchRangeElement, bruch_KeinGanzZahlReziprok_ in zip(
-                    bruchRange, bruch_KeinGanzZahlReziprokeEn
-                ):
+            if len(rangesBruecheDict) > 0:
+                for nenner, zaehler in rangesBruecheDict.items():
                     import reta
 
                     kette = [
                         "reta",
                         "-zeilen",
-                        "--vorhervonausschnitt="
-                        + ",".join(bruch_KeinGanzZahlReziprok_),
+                        "--vorhervonausschnitt=" + ",".join(zaehler),
                         "-spalten",
-                        "--gebrochenuniversum=" + str(bruchRangeElement),
+                        "--gebrochenuniversum=" + str(nenner),
                         "--breite=" + str(int(shellRowsAmountStr) - 2),
                         "-kombination",
                         "-ausgabe",
