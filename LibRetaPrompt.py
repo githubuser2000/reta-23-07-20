@@ -379,9 +379,12 @@ def verifyBruchNganzZahlBetweenCommas(
     etwaBruch,
     zahlenAngaben_,
 ):
+
+    print("x {}".format(bruchBereichsAngabe))
     isBruch, isGanzZahl = isZeilenAngabe_betweenKommas(
         bruchBereichsAngabe
     ), isZeilenAngabe_betweenKommas(etwaBruch)
+    print("y {}".format(bruchBereichsAngabe))
     if isBruch != isGanzZahl:
         bruchAndGanzZahlEtwaKorrekterBereich += [True]
         if isBruch:
@@ -393,6 +396,7 @@ def verifyBruchNganzZahlBetweenCommas(
         bruchAndGanzZahlEtwaKorrekterBereich += [False]
     # if isZeilenAngabe_betweenKommas(etwaBruch):
     #    zahlenAngaben_ += [etwaBruch]
+    print("h {},{}".format(bruchBereichsAngaben, bruchAndGanzZahlEtwaKorrekterBereich))
     return (
         bruchAndGanzZahlEtwaKorrekterBereich,
         bruchBereichsAngaben,

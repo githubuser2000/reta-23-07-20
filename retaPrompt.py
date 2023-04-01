@@ -126,13 +126,34 @@ def bruchSpalt(text) -> list:
     for k, bS in enumerate(bruchSpalten):
         keineZahlBefore = keineZahl
         zahl, keineZahl, bsNeu = OrderedDict(), OrderedDict(), []
-        for i, char in enumerate(bS):
+        countChar = 0
+        countNumber = 0
+        wasNumber = False
+        goNext = 0
+        for char in bS:
             if char.isdecimal():
                 """alles was Zahlen sind"""
-                zahl[i] = char
+                if not wasNumber:
+                    goNext += 1
+                try:
+                    zahl[goNext] += char
+                except KeyError:
+                    zahl[goNext] = char
+                wasNumber = True
+                countNumber += 1
+                countChar = 0
             else:
                 """alles was keine Zahlen sind"""
-                keineZahl[i] = char
+                if wasNumber:
+                    goNext += 1
+                try:
+                    keineZahl[goNext] += char
+                except KeyError:
+                    keineZahl[goNext] = char
+                wasNumber = False
+                countChar += 1
+                countNumber = 0
+        print("ä {},{}".format(zahl, keineZahl))
         flag: bool = False
         allVergleich: list[bool] = [
             zahl > c for c, zahl in zip(keineZahl.keys(), zahl.keys())
@@ -245,6 +266,7 @@ def createRangesForBruchLists(bruchList: list) -> tuple:
     flag = 0
     # ergebnis: list[tuple[range | str]] = []
     ergebnis = []
+    print(bruchList)
     if (
         len(bruchList) == 3
         and len(bruchList[0]) == 0
@@ -262,6 +284,8 @@ def createRangesForBruchLists(bruchList: list) -> tuple:
         elif flag == 3:
             """Es war ein Bruch"""
             ergebnis += [str(n2[-2]), "-", str(n2[-1])]
+
+            print("ü {}".format(ergebnis))
             listenRange = range(int(n1[-2]), int(n1[-1]) + 1)
             listenRangeUrsprung = listenRange
             flag = -1
@@ -303,6 +327,7 @@ def createRangesForBruchLists(bruchList: list) -> tuple:
             """Es ist kein Bruch"""
             flag = 0
             ergebnis += [*b]
+    print("d {}".format(ergebnis))
     ergebnis2 = "".join(ergebnis)
     return listenRange, ergebnis2
 
@@ -1241,14 +1266,18 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
     bruch_KeinGanzZahlReziprokeEn = []
     rangesBruecheDict = {}
     rangesBruecheDictReverse: dict = {}
+    bruch_KeinGanzZahlReziprokeEnDictAbzug = {}
+    bruchRanges3Abzug = {}
     for g, a in enumerate(stext):
         bruchAndGanzZahlEtwaKorrekterBereich = []
         bruchBereichsAngaben = []
         bruchRanges = []
+        abzug = False
         for etwaBruch in a.split(","):
             bruchRange, bruchBereichsAngabe = createRangesForBruchLists(
                 bruchSpalt(etwaBruch)
             )
+            print("_ {}".format(bruchBereichsAngabe))
             (
                 bruchAndGanzZahlEtwaKorrekterBereich,
                 bruchBereichsAngaben,
@@ -1264,12 +1293,14 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                 etwaBruch,
                 zahlenAngaben_,
             )
+            print(bruchBereichsAngaben)
             if etwaAllTrue:
                 fullBlockIsZahlenbereichAndBruch = (
                     fullBlockIsZahlenbereichAndBruch
                     and all(bruchAndGanzZahlEtwaKorrekterBereich)
                 )
 
+        print(bruchBereichsAngaben)
         for bruchBereichsAngabe, bruchRange in zip(bruchBereichsAngaben, bruchRanges):
             if isZeilenAngabe(bruchBereichsAngabe):
                 if 1 in bruchRange:
@@ -1310,28 +1341,63 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
             for k, (br, no1brueche) in enumerate(
                 zip(bruchRange, bruch_KeinGanzZahlReziprokeEn)
             ):
-                i = 1
-                rechnung = br * i
-                while rechnung in gebrochenErlaubteZahlen:
-                    try:
-                        bruchRanges3[k] += [rechnung]
-                    except KeyError:
-                        bruchRanges3[k] = [rechnung]
-                    i += 1
-                    rechnung = br * i
+
                 for no1bruch in no1brueche:
                     i = 1
-                    no1bruch = int(no1bruch)
+                    if len(no1bruch) > 0 and no1bruch[0] == "v":
+                        no1bruch = no1bruch[1:]
+                    if len(no1bruch) > 0 and no1bruch[0] == "-":
+                        no1bruch = no1bruch[1:]
+                        print("abzug true {}".format(no1bruch))
+                        abzug = True
+                    else:
+                        print("abzug false {}".format(no1bruch))
+                        abzug = False
+                    no1bruch = int(no1bruch) if no1bruch.isdecimal() else 0
+                    print("l {}".format(no1bruch))
                     rechnung2 = no1bruch * i
                     while rechnung2 in gebrochenErlaubteZahlen:
                         print(rechnung2)
                         if rechnung2 not in bruch_KeinGanzZahlReziprokeEnDict.values():
-                            try:
-                                bruch_KeinGanzZahlReziprokeEnDict[k] += [rechnung2]
-                            except KeyError:
-                                bruch_KeinGanzZahlReziprokeEnDict[k] = [rechnung2]
+                            if abzug:
+                                print("z abzug {}: {}".format(rechnung2, rechnung2))
+                                try:
+                                    bruch_KeinGanzZahlReziprokeEnDictAbzug[k] += [
+                                        rechnung2
+                                    ]
+                                except KeyError:
+                                    bruch_KeinGanzZahlReziprokeEnDictAbzug[k] = [
+                                        rechnung2
+                                    ]
+                            else:
+                                print("z dazu {}: {}".format(rechnung2, rechnung2))
+                                try:
+                                    bruch_KeinGanzZahlReziprokeEnDict[k] += [rechnung2]
+                                except KeyError:
+                                    bruch_KeinGanzZahlReziprokeEnDict[k] = [rechnung2]
                         i += 1
                         rechnung2 = no1bruch * i
+                i = 1
+                rechnung = br * i
+                while rechnung in gebrochenErlaubteZahlen:
+                    print(rechnung)
+                    if abzug:
+                        try:
+                            if rechnung not in bruchRanges3Abzug:
+                                bruchRanges3Abzug[k] += [rechnung]
+                        except KeyError:
+                            bruchRanges3Abzug[k] = [rechnung]
+                    else:
+                        try:
+                            if rechnung not in bruchRanges3:
+                                bruchRanges3[k] += [rechnung]
+                        except KeyError:
+                            bruchRanges3[k] = [rechnung]
+                    i += 1
+                    rechnung = br * i
+
+            print("abzug if true {}".format(abzug))
+            print("jjj {}: {}".format(bruchRanges3, bruch_KeinGanzZahlReziprokeEnDict))
             for keyRanges, valueRanges in bruchRanges3.items():
                 for (
                     keyBrueche,
@@ -1340,10 +1406,69 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                     for eineRange in valueRanges:
                         for einBruch in valueBrueche:
                             if keyRanges == keyBrueche:
+                                print("s dazu {}:{}".format(eineRange, einBruch))
                                 try:
-                                    rangesBruecheDict[eineRange] += [str(einBruch)]
+                                    strBruch = str(einBruch)
+                                    if strBruch not in rangesBruecheDict[eineRange]:
+                                        rangesBruecheDict[eineRange] += [strBruch]
                                 except KeyError:
                                     rangesBruecheDict[eineRange] = [str(einBruch)]
+            print(
+                "jjj {}: {}".format(
+                    bruchRanges3Abzug, bruch_KeinGanzZahlReziprokeEnDictAbzug
+                )
+            )
+            if len(bruchRanges3Abzug) > 0:
+                print("jjj- {}: {}".format(bruchRanges3, rangesBruecheDict))
+                rangesBruecheDict2 = deepcopy(rangesBruecheDict)
+                bruchRanges4 = deepcopy(bruchRanges3)
+                for AbzugNenners, AbzugZaehlers in zip(
+                    bruchRanges3Abzug.values(),
+                    bruch_KeinGanzZahlReziprokeEnDictAbzug.values(),
+                ):
+                    for aNenner, aZaehler in zip(AbzugNenners, AbzugZaehlers):
+                        print("s abzug {}:{}".format(aNenner, aZaehler))
+                        for key, value in zip(
+                            bruchRanges3.values(), rangesBruecheDict.values()
+                        ):
+                            print("bla {}:{}".format(key, value))
+                            try:
+                                if key.index(int(aNenner)) == value.index(
+                                    str(aZaehler)
+                                ):
+                                    print("bla2 {}:{}".format(key, aNenner))
+                                    print("bla3 {}".format(rangesBruecheDict))
+                                    print(
+                                        "bla4 {}:{}:{}:{}".format(
+                                            value, aZaehler, key, aNenner
+                                        )
+                                    )
+                                    try:
+                                        value.remove(str(aZaehler))
+                                    except:
+                                        pass
+                                    try:
+                                        key.remove(str(aNenner))
+                                    except:
+                                        pass
+                                    try:
+                                        value.remove(aZaehler)
+                                    except:
+                                        pass
+                                    try:
+                                        key.remove(aNenner)
+                                    except:
+                                        pass
+                                    print("bla5 {}:{}:{}".format(aNenner, key, value))
+                                    rangesBruecheDict2[aNenner] = value
+                                    bruchRanges4[aNenner] = key
+                            except ValueError:
+                                pass
+                rangesBruecheDict = rangesBruecheDict2
+                bruchRanges3 = bruchRanges4
+                bruchRanges3Abzug = {}
+                bruch_KeinGanzZahlReziprokeEnDictAbzug = {}
+            print("jjj_ {}: {}".format(bruchRanges3, rangesBruecheDict))
         else:
             rangesBruecheDict = bruchDict
         valueLenSum = 0
@@ -1362,13 +1487,20 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
         if dictLen != 0:
             avg = valueLenSum / dictLen
             if avg < 1:
+                print(
+                    "zu {}:{}".format(
+                        bereicheVorherBestimmtListofSets, rangesBruecheDict
+                    )
+                )
                 for ListeAusBereichNummern, (key, values) in zip(
                     bereicheVorherBestimmtListofSets, rangesBruecheDict.items()
                 ):
                     for value in values:
                         for newKey in ListeAusBereichNummern:
                             try:
-                                rangesBruecheDictReverse[newKey] += [str(key)]
+                                strKey = str(key)
+                                if strKey not in rangesBruecheDictReverse[newKey]:
+                                    rangesBruecheDictReverse[newKey] += [strKey]
                             except KeyError:
                                 rangesBruecheDictReverse[newKey] = [str(key)]
                 rangesBruecheDict = {}
@@ -1417,6 +1549,15 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
         c2
     except:
         c2 = ""
+    print(
+        "{},{},{},{},{}".format(
+            bruch_GanzZahlReziproke,
+            fullBlockIsZahlenbereichAndBruch,
+            rangesBruecheDict,
+            zahlenAngaben_,
+            rangesBruecheDictReverse,
+        )
+    )
     return (
         bruch_GanzZahlReziproke,
         c,
