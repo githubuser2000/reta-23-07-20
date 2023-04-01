@@ -542,7 +542,14 @@ def PromptGrosseAusgabe(
     zahlenAngaben_,
     ifKurzKurz,
 ):
-
+    (
+        EsGabzahlenAngaben,
+        c2,
+        bruch_GanzZahlReziproke,
+        fullBlockIsZahlenbereichAndBruch,
+        rangesBruecheDict,
+        rangesBruecheDictReverse,
+    ) = (False, "", [], False, {}, {})
     if not bedingung:
         (
             bruch_GanzZahlReziproke,
@@ -733,10 +740,11 @@ def PromptGrosseAusgabe(
                 for nenner, zaehler in rangesBruecheDict.items():
                     import reta
 
+                    hierBereich = ",".join(zaehler)
                     kette = [
                         "reta",
                         "-zeilen",
-                        "--vorhervonausschnitt=" + ",".join(zaehler),
+                        "--vorhervonausschnitt=" + hierBereich,
                         "-spalten",
                         "--gebrochengalaxie=" + str(nenner),
                         "--breite=" + str(int(shellRowsAmountStr) - 2),
@@ -754,7 +762,7 @@ def PromptGrosseAusgabe(
                     if (
                         "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
                         not in stext
-                    ):
+                    ) and not len(BereichToNumbers2(hierBereich)) == 0:
                         print(" ".join(kette))
                     reta.Program(
                         kette,
@@ -764,10 +772,11 @@ def PromptGrosseAusgabe(
                 for nenner, zaehler in rangesBruecheDictReverse.items():
                     import reta
 
+                    hierBereich = ",".join(zaehler)
                     kette = [
                         "reta",
                         "-zeilen",
-                        "--vorhervonausschnitt=" + ",".join(zaehler),
+                        "--vorhervonausschnitt=" + hierBereich,
                         "-spalten",
                         "--gebrochengalaxie=" + str(nenner),
                         "--breite=" + str(int(shellRowsAmountStr) - 2),
@@ -785,7 +794,7 @@ def PromptGrosseAusgabe(
                     if (
                         "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
                         not in stext
-                    ):
+                    ) and not len(BereichToNumbers2(hierBereich)) == 0:
                         print(" ".join(kette))
                     reta.Program(
                         kette,
@@ -933,10 +942,11 @@ def PromptGrosseAusgabe(
                 for nenner, zaehler in rangesBruecheDict.items():
                     import reta
 
+                    hierBereich = ",".join(zaehler)
                     kette = [
                         "reta",
                         "-zeilen",
-                        "--vorhervonausschnitt=" + ",".join(zaehler),
+                        "--vorhervonausschnitt=" + hierBereich,
                         "-spalten",
                         "--gebrochenuniversum=" + str(nenner),
                         "--breite=" + str(int(shellRowsAmountStr) - 2),
@@ -954,7 +964,7 @@ def PromptGrosseAusgabe(
                     if (
                         "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
                         not in stext
-                    ):
+                    ) and not len(BereichToNumbers2(hierBereich)) == 0:
                         print(" ".join(kette))
                     reta.Program(
                         kette,
@@ -964,10 +974,11 @@ def PromptGrosseAusgabe(
                 for nenner, zaehler in rangesBruecheDictReverse.items():
                     import reta
 
+                    hierBereich = ",".join(zaehler)
                     kette = [
                         "reta",
                         "-zeilen",
-                        "--vorhervonausschnitt=" + ",".join(zaehler),
+                        "--vorhervonausschnitt=" + hierBereich,
                         "-spalten",
                         "--gebrochenuniversum=" + str(nenner),
                         "--breite=" + str(int(shellRowsAmountStr) - 2),
@@ -985,7 +996,7 @@ def PromptGrosseAusgabe(
                     if (
                         "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
                         not in stext
-                    ):
+                    ) and not len(BereichToNumbers2(hierBereich)) == 0:
                         print(" ".join(kette))
                     reta.Program(
                         kette,
@@ -1341,7 +1352,10 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
         for values in rangesBruecheDict.values():
             bereichVorherBestimmt = [BereichToNumbers2(value) for value in values]
             bereicheVorherBestimmtListofSets += bereichVorherBestimmt
-            bereicheVorherBestimmtSet |= set(*bereichVorherBestimmt)
+            neuSet = set()
+            for b in bereichVorherBestimmt:
+                neuSet |= b
+            bereicheVorherBestimmtSet |= b
         valueLenSum += len(bereicheVorherBestimmtSet)
         del bereicheVorherBestimmtSet
         dictLen = len(rangesBruecheDict)
@@ -1402,7 +1416,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
     try:
         c2
     except:
-        c2 = None
+        c2 = ""
     return (
         bruch_GanzZahlReziproke,
         c,

@@ -376,6 +376,11 @@ class Tables:
                     i_textwidth = certaintextwidth
                 return i_textwidth
 
+            if len(finallyDisplayLinesSet) == 0 or (
+                len(finallyDisplayLinesSet) == 1 and 0 in finallyDisplayLinesSet
+            ):
+                return
+
             maxCellTextLen = findMaxCellTextLen(
                 finallyDisplayLinesSet, newTable, rowsRange
             )

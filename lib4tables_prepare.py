@@ -352,7 +352,8 @@ class Prepare:
 
         for condition in paramLines:
             if "all" == condition:
-                return set(self.originalLinesRange)
+                finallyDisplayLines = set(range(self.hoechsteZeile[1024]))
+                # return set(self.originalLinesRange)
 
         numRangeYesZ = set()
         if_a_AtAll = False
