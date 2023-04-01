@@ -395,7 +395,6 @@ def speichern(ketten, platzhalter, text):
     else:
         promptMode2 = PromptModus.normal
     (
-        EineZahlenFolgeJaX,
         bedingungX,
         bruecheX,
         cX,
@@ -494,7 +493,6 @@ def PromptScope():
             continue
 
         (
-            EineZahlenFolgeJa,
             bedingung,
             brueche,
             c,
@@ -513,7 +511,6 @@ def PromptScope():
             textDazu0,
         )
         loggingSwitch = PromptGrosseAusgabe(
-            EineZahlenFolgeJa,
             bedingung,
             befehleBeenden,
             brueche,
@@ -531,7 +528,6 @@ def PromptScope():
 
 
 def PromptGrosseAusgabe(
-    EineZahlenFolgeJa,
     bedingung,
     befehleBeenden,
     brueche,
@@ -555,9 +551,8 @@ def PromptGrosseAusgabe(
             fullBlockIsZahlenbereichAndBruch,
             rangesBruecheDict,
             EsGabzahlenAngaben,
-        ) = bruchBereichsManagementAndWbefehl(
-            EineZahlenFolgeJa, c, stext, zahlenAngaben_
-        )
+            rangesBruecheDictReverse,
+        ) = bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_)
     if "mulpri" in stext or "p" in stext:
         stext += ["multis", "prim"]
     if "--art=bbcode" in stext and "reta" == stext[0]:
@@ -601,7 +596,8 @@ def PromptGrosseAusgabe(
         retaPromptHilfe()
     bedingungZahl, bedingungBrueche = (
         EsGabzahlenAngaben,
-        (len(bruch_GanzZahlReziproke) > 0 or len(rangesBruecheDict) > 0),
+        (len(bruch_GanzZahlReziproke) > 0 or len(rangesBruecheDict) > 0)
+        or len(rangesBruecheDictReverse) > 0,
     )
     if bedingung:
         warBefehl = True
@@ -747,6 +743,37 @@ def PromptGrosseAusgabe(
                         "-kombination",
                         "-ausgabe",
                         "--spaltenreihenfolgeundnurdiese=1",
+                        *[
+                            "--keineleereninhalte"
+                            if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                            in stext
+                            else ""
+                        ],
+                    ] + returnOnlyParasAsList(stext)
+                    kette += ketten
+                    if (
+                        "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                        not in stext
+                    ):
+                        print(" ".join(kette))
+                    reta.Program(
+                        kette,
+                        int(shellRowsAmountStr),
+                    )
+            elif len(rangesBruecheDictReverse) > 0:
+                for nenner, zaehler in rangesBruecheDictReverse.items():
+                    import reta
+
+                    kette = [
+                        "reta",
+                        "-zeilen",
+                        "--vorhervonausschnitt=" + ",".join(zaehler),
+                        "-spalten",
+                        "--gebrochengalaxie=" + str(nenner),
+                        "--breite=" + str(int(shellRowsAmountStr) - 2),
+                        "-kombination",
+                        "-ausgabe",
+                        "--spaltenreihenfolgeundnurdiese=2",
                         *[
                             "--keineleereninhalte"
                             if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
@@ -916,6 +943,37 @@ def PromptGrosseAusgabe(
                         "-kombination",
                         "-ausgabe",
                         "--spaltenreihenfolgeundnurdiese=1",
+                        *[
+                            "--keineleereninhalte"
+                            if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                            in stext
+                            else ""
+                        ],
+                    ] + returnOnlyParasAsList(stext)
+                    kette += ketten
+                    if (
+                        "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                        not in stext
+                    ):
+                        print(" ".join(kette))
+                    reta.Program(
+                        kette,
+                        int(shellRowsAmountStr),
+                    )
+            elif len(rangesBruecheDictReverse) > 0:
+                for nenner, zaehler in rangesBruecheDictReverse.items():
+                    import reta
+
+                    kette = [
+                        "reta",
+                        "-zeilen",
+                        "--vorhervonausschnitt=" + ",".join(zaehler),
+                        "-spalten",
+                        "--gebrochenuniversum=" + str(nenner),
+                        "--breite=" + str(int(shellRowsAmountStr) - 2),
+                        "-kombination",
+                        "-ausgabe",
+                        "--spaltenreihenfolgeundnurdiese=2",
                         *[
                             "--keineleereninhalte"
                             if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
@@ -1163,7 +1221,7 @@ def PromptGrosseAusgabe(
     return loggingSwitch
 
 
-def bruchBereichsManagementAndWbefehl(EineZahlenFolgeJa, c, stext, zahlenAngaben_):
+def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
     bruch_GanzZahlReziproke = []
     bruch_KeinGanzZahlReziproke = []
     bruch_KeinGanzZahlReziprok_ = []
@@ -1171,8 +1229,8 @@ def bruchBereichsManagementAndWbefehl(EineZahlenFolgeJa, c, stext, zahlenAngaben
     bruchRanges2 = []
     bruch_KeinGanzZahlReziprokeEn = []
     rangesBruecheDict = {}
+    rangesBruecheDictReverse: dict = {}
     for g, a in enumerate(stext):
-        EineZahlenFolgeJa[g] = isZeilenAngabe(a)
         bruchAndGanzZahlEtwaKorrekterBereich = []
         bruchBereichsAngaben = []
         bruchRanges = []
@@ -1277,6 +1335,30 @@ def bruchBereichsManagementAndWbefehl(EineZahlenFolgeJa, c, stext, zahlenAngaben
                                     rangesBruecheDict[eineRange] = [str(einBruch)]
         else:
             rangesBruecheDict = bruchDict
+        valueLenSum = 0
+        bereicheVorherBestimmtListofSets = []
+        bereicheVorherBestimmtSet = set()
+        for values in rangesBruecheDict.values():
+            bereichVorherBestimmt = [BereichToNumbers2(value) for value in values]
+            bereicheVorherBestimmtListofSets += bereichVorherBestimmt
+            bereicheVorherBestimmtSet |= set(*bereichVorherBestimmt)
+        valueLenSum += len(bereicheVorherBestimmtSet)
+        del bereicheVorherBestimmtSet
+        dictLen = len(rangesBruecheDict)
+        if dictLen != 0:
+            avg = valueLenSum / dictLen
+            if avg < 1:
+                for ListeAusBereichNummern, (key, values) in zip(
+                    bereicheVorherBestimmtListofSets, rangesBruecheDict.items()
+                ):
+                    for value in values:
+                        for newKey in ListeAusBereichNummern:
+                            try:
+                                rangesBruecheDictReverse[newKey] += [str(key)]
+                            except KeyError:
+                                rangesBruecheDictReverse[newKey] = [str(key)]
+                rangesBruecheDict = {}
+
     try:
         del bruchRanges3
     except:
@@ -1328,6 +1410,7 @@ def bruchBereichsManagementAndWbefehl(EineZahlenFolgeJa, c, stext, zahlenAngaben
         fullBlockIsZahlenbereichAndBruch,
         rangesBruecheDict,
         len(zahlenAngaben_) > 0,
+        rangesBruecheDictReverse,
     )
 
 
@@ -1459,10 +1542,8 @@ def promptVorbereitungGrosseAusgabe(
     brueche = []
     zahlenAngaben_ = []
     c = ""
-    EineZahlenFolgeJa: dict = {}
     if len(set(stext) & befehleBeenden) > 0:
         stext = [tuple(befehleBeenden)[0]]
-    # print([EineZahlenFolgeJa, bedingung, brueche, c, ketten, maxNum, stext])
     replacements = {
         "e": "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
         "a": "absicht",
@@ -1484,7 +1565,6 @@ def promptVorbereitungGrosseAusgabe(
             pass
     stext = list(set(stext))
     return (
-        EineZahlenFolgeJa,
         bedingung,
         brueche,
         c,
