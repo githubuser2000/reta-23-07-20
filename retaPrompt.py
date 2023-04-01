@@ -547,146 +547,17 @@ def PromptGrosseAusgabe(
     ifKurzKurz,
 ):
 
-    bruch_GanzZahlReziproke = []
-    bruch_KeinGanzZahlReziproke = []
-    bruch_KeinGanzZahlReziprok_ = []
-    fullBlockIsZahlenbereichAndBruch = True
-    bruchRanges2 = []
-    bruch_KeinGanzZahlReziprokeEn = []
-    rangesBruecheDict = {}
     if not bedingung:
-        for g, a in enumerate(stext):
-            EineZahlenFolgeJa[g] = isZeilenAngabe(a)
-            bruchAndGanzZahlEtwaKorrekterBereich = []
-            bruchBereichsAngaben = []
-            bruchRanges = []
-            for etwaBruch in a.split(","):
-                bruchRange, bruchBereichsAngabe = createRangesForBruchLists(
-                    bruchSpalt(etwaBruch)
-                )
-                (
-                    bruchAndGanzZahlEtwaKorrekterBereich,
-                    bruchBereichsAngaben,
-                    bruchRanges,
-                    zahlenAngaben_,
-                    etwaAllTrue,
-                ) = verifyBruchNganzZahlBetweenCommas(
-                    bruchAndGanzZahlEtwaKorrekterBereich,
-                    bruchBereichsAngabe,
-                    bruchBereichsAngaben,
-                    bruchRange,
-                    bruchRanges,
-                    etwaBruch,
-                    zahlenAngaben_,
-                )
-                if etwaAllTrue:
-                    fullBlockIsZahlenbereichAndBruch = (
-                        fullBlockIsZahlenbereichAndBruch
-                        and all(bruchAndGanzZahlEtwaKorrekterBereich)
-                    )
-
-            if len(zahlenAngaben_) > 0:
-                a = ",".join(zahlenAngaben_)
-                c2 = ",".join([str(zahl) for zahl in BereichToNumbers2(a, False, 0)])
-                if "w" in stext or "teiler" in stext:
-                    c: str = ",".join(teiler(a)[0])
-                else:
-                    c = a
-            for bruchBereichsAngabe, bruchRange in zip(
-                bruchBereichsAngaben, bruchRanges
-            ):
-                if isZeilenAngabe(bruchBereichsAngabe):
-                    if 1 in bruchRange:
-                        bruch_GanzZahlReziproke += [bruchBereichsAngabe]
-                    if len(bruchRange) > 1 or 1 not in bruchRange:
-                        bruch_KeinGanzZahlReziproke += [bruchBereichsAngabe]
-                        bruchRanges2 += [bruchRange]
-            # print(bruch_GanzZahlReziproke)
-            # print(bruch_KeinGanzZahlReziproke)
-            # print(bruchRanges2)
-            bruchDict = {}
-            for bruchRange, bruch_KeinGanzZahlReziprok_ in zip(
-                bruchRanges2, bruch_KeinGanzZahlReziproke
-            ):
-                for rangePunkt in bruchRange:
-                    if rangePunkt != 1:
-                        try:
-                            bruchDict[rangePunkt] |= {bruch_KeinGanzZahlReziprok_}
-                        except KeyError:
-                            bruchDict[rangePunkt] = {bruch_KeinGanzZahlReziprok_}
-            # print("X")
-            # print(bruchDict)
-            bruchRanges = []
-            bruch_KeinGanzZahlReziprokeEn = []
-            bruchRange = []
-            for key, value in bruchDict.items():
-                if key != 1 and (
-                    (key not in bruchRange)
-                    and (value not in bruch_KeinGanzZahlReziprokeEn)
-                ):
-                    bruchRange += [key]
-                    bruch_KeinGanzZahlReziprokeEn += [value]
-            # print(bruch_KeinGanzZahlReziprokeEn)
-            bruch_GanzZahlReziproke = list(set(bruch_GanzZahlReziproke))
-            # print("BBB")
-            # print(bruchRange)
-            # print(bruch_KeinGanzZahlReziproke)
-            # print(bruch_KeinGanzZahlReziprokeEn)
-            if ("v" in stext) or ("vielfache" in stext):
-                bruchRanges3 = {}
-                bruch_KeinGanzZahlReziprokeEnDict = {}
-                for k, (br, no1brueche) in enumerate(
-                    zip(bruchRange, bruch_KeinGanzZahlReziprokeEn)
-                ):
-                    i = 1
-                    rechnung = br * i
-                    while rechnung in gebrochenErlaubteZahlen:
-                        try:
-                            bruchRanges3[k] += [rechnung]
-                        except KeyError:
-                            bruchRanges3[k] = [rechnung]
-                        i += 1
-                        rechnung = br * i
-                    for no1bruch in no1brueche:
-                        i = 1
-                        no1bruch = int(no1bruch)
-                        rechnung2 = no1bruch * i
-                        print(rechnung2)
-                        while rechnung2 in gebrochenErlaubteZahlen:
-                            print(rechnung2)
-                            if (
-                                rechnung2
-                                not in bruch_KeinGanzZahlReziprokeEnDict.values()
-                            ):
-                                try:
-                                    bruch_KeinGanzZahlReziprokeEnDict[k] += [rechnung2]
-                                except KeyError:
-                                    bruch_KeinGanzZahlReziprokeEnDict[k] = [rechnung2]
-                            i += 1
-                            rechnung2 = no1bruch * i
-                bruchRange = []
-                bruch_KeinGanzZahlReziprokeEn = []
-                for keyRanges, valueRanges in bruchRanges3.items():
-                    for (
-                        keyBrueche,
-                        valueBrueche,
-                    ) in bruch_KeinGanzZahlReziprokeEnDict.items():
-                        for eineRange in valueRanges:
-                            for einBruch in valueBrueche:
-                                if keyRanges == keyBrueche:
-                                    # bruchRange += [eineRange]
-                                    # bruch_KeinGanzZahlReziprokeEn += [str(einBruch)]
-                                    try:
-                                        rangesBruecheDict[eineRange] += [str(einBruch)]
-                                    except KeyError:
-                                        rangesBruecheDict[eineRange] = [str(einBruch)]
-            else:
-                # print(bruchRange)
-                # print(bruch_KeinGanzZahlReziprokeEn)
-                # for nenner, zaehlers in zip(bruchRange, bruch_KeinGanzZahlReziprokeEn):
-                #    rangesBruecheDict[nenner] = list(zaehlers)
-                # print(rangesBruecheDict)
-                rangesBruecheDict = bruchDict
+        (
+            bruch_GanzZahlReziproke,
+            c,
+            c2,
+            fullBlockIsZahlenbereichAndBruch,
+            rangesBruecheDict,
+            EsGabzahlenAngaben,
+        ) = bruchBereichsManagementAndWbefehl(
+            EineZahlenFolgeJa, c, stext, zahlenAngaben_
+        )
     if "mulpri" in stext or "p" in stext:
         stext += ["multis", "prim"]
     if "--art=bbcode" in stext and "reta" == stext[0]:
@@ -729,8 +600,7 @@ def PromptGrosseAusgabe(
         warBefehl = True
         retaPromptHilfe()
     bedingungZahl, bedingungBrueche = (
-        # list(EineZahlenFolgeJa.values()).count(True) == 1,
-        len(zahlenAngaben_) > 0,
+        EsGabzahlenAngaben,
         (len(bruch_GanzZahlReziproke) > 0 or len(rangesBruecheDict) > 0),
     )
     if bedingung:
@@ -738,8 +608,6 @@ def PromptGrosseAusgabe(
         import reta
 
         reta.Program(stext, int(shellRowsAmountStr) - 2)
-        # process = subprocess.Popen(sos.path.dirname(__file__) + os.sep + text)
-        # process.wait()
 
     if len(bruch_GanzZahlReziproke) > 0:
         zeiln3 = "--vorhervonausschnitt=" + ",".join(bruch_GanzZahlReziproke)
@@ -1293,6 +1161,174 @@ def PromptGrosseAusgabe(
         else:
             print("Das ist kein Befehl! -> '{}''".format(" ".join(stext)))
     return loggingSwitch
+
+
+def bruchBereichsManagementAndWbefehl(EineZahlenFolgeJa, c, stext, zahlenAngaben_):
+    bruch_GanzZahlReziproke = []
+    bruch_KeinGanzZahlReziproke = []
+    bruch_KeinGanzZahlReziprok_ = []
+    fullBlockIsZahlenbereichAndBruch = True
+    bruchRanges2 = []
+    bruch_KeinGanzZahlReziprokeEn = []
+    rangesBruecheDict = {}
+    for g, a in enumerate(stext):
+        EineZahlenFolgeJa[g] = isZeilenAngabe(a)
+        bruchAndGanzZahlEtwaKorrekterBereich = []
+        bruchBereichsAngaben = []
+        bruchRanges = []
+        for etwaBruch in a.split(","):
+            bruchRange, bruchBereichsAngabe = createRangesForBruchLists(
+                bruchSpalt(etwaBruch)
+            )
+            (
+                bruchAndGanzZahlEtwaKorrekterBereich,
+                bruchBereichsAngaben,
+                bruchRanges,
+                zahlenAngaben_,
+                etwaAllTrue,
+            ) = verifyBruchNganzZahlBetweenCommas(
+                bruchAndGanzZahlEtwaKorrekterBereich,
+                bruchBereichsAngabe,
+                bruchBereichsAngaben,
+                bruchRange,
+                bruchRanges,
+                etwaBruch,
+                zahlenAngaben_,
+            )
+            if etwaAllTrue:
+                fullBlockIsZahlenbereichAndBruch = (
+                    fullBlockIsZahlenbereichAndBruch
+                    and all(bruchAndGanzZahlEtwaKorrekterBereich)
+                )
+
+        for bruchBereichsAngabe, bruchRange in zip(bruchBereichsAngaben, bruchRanges):
+            if isZeilenAngabe(bruchBereichsAngabe):
+                if 1 in bruchRange:
+                    bruch_GanzZahlReziproke += [bruchBereichsAngabe]
+                if len(bruchRange) > 1 or 1 not in bruchRange:
+                    bruch_KeinGanzZahlReziproke += [bruchBereichsAngabe]
+                    bruchRanges2 += [bruchRange]
+        bruchDict = {}
+        for bruchRange, bruch_KeinGanzZahlReziprok_ in zip(
+            bruchRanges2, bruch_KeinGanzZahlReziproke
+        ):
+            for rangePunkt in bruchRange:
+                if rangePunkt != 1:
+                    try:
+                        bruchDict[rangePunkt] |= {bruch_KeinGanzZahlReziprok_}
+                    except KeyError:
+                        bruchDict[rangePunkt] = {bruch_KeinGanzZahlReziprok_}
+        bruchRanges = []
+        bruch_KeinGanzZahlReziprokeEn = []
+        bruchRange = []
+        for key, value in bruchDict.items():
+            if key != 1 and (
+                (key not in bruchRange) and (value not in bruch_KeinGanzZahlReziprokeEn)
+            ):
+                bruchRange += [key]
+                bruch_KeinGanzZahlReziprokeEn += [value]
+        bruch_GanzZahlReziproke = list(set(bruch_GanzZahlReziproke))
+        if len(zahlenAngaben_) > 0:
+            a = ",".join(zahlenAngaben_)
+            c2 = ",".join([str(zahl) for zahl in BereichToNumbers2(a, False, 0)])
+            if "w" in stext or "teiler" in stext:
+                c: str = ",".join(teiler(a)[0])
+            else:
+                c = a
+        if ("v" in stext) or ("vielfache" in stext):
+            bruchRanges3 = {}
+            bruch_KeinGanzZahlReziprokeEnDict = {}
+            for k, (br, no1brueche) in enumerate(
+                zip(bruchRange, bruch_KeinGanzZahlReziprokeEn)
+            ):
+                i = 1
+                rechnung = br * i
+                while rechnung in gebrochenErlaubteZahlen:
+                    try:
+                        bruchRanges3[k] += [rechnung]
+                    except KeyError:
+                        bruchRanges3[k] = [rechnung]
+                    i += 1
+                    rechnung = br * i
+                for no1bruch in no1brueche:
+                    i = 1
+                    no1bruch = int(no1bruch)
+                    rechnung2 = no1bruch * i
+                    while rechnung2 in gebrochenErlaubteZahlen:
+                        print(rechnung2)
+                        if rechnung2 not in bruch_KeinGanzZahlReziprokeEnDict.values():
+                            try:
+                                bruch_KeinGanzZahlReziprokeEnDict[k] += [rechnung2]
+                            except KeyError:
+                                bruch_KeinGanzZahlReziprokeEnDict[k] = [rechnung2]
+                        i += 1
+                        rechnung2 = no1bruch * i
+            for keyRanges, valueRanges in bruchRanges3.items():
+                for (
+                    keyBrueche,
+                    valueBrueche,
+                ) in bruch_KeinGanzZahlReziprokeEnDict.items():
+                    for eineRange in valueRanges:
+                        for einBruch in valueBrueche:
+                            if keyRanges == keyBrueche:
+                                try:
+                                    rangesBruecheDict[eineRange] += [str(einBruch)]
+                                except KeyError:
+                                    rangesBruecheDict[eineRange] = [str(einBruch)]
+        else:
+            rangesBruecheDict = bruchDict
+    try:
+        del bruchRanges3
+    except:
+        pass
+    try:
+        del rechnung
+    except:
+        pass
+    try:
+        del rechnung2
+    except:
+        pass
+    try:
+        del bruchDict
+    except:
+        pass
+    try:
+        del no1brueche
+    except:
+        pass
+    try:
+        del bruchRanges
+    except:
+        pass
+    try:
+        del bruchRange
+    except:
+        pass
+    try:
+        del bruchRange2
+    except:
+        pass
+    try:
+        del bruch_KeinGanzZahlReziproke
+    except:
+        pass
+    try:
+        del bruch_KeinGanzZahlReziprokeEn
+    except:
+        pass
+    try:
+        c2
+    except:
+        c2 = None
+    return (
+        bruch_GanzZahlReziproke,
+        c,
+        c2,
+        fullBlockIsZahlenbereichAndBruch,
+        rangesBruecheDict,
+        len(zahlenAngaben_) > 0,
+    )
 
 
 def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, stext, text, warBefehl):
