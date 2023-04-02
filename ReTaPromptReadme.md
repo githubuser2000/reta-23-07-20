@@ -29,7 +29,7 @@ weight = -7
 
 -   "help" oder "hilfe" gibt diese Hilfe hier aus.
 -   "befehle" gibt die Liste der möglichen Befehle von ReTaPrompt aus.
-
+-   "-h" oder "-help" nicht in retaPrompt als Befehl, sondern davor als Programm-Start-Argument für retaPrompt, gibt aus, welche Programm-Start-Argumente für ReTa-Prompt möglich sind.
 
 ### Ausgabe-Befehle {#ausgabe-befehle}
 
