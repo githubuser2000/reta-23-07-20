@@ -18,8 +18,8 @@ from prompt_toolkit.completion import Completer, Completion
 from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
 
-from center import (cliout, invert_dict_B, isZeilenAngabe,
-                    isZeilenAngabe_betweenKommas, retaPromptHilfe, teiler)
+from center import (alxp, cliout, invert_dict_B, isZeilenAngabe,
+                    isZeilenAngabe_betweenKommas, retaPromptHilfe, teiler, x)
 from LibRetaPrompt import (BereichToNumbers2, PromptModus,
                            gebrochenErlaubteZahlen, isReTaParameter,
                            notParameterValues, stextFromKleinKleinKleinBefehl,
@@ -33,6 +33,7 @@ from word_completerAlx import WordCompleter
 
 wahl15["_"] = wahl15["_15"]
 befehleBeenden = {"ende", "exit", "quit", "q", ":q"}
+infoLog = False
 
 
 def anotherOberesMaximum(c, maxNum):
@@ -457,6 +458,7 @@ def PromptScope():
         shellRowsAmountStr,
         startpunkt1,
         text,
+        nurEinBefehl,
     ) = PromptAllesVorGroesserSchleife()
     while text not in befehleBeenden:
         warBefehl = False
@@ -473,6 +475,7 @@ def PromptScope():
                 promptMode,
                 startpunkt1,
                 text,
+                nurEinBefehl,
             )
             ketten, platzhalter, text = promptSpeicherungA(
                 ketten, platzhalter, promptMode, text
@@ -549,6 +552,7 @@ def PromptScope():
             warBefehl,
             zahlenAngaben_,
             ifKurzKurz,
+            nurEinBefehl,
         )
 
 
@@ -566,6 +570,7 @@ def PromptGrosseAusgabe(
     warBefehl,
     zahlenAngaben_,
     ifKurzKurz,
+    nurEinBefehl,
 ):
     (
         EsGabzahlenAngaben,
@@ -1245,6 +1250,10 @@ def PromptGrosseAusgabe(
     loggingSwitch, warBefehl = PromptVonGrosserAusgabeSonderBefehlAusgaben(
         loggingSwitch, stext, text, warBefehl
     )
+    if len(nurEinBefehl) > 0:
+        stext = copy(befehleBeenden)
+        nurEinBefehl = " ".join(befehleBeenden)
+        exit()
     if not warBefehl and len(stext) > 0 and stext[0] not in befehleBeenden:
         if stext[0] in befehle:
             print(
@@ -1697,6 +1706,30 @@ def PromptAllesVorGroesserSchleife():
     global promptMode2, textDazu0, befehleBeenden
     pp1 = pprint.PrettyPrinter(indent=2)
     pp = pp1.pprint
+
+    if "-vi" not in sys.argv:
+        retaPromptHilfe()
+    if "-log" in sys.argv:
+        loggingSwitch = True
+    else:
+        loggingSwitch = False
+    if ("-h" in sys.argv) or ("-help" in sys.argv):
+        print(
+            """Erlaubte Parameter sind
+            -vi für vi mode statt emacs mode,
+            -log, um Logging zu aktivieren,
+            -debug, um Debugging-Log-Ausgabe zu aktivieren. Das ist nur für Entwickler gedacht.
+            -befehl bewirkt, dass bis zum letzten Programmparameter retaPrompt Befehl nur ein RetaPrompt-Befehl ausgeführt wird."""
+        )
+        exit()
+    if "-debug" in sys.argv:
+        retaProgram.propInfoLog = True
+        alxp("Debug Log Aktiviert")
+    if "-befehl" in sys.argv:
+        von = sys.argv.index("-befehl")
+        nurEinBefehl = sys.argv[von:]
+    else:
+        nurEinBefehl = []
     startpunkt1 = NestedCompleter(
         {a: None for a in befehle},
         {},
@@ -1708,12 +1741,7 @@ def PromptAllesVorGroesserSchleife():
         },
     )
     text: Optional[str] = None
-    if "-vi" not in sys.argv:
-        retaPromptHilfe()
-    if "-log" in sys.argv:
-        loggingSwitch = True
-    else:
-        loggingSwitch = False
+
     if platform.system() != "Windows":
         try:
             ColumnsRowsAmount, shellRowsAmountStr = (
@@ -1746,6 +1774,7 @@ def PromptAllesVorGroesserSchleife():
         shellRowsAmountStr,
         startpunkt1,
         text,
+        nurEinBefehl,
     )
 
 
@@ -1800,33 +1829,44 @@ def promptSpeicherungA(ketten, platzhalter, promptMode, text):
 
 
 def promptInput(
-    loggingSwitch, platzhalter, promptDavorDict, promptMode, startpunkt1, text
+    loggingSwitch,
+    platzhalter,
+    promptDavorDict,
+    promptMode,
+    startpunkt1,
+    text,
+    nurEinBefehl,
 ):
-    session = newSession(loggingSwitch)
-    try:
-        befehlDavor = text
-        text = session.prompt(
-            # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
-            # ">",
-            [("class:bla", promptDavorDict[promptMode])],
-            # completer=NestedCompleter.from_nested_dict(
-            #    startpunkt, notParameterValues=notParameterValues
-            # ),
-            completer=startpunkt1
-            if not promptMode == PromptModus.loeschenSelect
-            else None,
-            wrap_lines=True,
-            complete_while_typing=True,
-            vi_mode=True if "-vi" in sys.argv else False,
-            style=Style.from_dict({"bla": "#0000ff bg:#ffff00"})
-            if loggingSwitch
-            else Style.from_dict({"bla": "#0000ff bg:#ff0000"}),
-            # placeholder="reta",
-            placeholder=platzhalter,
-        )
-        text: str = str(text).strip()
-    except KeyboardInterrupt:
-        sys.exit()
+
+    if len(nurEinBefehl) == 0:
+        session = newSession(loggingSwitch)
+        try:
+            befehlDavor = text
+            text = session.prompt(
+                # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
+                # ">",
+                [("class:bla", promptDavorDict[promptMode])],
+                # completer=NestedCompleter.from_nested_dict(
+                #    startpunkt, notParameterValues=notParameterValues
+                # ),
+                completer=startpunkt1
+                if not promptMode == PromptModus.loeschenSelect
+                else None,
+                wrap_lines=True,
+                complete_while_typing=True,
+                vi_mode=True if "-vi" in sys.argv else False,
+                style=Style.from_dict({"bla": "#0000ff bg:#ffff00"})
+                if loggingSwitch
+                else Style.from_dict({"bla": "#0000ff bg:#ff0000"}),
+                # placeholder="reta",
+                placeholder=platzhalter,
+            )
+            text: str = str(text).strip()
+        except KeyboardInterrupt:
+            sys.exit()
+    else:
+        text = " ".join(nurEinBefehl)
+        befehlDavor = ""
     return befehlDavor, text
 
 

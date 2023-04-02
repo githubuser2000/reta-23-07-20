@@ -4022,6 +4022,16 @@ class Program:
         self.tables.hoechsteZeile = max_
         return True
 
+    @property
+    def propInfoLog(self) -> OutputSyntax:
+        global Tables, infoLog
+        return infoLog
+
+    @propInfoLog.setter
+    def propInfoLog(self, value: bool):
+        global Tables, infoLog
+        infoLog = value
+
     def __init__(self, argv=[], alternativeShellRowsAmount: Optional[int] = None):
         global Tables, infoLog
         self.argv = argv
