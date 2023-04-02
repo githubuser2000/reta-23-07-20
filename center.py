@@ -55,6 +55,25 @@ Multiplikationen = [("Multiplikationen", "")]
 shellRowsAmount: int
 
 
+def isZeilenBruchAngabe_betweenKommas(g):
+    pattern = r"^(v?-?\d+\/\d+)(-\d+\/\d+)?((\+)(\d+\/\d+))*$"
+    return bool(re.fullmatch(pattern, g))
+
+
+def isZeilenBruchOrGanzZahlAngabe(text):
+    a = []
+    for g in text.split(","):
+        a += [isZeilenBruchAngabe_betweenKommas(g) or isZeilenAngabe_betweenKommas(g)]
+    return all(a)
+
+
+def isZeilenBruchAngabe(text):
+    a = []
+    for g in text.split(","):
+        a += [isZeilenBruchAngabe_betweenKommas(g)]
+    return all(a)
+
+
 def isZeilenAngabe(text):
     a = []
     for g in text.split(","):
@@ -490,3 +509,26 @@ def teiler(zahlenBereichsAngabe):
         ZahlenWbereichMenge -= {1}
     zahlenWBereichStringListe = [str(each2) for each2 in ZahlenWbereichMenge]
     return zahlenWBereichStringListe, ZahlenWbereichMenge
+
+
+def invert_dict_B(d):
+    new_dict = {}
+    for key, value_list in d.items():
+        for value in value_list:
+            intVal = int(value)
+            if value not in new_dict:
+                new_dict[intVal] = []
+            strKey = str(key)
+            if strKey not in new_dict[intVal]:
+                new_dict[intVal].append(strKey)
+    return new_dict
+
+
+# def invert_dict(d):
+#    new_dict = {}
+#    for key, value_list in d.items():
+#        for value in value_list:
+#            if value not in new_dict:
+#                new_dict[value] = []
+#            new_dict[value].append(key)
+#    return new_dict

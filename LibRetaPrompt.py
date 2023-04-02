@@ -5,7 +5,8 @@ from typing import Optional
 
 import reta
 from center import (BereichToNumbers2, Primzahlkreuz_pro_contra_strs,
-                    isZeilenAngabe, isZeilenAngabe_betweenKommas)
+                    isZeilenAngabe, isZeilenAngabe_betweenKommas,
+                    isZeilenBruchOrGanzZahlAngabe)
 
 retaProgram = reta.Program([sys.argv[0], "-nichts"])
 mainParas = ["-" + a for a in retaProgram.mainParaCmds]
@@ -380,11 +381,11 @@ def verifyBruchNganzZahlBetweenCommas(
     zahlenAngaben_,
 ):
 
-    print("x {}".format(bruchBereichsAngabe))
+    # print("x {}".format(bruchBereichsAngabe))
     isBruch, isGanzZahl = isZeilenAngabe_betweenKommas(
         bruchBereichsAngabe
     ), isZeilenAngabe_betweenKommas(etwaBruch)
-    print("y {}".format(bruchBereichsAngabe))
+    # print("y {}".format(bruchBereichsAngabe))
     if isBruch != isGanzZahl:
         bruchAndGanzZahlEtwaKorrekterBereich += [True]
         if isBruch:
@@ -396,7 +397,7 @@ def verifyBruchNganzZahlBetweenCommas(
         bruchAndGanzZahlEtwaKorrekterBereich += [False]
     # if isZeilenAngabe_betweenKommas(etwaBruch):
     #    zahlenAngaben_ += [etwaBruch]
-    print("h {},{}".format(bruchBereichsAngaben, bruchAndGanzZahlEtwaKorrekterBereich))
+    # print("h {},{}".format(bruchBereichsAngaben, bruchAndGanzZahlEtwaKorrekterBereich))
     return (
         bruchAndGanzZahlEtwaKorrekterBereich,
         bruchBereichsAngaben,
