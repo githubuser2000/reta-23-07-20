@@ -1320,6 +1320,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                     bruch_KeinGanzZahlReziproke += [bruchBereichsAngabe]
                     bruchRanges2 += [bruchRange]
         bruchDict = {}
+        # print("tzh__ {}".format(bruchRanges2))
         for bruchRange, bruch_KeinGanzZahlReziprok_ in zip(
             bruchRanges2, bruch_KeinGanzZahlReziproke
         ):
@@ -1332,12 +1333,17 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
         bruchRanges = []
         bruch_KeinGanzZahlReziprokeEn = []
         bruchRange = []
-        for key, value in bruchDict.items():
-            if key != 1 and (
-                (key not in bruchRange) and (value not in bruch_KeinGanzZahlReziprokeEn)
-            ):
-                bruchRange += [key]
-                bruch_KeinGanzZahlReziprokeEn += [value]
+        # print("---tzh__ {}".format(bruchDict))
+        bruchRange = list(bruchDict.keys())
+        bruch_KeinGanzZahlReziprokeEn = list(bruchDict.values())
+        # for key, value in bruchDict.items():
+        #    if key != 1 and (
+        #        (key not in bruchRange) and (value not in bruch_KeinGanzZahlReziprokeEn)
+        #    ):
+        #        bruchRange += [key]
+        #        bruch_KeinGanzZahlReziprokeEn += [value]
+
+        # print("ääää {}:{}".format(bruchRange, bruch_KeinGanzZahlReziprokeEn))
         bruch_GanzZahlReziproke = list(set(bruch_GanzZahlReziproke))
         if len(zahlenAngaben_) > 0:
             a = ",".join(zahlenAngaben_)
@@ -1373,6 +1379,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
 
         bruchRanges3 = {}
         bruch_KeinGanzZahlReziprokeEnDict = {}
+        # print("tzh {}:{}".format(bruchRange, bruch_KeinGanzZahlReziprokeEn))
         for k, (br, no1brueche) in enumerate(
             zip(bruchRange, bruch_KeinGanzZahlReziprokeEn)
         ):
