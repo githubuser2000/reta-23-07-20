@@ -3461,6 +3461,8 @@ class Program:
                     if arg[2:7] == "alles" and len(neg) == 0:
                         paramLines.add("all")
                         self.obZeilenBereicheAngegeben = True
+                    if arg[2:7] == "alles" and len(neg) != 0:
+                        pass
                     elif arg[2:7] == "zeit=":
                         self.obZeilenBereicheAngegeben = True
                         for subpara in arg[7:].split(","):

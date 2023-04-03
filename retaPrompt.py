@@ -776,6 +776,7 @@ def PromptGrosseAusgabe(
                 for nenner, zaehler in rangesBruecheDict.items():
                     import reta
 
+                    # zaehler = [s for s in zaehler if s]
                     hierBereich = ",".join(zaehler)
                     kette = [
                         "reta",
@@ -808,6 +809,7 @@ def PromptGrosseAusgabe(
                 for nenner, zaehler in rangesBruecheDictReverse.items():
                     import reta
 
+                    # zaehler = [s for s in zaehler if s]
                     hierBereich = ",".join(zaehler)
                     kette = [
                         "reta",
@@ -978,6 +980,7 @@ def PromptGrosseAusgabe(
                 for nenner, zaehler in rangesBruecheDict.items():
                     import reta
 
+                    # zaehler = [s for s in zaehler if s]
                     hierBereich = ",".join(zaehler)
                     kette = [
                         "reta",
@@ -1010,6 +1013,7 @@ def PromptGrosseAusgabe(
                 for nenner, zaehler in rangesBruecheDictReverse.items():
                     import reta
 
+                    # zaehler = [s for s in zaehler if s]
                     hierBereich = ",".join(zaehler)
                     kette = [
                         "reta",
@@ -1378,7 +1382,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
             ):
 
                 print(
-                    'Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\n'
+                    'Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\nDas ist eine Design-Entscheidung, die getroffen worden ist.'
                 )
         if len(bruch_GanzZahlReziproke) > 0:
             bruch_GanzZahlReziproke2 = set()

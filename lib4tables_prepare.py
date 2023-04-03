@@ -640,7 +640,7 @@ class Prepare:
         else:
             headingsAmount = 0
             rowsRange = range(0)
-        # print("__" + str(self.originalLinesRange) + "_" + str(paramLines))
+        #  print("__" + str(self.originalLinesRange) + "_" + str(paramLines))
         finallyDisplayLines: set = self.FilterOriginalLines(
             set(self.originalLinesRange), paramLines
         )
@@ -653,11 +653,20 @@ class Prepare:
             )
             if len(hasAnythingCanged) > 0:
                 finallyDisplayLines -= finallyDisplayLines2
+
+        # print(finallyDisplayLines)
         if len(finallyDisplayLines) == 0:
             if self.ifZeilenSetted:
                 finallyDisplayLines = set()
             else:
+                # alleshier = True
+                # for condition in paramLines:
+                #    if "nichts" == condition:
+                #        alleshier = False
+                # if alleshier:
                 finallyDisplayLines = set(range(self.hoechsteZeile[1024]))
+                # else:
+                #    finallyDisplayLines = set()
 
         finallyDisplayLines.add(0)
         finallyDisplayLines3: list = list(finallyDisplayLines)

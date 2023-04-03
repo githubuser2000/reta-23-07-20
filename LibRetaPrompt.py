@@ -61,6 +61,7 @@ ausgabeParas = [
 ]
 kombiMainParas = ["--galaxie=", "--universum="]
 zeilenParas = [
+    # "--nichts",
     "--zeit=",
     "--zaehlung=",
     "--vorhervonausschnitt=",

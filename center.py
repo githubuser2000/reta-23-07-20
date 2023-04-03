@@ -57,7 +57,7 @@ shellRowsAmount: int
 
 def isZeilenBruchAngabe_betweenKommas(g):
     pattern = r"^(v?-?\d+\/\d+)(-\d+\/\d+)?((\+)(\d+\/\d+))*$"
-    return bool(re.fullmatch(pattern, g))
+    return bool(re.fullmatch(pattern, g)) or len(g) == 0
 
 
 def isZeilenBruchOrGanzZahlAngabe(text):
@@ -83,7 +83,7 @@ def isZeilenAngabe(text):
 
 def isZeilenAngabe_betweenKommas(g):
     pattern = r"^(v?-?\d+)(-\d+)?((\+)(\d+))*$"
-    return bool(re.fullmatch(pattern, g))
+    return bool(re.fullmatch(pattern, g)) or len(g) == 0
     #    x = len(re.findall(r"[0-9]+\-[0-9]+", g))
     #    y = len(re.findall(r"[0-9]+\-[0-9]+\-[0-9]+", g))
     #    return (
@@ -353,6 +353,7 @@ def BereichToNumbers(MehrereBereiche: str) -> set:
 def BereichToNumbers2(
     MehrereBereiche: str, vielfache=False, maxZahl: int = 1028
 ) -> set:
+    MehrereBereiche = ",".join([s for s in MehrereBereiche.split(",") if s])
     if not isZeilenAngabe(MehrereBereiche):
         return set()
 
