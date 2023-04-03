@@ -1348,6 +1348,30 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
             else:
                 c = a
         if ("v" in stext) or ("vielfache" in stext):
+            if len(bruch_GanzZahlReziproke) > 0:
+                bruch_GanzZahlReziproke2 = set()
+                for gb1 in bruch_GanzZahlReziproke:
+                    if len(gb1) > 0 and gb1[0] == "v":
+                        gb1 = gb1[1:]
+                    if len(gb1) > 0 and gb1[0] == "-":
+                        gb1 = gb1[1:]
+                        abzug = True
+                    else:
+                        abzug = False
+                    gb1 = BereichToNumbers2(gb1)
+                    # print(abzug)
+                    # print(gb1)
+                    for gb in gb1:
+                        i = 1
+                        ganzMult = i * gb
+                        while ganzMult < retaProgram.tables.hoechsteZeile[1024]:
+                            ganzMult = i * gb
+                            if abzug:
+                                bruch_GanzZahlReziproke2 -= {str(ganzMult)}
+                            else:
+                                bruch_GanzZahlReziproke2 |= {str(ganzMult)}
+                            i += 1
+
             bruchRanges3 = {}
             bruch_KeinGanzZahlReziprokeEnDict = {}
             for k, (br, no1brueche) in enumerate(
@@ -1518,6 +1542,10 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                 #            except KeyError:
                 #                rangesBruecheDictReverse[newKey] = [str(key)]
                 rangesBruecheDict = {}
+    try:
+        bruch_GanzZahlReziproke = list(bruch_GanzZahlReziproke2)
+    except UnboundLocalError:
+        pass
     try:
         c2
     except:
