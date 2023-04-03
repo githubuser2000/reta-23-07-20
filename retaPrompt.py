@@ -782,7 +782,7 @@ def PromptGrosseAusgabe(
                         "--breite=" + str(int(shellRowsAmountStr) - 2),
                         "-kombination",
                         "-ausgabe",
-                        "--spaltenreihenfolgeundnurdiese=1",
+                        "--spaltenreihenfolgeundnurdiese=2",
                         *[
                             "--keineleereninhalte"
                             if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
@@ -814,7 +814,7 @@ def PromptGrosseAusgabe(
                         "--breite=" + str(int(shellRowsAmountStr) - 2),
                         "-kombination",
                         "-ausgabe",
-                        "--spaltenreihenfolgeundnurdiese=2",
+                        "--spaltenreihenfolgeundnurdiese=1",
                         *[
                             "--keineleereninhalte"
                             if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
@@ -984,7 +984,7 @@ def PromptGrosseAusgabe(
                         "--breite=" + str(int(shellRowsAmountStr) - 2),
                         "-kombination",
                         "-ausgabe",
-                        "--spaltenreihenfolgeundnurdiese=1",
+                        "--spaltenreihenfolgeundnurdiese=2",
                         *[
                             "--keineleereninhalte"
                             if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
@@ -1016,7 +1016,7 @@ def PromptGrosseAusgabe(
                         "--breite=" + str(int(shellRowsAmountStr) - 2),
                         "-kombination",
                         "-ausgabe",
-                        "--spaltenreihenfolgeundnurdiese=2",
+                        "--spaltenreihenfolgeundnurdiese=1",
                         *[
                             "--keineleereninhalte"
                             if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
@@ -1531,7 +1531,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
     if dictLen != 0:
         avg = valueLenSum / dictLen
         # print(avg)
-        if avg < 1:
+        if False and avg < 1:
             # print("zu {}:{}".format(rangesBruecheDict2, rangesBruecheDict))
             rangesBruecheDictReverse = invert_dict_B(rangesBruecheDict2)
             # print(
