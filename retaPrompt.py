@@ -459,8 +459,9 @@ def PromptScope():
         startpunkt1,
         text,
         nurEinBefehl,
+        immerEbefehlJa,
     ) = PromptAllesVorGroesserSchleife()
-    while text not in befehleBeenden:
+    while len(set(text.split()) & set(befehleBeenden)) == 0:
         warBefehl = False
         promptModeLast = promptMode
 
@@ -476,6 +477,7 @@ def PromptScope():
                 startpunkt1,
                 text,
                 nurEinBefehl,
+                immerEbefehlJa,
             )
             ketten, platzhalter, text = promptSpeicherungA(
                 ketten, platzhalter, promptMode, text
@@ -1719,7 +1721,8 @@ def PromptAllesVorGroesserSchleife():
             -vi für vi mode statt emacs mode,
             -log, um Logging zu aktivieren,
             -debug, um Debugging-Log-Ausgabe zu aktivieren. Das ist nur für Entwickler gedacht.
-            -befehl bewirkt, dass bis zum letzten Programmparameter retaPrompt Befehl nur ein RetaPrompt-Befehl ausgeführt wird."""
+            -befehl bewirkt, dass bis zum letzten Programmparameter retaPrompt Befehl nur ein RetaPrompt-Befehl ausgeführt wird.
+            -e bewirkt, dass bei allen Befehlen das 'e' Kommando bzw. 'keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar' jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil dieser anders funktioniert """
         )
         exit()
     if "-debug" in sys.argv:
@@ -1730,6 +1733,10 @@ def PromptAllesVorGroesserSchleife():
         nurEinBefehl = sys.argv[von:]
     else:
         nurEinBefehl = []
+    if "-e" in sys.argv:
+        immerEbefehlJa = True
+    else:
+        immerEbefehlJa = False
     startpunkt1 = NestedCompleter(
         {a: None for a in befehle},
         {},
@@ -1775,6 +1782,7 @@ def PromptAllesVorGroesserSchleife():
         startpunkt1,
         text,
         nurEinBefehl,
+        immerEbefehlJa,
     )
 
 
@@ -1836,6 +1844,7 @@ def promptInput(
     startpunkt1,
     text,
     nurEinBefehl,
+    immerEbefehlJa,
 ):
 
     if len(nurEinBefehl) == 0:
@@ -1862,8 +1871,11 @@ def promptInput(
                 placeholder=platzhalter,
             )
             text: str = str(text).strip()
+            if immerEbefehlJa and text[:4] != "reta":
+                text += " e"
         except KeyboardInterrupt:
             sys.exit()
+
     else:
         text = " ".join(nurEinBefehl)
         befehlDavor = ""

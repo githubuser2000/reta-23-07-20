@@ -1,0 +1,6 @@
+#!/usr/bin/env pypy3
+# -*- coding: utf-8 -*-
+import sys
+
+sys.argv = [sys.argv[0]]+["-vi","-e","-befehl"]+sys.argv[1:]
+import retaPrompt
