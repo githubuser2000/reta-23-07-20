@@ -2,6 +2,6 @@
 # -*- coding: utf-8 -*-
 import sys
 
-sys.argv += ["-vi","-log","-e"]
+sys.argv += ["-vi","-log"]
 if True:
     import retaPrompt

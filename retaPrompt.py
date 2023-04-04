@@ -19,7 +19,8 @@ from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
 
 from center import (alxp, cliout, invert_dict_B, isZeilenAngabe,
-                    isZeilenAngabe_betweenKommas, retaPromptHilfe, teiler, x)
+                    isZeilenAngabe_betweenKommas, retaPromptHilfe, teiler,
+                    textHatZiffer, x)
 from LibRetaPrompt import (BereichToNumbers2, PromptModus,
                            gebrochenErlaubteZahlen, isReTaParameter,
                            notParameterValues, stextFromKleinKleinKleinBefehl,
@@ -647,23 +648,29 @@ def PromptGrosseAusgabe(
 
         reta.Program(stext, int(shellRowsAmountStr) - 2)
 
-    if len(bruch_GanzZahlReziproke) > 0:
+    if len(bruch_GanzZahlReziproke) > 0 and textHatZiffer(bruch_GanzZahlReziproke):
         zeiln3 = "--vorhervonausschnitt=" + bruch_GanzZahlReziproke
     else:
         zeiln3 = ""
     if bedingungZahl:
-        if "einzeln" not in stext and (
-            ("vielfache" in stext)
-            or ("v" in stext and "abc" not in stext and "abcd" not in stext)
-        ):
-            zeiln1 = "--vielfachevonzahlen=" + str(c).strip()
-            # zeiln1 = "--vorhervonausschnitt=" + str(c).strip()
+        cneu = str(c).strip()
+        if textHatZiffer(cneu):
+            if "einzeln" not in stext and (
+                ("vielfache" in stext)
+                or ("v" in stext and "abc" not in stext and "abcd" not in stext)
+            ):
+                zeiln1 = "--vielfachevonzahlen=" + cneu
+                # zeiln1 = "--vorhervonausschnitt=" + str(c).strip()
 
-            zeiln2 = ""
+                zeiln2 = ""
+            else:
+                zeiln1 = "--vorhervonausschnitt=" + cneu
+
+                zeiln2 = anotherOberesMaximum(c, maxNum)
         else:
-            zeiln1 = "--vorhervonausschnitt=" + str(c).strip()
+            zeiln1 = "--vorhervonausschnitt=o"
+            zeiln2 = ""
 
-            zeiln2 = anotherOberesMaximum(c, maxNum)
     else:
         zeiln1 = ""
         zeiln2 = ""
@@ -1612,12 +1619,22 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
             bruch_KeinGanzZahlReziprok_,
         ) in bruch_KeinGanzZahlReziproke.items():
             bruch_KeinGanzZahlReziprok_ = ",".join(bruch_KeinGanzZahlReziprok_)
-            for (
-                bruchRangeA,
-                bruch_KeinGanzZahlReziprok_A,
-            ) in bruch_KeinGanzZahlReziprokeAbzug.items():
-                bruch_KeinGanzZahlReziprok_A = ",".join(bruch_KeinGanzZahlReziprok_A)
-                for rangePunkt in bruchRange:
+            for rangePunkt in bruchRange:
+                try:
+                    bruchDict[rangePunkt] |= {bruch_KeinGanzZahlReziprok_}
+                except KeyError:
+                    alxp(rangePunkt)
+                    alxp(bruch_KeinGanzZahlReziprok_)
+                    bruchDict[rangePunkt] = {bruch_KeinGanzZahlReziprok_}
+                x("cn29d", [bruchDict, bruch_KeinGanzZahlReziprok_])
+
+                for (
+                    bruchRangeA,
+                    bruch_KeinGanzZahlReziprok_A,
+                ) in bruch_KeinGanzZahlReziprokeAbzug.items():
+                    bruch_KeinGanzZahlReziprok_A = ",".join(
+                        bruch_KeinGanzZahlReziprok_A
+                    )
                     for rangePunktA in bruchRangeA:
                         if rangePunkt == rangePunktA:
                             x(
@@ -1638,13 +1655,6 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                                     bruch_KeinGanzZahlReziprok_,
                                     bruch_KeinGanzZahlReziprok_A,
                                 }
-                        else:
-                            try:
-                                bruchDict[rangePunkt] |= {bruch_KeinGanzZahlReziprok_}
-                            except KeyError:
-                                alxp(rangePunkt)
-                                alxp(bruch_KeinGanzZahlReziprok_)
-                                bruchDict[rangePunkt] = {bruch_KeinGanzZahlReziprok_}
         x("dfgh", bruchDict)
 
         for key, value in bruchDict.items():

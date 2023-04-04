@@ -538,3 +538,10 @@ def invert_dict_B(d):
 #                new_dict[value] = []
 #            new_dict[value].append(key)
 #    return new_dict
+
+
+def textHatZiffer(text) -> bool:
+    for char in text:
+        if char.isdigit():
+            return True
+    return False
