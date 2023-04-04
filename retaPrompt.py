@@ -648,15 +648,8 @@ def PromptGrosseAusgabe(
         reta.Program(stext, int(shellRowsAmountStr) - 2)
 
     if len(bruch_GanzZahlReziproke) > 0 and textHatZiffer(bruch_GanzZahlReziproke):
-        if "einzeln" not in stext and (
-            ("vielfache" in stext)
-            or ("v" in stext and "abc" not in stext and "abcd" not in stext)
-        ):
-            zeiln3 = "--vielfachevonzahlen=" + bruch_GanzZahlReziproke
-            zeiln2 = ""
-        else:
-            zeiln3 = "--vorhervonausschnitt=" + bruch_GanzZahlReziproke
-            zeiln2 = ""
+        zeiln3 = "--vorhervonausschnitt=" + bruch_GanzZahlReziproke
+        zeiln2 = ""
     else:
         zeiln1 = "--vorhervonausschnitt=0"
         zeiln2 = ""
@@ -1432,7 +1425,34 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                 print(
                     'Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\nDas ist eine Design-Entscheidung, die getroffen worden ist.'
                 )
-        bruch_GanzZahlReziproke = ",".join(bruch_GanzZahlReziproke)
+        bdNeu = set()
+        for bDazu in bruch_GanzZahlReziproke:
+            for bDazu in BereichToNumbers2(bDazu):
+                i = 1
+                rechnung = i * bDazu
+                while rechnung < retaProgram.tables.hoechsteZeile[1024]:
+                    bdNeu |= {rechnung}
+                    i += 1
+                    rechnung = i * bDazu
+        x("23efj90", bruch_GanzZahlReziprokeAbzug)
+        for bDazu in bruch_GanzZahlReziprokeAbzug:
+            if bDazu[:1] == "v":
+                bDazu = bDazu[1:]
+            if bDazu[:1] == "-":
+                bDazu = bDazu[1:]
+            for bDazu in BereichToNumbers2(bDazu):
+                i = 1
+                rechnung = i * bDazu
+                while rechnung < retaProgram.tables.hoechsteZeile[1024]:
+                    x("999", [rechnung, bdNeu])
+                    try:
+                        bdNeu -= {rechnung}
+                        i += 1
+                        rechnung = i * bDazu
+                    except:
+                        pass
+        bruch_GanzZahlReziproke = ",".join((str(b) for b in bdNeu))
+        x("43efj94", bruch_GanzZahlReziproke)
         x("ganz", bruch_GanzZahlReziproke)
         # if len(bruch_GanzZahlReziproke) > 0:
         #    bruch_GanzZahlReziproke2 = set()
@@ -1554,7 +1574,6 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
         if len(bruchRanges3Abzug) > 0:
             # print("jjj- {}: {}".format(bruchRanges3, rangesBruecheDict))
             rangesBruecheDict2 = deepcopy(rangesBruecheDict)
-            bruchRanges4 = deepcopy(bruchRanges3)
             for AbzugNenners, AbzugZaehlers in zip(
                 bruchRanges3Abzug.values(),
                 bruch_KeinGanzZahlReziprokeEnDictAbzug.values(),
@@ -1735,6 +1754,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
     #    )
     # )
     x("sd230nmys", [rangesBruecheDict, rangesBruecheDictReverse])
+    x("RRRRsd230nmys", bruch_GanzZahlReziproke)
     return (
         bruch_GanzZahlReziproke,
         c,
