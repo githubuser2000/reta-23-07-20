@@ -4114,54 +4114,6 @@ class Program:
         )
 
         self.tables.getOut.cliOut(finallyDisplayLines, newTable, numlen, rowsRange)
-        alxp(
-            """bei Kurzbefehlen ohne leerzeichen noch -1-2 und -6 möglich machen, auch für Multis Ranges und bindestrich vor zahlen und bereichen ermöglichen - für so etwas externe funktionen nutzen, die ich in ReTa bereits programmiert hatte und maximal suchen, weil das schon programmiert wurde und nicht gleich wieder drauf los programmieren!"""
-        )
-        alxp(
-            """2021-09-21 spalte wird verschluckt immer noch, auf handy shell, wenn breite zu breit angegeben wird, verdammt!"""
-        )
-        alxp(
-            """kombinationen sortiert ausgeben und als Hierarchiebaum den Zahlenkombinationen entlang"""
-        )
-        alxp(
-            """kombinationen filterbar machen, dass nicht alle kombinationen bei einer Zahl immer angezeigt werden"""
-        )
-        alxp(
-            """neues Farbschema: für html aber besser nur: primzahlen pro außen und pro innen und ggf. dessen vielfacher; Farbschema mit durch 3 teilbarem außerdem"""
-        )
-        alxp(
-            """Viele Routinen schreiben, die Codeteile immer dann überspringen, wenn man weiß, dass sie nicht benötigt werden, zur Geschwindigkeitssteigerung"""
-        )
-        alxp("""Ctrl+C kontrollierter abbrechen lassen!""")
-        alxp("""Pytest verwenden wegen Geschwindigkeitstests.""")
-        alxp(
-            """In einigen GenerierungsSpalten werden Teile aus der Reli dings kopiert, was unnötig ist.
-             Außerem, dass dann die relitable ganz geklont werden muss. Und die Einzelsachen
-             müssten nur selbst geklont werden und mehr nicht."""
-        )
-        alxp(
-            """Immer dann wenn ich die ganze relitable matrix deepcopy geklont habe, hätte ich das gar nicht tun müssen, da ich einfach nur die werte, die ich vorher raus genommen habe, einfach nur per copy oder deepcopy hätte nur rausnehmen müssen"""
-        )
-        alxp(
-            "Ich muss bei vielen Funktionen noch den Funktionskopf, Quellcode hier dokumentieren"
-        )
-        alxp("vim: iIaAoOjJ mit Registern arbeiten wegen Löschen ohne ausschneiden")
-        alxp(
-            "Die Geschwindigkeitsteigerugnen entstehn meist durch anschließndes Zusammenfügen zu einer dann festen Größe."
-        )
-        alxp(
-            """py datei erstellen, die dafür da ist datenstrukturen für die js zu bilden, die für die Zeilenangelegenheiten da sind, so dass die js die nicht jedes Mal berechnen muss."""
-        )
-        alxp(
-            """Ich müsste wirklich noch total überall schauen und zu jedem Punkt im Forum zu gleichförmiges-Polygon-Religionen"""
-        )
-        alxp(
-            """Irgendeine Art Funktionalität, dass man sich durch die Grundstrukturen hangeln kann: Uni/Geist (15) > Uni / Geist (15) > Paradigmen (13) wie Egoismus > speziellere Paradigmen wie materieller Egoismus, etc."""
-        )
-        alxp("""rp Parameterangabe, dass loggen ja nein""")
-        alxp(
-            """cli out: org mode , und für shell lib als pretty print für tabellen, schöner"""
-        )
 
     def combiTableWorkflow(
         self,

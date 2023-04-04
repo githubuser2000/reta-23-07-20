@@ -57,7 +57,7 @@ shellRowsAmount: int
 
 def isZeilenBruchAngabe_betweenKommas(g):
     pattern = r"^(v?-?\d+\/\d+)(-\d+\/\d+)?((\+)(\d+\/\d+))*$"
-    return bool(re.fullmatch(pattern, g)) or len(g) == 0
+    return bool(re.fullmatch(pattern, g))
 
 
 def isZeilenBruchOrGanzZahlAngabe(text):
@@ -69,21 +69,25 @@ def isZeilenBruchOrGanzZahlAngabe(text):
 
 def isZeilenBruchAngabe(text):
     a = []
-    for g in text.split(","):
-        a += [isZeilenBruchAngabe_betweenKommas(g)]
+    stext = text.split(",")
+    anyAtAll = any([len(txt) > 0 for txt in stext])
+    for g in stext:
+        a += [isZeilenBruchAngabe_betweenKommas(g) or (g == "" and anyAtAll)]
     return all(a)
 
 
 def isZeilenAngabe(text):
     a = []
-    for g in text.split(","):
-        a += [isZeilenAngabe_betweenKommas(g)]
+    stext = text.split(",")
+    anyAtAll = any([len(txt) > 0 for txt in stext])
+    for g in stext:
+        a += [isZeilenAngabe_betweenKommas(g) or (g == "" and anyAtAll)]
     return all(a)
 
 
 def isZeilenAngabe_betweenKommas(g):
     pattern = r"^(v?-?\d+)(-\d+)?((\+)(\d+))*$"
-    return bool(re.fullmatch(pattern, g)) or len(g) == 0
+    return bool(re.fullmatch(pattern, g))
     #    x = len(re.findall(r"[0-9]+\-[0-9]+", g))
     #    y = len(re.findall(r"[0-9]+\-[0-9]+\-[0-9]+", g))
     #    return (
@@ -354,6 +358,7 @@ def BereichToNumbers2(
     MehrereBereiche: str, vielfache=False, maxZahl: int = 1028
 ) -> set:
     MehrereBereiche = ",".join([s for s in MehrereBereiche.split(",") if s])
+    # print(MehrereBereiche)
     if not isZeilenAngabe(MehrereBereiche):
         return set()
 
