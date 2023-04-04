@@ -617,20 +617,20 @@ class Tables:
                             else:
                                 rowsEmpty += 1
 
-                        x(
-                            "AUSGABE-3",
-                            [
-                                rowsEmpty,
-                                "!=",
-                                len(self.rowsAsNumbers),
-                                "and",
-                                iterWholeLine,
-                                "<",
-                                self.textheight,
-                                "or 0 ==",
-                                self.textheight,
-                            ],
-                        )
+                        # x(
+                        #    "AUSGABE-3",
+                        #    [
+                        #        rowsEmpty,
+                        #        "!=",
+                        #        len(self.rowsAsNumbers),
+                        #        "and",
+                        #        iterWholeLine,
+                        #        "<",
+                        #        self.textheight,
+                        #        "or 0 ==",
+                        #        self.textheight,
+                        #    ],
+                        # )
                         if rowsEmpty != len(self.rowsAsNumbers) and (
                             iterWholeLine < self.textheight or self.textheight == 0
                         ):  # and m < actualPartLineLen:

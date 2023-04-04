@@ -777,7 +777,8 @@ def PromptGrosseAusgabe(
                     import reta
 
                     # zaehler = [s for s in zaehler if s]
-                    hierBereich = ",".join(zaehler)
+                    # hierBereich = ",".join(zaehler)
+                    hierBereich = zaehler
                     kette = [
                         "reta",
                         "-zeilen",
@@ -810,7 +811,8 @@ def PromptGrosseAusgabe(
                     import reta
 
                     # zaehler = [s for s in zaehler if s]
-                    hierBereich = ",".join(zaehler)
+                    # hierBereich = ",".join(zaehler)
+                    hierBereich = zaehler
                     kette = [
                         "reta",
                         "-zeilen",
@@ -981,7 +983,8 @@ def PromptGrosseAusgabe(
                     import reta
 
                     # zaehler = [s for s in zaehler if s]
-                    hierBereich = ",".join(zaehler)
+                    # hierBereich = ",".join(zaehler)
+                    hierBereich = zaehler
                     kette = [
                         "reta",
                         "-zeilen",
@@ -1014,7 +1017,8 @@ def PromptGrosseAusgabe(
                     import reta
 
                     # zaehler = [s for s in zaehler if s]
-                    hierBereich = ",".join(zaehler)
+                    # hierBereich = ",".join(zaehler)
+                    hierBereich = zaehler
                     kette = [
                         "reta",
                         "-zeilen",
@@ -1278,10 +1282,13 @@ def PromptGrosseAusgabe(
 
 def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
     bruch_GanzZahlReziproke = []
-    bruch_KeinGanzZahlReziproke = []
+    bruch_GanzZahlReziprokeAbzug = []
+    bruch_KeinGanzZahlReziproke = {}
+    bruch_KeinGanzZahlReziprokeAbzug = {}
     bruch_KeinGanzZahlReziprok_ = []
     fullBlockIsZahlenbereichAndBruch = True
     bruchRanges2 = []
+    bruchRanges2Abzug = []
     bruch_KeinGanzZahlReziprokeEn = []
     rangesBruecheDict = {}
     rangesBruecheDictReverse: dict = {}
@@ -1289,6 +1296,9 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
     bruchRanges3Abzug = {}
     valueLenSum = 0
     zahlenAngaben_mehrere = []
+    bruchRangeNeu = {}
+    bruchRangeNeuAbzug = {}
+    Minusse = {}
     for g, a in enumerate(stext):
         bruchAndGanzZahlEtwaKorrekterBereich = []
         bruchBereichsAngaben = []
@@ -1321,51 +1331,97 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                     and all(bruchAndGanzZahlEtwaKorrekterBereich)
                 )
 
-        for bruchBereichsAngabe, bruchRange in zip(bruchBereichsAngaben, bruchRanges):
-            if isZeilenAngabe(bruchBereichsAngabe):
-                EinsInBereichHier1 = BereichToNumbers2(bruchBereichsAngabe)
-                EinsInBereichHier = 1 in EinsInBereichHier1
-                if 1 in bruchRange:
-                    bruch_GanzZahlReziproke += [bruchBereichsAngabe]
-                if len(bruchRange) > 1 or 1 not in bruchRange:
+        if fullBlockIsZahlenbereichAndBruch:
+            for bruchBereichsAngabe, bruchRange in zip(
+                bruchBereichsAngaben, bruchRanges
+            ):
+                if isZeilenAngabe(bruchBereichsAngabe):
+                    EinsInBereichHier1 = BereichToNumbers2(bruchBereichsAngabe)
+                    EinsInBereichHier = 1 in EinsInBereichHier1
+                    if (
+                        bruchBereichsAngabe[:1] == "-"
+                        or bruchBereichsAngabe[:2] == "v-"
+                    ):
+                        minusHier = True
+                        if bruchBereichsAngabe[:2] == "v-":
+                            pass
+                        if bruchBereichsAngabe[:1] == "-":
+                            pass
+                    else:
+                        minusHier = False
+                    if 1 in bruchRange:
+                        if minusHier:
+                            bruch_GanzZahlReziprokeAbzug += [bruchBereichsAngabe]
+                        else:
+                            bruch_GanzZahlReziproke += [bruchBereichsAngabe]
+                    bruchRangeOhne1 = frozenset(set(bruchRange) - {1})
                     neuerBereich = ",".join(
                         {str(zahl) for zahl in EinsInBereichHier1} - {"1"}
                     )
-                    bruch_KeinGanzZahlReziproke += [neuerBereich]
-                    bruchRanges2 += [bruchRange]
-                if EinsInBereichHier:
-                    neueRange = ",".join([str(zahl) for zahl in bruchRange])
-                    stext += [neueRange]
-                    EsGabzahlenAngaben = True
-                    zahlenAngaben_mehrere += [neueRange]
+                    Minusse[tuple(bruchRange)] = minusHier
+                    if minusHier:
+                        x(":_", bruchBereichsAngabe)
+                        try:
+                            bruch_KeinGanzZahlReziprokeAbzug[bruchRangeOhne1] += [
+                                bruchBereichsAngabe
+                            ]
+                        except KeyError:
+                            bruch_KeinGanzZahlReziprokeAbzug[bruchRangeOhne1] = [
+                                bruchBereichsAngabe
+                            ]
+                    else:
+                        try:
+                            bruch_KeinGanzZahlReziproke[bruchRangeOhne1] += [
+                                neuerBereich
+                            ]
+                        except KeyError:
+                            bruch_KeinGanzZahlReziproke[bruchRangeOhne1] = [
+                                neuerBereich
+                            ]
+                    if EinsInBereichHier:
+                        neueRange = ",".join([str(zahl) for zahl in bruchRange])
+                        stext += [neueRange]
+                        EsGabzahlenAngaben = True
+                        zahlenAngaben_mehrere += [neueRange]
 
-        bruchDict = {}
-        # print("tzh__ {}".format(bruch_KeinGanzZahlReziproke))
-        for bruchRange, bruch_KeinGanzZahlReziprok_ in zip(
-            bruchRanges2, bruch_KeinGanzZahlReziproke
-        ):
+    bruch_GanzZahlReziproke = list(
+        set(bruch_GanzZahlReziproke) - set(bruch_GanzZahlReziprokeAbzug)
+    )
+    bruchRanges2 = list(set(bruchRangeNeu) - set(bruchRangeNeuAbzug))
+    bruchDict = {}
+    alxp(
+        "tzh__ {}:{}".format(
+            bruch_KeinGanzZahlReziproke, bruch_KeinGanzZahlReziprokeAbzug
+        )
+    )
+    for bruchRange, bruch_KeinGanzZahlReziprok_ in bruch_KeinGanzZahlReziproke.items():
+        for (
+            bruchRangeA,
+            bruch_KeinGanzZahlReziprok_A,
+        ) in bruch_KeinGanzZahlReziprokeAbzug.items():
+            bruch_KeinGanzZahlReziprok_ = ",".join(bruch_KeinGanzZahlReziprok_)
             for rangePunkt in bruchRange:
-                if rangePunkt != 1:
-                    try:
-                        bruchDict[rangePunkt] |= {bruch_KeinGanzZahlReziprok_}
-                    except KeyError:
-                        bruchDict[rangePunkt] = {bruch_KeinGanzZahlReziprok_}
-        bruchRanges = []
-        bruch_KeinGanzZahlReziprokeEn = []
-        bruchRange = []
-        # print("---tzh__ {}".format(bruchDict))
-        bruchRange = list(bruchDict.keys())
-        bruch_KeinGanzZahlReziprokeEn = list(bruchDict.values())
-        # for key, value in bruchDict.items():
-        #    if key != 1 and (
-        #        (key not in bruchRange) and (value not in bruch_KeinGanzZahlReziprokeEn)
-        #    ):
-        #        bruchRange += [key]
-        #        bruch_KeinGanzZahlReziprokeEn += [value]
-
-        # print("ääää {}:{}".format(bruchRange, bruch_KeinGanzZahlReziprokeEn))
-        bruch_GanzZahlReziproke = list(set(bruch_GanzZahlReziproke))
-        zahlenAngaben_mehrere += zahlenAngaben_
+                for rangePunktA in bruchRangeA:
+                    if rangePunkt == rangePunktA:
+                        bruch_KeinGanzZahlReziprok_A = ",".join(
+                            bruch_KeinGanzZahlReziprok_A
+                        )
+                        bruchDict[rangePunkt] = {
+                            bruch_KeinGanzZahlReziprok_,
+                            bruch_KeinGanzZahlReziprok_A,
+                        }
+                    else:
+                        try:
+                            bruchDict[rangePunkt] |= {bruch_KeinGanzZahlReziprok_}
+                        except KeyError:
+                            alxp(rangePunkt)
+                            alxp(bruch_KeinGanzZahlReziprok_)
+                            bruchDict[rangePunkt] = {bruch_KeinGanzZahlReziprok_}
+    x("dfgh", bruchDict)
+    try:
+        EsGabzahlenAngaben
+    except UnboundLocalError:
+        EsGabzahlenAngaben = False
     if ("v" in stext) or ("vielfache" in stext):
         if ("e" in stext) or (
             "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" in stext
@@ -1410,7 +1466,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
 
         bruchRanges3 = {}
         bruch_KeinGanzZahlReziprokeEnDict = {}
-        # print("tzh {}:{}".format(bruchRange, bruch_KeinGanzZahlReziprokeEn))
+        print("tzh {}:{}".format(bruchRange, bruch_KeinGanzZahlReziprokeEn))
         for k, (br, no1brueche) in enumerate(
             zip(bruchRange, bruch_KeinGanzZahlReziprokeEn)
         ):
@@ -1551,7 +1607,9 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
             bruch_KeinGanzZahlReziprokeEnDictAbzug = {}
         # print("jjj_ {}".format(rangesBruecheDict))
     else:
-        rangesBruecheDict = bruchDict
+        for key, value in bruchDict.items():
+            rangesBruecheDict[key] = ",".join(value)
+        x("2345890", rangesBruecheDict)
     # bereicheVorherBestimmtListofSets = []
     rangesBruecheDict2 = {}
     bereicheVorherBestimmtSet = set()
@@ -1601,10 +1659,6 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
         bruch_GanzZahlReziproke = list(bruch_GanzZahlReziproke2)
     except UnboundLocalError:
         pass
-    try:
-        EsGabzahlenAngaben
-    except UnboundLocalError:
-        EsGabzahlenAngaben = False
     try:
         c2
     except:
