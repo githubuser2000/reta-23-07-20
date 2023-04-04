@@ -108,6 +108,7 @@ class Prepare:
         ]  # Strukturangaben zur Zeile wegen Mondzahlen und Sonnenzahlen
         self.religionNumbers = 0
         self.gezaehlt = False
+        self.ifZeilenSetted = False
 
     def setZaehlungen(
         self, num: int
@@ -351,7 +352,8 @@ class Prepare:
 
         for condition in paramLines:
             if "all" == condition:
-                return set(self.originalLinesRange)
+                finallyDisplayLines = set(range(self.hoechsteZeile[1024]))
+                # return set(self.originalLinesRange)
 
         numRangeYesZ = set()
         if_a_AtAll = False
@@ -371,6 +373,7 @@ class Prepare:
             numRangeYesZ |= BereichToNumbers2(
                 ",".join(mehrere), True, self.hoechsteZeile[1024]
             )
+        #x("c230", numRangeYesZ)
 
         numRange = cutset(if_a_AtAll, numRange, numRangeYesZ)
         numRangeYesZ = set()
@@ -638,7 +641,7 @@ class Prepare:
         else:
             headingsAmount = 0
             rowsRange = range(0)
-        # print("__" + str(self.originalLinesRange) + "_" + str(paramLines))
+        #  print("__" + str(self.originalLinesRange) + "_" + str(paramLines))
         finallyDisplayLines: set = self.FilterOriginalLines(
             set(self.originalLinesRange), paramLines
         )
@@ -651,8 +654,20 @@ class Prepare:
             )
             if len(hasAnythingCanged) > 0:
                 finallyDisplayLines -= finallyDisplayLines2
+
+        # print(finallyDisplayLines)
         if len(finallyDisplayLines) == 0:
-            finallyDisplayLines = set(range(self.hoechsteZeile[1024]))
+            if self.ifZeilenSetted:
+                finallyDisplayLines = set()
+            else:
+                # alleshier = True
+                # for condition in paramLines:
+                #    if "nichts" == condition:
+                #        alleshier = False
+                # if alleshier:
+                finallyDisplayLines = set(range(self.hoechsteZeile[1024]))
+                # else:
+                #    finallyDisplayLines = set()
 
         finallyDisplayLines.add(0)
         finallyDisplayLines3: list = list(finallyDisplayLines)

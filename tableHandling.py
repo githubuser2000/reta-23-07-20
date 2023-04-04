@@ -80,6 +80,14 @@ class Tables:
     def ifPrimMultis(self):
         return self.getPrepare.ifprimmultis
 
+    @property
+    def ifZeilenSetted(self):
+        return self.getPrepare.ifZeilenSetted
+
+    @ifZeilenSetted.setter
+    def ifZeilenSetted(self, value: bool):
+        self.getPrepare.ifZeilenSetted = value
+
     @ifPrimMultis.setter
     def ifPrimMultis(self, value: bool):
         self.getPrepare.ifprimmultis = value
@@ -368,6 +376,11 @@ class Tables:
                     i_textwidth = certaintextwidth
                 return i_textwidth
 
+            if len(finallyDisplayLinesSet) == 0 or (
+                len(finallyDisplayLinesSet) == 1 and 0 in finallyDisplayLinesSet
+            ):
+                return
+
             maxCellTextLen = findMaxCellTextLen(
                 finallyDisplayLinesSet, newTable, rowsRange
             )
@@ -604,20 +617,20 @@ class Tables:
                             else:
                                 rowsEmpty += 1
 
-                        x(
-                            "AUSGABE-3",
-                            [
-                                rowsEmpty,
-                                "!=",
-                                len(self.rowsAsNumbers),
-                                "and",
-                                iterWholeLine,
-                                "<",
-                                self.textheight,
-                                "or 0 ==",
-                                self.textheight,
-                            ],
-                        )
+                        # x(
+                        #    "AUSGABE-3",
+                        #    [
+                        #        rowsEmpty,
+                        #        "!=",
+                        #        len(self.rowsAsNumbers),
+                        #        "and",
+                        #        iterWholeLine,
+                        #        "<",
+                        #        self.textheight,
+                        #        "or 0 ==",
+                        #        self.textheight,
+                        #    ],
+                        # )
                         if rowsEmpty != len(self.rowsAsNumbers) and (
                             iterWholeLine < self.textheight or self.textheight == 0
                         ):  # and m < actualPartLineLen:

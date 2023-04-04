@@ -29,7 +29,7 @@ weight = -7
 
 -   "help" oder "hilfe" gibt diese Hilfe hier aus.
 -   "befehle" gibt die Liste der möglichen Befehle von ReTaPrompt aus.
-
+-   "-h" oder "-help" nicht in retaPrompt als Befehl, sondern davor als Programm-Start-Argument für retaPrompt, gibt aus, welche Programm-Start-Argumente für ReTa-Prompt möglich sind.
 
 ### Ausgabe-Befehle {#ausgabe-befehle}
 
@@ -73,8 +73,15 @@ Zeilenangaben oder Zahlenbereiche für andere Angaben können sein (ohne Anführ
 -   "5+2+4" das wären die Nachbarn der 5 mit Abstand 2 und 4, also 1,3,7,9
 -   "10+2" Als Angabe, wenn die Vielfacher gemeint wären, dann wäre das nicht nur 8 und 12, sondern auch 18 und 22, und 28 und 32, usw.
 -   In der Readme von reta, statt retaPrompt, wird das nochmal erklärt
+-  5,v20-22 meint Zeile 5 und außerdem alle Vielfacher von 20,21,22, also z.B. 40,42,44
+-  -20,v10 meint alle Vielfacher von 10 ohne die 20 dabei
+-  mit Brüchen funktioniert diese v Syntax genau auch
 -  "1/2,3" meint Zeile 3 für Sternpolygone n und 1/2 meint hier Zeile 2 für gleichförmige Polygone 1/n
-
+-  "1/2-3/3" zieht sozusagen ein Quadrat und meint damit die Brüche 1/2,2/2,3/2,1/3,2/3,3/3, also den Bereich zwichen den Brüchen.
+-  "4/5+2/2" wählt den Bruch 2/3,2/7,6/3,6/7: bildet also den Abstand 2 hin und zurück für den Zähler und Nenner
+-  Die Syntax, bei der ein Minus und Plus vorkommt, lässt sich zusammen auch kombinieren. Für Ganz-Zahlwerte wie für Brüche.
+-  Diese Syntax kann mehrfach hintereinader eingesetzt werden, wenn sie mit Kommas voneinader getrennt wird. Innerhalb dieser Kommas dürfen entweder Brüche oder ganze Zahlen als Bereichsangabe enthalten sein und dadurch zusammen angegeben werden durch viele Kommas.
+-  Diese Syntax für Brüche und ganze Zahlen funktioniert mit dem "v" oder "vielfache" Befehl und mit dieser Minus Syntax, welche für das Herausnehmen von Bereichen da ist.
 
 ### Die Befehle 15\_.... {#die-befehle-15-dot-dot-dot-dot}
 

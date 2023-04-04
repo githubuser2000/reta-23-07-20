@@ -168,5 +168,9 @@ Nebenparameter beginnen mit 2 Minus --.
 * v5
   * Bei (fast) sämtlichen solchen Zahlenangaben kann ein v davor geschrieben werden: Das führt dazu, dass Vielfacher, statt nur die Zahl, verwendet werden: in dem Beispiel v5 ist es damit statt der Zahl 5 nun auch die Zahlen 5,10,15,20,25, usw.
 
+* v Syntax dabei
+  * 5,v20-22 meint Zeile 5 und außerdem alle Vielfacher von 20,21,22, also z.B. 40,42,44
+  *  -20,v10 meint alle Vielfacher von 10 ohne die 20 dabei
+
 ### Beispiel (eine Zeile, nicht mehrere):
         `reta -zeilen --vorhervonausschnitt=1-9 -spalten --religionen=sternpolygon,gleichfoermigespolygon --galaxie=babylon --breite=50`

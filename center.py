@@ -55,10 +55,33 @@ Multiplikationen = [("Multiplikationen", "")]
 shellRowsAmount: int
 
 
-def isZeilenAngabe(text):
+def isZeilenBruchAngabe_betweenKommas(g):
+    pattern = r"^(v?-?\d+\/\d+)(-\d+\/\d+)?((\+)(\d+\/\d+))*$"
+    return bool(re.fullmatch(pattern, g))
+
+
+def isZeilenBruchOrGanzZahlAngabe(text):
     a = []
     for g in text.split(","):
-        a += [isZeilenAngabe_betweenKommas(g)]
+        a += [isZeilenBruchAngabe_betweenKommas(g) or isZeilenAngabe_betweenKommas(g)]
+    return all(a)
+
+
+def isZeilenBruchAngabe(text):
+    a = []
+    stext = text.split(",")
+    anyAtAll = any([len(txt) > 0 for txt in stext])
+    for g in stext:
+        a += [isZeilenBruchAngabe_betweenKommas(g) or (g == "" and anyAtAll)]
+    return all(a)
+
+
+def isZeilenAngabe(text):
+    a = []
+    stext = text.split(",")
+    anyAtAll = any([len(txt) > 0 for txt in stext])
+    for g in stext:
+        a += [isZeilenAngabe_betweenKommas(g) or (g == "" and anyAtAll)]
     return all(a)
 
 
@@ -334,6 +357,8 @@ def BereichToNumbers(MehrereBereiche: str) -> set:
 def BereichToNumbers2(
     MehrereBereiche: str, vielfache=False, maxZahl: int = 1028
 ) -> set:
+    MehrereBereiche = ",".join([s for s in MehrereBereiche.split(",") if s])
+    # print(MehrereBereiche)
     if not isZeilenAngabe(MehrereBereiche):
         return set()
 
@@ -411,6 +436,7 @@ def BereichToNumbers2_EinBereich_Menge(
             if richtig and len(numList) > 0:
                 around = numList[1:]
                 BereichCouple[1] = numList[0]
+        # x("90sd3", [BereichCouple, around, maxZahl, menge])
         if vielfache:
             BereichToNumbers2_EinBereich_Menge_vielfache(
                 BereichCouple, around, maxZahl, menge
@@ -436,7 +462,8 @@ def BereichToNumbers2_EinBereich_Menge_nichtVielfache(
 
 def BereichToNumbers2_EinBereich_Menge_vielfache(BereichCouple, around, maxZahl, menge):
     i = 0
-    if len(around) == 0 or len(set(around) & {0}) == 1:
+    if len(around) == 0 or len(set(around) - {0}) == 0:
+        x("9hb3", set(around) & {0})
         while all([int(BereichCouple[0]) * i < maxZahl - a for a in around]):
             i += 1
             for number in range(int(BereichCouple[0]), int(BereichCouple[1]) + 1):
@@ -490,3 +517,33 @@ def teiler(zahlenBereichsAngabe):
         ZahlenWbereichMenge -= {1}
     zahlenWBereichStringListe = [str(each2) for each2 in ZahlenWbereichMenge]
     return zahlenWBereichStringListe, ZahlenWbereichMenge
+
+
+def invert_dict_B(d):
+    new_dict = {}
+    for key, value_list in d.items():
+        for value in value_list:
+            intVal = int(value)
+            if value not in new_dict:
+                new_dict[intVal] = []
+            strKey = str(key)
+            if strKey not in new_dict[intVal]:
+                new_dict[intVal].append(strKey)
+    return new_dict
+
+
+# def invert_dict(d):
+#    new_dict = {}
+#    for key, value_list in d.items():
+#        for value in value_list:
+#            if value not in new_dict:
+#                new_dict[value] = []
+#            new_dict[value].append(key)
+#    return new_dict
+
+
+def textHatZiffer(text) -> bool:
+    for char in text:
+        if char.isdigit():
+            return True
+    return False

@@ -4,8 +4,9 @@ from enum import Enum
 from typing import Optional
 
 import reta
-from center import (Primzahlkreuz_pro_contra_strs, isZeilenAngabe,
-                    isZeilenAngabe_betweenKommas)
+from center import (BereichToNumbers2, Primzahlkreuz_pro_contra_strs,
+                    isZeilenAngabe, isZeilenAngabe_betweenKommas,
+                    isZeilenBruchOrGanzZahlAngabe)
 
 retaProgram = reta.Program([sys.argv[0], "-nichts"])
 mainParas = ["-" + a for a in retaProgram.mainParaCmds]
@@ -60,6 +61,7 @@ ausgabeParas = [
 ]
 kombiMainParas = ["--galaxie=", "--universum="]
 zeilenParas = [
+    # "--nichts",
     "--zeit=",
     "--zaehlung=",
     "--vorhervonausschnitt=",
@@ -139,9 +141,13 @@ wahl15 = {
 }
 
 zumVergleich = []
+gebrochenErlaubteZahlen: set = set()
 for a in reta.Program(["reta", "-zeilen"]).paraNdataMatrix:
     for b in a[1]:
         zumVergleich += [b]
+        if len(set(a[0]) & {"gebrochenuniversum", "gebrochengalaxie"}) > 0:
+            gebrochenErlaubteZahlen |= {int(b)}
+gebrochenErlaubteZahlen -= {max(gebrochenErlaubteZahlen)}
 
 for a in wahl15.values():
     for b in a.split(","):
@@ -248,11 +254,27 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, stext2, textD
                 pass
 
             if n is not None:
+                # (
+                #    brueche_Z,
+                #    zahlenAngaben__Z,
+                #    fullBlockIsZahlenbereichAndBruch_Z,
+                # ) = getFromZahlenBereichBruchAndZahlenbereich(s_b[n:], [], [])
                 (
-                    brueche_Z,
+                    bruchAndGanzZahlEtwaKorrekterBereich,
+                    bruchBereichsAngaben,
+                    bruchRanges,
                     zahlenAngaben__Z,
                     fullBlockIsZahlenbereichAndBruch_Z,
-                ) = getFromZahlenBereichBruchAndZahlenbereich(s_b[n:], [], [])
+                ) = verifyBruchNganzZahlCommaList(
+                    [],
+                    "",
+                    [],
+                    [],
+                    [],
+                    s_b[n:],
+                    [],
+                )
+
                 if fullBlockIsZahlenbereichAndBruch_Z:
                     s_ = s_b
                     buchst = set(s_[:n]) & {
@@ -270,7 +292,7 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, stext2, textD
                         # "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
                     }
                     if (len(buchst) != len(s_[:n]) or len(buchst) == 0) and not (
-                        len(stext) == 1 and isZeilenAngabe(stext[0])
+                        len(stext) == 1 and fullBlockIsZahlenbereichAndBruch_Z
                     ):
                         s_ = s_m
                     else:
@@ -293,6 +315,8 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, stext2, textD
                                 "w",
                                 "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
                             ]
+                            if "/" in stext[0]:
+                                textDazu += ["u"]
         else:
             textDazu += [s_]
         if len(textDazu) > 0:
@@ -303,23 +327,110 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, stext2, textD
     return ifKurzKurz, stext
 
 
-def getFromZahlenBereichBruchAndZahlenbereich(a, brueche, zahlenAngaben_):
-    ifAllTrue = []
-    first = True
-    for innerKomma in a.split(","):
-        bruch = [bruch for bruch in innerKomma.split("/")]
-        isBruch_ = [bruch1.isdecimal() for bruch1 in bruch] == [True, True]
-        if first:
-            isZahlenangabe_ = isZeilenAngabe(innerKomma)
-        else:
-            isZahlenangabe_ = isZeilenAngabe_betweenKommas(innerKomma)
-        if isBruch_ or isZahlenangabe_:
-            ifAllTrue += [True]
-            if isBruch_:
-                brueche += [bruch]
-            if isZahlenangabe_:
-                zahlenAngaben_ += [innerKomma]
-        else:
-            ifAllTrue += [True]
-        first = False
-    return brueche, zahlenAngaben_, all(ifAllTrue)
+def verifyBruchNganzZahlCommaList(
+    bruchAndGanzZahlEtwaKorrekterBereich,
+    bruchBereichsAngabe,
+    bruchBereichsAngaben,
+    bruchRange,
+    bruchRanges,
+    commaListe,
+    zahlenAngaben_,
+):
+    _bruchAndGanzZahlEtwaKorrekterBereich = []
+    _bruchBereichsAngaben = []
+    _bruchRanges = []
+    _zahlenAngaben_ = []
+    _etwaAllTrue = []
+
+    for etwaBruch in commaListe.split(","):
+        (
+            bruchAndGanzZahlEtwaKorrekterBereich1,
+            bruchBereichsAngaben1,
+            bruchRanges1,
+            zahlenAngaben_1,
+            etwaAllTrue1,
+        ) = verifyBruchNganzZahlBetweenCommas(
+            bruchAndGanzZahlEtwaKorrekterBereich,
+            bruchBereichsAngabe,
+            bruchBereichsAngaben,
+            bruchRange,
+            bruchRanges,
+            etwaBruch,
+            zahlenAngaben_,
+        )
+        _bruchAndGanzZahlEtwaKorrekterBereich += [bruchAndGanzZahlEtwaKorrekterBereich1]
+        _bruchBereichsAngaben += [bruchBereichsAngaben1]
+        _bruchRanges += [bruchRanges1]
+        _zahlenAngaben_ += [zahlenAngaben_1]
+        _etwaAllTrue += [etwaAllTrue1]
+    return (
+        _bruchAndGanzZahlEtwaKorrekterBereich,
+        _bruchBereichsAngaben,
+        _bruchRanges,
+        _zahlenAngaben_,
+        all(_bruchAndGanzZahlEtwaKorrekterBereich),
+    )
+
+
+def verifyBruchNganzZahlBetweenCommas(
+    bruchAndGanzZahlEtwaKorrekterBereich,
+    bruchBereichsAngabe,
+    bruchBereichsAngaben,
+    bruchRange,
+    bruchRanges,
+    etwaBruch,
+    zahlenAngaben_,
+):
+
+    # print("x {}".format(bruchBereichsAngabe))
+    isBruch, isGanzZahl = isZeilenAngabe_betweenKommas(
+        bruchBereichsAngabe
+    ), isZeilenAngabe_betweenKommas(etwaBruch)
+    # print("y {}".format(bruchBereichsAngabe))
+    if isBruch != isGanzZahl:
+        bruchAndGanzZahlEtwaKorrekterBereich += [True]
+        if isBruch:
+            bruchRanges += [bruchRange]
+            bruchBereichsAngaben += [bruchBereichsAngabe]
+        elif isGanzZahl:
+            zahlenAngaben_ += [etwaBruch]
+    else:
+        bruchAndGanzZahlEtwaKorrekterBereich += [False]
+    # if isZeilenAngabe_betweenKommas(etwaBruch):
+    #    zahlenAngaben_ += [etwaBruch]
+    # print("h {},{}".format(bruchBereichsAngaben, bruchAndGanzZahlEtwaKorrekterBereich))
+    return (
+        bruchAndGanzZahlEtwaKorrekterBereich,
+        bruchBereichsAngaben,
+        bruchRanges,
+        zahlenAngaben_,
+        all(bruchAndGanzZahlEtwaKorrekterBereich),
+    )
+
+
+# def getFromZahlenBereichBruchAndZahlenbereich(a, brueche, zahlenAngaben_):
+#    ifAllTrue = []
+#    first = True
+#    for innerKomma in a.split(","):
+#        bruch = [bruch for bruch in innerKomma.split("/")]
+#        isBruch_ = [bruch1.isdecimal() for bruch1 in bruch] == [True, True]
+#        if first:
+#            isZahlenangabe_ = isZeilenAngabe(innerKomma)
+#        else:
+#            isZahlenangabe_ = isZeilenAngabe_betweenKommas(innerKomma)
+#        if isBruch_ or isZahlenangabe_:
+#            ifAllTrue += [True]
+#            if isBruch_:
+#                brueche += [bruch]
+#            if isZahlenangabe_:
+#                zahlenAngaben_ += [innerKomma]
+#        else:
+#            ifAllTrue += [True]
+#        first = False
+#    return brueche, zahlenAngaben_, all(ifAllTrue)
+def verkuerze_dict(dictionary: dict) -> dict:
+    dict2: dict = {}
+    for key, value in dictionary.items():
+        if value not in dict2.values():
+            dict2[key] = value
+    return dict2

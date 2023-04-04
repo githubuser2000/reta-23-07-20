@@ -2580,24 +2580,24 @@ class Program:
             ),
             (
                 Program.ParametersMain.gebrochengalaxie,
-                set([str(a) for a in range(2, 100)]),
+                set([str(a) for a in range(2, 21)]),
                 set(),
                 set(),
                 set(),
                 set(),
                 set(),
                 set(),
-                set([str(a) for a in range(2, 100)]),
+                set([str(a) for a in range(2, 21)]),
             ),
             (
                 Program.ParametersMain.gebrochenuniversum,
-                set([str(a) for a in range(2, 100)]),
+                set([str(a) for a in range(2, 21)]),
                 set(),
                 set(),
                 set(),
                 set(),
                 set(),
-                set([str(a) for a in range(2, 100)]),
+                set([str(a) for a in range(2, 21)]),
             ),
             (Program.ParametersMain.symbole, (), {36, 37}),
             # (
@@ -3460,7 +3460,11 @@ class Program:
                 ):
                     if arg[2:7] == "alles" and len(neg) == 0:
                         paramLines.add("all")
+                        self.obZeilenBereicheAngegeben = True
+                    if arg[2:7] == "alles" and len(neg) != 0:
+                        pass
                     elif arg[2:7] == "zeit=":
+                        self.obZeilenBereicheAngegeben = True
                         for subpara in arg[7:].split(","):
                             if neg + "=" == subpara:
                                 paramLines.add("=")
@@ -3469,6 +3473,7 @@ class Program:
                             elif neg + ">" == subpara:
                                 paramLines.add(">")
                     elif arg[2:11] == "zaehlung=":
+                        self.obZeilenBereicheAngegeben = True
                         paramLines |= (
                             self.tables.getPrepare.parametersCmdWithSomeBereich(
                                 arg[11:], "n", neg
@@ -3478,6 +3483,7 @@ class Program:
                         if arg[15:].isdecimal():
                             self.tables.textHeight = abs(int(arg[15:]))
                     elif arg[2:6] == "typ=":
+                        self.obZeilenBereicheAngegeben = True
                         for word in arg[6:].split(","):
                             if word == neg + "sonne":
                                 paramLines.add("sonne")
@@ -3488,6 +3494,7 @@ class Program:
                             elif word == neg + "mond":
                                 paramLines.add("mond")
                     elif arg[2 : 2 + len("potenzenvonzahlen=")] == "potenzenvonzahlen=":
+                        self.obZeilenBereicheAngegeben = True
                         if neg == "" or True:
                             angabe = arg[2 + len("potenzenvonzahlen=") :]
                             paramLines |= (
@@ -3496,6 +3503,7 @@ class Program:
                                 )
                             )
                     elif arg[2:21] == "vielfachevonzahlen=":
+                        self.obZeilenBereicheAngegeben = True
                         if neg == "":
                             paramLines |= (
                                 self.tables.getPrepare.parametersCmdWithSomeBereich(
@@ -3503,6 +3511,7 @@ class Program:
                                 )
                             )
                     elif arg[2:20] == "primzahlvielfache=":
+                        self.obZeilenBereicheAngegeben = True
                         if neg == "":
                             zahlenMenge = BereichToNumbers2(
                                 arg[2 + len("primzahlvielfache=") :]
@@ -3512,6 +3521,7 @@ class Program:
                     elif self.oberesMaximum(arg):
                         pass
                     elif arg[2:27] == "vorhervonausschnittteiler":
+                        self.obZeilenBereicheAngegeben = True
                         if neg == "":
                             paramLines |= (
                                 self.tables.getPrepare.parametersCmdWithSomeBereich(
@@ -3519,6 +3529,7 @@ class Program:
                                 )
                             )
                     elif arg[2:22] == "vorhervonausschnitt=":
+                        self.obZeilenBereicheAngegeben = True
                         if neg == "":
                             paramLines |= (
                                 self.tables.getPrepare.parametersCmdWithSomeBereich(
@@ -3526,12 +3537,14 @@ class Program:
                                 )
                             )
                     elif arg[2:38] == "nachtraeglichneuabzaehlungvielfache=":
+                        self.obZeilenBereicheAngegeben = True
                         paramLines |= (
                             self.tables.getPrepare.parametersCmdWithSomeBereich(
                                 arg[38:], "y", neg
                             )
                         )
                     elif arg[2:29] == "nachtraeglichneuabzaehlung=":
+                        self.obZeilenBereicheAngegeben = True
                         paramLines |= (
                             self.tables.getPrepare.parametersCmdWithSomeBereich(
                                 arg[29:], "z", neg
@@ -3611,6 +3624,7 @@ class Program:
                 if shellRowsAmount > self.tables.textWidth + 7 or shellRowsAmount <= 0
                 else shellRowsAmount - 7
             )
+        self.tables.ifZeilenSetted = self.obZeilenBereicheAngegeben
         return (
             paramLines,
             rowsAsNumbers,
@@ -4010,11 +4024,22 @@ class Program:
         self.tables.hoechsteZeile = max_
         return True
 
+    @property
+    def propInfoLog(self) -> OutputSyntax:
+        global Tables, infoLog
+        return infoLog
+
+    @propInfoLog.setter
+    def propInfoLog(self, value: bool):
+        global Tables, infoLog
+        infoLog = value
+
     def __init__(self, argv=[], alternativeShellRowsAmount: Optional[int] = None):
         global Tables, infoLog
         self.argv = argv
         self.allesParameters = 0
         self.tables = Tables(alternativeShellRowsAmount, self.oberesMaximum2(argv[1:]))
+        self.obZeilenBereicheAngegeben = False
         if platform.system() == "Windows":
             self.tables.getOut.color = False
         self.workflowEverything(argv)
@@ -4089,54 +4114,6 @@ class Program:
         )
 
         self.tables.getOut.cliOut(finallyDisplayLines, newTable, numlen, rowsRange)
-        alxp(
-            """bei Kurzbefehlen ohne leerzeichen noch -1-2 und -6 möglich machen, auch für Multis Ranges und bindestrich vor zahlen und bereichen ermöglichen - für so etwas externe funktionen nutzen, die ich in ReTa bereits programmiert hatte und maximal suchen, weil das schon programmiert wurde und nicht gleich wieder drauf los programmieren!"""
-        )
-        alxp(
-            """2021-09-21 spalte wird verschluckt immer noch, auf handy shell, wenn breite zu breit angegeben wird, verdammt!"""
-        )
-        alxp(
-            """kombinationen sortiert ausgeben und als Hierarchiebaum den Zahlenkombinationen entlang"""
-        )
-        alxp(
-            """kombinationen filterbar machen, dass nicht alle kombinationen bei einer Zahl immer angezeigt werden"""
-        )
-        alxp(
-            """neues Farbschema: für html aber besser nur: primzahlen pro außen und pro innen und ggf. dessen vielfacher; Farbschema mit durch 3 teilbarem außerdem"""
-        )
-        alxp(
-            """Viele Routinen schreiben, die Codeteile immer dann überspringen, wenn man weiß, dass sie nicht benötigt werden, zur Geschwindigkeitssteigerung"""
-        )
-        alxp("""Ctrl+C kontrollierter abbrechen lassen!""")
-        alxp("""Pytest verwenden wegen Geschwindigkeitstests.""")
-        alxp(
-            """In einigen GenerierungsSpalten werden Teile aus der Reli dings kopiert, was unnötig ist.
-             Außerem, dass dann die relitable ganz geklont werden muss. Und die Einzelsachen
-             müssten nur selbst geklont werden und mehr nicht."""
-        )
-        alxp(
-            """Immer dann wenn ich die ganze relitable matrix deepcopy geklont habe, hätte ich das gar nicht tun müssen, da ich einfach nur die werte, die ich vorher raus genommen habe, einfach nur per copy oder deepcopy hätte nur rausnehmen müssen"""
-        )
-        alxp(
-            "Ich muss bei vielen Funktionen noch den Funktionskopf, Quellcode hier dokumentieren"
-        )
-        alxp("vim: iIaAoOjJ mit Registern arbeiten wegen Löschen ohne ausschneiden")
-        alxp(
-            "Die Geschwindigkeitsteigerugnen entstehn meist durch anschließndes Zusammenfügen zu einer dann festen Größe."
-        )
-        alxp(
-            """py datei erstellen, die dafür da ist datenstrukturen für die js zu bilden, die für die Zeilenangelegenheiten da sind, so dass die js die nicht jedes Mal berechnen muss."""
-        )
-        alxp(
-            """Ich müsste wirklich noch total überall schauen und zu jedem Punkt im Forum zu gleichförmiges-Polygon-Religionen"""
-        )
-        alxp(
-            """Irgendeine Art Funktionalität, dass man sich durch die Grundstrukturen hangeln kann: Uni/Geist (15) > Uni / Geist (15) > Paradigmen (13) wie Egoismus > speziellere Paradigmen wie materieller Egoismus, etc."""
-        )
-        alxp("""rp Parameterangabe, dass loggen ja nein""")
-        alxp(
-            """cli out: org mode , und für shell lib als pretty print für tabellen, schöner"""
-        )
 
     def combiTableWorkflow(
         self,
