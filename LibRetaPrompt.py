@@ -291,8 +291,19 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, stext2, textD
                         "e",
                         # "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
                     }
+                    setTextLenIs1 = (
+                        len(
+                            set(stext)
+                            - {
+                                "e",
+                                "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
+                            }
+                        )
+                        == 1
+                    )
+
                     if (len(buchst) != len(s_[:n]) or len(buchst) == 0) and not (
-                        len(stext) == 1 and fullBlockIsZahlenbereichAndBruch_Z
+                        setTextLenIs1 and fullBlockIsZahlenbereichAndBruch_Z
                     ):
                         s_ = s_m
                     else:
@@ -304,7 +315,7 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, stext2, textD
                             ]
                             textDazu += buchst2 + [str(s_[n:])]
                         if (
-                            len(stext) == 1
+                            setTextLenIs1
                             and len(buchst) == 0
                             and promptMode2 != PromptModus.AusgabeSelektiv
                         ):
