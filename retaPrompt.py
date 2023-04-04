@@ -648,9 +648,18 @@ def PromptGrosseAusgabe(
         reta.Program(stext, int(shellRowsAmountStr) - 2)
 
     if len(bruch_GanzZahlReziproke) > 0 and textHatZiffer(bruch_GanzZahlReziproke):
-        zeiln3 = "--vorhervonausschnitt=" + bruch_GanzZahlReziproke
+        if "einzeln" not in stext and (
+            ("vielfache" in stext)
+            or ("v" in stext and "abc" not in stext and "abcd" not in stext)
+        ):
+            zeiln3 = "--vielfachevonzahlen=" + bruch_GanzZahlReziproke
+            zeiln2 = ""
+        else:
+            zeiln3 = "--vorhervonausschnitt=" + bruch_GanzZahlReziproke
+            zeiln2 = ""
     else:
-        zeiln3 = "--vorhervonausschnitt=0"
+        zeiln1 = "--vorhervonausschnitt=0"
+        zeiln2 = ""
     if bedingungZahl:
         cneu = str(c).strip()
         x("890ßfvsdwer", [cneu, textHatZiffer(cneu)])
@@ -1401,16 +1410,17 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
     except UnboundLocalError:
         EsGabzahlenAngaben = False
     if ("v" in stext) or ("vielfache" in stext):
-        if ("e" in stext) or (
-            "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" in stext
+        if not (
+            ("e" in stext)
+            or ("keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" in stext)
         ):
             if (
                 len(bruch_GanzZahlReziproke) > 0
-                or (1 in bruchRange)
-                or ("1" in bruchRange)
                 or any(
-                    any([1 in BereichToNumbers2(br2) for br2 in br1])
-                    for br1 in bruch_KeinGanzZahlReziprokeEn
+                    [
+                        any([1 in BereichToNumbers2(val2) for val2 in val])
+                        for val in bruch_KeinGanzZahlReziproke.values()
+                    ]
                 )
                 or EsGabzahlenAngaben
             ):
@@ -1418,33 +1428,36 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                 print(
                     'Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\nDas ist eine Design-Entscheidung, die getroffen worden ist.'
                 )
-        if len(bruch_GanzZahlReziproke) > 0:
-            bruch_GanzZahlReziproke2 = set()
-            for gb1 in bruch_GanzZahlReziproke:
-                if len(gb1) > 0 and gb1[0] == "v":
-                    gb1 = gb1[1:]
-                if len(gb1) > 0 and gb1[0] == "-":
-                    gb1 = gb1[1:]
-                    abzug = True
-                else:
-                    abzug = False
-                gb1 = BereichToNumbers2(gb1)
-                # print(abzug)
-                # print(gb1)
-                for gb in gb1:
-                    i = 1
-                    ganzMult = i * gb
-                    while ganzMult < retaProgram.tables.hoechsteZeile[1024]:
-                        ganzMult = i * gb
-                        if abzug:
-                            bruch_GanzZahlReziproke2 -= {str(ganzMult)}
-                        else:
-                            bruch_GanzZahlReziproke2 |= {str(ganzMult)}
-                        i += 1
-
+        bruch_GanzZahlReziproke = ",".join(bruch_GanzZahlReziproke)
+        x("ganz", bruch_GanzZahlReziproke)
+        # if len(bruch_GanzZahlReziproke) > 0:
+        #    bruch_GanzZahlReziproke2 = set()
+        #    x("cn29kd", bruch_GanzZahlReziproke)
+        #    for gb1 in bruch_GanzZahlReziproke:
+        #        if len(gb1) > 0 and gb1[0] == "v":
+        #            gb1 = gb1[1:]
+        #        if len(gb1) > 0 and gb1[0] == "-":
+        #            gb1 = gb1[1:]
+        #            abzug = True
+        #        else:
+        #            abzug = False
+        #        gb1 = BereichToNumbers2(gb1)
+        #        # print(abzug)
+        #        # print(gb1)
+        #        for gb in gb1:
+        #            i = 1
+        #            ganzMult = i * gb
+        #            while ganzMult < retaProgram.tables.hoechsteZeile[1024]:
+        #                ganzMult = i * gb
+        #                if abzug:
+        #                    bruch_GanzZahlReziproke2 -= {str(ganzMult)}
+        #                else:
+        #                    bruch_GanzZahlReziproke2 |= {str(ganzMult)}
+        #                i += 1
+        #
         bruchRanges3 = {}
         bruch_KeinGanzZahlReziprokeEnDict = {}
-        print("tzh {}:{}".format(bruchRange, bruch_KeinGanzZahlReziprokeEn))
+        x("tzh", [bruchRange, bruch_KeinGanzZahlReziprokeEn])
         for k, (br, no1brueche) in enumerate(
             zip(bruchRange, bruch_KeinGanzZahlReziprokeEn)
         ):
@@ -1584,10 +1597,6 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
             bruchRanges3Abzug = {}
             bruch_KeinGanzZahlReziprokeEnDictAbzug = {}
         # print("jjj_ {}".format(rangesBruecheDict))
-        try:
-            bruch_GanzZahlReziproke = list(bruch_GanzZahlReziproke2)
-        except UnboundLocalError:
-            pass
     else:
         if (
             len(bruch_GanzZahlReziproke) == 0

@@ -373,6 +373,7 @@ class Prepare:
             numRangeYesZ |= BereichToNumbers2(
                 ",".join(mehrere), True, self.hoechsteZeile[1024]
             )
+        #x("c230", numRangeYesZ)
 
         numRange = cutset(if_a_AtAll, numRange, numRangeYesZ)
         numRangeYesZ = set()

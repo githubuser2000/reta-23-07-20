@@ -436,6 +436,7 @@ def BereichToNumbers2_EinBereich_Menge(
             if richtig and len(numList) > 0:
                 around = numList[1:]
                 BereichCouple[1] = numList[0]
+        # x("90sd3", [BereichCouple, around, maxZahl, menge])
         if vielfache:
             BereichToNumbers2_EinBereich_Menge_vielfache(
                 BereichCouple, around, maxZahl, menge
@@ -461,7 +462,8 @@ def BereichToNumbers2_EinBereich_Menge_nichtVielfache(
 
 def BereichToNumbers2_EinBereich_Menge_vielfache(BereichCouple, around, maxZahl, menge):
     i = 0
-    if len(around) == 0 or len(set(around) & {0}) == 1:
+    if len(around) == 0 or len(set(around) - {0}) == 0:
+        x("9hb3", set(around) & {0})
         while all([int(BereichCouple[0]) * i < maxZahl - a for a in around]):
             i += 1
             for number in range(int(BereichCouple[0]), int(BereichCouple[1]) + 1):
