@@ -594,8 +594,7 @@ def PromptGrosseAusgabe(
             rangesBruecheDictReverse,
             stext,
         ) = bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_)
-        # print(stext)
-        # print(EsGabzahlenAngaben)
+        x("v236g", [stext, EsGabzahlenAngaben, c])
     if "mulpri" in stext or "p" in stext:
         stext += ["multis", "prim"]
     if "--art=bbcode" in stext and "reta" == stext[0]:
@@ -651,9 +650,10 @@ def PromptGrosseAusgabe(
     if len(bruch_GanzZahlReziproke) > 0 and textHatZiffer(bruch_GanzZahlReziproke):
         zeiln3 = "--vorhervonausschnitt=" + bruch_GanzZahlReziproke
     else:
-        zeiln3 = ""
+        zeiln3 = "--vorhervonausschnitt=0"
     if bedingungZahl:
         cneu = str(c).strip()
+        x("890ßfvsdwer", [cneu, textHatZiffer(cneu)])
         if textHatZiffer(cneu):
             if "einzeln" not in stext and (
                 ("vielfache" in stext)
@@ -668,7 +668,7 @@ def PromptGrosseAusgabe(
 
                 zeiln2 = anotherOberesMaximum(c, maxNum)
         else:
-            zeiln1 = "--vorhervonausschnitt=o"
+            zeiln1 = "--vorhervonausschnitt=0"
             zeiln2 = ""
 
     else:
@@ -708,6 +708,7 @@ def PromptGrosseAusgabe(
             )
 
     # if bedingungZahl or bedingungBrueche:
+    x("90ß234wrfn", [zeiln1, zeiln2])
     if fullBlockIsZahlenbereichAndBruch and (bedingungZahl or bedingungBrueche):
         if len({"absicht", "absichten", "motiv", "motive"} & set(stext)) > 0 or (
             (("a" in stext) != ("mo" in stext))
@@ -1312,10 +1313,11 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
         bruchRanges = []
         abzug = False
         for etwaBruch in a.split(","):
+            # x("| ", bruchSpalt(etwaBruch))
             bruchRange, bruchBereichsAngabe = createRangesForBruchLists(
                 bruchSpalt(etwaBruch)
             )
-            # print("_ {}".format(bruchBereichsAngabe))
+            # x("_,", bruchBereichsAngabe)
             (
                 bruchAndGanzZahlEtwaKorrekterBereich,
                 bruchBereichsAngaben,
@@ -1331,7 +1333,8 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                 etwaBruch,
                 zahlenAngaben_,
             )
-            # print(bruchBereichsAngaben)
+            alxp(bruchBereichsAngaben)
+            x("c02d", zahlenAngaben_)
             if etwaAllTrue:
                 fullBlockIsZahlenbereichAndBruch = (
                     fullBlockIsZahlenbereichAndBruch
@@ -1391,7 +1394,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                         stext += [neueRange]
                         EsGabzahlenAngaben = True
                         zahlenAngaben_mehrere += [neueRange]
-
+        zahlenAngaben_mehrere += zahlenAngaben_
     x("0c83jd", bruch_KeinGanzZahlReziproke)
     try:
         EsGabzahlenAngaben
@@ -1718,6 +1721,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
     #        rangesBruecheDictReverse,
     #    )
     # )
+    x("sd230nmys", [rangesBruecheDict, rangesBruecheDictReverse])
     return (
         bruch_GanzZahlReziproke,
         c,
