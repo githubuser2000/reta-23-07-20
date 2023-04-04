@@ -651,7 +651,7 @@ def PromptGrosseAusgabe(
         zeiln3 = "--vorhervonausschnitt=" + bruch_GanzZahlReziproke
         zeiln2 = ""
     else:
-        zeiln1 = "--vorhervonausschnitt=0"
+        zeiln3 = "--vorhervonausschnitt=0"
         zeiln2 = ""
     if bedingungZahl:
         cneu = str(c).strip()
@@ -1691,8 +1691,9 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                                 }
         x("dfgh", bruchDict)
 
-        for key, value in bruchDict.items():
-            rangesBruecheDict[key] = ",".join(value)
+        rangesBruecheDict = bruchDict
+        # for key, value in bruchDict.items():
+        #    rangesBruecheDict[key] = ",".join(value)
         x("2345890", rangesBruecheDict)
     # bereicheVorherBestimmtListofSets = []
     rangesBruecheDict2 = {}
