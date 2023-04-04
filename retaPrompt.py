@@ -1310,6 +1310,8 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
     bruchRangeNeu = {}
     bruchRangeNeuAbzug = {}
     Minusse = {}
+    pfaue = {}
+    pfaueAbzug = {}
     for g, a in enumerate(stext):
         bruchAndGanzZahlEtwaKorrekterBereich = []
         bruchBereichsAngaben = []
@@ -1381,9 +1383,15 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                                 bruch_KeinGanzZahlReziprokeAbzug[bruchRangeOhne1] += [
                                     bruchBereichsAngabe
                                 ]
+                                pfaueAbzug[bruchRangeOhne1] += [
+                                    bruchBereichsAngabe[:1] == "v"
+                                ]
                             except KeyError:
                                 bruch_KeinGanzZahlReziprokeAbzug[bruchRangeOhne1] = [
                                     bruchBereichsAngabe
+                                ]
+                                pfaueAbzug[bruchRangeOhne1] = [
+                                    bruchBereichsAngabe[:1] == "v"
                                 ]
                         else:
                             x(":<4", bruchBereichsAngabe)
@@ -1391,9 +1399,15 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                                 bruch_KeinGanzZahlReziproke[bruchRangeOhne1] += [
                                     neuerBereich
                                 ]
+                                pfaue[bruchRangeOhne1] += [
+                                    bruchBereichsAngabe[:1] == "v"
+                                ]
                             except KeyError:
                                 bruch_KeinGanzZahlReziproke[bruchRangeOhne1] = [
                                     neuerBereich
+                                ]
+                                pfaue[bruchRangeOhne1] = [
+                                    bruchBereichsAngabe[:1] == "v"
                                 ]
                     if EinsInBereichHier:
                         neueRange = ",".join([str(zahl) for zahl in bruchRange])
@@ -1401,7 +1415,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                         EsGabzahlenAngaben = True
                         zahlenAngaben_mehrere += [neueRange]
         zahlenAngaben_mehrere += zahlenAngaben_
-    x("0c83jd", bruch_KeinGanzZahlReziproke)
+    x("0c83jd", [bruch_KeinGanzZahlReziproke, pfaue])
     try:
         EsGabzahlenAngaben
     except UnboundLocalError:
@@ -1648,11 +1662,27 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                 bruch_KeinGanzZahlReziproke, bruch_KeinGanzZahlReziprokeAbzug
             )
         )
-        for (
-            bruchRange,
-            bruch_KeinGanzZahlReziprok_,
-        ) in bruch_KeinGanzZahlReziproke.items():
-            bruch_KeinGanzZahlReziprok_ = ",".join(bruch_KeinGanzZahlReziprok_)
+        x("0c83jd", [bruch_KeinGanzZahlReziproke, pfaue])
+        for ((bruchRange, bruch_KeinGanzZahlReziprok_), pfauList) in zip(
+            bruch_KeinGanzZahlReziproke.items(), pfaue.values()
+        ):
+            bruch_KeinGanzZahlReziprok_2 = set()
+            x("nixda ", [pfauList, bruch_KeinGanzZahlReziprok_])
+            for pfau, nenners in zip(pfauList, bruch_KeinGanzZahlReziprok_):
+                if pfau:
+                    nenners = BereichToNumbers2(nenners)
+                    for nenner in nenners:
+                        i = 1
+                        rechnung = i * int(nenner)
+                        while rechnung in gebrochenErlaubteZahlen:
+                            bruch_KeinGanzZahlReziprok_2 |= {str(rechnung)}
+                            i += 1
+                            rechnung = i * int(nenner)
+                    x("hui", bruch_KeinGanzZahlReziprok_2)
+                else:
+                    bruch_KeinGanzZahlReziprok_2 |= set(nenners.split(","))
+                    x("hop", bruch_KeinGanzZahlReziprok_2)
+            bruch_KeinGanzZahlReziprok_ = ",".join(bruch_KeinGanzZahlReziprok_2)
             for rangePunkt in bruchRange:
                 try:
                     bruchDict[rangePunkt] |= {bruch_KeinGanzZahlReziprok_}
