@@ -795,7 +795,7 @@ def PromptGrosseAusgabe(
 
                     # zaehler = [s for s in zaehler if s]
                     # hierBereich = ",".join(zaehler)
-                    hierBereich = zaehler
+                    hierBereich = ",".join(zaehler)
                     kette = [
                         "reta",
                         "-zeilen",
@@ -825,11 +825,12 @@ def PromptGrosseAusgabe(
                     )
             elif len(rangesBruecheDictReverse) > 0:
                 for nenner, zaehler in rangesBruecheDictReverse.items():
+                    x("346dfg", rangesBruecheDictReverse)
                     import reta
 
                     # zaehler = [s for s in zaehler if s]
                     # hierBereich = ",".join(zaehler)
-                    hierBereich = zaehler
+                    hierBereich = ",".join(zaehler)
                     kette = [
                         "reta",
                         "-zeilen",
@@ -1001,7 +1002,7 @@ def PromptGrosseAusgabe(
 
                     # zaehler = [s for s in zaehler if s]
                     # hierBereich = ",".join(zaehler)
-                    hierBereich = zaehler
+                    hierBereich = ",".join(zaehler)
                     kette = [
                         "reta",
                         "-zeilen",
@@ -1035,7 +1036,7 @@ def PromptGrosseAusgabe(
 
                     # zaehler = [s for s in zaehler if s]
                     # hierBereich = ",".join(zaehler)
-                    hierBereich = zaehler
+                    hierBereich = ",".join(zaehler)
                     kette = [
                         "reta",
                         "-zeilen",
@@ -1305,7 +1306,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
     bruch_KeinGanzZahlReziprok_ = []
     fullBlockIsZahlenbereichAndBruch = True
     bruchRanges2 = []
-    bruchRanges2Abzug = []
+    # bruchRanges2Abzug = []
     bruch_KeinGanzZahlReziprokeEn = []
     rangesBruecheDict = {}
     rangesBruecheDictReverse: dict = {}
@@ -1351,10 +1352,12 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                 )
 
         if fullBlockIsZahlenbereichAndBruch:
+            x("9c2m", bruchRanges)
             for bruchBereichsAngabe, bruchRange in zip(
                 bruchBereichsAngaben, bruchRanges
             ):
                 if isZeilenAngabe(bruchBereichsAngabe):
+                    bruchRange = {b for b in bruchRange if b > 0}
                     EinsInBereichHier1 = BereichToNumbers2(bruchBereichsAngabe)
                     EinsInBereichHier = 1 in EinsInBereichHier1
                     if (
@@ -1390,6 +1393,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                                     bruchBereichsAngabe
                                 ]
                         else:
+                            x(":<4", bruchBereichsAngabe)
                             try:
                                 bruch_KeinGanzZahlReziproke[bruchRangeOhne1] += [
                                     neuerBereich
@@ -1457,10 +1461,8 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
         #
         bruchRanges3 = {}
         bruch_KeinGanzZahlReziprokeEnDict = {}
-        x("tzh", [bruchRange, bruch_KeinGanzZahlReziprokeEn])
-        for k, (br, no1brueche) in enumerate(
-            zip(bruchRange, bruch_KeinGanzZahlReziprokeEn)
-        ):
+        # x("tzh", [bruchRange, bruch_KeinGanzZahlReziprokeEn])
+        for k, (brZahlen, no1brueche) in enumerate(bruch_KeinGanzZahlReziproke.items()):
 
             for no1bruch in no1brueche:
                 if len(no1bruch) > 0 and no1bruch[0] == "v":
@@ -1504,24 +1506,25 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                         i += 1
                         rechnung2 = no1bruch * i
             # print(bruch_KeinGanzZahlReziprokeEnDict)
-            i = 1
-            rechnung = br * i
-            while rechnung in gebrochenErlaubteZahlen:
-                # print(rechnung)
-                if abzug:
-                    try:
-                        if rechnung not in bruchRanges3Abzug:
-                            bruchRanges3Abzug[k] += [rechnung]
-                    except KeyError:
-                        bruchRanges3Abzug[k] = [rechnung]
-                else:
-                    try:
-                        if rechnung not in bruchRanges3:
-                            bruchRanges3[k] += [rechnung]
-                    except KeyError:
-                        bruchRanges3[k] = [rechnung]
-                i += 1
+            for br in brZahlen:
+                i = 1
                 rechnung = br * i
+                while rechnung in gebrochenErlaubteZahlen:
+                    # print(rechnung)
+                    if abzug:
+                        try:
+                            if rechnung not in bruchRanges3Abzug:
+                                bruchRanges3Abzug[k] += [rechnung]
+                        except KeyError:
+                            bruchRanges3Abzug[k] = [rechnung]
+                    else:
+                        try:
+                            if rechnung not in bruchRanges3:
+                                bruchRanges3[k] += [rechnung]
+                        except KeyError:
+                            bruchRanges3[k] = [rechnung]
+                    i += 1
+                    rechnung = br * i
 
         # print(bruchRange)
         # print(bruch_KeinGanzZahlReziprokeEn)
@@ -1685,6 +1688,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
         rangesBruecheDict2[key] = list(bereicheVorherBestimmtSet2)
     valueLenSum += len(bereicheVorherBestimmtSet)
     dictLen = len(rangesBruecheDict)
+    x("cv5l", rangesBruecheDict)
     if dictLen != 0:
         avg = valueLenSum / dictLen
         # print(avg)
