@@ -22,6 +22,8 @@ from tableHandling import (Enum, Iterable, Multiplikationen, OutputSyntax,
                            output, primCreativity, re, setShellRowsAmount,
                            shellRowsAmount, sys, x)
 
+gebrochenSpaltenMaximumPlus1 = 21
+
 
 def render_color(tag_name, value, options, parent, context):
     return '<span style="color:%s;">%s</span>' % (tag_name, value)
@@ -506,6 +508,7 @@ class Program:
             key ist Spaltennummer der Ausgabe, value ist ein Paar von 2 Strings über Überparametername und Unterparametername für den Klassenname für die Spalte des HTML-Tags.
             <em>
             Das beinhaltet das für alle Parameter und Ausgabe-Spalten-Nummern.</em>"""
+            global gebrochenSpaltenMaximumPlus1
 
             paraMainDict1 = {**paraMainDict1, **paraMainDict2}
             paraDict1 = {**paraDict1, **paraDict2}
@@ -2580,24 +2583,24 @@ class Program:
             ),
             (
                 Program.ParametersMain.gebrochengalaxie,
-                set([str(a) for a in range(2, 21)]),
+                set([str(a) for a in range(2, gebrochenSpaltenMaximumPlus1)]),
                 set(),
                 set(),
                 set(),
                 set(),
                 set(),
                 set(),
-                set([str(a) for a in range(2, 21)]),
+                set([str(a) for a in range(2, gebrochenSpaltenMaximumPlus1)]),
             ),
             (
                 Program.ParametersMain.gebrochenuniversum,
-                set([str(a) for a in range(2, 21)]),
+                set([str(a) for a in range(2, gebrochenSpaltenMaximumPlus1)]),
                 set(),
                 set(),
                 set(),
                 set(),
                 set(),
-                set([str(a) for a in range(2, 21)]),
+                set([str(a) for a in range(2, gebrochenSpaltenMaximumPlus1)]),
             ),
             (Program.ParametersMain.symbole, (), {36, 37}),
             # (
@@ -3366,8 +3369,8 @@ class Program:
         """
         allValues[2] = set((int(pNum) for pNum in allowedPrimNumbersForCommand))
         allValues[3] = set(Program.kombiParaNdataMatrix.keys())
-        allValues[5] = set(range(2, 21))
-        allValues[6] = set(range(2, 21))
+        allValues[5] = set(range(2, gebrochenSpaltenMaximumPlus1))
+        allValues[6] = set(range(2, gebrochenSpaltenMaximumPlus1))
         allValues[8] = set(Program.kombiParaNdataMatrix2.keys())
 
         """
