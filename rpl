@@ -5,5 +5,5 @@ import sys
 sys.argv += ["-vi","-log"]
 if "-debug" not in sys.argv:
     sys.argv += ["-e"]
-if True:
-    import retaPrompt
+import retaPrompt
+retaPrompt.start()

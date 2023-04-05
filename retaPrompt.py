@@ -2155,4 +2155,9 @@ def promptInput(
     return befehlDavor, text
 
 
-PromptScope()
+if __name__ == "__main__":
+    PromptScope()
+
+
+def start():
+    PromptScope()
