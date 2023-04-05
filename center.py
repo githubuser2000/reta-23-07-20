@@ -547,3 +547,58 @@ def textHatZiffer(text) -> bool:
         if char.isdigit():
             return True
     return False
+
+
+def primfaktoren(n):
+
+    """zerlegt eine Zahl in ihre Primfaktoren
+
+    >>> primfaktoren(24)
+    [2, 2, 2, 3]
+
+    """
+
+    faktoren = []
+    z = n
+    while z > 1:
+        # bestimme den kleinsten Primfaktor p von z
+        i = 2
+        gefunden = False
+        while i * i <= n and not gefunden:
+            if z % i == 0:
+                gefunden = True
+                p = i
+            else:
+                i = i + 1
+        if not gefunden:
+            p = z
+        # füge p in die Liste der Faktoren ein
+        faktoren = faktoren + [p]
+        z = z // p
+    return faktoren
+
+
+def primRepeat(n):
+    n.reverse()
+    c = 1
+    b = None
+    d = []
+    for a in n:
+        if b == a:
+            c += 1
+        else:
+            c = 1
+        d += [[a, c]]
+        b = a
+    d.reverse()
+    b = None
+    f = []
+    for e, g in d:
+        if b != e:
+            if g == 1:
+                f += [e]
+            else:
+                f += [str(e) + "^" + str(g)]
+        b = e
+
+    return f

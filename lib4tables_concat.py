@@ -15,8 +15,8 @@ except:
 
 from center import (DefaultOrderedDict, Multiplikationen,
                     Primzahlkreuz_pro_contra_strs, alxp, cliout,
-                    getTextWrapThings, infoLog, multiples, output, re,
-                    unique_everseen, x)
+                    getTextWrapThings, infoLog, multiples, output,
+                    primfaktoren, re, unique_everseen, x)
 from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz,
                         couldBePrimeNumberPrimzahlkreuz_fuer_aussen,
@@ -98,6 +98,89 @@ class Concat:
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
             ] = self.tables.dataDict[0][9]
+        return self.relitable, rowsAsNumbers
+
+    def geistEmotionEnergieMaterieTopologie(self, zahl: int) -> str:
+        zahl = int(zahl)
+        prFa = primfaktoren(zahl)
+        # print("Faktoren: {}".format(prFa))
+        auss = [couldBePrimeNumberPrimzahlkreuz_fuer_aussen(a) for a in prFa]
+        # print("außen: {}".format(auss))
+        innen = [couldBePrimeNumberPrimzahlkreuz_fuer_innen(a) for a in prFa]
+        # print("innen: {}".format(innen))
+        zwei = len([a for a in prFa if a == 2])
+        # print("zwei: {}".format(zwei))
+        gefuehl = any(auss)
+        denken = any(innen)
+        # anZahlInnen = len([a for a in innen if True])
+        totalTopologie = zwei > 1 and gefuehl
+        etwasTopologie = (zwei > 1 or (zwei > 0 and gefuehl)) and not totalTopologie
+        totalMaterie = zwei > 4
+        etwasMaterie = zwei == 4
+        wenigMaterie = zwei == 3
+        kaumMaterie = zwei == 2
+        x, y, z = denken, (2 in prFa), (3 in prFa)
+        totalEnerge = x and y and z
+        einermassenEnergie = ((x and y) or (y and z) or (y and z)) and not totalEnerge
+        kaumEnergie = not einermassenEnergie and not totalEnerge and (x or y or z)
+        ausgabeStringList = []
+        if denken:
+            ausgabeStringList += ["eine Denkart"]
+        if gefuehl:
+            ausgabeStringList += ["eine Gefühlsart"]
+        if totalMaterie:
+            ausgabeStringList += ["total Materie"]
+        if totalTopologie:
+            ausgabeStringList += ["total eine Art Topologie"]
+        if totalEnerge:
+            ausgabeStringList += ["total eine Energie-Art"]
+        if etwasTopologie:
+            ausgabeStringList += ["etwas eine Art Topologie"]
+        if etwasMaterie:
+            ausgabeStringList += ["etwas eine Art Materie"]
+        if wenigMaterie:
+            ausgabeStringList += ["wenig eine Art Materie"]
+        if einermassenEnergie:
+            ausgabeStringList += ["einigermaßen eine Energie-Art"]
+        if kaumEnergie:
+            ausgabeStringList += ["kaum eine Energie-Art"]
+        if kaumMaterie:
+            ausgabeStringList += ["kaum eine Materie-Art"]
+        ausgabeString = "; ".join(ausgabeStringList)
+        return ausgabeString
+
+    def concatGeistEmotionEnergieMaterieTopologie(
+        self, relitable: list, rowsAsNumbers: set
+    ) -> tuple:
+        self.relitable = relitable
+        if set(rowsAsNumbers) >= {242}:
+            alxp(rowsAsNumbers)
+            rowsAsNumbers |= {len(self.relitable[0])}
+            self.tables.generatedSpaltenParameter_Tags[
+                len(rowsAsNumbers) - 1
+            ] = frozenset({ST.sternPolygon, ST.universum})
+            for i, cols in enumerate(
+                deepcopy(self.relitable[: self.tables.lastLineNumber + 1])
+            ):
+                if i == 0:
+                    ausgabeString = "Energie oder Denkart oder Gefühlsart oder Materie-Art oder Topologie-Art"
+                else:
+                    ausgabeString = self.geistEmotionEnergieMaterieTopologie(i)
+                self.relitable[i] += [ausgabeString]
+
+            if (
+                len(self.tables.generatedSpaltenParameter)
+                + self.tables.SpaltenVanillaAmount
+                in self.tables.generatedSpaltenParameter
+            ):
+                raise ValueError
+
+            # x("wasdas", self.tables.dataDict[0][242])
+            self.tables.generatedSpaltenParameter[
+                len(self.tables.generatedSpaltenParameter)
+                + self.tables.SpaltenVanillaAmount
+            ] = self.tables.dataDict[0][242]
+
         return self.relitable, rowsAsNumbers
 
     def concatPrimCreativityType(self, relitable: list, rowsAsNumbers: set) -> tuple:

@@ -3890,6 +3890,14 @@ class Program:
         ) = self.tables.getConcat.concatPrimCreativityType(
             self.relitable, self.rowsAsNumbers
         )
+
+        (
+            self.relitable,
+            self.rowsAsNumbers,
+        ) = self.tables.getConcat.concatGeistEmotionEnergieMaterieTopologie(
+            self.relitable, self.rowsAsNumbers
+        )
+
         (
             self.relitable,
             self.rowsAsNumbers,
