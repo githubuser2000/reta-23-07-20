@@ -129,23 +129,23 @@ class Concat:
         if gefuehl:
             ausgabeStringList += ["eine Gefühlsart"]
         if totalMaterie:
-            ausgabeStringList += ["total Materie"]
+            ausgabeStringList += ["total eine Art, etwas geistig zu erzeugen"]
         if totalTopologie:
-            ausgabeStringList += ["total eine Art Topologie"]
+            ausgabeStringList += ["total eine Art zu erleben"]
         if totalEnerge:
             ausgabeStringList += ["total eine Energie-Art"]
         if etwasTopologie:
-            ausgabeStringList += ["etwas eine Art Topologie"]
+            ausgabeStringList += ["etwas eine Art zu erleben"]
         if etwasMaterie:
-            ausgabeStringList += ["etwas eine Art Materie"]
+            ausgabeStringList += ["etwas eine Art, etwas geistig zu erzeugen"]
         if wenigMaterie:
-            ausgabeStringList += ["wenig eine Art Materie"]
+            ausgabeStringList += ["wenig eine Art, etwas geistig zu erzeugen"]
         if einermassenEnergie:
             ausgabeStringList += ["einigermaßen eine Energie-Art"]
         if kaumEnergie:
             ausgabeStringList += ["kaum eine Energie-Art"]
         if kaumMaterie:
-            ausgabeStringList += ["kaum eine Materie-Art"]
+            ausgabeStringList += ["kaum eine Art, etwas geistig zu erzeugen"]
         ausgabeString = "; ".join(ausgabeStringList)
         return ausgabeString
 

@@ -1422,7 +1422,7 @@ class Program:
             (
                 Program.ParametersMain.universum,
                 ("Geist__(15)", "geist"),
-                {242, 244},
+                {242},
             ),
             (
                 Program.ParametersMain.universum,
@@ -1899,7 +1899,7 @@ class Program:
                     Primzahlkreuz_pro_contra_strs[1],
                     "nachvollziehen",
                 ),
-                {242, 244, 297},
+                {242, 297},
                 set(),
                 set(),
                 set(),
@@ -1934,7 +1934,7 @@ class Program:
                     "geist",
                     "bewusstsein",
                 ),
-                {229, 231, 242, 244, 273, 297, 304},
+                {229, 231, 242, 273, 297, 304},
             ),
             (
                 Program.ParametersMain.grundstrukturen,
