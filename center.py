@@ -605,3 +605,26 @@ def primRepeat(n):
         b = e
 
     return f
+
+
+def classify(mod):
+    if mod == 0:
+        return "ja"
+    elif mod == 1:
+        return "Gegenteil"
+    elif mod == 2:
+        return "ähnlich"
+    elif mod == 3:
+        return "entferntes Gegenteil"
+    elif mod == 4:
+        return "entfernt ähnlich"
+
+
+def moduloA(zahlen):
+    for arg in zahlen:
+        for var in range(2, 26):
+            print(f"{arg} % {var} = ", end="")
+            mod = int(arg) % var
+            print(f"{mod} {classify(mod)}", end=", ")
+            mod = var - mod
+            print(f"{mod} {classify(mod)}")

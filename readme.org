@@ -44,24 +44,16 @@
 ***** unwichtiges
 + Ich könnte erweitern aus welchen Dingen ich noch bestehe, der höheren Art, wie höhere Gefühle und Impulse, etc. Denn das gabs vorher nicht.
 *** 2. Feature Ideen
-+ die Primzahlfilterung und alle Filterungen von der html
-+ Dass man bei Kombinationen filtern kann nach nur bestimmten Zahlen, dazu und hinweg - am Besten mit den bisherigeen allen Filtermethoden, den Bereichsangaben, aber auch für Brüche dann ja wohl - das aber vorher detailliert und umfangreich und lang genug vorher planen!
++ retaPrompt: auch genug Autocomplete bei Zeilenangabe
 + Zeilen-Befehle für Primzahlen und deren Vielfachern (und welche) und der Primzahlart von 4
++ die Primzahlfilterung und alle Filterungen von der html
 + SQL like Relationen, z.B. 2:1, d.h. 3 Spalten, und auch alles wie bei SQL, d.h. z.B. n Spalten nach oben/unten: bei z.B. Abstand 1: Gegenspieler. Warum nicht gleich eine SQL (like) Sprache übernehmen, statt das Rad neu zu erfinden!
 + alle Features von retaPrompt und der von reta ausgegebenen html bei beiden haben, weil nicht ganz beide ganz alles von beiden können, sondern nur fast: was fehlt da eigentlich noch? Aufgabe: herausfinden, was noch ungleich ist: detailliert austesten
-+ Syntax highlighting: hä?
-+ dinge bei zsh abschauen: was kann zsh alles?
++ Nein: Syntax highlighting: hä?
++ Was denn nun?: dinge bei zsh abschauen: was kann zsh alles?
 + schöneres UTF: Ideen? Keine!
-+ csv diff und insert geht schnell zu programmieren: die app ins git mogeln: recherche und KI
-Kann man ncurses einfach zu web konvertieren, ohne viel Aufwand oder wurde das nicht erfunden?
-+ nicht loggen, bei befehlen über Logging
 + Kurzform für Zeile und Spalte einführen, statt die langen Befehlsketten immer.
 + Die Spaltennummer direkt als Zahl wählen können.
-+ Multiplikation aus 3 Faktoren, oder mehr, statt nur aus 2:
-python print(str((1,*(2,3))))
-(1, 2, 3)
-Geht einfach und schnell zu programmieren durch Rekursion.
-+ --parameter=* könnte alle Unter-Parameter meinen, als Kommandozeilenargument. Dürfte nicht so lange dauern einprogrammiert zu werden
 + Wie programmiere ich, dass nachträgliches Resizen der CLI App geht?
   + Programmieren, dass man die Konsole beliebig resizen kann, und dass es dann immernoch die richtige Größe ermöglicht.
     + Teil A
@@ -79,9 +71,15 @@ Geht einfach und schnell zu programmieren durch Rekursion.
   + Farbschema der Helligkeiten aus welchen Primzahlen welche Zahl besteht
   + Um bessere Farben für die html zu finden, sollte ich einen screenshot davon machen und diesen mit gimp so bearbeiten, dass ich exakt eine Farbe in eine andere ändere. In Gimp kann ich viele Farben ausprobieren.
 + retaPrompt skriptingfähig machen: nein, das muss nicht bald sein
-**** aus reta.py
-+ bei Kurzbefehlen ohne leerzeichen noch -1-2 und -6 möglich machen, auch für Multis Ranges und bindestrich vor zahlen und bereichen ermöglichen - für so etwas externe funktionen nutzen, die ich in ReTa bereits programmiert hatte und maximal suchen, weil das schon programmiert wurde und nicht gleich wieder drauf los programmieren!
-+ 2021-09-21 spalte wird verschluckt immer noch, auf handy shell, wenn breite zu breit angegeben wird, verdammt!
+****  2.1. minder wichtig, aber geht schnell:
++ --parameter=* könnte alle Unter-Parameter meinen, als Kommandozeilenargument. Dürfte nicht so lange dauern einprogrammiert zu werden
++ minder wichtig, aber geht schnell: Multiplikation aus 3 Faktoren, oder mehr, statt nur aus 2:
+  python print(str((1,*(2,3))))
+  (1, 2, 3)
+  Geht einfach und schnell zu programmieren durch Rekursion.
++ Dass man bei Kombinationen filtern kann nach nur bestimmten Zahlen, dazu und hinweg - am Besten mit den bisherigeen allen Filtermethoden, den Bereichsangaben, aber auch für Brüche dann ja wohl - das aber vorher detailliert und umfangreich und lang genug vorher planen!
++ minder wichtig, aber geht schnell: nicht loggen, bei befehlen über Logging
+**** 2.2. aus reta.py
 + kombinationen sortiert ausgeben und als Hierarchiebaum den Zahlenkombinationen entlang
 + kombinationen filterbar machen, dass nicht alle kombinationen bei einer Zahl immer angezeigt werden
 + neues Farbschema: für html aber besser nur: primzahlen pro außen und pro innen und ggf. dessen vielfacher; Farbschema mit durch 3 teilbarem außerdem
@@ -97,7 +95,6 @@ Geht einfach und schnell zu programmieren durch Rekursion.
 + Die Geschwindigkeitsteigerugnen entstehn meist durch anschließndes Zusammenfügen zu einer dann festen Größe.
 + py datei erstellen, die dafür da ist datenstrukturen für die js zu bilden, die für die Zeilenangelegenheiten da sind, so dass die js die nicht jedes Mal berechnen muss.
 + Ich müsste wirklich noch total überall schauen und zu jedem Punkt im Forum zu gleichförmiges-Polygon-Religionen
-+ Irgendeine Art Funktionalität, dass man sich durch die Grundstrukturen hangeln kann: Uni/Geist (15) > Uni / Geist (15) > Paradigmen (13) wie Egoismus > speziellere Paradigmen wie materieller Egoismus, etc.
 + rp Parameterangabe, dass loggen ja nein
 + cli out: org mode , und für shell lib als pretty print für tabellen, schöner
 *** 3. Bugs

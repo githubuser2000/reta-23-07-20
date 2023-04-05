@@ -19,8 +19,8 @@ from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
 
 from center import (alxp, cliout, invert_dict_B, isZeilenAngabe,
-                    isZeilenAngabe_betweenKommas, primfaktoren, primRepeat,
-                    retaPromptHilfe, teiler, textHatZiffer, x)
+                    isZeilenAngabe_betweenKommas, moduloA, primfaktoren,
+                    primRepeat, retaPromptHilfe, teiler, textHatZiffer, x)
 from LibRetaPrompt import (BereichToNumbers2, PromptModus,
                            gebrochenErlaubteZahlen, isReTaParameter,
                            notParameterValues, stextFromKleinKleinKleinBefehl,
@@ -71,17 +71,18 @@ def returnOnlyParasAsList(textList: str):
     return liste
 
 
-def externCommand(cmd: str, StrNummern: str):
-    nummern: list[int] = list(BereichToNumbers2(StrNummern, False, 0))
-    nummern.sort()
-    nummernStr: list[str] = [str(nummer) for nummer in nummern]
-    try:
-        process = subprocess.Popen(
-            [os.path.dirname(__file__) + os.sep + cmd, *nummernStr]
-        )
-        process.wait()
-    except:
-        pass
+# def externCommand(cmd: str, StrNummern: str):
+#    nummern: list[int] = list(BereichToNumbers2(StrNummern, False, 0))
+#    nummern.sort()
+#    nummernStr: list[str] = [str(nummer) for nummer in nummern]
+#    try:
+#        process = subprocess.Popen(
+#            [os.path.dirname(__file__) + os.sep + cmd, *nummernStr]
+#        )
+#        process.wait()
+#    except:
+#        pass
+#
 
 
 def grKl(A: set, B: set) -> tuple[set, set]:
@@ -1157,8 +1158,7 @@ def PromptGrosseAusgabe(
             )
         if len({"modulo"} & set(stext)) > 0:
             warBefehl = True
-            externCommand("modulo", c)
-
+            moduloA([str(num) for num in BereichToNumbers2(c)])
         if len({"alles"} & set(stext)) > 0:
             warBefehl = True
             import reta
