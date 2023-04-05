@@ -549,7 +549,7 @@ def textHatZiffer(text) -> bool:
     return False
 
 
-def primfaktoren(n):
+def primfaktoren(n, modulo=False):
 
     """zerlegt eine Zahl in ihre Primfaktoren
 
@@ -573,7 +573,10 @@ def primfaktoren(n):
         if not gefunden:
             p = z
         # füge p in die Liste der Faktoren ein
-        faktoren = faktoren + [p]
+        if modulo:
+            faktoren += [p % 24]
+        else:
+            faktoren += [p]
         z = z // p
     return faktoren
 

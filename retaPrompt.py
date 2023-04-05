@@ -19,8 +19,8 @@ from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
 
 from center import (alxp, cliout, invert_dict_B, isZeilenAngabe,
-                    isZeilenAngabe_betweenKommas, retaPromptHilfe, teiler,
-                    textHatZiffer, x)
+                    isZeilenAngabe_betweenKommas, primfaktoren, primRepeat,
+                    retaPromptHilfe, teiler, textHatZiffer, x)
 from LibRetaPrompt import (BereichToNumbers2, PromptModus,
                            gebrochenErlaubteZahlen, isReTaParameter,
                            notParameterValues, stextFromKleinKleinKleinBefehl,
@@ -1061,11 +1061,27 @@ def PromptGrosseAusgabe(
 
         if len({"prim24", "primfaktorzerlegungModulo24"} & set(stext)) > 0:
             warBefehl = True
-            externCommand("prim24", c2)
+            for arg in c2.split(","):
+                if arg.isdecimal():
+                    print(
+                        str(arg)
+                        + ": "
+                        + str(primRepeat(primfaktoren(int(arg), True)))[1:-1]
+                        .replace("'", "")
+                        .replace(", ", " ")
+                    )
 
         if len({"prim", "primfaktorzerlegung"} & set(stext)) > 0:
             warBefehl = True
-            externCommand("prim", c2)
+            for arg in c2.split(","):
+                if arg.isdecimal():
+                    print(
+                        str(arg)
+                        + ": "
+                        + str(primRepeat(primfaktoren(int(arg))))[1:-1]
+                        .replace("'", "")
+                        .replace(", ", " ")
+                    )
 
         if len({"multis"} & set(stext)) > 0 or (
             "mu" in stext and "abc" not in stext and "abcd" not in stext
