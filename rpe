@@ -2,6 +2,15 @@
 # -*- coding: utf-8 -*-
 import sys
 
-sys.argv = [sys.argv[0]]+["-vi","-e","-befehl","-ausgabe","--art=emacs", "--keineueberschriften"]+sys.argv[1:]
+toAdd = sys.argv[1:]
+if sys.argv[1:2] != ["reta"]:
+    flag = True
+else:
+    flag = False
+sys.argv = [sys.argv[0]]+["-vi","-e","-befehl"]
+if flag:
+    sys.argv += ["-ausgabe","--art=emacs", "--keineueberschriften"]+toAdd + ["e"]
+else:
+    sys.argv += toAdd + ["-ausgabe","--art=emacs", "--keineueberschriften"]
 import retaPrompt
 retaPrompt.start()
