@@ -742,6 +742,7 @@ def PromptGrosseAusgabe(
                     ],
                 ] + returnOnlyParasAsList(stext)
                 kette += ketten
+                # print("a")
                 if (
                     "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
                     not in stext
@@ -751,8 +752,12 @@ def PromptGrosseAusgabe(
                     kette,
                     int(shellRowsAmountStr),
                 )
-            x("9vnw3dfg345", bruch_GanzZahlReziproke)
-            if len(bruch_GanzZahlReziproke) > 0 and zeiln3 != "":
+            # x("9vnw3dfg345", bruch_GanzZahlReziproke)
+            if (
+                len(bruch_GanzZahlReziproke) > 0
+                and textHatZiffer(bruch_GanzZahlReziproke)
+                and zeiln3 != ""
+            ):
                 import reta
 
                 kette = [
@@ -959,7 +964,12 @@ def PromptGrosseAusgabe(
                     int(shellRowsAmountStr),
                 )
 
-            if len(bruch_GanzZahlReziproke) > 0 and zeiln3 != "":
+            if (
+                len(bruch_GanzZahlReziproke) > 0
+                and textHatZiffer(bruch_GanzZahlReziproke)
+                and zeiln3 != ""
+            ):
+
                 import reta
 
                 kette = [
@@ -2003,7 +2013,7 @@ def PromptAllesVorGroesserSchleife():
         if "-e" not in sys.argv:
             alxp("Debug Log Aktiviert")
     if "-befehl" in sys.argv:
-        von = sys.argv.index("-befehl")
+        von = sys.argv.index("-befehl") + 1
         nurEinBefehl = sys.argv[von:]
     else:
         nurEinBefehl = []
