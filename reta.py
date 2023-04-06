@@ -3612,6 +3612,10 @@ class Program:
                     # print(arg[2:])
                     if self.breiteBreitenSysArgvPara(arg[2:], neg):
                         pass
+                    elif (
+                        arg[2 : 2 + len("keineueberschriften")] == "keineueberschriften"
+                    ):
+                        self.tables.keineUeberschriften = True
                     elif arg[2 : 2 + len("keinenummerierung")] == "keinenummerierung":
                         self.tables.nummeriere = False
                     elif arg[2 : 2 + len("keineleereninhalte")] == "keineleereninhalte":

@@ -15,3 +15,5 @@
 * rpb
     - kein direktes starten von retaPrompt, sondern nur das Ausführen eines retaPrompt Befehls in ihrer/deiner normalen Shell, sodass danach retaPrompt gleich wieder zuende ist.
     - rpb gibt die Hilfe aus
+* rpe
+    - retaPrompt für Emacs geeignet, mit passenden Startparametern.

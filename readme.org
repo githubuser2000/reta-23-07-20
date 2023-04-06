@@ -44,8 +44,7 @@
 ***** unwichtiges
 + Ich könnte erweitern aus welchen Dingen ich noch bestehe, der höheren Art, wie höhere Gefühle und Impulse, etc. Denn das gabs vorher nicht.
 *** 2. Feature Ideen
-+ --breite soll bei spalten und ausgabe das gleiche bewirken: das, was es bei spalten wirkt!
-+ retaPrompt: auch genug Autocomplete bei Zeilenangabe
++ Dass man auch alle Überschriften als Ausgabe aussparen könnte.
 + Zeilen-Befehle für Primzahlen und deren Vielfachern (und welche) und der Primzahlart von 4
 + die Primzahlfilterung und alle Filterungen von der html
 + SQL like Relationen, z.B. 2:1, d.h. 3 Spalten, und auch alles wie bei SQL, d.h. z.B. n Spalten nach oben/unten: bei z.B. Abstand 1: Gegenspieler. Warum nicht gleich eine SQL (like) Sprache übernehmen, statt das Rad neu zu erfinden!

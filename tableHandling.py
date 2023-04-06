@@ -178,6 +178,8 @@ class Tables:
             self.__hoechsteZeile = {1024: 1024, 114: 120}
         else:
             self.__hoechsteZeile = {1024: hoechstZeil, 114: hoechstZeil}
+
+        self.keineUeberschriften = False
         self.rowNumDisplay2rowNumOrig = OrderedDict()
         self.generatedSpaltenParameter = OrderedDict()
         self.generatedSpaltenParameter_Tags = OrderedDict()
@@ -423,6 +425,8 @@ class Tables:
                 ) in enumerate(
                     zip(newTable, self.finallyDisplayLines)
                 ):  # n Linien einer Zelle, d.h. 1 EL = n Zellen
+                    if BigCellLineNumber == 0 and self.tables.keineUeberschriften:
+                        continue
                     for iterWholeLine, OneWholeScreenLine_AllSubCells in enumerate(
                         rowsRange
                     ):  # eine Bildhschirm-Zeile immer
