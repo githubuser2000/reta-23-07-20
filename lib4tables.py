@@ -36,6 +36,21 @@ class csvSyntax(OutputSyntax):
     endZeile = ""
 
 
+class emacsSyntax(OutputSyntax):
+    # print(OutputSyntax)
+    # def generateCell(
+    #    self, spalte: int, SpaltenParameter: dict, content=None, zeile=None, tables=None
+    # ) -> str:
+    #    return "|"
+
+    beginTable = ""
+    endTable = ""
+    beginCell = "|"
+    endCell = ""
+    beginZeile = ""
+    endZeile = "|"
+
+
 class markdownSyntax(OutputSyntax):
     # print(OutputSyntax)
     # def generateCell(
@@ -170,7 +185,8 @@ class htmlSyntax(OutputSyntax):
                 if str(spalte).isdecimal():
                     raise ValueError
                 tupleOfListsOfCouples = (("?", "?"),)
-        things1: OrderedDict[int, list] = OrderedDict()  # damit pypy3 == python3
+        # damit pypy3 == python3
+        things1: OrderedDict[int, list] = OrderedDict()
 
         listOfListsOfCouples: list = list(tupleOfListsOfCouples)
         listOfListsOfCouples.sort()  # damit pypy3 == python3

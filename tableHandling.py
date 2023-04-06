@@ -20,9 +20,9 @@ from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
                     output, re, x)
 from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz, csvSyntax,
-                        divisorGenerator, htmlSyntax, isPrimMultiple,
-                        markdownSyntax, math, moonNumber, primCreativity,
-                        primFak, primMultiple, primRepeat)
+                        divisorGenerator, emacsSyntax, htmlSyntax,
+                        isPrimMultiple, markdownSyntax, math, moonNumber,
+                        primCreativity, primFak, primMultiple, primRepeat)
 from lib4tables_concat import Concat
 from lib4tables_Enum import ST
 from lib4tables_prepare import Prepare, setShellRowsAmount, shellRowsAmount
@@ -699,6 +699,28 @@ class Tables:
                                             * (
                                                 len(newTable[BigCellLineNumber])
                                                 + (2 if self.nummerierung else 0)
+                                            )
+                                            + "|"
+                                        )
+                                    elif (
+                                        type(self.__outType) is emacsSyntax
+                                        and BigCellLineNumber == 0
+                                    ):
+                                        self.cliout2(
+                                            "|----"
+                                            + (
+                                                "+----"
+                                                * (
+                                                    (
+                                                        len(newTable[BigCellLineNumber])
+                                                        + (
+                                                            2
+                                                            if self.nummerierung
+                                                            else 0
+                                                        )
+                                                    )
+                                                    - 1
+                                                )
                                             )
                                             + "|"
                                         )

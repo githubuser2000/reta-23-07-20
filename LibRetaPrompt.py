@@ -85,7 +85,7 @@ hauptForNeben = ("-zeilen", "-spalten", "-kombination", "-ausgabe", "-h", "-help
 notParameterValues = ausgabeParas + zeilenParas + kombiMainParas + spalten + mainParas
 hauptForNebenSet = set(hauptForNeben)
 
-ausgabeArt = ["bbcode", "html", "csv", "shell", "markdown"]
+ausgabeArt = ["bbcode", "html", "csv", "shell", "markdown", "emacs"]
 
 wahl15 = {
     #    "_": "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15)",

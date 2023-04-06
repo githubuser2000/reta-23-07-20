@@ -17,10 +17,10 @@ except:
 from center import BereichToNumbers2, Primzahlkreuz_pro_contra_strs, retaHilfe
 from tableHandling import (Enum, Iterable, Multiplikationen, OutputSyntax,
                            Tables, Union, alxp, bbCodeSyntax, cliout, copy,
-                           csv, csvSyntax, deepcopy, getTextWrapThings,
-                           htmlSyntax, infoLog, markdownSyntax, math, os,
-                           output, primCreativity, re, setShellRowsAmount,
-                           shellRowsAmount, sys, x)
+                           csv, csvSyntax, deepcopy, emacsSyntax,
+                           getTextWrapThings, htmlSyntax, infoLog,
+                           markdownSyntax, math, os, output, primCreativity,
+                           re, setShellRowsAmount, shellRowsAmount, sys, x)
 
 gebrochenSpaltenMaximumPlus1 = 21
 
@@ -134,6 +134,13 @@ class Program:
         lastMainCmd: int = -1
         # kombiSpalten = OrderedSet()
         # ordinarySpalten = OrderedSet()
+
+        for cmd in self.argv[1:]:
+            if (
+                lastMainCmd == self.mainParaCmds["spalten"]
+                or lastMainCmd == self.mainParaCmds["ausgabe"]
+            ):
+                self.breiteBreitenSysArgvPara(cmd, neg)
         for cmd in self.argv[1:]:
             if len(cmd) > 1 and cmd[0] == "-" and cmd[1] != "-":
                 if cmd[1:] in self.mainParaCmds.keys():
@@ -358,7 +365,7 @@ class Program:
 
     def breiteBreitenSysArgvPara(self, cmd, neg) -> bool:
         global shellRowsAmount
-        if cmd[:7] == "breite=" and len(neg) == 0:
+        if cmd[:7] == "breite=":
             if cmd[7:].isdecimal():
                 breite = abs(int(cmd[7:]))
                 if breite == 0:
@@ -3616,6 +3623,8 @@ class Program:
                         elif outputtype == "html":
                             self.tables.outType = htmlSyntax()
                             self.htmlOrBBcode = True
+                        elif outputtype == "emacs":
+                            self.tables.outType = emacsSyntax()
                         elif outputtype == "markdown":
                             self.tables.outType = markdownSyntax()
                     elif arg[2:] in ["nocolor", "justtext"] and neg == "":
