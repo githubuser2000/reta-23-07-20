@@ -319,6 +319,16 @@ class Prepare:
         return self.zaehlungen[3][zeile]
 
     # ich wollte je pro extra num, nun nicht mehr nur sondern modular ein mal alles und dann pro nummer in 2 funktionen geteilt
+    def moonsun(
+        self, MoonNotSun: bool, numRangeYesZ: set, numRange, ifZaehlungenAtAll=True
+    ):
+        if not ifZaehlungenAtAll:
+            self.setZaehlungen(self.originalLinesRange[-1])
+        for n in numRange:
+            if (self.zaehlungen[4][n][0] != []) == MoonNotSun:
+                numRangeYesZ.add(n)
+        return numRangeYesZ
+
     def FilterOriginalLines(self, numRange: set, paramLines: set) -> set:
         """Hier werden die Befehle der Angabe welche Zeilen angezeigt werden in konkrete Zeilen umgewandelt.
 
@@ -373,7 +383,7 @@ class Prepare:
             numRangeYesZ |= BereichToNumbers2(
                 ",".join(mehrere), True, self.hoechsteZeile[1024]
             )
-        #x("c230", numRangeYesZ)
+        # x("c230", numRangeYesZ)
 
         numRange = cutset(if_a_AtAll, numRange, numRangeYesZ)
         numRangeYesZ = set()
@@ -441,24 +451,22 @@ class Prepare:
         ifTypAtAll = False
         numRangeYesZ = set()
 
-        def moonsun(MoonNotSun: bool, numRangeYesZ: set):
-            if not ifZaehlungenAtAll:
-                self.setZaehlungen(self.originalLinesRange[-1])
-            for n in numRange:
-                if (self.zaehlungen[4][n][0] != []) == MoonNotSun:
-                    numRangeYesZ.add(n)
-            return numRangeYesZ
-
         for condition in paramLines:
             if "mond" in condition:
-                numRangeYesZ, ifTypAtAll = moonsun(True, numRangeYesZ), True
+                numRangeYesZ, ifTypAtAll = (
+                    self.moonsun(True, numRangeYesZ, numRange, ifZaehlungenAtAll),
+                    True,
+                )
             elif "schwarzesonne" in condition:
                 ifTypAtAll = True
                 for n in numRange:
                     if n % 3 == 0:
                         numRangeYesZ.add(n)
             elif "sonne" in condition:
-                numRangeYesZ, ifTypAtAll = moonsun(False, numRangeYesZ), True
+                numRangeYesZ, ifTypAtAll = (
+                    self.moonsun(False, numRangeYesZ, numRange, ifZaehlungenAtAll),
+                    True,
+                )
             elif "planet" in condition:
                 ifTypAtAll = True
                 for n in numRange:

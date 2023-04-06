@@ -17,7 +17,7 @@ except:
     OrderedSet = set
 
 from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
-                    output, re, x)
+                    output, primfaktoren, primRepeat, re, x)
 from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz, csvSyntax,
                         divisorGenerator, emacsSyntax, htmlSyntax,
@@ -702,10 +702,30 @@ class Tables:
                                             )
                                             + "|"
                                         )
-                                    elif (
-                                        type(self.__outType) is emacsSyntax
-                                        and BigCellLineNumber == 0
+                                    elif type(self.__outType) is emacsSyntax and (
+                                        BigCellLineNumber == 0
+                                        or (
+                                            len(
+                                                set(
+                                                    primfaktoren(
+                                                        filteredLineNumbersofOrignal,
+                                                        True,
+                                                    )
+                                                )
+                                            )
+                                            == 1
+                                            and len(
+                                                (
+                                                    primfaktoren(
+                                                        filteredLineNumbersofOrignal,
+                                                        True,
+                                                    )
+                                                )
+                                            )
+                                            != 1
+                                        )
                                     ):
+
                                         self.cliout2(
                                             "|----"
                                             + (
