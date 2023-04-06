@@ -16,7 +16,8 @@ from LibRetaPrompt import (PromptModus, ausgabeArt, ausgabeParas, befehle,
                            isReTaParameter, isZeilenBruchOrGanzZahlAngabe,
                            kombiMainParas, mainParas, reta, retaProgram,
                            spalten, spaltenDict,
-                           stextFromKleinKleinKleinBefehl, zeilenParas)
+                           stextFromKleinKleinKleinBefehl, zeilenParas,
+                           zeilenTypen, zeilenZeit)
 # from prompt_toolkit.completion.word_completer import WordCompleter
 from word_completerAlx import WordCompleter
 
@@ -261,13 +262,15 @@ class NestedCompleter(Completer):
                 var2, var3, var4 = self.gleichKommaAusg(
                     completer, first_term, gleich, komma
                 )
-
+            else:
+                var3 = ""
+                var4 = {}
             suchWort = (
                 first_term[2:]
                 if gleich
                 else var3[2:]
                 if komma and var3 is not None
-                else None
+                else 0
             )
             try:
                 var1 = var4[suchWort]
@@ -304,6 +307,8 @@ class NestedCompleter(Completer):
             first_term if gleich else self.zeilenParaWort if komma else None
         )
         var4 = {key: [] for key in zeilenParas}
+        var4["typ"] = zeilenTypen
+        var4["zeit"] = zeilenZeit
         var2 = ComplSitua.zeilenPara
         var3 = self.zeilenParaWort
         completer.situationsTyp = ComplSitua.zeilenValPara

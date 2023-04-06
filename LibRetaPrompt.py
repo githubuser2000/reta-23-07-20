@@ -46,6 +46,10 @@ for tupel in retaProgram.paraNdataMatrix:
 
 spalten += ["--breite=", "--breiten=", "--keinenummerierung"]
 
+zeilenTypen = ["sonne", "mond", "planet", "schwarzesonne"]
+zeilenZeit = ["heute", "gestern", "morgen"]
+
+
 ausgabeParas = [
     "--nocolor",
     "--justtext",

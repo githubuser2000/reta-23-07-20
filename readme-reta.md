@@ -16,13 +16,13 @@ Nebenparameter beginnen mit 2 Minus --.
 
 * --alles
 * --zeit=
-* "<"
-    bedeutet Religionen 1-9
-* "="
+    * "gestern"
+        bedeutet Religionen 1-9
+    * "heute"
         bedeutet nur Religion 10
-    * ">"
+    * "morgen"
         bedeutet Religionen > 10
-    * "<,=,>"
+    * "gestern,heute,morgen"
         bedeutet Religion 1-10 und höher als 10,
         Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole!
 * --zaehlung=

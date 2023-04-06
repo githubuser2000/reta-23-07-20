@@ -200,8 +200,25 @@ class Program:
                                             + cmd[:eq]
                                             + '" existiert, aber nicht mit dem Textwert "'
                                             + oneOfThingsAfterEqSign
-                                            + '" mögliche Nebenparameter-Textwerte, für diesen Unter-Parameter, sind: '
-                                            + ",".join(possibleNebenparameterWert)
+                                            + (
+                                                (
+                                                    '". Mögliche Nebenparameter-Textwerte, für diesen Unter-Parameter, sind: "'
+                                                )
+                                                + (
+                                                    ",".join(possibleNebenparameterWert)
+                                                    + '"'
+                                                )
+                                                if (
+                                                    len(possibleNebenparameterWert) > 0
+                                                    and not all(
+                                                        [
+                                                            p == ""
+                                                            for p in possibleNebenparameterWert
+                                                        ]
+                                                    )
+                                                )
+                                                else '". Stattdessen gibt keine Nebenparameter-Textwerte.'
+                                            )
                                         )
                                     else:
                                         cliout(
@@ -3469,11 +3486,11 @@ class Program:
                     elif arg[2:7] == "zeit=":
                         self.obZeilenBereicheAngegeben = True
                         for subpara in arg[7:].split(","):
-                            if neg + "=" == subpara:
+                            if neg + "heute" == subpara:
                                 paramLines.add("=")
-                            elif neg + "<" == subpara:
+                            elif neg + "gestern" == subpara:
                                 paramLines.add("<")
-                            elif neg + ">" == subpara:
+                            elif neg + "morgen" == subpara:
                                 paramLines.add(">")
                     elif arg[2:11] == "zaehlung=":
                         self.obZeilenBereicheAngegeben = True
