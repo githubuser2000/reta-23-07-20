@@ -29,15 +29,15 @@ from lib4tables_prepare import Prepare, setShellRowsAmount, shellRowsAmount
 
 
 class Tables:
-    def getRowAmountofAnyPart(self):
-        return {
-            "numerierung": 1 if self.nummeriere else 0,
-            "main prepare relitable orignal | combi & concat-prim drin": self.getPrepare.rowsAsNumbers,
-            "prim (concat)": self.puniverseprims,
-            "combi": (self.getCombis.rowsOfcombi, self.getCombis.ChosenKombiLines),
-            "len(AllCombiRows)": self.getCombis.sumOfAllCombiRowsAmount,
-            "row of prim multi generated": self.primUniverseRow,
-        }
+    # def getRowAmountofAnyPart(self):
+    #    return {
+    #        "numerierung": 1 if self.nummeriere else 0,
+    #        "main prepare relitable orignal | combi & concat-prim drin": self.getPrepare.rowsAsNumbers,
+    #        "prim (concat)": self.puniverseprims,
+    #        "combi": (self.getCombis.rowsOfcombi, self.getCombis.ChosenKombiLines),
+    #        "len(AllCombiRows)": self.getCombis.sumOfAllCombiRowsAmount,
+    #        "row of prim multi generated": self.primUniverseRow,
+    #    }
 
     @property
     def markdownOutputYes(self) -> bool:
@@ -125,6 +125,7 @@ class Tables:
     def nummeriere(self, value: bool):
         self.getOut.nummerierung = value
         self.getPrepare.nummerierung = value
+        self.nummerierung = value
 
     @property
     def textHeight(self):
@@ -192,7 +193,8 @@ class Tables:
         self.nummeriere = True
         self.spaltegGestirn = False
         self.breitenn: list = []
-        self.puniverseprims: set = OrderedSet()  # welche Spalten von "primenumbers.csv"
+        # welche Spalten von "primenumbers.csv"
+        self.puniverseprims: set = OrderedSet()
         self.gebrUniv: set = OrderedSet()
         self.getOut.primUniversePrimsSet = self.puniverseprims
         self.getConcat.primUniversePrimsSet = self.puniverseprims
@@ -634,7 +636,7 @@ class Tables:
                         if rowsEmpty != len(self.rowsAsNumbers) and (
                             iterWholeLine < self.textheight or self.textheight == 0
                         ):  # and m < actualPartLineLen:
-                            if type(self.__outType) is markdownSyntax:
+                            if False and type(self.__outType) is markdownSyntax:
                                 line += [
                                     self.__outType.generateCell(
                                         subCellIndexRightLeft,
@@ -688,6 +690,18 @@ class Tables:
                                             + [self.__outType.endZeile]
                                         )
                                     )
+                                    if (
+                                        type(self.__outType) is markdownSyntax
+                                        and BigCellLineNumber == 0
+                                    ):
+                                        self.cliout2(
+                                            "|:--:"
+                                            * (
+                                                len(newTable[BigCellLineNumber])
+                                                + (2 if self.nummerierung else 0)
+                                            )
+                                            + "|"
+                                        )
                 if type(self.__outType) in (htmlSyntax, bbCodeSyntax):
                     self.cliout2(
                         self.__outType.endTable,
@@ -712,7 +726,6 @@ class Tables:
             cliout(text, self.color and janee[0], janee[1])
 
         def colorize(self, text, num: int, rest=False) -> str:
-
             """Die Ausagabe der Tabelle wird coloriert
 
             @type text: str

@@ -37,13 +37,18 @@ class csvSyntax(OutputSyntax):
 
 
 class markdownSyntax(OutputSyntax):
+    # print(OutputSyntax)
+    # def generateCell(
+    #    self, spalte: int, SpaltenParameter: dict, content=None, zeile=None, tables=None
+    # ) -> str:
+    #    return "|"
 
     beginTable = ""
     endTable = ""
     beginCell = "|"
     endCell = ""
     beginZeile = ""
-    endZeile = ""
+    endZeile = "|"
 
 
 class bbCodeSyntax(OutputSyntax):

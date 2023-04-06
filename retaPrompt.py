@@ -1963,7 +1963,8 @@ def promptVorbereitungGrosseAusgabe(
             stext[i] = replacements[token]
         except KeyError:
             pass
-    stext = list(set(stext))
+    if stext[:1] != ["reta"]:
+        stext = list(set(stext))
     return (
         bedingung,
         brueche,

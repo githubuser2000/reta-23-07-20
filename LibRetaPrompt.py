@@ -62,6 +62,7 @@ ausgabeParas = [
     "--breite=",
     "--breiten=",
     "--keineleereninhalte",
+    "--keinenummerierung",
 ]
 kombiMainParas = ["--galaxie=", "--universum="]
 zeilenParas = [

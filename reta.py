@@ -3590,6 +3590,8 @@ class Program:
                 ):  # unteres Kommando
                     if self.breiteBreitenSysArgvPara(arg[2:], neg):
                         pass
+                    elif arg[2 : 2 + len("keinenummerierung")] == "keinenummerierung":
+                        self.tables.nummeriere = False
                     elif arg[2 : 2 + len("keineleereninhalte")] == "keineleereninhalte":
                         self.keineleereninhalte = True
                         self.tables.keineleereninhalte = True
