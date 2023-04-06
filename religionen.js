@@ -1210,6 +1210,10 @@ function isZeilenAngabe(g) {
 }
 */
 function BereichToNumbers2(MehrereBereiche, vielfache = false, maxZahl = 1028) {
+  MehrereBereiche = MehrereBereiche.split(",")
+    .filter((s) => s.trim())
+    .join(",");
+  const Bereiche = MehrereBereiche.split(",");
   if (!isZeilenAngabe(MehrereBereiche)) {
     return new Set();
   }
@@ -1218,7 +1222,6 @@ function BereichToNumbers2(MehrereBereiche, vielfache = false, maxZahl = 1028) {
     maxZahl = Infinity;
   }
 
-  const Bereiche = MehrereBereiche.split(",");
   const dazu = new Set();
   const hinfort = new Set();
   let menge;
@@ -1337,8 +1340,10 @@ function BereichToNumbers2_EinBereich_Menge_vielfache(
   menge
 ) {
   let i = 0;
+  aroundSet = new Set(around);
+  aroundSet.delete(0);
   //window.alert(Array.from(around).join(","));
-  if (around.length === 0 || (around.length == 1 && around[0] == 0)) {
+  if (around.length === 0 || aroundSet.size == 0) {
     while (around.every((a) => parseInt(BereichCouple[0]) * i < maxZahl - a)) {
       i += 1;
       for (
