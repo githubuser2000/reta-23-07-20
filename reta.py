@@ -135,12 +135,12 @@ class Program:
         # kombiSpalten = OrderedSet()
         # ordinarySpalten = OrderedSet()
 
-        for cmd in self.argv[1:]:
-            if (
-                lastMainCmd == self.mainParaCmds["spalten"]
-                or lastMainCmd == self.mainParaCmds["ausgabe"]
-            ):
-                self.breiteBreitenSysArgvPara(cmd, neg)
+        # for cmd in self.argv[1:]:
+        #    if (
+        #        lastMainCmd == self.mainParaCmds["spalten"]
+        #        or lastMainCmd == self.mainParaCmds["ausgabe"]
+        #    ):
+        #        self.breiteBreitenSysArgvPara(cmd, neg)
         for cmd in self.argv[1:]:
             if len(cmd) > 1 and cmd[0] == "-" and cmd[1] != "-":
                 if cmd[1:] in self.mainParaCmds.keys():
@@ -359,16 +359,25 @@ class Program:
                         + '" ausgeführt werden kann. Hauptparameter sind: -'
                         + " -".join(self.mainParaCmds)
                     )
+        if "--breite=0" in self.argv:
+            self.breiteBreitenSysArgvPara("--breite=0", "")
         if len(neg) == 0:
             self.produceAllSpaltenNumbers("-")
             spalten_removeDoublesNthenRemoveOneFromAnother()
 
     def breiteBreitenSysArgvPara(self, cmd, neg) -> bool:
         global shellRowsAmount
+
         if cmd[:7] == "breite=":
+            if self.breiteHasBeenOnceZero:
+                shellRowsAmount = 0
+                self.tables.textWidth = 0
+                self.breiteORbreiten = True
+                return True
             if cmd[7:].isdecimal():
                 breite = abs(int(cmd[7:]))
                 if breite == 0:
+                    self.breiteHasBeenOnceZero = True
                     shellRowsAmount = 0
                 elif shellRowsAmount > 7 and breite > shellRowsAmount - 7:
                     breite = shellRowsAmount - 7
@@ -3477,6 +3486,11 @@ class Program:
         self.bigParamaeter: list = []
         self.__willBeOverwritten_rowsOfcombi: set = OrderedSet()
         generRows = OrderedSet()
+        # for arg in argv[1:]:
+        #    elif (
+        #                arg[2 : 2 + len("spaltenreihenfolgeundnurdiese=")]
+        #                == "spaltenreihenfolgeundnurdiese="
+        #    ):
         for arg in argv[1:]:
             if len(arg) > 0 and arg[0] == "-":
                 if (
@@ -3595,6 +3609,7 @@ class Program:
                     and len(self.bigParamaeter) > 0
                     and self.bigParamaeter[-1] == "ausgabe"
                 ):  # unteres Kommando
+                    # print(arg[2:])
                     if self.breiteBreitenSysArgvPara(arg[2:], neg):
                         pass
                     elif arg[2 : 2 + len("keinenummerierung")] == "keinenummerierung":
@@ -3617,6 +3632,8 @@ class Program:
                             self.tables.outType = OutputSyntax()
                         elif outputtype == "csv":
                             self.tables.outType = csvSyntax()
+                            self.tables.getOut.oneTable = True
+                            self.breiteBreitenSysArgvPara("breite=0", "")
                         elif outputtype == "bbcode":
                             self.htmlOrBBcode = True
                             self.tables.outType = bbCodeSyntax()
@@ -3624,9 +3641,13 @@ class Program:
                             self.tables.outType = htmlSyntax()
                             self.htmlOrBBcode = True
                         elif outputtype == "emacs":
+                            self.tables.getOut.oneTable = True
                             self.tables.outType = emacsSyntax()
+                            self.breiteBreitenSysArgvPara("breite=0", "")
                         elif outputtype == "markdown":
                             self.tables.outType = markdownSyntax()
+                            self.tables.getOut.oneTable = True
+                            self.breiteBreitenSysArgvPara("breite=0", "")
                     elif arg[2:] in ["nocolor", "justtext"] and neg == "":
                         self.tables.getOut.color = False
                     elif (
@@ -4078,9 +4099,14 @@ class Program:
         self.argv = argv
         self.allesParameters = 0
         self.tables = Tables(alternativeShellRowsAmount, self.oberesMaximum2(argv[1:]))
+
+        self.breiteHasBeenOnceZero: bool = False
         self.obZeilenBereicheAngegeben = False
         if platform.system() == "Windows":
             self.tables.getOut.color = False
+
+        # if "--breite=0" in argv:
+        #    self.breiteBreitenSysArgvPara("--breite=0", "")
         self.workflowEverything(argv)
 
     def workflowEverything(self, argv):
