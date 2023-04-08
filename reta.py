@@ -4102,7 +4102,7 @@ class Program:
         global Tables, infoLog
         self.argv = argv
         self.allesParameters = 0
-        self.tables = Tables(alternativeShellRowsAmount, self.oberesMaximum2(argv[1:]))
+        self.tables = Tables(self.oberesMaximum2(argv[1:]))
 
         self.breiteHasBeenOnceZero: bool = False
         self.obZeilenBereicheAngegeben = False

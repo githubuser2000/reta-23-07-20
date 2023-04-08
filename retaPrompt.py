@@ -457,13 +457,15 @@ def PromptScope():
         platzhalter,
         promptDavorDict,
         promptMode,
-        shellRowsAmountStr,
         startpunkt1,
         text,
         nurEinBefehl,
         immerEbefehlJa,
     ) = PromptAllesVorGroesserSchleife()
     while len(set(text.split()) & set(befehleBeenden)) == 0:
+        SiZe = os.get_terminal_size()
+        shellAnzahlCharsPerLineStr = str(SiZe.columns)
+        x("breite: ", shellAnzahlCharsPerLineStr)
         warBefehl = False
         promptModeLast = promptMode
 
@@ -550,7 +552,7 @@ def PromptScope():
             ketten,
             loggingSwitch,
             maxNum,
-            shellRowsAmountStr,
+            shellAnzahlCharsPerLineStr,
             stext,
             text,
             warBefehl,
@@ -568,7 +570,7 @@ def PromptGrosseAusgabe(
     ketten,
     loggingSwitch,
     maxNum,
-    shellRowsAmountStr,
+    shellAnzahlCharsPerLineStr,
     stext,
     text,
     warBefehl,
@@ -595,7 +597,7 @@ def PromptGrosseAusgabe(
             rangesBruecheDictReverse,
             stext,
         ) = bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_)
-        x("v236g", [stext, EsGabzahlenAngaben, c])
+        # x("v236g", [stext, EsGabzahlenAngaben, c])
     if "mulpri" in stext or "p" in stext:
         stext += ["multis", "prim"]
     if "--art=bbcode" in stext and "reta" == stext[0]:
@@ -646,7 +648,7 @@ def PromptGrosseAusgabe(
         warBefehl = True
         import reta
 
-        reta.Program(stext, int(shellRowsAmountStr) - 2)
+        reta.Program(stext, int(shellAnzahlCharsPerLineStr) - 2)
 
     if len(bruch_GanzZahlReziproke) > 0 and textHatZiffer(bruch_GanzZahlReziproke):
         zeiln3 = "--vorhervonausschnitt=" + bruch_GanzZahlReziproke
@@ -656,7 +658,7 @@ def PromptGrosseAusgabe(
         zeiln2 = ""
     if bedingungZahl:
         cneu = str(c).strip()
-        x("890ßfvsdwer", [cneu, textHatZiffer(cneu)])
+        # x("890ßfvsdwer", [cneu, textHatZiffer(cneu)])
         if textHatZiffer(cneu):
             if "einzeln" not in stext and (
                 ("vielfache" in stext)
@@ -692,7 +694,7 @@ def PromptGrosseAusgabe(
                 zeiln2,
                 "-spalten",
                 "--galaxie=thomas",
-                "--breite=" + str(int(shellRowsAmountStr) - 2),
+                "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=2",
                 *[
@@ -707,11 +709,11 @@ def PromptGrosseAusgabe(
                 print(" ".join(kette))
             reta.Program(
                 kette,
-                int(shellRowsAmountStr),
+                int(shellAnzahlCharsPerLineStr),
             )
 
     # if bedingungZahl or bedingungBrueche:
-    x("90ß234wrfn", [zeiln1, zeiln2])
+    # x("90ß234wrfn", [zeiln1, zeiln2])
     if fullBlockIsZahlenbereichAndBruch and (bedingungZahl or bedingungBrueche):
         if len({"absicht", "absichten", "motiv", "motive"} & set(stext)) > 0 or (
             (("a" in stext) != ("mo" in stext))
@@ -731,7 +733,7 @@ def PromptGrosseAusgabe(
                     zeiln2,
                     "-spalten",
                     "--menschliches=motivation",
-                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                    "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1",
                     *[
@@ -750,7 +752,7 @@ def PromptGrosseAusgabe(
                     print(" ".join(kette))
                 reta.Program(
                     kette,
-                    int(shellRowsAmountStr),
+                    int(shellAnzahlCharsPerLineStr),
                 )
             # x("9vnw3dfg345", bruch_GanzZahlReziproke)
             if (
@@ -767,7 +769,7 @@ def PromptGrosseAusgabe(
                     zeiln2,
                     "-spalten",
                     "--menschliches=motivation",
-                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                    "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=3",
                     *[
@@ -785,7 +787,7 @@ def PromptGrosseAusgabe(
                     print(" ".join(kette))
                 reta.Program(
                     kette,
-                    int(shellRowsAmountStr),
+                    int(shellAnzahlCharsPerLineStr),
                 )
 
             if len(rangesBruecheDict) > 0:
@@ -801,7 +803,7 @@ def PromptGrosseAusgabe(
                         "--vorhervonausschnitt=" + hierBereich,
                         "-spalten",
                         "--gebrochengalaxie=" + str(nenner),
-                        "--breite=" + str(int(shellRowsAmountStr) - 2),
+                        "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
                         "-kombination",
                         "-ausgabe",
                         "--spaltenreihenfolgeundnurdiese=2",
@@ -820,11 +822,11 @@ def PromptGrosseAusgabe(
                         print(" ".join(kette))
                     reta.Program(
                         kette,
-                        int(shellRowsAmountStr),
+                        int(shellAnzahlCharsPerLineStr),
                     )
             elif len(rangesBruecheDictReverse) > 0:
                 for nenner, zaehler in rangesBruecheDictReverse.items():
-                    x("346dfg", rangesBruecheDictReverse)
+                    # x("346dfg", rangesBruecheDictReverse)
                     import reta
 
                     # zaehler = [s for s in zaehler if s]
@@ -836,7 +838,7 @@ def PromptGrosseAusgabe(
                         "--vorhervonausschnitt=" + hierBereich,
                         "-spalten",
                         "--gebrochengalaxie=" + str(nenner),
-                        "--breite=" + str(int(shellRowsAmountStr) - 2),
+                        "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
                         "-kombination",
                         "-ausgabe",
                         "--spaltenreihenfolgeundnurdiese=1",
@@ -855,7 +857,7 @@ def PromptGrosseAusgabe(
                         print(" ".join(kette))
                     reta.Program(
                         kette,
-                        int(shellRowsAmountStr),
+                        int(shellAnzahlCharsPerLineStr),
                     )
 
         eigN, eigR = [], []
@@ -877,7 +879,7 @@ def PromptGrosseAusgabe(
                     zeiln2,
                     "-spalten",
                     "--konzept=" + ",".join(eigN),
-                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                    "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
                     "-ausgabe",
                     *[
                         "--keineleereninhalte"
@@ -894,7 +896,7 @@ def PromptGrosseAusgabe(
                     print(" ".join(kette))
                 reta.Program(
                     kette,
-                    int(shellRowsAmountStr),
+                    int(shellAnzahlCharsPerLineStr),
                 )
 
         if len(eigR) > 0:
@@ -909,7 +911,7 @@ def PromptGrosseAusgabe(
                     zeiln2,
                     "-spalten",
                     "--konzept2=" + ",".join(eigR),
-                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                    "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
                     "-ausgabe",
                     *[
                         "--keineleereninhalte"
@@ -926,7 +928,7 @@ def PromptGrosseAusgabe(
                     print(" ".join(kette))
                 reta.Program(
                     kette,
-                    int(shellRowsAmountStr),
+                    int(shellAnzahlCharsPerLineStr),
                 )
 
         if len({"universum"} & set(stext)) > 0 or (
@@ -943,7 +945,7 @@ def PromptGrosseAusgabe(
                     zeiln2,
                     "-spalten",
                     "--universum=transzendentalien,komplexitaet,ontologie",
-                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                    "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1,3,4",
                     *[
@@ -961,7 +963,7 @@ def PromptGrosseAusgabe(
                     print(" ".join(kette))
                 reta.Program(
                     kette,
-                    int(shellRowsAmountStr),
+                    int(shellAnzahlCharsPerLineStr),
                 )
 
             if (
@@ -979,7 +981,7 @@ def PromptGrosseAusgabe(
                     zeiln2,
                     "-spalten",
                     "--universum=transzendentaliereziproke",
-                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                    "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1",
                     *[
@@ -997,7 +999,7 @@ def PromptGrosseAusgabe(
                     print(" ".join(kette))
                 reta.Program(
                     kette,
-                    int(shellRowsAmountStr),
+                    int(shellAnzahlCharsPerLineStr),
                 )
 
             if len(rangesBruecheDict) > 0:
@@ -1013,7 +1015,7 @@ def PromptGrosseAusgabe(
                         "--vorhervonausschnitt=" + hierBereich,
                         "-spalten",
                         "--gebrochenuniversum=" + str(nenner),
-                        "--breite=" + str(int(shellRowsAmountStr) - 2),
+                        "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
                         "-kombination",
                         "-ausgabe",
                         "--spaltenreihenfolgeundnurdiese=2",
@@ -1032,7 +1034,7 @@ def PromptGrosseAusgabe(
                         print(" ".join(kette))
                     reta.Program(
                         kette,
-                        int(shellRowsAmountStr),
+                        int(shellAnzahlCharsPerLineStr),
                     )
             elif len(rangesBruecheDictReverse) > 0:
                 for nenner, zaehler in rangesBruecheDictReverse.items():
@@ -1047,7 +1049,7 @@ def PromptGrosseAusgabe(
                         "--vorhervonausschnitt=" + hierBereich,
                         "-spalten",
                         "--gebrochenuniversum=" + str(nenner),
-                        "--breite=" + str(int(shellRowsAmountStr) - 2),
+                        "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
                         "-kombination",
                         "-ausgabe",
                         "--spaltenreihenfolgeundnurdiese=1",
@@ -1066,7 +1068,7 @@ def PromptGrosseAusgabe(
                         print(" ".join(kette))
                     reta.Program(
                         kette,
-                        int(shellRowsAmountStr),
+                        int(shellAnzahlCharsPerLineStr),
                     )
     if bedingungZahl:
 
@@ -1123,7 +1125,7 @@ def PromptGrosseAusgabe(
                 "--bedeutung=gestirn",
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=3,4,5,6",
-                "--breite=" + str(int(shellRowsAmountStr) - 2),
+                "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
                 *[
                     "--keineleereninhalte"
                     if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
@@ -1136,7 +1138,7 @@ def PromptGrosseAusgabe(
                 print(" ".join(kette))
             reta.Program(
                 kette,
-                int(shellRowsAmountStr),
+                int(shellAnzahlCharsPerLineStr),
             )
 
         if len({"procontra"} & set(stext)) > 0:
@@ -1150,7 +1152,7 @@ def PromptGrosseAusgabe(
                 zeiln2,
                 "-spalten",
                 "--procontra=pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit",
-                "--breite=" + str(int(shellRowsAmountStr) - 2),
+                "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
                 "-ausgabe",
                 *[
                     "--keineleereninhalte"
@@ -1164,7 +1166,7 @@ def PromptGrosseAusgabe(
                 print(" ".join(kette))
             reta.Program(
                 kette,
-                int(shellRowsAmountStr),
+                int(shellAnzahlCharsPerLineStr),
             )
         if len({"modulo"} & set(stext)) > 0:
             warBefehl = True
@@ -1180,7 +1182,7 @@ def PromptGrosseAusgabe(
                 zeiln2,
                 "-spalten",
                 "--alles",
-                "--breite=" + str(int(shellRowsAmountStr) - 2),
+                "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
                 "-ausgabe",
                 *[
                     "--keineleereninhalte"
@@ -1194,7 +1196,7 @@ def PromptGrosseAusgabe(
                 print(" ".join(kette))
             reta.Program(
                 kette,
-                int(shellRowsAmountStr),
+                int(shellAnzahlCharsPerLineStr),
             )
 
         if len({"primzahlkreuz"} & set(stext)) > 0:
@@ -1208,7 +1210,7 @@ def PromptGrosseAusgabe(
                 anotherOberesMaximum(c, 1028),
                 "-spalten",
                 "--bedeutung=primzahlkreuz",
-                "--breite=" + str(int(shellRowsAmountStr) - 2),
+                "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
                 "-ausgabe",
                 *[
                     "--keineleereninhalte"
@@ -1222,7 +1224,7 @@ def PromptGrosseAusgabe(
                 print(" ".join(kette))
             reta.Program(
                 kette,
-                int(shellRowsAmountStr),
+                int(shellAnzahlCharsPerLineStr),
             )
 
         if (len({"richtung"} & set(stext)) > 0) or (
@@ -1238,7 +1240,7 @@ def PromptGrosseAusgabe(
                 zeiln2,
                 "-spalten",
                 "--primzahlwirkung=Galaxieabsicht",
-                "--breite=" + str(int(shellRowsAmountStr) - 2),
+                "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
                 "-ausgabe",
                 *[
                     "--keineleereninhalte"
@@ -1252,7 +1254,7 @@ def PromptGrosseAusgabe(
                 print(" ".join(kette))
             reta.Program(
                 kette,
-                int(shellRowsAmountStr),
+                int(shellAnzahlCharsPerLineStr),
             )
 
         if (
@@ -1277,7 +1279,7 @@ def PromptGrosseAusgabe(
                     zeiln2,
                     "-spalten",
                     "--grundstrukturen=" + grundstruk,
-                    "--breite=" + str(int(shellRowsAmountStr) - 2),
+                    "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
                     "-ausgabe",
                     *[
                         "--keineleereninhalte"
@@ -1294,7 +1296,7 @@ def PromptGrosseAusgabe(
                     print(" ".join(kette))
                 reta.Program(
                     kette,
-                    int(shellRowsAmountStr),
+                    int(shellAnzahlCharsPerLineStr),
                 )
             except:
                 pass
@@ -1364,8 +1366,9 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                 etwaBruch,
                 zahlenAngaben_,
             )
-            alxp(bruchBereichsAngaben)
-            x("c02d", zahlenAngaben_)
+            # alxp(bruchBereichsAngaben)
+            #
+            # x("c02d", zahlenAngaben_)
             if etwaAllTrue:
                 fullBlockIsZahlenbereichAndBruch = (
                     fullBlockIsZahlenbereichAndBruch
@@ -1373,7 +1376,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                 )
 
         if fullBlockIsZahlenbereichAndBruch:
-            x("9c2m", bruchRanges)
+            # x("9c2m", bruchRanges)
             for bruchBereichsAngabe, bruchRange in zip(
                 bruchBereichsAngaben, bruchRanges
             ):
@@ -1404,7 +1407,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                     Minusse[tuple(bruchRange)] = minusHier
                     if len(bruchRangeOhne1) > 0:
                         if minusHier:
-                            x(":_", bruchBereichsAngabe)
+                            # x(":_", bruchBereichsAngabe)
                             try:
                                 bruch_KeinGanzZahlReziprokeAbzug[bruchRangeOhne1] += [
                                     bruchBereichsAngabe
@@ -1420,7 +1423,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                                     bruchBereichsAngabe[:1] == "v"
                                 ]
                         else:
-                            x(":<4", bruchBereichsAngabe)
+                            # x(":<4", bruchBereichsAngabe)
                             try:
                                 bruch_KeinGanzZahlReziproke[bruchRangeOhne1] += [
                                     neuerBereich
@@ -1441,7 +1444,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                         EsGabzahlenAngaben = True
                         zahlenAngaben_mehrere += [neueRange]
         zahlenAngaben_mehrere += zahlenAngaben_
-    x("0c83jd", [bruch_KeinGanzZahlReziproke, pfaue])
+    # x("0c83jd", [bruch_KeinGanzZahlReziproke, pfaue])
     try:
         EsGabzahlenAngaben
     except UnboundLocalError:
@@ -1474,7 +1477,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                     bdNeu |= {rechnung}
                     i += 1
                     rechnung = i * bDazu
-        x("23efj90", bruch_GanzZahlReziprokeAbzug)
+        # x("23efj90", bruch_GanzZahlReziprokeAbzug)
         for bDazu in bruch_GanzZahlReziprokeAbzug:
             if bDazu[:1] == "v":
                 bDazu = bDazu[1:]
@@ -1484,7 +1487,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                 i = 1
                 rechnung = i * bDazu
                 while rechnung < retaProgram.tables.hoechsteZeile[1024]:
-                    x("999", [rechnung, bdNeu])
+                    # x("999", [rechnung, bdNeu])
                     try:
                         bdNeu -= {rechnung}
                         i += 1
@@ -1492,8 +1495,8 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                     except:
                         pass
         bruch_GanzZahlReziproke = ",".join((str(b) for b in bdNeu))
-        x("43efj94", bruch_GanzZahlReziproke)
-        x("ganz", bruch_GanzZahlReziproke)
+        # x("43efj94", bruch_GanzZahlReziproke)
+        # x("ganz", bruch_GanzZahlReziproke)
         # if len(bruch_GanzZahlReziproke) > 0:
         #    bruch_GanzZahlReziproke2 = set()
         #    x("cn29kd", bruch_GanzZahlReziproke)
@@ -1680,20 +1683,20 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                 )
             )
 
-        x("23490sdfjkl", [bruch_GanzZahlReziproke, bruch_GanzZahlReziprokeAbzug])
+        # x("23490sdfjkl", [bruch_GanzZahlReziproke, bruch_GanzZahlReziprokeAbzug])
         bruchRanges2 = list(set(bruchRangeNeu) - set(bruchRangeNeuAbzug))
         bruchDict = {}
-        alxp(
-            "tzh__ {}:{}".format(
-                bruch_KeinGanzZahlReziproke, bruch_KeinGanzZahlReziprokeAbzug
-            )
-        )
-        x("0c83jd", [bruch_KeinGanzZahlReziproke, pfaue])
+        # alxp(
+        #    "tzh__ {}:{}".format(
+        #        bruch_KeinGanzZahlReziproke, bruch_KeinGanzZahlReziprokeAbzug
+        #    )
+        # )
+        # x("0c83jd", [bruch_KeinGanzZahlReziproke, pfaue])
         for ((bruchRange, bruch_KeinGanzZahlReziprok_), pfauList) in zip(
             bruch_KeinGanzZahlReziproke.items(), pfaue.values()
         ):
             bruch_KeinGanzZahlReziprok_2 = set()
-            x("nixda ", [pfauList, bruch_KeinGanzZahlReziprok_])
+            # x("nixda ", [pfauList, bruch_KeinGanzZahlReziprok_])
             for pfau, nenners in zip(pfauList, bruch_KeinGanzZahlReziprok_):
                 if pfau:
                     nenners = BereichToNumbers2(nenners)
@@ -1704,19 +1707,19 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                             bruch_KeinGanzZahlReziprok_2 |= {str(rechnung)}
                             i += 1
                             rechnung = i * int(nenner)
-                    x("hui", bruch_KeinGanzZahlReziprok_2)
+                    # x("hui", bruch_KeinGanzZahlReziprok_2)
                 else:
                     bruch_KeinGanzZahlReziprok_2 |= set(nenners.split(","))
-                    x("hop", bruch_KeinGanzZahlReziprok_2)
+                    # x("hop", bruch_KeinGanzZahlReziprok_2)
             bruch_KeinGanzZahlReziprok_ = ",".join(bruch_KeinGanzZahlReziprok_2)
             for rangePunkt in bruchRange:
                 try:
                     bruchDict[rangePunkt] |= {bruch_KeinGanzZahlReziprok_}
                 except KeyError:
-                    alxp(rangePunkt)
-                    alxp(bruch_KeinGanzZahlReziprok_)
+                    # alxp(rangePunkt)
+                    # alxp(bruch_KeinGanzZahlReziprok_)
                     bruchDict[rangePunkt] = {bruch_KeinGanzZahlReziprok_}
-                x("cn29d", [bruchDict, bruch_KeinGanzZahlReziprok_])
+                # x("cn29d", [bruchDict, bruch_KeinGanzZahlReziprok_])
 
                 for (
                     bruchRangeA,
@@ -1727,14 +1730,14 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                     )
                     for rangePunktA in bruchRangeA:
                         if rangePunkt == rangePunktA:
-                            x(
-                                "brt356",
-                                [
-                                    rangePunkt,
-                                    bruch_KeinGanzZahlReziprok_A,
-                                    bruch_KeinGanzZahlReziprok_,
-                                ],
-                            )
+                            # x(
+                            #    "brt356",
+                            #    [
+                            #        rangePunkt,
+                            #        bruch_KeinGanzZahlReziprok_A,
+                            #        bruch_KeinGanzZahlReziprok_,
+                            #    ],
+                            # )
                             try:
                                 bruchDict[rangePunkt] |= {
                                     bruch_KeinGanzZahlReziprok_,
@@ -1745,12 +1748,12 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                                     bruch_KeinGanzZahlReziprok_,
                                     bruch_KeinGanzZahlReziprok_A,
                                 }
-        x("dfgh", bruchDict)
+        # x("dfgh", bruchDict)
 
         rangesBruecheDict = bruchDict
         # for key, value in bruchDict.items():
         #    rangesBruecheDict[key] = ",".join(value)
-        x("2345890", rangesBruecheDict)
+        # x("2345890", rangesBruecheDict)
     # bereicheVorherBestimmtListofSets = []
     rangesBruecheDict2 = {}
     bereicheVorherBestimmtSet = set()
@@ -1764,7 +1767,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
         rangesBruecheDict2[key] = list(bereicheVorherBestimmtSet2)
     valueLenSum += len(bereicheVorherBestimmtSet)
     dictLen = len(rangesBruecheDict)
-    x("cv5l", rangesBruecheDict)
+    # x("cv5l", rangesBruecheDict)
     if dictLen != 0:
         avg = valueLenSum / dictLen
         # print(avg)
@@ -1810,8 +1813,8 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
     #        rangesBruecheDictReverse,
     #    )
     # )
-    x("sd230nmys", [rangesBruecheDict, rangesBruecheDictReverse])
-    x("RRRRsd230nmys", bruch_GanzZahlReziproke)
+    # x("sd230nmys", [rangesBruecheDict, rangesBruecheDictReverse])
+    # x("RRRRsd230nmys", bruch_GanzZahlReziproke)
     return (
         bruch_GanzZahlReziproke,
         c,
@@ -2033,16 +2036,14 @@ def PromptAllesVorGroesserSchleife():
     )
     text: Optional[str] = None
 
-    if platform.system() != "Windows":
-        try:
-            ColumnsRowsAmount, shellRowsAmountStr = (
-                os.popen("stty size", "r").read().split()
-            )  # Wie viele Zeilen und Spalten hat die Shell ?
-        except Exception:
-            ColumnsRowsAmount, shellRowsAmountStr = "80", "80"
-    else:
-        SiZe = os.get_terminal_size()
-        ColumnsRowsAmount, shellRowsAmountStr = SiZe.columns, SiZe.lines
+    # if platform.system() != "Windows":
+    #    try:
+    #        ColumnsRowsAmount, shellAnzahlCharsPerLineStr = (
+    #            os.popen("stty size", "r").read().split()
+    #        )  # Wie viele Zeilen und Spalten hat die Shell ?
+    #    except Exception:
+    #        ColumnsRowsAmount, shellAnzahlCharsPerLineStr = "80", "80"
+    # else:
     promptMode = PromptModus.normal
     promptMode2 = PromptModus.normal
     warBefehl: bool
@@ -2062,7 +2063,6 @@ def PromptAllesVorGroesserSchleife():
         platzhalter,
         promptDavorDict,
         promptMode,
-        shellRowsAmountStr,
         startpunkt1,
         text,
         nurEinBefehl,

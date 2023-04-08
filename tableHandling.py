@@ -172,8 +172,7 @@ class Tables:
             liste2 += [""]
         return liste1, liste2
 
-    def __init__(self, alternativeShellRowsAmount, hoechstZeil=None):
-        global shellRowsAmount
+    def __init__(self, hoechstZeil=None):
         if hoechstZeil is None:
             self.__hoechsteZeile = {1024: 1024, 114: 120}
         else:
@@ -183,9 +182,7 @@ class Tables:
         self.rowNumDisplay2rowNumOrig = OrderedDict()
         self.generatedSpaltenParameter = OrderedDict()
         self.generatedSpaltenParameter_Tags = OrderedDict()
-        if alternativeShellRowsAmount is not None:
-            shellRowsAmount = alternativeShellRowsAmount
-        self.getPrepare = Prepare(self, shellRowsAmount, self.hoechsteZeile)
+        self.getPrepare = Prepare(self, self.hoechsteZeile)
         self.getCombis = self.Combi(self)
         self.getConcat = Concat(self)
         self.getOut = self.Output(self)
@@ -319,7 +316,11 @@ class Tables:
             @rtype:
             @return: nichts
             """
-            global output, shellRowsAmount
+            global output, shellRowsAmount, h_de, dic, fill
+            shellRowsAmount, h_de, dic, fill = getTextWrapThings()
+            # x("breite Alt: ", [shellRowsAmount, type(shellRowsAmount)])
+            # shellRowsAmount = os.get_terminal_size().columns
+            # x("breite Neu: ", [shellRowsAmount, type(shellRowsAmount)])
 
             def findMaxCellTextLen(
                 finallyDisplayLines: set, newTable: list, rowsRange: range
@@ -398,6 +399,10 @@ class Tables:
                 if len(self.finallyDisplayLines) > 0 and shellRowsAmount != 0
                 else 0
             )
+            # x(
+            #    "und dann: ",
+            #    [shellRowsAmount, len(str(self.finallyDisplayLines[-1])) + 1],
+            # )
             self.finallyDisplayLines[0] = ""
             lastSubCellIndex = -1
             lastlastSubCellIndex = -2

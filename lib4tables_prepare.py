@@ -94,7 +94,9 @@ def alxwrap(text: str, len_: int):
 
 
 class Prepare:
-    def __init__(self, tables, shellRowsAmount, hoechsteZeile):
+    def __init__(self, tables, hoechsteZeile):
+        global shellRowsAmount, h_de, dic, fill
+        shellRowsAmount, h_de, dic, fill = getTextWrapThings()
         self.tables = tables
         self.hoechsteZeile = tables.hoechsteZeile
         self.originalLinesRange = range(tables.hoechsteZeile[1024] + 4)
@@ -193,18 +195,34 @@ class Prepare:
 
     def setWidth(self, rowToDisplay: int, combiRows1: int = 0) -> int:
         if self.shellRowsAmount == 0:
+            x("_1", 0)
             return 0
         combiRows = combiRows1 if combiRows1 != 0 else len(self.rowsAsNumbers)
         if len(self.rowsAsNumbers) - combiRows < len(self.breiten):
-            breiten: list = self.breiten[len(self.rowsAsNumbers) - combiRows :]
+            x("_2", [len(self.rowsAsNumbers), combiRows, len(self.breiten)])
+            breiten: list = self.breiten[len(self.rowsAsNumbers) - combiRows]
         else:
+            x("_3", [])
             breiten: list = []
         # delta = -1 if not self.nummerierung and combiRows1 != 0 else -1
         delta = -1
+        x(
+            "_4_vorher",
+            [rowToDisplay, delta, len(breiten), rowToDisplay, delta],
+        )
         if rowToDisplay + delta < len(breiten) and rowToDisplay + delta >= 0:
             certaintextwidth = breiten[rowToDisplay + delta]
+            x(
+                "_4",
+                [
+                    certaintextwidth,
+                    [rowToDisplay, delta, len(breiten), rowToDisplay, delta],
+                ],
+            )
         else:
+            x("_5", self.textwidth)
             certaintextwidth = self.textwidth
+        x("setWidth()", certaintextwidth)
         return certaintextwidth
 
     def parametersCmdWithSomeBereich(
@@ -727,6 +745,7 @@ class Prepare:
 
                 rowToDisplay += 1
                 certaintextwidth = self.setWidth(rowToDisplay, combiRows)
+                # x("certaintextwidth", [certaintextwidth, [rowToDisplay, combiRows]])
                 self.certaintextwidth = certaintextwidth
 
                 into = self.cellWork(cell, certaintextwidth)
