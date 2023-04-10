@@ -337,17 +337,6 @@ class Prepare:
         @rtype: set
         @return: Mehrere Bereichsbezeichnugen
         """
-
-        def diffset(wether, a: set, b: set) -> set:
-            if wether:
-                # result = a.difference(b)
-                result = a - b
-                if result is None:
-                    return set()
-                else:
-                    return result
-            return a
-
         numRange -= {0}
 
         def cutset(wether, a: set, b: set) -> set:
@@ -366,47 +355,6 @@ class Prepare:
             numRange = set()
             # return set(self.originalLinesRange)
 
-        if_a_AtAll = False
-        mehrere: list = []
-        # print(paramLines)
-        for condition in paramLines:
-            if "_b_" in condition[:3] and len(condition) > 3:
-                if_a_AtAll = True
-
-                # print("_-_" + condition[3:])
-                mehrere += [condition[3:]]
-                # numRangeYesZ |= BereichToNumbers2(
-                #    condition[3:], True, self.hoechsteZeile[1024]
-                # )
-        # print(",".join(mehrere))
-        if if_a_AtAll:
-            alxp("ja 2")
-            numRange |= BereichToNumbers2(
-                ",".join(mehrere), True, self.hoechsteZeile[1024]
-            )
-            if len(numRange) != 0:
-                x("ja 3", mehrere)
-                mehrere = (",".join(mehrere)).split(",")
-                for eins in mehrere:
-                    ja1, ja2 = eins[:1] == "-", eins[1:2] == "-"
-                    x("ja4", [ja1, ja2, eins])
-                    if ja1 or ja2:
-                        if ja1:
-                            eins = eins[1:]
-                        if ja2:
-                            eins = "v" + eins[2:]
-                        x("eins_: ", eins)
-                        numRange -= BereichToNumbers2(
-                            eins, True, self.hoechsteZeile[1024]
-                        )
-        # x("c230", numRangeYesZ)
-        # alxp(numRangeYesZ)
-
-        x("numRange", numRange)
-        # numRange = cutset(if_a_AtAll, numRange, numRangeYesZ)
-        numRangeYesZ = set()
-        ifZeitAtAll = False
-
         # numRangeYesZ = set()
         if_a_AtAll = False
         mehrere: list = []
@@ -418,15 +366,13 @@ class Prepare:
             if condition[:3] == "_w_":
                 ifTeiler = True
         if if_a_AtAll:
-            alxp("ja 1a")
             numRange |= BereichToNumbers2(
                 ",".join(mehrere), False, self.hoechsteZeile[1024]
             )
             if ifTeiler:
-                numRangeYesZ = teiler(",".join([str(c) for c in numRangeYesZ]))[1]
+                numRange = teiler(",".join([str(c) for c in numRange]))[1]
             if len(numRange) != 0:
                 mehrere = (",".join(mehrere)).split(",")
-                x("ja 3", mehrere)
                 for eins in mehrere:
                     ja1, ja2 = eins[:1] == "-", eins[1:2] == "-"
                     if ja1 or ja2:
@@ -437,11 +383,34 @@ class Prepare:
                         numRange -= BereichToNumbers2(
                             eins, False, self.hoechsteZeile[1024]
                         )
-        x("numRange", numRange)
-        # numRange = cutset(if_a_AtAll, numRange, numRangeYesZ)
+
+        del if_a_AtAll
+        if_b_AtAll = False
+        mehrere = []
+        numRangeYesZ: set = set()
+        for condition in paramLines:
+            if "_b_" in condition[:3] and len(condition) > 3:
+                if_b_AtAll = True
+                mehrere += [condition[3:]]
+        if if_b_AtAll:
+            numRangeYesZ |= BereichToNumbers2(
+                ",".join(mehrere), True, self.hoechsteZeile[1024]
+            )
+            numRange &= numRangeYesZ
+            if len(numRange) != 0:
+                mehrere = (",".join(mehrere)).split(",")
+                for eins in mehrere:
+                    ja1, ja2 = eins[:1] == "-", eins[1:2] == "-"
+                    if ja1 or ja2:
+                        if ja1:
+                            eins = eins[1:]
+                        if ja2:
+                            eins = "v" + eins[2:]
+                        numRange -= BereichToNumbers2(
+                            eins, True, self.hoechsteZeile[1024]
+                        )
         numRangeYesZ = set()
         ifZeitAtAll = False
-
         for condition in paramLines:
             if "=" == condition:
                 ifZeitAtAll = True
