@@ -85,7 +85,7 @@ def returnOnlyParasAsList(textList: str):
 #
 
 
-def grKl(A: set, B: set) -> tuple[set, set]:
+def grKl(A: set, B: set) -> tuple:
     """
     Gibt 2 Mengen zurück: eine Menge aus allem, das größer ist als im ersten Parameter aus dem zweiten Parameter
     und in die zweite Menge kommt alles, das kleiner ist, als in der ersten Menge aus der zweiten Menge
@@ -1841,13 +1841,14 @@ def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, stext, text, warB
             pass
     if len(stext) > 0 and "math" == stext[0]:
         warBefehl = True
-        try:
-            process = subprocess.Popen(
-                ["python3", "-c", "print(" + " ".join(stext[1:]) + ")"]
-            )
-            process.wait()
-        except:
-            pass
+        for st in "".join(stext[1:2]).split(","):
+            try:
+                process = subprocess.Popen(
+                    ["python3", "-c", "print(" + st + ")"]
+                )
+                process.wait()
+            except:
+                pass
     if "loggen" == text:
         warBefehl = True
         loggingSwitch = True
