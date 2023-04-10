@@ -360,12 +360,12 @@ class Prepare:
                     return result
             return a
 
-        for condition in paramLines:
-            if "all" == condition:
-                finallyDisplayLines = set(range(self.hoechsteZeile[1024]))
-                # return set(self.originalLinesRange)
+        if "all" in paramLines:
+            numRange = set(range(self.hoechsteZeile[1024]))
+        else:
+            numRange = set()
+            # return set(self.originalLinesRange)
 
-        numRangeYesZ = set()
         if_a_AtAll = False
         mehrere: list = []
         # print(paramLines)
@@ -380,16 +380,34 @@ class Prepare:
                 # )
         # print(",".join(mehrere))
         if if_a_AtAll:
-            numRangeYesZ |= BereichToNumbers2(
+            alxp("ja 2")
+            numRange |= BereichToNumbers2(
                 ",".join(mehrere), True, self.hoechsteZeile[1024]
             )
+            if len(numRange) != 0:
+                x("ja 3", mehrere)
+                mehrere = (",".join(mehrere)).split(",")
+                for eins in mehrere:
+                    ja1, ja2 = eins[:1] == "-", eins[1:2] == "-"
+                    x("ja4", [ja1, ja2, eins])
+                    if ja1 or ja2:
+                        if ja1:
+                            eins = eins[1:]
+                        if ja2:
+                            eins = "v" + eins[2:]
+                        x("eins_: ", eins)
+                        numRange -= BereichToNumbers2(
+                            eins, True, self.hoechsteZeile[1024]
+                        )
         # x("c230", numRangeYesZ)
+        # alxp(numRangeYesZ)
 
-        numRange = cutset(if_a_AtAll, numRange, numRangeYesZ)
+        x("numRange", numRange)
+        # numRange = cutset(if_a_AtAll, numRange, numRangeYesZ)
         numRangeYesZ = set()
         ifZeitAtAll = False
 
-        numRangeYesZ = set()
+        # numRangeYesZ = set()
         if_a_AtAll = False
         mehrere: list = []
         ifTeiler = False
@@ -400,13 +418,27 @@ class Prepare:
             if condition[:3] == "_w_":
                 ifTeiler = True
         if if_a_AtAll:
-            numRangeYesZ = BereichToNumbers2(
+            alxp("ja 1a")
+            numRange |= BereichToNumbers2(
                 ",".join(mehrere), False, self.hoechsteZeile[1024]
             )
             if ifTeiler:
                 numRangeYesZ = teiler(",".join([str(c) for c in numRangeYesZ]))[1]
-
-        numRange = cutset(if_a_AtAll, numRange, numRangeYesZ)
+            if len(numRange) != 0:
+                mehrere = (",".join(mehrere)).split(",")
+                x("ja 3", mehrere)
+                for eins in mehrere:
+                    ja1, ja2 = eins[:1] == "-", eins[1:2] == "-"
+                    if ja1 or ja2:
+                        if ja1:
+                            eins = eins[1:]
+                        if ja2:
+                            eins = "v" + eins[2:]
+                        numRange -= BereichToNumbers2(
+                            eins, False, self.hoechsteZeile[1024]
+                        )
+        x("numRange", numRange)
+        # numRange = cutset(if_a_AtAll, numRange, numRangeYesZ)
         numRangeYesZ = set()
         ifZeitAtAll = False
 
@@ -476,7 +508,7 @@ class Prepare:
         numRange = cutset(ifTypAtAll, numRange, numRangeYesZ)
 
         # Sonnen über 114 immer entfernen
-        for n in copy(numRange):
+        for n in copy(numRange - {0}):
             if (self.zaehlungen[4][n][0] == []) and (
                 n > self.tables.hoechsteZeile[114]
             ):
