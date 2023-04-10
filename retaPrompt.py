@@ -694,7 +694,7 @@ def PromptGrosseAusgabe(
                 zeiln2,
                 "-spalten",
                 "--galaxie=thomas",
-                "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
+                "--breite=0",
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=2",
                 *[
@@ -733,7 +733,7 @@ def PromptGrosseAusgabe(
                     zeiln2,
                     "-spalten",
                     "--menschliches=motivation",
-                    "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
+                    "--breite=0",
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1",
                     *[
@@ -769,7 +769,7 @@ def PromptGrosseAusgabe(
                     zeiln2,
                     "-spalten",
                     "--menschliches=motivation",
-                    "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
+                    "--breite=0",
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=3",
                     *[
@@ -803,7 +803,7 @@ def PromptGrosseAusgabe(
                         "--vorhervonausschnitt=" + hierBereich,
                         "-spalten",
                         "--gebrochengalaxie=" + str(nenner),
-                        "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
+                        "--breite=0",
                         "-kombination",
                         "-ausgabe",
                         "--spaltenreihenfolgeundnurdiese=2",
@@ -838,7 +838,7 @@ def PromptGrosseAusgabe(
                         "--vorhervonausschnitt=" + hierBereich,
                         "-spalten",
                         "--gebrochengalaxie=" + str(nenner),
-                        "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
+                        "--breite=0",
                         "-kombination",
                         "-ausgabe",
                         "--spaltenreihenfolgeundnurdiese=1",
@@ -879,7 +879,7 @@ def PromptGrosseAusgabe(
                     zeiln2,
                     "-spalten",
                     "--konzept=" + ",".join(eigN),
-                    "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
+                    "--breite=0",
                     "-ausgabe",
                     *[
                         "--keineleereninhalte"
@@ -911,7 +911,7 @@ def PromptGrosseAusgabe(
                     zeiln2,
                     "-spalten",
                     "--konzept2=" + ",".join(eigR),
-                    "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
+                    "--breite=0",
                     "-ausgabe",
                     *[
                         "--keineleereninhalte"
@@ -945,7 +945,7 @@ def PromptGrosseAusgabe(
                     zeiln2,
                     "-spalten",
                     "--universum=transzendentalien,komplexitaet,ontologie",
-                    "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
+                    "--breite=0",
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1,3,4",
                     *[
@@ -981,7 +981,7 @@ def PromptGrosseAusgabe(
                     zeiln2,
                     "-spalten",
                     "--universum=transzendentaliereziproke",
-                    "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
+                    "--breite=0",
                     "-ausgabe",
                     "--spaltenreihenfolgeundnurdiese=1",
                     *[
@@ -1015,7 +1015,7 @@ def PromptGrosseAusgabe(
                         "--vorhervonausschnitt=" + hierBereich,
                         "-spalten",
                         "--gebrochenuniversum=" + str(nenner),
-                        "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
+                        "--breite=0",
                         "-kombination",
                         "-ausgabe",
                         "--spaltenreihenfolgeundnurdiese=2",
@@ -1049,7 +1049,7 @@ def PromptGrosseAusgabe(
                         "--vorhervonausschnitt=" + hierBereich,
                         "-spalten",
                         "--gebrochenuniversum=" + str(nenner),
-                        "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
+                        "--breite=0",
                         "-kombination",
                         "-ausgabe",
                         "--spaltenreihenfolgeundnurdiese=1",
@@ -1125,7 +1125,7 @@ def PromptGrosseAusgabe(
                 "--bedeutung=gestirn",
                 "-ausgabe",
                 "--spaltenreihenfolgeundnurdiese=3,4,5,6",
-                "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
+                "--breite=0",
                 *[
                     "--keineleereninhalte"
                     if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
@@ -1152,7 +1152,7 @@ def PromptGrosseAusgabe(
                 zeiln2,
                 "-spalten",
                 "--procontra=pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit",
-                "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
+                "--breite=0",
                 "-ausgabe",
                 *[
                     "--keineleereninhalte"
@@ -1182,7 +1182,7 @@ def PromptGrosseAusgabe(
                 zeiln2,
                 "-spalten",
                 "--alles",
-                "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
+                "--breite=0",
                 "-ausgabe",
                 *[
                     "--keineleereninhalte"
@@ -1210,7 +1210,7 @@ def PromptGrosseAusgabe(
                 anotherOberesMaximum(c, 1028),
                 "-spalten",
                 "--bedeutung=primzahlkreuz",
-                "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
+                "--breite=0",
                 "-ausgabe",
                 *[
                     "--keineleereninhalte"
@@ -1240,7 +1240,7 @@ def PromptGrosseAusgabe(
                 zeiln2,
                 "-spalten",
                 "--primzahlwirkung=Galaxieabsicht",
-                "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
+                "--breite=0",
                 "-ausgabe",
                 *[
                     "--keineleereninhalte"
@@ -1279,7 +1279,7 @@ def PromptGrosseAusgabe(
                     zeiln2,
                     "-spalten",
                     "--grundstrukturen=" + grundstruk,
-                    "--breite=" + str(int(shellAnzahlCharsPerLineStr) - 2),
+                    "--breite=0",
                     "-ausgabe",
                     *[
                         "--keineleereninhalte"
@@ -2014,13 +2014,15 @@ def PromptAllesVorGroesserSchleife():
     if "-debug" in sys.argv:
         retaProgram.propInfoLog = True
         if "-e" not in sys.argv:
-            alxp("Debug Log Aktiviert")
+            alxp("Debug Log aktiviert.")
+
     if "-befehl" in sys.argv:
         von = sys.argv.index("-befehl") + 1
         nurEinBefehl = sys.argv[von:]
     else:
         nurEinBefehl = []
     if "-e" in sys.argv:
+        alxp("Debug Log aktiviert.")
         immerEbefehlJa = True
     else:
         immerEbefehlJa = False

@@ -106,7 +106,8 @@ class Tables:
 
     @breitenn.setter
     def breitenn(self, value: list):
-        global shellRowsAmount
+        # global shellRowsAmount
+        shellRowsAmount, _, _, _ = getTextWrapThings()
         for i, v in enumerate(copy(value)):
             value[i] = (
                 v
@@ -141,6 +142,12 @@ class Tables:
 
     @textWidth.setter
     def textWidth(self, value: int):
+        shellRowsAmount, _, _, _ = getTextWrapThings()
+        alxp(
+            "shellRowsAmount war im Setter von Tables() auf {} gesetzt und wird jetzt überall (3 Klassen) auf {} gesetzt".format(
+                shellRowsAmount,value
+            )
+        )
         value = (
             value
             if (shellRowsAmount > value + 7 or shellRowsAmount == 0)
@@ -153,6 +160,7 @@ class Tables:
         self.getPrepare.textWidth = value
         self.getOut.textWidth = value
         self.textwidth = value
+
 
     @staticmethod
     def fillBoth(liste1, liste2) -> Iterable[Union[list, list]]:
