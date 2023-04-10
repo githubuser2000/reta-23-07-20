@@ -168,7 +168,7 @@ def getTextWrapThings(maxLen=None) -> tuple:
     shellBreite = os.get_terminal_size().columns
     # shellRowsAmount = int(shellRowsAmountStr) if maxLen is None else int(maxLen)
     # shellBreite = int(shellBreite)
-    x("sbreite", shellBreite)
+    # x("sbreite", shellBreite)
 
     return shellBreite, h_de, dic, fill
 

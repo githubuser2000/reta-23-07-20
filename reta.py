@@ -367,11 +367,11 @@ class Program:
 
     def breiteBreitenSysArgvPara(self, cmd, neg) -> bool:
         global shellRowsAmount
-        alxp(
-            "shellRowsAmount war in reta.py wegen dem Setzen der Breite auf {} gesetzt".format(
-                shellRowsAmount
-            )
-        )
+        # alxp(
+        #    "shellRowsAmount war in reta.py wegen dem Setzen der Breite auf {} gesetzt".format(
+        #        shellRowsAmount
+        #    )
+        # )
 
         if cmd[:7] == "breite=":
             shellRowsAmount, _, _, _ = getTextWrapThings()
@@ -387,9 +387,9 @@ class Program:
                     shellRowsAmount = 0
                 elif shellRowsAmount > 7 and breite > shellRowsAmount - 7:
                     breite = shellRowsAmount - 7
-                alxp(
-                    "X1 textW von {} in {} ändern".format(self.tables.textWidth, breite)
-                )
+                # alxp(
+                #    "X1 textW von {} in {} ändern".format(self.tables.textWidth, breite)
+                # )
                 try:
                     self.tables.textWidth = (
                         breite

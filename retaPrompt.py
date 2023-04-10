@@ -465,7 +465,7 @@ def PromptScope():
     while len(set(text.split()) & set(befehleBeenden)) == 0:
         SiZe = os.get_terminal_size()
         shellAnzahlCharsPerLineStr = str(SiZe.columns)
-        x("breite: ", shellAnzahlCharsPerLineStr)
+        # x("breite: ", shellAnzahlCharsPerLineStr)
         warBefehl = False
         promptModeLast = promptMode
 
