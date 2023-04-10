@@ -154,7 +154,7 @@ class Concat:
     ) -> tuple:
         self.relitable = relitable
         if set(rowsAsNumbers) >= {242}:
-            alxp(rowsAsNumbers)
+
             rowsAsNumbers |= {len(self.relitable[0])}
             self.tables.generatedSpaltenParameter_Tags[
                 len(rowsAsNumbers) - 1

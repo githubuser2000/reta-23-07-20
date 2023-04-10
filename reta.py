@@ -367,8 +367,14 @@ class Program:
 
     def breiteBreitenSysArgvPara(self, cmd, neg) -> bool:
         global shellRowsAmount
+        # alxp(
+        #    "shellRowsAmount war in reta.py wegen dem Setzen der Breite auf {} gesetzt".format(
+        #        shellRowsAmount
+        #    )
+        # )
 
         if cmd[:7] == "breite=":
+            shellRowsAmount, _, _, _ = getTextWrapThings()
             if self.breiteHasBeenOnceZero:
                 shellRowsAmount = 0
                 self.tables.textWidth = 0
@@ -381,7 +387,17 @@ class Program:
                     shellRowsAmount = 0
                 elif shellRowsAmount > 7 and breite > shellRowsAmount - 7:
                     breite = shellRowsAmount - 7
-                self.tables.textWidth = breite
+                # alxp(
+                #    "X1 textW von {} in {} ändern".format(self.tables.textWidth, breite)
+                # )
+                try:
+                    self.tables.textWidth = (
+                        breite
+                        if breite > self.tables.textWidth
+                        else self.tables.textWidth
+                    )
+                except:
+                    self.tables.textWidth = breite
                 self.breiteORbreiten = True
             return True
         elif cmd[:8] == "breiten=" and len(neg) == 0:
@@ -3674,7 +3690,10 @@ class Program:
                         infoLog = True
                     elif arg[1:] in ["h", "help"] and neg == "":
                         self.helpPage()
+
         if not self.tables.getOut.oneTable:
+            shellRowsAmount, _, _, _ = getTextWrapThings()
+
             self.tables.textWidth = (
                 self.tables.textWidth
                 if shellRowsAmount > self.tables.textWidth + 7 or shellRowsAmount <= 0
@@ -4102,7 +4121,7 @@ class Program:
         global Tables, infoLog
         self.argv = argv
         self.allesParameters = 0
-        self.tables = Tables(alternativeShellRowsAmount, self.oberesMaximum2(argv[1:]))
+        self.tables = Tables(self.oberesMaximum2(argv[1:]))
 
         self.breiteHasBeenOnceZero: bool = False
         self.obZeilenBereicheAngegeben = False

@@ -334,6 +334,8 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, stext2, textD
                             ]
                             if "/" in stext[0]:
                                 textDazu += ["u"]
+                            if "-e" in sys.argv:
+                                textDazu += ["-ausgabe", "--keineueberschriften"]
         else:
             textDazu += [s_]
         if len(textDazu) > 0:

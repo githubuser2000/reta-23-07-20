@@ -149,26 +149,28 @@ def getTextWrapThings(maxLen=None) -> tuple:
             lang="de_DE"
         )  # Bibliothek für Worteilumbruch bei Zeilenumbruch
 
-        if platform.system() != "Windows":
-            try:
-                ColumnsRowsAmount, shellRowsAmountStr = (
-                    os.popen("stty size", "r").read().split()
-                )  # Wie viele Zeilen und Spalten hat die Shell ?
-            except Exception:
-                ColumnsRowsAmount, shellRowsAmountStr = "80", "80"
-        else:
-            SiZe = os.get_terminal_size()
-            ColumnsRowsAmount, shellRowsAmountStr = SiZe.columns, SiZe.lines
+        # if platform.system() != "Windows":
+        #    try:
+        #        ColumnsRowsAmount, shellRowsAmountStr = (
+        #            os.popen("stty size", "r").read().split()
+        #        )  # Wie viele Zeilen und Spalten hat die Shell ?
+        #    except Exception:
+        #        ColumnsRowsAmount, shellRowsAmountStr = "80", "80"
+        # else:
+        SiZe = os.get_terminal_size()
+        ColumnsRowsAmount, shellRowsAmountStr = SiZe.columns, SiZe.lines
 
     else:
         html2text = None
         pyphen = None
         Hyphenator = None
         fill = None
-        SiZe = os.get_terminal_size()
-        ColumnsRowsAmount, shellRowsAmountStr = SiZe.columns, SiZe.lines
-    shellRowsAmount = int(shellRowsAmountStr) if maxLen is None else int(maxLen)
-    return shellRowsAmount, h_de, dic, fill
+    shellBreite = os.get_terminal_size().columns
+    # shellRowsAmount = int(shellRowsAmountStr) if maxLen is None else int(maxLen)
+    # shellBreite = int(shellBreite)
+    # x("sbreite", shellBreite)
+
+    return shellBreite, h_de, dic, fill
 
 
 def x(text1, text):
@@ -463,7 +465,7 @@ def BereichToNumbers2_EinBereich_Menge_nichtVielfache(
 def BereichToNumbers2_EinBereich_Menge_vielfache(BereichCouple, around, maxZahl, menge):
     i = 0
     if len(around) == 0 or len(set(around) - {0}) == 0:
-        x("9hb3", set(around) & {0})
+        # x("9hb3", set(around) & {0})
         while all([int(BereichCouple[0]) * i < maxZahl - a for a in around]):
             i += 1
             for number in range(int(BereichCouple[0]), int(BereichCouple[1]) + 1):

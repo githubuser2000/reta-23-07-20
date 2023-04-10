@@ -73,6 +73,7 @@
   + Um bessere Farben für die html zu finden, sollte ich einen screenshot davon machen und diesen mit gimp so bearbeiten, dass ich exakt eine Farbe in eine andere ändere. In Gimp kann ich viele Farben ausprobieren.
 + retaPrompt skriptingfähig machen: nein, das muss nicht bald sein
 ****  2.1. minder wichtig, aber geht schnell:
++ --nocolor auch für html und bbcode als option umsetzen
 + --parameter=* könnte alle Unter-Parameter meinen, als Kommandozeilenargument. Dürfte nicht so lange dauern einprogrammiert zu werden
 + minder wichtig, aber geht schnell: Multiplikation aus 3 Faktoren, oder mehr, statt nur aus 2:
   python print(str((1,*(2,3))))
@@ -223,4 +224,3 @@ Sollte ich das umsetzen wollen, dann sollte ich unbedingt einen neuen eigenen Br
 + Oder statische Klassen, statt Instanzen verwenden.
 + Aufhören damit, weg machen: mehrfache Art gleichzeitig Variablen zu übergeben und zu referenzieren: Das ist liederlich, unordentlich.
 + Vielleicht mal besser doch Clean Code umsetzen, obwohl mir das den Spaß wegnimmt.
-
