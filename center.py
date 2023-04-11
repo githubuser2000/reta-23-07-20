@@ -157,18 +157,27 @@ def getTextWrapThings(maxLen=None) -> tuple:
         #    except Exception:
         #        ColumnsRowsAmount, shellRowsAmountStr = "80", "80"
         # else:
-        SiZe = os.get_terminal_size()
-        ColumnsRowsAmount, shellRowsAmountStr = SiZe.columns, SiZe.lines
+        try:
+            SiZe = os.get_terminal_size()
+            ColumnsRowsAmount, shellRowsAmountStr = SiZe.columns, SiZe.lines
+        except OSError:
+            try:
+                ColumnsRowsAmount, shellRowsAmountStr = (
+                    os.popen("stty size", "r").read().split()
+                )  # Wie viele Zeilen und Spalten hat die Shell ?
+            except Exception:
+                ColumnsRowsAmount = "80"
 
     else:
         html2text = None
         pyphen = None
         Hyphenator = None
         fill = None
-    shellBreite = os.get_terminal_size().columns
-    # shellRowsAmount = int(shellRowsAmountStr) if maxLen is None else int(maxLen)
-    # shellBreite = int(shellBreite)
-    # x("sbreite", shellBreite)
+    # shellBreite = os.get_terminal_size().columns
+    shellBreite = int(ColumnsRowsAmount)
+    ## shellRowsAmount = int(shellRowsAmountStr) if maxLen is None else int(maxLen)
+    ## shellBreite = int(shellBreite)
+    ## x("sbreite", shellBreite)
 
     return shellBreite, h_de, dic, fill
 
