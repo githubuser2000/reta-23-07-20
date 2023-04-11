@@ -255,10 +255,10 @@ class Prepare:
         """
         results = set()
         if keineNegBeruecksichtigung:
-            alxp("JAAAAAA")
+            # alxp("JAAAAAA")
             if isZeilenAngabe(MehrereBereiche):
                 results.add("".join(["_", symbol, "_", MehrereBereiche]))
-                x("JAAAAAA DOCH", results)
+                # x("JAAAAAA DOCH", results)
         else:
             for EinBereich in MehrereBereiche.split(","):
                 if (
@@ -451,22 +451,30 @@ class Prepare:
 
         numRangeYesZ = set()
         ifZeitAtAll = False
+        # x("AJA", paramLines)
         for condition in paramLines:
             if "=" == condition:
                 ifZeitAtAll = True
-                numRangeYesZ.add(10)
+                numRangeYesZ |= {10}
             elif "<" == condition:
                 ifZeitAtAll = True
-                for n in numRange:
-                    if n < 10:
-                        numRangeYesZ.add(n)
+                numRangeYesZ |= set(range(1, 10))
             elif ">" == condition:
                 ifZeitAtAll = True
-                for n in numRange:
-                    if n > 10:
-                        numRangeYesZ.add(n)
-
-        numRange = cutset(ifZeitAtAll, numRange, numRangeYesZ)
+                numRangeYesZ |= set(range(11, self.hoechsteZeile[1024]))
+        if ifZeitAtAll:
+            if (
+                len(numRange) == 0
+                and not if_b_AtAll
+                and not if_a_AtAll
+                and "all" not in paramLines
+                and len(numRangeYesZ) == 0
+            ):
+                numRange = set(range(1, self.hoechsteZeile[1024]))
+            if if_a_AtAll or "all" in paramLines or if_b_AtAll:
+                numRange &= numRangeYesZ
+            else:
+                numRange |= numRangeYesZ
 
         numRangeYesZ = set()
         ifZaehlungenAtAll = False
