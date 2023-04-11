@@ -3531,11 +3531,13 @@ class Program:
                                 paramLines.add(">")
                     elif arg[2:11] == "zaehlung=":
                         self.obZeilenBereicheAngegeben = True
-                        paramLines |= (
-                            self.tables.getPrepare.parametersCmdWithSomeBereich(
-                                arg[11:], "n", neg
+                        if neg == "":
+                            paramLines |= (
+                                self.tables.getPrepare.parametersCmdWithSomeBereich(
+                                    arg[11:], "n", "", True
+                                )
                             )
-                        )
+                            x("paraLi", paramLines)
                     elif arg[2:15] == "hoehemaximal=":
                         if arg[15:].isdecimal():
                             self.tables.textHeight = abs(int(arg[15:]))

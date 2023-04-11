@@ -255,8 +255,10 @@ class Prepare:
         """
         results = set()
         if keineNegBeruecksichtigung:
+            alxp("JAAAAAA")
             if isZeilenAngabe(MehrereBereiche):
                 results.add("".join(["_", symbol, "_", MehrereBereiche]))
+                x("JAAAAAA DOCH", results)
         else:
             for EinBereich in MehrereBereiche.split(","):
                 if (
@@ -378,7 +380,7 @@ class Prepare:
             return a
 
         if "all" in paramLines:
-            numRange = set(range(self.hoechsteZeile[1024]))
+            numRange = set(range(1, self.hoechsteZeile[1024]))
         else:
             numRange = set()
             # return set(self.originalLinesRange)
@@ -387,6 +389,7 @@ class Prepare:
         if_a_AtAll = False
         mehrere: list = []
         ifTeiler = False
+
         for condition in paramLines:
             if "_a_" in condition[:3] and len(condition) > 3:
                 if_a_AtAll = True
@@ -394,15 +397,18 @@ class Prepare:
             if condition[:3] == "_w_":
                 ifTeiler = True
         if if_a_AtAll:
+
             numRange |= BereichToNumbers2(
                 ",".join(mehrere), False, self.hoechsteZeile[1024]
             )
+
             if ifTeiler:
-                numRange = teiler(",".join([str(c) for c in numRange]))[1]
+                numRange |= teiler(",".join([str(c) for c in numRange]))[1]
+
             if len(numRange) != 0:
                 mehrere = (",".join(mehrere)).split(",")
                 for eins in mehrere:
-                    ja1, ja2 = eins[:1] == "-", eins[1:2] == "-"
+                    ja1, ja2 = eins[:1] == "-", eins[:2] == "v-"
                     if ja1 or ja2:
                         if ja1:
                             eins = eins[1:]
@@ -412,7 +418,6 @@ class Prepare:
                             eins, False, self.hoechsteZeile[1024]
                         )
 
-        del if_a_AtAll
         if_b_AtAll = False
         mehrere = []
         numRangeYesZ: set = set()
@@ -421,14 +426,20 @@ class Prepare:
                 if_b_AtAll = True
                 mehrere += [condition[3:]]
         if if_b_AtAll:
+            if len(numRange) == 0 and not if_a_AtAll and "all" not in paramLines:
+                numRange = set(range(1, self.hoechsteZeile[1024]))
+
             numRangeYesZ |= BereichToNumbers2(
                 ",".join(mehrere), True, self.hoechsteZeile[1024]
             )
-            numRange &= numRangeYesZ
+
+            if len(numRangeYesZ) != 0:
+                numRange &= numRangeYesZ
+
             if len(numRange) != 0:
                 mehrere = (",".join(mehrere)).split(",")
                 for eins in mehrere:
-                    ja1, ja2 = eins[:1] == "-", eins[1:2] == "-"
+                    ja1, ja2 = eins[:1] == "-", eins[:2] == "v-"
                     if ja1 or ja2:
                         if ja1:
                             eins = eins[1:]
@@ -437,6 +448,7 @@ class Prepare:
                         numRange -= BereichToNumbers2(
                             eins, True, self.hoechsteZeile[1024]
                         )
+
         numRangeYesZ = set()
         ifZeitAtAll = False
         for condition in paramLines:
@@ -458,23 +470,62 @@ class Prepare:
 
         numRangeYesZ = set()
         ifZaehlungenAtAll = False
+        mehrere = []
+        x("paramLines", paramLines)
         for condition in paramLines:
             if "_n_" in condition[:3] and len(condition) > 3:
                 numRangeYesZ |= BereichToNumbers2(
                     condition[3:], False, self.hoechsteZeile[1024]
                 )
                 ifZaehlungenAtAll = True
-        if ifZaehlungenAtAll or True:
+                mehrere += [condition[3:]]
+        x("mehrererere", mehrere)
+        if True or ifZaehlungenAtAll:
             self.setZaehlungen(self.originalLinesRange[-1])
         if ifZaehlungenAtAll:
             # self.setZaehlungen(self.originalLinesRange[-1])
+            x("zähl", [numRange, numRangeYesZ])
             numRangeYesZ2 = set()
+            # x("BBBSDRFG", [numRangeYesZ2, self.zaehlungen[3], numRange])
+            if (
+                len(numRange) == 0
+                and not if_a_AtAll
+                and not if_b_AtAll
+                and "all" not in paramLines
+            ):
+                numRange = set(range(1, self.hoechsteZeile[1024]))
             for n in numRange:  # nur die nummern, die noch infrage kommen
                 for z in numRangeYesZ:
                     if self.zaehlungen[3][n] == int(z):  # 1-4:1,5-9:2 == jetzt ?
-                        numRangeYesZ2.add(n)
+                        numRangeYesZ2 |= {n}
                         # numRange.remove(n)
-            numRange = cutset(ifZaehlungenAtAll, numRange, numRangeYesZ2)
+            x("ASDRFG", [numRangeYesZ2, numRangeYesZ, numRange])
+            if ifZaehlungenAtAll:
+                if len(numRangeYesZ2) > 0 and len(numRange) != 0:
+                    numRange &= numRangeYesZ2
+                elif len(numRange) == 0:
+                    numRange |= numRangeYesZ2
+            alxp(len(numRange))
+            if len(numRange) != 0:
+                mehrere = (",".join(mehrere)).split(",")
+                minusBereiche = set()
+                for eins in mehrere:
+                    ja1, ja2 = eins[:1] == "-", eins[:2] == "v-"
+                    if ja1 or ja2:
+                        if ja1:
+                            eins = eins[1:]
+                        if ja2:
+                            eins = "v" + eins[2:]
+                        minusBereiche |= BereichToNumbers2(
+                            eins, False, self.hoechsteZeile[1024]
+                        )
+                if len(minusBereiche) > 0:
+                    alxp("zähl-minus")
+                    for n in copy(numRange):
+                        for z in minusBereiche:
+                            if self.zaehlungen[3][n] == int(z):
+                                numRange -= {n}
+
             # set().add
             # exit()
         ifTypAtAll = False
@@ -532,8 +583,8 @@ class Prepare:
                 ifPowerAtall = True
                 mehrere += [condition[3:]]
         toPowerIt = list(BereichToNumbers2(",".join(mehrere)))
-        # print(",".join(mehrere))
-        # print(toPowerIt)
+        #
+        #
         if ifPowerAtall:
             numRangeYesZ = set()
             lastEl = list(numRange)
@@ -678,7 +729,7 @@ class Prepare:
         else:
             headingsAmount = 0
             rowsRange = range(0)
-        #  print("__" + str(self.originalLinesRange) + "_" + str(paramLines))
+        #
         finallyDisplayLines: set = self.FilterOriginalLines(
             set(self.originalLinesRange), paramLines
         )
@@ -692,7 +743,7 @@ class Prepare:
             if len(hasAnythingCanged) > 0:
                 finallyDisplayLines -= finallyDisplayLines2
 
-        # print(finallyDisplayLines)
+        #
         if len(finallyDisplayLines) == 0:
             if self.ifZeilenSetted:
                 finallyDisplayLines = set()
