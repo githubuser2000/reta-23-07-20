@@ -1002,6 +1002,7 @@ def PromptGrosseAusgabe(
                     int(shellAnzahlCharsPerLineStr),
                 )
 
+            nennerZaehlerGleich = []
             if len(rangesBruecheDict) > 0:
                 for nenner, zaehler in rangesBruecheDict.items():
                     import reta
@@ -1036,6 +1037,11 @@ def PromptGrosseAusgabe(
                         kette,
                         int(shellAnzahlCharsPerLineStr),
                     )
+                    nennerZaehlerGleich += findEqualNennerZaehler(
+                        hierBereich, nenner, nennerZaehlerGleich
+                    )
+
+                # if len(nennerZaehlerGleich) != 0:
             elif len(rangesBruecheDictReverse) > 0:
                 for nenner, zaehler in rangesBruecheDictReverse.items():
                     import reta
@@ -1070,6 +1076,38 @@ def PromptGrosseAusgabe(
                         kette,
                         int(shellAnzahlCharsPerLineStr),
                     )
+                    nennerZaehlerGleich += findEqualNennerZaehler(
+                        hierBereich, nenner, nennerZaehlerGleich
+                    )
+            if len(nennerZaehlerGleich) != 0:
+                nennerZaehlerGleich = ",".join(nennerZaehlerGleich)
+                kette = [
+                    "reta",
+                    "-zeilen",
+                    "--vorhervonausschnitt=" + nennerZaehlerGleich,
+                    "-spalten",
+                    "--universum=verhaeltnisgleicherzahl",
+                    "--breite=0",
+                    "-kombination",
+                    "-ausgabe",
+                    "--spaltenreihenfolgeundnurdiese=1",
+                    *[
+                        "--keineleereninhalte"
+                        if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                        in stext
+                        else ""
+                    ],
+                ] + returnOnlyParasAsList(stext)
+                kette += ketten
+                if (
+                    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                    not in stext
+                ) and not len(BereichToNumbers2(hierBereich)) == 0:
+                    print(" ".join(kette))
+                reta.Program(
+                    kette,
+                    int(shellAnzahlCharsPerLineStr),
+                )
     if bedingungZahl:
 
         if len({"prim24", "primfaktorzerlegungModulo24"} & set(stext)) > 0:
@@ -1317,6 +1355,16 @@ def PromptGrosseAusgabe(
         else:
             print("Das ist kein Befehl! -> '{}''".format(" ".join(stext)))
     return loggingSwitch
+
+
+def findEqualNennerZaehler(hierBereich, nenner, nennerZaehlerGleich):
+    hierBereich2 = BereichToNumbers2(str(hierBereich))
+    nenner2 = BereichToNumbers2(str(nenner))
+    for nn3 in nenner2:
+        for hB3 in hierBereich2:
+            if nn3 == hB3 and nn3 not in [0, 1]:
+                nennerZaehlerGleich += [str(nn3)]
+    return nennerZaehlerGleich
 
 
 def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
@@ -1846,9 +1894,7 @@ def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, stext, text, warB
         warBefehl = True
         for st in "".join(stext[1:2]).split(","):
             try:
-                process = subprocess.Popen(
-                    ["python3", "-c", "print(" + st + ")"]
-                )
+                process = subprocess.Popen(["python3", "-c", "print(" + st + ")"])
                 process.wait()
             except:
                 pass
