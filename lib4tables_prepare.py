@@ -508,6 +508,7 @@ class Prepare:
             alxp(len(numRange))
             if len(numRange) != 0:
                 mehrere = (",".join(mehrere)).split(",")
+                # print(mehrere)
                 minusBereiche = set()
                 for eins in mehrere:
                     ja1, ja2 = eins[:1] == "-", eins[:2] == "v-"
@@ -570,10 +571,20 @@ class Prepare:
                 primMultiples += [int(condition[:-1])]
 
         numRangeYesZ = set()
-        for n in numRange:
-            if isPrimMultiple(n, primMultiples):
-                numRangeYesZ.add(n)
-        numRange = cutset(ifPrimAtAll, numRange, numRangeYesZ)
+        if ifPrimAtAll:
+            if (
+                len(numRange) == 0
+                and not if_b_AtAll
+                and not if_a_AtAll
+                and "all" not in paramLines
+                and not ifTypAtAll
+            ):
+                numRange = set(range(1, self.hoechsteZeile[1024]))
+
+            for n in numRange:
+                if isPrimMultiple(n, primMultiples):
+                    numRangeYesZ.add(n)
+            numRange = cutset(ifPrimAtAll, numRange, numRangeYesZ)
 
         toPowerIt: list = []
         ifPowerAtall: bool = False
