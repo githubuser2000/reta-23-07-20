@@ -72,7 +72,16 @@
   + Farbschema der Helligkeiten aus welchen Primzahlen welche Zahl besteht
   + Um bessere Farben für die html zu finden, sollte ich einen screenshot davon machen und diesen mit gimp so bearbeiten, dass ich exakt eine Farbe in eine andere ändere. In Gimp kann ich viele Farben ausprobieren.
 + retaPrompt skriptingfähig machen: nein, das muss nicht bald sein
-****  2.1. minder wichtig, aber geht schnell:
+**** 2.1. Multilingual
++ csvs und Befehle multilingual machen: vorher planen und recherchieren für beste Lösung und _ fragen!
++ Ich sollte gettext verwenden und zur Generierung dafür Pygettext.
++ nein ich sollte Babel verwenden: +"Pygettext hingegen ist ein Werkzeug zum Generieren von Sprachdateien aus Python-Code, die mit der gettext-Bibliothek verwendet werden können. Es bietet eine einfache Möglichkeit, Texte aus Python-Code zu extrahieren und in eine Sprachdatei zu schreiben. Pygettext ist ideal für kleinere Projekte oder Anwendungen mit wenigen Texten, die übersetzt werden müssen."+
+  + Unterstützung für Fortgeschrittene Funktionen: Babel unterstützt fortgeschrittene Funktionen wie Pluralformen, Kontexte, Variablen-Substitution und Markup-Unterstützung, die für eine qualitativ hochwertige Übersetzungserfahrung unerlässlich sind.
+  + PO (Portable Object), MO (Machine Object), JSON, YAML und CSV
+  + automatische Extraktion von Zeichenfolgen
++ "Mache mir eine Datenstruktur, in der nur alle diese strings drin auf die Art gespeichert sind, dass man mit dem python tool babel diese strings auch mit anderen strings für andere sprachen befüllen kann und programmiere mir, dass diese Datenstruktur aus nur diesen strings, die strings der einen großen Datenstruktur befüllt, sodass sie im einfachen Fall letztlich die gleiche Datenstruktur sein wird, nachdem sie wieder mit den strings befüllt wurde, die sie eigentlich ursprünglich hatte."
+****  2.2. minder wichtig, aber geht schnell:
++ html zstd pro zelle
 + --nocolor auch für html und bbcode als option umsetzen
 + --parameter=* könnte alle Unter-Parameter meinen, als Kommandozeilenargument. Dürfte nicht so lange dauern einprogrammiert zu werden
 + minder wichtig, aber geht schnell: Multiplikation aus 3 Faktoren, oder mehr, statt nur aus 2:
@@ -81,7 +90,7 @@
   Geht einfach und schnell zu programmieren durch Rekursion.
 + Dass man bei Kombinationen filtern kann nach nur bestimmten Zahlen, dazu und hinweg - am Besten mit den bisherigeen allen Filtermethoden, den Bereichsangaben, aber auch für Brüche dann ja wohl - das aber vorher detailliert und umfangreich und lang genug vorher planen!
 + minder wichtig, aber geht schnell: nicht loggen, bei befehlen über Logging
-**** 2.2. aus reta.py
+**** 2.3. aus reta.py
 + kombinationen sortiert ausgeben und als Hierarchiebaum den Zahlenkombinationen entlang
 + kombinationen filterbar machen, dass nicht alle kombinationen bei einer Zahl immer angezeigt werden
 + neues Farbschema: für html aber besser nur: primzahlen pro außen und pro innen und ggf. dessen vielfacher; Farbschema mit durch 3 teilbarem außerdem
