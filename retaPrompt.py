@@ -503,24 +503,30 @@ def PromptScope():
         else:
             stext: list = []
 
-        if text == "S" or text == "BefehlSpeichernDanach":
+        stextMinusE = set(stext) - {
+            "e",
+            "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" "",
+        }
+        if len(stextMinusE & {"S", "BefehlSpeichernDanach"}) > 0:
             promptMode = PromptModus.speichern
             continue
-        if text == "s" or text == "BefehlSpeichernDavor":
+        if len(stextMinusE & {"s", "BefehlSpeichernDavor"}) > 0:
             ketten, platzhalter, text = speichern(ketten, platzhalter, befehlDavor)
             promptMode = PromptModus.normal
             continue
 
-        elif text == "o" or text == "BefehlSpeicherungAusgeben":
+        elif len(stextMinusE & {"o", "BefehlSpeicherungAusgeben"}) > 0:
             promptMode = PromptModus.speicherungAusgaben
             continue
-        elif ("o" in stext or "BefehlSpeicherungAusgeben" in stext) and len(stext) > 1:
+        elif ("o" in stextMinusE or "BefehlSpeicherungAusgeben" in stextMinusE) and len(
+            stextMinusE
+        ) > 1:
             nochAusageben = " ".join(
-                tuple(set(stext) - {"o"} - {"BefehlSpeicherungAusgeben"})
+                tuple(stextMinusE - {"o"} - {"BefehlSpeicherungAusgeben"})
             )
             promptMode = PromptModus.speicherungAusgabenMitZusatz
             continue
-        elif text in ("l", "BefehlSpeicherungLöschen"):
+        elif len(stextMinusE & {"l", "BefehlSpeicherungLöschen"}) > 0:
             print(str([{i + 1, a} for i, a in enumerate(platzhalter.split())]))
             print("promptmode vorher: {} , {}".format(promptMode, promptMode2))
             promptMode = PromptModus.loeschenSelect
@@ -1898,10 +1904,11 @@ def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, stext, text, warB
                 process.wait()
             except:
                 pass
-    if "loggen" == text:
+    stext = text.split()
+    if "loggen" in stext:
         warBefehl = True
         loggingSwitch = True
-    elif "nichtloggen" == text:
+    elif "nichtloggen" in stext:
         warBefehl = True
         loggingSwitch = False
     return loggingSwitch, warBefehl
