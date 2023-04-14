@@ -379,7 +379,11 @@ class Prepare:
                     return result
             return a
 
-        if "all" in paramLines or len(paramLines) == 0:
+        if (
+            "all" in paramLines
+            or len(set(paramLines) - {"ka", "ka2"}) == 0
+            or not self.ifZeilenSetted
+        ):
             numRange = set(range(1, self.hoechsteZeile[1024] + 1))
         else:
             numRange = set()
