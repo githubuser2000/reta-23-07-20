@@ -379,8 +379,8 @@ class Prepare:
                     return result
             return a
 
-        if "all" in paramLines:
-            numRange = set(range(1, self.hoechsteZeile[1024]))
+        if "all" in paramLines or len(paramLines) == 0:
+            numRange = set(range(1, self.hoechsteZeile[1024] + 1))
         else:
             numRange = set()
             # return set(self.originalLinesRange)
@@ -399,7 +399,7 @@ class Prepare:
         if if_a_AtAll:
 
             numRange |= BereichToNumbers2(
-                ",".join(mehrere), False, self.hoechsteZeile[1024]
+                ",".join(mehrere), False, self.hoechsteZeile[1024] + 1
             )
 
             if ifTeiler:
@@ -415,7 +415,7 @@ class Prepare:
                         if ja2:
                             eins = "v" + eins[2:]
                         numRange -= BereichToNumbers2(
-                            eins, False, self.hoechsteZeile[1024]
+                            eins, False, self.hoechsteZeile[1024] + 1
                         )
 
         if_b_AtAll = False
@@ -427,10 +427,10 @@ class Prepare:
                 mehrere += [condition[3:]]
         if if_b_AtAll:
             if len(numRange) == 0 and not if_a_AtAll and "all" not in paramLines:
-                numRange = set(range(1, self.hoechsteZeile[1024]))
+                numRange = set(range(1, self.hoechsteZeile[1024] + 1))
 
             numRangeYesZ |= BereichToNumbers2(
-                ",".join(mehrere), True, self.hoechsteZeile[1024]
+                ",".join(mehrere), True, self.hoechsteZeile[1024] + 1
             )
 
             if len(numRangeYesZ) != 0:
@@ -446,7 +446,7 @@ class Prepare:
                         if ja2:
                             eins = "v" + eins[2:]
                         numRange -= BereichToNumbers2(
-                            eins, True, self.hoechsteZeile[1024]
+                            eins, True, self.hoechsteZeile[1024] + 1
                         )
 
         numRangeYesZ = set()
@@ -461,7 +461,7 @@ class Prepare:
                 numRangeYesZ |= set(range(1, 10))
             elif ">" == condition:
                 ifZeitAtAll = True
-                numRangeYesZ |= set(range(11, self.hoechsteZeile[1024]))
+                numRangeYesZ |= set(range(11, self.hoechsteZeile[1024] + 1))
         if ifZeitAtAll:
             if (
                 len(numRange) == 0
@@ -470,7 +470,7 @@ class Prepare:
                 and "all" not in paramLines
                 and len(numRangeYesZ) == 0
             ):
-                numRange = set(range(1, self.hoechsteZeile[1024]))
+                numRange = set(range(1, self.hoechsteZeile[1024] + 1))
             if if_a_AtAll or "all" in paramLines or if_b_AtAll:
                 numRange &= numRangeYesZ
             else:
@@ -483,7 +483,7 @@ class Prepare:
         for condition in paramLines:
             if "_n_" in condition[:3] and len(condition) > 3:
                 numRangeYesZ |= BereichToNumbers2(
-                    condition[3:], False, self.hoechsteZeile[1024]
+                    condition[3:], False, self.hoechsteZeile[1024] + 1
                 )
                 ifZaehlungenAtAll = True
                 mehrere += [condition[3:]]
@@ -501,7 +501,7 @@ class Prepare:
                 and not if_b_AtAll
                 and "all" not in paramLines
             ):
-                numRange = set(range(1, self.hoechsteZeile[1024]))
+                numRange = set(range(1, self.hoechsteZeile[1024] + 1))
             for n in numRange:  # nur die nummern, die noch infrage kommen
                 for z in numRangeYesZ:
                     if self.zaehlungen[3][n] == int(z):  # 1-4:1,5-9:2 == jetzt ?
@@ -526,7 +526,7 @@ class Prepare:
                         if ja2:
                             eins = "v" + eins[2:]
                         minusBereiche |= BereichToNumbers2(
-                            eins, False, self.hoechsteZeile[1024]
+                            eins, False, self.hoechsteZeile[1024] + 1
                         )
                 if len(minusBereiche) > 0:
                     alxp("zähl-minus")
@@ -564,13 +564,6 @@ class Prepare:
 
         numRange = cutset(ifTypAtAll, numRange, numRangeYesZ)
 
-        # Sonnen über 114 immer entfernen
-        for n in copy(numRange - {0}):
-            if (self.zaehlungen[4][n][0] == []) and (
-                n > self.tables.hoechsteZeile[114]
-            ):
-                numRange.remove(n)
-
         primMultiples: list = []
         ifPrimAtAll = False
         for condition in paramLines:
@@ -587,7 +580,7 @@ class Prepare:
                 and "all" not in paramLines
                 and not ifTypAtAll
             ):
-                numRange = set(range(1, self.hoechsteZeile[1024]))
+                numRange = set(range(1, self.hoechsteZeile[1024] + 1))
 
             for n in numRange:
                 if isPrimMultiple(n, primMultiples):
@@ -639,6 +632,13 @@ class Prepare:
                         numRangeYesZ.add(n)
             numRange = cutset(ifMultiplesFromAnyAtAll, numRange, numRangeYesZ)
 
+        # über 114 die Sonnen weg
+        for n in copy(numRange - {0}):
+            if (self.zaehlungen[4][n][0] == []) and (
+                n > self.tables.hoechsteZeile[114]
+            ):
+                numRange.remove(n)
+
         numRangeList = list(numRange)
         numRangeList.sort()
         numRange2Map = {i: a for i, a in enumerate(numRangeList)}
@@ -648,7 +648,7 @@ class Prepare:
             if "_z_" in condition[:3] and len(condition) > 3:
                 zJa = True
                 NumRangeNeu = set(numRange2Map.keys()) & BereichToNumbers2(
-                    condition[3:], False, self.hoechsteZeile[1024]
+                    condition[3:], False, self.hoechsteZeile[1024] + 1
                 )
                 for a in NumRangeNeu:
                     numRangeNeu2 |= {numRange2Map[a]}
@@ -660,7 +660,7 @@ class Prepare:
             if "_y_" in condition[:3] and len(condition) > 3:
                 yJa = True
                 NumRangeNeu = set(numRange2Map.keys()) & BereichToNumbers2(
-                    condition[3:], True, self.hoechsteZeile[1024]
+                    condition[3:], True, self.hoechsteZeile[1024] + 1
                 )
                 for a in NumRangeNeu:
                     numRangeNeu2 |= {numRange2Map[a]}
@@ -762,7 +762,6 @@ class Prepare:
             if len(hasAnythingCanged) > 0:
                 finallyDisplayLines -= finallyDisplayLines2
 
-        #
         if len(finallyDisplayLines) == 0:
             if self.ifZeilenSetted:
                 finallyDisplayLines = set()
@@ -772,7 +771,7 @@ class Prepare:
                 #    if "nichts" == condition:
                 #        alleshier = False
                 # if alleshier:
-                finallyDisplayLines = set(range(self.hoechsteZeile[1024]))
+                finallyDisplayLines = set(range(self.hoechsteZeile[1024] + 1))
                 # else:
                 #    finallyDisplayLines = set()
 
