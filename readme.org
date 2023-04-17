@@ -84,6 +84,9 @@
 + "Mache mir eine Datenstruktur, in der nur alle diese strings drin auf die Art gespeichert sind, dass man mit dem python tool babel diese strings auch mit anderen strings für andere sprachen befüllen kann und programmiere mir, dass diese Datenstruktur aus nur diesen strings, die strings der einen großen Datenstruktur befüllt, sodass sie im einfachen Fall letztlich die gleiche Datenstruktur sein wird, nachdem sie wieder mit den strings befüllt wurde, die sie eigentlich ursprünglich hatte."
 ****  2.2. minder wichtig, aber geht schnell:
 + Dass Befehl v und w nicht so kombiniert werden, dass v auch alle Vielfacher von w nimmt.
+  + in reta wie in retaPrompt
++ Für besseres Unit-Testing: dass man mehrere Befehle bei Start von RetaPrompt angeben kann mit anschließendem Beenden.
++ Bereichsangaben bei von bis speicherbefehlen - retaPrompt
 + html zstd pro zelle: sukkzessiv mit zentraler lib aber dennoch pro zelle komprimiert: so wie mehrere dateien auch zusammen verschlüsselt werden können, ohne dass die Kompression wieder von vorn beginnen muss: spart platz insgesamt.
 + --nocolor auch für html und bbcode als option umsetzen
 + --parameter=* könnte alle Unter-Parameter meinen, als Kommandozeilenargument. Dürfte nicht so lange dauern einprogrammiert zu werden

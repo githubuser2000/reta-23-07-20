@@ -582,7 +582,7 @@ def PromptGrosseAusgabe(
 ):
     (
         EsGabzahlenAngaben,
-        c2,
+        zahlenReiheKeineWteiler,
         bruch_GanzZahlReziproke,
         fullBlockIsZahlenbereichAndBruch,
         rangesBruecheDict,
@@ -592,7 +592,7 @@ def PromptGrosseAusgabe(
         (
             bruch_GanzZahlReziproke,
             c,
-            c2,
+            zahlenReiheKeineWteiler,
             fullBlockIsZahlenbereichAndBruch,
             rangesBruecheDict,
             EsGabzahlenAngaben,
@@ -655,24 +655,36 @@ def PromptGrosseAusgabe(
 
     if len(bruch_GanzZahlReziproke) > 0 and textHatZiffer(bruch_GanzZahlReziproke):
         zeiln3 = "--vorhervonausschnitt=" + bruch_GanzZahlReziproke
-        zeiln2 = ""
+        zeiln4 = ""
     else:
         zeiln3 = "--vorhervonausschnitt=0"
-        zeiln2 = ""
+        zeiln4 = ""
     if bedingungZahl:
-        cneu = str(c).strip()
-        # x("890ßfvsdwer", [cneu, textHatZiffer(cneu)])
-        if textHatZiffer(cneu):
+        zahlenBereiche = str(c).strip()
+        # x("890ßfvsdwer", [zahlenBereiche, textHatZiffer(zahlenBereiche)])
+        if textHatZiffer(zahlenBereiche):
             if "einzeln" not in stextE and (
                 ("vielfache" in stextE)
                 or ("v" in stextE and "abc" not in stextE and "abcd" not in stextE)
             ):
-                zeiln1 = "--vielfachevonzahlen=" + cneu
-                # zeiln1 = "--vorhervonausschnitt=" + str(c).strip()
+                if len(set(stext) & {"teiler", "w"}) == 0:
+                    zeiln1 = "--vielfachevonzahlen=" + zahlenReiheKeineWteiler
+                else:
+                    zeiln1 = ""
+                zeiln2 = "".join(
+                    [
+                        "--vorhervonausschnitt=",
+                        zahlenBereiche,
+                        ",",
+                        ",".join(
+                            ["v" + str(z) for z in zahlenReiheKeineWteiler.split(",")]
+                        ),
+                    ]
+                )
 
-                zeiln2 = ""
+                # zeiln2 = ""
             else:
-                zeiln1 = "--vorhervonausschnitt=" + cneu
+                zeiln1 = "--vorhervonausschnitt=" + zahlenBereiche
 
                 zeiln2 = anotherOberesMaximum(c, maxNum)
         else:
@@ -767,7 +779,7 @@ def PromptGrosseAusgabe(
                     "reta",
                     "-zeilen",
                     zeiln3,
-                    zeiln2,
+                    zeiln4,
                     "-spalten",
                     "--menschliches=motivation",
                     "--breite=0",
@@ -973,7 +985,7 @@ def PromptGrosseAusgabe(
                     "reta",
                     "-zeilen",
                     zeiln3,
-                    zeiln2,
+                    zeiln4,
                     "-spalten",
                     "--universum=transzendentaliereziproke",
                     "--breite=0",
@@ -1103,7 +1115,7 @@ def PromptGrosseAusgabe(
 
         if len({"prim24", "primfaktorzerlegungModulo24"} & set(stextE)) > 0:
             warBefehl = True
-            for arg in c2.split(","):
+            for arg in zahlenReiheKeineWteiler.split(","):
                 if arg.isdecimal():
                     print(
                         str(arg)
@@ -1115,7 +1127,7 @@ def PromptGrosseAusgabe(
 
         if len({"prim", "primfaktorzerlegung"} & set(stextE)) > 0:
             warBefehl = True
-            for arg in c2.split(","):
+            for arg in zahlenReiheKeineWteiler.split(","):
                 if arg.isdecimal():
                     print(
                         str(arg)
@@ -1131,7 +1143,7 @@ def PromptGrosseAusgabe(
             warBefehl = True
             import reta
 
-            listeStrWerte = c2.split(",")
+            listeStrWerte = zahlenReiheKeineWteiler.split(",")
             try:
                 mult(listeStrWerte)
             except NameError:
@@ -1410,7 +1422,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                 )
 
         if fullBlockIsZahlenbereichAndBruch:
-            # x("9c2m", bruchRanges)
+            # x("9zahlenReiheKeineWteilerm", bruchRanges)
             for bruchBereichsAngabe, bruchRange in zip(
                 bruchBereichsAngaben, bruchRanges
             ):
@@ -1827,17 +1839,22 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
             rangesBruecheDict = {}
     zahlenAngaben_mehrere = list(set(zahlenAngaben_mehrere))
     if len(zahlenAngaben_mehrere) > 0:
-        a = ",".join(zahlenAngaben_mehrere)
-        c2 = ",".join([str(zahl) for zahl in BereichToNumbers2(a, False, 0)])
+        zahlenAngaben_mehrereStr = ",".join(zahlenAngaben_mehrere)
+        zahlenReiheKeineWteiler = ",".join(
+            [
+                str(zahl)
+                for zahl in BereichToNumbers2(zahlenAngaben_mehrereStr, False, 0)
+            ]
+        )
         if "w" in stext or "teiler" in stext:
-            c: str = ",".join(teiler(a)[0])
+            c: str = ",".join(teiler(zahlenAngaben_mehrereStr)[0])
         else:
-            c = a
+            c = zahlenAngaben_mehrereStr
 
     try:
-        c2
-    except:
-        c2 = ""
+        zahlenReiheKeineWteiler
+    except (UnboundLocalError, NameError):
+        zahlenReiheKeineWteiler = ""
     # print(
     #    "{},{},{},{},{}".format(
     #        bruch_GanzZahlReziproke,
@@ -1852,7 +1869,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
     return (
         bruch_GanzZahlReziproke,
         c,
-        c2,
+        zahlenReiheKeineWteiler,
         fullBlockIsZahlenbereichAndBruch,
         rangesBruecheDict,
         len(zahlenAngaben_) > 0 or EsGabzahlenAngaben,

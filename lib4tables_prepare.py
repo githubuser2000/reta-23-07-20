@@ -431,10 +431,10 @@ class Prepare:
                 mehrere += [condition[3:]]
         if if_b_AtAll:
             if len(numRange) == 0 and not if_a_AtAll and "all" not in paramLines:
-                numRange = set(range(1, self.hoechsteZeile[1024] + 1))
+                numRange = set(range(1, self.hoechsteZeile[114] + 1))
 
             numRangeYesZ |= BereichToNumbers2(
-                ",".join(mehrere), True, self.hoechsteZeile[1024] + 1
+                ",".join(mehrere), True, self.hoechsteZeile[114] + 1
             )
 
             if len(numRangeYesZ) != 0:
