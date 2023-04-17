@@ -519,7 +519,7 @@ def PromptScope():
             nochAusageben = stext
             promptMode = PromptModus.speicherungAusgabenMitZusatz
             continue
-        elif len(stext & {"l", "BefehlSpeicherungLöschen"}) == 1:
+        elif len(set(stext) & {"l", "BefehlSpeicherungLöschen"}) == 1:
             print(str([{i + 1, a} for i, a in enumerate(platzhalter.split())]))
             print("promptmode vorher: {} , {}".format(promptMode, promptMode2))
             promptMode = PromptModus.loeschenSelect
@@ -543,6 +543,7 @@ def PromptScope():
             text,
             textDazu0,
         )
+        stextE = stext + textE
         loggingSwitch = PromptGrosseAusgabe(
             bedingung,
             befehleBeenden,
@@ -1349,7 +1350,7 @@ def PromptGrosseAusgabe(
         nurEinBefehl = " ".join(befehleBeenden)
         exit()
     if not warBefehl and len(stext) > 0 and stextE[0] not in befehleBeenden:
-        if len(set(stext & befehle)) > 0:
+        if len(set(stext) & set(befehle)) > 0:
             print(
                 "Dies ('"
                 + " ".join(stextE)
@@ -1912,7 +1913,7 @@ def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, stext, text, warB
 
 
 def promptVorbereitungGrosseAusgabe(
-    ketten, platzhalter, promptMode, promptMode2, promptModeLast, text, textDazu0, textE
+    ketten, platzhalter, promptMode, promptMode2, promptModeLast, text, textDazu0
 ):
     if text is not None:
         stext: list = text.split()
@@ -2043,8 +2044,8 @@ def promptVorbereitungGrosseAusgabe(
 
 def PromptAllesVorGroesserSchleife():
     global promptMode2, textDazu0, befehleBeenden
-    pp1 = pprint.PrettyPrinter(indent=2)
-    pp = pp1.pprint
+    # pp1 = pprint.PrettyPrinter(indent=2)
+    # pp = pp1.pprint
 
     if "-vi" not in sys.argv:
         retaPromptHilfe()
