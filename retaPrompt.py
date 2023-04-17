@@ -342,7 +342,7 @@ def speichern(ketten, platzhalter, text):
     if bedingung1 or bedingung2:
         if bedingung1:
             ifJoinReTaBefehle = True
-            rpBefehlE = ""
+            rpBefehlE = " "
             for rpBefehl in (text, platzhalter):
                 rpBefehlSplitted = str(rpBefehl).split()
                 if len(rpBefehlSplitted) > 0 and rpBefehlSplitted[0] == "reta":
@@ -361,7 +361,7 @@ def speichern(ketten, platzhalter, text):
                     else:
                         textUndPlatzHalterNeu += [rpBefehl]
                 ifJoinReTaBefehle = True
-                rpBefehlE = ""
+                rpBefehlE = " "
                 for rpBefehl in textUndPlatzHalterNeu:
                     rpBefehlSplitted = str(rpBefehl).split()
                     if len(rpBefehlSplitted) > 0 and rpBefehlSplitted[0] != "reta":
@@ -369,7 +369,7 @@ def speichern(ketten, platzhalter, text):
                     else:
                         ifJoinReTaBefehle = False
                 if ifJoinReTaBefehle:
-                    rpBefehle2 = ""
+                    rpBefehle2 = " "
                     charTuep = CharType.begin
                     stilbruch = False
                     zeichenKette = []
@@ -506,21 +506,48 @@ def PromptScope():
             stext: list = []
 
         stextE = stext + textE
-        if len(set(stext) & {"S", "BefehlSpeichernDanach"}) == 1:
+        if (("S" in stext) or ("BefehlSpeichernDanach" in stext)) and len(stext) == 1:
             promptMode = PromptModus.speichern
             continue
-        if len(set(stext) & {"s", "BefehlSpeichernDavor"}) == 1:
+        elif (("s" in stext) or ("BefehlSpeichernDavor" in stext)) and len(stext) == 1:
             ketten, platzhalter, text = speichern(ketten, platzhalter, befehlDavor)
             promptMode = PromptModus.normal
             continue
-        elif len(set(stext) & {"o", "BefehlSpeicherungAusgeben"}) == 1:
+        elif len(
+            set(stext) - {"s", "BefehlSpeichernDavor", "S", "BefehlSpeichernDanach"}
+        ) > 0 and (
+            len(
+                set(stext) & {"s", "BefehlSpeichernDavor", "S", "BefehlSpeichernDanach"}
+            )
+            == 1
+        ):
+            stextB = copy(stext)
+            for val in ("s", "S", "BefehlSpeichernDavor", "BefehlSpeichernDanach"):
+                try:
+                    stextB.remove(val)
+                except ValueError:
+                    pass
+            ketten, platzhalter, text = speichern(ketten, platzhalter, "".join(stextB))
+            stext = []
+            stextE = []
+            text = ""
+            befehlDavor = ""
+            promptMode = PromptModus.normal
+            continue
+        elif (("o" in stext) or ("BefehlSpeicherungAusgeben" in stext)) and len(
+            stext
+        ) == 1:
             promptMode = PromptModus.speicherungAusgaben
             continue
-        elif ("o" in stext or "BefehlSpeicherungAusgeben" in stext) and len(stext) > 1:
+        elif (("o" in stext) or ("BefehlSpeicherungAusgeben" in stext)) and len(
+            stext
+        ) == 1:
             nochAusageben = stext
             promptMode = PromptModus.speicherungAusgabenMitZusatz
             continue
-        elif len(set(stext) & {"l", "BefehlSpeicherungLöschen"}) == 1:
+        elif (("l" in stext) or ("BefehlSpeicherungLöschen" in stext)) and len(
+            stext
+        ) == 1:
             print(str([{i + 1, a} for i, a in enumerate(platzhalter.split())]))
             print("promptmode vorher: {} , {}".format(promptMode, promptMode2))
             promptMode = PromptModus.loeschenSelect
