@@ -1482,6 +1482,20 @@ class Program:
                 {65, 5, 166},
             ),
             (
+                Program.ParametersMain.grundstrukturen,
+                (
+                    "Model_of_Hierarchical_Complexity",
+                    "modelofhierarchicalcomplexity",
+                    "komplex",
+                    "komplexität",
+                    "komplexitaet",
+                    "complexity",
+                    "model",
+                    "abstraktion",
+                ),
+                {65, 75, 203},
+            ),
+            (
                 Program.ParametersMain.universum,
                 (
                     "Model_of_Hierarchical_Complexity",

@@ -90,7 +90,7 @@ ausgabeArt = ["bbcode", "html", "csv", "shell", "markdown", "emacs"]
 
 wahl15 = {
     #    "_": "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15)",
-    "_15": "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15),"
+    "_15": "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15),Model_of_Hierarchical_Complexity,"
     + Primzahlkreuz_pro_contra_strs[1],
     "_2": "Konkreta_und_Focus_(2)",
     "_5": "Impulse_(5)",
