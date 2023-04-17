@@ -1869,16 +1869,29 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
             #                rangesBruecheDictReverse[newKey] = [str(key)]
             rangesBruecheDict = {}
     zahlenAngaben_mehrere = list(set(zahlenAngaben_mehrere))
+    x("AS)§", zahlenAngaben_mehrere)
     if len(zahlenAngaben_mehrere) > 0:
         zahlenAngaben_mehrereStr = ",".join(zahlenAngaben_mehrere)
-        zahlenReiheKeineWteiler = ",".join(
-            [
-                str(zahl)
-                for zahl in BereichToNumbers2(zahlenAngaben_mehrereStr, False, 0)
-            ]
-        )
+        zahlenReiheKeineWteiler = copy(zahlenAngaben_mehrereStr)
         if "w" in stext or "teiler" in stext:
+            zahlenAngaben_mehrereStr = ",".join(
+                [
+                    str(zahl)
+                    for zahl in BereichToNumbers2(
+                        ",".join(
+                            [
+                                str(z).split("+")[0]
+                                for z in zahlenReiheKeineWteiler.split(",")
+                            ]
+                        ),
+                        False,
+                        0,
+                    )
+                ]
+            )
             c: str = ",".join(teiler(zahlenAngaben_mehrereStr)[0])
+            if len(zahlenReiheKeineWteiler) > 1:
+                c += "," + zahlenReiheKeineWteiler
         else:
             c = zahlenAngaben_mehrereStr
 
