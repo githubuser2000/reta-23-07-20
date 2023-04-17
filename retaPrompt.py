@@ -473,7 +473,7 @@ def PromptScope():
             PromptModus.speicherungAusgaben,
             PromptModus.speicherungAusgabenMitZusatz,
         ):
-            befehlDavor, text = promptInput(
+            befehlDavor, text, textE = promptInput(
                 loggingSwitch,
                 platzhalter,
                 promptDavorDict,
@@ -489,6 +489,7 @@ def PromptScope():
 
         else:
             text = promptSpeicherungB(nochAusageben, platzhalter, promptMode, text)
+            textE = []
 
         if promptMode == PromptModus.loeschenSelect:
             platzhalter, promptMode, text = PromptLoescheVorSpeicherungBefehle(
@@ -503,30 +504,22 @@ def PromptScope():
         else:
             stext: list = []
 
-        stextMinusE = set(stext) - {
-            "e",
-            "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" "",
-        }
-        if len(stextMinusE & {"S", "BefehlSpeichernDanach"}) > 0:
+        stextE = stext + textE
+        if len(set(stext) & {"S", "BefehlSpeichernDanach"}) == 1:
             promptMode = PromptModus.speichern
             continue
-        if len(stextMinusE & {"s", "BefehlSpeichernDavor"}) > 0:
+        if len(set(stext) & {"s", "BefehlSpeichernDavor"}) == 1:
             ketten, platzhalter, text = speichern(ketten, platzhalter, befehlDavor)
             promptMode = PromptModus.normal
             continue
-
-        elif len(stextMinusE & {"o", "BefehlSpeicherungAusgeben"}) > 0:
+        elif len(set(stext) & {"o", "BefehlSpeicherungAusgeben"}) == 1:
             promptMode = PromptModus.speicherungAusgaben
             continue
-        elif ("o" in stextMinusE or "BefehlSpeicherungAusgeben" in stextMinusE) and len(
-            stextMinusE
-        ) > 1:
-            nochAusageben = " ".join(
-                tuple(stextMinusE - {"o"} - {"BefehlSpeicherungAusgeben"})
-            )
+        elif ("o" in stext or "BefehlSpeicherungAusgeben" in stext) and len(stext) > 1:
+            nochAusageben = stext
             promptMode = PromptModus.speicherungAusgabenMitZusatz
             continue
-        elif len(stextMinusE & {"l", "BefehlSpeicherungLöschen"}) > 0:
+        elif len(stext & {"l", "BefehlSpeicherungLöschen"}) == 1:
             print(str([{i + 1, a} for i, a in enumerate(platzhalter.split())]))
             print("promptmode vorher: {} , {}".format(promptMode, promptMode2))
             promptMode = PromptModus.loeschenSelect
@@ -565,6 +558,7 @@ def PromptScope():
             zahlenAngaben_,
             ifKurzKurz,
             nurEinBefehl,
+            stextE,
         )
 
 
@@ -583,6 +577,7 @@ def PromptGrosseAusgabe(
     zahlenAngaben_,
     ifKurzKurz,
     nurEinBefehl,
+    stextE,
 ):
     (
         EsGabzahlenAngaben,
@@ -604,23 +599,24 @@ def PromptGrosseAusgabe(
             stext,
         ) = bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_)
         # x("v236g", [stext, EsGabzahlenAngaben, c])
-    if "mulpri" in stext or "p" in stext:
+    if "mulpri" in stextE or "p" in stextE:
         stext += ["multis", "prim"]
-    if "--art=bbcode" in stext and "reta" == stext[0]:
-        if "--nocolor" in stext:
+        stextE += ["multis", "prim"]
+    if "--art=bbcode" in stextE and "reta" == stextE[0]:
+        if "--nocolor" in stextE:
             print("[code]" + text + "[/code]")
         else:
             cliout("[code]" + text + "[/code]", True, "bbcode")
     if (
         ifKurzKurz
-        and "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stext
+        and "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stextE
     ):
         print(
             "'{}' ergibt sich aus '{}' und ergibt danach reta-Befehl:".format(
-                " ".join(stext), text
+                " ".join(stextE), text
             )
         )
-    if ("abc" in stext or "abcd" in stext) and len(stext) == 2:
+    if ("abc" in stextE or "abcd" in stextE) and len(stext) == 2:
         warBefehl = True
         buchstabe: str
         if stext[0] == "abc" or stext[0] == "abcd":
@@ -637,11 +633,11 @@ def PromptGrosseAusgabe(
                 )
             )
         )
-    if len({"befehle"} & set(stext)) > 0:
+    if len({"befehle"} & set(stextE)) > 0:
         warBefehl = True
         print("Befehle: " + str(befehle)[1:-1])
-    if len({"help", "hilfe"} & set(stext)) > 0 or (
-        "h" in stext and "abc" not in stext and "abcd" not in stext
+    if len({"help", "hilfe"} & set(stextE)) > 0 or (
+        "h" in stextE and "abc" not in stextE and "abcd" not in stextE
     ):
         warBefehl = True
         retaPromptHilfe()
@@ -654,7 +650,7 @@ def PromptGrosseAusgabe(
         warBefehl = True
         import reta
 
-        reta.Program(stext, int(shellAnzahlCharsPerLineStr) - 2)
+        reta.Program(stextE, int(shellAnzahlCharsPerLineStr) - 2)
 
     if len(bruch_GanzZahlReziproke) > 0 and textHatZiffer(bruch_GanzZahlReziproke):
         zeiln3 = "--vorhervonausschnitt=" + bruch_GanzZahlReziproke
@@ -666,9 +662,9 @@ def PromptGrosseAusgabe(
         cneu = str(c).strip()
         # x("890ßfvsdwer", [cneu, textHatZiffer(cneu)])
         if textHatZiffer(cneu):
-            if "einzeln" not in stext and (
-                ("vielfache" in stext)
-                or ("v" in stext and "abc" not in stext and "abcd" not in stext)
+            if "einzeln" not in stextE and (
+                ("vielfache" in stextE)
+                or ("v" in stextE and "abc" not in stextE and "abcd" not in stextE)
             ):
                 zeiln1 = "--vielfachevonzahlen=" + cneu
                 # zeiln1 = "--vorhervonausschnitt=" + str(c).strip()
@@ -687,8 +683,8 @@ def PromptGrosseAusgabe(
         zeiln2 = ""
 
     if bedingungZahl:
-        if (len({"thomas"} & set(stext)) > 0) or (
-            "t" in stext and "abc" not in stext and "abcd" not in stext
+        if (len({"thomas"} & set(stextE)) > 0) or (
+            "t" in stextE and "abc" not in stextE and "abcd" not in stextE
         ):
             warBefehl = True
             import reta
@@ -706,12 +702,12 @@ def PromptGrosseAusgabe(
                 *[
                     "--keineleereninhalte"
                     if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                    in stext
+                    in stextE
                     else ""
                 ],
-            ] + returnOnlyParasAsList(stext)
+            ] + returnOnlyParasAsList(stextE)
             kette += ketten
-            if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stext:
+            if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stextE:
                 print(" ".join(kette))
             reta.Program(
                 kette,
@@ -721,10 +717,10 @@ def PromptGrosseAusgabe(
     # if bedingungZahl or bedingungBrueche:
     # x("90ß234wrfn", [zeiln1, zeiln2])
     if fullBlockIsZahlenbereichAndBruch and (bedingungZahl or bedingungBrueche):
-        if len({"absicht", "absichten", "motiv", "motive"} & set(stext)) > 0 or (
-            (("a" in stext) != ("mo" in stext))
-            and "abc" not in stext
-            and "abcd" not in stext
+        if len({"absicht", "absichten", "motiv", "motive"} & set(stextE)) > 0 or (
+            (("a" in stextE) != ("mo" in stextE))
+            and "abc" not in stextE
+            and "abcd" not in stextE
         ):
             warBefehl = True
 
@@ -745,15 +741,15 @@ def PromptGrosseAusgabe(
                     *[
                         "--keineleereninhalte"
                         if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                        in stext
+                        in stextE
                         else ""
                     ],
-                ] + returnOnlyParasAsList(stext)
+                ] + returnOnlyParasAsList(stextE)
                 kette += ketten
                 # print("a")
                 if (
                     "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                    not in stext
+                    not in stextE
                 ):
                     print(" ".join(kette))
                 reta.Program(
@@ -781,14 +777,14 @@ def PromptGrosseAusgabe(
                     *[
                         "--keineleereninhalte"
                         if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                        in stext
+                        in stextE
                         else ""
                     ],
-                ] + returnOnlyParasAsList(stext)
+                ] + returnOnlyParasAsList(stextE)
                 kette += ketten
                 if (
                     "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                    not in stext
+                    not in stextE
                 ):
                     print(" ".join(kette))
                 reta.Program(
@@ -816,14 +812,14 @@ def PromptGrosseAusgabe(
                         *[
                             "--keineleereninhalte"
                             if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                            in stext
+                            in stextE
                             else ""
                         ],
-                    ] + returnOnlyParasAsList(stext)
+                    ] + returnOnlyParasAsList(stextE)
                     kette += ketten
                     if (
                         "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                        not in stext
+                        not in stextE
                     ) and not len(BereichToNumbers2(hierBereich)) == 0:
                         print(" ".join(kette))
                     reta.Program(
@@ -851,14 +847,14 @@ def PromptGrosseAusgabe(
                         *[
                             "--keineleereninhalte"
                             if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                            in stext
+                            in stextE
                             else ""
                         ],
-                    ] + returnOnlyParasAsList(stext)
+                    ] + returnOnlyParasAsList(stextE)
                     kette += ketten
                     if (
                         "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                        not in stext
+                        not in stextE
                     ) and not len(BereichToNumbers2(hierBereich)) == 0:
                         print(" ".join(kette))
                     reta.Program(
@@ -867,7 +863,7 @@ def PromptGrosseAusgabe(
                     )
 
         eigN, eigR = [], []
-        for aa in stext:
+        for aa in stextE:
             if "EIGN" == aa[:4]:
                 eigN += [aa[4:]]
             if "EIGR" == aa[:4]:
@@ -890,14 +886,14 @@ def PromptGrosseAusgabe(
                     *[
                         "--keineleereninhalte"
                         if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                        in stext
+                        in stextE
                         else ""
                     ],
-                ] + returnOnlyParasAsList(stext)
+                ] + returnOnlyParasAsList(stextE)
                 kette += ketten
                 if (
                     "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                    not in stext
+                    not in stextE
                 ):
                     print(" ".join(kette))
                 reta.Program(
@@ -922,14 +918,14 @@ def PromptGrosseAusgabe(
                     *[
                         "--keineleereninhalte"
                         if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                        in stext
+                        in stextE
                         else ""
                     ],
-                ] + returnOnlyParasAsList(stext)
+                ] + returnOnlyParasAsList(stextE)
                 kette += ketten
                 if (
                     "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                    not in stext
+                    not in stextE
                 ):
                     print(" ".join(kette))
                 reta.Program(
@@ -937,8 +933,8 @@ def PromptGrosseAusgabe(
                     int(shellAnzahlCharsPerLineStr),
                 )
 
-        if len({"universum"} & set(stext)) > 0 or (
-            "u" in stext and "abc" not in stext and "abcd" not in stext
+        if len({"universum"} & set(stextE)) > 0 or (
+            "u" in stextE and "abc" not in stextE and "abcd" not in stextE
         ):
             warBefehl = True
             if len(c) > 0:
@@ -957,14 +953,14 @@ def PromptGrosseAusgabe(
                     *[
                         "--keineleereninhalte"
                         if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                        in stext
+                        in stextE
                         else ""
                     ],
-                ] + returnOnlyParasAsList(stext)
+                ] + returnOnlyParasAsList(stextE)
                 kette += ketten
                 if (
                     "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                    not in stext
+                    not in stextE
                 ):
                     print(" ".join(kette))
                 reta.Program(
@@ -993,14 +989,14 @@ def PromptGrosseAusgabe(
                     *[
                         "--keineleereninhalte"
                         if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                        in stext
+                        in stextE
                         else ""
                     ],
-                ] + returnOnlyParasAsList(stext)
+                ] + returnOnlyParasAsList(stextE)
                 kette += ketten
                 if (
                     "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                    not in stext
+                    not in stextE
                 ):
                     print(" ".join(kette))
                 reta.Program(
@@ -1029,14 +1025,14 @@ def PromptGrosseAusgabe(
                         *[
                             "--keineleereninhalte"
                             if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                            in stext
+                            in stextE
                             else ""
                         ],
-                    ] + returnOnlyParasAsList(stext)
+                    ] + returnOnlyParasAsList(stextE)
                     kette += ketten
                     if (
                         "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                        not in stext
+                        not in stextE
                     ) and not len(BereichToNumbers2(hierBereich)) == 0:
                         print(" ".join(kette))
                     reta.Program(
@@ -1068,14 +1064,14 @@ def PromptGrosseAusgabe(
                         *[
                             "--keineleereninhalte"
                             if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                            in stext
+                            in stextE
                             else ""
                         ],
-                    ] + returnOnlyParasAsList(stext)
+                    ] + returnOnlyParasAsList(stextE)
                     kette += ketten
                     if (
                         "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                        not in stext
+                        not in stextE
                     ) and not len(BereichToNumbers2(hierBereich)) == 0:
                         print(" ".join(kette))
                     reta.Program(
@@ -1100,14 +1096,14 @@ def PromptGrosseAusgabe(
                     *[
                         "--keineleereninhalte"
                         if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                        in stext
+                        in stextE
                         else ""
                     ],
-                ] + returnOnlyParasAsList(stext)
+                ] + returnOnlyParasAsList(stextE)
                 kette += ketten
                 if (
                     "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                    not in stext
+                    not in stextE
                 ) and not len(BereichToNumbers2(hierBereich)) == 0:
                     print(" ".join(kette))
                 reta.Program(
@@ -1116,7 +1112,7 @@ def PromptGrosseAusgabe(
                 )
     if bedingungZahl:
 
-        if len({"prim24", "primfaktorzerlegungModulo24"} & set(stext)) > 0:
+        if len({"prim24", "primfaktorzerlegungModulo24"} & set(stextE)) > 0:
             warBefehl = True
             for arg in c2.split(","):
                 if arg.isdecimal():
@@ -1128,7 +1124,7 @@ def PromptGrosseAusgabe(
                         .replace(", ", " ")
                     )
 
-        if len({"prim", "primfaktorzerlegung"} & set(stext)) > 0:
+        if len({"prim", "primfaktorzerlegung"} & set(stextE)) > 0:
             warBefehl = True
             for arg in c2.split(","):
                 if arg.isdecimal():
@@ -1140,8 +1136,8 @@ def PromptGrosseAusgabe(
                         .replace(", ", " ")
                     )
 
-        if len({"multis"} & set(stext)) > 0 or (
-            "mu" in stext and "abc" not in stext and "abcd" not in stext
+        if len({"multis"} & set(stextE)) > 0 or (
+            "mu" in stextE and "abc" not in stextE and "abcd" not in stextE
         ):
             warBefehl = True
             import reta
@@ -1156,7 +1152,7 @@ def PromptGrosseAusgabe(
 
             # externCommand("prim", c)
 
-        if len({"mond"} & set(stext)) > 0:
+        if len({"mond"} & set(stextE)) > 0:
             warBefehl = True
             import reta
 
@@ -1173,19 +1169,19 @@ def PromptGrosseAusgabe(
                 *[
                     "--keineleereninhalte"
                     if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                    in stext
+                    in stextE
                     else ""
                 ],
-            ] + returnOnlyParasAsList(stext)
+            ] + returnOnlyParasAsList(stextE)
             kette += ketten
-            if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stext:
+            if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stextE:
                 print(" ".join(kette))
             reta.Program(
                 kette,
                 int(shellAnzahlCharsPerLineStr),
             )
 
-        if len({"procontra"} & set(stext)) > 0:
+        if len({"procontra"} & set(stextE)) > 0:
             warBefehl = True
             import reta
 
@@ -1201,21 +1197,21 @@ def PromptGrosseAusgabe(
                 *[
                     "--keineleereninhalte"
                     if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                    in stext
+                    in stextE
                     else ""
                 ],
-            ] + returnOnlyParasAsList(stext)
+            ] + returnOnlyParasAsList(stextE)
             kette += ketten
-            if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stext:
+            if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stextE:
                 print(" ".join(kette))
             reta.Program(
                 kette,
                 int(shellAnzahlCharsPerLineStr),
             )
-        if len({"modulo"} & set(stext)) > 0:
+        if len({"modulo"} & set(stextE)) > 0:
             warBefehl = True
             moduloA([str(num) for num in BereichToNumbers2(c)])
-        if len({"alles"} & set(stext)) > 0:
+        if len({"alles"} & set(stextE)) > 0:
             warBefehl = True
             import reta
 
@@ -1231,19 +1227,19 @@ def PromptGrosseAusgabe(
                 *[
                     "--keineleereninhalte"
                     if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                    in stext
+                    in stextE
                     else ""
                 ],
-            ] + returnOnlyParasAsList(stext)
+            ] + returnOnlyParasAsList(stextE)
             kette += ketten
-            if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stext:
+            if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stextE:
                 print(" ".join(kette))
             reta.Program(
                 kette,
                 int(shellAnzahlCharsPerLineStr),
             )
 
-        if len({"primzahlkreuz"} & set(stext)) > 0:
+        if len({"primzahlkreuz"} & set(stextE)) > 0:
             warBefehl = True
             import reta
 
@@ -1259,20 +1255,20 @@ def PromptGrosseAusgabe(
                 *[
                     "--keineleereninhalte"
                     if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                    in stext
+                    in stextE
                     else ""
                 ],
-            ] + returnOnlyParasAsList(stext)
+            ] + returnOnlyParasAsList(stextE)
             kette += ketten
-            if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stext:
+            if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stextE:
                 print(" ".join(kette))
             reta.Program(
                 kette,
                 int(shellAnzahlCharsPerLineStr),
             )
 
-        if (len({"richtung"} & set(stext)) > 0) or (
-            "r" in stext and "abc" not in stext and "abcd" not in stext
+        if (len({"richtung"} & set(stextE)) > 0) or (
+            "r" in stextE and "abc" not in stextE and "abcd" not in stextE
         ):
             warBefehl = True
             import reta
@@ -1289,12 +1285,12 @@ def PromptGrosseAusgabe(
                 *[
                     "--keineleereninhalte"
                     if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                    in stext
+                    in stextE
                     else ""
                 ],
-            ] + returnOnlyParasAsList(stext)
+            ] + returnOnlyParasAsList(stextE)
             kette += ketten
-            if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stext:
+            if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar" not in stextE:
                 print(" ".join(kette))
             reta.Program(
                 kette,
@@ -1302,17 +1298,17 @@ def PromptGrosseAusgabe(
             )
 
         if (
-            len(stext) > 0
-            and any([token[:3] == "15_" for token in stext])
-            and "abc" not in stext
-            and "abcd" not in stext
+            len(stextE) > 0
+            and any([token[:3] == "15_" for token in stextE])
+            and "abc" not in stextE
+            and "abcd" not in stextE
         ):
             warBefehl = True
             import reta
 
             try:
                 befehle15 = []
-                for token in stext:
+                for token in stextE:
                     if token[:3] == "15_":
                         befehle15 += [wahl15[token[2:]]]
                 grundstruk = ",".join(befehle15)
@@ -1328,14 +1324,14 @@ def PromptGrosseAusgabe(
                     *[
                         "--keineleereninhalte"
                         if "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                        in stext
+                        in stextE
                         else ""
                     ],
-                ] + returnOnlyParasAsList(stext)
+                ] + returnOnlyParasAsList(stextE)
                 kette += ketten
                 if (
                     "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                    not in stext
+                    not in stextE
                 ):
                     print(" ".join(kette))
                 reta.Program(
@@ -1349,17 +1345,18 @@ def PromptGrosseAusgabe(
     )
     if len(nurEinBefehl) > 0:
         stext = copy(befehleBeenden)
+        stextE = copy(befehleBeenden)
         nurEinBefehl = " ".join(befehleBeenden)
         exit()
-    if not warBefehl and len(stext) > 0 and stext[0] not in befehleBeenden:
-        if stext[0] in befehle:
+    if not warBefehl and len(stext) > 0 and stextE[0] not in befehleBeenden:
+        if len(set(stext & befehle)) > 0:
             print(
                 "Dies ('"
-                + stext[0].strip()
+                + " ".join(stextE)
                 + "') ist tatsächlich ein Befehl (oder es sind mehrere), aber es gibt nichts auszugeben.",
             )
         else:
-            print("Das ist kein Befehl! -> '{}''".format(" ".join(stext)))
+            print("Das ist kein Befehl! -> '{}''".format(" ".join(stextE)))
     return loggingSwitch
 
 
@@ -1382,7 +1379,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
     fullBlockIsZahlenbereichAndBruch = True
     bruchRanges2 = []
     # bruchRanges2Abzug = []
-    bruch_KeinGanzZahlReziprokeEn = []
+    # bruch_KeinGanzZahlReziprokeEn = []
     rangesBruecheDict = {}
     rangesBruecheDictReverse: dict = {}
     bruch_KeinGanzZahlReziprokeEnDictAbzug = {}
@@ -1915,14 +1912,14 @@ def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, stext, text, warB
 
 
 def promptVorbereitungGrosseAusgabe(
-    ketten, platzhalter, promptMode, promptMode2, promptModeLast, text, textDazu0
+    ketten, platzhalter, promptMode, promptMode2, promptModeLast, text, textDazu0, textE
 ):
     if text is not None:
         stext: list = text.split()
     else:
         stext: list = []
     ketten = []
-    AusgabeSelektiv = 5
+    # AusgabeSelektiv = 5
     ifKurzKurz = False
     if len(stext) > 0:
         textDazu: list = []
@@ -1941,7 +1938,7 @@ def promptVorbereitungGrosseAusgabe(
             maxNum = max(nstextnum)
         else:
             maxNum = 1024
-    stextb = []
+    # stextb = []
     zahlenBereichMatch = [bool(isZeilenAngabe(swort)) for swort in stext]
     if (
         promptMode2 == PromptModus.AusgabeSelektiv
@@ -2021,7 +2018,7 @@ def promptVorbereitungGrosseAusgabe(
         "h": "help",
         "w": "teiler",
         "S": "BefehlSpeichernDanach",
-        "s": "BefehlSpeichernDavor",
+        "s": "BpromptMode = PromptModus.speichernefehlSpeichernDavor",
         "l": "BefehlSpeicherungLöschen",
         "o": "BefehlSpeicherungAusgeben",
     }
@@ -2212,14 +2209,17 @@ def promptInput(
             )
             text: str = str(text).strip()
             if immerEbefehlJa and text[:4] != "reta":
-                text += " e"
+                textE = ["e"]
+            else:
+                textE = []
         except KeyboardInterrupt:
             sys.exit()
 
     else:
         text = " ".join(nurEinBefehl)
+        textE = []
         befehlDavor = ""
-    return befehlDavor, text
+    return befehlDavor, text, textE
 
 
 if __name__ == "__main__":
