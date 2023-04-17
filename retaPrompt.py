@@ -634,6 +634,7 @@ def PromptGrosseAusgabe(
     if "mulpri" in stextE or "p" in stextE:
         stext += ["multis", "prim"]
         stextE += ["multis", "prim"]
+
     if "--art=bbcode" in stextE and "reta" == stextE[0]:
         if "--nocolor" in stextE:
             print("[code]" + text + "[/code]")
@@ -2281,7 +2282,7 @@ def promptInput(
             )
             text: str = str(text).strip()
             if immerEbefehlJa and text[:4] != "reta":
-                textE = ["e"]
+                textE = ["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"]
             else:
                 textE = []
         except KeyboardInterrupt:
