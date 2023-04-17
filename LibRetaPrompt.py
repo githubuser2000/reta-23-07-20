@@ -6,7 +6,7 @@ from typing import Optional
 import reta
 from center import (BereichToNumbers2, Primzahlkreuz_pro_contra_strs,
                     isZeilenAngabe, isZeilenAngabe_betweenKommas,
-                    isZeilenBruchOrGanzZahlAngabe)
+                    isZeilenBruchOrGanzZahlAngabe, x)
 
 retaProgram = reta.Program([sys.argv[0], "-nichts"])
 mainParas = ["-" + a for a in retaProgram.mainParaCmds]
@@ -234,7 +234,9 @@ def isReTaParameter(t: str):
     )
 
 
-def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, stext2, textDazu):
+def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, textDazu):
+    stext2 = []
+    x("RIIDA", [stext, textDazu])
     for s_ in tuple(deepcopy(stext)):
         s_m = s_
         if s_[2:] not in wahl15 and s_ not in befehle and stext[0] != "reta":
@@ -342,7 +344,9 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, stext2, textD
             stext2 += textDazu
         else:
             stext2 += [str(s_)]
-    stext = stext2
+    if stext[0] != "reta":
+        stext = stext2
+    x("REEEDA__7", [stext, textDazu, stext2])
     return ifKurzKurz, stext
 
 

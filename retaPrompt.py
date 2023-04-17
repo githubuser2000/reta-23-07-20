@@ -422,6 +422,7 @@ def speichern(ketten, platzhalter, text):
         promptMode2 = PromptModus.AusgabeSelektiv
     else:
         promptMode2 = PromptModus.normal
+    x("textDazu0AA", [ketten, platzhalter])
     (
         bedingungX,
         bruecheX,
@@ -443,6 +444,7 @@ def speichern(ketten, platzhalter, text):
 
     # textDazu0 = platzhalter.split()
     textDazu0 = stextX
+    x("textDazu0", stextX)
     # print([ketten, platzhalter, text, textDazu0, promptMode2, "end"])
     return ketten, platzhalter, text
 
@@ -463,8 +465,7 @@ def PromptScope():
         immerEbefehlJa,
     ) = PromptAllesVorGroesserSchleife()
     while len(set(text.split()) & set(befehleBeenden)) == 0:
-        SiZe = os.get_terminal_size()
-        shellAnzahlCharsPerLineStr = str(SiZe.columns)
+        # SiZe = os.get_terminal_size()
         # x("breite: ", shellAnzahlCharsPerLineStr)
         warBefehl = False
         promptModeLast = promptMode
@@ -525,6 +526,7 @@ def PromptScope():
             promptMode = PromptModus.loeschenSelect
             continue
 
+        x("4$ZH", [text, textDazu0, ketten, platzhalter])
         (
             bedingung,
             brueche,
@@ -552,7 +554,6 @@ def PromptScope():
             ketten,
             loggingSwitch,
             maxNum,
-            shellAnzahlCharsPerLineStr,
             stext,
             text,
             warBefehl,
@@ -571,7 +572,6 @@ def PromptGrosseAusgabe(
     ketten,
     loggingSwitch,
     maxNum,
-    shellAnzahlCharsPerLineStr,
     stext,
     text,
     warBefehl,
@@ -651,7 +651,7 @@ def PromptGrosseAusgabe(
         warBefehl = True
         import reta
 
-        reta.Program(stextE, int(shellAnzahlCharsPerLineStr) - 2)
+        reta.Program(stextE)
 
     if len(bruch_GanzZahlReziproke) > 0 and textHatZiffer(bruch_GanzZahlReziproke):
         zeiln3 = "--vorhervonausschnitt=" + bruch_GanzZahlReziproke
@@ -712,7 +712,6 @@ def PromptGrosseAusgabe(
                 print(" ".join(kette))
             reta.Program(
                 kette,
-                int(shellAnzahlCharsPerLineStr),
             )
 
     # if bedingungZahl or bedingungBrueche:
@@ -755,7 +754,6 @@ def PromptGrosseAusgabe(
                     print(" ".join(kette))
                 reta.Program(
                     kette,
-                    int(shellAnzahlCharsPerLineStr),
                 )
             # x("9vnw3dfg345", bruch_GanzZahlReziproke)
             if (
@@ -790,7 +788,6 @@ def PromptGrosseAusgabe(
                     print(" ".join(kette))
                 reta.Program(
                     kette,
-                    int(shellAnzahlCharsPerLineStr),
                 )
 
             if len(rangesBruecheDict) > 0:
@@ -825,7 +822,6 @@ def PromptGrosseAusgabe(
                         print(" ".join(kette))
                     reta.Program(
                         kette,
-                        int(shellAnzahlCharsPerLineStr),
                     )
             elif len(rangesBruecheDictReverse) > 0:
                 for nenner, zaehler in rangesBruecheDictReverse.items():
@@ -860,7 +856,6 @@ def PromptGrosseAusgabe(
                         print(" ".join(kette))
                     reta.Program(
                         kette,
-                        int(shellAnzahlCharsPerLineStr),
                     )
 
         eigN, eigR = [], []
@@ -899,7 +894,6 @@ def PromptGrosseAusgabe(
                     print(" ".join(kette))
                 reta.Program(
                     kette,
-                    int(shellAnzahlCharsPerLineStr),
                 )
 
         if len(eigR) > 0:
@@ -931,7 +925,6 @@ def PromptGrosseAusgabe(
                     print(" ".join(kette))
                 reta.Program(
                     kette,
-                    int(shellAnzahlCharsPerLineStr),
                 )
 
         if len({"universum"} & set(stextE)) > 0 or (
@@ -966,7 +959,6 @@ def PromptGrosseAusgabe(
                     print(" ".join(kette))
                 reta.Program(
                     kette,
-                    int(shellAnzahlCharsPerLineStr),
                 )
 
             if (
@@ -1002,7 +994,6 @@ def PromptGrosseAusgabe(
                     print(" ".join(kette))
                 reta.Program(
                     kette,
-                    int(shellAnzahlCharsPerLineStr),
                 )
 
             nennerZaehlerGleich = []
@@ -1038,7 +1029,6 @@ def PromptGrosseAusgabe(
                         print(" ".join(kette))
                     reta.Program(
                         kette,
-                        int(shellAnzahlCharsPerLineStr),
                     )
                     nennerZaehlerGleich += findEqualNennerZaehler(
                         hierBereich, nenner, nennerZaehlerGleich
@@ -1077,7 +1067,6 @@ def PromptGrosseAusgabe(
                         print(" ".join(kette))
                     reta.Program(
                         kette,
-                        int(shellAnzahlCharsPerLineStr),
                     )
                     nennerZaehlerGleich += findEqualNennerZaehler(
                         hierBereich, nenner, nennerZaehlerGleich
@@ -1109,7 +1098,6 @@ def PromptGrosseAusgabe(
                     print(" ".join(kette))
                 reta.Program(
                     kette,
-                    int(shellAnzahlCharsPerLineStr),
                 )
     if bedingungZahl:
 
@@ -1179,7 +1167,6 @@ def PromptGrosseAusgabe(
                 print(" ".join(kette))
             reta.Program(
                 kette,
-                int(shellAnzahlCharsPerLineStr),
             )
 
         if len({"procontra"} & set(stextE)) > 0:
@@ -1207,7 +1194,6 @@ def PromptGrosseAusgabe(
                 print(" ".join(kette))
             reta.Program(
                 kette,
-                int(shellAnzahlCharsPerLineStr),
             )
         if len({"modulo"} & set(stextE)) > 0:
             warBefehl = True
@@ -1237,7 +1223,6 @@ def PromptGrosseAusgabe(
                 print(" ".join(kette))
             reta.Program(
                 kette,
-                int(shellAnzahlCharsPerLineStr),
             )
 
         if len({"primzahlkreuz"} & set(stextE)) > 0:
@@ -1265,7 +1250,6 @@ def PromptGrosseAusgabe(
                 print(" ".join(kette))
             reta.Program(
                 kette,
-                int(shellAnzahlCharsPerLineStr),
             )
 
         if (len({"richtung"} & set(stextE)) > 0) or (
@@ -1295,7 +1279,6 @@ def PromptGrosseAusgabe(
                 print(" ".join(kette))
             reta.Program(
                 kette,
-                int(shellAnzahlCharsPerLineStr),
             )
 
         if (
@@ -1337,7 +1320,6 @@ def PromptGrosseAusgabe(
                     print(" ".join(kette))
                 reta.Program(
                     kette,
-                    int(shellAnzahlCharsPerLineStr),
                 )
             except:
                 pass
@@ -1922,14 +1904,15 @@ def promptVorbereitungGrosseAusgabe(
     ketten = []
     # AusgabeSelektiv = 5
     ifKurzKurz = False
+    x("I_I_I_I", textDazu0)
     if len(stext) > 0:
         textDazu: list = []
-        stext2: list = []
         s_2: list
 
         ifKurzKurz, stext = stextFromKleinKleinKleinBefehl(
-            ifKurzKurz, promptMode2, stext, stext2, textDazu
+            ifKurzKurz, promptMode2, stext, textDazu
         )
+        x("IIII", stext)
     if stext is not None:
         nstextnum: list = []
         for astext in stext:
@@ -1939,13 +1922,35 @@ def promptVorbereitungGrosseAusgabe(
             maxNum = max(nstextnum)
         else:
             maxNum = 1024
+    x("____", [stext, textDazu0])
     # stextb = []
-    zahlenBereichMatch = [bool(isZeilenAngabe(swort)) for swort in stext]
+    # zahlenBereichMatch = [bool(isZeilenAngabe(swort)) for swort in stext]
+    zahlenBereichNeu: map = {}
+    zahlenBereichNeu1: map = {}
+    for swort in stext:
+        try:
+            zahlenBereichNeu1[bool(isZeilenAngabe(swort))] += [swort]
+        except KeyError:
+            zahlenBereichNeu1[bool(isZeilenAngabe(swort))] = [swort]
+    for key, value in zahlenBereichNeu1.items():
+        zahlenBereichNeu[key] = ",".join(value)
+
+    zahlenBereichMatch = tuple(zahlenBereichNeu.keys())
     if (
         promptMode2 == PromptModus.AusgabeSelektiv
         and promptModeLast == PromptModus.normal
     ):
-        stext += textDazu0
+        stext = textDazu0 + stext
+    x(
+        "SDFASDF",
+        [
+            promptMode,
+            len(platzhalter),
+            platzhalter[:4],
+            zahlenBereichMatch,
+            zahlenBereichMatch.count(True) == 1,
+        ],
+    )
     if (
         promptMode == PromptModus.normal
         and len(platzhalter) > 1
@@ -1954,6 +1959,8 @@ def promptVorbereitungGrosseAusgabe(
         and any(zahlenBereichMatch)
         and zahlenBereichMatch.count(True) == 1
     ):
+        x("REDA", platzhalter)
+        x("REDA", stext)
         zeilenn = False
         woerterToDel = []
         for i, wort in enumerate(stext):
@@ -1968,10 +1975,12 @@ def promptVorbereitungGrosseAusgabe(
         for todel in woerterToDel:
             del stextDict[todel]
         stext = list(stextDict.values())
+        x("REDA", stext)
 
         if len({"w", "teiler"} & set(stext)) > 0:
+            # print(zahlenBereichNeu[True])
             BereichMenge = BereichToNumbers2(zahlenBereichNeu[True], False, 0)
-            BereichMengeNeu = teiler(BereichMenge)[1]
+            BereichMengeNeu = teiler(",".join([str(b) for b in BereichMenge]))[1]
             zahlenBereichNeu[True] = ""
             for a in BereichMengeNeu:
                 zahlenBereichNeu[True] += str(a) + ","
@@ -2165,6 +2174,7 @@ def promptSpeicherungB(nochAusageben, platzhalter, promptMode, text):
         text = platzhalter
     elif promptMode == PromptModus.speicherungAusgabenMitZusatz:
         text = platzhalter + " " + nochAusageben
+    x("TEXT", [PromptModus, platzhalter, nochAusageben, text])
     return text
 
 
