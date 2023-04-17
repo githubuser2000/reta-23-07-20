@@ -400,7 +400,9 @@ def speichern(ketten, platzhalter, text):
                         alt_i = i
                     if stilbruch:
                         rpBefehle2 = " ".join(zeichenKette) + zahlenBereich
+                        x("_FGW$_", rpBefehle2)
                     platzhalter = rpBefehle2 + " " + (" ".join(langKurzBefehle))
+                    x("FGW$", platzhalter)
 
         # vielleicht programmier ich hier noch weiter
         if bedingung2 and False:
@@ -414,8 +416,10 @@ def speichern(ketten, platzhalter, text):
                     ifJoinReTaBefehle = False
             if ifJoinReTaBefehle:
                 platzhalter = "reta " + rpBefehlE
+                x("if_", platzhalter)
 
     else:
+        x("else", text)
         platzhalter = "" if text is None else str(text)
     text = ""
     if platzhalter != "":
@@ -527,7 +531,7 @@ def PromptScope():
                     stextB.remove(val)
                 except ValueError:
                     pass
-            ketten, platzhalter, text = speichern(ketten, platzhalter, "".join(stextB))
+            ketten, platzhalter, text = speichern(ketten, platzhalter, " ".join(stextB))
             stext = []
             stextE = []
             text = ""
@@ -540,8 +544,8 @@ def PromptScope():
             promptMode = PromptModus.speicherungAusgaben
             continue
         elif (("o" in stext) or ("BefehlSpeicherungAusgeben" in stext)) and len(
-            stext
-        ) == 1:
+            set(stext) - {"o", "BefehlSpeicherungAusgeben"}
+        ) > 1:
             nochAusageben = stext
             promptMode = PromptModus.speicherungAusgabenMitZusatz
             continue

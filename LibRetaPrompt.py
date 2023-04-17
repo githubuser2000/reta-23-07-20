@@ -215,7 +215,7 @@ befehle = ["15" + a for a in wahl15.keys()] + [
     "l",
     "BefehlSpeicherungAusgeben",
     "o",
-    "BefehlsSpeicherungsModusAus",
+    # "BefehlsSpeicherungsModusAus",
     # "x",
     "BefehlSpeichernDavor",
     "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
