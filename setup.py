@@ -11,12 +11,12 @@ setup(
     install_requires=[
         "html2text==2020.1.16",
         "bbcode==1.1.0",
-        "pyphen==0.9.5",
+        # "pyphen==0.9.5",
         "PyHyphen==3.0.1",
         "prompt_toolkit==3.0.19",
-        "orderedset==2.0.3",
+        # "orderedset==2.0.3",
         "rich==10.12.0",
-        #"numpy"
+        # "numpy"
     ],
     package_data={
         ".": [

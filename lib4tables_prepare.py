@@ -68,9 +68,11 @@ def alxwrap(text: str, len_: int):
     if "Brython" in sys.version.split():
         return (text,)
     try:
+        # print("A")
+        # print(wrappingType)
         return (
             dic.wrap(text, len_)
-            if wrappingType == Wraptype.pypheni and len_ != 0
+            if wrappingType == Wraptype.pyphen and len_ != 0
             else (
                 splitMoreIfNotSmall(
                     fill(text, width=len_, use_hyphenator=h_de).split("\n"), len_
@@ -80,6 +82,8 @@ def alxwrap(text: str, len_: int):
             )
         )
     except:
+        # print("B")
+        # print(wrappingType)
         return (
             dic.wrap(text, len_)
             if wrappingType == Wraptype.pyhyphen and len_ != 0

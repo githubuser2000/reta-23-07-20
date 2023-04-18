@@ -1,3 +1,5 @@
+import gettext
+import os
 import sys
 from collections import OrderedDict, namedtuple
 from typing import Optional, Union
@@ -25,249 +27,273 @@ LibRetaPrompt: größten Teil entnommen
 
 ES FEHLEN NOCH ALLE ''
 """
+localedir = os.path.abspath(os.path.dirname(__file__))
+translate = gettext.translation("handroll", localedir, fallback=True)
+_ = translate.gettext
 
 gebrochenSpaltenMaximumPlus1 = 21
 spalten: dict = {}
 spalten |= {
-    "--breite=": "--breite=",
-    "--breiten=": "--breiten=",
-    "--keinenummerierung": "--keinenummerierung",
+    "--breite=_(": _(")--breite="),
+    "--breiten=_(": _(")--breiten="),
+    "--keinenummerierung": _("--keinenummerierung"),
 }
 
 zeilenTypen = {
-    "sonne": "sonne",
-    "mond": "mond",
-    "planet": "planet",
-    "schwarzesonne": "schwarzesonne",
+    "sonne": _("sonne"),
+    "mond": _("mond"),
+    "planet": _("planet"),
+    "schwarzesonne": _("schwarzesonne"),
 }
-zeilenZeit = {"heute": "heute", "gestern": "gestern", "morgen": "morgen"}
+zeilenZeit = {"heute": _("heute"), "gestern": _("gestern"), "morgen": _("morgen")}
 
 ausgabeParas = {
-    "--nocolor": "--nocolor",
-    "--justtext": "--justtext",
-    "--art=": "--art=",
-    "--onetable": "--onetable",
-    "--spaltenreihenfolgeundnurdiese=": "--spaltenreihenfolgeundnurdiese=",
-    "--endlessscreen": "--endlessscreen",
-    "--endless": "--endless",
-    "--dontwrap": "--dontwrap",
-    "--breite=": "--breite=",
-    "--breiten=": "--breiten=",
-    "--keineleereninhalte": "--keineleereninhalte",
-    "--keinenummerierung": "--keinenummerierung",
-    "--keineueberschriften": "--keineueberschriften",
+    "--nocolor": _("--nocolor"),
+    "--justtext": _("--justtext"),
+    "--art=_(": _(")--art="),
+    "--onetable": _("--onetable"),
+    "--spaltenreihenfolgeundnurdiese=_(": _(")--spaltenreihenfolgeundnurdiese="),
+    "--endlessscreen": _("--endlessscreen"),
+    "--endless": _("--endless"),
+    "--dontwrap": _("--dontwrap"),
+    "--breite=_(": _(")--breite="),
+    "--breiten=_(": _(")--breiten="),
+    "--keineleereninhalte": _("--keineleereninhalte"),
+    "--keinenummerierung": _("--keinenummerierung"),
+    "--keineueberschriften": _("--keineueberschriften"),
 }
-kombiMainParas = {"--galaxie=": "--galaxie=", "--universum=": "--universum="}
+kombiMainParas = {
+    "--galaxie=_(": _(")--galaxie=_("),
+    ")--universum=_(": _(")--universum="),
+}
 zeilenParas = {
-    "--zeit=": "--zeit=",
-    "--zaehlung=": "--zaehlung=",
-    "--vorhervonausschnitt=": "--vorhervonausschnitt=",
-    "--vorhervonausschnittteiler": "--vorhervonausschnittteiler",
-    "--primzahlvielfache=": "--primzahlvielfache=",
-    "--nachtraeglichneuabzaehlung=": "--nachtraeglichneuabzaehlung=",
-    "--nachtraeglichneuabzaehlungvielfache=": "--nachtraeglichneuabzaehlungvielfache=",
-    "--alles": "--alles",
-    "--potenzenvonzahlen=": "--potenzenvonzahlen=",
-    "--typ=": "--typ=",
-    "--vielfachevonzahlen=": "--vielfachevonzahlen=",
-    "--oberesmaximum=": "--oberesmaximum=",
+    "--zeit=_(": _(")--zeit="),
+    "--zaehlung=_(": _(")--zaehlung="),
+    "--vorhervonausschnitt=_(": _(")--vorhervonausschnitt="),
+    "--vorhervonausschnittteiler": _("--vorhervonausschnittteiler"),
+    "--primzahlvielfache=_(": _(")--primzahlvielfache="),
+    "--nachtraeglichneuabzaehlung=_(": _(")--nachtraeglichneuabzaehlung="),
+    "--nachtraeglichneuabzaehlungvielfache=": _(
+        "--nachtraeglichneuabzaehlungvielfache="
+    ),
+    "--alles": _("--alles"),
+    "--potenzenvonzahlen=_(": _(")--potenzenvonzahlen="),
+    "--typ=_(": _(")--typ="),
+    "--vielfachevonzahlen=_(": _(")--vielfachevonzahlen="),
+    "--oberesmaximum=_(": _(")--oberesmaximum="),
 }
 
 hauptForNeben = {
-    "-zeilen": "-zeilen",
-    "-spalten": "-spalten",
-    "-kombination": "-kombination",
-    "-ausgabe": "-ausgabe",
-    "-h": "-h",
-    "-help": "-help",
+    "-zeilen": _("-zeilen"),
+    "-spalten": _("-spalten"),
+    "-kombination": _("-kombination"),
+    "-ausgabe": _("-ausgabe"),
+    "-h": _("-h"),
+    "-help": _("-help"),
 }
 
 ausgabeArt = {
-    "bbcode": "bbcode",
-    "html": "html",
-    "csv": "csv",
-    "shell": "shell",
-    "markdown": "markdown",
-    "emacs": "emacs",
+    "bbcode": _("bbcode"),
+    "html": _("html"),
+    "csv": _("csv"),
+    "shell": _("shell"),
+    "markdown": _("markdown"),
+    "emacs": _("emacs"),
 }
 
 
 wahl15Words = {
     "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15),Model_of_Hierarchical_Complexity,"
-    + Primzahlkreuz_pro_contra_strs[
-        1
-    ]: "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15),Model_of_Hierarchical_Complexity,"
+    + Primzahlkreuz_pro_contra_strs[1]: _(
+        "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15),Model_of_Hierarchical_Complexity,"
+    )
     + Primzahlkreuz_pro_contra_strs[1],
-    "Konkreta_und_Focus_(2)": "Konkreta_und_Focus_(2)",
-    "Impulse_(5)": "Impulse_(5)",
-    "Gefühle_(7)": "Gefühle_(7)",
-    "Modus_und_Sein_(8)": "Modus_und_Sein_(8)",
-    "Wirklichkeiten_Wahrheit_Wahrnehmung_(10)": "Wirklichkeiten_Wahrheit_Wahrnehmung_(10)",
-    "Meta-Systeme_(12),Ordnung_und_Filterung_12_und_1pro12": "Meta-Systeme_(12),Ordnung_und_Filterung_12_und_1pro12",
-    "Paradigmen_sind_Absichten_(13)": "Paradigmen_sind_Absichten_(13)",
-    "Gedanken_sind_Positionen_(17)": "Gedanken_sind_Positionen_(17)",
-    "Verbundenheiten_(18)": "Verbundenheiten_(18)",
-    "Triebe_und_Bedürfnisse_(6)": "Triebe_und_Bedürfnisse_(6)",
-    "Lust_(9)": "Lust_(9)",
-    "Reflexe_(3),Existenzialien_(3)": "Reflexe_(3),Existenzialien_(3)",
-    "Absicht_6_ist_Vorteilsmaximierung": "Absicht_6_ist_Vorteilsmaximierung",
-    "Absicht_7_ist_Selbstlosigkeit": "Absicht_7_ist_Selbstlosigkeit",
-    "Absicht_10_ist_Wirklichkeit_erkennen": "Absicht_10_ist_Wirklichkeit_erkennen",
-    "Absicht_17_ist_zu_meinen": "Absicht_17_ist_zu_meinen",
-    "Zeit_(4)_als_Wirklichkeit": "Zeit_(4)_als_Wirklichkeit",
-    "Funktionen_Vorstellungen_(16)": "Funktionen_Vorstellungen_(16)",
-    "Achtung_(4)": "Achtung_(4)",
-    "Absicht_1/8": "Absicht_1/8",
-    "Absicht_1/6_ist_Reinigung_und_Klarheit": "Absicht_1/6_ist_Reinigung_und_Klarheit",
-    "Reflektion_und_Kategorien_(1/15)": "Reflektion_und_Kategorien_(1/15)",
-    "Regungen_(1)": "Regungen_(1)",
-    "Energie_und_universelle_Eigenschaften_(30)": "Energie_und_universelle_Eigenschaften_(30)",
-    "Stimmungen_Kombinationen_(14)": "Stimmungen_Kombinationen_(14)",
-    "Klassen_(20)": "Klassen_(20)",
-    "Empathie_(37)": "Empathie_(37)",
-    "Garben_und_Verhalten_nachfühlen(31)": "Garben_und_Verhalten_nachfühlen(31)",
-    "Verhalten_(11)": "Verhalten_(11)",
-    "Bedeutung_(10)": "Bedeutung_(10)",
-    "Themen_(6)": "Themen_(6)",
-    "Optimierung_(10)": "Optimierung_(10)",
-    "Attraktionen_(36)": "Attraktionen_(36)",
-    "Absicht_16_ist_zu_genügen": "Absicht_16_ist_zu_genügen",
-    "Liebe_(7)": "Liebe_(7)",
-    "Koalitionen_(10)": "Koalitionen_(10)",
-    "Ansichten_Standpunkte_(18_17)": "Ansichten_Standpunkte_(18_17)",
-    "Prinzipien(1/8)": "Prinzipien(1/8)",
-    "Bestrebungen(1/5)": "Bestrebungen(1/5)",
-    "Bedingung_und_Auslöser_(1/3)": "Bedingung_und_Auslöser_(1/3)",
-    "relativer_Zeit-Betrag_(15_10_4_18_6)": "relativer_Zeit-Betrag_(15_10_4_18_6)",
-    "Zahlenvergleich_(15_18_6)": "Zahlenvergleich_(15_18_6)",
-    "Leidenschaften_(21)": "Leidenschaften_(21)",
-    "Erwartungshaltungen_(26)": "Erwartungshaltungen_(26)",
-    "Extremalien_(19),Ziele_(19)": "Extremalien_(19),Ziele_(19)",
-    "universeller_Komperativ_(18→15)": "universeller_Komperativ_(18→15)",
-    "Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)": "Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)",
-    "Sollen_Frage_Vorgehensweise_(1/13)": "Sollen_Frage_Vorgehensweise_(1/13)",
-    "Fundament_(1/19)": "Fundament_(1/19)",
-    "abhängige_Verbundenheit_(90)": "abhängige_Verbundenheit_(90)",
-    "Absicht_13_ist_Helfen": "Absicht_13_ist_Helfen",
-    "Karte_Filter_und_Unterscheidung_(1/12)": "Karte_Filter_und_Unterscheidung_(1/12)",
+    "Konkreta_und_Focus_(2)": _("Konkreta_und_Focus_(2)"),
+    "Impulse_(5)": _("Impulse_(5)"),
+    "Gefühle_(7)": _("Gefühle_(7)"),
+    "Modus_und_Sein_(8)": _("Modus_und_Sein_(8)"),
+    "Wirklichkeiten_Wahrheit_Wahrnehmung_(10)": _(
+        "Wirklichkeiten_Wahrheit_Wahrnehmung_(10)"
+    ),
+    "Meta-Systeme_(12),Ordnung_und_Filterung_12_und_1pro12": _(
+        "Meta-Systeme_(12),Ordnung_und_Filterung_12_und_1pro12"
+    ),
+    "Paradigmen_sind_Absichten_(13)": _("Paradigmen_sind_Absichten_(13)"),
+    "Gedanken_sind_Positionen_(17)": _("Gedanken_sind_Positionen_(17)"),
+    "Verbundenheiten_(18)": _("Verbundenheiten_(18)"),
+    "Triebe_und_Bedürfnisse_(6)": _("Triebe_und_Bedürfnisse_(6)"),
+    "Lust_(9)": _("Lust_(9)"),
+    "Reflexe_(3),Existenzialien_(3)": _("Reflexe_(3),Existenzialien_(3)"),
+    "Absicht_6_ist_Vorteilsmaximierung": _("Absicht_6_ist_Vorteilsmaximierung"),
+    "Absicht_7_ist_Selbstlosigkeit": _("Absicht_7_ist_Selbstlosigkeit"),
+    "Absicht_10_ist_Wirklichkeit_erkennen": _("Absicht_10_ist_Wirklichkeit_erkennen"),
+    "Absicht_17_ist_zu_meinen": _("Absicht_17_ist_zu_meinen"),
+    "Zeit_(4)_als_Wirklichkeit": _("Zeit_(4)_als_Wirklichkeit"),
+    "Funktionen_Vorstellungen_(16)": _("Funktionen_Vorstellungen_(16)"),
+    "Achtung_(4)": _("Achtung_(4)"),
+    "Absicht_1/8": _("Absicht_1/8"),
+    "Absicht_1/6_ist_Reinigung_und_Klarheit": _(
+        "Absicht_1/6_ist_Reinigung_und_Klarheit"
+    ),
+    "Reflektion_und_Kategorien_(1/15)": _("Reflektion_und_Kategorien_(1/15)"),
+    "Regungen_(1)": _("Regungen_(1)"),
+    "Energie_und_universelle_Eigenschaften_(30)": _(
+        "Energie_und_universelle_Eigenschaften_(30)"
+    ),
+    "Stimmungen_Kombinationen_(14)": _("Stimmungen_Kombinationen_(14)"),
+    "Klassen_(20)": _("Klassen_(20)"),
+    "Empathie_(37)": _("Empathie_(37)"),
+    "Garben_und_Verhalten_nachfühlen(31)": _("Garben_und_Verhalten_nachfühlen(31)"),
+    "Verhalten_(11)": _("Verhalten_(11)"),
+    "Bedeutung_(10)": _("Bedeutung_(10)"),
+    "Themen_(6)": _("Themen_(6)"),
+    "Optimierung_(10)": _("Optimierung_(10)"),
+    "Attraktionen_(36)": _("Attraktionen_(36)"),
+    "Absicht_16_ist_zu_genügen": _("Absicht_16_ist_zu_genügen"),
+    "Liebe_(7)": _("Liebe_(7)"),
+    "Koalitionen_(10)": _("Koalitionen_(10)"),
+    "Ansichten_Standpunkte_(18_17)": _("Ansichten_Standpunkte_(18_17)"),
+    "Prinzipien(1/8)": _("Prinzipien(1/8)"),
+    "Bestrebungen(1/5)": _("Bestrebungen(1/5)"),
+    "Bedingung_und_Auslöser_(1/3)": _("Bedingung_und_Auslöser_(1/3)"),
+    "relativer_Zeit-Betrag_(15_10_4_18_6)": _("relativer_Zeit-Betrag_(15_10_4_18_6)"),
+    "Zahlenvergleich_(15_18_6)": _("Zahlenvergleich_(15_18_6)"),
+    "Leidenschaften_(21)": _("Leidenschaften_(21)"),
+    "Erwartungshaltungen_(26)": _("Erwartungshaltungen_(26)"),
+    "Extremalien_(19),Ziele_(19)": _("Extremalien_(19),Ziele_(19)"),
+    "universeller_Komperativ_(18→15)": _("universeller_Komperativ_(18→15)"),
+    "Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)": _(
+        "Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)"
+    ),
+    "Sollen_Frage_Vorgehensweise_(1/13)": _("Sollen_Frage_Vorgehensweise_(1/13)"),
+    "Fundament_(1/19)": _("Fundament_(1/19)"),
+    "abhängige_Verbundenheit_(90)": _("abhängige_Verbundenheit_(90)"),
+    "Absicht_13_ist_Helfen": _("Absicht_13_ist_Helfen"),
+    "Karte_Filter_und_Unterscheidung_(1/12)": _(
+        "Karte_Filter_und_Unterscheidung_(1/12)"
+    ),
 }
 wahl15 = {
-    #    "_": "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15)",
-    "_15": "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15),Model_of_Hierarchical_Complexity,"
+    #    "_": _("Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15)"),
+    "_15": _(
+        "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15),Model_of_Hierarchical_Complexity,"
+    )
     + Primzahlkreuz_pro_contra_strs[1],
-    "_2": "Konkreta_und_Focus_(2)",
-    "_5": "Impulse_(5)",
-    "_7": "Gefühle_(7)",
-    "_8": "Modus_und_Sein_(8)",
-    "_10": "Wirklichkeiten_Wahrheit_Wahrnehmung_(10)",
-    "_12": "Meta-Systeme_(12),Ordnung_und_Filterung_12_und_1pro12",
-    "_13": "Paradigmen_sind_Absichten_(13)",
-    "_17": "Gedanken_sind_Positionen_(17)",
-    "_18": "Verbundenheiten_(18)",
-    "_6": "Triebe_und_Bedürfnisse_(6)",
-    "_9": "Lust_(9)",
-    "_3": "Reflexe_(3),Existenzialien_(3)",
-    "_13_6": "Absicht_6_ist_Vorteilsmaximierung",
-    "_13_7": "Absicht_7_ist_Selbstlosigkeit",
-    "_13_10": "Absicht_10_ist_Wirklichkeit_erkennen",
-    "_13_17": "Absicht_17_ist_zu_meinen",
-    "_10_4": "Zeit_(4)_als_Wirklichkeit",
-    "_16": "Funktionen_Vorstellungen_(16)",
-    "_4": "Achtung_(4)",
-    "_13_1pro8": "Absicht_1/8",
-    "_13_1pro6": "Absicht_1/6_ist_Reinigung_und_Klarheit",
-    "_1pro15": "Reflektion_und_Kategorien_(1/15)",
-    "_1": "Regungen_(1)",
-    "_30": "Energie_und_universelle_Eigenschaften_(30)",
-    "_14": "Stimmungen_Kombinationen_(14)",
-    "_20": "Klassen_(20)",
-    "_37": "Empathie_(37)",
-    "_31": "Garben_und_Verhalten_nachfühlen(31)",
-    "_11": "Verhalten_(11)",
-    "_5_10": "Bedeutung_(10)",
-    "_17_6": "Themen_(6)",
-    "_17_6_10mit4": "Optimierung_(10)",
-    "_36": "Attraktionen_(36)",
-    "_13_16": "Absicht_16_ist_zu_genügen",
-    "_18_7": "Liebe_(7)",
-    "_18_10": "Koalitionen_(10)",
-    "_18_17": "Ansichten_Standpunkte_(18_17)",
-    "_1pro8": "Prinzipien(1/8)",
-    "_1pro5": "Bestrebungen(1/5)",
-    "_1pro3": "Bedingung_und_Auslöser_(1/3)",
-    "_10_4_18_6": "relativer_Zeit-Betrag_(15_10_4_18_6)",
-    "_18_6": "Zahlenvergleich_(15_18_6)",
-    "_21": "Leidenschaften_(21)",
-    "_26": "Erwartungshaltungen_(26)",
-    "_19": "Extremalien_(19),Ziele_(19)",
-    "_18_15": "universeller_Komperativ_(18→15)",
-    "_18_15_n-vs-1pron": "Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)",
-    "_1pro13": "Sollen_Frage_Vorgehensweise_(1/13)",
-    "_1pro19": "Fundament_(1/19)",
-    "_90": "abhängige_Verbundenheit_(90)",
-    "_13_13": "Absicht_13_ist_Helfen",
-    "_1pro12": "Karte_Filter_und_Unterscheidung_(1/12)",
+    "_2": _("Konkreta_und_Focus_(2)"),
+    "_5": _("Impulse_(5)"),
+    "_7": _("Gefühle_(7)"),
+    "_8": _("Modus_und_Sein_(8)"),
+    "_10": _("Wirklichkeiten_Wahrheit_Wahrnehmung_(10)"),
+    "_12": _("Meta-Systeme_(12),Ordnung_und_Filterung_12_und_1pro12"),
+    "_13": _("Paradigmen_sind_Absichten_(13)"),
+    "_17": _("Gedanken_sind_Positionen_(17)"),
+    "_18": _("Verbundenheiten_(18)"),
+    "_6": _("Triebe_und_Bedürfnisse_(6)"),
+    "_9": _("Lust_(9)"),
+    "_3": _("Reflexe_(3),Existenzialien_(3)"),
+    "_13_6": _("Absicht_6_ist_Vorteilsmaximierung"),
+    "_13_7": _("Absicht_7_ist_Selbstlosigkeit"),
+    "_13_10": _("Absicht_10_ist_Wirklichkeit_erkennen"),
+    "_13_17": _("Absicht_17_ist_zu_meinen"),
+    "_10_4": _("Zeit_(4)_als_Wirklichkeit"),
+    "_16": _("Funktionen_Vorstellungen_(16)"),
+    "_4": _("Achtung_(4)"),
+    "_13_1pro8": _("Absicht_1/8"),
+    "_13_1pro6": _("Absicht_1/6_ist_Reinigung_und_Klarheit"),
+    "_1pro15": _("Reflektion_und_Kategorien_(1/15)"),
+    "_1": _("Regungen_(1)"),
+    "_30": _("Energie_und_universelle_Eigenschaften_(30)"),
+    "_14": _("Stimmungen_Kombinationen_(14)"),
+    "_20": _("Klassen_(20)"),
+    "_37": _("Empathie_(37)"),
+    "_31": _("Garben_und_Verhalten_nachfühlen(31)"),
+    "_11": _("Verhalten_(11)"),
+    "_5_10": _("Bedeutung_(10)"),
+    "_17_6": _("Themen_(6)"),
+    "_17_6_10mit4": _("Optimierung_(10)"),
+    "_36": _("Attraktionen_(36)"),
+    "_13_16": _("Absicht_16_ist_zu_genügen"),
+    "_18_7": _("Liebe_(7)"),
+    "_18_10": _("Koalitionen_(10)"),
+    "_18_17": _("Ansichten_Standpunkte_(18_17)"),
+    "_1pro8": _("Prinzipien(1/8)"),
+    "_1pro5": _("Bestrebungen(1/5)"),
+    "_1pro3": _("Bedingung_und_Auslöser_(1/3)"),
+    "_10_4_18_6": _("relativer_Zeit-Betrag_(15_10_4_18_6)"),
+    "_18_6": _("Zahlenvergleich_(15_18_6)"),
+    "_21": _("Leidenschaften_(21)"),
+    "_26": _("Erwartungshaltungen_(26)"),
+    "_19": _("Extremalien_(19),Ziele_(19)"),
+    "_18_15": _("universeller_Komperativ_(18→15)"),
+    "_18_15_n-vs-1pron": _("Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)"),
+    "_1pro13": _("Sollen_Frage_Vorgehensweise_(1/13)"),
+    "_1pro19": _("Fundament_(1/19)"),
+    "_90": _("abhängige_Verbundenheit_(90)"),
+    "_13_13": _("Absicht_13_ist_Helfen"),
+    "_1pro12": _("Karte_Filter_und_Unterscheidung_(1/12)"),
 }
 
-befehle = {"15" + a: "15" + a for a in wahl15.keys()} | {
-    "mond": "mond",
-    "reta": "reta",
-    "absicht": "absicht",
-    "motiv": "motiv",
-    "thomas": "thomas",
-    "universum": "universum",
-    "motive": "motive",
-    "absichten": "absichten",
-    "vielfache": "vielfache",
-    "einzeln": "einzeln",
-    "multis": "multis",
-    "modulo": "modulo",
-    "prim": "prim",
-    "primfaktorzerlegung": "primfaktorzerlegung",
-    "procontra": "procontra",
-    "prim24": "prim24",
-    "primfaktorzerlegungModulo24": "primfaktorzerlegungModulo24",
-    "help": "help",
-    "hilfe": "hilfe",
-    "abc": "abc",
-    "abcd": "abcd",
-    "alles": "alles",
-    "a": "a",
-    "u": "u",
-    "befehle": "befehle",
-    "t": "t",
-    "richtung": "richtung",
-    "r": "r",
-    "v": "v",
-    "h": "h",
-    "p": "p",
-    "mo": "mo",
-    "mu": "mu",
-    "primzahlkreuz": "primzahlkreuz",
-    "ende": "ende",
-    "exit": "exit",
-    "quit": "quit",
-    "q": "q",
-    ":q": ":q",
-    "shell": "shell",
-    "s": "s",
-    "math": "math",
-    "loggen": "loggen",
-    "nichtloggen": "nichtloggen",
-    "mulpri": "mulpri",
-    "python": "python",
-    "w": "w",
-    "teiler": "teiler",
-    "BefehlSpeichernDanach": "BefehlSpeichernDanach",
-    "S": "S",
-    "BefehlSpeicherungLöschen": "BefehlSpeicherungLöschen",
-    "l": "l",
-    "BefehlSpeicherungAusgeben": "BefehlSpeicherungAusgeben",
-    "o": "o",
-    # "BefehlsSpeicherungsModusAus": "BefehlsSpeicherungsModusAus",
-    # "x": "x",
-    "BefehlSpeichernDavor": "BefehlSpeichernDavor",
-    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar": "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
+befehle = {"15" + a: _("15") + a for a in wahl15.keys()} | {
+    "mond": _("mond"),
+    "reta": _("reta"),
+    "absicht": _("absicht"),
+    "motiv": _("motiv"),
+    "thomas": _("thomas"),
+    "universum": _("universum"),
+    "motive": _("motive"),
+    "absichten": _("absichten"),
+    "vielfache": _("vielfache"),
+    "einzeln": _("einzeln"),
+    "multis": _("multis"),
+    "modulo": _("modulo"),
+    "prim": _("prim"),
+    "primfaktorzerlegung": _("primfaktorzerlegung"),
+    "procontra": _("procontra"),
+    "prim24": _("prim24"),
+    "primfaktorzerlegungModulo24": _("primfaktorzerlegungModulo24"),
+    "help": _("help"),
+    "hilfe": _("hilfe"),
+    "abc": _("abc"),
+    "abcd": _("abcd"),
+    "alles": _("alles"),
+    "a": _("a"),
+    "u": _("u"),
+    "befehle": _("befehle"),
+    "t": _("t"),
+    "richtung": _("richtung"),
+    "r": _("r"),
+    "v": _("v"),
+    "h": _("h"),
+    "p": _("p"),
+    "mo": _("mo"),
+    "mu": _("mu"),
+    "primzahlkreuz": _("primzahlkreuz"),
+    "ende": _("ende"),
+    "exit": _("exit"),
+    "quit": _("quit"),
+    "q": _("q"),
+    ":q": _(":q"),
+    "shell": _("shell"),
+    "s": _("s"),
+    "math": _("math"),
+    "loggen": _("loggen"),
+    "nichtloggen": _("nichtloggen"),
+    "mulpri": _("mulpri"),
+    "python": _("python"),
+    "w": _("w"),
+    "teiler": _("teiler"),
+    "BefehlSpeichernDanach": _("BefehlSpeichernDanach"),
+    "S": _("S"),
+    "BefehlSpeicherungLöschen": _("BefehlSpeicherungLöschen"),
+    "l": _("l"),
+    "BefehlSpeicherungAusgeben": _("BefehlSpeicherungAusgeben"),
+    "o": _("o"),
+    # "BefehlsSpeicherungsModusAus": _("BefehlsSpeicherungsModusAus"),
+    # "x": _("x"),
+    "BefehlSpeichernDavor": _("BefehlSpeichernDavor"),
+    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar": _(
+        "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+    ),
 }
 
 ParametersMain1: namedtuple = namedtuple(
@@ -277,109 +303,114 @@ ParametersMain1: namedtuple = namedtuple(
 
 ParametersMain = ParametersMain1(
     {
-        "Wichtigstes_zum_verstehen": "Wichtigstes_zum_verstehen",
-        "wichtigsteverstehen": "wichtigsteverstehen",
+        "Wichtigstes_zum_verstehen": _("Wichtigstes_zum_verstehen"),
+        "wichtigsteverstehen": _("wichtigsteverstehen"),
     },
     {
-        "Wichtigstes_zum_gedanklich_einordnen": "Wichtigstes_zum_gedanklich_einordnen",
-        "wichtigsteeinordnen": "wichtigsteeinordnen",
+        "Wichtigstes_zum_gedanklich_einordnen": _(
+            "Wichtigstes_zum_gedanklich_einordnen"
+        ),
+        "wichtigsteeinordnen": _("wichtigsteeinordnen"),
     },
     {
-        "Religionen": "Religionen",
-        "religionen": "religionen",
-        "religion": "religion",
+        "Religionen": _("Religionen"),
+        "religionen": _("religionen"),
+        "religion": _("religion"),
     },
     {
-        "Galaxie": "Galaxie",
-        "galaxie": "galaxie",
-        "alteschriften": "alteschriften",
-        "kreis": "kreis",
-        "galaxien": "galaxien",
-        "kreise": "kreise",
+        "Galaxie": _("Galaxie"),
+        "galaxie": _("galaxie"),
+        "alteschriften": _("alteschriften"),
+        "kreis": _("kreis"),
+        "galaxien": _("galaxien"),
+        "kreise": _("kreise"),
     },
     {
-        "Größenordnung": "Größenordnung",
-        "groessenordnung": "groessenordnung",
-        "strukturgroesse": "strukturgroesse",
-        "strukturgroeße": "strukturgroeße",
-        "strukturgrösse": "strukturgrösse",
-        "strukturgröße": "strukturgröße",
-        "groesse": "groesse",
-        "stufe": "stufe",
-        "organisationen": "organisationen",
+        "Größenordnung": _("Größenordnung"),
+        "groessenordnung": _("groessenordnung"),
+        "strukturgroesse": _("strukturgroesse"),
+        "strukturgroeße": _("strukturgroeße"),
+        "strukturgrösse": _("strukturgrösse"),
+        "strukturgröße": _("strukturgröße"),
+        "groesse": _("groesse"),
+        "stufe": _("stufe"),
+        "organisationen": _("organisationen"),
     },
     {
-        "Universum": "Universum",
-        "universum": "universum",
-        "transzendentalien": "transzendentalien",
-        "strukturalien": "strukturalien",
-        "kugel": "kugel",
-        "kugeln": "kugeln",
-        "ball": "ball",
-        "baelle": "baelle",
-        "bälle": "bälle",
+        "Universum": _("Universum"),
+        "universum": _("universum"),
+        "transzendentalien": _("transzendentalien"),
+        "strukturalien": _("strukturalien"),
+        "kugel": _("kugel"),
+        "kugeln": _("kugeln"),
+        "ball": _("ball"),
+        "baelle": _("baelle"),
+        "bälle": _("bälle"),
     },
-    {"Wirtschaft": "Wirtschaft", "wirtschaft": "wirtschaft"},
+    {"Wirtschaft": _("Wirtschaft"), "wirtschaft": _("wirtschaft")},
     {
-        "Menschliches": "Menschliches",
-        "menschliches": "menschliches",
-    },
-    {
-        "Pro_Contra": "Pro_Contra",
-        "procontra": "procontra",
-        "dagegendafuer": "dagegendafuer",
+        "Menschliches": _("Menschliches"),
+        "menschliches": _("menschliches"),
     },
     {
-        "Licht": "Licht",
-        "licht": "licht",
+        "Pro_Contra": _("Pro_Contra"),
+        "procontra": _("procontra"),
+        "dagegendafuer": _("dagegendafuer"),
     },
     {
-        "Bedeutung": "Bedeutung",
-        "bedeutung": "bedeutung",
+        "Licht": _("Licht"),
+        "licht": _("licht"),
     },
     {
-        "Symbole": "Symbole",
-        "symbole": "symbole",
+        "Bedeutung": _("Bedeutung"),
+        "bedeutung": _("bedeutung"),
+    },
+    {
+        "Symbole": _("Symbole"),
+        "symbole": _("symbole"),
     },
     {a[0]: a[0] for a in Multiplikationen},
     {
-        "Eigenschaften_n": "Eigenschaften_n",
-        "eigenschaften": "eigenschaften",
-        "eigenschaft": "eigenschaft",
-        "konzept": "konzept",
-        "konzepte": "konzepte",
+        "Eigenschaften_n": _("Eigenschaften_n"),
+        "eigenschaften": _("eigenschaften"),
+        "eigenschaft": _("eigenschaft"),
+        "konzept": _("konzept"),
+        "konzepte": _("konzepte"),
     },
     {
-        "Eigenschaften_1/n": "Eigenschaften_1/n",
-        "konzept2": "konzept2",
-        "konzepte2": "konzepte2",
+        "Eigenschaften_1/n": _("Eigenschaften_1/n"),
+        "konzept2": _("konzept2"),
+        "konzepte2": _("konzepte2"),
     },
     {
-        "Inkrementieren": "Inkrementieren",
-        "inkrementieren": "inkrementieren",
+        "Inkrementieren": _("Inkrementieren"),
+        "inkrementieren": _("inkrementieren"),
     },
     {
-        "Operationen": "Operationen",
-        "operationen": "operationen",
+        "Operationen": _("Operationen"),
+        "operationen": _("operationen"),
     },
     {
-        "Meta_vs_Konkret_{Universum}": "Meta_vs_Konkret_{Universum}",
-        "universummetakonkret": "universummetakonkret",
+        "Meta_vs_Konkret_{Universum}": _("Meta_vs_Konkret_{Universum}"),
+        "universummetakonkret": _("universummetakonkret"),
     },
     {
-        "Primzahlwirkung": "Primzahlwirkung",
-        "primzahlwirkung": "primzahlwirkung",
+        "Primzahlwirkung": _("Primzahlwirkung"),
+        "primzahlwirkung": _("primzahlwirkung"),
     },
-    {"gebrochenuniversum": "gebrochenuniversum"},
-    {"gebrochengalaxie": "gebrochengalaxie"},
-    {"Multiplikationen": "Multiplikationen", "multiplikationen": "multiplikationen"},
-    {"Planet_{10_und_oder_12}": "Planet_{10_und_oder_12}", "planet": "planet"},
+    {"gebrochenuniversum": _("gebrochenuniversum")},
+    {"gebrochengalaxie": _("gebrochengalaxie")},
     {
-        "Strukturen_1_bis_9": "Strukturen_1_bis_9",
-        "strukturkleinerzehn": "strukturkleinerzehn",
+        "Multiplikationen": _("Multiplikationen"),
+        "multiplikationen": _("multiplikationen"),
     },
-    {"Grundstrukturen": "Grundstrukturen", "grundstrukturen": "grundstrukturen"},
-    {"alles": "alles"},
+    {"Planet_{10_und_oder_12}": _("Planet_{10_und_oder_12}"), "planet": _("planet")},
+    {
+        "Strukturen_1_bis_9": _("Strukturen_1_bis_9"),
+        "strukturkleinerzehn": _("strukturkleinerzehn"),
+    },
+    {"Grundstrukturen": _("Grundstrukturen"), "grundstrukturen": _("grundstrukturen")},
+    {"alles": _("alles")},
 )
 
 
@@ -399,95 +430,95 @@ paraNdataMatrix: list[
     (
         ParametersMain.wichtigste,
         {
-            "Wichtigste": "Wichtigste",
-            "wichtigste": "wichtigste",
+            "Wichtigste": _("Wichtigste"),
+            "wichtigste": _("wichtigste"),
         },
         {10, 5, 4, 8},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Mensch-zu-Tier": "Mensch-zu-Tier",
-            "menschtier": "menschtier",
-            "tiermensch": "tiermensch",
+            "Mensch-zu-Tier": _("Mensch-zu-Tier"),
+            "menschtier": _("menschtier"),
+            "tiermensch": _("tiermensch"),
         },
         {314},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Ansichten_Standpunkte_(18_17)": "Ansichten_Standpunkte_(18_17)",
-            "ansichten": "ansichten",
+            "Ansichten_Standpunkte_(18_17)": _("Ansichten_Standpunkte_(18_17)"),
+            "ansichten": _("ansichten"),
         },
         {240, 346},
     ),
     (
         ParametersMain.menschliches,
         {
-            "(politische)_Richtungen_(7)": "(politische)_Richtungen_(7)",
-            "richtungen": "richtungen",
-            "politische": "politische",
+            "(politische)_Richtungen_(7)": _("(politische)_Richtungen_(7)"),
+            "richtungen": _("richtungen"),
+            "politische": _("politische"),
         },
         {235},
     ),
     (
         ParametersMain.planet,
         {
-            "Wirklichkeiten_(10)": "Wirklichkeiten_(10)",
-            "wirklichkeit": "wirklichkeit",
-            "wirklichkeiten": "wirklichkeiten",
+            "Wirklichkeiten_(10)": _("Wirklichkeiten_(10)"),
+            "wirklichkeit": _("wirklichkeit"),
+            "wirklichkeiten": _("wirklichkeiten"),
         },
         {233, 265, 268, 322},
     ),
     (
         ParametersMain.planet,
         {
-            "Meta-Systeme_(12)": "Meta-Systeme_(12)",
-            "metasysteme": "metasysteme",
-            "metasystem": "metasystem",
-            "meta-systeme": "meta-systeme",
-            "meta-system": "meta-system",
+            "Meta-Systeme_(12)": _("Meta-Systeme_(12)"),
+            "metasysteme": _("metasysteme"),
+            "metasystem": _("metasystem"),
+            "meta-systeme": _("meta-systeme"),
+            "meta-system": _("meta-system"),
         },
         {232, 288, 334},
     ),
     (
         ParametersMain.planet,
-        {"Intelligenz": "Intelligenz", "intelligenz": "intelligenz"},
+        {"Intelligenz": _("Intelligenz"), "intelligenz": _("intelligenz")},
         {214},
     ),
     (
         ParametersMain.planet,
         {
-            "Gleichheit_Freiheit_Ordnung": "Gleichheit_Freiheit_Ordnung",
-            "gleichheit": "gleichheit",
-            "freiheit": "freiheit",
-            "ordnung": "ordnung",
+            "Gleichheit_Freiheit_Ordnung": _("Gleichheit_Freiheit_Ordnung"),
+            "gleichheit": _("gleichheit"),
+            "freiheit": _("freiheit"),
+            "ordnung": _("ordnung"),
         },
         {132, 324, 328, 79, 80, 331, 335},
     ),
     (
         ParametersMain.planet,
         {
-            "Komplexität": "Komplexität",
-            "komplexität": "komplexität",
-            "komplexitaet": "komplexitaet",
+            "Komplexität": _("Komplexität"),
+            "komplexität": _("komplexität"),
+            "komplexitaet": _("komplexitaet"),
         },
         {213},
     ),
     (
         ParametersMain.planet,
         {
-            "Mechanismen": "Mechanismen",
-            "mechanismen": "mechanismen",
-            "mechanismus": "mechanismus",
+            "Mechanismen": _("Mechanismen"),
+            "mechanismen": _("mechanismen"),
+            "mechanismus": _("mechanismus"),
         },
         {107},
     ),
     (
         ParametersMain.wichtigste,
         {
-            "Zweitwichtigste": "Zweitwichtigste",
-            "zweitwichtigste": "zweitwichtigste",
+            "Zweitwichtigste": _("Zweitwichtigste"),
+            "zweitwichtigste": _("zweitwichtigste"),
         },
         {19, 65, 183},
         set(),
@@ -498,16 +529,16 @@ paraNdataMatrix: list[
     (
         ParametersMain.wichtigste,
         {
-            "Drittwichtigste": "Drittwichtigste",
-            "drittwichtigste": "drittwichtigste",
+            "Drittwichtigste": _("Drittwichtigste"),
+            "drittwichtigste": _("drittwichtigste"),
         },
         {64},
     ),
     (
         ParametersMain.wichtigste,
         {
-            "Motive_Sternpolygone": "Motive_Sternpolygone",
-            "viertwichtigste": "viertwichtigste",
+            "Motive_Sternpolygone": _("Motive_Sternpolygone"),
+            "viertwichtigste": _("viertwichtigste"),
         },
         set(),
         set(),
@@ -520,336 +551,345 @@ paraNdataMatrix: list[
     ),
     (
         ParametersMain.wichtigste2,
-        {"Wichtigste": "Wichtigste", "wichtigstes": "wichtigstes"},
+        {"Wichtigste": _("Wichtigste"), "wichtigstes": _("wichtigstes")},
         {0, 1, 2, 36, 37, 207},
     ),
     (
         ParametersMain.wichtigste2,
-        {"Zweitwichtigste": "Zweitwichtigste", "zweitwichtigste": "zweitwichtigste"},
+        {
+            "Zweitwichtigste": _("Zweitwichtigste"),
+            "zweitwichtigste": _("zweitwichtigste"),
+        },
         {30},
     ),
     (
         ParametersMain.operationen,
         {
-            "Halbierung": "Halbierung",
-            "halbierung": "halbierung",
-            "halbierungen": "halbierungen",
+            "Halbierung": _("Halbierung"),
+            "halbierung": _("halbierung"),
+            "halbierungen": _("halbierungen"),
         },
         {86},
     ),
     (
         ParametersMain.religionen,
         {
-            "Religions-Gründer-Typ": "Religions-Gründer-Typ",
-            "religionsgründertyp": "religionsgründertyp",
-            "prophet": "prophet",
-            "archon": "archon",
-            "religionsgruendertyp": "religionsgruendertyp",
+            "Religions-Gründer-Typ": _("Religions-Gründer-Typ"),
+            "religionsgründertyp": _("religionsgründertyp"),
+            "prophet": _("prophet"),
+            "archon": _("archon"),
+            "religionsgruendertyp": _("religionsgruendertyp"),
         },
         {72},
     ),
     (
         ParametersMain.religionen,
-        {"Hinduismus": "Hinduismus", "hinduismus": "hinduismus"},
+        {"Hinduismus": _("Hinduismus"), "hinduismus": _("hinduismus")},
         {217},
     ),
     (
         ParametersMain.religionen,
-        {"Sternpolygon": "Sternpolygon", "sternpolygon": "sternpolygon"},
+        {"Sternpolygon": _("Sternpolygon"), "sternpolygon": _("sternpolygon")},
         {0, 6, 36},
     ),
     (
         ParametersMain.religionen,
         {
-            "der_Tierkreiszeichen": "der_Tierkreiszeichen",
-            "dertierkreiszeichen": "dertierkreiszeichen",
-            "babylon": "babylon",
+            "der_Tierkreiszeichen": _("der_Tierkreiszeichen"),
+            "dertierkreiszeichen": _("dertierkreiszeichen"),
+            "babylon": _("babylon"),
         },
         {0, 36, 207},
     ),
     (
         ParametersMain.religionen,
         {
-            "Sternpolygon_vs_gleichförmiges": "Sternpolygon_vs_gleichförmiges",
-            "vergleich": "vergleich",
-            "sternpolygonvsgleichfoermiges": "sternpolygonvsgleichfoermiges",
-            "vergleichnvs1divn": "vergleichnvs1divn",
+            "Sternpolygon_vs_gleichförmiges": _("Sternpolygon_vs_gleichförmiges"),
+            "vergleich": _("vergleich"),
+            "sternpolygonvsgleichfoermiges": _("sternpolygonvsgleichfoermiges"),
+            "vergleichnvs1divn": _("vergleichnvs1divn"),
         },
         {87},
     ),
     (
         ParametersMain.religionen,
         {
-            "Messias": "Messias",
-            "messias": "messias",
-            "heptagramm": "heptagramm",
-            "hund": "hund",
-            "messiase": "messiase",
-            "messiasse": "messiasse",
+            "Messias": _("Messias"),
+            "messias": _("messias"),
+            "heptagramm": _("heptagramm"),
+            "hund": _("hund"),
+            "messiase": _("messiase"),
+            "messiasse": _("messiasse"),
         },
         {7},
     ),
     (
         ParametersMain.religionen,
         {
-            "gleichförmiges_Polygon": "gleichförmiges_Polygon",
-            "gleichförmigespolygon": "gleichförmigespolygon",
-            "gleichfoermigespolygon": "gleichfoermigespolygon",
-            "nichtsternpolygon": "nichtsternpolygon",
-            "polygon": "polygon",
+            "gleichförmiges_Polygon": _("gleichförmiges_Polygon"),
+            "gleichförmigespolygon": _("gleichförmigespolygon"),
+            "gleichfoermigespolygon": _("gleichfoermigespolygon"),
+            "nichtsternpolygon": _("nichtsternpolygon"),
+            "polygon": _("polygon"),
         },
         {16, 37},
     ),
     (
         ParametersMain.religionen,
         {
-            "Vertreter_höherer_Konzepte": "Vertreter_höherer_Konzepte",
-            "vertreterhoehererkonzepte": "vertreterhoehererkonzepte",
-            "galaxien": "galaxien",
-            "galaxie": "galaxie",
-            "schwarzesonne": "schwarzesonne",
-            "schwarzesonnen": "schwarzesonnen",
-            "universum": "universum",
-            "universen": "universen",
-            "kreis": "kreis",
-            "kreise": "kreise",
-            "kugel": "kugel",
-            "kugeln": "kugeln",
+            "Vertreter_höherer_Konzepte": _("Vertreter_höherer_Konzepte"),
+            "vertreterhoehererkonzepte": _("vertreterhoehererkonzepte"),
+            "galaxien": _("galaxien"),
+            "galaxie": _("galaxie"),
+            "schwarzesonne": _("schwarzesonne"),
+            "schwarzesonnen": _("schwarzesonnen"),
+            "universum": _("universum"),
+            "universen": _("universen"),
+            "kreis": _("kreis"),
+            "kreise": _("kreise"),
+            "kugel": _("kugel"),
+            "kugeln": _("kugeln"),
         },
         {23},
     ),
     (
         ParametersMain.galaxie,
         {
-            "Offenbarung_des_Johannes": "Offenbarung_des_Johannes",
-            "offenbarung": "offenbarung",
-            "offenbarungdesjohannes": "offenbarungdesjohannes",
-            "johannes": "johannes",
-            "bibel": "bibel",
-            "offenbarungjohannes": "offenbarungjohannes",
+            "Offenbarung_des_Johannes": _("Offenbarung_des_Johannes"),
+            "offenbarung": _("offenbarung"),
+            "offenbarungdesjohannes": _("offenbarungdesjohannes"),
+            "johannes": _("johannes"),
+            "bibel": _("bibel"),
+            "offenbarungjohannes": _("offenbarungjohannes"),
         },
         {90},
     ),
     (
         ParametersMain.inkrementieren,
         {
-            "Teilchen-Meta-Physik": "Teilchen-Meta-Physik",
-            "addition": "addition",
-            "identitaet": "identitaet",
-            "Identität": "Identität",
+            "Teilchen-Meta-Physik": _("Teilchen-Meta-Physik"),
+            "addition": _("addition"),
+            "identitaet": _("identitaet"),
+            "Identität": _("Identität"),
         },
         {219, 223, 307, 308, 333},
     ),
     (
         ParametersMain.galaxie,
         {
-            "Hochzüchten": "Hochzüchten",
-            "hochzüchten": "hochzüchten",
-            "hochzuechten": "hochzuechten",
+            "Hochzüchten": _("Hochzüchten"),
+            "hochzüchten": _("hochzüchten"),
+            "hochzuechten": _("hochzuechten"),
         },
         {318, 319},
     ),
     (
         ParametersMain.universum,
         {
-            "Universelles_Verhältnis_gleicher_Zahlen": "Universelles_Verhältnis_gleicher_Zahlen",
-            "verhaeltnisgleicherzahl": "verhaeltnisgleicherzahl",
+            "Universelles_Verhältnis_gleicher_Zahlen": _(
+                "Universelles_Verhältnis_gleicher_Zahlen"
+            ),
+            "verhaeltnisgleicherzahl": _("verhaeltnisgleicherzahl"),
         },
         {383},
     ),
     (
         ParametersMain.universum,
-        {"universelles_Recht": "universelles_Recht", "recht": "recht", "jura": "jura"},
+        {
+            "universelles_Recht": _("universelles_Recht"),
+            "recht": _("recht"),
+            "jura": _("jura"),
+        },
         {382, 34, 65},
     ),
     (
         ParametersMain.universum,
         {
-            "sowas_wie_Kombinieren_Verknüpfen": "sowas_wie_Kombinieren_Verknüpfen",
-            "kombinierenetc": "kombinierenetc",
+            "sowas_wie_Kombinieren_Verknüpfen": _("sowas_wie_Kombinieren_Verknüpfen"),
+            "kombinierenetc": _("kombinierenetc"),
         },
         {320},
     ),
     (
         ParametersMain.universum,
         {
-            "Hochzüchten": "Hochzüchten",
-            "hochzüchten": "hochzüchten",
-            "hochzuechten": "hochzuechten",
+            "Hochzüchten": _("Hochzüchten"),
+            "hochzüchten": _("hochzüchten"),
+            "hochzuechten": _("hochzuechten"),
         },
         {318, 319},
     ),
     (
         ParametersMain.universum,
         {
-            "Teilchen-Meta-Physik": "Teilchen-Meta-Physik",
-            "addition": "addition",
-            "identitaet": "identitaet",
-            "Identität": "Identität",
+            "Teilchen-Meta-Physik": _("Teilchen-Meta-Physik"),
+            "addition": _("addition"),
+            "identitaet": _("identitaet"),
+            "Identität": _("Identität"),
         },
         {219, 223, 307, 308, 333},
     ),
     (
         ParametersMain.universum,
         {
-            "keine_Nur-Paradigma-Religionen": "keine_Nur-Paradigma-Religionen",
-            "metaparadigmareligion": "metaparadigmareligion",
+            "keine_Nur-Paradigma-Religionen": _("keine_Nur-Paradigma-Religionen"),
+            "metaparadigmareligion": _("metaparadigmareligion"),
         },
         {190, 191, 196},
     ),
     (
         ParametersMain.universum,
         {
-            "Kugeln_Kreise": "Kugeln_Kreise",
-            "kugelnkreise": "kugelnkreise",
-            "kugeln": "kugeln",
-            "kreise": "kreise",
+            "Kugeln_Kreise": _("Kugeln_Kreise"),
+            "kugelnkreise": _("kugelnkreise"),
+            "kugeln": _("kugeln"),
+            "kreise": _("kreise"),
         },
         {77, 145},
     ),
     (
         ParametersMain.galaxie,
         {
-            "Kugeln_Kreise": "Kugeln_Kreise",
-            "kugelnkreise": "kugelnkreise",
-            "kugeln": "kugeln",
-            "kreise": "kreise",
+            "Kugeln_Kreise": _("Kugeln_Kreise"),
+            "kugelnkreise": _("kugelnkreise"),
+            "kugeln": _("kugeln"),
+            "kreise": _("kreise"),
         },
         {77, 145},
     ),
     (
         ParametersMain.galaxie,
         {
-            "chinesisches_Horoskop": "chinesisches_Horoskop",
-            "chinesischeshoroskop": "chinesischeshoroskop",
-            "china": "china",
+            "chinesisches_Horoskop": _("chinesisches_Horoskop"),
+            "chinesischeshoroskop": _("chinesischeshoroskop"),
+            "china": _("china"),
         },
         {91},
     ),
     (
         ParametersMain.galaxie,
         {
-            "babylonische_Tierkreiszeichen": "babylonische_Tierkreiszeichen",
-            "tierkreiszeichen": "tierkreiszeichen",
-            "babylon": "babylon",
+            "babylonische_Tierkreiszeichen": _("babylonische_Tierkreiszeichen"),
+            "tierkreiszeichen": _("tierkreiszeichen"),
+            "babylon": _("babylon"),
         },
         {1, 2},
     ),
     (
         ParametersMain.galaxie,
         {
-            "Thomasevangelium": "Thomasevangelium",
-            "thomasevangelium": "thomasevangelium",
-            "thomas": "thomas",
+            "Thomasevangelium": _("Thomasevangelium"),
+            "thomasevangelium": _("thomasevangelium"),
+            "thomas": _("thomas"),
         },
         {0, 3, 303},
     ),
     (
         ParametersMain.galaxie,
         {
-            "analytische_Ontologie": "analytische_Ontologie",
-            "analytischeontologie": "analytischeontologie",
-            "ontologie": "ontologie",
+            "analytische_Ontologie": _("analytische_Ontologie"),
+            "analytischeontologie": _("analytischeontologie"),
+            "ontologie": _("ontologie"),
         },
         {84},
     ),
     (
         ParametersMain.galaxie,
         {
-            "Transzendentalien_innen_außen": "Transzendentalien_innen_außen",
-            "innenaussenstrukur": "innenaussenstrukur",
-            "strukturalieninnenaußen": "strukturalieninnenaußen",
-            "strukturalieninnenaussen": "strukturalieninnenaussen",
-            "innenaußenstrukur": "innenaußenstrukur",
-            "transzendentalieninnenaußen": "transzendentalieninnenaußen",
-            "transzendentalieninnenaussen": "transzendentalieninnenaussen",
+            "Transzendentalien_innen_außen": _("Transzendentalien_innen_außen"),
+            "innenaussenstrukur": _("innenaussenstrukur"),
+            "strukturalieninnenaußen": _("strukturalieninnenaußen"),
+            "strukturalieninnenaussen": _("strukturalieninnenaussen"),
+            "innenaußenstrukur": _("innenaußenstrukur"),
+            "transzendentalieninnenaußen": _("transzendentalieninnenaußen"),
+            "transzendentalieninnenaussen": _("transzendentalieninnenaussen"),
         },
         {149},
     ),
     (
         ParametersMain.galaxie,
         {
-            "Modallogik": "Modallogik",
-            "modallogik": "modallogik",
+            "Modallogik": _("Modallogik"),
+            "modallogik": _("modallogik"),
         },
         {148},
     ),
     (
         ParametersMain.operationen,
         {
-            "5": "5",
-            "fünf": "fünf",
-            "fünfer": "fünfer",
-            "fünferstruktur": "fünferstruktur",
-            "fuenf": "fuenf",
-            "fuenfer": "fuenfer",
-            "fuenferstruktur": "fuenferstruktur",
+            "5": _("5"),
+            "fünf": _("fünf"),
+            "fünfer": _("fünfer"),
+            "fünferstruktur": _("fünferstruktur"),
+            "fuenf": _("fuenf"),
+            "fuenfer": _("fuenfer"),
+            "fuenferstruktur": _("fuenferstruktur"),
         },
         {96},
     ),
     (
         ParametersMain.operationen,
         {
-            "9": "9",
-            "neun": "neun",
-            "neuner": "neuner",
-            "neunerstruktur": "neunerstruktur",
+            "9": _("9"),
+            "neun": _("neun"),
+            "neuner": _("neuner"),
+            "neunerstruktur": _("neunerstruktur"),
         },
         {94},
     ),
     (
         ParametersMain.operationen,
         {
-            "3": "3",
-            "drei": "drei",
-            "dreier": "dreier",
-            "dreierstruktur": "dreierstruktur",
+            "3": _("3"),
+            "drei": _("drei"),
+            "dreier": _("dreier"),
+            "dreierstruktur": _("dreierstruktur"),
         },
         {92, 93, 315, 316},
     ),
     (
         ParametersMain.strukturgroesse,
         {
-            "Licht": "Licht",
-            "licht": "licht",
+            "Licht": _("Licht"),
+            "licht": _("licht"),
         },
         {20, 27, 313},
     ),
     (
         ParametersMain.strukturgroesse,
         {
-            "Strukturgrösse": "Strukturgrösse",
-            "größe": "größe",
-            "groesse": "groesse",
-            "gross": "gross",
-            "strukturgroesse": "strukturgroesse",
-            "strukturgroeße": "strukturgroeße",
-            "strukturgrösse": "strukturgrösse",
-            "strukturgröße": "strukturgröße",
+            "Strukturgrösse": _("Strukturgrösse"),
+            "größe": _("größe"),
+            "groesse": _("groesse"),
+            "gross": _("gross"),
+            "strukturgroesse": _("strukturgroesse"),
+            "strukturgroeße": _("strukturgroeße"),
+            "strukturgrösse": _("strukturgrösse"),
+            "strukturgröße": _("strukturgröße"),
         },
         {4, 21, 54, 197},
     ),
     (
         ParametersMain.strukturgroesse,
         {
-            "Organisationen": "Organisationen",
-            "organisationen": "organisationen",
-            "organisation": "organisation",
+            "Organisationen": _("Organisationen"),
+            "organisationen": _("organisationen"),
+            "organisation": _("organisation"),
         },
         {30, 82},
     ),
     (
         ParametersMain.strukturgroesse,
         {
-            "politische_Systeme": "politische_Systeme",
-            "politischesysteme": "politischesysteme",
-            "politik": "politik",
+            "politische_Systeme": _("politische_Systeme"),
+            "politischesysteme": _("politischesysteme"),
+            "politik": _("politik"),
         },
         {83},
     ),
     (
         ParametersMain.universummetakonkret,
-        {"meta": "meta"},
+        {"meta": _("meta")},
         set(),
         set(),
         set(),
@@ -863,7 +903,7 @@ paraNdataMatrix: list[
     ),
     (
         ParametersMain.universummetakonkret,
-        {"konkret": "konkret"},
+        {"konkret": _("konkret")},
         set(),
         set(),
         set(),
@@ -877,7 +917,7 @@ paraNdataMatrix: list[
     ),
     (
         ParametersMain.universummetakonkret,
-        {"Theorie": "Theorie", "theorie": "theorie"},
+        {"Theorie": _("Theorie"), "theorie": _("theorie")},
         set(),
         set(),
         set(),
@@ -891,7 +931,7 @@ paraNdataMatrix: list[
     ),
     (
         ParametersMain.universummetakonkret,
-        {"Praxis": "Praxis", "praxis": "praxis"},
+        {"Praxis": _("Praxis"), "praxis": _("praxis")},
         set(),
         set(),
         set(),
@@ -906,9 +946,9 @@ paraNdataMatrix: list[
     (
         ParametersMain.universummetakonkret,
         {
-            "Management": "Management",
-            "management": "management",
-            "stau": "stau",
+            "Management": _("Management"),
+            "management": _("management"),
+            "stau": _("stau"),
         },
         set(),
         set(),
@@ -924,9 +964,9 @@ paraNdataMatrix: list[
     (
         ParametersMain.universummetakonkret,
         {
-            "verändernd": "verändernd",
-            "veraendernd": "veraendernd",
-            "fluss": "fluss",
+            "verändernd": _("verändernd"),
+            "veraendernd": _("veraendernd"),
+            "fluss": _("fluss"),
         },
         set(),
         set(),
@@ -942,9 +982,9 @@ paraNdataMatrix: list[
     (
         ParametersMain.universummetakonkret,
         {
-            "ganzheitlich": "ganzheitlich",
-            "mathematisch_diskret": "mathematisch_diskret",
-            "diskret": "diskret",
+            "ganzheitlich": _("ganzheitlich"),
+            "mathematisch_diskret": _("mathematisch_diskret"),
+            "diskret": _("diskret"),
         },
         set(),
         set(),
@@ -960,9 +1000,9 @@ paraNdataMatrix: list[
     (
         ParametersMain.universummetakonkret,
         {
-            "darüber_hinausgehend": "darüber_hinausgehend",
-            "hinausgehend": "hinausgehend",
-            "kontinuierlich": "kontinuierlich",
+            "darüber_hinausgehend": _("darüber_hinausgehend"),
+            "hinausgehend": _("hinausgehend"),
+            "kontinuierlich": _("kontinuierlich"),
         },
         set(),
         set(),
@@ -978,12 +1018,14 @@ paraNdataMatrix: list[
     (
         ParametersMain.primzahlwirkung,
         {
-            "Universum_Strukturalien_Transzendentalien": "Universum_Strukturalien_Transzendentalien",
-            "universum": "universum",
-            "strukturalie": "strukturalie",
-            "strukturalien": "strukturalien",
-            "transzendentalien": "transzendentalien",
-            "transzendentalie": "transzendentalie",
+            "Universum_Strukturalien_Transzendentalien": _(
+                "Universum_Strukturalien_Transzendentalien"
+            ),
+            "universum": _("universum"),
+            "strukturalie": _("strukturalie"),
+            "strukturalien": _("strukturalien"),
+            "transzendentalien": _("transzendentalien"),
+            "transzendentalie": _("transzendentalie"),
         },
         set(),
         set(),
@@ -994,8 +1036,8 @@ paraNdataMatrix: list[
     (
         ParametersMain.primzahlwirkung,
         {
-            "Richtung_als_Richtung": "Richtung_als_Richtung",
-            "richtungrichtung": "richtungrichtung",
+            "Richtung_als_Richtung": _("Richtung_als_Richtung"),
+            "richtungrichtung": _("richtungrichtung"),
         },
         set(),
         set(),
@@ -1006,13 +1048,13 @@ paraNdataMatrix: list[
     (
         ParametersMain.primzahlwirkung,
         {
-            "Galaxieabsicht": "Galaxieabsicht",
-            "absichtgalaxie": "absichtgalaxie",
-            "absicht": "absicht",
-            "motive": "motive",
-            "motiv": "motiv",
-            "absichten": "absichten",
-            "galaxie": "galaxie",
+            "Galaxieabsicht": _("Galaxieabsicht"),
+            "absichtgalaxie": _("absichtgalaxie"),
+            "absicht": _("absicht"),
+            "motive": _("motive"),
+            "motiv": _("motiv"),
+            "absichten": _("absichten"),
+            "galaxie": _("galaxie"),
         },
         set(),
         set(),
@@ -1023,13 +1065,13 @@ paraNdataMatrix: list[
     (
         ParametersMain.primzahlwirkung,
         {
-            "Absicht_Reziproke_Galaxie": "Absicht_Reziproke_Galaxie",
-            "absichtgalaxiereziproke": "absichtgalaxiereziproke",
-            "absichtreziproke": "absichtreziproke",
-            "motivereziproke": "motivereziproke",
-            "motivreziproke": "motivreziproke",
-            "absichtenreziproke": "absichtenreziproke",
-            "galaxiereziproke": "galaxiereziproke",
+            "Absicht_Reziproke_Galaxie": _("Absicht_Reziproke_Galaxie"),
+            "absichtgalaxiereziproke": _("absichtgalaxiereziproke"),
+            "absichtreziproke": _("absichtreziproke"),
+            "motivereziproke": _("motivereziproke"),
+            "motivreziproke": _("motivreziproke"),
+            "absichtenreziproke": _("absichtenreziproke"),
+            "galaxiereziproke": _("galaxiereziproke"),
         },
         set(),
         set(),
@@ -1040,12 +1082,12 @@ paraNdataMatrix: list[
     (
         ParametersMain.primzahlwirkung,
         {
-            "Universum_Reziproke": "Universum_Reziproke",
-            "universumreziproke": "universumreziproke",
-            "strukturaliereziproke": "strukturaliereziproke",
-            "strukturalienreziproke": "strukturalienreziproke",
-            "transzendentalienreziproke": "transzendentalienreziproke",
-            "transzendentaliereziproke": "transzendentaliereziproke",
+            "Universum_Reziproke": _("Universum_Reziproke"),
+            "universumreziproke": _("universumreziproke"),
+            "strukturaliereziproke": _("strukturaliereziproke"),
+            "strukturalienreziproke": _("strukturalienreziproke"),
+            "transzendentalienreziproke": _("transzendentalienreziproke"),
+            "transzendentaliereziproke": _("transzendentaliereziproke"),
         },
         set(),
         set(),
@@ -1056,11 +1098,11 @@ paraNdataMatrix: list[
     (
         ParametersMain.primzahlwirkung,
         {
-            "Dagegen-Gegentranszendentalie": "Dagegen-Gegentranszendentalie",
-            "dagegengegentranszendentalie": "dagegengegentranszendentalie",
-            "dagegengegentranszendentalien": "dagegengegentranszendentalien",
-            "dagegengegenstrukturalien": "dagegengegenstrukturalien",
-            "dagegengegenstrukturalie": "dagegengegenstrukturalie",
+            "Dagegen-Gegentranszendentalie": _("Dagegen-Gegentranszendentalie"),
+            "dagegengegentranszendentalie": _("dagegengegentranszendentalie"),
+            "dagegengegentranszendentalien": _("dagegengegentranszendentalien"),
+            "dagegengegenstrukturalien": _("dagegengegenstrukturalien"),
+            "dagegengegenstrukturalie": _("dagegengegenstrukturalie"),
         },
         set(),
         set(),
@@ -1071,11 +1113,11 @@ paraNdataMatrix: list[
     (
         ParametersMain.primzahlwirkung,
         {
-            "neutrale_Gegentranszendentalie": "neutrale_Gegentranszendentalie",
-            "neutralegegentranszendentalie": "neutralegegentranszendentalie",
-            "neutralegegentranszendentalien": "neutralegegentranszendentalien",
-            "neutralegegenstrukturalien": "neutralegegenstrukturalien",
-            "neutralegegenstrukturalie": "neutralegegenstrukturalie",
+            "neutrale_Gegentranszendentalie": _("neutrale_Gegentranszendentalie"),
+            "neutralegegentranszendentalie": _("neutralegegentranszendentalie"),
+            "neutralegegentranszendentalien": _("neutralegegentranszendentalien"),
+            "neutralegegenstrukturalien": _("neutralegegenstrukturalien"),
+            "neutralegegenstrukturalie": _("neutralegegenstrukturalie"),
         },
         set(),
         set(),
@@ -1086,11 +1128,11 @@ paraNdataMatrix: list[
     (
         ParametersMain.universummetakonkret,
         {
-            "Unternehmung_Geschäft": "Unternehmung_Geschäft",
-            "unternehmen": "unternehmen",
-            "unternehmung": "unternehmung",
-            "geschaeft": "geschaeft",
-            "geschäft": "geschäft",
+            "Unternehmung_Geschäft": _("Unternehmung_Geschäft"),
+            "unternehmen": _("unternehmen"),
+            "unternehmung": _("unternehmung"),
+            "geschaeft": _("geschaeft"),
+            "geschäft": _("geschäft"),
         },
         set(),
         set(),
@@ -1105,7 +1147,7 @@ paraNdataMatrix: list[
     ),
     (
         ParametersMain.universummetakonkret,
-        {"wertvoll": "wertvoll", "wert": "wert"},
+        {"wertvoll": _("wertvoll"), "wert": _("wert")},
         set(),
         set(),
         set(),
@@ -1120,9 +1162,9 @@ paraNdataMatrix: list[
     (
         ParametersMain.universummetakonkret,
         {
-            "Beherrschen": "Beherrschen",
-            "regieren": "regieren",
-            "beherrschen": "beherrschen",
+            "Beherrschen": _("Beherrschen"),
+            "regieren": _("regieren"),
+            "beherrschen": _("beherrschen"),
         },
         set(),
         set(),
@@ -1138,9 +1180,9 @@ paraNdataMatrix: list[
     (
         ParametersMain.universummetakonkret,
         {
-            "Richtung": "Richtung",
-            "richtung": "richtung",
-            "gut": "gut",
+            "Richtung": _("Richtung"),
+            "richtung": _("richtung"),
+            "gut": _("gut"),
         },
         set(),
         set(),
@@ -1156,27 +1198,27 @@ paraNdataMatrix: list[
     (
         ParametersMain.universum,
         {
-            "analytische_Ontologie": "analytische_Ontologie",
-            "analytischeontologie": "analytischeontologie",
-            "ontologie": "ontologie",
+            "analytische_Ontologie": _("analytische_Ontologie"),
+            "analytischeontologie": _("analytischeontologie"),
+            "ontologie": _("ontologie"),
         },
         {84},
     ),
     (
         ParametersMain.universum,
         {
-            "Gegentranszendentalien": "Gegentranszendentalien",
-            "gegentranszendentalien": "gegentranszendentalien",
-            "gegentranszendentalie": "gegentranszendentalie",
-            "gegenstrukturalien": "gegenstrukturalien",
-            "gegenalien": "gegenalien",
-            "gegenuniversalien": "gegenuniversalien",
+            "Gegentranszendentalien": _("Gegentranszendentalien"),
+            "gegentranszendentalien": _("gegentranszendentalien"),
+            "gegentranszendentalie": _("gegentranszendentalie"),
+            "gegenstrukturalien": _("gegenstrukturalien"),
+            "gegenalien": _("gegenalien"),
+            "gegenuniversalien": _("gegenuniversalien"),
         },
         {138, 202},
     ),
     (
         ParametersMain.universum,
-        {"Systemsachen": "Systemsachen", "systemsachen": "systemsachen"},
+        {"Systemsachen": _("Systemsachen"), "systemsachen": _("systemsachen")},
         {
             150,
         },
@@ -1184,207 +1226,215 @@ paraNdataMatrix: list[
     (
         ParametersMain.universum,
         {
-            "Transzendentalien": "Transzendentalien",
-            "transzendentalien": "transzendentalien",
-            "transzendentalie": "transzendentalie",
-            "strukturalien": "strukturalien",
-            "alien": "alien",
-            "universalien": "universalien",
+            "Transzendentalien": _("Transzendentalien"),
+            "transzendentalien": _("transzendentalien"),
+            "transzendentalie": _("transzendentalie"),
+            "strukturalien": _("strukturalien"),
+            "alien": _("alien"),
+            "universalien": _("universalien"),
         },
         {5, 54, 55, 198},
     ),
     (
         ParametersMain.universum,
         {
-            "Reziproke_von_Transzendentalien": "Reziproke_von_Transzendentalien",
-            "transzendentalienreziproke": "transzendentalienreziproke",
-            "transzendentaliereziproke": "transzendentaliereziproke",
-            "strukturalienreziproke": "strukturalienreziproke",
-            "alienreziproke": "alienreziproke",
-            "universalienreziproke": "universalienreziproke",
+            "Reziproke_von_Transzendentalien": _("Reziproke_von_Transzendentalien"),
+            "transzendentalienreziproke": _("transzendentalienreziproke"),
+            "transzendentaliereziproke": _("transzendentaliereziproke"),
+            "strukturalienreziproke": _("strukturalienreziproke"),
+            "alienreziproke": _("alienreziproke"),
+            "universalienreziproke": _("universalienreziproke"),
         },
         {131, 201},
     ),
     (
         ParametersMain.universum,
-        {"Netzwerk": "Netzwerk", "netzwerk": "netzwerk"},
+        {"Netzwerk": _("Netzwerk"), "netzwerk": _("netzwerk")},
         {25},
     ),
     (
         ParametersMain.universum,
         {
-            "warum_Transzendentalie_=_Strukturgroesse_=_Charakter": "warum_Transzendentalie_=_Strukturgroesse_=_Charakter",
-            "warumtranszendentaliezustrukturgroesseundcharakter": "warumtranszendentaliezustrukturgroesseundcharakter",
+            "warum_Transzendentalie_=_Strukturgroesse_=_Charakter": _(
+                "warum_Transzendentalie_=_Strukturgroesse_=_Charakter"
+            ),
+            "warumtranszendentaliezustrukturgroesseundcharakter": _(
+                "warumtranszendentaliezustrukturgroesseundcharakter"
+            ),
         },
         {4, 54, 5, 165},
     ),
     (
         ParametersMain.universum,
-        {"Kategorie": "Kategorie", "kategorie": "kategorie"},
+        {"Kategorie": _("Kategorie"), "kategorie": _("kategorie")},
         {204, 205, 281},
     ),
     (
         ParametersMain.universum,
-        {"Raum-Missionen": "Raum-Missionen", "weltall": "weltall"},
+        {"Raum-Missionen": _("Raum-Missionen"), "weltall": _("weltall")},
         {218},
     ),
     (
         ParametersMain.universum,
         {
-            "Programmier-Paradigmen": "Programmier-Paradigmen",
-            "programmierparadigmen": "programmierparadigmen",
+            "Programmier-Paradigmen": _("Programmier-Paradigmen"),
+            "programmierparadigmen": _("programmierparadigmen"),
         },
         {351},
     ),
     (
         ParametersMain.galaxie,
-        {"Raum-Missionen": "Raum-Missionen", "weltall": "weltall"},
+        {"Raum-Missionen": _("Raum-Missionen"), "weltall": _("weltall")},
         {218},
     ),
     (
         ParametersMain.universum,
-        {"Geist__(15)": "Geist__(15)", "geist": "geist"},
+        {"Geist__(15)": _("Geist__(15)"), "geist": _("geist")},
         {242},
     ),
     (
         ParametersMain.universum,
         {
-            "warum_Transzendentalie_=_Komplexität_von_Michael_Commons": "warum_Transzendentalie_=_Komplexität_von_Michael_Commons",
-            "warumtranszendentaliegleichkomplexitaet": "warumtranszendentaliegleichkomplexitaet",
+            "warum_Transzendentalie_=_Komplexität_von_Michael_Commons": _(
+                "warum_Transzendentalie_=_Komplexität_von_Michael_Commons"
+            ),
+            "warumtranszendentaliegleichkomplexitaet": _(
+                "warumtranszendentaliegleichkomplexitaet"
+            ),
         },
         {65, 5, 166},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Model_of_Hierarchical_Complexity": "Model_of_Hierarchical_Complexity",
-            "modelofhierarchicalcomplexity": "modelofhierarchicalcomplexity",
-            "komplex": "komplex",
-            "komplexität": "komplexität",
-            "komplexitaet": "komplexitaet",
-            "complexity": "complexity",
-            "model": "model",
-            "abstraktion": "abstraktion",
+            "Model_of_Hierarchical_Complexity": _("Model_of_Hierarchical_Complexity"),
+            "modelofhierarchicalcomplexity": _("modelofhierarchicalcomplexity"),
+            "komplex": _("komplex"),
+            "komplexität": _("komplexität"),
+            "komplexitaet": _("komplexitaet"),
+            "complexity": _("complexity"),
+            "model": _("model"),
+            "abstraktion": _("abstraktion"),
         },
         {65, 75, 203},
     ),
     (
         ParametersMain.universum,
         {
-            "Model_of_Hierarchical_Complexity": "Model_of_Hierarchical_Complexity",
-            "modelofhierarchicalcomplexity": "modelofhierarchicalcomplexity",
-            "komplex": "komplex",
-            "komplexität": "komplexität",
-            "komplexitaet": "komplexitaet",
-            "complexity": "complexity",
-            "model": "model",
-            "abstraktion": "abstraktion",
+            "Model_of_Hierarchical_Complexity": _("Model_of_Hierarchical_Complexity"),
+            "modelofhierarchicalcomplexity": _("modelofhierarchicalcomplexity"),
+            "komplex": _("komplex"),
+            "komplexität": _("komplexität"),
+            "komplexitaet": _("komplexitaet"),
+            "complexity": _("complexity"),
+            "model": _("model"),
+            "abstraktion": _("abstraktion"),
         },
         {65, 75, 203},
     ),
     (
         ParametersMain.operationen,
         {
-            "2": "2",
-            "zwei": "zwei",
-            "gerade": "gerade",
-            "ungerade": "ungerade",
-            "alternierung": "alternierung",
-            "alternierend": "alternierend",
-            "zweierstruktur": "zweierstruktur",
+            "2": _("2"),
+            "zwei": _("zwei"),
+            "gerade": _("gerade"),
+            "ungerade": _("ungerade"),
+            "alternierung": _("alternierung"),
+            "alternierend": _("alternierend"),
+            "zweierstruktur": _("zweierstruktur"),
         },
         {78, 79, 80, 331},
     ),
     (
         ParametersMain.operationen,
         {
-            "Multiplikation": "Multiplikation",
-            "multiplikation": "multiplikation",
+            "Multiplikation": _("Multiplikation"),
+            "multiplikation": _("multiplikation"),
         },
         {158},
     ),
     (
         ParametersMain.operationen,
         {
-            "4": "4",
-            "vier": "vier",
-            "viererstruktur": "viererstruktur",
-            "viererabfolgen": "viererabfolgen",
+            "4": _("4"),
+            "vier": _("vier"),
+            "viererstruktur": _("viererstruktur"),
+            "viererabfolgen": _("viererabfolgen"),
         },
         {76, 77, 81, 104, 145},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Gesellschaftsschicht": "Gesellschaftsschicht",
-            "klasse": "klasse",
-            "klassen": "klassen",
+            "Gesellschaftsschicht": _("Gesellschaftsschicht"),
+            "klasse": _("klasse"),
+            "klassen": _("klassen"),
         },
         {241},
     ),
     (
         ParametersMain.menschliches,
-        {"Moral": "Moral", "moral": "moral", "warummoral": "warummoral"},
+        {"Moral": _("Moral"), "moral": _("moral"), "warummoral": _("warummoral")},
         {215, 216},
         {(216, 221)},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Fachgebiete": "Fachgebiete",
-            "fachgebiete": "fachgebiete",
-            "fachbereiche": "fachbereiche",
-            "themen": "themen",
+            "Fachgebiete": _("Fachgebiete"),
+            "fachgebiete": _("fachgebiete"),
+            "fachbereiche": _("fachbereiche"),
+            "themen": _("themen"),
         },
         {183},
     ),
     (
         ParametersMain.wirtschaft,
         {
-            "Fachgebiete": "Fachgebiete",
-            "fachgebiete": "fachgebiete",
-            "fachbereiche": "fachbereiche",
-            "themen": "themen",
+            "Fachgebiete": _("Fachgebiete"),
+            "fachgebiete": _("fachgebiete"),
+            "fachbereiche": _("fachbereiche"),
+            "themen": _("themen"),
         },
         {183},
     ),
     (
         ParametersMain.wirtschaft,
         {
-            "Pflanzen": "Pflanzen",
-            "pflanzen": "pflanzen",
+            "Pflanzen": _("Pflanzen"),
+            "pflanzen": _("pflanzen"),
         },
         {113},
     ),
     (
         ParametersMain.wirtschaft,
         {
-            "Maschinen": "Maschinen",
-            "maschinen": "maschinen",
-            "maschine": "maschine",
-            "gerät": "gerät",
-            "geräte": "geräte",
-            "geraete": "geraete",
-            "geraet": "geraet",
+            "Maschinen": _("Maschinen"),
+            "maschinen": _("maschinen"),
+            "maschine": _("maschine"),
+            "gerät": _("gerät"),
+            "geräte": _("geräte"),
+            "geraete": _("geraete"),
+            "geraet": _("geraet"),
         },
         {89},
     ),
     (
         ParametersMain.wirtschaft,
         {
-            "Organisationsform": "Organisationsform",
-            "organisationsform": "organisationsform",
-            "organisationsart": "organisationsart",
-            "firma": "firma",
-            "verein": "verein",
+            "Organisationsform": _("Organisationsform"),
+            "organisationsform": _("organisationsform"),
+            "organisationsart": _("organisationsart"),
+            "firma": _("firma"),
+            "verein": _("verein"),
         },
         {99},
     ),
     (
         ParametersMain.wirtschaft,
         {
-            "System": "System",
-            "system": "system",
+            "System": _("System"),
+            "system": _("system"),
         },
         {
             69,
@@ -1393,36 +1443,36 @@ paraNdataMatrix: list[
     (
         ParametersMain.wirtschaft,
         {
-            "realistisch": "realistisch",
-            "funktioniert": "funktioniert",
+            "realistisch": _("realistisch"),
+            "funktioniert": _("funktioniert"),
         },
         {70},
     ),
     (
         ParametersMain.wirtschaft,
         {
-            "Erklärung": "Erklärung",
-            "erklärung": "erklärung",
-            "erklaerung": "erklaerung",
+            "Erklärung": _("Erklärung"),
+            "erklärung": _("erklärung"),
+            "erklaerung": _("erklaerung"),
         },
         {71},
     ),
     (
         ParametersMain.wirtschaft,
         {
-            "BWL": "BWL",
-            "bwl": "bwl",
+            "BWL": _("BWL"),
+            "bwl": _("bwl"),
         },
         {109},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Sinn_des_Lebens": "Sinn_des_Lebens",
-            "sinndeslebens": "sinndeslebens",
-            "lebenssinn": "lebenssinn",
-            "sinn": "sinn",
-            "sinnsuche": "sinnsuche",
+            "Sinn_des_Lebens": _("Sinn_des_Lebens"),
+            "sinndeslebens": _("sinndeslebens"),
+            "lebenssinn": _("lebenssinn"),
+            "sinn": _("sinn"),
+            "sinnsuche": _("sinnsuche"),
         },
         {88, 189},
         {(181, 182)},
@@ -1430,63 +1480,63 @@ paraNdataMatrix: list[
     (
         ParametersMain.menschliches,
         {
-            "Intelligenzprobleme": "Intelligenzprobleme",
-            "intelligenzprobleme": "intelligenzprobleme",
-            "intelligenzmaengel": "intelligenzmaengel",
-            "intelligenzmängel": "intelligenzmängel",
+            "Intelligenzprobleme": _("Intelligenzprobleme"),
+            "intelligenzprobleme": _("intelligenzprobleme"),
+            "intelligenzmaengel": _("intelligenzmaengel"),
+            "intelligenzmängel": _("intelligenzmängel"),
         },
         {147},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Denkweise_von_Lebewesen": "Denkweise_von_Lebewesen",
-            "lebewesendenkweise": "lebewesendenkweise",
-            "denkweise": "denkweise",
+            "Denkweise_von_Lebewesen": _("Denkweise_von_Lebewesen"),
+            "lebewesendenkweise": _("lebewesendenkweise"),
+            "denkweise": _("denkweise"),
         },
         {146},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Gegentranszendentalien": "Gegentranszendentalien",
-            "gegentranszendentalien": "gegentranszendentalien",
-            "gegenstrukturalien": "gegenstrukturalien",
+            "Gegentranszendentalien": _("Gegentranszendentalien"),
+            "gegentranszendentalien": _("gegentranszendentalien"),
+            "gegenstrukturalien": _("gegenstrukturalien"),
         },
         {138, 139, 202},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Gleichheit_Freiheit": "Gleichheit_Freiheit",
-            "gleichheitfreiheit": "gleichheitfreiheit",
-            "ungleichheit": "ungleichheit",
-            "dominieren": "dominieren",
-            "gleichheit": "gleichheit",
-            "freiheit": "freiheit",
+            "Gleichheit_Freiheit": _("Gleichheit_Freiheit"),
+            "gleichheitfreiheit": _("gleichheitfreiheit"),
+            "ungleichheit": _("ungleichheit"),
+            "dominieren": _("dominieren"),
+            "gleichheit": _("gleichheit"),
+            "freiheit": _("freiheit"),
         },
         {132, 328, 331, 335},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Gefühle": "Gefühle",
-            "emotionen": "emotionen",
-            "gefuehle": "gefuehle",
-            "gefuehle": "gefuehle",
-            "emotion": "emotion",
-            "gefühl": "gefühl",
-            "gefuehl": "gefuehl",
+            "Gefühle": _("Gefühle"),
+            "emotionen": _("emotionen"),
+            "gefuehle": _("gefuehle"),
+            "gefuehle": _("gefuehle"),
+            "emotion": _("emotion"),
+            "gefühl": _("gefühl"),
+            "gefuehl": _("gefuehl"),
         },
         {105, 230, 243, 283, 284, 285, 286, 305},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Egoismus": "Egoismus",
-            "egoismus": "egoismus",
-            "altruismus": "altruismus",
-            "selbstlosigkeit": "selbstlosigkeit",
+            "Egoismus": _("Egoismus"),
+            "egoismus": _("egoismus"),
+            "altruismus": _("altruismus"),
+            "selbstlosigkeit": _("selbstlosigkeit"),
         },
         {136},
         {(66, 67)},
@@ -1494,46 +1544,50 @@ paraNdataMatrix: list[
     (
         ParametersMain.menschliches,
         {
-            "Wirkung": "Wirkung",
-            "wirkung": "wirkung",
+            "Wirkung": _("Wirkung"),
+            "wirkung": _("wirkung"),
         },
         {135},
     ),
     (
         ParametersMain.menschliches,
         {
-            "INCELs": "INCELs",
-            "incel": "incel",
-            "incels": "incels",
+            "INCELs": _("INCELs"),
+            "incel": _("incel"),
+            "incels": _("incels"),
         },
         {68},
     ),
     (
         ParametersMain.menschliches,
         {
-            "irrationale_Zahlen_durch_Wurzelbildung": "irrationale_Zahlen_durch_Wurzelbildung",
-            "irrationalezahlendurchwurzelbildung": "irrationalezahlendurchwurzelbildung",
-            "ausgangslage": "ausgangslage",
+            "irrationale_Zahlen_durch_Wurzelbildung": _(
+                "irrationale_Zahlen_durch_Wurzelbildung"
+            ),
+            "irrationalezahlendurchwurzelbildung": _(
+                "irrationalezahlendurchwurzelbildung"
+            ),
+            "ausgangslage": _("ausgangslage"),
         },
         {73},
     ),
     (
         ParametersMain.menschliches,
         {
-            "dominierendes_Geschlecht": "dominierendes_Geschlecht",
-            "dominierendesgeschlecht": "dominierendesgeschlecht",
-            "maennlich": "maennlich",
-            "männlich": "männlich",
-            "weiblich": "weiblich",
+            "dominierendes_Geschlecht": _("dominierendes_Geschlecht"),
+            "dominierendesgeschlecht": _("dominierendesgeschlecht"),
+            "maennlich": _("maennlich"),
+            "männlich": _("männlich"),
+            "weiblich": _("weiblich"),
         },
         {51},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Liebe": "Liebe",
-            "liebe": "liebe",
-            "ethik": "ethik",
+            "Liebe": _("Liebe"),
+            "liebe": _("liebe"),
+            "ethik": _("ethik"),
         },
         {8, 9, 28, 208, 330},
         {(121, 122)},
@@ -1541,160 +1595,169 @@ paraNdataMatrix: list[
     (
         ParametersMain.menschliches,
         {
-            "Glaube_Erkenntnis": "Glaube_Erkenntnis",
-            "glauben": "glauben",
-            "erkenntnis": "erkenntnis",
-            "glaube": "glaube",
+            "Glaube_Erkenntnis": _("Glaube_Erkenntnis"),
+            "glauben": _("glauben"),
+            "erkenntnis": _("erkenntnis"),
+            "glaube": _("glaube"),
         },
         {59},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Angreifbarkeit": "Angreifbarkeit",
-            "angreifbarkeit": "angreifbarkeit",
-            "angreifbar": "angreifbar",
+            "Angreifbarkeit": _("Angreifbarkeit"),
+            "angreifbarkeit": _("angreifbarkeit"),
+            "angreifbar": _("angreifbar"),
         },
         {58, 57},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15)": "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15)",
-            "Transzendentalien": "Transzendentalien",
-            "transzendentalien": "transzendentalien",
-            "transzendentalie": "transzendentalie",
-            "strukturalien": "strukturalien",
-            "alien": "alien",
-            "universalien": "universalien",
-            "meta-paradigmen": "meta-paradigmen",
+            "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15)": _(
+                "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15)"
+            ),
+            "Transzendentalien": _("Transzendentalien"),
+            "transzendentalien": _("transzendentalien"),
+            "transzendentalie": _("transzendentalie"),
+            "strukturalien": _("strukturalien"),
+            "alien": _("alien"),
+            "universalien": _("universalien"),
+            "meta-paradigmen": _("meta-paradigmen"),
         },
         {5, 229, 131},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Bedingung_und_Auslöser_(1/3)": "Bedingung_und_Auslöser_(1/3)",
-            "bedingung": "bedingung",
-            "bedingungen": "bedingungen",
-            "auslöser": "auslöser",
-            "ausloeser": "ausloeser",
+            "Bedingung_und_Auslöser_(1/3)": _("Bedingung_und_Auslöser_(1/3)"),
+            "bedingung": _("bedingung"),
+            "bedingungen": _("bedingungen"),
+            "auslöser": _("auslöser"),
+            "ausloeser": _("ausloeser"),
         },
         {338},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)": "Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)",
-            "relativreziprokuniversell": "relativreziprokuniversell",
+            "Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)": _(
+                "Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)"
+            ),
+            "relativreziprokuniversell": _("relativreziprokuniversell"),
         },
         {350},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "universeller_Komperativ_(18→15)": "universeller_Komperativ_(18→15)",
-            "universellerkomperativ": "universellerkomperativ",
+            "universeller_Komperativ_(18→15)": _("universeller_Komperativ_(18→15)"),
+            "universellerkomperativ": _("universellerkomperativ"),
         },
         {349},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Existenzialien_(3)": "Existenzialien_(3)",
-            "existenzialien": "existenzialien",
+            "Existenzialien_(3)": _("Existenzialien_(3)"),
+            "existenzialien": _("existenzialien"),
         },
         {348},
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Extremalien_(19)": "Extremalien_(19)", "extremalien": "extremalien"},
+        {"Extremalien_(19)": _("Extremalien_(19)"), "extremalien": _("extremalien")},
         {347, 352},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Erwartungshaltungen_(26)": "Erwartungshaltungen_(26)",
-            "erwartungen": "erwartungen",
-            "erwartungshaltungen": "erwartungshaltungen",
+            "Erwartungshaltungen_(26)": _("Erwartungshaltungen_(26)"),
+            "erwartungen": _("erwartungen"),
+            "erwartungshaltungen": _("erwartungshaltungen"),
         },
         {344},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Leidenschaften_(21)": "Leidenschaften_(21)",
-            "leidenschaft": "leidenschaft",
-            "leidenschaften": "leidenschaften",
+            "Leidenschaften_(21)": _("Leidenschaften_(21)"),
+            "leidenschaft": _("leidenschaft"),
+            "leidenschaften": _("leidenschaften"),
         },
         {343},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "relativer_Zeit-Betrag_(15_10_4_18_6)": "relativer_Zeit-Betrag_(15_10_4_18_6)",
-            "relativerzeitbetrag": "relativerzeitbetrag",
+            "relativer_Zeit-Betrag_(15_10_4_18_6)": _(
+                "relativer_Zeit-Betrag_(15_10_4_18_6)"
+            ),
+            "relativerzeitbetrag": _("relativerzeitbetrag"),
         },
         {339},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Zahlenvergleich_(15_18_6)": "Zahlenvergleich_(15_18_6)",
-            "zahlenvergleich": "zahlenvergleich",
+            "Zahlenvergleich_(15_18_6)": _("Zahlenvergleich_(15_18_6)"),
+            "zahlenvergleich": _("zahlenvergleich"),
         },
         {340},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Bestrebungen(1/5)": "Bestrebungen(1/5)",
-            "bestrebung": "bestrebung",
-            "bestrebungen": "bestrebungen",
+            "Bestrebungen(1/5)": _("Bestrebungen(1/5)"),
+            "bestrebung": _("bestrebung"),
+            "bestrebungen": _("bestrebungen"),
         },
         {332},
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Prinzipien(1/8)": "Prinzipien(1/8)", "prinzipien": "prinzipien"},
+        {"Prinzipien(1/8)": _("Prinzipien(1/8)"), "prinzipien": _("prinzipien")},
         {329, 378},
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Attraktionen_(36)": "Attraktionen_(36)", "attraktionen": "attraktionen"},
+        {
+            "Attraktionen_(36)": _("Attraktionen_(36)"),
+            "attraktionen": _("attraktionen"),
+        },
         {311},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Optimierung_(10)": "Optimierung_(10)",
-            "optimierung": "optimierung",
+            "Optimierung_(10)": _("Optimierung_(10)"),
+            "optimierung": _("optimierung"),
         },
         {310},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Themen_(6)": "Themen_(6)",
-            "themen": "themen",
-            "thema": "thema",
+            "Themen_(6)": _("Themen_(6)"),
+            "themen": _("themen"),
+            "thema": _("thema"),
         },
         {309},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Bedeutung_(10)": "Bedeutung_(10)",
-            "bedeutung": "bedeutung",
+            "Bedeutung_(10)": _("Bedeutung_(10)"),
+            "bedeutung": _("bedeutung"),
         },
         {306},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Reziprokes": "Reziprokes",
-            "reziproke": "reziproke",
-            "reziprokes": "reziprokes",
+            "Reziprokes": _("Reziprokes"),
+            "reziproke": _("reziproke"),
+            "reziprokes": _("reziprokes"),
         },
         {
             42,
@@ -1723,73 +1786,88 @@ paraNdataMatrix: list[
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Achtung_(4)": "Achtung_(4)", "achtung": "achtung", "achten": "achten"},
+        {
+            "Achtung_(4)": _("Achtung_(4)"),
+            "achtung": _("achtung"),
+            "achten": _("achten"),
+        },
         {270},
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Zeit_(4)_als_Wirklichkeit": "Zeit_(4)_als_Wirklichkeit", "zeit": "zeit"},
+        {
+            "Zeit_(4)_als_Wirklichkeit": _("Zeit_(4)_als_Wirklichkeit"),
+            "zeit": _("zeit"),
+        },
         {266, 267},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Absicht_16_ist_zu_genügen": "Absicht_16_ist_zu_genügen",
-            "absicht16": "absicht16",
+            "Absicht_16_ist_zu_genügen": _("Absicht_16_ist_zu_genügen"),
+            "absicht16": _("absicht16"),
         },
         {312},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Absicht_17_ist_zu_meinen": "Absicht_17_ist_zu_meinen",
-            "absicht17": "absicht17",
+            "Absicht_17_ist_zu_meinen": _("Absicht_17_ist_zu_meinen"),
+            "absicht17": _("absicht17"),
         },
         {263},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Absicht_6_ist_Vorteilsmaximierung": "Absicht_6_ist_Vorteilsmaximierung",
-            "absicht6": "absicht6",
+            "Absicht_6_ist_Vorteilsmaximierung": _("Absicht_6_ist_Vorteilsmaximierung"),
+            "absicht6": _("absicht6"),
         },
         {262},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Absicht_7_ist_Selbstlosigkeit": "Absicht_7_ist_Selbstlosigkeit",
-            "absicht7": "absicht7",
+            "Absicht_7_ist_Selbstlosigkeit": _("Absicht_7_ist_Selbstlosigkeit"),
+            "absicht7": _("absicht7"),
         },
         {261},
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Regungen_(1)": "Regungen_(1)", "regung": "regung", "regungen": "regungen"},
+        {
+            "Regungen_(1)": _("Regungen_(1)"),
+            "regung": _("regung"),
+            "regungen": _("regungen"),
+        },
         {282},
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Verhalten_(11)": "Verhalten_(11)", "verhalten": "verhalten"},
+        {"Verhalten_(11)": _("Verhalten_(11)"), "verhalten": _("verhalten")},
         {301, 302},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Energie_und_universelle_Eigenschaften_(30)": "Energie_und_universelle_Eigenschaften_(30)",
-            "energie": "energie",
-            "universelleeigenschaften": "universelleeigenschaften",
-            "lebensenergie": "lebensenergie",
+            "Energie_und_universelle_Eigenschaften_(30)": _(
+                "Energie_und_universelle_Eigenschaften_(30)"
+            ),
+            "energie": _("energie"),
+            "universelleeigenschaften": _("universelleeigenschaften"),
+            "lebensenergie": _("lebensenergie"),
         },
         {287, 293},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Garben_und_Verhalten_nachfühlen(31)": "Garben_und_Verhalten_nachfühlen(31)",
-            "garben": "garben",
-            "verhaltenfuehlen": "verhaltenfuehlen",
-            "verhaltenfühlen": "verhaltenfühlen",
+            "Garben_und_Verhalten_nachfühlen(31)": _(
+                "Garben_und_Verhalten_nachfühlen(31)"
+            ),
+            "garben": _("garben"),
+            "verhaltenfuehlen": _("verhaltenfuehlen"),
+            "verhaltenfühlen": _("verhaltenfühlen"),
         },
         {295},
     ),
@@ -1797,7 +1875,7 @@ paraNdataMatrix: list[
         ParametersMain.grundstrukturen,
         {
             Primzahlkreuz_pro_contra_strs[1]: Primzahlkreuz_pro_contra_strs[1],
-            "nachvollziehen": "nachvollziehen",
+            "nachvollziehen": _("nachvollziehen"),
         },
         {242, 297},
         set(),
@@ -1811,596 +1889,614 @@ paraNdataMatrix: list[
     (
         ParametersMain.grundstrukturen,
         {
-            "Empathie_(37)": "Empathie_(37)",
-            "empathie": "empathie",
-            "mitgefuehl": "mitgefuehl",
+            "Empathie_(37)": _("Empathie_(37)"),
+            "empathie": _("empathie"),
+            "mitgefuehl": _("mitgefuehl"),
         },
         {294},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Absicht_1/6_ist_Reinigung_und_Klarheit": "Absicht_1/6_ist_Reinigung_und_Klarheit",
-            "absicht1/6": "absicht1/6",
-            "absicht1pro6": "absicht1pro6",
+            "Absicht_1/6_ist_Reinigung_und_Klarheit": _(
+                "Absicht_1/6_ist_Reinigung_und_Klarheit"
+            ),
+            "absicht1/6": _("absicht1/6"),
+            "absicht1pro6": _("absicht1pro6"),
         },
         {298},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Absicht_10_ist_Wirklichkeit_erkennen": "Absicht_10_ist_Wirklichkeit_erkennen",
-            "absicht10": "absicht10",
+            "Absicht_10_ist_Wirklichkeit_erkennen": _(
+                "Absicht_10_ist_Wirklichkeit_erkennen"
+            ),
+            "absicht10": _("absicht10"),
         },
         {260},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Geist_(15)": "Geist_(15)",
-            "geist": "geist",
-            "bewusstsein": "bewusstsein",
+            "Geist_(15)": _("Geist_(15)"),
+            "geist": _("geist"),
+            "bewusstsein": _("bewusstsein"),
         },
         {229, 231, 242, 273, 297, 304},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Reflexe_(3)": "Reflexe_(3)",
-            "reflex": "reflex",
-            "reflexe": "reflexe",
+            "Reflexe_(3)": _("Reflexe_(3)"),
+            "reflex": _("reflex"),
+            "reflexe": _("reflexe"),
         },
         {256},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Lust_(9)": "Lust_(9)",
-            "lust": "lust",
+            "Lust_(9)": _("Lust_(9)"),
+            "lust": _("lust"),
         },
         {255},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Paradigmen_sind_Absichten_(13)": "Paradigmen_sind_Absichten_(13)",
-            "paradigmen": "paradigmen",
-            "absichten": "absichten",
+            "Paradigmen_sind_Absichten_(13)": _("Paradigmen_sind_Absichten_(13)"),
+            "paradigmen": _("paradigmen"),
+            "absichten": _("absichten"),
         },
         {10, 42},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Wirklichkeiten_Wahrheit_Wahrnehmung_(10)": "Wirklichkeiten_Wahrheit_Wahrnehmung_(10)",
-            "wirklichkeit": "wirklichkeit",
-            "wirklichkeiten": "wirklichkeiten",
-            "wahrheit": "wahrheit",
-            "wahrnehmung": "wahrnehmung",
+            "Wirklichkeiten_Wahrheit_Wahrnehmung_(10)": _(
+                "Wirklichkeiten_Wahrheit_Wahrnehmung_(10)"
+            ),
+            "wirklichkeit": _("wirklichkeit"),
+            "wirklichkeiten": _("wirklichkeiten"),
+            "wahrheit": _("wahrheit"),
+            "wahrnehmung": _("wahrnehmung"),
         },
         {233, 265, 268, 322, 342},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Stimmungen_Kombinationen_(14)": "Stimmungen_Kombinationen_(14)",
-            "stimmung": "stimmung",
-            "stimmungen": "stimmungen",
-            "kombination": "kombination",
-            "kombinationen": "kombinationen",
+            "Stimmungen_Kombinationen_(14)": _("Stimmungen_Kombinationen_(14)"),
+            "stimmung": _("stimmung"),
+            "stimmungen": _("stimmungen"),
+            "kombination": _("kombination"),
+            "kombinationen": _("kombinationen"),
         },
         {290, 296, 325, 326, 327},
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Klassen_(20)": "Klassen_(20)", "klasse": "klasse", "klassen": "klassen"},
+        {
+            "Klassen_(20)": _("Klassen_(20)"),
+            "klasse": _("klasse"),
+            "klassen": _("klassen"),
+        },
         {241, 289},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Ordnung_und_Filterung_12_und_1pro12": "Ordnung_und_Filterung_12_und_1pro12",
-            "ordnen": "ordnen",
-            "ordnenundfiltern": "ordnenundfiltern",
-            "filtern": "filtern",
+            "Ordnung_und_Filterung_12_und_1pro12": _(
+                "Ordnung_und_Filterung_12_und_1pro12"
+            ),
+            "ordnen": _("ordnen"),
+            "ordnenundfiltern": _("ordnenundfiltern"),
+            "filtern": _("filtern"),
         },
         {132, 328, 331, 335},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Meta-Systeme_(12)": "Meta-Systeme_(12)",
-            "metasysteme": "metasysteme",
-            "metasystem": "metasystem",
-            "meta-systeme": "meta-systeme",
-            "meta-system": "meta-system",
-            "menge": "menge",
-            "mengen": "mengen",
+            "Meta-Systeme_(12)": _("Meta-Systeme_(12)"),
+            "metasysteme": _("metasysteme"),
+            "metasystem": _("metasystem"),
+            "meta-systeme": _("meta-systeme"),
+            "meta-system": _("meta-system"),
+            "menge": _("menge"),
+            "mengen": _("mengen"),
         },
         {232, 288, 334},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Absicht_1/8": "Absicht_1/8",
-            "absicht1pro8": "absicht1pro8",
-            "absicht1/8": "absicht1/8",
+            "Absicht_1/8": _("Absicht_1/8"),
+            "absicht1pro8": _("absicht1pro8"),
+            "absicht1/8": _("absicht1/8"),
         },
         {272, 379},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Ziele_(19)": "Ziele_(19)",
-            "ziele": "ziele",
-            "maxima": "maxima",
-            "höhenvorstellungen": "höhenvorstellungen",
+            "Ziele_(19)": _("Ziele_(19)"),
+            "ziele": _("ziele"),
+            "maxima": _("maxima"),
+            "höhenvorstellungen": _("höhenvorstellungen"),
         },
         {271},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Konkreta_und_Focus_(2)": "Konkreta_und_Focus_(2)",
-            "konkreta": "konkreta",
-            "focus": "focus",
-            "fokus": "fokus",
+            "Konkreta_und_Focus_(2)": _("Konkreta_und_Focus_(2)"),
+            "konkreta": _("konkreta"),
+            "focus": _("focus"),
+            "fokus": _("fokus"),
         },
         {250, 269},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Gefühle_(7)": "Gefühle_(7)",
-            "gefuehle": "gefuehle",
-            "emotionen": "emotionen",
-            "gefühle": "gefühle",
+            "Gefühle_(7)": _("Gefühle_(7)"),
+            "gefuehle": _("gefuehle"),
+            "emotionen": _("emotionen"),
+            "gefühle": _("gefühle"),
         },
         {243, 283, 284, 285, 286, 305},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "abhängige_Verbundenheit_(90)": "abhängige_Verbundenheit_(90)",
-            "abhaengigkeit": "abhaengigkeit",
-            "abhängigkeit": "abhängigkeit",
+            "abhängige_Verbundenheit_(90)": _("abhängige_Verbundenheit_(90)"),
+            "abhaengigkeit": _("abhaengigkeit"),
+            "abhängigkeit": _("abhängigkeit"),
         },
         {357},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Karte_Filter_und_Unterscheidung_(1/12)": "Karte_Filter_und_Unterscheidung_(1/12)",
-            "karte": "karte",
-            "filter": "filter",
-            "unterscheidung": "unterscheidung",
+            "Karte_Filter_und_Unterscheidung_(1/12)": _(
+                "Karte_Filter_und_Unterscheidung_(1/12)"
+            ),
+            "karte": _("karte"),
+            "filter": _("filter"),
+            "unterscheidung": _("unterscheidung"),
         },
         {377},
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Fundament_(1/19)": "Fundament_(1/19)", "fundament": "fundament"},
+        {"Fundament_(1/19)": _("Fundament_(1/19)"), "fundament": _("fundament")},
         {356},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Gedanken_sind_Positionen_(17)": "Gedanken_sind_Positionen_(17)",
-            "positionen": "positionen",
-            "gedanken": "gedanken",
+            "Gedanken_sind_Positionen_(17)": _("Gedanken_sind_Positionen_(17)"),
+            "positionen": _("positionen"),
+            "gedanken": _("gedanken"),
         },
         {249, 317, 323},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Funktionen_Vorstellungen_(16)": "Funktionen_Vorstellungen_(16)",
-            "vorstellungen": "vorstellungen",
-            "vorstellung": "vorstellung",
-            "funktionen": "funktionen",
+            "Funktionen_Vorstellungen_(16)": _("Funktionen_Vorstellungen_(16)"),
+            "vorstellungen": _("vorstellungen"),
+            "vorstellung": _("vorstellung"),
+            "funktionen": _("funktionen"),
         },
         {345, 264},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Sollen_Frage_Vorgehensweise_(1/13)": "Sollen_Frage_Vorgehensweise_(1/13)",
-            "sollen": "sollen",
-            "frage": "frage",
-            "vorgehensweise": "vorgehensweise",
+            "Sollen_Frage_Vorgehensweise_(1/13)": _(
+                "Sollen_Frage_Vorgehensweise_(1/13)"
+            ),
+            "sollen": _("sollen"),
+            "frage": _("frage"),
+            "vorgehensweise": _("vorgehensweise"),
         },
         {353, 354},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Ansichten_Standpunkte_(18_17)": "Ansichten_Standpunkte_(18_17)",
-            "ansichten": "ansichten",
+            "Ansichten_Standpunkte_(18_17)": _("Ansichten_Standpunkte_(18_17)"),
+            "ansichten": _("ansichten"),
         },
         {240, 346},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Verbundenheiten_(18)": "Verbundenheiten_(18)",
-            "verbundenheiten": "verbundenheiten",
+            "Verbundenheiten_(18)": _("Verbundenheiten_(18)"),
+            "verbundenheiten": _("verbundenheiten"),
         },
         {252, 299, 300, 336},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Absicht_13_ist_Helfen": "Absicht_13_ist_Helfen",
-            "absicht13": "absicht13",
-            "helfen": "helfen",
+            "Absicht_13_ist_Helfen": _("Absicht_13_ist_Helfen"),
+            "absicht13": _("absicht13"),
+            "helfen": _("helfen"),
         },
         {370},
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Liebe_(7)": "Liebe_(7)", "liebe": "liebe"},
+        {"Liebe_(7)": _("Liebe_(7)"), "liebe": _("liebe")},
         {8, 9, 28, 208, 221, 330},
         {(121, 122)},
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Koalitionen_(10)": "Koalitionen_(10)", "koalitionen": "koalitionen"},
+        {"Koalitionen_(10)": _("Koalitionen_(10)"), "koalitionen": _("koalitionen")},
         {321},
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Impulse_(5)": "Impulse_(5)", "impulse": "impulse"},
+        {"Impulse_(5)": _("Impulse_(5)"), "impulse": _("impulse")},
         {251, 253, 257, 341},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Triebe_und_Bedürfnisse_(6)": "Triebe_und_Bedürfnisse_(6)",
-            "trieb": "trieb",
-            "triebe": "triebe",
-            "bedürfnis": "bedürfnis",
-            "bedürfnisse": "bedürfnisse",
+            "Triebe_und_Bedürfnisse_(6)": _("Triebe_und_Bedürfnisse_(6)"),
+            "trieb": _("trieb"),
+            "triebe": _("triebe"),
+            "bedürfnis": _("bedürfnis"),
+            "bedürfnisse": _("bedürfnisse"),
         },
         {254},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Reflektion_und_Kategorien_(1/15)": "Reflektion_und_Kategorien_(1/15)",
-            "reflektion": "reflektion",
-            "kategorien": "kategorien",
+            "Reflektion_und_Kategorien_(1/15)": _("Reflektion_und_Kategorien_(1/15)"),
+            "reflektion": _("reflektion"),
+            "kategorien": _("kategorien"),
         },
         {204, 205, 281},
     ),
     (
         ParametersMain.grundstrukturen,
         {
-            "Modus_und_Sein_(8)": "Modus_und_Sein_(8)",
-            "zustaende": "zustaende",
-            "zustände": "zustände",
-            "modus": "modus",
-            "modi": "modi",
-            "sein": "sein",
+            "Modus_und_Sein_(8)": _("Modus_und_Sein_(8)"),
+            "zustaende": _("zustaende"),
+            "zustände": _("zustände"),
+            "modus": _("modus"),
+            "modi": _("modi"),
+            "sein": _("sein"),
         },
         {234, 337},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Motive": "Motive",
-            "motive": "motive",
-            "motivation": "motivation",
-            "motiv": "motiv",
-            "absicht": "absicht",
-            "absichten": "absichten",
+            "Motive": _("Motive"),
+            "motive": _("motive"),
+            "motivation": _("motivation"),
+            "motiv": _("motiv"),
+            "absicht": _("absicht"),
+            "absichten": _("absichten"),
         },
         {10, 18, 42, 167, 168, 149, 229, 230},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Gedanken_sind_Positionen_(17)": "Gedanken_sind_Positionen_(17)",
-            "positionen": "positionen",
-            "gedanken": "gedanken",
+            "Gedanken_sind_Positionen_(17)": _("Gedanken_sind_Positionen_(17)"),
+            "positionen": _("positionen"),
+            "gedanken": _("gedanken"),
         },
         {249, 276},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Bewusstsein_und_Wahrnehmung": "Bewusstsein_und_Wahrnehmung",
-            "bewusstsein": "bewusstsein",
-            "wahrnehmung": "wahrnehmung",
+            "Bewusstsein_und_Wahrnehmung": _("Bewusstsein_und_Wahrnehmung"),
+            "bewusstsein": _("bewusstsein"),
+            "wahrnehmung": _("wahrnehmung"),
         },
         {265, 229, 231, 281, 304, 342},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Errungenschaften": "Errungenschaften",
-            "errungenschaften": "errungenschaften",
-            "ziele": "ziele",
-            "erhalten": "erhalten",
+            "Errungenschaften": _("Errungenschaften"),
+            "errungenschaften": _("errungenschaften"),
+            "ziele": _("ziele"),
+            "erhalten": _("erhalten"),
         },
         {11, 257, 251},
     ),
     (
         ParametersMain.menschliches,
         {
-            "evolutionär_erwerben_und_Intelligenz_Kreativität": "evolutionär_erwerben_und_Intelligenz_Kreativität",
-            "evolutionärerwerbenundintelligenz": "evolutionärerwerbenundintelligenz",
-            "intelligenz": "intelligenz",
-            "erwerben": "erwerben",
-            "erlernen": "erlernen",
-            "lernen": "lernen",
-            "evolutionaer": "evolutionaer",
-            "evolutionär": "evolutionär",
-            "kreativität": "kreativität",
-            "kreativitaet": "kreativitaet",
-            "kreativ": "kreativ",
+            "evolutionär_erwerben_und_Intelligenz_Kreativität": _(
+                "evolutionär_erwerben_und_Intelligenz_Kreativität"
+            ),
+            "evolutionärerwerbenundintelligenz": _("evolutionärerwerbenundintelligenz"),
+            "intelligenz": _("intelligenz"),
+            "erwerben": _("erwerben"),
+            "erlernen": _("erlernen"),
+            "lernen": _("lernen"),
+            "evolutionaer": _("evolutionaer"),
+            "evolutionär": _("evolutionär"),
+            "kreativität": _("kreativität"),
+            "kreativitaet": _("kreativitaet"),
+            "kreativ": _("kreativ"),
         },
         {12, 47, 27, 13, 32},
     ),
     (
         ParametersMain.menschliches,
         {
-            "brauchen": "brauchen",
-            "benoetigen": "benoetigen",
-            "benötigen": "benötigen",
-            "notwendig": "notwendig",
+            "brauchen": _("brauchen"),
+            "benoetigen": _("benoetigen"),
+            "benötigen": _("benötigen"),
+            "notwendig": _("notwendig"),
         },
         {13, 14},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Krankheit": "Krankheit",
-            "krankheit": "krankheit",
-            "krankheiten": "krankheiten",
-            "pathologisch": "pathologisch",
-            "pathologie": "pathologie",
-            "psychiatrisch": "psychiatrisch",
+            "Krankheit": _("Krankheit"),
+            "krankheit": _("krankheit"),
+            "krankheiten": _("krankheiten"),
+            "pathologisch": _("pathologisch"),
+            "pathologie": _("pathologie"),
+            "psychiatrisch": _("psychiatrisch"),
         },
         {24},
     ),
     (
         ParametersMain.menschliches,
         {
-            "alpha_beta": "alpha_beta",
-            "alphabeta": "alphabeta",
-            "alpha": "alpha",
-            "beta": "beta",
-            "omega": "omega",
-            "sigma": "sigma",
+            "alpha_beta": _("alpha_beta"),
+            "alphabeta": _("alphabeta"),
+            "alpha": _("alpha"),
+            "beta": _("beta"),
+            "omega": _("omega"),
+            "sigma": _("sigma"),
         },
         {46},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Anführer": "Anführer",
-            "anfuehrer": "anfuehrer",
-            "chef": "chef",
+            "Anführer": _("Anführer"),
+            "anfuehrer": _("anfuehrer"),
+            "chef": _("chef"),
         },
         {29, 170},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Manipulation": "Manipulation",
-            "manipulation": "manipulation",
+            "Manipulation": _("Manipulation"),
+            "manipulation": _("manipulation"),
         },
         {153},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Berufe": "Berufe",
-            "berufe": "berufe",
-            "beruf": "beruf",
+            "Berufe": _("Berufe"),
+            "berufe": _("berufe"),
+            "beruf": _("beruf"),
         },
         {30},
     ),
     (
         ParametersMain.menschliches,
         {
-            "Lösungen": "Lösungen",
-            "lösungen": "lösungen",
-            "loesungen": "loesungen",
-            "loesung": "loesung",
-            "lösungen": "lösungen",
+            "Lösungen": _("Lösungen"),
+            "lösungen": _("lösungen"),
+            "loesungen": _("loesungen"),
+            "loesung": _("loesung"),
+            "lösungen": _("lösungen"),
         },
         {31},
     ),
-    (ParametersMain.menschliches, {"Musik": "Musik", "musik": "musik"}, {33}),
+    (ParametersMain.menschliches, {"Musik": _("Musik"), "musik": _("musik")}, {33}),
     (
         ParametersMain.procontra,
         {
-            "ergibt_Sinn": "ergibt_Sinn",
-            "ergibtsinn": "ergibtsinn",
-            "machtsinn": "machtsinn",
-            "sinn": "sinn",
+            "ergibt_Sinn": _("ergibt_Sinn"),
+            "ergibtsinn": _("ergibtsinn"),
+            "machtsinn": _("machtsinn"),
+            "sinn": _("sinn"),
         },
         {140},
     ),
     (
         ParametersMain.procontra,
         {
-            "Veränderung": "Veränderung",
-            "veraenderung": "veraenderung",
-            "veraendern": "veraendern",
-            "veränderung": "veränderung",
-            "verändern": "verändern",
+            "Veränderung": _("Veränderung"),
+            "veraenderung": _("veraenderung"),
+            "veraendern": _("veraendern"),
+            "veränderung": _("veränderung"),
+            "verändern": _("verändern"),
         },
         {142},
     ),
     (
         ParametersMain.procontra,
         {
-            "bändigen_kontrollieren": "bändigen_kontrollieren",
-            "baendigenkontrollieren": "baendigenkontrollieren",
-            "kontrollieren": "kontrollieren",
-            "baendigen": "baendigen",
-            "bändigen": "bändigen",
+            "bändigen_kontrollieren": _("bändigen_kontrollieren"),
+            "baendigenkontrollieren": _("baendigenkontrollieren"),
+            "kontrollieren": _("kontrollieren"),
+            "baendigen": _("baendigen"),
+            "bändigen": _("bändigen"),
         },
         {143},
     ),
     (
         ParametersMain.procontra,
         {
-            "vereinen": "vereinen",
-            "einheit": "einheit",
+            "vereinen": _("vereinen"),
+            "einheit": _("einheit"),
         },
         {144},
     ),
     (
         ParametersMain.procontra,
         {
-            "Vorteile": "Vorteile",
-            "vorteile": "vorteile",
-            "veraenderungnutzen": "veraenderungnutzen",
+            "Vorteile": _("Vorteile"),
+            "vorteile": _("vorteile"),
+            "veraenderungnutzen": _("veraenderungnutzen"),
         },
         {141},
     ),
     (
         ParametersMain.procontra,
         {
-            "Gegenspieler": "Gegenspieler",
-            "gegenspieler": "gegenspieler",
-            "antagonist": "antagonist",
+            "Gegenspieler": _("Gegenspieler"),
+            "gegenspieler": _("gegenspieler"),
+            "antagonist": _("antagonist"),
         },
         {137},
     ),
     (
         ParametersMain.procontra,
-        {"nervig": "nervig"},
+        {"nervig": _("nervig")},
         {120},
     ),
     (
         ParametersMain.procontra,
         {
-            "pro_nutzen": "pro_nutzen",
-            "pronutzen": "pronutzen",
+            "pro_nutzen": _("pro_nutzen"),
+            "pronutzen": _("pronutzen"),
         },
         {117},
     ),
     (
         ParametersMain.procontra,
         {
-            "Gegenposition": "Gegenposition",
-            "gegenposition": "gegenposition",
+            "Gegenposition": _("Gegenposition"),
+            "gegenposition": _("gegenposition"),
         },
         {116},
     ),
     (
         ParametersMain.procontra,
         {
-            "Hilfe_erhalten": "Hilfe_erhalten",
-            "hilfeerhalten": "hilfeerhalten",
+            "Hilfe_erhalten": _("Hilfe_erhalten"),
+            "hilfeerhalten": _("hilfeerhalten"),
         },
         {114},
     ),
     (
         ParametersMain.procontra,
         {
-            "Helfen": "Helfen",
-            "helfen": "helfen",
-            "hilfe": "hilfe",
+            "Helfen": _("Helfen"),
+            "helfen": _("helfen"),
+            "hilfe": _("hilfe"),
         },
         {115},
     ),
     (
         ParametersMain.procontra,
         {
-            "Pro": "Pro",
-            "pro": "pro",
-            "dafür": "dafür",
-            "dafuer": "dafuer",
+            "Pro": _("Pro"),
+            "pro": _("pro"),
+            "dafür": _("dafür"),
+            "dafuer": _("dafuer"),
         },
         {17, 48},
     ),
     (
         ParametersMain.procontra,
         {
-            "nicht_miteinander_auskommen": "nicht_miteinander_auskommen",
-            "nichtauskommen": "nichtauskommen",
+            "nicht_miteinander_auskommen": _("nicht_miteinander_auskommen"),
+            "nichtauskommen": _("nichtauskommen"),
         },
         {123},
     ),
     (
         ParametersMain.procontra,
         {
-            "nicht_dagegen": "nicht_dagegen",
-            "nichtdagegen": "nichtdagegen",
+            "nicht_dagegen": _("nicht_dagegen"),
+            "nichtdagegen": _("nichtdagegen"),
         },
         {124},
     ),
     (
         ParametersMain.procontra,
         {
-            "kein_Gegenteil": "kein_Gegenteil",
-            "keingegenteil": "keingegenteil",
+            "kein_Gegenteil": _("kein_Gegenteil"),
+            "keingegenteil": _("keingegenteil"),
         },
         {125},
     ),
     (
         ParametersMain.procontra,
         {
-            "nicht_dafür": "nicht_dafür",
-            "nichtdafuer": "nichtdafuer",
+            "nicht_dafür": _("nicht_dafür"),
+            "nichtdafuer": _("nichtdafuer"),
         },
         {126},
     ),
     (
         ParametersMain.procontra,
         {
-            "Hilfe_nicht_gebrauchen": "Hilfe_nicht_gebrauchen",
-            "hilfenichtgebrauchen": "hilfenichtgebrauchen",
+            "Hilfe_nicht_gebrauchen": _("Hilfe_nicht_gebrauchen"),
+            "hilfenichtgebrauchen": _("hilfenichtgebrauchen"),
         },
         {127},
     ),
     (
         ParametersMain.procontra,
         {
-            "nicht_helfen_können": "nicht_helfen_können",
-            "nichthelfenkoennen": "nichthelfenkoennen",
+            "nicht_helfen_können": _("nicht_helfen_können"),
+            "nichthelfenkoennen": _("nichthelfenkoennen"),
         },
         {128},
     ),
     (
         ParametersMain.procontra,
         {
-            "nicht_abgeneigt": "nicht_abgeneigt",
-            "nichtabgeneigt": "nichtabgeneigt",
+            "nicht_abgeneigt": _("nicht_abgeneigt"),
+            "nichtabgeneigt": _("nichtabgeneigt"),
         },
         {129},
     ),
     (
         ParametersMain.procontra,
-        {"unmotivierbar": "unmotivierbar"},
+        {"unmotivierbar": _("unmotivierbar")},
         {130},
     ),
     (
         ParametersMain.procontra,
         {
-            "contra": "contra",
-            "dagegen": "dagegen",
+            "contra": _("contra"),
+            "dagegen": _("dagegen"),
         },
         {15, 26},
     ),
     (
         ParametersMain.procontra,
         {
-            "Gegenteil": "Gegenteil",
-            "gegenteil": "gegenteil",
+            "Gegenteil": _("Gegenteil"),
+            "gegenteil": _("gegenteil"),
         },
         {100, 101, 222},
     ),
     (
         ParametersMain.procontra,
         {
-            "Harmonie": "Harmonie",
-            "harmonie": "harmonie",
+            "Harmonie": _("Harmonie"),
+            "harmonie": _("harmonie"),
         },
         {102, 103},
     ),
@@ -2409,7 +2505,7 @@ paraNdataMatrix: list[
         ParametersMain.procontra,
         {
             Primzahlkreuz_pro_contra_strs[0]: Primzahlkreuz_pro_contra_strs[0],
-            "primzahlkreuz": "primzahlkreuz",
+            "primzahlkreuz": _("primzahlkreuz"),
         },
         set(),
         set(),
@@ -2424,7 +2520,7 @@ paraNdataMatrix: list[
         ParametersMain.bedeutung,
         {
             Primzahlkreuz_pro_contra_strs[0]: Primzahlkreuz_pro_contra_strs[0],
-            "primzahlkreuz": "primzahlkreuz",
+            "primzahlkreuz": _("primzahlkreuz"),
         },
         set(),
         set(),
@@ -2438,77 +2534,77 @@ paraNdataMatrix: list[
     (
         ParametersMain.bedeutung,
         {
-            "in_ReTa": "in_ReTa",
-            "inreta": "inreta",
+            "in_ReTa": _("in_ReTa"),
+            "inreta": _("inreta"),
         },
         {209, 210},
     ),
     (
         ParametersMain.bedeutung,
         {
-            "Vorzeichen": "Vorzeichen",
-            "vorzeichen": "vorzeichen",
+            "Vorzeichen": _("Vorzeichen"),
+            "vorzeichen": _("vorzeichen"),
         },
         {118, 119},
     ),
     (
         ParametersMain.bedeutung,
         {
-            "Primzahlen": "Primzahlen",
-            "primzahlen": "primzahlen",
-            "vielfache": "vielfache",
-            "vielfacher": "vielfacher",
+            "Primzahlen": _("Primzahlen"),
+            "primzahlen": _("primzahlen"),
+            "vielfache": _("vielfache"),
+            "vielfacher": _("vielfacher"),
         },
         {19},
     ),
     (
         ParametersMain.bedeutung,
         {
-            "Anwendung_der_Sonnen_und_Monde": "Anwendung_der_Sonnen_und_Monde",
-            "anwendungdersonnenundmonde": "anwendungdersonnenundmonde",
-            "anwendungdersonnen": "anwendungdersonnen",
-            "anwendungenfuermonde": "anwendungenfuermonde",
+            "Anwendung_der_Sonnen_und_Monde": _("Anwendung_der_Sonnen_und_Monde"),
+            "anwendungdersonnenundmonde": _("anwendungdersonnenundmonde"),
+            "anwendungdersonnen": _("anwendungdersonnen"),
+            "anwendungenfuermonde": _("anwendungenfuermonde"),
         },
         {22},
     ),
     (
         ParametersMain.bedeutung,
         {
-            "Zählungen": "Zählungen",
-            "zählungen": "zählungen",
-            "zaehlung": "zaehlung",
-            "zaehlungen": "zaehlungen",
-            "zählung": "zählung",
+            "Zählungen": _("Zählungen"),
+            "zählungen": _("zählungen"),
+            "zaehlung": _("zaehlung"),
+            "zaehlungen": _("zaehlungen"),
+            "zählung": _("zählung"),
         },
         {25, 45, 169, 188},
     ),
     (
         ParametersMain.bedeutung,
         {
-            "Jura": "Jura",
-            "jura": "jura",
-            "gesetzeslehre": "gesetzeslehre",
-            "recht": "recht",
+            "Jura": _("Jura"),
+            "jura": _("jura"),
+            "gesetzeslehre": _("gesetzeslehre"),
+            "recht": _("recht"),
         },
         {34},
     ),
     (
         ParametersMain.bedeutung,
         {
-            "Vollkommenheit_des_Geistes": "Vollkommenheit_des_Geistes",
-            "vollkommenheit": "vollkommenheit",
-            "geist": "geist",
+            "Vollkommenheit_des_Geistes": _("Vollkommenheit_des_Geistes"),
+            "vollkommenheit": _("vollkommenheit"),
+            "geist": _("geist"),
         },
         {35},
     ),
     (
         ParametersMain.bedeutung,
         {
-            "Gestirn": "Gestirn",
-            "gestirn": "gestirn",
-            "mond": "mond",
-            "sonne": "sonne",
-            "planet": "planet",
+            "Gestirn": _("Gestirn"),
+            "gestirn": _("gestirn"),
+            "mond": _("mond"),
+            "sonne": _("sonne"),
+            "planet": _("planet"),
         },
         {64, 154},
         set(),
@@ -2518,22 +2614,22 @@ paraNdataMatrix: list[
     (
         ParametersMain.bedeutung,
         {
-            "Konjunktiv_Wurzelbildung": "Konjunktiv_Wurzelbildung",
-            "konjunktiv": "konjunktiv",
-            "wurzel": "wurzel",
+            "Konjunktiv_Wurzelbildung": _("Konjunktiv_Wurzelbildung"),
+            "konjunktiv": _("konjunktiv"),
+            "wurzel": _("wurzel"),
         },
         {106},
     ),
     (
         ParametersMain.bedeutung,
         {
-            "Mechanismen_der_Züchtung": "Mechanismen_der_Züchtung",
-            "mechanismen": "mechanismen",
-            "wesen": "wesen",
-            "zuechtung": "zuechtung",
-            "züchtung": "züchtung",
-            "züchten": "züchten",
-            "zuechten": "zuechten",
+            "Mechanismen_der_Züchtung": _("Mechanismen_der_Züchtung"),
+            "mechanismen": _("mechanismen"),
+            "wesen": _("wesen"),
+            "zuechtung": _("zuechtung"),
+            "züchtung": _("züchtung"),
+            "züchten": _("züchten"),
+            "zuechten": _("zuechten"),
         },
         {107, 108, 109},
     ),
@@ -2573,14 +2669,14 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "Weisheit_etc": "Weisheit_etc",
-            "weisheit": "weisheit",
-            "metaweisheit": "metaweisheit",
-            "meta-weisheit": "meta-weisheit",
-            "idiot": "idiot",
-            "weise": "weise",
-            "optimal": "optimal",
-            "optimum": "optimum",
+            "Weisheit_etc": _("Weisheit_etc"),
+            "weisheit": _("weisheit"),
+            "metaweisheit": _("metaweisheit"),
+            "meta-weisheit": _("meta-weisheit"),
+            "idiot": _("idiot"),
+            "weise": _("weise"),
+            "optimal": _("optimal"),
+            "optimum": _("optimum"),
         },
         {112},
         {(40, 41)},
@@ -2588,10 +2684,10 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "Dein_Recht_bekommen": "Dein_Recht_bekommen",
-            "rechte": "rechte",
-            "recht": "recht",
-            "selbstgerecht": "selbstgerecht",
+            "Dein_Recht_bekommen": _("Dein_Recht_bekommen"),
+            "rechte": _("rechte"),
+            "recht": _("recht"),
+            "selbstgerecht": _("selbstgerecht"),
         },
         set(),
         {(291, 292)},
@@ -2599,9 +2695,9 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "unterlegen_überlegen": "unterlegen_überlegen",
-            "unterlegen": "unterlegen",
-            "ueberlegen": "ueberlegen",
+            "unterlegen_überlegen": _("unterlegen_überlegen"),
+            "unterlegen": _("unterlegen"),
+            "ueberlegen": _("ueberlegen"),
         },
         set(),
         {(380, 381)},
@@ -2609,25 +2705,25 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "Ehrlichkeit_und_Streit": "Ehrlichkeit_und_Streit",
-            "streit": "streit",
-            "ehrlichkeit": "ehrlichkeit",
+            "Ehrlichkeit_und_Streit": _("Ehrlichkeit_und_Streit"),
+            "streit": _("streit"),
+            "ehrlichkeit": _("ehrlichkeit"),
         },
         set(),
         {(375, 376)},
     ),
     (
         ParametersMain.konzept2,
-        {"Würdig": "Würdig", "wuerdig": "wuerdig", "würdig": "würdig"},
+        {"Würdig": _("Würdig"), "wuerdig": _("wuerdig"), "würdig": _("würdig")},
         set(),
         {(373, 374)},
     ),
     (
         ParametersMain.konzept2,
         {
-            "Regel_vs_Ausnahme": "Regel_vs_Ausnahme",
-            "regel": "regel",
-            "ausnahme": "ausnahme",
+            "Regel_vs_Ausnahme": _("Regel_vs_Ausnahme"),
+            "regel": _("regel"),
+            "ausnahme": _("ausnahme"),
         },
         set(),
         {(371, 372)},
@@ -2635,17 +2731,17 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept2,
         {
-            "Filterart_Widrigkeit": "Filterart_Widrigkeit",
-            "filterart": "filterart",
-            "widrigkeit": "widrigkeit",
+            "Filterart_Widrigkeit": _("Filterart_Widrigkeit"),
+            "filterart": _("filterart"),
+            "widrigkeit": _("widrigkeit"),
         },
         {331, 335},
     ),
     (
         ParametersMain.konzept2,
         {
-            "Werte": "Werte",
-            "werte": "werte",
+            "Werte": _("Werte"),
+            "werte": _("werte"),
         },
         set(),
         {(360, 361)},
@@ -2653,9 +2749,9 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept2,
         {
-            "Gutartigkeits-Egoismus": "Gutartigkeits-Egoismus",
-            "position": "position",
-            "gutesreziprok": "gutesreziprok",
+            "Gutartigkeits-Egoismus": _("Gutartigkeits-Egoismus"),
+            "position": _("position"),
+            "gutesreziprok": _("gutesreziprok"),
         },
         set(),
         {(362, 363)},
@@ -2663,26 +2759,29 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept2,
         {
-            "Reflektieren_Erkenntnis-Erkennen": "Reflektieren_Erkenntnis-Erkennen",
-            "reflektieren": "reflektieren",
-            "erkenntnis": "erkenntnis",
+            "Reflektieren_Erkenntnis-Erkennen": _("Reflektieren_Erkenntnis-Erkennen"),
+            "reflektieren": _("reflektieren"),
+            "erkenntnis": _("erkenntnis"),
         },
         set(),
         {(364, 365)},
     ),
     (
         ParametersMain.konzept2,
-        {"Vertrauen_wollen": "Vertrauen_wollen", "vertrauenwollen": "vertrauenwollen"},
+        {
+            "Vertrauen_wollen": _("Vertrauen_wollen"),
+            "vertrauenwollen": _("vertrauenwollen"),
+        },
         set(),
         {(366, 367)},
     ),
     (
         ParametersMain.konzept,
         {
-            "einklinken_vertrauen_anprangern": "einklinken_vertrauen_anprangern",
-            "einklinken": "einklinken",
-            "vertrauenerhalten": "vertrauenerhalten",
-            "anprangern": "anprangern",
+            "einklinken_vertrauen_anprangern": _("einklinken_vertrauen_anprangern"),
+            "einklinken": _("einklinken"),
+            "vertrauenerhalten": _("vertrauenerhalten"),
+            "anprangern": _("anprangern"),
         },
         set(),
         {(368, 369)},
@@ -2690,9 +2789,9 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept2,
         {
-            "Ausrichten_Einrichten": "Ausrichten_Einrichten",
-            "einrichten": "einrichten",
-            "ausrichten": "ausrichten",
+            "Ausrichten_Einrichten": _("Ausrichten_Einrichten"),
+            "einrichten": _("einrichten"),
+            "ausrichten": _("ausrichten"),
         },
         set(),
         {(358, 359)},
@@ -2700,11 +2799,13 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept2,
         {
-            "Toleranz_Respekt_Akzeptanz_Willkommen": "Toleranz_Respekt_Akzeptanz_Willkommen",
-            "toleranz": "toleranz",
-            "respekt": "respekt",
-            "akzeptanz": "akzeptanz",
-            "willkommen": "willkommen",
+            "Toleranz_Respekt_Akzeptanz_Willkommen": _(
+                "Toleranz_Respekt_Akzeptanz_Willkommen"
+            ),
+            "toleranz": _("toleranz"),
+            "respekt": _("respekt"),
+            "akzeptanz": _("akzeptanz"),
+            "willkommen": _("willkommen"),
         },
         set(),
         # {(359, 360)},
@@ -2712,22 +2813,22 @@ paraNdataMatrix: list[
     ),
     (
         ParametersMain.konzept,
-        {"familiebrauchen": "familiebrauchen"},
+        {"familiebrauchen": _("familiebrauchen")},
         set(),
         {(279, 280)},
     ),
     (
         ParametersMain.konzept,
-        {"ego": "ego", "bescheiden": "bescheiden"},
+        {"ego": _("ego"), "bescheiden": _("bescheiden")},
         set(),
         {(277, 278)},
     ),
     (
         ParametersMain.konzept,
         {
-            "Selbstsucht_Ichsucht_etc": "Selbstsucht_Ichsucht_etc",
-            "selbstsucht": "selbstsucht",
-            "ichsucht": "ichsucht",
+            "Selbstsucht_Ichsucht_etc": _("Selbstsucht_Ichsucht_etc"),
+            "selbstsucht": _("selbstsucht"),
+            "ichsucht": _("ichsucht"),
         },
         set(),
         {(274, 275)},
@@ -2735,11 +2836,11 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "Forschen_Erfinden_Einklinken": "Forschen_Erfinden_Einklinken",
-            "wissenschaft": "wissenschaft",
-            "forschen": "forschen",
-            "einklinken": "einklinken",
-            "erfinden": "erfinden",
+            "Forschen_Erfinden_Einklinken": _("Forschen_Erfinden_Einklinken"),
+            "wissenschaft": _("wissenschaft"),
+            "forschen": _("forschen"),
+            "einklinken": _("einklinken"),
+            "erfinden": _("erfinden"),
         },
         set(),
         {(258, 259)},
@@ -2747,26 +2848,26 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "Kooperation_vs_Arsch": "Kooperation_vs_Arsch",
-            "arschloch": "arschloch",
-            "kooperation": "kooperation",
-            "arsch": "arsch",
+            "Kooperation_vs_Arsch": _("Kooperation_vs_Arsch"),
+            "arschloch": _("arschloch"),
+            "kooperation": _("kooperation"),
+            "arsch": _("arsch"),
         },
         set(),
         {(245, 246)},
     ),
     (
         ParametersMain.konzept,
-        {"Liebe_usw": "Liebe_usw", "liebe": "liebe", "zuneigung": "zuneigung"},
+        {"Liebe_usw": _("Liebe_usw"), "liebe": _("liebe"), "zuneigung": _("zuneigung")},
         set(),
         {(247, 248)},
     ),
     (
         ParametersMain.konzept,
         {
-            "Selbstlosigkeit_Ichlosigkeit_etc": "Selbstlosigkeit_Ichlosigkeit_etc",
-            "selbstlos": "selbstlos",
-            "ichlos": "ichlos",
+            "Selbstlosigkeit_Ichlosigkeit_etc": _("Selbstlosigkeit_Ichlosigkeit_etc"),
+            "selbstlos": _("selbstlos"),
+            "ichlos": _("ichlos"),
         },
         set(),
         {(238, 239)},
@@ -2774,10 +2875,10 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "variationsreich_eintönig": "variationsreich_eintönig",
-            "eintönig": "eintönig",
-            "eintoenig": "eintoenig",
-            "variationsreich": "variationsreich",
+            "variationsreich_eintönig": _("variationsreich_eintönig"),
+            "eintönig": _("eintönig"),
+            "eintoenig": _("eintoenig"),
+            "variationsreich": _("variationsreich"),
         },
         set(),
         {(236, 237)},
@@ -2785,11 +2886,11 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "Zuneigung_Abneigung": "Zuneigung_Abneigung",
-            "abgeneigt": "abgeneigt",
-            "zugewandt": "zugewandt",
-            "reserviert": "reserviert",
-            "zugeneigt": "zugeneigt",
+            "Zuneigung_Abneigung": _("Zuneigung_Abneigung"),
+            "abgeneigt": _("abgeneigt"),
+            "zugewandt": _("zugewandt"),
+            "reserviert": _("reserviert"),
+            "zugeneigt": _("zugeneigt"),
         },
         set(),
         {(199, 200)},
@@ -2797,51 +2898,51 @@ paraNdataMatrix: list[
     (
         ParametersMain.menschliches,
         {
-            "ehrlich vs höflich": "ehrlich vs höflich",
-            "ehrlich": "ehrlich",
-            "höflich": "höflich",
-            "hoeflich": "hoeflich",
+            "ehrlich vs höflich": _("ehrlich vs höflich"),
+            "ehrlich": _("ehrlich"),
+            "höflich": _("höflich"),
+            "hoeflich": _("hoeflich"),
         },
         set(),
         {(224, 225)},
     ),
     # (
     #    ParametersMain.konzept,
-    #    {"delegieren": "delegieren", "ansammlung": "ansammlung"},
+    #    {"delegieren": _("delegieren"), "ansammlung": _("ansammlung")},
     #    set(),
     #    {(227, 228)},
     # ),
     (
         ParametersMain.konzept,
         {
-            "ehrlich vs höflich": "ehrlich vs höflich",
-            "ehrlich": "ehrlich",
-            "höflich": "höflich",
-            "hoeflich": "hoeflich",
+            "ehrlich vs höflich": _("ehrlich vs höflich"),
+            "ehrlich": _("ehrlich"),
+            "höflich": _("höflich"),
+            "hoeflich": _("hoeflich"),
         },
         set(),
         {(224, 225)},
     ),
     (
         ParametersMain.konzept,
-        {"Tragweite": "Tragweite", "tragweite": "tragweite"},
+        {"Tragweite": _("Tragweite"), "tragweite": _("tragweite")},
         set(),
         {(211, 212)},
     ),
     (
         ParametersMain.konzept,
-        {"wertvoll": "wertvoll", "wertlos": "wertlos"},
+        {"wertvoll": _("wertvoll"), "wertlos": _("wertlos")},
         set(),
         {(186, 187)},
     ),
     (
         ParametersMain.konzept,
         {
-            "Götter_Propheten_Familien_Freunde": "Götter_Propheten_Familien_Freunde",
-            "familiaer": "familiaer",
-            "goettlich": "goettlich",
-            "freunde": "freunde",
-            "propheten": "propheten",
+            "Götter_Propheten_Familien_Freunde": _("Götter_Propheten_Familien_Freunde"),
+            "familiaer": _("familiaer"),
+            "goettlich": _("goettlich"),
+            "freunde": _("freunde"),
+            "propheten": _("propheten"),
         },
         set(),
         {(184, 185)},
@@ -2849,9 +2950,9 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "sanft_vs_hart": "sanft_vs_hart",
-            "sanft": "sanft",
-            "hart": "hart",
+            "sanft_vs_hart": _("sanft_vs_hart"),
+            "sanft": _("sanft"),
+            "hart": _("hart"),
         },
         set(),
         {(159, 160), (161, 162)},
@@ -2859,12 +2960,12 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "vereinen_vs_verbinden": "vereinen_vs_verbinden",
-            "vereinenverbinden": "vereinenverbinden",
-            "vereinen": "vereinen",
-            "verbinden": "verbinden",
-            "einheit": "einheit",
-            "verbindung": "verbindung",
+            "vereinen_vs_verbinden": _("vereinen_vs_verbinden"),
+            "vereinenverbinden": _("vereinenverbinden"),
+            "vereinen": _("vereinen"),
+            "verbinden": _("verbinden"),
+            "einheit": _("einheit"),
+            "verbindung": _("verbindung"),
         },
         set(),
         {(133, 134)},
@@ -2872,20 +2973,20 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "ähnlich": "ähnlich",
-            "aehnlich": "aehnlich",
+            "ähnlich": _("ähnlich"),
+            "aehnlich": _("aehnlich"),
         },
         {220},
     ),
     (
         ParametersMain.konzept,
         {
-            "gut_böse_lieb_schlecht": "gut_böse_lieb_schlecht",
-            "gut": "gut",
-            "böse": "böse",
-            "boese": "boese",
-            "lieb": "lieb",
-            "schlecht": "schlecht",
+            "gut_böse_lieb_schlecht": _("gut_böse_lieb_schlecht"),
+            "gut": _("gut"),
+            "böse": _("böse"),
+            "boese": _("boese"),
+            "lieb": _("lieb"),
+            "schlecht": _("schlecht"),
         },
         {52, 53},
         {(38, 39)},
@@ -2893,10 +2994,10 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "Sinn_und_Zweck_des_Lebens": "Sinn_und_Zweck_des_Lebens",
-            "sinn": "sinn",
-            "zweck": "zweck",
-            "bedeutung": "bedeutung",
+            "Sinn_und_Zweck_des_Lebens": _("Sinn_und_Zweck_des_Lebens"),
+            "sinn": _("sinn"),
+            "zweck": _("zweck"),
+            "bedeutung": _("bedeutung"),
         },
         {88, 189},
         {(181, 182)},
@@ -2904,11 +3005,11 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "Zeit_vs_Raum": "Zeit_vs_Raum",
-            "zeit": "zeit",
-            "raum": "raum",
-            "zeitlich": "zeitlich",
-            "räumlich": "räumlich",
+            "Zeit_vs_Raum": _("Zeit_vs_Raum"),
+            "zeit": _("zeit"),
+            "raum": _("raum"),
+            "zeitlich": _("zeitlich"),
+            "räumlich": _("räumlich"),
         },
         set(),
         {(49, 50)},
@@ -2916,12 +3017,12 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "egalitär_vs_autoritär": "egalitär_vs_autoritär",
-            "egalitaerautoritaer": "egalitaerautoritaer",
-            "egalitaer": "egalitaer",
-            "autoritaer": "autoritaer",
-            "egalitär": "egalitär",
-            "autoritär": "autoritär",
+            "egalitär_vs_autoritär": _("egalitär_vs_autoritär"),
+            "egalitaerautoritaer": _("egalitaerautoritaer"),
+            "egalitaer": _("egalitaer"),
+            "autoritaer": _("autoritaer"),
+            "egalitär": _("egalitär"),
+            "autoritär": _("autoritär"),
         },
         set(),
         {(163, 164)},
@@ -2929,10 +3030,10 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "Meinungen_und_Ruf": "Meinungen_und_Ruf",
-            "meinungen": "meinungen",
-            "anderemenschen": "anderemenschen",
-            "ruf": "ruf",
+            "Meinungen_und_Ruf": _("Meinungen_und_Ruf"),
+            "meinungen": _("meinungen"),
+            "anderemenschen": _("anderemenschen"),
+            "ruf": _("ruf"),
         },
         set(),
         {(60, 61)},
@@ -2940,9 +3041,9 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "Meinungsintelligenz": "Meinungsintelligenz",
-            "meinungsintelligenz": "meinungsintelligenz",
-            "ursprungsintelligenz": "ursprungsintelligenz",
+            "Meinungsintelligenz": _("Meinungsintelligenz"),
+            "meinungsintelligenz": _("meinungsintelligenz"),
+            "ursprungsintelligenz": _("ursprungsintelligenz"),
         },
         set(),
         {(151, 152)},
@@ -2950,25 +3051,25 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "Sittlichkeit": "Sittlichkeit",
-            "sittlichkeit": "sittlichkeit",
-            "annaehrerung": "annaehrerung",
+            "Sittlichkeit": _("Sittlichkeit"),
+            "sittlichkeit": _("sittlichkeit"),
+            "annaehrerung": _("annaehrerung"),
         },
         set(),
         {(179, 180)},
     ),
     (
         ParametersMain.konzept,
-        {"Führung": "Führung", "führung": "führung", "fuehrung": "fuehrung"},
+        {"Führung": _("Führung"), "führung": _("führung"), "fuehrung": _("fuehrung")},
         set(),
         {(173, 174)},
     ),
     (
         ParametersMain.konzept,
         {
-            "Durchleuchten": "Durchleuchten",
-            "durchleuchten": "durchleuchten",
-            "erleuchten": "erleuchten",
+            "Durchleuchten": _("Durchleuchten"),
+            "durchleuchten": _("durchleuchten"),
+            "erleuchten": _("erleuchten"),
         },
         set(),
         {(177, 178)},
@@ -2976,13 +3077,15 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "Fördern_Sensiblisieren_und_Gedeihen": "Fördern_Sensiblisieren_und_Gedeihen",
-            "foerdern": "foerdern",
-            "fördern": "fördern",
-            "begrenzen": "begrenzen",
-            "sensibilisieren": "sensibilisieren",
-            "gedeihen": "gedeihen",
-            "verderben": "verderben",
+            "Fördern_Sensiblisieren_und_Gedeihen": _(
+                "Fördern_Sensiblisieren_und_Gedeihen"
+            ),
+            "foerdern": _("foerdern"),
+            "fördern": _("fördern"),
+            "begrenzen": _("begrenzen"),
+            "sensibilisieren": _("sensibilisieren"),
+            "gedeihen": _("gedeihen"),
+            "verderben": _("verderben"),
         },
         set(),
         {(175, 176)},
@@ -2990,11 +3093,11 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "Überheblichkeit": "Überheblichkeit",
-            "überheblich": "überheblich",
-            "ueberheblichkeit": "ueberheblichkeit",
-            "ueberheblich": "ueberheblich",
-            "überheblichkeit": "überheblichkeit",
+            "Überheblichkeit": _("Überheblichkeit"),
+            "überheblich": _("überheblich"),
+            "ueberheblichkeit": _("ueberheblichkeit"),
+            "ueberheblich": _("ueberheblich"),
+            "überheblichkeit": _("überheblichkeit"),
         },
         set(),
         {(171, 172)},
@@ -3002,8 +3105,8 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "Polung_der_Liebe": "Polung_der_Liebe",
-            "liebepolung": "liebepolung",
+            "Polung_der_Liebe": _("Polung_der_Liebe"),
+            "liebepolung": _("liebepolung"),
         },
         set(),
         {(121, 122)},
@@ -3011,63 +3114,71 @@ paraNdataMatrix: list[
     (
         ParametersMain.konzept,
         {
-            "Egoismus_vs_Altruismus": "Egoismus_vs_Altruismus",
-            "egoismus": "egoismus",
-            "altruismus": "altruismus",
-            "egoist": "egoist",
-            "altruist": "altruist",
+            "Egoismus_vs_Altruismus": _("Egoismus_vs_Altruismus"),
+            "egoismus": _("egoismus"),
+            "altruismus": _("altruismus"),
+            "egoist": _("egoist"),
+            "altruist": _("altruist"),
         },
         {136},
         {(66, 67)},
     ),
     (
         ParametersMain.konzept,
-        {"kausal": "kausal", "geltung": "geltung", "genese": "genese"},
+        {"kausal": _("kausal"), "geltung": _("geltung"), "genese": _("genese")},
         set(),
         {(110, 111)},
     ),
     (
         ParametersMain.konzept,
-        {"Gleichheit": "Gleichheit", "gleich": "gleich"},
+        {"Gleichheit": _("Gleichheit"), "gleich": _("gleich")},
         set(),
         {(192, 193)},
     ),
     (
         ParametersMain.konzept,
-        {"Überleben": "Überleben", "ueberleben": "ueberleben"},
+        {"Überleben": _("Überleben"), "ueberleben": _("ueberleben")},
         set(),
         {(194, 195)},
     ),
     (ParametersMain.inkrementieren, set(), {43, 54, 74, 95}),
-    (ParametersMain.inkrementieren, {"um1": "um1"}, {155}),
-    (ParametersMain.inkrementieren, {"um2": "um2"}, {156}),
-    (ParametersMain.inkrementieren, {"um3": "um3"}, {157}),
+    (ParametersMain.inkrementieren, {"um1": _("um1")}, {155}),
+    (ParametersMain.inkrementieren, {"um2": _("um2")}, {156}),
+    (ParametersMain.inkrementieren, {"um3": _("um3")}, {157}),
     (
         ParametersMain.inkrementieren,
         {
-            "warum_Transzendentalie_=_Strukturgroesse_=_Charakter": "warum_Transzendentalie_=_Strukturgroesse_=_Charakter",
-            "warumtranszendentaliezustrukturgroesseundcharakter": "warumtranszendentaliezustrukturgroesseundcharakter",
+            "warum_Transzendentalie_=_Strukturgroesse_=_Charakter": _(
+                "warum_Transzendentalie_=_Strukturgroesse_=_Charakter"
+            ),
+            "warumtranszendentaliezustrukturgroesseundcharakter": _(
+                "warumtranszendentaliezustrukturgroesseundcharakter"
+            ),
         },
         {4, 54, 5, 165},
     ),
     (
         ParametersMain.inkrementieren,
         {
-            "warum_Transzendentalie_=_Komplexität_von_Michael_Commons": "warum_Transzendentalie_=_Komplexität_von_Michael_Commons",
-            "warumtranszendentaliegleichkomplexitaet": "warumtranszendentaliegleichkomplexitaet",
+            "warum_Transzendentalie_=_Komplexität_von_Michael_Commons": _(
+                "warum_Transzendentalie_=_Komplexität_von_Michael_Commons"
+            ),
+            "warumtranszendentaliegleichkomplexitaet": _(
+                "warumtranszendentaliegleichkomplexitaet"
+            ),
         },
         {65, 5, 166},
     ),
     (
         ParametersMain.primvielfache,
-        {"Rahmen-Bedingungen": "Rahmen-Bedingungen", "rahmen": "rahmen"},
+        {"Rahmen-Bedingungen": _("Rahmen-Bedingungen"), "rahmen": _("rahmen")},
         {226},
     ),
     (
         ParametersMain.primvielfache,
         {
-            "Motive_gleichförmige_Polygone": "Motive_gleichförmige_Polygone",
-            "motivgleichfoermig": "motivgleichfoermig",
+            "Motive_gleichförmige_Polygone": _("Motive_gleichförmige_Polygone"),
+            "motivgleichfoermig": _("motivgleichfoermig"),
         },
         set(),
         set(),
@@ -3081,8 +3192,8 @@ paraNdataMatrix: list[
     (
         ParametersMain.primvielfache,
         {
-            "Struktur_gleichförmige_Polygone": "Struktur_gleichförmige_Polygone",
-            "strukturgleichfoermig": "strukturgleichfoermig",
+            "Struktur_gleichförmige_Polygone": _("Struktur_gleichförmige_Polygone"),
+            "strukturgleichfoermig": _("strukturgleichfoermig"),
         },
         set(),
         set(),
@@ -3095,7 +3206,10 @@ paraNdataMatrix: list[
     ),
     (
         ParametersMain.primvielfache,
-        {"Motive_Sternpolygone": "Motive_Sternpolygone", "motivstern": "motivstern"},
+        {
+            "Motive_Sternpolygone": _("Motive_Sternpolygone"),
+            "motivstern": _("motivstern"),
+        },
         set(),
         set(),
         set(),
@@ -3108,8 +3222,8 @@ paraNdataMatrix: list[
     (
         ParametersMain.primvielfache,
         {
-            "Struktur_Sternpolygone": "Struktur_Sternpolygone",
-            "strukturstern": "strukturstern",
+            "Struktur_Sternpolygone": _("Struktur_Sternpolygone"),
+            "strukturstern": _("strukturstern"),
         },
         set(),
         set(),
@@ -3123,8 +3237,10 @@ paraNdataMatrix: list[
     (
         ParametersMain.primvielfache,
         {
-            "Motiv_Sternpolygon_gebrochen-rational": "Motiv_Sternpolygon_gebrochen-rational",
-            "motivgebrstern": "motivgebrstern",
+            "Motiv_Sternpolygon_gebrochen-rational": _(
+                "Motiv_Sternpolygon_gebrochen-rational"
+            ),
+            "motivgebrstern": _("motivgebrstern"),
         },
         set(),
         set(),
@@ -3138,8 +3254,10 @@ paraNdataMatrix: list[
     (
         ParametersMain.primvielfache,
         {
-            "Struktur_Sternpolyon_gebrochen-rational": "Struktur_Sternpolyon_gebrochen-rational",
-            "strukgebrstern": "strukgebrstern",
+            "Struktur_Sternpolyon_gebrochen-rational": _(
+                "Struktur_Sternpolyon_gebrochen-rational"
+            ),
+            "strukgebrstern": _("strukgebrstern"),
         },
         set(),
         set(),
@@ -3153,8 +3271,10 @@ paraNdataMatrix: list[
     (
         ParametersMain.primvielfache,
         {
-            "Motiv_gleichförmige_Polygone_gebrochen-rational": "Motiv_gleichförmige_Polygone_gebrochen-rational",
-            "motivgebrgleichf": "motivgebrgleichf",
+            "Motiv_gleichförmige_Polygone_gebrochen-rational": _(
+                "Motiv_gleichförmige_Polygone_gebrochen-rational"
+            ),
+            "motivgebrgleichf": _("motivgebrgleichf"),
         },
         set(),
         set(),
@@ -3168,8 +3288,10 @@ paraNdataMatrix: list[
     (
         ParametersMain.primvielfache,
         {
-            "Struktur_gleichförmige_Polygone_gebrochen-rational": "Struktur_gleichförmige_Polygone_gebrochen-rational",
-            "strukgebrgleichf": "strukgebrgleichf",
+            "Struktur_gleichförmige_Polygone_gebrochen-rational": _(
+                "Struktur_gleichförmige_Polygone_gebrochen-rational"
+            ),
+            "strukgebrgleichf": _("strukgebrgleichf"),
         },
         set(),
         set(),
@@ -3182,7 +3304,7 @@ paraNdataMatrix: list[
     ),
     (
         ParametersMain.primvielfache,
-        {"beschrieben": "beschrieben"},
+        {"beschrieben": _("beschrieben")},
         set(),
         set(),
         set(),
@@ -3198,69 +3320,71 @@ paraNdataMatrix = paraNdataMatrix
 kombiParaNdataMatrix: OrderedDict[int, tuple[str]] = OrderedDict(
     {
         1: {
-            "Lebewesen": "Lebewesen",
-            "tiere": "tiere",
-            "tier": "tier",
-            "lebewesen": "lebewesen",
+            "Lebewesen": _("Lebewesen"),
+            "tiere": _("tiere"),
+            "tier": _("tier"),
+            "lebewesen": _("lebewesen"),
         },
-        2: {"Berufe": "Berufe", "berufe": "berufe", "beruf": "beruf"},
+        2: {"Berufe": _("Berufe"), "berufe": _("berufe"), "beruf": _("beruf")},
         3: {
-            "Kreativität_und_Intelligenz": "Kreativität_und_Intelligenz",
-            "kreativität": "kreativität",
-            "intelligenz": "intelligenz",
-            "kreativitaet": "kreativitaet",
+            "Kreativität_und_Intelligenz": _("Kreativität_und_Intelligenz"),
+            "kreativität": _("kreativität"),
+            "intelligenz": _("intelligenz"),
+            "kreativitaet": _("kreativitaet"),
         },
         4: {
-            "Liebe": "Liebe",
-            "liebe": "liebe",
+            "Liebe": _("Liebe"),
+            "liebe": _("liebe"),
         },
         7: {
-            "Männer": "Männer",
-            "männer": "männer",
-            "maenner": "maenner",
-            "frauen": "frauen",
+            "Männer": _("Männer"),
+            "männer": _("männer"),
+            "maenner": _("maenner"),
+            "frauen": _("frauen"),
         },
         8: {
-            "Persönlichkeit_evolutionär_erwerben": "Persönlichkeit_evolutionär_erwerben",
-            "evolution": "evolution",
-            "erwerben": "erwerben",
-            "persoenlichkeit": "persoenlichkeit",
-            "persönlichkeit": "persönlichkeit",
+            "Persönlichkeit_evolutionär_erwerben": _(
+                "Persönlichkeit_evolutionär_erwerben"
+            ),
+            "evolution": _("evolution"),
+            "erwerben": _("erwerben"),
+            "persoenlichkeit": _("persoenlichkeit"),
+            "persönlichkeit": _("persönlichkeit"),
         },
         9: {
-            "Religion": "Religion",
-            "religion": "religion",
-            "religionen": "religionen",
+            "Religion": _("Religion"),
+            "religion": _("religion"),
+            "religionen": _("religionen"),
         },
         10: {
-            "Motive_Ziele": "Motive_Ziele",
-            "motivation": "motivation",
-            "motive": "motive",
-            "ziele": "ziele",
-            "ziel": "ziel",
-            "motive": "motive",
+            "Motive_Ziele": _("Motive_Ziele"),
+            "motivation": _("motivation"),
+            "motive": _("motive"),
+            "ziele": _("ziele"),
+            "ziel": _("ziel"),
+            "motive": _("motive"),
         },
         12: {
-            "Emotionen": "Emotionen",
-            "emotionen": "emotionen",
-            "gefuehle": "gefuehle",
-            "gefühle": "gefühle",
-            "emotion": "emotion",
-            "gefühl": "gefühl",
-            "gefühle": "gefühle",
+            "Emotionen": _("Emotionen"),
+            "emotionen": _("emotionen"),
+            "gefuehle": _("gefuehle"),
+            "gefühle": _("gefühle"),
+            "emotion": _("emotion"),
+            "gefühl": _("gefühl"),
+            "gefühle": _("gefühle"),
         },
         13: {
-            "Personen": "Personen",
-            "personen": "personen",
-            "berühmtheiten": "berühmtheiten",
-            "beruehmtheiten": "beruehmtheiten",
+            "Personen": _("Personen"),
+            "personen": _("personen"),
+            "berühmtheiten": _("berühmtheiten"),
+            "beruehmtheiten": _("beruehmtheiten"),
         },
         16: {
-            "Wirtschaftssysteme": "Wirtschaftssysteme",
-            "wirtschaftssystem": "wirtschaftssystem",
-            "wirtschaftssysteme": "wirtschaftssysteme",
-            "kombinierteswirtschaftssystem": "kombinierteswirtschaftssystem",
-            "kombiniertewirtschaftssysteme": "kombiniertewirtschaftssysteme",
+            "Wirtschaftssysteme": _("Wirtschaftssysteme"),
+            "wirtschaftssystem": _("wirtschaftssystem"),
+            "wirtschaftssysteme": _("wirtschaftssysteme"),
+            "kombinierteswirtschaftssystem": _("kombinierteswirtschaftssystem"),
+            "kombiniertewirtschaftssysteme": _("kombiniertewirtschaftssysteme"),
         },
     }
 )
@@ -3268,109 +3392,111 @@ kombiParaNdataMatrix: OrderedDict[int, tuple[str]] = OrderedDict(
 kombiParaNdataMatrix2: OrderedDict[int, tuple[str]] = OrderedDict(
     {
         1: {
-            "Lebewesen": "Lebewesen",
-            "tiere": "tiere",
-            "tier": "tier",
-            "lebewesen": "lebewesen",
+            "Lebewesen": _("Lebewesen"),
+            "tiere": _("tiere"),
+            "tier": _("tier"),
+            "lebewesen": _("lebewesen"),
         },
-        2: {"Berufe": "Berufe", "berufe": "berufe", "beruf": "beruf"},
+        2: {"Berufe": _("Berufe"), "berufe": _("berufe"), "beruf": _("beruf")},
         # 3: {
-        #    "Kreativität_und_Intelligenz": "Kreativität_und_Intelligenz",
-        #    "kreativität": "kreativität",
-        #    "intelligenz": "intelligenz",
-        #    "kreativitaet": "kreativitaet",
+        #    "Kreativität_und_Intelligenz": _("Kreativität_und_Intelligenz"),
+        #    "kreativität": _("kreativität"),
+        #    "intelligenz": _("intelligenz"),
+        #    "kreativitaet": _("kreativitaet"),
         # },
         # 4: {
-        #    "Liebe": "Liebe",
-        #    "liebe": "liebe",
+        #    "Liebe": _("Liebe"),
+        #    "liebe": _("liebe"),
         # },
         5: {
-            "Transzendentalien_Strukturalien": "Transzendentalien_Strukturalien",
-            "transzendenz": "transzendenz",
-            "transzendentalien": "transzendentalien",
-            "strukturalien": "strukturalien",
-            "alien": "alien",
+            "Transzendentalien_Strukturalien": _("Transzendentalien_Strukturalien"),
+            "transzendenz": _("transzendenz"),
+            "transzendentalien": _("transzendentalien"),
+            "strukturalien": _("strukturalien"),
+            "alien": _("alien"),
         },
         6: {
-            "Primzahlkreuz": "Primzahlkreuz",
-            "leibnitz": "leibnitz",
-            "primzahlkreuz": "primzahlkreuz",
+            "Primzahlkreuz": _("Primzahlkreuz"),
+            "leibnitz": _("leibnitz"),
+            "primzahlkreuz": _("primzahlkreuz"),
         },
         # 7: {
-        #    "Männer": "Männer",
-        #    "männer": "männer",
-        #    "maenner": "maenner",
-        #    "frauen": "frauen",
+        #    "Männer": _("Männer"),
+        #    "männer": _("männer"),
+        #    "maenner": _("maenner"),
+        #    "frauen": _("frauen"),
         # },
         8: {
-            "Persönlichkeit_evolutionär_erwerben": "Persönlichkeit_evolutionär_erwerben",
-            "evolution": "evolution",
-            "erwerben": "erwerben",
-            "persoenlichkeit": "persoenlichkeit",
-            "persönlichkeit": "persönlichkeit",
+            "Persönlichkeit_evolutionär_erwerben": _(
+                "Persönlichkeit_evolutionär_erwerben"
+            ),
+            "evolution": _("evolution"),
+            "erwerben": _("erwerben"),
+            "persoenlichkeit": _("persoenlichkeit"),
+            "persönlichkeit": _("persönlichkeit"),
         },
         # 9: {
-        #    "Religion": "Religion",
-        #    "religion": "religion",
-        #    "religionen": "religionen",
+        #    "Religion": _("Religion"),
+        #    "religion": _("religion"),
+        #    "religionen": _("religionen"),
         # },
         10: {
-            "Motive_Ziele": "Motive_Ziele",
-            "motivation": "motivation",
-            "motive": "motive",
-            "ziele": "ziele",
-            "ziel": "ziel",
-            "motive": "motive",
+            "Motive_Ziele": _("Motive_Ziele"),
+            "motivation": _("motivation"),
+            "motive": _("motive"),
+            "ziele": _("ziele"),
+            "ziel": _("ziel"),
+            "motive": _("motive"),
         },
         11: {
-            "analytische_Ontologie": "analytische_Ontologie",
-            "analytischeontologie": "analytischeontologie",
-            "ontologie": "ontologie",
+            "analytische_Ontologie": _("analytische_Ontologie"),
+            "analytischeontologie": _("analytischeontologie"),
+            "ontologie": _("ontologie"),
         },
         # 12: {
-        #    "Emotionen": "Emotionen",
-        #    "emotionen": "emotionen",
-        #    "gefuehle": "gefuehle",
-        #    "gefühle": "gefühle",
-        #    "emotion": "emotion",
-        #    "gefühl": "gefühl",
-        #    "gefühle": "gefühle",
+        #    "Emotionen": _("Emotionen"),
+        #    "emotionen": _("emotionen"),
+        #    "gefuehle": _("gefuehle"),
+        #    "gefühle": _("gefühle"),
+        #    "emotion": _("emotion"),
+        #    "gefühl": _("gefühl"),
+        #    "gefühle": _("gefühle"),
         # },
-        # 13: {"Personen": "Personen", "personen": "personen", "berühmtheiten": "berühmtheiten", "beruehmtheiten": "beruehmtheiten"},
+        # 13: {"Personen": _("Personen"), "personen": _("personen"), "berühmtheiten": _("berühmtheiten"), "beruehmtheiten": _("beruehmtheiten")},
         14: {
-            "Mechanismen_der_Zuechtung": "Mechanismen_der_Zuechtung",
-            "mechanismen": "mechanismen",
-            "wesen": "wesen",
-            "zuechten": "zuechten",
-            "züchten": "züchten",
+            "Mechanismen_der_Zuechtung": _("Mechanismen_der_Zuechtung"),
+            "mechanismen": _("mechanismen"),
+            "wesen": _("wesen"),
+            "zuechten": _("zuechten"),
+            "züchten": _("züchten"),
         },
         15: {
-            "Gegentranszendentalien": "Gegentranszendentalien",
-            "gegentranszendentalien": "gegentranszendentalien",
-            "gegenstrukturalien": "gegenstrukturalien",
+            "Gegentranszendentalien": _("Gegentranszendentalien"),
+            "gegentranszendentalien": _("gegentranszendentalien"),
+            "gegenstrukturalien": _("gegenstrukturalien"),
         },
         # 16: {
-        #    "Wirtschaftssysteme": "Wirtschaftssysteme",
-        #    "wirtschaftssystem": "wirtschaftssystem",
-        #    "wirtschaftssysteme": "wirtschaftssysteme",
-        #    "kombinierteswirtschaftssystem": "kombinierteswirtschaftssystem",
-        #    "kombiniertewirtschaftssysteme": "kombiniertewirtschaftssysteme",
+        #    "Wirtschaftssysteme": _("Wirtschaftssysteme"),
+        #    "wirtschaftssystem": _("wirtschaftssystem"),
+        #    "wirtschaftssysteme": _("wirtschaftssysteme"),
+        #    "kombinierteswirtschaftssystem": _("kombinierteswirtschaftssystem"),
+        #    "kombiniertewirtschaftssysteme": _("kombiniertewirtschaftssysteme"),
         # },
         17: {
-            "Maschinen": "Maschinen",
-            "maschinen": "maschinen",
-            "geräte": "geräte",
-            "geraete": "geraete",
+            "Maschinen": _("Maschinen"),
+            "maschinen": _("maschinen"),
+            "geräte": _("geräte"),
+            "geraete": _("geraete"),
         },
-        18: {"Geist": "Geist", "geist": "geist"},
-        19: {"Bewusstsein": "Bewusstsein", "bewusstsein": "bewusstsein"},
+        18: {"Geist": _("Geist"), "geist": _("geist")},
+        19: {"Bewusstsein": _("Bewusstsein"), "bewusstsein": _("bewusstsein")},
     }
 )
 
 
 class concat:
-    polygon1 = " der eigenen Strukturgröße ("
-    polygon2 = ") auf dich bei gleichförmigen Polygonen"
+    polygon1 = _(" der eigenen Strukturgröße (")
+    polygon2 = _(") auf dich bei gleichförmigen Polygonen")
     energietopologie1 = (
         "eine Denkart",
         "eine Gefühlsart",
@@ -3410,11 +3536,11 @@ class concat:
         "Mond-Typ eines gleichförmigen Polygons",
     )
 
-    mondExpLog2 = "kein Mond"
+    mondExpLog2 = _("kein Mond")
     # wohl nich nötig zu übersetzen modalA_
-    modalA1 = "modalS"
-    modalA2 = "vervielfachter"
-    modalA3 = "i_origS"
+    modalA1 = _("modalS")
+    modalA2 = _("vervielfachter")
+    modalA3 = _("i_origS")
 
     modalB = (
         "mittelstark überdurchschnittlich: ",
@@ -3432,18 +3558,22 @@ class concat:
         "intrinsisch",
         "zuerst",
     )
-    generiert = "Generiert: "
+    generiert = _("Generiert: ")
     allesNurBezogen = ("Alles nur bezogen auf die selbe Strukturgröße einer ",)
-    headline1 = "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
-    gegen = "gegen "
-    pro = "pro "
+    headline1 = _(
+        "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
+    )
+    gegen = _("gegen ")
+    pro = _("pro ")
     hineinversetzen = (
         " Darin kann sich die ",
         " am Besten hineinversetzten.",
     )
-    proIst = ("pro dieser Zahl sind: ", "pro dieser Zahl ist ")
-    contraIst = (" contra dieser Zahl sind: ", " contra dieser Zahl ist ")
-    hineinversetzen = " - Die Zahlen, die für oder gegen diese Zahlen hier sind, können sich in diese am Besten gedanklich hineinversetzen."
+    proIst = ("pro dieser Zahl sind: _(", ")pro dieser Zahl ist ")
+    contraIst = (" contra dieser Zahl sind: _(", ") contra dieser Zahl ist ")
+    hineinversetzen = _(
+        " - Die Zahlen, die für oder gegen diese Zahlen hier sind, können sich in diese am Besten gedanklich hineinversetzen."
+    )
     polygone = ("Sternpolygone", "gleichförmige Polygone")
 
     kombisNamen: tuple = (
@@ -3459,29 +3589,29 @@ class concat:
         "UniUni",
     )
 
-    faktorenbla = ", mit Faktoren aus gebrochen-rationalen Zahlen"
-    genMul = "generierte Multiplikationen "
-    ausserdem = ", außerdem: "
-    Multiplikationen_ = "Multiplikationen"
+    faktorenbla = _(", mit Faktoren aus gebrochen-rationalen Zahlen")
+    genMul = _("generierte Multiplikationen ")
+    ausserdem = _(", außerdem: ")
+    Multiplikationen_ = _("Multiplikationen")
     nWichtigste = ("Wichtigstes_zum_verstehen", "Viertwichtigste")
     metaOrWhat = OrderedDict(
         {
-            2: (("Meta-Thema: ", "Konkretes: "), ("Meta-", "Konkret-")),
-            3: (("Theorie-Thema: ", "Praxis: "), ("Theorie-", "Praxis-")),
+            2: (("Meta-Thema: _(", ")Konkretes: _("), (")Meta-", "Konkret-")),
+            3: (("Theorie-Thema: _(", ")Praxis: _("), (")Theorie-", "Praxis-")),
             4: (
-                ("Planungs-Thema: ", "Umsetzungs-Thema: "),
+                ("Planungs-Thema: _(", ")Umsetzungs-Thema: "),
                 ("Planung-", "Umsetzung-"),
             ),
             5: (
-                ("Anlass-Thema: ", "Wirkungs-Thema: "),
+                ("Anlass-Thema: _(", ")Wirkungs-Thema: "),
                 ("Anlass-", "wirkung-"),
             ),
             6: (
-                ("Kraft-Gebung: ", "Verstärkungs-Thema: "),
+                ("Kraft-Gebung: _(", ")Verstärkungs-Thema: "),
                 ("Kraft-geben-", "Verstärkung-"),
             ),
             7: (
-                ("Beherrschung: ", "Richtung-Thema: "),
+                ("Beherrschung: _(", ")Richtung-Thema: "),
                 ("beherrschend-", "Richtung-"),
             ),
         }
@@ -3511,31 +3641,33 @@ class concat:
     )
     spaltenNamen = OrderedDict(
         {
-            5: "Transzendentalien, Strukturalien, Universum n",
-            10: "Galaxie n",
-            42: "Galaxie 1/n",
-            131: "Transzendentalien, Strukturalien, Universum 1/n",
-            138: "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n",
-            202: "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n",
-            None: "Richtung-Richtung",
+            5: _("Transzendentalien, Strukturalien, Universum n"),
+            10: _("Galaxie n"),
+            42: _("Galaxie 1/n"),
+            131: _("Transzendentalien, Strukturalien, Universum 1/n"),
+            138: _("Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n"),
+            202: _(
+                "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n"
+            ),
+            None: _("Richtung-Richtung"),
         }
     )
 
-    primRicht = "Primzahlwirkung (7, Richtung) "
+    primRicht = _("Primzahlwirkung (7, Richtung) ")
 
-    letztEnd = "] * letztendlich: "
+    letztEnd = _("] * letztendlich: ")
 
-    primVielGen = "Primzahlvielfache, nicht generiert"
+    primVielGen = _("Primzahlvielfache, nicht generiert")
     GalOrUniOrFehler = ("Fehler", " Universum", " Galaxie")
 
-    multipl = "Multiplikationen"
-    notGen = "Nicht_generiert"
+    multipl = _("Multiplikationen")
+    notGen = _("Nicht_generiert")
 
 
 class lib4tables:
-    zaehlung = "zaehlung"
-    nummerier = "nummerierung"
-    alles = "alles"
+    zaehlung = _("zaehlung")
+    nummerier = _("nummerierung")
+    alles = _("alles")
 
 
 class center:
@@ -3561,32 +3693,32 @@ class center:
 
 
 class nested:
-    gal = "galaxie"  # eigtl aus reta.py
-    uni = "universum"  # eigtl aus reta.py
-    typ = "typ"  # eigtl aus reta.py
-    zeit = "zeit"  # eigtl aus reta.py
-    art = "art"  # eigtl aus reta.py
+    gal = _("galaxie")  # eigtl aus reta.py
+    uni = _("universum")  # eigtl aus reta.py
+    typ = _("typ")  # eigtl aus reta.py
+    zeit = _("zeit")  # eigtl aus reta.py
+    art = _("art")  # eigtl aus reta.py
 
 
 class retapy:
-    beschrieben = "beschrieben"
+    beschrieben = _("beschrieben")
     mainParaCmds: dict = {
         "zeilen": 0,
         "spalten": 1,
-        self.tables.getCombis.parameterName: 2,
+        # self.tables.getCombis.parameterName: 2,
         "ausgabe": 3,
         "debug": None,
         "h": None,
         "help": None,
     }
-    nichts = "nichts"
+    nichts = _("nichts")
     cliout1 = (
         'Der Haupt-Parameter "',
         '" existiert hier nicht als Befehl!',
         " Es ist nur möglich: -",
     )
 
-    keineNum = "keinenummerierung"
+    keineNum = _("keinenummerierung")
     cliout2 = (
         'Der Unter-Paramaeter "--',
         '" existiert, aber nicht mit dem Textwert "',
@@ -3611,41 +3743,41 @@ class retapy:
         "Es ist nur möglich: --",
         ", --keinenummerierung",
     )
-    galaxie = "--galaxie="
-    universum = "--universum="
-    kombinationen = "kombinationen"
+    galaxie = _("--galaxie=")
+    universum = _("--universum=")
+    kombinationen = _("kombinationen")
     cliout5 = (
         'Die Kombispalte "',
         '" existiert so nicht als Befehl. Möglich sind die Parameter für ',
     )
-    cliout6 = 'kein Unter-Parameter "--galaxie=" oder "--universum=" angegeben für Hauptparameter -kombination'
+    cliout6 = _('kein Unter-Parameter "--galaxie=_(" oder ")--universum=" angegeben für Hauptparameter -kombination')
     cliout7 = (
         "Es muss ein Hauptparameter, bzw. der richtige, gesetzt sein, damit ein",
         ' Nebenparameter, wie möglicherweise: "',
         '" ausgeführt werden kann. Hauptparameter sind: -',
     )
-    breite = "--breite"
+    breite = _("--breite")
 
-    cliout8 = "Versuche Parameter -h"
+    cliout8 = _("Versuche Parameter -h")
     zeilenParas = {
-        "alles": "alles",
-        "zeit": "zeit",
-        "heute": "heute",
-        "gestern": "gestern",
-        "morgen": "morgen",
-        "hoehemaximal": "hoehemaximal",
-        "typ": "typ",
-        "sonne": "sonne",
-        "mond": "mond",
-        "planet": "planet",
-        "schwarzesonne": "schwarzesonne",
-        "potenzenvonzahlen": "potenzenvonzahlen",
-        "vielfachevonzahlen": "vielfachevonzahlen",
-        "primzahlvielfache": "primzahlvielfache",
-        "vorhervonausschnittteiler": "vorhervonausschnittteiler",
-        "vorhervonausschnitt": "vorhervonausschnitt",
-        "nachtraeglichneuabzaehlungvielfache": "nachtraeglichneuabzaehlungvielfache",
-        "nachtraeglichneuabzaehlung": "nachtraeglichneuabzaehlung",
+        "alles": _("alles"),
+        "zeit": _("zeit"),
+        "heute": _("heute"),
+        "gestern": _("gestern"),
+        "morgen": _("morgen"),
+        "hoehemaximal": _("hoehemaximal"),
+        "typ": _("typ"),
+        "sonne": _("sonne"),
+        "mond": _("mond"),
+        "planet": _("planet"),
+        "schwarzesonne": _("schwarzesonne"),
+        "potenzenvonzahlen": _("potenzenvonzahlen"),
+        "vielfachevonzahlen": _("vielfachevonzahlen"),
+        "primzahlvielfache": _("primzahlvielfache"),
+        "vorhervonausschnittteiler": _("vorhervonausschnittteiler"),
+        "vorhervonausschnitt": _("vorhervonausschnitt"),
+        "nachtraeglichneuabzaehlungvielfache": _("nachtraeglichneuabzaehlungvielfache"),
+        "nachtraeglichneuabzaehlung": _("nachtraeglichneuabzaehlung"),
     }
     cliout9 = (
         'Den Neben-Parameter "',
@@ -3661,38 +3793,38 @@ class retapy:
 
 class retaPrompt:
     befehleBeenden = {"ende", "exit", "quit", "q", ":q"}
-    promptMode = "promptmode vorher: {} , {}"
+    promptMode = _("promptmode vorher: {} , {}")
     out1 = (
         "Dies ('",
         "') ist tatsächlich ein Befehl (oder es sind mehrere), aber es gibt nichts auszugeben.",
     )
-    out2 = "Das ist kein Befehl! -> '{}''"
-    out3 = 'Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\nDas ist eine Design-Entscheidung, die getroffen worden ist.'
+    out2 = _("Das ist kein Befehl! -> '{}''")
+    out3 = _('Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\nDas ist eine Design-Entscheidung, die getroffen worden ist.')
     replacements = {
-        "e": "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
-        "a": "absicht",
-        "u": "universum",
-        "t": "thomas",
-        "r": "richtung",
-        "v": "vielfache",
-        "h": "help",
-        "w": "teiler",
-        "S": "BefehlSpeichernDanach",
-        "s": "BpromptMode = PromptModus.speichernefehlSpeichernDavor",
-        "l": "BefehlSpeicherungLöschen",
-        "o": "BefehlSpeicherungAusgeben",
+        "e": _("keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"),
+        "a": _("absicht"),
+        "u": _("universum"),
+        "t": _("thomas"),
+        "r": _("richtung"),
+        "v": _("vielfache"),
+        "h": _("help"),
+        "w": _("teiler"),
+        "S": _("BefehlSpeichernDanach"),
+        "s": _("BpromptMode = PromptModus.speichernefehlSpeichernDavor"),
+        "l": _("BefehlSpeicherungLöschen"),
+        "o": _("BefehlSpeicherungAusgeben"),
     }
     retaPromptParameter = {
-        "-vi": "-vi",
-        "-log": "-log",
-        "-h": "-h",
-        "-help": "-help",
-        "-e": "-e",
-        "-debug": "-debug",
-        "-befehl": "-befehl",
+        "-vi": _("-vi"),
+        "-log": _("-log"),
+        "-h": _("-h"),
+        "-help": _("-help"),
+        "-e": _("-e"),
+        "-debug": _("-debug"),
+        "-befehl": _("-befehl"),
     }
 
-    debugLog = "Debug Log aktiviert."
+    debugLog = _("Debug Log aktiviert.")
     helptext = """Erlaube Parameter sind
             -vi für vi mode statt emacs mode,
             -log, um Logging zu aktivieren,
@@ -3700,6 +3832,6 @@ class retaPrompt:
             -befehl bewirkt, dass bis zum letzten Programmparameter retaPrompt Befehl nur ein RetaPrompt-Befehl ausgeführt wird.
             -e bewirkt, dass bei allen Befehlen das 'e' Kommando bzw. 'keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar' jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil dieser anders funktioniert """
 
-    wspeichern = "was speichern>"
-    wloeschen = "was löschen>"
-    reziInfoText = 'Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\nDas ist eine Design-Entscheidung, die getroffen worden ist.'
+    wspeichern = _("was speichern>")
+    wloeschen = _("was löschen>")
+    reziInfoText = _('Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\nDas ist eine Design-Entscheidung, die getroffen worden ist.')
