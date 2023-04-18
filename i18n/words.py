@@ -3657,3 +3657,49 @@ class retapy:
         'Den Neben-Parameter "',
         '" gibt es hier nicht für den Hauptparameter "-',
     )
+
+
+class retaPrompt:
+    befehleBeenden = {"ende", "exit", "quit", "q", ":q"}
+    promptMode = "promptmode vorher: {} , {}"
+    out1 = (
+        "Dies ('",
+        "') ist tatsächlich ein Befehl (oder es sind mehrere), aber es gibt nichts auszugeben.",
+    )
+    out2 = "Das ist kein Befehl! -> '{}''"
+    out3 = 'Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\nDas ist eine Design-Entscheidung, die getroffen worden ist.'
+    replacements = {
+        "e": "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
+        "a": "absicht",
+        "u": "universum",
+        "t": "thomas",
+        "r": "richtung",
+        "v": "vielfache",
+        "h": "help",
+        "w": "teiler",
+        "S": "BefehlSpeichernDanach",
+        "s": "BpromptMode = PromptModus.speichernefehlSpeichernDavor",
+        "l": "BefehlSpeicherungLöschen",
+        "o": "BefehlSpeicherungAusgeben",
+    }
+    retaPromptParameter = {
+        "-vi": "-vi",
+        "-log": "-log",
+        "-h": "-h",
+        "-help": "-help",
+        "-e": "-e",
+        "-debug": "-debug",
+        "-befehl": "-befehl",
+    }
+
+    debugLog = "Debug Log aktiviert."
+    helptext = """Erlaube Parameter sind
+            -vi für vi mode statt emacs mode,
+            -log, um Logging zu aktivieren,
+            -debug, um Debugging-Log-Ausgabe zu aktivieren. Das ist nur für Entwickler gedacht.
+            -befehl bewirkt, dass bis zum letzten Programmparameter retaPrompt Befehl nur ein RetaPrompt-Befehl ausgeführt wird.
+            -e bewirkt, dass bei allen Befehlen das 'e' Kommando bzw. 'keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar' jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil dieser anders funktioniert """
+
+    wspeichern = "was speichern>"
+    wloeschen = "was löschen>"
+    reziInfoText = 'Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\nDas ist eine Design-Entscheidung, die getroffen worden ist.'
