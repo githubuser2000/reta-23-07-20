@@ -106,16 +106,6 @@ class Program:
                     (0, el2Type)
                 ] -= self.spaltenArtenKey_SpaltennummernValue.pop((1, el2Type))
 
-        # def notNormalParameters(parameter, parametervalue, tables):
-        #     if parameter == "bedeutung" and parametervalue in [
-        #         "gestirn",
-        #         "mond",
-        #         "sonne",
-        #         "planet",
-        #     ]:
-        #         tables.spalteGestirn = True
-
-        # self.intoParameterDatatype
         self.mainParaCmds: dict = {
             "zeilen": 0,
             "spalten": 1,

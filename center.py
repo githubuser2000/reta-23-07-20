@@ -88,24 +88,6 @@ def isZeilenAngabe(text):
 def isZeilenAngabe_betweenKommas(g):
     pattern = r"^(v?-?\d+)(-\d+)?((\+)(\d+))*$"
     return bool(re.fullmatch(pattern, g))
-    #    x = len(re.findall(r"[0-9]+\-[0-9]+", g))
-    #    y = len(re.findall(r"[0-9]+\-[0-9]+\-[0-9]+", g))
-    #    return (
-    #        True
-    #        if bool(re.match(r"^\-?[0-9-]+[\+0-9,]*$", g))  # len(g) > 0 and
-    #        and g[-1] not in ["-", "+"]
-    #        and (
-    #            (x < 2 and y == 0)
-    #            or (bool(re.match(r"^\-?[0-9]+[\+0-9,]*$", g)) and x == 0)
-    #        )
-    #        and "--" not in g
-    #        and "++" not in g
-    #        and "+-" not in g
-    #        and "-+" not in g
-    #        and ",+" not in g
-    #        and "+," not in g
-    #        and "-," not in g
-    #        else False
 
 
 def retaPromptHilfe():
@@ -447,7 +429,6 @@ def BereichToNumbers2_EinBereich_Menge(
             if richtig and len(numList) > 0:
                 around = numList[1:]
                 BereichCouple[1] = numList[0]
-        # x("90sd3", [BereichCouple, around, maxZahl, menge])
         if vielfache:
             BereichToNumbers2_EinBereich_Menge_vielfache(
                 BereichCouple, around, maxZahl, menge
@@ -474,7 +455,6 @@ def BereichToNumbers2_EinBereich_Menge_nichtVielfache(
 def BereichToNumbers2_EinBereich_Menge_vielfache(BereichCouple, around, maxZahl, menge):
     i = 0
     if len(around) == 0 or len(set(around) - {0}) == 0:
-        # x("9hb3", set(around) & {0})
         while all([int(BereichCouple[0]) * i < maxZahl - a for a in around]):
             i += 1
             for number in range(int(BereichCouple[0]), int(BereichCouple[1]) + 1):

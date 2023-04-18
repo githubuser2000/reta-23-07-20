@@ -10,6 +10,22 @@ except:
 sys.path.insert(1, "./..")
 from center import Multiplikationen, Primzahlkreuz_pro_contra_strs
 
+"""
+ES FEHLEN NOCH ALLE ''
+fertig: in prepare ist nichts
+fertig: concat
+fertig: center
+fertig: lib4tables
+fertig: reta.py
+nichts drin: enum
+nichts drin: multis
+nichts drin: grundstruk html
+die aus den anderen dateien: nestedcompleter
+LibRetaPrompt: größten Teil entnommen
+
+ES FEHLEN NOCH ALLE ''
+"""
+
 gebrochenSpaltenMaximumPlus1 = 21
 spalten: dict = {}
 spalten |= {
@@ -3350,3 +3366,294 @@ kombiParaNdataMatrix2: OrderedDict[int, tuple[str]] = OrderedDict(
         19: {"Bewusstsein": "Bewusstsein", "bewusstsein": "bewusstsein"},
     }
 )
+
+
+class concat:
+    polygon1 = " der eigenen Strukturgröße ("
+    polygon2 = ") auf dich bei gleichförmigen Polygonen"
+    energietopologie1 = (
+        "eine Denkart",
+        "eine Gefühlsart",
+        "total eine Art, etwas geistig zu erzeugen",
+        "total eine Art zu erleben",
+        "total eine Energie-Art",
+        "etwas eine Art zu erleben",
+        "etwas eine Art, etwas geistig zu erzeugen",
+        "wenig eine Art, etwas geistig zu erzeugen",
+        "einigermaßen eine Energie-Art",
+        "kaum eine Energie-Art",
+        "kaum eine Art, etwas geistig zu erzeugen",
+        "eine Denkart",
+        "eine Gefühlsart",
+        "total eine Art, etwas geistig zu erzeugen",
+        "total eine Art zu erleben",
+        "total eine Energie-Art",
+        "etwas eine Art zu erleben",
+        "etwas eine Art, etwas geistig zu erzeugen",
+        "wenig eine Art, etwas geistig zu erzeugen",
+        "einigermaßen eine Energie-Art",
+        "kaum eine Energie-Art",
+        "kaum eine Art, etwas geistig zu erzeugen",
+    )
+    ausgabeString = (
+        "Energie oder Denkart oder Gefühlsart oder Materie-Art oder Topologie-Art"
+    )
+    kreaZahl = (
+        "Evolutions-Züchtungs-Kreativität",
+        "0. Primzahl 1",
+        "1. Primzahl und Sonnenzahl",
+        "2. Sonnenzahl, aber keine Primzahl",
+        "3. Mondzahl",
+    )
+    mondExpLog1 = (
+        "Mond-Typ eines Sternpolygons",
+        "Mond-Typ eines gleichförmigen Polygons",
+    )
+
+    mondExpLog2 = "kein Mond"
+    # wohl nich nötig zu übersetzen modalA_
+    modalA1 = "modalS"
+    modalA2 = "vervielfachter"
+    modalA3 = "i_origS"
+
+    modalB = (
+        "mittelstark überdurchschnittlich: ",
+        "überdurchschnittlich: ",
+        "mittelleicht überdurchschnittlich: ",
+        "sehr: ",
+        "sehr leicht überdurchschnittlich: ",
+    )
+    modalC = ("intrinsisch", "zuerst", "extrinsisch", "als zweites")
+    modalD = (
+        ", nicht: ",
+        " (das alles nicht): ",
+        "extrinsisch",
+        "als zweites",
+        "intrinsisch",
+        "zuerst",
+    )
+    generiert = "Generiert: "
+    allesNurBezogen = ("Alles nur bezogen auf die selbe Strukturgröße einer ",)
+    headline1 = "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
+    gegen = "gegen "
+    pro = "pro "
+    hineinversetzen = (
+        " Darin kann sich die ",
+        " am Besten hineinversetzten.",
+    )
+    proIst = ("pro dieser Zahl sind: ", "pro dieser Zahl ist ")
+    contraIst = (" contra dieser Zahl sind: ", " contra dieser Zahl ist ")
+    hineinversetzen = " - Die Zahlen, die für oder gegen diese Zahlen hier sind, können sich in diese am Besten gedanklich hineinversetzen."
+    polygone = ("Sternpolygone", "gleichförmige Polygone")
+
+    kombisNamen: tuple = (
+        "Motiv -> Motiv",
+        "Motiv -> Strukur",
+        "Struktur -> Motiv",
+        "Struktur -> Strukur",
+    )
+    kombisNamen2: tuple = (
+        "GalGal",
+        "GalUni",
+        "UniGal",
+        "UniUni",
+    )
+
+    faktorenbla = ", mit Faktoren aus gebrochen-rationalen Zahlen"
+    genMul = "generierte Multiplikationen "
+    ausserdem = ", außerdem: "
+    Multiplikationen_ = "Multiplikationen"
+    nWichtigste = ("Wichtigstes_zum_verstehen", "Viertwichtigste")
+    metaOrWhat = OrderedDict(
+        {
+            2: (("Meta-Thema: ", "Konkretes: "), ("Meta-", "Konkret-")),
+            3: (("Theorie-Thema: ", "Praxis: "), ("Theorie-", "Praxis-")),
+            4: (
+                ("Planungs-Thema: ", "Umsetzungs-Thema: "),
+                ("Planung-", "Umsetzung-"),
+            ),
+            5: (
+                ("Anlass-Thema: ", "Wirkungs-Thema: "),
+                ("Anlass-", "wirkung-"),
+            ),
+            6: (
+                ("Kraft-Gebung: ", "Verstärkungs-Thema: "),
+                ("Kraft-geben-", "Verstärkung-"),
+            ),
+            7: (
+                ("Beherrschung: ", "Richtung-Thema: "),
+                ("beherrschend-", "Richtung-"),
+            ),
+        }
+    )
+    metaKonkret = (
+        "Meta",
+        "Theorie",
+        "Management",
+        "ganzheitlich",
+        "Verwertung, Unternehmung, Geschäft",
+        "regieren, beherrschen",
+        "Konkretes",
+        "Praxis",
+        "verändernd",
+        "darüber hinaus gehend",
+        "wertvoll",
+        "Richtung",
+        " für 1/n statt n",
+        " für n",
+    )
+    innenAussen = (
+        "für innen",
+        "für außen",
+        '"für seitlich und gegen Schwächlinge innen"',
+        '"gegen seitlich und für Schwächlinge innen"',
+        "für außen",
+    )
+    spaltenNamen = OrderedDict(
+        {
+            5: "Transzendentalien, Strukturalien, Universum n",
+            10: "Galaxie n",
+            42: "Galaxie 1/n",
+            131: "Transzendentalien, Strukturalien, Universum 1/n",
+            138: "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n",
+            202: "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n",
+            None: "Richtung-Richtung",
+        }
+    )
+
+    primRicht = "Primzahlwirkung (7, Richtung) "
+
+    letztEnd = "] * letztendlich: "
+
+    primVielGen = "Primzahlvielfache, nicht generiert"
+    GalOrUniOrFehler = ("Fehler", " Universum", " Galaxie")
+
+    multipl = "Multiplikationen"
+    notGen = "Nicht_generiert"
+
+
+class lib4tables:
+    zaehlung = "zaehlung"
+    nummerier = "nummerierung"
+    alles = "alles"
+
+
+class center:
+    Primzahlkreuz_pro_contra_strs = (
+        "Primzahlkreuz_pro_contra",
+        "nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)",
+    )
+
+    Multiplikationen = [("Multiplikationen", "")]
+
+    @classmethod
+    def classify(cls, mod):
+        if mod == 0:
+            return "ja"
+        elif mod == 1:
+            return "Gegenteil"
+        elif mod == 2:
+            return "ähnlich"
+        elif mod == 3:
+            return "entferntes Gegenteil"
+        elif mod == 4:
+            return "entfernt ähnlich"
+
+
+class nested:
+    gal = "galaxie"  # eigtl aus reta.py
+    uni = "universum"  # eigtl aus reta.py
+    typ = "typ"  # eigtl aus reta.py
+    zeit = "zeit"  # eigtl aus reta.py
+    art = "art"  # eigtl aus reta.py
+
+
+class retapy:
+    beschrieben = "beschrieben"
+    mainParaCmds: dict = {
+        "zeilen": 0,
+        "spalten": 1,
+        self.tables.getCombis.parameterName: 2,
+        "ausgabe": 3,
+        "debug": None,
+        "h": None,
+        "help": None,
+    }
+    nichts = "nichts"
+    cliout1 = (
+        'Der Haupt-Parameter "',
+        '" existiert hier nicht als Befehl!',
+        " Es ist nur möglich: -",
+    )
+
+    keineNum = "keinenummerierung"
+    cliout2 = (
+        'Der Unter-Paramaeter "--',
+        '" existiert, aber nicht mit dem Textwert "',
+        '". Mögliche Nebenparameter-Textwerte, für diesen Unter-Parameter, sind: "',
+        '". Stattdessen gibt keine Nebenparameter-Textwerte.',
+    )
+    cliout3 = (
+        'Der Unter-Paramaeter "--',
+        '" mit dem Textwert "',
+        '" existiert hier nicht als Befehl für Haupt-Parameter',
+        " -spalten",
+        " !",
+        " Es ist nur möglich:\n--",
+        ", --breiten, --breite",
+        "\nmit dem Werten dahinter:\n",
+    )
+    cliout4 = (
+        'Der Unter-Parameter "--',
+        '" existiert hier nicht als Befehl für Haupt-Parameter',
+        " -spalten",
+        ", oder dieser Parameter braucht Werte analog wie: \n--unterParameter=Wert1\n",
+        "Es ist nur möglich: --",
+        ", --keinenummerierung",
+    )
+    galaxie = "--galaxie="
+    universum = "--universum="
+    kombinationen = "kombinationen"
+    cliout5 = (
+        'Die Kombispalte "',
+        '" existiert so nicht als Befehl. Möglich sind die Parameter für ',
+    )
+    cliout6 = 'kein Unter-Parameter "--galaxie=" oder "--universum=" angegeben für Hauptparameter -kombination'
+    cliout7 = (
+        "Es muss ein Hauptparameter, bzw. der richtige, gesetzt sein, damit ein",
+        ' Nebenparameter, wie möglicherweise: "',
+        '" ausgeführt werden kann. Hauptparameter sind: -',
+    )
+    breite = "--breite"
+
+    cliout8 = "Versuche Parameter -h"
+    zeilenParas = {
+        "alles": "alles",
+        "zeit": "zeit",
+        "heute": "heute",
+        "gestern": "gestern",
+        "morgen": "morgen",
+        "hoehemaximal": "hoehemaximal",
+        "typ": "typ",
+        "sonne": "sonne",
+        "mond": "mond",
+        "planet": "planet",
+        "schwarzesonne": "schwarzesonne",
+        "potenzenvonzahlen": "potenzenvonzahlen",
+        "vielfachevonzahlen": "vielfachevonzahlen",
+        "primzahlvielfache": "primzahlvielfache",
+        "vorhervonausschnittteiler": "vorhervonausschnittteiler",
+        "vorhervonausschnitt": "vorhervonausschnitt",
+        "nachtraeglichneuabzaehlungvielfache": "nachtraeglichneuabzaehlungvielfache",
+        "nachtraeglichneuabzaehlung": "nachtraeglichneuabzaehlung",
+    }
+    cliout9 = (
+        'Den Neben-Parameter "',
+        '" gibt es hier nicht für den Hauptparameter "-',
+        '".',
+        " Möglich sind: ",
+    )
+    cliout10 = (
+        'Den Neben-Parameter "',
+        '" gibt es hier nicht für den Hauptparameter "-',
+    )

@@ -255,10 +255,8 @@ class Prepare:
         """
         results = set()
         if keineNegBeruecksichtigung:
-            # alxp("JAAAAAA")
             if isZeilenAngabe(MehrereBereiche):
                 results.add("".join(["_", symbol, "_", MehrereBereiche]))
-                # x("JAAAAAA DOCH", results)
         else:
             for EinBereich in MehrereBereiche.split(","):
                 if (
@@ -455,7 +453,6 @@ class Prepare:
 
         numRangeYesZ = set()
         ifZeitAtAll = False
-        # x("AJA", paramLines)
         for condition in paramLines:
             if "=" == condition:
                 ifZeitAtAll = True
@@ -491,14 +488,11 @@ class Prepare:
                 )
                 ifZaehlungenAtAll = True
                 mehrere += [condition[3:]]
-        x("mehrererere", mehrere)
         if True or ifZaehlungenAtAll:
             self.setZaehlungen(self.originalLinesRange[-1])
         if ifZaehlungenAtAll:
             # self.setZaehlungen(self.originalLinesRange[-1])
-            x("zähl", [numRange, numRangeYesZ])
             numRangeYesZ2 = set()
-            # x("BBBSDRFG", [numRangeYesZ2, self.zaehlungen[3], numRange])
             if (
                 len(numRange) == 0
                 and not if_a_AtAll
@@ -511,7 +505,6 @@ class Prepare:
                     if self.zaehlungen[3][n] == int(z):  # 1-4:1,5-9:2 == jetzt ?
                         numRangeYesZ2 |= {n}
                         # numRange.remove(n)
-            x("ASDRFG", [numRangeYesZ2, numRangeYesZ, numRange])
             if ifZaehlungenAtAll:
                 if len(numRangeYesZ2) > 0 and len(numRange) != 0:
                     numRange &= numRangeYesZ2
@@ -533,7 +526,6 @@ class Prepare:
                             eins, False, self.hoechsteZeile[1024] + 1
                         )
                 if len(minusBereiche) > 0:
-                    alxp("zähl-minus")
                     for n in copy(numRange):
                         for z in minusBereiche:
                             if self.zaehlungen[3][n] == int(z):
@@ -739,7 +731,6 @@ class Prepare:
                 if new2Lines != []:
                     newerTable += [new2Lines]
 
-        # #x("idiot", self.tables.generatedSpaltenParameter)
         return finallyDisplayLines, newerTable, numlen, rowsRange, old2Rows
 
     def prepare4out_beforeForLoop_SpaltenZeilenBestimmen(
@@ -770,14 +761,7 @@ class Prepare:
             if self.ifZeilenSetted:
                 finallyDisplayLines = set()
             else:
-                # alleshier = True
-                # for condition in paramLines:
-                #    if "nichts" == condition:
-                #        alleshier = False
-                # if alleshier:
                 finallyDisplayLines = set(range(self.hoechsteZeile[1024] + 1))
-                # else:
-                #    finallyDisplayLines = set()
 
         finallyDisplayLines.add(0)
         finallyDisplayLines3: list = list(finallyDisplayLines)
@@ -829,7 +813,6 @@ class Prepare:
 
                 rowToDisplay += 1
                 certaintextwidth = self.setWidth(rowToDisplay, combiRows)
-                # x("certaintextwidth", [certaintextwidth, [rowToDisplay, combiRows]])
                 self.certaintextwidth = certaintextwidth
 
                 into = self.cellWork(cell, certaintextwidth)
