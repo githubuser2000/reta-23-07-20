@@ -156,6 +156,7 @@ def bruchSpalt(text) -> list:
                 wasNumber = False
                 countChar += 1
                 countNumber = 0
+        # print("ä {},{}".format(zahl, keineZahl))
         flag: bool = False
         allVergleich: list[bool] = [
             zahl > c for c, zahl in zip(keineZahl.keys(), zahl.keys())
@@ -287,7 +288,6 @@ def createRangesForBruchLists(bruchList: list) -> tuple:
             """Es war ein Bruch"""
             ergebnis += [str(n2[-2]), "-", str(n2[-1])]
 
-            # print("ü {}".format(ergebnis))
             listenRange = range(int(n1[-2]), int(n1[-1]) + 1)
             listenRangeUrsprung = listenRange
             flag = -1
@@ -460,7 +460,6 @@ def PromptScope():
         immerEbefehlJa,
     ) = PromptAllesVorGroesserSchleife()
     while len(set(text.split()) & set(befehleBeenden)) == 0:
-        # SiZe = os.get_terminal_size()
         warBefehl = False
         promptModeLast = promptMode
 
@@ -1033,6 +1032,8 @@ def PromptGrosseAusgabe(
                 for nenner, zaehler in rangesBruecheDict.items():
                     import reta
 
+                    # zaehler = [s for s in zaehler if s]
+                    # hierBereich = ",".join(zaehler)
                     hierBereich = ",".join(zaehler)
                     kette = [
                         "reta",
@@ -1390,17 +1391,12 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
     bruch_KeinGanzZahlReziprokeAbzug = {}
     bruch_KeinGanzZahlReziprok_ = []
     fullBlockIsZahlenbereichAndBruch = True
-    bruchRanges2 = []
-    # bruchRanges2Abzug = []
-    # bruch_KeinGanzZahlReziprokeEn = []
     rangesBruecheDict = {}
     rangesBruecheDictReverse: dict = {}
     bruch_KeinGanzZahlReziprokeEnDictAbzug = {}
     bruchRanges3Abzug = {}
     valueLenSum = 0
     zahlenAngaben_mehrere = []
-    bruchRangeNeu = {}
-    bruchRangeNeuAbzug = {}
     Minusse = {}
     pfaue = {}
     pfaueAbzug = {}
@@ -1541,7 +1537,13 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                 i = 1
                 rechnung = i * bDazu
                 while rechnung < retaProgram.tables.hoechsteZeile[1024]:
-                    try",".join((str(b) for b in bdNeu))
+                    try:
+                        bdNeu -= {rechnung}
+                        i += 1
+                        rechnung = i * bDazu
+                    except:
+                        pass
+        bruch_GanzZahlReziproke = ",".join((str(b) for b in bdNeu))
         bruchRanges3 = {}
         bruch_KeinGanzZahlReziprokeEnDict = {}
         for k, (brZahlen, no1brueche) in enumerate(bruch_KeinGanzZahlReziproke.items()):
@@ -1664,7 +1666,6 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                 )
             )
 
-        bruchRanges2 = list(set(bruchRangeNeu) - set(bruchRangeNeuAbzug))
         bruchDict = {}
         for ((bruchRange, bruch_KeinGanzZahlReziprok_), pfauList) in zip(
             bruch_KeinGanzZahlReziproke.items(), pfaue.values()
@@ -1708,7 +1709,6 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                                     bruch_KeinGanzZahlReziprok_,
                                     bruch_KeinGanzZahlReziprok_A,
                                 }
-
         rangesBruecheDict = bruchDict
     rangesBruecheDict2 = {}
     bereicheVorherBestimmtSet = set()
@@ -1847,6 +1847,7 @@ def promptVorbereitungGrosseAusgabe(
         promptMode == PromptModus.normal
         and len(platzhalter) > 1
         and platzhalter[:4] == "reta"
+        # and not any([("--vorhervonausschnitt" in a or "--vielfachevonzahlen" in a) for a in stext])
         and any(zahlenBereichMatch)
         and zahlenBereichMatch.count(True) == 1
     ):
@@ -1864,6 +1865,7 @@ def promptVorbereitungGrosseAusgabe(
         for todel in woerterToDel:
             del stextDict[todel]
         stext = list(stextDict.values())
+        x("REDA", stext)
 
         if len({"w", "teiler"} & set(stext)) > 0:
             # print(zahlenBereichNeu[True])
@@ -1887,6 +1889,7 @@ def promptVorbereitungGrosseAusgabe(
             stext += ["-zeilen", "--vorhervonausschnitt=" + zahlenBereichNeu[True]]
 
         else:
+            # stext += ["-zeilen", "--vorhervonausschnitt=" + zahlenBereichNeu[True]]
             stext += [
                 "-zeilen",
                 "--vielfachevonzahlen=" + zahlenBereichNeu[True],
@@ -1986,14 +1989,6 @@ def PromptAllesVorGroesserSchleife():
     )
     text: Optional[str] = None
 
-    # if platform.system() != "Windows":
-    #    try:
-    #        ColumnsRowsAmount, shellAnzahlCharsPerLineStr = (
-    #            os.popen("stty size", "r").read().split()
-    #        )  # Wie viele Zeilen und Spalten hat die Shell ?
-    #    except Exception:
-    #        ColumnsRowsAmount, shellAnzahlCharsPerLineStr = "80", "80"
-    # else:
     promptMode = PromptModus.normal
     promptMode2 = PromptModus.normal
     warBefehl: bool
@@ -2061,7 +2056,6 @@ def promptSpeicherungB(nochAusageben, platzhalter, promptMode, text):
         text = platzhalter
     elif promptMode == PromptModus.speicherungAusgabenMitZusatz:
         text = platzhalter + " " + nochAusageben
-    x("TEXT", [PromptModus, platzhalter, nochAusageben, text])
     return text
 
 
