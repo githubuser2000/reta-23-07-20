@@ -3514,7 +3514,7 @@ class concat:
         _("für außen"),
         _('"für seitlich und gegen Schwächlinge innen"'),
         _('"gegen seitlich und für Schwächlinge innen"'),
-        "für außen",
+        _("für außen"),
     )
     spaltenNamen = OrderedDict(
         {
