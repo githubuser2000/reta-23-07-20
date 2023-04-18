@@ -8,8 +8,8 @@ except:
     OrderedSet = set
 
 sys.path.insert(1, "./..")
-from center import Multiplikationen, Primzahlkreuz_pro_contra_strs
 
+Multiplikationen = [(_("Multiplikationen"), "")]
 """
 ES FEHLEN NOCH ALLE ''
 fertig: in prepare ist nichts
@@ -25,6 +25,10 @@ LibRetaPrompt: größten Teil entnommen
 
 ES FEHLEN NOCH ALLE ''
 """
+Primzahlkreuz_pro_contra_strs = (
+    _("Primzahlkreuz_pro_contra"),
+    _("nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)"),
+)
 
 gebrochenSpaltenMaximumPlus1 = 21
 spalten: dict = {}
@@ -96,8 +100,7 @@ wahl15Words = {
     "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15),Model_of_Hierarchical_Complexity,"
     + Primzahlkreuz_pro_contra_strs[
         1
-    ]: _("Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15),Model_of_Hierarchical_Complexity,"),
-    + Primzahlkreuz_pro_contra_strs[1],
+    ]: _("Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15),Model_of_Hierarchical_Complexity,")+Primzahlkreuz_pro_contra_strs[1])),
     "Konkreta_und_Focus_(2)": _("Konkreta_und_Focus_(2)"),
     "Impulse_(5)": _("Impulse_(5)"),
     "Gefühle_(7)": _("Gefühle_(7)"),
@@ -3491,26 +3494,26 @@ class concat:
         }
     )
     metaKonkret = (
-        "Meta",
-        "Theorie",
-        "Management",
-        "ganzheitlich",
-        "Verwertung, Unternehmung, Geschäft",
-        "regieren, beherrschen",
-        "Konkretes",
-        "Praxis",
-        "verändernd",
-        "darüber hinaus gehend",
-        "wertvoll",
-        "Richtung",
-        " für 1/n statt n",
-        " für n",
+        _("Meta"),
+        _("Theorie"),
+        _("Management"),
+        _("ganzheitlich"),
+        _("Verwertung, Unternehmung, Geschäft"),
+        _("regieren, beherrschen"),
+        _("Konkretes"),
+        _("Praxis"),
+        _("verändernd"),
+        _("darüber hinaus gehend"),
+        _("wertvoll"),
+        _("Richtung"),
+        _(" für 1/n statt n"),
+        _(" für n"),
     )
     innenAussen = (
-        "für innen",
-        "für außen",
-        '"für seitlich und gegen Schwächlinge innen"',
-        '"gegen seitlich und für Schwächlinge innen"',
+        _("für innen"),
+        _("für außen"),
+        _('"für seitlich und gegen Schwächlinge innen"'),
+        _('"gegen seitlich und für Schwächlinge innen"'),
         "für außen",
     )
     spaltenNamen = OrderedDict(
@@ -3585,50 +3588,50 @@ class retapy:
     }
     nichts = _("nichts")
     cliout1 = (
-        'Der Haupt-Parameter "',
-        '" existiert hier nicht als Befehl!',
-        " Es ist nur möglich: -",
+        _('Der Haupt-Parameter "'),
+        _('" existiert hier nicht als Befehl!'),
+        _(" Es ist nur möglich: -"),
     )
 
     keineNum = _("keinenummerierung")
     cliout2 = (
-        'Der Unter-Paramaeter "--',
-        '" existiert, aber nicht mit dem Textwert "',
-        '". Mögliche Nebenparameter-Textwerte, für diesen Unter-Parameter, sind: "',
-        '". Stattdessen gibt keine Nebenparameter-Textwerte.',
+        _('Der Unter-Paramaeter "--'),
+        _('" existiert, aber nicht mit dem Textwert "'),
+        _('". Mögliche Nebenparameter-Textwerte, für diesen Unter-Parameter, sind: "'),
+        _('". Stattdessen gibt keine Nebenparameter-Textwerte.'),
     )
     cliout3 = (
-        'Der Unter-Paramaeter "--',
-        '" mit dem Textwert "',
-        '" existiert hier nicht als Befehl für Haupt-Parameter',
-        " -spalten",
-        " !",
-        " Es ist nur möglich:\n--",
-        ", --breiten, --breite",
-        "\nmit dem Werten dahinter:\n",
+        _('Der Unter-Paramaeter "--'),
+        _('" mit dem Textwert "'),
+        _('" existiert hier nicht als Befehl für Haupt-Parameter'),
+        _(" -spalten"),
+        _(" !"),
+        _(" Es ist nur möglich:\n--"),
+        _(", --breiten, --breite"),
+        _("\nmit dem Werten dahinter:\n"),
     )
     cliout4 = (
-        'Der Unter-Parameter "--',
-        '" existiert hier nicht als Befehl für Haupt-Parameter',
-        " -spalten",
-        ", oder dieser Parameter braucht Werte analog wie: \n--unterParameter=Wert1\n",
-        "Es ist nur möglich: --",
-        ", --keinenummerierung",
+        _('Der Unter-Parameter "--'),
+        _('" existiert hier nicht als Befehl für Haupt-Parameter'),
+        _(" -spalten"),
+        _(", oder dieser Parameter braucht Werte analog wie: \n--unterParameter=Wert1\n"),
+        _("Es ist nur möglich: --"),
+        _(", --keinenummerierung"),
     )
     galaxie = _("--galaxie=")
     universum = _("--universum=")
     kombinationen = _("kombinationen")
     cliout5 = (
-        'Die Kombispalte "',
-        '" existiert so nicht als Befehl. Möglich sind die Parameter für ',
+        _('Die Kombispalte "'),
+        _('" existiert so nicht als Befehl. Möglich sind die Parameter für '),
     )
     cliout6 = _(
         'kein Unter-Parameter "--galaxie=" oder "--universum=" angegeben für Hauptparameter -kombination'
     )
     cliout7 = (
-        "Es muss ein Hauptparameter, bzw. der richtige, gesetzt sein, damit ein",
-        ' Nebenparameter, wie möglicherweise: "',
-        '" ausgeführt werden kann. Hauptparameter sind: -',
+        _("Es muss ein Hauptparameter, bzw. der richtige, gesetzt sein, damit ein"),
+        _(' Nebenparameter, wie möglicherweise: "'),
+        _('" ausgeführt werden kann. Hauptparameter sind: -'),
     )
     breite = _("--breite")
 
@@ -3654,23 +3657,23 @@ class retapy:
         "nachtraeglichneuabzaehlung": _("nachtraeglichneuabzaehlung"),
     }
     cliout9 = (
-        'Den Neben-Parameter "',
-        '" gibt es hier nicht für den Hauptparameter "-',
-        '".',
-        " Möglich sind: ",
+        _('Den Neben-Parameter "'),
+        _('" gibt es hier nicht für den Hauptparameter "-'),
+        _('".'),
+        _(" Möglich sind: "),
     )
     cliout10 = (
-        'Den Neben-Parameter "',
-        '" gibt es hier nicht für den Hauptparameter "-',
+        _('Den Neben-Parameter "'),
+        _('" gibt es hier nicht für den Hauptparameter "-'),
     )
 
 
 class retaPrompt:
-    befehleBeenden = {"ende", "exit", "quit", "q", ":q"}
+    befehleBeenden = {_("ende"), _("exit"), _("quit"), _("q"), _(":q")}
     promptMode = _("promptmode vorher: {} , {}")
     out1 = (
-        "Dies ('",
-        "') ist tatsächlich ein Befehl (oder es sind mehrere), aber es gibt nichts auszugeben.",
+        _("Dies ('"),
+        _("') ist tatsächlich ein Befehl (oder es sind mehrere), aber es gibt nichts auszugeben."),
     )
     out2 = _("Das ist kein Befehl! -> '{}''")
     out3 = _(
