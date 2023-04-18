@@ -2213,7 +2213,7 @@ class Program:
                     "absicht",
                     "absichten",
                 ),
-                {10, 18, 42, 167, 168, 149, 230},
+                {10, 18, 42, 167, 168, 149, 229, 230},
             ),
             (
                 Program.ParametersMain.menschliches,
