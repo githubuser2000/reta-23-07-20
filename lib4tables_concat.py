@@ -103,13 +103,9 @@ class Concat:
     def geistEmotionEnergieMaterieTopologie(self, zahl: int) -> str:
         zahl = int(zahl)
         prFa = primfaktoren(zahl)
-        # print("Faktoren: {}".format(prFa))
         auss = [couldBePrimeNumberPrimzahlkreuz_fuer_aussen(a) for a in prFa]
-        # print("außen: {}".format(auss))
         innen = [couldBePrimeNumberPrimzahlkreuz_fuer_innen(a) for a in prFa]
-        # print("innen: {}".format(innen))
         zwei = len([a for a in prFa if a == 2])
-        # print("zwei: {}".format(zwei))
         gefuehl = any(auss)
         denken = any(innen)
         # anZahlInnen = len([a for a in innen if True])
@@ -175,7 +171,6 @@ class Concat:
             ):
                 raise ValueError
 
-            # x("wasdas", self.tables.dataDict[0][242])
             self.tables.generatedSpaltenParameter[
                 len(self.tables.generatedSpaltenParameter)
                 + self.tables.SpaltenVanillaAmount
@@ -319,7 +314,6 @@ class Concat:
                 content = zeileninhalt[s]
                 if len(content.strip()) > 0:
                     store[(z, s)] = content  # interessant
-            # #x("store", store)
             multis = {}
             for (coords, content) in store.items():
                 vielfacher = 1
@@ -558,7 +552,6 @@ class Concat:
                 vervielFachter: list = []
                 # Ein Couple besteht aus der Zahl, ggf. Primzahl mit ihrem Vielfacher danach
                 for couple in vorkommenVielfacher[i_with_a_distance]:
-                    # #x("x4hh", couple)
                     vorkommen, vielfacher = couple[0], couple[1]
                     modalOperatorEnEn += [(getModaloperatorsPerLineCells(vielfacher))]
                     # vorkommenZeilenBegriffe += [
@@ -633,7 +626,6 @@ class Concat:
 
         distances = (-4, -3, -2, -1, 0, 1, 2, 3, 4)
         conceptsRowsSetOfTuple2: list = list(conceptsRowsSetOfTuple)
-        # #x("wer", conceptsRowsSetOfTuple2)
         reliTableCopy = deepcopy(self.relitable)
         conceptsRowsSetOfTuple2.sort()
         for o, concept in enumerate(conceptsRowsSetOfTuple2):
@@ -666,7 +658,6 @@ class Concat:
                         einVorkommen, ergebnis, vielfacher, vorkommenVielfacher
                     )
 
-            # #x("d5g", vorkommenVielfacher)
             vorkommenVielfacher_B: OrderedDict = OrderedDict()
             for i, zeileninhalte in enumerate(
                 reliTableCopy[1 : self.tables.lastLineNumber + 1], 1
@@ -684,7 +675,6 @@ class Concat:
             for i, zeileninhalte in enumerate(
                 reliTableCopy[1 : self.tables.lastLineNumber + 1], 1
             ):
-                # #x("_ö_", vorkommenVielfacher_B)
                 for distanceFromLine in distances:
                     ModalLogikIntoTable(
                         concept, distanceFromLine, i, into, vorkommenVielfacher_B
@@ -998,8 +988,6 @@ class Concat:
                                 for firstOrSecond in (
                                     (1, 0) if couple[0] != couple[1] else (1,)
                                 ):
-                                    # if num == 4:
-                                    #    print("bla")
                                     if (
                                         couldBePrimeNumberPrimzahlkreuz_fuer_innen(
                                             couple[firstOrSecond]
@@ -1026,9 +1014,10 @@ class Concat:
                                     ):
                                         try:
                                             if num == 4:
-                                                print(
-                                                    f"{couple} _ {firstOrSecond} | {proPro[couple[firstOrSecond]]}"
-                                                )
+                                                pass
+                                                # print(
+                                                #    f"{couple} ___ {firstOrSecond} | {proPro[couple[firstOrSecond]]}"
+                                                # )
                                             pro3 = (
                                                 int(
                                                     couple[
@@ -1552,38 +1541,6 @@ class Concat:
                                 OrderedDict(),
                             )
                         )
-                        # if KeyMulOrDiv == "mul":
-                        # print(
-                        # str(
-                        # self.combineDicts(
-                        # self.convertSetOfPaarenToDictOfNumToPaareMul(
-                        # Couples,
-                        # True
-                        # if KeySternOrGleichf == "gleichf"
-                        # else False,
-                        # ),
-                        # self.convertFractionsToDictOfNumToPaareOfMulOfIntAndFraction(
-                        # self.BruecheUni
-                        # if KeyGalUniUniGal[:3] == "Uni"
-                        # else self.BruecheGal,
-                        # self.BruecheUni
-                        # if KeyGalUniUniGal[3:] == "Uni"
-                        # else self.BruecheGal,
-                        # True
-                        # if KeySternOrGleichf == "gleichf"
-                        # else False,
-                        # ),
-                        # )
-                        # )
-                        # )
-                    # # print(
-                    # "||"
-                    # + str(
-                    # alleFractionErgebnisse2[KeyGalUniUniGal][
-                    # KeySternOrGleichf
-                    # ][KeyMulOrDiv]
-                    # )
-                    # )
 
             """Wegen pypy3 == python3"""
             for key1, value1 in alleFractionErgebnisse2.items():
