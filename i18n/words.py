@@ -2,7 +2,7 @@ import gettext
 import os
 # import sys
 from collections import OrderedDict, namedtuple
-from typing import Any, NamedTuple, Optional
+from typing import Any, NamedTuple, Optional, Tuple, Union
 
 # from typing import Optional, Union
 
@@ -31,28 +31,37 @@ LibRetaPrompt: größten Teil entnommen
 
 ES FEHLEN NOCH ALLE ''
 """
-Primzahlkreuz_pro_contra_strs = (
+Primzahlkreuz_pro_contra_strs: tuple[str, str] = (
+    "Primzahlkreuz_pro_contra",
+    "nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)",
+)
+
+Primzahlkreuz_pro_contra_strs_Fkt: tuple[str, str] = (
     _("Primzahlkreuz_pro_contra"),
     _("nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)"),
 )
 
-gebrochenSpaltenMaximumPlus1 = 21
-spalten: dict = {}
+gebrochenSpaltenMaximumPlus1: int = 21  # Das ist nicht die Spaltenbreite, sondern wie weit gebrochene Zahlen gehen dürfen bei Zähler und Nenner
+spalten: dict[str, str] = {}
 spalten |= {
     "--breite=": _("--breite="),
     "--breiten=": _("--breiten="),
     "--keinenummerierung": _("--keinenummerierung"),
 }
 
-zeilenTypen = {
+zeilenTypen: dict[str, str] = {
     "sonne": _("sonne"),
     "mond": _("mond"),
     "planet": _("planet"),
     "schwarzesonne": _("schwarzesonne"),
 }
-zeilenZeit = {"heute": _("heute"), "gestern": _("gestern"), "morgen": _("morgen")}
+zeilenZeit: dict[str, str] = {
+    "heute": _("heute"),
+    "gestern": _("gestern"),
+    "morgen": _("morgen"),
+}
 
-ausgabeParas = {
+ausgabeParas: dict[str, str] = {
     "--nocolor": _("--nocolor"),
     "--justtext": _("--justtext"),
     "--art=": _("--art="),
@@ -67,8 +76,11 @@ ausgabeParas = {
     "--keinenummerierung": _("--keinenummerierung"),
     "--keineueberschriften": _("--keineueberschriften"),
 }
-kombiMainParas = {"--galaxie=": _("--galaxie="), "--universum=": _("--universum=")}
-zeilenParas = {
+kombiMainParas: dict[str, str] = {
+    "--galaxie=": _("--galaxie="),
+    "--universum=": _("--universum="),
+}
+zeilenParas: dict[str, str] = {
     "--zeit=": _("--zeit="),
     "--zaehlung=": _("--zaehlung="),
     "--vorhervonausschnitt=": _("--vorhervonausschnitt="),
@@ -85,7 +97,7 @@ zeilenParas = {
     "--oberesmaximum=": _("--oberesmaximum="),
 }
 
-hauptForNeben = {
+hauptForNeben: dict[str, str] = {
     "-zeilen": _("-zeilen"),
     "-spalten": _("-spalten"),
     "-kombination": _("-kombination"),
@@ -94,7 +106,7 @@ hauptForNeben = {
     "-help": _("-help"),
 }
 
-ausgabeArt = {
+ausgabeArt: dict[str, str] = {
     "bbcode": _("bbcode"),
     "html": _("html"),
     "csv": _("csv"),
@@ -104,14 +116,14 @@ ausgabeArt = {
 }
 
 
-wahl15Words = {
+wahl15Words: dict[str, str] = {
     "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15),Model_of_Hierarchical_Complexity,"
     + Primzahlkreuz_pro_contra_strs[1]: ",".join(
         (
             _("Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15)"),
             _("Geist_(15)"),
             _("Model_of_Hierarchical_Complexity),"),
-            Primzahlkreuz_pro_contra_strs[1],
+            Primzahlkreuz_pro_contra_strs_Fkt[1],
         ),
     ),
     "Konkreta_und_Focus_(2)": _("Konkreta_und_Focus_(2)"),
@@ -180,14 +192,14 @@ wahl15Words = {
     ),
 }
 
-wahl15 = {
+wahl15: dict[str, str] = {
     #    "_": _("Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15)"),
     "_15": ",".join(
         (
             _("Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15)"),
             _("Geist_(15)"),
             _("Model_of_Hierarchical_Complexity"),
-            Primzahlkreuz_pro_contra_strs[1],
+            Primzahlkreuz_pro_contra_strs_Fkt[1],
         )
     ),
     "_2": _("Konkreta_und_Focus_(2)"),
@@ -244,7 +256,7 @@ wahl15 = {
     "_1pro12": _("Karte_Filter_und_Unterscheidung_(1/12)"),
 }
 
-befehle = {"15" + a: "15" + a for a in wahl15.keys()} | {
+befehle: dict[str, str] = {"15" + a: "15" + a for a in wahl15.keys()} | {
     "mond": _("mond"),
     "reta": _("reta"),
     "absicht": _("absicht"),
@@ -425,7 +437,7 @@ ParametersMain: NamedTuple = ParametersMain(
 )
 
 
-paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
+paraNdataMatrix: list[Tuple[Any, dict[str, str], set[int], Optional[set]]] = [
     (
         ParametersMain.wichtigste,
         {
@@ -482,7 +494,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.planet,
-        {"Intelligenz": "Intelligenz", "intelligenz": "intelligenz"},
+        {"Intelligenz": _("Intelligenz"), "intelligenz": _("intelligenz")},
         {214},
     ),
     (
@@ -550,12 +562,15 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.wichtigste2,
-        {"Wichtigste": "Wichtigste", "wichtigstes": "wichtigstes"},
+        {"Wichtigste": _("Wichtigste"), "wichtigstes": _("wichtigstes")},
         {0, 1, 2, 36, 37, 207},
     ),
     (
         ParametersMain.wichtigste2,
-        {"Zweitwichtigste": "Zweitwichtigste", "zweitwichtigste": "zweitwichtigste"},
+        {
+            "Zweitwichtigste": _("Zweitwichtigste"),
+            "zweitwichtigste": _("zweitwichtigste"),
+        },
         {30},
     ),
     (
@@ -580,12 +595,12 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.religionen,
-        {"Hinduismus": "Hinduismus", "hinduismus": "hinduismus"},
+        {"Hinduismus": _("Hinduismus"), "hinduismus": _("hinduismus")},
         {217},
     ),
     (
         ParametersMain.religionen,
-        {"Sternpolygon": "Sternpolygon", "sternpolygon": "sternpolygon"},
+        {"Sternpolygon": _("Sternpolygon"), "sternpolygon": _("sternpolygon")},
         {0, 6, 36},
     ),
     (
@@ -691,7 +706,11 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.universum,
-        {"universelles_Recht": "universelles_Recht", "recht": "recht", "jura": "jura"},
+        {
+            "universelles_Recht": _("universelles_Recht"),
+            "recht": _("recht"),
+            "jura": _("jura"),
+        },
         {382, 34, 65},
     ),
     (
@@ -881,7 +900,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.universummetakonkret,
-        {"meta": "meta"},
+        {"meta": _("meta")},
         set(),
         set(),
         set(),
@@ -895,7 +914,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.universummetakonkret,
-        {"konkret": "konkret"},
+        {"konkret": _("konkret")},
         set(),
         set(),
         set(),
@@ -909,7 +928,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.universummetakonkret,
-        {"Theorie": "Theorie", "theorie": "theorie"},
+        {"Theorie": _("Theorie"), "theorie": _("theorie")},
         set(),
         set(),
         set(),
@@ -923,7 +942,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.universummetakonkret,
-        {"Praxis": "Praxis", "praxis": "praxis"},
+        {"Praxis": _("Praxis"), "praxis": _("praxis")},
         set(),
         set(),
         set(),
@@ -1139,7 +1158,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.universummetakonkret,
-        {"wertvoll": "wertvoll", "wert": "wert"},
+        {"wertvoll": _("wertvoll"), "wert": _("wert")},
         set(),
         set(),
         set(),
@@ -1210,7 +1229,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.universum,
-        {"Systemsachen": "Systemsachen", "systemsachen": "systemsachen"},
+        {"Systemsachen": _("Systemsachen"), "systemsachen": _("systemsachen")},
         {
             150,
         },
@@ -1241,7 +1260,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.universum,
-        {"Netzwerk": "Netzwerk", "netzwerk": "netzwerk"},
+        {"Netzwerk": _("Netzwerk"), "netzwerk": _("netzwerk")},
         {25},
     ),
     (
@@ -1258,12 +1277,12 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.universum,
-        {"Kategorie": "Kategorie", "kategorie": "kategorie"},
+        {"Kategorie": _("Kategorie"), "kategorie": _("kategorie")},
         {204, 205, 281},
     ),
     (
         ParametersMain.universum,
-        {"Raum-Missionen": "Raum-Missionen", "weltall": "weltall"},
+        {"Raum-Missionen": _("Raum-Missionen"), "weltall": _("weltall")},
         {218},
     ),
     (
@@ -1276,12 +1295,12 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.galaxie,
-        {"Raum-Missionen": "Raum-Missionen", "weltall": "weltall"},
+        {"Raum-Missionen": _("Raum-Missionen"), "weltall": _("weltall")},
         {218},
     ),
     (
         ParametersMain.universum,
-        {"Geist__(15)": "Geist__(15)", "geist": "geist"},
+        {"Geist__(15)": _("Geist__(15)"), "geist": _("geist")},
         {242},
     ),
     (
@@ -1366,7 +1385,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.menschliches,
-        {"Moral": "Moral", "moral": "moral", "warummoral": "warummoral"},
+        {"Moral": _("Moral"), "moral": _("moral"), "warummoral": _("warummoral")},
         {215, 216},
         {(216, 221)},
     ),
@@ -1515,7 +1534,6 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
             "Gefühle": _("Gefühle"),
             "emotionen": _("emotionen"),
             "gefuehle": _("gefuehle"),
-            "gefuehle": _("gefuehle"),
             "emotion": _("emotion"),
             "gefühl": _("gefühl"),
             "gefuehl": _("gefuehl"),
@@ -1658,7 +1676,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Extremalien_(19)": "Extremalien_(19)", "extremalien": "extremalien"},
+        {"Extremalien_(19)": _("Extremalien_(19)"), "extremalien": _("extremalien")},
         {347, 352},
     ),
     (
@@ -1708,12 +1726,15 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Prinzipien(1/8)": "Prinzipien(1/8)", "prinzipien": "prinzipien"},
+        {"Prinzipien(1/8)": _("Prinzipien(1/8)"), "prinzipien": _("prinzipien")},
         {329, 378},
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Attraktionen_(36)": "Attraktionen_(36)", "attraktionen": "attraktionen"},
+        {
+            "Attraktionen_(36)": _("Attraktionen_(36)"),
+            "attraktionen": _("attraktionen"),
+        },
         {311},
     ),
     (
@@ -1775,12 +1796,19 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Achtung_(4)": "Achtung_(4)", "achtung": "achtung", "achten": "achten"},
+        {
+            "Achtung_(4)": _("Achtung_(4)"),
+            "achtung": _("achtung"),
+            "achten": _("achten"),
+        },
         {270},
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Zeit_(4)_als_Wirklichkeit": "Zeit_(4)_als_Wirklichkeit", "zeit": "zeit"},
+        {
+            "Zeit_(4)_als_Wirklichkeit": _("Zeit_(4)_als_Wirklichkeit"),
+            "zeit": _("zeit"),
+        },
         {266, 267},
     ),
     (
@@ -1817,12 +1845,16 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Regungen_(1)": "Regungen_(1)", "regung": "regung", "regungen": "regungen"},
+        {
+            "Regungen_(1)": _("Regungen_(1)"),
+            "regung": _("regung"),
+            "regungen": _("regungen"),
+        },
         {282},
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Verhalten_(11)": "Verhalten_(11)", "verhalten": "verhalten"},
+        {"Verhalten_(11)": _("Verhalten_(11)"), "verhalten": _("verhalten")},
         {301, 302},
     ),
     (
@@ -1852,7 +1884,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     (
         ParametersMain.grundstrukturen,
         {
-            Primzahlkreuz_pro_contra_strs[1]: Primzahlkreuz_pro_contra_strs[1],
+            Primzahlkreuz_pro_contra_strs[1]: Primzahlkreuz_pro_contra_strs_Fkt[1],
             "nachvollziehen": _("nachvollziehen"),
         },
         {242, 297},
@@ -1955,7 +1987,11 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Klassen_(20)": "Klassen_(20)", "klasse": "klasse", "klassen": "klassen"},
+        {
+            "Klassen_(20)": _("Klassen_(20)"),
+            "klasse": _("klasse"),
+            "klassen": _("klassen"),
+        },
         {241, 289},
     ),
     (
@@ -2045,7 +2081,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Fundament_(1/19)": "Fundament_(1/19)", "fundament": "fundament"},
+        {"Fundament_(1/19)": _("Fundament_(1/19)"), "fundament": _("fundament")},
         {356},
     ),
     (
@@ -2106,18 +2142,18 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Liebe_(7)": "Liebe_(7)", "liebe": "liebe"},
+        {"Liebe_(7)": _("Liebe_(7)"), "liebe": _("liebe")},
         {8, 9, 28, 208, 221, 330},
         {(121, 122)},
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Koalitionen_(10)": "Koalitionen_(10)", "koalitionen": "koalitionen"},
+        {"Koalitionen_(10)": _("Koalitionen_(10)"), "koalitionen": _("koalitionen")},
         {321},
     ),
     (
         ParametersMain.grundstrukturen,
-        {"Impulse_(5)": "Impulse_(5)", "impulse": "impulse"},
+        {"Impulse_(5)": _("Impulse_(5)"), "impulse": _("impulse")},
         {251, 253, 257, 341},
     ),
     (
@@ -2282,7 +2318,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
         },
         {31},
     ),
-    (ParametersMain.menschliches, {"Musik": "Musik", "musik": "musik"}, {33}),
+    (ParametersMain.menschliches, {"Musik": _("Musik"), "musik": _("musik")}, {33}),
     (
         ParametersMain.procontra,
         {
@@ -2343,7 +2379,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.procontra,
-        {"nervig": "nervig"},
+        {"nervig": _("nervig")},
         {120},
     ),
     (
@@ -2447,7 +2483,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.procontra,
-        {"unmotivierbar": "unmotivierbar"},
+        {"unmotivierbar": _("unmotivierbar")},
         {130},
     ),
     (
@@ -2478,7 +2514,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     (
         ParametersMain.procontra,
         {
-            Primzahlkreuz_pro_contra_strs[0]: Primzahlkreuz_pro_contra_strs[0],
+            Primzahlkreuz_pro_contra_strs[0]: Primzahlkreuz_pro_contra_strs_Fkt[0],
             "primzahlkreuz": _("primzahlkreuz"),
         },
         set(),
@@ -2493,7 +2529,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     (
         ParametersMain.bedeutung,
         {
-            Primzahlkreuz_pro_contra_strs[0]: Primzahlkreuz_pro_contra_strs[0],
+            Primzahlkreuz_pro_contra_strs[0]: Primzahlkreuz_pro_contra_strs_Fkt[0],
             "primzahlkreuz": _("primzahlkreuz"),
         },
         set(),
@@ -2688,7 +2724,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.konzept2,
-        {"Würdig": "Würdig", "wuerdig": "wuerdig", "würdig": "würdig"},
+        {"Würdig": _("Würdig"), "wuerdig": _("wuerdig"), "würdig": _("würdig")},
         set(),
         {(373, 374)},
     ),
@@ -2742,7 +2778,10 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.konzept2,
-        {"Vertrauen_wollen": "Vertrauen_wollen", "vertrauenwollen": "vertrauenwollen"},
+        {
+            "Vertrauen_wollen": _("Vertrauen_wollen"),
+            "vertrauenwollen": _("vertrauenwollen"),
+        },
         set(),
         {(366, 367)},
     ),
@@ -2784,13 +2823,13 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.konzept,
-        {"familiebrauchen": "familiebrauchen"},
+        {"familiebrauchen": _("familiebrauchen")},
         set(),
         {(279, 280)},
     ),
     (
         ParametersMain.konzept,
-        {"ego": "ego", "bescheiden": "bescheiden"},
+        {"ego": _("ego"), "bescheiden": _("bescheiden")},
         set(),
         {(277, 278)},
     ),
@@ -2829,7 +2868,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.konzept,
-        {"Liebe_usw": "Liebe_usw", "liebe": "liebe", "zuneigung": "zuneigung"},
+        {"Liebe_usw": _("Liebe_usw"), "liebe": _("liebe"), "zuneigung": _("zuneigung")},
         set(),
         {(247, 248)},
     ),
@@ -2879,7 +2918,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     # (
     #    ParametersMain.konzept,
-    #    {"delegieren": "delegieren", "ansammlung": "ansammlung"},
+    #    {"delegieren": _("delegieren"), "ansammlung": _("ansammlung")},
     #    set(),
     #    {(227, 228)},
     # ),
@@ -2896,13 +2935,13 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.konzept,
-        {"Tragweite": "Tragweite", "tragweite": "tragweite"},
+        {"Tragweite": _("Tragweite"), "tragweite": _("tragweite")},
         set(),
         {(211, 212)},
     ),
     (
         ParametersMain.konzept,
-        {"wertvoll": "wertvoll", "wertlos": "wertlos"},
+        {"wertvoll": _("wertvoll"), "wertlos": _("wertlos")},
         set(),
         {(186, 187)},
     ),
@@ -3031,7 +3070,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.konzept,
-        {"Führung": "Führung", "führung": "führung", "fuehrung": "fuehrung"},
+        {"Führung": _("Führung"), "führung": _("führung"), "fuehrung": _("fuehrung")},
         set(),
         {(173, 174)},
     ),
@@ -3096,26 +3135,26 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.konzept,
-        {"kausal": "kausal", "geltung": "geltung", "genese": "genese"},
+        {"kausal": _("kausal"), "geltung": _("geltung"), "genese": _("genese")},
         set(),
         {(110, 111)},
     ),
     (
         ParametersMain.konzept,
-        {"Gleichheit": "Gleichheit", "gleich": "gleich"},
+        {"Gleichheit": _("Gleichheit"), "gleich": _("gleich")},
         set(),
         {(192, 193)},
     ),
     (
         ParametersMain.konzept,
-        {"Überleben": "Überleben", "ueberleben": "ueberleben"},
+        {"Überleben": _("Überleben"), "ueberleben": _("ueberleben")},
         set(),
         {(194, 195)},
     ),
     (ParametersMain.inkrementieren, set(), {43, 54, 74, 95}),
-    (ParametersMain.inkrementieren, {"um1": "um1"}, {155}),
-    (ParametersMain.inkrementieren, {"um2": "um2"}, {156}),
-    (ParametersMain.inkrementieren, {"um3": "um3"}, {157}),
+    (ParametersMain.inkrementieren, {"um1": _("um1")}, {155}),
+    (ParametersMain.inkrementieren, {"um2": _("um2")}, {156}),
+    (ParametersMain.inkrementieren, {"um3": _("um3")}, {157}),
     (
         ParametersMain.inkrementieren,
         {
@@ -3142,7 +3181,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.primvielfache,
-        {"Rahmen-Bedingungen": "Rahmen-Bedingungen", "rahmen": "rahmen"},
+        {"Rahmen-Bedingungen": _("Rahmen-Bedingungen"), "rahmen": _("rahmen")},
         {226},
     ),
     (
@@ -3177,7 +3216,10 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.primvielfache,
-        {"Motive_Sternpolygone": "Motive_Sternpolygone", "motivstern": "motivstern"},
+        {
+            "Motive_Sternpolygone": _("Motive_Sternpolygone"),
+            "motivstern": _("motivstern"),
+        },
         set(),
         set(),
         set(),
@@ -3272,7 +3314,7 @@ paraNdataMatrix: list[tuple[dict[str, str], dict[str, str], set[int]]] = [
     ),
     (
         ParametersMain.primvielfache,
-        {"beschrieben": "beschrieben"},
+        {"beschrieben": _("beschrieben")},
         set(),
         set(),
         set(),
@@ -3293,7 +3335,7 @@ kombiParaNdataMatrix: OrderedDict[int, tuple[str]] = OrderedDict(
             "tier": _("tier"),
             "lebewesen": _("lebewesen"),
         },
-        2: {"Berufe": "Berufe", "berufe": "berufe", "beruf": "beruf"},
+        2: {"Berufe": _("Berufe"), "berufe": _("berufe"), "beruf": _("beruf")},
         3: {
             "Kreativität_und_Intelligenz": _("Kreativität_und_Intelligenz"),
             "kreativität": _("kreativität"),
@@ -3327,7 +3369,6 @@ kombiParaNdataMatrix: OrderedDict[int, tuple[str]] = OrderedDict(
         10: {
             "Motive_Ziele": _("Motive_Ziele"),
             "motivation": _("motivation"),
-            "motive": _("motive"),
             "ziele": _("ziele"),
             "ziel": _("ziel"),
             "motive": _("motive"),
@@ -3336,7 +3377,6 @@ kombiParaNdataMatrix: OrderedDict[int, tuple[str]] = OrderedDict(
             "Emotionen": _("Emotionen"),
             "emotionen": _("emotionen"),
             "gefuehle": _("gefuehle"),
-            "gefühle": _("gefühle"),
             "emotion": _("emotion"),
             "gefühl": _("gefühl"),
             "gefühle": _("gefühle"),
@@ -3365,7 +3405,7 @@ kombiParaNdataMatrix2: OrderedDict[int, tuple[str]] = OrderedDict(
             "tier": _("tier"),
             "lebewesen": _("lebewesen"),
         },
-        2: {"Berufe": "Berufe", "berufe": "berufe", "beruf": "beruf"},
+        2: {"Berufe": _("Berufe"), "berufe": _("berufe"), "beruf": _("beruf")},
         # 3: {
         #    "Kreativität_und_Intelligenz": _("Kreativität_und_Intelligenz"),
         #    "kreativität": _("kreativität"),
@@ -3414,7 +3454,6 @@ kombiParaNdataMatrix2: OrderedDict[int, tuple[str]] = OrderedDict(
             "motive": _("motive"),
             "ziele": _("ziele"),
             "ziel": _("ziel"),
-            "motive": _("motive"),
         },
         11: {
             "analytische_Ontologie": _("analytische_Ontologie"),
@@ -3430,7 +3469,7 @@ kombiParaNdataMatrix2: OrderedDict[int, tuple[str]] = OrderedDict(
         #    "gefühl": _("gefühl"),
         #    "gefühle": _("gefühle"),
         # },
-        # 13: {"Personen": "Personen", "personen": "personen", "berühmtheiten": "berühmtheiten", "beruehmtheiten": "beruehmtheiten"},
+        # 13: {"Personen": _("Personen"), "personen": _("personen"), "berühmtheiten": _("berühmtheiten"), "beruehmtheiten": _("beruehmtheiten")},
         14: {
             "Mechanismen_der_Zuechtung": _("Mechanismen_der_Zuechtung"),
             "mechanismen": _("mechanismen"),
@@ -3456,8 +3495,8 @@ kombiParaNdataMatrix2: OrderedDict[int, tuple[str]] = OrderedDict(
             "geräte": _("geräte"),
             "geraete": _("geraete"),
         },
-        18: {"Geist": "Geist", "geist": "geist"},
-        19: {"Bewusstsein": "Bewusstsein", "bewusstsein": "bewusstsein"},
+        18: {"Geist": _("Geist"), "geist": _("geist")},
+        19: {"Bewusstsein": _("Bewusstsein"), "bewusstsein": _("bewusstsein")},
     }
 )
 
@@ -3466,42 +3505,42 @@ class concat:
     polygon1 = _(" der eigenen Strukturgröße (")
     polygon2 = _(") auf dich bei gleichförmigen Polygonen")
     energietopologie1 = (
-        "eine Denkart",
-        "eine Gefühlsart",
-        "total eine Art, etwas geistig zu erzeugen",
-        "total eine Art zu erleben",
-        "total eine Energie-Art",
-        "etwas eine Art zu erleben",
-        "etwas eine Art, etwas geistig zu erzeugen",
-        "wenig eine Art, etwas geistig zu erzeugen",
-        "einigermaßen eine Energie-Art",
-        "kaum eine Energie-Art",
-        "kaum eine Art, etwas geistig zu erzeugen",
-        "eine Denkart",
-        "eine Gefühlsart",
-        "total eine Art, etwas geistig zu erzeugen",
-        "total eine Art zu erleben",
-        "total eine Energie-Art",
-        "etwas eine Art zu erleben",
-        "etwas eine Art, etwas geistig zu erzeugen",
-        "wenig eine Art, etwas geistig zu erzeugen",
-        "einigermaßen eine Energie-Art",
-        "kaum eine Energie-Art",
-        "kaum eine Art, etwas geistig zu erzeugen",
+        _("eine Denkart"),
+        _("eine Gefühlsart"),
+        _("total eine Art, etwas geistig zu erzeugen"),
+        _("total eine Art zu erleben"),
+        _("total eine Energie-Art"),
+        _("etwas eine Art zu erleben"),
+        _("etwas eine Art, etwas geistig zu erzeugen"),
+        _("wenig eine Art, etwas geistig zu erzeugen"),
+        _("einigermaßen eine Energie-Art"),
+        _("kaum eine Energie-Art"),
+        _("kaum eine Art, etwas geistig zu erzeugen"),
+        _("eine Denkart"),
+        _("eine Gefühlsart"),
+        _("total eine Art, etwas geistig zu erzeugen"),
+        _("total eine Art zu erleben"),
+        _("total eine Energie-Art"),
+        _("etwas eine Art zu erleben"),
+        _("etwas eine Art, etwas geistig zu erzeugen"),
+        _("wenig eine Art, etwas geistig zu erzeugen"),
+        _("einigermaßen eine Energie-Art"),
+        _("kaum eine Energie-Art"),
+        _("kaum eine Art, etwas geistig zu erzeugen"),
     )
-    ausgabeString = (
+    ausgabeString = _(
         "Energie oder Denkart oder Gefühlsart oder Materie-Art oder Topologie-Art"
     )
     kreaZahl = (
-        "Evolutions-Züchtungs-Kreativität",
-        "0. Primzahl 1",
-        "1. Primzahl und Sonnenzahl",
-        "2. Sonnenzahl, aber keine Primzahl",
-        "3. Mondzahl",
+        _("Evolutions-Züchtungs-Kreativität"),
+        _("0. Primzahl 1"),
+        _("1. Primzahl und Sonnenzahl"),
+        _("2. Sonnenzahl, aber keine Primzahl"),
+        _("3. Mondzahl"),
     )
     mondExpLog1 = (
-        "Mond-Typ eines Sternpolygons",
-        "Mond-Typ eines gleichförmigen Polygons",
+        _("Mond-Typ eines Sternpolygons"),
+        _("Mond-Typ eines gleichförmigen Polygons"),
     )
 
     mondExpLog2 = _("kein Mond")
@@ -3517,70 +3556,78 @@ class concat:
         "sehr: ",
         "sehr leicht überdurchschnittlich: ",
     )
-    modalC = ("intrinsisch", "zuerst", "extrinsisch", "als zweites")
+    modalC = (_("intrinsisch"), _("zuerst"), _("extrinsisch"), _("als zweites"))
     modalD = (
-        ", nicht: ",
-        " (das alles nicht): ",
-        "extrinsisch",
-        "als zweites",
-        "intrinsisch",
-        "zuerst",
+        _(", nicht: "),
+        _(" (das alles nicht): "),
+        _("extrinsisch"),
+        _("als zweites"),
+        _("intrinsisch"),
+        _("zuerst"),
     )
     generiert = _("Generiert: ")
-    allesNurBezogen = ("Alles nur bezogen auf die selbe Strukturgröße einer ",)
+    allesNurBezogen = (_("Alles nur bezogen auf die selbe Strukturgröße einer "),)
     headline1 = _(
         "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
     )
     gegen = _("gegen ")
     pro = _("pro ")
     hineinversetzen = (
-        " Darin kann sich die ",
-        " am Besten hineinversetzten.",
+        _(" Darin kann sich die "),
+        _(" am Besten hineinversetzten."),
     )
-    proIst = ("pro dieser Zahl sind: ", "pro dieser Zahl ist ")
-    contraIst = (" contra dieser Zahl sind: ", " contra dieser Zahl ist ")
+    proIst = (_("pro dieser Zahl sind: _("), _(")pro dieser Zahl ist "))
+    contraIst = (_(" contra dieser Zahl sind: _("), _(") contra dieser Zahl ist "))
     hineinversetzen = _(
-        " - Die Zahlen, die für oder gegen diese Zahlen hier sind, können sich in diese am Besten gedanklich hineinversetzen."
+        _(
+            " - Die Zahlen, die für oder gegen diese Zahlen hier sind, können sich in diese am Besten gedanklich hineinversetzen."
+        )
     )
-    polygone = ("Sternpolygone", "gleichförmige Polygone")
+    polygone = (_("Sternpolygone"), _("gleichförmige Polygone"))
 
     kombisNamen: tuple = (
-        "Motiv -> Motiv",
-        "Motiv -> Strukur",
-        "Struktur -> Motiv",
-        "Struktur -> Strukur",
+        _("Motiv -> Motiv"),
+        _("Motiv -> Strukur"),
+        _("Struktur -> Motiv"),
+        _("Struktur -> Strukur"),
     )
     kombisNamen2: tuple = (
-        "GalGal",
-        "GalUni",
-        "UniGal",
-        "UniUni",
+        _("GalGal"),
+        _("GalUni"),
+        _("UniGal"),
+        _("UniUni"),
     )
 
     faktorenbla = _(", mit Faktoren aus gebrochen-rationalen Zahlen")
     genMul = _("generierte Multiplikationen ")
     ausserdem = _(", außerdem: ")
     Multiplikationen_ = _("Multiplikationen")
-    nWichtigste = ("Wichtigstes_zum_verstehen", "Viertwichtigste")
+    nWichtigste = (_("Wichtigstes_zum_verstehen"), _("Viertwichtigste"))
     metaOrWhat = OrderedDict(
         {
-            2: (("Meta-Thema: ", "Konkretes: "), ("Meta-", "Konkret-")),
-            3: (("Theorie-Thema: ", "Praxis: "), ("Theorie-", "Praxis-")),
+            2: (
+                (_("Meta-Thema: _("), _(")Konkretes: _(")),
+                _((")Meta-_("), _(")Konkret-")),
+            ),
+            3: (
+                (_("Theorie-Thema: _("), _(")Praxis: _(")),
+                _((")Theorie-_("), _(")Praxis-")),
+            ),
             4: (
-                ("Planungs-Thema: ", "Umsetzungs-Thema: "),
-                ("Planung-", "Umsetzung-"),
+                (_("Planungs-Thema: _("), _(")Umsetzungs-Thema: ")),
+                (_("Planung-"), _("Umsetzung-")),
             ),
             5: (
-                ("Anlass-Thema: ", "Wirkungs-Thema: "),
-                ("Anlass-", "wirkung-"),
+                (_("Anlass-Thema: _("), _(")Wirkungs-Thema: ")),
+                (_("Anlass-"), _("wirkung-")),
             ),
             6: (
-                ("Kraft-Gebung: ", "Verstärkungs-Thema: "),
-                ("Kraft-geben-", "Verstärkung-"),
+                (_("Kraft-Gebung: _("), _(")Verstärkungs-Thema: ")),
+                (_("Kraft-geben-"), _("Verstärkung-")),
             ),
             7: (
-                ("Beherrschung: ", "Richtung-Thema: "),
-                ("beherrschend-", "Richtung-"),
+                (_("Beherrschung: _("), _(")Richtung-Thema: ")),
+                (_("beherrschend-"), _("Richtung-")),
             ),
         }
     )
@@ -3626,7 +3673,7 @@ class concat:
     letztEnd = _("] * letztendlich: ")
 
     primVielGen = _("Primzahlvielfache, nicht generiert")
-    GalOrUniOrFehler = ("Fehler", " Universum", " Galaxie")
+    GalOrUniOrFehler = (_("Fehler"), _(" Universum"), _(" Galaxie"))
 
     multipl = _("Multiplikationen")
     notGen = _("Nicht_generiert")
@@ -3639,15 +3686,6 @@ class lib4tables:
 
 
 class center:
-    Primzahlkreuz_pro_contra_strs = (
-        _("Primzahlkreuz_pro_contra"),
-        _(
-            "nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)"
-        ),
-    )
-
-    Multiplikationen = [(_("Multiplikationen"), "")]
-
     @classmethod
     def classify(cls, mod):
         if mod == 0:
