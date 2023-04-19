@@ -389,7 +389,7 @@ class Tables:
             lastlastSubCellIndex = -2
             headingfinished = False
             if type(self.__outType) is csvSyntax:
-                strio = io.StringIO(newline="")
+                strio = io.StringIO(newline="\n")
                 writer = csv.writer(
                     strio,
                     quoting=csv.QUOTE_NONE,
@@ -648,7 +648,17 @@ class Tables:
                                     line += ["\n"] + addionalLine
                             if emptyEntries != entriesHere:
                                 if type(self.__outType) is csvSyntax:
+                                    strio = io.StringIO(newline="\n")
+                                    writer = csv.writer(
+                                        strio,
+                                        quoting=csv.QUOTE_NONE,
+                                        delimiter=";",
+                                        quotechar="",
+                                        escapechar="\\",
+                                    )
+
                                     writer.writerow(line)
+                                    self.cliout2(strio.getvalue())
                                 else:
                                     if (
                                         type(filteredLineNumbersofOrignal) is str
@@ -724,9 +734,10 @@ class Tables:
                     self.cliout2(
                         self.__outType.endTable,
                     )
-                if type(self.__outType) is csvSyntax:
+                if False and type(self.__outType) is csvSyntax:
+                    csvText = strio.getvalue()
                     self.cliout2(
-                        strio.getvalue(),
+                        csvText,
                     )
                 if self.__oneTable:
                     break
@@ -737,6 +748,10 @@ class Tables:
                 if self.tables.bbcodeOutputYes
                 else (True, "html")
                 if self.tables.htmlOutputYes
+                else (True, "markdown")
+                if type(self.__outType) is emacsSyntax
+                else (True, "markdown")
+                if type(self.__outType) is csvSyntax
                 else (True, "markdown")
                 if self.tables.markdownOutputYes
                 else (False, "")
