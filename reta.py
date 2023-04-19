@@ -1067,7 +1067,6 @@ class Program:
             # tabneu = np.chararray((len(self.relitable) + 1, self.tables.hoechsteZeile[1024] + 3), itemsize=5000, unicode = True)
             # self.relitable = np.chararray((len(self.relitable) + 1, self.tables.hoechsteZeile[1024] + 3), itemsize=5000, unicode = True)
             for i, col in enumerate(csv.reader(csv_file, delimiter=";")):
-
                 if (
                     "".join(
                         ("--", i18n.ausgabeParas["art"], "=", i18n.ausgabeArt["bbcode"])
@@ -1085,7 +1084,7 @@ class Program:
                         ("--", i18n.ausgabeParas["art"], "=", i18n.ausgabeArt["html"])
                     )
                     in self.argv
-                ) in self.argv:
+                ):
                     col = [
                         json.loads(ccc[1:-1])["html"]
                         if ccc[:2] == "|{" and ccc[-2:] == "}|"
