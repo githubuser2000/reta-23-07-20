@@ -339,7 +339,7 @@ class Program:
                     )
         breiteIstNull = "".join(("--", i18n.ausgabeParas["breite"], "=0"))
         if breiteIstNull in self.argv:
-            self.breiteBreitenSysArgvPara(breiteIstNull, "")
+            self.breiteBreitenSysArgvPara(breiteIstNull[2:], "")
         if len(neg) == 0:
             self.produceAllSpaltenNumbers("-")
             spalten_removeDoublesNthenRemoveOneFromAnother()
@@ -964,7 +964,7 @@ class Program:
                         elif outputtype == i18n.ausgabeArt["csv"]:
                             self.tables.outType = csvSyntax()
                             self.tables.getOut.oneTable = True
-                            self.breiteBreitenSysArgvPara(breiteIstNull, "")
+                            self.breiteBreitenSysArgvPara(breiteIstNull[2:], "")
                         elif outputtype == i18n.ausgabeArt["bbcode"]:
                             self.htmlOrBBcode = True
                             self.tables.outType = bbCodeSyntax()
@@ -974,11 +974,11 @@ class Program:
                         elif outputtype == i18n.ausgabeArt["emacs"]:
                             self.tables.getOut.oneTable = True
                             self.tables.outType = emacsSyntax()
-                            self.breiteBreitenSysArgvPara(breiteIstNull, "")
+                            self.breiteBreitenSysArgvPara(breiteIstNull[2:], "")
                         elif outputtype == i18n.ausgabeArt["markdown"]:
                             self.tables.outType = markdownSyntax()
                             self.tables.getOut.oneTable = True
-                            self.breiteBreitenSysArgvPara(breiteIstNull, "")
+                            self.breiteBreitenSysArgvPara(breiteIstNull[2:], "")
                     elif (
                         arg[2:]
                         in [i18n.ausgabeParas["nocolor"], i18n.ausgabeParas["justtext"]]
