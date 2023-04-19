@@ -54,18 +54,6 @@ gebrochenSpaltenMaximumPlus1: int = 21  # Das ist nicht die Spaltenbreite, sonde
 #    "keinenummerierung": _("keinenummerierung"),
 # }
 
-zeilenTypen: dict[str, str] = {
-    "sonne": _("sonne"),
-    "mond": _("mond"),
-    "planet": _("planet"),
-    "schwarzesonne": _("schwarzesonne"),
-}
-zeilenZeit: dict[str, str] = {
-    "heute": _("heute"),
-    "gestern": _("gestern"),
-    "morgen": _("morgen"),
-}
-
 ausgabeParas: dict[str, str] = {
     "nocolor": _("nocolor"),
     "justtext": _("justtext"),
@@ -86,20 +74,30 @@ kombiMainParas: dict[str, str] = {
     "universum": _("universum"),
 }
 zeilenParas: dict[str, str] = {
-    "zeit": _("zeit"),
-    "zaehlung": _("zaehlung"),
-    "vorhervonausschnitt": _("vorhervonausschnitt"),
-    "vorhervonausschnittteiler": _("vorhervonausschnittteiler"),
-    "primzahlvielfache": _("primzahlvielfache"),
+    "alles": _("alles"),
+    "gestern": _("gestern"),
+    "heute": _("heute"),
+    "hoehemaximal": _("hoehemaximal"),
+    "mond": _("mond"),
+    "morgen": _("morgen"),
     "nachtraeglichneuabzaehlung": _("nachtraeglichneuabzaehlung"),
     "nachtraeglichneuabzaehlungvielfache": _("nachtraeglichneuabzaehlungvielfache"),
-    "alles": _("alles"),
+    "oberesmaximum": _("oberesmaximum"),
+    "planet": _("planet"),
     "potenzenvonzahlen": _("potenzenvonzahlen"),
+    "primzahlvielfache": _("primzahlvielfache"),
+    "schwarzesonne": _("schwarzesonne"),
+    "sonne": _("sonne"),
     "typ": _("typ"),
     "vielfachevonzahlen": _("vielfachevonzahlen"),
-    "oberesmaximum": _("oberesmaximum"),
+    "vorhervonausschnitt": _("vorhervonausschnitt"),
+    "vorhervonausschnittteiler": _("vorhervonausschnittteiler"),
+    "zaehlung": _("zaehlung"),
+    "zeit": _("zeit"),
 }
 
+zeilenParasLen = {key: len(value) for (key, value) in zeilenParas.items()}
+# zeilenParasLenPlus2 = {key: len(value) + 2 for (key, value) in zeilenParas.items()}
 hauptForNeben: dict[str, str] = {
     "zeilen": _("zeilen"),
     "spalten": _("spalten"),
@@ -3867,38 +3865,19 @@ class retapy:
         _(' Nebenparameter, wie möglicherweise: "'),
         _('" ausgeführt werden kann. Hauptparameter sind: -'),
     )
-    breiteParameterWort = _("breite")
+    # breiteParameterWort = _("breite")
 
-    cliout8Satz = _("Versuche Parameter -h")
-    zeilenParas = {
-        "alles": _("alles"),
-        "zeit": _("zeit"),
-        "heute": _("heute"),
-        "gestern": _("gestern"),
-        "morgen": _("morgen"),
-        "hoehemaximal": _("hoehemaximal"),
-        "typ": _("typ"),
-        "sonne": _("sonne"),
-        "mond": _("mond"),
-        "planet": _("planet"),
-        "schwarzesonne": _("schwarzesonne"),
-        "potenzenvonzahlen": _("potenzenvonzahlen"),
-        "vielfachevonzahlen": _("vielfachevonzahlen"),
-        "primzahlvielfache": _("primzahlvielfache"),
-        "vorhervonausschnittteiler": _("vorhervonausschnittteiler"),
-        "vorhervonausschnitt": _("vorhervonausschnitt"),
-        "nachtraeglichneuabzaehlungvielfache": _("nachtraeglichneuabzaehlungvielfache"),
-        "nachtraeglichneuabzaehlung": _("nachtraeglichneuabzaehlung"),
-    }
+    cliout8SatzVersucheParaH = _("Versuche Parameter -h")
     cliout9Saetze = (
         _('Den Neben-Parameter "'),
         _('" gibt es hier nicht für den Hauptparameter "-'),
         _('".'),
         _(" Möglich sind: "),
     )
-    cliout10Satze = (
+    cliout10Saetze = (
         _('Den Neben-Parameter "'),
         _('" gibt es hier nicht für den Hauptparameter "-'),
+        _('".'),
     )
 
 
