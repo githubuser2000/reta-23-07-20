@@ -389,7 +389,7 @@ class Tables:
             lastlastSubCellIndex = -2
             headingfinished = False
             if type(self.__outType) is csvSyntax:
-                strio = io.StringIO()
+                strio = io.StringIO(newline="")
                 writer = csv.writer(
                     strio,
                     quoting=csv.QUOTE_NONE,
@@ -724,12 +724,12 @@ class Tables:
                     self.cliout2(
                         self.__outType.endTable,
                     )
-                if self.__oneTable:
-                    break
                 if type(self.__outType) is csvSyntax:
                     self.cliout2(
                         strio.getvalue(),
                     )
+                if self.__oneTable:
+                    break
 
         def cliout2(self, text):
             janee: tuple[bool, str] = (
