@@ -14,7 +14,8 @@ try:
 except:
     OrderedSet = set
 
-from center import BereichToNumbers2, Primzahlkreuz_pro_contra_strs, retaHilfe
+from center import (BereichToNumbers2, Primzahlkreuz_pro_contra_strs, i18n,
+                    retaHilfe)
 from tableHandling import (Enum, Iterable, Multiplikationen, OutputSyntax,
                            Tables, Union, alxp, bbCodeSyntax, cliout, copy,
                            csv, csvSyntax, deepcopy, emacsSyntax,
@@ -23,6 +24,8 @@ from tableHandling import (Enum, Iterable, Multiplikationen, OutputSyntax,
                            re, setShellRowsAmount, shellRowsAmount, sys, x)
 
 gebrochenSpaltenMaximumPlus1 = 21
+
+i18nR = i18n.retapy
 
 
 def render_color(tag_name, value, options, parent, context):
@@ -78,7 +81,7 @@ class Program:
                         print(befehlName)
                         raise ValueError
                 elif (
-                    paraValue == "beschrieben"
+                    paraValue == i18nR.beschriebenWort
                     and befehlName in Program.ParametersMain.primvielfache
                 ):
                     self.spaltenArtenKey_SpaltennummernValue[(len(neg), 2)] |= {2}
@@ -107,52 +110,37 @@ class Program:
                 ] -= self.spaltenArtenKey_SpaltennummernValue.pop((1, el2Type))
 
         self.mainParaCmds: dict = {
-            "zeilen": 0,
-            "spalten": 1,
-            self.tables.getCombis.parameterName: 2,
-            "ausgabe": 3,
-            "debug": None,
-            "h": None,
-            "help": None,
+            i18n.mainParaCmds["zeilen"]: 0,
+            i18n.mainParaCmds["spalten"]: 1,
+            i18n.mainParaCmds[tuple(i18n.tableHandling.parameterName.keys())[0]]: 2,
+            i18n.mainParaCmds["ausgabe"]: 3,
+            i18n.mainParaCmds["debug"]: None,
+            i18n.mainParaCmds["h"]: None,
+            i18n.mainParaCmds["help"]: None,
         }
-        # self.mainParaCmds2: dict = {
-        #    0: "zeilen",
-        #    1: "spalten",
-        #    2: "kombination",
-        #    3: "ausgabe",
-        # }
         lastMainCmd: int = -1
-        # kombiSpalten = OrderedSet()
-        # ordinarySpalten = OrderedSet()
-
-        # for cmd in self.argv[1:]:
-        #    if (
-        #        lastMainCmd == self.mainParaCmds["spalten"]
-        #        or lastMainCmd == self.mainParaCmds["ausgabe"]
-        #    ):
-        #        self.breiteBreitenSysArgvPara(cmd, neg)
         for cmd in self.argv[1:]:
             if len(cmd) > 1 and cmd[0] == "-" and cmd[1] != "-":
                 if cmd[1:] in self.mainParaCmds.keys():
                     lastMainCmd = self.mainParaCmds[cmd[1:]]
-                elif cmd[1:] == "nichts":
+                elif cmd[1:] == i18nR.nichtsWort:
                     pass
                 elif len(neg) == 0:
                     # else:
                     cliout(
-                        'Der Haupt-Parameter "'
+                        i18nR.cliout1Saetze[0]
                         + cmd
-                        + '" existiert hier nicht als Befehl!'
-                        + " Es ist nur möglich: -"
+                        + i18nR.cliout1Saetze[1]
+                        + i18nR.cliout1Saetze[2]
                         + str(", -".join(list(self.mainParaCmds.keys())))
                     )
             elif cmd[:2] == "--":
-                if lastMainCmd == self.mainParaCmds["spalten"]:
+                if lastMainCmd == self.mainParaCmds[i18n.mainParaCmds["spalten"]]:
                     cmd = cmd[2:]
                     eq = cmd.find("=")
                     if self.breiteBreitenSysArgvPara(cmd, neg):
                         pass
-                    elif cmd == "keinenummerierung" and len(neg) == 0:
+                    elif cmd == i18nR.keineNumWort and len(neg) == 0:
                         self.tables.nummeriere = False
                     elif eq != -1:
                         for oneOfThingsAfterEqSign in cmd[eq + 1 :].split(","):
@@ -193,14 +181,12 @@ class Program:
                                                 ]
 
                                         cliout(
-                                            'Der Unter-Paramaeter "--'
+                                            i18nR.cliout2Saetze[0]
                                             + cmd[:eq]
-                                            + '" existiert, aber nicht mit dem Textwert "'
+                                            + i18nR.cliout2Saetze[1]
                                             + oneOfThingsAfterEqSign
                                             + (
-                                                (
-                                                    '". Mögliche Nebenparameter-Textwerte, für diesen Unter-Parameter, sind: "'
-                                                )
+                                                (i18nR.cliout2Saetze[2])
                                                 + (
                                                     ",".join(possibleNebenparameterWert)
                                                     + '"'
@@ -214,19 +200,19 @@ class Program:
                                                         ]
                                                     )
                                                 )
-                                                else '". Stattdessen gibt keine Nebenparameter-Textwerte.'
+                                                else i18nR.cliout2Saetze[3]
                                             )
                                         )
                                     else:
                                         cliout(
-                                            'Der Unter-Paramaeter "--'
+                                            i18nR.cliout3Saetze[0]
                                             + cmd[:eq]
-                                            + '" mit dem Textwert "'
+                                            + i18nR.cliout3Saetze[1]
                                             + oneOfThingsAfterEqSign
-                                            + '" existiert hier nicht als Befehl für Haupt-Parameter'
-                                            + " -spalten"
-                                            + " !"
-                                            + " Es ist nur möglich:\n--"
+                                            + i18nR.cliout3Saetze[2]
+                                            + i18nR.cliout3Saetze[3]
+                                            + i18nR.cliout3Saetze[4]
+                                            + i18nR.cliout3Saetze[5]
                                             + str(
                                                 ", --".join(
                                                     tuple(
@@ -237,8 +223,8 @@ class Program:
                                                     )
                                                 )
                                             )
-                                            + ", --breiten, --breite"
-                                            + "\nmit dem Werten dahinter:\n"
+                                            + i18nR.cliout3Saetze[6]
+                                            + i18nR.cliout3Saetze[7]
                                             + str(
                                                 ",".join(
                                                     tuple(
@@ -265,12 +251,12 @@ class Program:
 
                         except KeyError:
                             cliout(
-                                'Der Unter-Parameter "--'
+                                i18nR.cliout4Saetze[0]
                                 + cmd
-                                + '" existiert hier nicht als Befehl für Haupt-Parameter'
-                                + " -spalten"
-                                + ", oder dieser Parameter braucht Werte analog wie: \n--unterParameter=Wert1\n"
-                                + "Es ist nur möglich: --"
+                                + i18nR.cliout4Saetze[1]
+                                + i18nR.cliout4Saetze[2]
+                                + i18nR.cliout4Saetze[3]
+                                + i18nR.cliout4Saetze[4]
                                 + str(
                                     ", --".join(
                                         tuple(
@@ -280,14 +266,17 @@ class Program:
                                         )
                                     )
                                 )
-                                + ", --keinenummerierung"
+                                + i18nR.cliout4Saetze[5]
                             )
 
                 elif (
                     lastMainCmd
                     == self.mainParaCmds[self.tables.getCombis.parameterName]
                 ):
-                    if cmd[:10] == "--galaxie=" or cmd[:12] == "--universum=":
+                    galWort = "--" + i18n.kombiMainParas["galaxie"] + "="
+                    uniWort = "--" + i18n.kombiMainParas["universum"] + "="
+
+                    if cmd[: len(galWort)] == galWort or cmd[: len(uniWort)] == uniWort:
                         for oneKombiSpalte in cmd[cmd.find("=") + 1 :].split(","):
                             if len(oneKombiSpalte) > 0 and oneKombiSpalte[0] == "-":
                                 oneKombiSpalte = oneKombiSpalte[1:]
@@ -317,36 +306,34 @@ class Program:
                                             else OrderedSet(),
                                         ),
                                         neg,
-                                        befehlName="kombinationen",
+                                        befehlName=i18n.hauptForNeben["kombinationen"],
                                     )
                                 except KeyError:
                                     cliout(
-                                        'Die Kombispalte "'
+                                        i18nR.cliout5Satz[0]
                                         + oneKombiSpalte
-                                        + '" existiert so nicht als Befehl. Möglich sind die Parameter für '
+                                        + i18nR.cliout5Satz[1]
                                         + cmd[: cmd.find("=") + 1]
                                         + " "
                                         + (
                                             str(self.kombiReverseDict.keys())[11:-1]
-                                            if cmd[: cmd.find("=")] == "--galaxie"
+                                            if cmd[: cmd.find("=")] == galWort[:-1]
                                             else str(self.kombiReverseDict2.keys())[
                                                 11:-1
                                             ]
-                                            if cmd[: cmd.find("=")] == "--universum"
+                                            if cmd[: cmd.find("=")] == uniWort[:-1]
                                             else ""
                                         )
                                     )
 
                     else:
-                        cliout(
-                            'kein Unter-Parameter "--galaxie=" oder "--universum=" angegeben für Hauptparameter -kombination'
-                        )
+                        cliout(i18nR.cliout6Satz)
                 elif lastMainCmd not in self.mainParaCmds.values():
                     cliout(
-                        "Es muss ein Hauptparameter, bzw. der richtige, gesetzt sein, damit ein"
-                        + ' Nebenparameter, wie möglicherweise: "'
+                        i18nR.cliout7Saetzetz[0]
+                        + i18nR.cliout7Saetzetz[1]
                         + cmd
-                        + '" ausgeführt werden kann. Hauptparameter sind: -'
+                        + i18nR.cliout7Saetzetz[2]
                         + " -".join(self.mainParaCmds)
                     )
         if "--breite=0" in self.argv:
