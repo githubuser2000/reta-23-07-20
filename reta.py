@@ -7,7 +7,7 @@ import platform
 import re
 from collections import OrderedDict, namedtuple
 from itertools import zip_longest
-from typing import Optional, Union
+from typing import Any, NamedTuple, Optional, Tuple, Union
 
 try:
     from orderedset import OrderedSet
@@ -336,8 +336,9 @@ class Program:
                         + i18nR.cliout7Saetzetz[2]
                         + " -".join(self.mainParaCmds)
                     )
-        if "--breite=0" in self.argv:
-            self.breiteBreitenSysArgvPara("--breite=0", "")
+        breiteIstNull = "".join("--", i18n.ausgabeParas["breite"], "=0")
+        if breiteIstNull in self.argv:
+            self.breiteBreitenSysArgvPara(breiteIstNull, "")
         if len(neg) == 0:
             self.produceAllSpaltenNumbers("-")
             spalten_removeDoublesNthenRemoveOneFromAnother()
@@ -350,23 +351,22 @@ class Program:
         #    )
         # )
 
-        if cmd[:7] == "breite=":
+        paraBreite = i18n.ausgabeParas["breite"] + "="
+        paraBreiteN = i18n.ausgabeParas["breiten"] + "="
+        if cmd[: len(paraBreite)] == paraBreite:
             shellRowsAmount, _, _, _ = getTextWrapThings()
             if self.breiteHasBeenOnceZero:
                 shellRowsAmount = 0
                 self.tables.textWidth = 0
                 self.breiteORbreiten = True
                 return True
-            if cmd[7:].isdecimal():
-                breite = abs(int(cmd[7:]))
+            if cmd[len(paraBreite) :].isdecimal():
+                breite = abs(int(cmd[len(paraBreite) :]))
                 if breite == 0:
                     self.breiteHasBeenOnceZero = True
                     shellRowsAmount = 0
                 elif shellRowsAmount > 7 and breite > shellRowsAmount - 7:
                     breite = shellRowsAmount - 7
-                # alxp(
-                #    "X1 textW von {} in {} ändern".format(self.tables.textWidth, breite)
-                # )
                 try:
                     self.tables.textWidth = (
                         breite
@@ -377,9 +377,9 @@ class Program:
                     self.tables.textWidth = breite
                 self.breiteORbreiten = True
             return True
-        elif cmd[:8] == "breiten=" and len(neg) == 0:
+        elif cmd[: len(paraBreiteN)] == paraBreiteN and len(neg) == 0:
             self.tables.breitenn = []
-            for breite in cmd[8:].split(","):
+            for breite in cmd[len(paraBreiteN) :].split(","):
                 if breite.isdecimal():
                     self.tables.breitenn += [int(breite)]
                     self.breiteORbreiten = True
@@ -556,104 +556,7 @@ class Program:
                     dataDicts3[i] = dict2
             return paraDict1, dataDicts3
 
-        Program.ParametersMain: namedtuple[str, str] = namedtuple(
-            "ParametersMain",
-            "wichtigste wichtigste2 religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept konzept2 inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache planet strukturenkleinere grundstrukturen alles",
-        )
-
-        Program.ParametersMain: namedtuple[tuple[str]] = Program.ParametersMain(
-            ("Wichtigstes_zum_verstehen", "wichtigsteverstehen"),
-            ("Wichtigstes_zum_gedanklich_einordnen", "wichtigsteeinordnen"),
-            (
-                "Religionen",
-                "religionen",
-                "religion",
-            ),
-            (
-                "Galaxie",
-                "galaxie",
-                "alteschriften",
-                "kreis",
-                "galaxien",
-                "kreise",
-            ),
-            (
-                "Größenordnung",
-                "groessenordnung",
-                "strukturgroesse",
-                "strukturgroeße",
-                "strukturgrösse",
-                "strukturgröße",
-                "groesse",
-                "stufe",
-                "organisationen",
-            ),
-            (
-                "Universum",
-                "universum",
-                "transzendentalien",
-                "strukturalien",
-                "kugel",
-                "kugeln",
-                "ball",
-                "baelle",
-                "bälle",
-            ),
-            ("Wirtschaft", "wirtschaft"),
-            (
-                "Menschliches",
-                "menschliches",
-            ),
-            (
-                "Pro_Contra",
-                "procontra",
-                "dagegendafuer",
-            ),
-            (
-                "Licht",
-                "licht",
-            ),
-            (
-                "Bedeutung",
-                "bedeutung",
-            ),
-            (
-                "Symbole",
-                "symbole",
-            ),
-            tuple(a[0] for a in Multiplikationen),
-            (
-                "Eigenschaften_n",
-                "eigenschaften",
-                "eigenschaft",
-                "konzept",
-                "konzepte",
-            ),
-            ("Eigenschaften_1/n", "konzept2", "konzepte2"),
-            (
-                "Inkrementieren",
-                "inkrementieren",
-            ),
-            (
-                "Operationen",
-                "operationen",
-            ),
-            (
-                "Meta_vs_Konkret_(Universum)",
-                "universummetakonkret",
-            ),
-            (
-                "Primzahlwirkung",
-                "primzahlwirkung",
-            ),
-            ("gebrochenuniversum",),
-            ("gebrochengalaxie",),
-            ("Multiplikationen", "multiplikationen"),
-            ("Planet_(10_und_oder_12)", "planet"),
-            ("Strukturen_1_bis_9", "strukturkleinerzehn"),
-            ("Grundstrukturen", "grundstrukturen"),
-            ("alles",),
-        )
+        Program.ParametersMain: namedtuple = i18n.ParametersMain
 
         allowedPrimNumbersForCommand: tuple[str] = tuple(
             (
@@ -683,2690 +586,17 @@ class Program:
         } - {None, 0, 1}
 
         paraNdataMatrix: list[
-            tuple[
-                tuple[str],
-                set[int],
-                set[tuple[int]],
-                set,
-                set,
-                set[tuple[Optional[int], Optional[int]]],
-                set,
-                set[list[str]],
-                set[str],
-            ]
-        ] = [
-            (
-                Program.ParametersMain.wichtigste,
-                (
-                    "Wichtigste",
-                    "wichtigste",
-                ),
-                {10, 5, 4, 8},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                ("Mensch-zu-Tier", "menschtier", "tiermensch"),
-                {314},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                ("Ansichten_Standpunkte_(18_17)", "ansichten"),
-                {240, 346},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                ("(politische)_Richtungen_(7)", "richtungen", "politische"),
-                {235},
-            ),
-            (
-                Program.ParametersMain.planet,
-                ("Wirklichkeiten_(10)", "wirklichkeit", "wirklichkeiten"),
-                {233, 265, 268, 322},
-            ),
-            (
-                Program.ParametersMain.planet,
-                (
-                    "Meta-Systeme_(12)",
-                    "metasysteme",
-                    "metasystem",
-                    "meta-systeme",
-                    "meta-system",
-                ),
-                {232, 288, 334},
-            ),
-            (
-                Program.ParametersMain.planet,
-                ("Intelligenz", "intelligenz"),
-                {214},
-            ),
-            (
-                Program.ParametersMain.planet,
-                ("Gleichheit_Freiheit_Ordnung", "gleichheit", "freiheit", "ordnung"),
-                {132, 324, 328, 79, 80, 331, 335},
-            ),
-            (
-                Program.ParametersMain.planet,
-                ("Komplexität", "komplexität", "komplexitaet"),
-                {213},
-            ),
-            (
-                Program.ParametersMain.planet,
-                ("Mechanismen", "mechanismen", "mechanismus"),
-                {107},
-            ),
-            (
-                Program.ParametersMain.wichtigste,
-                (
-                    "Zweitwichtigste",
-                    "zweitwichtigste",
-                ),
-                {19, 65, 183},
-                set(),
-                set(),
-                set(),
-                {(10,)},
-            ),
-            (
-                Program.ParametersMain.wichtigste,
-                (
-                    "Drittwichtigste",
-                    "drittwichtigste",
-                ),
-                {64},
-            ),
-            (
-                Program.ParametersMain.wichtigste,
-                ("Motive_Sternpolygone", "viertwichtigste"),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                {"primMotivStern"},
-            ),
-            (
-                Program.ParametersMain.wichtigste2,
-                ("Wichtigste", "wichtigstes"),
-                {0, 1, 2, 36, 37, 207},
-            ),
-            (
-                Program.ParametersMain.wichtigste2,
-                ("Zweitwichtigste", "zweitwichtigste"),
-                {30},
-            ),
-            (
-                Program.ParametersMain.operationen,
-                (
-                    "Halbierung",
-                    "halbierung",
-                    "halbierungen",
-                ),
-                {86},
-            ),
-            (
-                Program.ParametersMain.religionen,
-                (
-                    "Religions-Gründer-Typ",
-                    "religionsgründertyp",
-                    "prophet",
-                    "archon",
-                    "religionsgruendertyp",
-                ),
-                {72},
-            ),
-            (
-                Program.ParametersMain.religionen,
-                ("Hinduismus", "hinduismus"),
-                {217},
-            ),
-            (
-                Program.ParametersMain.religionen,
-                ("Sternpolygon", "sternpolygon"),
-                {0, 6, 36},
-            ),
-            (
-                Program.ParametersMain.religionen,
-                (
-                    "der_Tierkreiszeichen",
-                    "dertierkreiszeichen",
-                    "babylon",
-                ),
-                {0, 36, 207},
-            ),
-            (
-                Program.ParametersMain.religionen,
-                (
-                    "Sternpolygon_vs_gleichförmiges",
-                    "vergleich",
-                    "sternpolygonvsgleichfoermiges",
-                    "vergleichnvs1divn",
-                ),
-                {87},
-            ),
-            (
-                Program.ParametersMain.religionen,
-                (
-                    "Messias",
-                    "messias",
-                    "heptagramm",
-                    "hund",
-                    "messiase",
-                    "messiasse",
-                ),
-                {7},
-            ),
-            (
-                Program.ParametersMain.religionen,
-                (
-                    "gleichförmiges_Polygon",
-                    "gleichförmigespolygon",
-                    "gleichfoermigespolygon",
-                    "nichtsternpolygon",
-                    "polygon",
-                ),
-                {16, 37},
-            ),
-            (
-                Program.ParametersMain.religionen,
-                (
-                    "Vertreter_höherer_Konzepte",
-                    "vertreterhoehererkonzepte",
-                    "galaxien",
-                    "galaxie",
-                    "schwarzesonne",
-                    "schwarzesonnen",
-                    "universum",
-                    "universen",
-                    "kreis",
-                    "kreise",
-                    "kugel",
-                    "kugeln",
-                ),
-                {23},
-            ),
-            (
-                Program.ParametersMain.galaxie,
-                (
-                    "Offenbarung_des_Johannes",
-                    "offenbarung",
-                    "offenbarungdesjohannes",
-                    "johannes",
-                    "bibel",
-                    "offenbarungjohannes",
-                ),
-                {90},
-            ),
-            (
-                Program.ParametersMain.inkrementieren,
-                ("Teilchen-Meta-Physik", "addition", "identitaet", "Identität"),
-                {219, 223, 307, 308, 333},
-            ),
-            (
-                Program.ParametersMain.galaxie,
-                ("Hochzüchten", "hochzüchten", "hochzuechten"),
-                {318, 319},
-            ),
-            (
-                Program.ParametersMain.universum,
-                ("Universelles_Verhältnis_gleicher_Zahlen", "verhaeltnisgleicherzahl"),
-                {383},
-            ),
-            (
-                Program.ParametersMain.universum,
-                ("universelles_Recht", "recht", "jura"),
-                {382, 34, 65},
-            ),
-            (
-                Program.ParametersMain.universum,
-                ("sowas_wie_Kombinieren_Verknüpfen", "kombinierenetc"),
-                {320},
-            ),
-            (
-                Program.ParametersMain.universum,
-                ("Hochzüchten", "hochzüchten", "hochzuechten"),
-                {318, 319},
-            ),
-            (
-                Program.ParametersMain.universum,
-                ("Teilchen-Meta-Physik", "addition", "identitaet", "Identität"),
-                {219, 223, 307, 308, 333},
-            ),
-            (
-                Program.ParametersMain.universum,
-                ("keine_Nur-Paradigma-Religionen", "metaparadigmareligion"),
-                {190, 191, 196},
-            ),
-            (
-                Program.ParametersMain.universum,
-                ("Kugeln_Kreise", "kugelnkreise", "kugeln", "kreise"),
-                {77, 145},
-            ),
-            (
-                Program.ParametersMain.galaxie,
-                ("Kugeln_Kreise", "kugelnkreise", "kugeln", "kreise"),
-                {77, 145},
-            ),
-            (
-                Program.ParametersMain.galaxie,
-                ("chinesisches_Horoskop", "chinesischeshoroskop", "china"),
-                {91},
-            ),
-            (
-                Program.ParametersMain.galaxie,
-                (
-                    "babylonische_Tierkreiszeichen",
-                    "tierkreiszeichen",
-                    "babylon",
-                ),
-                {1, 2},
-            ),
-            (
-                Program.ParametersMain.galaxie,
-                (
-                    "Thomasevangelium",
-                    "thomasevangelium",
-                    "thomas",
-                ),
-                {0, 3, 303},
-            ),
-            (
-                Program.ParametersMain.galaxie,
-                (
-                    "analytische_Ontologie",
-                    "analytischeontologie",
-                    "ontologie",
-                ),
-                {84},
-            ),
-            (
-                Program.ParametersMain.galaxie,
-                (
-                    "Transzendentalien_innen_außen",
-                    "innenaussenstrukur",
-                    "strukturalieninnenaußen",
-                    "strukturalieninnenaussen",
-                    "innenaußenstrukur",
-                    "transzendentalieninnenaußen",
-                    "transzendentalieninnenaussen",
-                ),
-                {149},
-            ),
-            (
-                Program.ParametersMain.galaxie,
-                (
-                    "Modallogik",
-                    "modallogik",
-                ),
-                {148},
-            ),
-            (
-                Program.ParametersMain.operationen,
-                (
-                    "5",
-                    "fünf",
-                    "fünfer",
-                    "fünferstruktur",
-                    "fuenf",
-                    "fuenfer",
-                    "fuenferstruktur",
-                ),
-                {96},
-            ),
-            (
-                Program.ParametersMain.operationen,
-                (
-                    "9",
-                    "neun",
-                    "neuner",
-                    "neunerstruktur",
-                ),
-                {94},
-            ),
-            (
-                Program.ParametersMain.operationen,
-                (
-                    "3",
-                    "drei",
-                    "dreier",
-                    "dreierstruktur",
-                ),
-                {92, 93, 315, 316},
-            ),
-            (
-                Program.ParametersMain.strukturgroesse,
-                (
-                    "Licht",
-                    "licht",
-                ),
-                {20, 27, 313},
-            ),
-            (
-                Program.ParametersMain.strukturgroesse,
-                (
-                    "Strukturgrösse",
-                    "größe",
-                    "groesse",
-                    "gross",
-                    "strukturgroesse",
-                    "strukturgroeße",
-                    "strukturgrösse",
-                    "strukturgröße",
-                ),
-                {4, 21, 54, 197},
-            ),
-            (
-                Program.ParametersMain.strukturgroesse,
-                ("Organisationen", "organisationen", "organisation"),
-                {30, 82},
-            ),
-            (
-                Program.ParametersMain.strukturgroesse,
-                ("politische_Systeme", "politischesysteme", "politik"),
-                {83},
-            ),
-            (
-                Program.ParametersMain.universummetakonkret,
-                ("meta",),
-                set(),
-                set(),
-                set(),
-                set(),
-                {
-                    (
-                        2,
-                        0,
-                    )
-                },
-            ),
-            (
-                Program.ParametersMain.universummetakonkret,
-                ("konkret",),
-                set(),
-                set(),
-                set(),
-                set(),
-                {
-                    (
-                        2,
-                        1,
-                    )
-                },
-            ),
-            (
-                Program.ParametersMain.universummetakonkret,
-                ("Theorie", "theorie"),
-                set(),
-                set(),
-                set(),
-                set(),
-                {
-                    (
-                        3,
-                        0,
-                    )
-                },
-            ),
-            (
-                Program.ParametersMain.universummetakonkret,
-                ("Praxis", "praxis"),
-                set(),
-                set(),
-                set(),
-                set(),
-                {
-                    (
-                        3,
-                        1,
-                    )
-                },
-            ),
-            (
-                Program.ParametersMain.universummetakonkret,
-                (
-                    "Management",
-                    "management",
-                    "stau",
-                ),
-                set(),
-                set(),
-                set(),
-                set(),
-                {
-                    (
-                        4,
-                        0,
-                    )
-                },
-            ),
-            (
-                Program.ParametersMain.universummetakonkret,
-                (
-                    "verändernd",
-                    "veraendernd",
-                    "fluss",
-                ),
-                set(),
-                set(),
-                set(),
-                set(),
-                {
-                    (
-                        4,
-                        1,
-                    )
-                },
-            ),
-            (
-                Program.ParametersMain.universummetakonkret,
-                ("ganzheitlich", "mathematisch_diskret", "diskret"),
-                set(),
-                set(),
-                set(),
-                set(),
-                {
-                    (
-                        5,
-                        0,
-                    )
-                },
-            ),
-            (
-                Program.ParametersMain.universummetakonkret,
-                (
-                    "darüber_hinausgehend",
-                    "hinausgehend",
-                    "kontinuierlich",
-                ),
-                set(),
-                set(),
-                set(),
-                set(),
-                {
-                    (
-                        5,
-                        1,
-                    )
-                },
-            ),
-            (
-                Program.ParametersMain.primzahlwirkung,
-                (
-                    "Universum_Strukturalien_Transzendentalien",
-                    "universum",
-                    "strukturalie",
-                    "strukturalien",
-                    "transzendentalien",
-                    "transzendentalie",
-                ),
-                set(),
-                set(),
-                set(),
-                set(),
-                {(5,)},
-            ),
-            (
-                Program.ParametersMain.primzahlwirkung,
-                (
-                    "Richtung_als_Richtung",
-                    "richtungrichtung",
-                ),
-                set(),
-                set(),
-                set(),
-                set(),
-                {(None,)},
-            ),
-            (
-                Program.ParametersMain.primzahlwirkung,
-                (
-                    "Galaxieabsicht",
-                    "absichtgalaxie",
-                    "absicht",
-                    "motive",
-                    "motiv",
-                    "absichten",
-                    "galaxie",
-                ),
-                set(),
-                set(),
-                set(),
-                set(),
-                {(10,)},
-            ),
-            (
-                Program.ParametersMain.primzahlwirkung,
-                (
-                    "Absicht_Reziproke_Galaxie",
-                    "absichtgalaxiereziproke",
-                    "absichtreziproke",
-                    "motivereziproke",
-                    "motivreziproke",
-                    "absichtenreziproke",
-                    "galaxiereziproke",
-                ),
-                set(),
-                set(),
-                set(),
-                set(),
-                {(42,)},
-            ),
-            (
-                Program.ParametersMain.primzahlwirkung,
-                (
-                    "Universum_Reziproke",
-                    "universumreziproke",
-                    "strukturaliereziproke",
-                    "strukturalienreziproke",
-                    "transzendentalienreziproke",
-                    "transzendentaliereziproke",
-                ),
-                set(),
-                set(),
-                set(),
-                set(),
-                {(131,)},
-            ),
-            (
-                Program.ParametersMain.primzahlwirkung,
-                (
-                    "Dagegen-Gegentranszendentalie",
-                    "dagegengegentranszendentalie",
-                    "dagegengegentranszendentalien",
-                    "dagegengegenstrukturalien",
-                    "dagegengegenstrukturalie",
-                ),
-                set(),
-                set(),
-                set(),
-                set(),
-                {(138,)},
-            ),
-            (
-                Program.ParametersMain.primzahlwirkung,
-                (
-                    "neutrale_Gegentranszendentalie",
-                    "neutralegegentranszendentalie",
-                    "neutralegegentranszendentalien",
-                    "neutralegegenstrukturalien",
-                    "neutralegegenstrukturalie",
-                ),
-                set(),
-                set(),
-                set(),
-                set(),
-                {(202,)},
-            ),
-            (
-                Program.ParametersMain.universummetakonkret,
-                (
-                    "Unternehmung_Geschäft",
-                    "unternehmen",
-                    "unternehmung",
-                    "geschaeft",
-                    "geschäft",
-                ),
-                set(),
-                set(),
-                set(),
-                set(),
-                {
-                    (
-                        6,
-                        0,
-                    )
-                },
-            ),
-            (
-                Program.ParametersMain.universummetakonkret,
-                ("wertvoll", "wert"),
-                set(),
-                set(),
-                set(),
-                set(),
-                {
-                    (
-                        6,
-                        1,
-                    )
-                },
-            ),
-            (
-                Program.ParametersMain.universummetakonkret,
-                (
-                    "Beherrschen",
-                    "regieren",
-                    "beherrschen",
-                ),
-                set(),
-                set(),
-                set(),
-                set(),
-                {
-                    (
-                        7,
-                        0,
-                    )
-                },
-            ),
-            (
-                Program.ParametersMain.universummetakonkret,
-                (
-                    "Richtung",
-                    "richtung",
-                    "gut",
-                ),
-                set(),
-                set(),
-                set(),
-                set(),
-                {
-                    (
-                        7,
-                        1,
-                    )
-                },
-            ),
-            (
-                Program.ParametersMain.universum,
-                (
-                    "analytische_Ontologie",
-                    "analytischeontologie",
-                    "ontologie",
-                ),
-                {84},
-            ),
-            (
-                Program.ParametersMain.universum,
-                (
-                    "Gegentranszendentalien",
-                    "gegentranszendentalien",
-                    "gegentranszendentalie",
-                    "gegenstrukturalien",
-                    "gegenalien",
-                    "gegenuniversalien",
-                ),
-                {138, 202},
-            ),
-            (
-                Program.ParametersMain.universum,
-                ("Systemsachen", "systemsachen"),
-                {
-                    150,
-                },
-            ),
-            (
-                Program.ParametersMain.universum,
-                (
-                    "Transzendentalien",
-                    "transzendentalien",
-                    "transzendentalie",
-                    "strukturalien",
-                    "alien",
-                    "universalien",
-                ),
-                {5, 54, 55, 198},
-            ),
-            (
-                Program.ParametersMain.universum,
-                (
-                    "Reziproke_von_Transzendentalien",
-                    "transzendentalienreziproke",
-                    "transzendentaliereziproke",
-                    "strukturalienreziproke",
-                    "alienreziproke",
-                    "universalienreziproke",
-                ),
-                {131, 201},
-            ),
-            (
-                Program.ParametersMain.universum,
-                ("Netzwerk", "netzwerk"),
-                {25},
-            ),
-            (
-                Program.ParametersMain.universum,
-                (
-                    "warum_Transzendentalie_=_Strukturgroesse_=_Charakter",
-                    "warumtranszendentaliezustrukturgroesseundcharakter",
-                ),
-                {4, 54, 5, 165},
-            ),
-            (
-                Program.ParametersMain.universum,
-                ("Kategorie", "kategorie"),
-                {204, 205, 281},
-            ),
-            (Program.ParametersMain.universum, ("Raum-Missionen", "weltall"), {218}),
-            (
-                Program.ParametersMain.universum,
-                ("Programmier-Paradigmen", "programmierparadigmen"),
-                {351},
-            ),
-            (Program.ParametersMain.galaxie, ("Raum-Missionen", "weltall"), {218}),
-            (
-                Program.ParametersMain.universum,
-                ("Geist__(15)", "geist"),
-                {242},
-            ),
-            (
-                Program.ParametersMain.universum,
-                (
-                    "warum_Transzendentalie_=_Komplexität_von_Michael_Commons",
-                    "warumtranszendentaliegleichkomplexitaet",
-                ),
-                {65, 5, 166},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Model_of_Hierarchical_Complexity",
-                    "modelofhierarchicalcomplexity",
-                    "komplex",
-                    "komplexität",
-                    "komplexitaet",
-                    "complexity",
-                    "model",
-                    "abstraktion",
-                ),
-                {65, 75, 203},
-            ),
-            (
-                Program.ParametersMain.universum,
-                (
-                    "Model_of_Hierarchical_Complexity",
-                    "modelofhierarchicalcomplexity",
-                    "komplex",
-                    "komplexität",
-                    "komplexitaet",
-                    "complexity",
-                    "model",
-                    "abstraktion",
-                ),
-                {65, 75, 203},
-            ),
-            (
-                Program.ParametersMain.operationen,
-                (
-                    "2",
-                    "zwei",
-                    "gerade",
-                    "ungerade",
-                    "alternierung",
-                    "alternierend",
-                    "zweierstruktur",
-                ),
-                {78, 79, 80, 331},
-            ),
-            (
-                Program.ParametersMain.operationen,
-                (
-                    "Multiplikation",
-                    "multiplikation",
-                ),
-                {158},
-            ),
-            (
-                Program.ParametersMain.operationen,
-                ("4", "vier", "viererstruktur", "viererabfolgen"),
-                {76, 77, 81, 104, 145},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                ("Gesellschaftsschicht", "klasse", "klassen"),
-                {241},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                ("Moral", "moral", "warummoral"),
-                {215, 216},
-                {(216, 221)},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                ("Fachgebiete", "fachgebiete", "fachbereiche", "themen"),
-                {183},
-            ),
-            (
-                Program.ParametersMain.wirtschaft,
-                ("Fachgebiete", "fachgebiete", "fachbereiche", "themen"),
-                {183},
-            ),
-            (
-                Program.ParametersMain.wirtschaft,
-                (
-                    "Pflanzen",
-                    "pflanzen",
-                ),
-                {113},
-            ),
-            (
-                Program.ParametersMain.wirtschaft,
-                (
-                    "Maschinen",
-                    "maschinen",
-                    "maschine",
-                    "gerät",
-                    "geräte",
-                    "geraete",
-                    "geraet",
-                ),
-                {89},
-            ),
-            (
-                Program.ParametersMain.wirtschaft,
-                (
-                    "Organisationsform",
-                    "organisationsform",
-                    "organisationsart",
-                    "firma",
-                    "verein",
-                ),
-                {99},
-            ),
-            (
-                Program.ParametersMain.wirtschaft,
-                (
-                    "System",
-                    "system",
-                ),
-                {
-                    69,
-                },
-            ),
-            (
-                Program.ParametersMain.wirtschaft,
-                (
-                    "realistisch",
-                    "funktioniert",
-                ),
-                {70},
-            ),
-            (
-                Program.ParametersMain.wirtschaft,
-                (
-                    "Erklärung",
-                    "erklärung",
-                    "erklaerung",
-                ),
-                {71},
-            ),
-            (
-                Program.ParametersMain.wirtschaft,
-                (
-                    "BWL",
-                    "bwl",
-                ),
-                {109},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "Sinn_des_Lebens",
-                    "sinndeslebens",
-                    "lebenssinn",
-                    "sinn",
-                    "sinnsuche",
-                ),
-                {88, 189},
-                {(181, 182)},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "Intelligenzprobleme",
-                    "intelligenzprobleme",
-                    "intelligenzmaengel",
-                    "intelligenzmängel",
-                ),
-                {147},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                ("Denkweise_von_Lebewesen", "lebewesendenkweise", "denkweise"),
-                {146},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "Gegentranszendentalien",
-                    "gegentranszendentalien",
-                    "gegenstrukturalien",
-                ),
-                {138, 139, 202},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "Gleichheit_Freiheit",
-                    "gleichheitfreiheit",
-                    "ungleichheit",
-                    "dominieren",
-                    "gleichheit",
-                    "freiheit",
-                ),
-                {132, 328, 331, 335},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "Gefühle",
-                    "emotionen",
-                    "gefuehle",
-                    "gefuehle",
-                    "emotion",
-                    "gefühl",
-                    "gefuehl",
-                ),
-                {105, 230, 243, 283, 284, 285, 286, 305},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                ("Egoismus", "egoismus", "altruismus", "selbstlosigkeit"),
-                {136},
-                {(66, 67)},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "Wirkung",
-                    "wirkung",
-                ),
-                {135},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "INCELs",
-                    "incel",
-                    "incels",
-                ),
-                {68},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "irrationale_Zahlen_durch_Wurzelbildung",
-                    "irrationalezahlendurchwurzelbildung",
-                    "ausgangslage",
-                ),
-                {73},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "dominierendes_Geschlecht",
-                    "dominierendesgeschlecht",
-                    "maennlich",
-                    "männlich",
-                    "weiblich",
-                ),
-                {51},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "Liebe",
-                    "liebe",
-                    "ethik",
-                ),
-                {8, 9, 28, 208, 330},
-                {(121, 122)},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "Glaube_Erkenntnis",
-                    "glauben",
-                    "erkenntnis",
-                    "glaube",
-                ),
-                {59},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "Angreifbarkeit",
-                    "angreifbarkeit",
-                    "angreifbar",
-                ),
-                {58, 57},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15)",
-                    "Transzendentalien",
-                    "transzendentalien",
-                    "transzendentalie",
-                    "strukturalien",
-                    "alien",
-                    "universalien",
-                    "meta-paradigmen",
-                ),
-                {5, 229, 131},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Bedingung_und_Auslöser_(1/3)",
-                    "bedingung",
-                    "bedingungen",
-                    "auslöser",
-                    "ausloeser",
-                ),
-                {338},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)",
-                    "relativreziprokuniversell",
-                ),
-                {350},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("universeller_Komperativ_(18→15)", "universellerkomperativ"),
-                {349},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Existenzialien_(3)", "existenzialien"),
-                {348},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Extremalien_(19)", "extremalien"),
-                {347, 352},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Erwartungshaltungen_(26)", "erwartungen", "erwartungshaltungen"),
-                {344},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Leidenschaften_(21)", "leidenschaft", "leidenschaften"),
-                {343},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("relativer_Zeit-Betrag_(15_10_4_18_6)", "relativerzeitbetrag"),
-                {339},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Zahlenvergleich_(15_18_6)", "zahlenvergleich"),
-                {340},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Bestrebungen(1/5)", "bestrebung", "bestrebungen"),
-                {332},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Prinzipien(1/8)", "prinzipien"),
-                {329, 378},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Attraktionen_(36)", "attraktionen"),
-                {311},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Optimierung_(10)",
-                    "optimierung",
-                ),
-                {310},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Themen_(6)",
-                    "themen",
-                    "thema",
-                ),
-                {309},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Bedeutung_(10)",
-                    "bedeutung",
-                ),
-                {306},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Reziprokes",
-                    "reziproke",
-                    "reziprokes",
-                ),
-                {
-                    42,
-                    131,
-                    204,
-                    231,
-                    273,
-                    257,
-                    284,
-                    285,
-                    257,
-                    204,
-                    205,
-                    281,
-                    326,
-                    327,
-                    328,
-                    329,
-                    330,
-                    331,
-                    332,
-                    334,
-                    335,
-                    338,
-                },
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Achtung_(4)", "achtung", "achten"),
-                {270},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Zeit_(4)_als_Wirklichkeit", "zeit"),
-                {266, 267},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Absicht_16_ist_zu_genügen", "absicht16"),
-                {312},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Absicht_17_ist_zu_meinen", "absicht17"),
-                {263},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Absicht_6_ist_Vorteilsmaximierung", "absicht6"),
-                {262},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Absicht_7_ist_Selbstlosigkeit", "absicht7"),
-                {261},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Regungen_(1)", "regung", "regungen"),
-                {282},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Verhalten_(11)", "verhalten"),
-                {301, 302},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Energie_und_universelle_Eigenschaften_(30)",
-                    "energie",
-                    "universelleeigenschaften",
-                    "lebensenergie",
-                ),
-                {287, 293},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Garben_und_Verhalten_nachfühlen(31)",
-                    "garben",
-                    "verhaltenfuehlen",
-                    "verhaltenfühlen",
-                ),
-                {295},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    Primzahlkreuz_pro_contra_strs[1],
-                    "nachvollziehen",
-                ),
-                {242, 297},
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                {"primzahlkreuzprocontra"},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Empathie_(37)", "empathie", "mitgefuehl"),
-                {294},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Absicht_1/6_ist_Reinigung_und_Klarheit",
-                    "absicht1/6",
-                    "absicht1pro6",
-                ),
-                {298},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Absicht_10_ist_Wirklichkeit_erkennen", "absicht10"),
-                {260},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Geist_(15)",
-                    "geist",
-                    "bewusstsein",
-                ),
-                {229, 231, 242, 273, 297, 304},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Reflexe_(3)",
-                    "reflex",
-                    "reflexe",
-                ),
-                {256},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Lust_(9)",
-                    "lust",
-                ),
-                {255},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Paradigmen_sind_Absichten_(13)",
-                    "paradigmen",
-                    "absichten",
-                ),
-                {10, 42},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Wirklichkeiten_Wahrheit_Wahrnehmung_(10)",
-                    "wirklichkeit",
-                    "wirklichkeiten",
-                    "wahrheit",
-                    "wahrnehmung",
-                ),
-                {233, 265, 268, 322, 342},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Stimmungen_Kombinationen_(14)",
-                    "stimmung",
-                    "stimmungen",
-                    "kombination",
-                    "kombinationen",
-                ),
-                {290, 296, 325, 326, 327},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Klassen_(20)", "klasse", "klassen"),
-                {241, 289},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Ordnung_und_Filterung_12_und_1pro12",
-                    "ordnen",
-                    "ordnenundfiltern",
-                    "filtern",
-                ),
-                {132, 328, 331, 335},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Meta-Systeme_(12)",
-                    "metasysteme",
-                    "metasystem",
-                    "meta-systeme",
-                    "meta-system",
-                    "menge",
-                    "mengen",
-                ),
-                {232, 288, 334},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Absicht_1/8", "absicht1pro8", "absicht1/8"),
-                {272, 379},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Ziele_(19)", "ziele", "maxima", "höhenvorstellungen"),
-                {271},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Konkreta_und_Focus_(2)", "konkreta", "focus", "fokus"),
-                {250, 269},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Gefühle_(7)", "gefuehle", "emotionen", "gefühle"),
-                {243, 283, 284, 285, 286, 305},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("abhängige_Verbundenheit_(90)", "abhaengigkeit", "abhängigkeit"),
-                {357},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Karte_Filter_und_Unterscheidung_(1/12)",
-                    "karte",
-                    "filter",
-                    "unterscheidung",
-                ),
-                {377},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Fundament_(1/19)", "fundament"),
-                {356},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Gedanken_sind_Positionen_(17)", "positionen", "gedanken"),
-                {249, 317, 323},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Funktionen_Vorstellungen_(16)",
-                    "vorstellungen",
-                    "vorstellung",
-                    "funktionen",
-                ),
-                {345, 264},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Sollen_Frage_Vorgehensweise_(1/13)",
-                    "sollen",
-                    "frage",
-                    "vorgehensweise",
-                ),
-                {353, 354},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Ansichten_Standpunkte_(18_17)", "ansichten"),
-                {240, 346},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Verbundenheiten_(18)", "verbundenheiten"),
-                {252, 299, 300, 336},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Absicht_13_ist_Helfen", "absicht13", "helfen"),
-                {370},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Liebe_(7)", "liebe"),
-                {8, 9, 28, 208, 221, 330},
-                {(121, 122)},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Koalitionen_(10)", "koalitionen"),
-                {321},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                ("Impulse_(5)", "impulse"),
-                {251, 253, 257, 341},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Triebe_und_Bedürfnisse_(6)",
-                    "trieb",
-                    "triebe",
-                    "bedürfnis",
-                    "bedürfnisse",
-                ),
-                {254},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Reflektion_und_Kategorien_(1/15)",
-                    "reflektion",
-                    "kategorien",
-                ),
-                {204, 205, 281},
-            ),
-            (
-                Program.ParametersMain.grundstrukturen,
-                (
-                    "Modus_und_Sein_(8)",
-                    "zustaende",
-                    "zustände",
-                    "modus",
-                    "modi",
-                    "sein",
-                ),
-                {234, 337},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "Motive",
-                    "motive",
-                    "motivation",
-                    "motiv",
-                    "absicht",
-                    "absichten",
-                ),
-                {10, 18, 42, 167, 168, 149, 229, 230},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                ("Gedanken_sind_Positionen_(17)", "positionen", "gedanken"),
-                {249, 276},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                ("Bewusstsein_und_Wahrnehmung", "bewusstsein", "wahrnehmung"),
-                {265, 229, 231, 281, 304, 342},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "Errungenschaften",
-                    "errungenschaften",
-                    "ziele",
-                    "erhalten",
-                ),
-                {11, 257, 251},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "evolutionär_erwerben_und_Intelligenz_Kreativität",
-                    "evolutionärerwerbenundintelligenz",
-                    "intelligenz",
-                    "erwerben",
-                    "erlernen",
-                    "lernen",
-                    "evolutionaer",
-                    "evolutionär",
-                    "kreativität",
-                    "kreativitaet",
-                    "kreativ",
-                ),
-                {12, 47, 27, 13, 32},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "brauchen",
-                    "benoetigen",
-                    "benötigen",
-                    "notwendig",
-                ),
-                {13, 14},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "Krankheit",
-                    "krankheit",
-                    "krankheiten",
-                    "pathologisch",
-                    "pathologie",
-                    "psychiatrisch",
-                ),
-                {24},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "alpha_beta",
-                    "alphabeta",
-                    "alpha",
-                    "beta",
-                    "omega",
-                    "sigma",
-                ),
-                {46},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "Anführer",
-                    "anfuehrer",
-                    "chef",
-                ),
-                {29, 170},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "Manipulation",
-                    "manipulation",
-                ),
-                {153},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "Berufe",
-                    "berufe",
-                    "beruf",
-                ),
-                {30},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                (
-                    "Lösungen",
-                    "lösungen",
-                    "loesungen",
-                    "loesung",
-                    "lösungen",
-                ),
-                {31},
-            ),
-            (Program.ParametersMain.menschliches, ("Musik", "musik"), {33}),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "ergibt_Sinn",
-                    "ergibtsinn",
-                    "machtsinn",
-                    "sinn",
-                ),
-                {140},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "Veränderung",
-                    "veraenderung",
-                    "veraendern",
-                    "veränderung",
-                    "verändern",
-                ),
-                {142},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "bändigen_kontrollieren",
-                    "baendigenkontrollieren",
-                    "kontrollieren",
-                    "baendigen",
-                    "bändigen",
-                ),
-                {143},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "vereinen",
-                    "einheit",
-                ),
-                {144},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "Vorteile",
-                    "vorteile",
-                    "veraenderungnutzen",
-                ),
-                {141},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "Gegenspieler",
-                    "gegenspieler",
-                    "antagonist",
-                ),
-                {137},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                ("nervig",),
-                {120},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "pro_nutzen",
-                    "pronutzen",
-                ),
-                {117},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "Gegenposition",
-                    "gegenposition",
-                ),
-                {116},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "Hilfe_erhalten",
-                    "hilfeerhalten",
-                ),
-                {114},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "Helfen",
-                    "helfen",
-                    "hilfe",
-                ),
-                {115},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "Pro",
-                    "pro",
-                    "dafür",
-                    "dafuer",
-                ),
-                {17, 48},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "nicht_miteinander_auskommen",
-                    "nichtauskommen",
-                ),
-                {123},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "nicht_dagegen",
-                    "nichtdagegen",
-                ),
-                {124},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "kein_Gegenteil",
-                    "keingegenteil",
-                ),
-                {125},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "nicht_dafür",
-                    "nichtdafuer",
-                ),
-                {126},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "Hilfe_nicht_gebrauchen",
-                    "hilfenichtgebrauchen",
-                ),
-                {127},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "nicht_helfen_können",
-                    "nichthelfenkoennen",
-                ),
-                {128},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "nicht_abgeneigt",
-                    "nichtabgeneigt",
-                ),
-                {129},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                ("unmotivierbar",),
-                {130},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "contra",
-                    "dagegen",
-                ),
-                {15, 26},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "Gegenteil",
-                    "gegenteil",
-                ),
-                {100, 101, 222},
-            ),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    "Harmonie",
-                    "harmonie",
-                ),
-                {102, 103},
-            ),
-            (Program.ParametersMain.licht, (), {20, 27, 313}),
-            (
-                Program.ParametersMain.procontra,
-                (
-                    Primzahlkreuz_pro_contra_strs[0],
-                    "primzahlkreuz",
-                ),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                {"primzahlkreuzprocontra"},
-            ),
-            (
-                Program.ParametersMain.bedeutung,
-                (
-                    Primzahlkreuz_pro_contra_strs[0],
-                    "primzahlkreuz",
-                ),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                {"primzahlkreuzprocontra"},
-            ),
-            (
-                Program.ParametersMain.bedeutung,
-                (
-                    "in_ReTa",
-                    "inreta",
-                ),
-                {209, 210},
-            ),
-            (
-                Program.ParametersMain.bedeutung,
-                (
-                    "Vorzeichen",
-                    "vorzeichen",
-                ),
-                {118, 119},
-            ),
-            (
-                Program.ParametersMain.bedeutung,
-                (
-                    "Primzahlen",
-                    "primzahlen",
-                    "vielfache",
-                    "vielfacher",
-                ),
-                {19},
-            ),
-            (
-                Program.ParametersMain.bedeutung,
-                (
-                    "Anwendung_der_Sonnen_und_Monde",
-                    "anwendungdersonnenundmonde",
-                    "anwendungdersonnen",
-                    "anwendungenfuermonde",
-                ),
-                {22},
-            ),
-            (
-                Program.ParametersMain.bedeutung,
-                (
-                    "Zählungen",
-                    "zählungen",
-                    "zaehlung",
-                    "zaehlungen",
-                    "zählung",
-                ),
-                {25, 45, 169, 188},
-            ),
-            (
-                Program.ParametersMain.bedeutung,
-                (
-                    "Jura",
-                    "jura",
-                    "gesetzeslehre",
-                    "recht",
-                ),
-                {34},
-            ),
-            (
-                Program.ParametersMain.bedeutung,
-                (
-                    "Vollkommenheit_des_Geistes",
-                    "vollkommenheit",
-                    "geist",
-                ),
-                {35},
-            ),
-            (
-                Program.ParametersMain.bedeutung,
-                (
-                    "Gestirn",
-                    "gestirn",
-                    "mond",
-                    "sonne",
-                    "planet",
-                ),
-                {64, 154},
-                set(),
-                set(),
-                set(),
-            ),
-            (
-                Program.ParametersMain.bedeutung,
-                ("Konjunktiv_Wurzelbildung", "konjunktiv", "wurzel"),
-                {106},
-            ),
-            (
-                Program.ParametersMain.bedeutung,
-                (
-                    "Mechanismen_der_Züchtung",
-                    "mechanismen",
-                    "wesen",
-                    "zuechtung",
-                    "züchtung",
-                    "züchten",
-                    "zuechten",
-                ),
-                {107, 108, 109},
-            ),
-            (
-                Program.ParametersMain.gebrochengalaxie,
-                set([str(a) for a in range(2, gebrochenSpaltenMaximumPlus1)]),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set([str(a) for a in range(2, gebrochenSpaltenMaximumPlus1)]),
-            ),
-            (
-                Program.ParametersMain.gebrochenuniversum,
-                set([str(a) for a in range(2, gebrochenSpaltenMaximumPlus1)]),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set([str(a) for a in range(2, gebrochenSpaltenMaximumPlus1)]),
-            ),
-            (Program.ParametersMain.symbole, (), {36, 37}),
-            # (
-            #    Program.ParametersMain.Multiplikationen,
-            #    allowedPrimNumbersForCommand,
-            #    set(),
-            #    set(),
-            #    (
-            #        lambda: {  # nur noch ein Platzhalter
-            #            None,
-            #        },
-            #    ),
-            # ),
-            (
-                Program.ParametersMain.konzept,
-                (
-                    "Weisheit_etc",
-                    "weisheit",
-                    "metaweisheit",
-                    "meta-weisheit",
-                    "idiot",
-                    "weise",
-                    "optimal",
-                    "optimum",
-                ),
-                {112},
-                {(40, 41)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                (
-                    "Dein_Recht_bekommen",
-                    "rechte",
-                    "recht",
-                    "selbstgerecht",
-                ),
-                set(),
-                {(291, 292)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                ("unterlegen_überlegen", "unterlegen", "ueberlegen"),
-                set(),
-                {(380, 381)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                ("Ehrlichkeit_und_Streit", "streit", "ehrlichkeit"),
-                set(),
-                {(375, 376)},
-            ),
-            (
-                Program.ParametersMain.konzept2,
-                ("Würdig", "wuerdig", "würdig"),
-                set(),
-                {(373, 374)},
-            ),
-            (
-                Program.ParametersMain.konzept2,
-                ("Regel_vs_Ausnahme", "regel", "ausnahme"),
-                set(),
-                {(371, 372)},
-            ),
-            (
-                Program.ParametersMain.konzept2,
-                (
-                    "Filterart_Widrigkeit",
-                    "filterart",
-                    "widrigkeit",
-                ),
-                {331, 335},
-            ),
-            (
-                Program.ParametersMain.konzept2,
-                (
-                    "Werte",
-                    "werte",
-                ),
-                set(),
-                {(360, 361)},
-            ),
-            (
-                Program.ParametersMain.konzept2,
-                ("Gutartigkeits-Egoismus", "position", "gutesreziprok"),
-                set(),
-                {(362, 363)},
-            ),
-            (
-                Program.ParametersMain.konzept2,
-                ("Reflektieren_Erkenntnis-Erkennen", "reflektieren", "erkenntnis"),
-                set(),
-                {(364, 365)},
-            ),
-            (
-                Program.ParametersMain.konzept2,
-                ("Vertrauen_wollen", "vertrauenwollen"),
-                set(),
-                {(366, 367)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                (
-                    "einklinken_vertrauen_anprangern",
-                    "einklinken",
-                    "vertrauenerhalten",
-                    "anprangern",
-                ),
-                set(),
-                {(368, 369)},
-            ),
-            (
-                Program.ParametersMain.konzept2,
-                (
-                    "Ausrichten_Einrichten",
-                    "einrichten",
-                    "ausrichten",
-                ),
-                set(),
-                {(358, 359)},
-            ),
-            (
-                Program.ParametersMain.konzept2,
-                (
-                    "Toleranz_Respekt_Akzeptanz_Willkommen",
-                    "toleranz",
-                    "respekt",
-                    "akzeptanz",
-                    "willkommen",
-                ),
-                set(),
-                # {(359, 360)},
-                {(62, 63)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                ("familiebrauchen",),
-                set(),
-                {(279, 280)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                ("ego", "bescheiden"),
-                set(),
-                {(277, 278)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                ("Selbstsucht_Ichsucht_etc", "selbstsucht", "ichsucht"),
-                set(),
-                {(274, 275)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                (
-                    "Forschen_Erfinden_Einklinken",
-                    "wissenschaft",
-                    "forschen",
-                    "einklinken",
-                    "erfinden",
-                ),
-                set(),
-                {(258, 259)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                ("Kooperation_vs_Arsch", "arschloch", "kooperation", "arsch"),
-                set(),
-                {(245, 246)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                ("Liebe_usw", "liebe", "zuneigung"),
-                set(),
-                {(247, 248)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                ("Selbstlosigkeit_Ichlosigkeit_etc", "selbstlos", "ichlos"),
-                set(),
-                {(238, 239)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                (
-                    "variationsreich_eintönig",
-                    "eintönig",
-                    "eintoenig",
-                    "variationsreich",
-                ),
-                set(),
-                {(236, 237)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                (
-                    "Zuneigung_Abneigung",
-                    "abgeneigt",
-                    "zugewandt",
-                    "reserviert",
-                    "zugeneigt",
-                ),
-                set(),
-                {(199, 200)},
-            ),
-            (
-                Program.ParametersMain.menschliches,
-                ("ehrlich vs höflich", "ehrlich", "höflich", "hoeflich"),
-                set(),
-                {(224, 225)},
-            ),
-            # (
-            #    Program.ParametersMain.konzept,
-            #    ("delegieren", "ansammlung"),
-            #    set(),
-            #    {(227, 228)},
-            # ),
-            (
-                Program.ParametersMain.konzept,
-                ("ehrlich vs höflich", "ehrlich", "höflich", "hoeflich"),
-                set(),
-                {(224, 225)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                ("Tragweite", "tragweite"),
-                set(),
-                {(211, 212)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                ("wertvoll", "wertlos"),
-                set(),
-                {(186, 187)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                (
-                    "Götter_Propheten_Familien_Freunde",
-                    "familiaer",
-                    "goettlich",
-                    "freunde",
-                    "propheten",
-                ),
-                set(),
-                {(184, 185)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                (
-                    "sanft_vs_hart",
-                    "sanft",
-                    "hart",
-                ),
-                set(),
-                {(159, 160), (161, 162)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                (
-                    "vereinen_vs_verbinden",
-                    "vereinenverbinden",
-                    "vereinen",
-                    "verbinden",
-                    "einheit",
-                    "verbindung",
-                ),
-                set(),
-                {(133, 134)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                (
-                    "ähnlich",
-                    "aehnlich",
-                ),
-                {220},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                (
-                    "gut_böse_lieb_schlecht",
-                    "gut",
-                    "böse",
-                    "boese",
-                    "lieb",
-                    "schlecht",
-                ),
-                {52, 53},
-                {(38, 39)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                ("Sinn_und_Zweck_des_Lebens", "sinn", "zweck", "bedeutung"),
-                {88, 189},
-                {(181, 182)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                (
-                    "Zeit_vs_Raum",
-                    "zeit",
-                    "raum",
-                    "zeitlich",
-                    "räumlich",
-                ),
-                set(),
-                {(49, 50)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                (
-                    "egalitär_vs_autoritär",
-                    "egalitaerautoritaer",
-                    "egalitaer",
-                    "autoritaer",
-                    "egalitär",
-                    "autoritär",
-                ),
-                set(),
-                {(163, 164)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                (
-                    "Meinungen_und_Ruf",
-                    "meinungen",
-                    "anderemenschen",
-                    "ruf",
-                ),
-                set(),
-                {(60, 61)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                ("Meinungsintelligenz", "meinungsintelligenz", "ursprungsintelligenz"),
-                set(),
-                {(151, 152)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                ("Sittlichkeit", "sittlichkeit", "annaehrerung"),
-                set(),
-                {(179, 180)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                ("Führung", "führung", "fuehrung"),
-                set(),
-                {(173, 174)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                ("Durchleuchten", "durchleuchten", "erleuchten"),
-                set(),
-                {(177, 178)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                (
-                    "Fördern_Sensiblisieren_und_Gedeihen",
-                    "foerdern",
-                    "fördern",
-                    "begrenzen",
-                    "sensibilisieren",
-                    "gedeihen",
-                    "verderben",
-                ),
-                set(),
-                {(175, 176)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                (
-                    "Überheblichkeit",
-                    "überheblich",
-                    "ueberheblichkeit",
-                    "ueberheblich",
-                    "überheblichkeit",
-                ),
-                set(),
-                {(171, 172)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                (
-                    "Polung_der_Liebe",
-                    "liebepolung",
-                ),
-                set(),
-                {(121, 122)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                (
-                    "Egoismus_vs_Altruismus",
-                    "egoismus",
-                    "altruismus",
-                    "egoist",
-                    "altruist",
-                ),
-                {136},
-                {(66, 67)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                ("kausal", "geltung", "genese"),
-                set(),
-                {(110, 111)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                ("Gleichheit", "gleich"),
-                set(),
-                {(192, 193)},
-            ),
-            (
-                Program.ParametersMain.konzept,
-                ("Überleben", "ueberleben"),
-                set(),
-                {(194, 195)},
-            ),
-            (Program.ParametersMain.inkrementieren, set(), {43, 54, 74, 95}),
-            (Program.ParametersMain.inkrementieren, ("um1",), {155}),
-            (Program.ParametersMain.inkrementieren, ("um2",), {156}),
-            (Program.ParametersMain.inkrementieren, ("um3",), {157}),
-            (
-                Program.ParametersMain.inkrementieren,
-                (
-                    "warum_Transzendentalie_=_Strukturgroesse_=_Charakter",
-                    "warumtranszendentaliezustrukturgroesseundcharakter",
-                ),
-                {4, 54, 5, 165},
-            ),
-            (
-                Program.ParametersMain.inkrementieren,
-                (
-                    "warum_Transzendentalie_=_Komplexität_von_Michael_Commons",
-                    "warumtranszendentaliegleichkomplexitaet",
-                ),
-                {65, 5, 166},
-            ),
-            (
-                Program.ParametersMain.primvielfache,
-                ("Rahmen-Bedingungen", "rahmen"),
-                {226},
-            ),
-            (
-                Program.ParametersMain.primvielfache,
-                ("Motive_gleichförmige_Polygone", "motivgleichfoermig"),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                {"primMotivGleichf"},
-            ),
-            (
-                Program.ParametersMain.primvielfache,
-                ("Struktur_gleichförmige_Polygone", "strukturgleichfoermig"),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                {"primStrukGleichf"},
-            ),
-            (
-                Program.ParametersMain.primvielfache,
-                ("Motive_Sternpolygone", "motivstern"),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                {"primMotivStern"},
-            ),
-            (
-                Program.ParametersMain.primvielfache,
-                ("Struktur_Sternpolygone", "strukturstern"),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                {"primStrukStern"},
-            ),
-            (
-                Program.ParametersMain.primvielfache,
-                ("Motiv_Sternpolygon_gebrochen-rational", "motivgebrstern"),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                {"primMotivSternGebr"},
-            ),
-            (
-                Program.ParametersMain.primvielfache,
-                ("Struktur_Sternpolyon_gebrochen-rational", "strukgebrstern"),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                {"primStrukSternGebr"},
-            ),
-            (
-                Program.ParametersMain.primvielfache,
-                ("Motiv_gleichförmige_Polygone_gebrochen-rational", "motivgebrgleichf"),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                {"primMotivGleichfGebr"},
-            ),
-            (
-                Program.ParametersMain.primvielfache,
-                (
-                    "Struktur_gleichförmige_Polygone_gebrochen-rational",
-                    "strukgebrgleichf",
-                ),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                {"primStrukGleichfGebr"},
-            ),
-            (
-                Program.ParametersMain.primvielfache,
-                ("beschrieben",),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                set(),
-                {"PrimCSV"},
-            ),
-        ]
+            Tuple[Any, dict[str, str], set[int], Optional[set]]
+        ] = i18n.paraNdataMatrix
         Program.paraNdataMatrix = paraNdataMatrix
 
-        """
-        paraNdataMatrix4onlyGenerated: dict = {
-            "primMotivGleichf": (
-                ("Primzahlvielfache", "primvielfache"),
-                ("Motive_gleichförmige_Polygone", "motivgleichfoermig"),
-            ),
-            "primStrukGleichf": (
-                ("Primzahlvielfache", "primvielfache"),
-                ("Struktur_gleichförmige_Polygone", "strukturgleichfoermig"),
-            ),
-            "primMotivStern": (
-                ("Primzahlvielfache", "primvielfache"),
-                ("Motive_Sternpolygone", "motivstern"),
-            ),
-            "primStrukStern": (
-                ("Primzahlvielfache", "primvielfache"),
-                ("Struktur_Sternpolygone", "strukturstern"),
-            ),
-            "primStrukGebrRat": (
-                ("Primzahlvielfache", "primvielfache"),
-                ("Struktur_gebrochen-rational", "strukturgebrochenrational"),
-            ),
-            "PrimCSV": (("Primzahlvielfache", "primvielfache"), ("beschrieben",)),
-        }
-        """
+        Program.kombiParaNdataMatrix: OrderedDict[
+            int, tuple[str]
+        ] = i18n.kombiParaNdataMatrix
 
-        Program.kombiParaNdataMatrix: OrderedDict[int, tuple[str]] = OrderedDict(
-            {
-                1: (
-                    "Lebewesen",
-                    "tiere",
-                    "tier",
-                    "lebewesen",
-                ),
-                2: ("Berufe", "berufe", "beruf"),
-                3: (
-                    "Kreativität_und_Intelligenz",
-                    "kreativität",
-                    "intelligenz",
-                    "kreativitaet",
-                ),
-                4: (
-                    "Liebe",
-                    "liebe",
-                ),
-                7: (
-                    "Männer",
-                    "männer",
-                    "maenner",
-                    "frauen",
-                ),
-                8: (
-                    "Persönlichkeit_evolutionär_erwerben",
-                    "evolution",
-                    "erwerben",
-                    "persoenlichkeit",
-                    "persönlichkeit",
-                ),
-                9: (
-                    "Religion",
-                    "religion",
-                    "religionen",
-                ),
-                10: ("Motive_Ziele", "motivation", "motive", "ziele", "ziel", "motive"),
-                12: (
-                    "Emotionen",
-                    "emotionen",
-                    "gefuehle",
-                    "gefühle",
-                    "emotion",
-                    "gefühl",
-                    "gefühle",
-                ),
-                13: ("Personen", "personen", "berühmtheiten", "beruehmtheiten"),
-                16: (
-                    "Wirtschaftssysteme",
-                    "wirtschaftssystem",
-                    "wirtschaftssysteme",
-                    "kombinierteswirtschaftssystem",
-                    "kombiniertewirtschaftssysteme",
-                ),
-            }
-        )
-
-        Program.kombiParaNdataMatrix2: OrderedDict[int, tuple[str]] = OrderedDict(
-            {
-                1: (
-                    "Lebewesen",
-                    "tiere",
-                    "tier",
-                    "lebewesen",
-                ),
-                2: ("Berufe", "berufe", "beruf"),
-                # 3: (
-                #    "Kreativität_und_Intelligenz",
-                #    "kreativität",
-                #    "intelligenz",
-                #    "kreativitaet",
-                # ),
-                # 4: (
-                #    "Liebe",
-                #    "liebe",
-                # ),
-                5: (
-                    "Transzendentalien_Strukturalien",
-                    "transzendenz",
-                    "transzendentalien",
-                    "strukturalien",
-                    "alien",
-                ),
-                6: ("Primzahlkreuz", "leibnitz", "primzahlkreuz"),
-                # 7: (
-                #    "Männer",
-                #    "männer",
-                #    "maenner",
-                #    "frauen",
-                # ),
-                8: (
-                    "Persönlichkeit_evolutionär_erwerben",
-                    "evolution",
-                    "erwerben",
-                    "persoenlichkeit",
-                    "persönlichkeit",
-                ),
-                # 9: (
-                #    "Religion",
-                #    "religion",
-                #    "religionen",
-                # ),
-                10: ("Motive_Ziele", "motivation", "motive", "ziele", "ziel", "motive"),
-                11: ("analytische_Ontologie", "analytischeontologie", "ontologie"),
-                # 12: (
-                #    "Emotionen",
-                #    "emotionen",
-                #    "gefuehle",
-                #    "gefühle",
-                #    "emotion",
-                #    "gefühl",
-                #    "gefühle",
-                # ),
-                # 13: ("Personen", "personen", "berühmtheiten", "beruehmtheiten"),
-                14: (
-                    "Mechanismen_der_Zuechtung",
-                    "mechanismen",
-                    "wesen",
-                    "zuechten",
-                    "züchten",
-                ),
-                15: (
-                    "Gegentranszendentalien",
-                    "gegentranszendentalien",
-                    "gegenstrukturalien",
-                ),
-                # 16: (
-                #    "Wirtschaftssysteme",
-                #    "wirtschaftssystem",
-                #    "wirtschaftssysteme",
-                #    "kombinierteswirtschaftssystem",
-                #    "kombiniertewirtschaftssysteme",
-                # ),
-                17: ("Maschinen", "maschinen", "geräte", "geraete"),
-                18: ("Geist", "geist"),
-                19: ("Bewusstsein", "bewusstsein"),
-            }
-        )
-
+        Program.kombiParaNdataMatrix2: OrderedDict[
+            int, tuple[str]
+        ] = i18n.kombiParaNdataMatrix2
         self.kombiReverseDict: dict = {}
         for key, value in Program.kombiParaNdataMatrix.items():
             for valuesInValuess in value:
@@ -3485,7 +715,7 @@ class Program:
         """
         global infoLog, shellRowsAmount  # , puniverseprims
         if len(argv) == 1 and neg == "":
-            cliout("Versuche Parameter -h")
+            cliout(i18nR.cliout8SatzVersucheParaH)
         spaltenreihenfolgeundnurdiese: tuple = ()
         puniverseprims_only: set = OrderedSet()
         rowsAsNumbers: set = set()
@@ -3493,84 +723,120 @@ class Program:
         self.bigParamaeter: list = []
         self.__willBeOverwritten_rowsOfcombi: set = OrderedSet()
         generRows = OrderedSet()
-        # for arg in argv[1:]:
-        #    elif (
-        #                arg[2 : 2 + len("spaltenreihenfolgeundnurdiese=")]
-        #                == "spaltenreihenfolgeundnurdiese="
-        #    ):
         for arg in argv[1:]:
             if len(arg) > 0 and arg[0] == "-":
                 if (
                     len(arg) > 1
                     and arg[1] == "-"
                     and len(self.bigParamaeter) > 0
-                    and self.bigParamaeter[-1] == "zeilen"
+                    and self.bigParamaeter[-1] == i18n.mainParaCmds["zeilen"]
                 ):
-                    if arg[2:7] == "alles" and len(neg) == 0:
+                    if (
+                        arg[2 : i18n.zeilenParasLen["alles"] + 2]
+                        == i18n.zeilenParas["alles"]
+                        and len(neg) == 0
+                    ):
                         paramLines.add("all")
                         self.obZeilenBereicheAngegeben = True
-                    if arg[2:7] == "alles" and len(neg) != 0:
+                    if (
+                        arg[2 : i18n.zeilenParasLenPlus2["alles"]]
+                        == i18n.zeilenParas["alles"]
+                        and len(neg) != 0
+                    ):
                         pass
-                    elif arg[2:7] == "zeit=":
+                    elif (
+                        arg[2 : i18n.zeilenParas["zeit"] + 3]
+                        == i18n.zeilenParas["zeit"] + "="
+                    ):
                         self.obZeilenBereicheAngegeben = True
-                        for subpara in arg[7:].split(","):
-                            if neg + "heute" == subpara:
+                        for subpara in arg[3 + i18n.zeilenParasLen["zeit"] :].split(
+                            ","
+                        ):
+                            if neg + i18n.zeilenParas["heute"] == subpara:
                                 paramLines.add("=")
-                            elif neg + "gestern" == subpara:
+                            elif neg + i18n.zeilenParas["gestern"] == subpara:
                                 paramLines.add("<")
-                            elif neg + "morgen" == subpara:
+                            elif neg + i18n.zeilenParas["morgen"] == subpara:
                                 paramLines.add(">")
-                    elif arg[2:11] == "zaehlung=":
+                    elif (
+                        arg[2 : 3 + i18n.zeilenParasLen["zaehlung"]]
+                        == i18n.zeilenParas["zaehlung"] + "="
+                    ):
                         self.obZeilenBereicheAngegeben = True
                         if neg == "":
                             paramLines |= (
                                 self.tables.getPrepare.parametersCmdWithSomeBereich(
-                                    arg[11:], "n", "", True
+                                    arg[3 + i18n.zeilenParasLen["zaehlung"] :],
+                                    "n",
+                                    "",
+                                    True,
                                 )
                             )
-                            x("paraLi", paramLines)
-                    elif arg[2:15] == "hoehemaximal=":
-                        if arg[15:].isdecimal():
+                    elif (
+                        arg[2 : 3 + i18n.zeilenParasLen["hoehemaximal"]]
+                        == i18n.zeilenParas["hoehemaximal"] + "="
+                    ):
+                        if arg[3 + i18n.zeilenParasLen["hoehemaximal"] :].isdecimal():
                             self.tables.textHeight = abs(int(arg[15:]))
-                    elif arg[2:6] == "typ=":
+                    elif (
+                        arg[2 : 3 + i18n.zeilenParasLen["typ"]]
+                        == i18n.zeilenParas["typ"] + "="
+                    ):
                         self.obZeilenBereicheAngegeben = True
-                        for word in arg[6:].split(","):
-                            if word == neg + "sonne":
-                                paramLines.add("sonne")
-                            elif word == neg + "schwarzesonne":
-                                paramLines.add("schwarzesonne")
-                            elif word == neg + "planet":
-                                paramLines.add("planet")
-                            elif word == neg + "mond":
-                                paramLines.add("mond")
-                    elif arg[2 : 2 + len("potenzenvonzahlen=")] == "potenzenvonzahlen=":
+                        for word in arg[3 + i18n.zeilenParasLen["typ"] :].split(","):
+                            if word == neg + i18n.zeilenParasLen["sonne"]:
+                                paramLines.add(i18n.zeilenParasLen["sonne"])
+                            elif word == neg + i18n.zeilenParasLen["schwarzesonne"]:
+                                paramLines.add(i18n.zeilenParasLen["schwarzesonne"])
+                            elif word == neg + i18n.zeilenParasLen["planet"]:
+                                paramLines.add(i18n.zeilenParasLen["planet"])
+                            elif word == neg + i18n.zeilenParasLen["mond"]:
+                                paramLines.add(i18n.zeilenParasLen["mond"])
+                    elif (
+                        arg[2 : 3 + i18n.zeilenParasLen["potenzenvonzahlen"]]
+                        == i18n.zeilenParas["potenzenvonzahlen"] + "="
+                    ):
                         self.obZeilenBereicheAngegeben = True
                         if neg == "" or True:
-                            angabe = arg[2 + len("potenzenvonzahlen=") :]
+                            angabe = arg[3 + i18n.zeilenParasLen["potenzenvonzahlen"] :]
                             paramLines |= (
                                 self.tables.getPrepare.parametersCmdWithSomeBereich(
                                     angabe, "^", neg, keineNegBeruecksichtigung=False
                                 )
                             )
-                    elif arg[2:21] == "vielfachevonzahlen=":
+                    elif (
+                        arg[2 : 3 + i18n.zeilenParasLen["vielfachevonzahlen"]]
+                        == i18n.zeilenParas["vielfachevonzahlen"] + "="
+                    ):
                         self.obZeilenBereicheAngegeben = True
                         if neg == "":
                             paramLines |= (
                                 self.tables.getPrepare.parametersCmdWithSomeBereich(
-                                    arg[21:], "b", neg, keineNegBeruecksichtigung=True
+                                    arg[
+                                        3 + i18n.zeilenParasLen["vielfachevonzahlen"] :
+                                    ],
+                                    "b",
+                                    neg,
+                                    keineNegBeruecksichtigung=True,
                                 )
                             )
-                    elif arg[2:20] == "primzahlvielfache=":
+                    elif (
+                        arg[2 : 3 + i18n.zeilenParasLen["primvielfache"]]
+                        == i18n.zeilenParas["primzahlvielfache"] + "="
+                    ):
                         self.obZeilenBereicheAngegeben = True
                         if neg == "":
                             zahlenMenge = BereichToNumbers2(
-                                arg[2 + len("primzahlvielfache=") :]
+                                arg[3 + i18n.zeilenParasLen["primvielfache"] :]
                             )
                             for zahl in zahlenMenge:
                                 paramLines.add(str(zahl) + "p")
                     elif self.oberesMaximum(arg):
                         pass
-                    elif arg[2:27] == "vorhervonausschnittteiler":
+                    elif (
+                        arg[2 : 2 + i18n.zeilenParasLen["vorhervonausschnittteiler"]]
+                        == i18n.zeilenParas["vorhervonausschnittteiler"]
+                    ):
                         self.obZeilenBereicheAngegeben = True
                         if neg == "":
                             paramLines |= (
@@ -3578,110 +844,178 @@ class Program:
                                     "1", "w", neg, keineNegBeruecksichtigung=True
                                 )
                             )
-                    elif arg[2:22] == "vorhervonausschnitt=":
+                    elif (
+                        arg[2 : 3 + i18n.zeilenParasLen["vorhervonausschnitt"]]
+                        == i18n.zeilenParas["vorhervonausschnitt"] + "="
+                    ):
                         self.obZeilenBereicheAngegeben = True
                         if neg == "":
                             paramLines |= (
                                 self.tables.getPrepare.parametersCmdWithSomeBereich(
-                                    arg[22:], "a", neg, keineNegBeruecksichtigung=True
+                                    arg[
+                                        3 + i18n.zeilenParasLen["vorhervonausschnitt"] :
+                                    ],
+                                    "a",
+                                    neg,
+                                    keineNegBeruecksichtigung=True,
                                 )
                             )
-                    elif arg[2:38] == "nachtraeglichneuabzaehlungvielfache=":
+                    elif (
+                        arg[
+                            2 : 3
+                            + i18n.zeilenParasLen["nachtraeglichneuabzaehlungvielfache"]
+                        ]
+                        == i18n.zeilenParas["nachtraeglichneuabzaehlungvielfache"] + "="
+                    ):
                         self.obZeilenBereicheAngegeben = True
                         paramLines |= (
                             self.tables.getPrepare.parametersCmdWithSomeBereich(
-                                arg[38:], "y", neg
+                                arg[
+                                    3
+                                    + i18n.zeilenParasLen[
+                                        "nachtraeglichneuabzaehlungvielfache"
+                                    ] :
+                                ],
+                                "y",
+                                neg,
                             )
                         )
-                    elif arg[2:29] == "nachtraeglichneuabzaehlung=":
+                    elif (
+                        arg[2 : 3 + i18n.zeilenParasLen["nachtraeglichneuabzaehlung"]]
+                        == i18n.zeilenParas["nachtraeglichneuabzaehlung"] + "="
+                    ):
                         self.obZeilenBereicheAngegeben = True
                         paramLines |= (
                             self.tables.getPrepare.parametersCmdWithSomeBereich(
-                                arg[29:], "z", neg
+                                arg[
+                                    3
+                                    + i18n.zeilenParasLen[
+                                        "nachtraeglichneuabzaehlung"
+                                    ] :
+                                ],
+                                "z",
+                                neg,
                             )
                         )
                     elif len(neg) > 0:
                         from LibRetaPrompt import zeilenParas
 
                         cliout(
-                            'Den Neben-Parameter "'
+                            i18nR.cliout9Saetze[0]
                             + arg
-                            + '" gibt es hier nicht für den Hauptparameter "-'
+                            + i18nR.cliout9Saetze[1]
                             + self.bigParamaeter[-1]
-                            + '".'
-                            + " Möglich sind: "
+                            + i18nR.cliout9Saetze[2]
+                            + i18nR.cliout9Saetze[3]
                             + ", ".join(zeilenParas)
                         )
                 elif (
                     len(arg) > 1
                     and arg[1] == "-"
                     and len(self.bigParamaeter) > 0
-                    and self.bigParamaeter[-1] == "ausgabe"
+                    and self.bigParamaeter[-1] == i18n.mainParaCmds["ausgabe"]
                 ):  # unteres Kommando
                     # print(arg[2:])
                     if self.breiteBreitenSysArgvPara(arg[2:], neg):
                         pass
                     elif (
-                        arg[2 : 2 + len("keineueberschriften")] == "keineueberschriften"
+                        arg[2 : 2 + i18n.ausgabeParasLen["keineueberschriften"]]
+                        == i18n.ausgabeParas["keineueberschriften"]
                     ):
                         self.tables.keineUeberschriften = True
-                    elif arg[2 : 2 + len("keinenummerierung")] == "keinenummerierung":
+                    elif (
+                        arg[2 : 2 + i18n.ausgabeParasLen["keinenummerierung"]]
+                        == i18n.ausgabeParas["keinenummerierung"]
+                    ):
                         self.tables.nummeriere = False
-                    elif arg[2 : 2 + len("keineleereninhalte")] == "keineleereninhalte":
+                    elif (
+                        arg[2 : 2 + i18n.ausgabeParasLen["keineleereninhalte"]]
+                        == i18n.ausgabeParas["keineleereninhalte"]
+                    ):
                         self.keineleereninhalte = True
                         self.tables.keineleereninhalte = True
                     elif (
-                        arg[2 : 2 + len("spaltenreihenfolgeundnurdiese=")]
-                        == "spaltenreihenfolgeundnurdiese="
+                        arg[
+                            2 : 3
+                            + i18n.ausgabeParasLen["spaltenreihenfolgeundnurdiese"]
+                        ]
+                        == i18n.ausgabeParas["spaltenreihenfolgeundnurdiese"] + "="
                     ):
                         spaltenreihenfolgeundnurdiese = tuple(
                             BereichToNumbers2(
-                                arg[2 + len("spaltenreihenfolgeundnurdiese=") :]
+                                arg[
+                                    3
+                                    + i18n.ausgabeParasLen[
+                                        "spaltenreihenfolgeundnurdiese"
+                                    ] :
+                                ]
                             )
                         )
-                    elif arg[2:6] == "art=":
+                    elif (
+                        arg[2 : i18n.ausgabeParasLen["art"] + 3]
+                        == i18n.ausgabeParas["art"] + "="
+                    ):
+                        breiteIstNull = "".join("--", i18n.ausgabeParas["breite"], "=0")
                         outputtype = arg[(arg.find("=") + 1) :]
-                        if outputtype == "shell":
+                        if outputtype == i18n.ausgabeArt["shell"]:
                             self.tables.outType = OutputSyntax()
-                        elif outputtype == "csv":
+                        elif outputtype == i18n.ausgabeArt["csv"]:
                             self.tables.outType = csvSyntax()
                             self.tables.getOut.oneTable = True
-                            self.breiteBreitenSysArgvPara("breite=0", "")
-                        elif outputtype == "bbcode":
+                            self.breiteBreitenSysArgvPara(breiteIstNull, "")
+                        elif outputtype == i18n.ausgabeArt["bbcode"]:
                             self.htmlOrBBcode = True
                             self.tables.outType = bbCodeSyntax()
-                        elif outputtype == "html":
+                        elif outputtype == i18n.ausgabeArt["html"]:
                             self.tables.outType = htmlSyntax()
                             self.htmlOrBBcode = True
-                        elif outputtype == "emacs":
+                        elif outputtype == i18n.ausgabeArt["emacs"]:
                             self.tables.getOut.oneTable = True
                             self.tables.outType = emacsSyntax()
-                            self.breiteBreitenSysArgvPara("breite=0", "")
-                        elif outputtype == "markdown":
+                            self.breiteBreitenSysArgvPara(breiteIstNull, "")
+                        elif outputtype == i18n.ausgabeArt["markdown"]:
                             self.tables.outType = markdownSyntax()
                             self.tables.getOut.oneTable = True
-                            self.breiteBreitenSysArgvPara("breite=0", "")
-                    elif arg[2:] in ["nocolor", "justtext"] and neg == "":
+                            self.breiteBreitenSysArgvPara(breiteIstNull, "")
+                    elif (
+                        arg[2:]
+                        in [i18n.ausgabeArt["nocolor"], i18n.ausgabeArt["justtext"]]
+                        and neg == ""
+                    ):
                         self.tables.getOut.color = False
                     elif (
-                        arg[2:] in ["endlessscreen", "endless", "dontwrap", "onetable"]
+                        arg[2:]
+                        in [
+                            i18n.ausgabeArt["endlessscreen"],
+                            i18n.ausgabeArt["endless"],
+                            i18n.ausgabeArt["dontwrap"],
+                            i18n.ausgabeArt["onetable"],
+                        ]
                         and neg == ""
                     ):
                         self.tables.getOut.oneTable = True
                     elif len(neg) == 0:
                         cliout(
-                            'Den Neben-Parameter "'
+                            i18nR.cliout10Saetze[0]
                             + arg
-                            + '" gibt es hier nicht für den Hauptparameter "-'
+                            + i18nR.cliout10Saetze[1]
                             + self.bigParamaeter[-1]
-                            + '".'
+                            + i18nR.cliout10Saetze[2]
                         )
                 else:  # oberes Kommando
-                    if arg[1:] in ["zeilen", "spalten", "kombination", "ausgabe"]:
+                    if arg[1:] in [
+                        i18n.hauptForNeben["zeilen"],
+                        i18n.hauptForNeben["spalten"],
+                        i18n.hauptForNeben["kombination"],
+                        i18n.hauptForNeben["ausgabe"],
+                    ]:
                         self.bigParamaeter += [arg[1:]]
-                    elif arg[1:] in ["debug"]:
+                    elif arg[1:] in [i18n.hauptForNeben["debug"]]:
                         infoLog = True
-                    elif arg[1:] in ["h", "help"] and neg == "":
+                    elif (
+                        arg[1:] in [i18n.hauptForNeben["h"], i18n.hauptForNeben["help"]]
+                        and neg == ""
+                    ):
                         self.helpPage()
 
         if not self.tables.getOut.oneTable:
@@ -3732,14 +1066,24 @@ class Program:
             # self.relitable = np.chararray((len(self.relitable) + 1, self.tables.hoechsteZeile[1024] + 3), itemsize=5000, unicode = True)
             for i, col in enumerate(csv.reader(csv_file, delimiter=";")):
 
-                if "--art=bbcode" in self.argv:
+                if (
+                    "".join(
+                        ("--", i18n.ausgabeParas["art"], "=", i18n.ausgabeArt["bbcode"])
+                    )
+                    in self.argv
+                ):
                     col = [
                         json.loads(ccc[1:-1])["bbcode"]
                         if ccc[:2] == "|{" and ccc[-2:] == "}|"
                         else ccc
                         for ccc in col
                     ]
-                elif "--art=html" in self.argv:
+                elif (
+                    "".join(
+                        ("--", i18n.ausgabeParas["art"], "=", i18n.ausgabeArt["html"])
+                    )
+                    in self.argv
+                ) in self.argv:
                     col = [
                         json.loads(ccc[1:-1])["html"]
                         if ccc[:2] == "|{" and ccc[-2:] == "}|"
@@ -3753,25 +1097,13 @@ class Program:
                         else ccc
                         for ccc in col
                     ]
-                # try:
-                #    maxi = { u : max(len(c_),maxi[u]) for u,c_ in enumerate(col)}
-                # except:
-                #    maxi = { u : len(c_) for u,c_ in enumerate(col)}
                 self.relitable += [col]
-                # self.relitable[i] = np.array(col, dtype=str)
                 if i == 0:
                     self.RowsLen = len(col)
-
-            # avg = maxi.values()
-            # avg = sum(avg) / len(avg)
-            # x("maxI",avg)
             for egal in range(
                 len(self.relitable) + 1, self.tables.hoechsteZeile[1024] + 2
             ):
                 self.relitable += [[""] * len(self.relitable[0])]
-
-        # x("tabneu", tabneu)
-
         self.htmlOrBBcode = False
         self.breiteORbreiten = False
         self.keineleereninhalte = False
