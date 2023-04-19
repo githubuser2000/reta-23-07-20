@@ -8,6 +8,8 @@ import re
 import sys
 from collections import OrderedDict
 
+import i18n.words as i18n
+
 try:
     from collections import Callable
 except ImportError:
@@ -26,10 +28,12 @@ from rich.console import Console
 from rich.markdown import Markdown
 from rich.syntax import Syntax
 
-Primzahlkreuz_pro_contra_strs = (
-    "Primzahlkreuz_pro_contra",
-    "nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)",
-)
+Primzahlkreuz_pro_contra_strs = i18n.Primzahlkreuz_pro_contra_strs_Dict[
+    (
+        "Primzahlkreuz_pro_contra",
+        "nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)",
+    )
+]
 # try:
 #    from numba import jit
 # except:
@@ -48,10 +52,10 @@ output = True
 pp = pprint.PrettyPrinter(indent=4)
 
 for arg in sys.argv:
-    if arg == "-debug":
+    if arg == "-" + i18n.mainParaCmds["debug"]:
         infoLog = True
 
-Multiplikationen = [("Multiplikationen", "")]
+Multiplikationen = i18n.Multiplikationen
 shellRowsAmount: int
 
 
@@ -121,8 +125,10 @@ def getTextWrapThings(maxLen=None) -> tuple:
     global shellRowsAmount
     if "Brython" not in sys.version.split():
         import html2text
+
         try:
             import pyphen
+
             dic = pyphen.Pyphen(
                 lang="de_DE"
             )  # Bibliothek für Worteilumbruch bei Zeilenumbruch
@@ -601,17 +607,7 @@ def primRepeat(n):
     return f
 
 
-def classify(mod):
-    if mod == 0:
-        return "ja"
-    elif mod == 1:
-        return "Gegenteil"
-    elif mod == 2:
-        return "ähnlich"
-    elif mod == 3:
-        return "entferntes Gegenteil"
-    elif mod == 4:
-        return "entfernt ähnlich"
+classify = i18n.classify
 
 
 def moduloA(zahlen):

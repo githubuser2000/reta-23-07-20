@@ -41,13 +41,18 @@ Primzahlkreuz_pro_contra_strs_Fkt: tuple[str, str] = (
     _("nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)"),
 )
 
-gebrochenSpaltenMaximumPlus1: int = 21  # Das ist nicht die Spaltenbreite, sondern wie weit gebrochene Zahlen gehen dürfen bei Zähler und Nenner
-spalten: dict[str, str] = {}
-spalten |= {
-    "breite": _("breite"),
-    "breiten": _("breiten"),
-    "keinenummerierung": _("keinenummerierung"),
+Primzahlkreuz_pro_contra_strs_Dict: dict[tuple, tuple] = {
+    Primzahlkreuz_pro_contra_strs: Primzahlkreuz_pro_contra_strs_Fkt,
 }
+gebrochenSpaltenMaximumPlus1: int = 21  # Das ist nicht die Spaltenbreite, sondern wie weit gebrochene Zahlen gehen dürfen bei Zähler und Nenner
+
+# DOPPELT
+# spalten: dict[str, str] = {}
+# spalten |= {
+#    "breite": _("breite"),
+#    "breiten": _("breiten"),
+#    "keinenummerierung": _("keinenummerierung"),
+# }
 
 zeilenTypen: dict[str, str] = {
     "sonne": _("sonne"),
@@ -3501,6 +3506,20 @@ kombiParaNdataMatrix2: OrderedDict[int, tuple[str]] = OrderedDict(
 )
 
 
+@classmethod
+def classify(cls, mod):
+    if mod == 0:
+        return _("ja")
+    elif mod == 1:
+        return _("Gegenteil")
+    elif mod == 2:
+        return _("ähnlich")
+    elif mod == 3:
+        return _("entferntes Gegenteil")
+    elif mod == 4:
+        return _("entfernt ähnlich")
+
+
 class tableHandling:
     parameterName: dict[str, str] = {"kombination": _("kombination")}
     art = ausgabeArt
@@ -3790,33 +3809,9 @@ class lib4tables:
     alles = {"alles": _("alles")}
 
 
-class center:
-    @classmethod
-    def classify(cls, mod):
-        if mod == 0:
-            return _("ja")
-        elif mod == 1:
-            return _("Gegenteil")
-        elif mod == 2:
-            return _("ähnlich")
-        elif mod == 3:
-            return _("entferntes Gegenteil")
-        elif mod == 4:
-            return _("entfernt ähnlich")
-
-
 class retapy:
 
     beschriebenWort = _("beschrieben")
-    mainParaCmds: dict = {
-        _("zeilen"): 0,
-        _("spalten"): 1,
-        tableHandling.parameterName["kombination"]: 2,
-        _("ausgabe"): 3,
-        _("debug"): None,
-        _("h"): None,
-        _("help"): None,
-    }
     nichtsWort = _("nichts")
     cliout1Saetze = (
         _('Der Haupt-Parameter "'),
@@ -3838,7 +3833,7 @@ class retapy:
         " -" + hauptForNeben["spalten"],
         _(" !"),
         _(" Es ist nur möglich:\n--"),
-        "".join((", --", spalten["breiten"], " --", spalten["breite"])),
+        "".join((", --", ausgabeParas["breiten"], " --", ausgabeParas["breite"])),
         _("\nmit dem Werten dahinter:\n"),
     )
     cliout4Saetze = (
@@ -3849,10 +3844,8 @@ class retapy:
             ", oder dieser Parameter braucht Werte analog wie: \n--unterParameter=Wert1\n"
         ),
         _("Es ist nur möglich: --"),
-        ", --" + spalten["keinenummerierung"],
+        ", --" + ausgabeParas["keinenummerierung"],
     )
-    galaxieParameter = _("galaxie")
-    universumParameter = _("universum")
     kombinationenWort = _("kombinationen")
     cliout5Saetze = (
         _('Die Kombispalte "'),
@@ -3865,7 +3858,7 @@ class retapy:
                 kombiMainParas["galaxie"],
                 '=" oder "--',
                 kombiMainParas["galaxie"],
-                '=" angegeben für Hauptparameter -kombination',
+                '=" angegeben für Hauptparameter -' + hauptForNeben["kombination"],
             )
         )
     )
@@ -3910,8 +3903,8 @@ class retapy:
 
 
 class nested:
-    galWort = retapy.galaxieParameter
-    uniWort = retapy.universumParameter
+    galWort = kombiMainParas["galaxie"]
+    uniWort = kombiMainParas["universum"]
     artWort = ausgabeParas["art"]
     zeitWort = zeilenParas["zeit"]
     typWort = zeilenParas["typ"]
@@ -3989,3 +3982,16 @@ class retaPrompt:
     reziInfoText = _(
         'Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\nDas ist eine Design-Entscheidung, die getroffen worden ist.'
     )
+
+
+mainParaCmds: dict = {
+    "zeilen": _("zeilen"),
+    "spalten": _("spalten"),
+    tuple(tableHandling.parameterName.keys())[0]: tuple(
+        tableHandling.parameterName.values()
+    )[0],
+    "ausgabe": _("ausgabe"),
+    "debug": _("debug"),
+    "h": _("h"),
+    "help": _("help"),
+}
