@@ -437,7 +437,7 @@ ParametersMain: NamedTuple = ParametersMain(
         _("strukturkleinerzehn"),
     ),
     (_("Grundstrukturen"), _("grundstrukturen")),
-    (_("alles")),
+    (_("alles"),),
 )
 
 
