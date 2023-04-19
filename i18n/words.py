@@ -44,9 +44,9 @@ Primzahlkreuz_pro_contra_strs_Fkt: tuple[str, str] = (
 gebrochenSpaltenMaximumPlus1: int = 21  # Das ist nicht die Spaltenbreite, sondern wie weit gebrochene Zahlen gehen dürfen bei Zähler und Nenner
 spalten: dict[str, str] = {}
 spalten |= {
-    "--breite=": _("--breite="),
-    "--breiten=": _("--breiten="),
-    "--keinenummerierung": _("--keinenummerierung"),
+    "breite": _("breite"),
+    "breiten": _("breiten"),
+    "keinenummerierung": _("keinenummerierung"),
 }
 
 zeilenTypen: dict[str, str] = {
@@ -77,34 +77,33 @@ ausgabeParas: dict[str, str] = {
     "keineueberschriften": _("keineueberschriften"),
 }
 kombiMainParas: dict[str, str] = {
-    "--galaxie=": _("--galaxie="),
-    "--universum=": _("--universum="),
+    "galaxie": _("galaxie"),
+    "universum": _("universum"),
 }
 zeilenParas: dict[str, str] = {
-    "--zeit=": _("--zeit="),
-    "--zaehlung=": _("--zaehlung="),
-    "--vorhervonausschnitt=": _("--vorhervonausschnitt="),
-    "--vorhervonausschnittteiler": _("--vorhervonausschnittteiler"),
-    "--primzahlvielfache=": _("--primzahlvielfache="),
-    "--nachtraeglichneuabzaehlung=": _("--nachtraeglichneuabzaehlung="),
-    "--nachtraeglichneuabzaehlungvielfache=": _(
-        "--nachtraeglichneuabzaehlungvielfache="
-    ),
-    "--alles": _("--alles"),
-    "--potenzenvonzahlen=": _("--potenzenvonzahlen="),
-    "--typ=": _("--typ="),
-    "--vielfachevonzahlen=": _("--vielfachevonzahlen="),
-    "--oberesmaximum=": _("--oberesmaximum="),
+    "zeit": _("zeit"),
+    "zaehlung": _("zaehlung"),
+    "vorhervonausschnitt": _("vorhervonausschnitt"),
+    "vorhervonausschnittteiler": _("vorhervonausschnittteiler"),
+    "primzahlvielfache": _("primzahlvielfache"),
+    "nachtraeglichneuabzaehlung": _("nachtraeglichneuabzaehlung"),
+    "nachtraeglichneuabzaehlungvielfache": _("nachtraeglichneuabzaehlungvielfache"),
+    "alles": _("alles"),
+    "potenzenvonzahlen": _("potenzenvonzahlen"),
+    "typ": _("typ"),
+    "vielfachevonzahlen": _("vielfachevonzahlen"),
+    "oberesmaximum": _("oberesmaximum"),
 }
 
 hauptForNeben: dict[str, str] = {
-    "-zeilen": _("-zeilen"),
-    "-spalten": _("-spalten"),
-    "-kombination": _("-kombination"),
-    "-ausgabe": _("-ausgabe"),
-    "-h": _("-h"),
-    "-help": _("-help"),
+    "zeilen": _("zeilen"),
+    "spalten": _("spalten"),
+    "kombination": _("kombination"),
+    "ausgabe": _("ausgabe"),
+    "h": _("h"),
+    "help": _("help"),
 }
+
 
 ausgabeArt: dict[str, str] = {
     "bbcode": _("bbcode"),
@@ -311,6 +310,7 @@ befehle: dict[str, str] = {"15" + a: "15" + a for a in wahl15.keys()} | {
     "l": _("l"),
     "BefehlSpeicherungAusgeben": _("BefehlSpeicherungAusgeben"),
     "o": _("o"),
+    "e": _("e"),
     # "BefehlsSpeicherungsModusAus": _("BefehlsSpeicherungsModusAus"),
     # "x": _("x"),
     "BefehlSpeichernDavor": _("BefehlSpeichernDavor"),
@@ -3503,7 +3503,7 @@ kombiParaNdataMatrix2: OrderedDict[int, tuple[str]] = OrderedDict(
 
 class tableHandling:
     parameterName: dict[str, str] = {"kombination": _("kombination")}
-    art = {"bbcode": _("bbcode"), "html": _("html"), "markdown": _("markdown")}
+    art = ausgabeArt
     into = {
         "Kombination_(Galaxie_und_schwarzes_Loch)_(14_mit_13)": _(
             "Kombination_(Galaxie_und_schwarzes_Loch)_(14_mit_13)"
@@ -3518,7 +3518,7 @@ class tableHandling:
             "Kombination_(Universum_und_Galaxie)_(14_mit_15)"
         ),
     }
-    gestirn = {
+    gestirnGrossschrift = {
         "Gestirn": _("Gestirn"),
         "Mond": _("Mond"),
         "Sonne": _("Sonne"),
@@ -3528,34 +3528,56 @@ class tableHandling:
 
 class concat:
     polygon1 = {" der eigenen Strukturgröße (": _(" der eigenen Strukturgröße (")}
-    polygon2 = {") auf dich bei gleichförmigen Polygonen": _(") auf dich bei gleichförmigen Polygonen")}
+    polygon2 = {
+        ") auf dich bei gleichförmigen Polygonen": _(
+            ") auf dich bei gleichförmigen Polygonen"
+        )
+    }
     energietopologie1 = {
         "eine Denkart": _("eine Denkart"),
         "eine Gefühlsart": _("eine Gefühlsart"),
-        "total eine Art, etwas geistig zu erzeugen": _("total eine Art, etwas geistig zu erzeugen"),
+        "total eine Art, etwas geistig zu erzeugen": _(
+            "total eine Art, etwas geistig zu erzeugen"
+        ),
         "total eine Art zu erleben": _("total eine Art zu erleben"),
         "total eine Energie-Art": _("total eine Energie-Art"),
         "etwas eine Art zu erleben": _("etwas eine Art zu erleben"),
-        "etwas eine Art, etwas geistig zu erzeugen": _("etwas eine Art, etwas geistig zu erzeugen"),
-        "wenig eine Art, etwas geistig zu erzeugen": _("wenig eine Art, etwas geistig zu erzeugen"),
+        "etwas eine Art, etwas geistig zu erzeugen": _(
+            "etwas eine Art, etwas geistig zu erzeugen"
+        ),
+        "wenig eine Art, etwas geistig zu erzeugen": _(
+            "wenig eine Art, etwas geistig zu erzeugen"
+        ),
         "einigermaßen eine Energie-Art": _("einigermaßen eine Energie-Art"),
         "kaum eine Energie-Art": _("kaum eine Energie-Art"),
-        "kaum eine Art, etwas geistig zu erzeugen": _("kaum eine Art, etwas geistig zu erzeugen"),
+        "kaum eine Art, etwas geistig zu erzeugen": _(
+            "kaum eine Art, etwas geistig zu erzeugen"
+        ),
         "eine Denkart": _("eine Denkart"),
         "eine Gefühlsart": _("eine Gefühlsart"),
-        "total eine Art, etwas geistig zu erzeugen": _("total eine Art, etwas geistig zu erzeugen"),
+        "total eine Art, etwas geistig zu erzeugen": _(
+            "total eine Art, etwas geistig zu erzeugen"
+        ),
         "total eine Art zu erleben": _("total eine Art zu erleben"),
         "total eine Energie-Art": _("total eine Energie-Art"),
         "etwas eine Art zu erleben": _("etwas eine Art zu erleben"),
-        "etwas eine Art, etwas geistig zu erzeugen": _("etwas eine Art, etwas geistig zu erzeugen"),
-        "wenig eine Art, etwas geistig zu erzeugen": _("wenig eine Art, etwas geistig zu erzeugen"),
+        "etwas eine Art, etwas geistig zu erzeugen": _(
+            "etwas eine Art, etwas geistig zu erzeugen"
+        ),
+        "wenig eine Art, etwas geistig zu erzeugen": _(
+            "wenig eine Art, etwas geistig zu erzeugen"
+        ),
         "einigermaßen eine Energie-Art": _("einigermaßen eine Energie-Art"),
         "kaum eine Energie-Art": _("kaum eine Energie-Art"),
-        "kaum eine Art, etwas geistig zu erzeugen": _("kaum eine Art, etwas geistig zu erzeugen"),
+        "kaum eine Art, etwas geistig zu erzeugen": _(
+            "kaum eine Art, etwas geistig zu erzeugen"
+        ),
     }
-    ausgabeString = {"Energie oder Denkart oder Gefühlsart oder Materie-Art oder Topologie-Art": _(
-        "Energie oder Denkart oder Gefühlsart oder Materie-Art oder Topologie-Art"
-    )}
+    ausgabeString = {
+        "Energie oder Denkart oder Gefühlsart oder Materie-Art oder Topologie-Art": _(
+            "Energie oder Denkart oder Gefühlsart oder Materie-Art oder Topologie-Art"
+        )
+    }
     kreaZahl = {
         "Evolutions-Züchtungs-Kreativität": _("Evolutions-Züchtungs-Kreativität"),
         "0. Primzahl 1": _("0. Primzahl 1"),
@@ -3565,7 +3587,9 @@ class concat:
     }
     mondExpLog1 = {
         "Mond-Typ eines Sternpolygons": _("Mond-Typ eines Sternpolygons"),
-        "Mond-Typ eines gleichförmigen Polygons": _("Mond-Typ eines gleichförmigen Polygons"),
+        "Mond-Typ eines gleichförmigen Polygons": _(
+            "Mond-Typ eines gleichförmigen Polygons"
+        ),
     }
 
     mondExpLog2 = {"kein Mond": _("kein Mond")}
@@ -3581,7 +3605,12 @@ class concat:
         "sehr: ": _("sehr: "),
         "sehr leicht überdurchschnittlich: ": _("sehr leicht überdurchschnittlich: "),
     }
-    modalC = {"intrinsisch": _("intrinsisch"), "zuerst": _("zuerst"), "extrinsisch": _("extrinsisch"), "als zweites": _("als zweites")}
+    modalC = {
+        "intrinsisch": _("intrinsisch"),
+        "zuerst": _("zuerst"),
+        "extrinsisch": _("extrinsisch"),
+        "als zweites": _("als zweites"),
+    }
     modalD = {
         ", nicht: ": _(", nicht: "),
         " (das alles nicht): ": _(" (das alles nicht): "),
@@ -3589,24 +3618,34 @@ class concat:
         "als zweites": _("als zweites"),
         "intrinsisch": _("intrinsisch"),
         "zuerst": _("zuerst"),
+    }
 
-    generiert = {"Generiert: ": _("Generiert: ")}
-    allesNurBezogen = {"Alles nur bezogen auf die selbe Strukturgröße einer ": _("Alles nur bezogen auf die selbe Strukturgröße einer "),}
-    headline1 = {_(
-        "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
-    )}
+    generiertWort = {"Generiert: ": _("Generiert: ")}
+    allesNurBezogenAufSatz = _("Alles nur bezogen auf die selbe Strukturgröße einer ")
+    headline1 = {
+        _(
+            "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
+        )
+    }
     gegen = {"gegen ": _("gegen ")}
     pro = {"pro ": _("pro ")}
     hineinversetzen = {
         " Darin kann sich die ": _(" Darin kann sich die "),
         " am Besten hineinversetzten.": _(" am Besten hineinversetzten."),
     }
-    proIst = {"pro dieser Zahl sind: _(": _("pro dieser Zahl sind: _("), ")pro dieser Zahl ist ": _(")pro dieser Zahl ist ")}
-    contraIst = {" contra dieser Zahl sind: _(": _(" contra dieser Zahl sind: _("), ") contra dieser Zahl ist ": _(") contra dieser Zahl ist ")}
-    hineinversetzen = {    _(
-            " - Die Zahlen, die für oder gegen diese Zahlen hier sind, können sich in diese am Besten gedanklich hineinversetzen."
-        )    }
-    polygone = {"Sternpolygone": _("Sternpolygone"), "gleichförmige Polygone": _("gleichförmige Polygone")}
+    proIst = {
+        "pro dieser Zahl sind: _(": _("pro dieser Zahl sind: _("),
+        ")pro dieser Zahl ist ": _(")pro dieser Zahl ist "),
+    }
+    contraIst = {
+        " contra dieser Zahl sind: _(": _(" contra dieser Zahl sind: _("),
+        ") contra dieser Zahl ist ": _(") contra dieser Zahl ist "),
+    }
+    hineinversetzenSatz = " - Die Zahlen, die für oder gegen diese Zahlen hier sind, können sich in diese am Besten gedanklich hineinversetzen."
+    polygone = {
+        "Sternpolygone": _("Sternpolygone"),
+        "gleichförmige Polygone": _("gleichförmige Polygone"),
+    }
 
     kombisNamen: dict[str, str] = {
         "Motiv -> Motiv": _("Motiv -> Motiv"),
@@ -3621,31 +3660,56 @@ class concat:
         "UniUni": _("UniUni"),
     }
 
-    faktorenbla = {", mit Faktoren aus gebrochen-rationalen Zahlen": _(", mit Faktoren aus gebrochen-rationalen Zahlen")}
+    faktorenbla = {
+        ", mit Faktoren aus gebrochen-rationalen Zahlen": _(
+            ", mit Faktoren aus gebrochen-rationalen Zahlen"
+        )
+    }
     genMul = {"generierte Multiplikationen ": _("generierte Multiplikationen ")}
     ausserdem = {", außerdem: ": _(", außerdem: ")}
     Multiplikationen_ = {"Multiplikationen": _("Multiplikationen")}
-    nWichtigste = {"Wichtigstes_zum_verstehen": _("Wichtigstes_zum_verstehen"), "Viertwichtigste": _("Viertwichtigste")}
+    nWichtigste = {
+        "Wichtigstes_zum_verstehen": _("Wichtigstes_zum_verstehen"),
+        "Viertwichtigste": _("Viertwichtigste"),
+    }
     metaOrWhat = OrderedDict(
         {
-                2: ({"Meta-Thema: ":_("Meta-Thema: "), "Konkretes: ":_("Konkretes: ")}, {"Meta-":_("Meta-"), "Konkret-":_("Konkret-")}),
-                3: ({"Theorie-Thema: ":_("Theorie-Thema: "), "Praxis: ":_("Praxis: ")}, {"Theorie-":_("Theorie-"), "Praxis-":_("Praxis-")}),
-                4: (
-                    {"Planungs-Thema: ":_("Planungs-Thema: "), "Umsetzungs-Thema: ":_("Umsetzungs-Thema: ")}
-                    {"Planung-":_("Planung-"), "Umsetzung-":_("Umsetzung-")}
-                ),
-                5: (
-                    {"Anlass-Thema: ":_("Anlass-Thema: "), "Wirkungs-Thema: ":_("Wirkungs-Thema: ")}
-                    {"Anlass-":_("Anlass-"), "wirkung-":_("wirkung-")}
-                ),
-                6: (
-                    {"Kraft-Gebung: ":_("Kraft-Gebung: "), "Verstärkungs-Thema: ":_("Verstärkungs-Thema: ")}
-                    {"Kraft-geben-":_("Kraft-geben-"), "Verstärkung-":_("Verstärkung-")}
-                ),
-                7: (
-                    {"Beherrschung: ":_("Beherrschung: "), "Richtung-Thema: ":_("Richtung-Thema: ")}
-                    {"beherrschend-":_("beherrschend-"), "Richtung-":_("Richtung-")})
-
+            2: (
+                {"Meta-Thema: ": _("Meta-Thema: "), "Konkretes: ": _("Konkretes: ")},
+                {"Meta-": _("Meta-"), "Konkret-": _("Konkret-")},
+            ),
+            3: (
+                {"Theorie-Thema: ": _("Theorie-Thema: "), "Praxis: ": _("Praxis: ")},
+                {"Theorie-": _("Theorie-"), "Praxis-": _("Praxis-")},
+            ),
+            4: (
+                {
+                    "Planungs-Thema: ": _("Planungs-Thema: "),
+                    "Umsetzungs-Thema: ": _("Umsetzungs-Thema: "),
+                },
+                {"Planung-": _("Planung-"), "Umsetzung-": _("Umsetzung-")},
+            ),
+            5: (
+                {
+                    "Anlass-Thema: ": _("Anlass-Thema: "),
+                    "Wirkungs-Thema: ": _("Wirkungs-Thema: "),
+                },
+                {"Anlass-": _("Anlass-"), "wirkung-": _("wirkung-")},
+            ),
+            6: (
+                {
+                    "Kraft-Gebung: ": _("Kraft-Gebung: "),
+                    "Verstärkungs-Thema: ": _("Verstärkungs-Thema: "),
+                },
+                {"Kraft-geben-": _("Kraft-geben-"), "Verstärkung-": _("Verstärkung-")},
+            ),
+            7: (
+                {
+                    "Beherrschung: ": _("Beherrschung: "),
+                    "Richtung-Thema: ": _("Richtung-Thema: "),
+                },
+                {"beherrschend-": _("beherrschend-"), "Richtung-": _("Richtung-")},
+            ),
         }
     )
     metaKonkret = {
@@ -3667,23 +3731,39 @@ class concat:
     innenAussen = {
         "für innen": _("für innen"),
         "für außen": _("für außen"),
-        '"für seitlich und gegen Schwächlinge innen"':
-        _('"für seitlich und gegen Schwächlinge innen"'),
-        '"gegen seitlich und für Schwächlinge innen"':
-        _('"gegen seitlich und für Schwächlinge innen"'),
+        '"für seitlich und gegen Schwächlinge innen"': _(
+            '"für seitlich und gegen Schwächlinge innen"'
+        ),
+        '"gegen seitlich und für Schwächlinge innen"': _(
+            '"gegen seitlich und für Schwächlinge innen"'
+        ),
         "für außen": _("für außen"),
     }
     spaltenNamen = OrderedDict(
         {
-            5: "Transzendentalien, Strukturalien, Universum n": _("Transzendentalien, Strukturalien, Universum n"),
-            10: "Galaxie n": _("Galaxie n"),
-            42: "Galaxie 1/n": _("Galaxie 1/n"),
-            131: "Transzendentalien, Strukturalien, Universum 1/n": _("Transzendentalien, Strukturalien, Universum 1/n"),
-            138: "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n": _("Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n"),
-            202: _(
-                "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n"
-            ),
-            None: "Richtung-Richtung": _("Richtung-Richtung"),
+            5: {
+                "Transzendentalien, Strukturalien, Universum n": _(
+                    "Transzendentalien, Strukturalien, Universum n"
+                )
+            },
+            10: {"Galaxie n": _("Galaxie n")},
+            42: {"Galaxie 1/n": _("Galaxie 1/n")},
+            131: {
+                "Transzendentalien, Strukturalien, Universum 1/n": _(
+                    "Transzendentalien, Strukturalien, Universum 1/n"
+                )
+            },
+            138: {
+                "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n": _(
+                    "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n"
+                )
+            },
+            202: {
+                "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n": _(
+                    "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n)"
+                )
+            },
+            None: {"Richtung-Richtung": _("Richtung-Richtung")},
         }
     )
 
@@ -3691,16 +3771,22 @@ class concat:
 
     letztEnd = {"] * letztendlich: ": _("] * letztendlich: ")}
 
-    primVielGen = {"Primzahlvielfache, nicht generiert": _("Primzahlvielfache, nicht generiert")}
-    GalOrUniOrFehler = {("Fehler": _("Fehler"), " Universum": _(" Universum"), " Galaxie": _(" Galaxie"))}
+    primVielGen = {
+        "Primzahlvielfache, nicht generiert": _("Primzahlvielfache, nicht generiert")
+    }
+    GalOrUniOrFehler = {
+        "Fehler": _("Fehler"),
+        " Universum": _(" Universum"),
+        " Galaxie": _(" Galaxie"),
+    }
 
     multipl = {"Multiplikationen": _("Multiplikationen")}
     notGen = {"Nicht_generiert": _("Nicht_generiert")}
 
 
 class lib4tables:
-    zaehlung = {"zaehlung:" _("zaehlung")}
-    nummerier = {"nummerierung":  _("nummerierung")}
+    zaehlung = {"zaehlung:": _("zaehlung")}
+    nummerier = {"nummerierung": _("nummerierung")}
     alles = {"alles": _("alles")}
 
 
@@ -3719,17 +3805,9 @@ class center:
             return _("entfernt ähnlich")
 
 
-class nested:
-    galWort = retapy.galaxieParameter
-    uniWort = retapy.universumParameter
-    artWort = retapy.ausgabeParas["art"]
-    zeitWort = retapy.zeilenParas["zeit"]
-    typWort = retapy.ausgabeParas["typ"]
-
-
 class retapy:
 
-    beschrieben = _("beschrieben")
+    beschriebenWort = _("beschrieben")
     mainParaCmds: dict = {
         _("zeilen"): 0,
         _("spalten"): 1,
@@ -3739,58 +3817,66 @@ class retapy:
         _("h"): None,
         _("help"): None,
     }
-    nichts = _("nichts")
-    cliout1 = (
+    nichtsWort = _("nichts")
+    cliout1Saetze = (
         _('Der Haupt-Parameter "'),
         _('" existiert hier nicht als Befehl!'),
         _(" Es ist nur möglich: -"),
     )
 
-    keineNum = _("keinenummerierung")
-    cliout2 = (
+    keineNumWort = _("keinenummerierung")
+    cliout2Saetze = (
         _('Der Unter-Paramaeter "--'),
         _('" existiert, aber nicht mit dem Textwert "'),
         _('". Mögliche Nebenparameter-Textwerte, für diesen Unter-Parameter, sind: "'),
         _('". Stattdessen gibt keine Nebenparameter-Textwerte.'),
     )
-    cliout3 = (
+    cliout3Saetze = (
         _('Der Unter-Paramaeter "--'),
         _('" mit dem Textwert "'),
         _('" existiert hier nicht als Befehl für Haupt-Parameter'),
-        _(" -spalten"),
+        " -" + hauptForNeben["spalten"],
         _(" !"),
         _(" Es ist nur möglich:\n--"),
-        _(", --breiten, --breite"),
+        "".join((", --", spalten["breiten"], " --", spalten["breite"])),
         _("\nmit dem Werten dahinter:\n"),
     )
-    cliout4 = (
+    cliout4Saetze = (
         _('Der Unter-Parameter "--'),
         _('" existiert hier nicht als Befehl für Haupt-Parameter'),
-        _(" -spalten"),
+        " -" + hauptForNeben["spalten"],
         _(
             ", oder dieser Parameter braucht Werte analog wie: \n--unterParameter=Wert1\n"
         ),
         _("Es ist nur möglich: --"),
-        _(", --keinenummerierung"),
+        ", --" + spalten["keinenummerierung"],
     )
     galaxieParameter = _("galaxie")
     universumParameter = _("universum")
-    kombinationen = _("kombinationen")
-    cliout5 = (
+    kombinationenWort = _("kombinationen")
+    cliout5Saetze = (
         _('Die Kombispalte "'),
         _('" existiert so nicht als Befehl. Möglich sind die Parameter für '),
     )
-    cliout6 = _(
-        'kein Unter-Parameter "--galaxie=" oder "--universum=" angegeben für Hauptparameter -kombination'
+    cliout6Satz = _(
+        "".join(
+            (
+                'kein Unter-Parameter "--',
+                kombiMainParas["galaxie"],
+                '=" oder "--',
+                kombiMainParas["galaxie"],
+                '=" angegeben für Hauptparameter -kombination',
+            )
+        )
     )
-    cliout7 = (
+    cliout7Saetze = (
         _("Es muss ein Hauptparameter, bzw. der richtige, gesetzt sein, damit ein"),
         _(' Nebenparameter, wie möglicherweise: "'),
         _('" ausgeführt werden kann. Hauptparameter sind: -'),
     )
-    breite = _("--breite")
+    breiteParameterWort = _("breite")
 
-    cliout8 = _("Versuche Parameter -h")
+    cliout8Satz = _("Versuche Parameter -h")
     zeilenParas = {
         "alles": _("alles"),
         "zeit": _("zeit"),
@@ -3811,67 +3897,95 @@ class retapy:
         "nachtraeglichneuabzaehlungvielfache": _("nachtraeglichneuabzaehlungvielfache"),
         "nachtraeglichneuabzaehlung": _("nachtraeglichneuabzaehlung"),
     }
-    cliout9 = (
+    cliout9Saetze = (
         _('Den Neben-Parameter "'),
         _('" gibt es hier nicht für den Hauptparameter "-'),
         _('".'),
         _(" Möglich sind: "),
     )
-    cliout10 = (
+    cliout10Satze = (
         _('Den Neben-Parameter "'),
         _('" gibt es hier nicht für den Hauptparameter "-'),
     )
 
 
+class nested:
+    galWort = retapy.galaxieParameter
+    uniWort = retapy.universumParameter
+    artWort = ausgabeParas["art"]
+    zeitWort = zeilenParas["zeit"]
+    typWort = zeilenParas["typ"]
+
+
 class retaPrompt:
     befehleBeenden = {_("ende"), _("exit"), _("quit"), _("q"), _(":q")}
-    promptMode = _("promptmode vorher: {} , {}")
-    out1 = (
+    promptModeSatz = _("promptmode vorher: {} , {}")
+    out1Satze = (
         _("Dies ('"),
         _(
             "') ist tatsächlich ein Befehl (oder es sind mehrere), aber es gibt nichts auszugeben."
         ),
     )
-    out2 = _("Das ist kein Befehl! -> '{}''")
-    out3 = _(
+    out2Satz = _("Das ist kein Befehl! -> '{}''")
+    out3Saetze = _(
         'Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\nDas ist eine Design-Entscheidung, die getroffen worden ist.'
     )
     replacements = {
-        "e": _("keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"),
-        "a": _("absicht"),
-        "u": _("universum"),
-        "t": _("thomas"),
-        "r": _("richtung"),
-        "v": _("vielfache"),
-        "h": _("help"),
-        "w": _("teiler"),
-        "S": _("BefehlSpeichernDanach"),
-        "s": _("BpromptMode = PromptModus.speichernefehlSpeichernDavor"),
-        "l": _("BefehlSpeicherungLöschen"),
-        "o": _("BefehlSpeicherungAusgeben"),
+        befehle["e"]: befehle[
+            "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+        ],
+        befehle["a"]: befehle["absicht"],
+        befehle["u"]: befehle["universum"],
+        befehle["t"]: befehle["thomas"],
+        befehle["r"]: befehle["richtung"],
+        befehle["v"]: befehle["vielfache"],
+        befehle["h"]: befehle["help"],
+        befehle["w"]: befehle["teiler"],
+        befehle["S"]: befehle["BefehlSpeichernDanach"],
+        befehle["s"]: befehle["BefehlSpeichernDavor"],
+        befehle["l"]: befehle["BefehlSpeicherungLöschen"],
+        befehle["o"]: befehle["BefehlSpeicherungAusgeben"],
     }
     retaPromptParameter = {
-        "-vi": _("-vi"),
-        "-log": _("-log"),
-        "-h": _("-h"),
-        "-help": _("-help"),
-        "-e": _("-e"),
-        "-debug": _("-debug"),
-        "-befehl": _("-befehl"),
+        "vi": _("vi"),
+        "log": _("log"),
+        "h": _("h"),
+        "help": _("help"),
+        "e": _("e"),
+        "debug": _("debug"),
+        "befehl": _("befehl"),
     }
 
     debugLog = _("Debug Log aktiviert.")
-    helptext = _(
-        """Erlaube Parameter sind
-            -vi für vi mode statt emacs mode,
-            -log, um Logging zu aktivieren,
-            -debug, um Debugging-Log-Ausgabe zu aktivieren. Das ist nur für Entwickler gedacht.
-            -befehl bewirkt, dass bis zum letzten Programmparameter retaPrompt Befehl nur ein RetaPrompt-Befehl ausgeführt wird.
-            -e bewirkt, dass bei allen Befehlen das 'e' Kommando bzw. 'keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar' jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil dieser anders funktioniert """
+    helptext = "".join(
+        (
+            """Erlaube Parameter sind
+            -""",
+            retaPromptParameter["vi"],
+            """, für vi mode statt emacs mode,
+            -""",
+            retaPromptParameter["log"],
+            """,  um Logging zu aktivieren,
+            -""",
+            retaPromptParameter["debug"],
+            """, um Debugging-Log-Ausgabe zu aktivieren. Das ist nur für Entwickler gedacht.
+            -""",
+            retaPromptParameter["befehl"],
+            """ bewirkt, dass bis zum letzten Programmparameter retaPrompt Befehl nur ein RetaPrompt-Befehl ausgeführt wird.
+            -""",
+            retaPromptParameter["e"],
+            _(" bewirkt, dass bei allen Befehlen das '"),
+            befehle["e"],
+            ("' Kommando bzw. '"),
+            befehle["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"],
+            _(
+                "' jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil dieser anders funktioniert "
+            ),
+        )
     )
 
-    wspeichern = _("was speichern>")
-    wloeschen = _("was löschen>")
+    wspeichernWort = _("was speichern>")
+    wloeschenWort = _("was löschen>")
     reziInfoText = _(
         'Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\nDas ist eine Design-Entscheidung, die getroffen worden ist.'
     )
