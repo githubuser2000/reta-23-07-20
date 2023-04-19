@@ -18,6 +18,7 @@ except:
 
 from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
                     output, primfaktoren, primRepeat, re, x)
+from i18n.words import tableHandlinig as i18n
 from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz, csvSyntax,
                         divisorGenerator, emacsSyntax, htmlSyntax,
@@ -824,8 +825,8 @@ class Tables:
         def __init__(self, tables):
             self.sumOfAllCombiRowsAmount = 0
             self.tables = tables
-            self.parameterName = "kombination"
-            """alle  Schritte für kombi:
+            self.parameterName = i18n.parameterName
+            "alle  Schritte für kombi:
             1. lesen: KombiTable und relation, was von kombitable zu haupt gehört
                       und matrix mit zellen sind zahlen der kombinationen
                       d.h. 3 Sachen sind das Ergebnis
