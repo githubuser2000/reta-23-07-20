@@ -55,6 +55,8 @@ class Program:
                         eineSpaltenArtmitSpaltenNummern = set(
                             eineSpaltenArtmitSpaltenNummern[0]
                         )
+                x("sdf39", [tupl, neg, paraValue, befehlName])
+                x("sdf39777", Program.ParametersMain.gebrochengalaxie[0])
                 if i == 2 and (
                     type(eineSpaltenArtmitSpaltenNummern)
                     in [
@@ -109,6 +111,7 @@ class Program:
                     (0, el2Type)
                 ] -= self.spaltenArtenKey_SpaltennummernValue.pop((1, el2Type))
 
+        print(i18n.mainParaCmds[tuple(i18n.tableHandling.parameterName.keys())[0]])
         self.mainParaCmds: dict = {
             i18n.mainParaCmds["zeilen"]: 0,
             i18n.mainParaCmds["spalten"]: 1,
@@ -285,6 +288,12 @@ class Program:
                                 yes1 = True if len(neg) == 0 else False
                             if yes1:
                                 try:
+                                    print("Sss")
+                                    # print(cmd.find("=") == len(galWort) - 1)
+                                    print(self.kombiReverseDict)
+                                    print(oneKombiSpalte)
+                                    print(self.kombiReverseDict[oneKombiSpalte])
+                                    # print(oneKombiSpalte)
                                     resultingSpaltenFromTuple(
                                         (
                                             OrderedSet(),
@@ -293,7 +302,7 @@ class Program:
                                             {
                                                 self.kombiReverseDict[oneKombiSpalte],
                                             }
-                                            if cmd.find("=") == 9
+                                            if cmd.find("=") == len(galWort) - 1
                                             else OrderedSet(),
                                             OrderedSet(),
                                             OrderedSet(),
@@ -302,17 +311,17 @@ class Program:
                                             {
                                                 self.kombiReverseDict2[oneKombiSpalte],
                                             }
-                                            if cmd.find("=") == 11
+                                            if cmd.find("=") == len(uniWort) - 1
                                             else OrderedSet(),
                                         ),
                                         neg,
-                                        befehlName=i18n.hauptForNeben["kombinationen"],
+                                        befehlName="kombinationen",
                                     )
                                 except KeyError:
                                     cliout(
-                                        i18nR.cliout5Satz[0]
+                                        i18nR.cliout5Saetze[0]
                                         + oneKombiSpalte
-                                        + i18nR.cliout5Satz[1]
+                                        + i18nR.cliout5Saetze[1]
                                         + cmd[: cmd.find("=") + 1]
                                         + " "
                                         + (
@@ -336,7 +345,7 @@ class Program:
                         + i18nR.cliout7Saetzetz[2]
                         + " -".join(self.mainParaCmds)
                     )
-        breiteIstNull = "".join("--", i18n.ausgabeParas["breite"], "=0")
+        breiteIstNull = "".join(("--", i18n.ausgabeParas["breite"], "=0"))
         if breiteIstNull in self.argv:
             self.breiteBreitenSysArgvPara(breiteIstNull, "")
         if len(neg) == 0:
@@ -739,13 +748,13 @@ class Program:
                         paramLines.add("all")
                         self.obZeilenBereicheAngegeben = True
                     if (
-                        arg[2 : i18n.zeilenParasLenPlus2["alles"]]
+                        arg[2 : 2 + i18n.zeilenParasLen["alles"]]
                         == i18n.zeilenParas["alles"]
                         and len(neg) != 0
                     ):
                         pass
                     elif (
-                        arg[2 : i18n.zeilenParas["zeit"] + 3]
+                        arg[2 : i18n.zeilenParasLen["zeit"] + 3]
                         == i18n.zeilenParas["zeit"] + "="
                     ):
                         self.obZeilenBereicheAngegeben = True
@@ -821,7 +830,7 @@ class Program:
                                 )
                             )
                     elif (
-                        arg[2 : 3 + i18n.zeilenParasLen["primvielfache"]]
+                        arg[2 : 3 + i18n.zeilenParasLen["primzahlvielfache"]]
                         == i18n.zeilenParas["primzahlvielfache"] + "="
                     ):
                         self.obZeilenBereicheAngegeben = True
@@ -955,7 +964,9 @@ class Program:
                         arg[2 : i18n.ausgabeParasLen["art"] + 3]
                         == i18n.ausgabeParas["art"] + "="
                     ):
-                        breiteIstNull = "".join("--", i18n.ausgabeParas["breite"], "=0")
+                        breiteIstNull = "".join(
+                            ("--", i18n.ausgabeParas["breite"], "=0")
+                        )
                         outputtype = arg[(arg.find("=") + 1) :]
                         if outputtype == i18n.ausgabeArt["shell"]:
                             self.tables.outType = OutputSyntax()
@@ -979,17 +990,17 @@ class Program:
                             self.breiteBreitenSysArgvPara(breiteIstNull, "")
                     elif (
                         arg[2:]
-                        in [i18n.ausgabeArt["nocolor"], i18n.ausgabeArt["justtext"]]
+                        in [i18n.ausgabeParas["nocolor"], i18n.ausgabeParas["justtext"]]
                         and neg == ""
                     ):
                         self.tables.getOut.color = False
                     elif (
                         arg[2:]
                         in [
-                            i18n.ausgabeArt["endlessscreen"],
-                            i18n.ausgabeArt["endless"],
-                            i18n.ausgabeArt["dontwrap"],
-                            i18n.ausgabeArt["onetable"],
+                            i18n.ausgabeParas["endlessscreen"],
+                            i18n.ausgabeParas["endless"],
+                            i18n.ausgabeParas["dontwrap"],
+                            i18n.ausgabeParas["onetable"],
                         ]
                         and neg == ""
                     ):
@@ -1149,17 +1160,6 @@ class Program:
             (1, 7),
             (1, 8),
         )
-
-        # self.spaltenArtenNameKey_SpaltenArtenTupleVal_4Key4otherDict = {
-        #    "ordinary": (0, 0),
-        #    "generated1": (0, 1),
-        #    "concat1": (0, 2),
-        #    "kombi1": (0, 3),
-        #    "ordinaryNot": (1, 0),
-        #    "generate1dNot": (1, 1),
-        #    "concat1Not": (1, 2),
-        #    "kombi1Not": (1, 3),
-        # }
         self.spaltenArtenKey_SpaltennummernValue = {
             (0, 0): OrderedSet(),
             (0, 1): OrderedSet(),
@@ -1402,12 +1402,22 @@ class Program:
 
     def oberesMaximumArg(self, arg) -> tuple:
         werte: list[int] = []
-        if arg[2:16] == "oberesmaximum=" and arg[16:].isdecimal():
+        if (
+            arg[2 : 3 + i18n.zeilenParasLen["oberesmaximum"]]
+            == i18n.zeilenParas["oberesmaximum"] + "="
+            and arg[16:].isdecimal()
+        ):
             werte = [int(arg[16:])]
             return werte, True
-        elif arg[2:22] == "vorhervonausschnitt=":
+        elif (
+            arg[2 : 3 + i18n.zeilenParasLen["vorhervonausschnitt"]]
+            == i18n.zeilenParas["vorhervonausschnitt"] + "="
+        ):
             werteList: list[int] = [
-                a + 1 for a in BereichToNumbers2(arg[22:], False, 0)
+                a + 1
+                for a in BereichToNumbers2(
+                    arg[3 + i18n.zeilenParasLen["vorhervonausschnitt"] :], False, 0
+                )
             ]
             werte = [max(w, 1024) for w in werteList]
             return werte, False
@@ -1453,8 +1463,6 @@ class Program:
         if platform.system() == "Windows":
             self.tables.getOut.color = False
 
-        # if "--breite=0" in argv:
-        #    self.breiteBreitenSysArgvPara("--breite=0", "")
         self.workflowEverything(argv)
 
     def workflowEverything(self, argv):
