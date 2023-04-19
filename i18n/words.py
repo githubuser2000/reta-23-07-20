@@ -62,19 +62,19 @@ zeilenZeit: dict[str, str] = {
 }
 
 ausgabeParas: dict[str, str] = {
-    "--nocolor": _("--nocolor"),
-    "--justtext": _("--justtext"),
-    "--art=": _("--art="),
-    "--onetable": _("--onetable"),
-    "--spaltenreihenfolgeundnurdiese=": _("--spaltenreihenfolgeundnurdiese="),
-    "--endlessscreen": _("--endlessscreen"),
-    "--endless": _("--endless"),
-    "--dontwrap": _("--dontwrap"),
-    "--breite=": _("--breite="),
-    "--breiten=": _("--breiten="),
-    "--keineleereninhalte": _("--keineleereninhalte"),
-    "--keinenummerierung": _("--keinenummerierung"),
-    "--keineueberschriften": _("--keineueberschriften"),
+    "nocolor": _("nocolor"),
+    "justtext": _("justtext"),
+    "art": _("art"),
+    "onetable": _("onetable"),
+    "spaltenreihenfolgeundnurdiese=": _("spaltenreihenfolgeundnurdiese"),
+    "endlessscreen": _("endlessscreen"),
+    "endless": _("endless"),
+    "dontwrap": _("dontwrap"),
+    "breite": _("breite"),
+    "breiten": _("breiten"),
+    "keineleereninhalte": _("keineleereninhalte"),
+    "keinenummerierung": _("keinenummerierung"),
+    "keineueberschriften": _("keineueberschriften"),
 }
 kombiMainParas: dict[str, str] = {
     "--galaxie=": _("--galaxie="),
@@ -3591,72 +3591,64 @@ class concat:
         "zuerst": _("zuerst"),
 
     generiert = {"Generiert: ": _("Generiert: ")}
-    allesNurBezogen = ("Alles nur bezogen auf die selbe Strukturgröße einer ": _("Alles nur bezogen auf die selbe Strukturgröße einer "),)
-    headline1 = _(
+    allesNurBezogen = {"Alles nur bezogen auf die selbe Strukturgröße einer ": _("Alles nur bezogen auf die selbe Strukturgröße einer "),}
+    headline1 = {_(
         "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
-    )
-    gegen = "gegen ": _("gegen ")
-    pro = "pro ": _("pro ")
-    hineinversetzen = (
+    )}
+    gegen = {"gegen ": _("gegen ")}
+    pro = {"pro ": _("pro ")}
+    hineinversetzen = {
         " Darin kann sich die ": _(" Darin kann sich die "),
         " am Besten hineinversetzten.": _(" am Besten hineinversetzten."),
-    )
-    proIst = ("pro dieser Zahl sind: _(": _("pro dieser Zahl sind: _("), ")pro dieser Zahl ist ": _(")pro dieser Zahl ist "))
-    contraIst = (" contra dieser Zahl sind: _(": _(" contra dieser Zahl sind: _("), ") contra dieser Zahl ist ": _(") contra dieser Zahl ist "))
-    hineinversetzen = _(
-        _(
+    }
+    proIst = {"pro dieser Zahl sind: _(": _("pro dieser Zahl sind: _("), ")pro dieser Zahl ist ": _(")pro dieser Zahl ist ")}
+    contraIst = {" contra dieser Zahl sind: _(": _(" contra dieser Zahl sind: _("), ") contra dieser Zahl ist ": _(") contra dieser Zahl ist ")}
+    hineinversetzen = {    _(
             " - Die Zahlen, die für oder gegen diese Zahlen hier sind, können sich in diese am Besten gedanklich hineinversetzen."
-        )
-    )
-    polygone = ("Sternpolygone": _("Sternpolygone"), "gleichförmige Polygone": _("gleichförmige Polygone"))
+        )    }
+    polygone = {"Sternpolygone": _("Sternpolygone"), "gleichförmige Polygone": _("gleichförmige Polygone")}
 
-    kombisNamen: tuple = (
+    kombisNamen: dict[str, str] = {
         "Motiv -> Motiv": _("Motiv -> Motiv"),
         "Motiv -> Strukur": _("Motiv -> Strukur"),
         "Struktur -> Motiv": _("Struktur -> Motiv"),
         "Struktur -> Strukur": _("Struktur -> Strukur"),
-    )
-    kombisNamen2: tuple = (
+    }
+    kombisNamen2: dict[str, str] = {
         "GalGal": _("GalGal"),
         "GalUni": _("GalUni"),
         "UniGal": _("UniGal"),
         "UniUni": _("UniUni"),
-    )
+    }
 
-    faktorenbla = ", mit Faktoren aus gebrochen-rationalen Zahlen": _(", mit Faktoren aus gebrochen-rationalen Zahlen")
-    genMul = "generierte Multiplikationen ": _("generierte Multiplikationen ")
-    ausserdem = ", außerdem: ": _(", außerdem: ")
-    Multiplikationen_ = "Multiplikationen": _("Multiplikationen")
-    nWichtigste = ("Wichtigstes_zum_verstehen": _("Wichtigstes_zum_verstehen"), "Viertwichtigste": _("Viertwichtigste"))
+    faktorenbla = {", mit Faktoren aus gebrochen-rationalen Zahlen": _(", mit Faktoren aus gebrochen-rationalen Zahlen")}
+    genMul = {"generierte Multiplikationen ": _("generierte Multiplikationen ")}
+    ausserdem = {", außerdem: ": _(", außerdem: ")}
+    Multiplikationen_ = {"Multiplikationen": _("Multiplikationen")}
+    nWichtigste = {"Wichtigstes_zum_verstehen": _("Wichtigstes_zum_verstehen"), "Viertwichtigste": _("Viertwichtigste")}
     metaOrWhat = OrderedDict(
         {
-            2: (
-                ("Meta-Thema: _(": _("Meta-Thema: _("), ")Konkretes: _(": _(")Konkretes: _(")),
-                _((")Meta-"), _(": _("), _(")Konkret-")),
-            ),
-            3: (
-                ("Theorie-Thema: _(": _("Theorie-Thema: _("), ")Praxis: _(": _(")Praxis: _(")),
-                _((")Theorie-"), _(": _("), _(")Praxis-")),
-            ),
-            4: (
-                ("Planungs-Thema: _(": _("Planungs-Thema: _("), ")Umsetzungs-Thema: ": _(")Umsetzungs-Thema: ")),
-                ("Planung-": _("Planung-"), "Umsetzung-": _("Umsetzung-")),
-            ),
-            5: (
-                ("Anlass-Thema: _(": _("Anlass-Thema: _("), ")Wirkungs-Thema: ": _(")Wirkungs-Thema: ")),
-                ("Anlass-": _("Anlass-"), "wirkung-": _("wirkung-")),
-            ),
-            6: (
-                ("Kraft-Gebung: _(": _("Kraft-Gebung: _("), ")Verstärkungs-Thema: ": _(")Verstärkungs-Thema: ")),
-                ("Kraft-geben-": _("Kraft-geben-"), "Verstärkung-": _("Verstärkung-")),
-            ),
-            7: (
-                ("Beherrschung: _(": _("Beherrschung: _("), ")Richtung-Thema: ": _(")Richtung-Thema: ")),
-                ("beherrschend-": _("beherrschend-"), "Richtung-": _("Richtung-")),
-            ),
+                2: ({"Meta-Thema: ":_("Meta-Thema: "), "Konkretes: ":_("Konkretes: ")}, {"Meta-":_("Meta-"), "Konkret-":_("Konkret-")}),
+                3: ({"Theorie-Thema: ":_("Theorie-Thema: "), "Praxis: ":_("Praxis: ")}, {"Theorie-":_("Theorie-"), "Praxis-":_("Praxis-")}),
+                4: (
+                    {"Planungs-Thema: ":_("Planungs-Thema: "), "Umsetzungs-Thema: ":_("Umsetzungs-Thema: ")}
+                    {"Planung-":_("Planung-"), "Umsetzung-":_("Umsetzung-")}
+                ),
+                5: (
+                    {"Anlass-Thema: ":_("Anlass-Thema: "), "Wirkungs-Thema: ":_("Wirkungs-Thema: ")}
+                    {"Anlass-":_("Anlass-"), "wirkung-":_("wirkung-")}
+                ),
+                6: (
+                    {"Kraft-Gebung: ":_("Kraft-Gebung: "), "Verstärkungs-Thema: ":_("Verstärkungs-Thema: ")}
+                    {"Kraft-geben-":_("Kraft-geben-"), "Verstärkung-":_("Verstärkung-")}
+                ),
+                7: (
+                    {"Beherrschung: ":_("Beherrschung: "), "Richtung-Thema: ":_("Richtung-Thema: ")}
+                    {"beherrschend-":_("beherrschend-"), "Richtung-":_("Richtung-")})
+
         }
     )
-    metaKonkret = (
+    metaKonkret = {
         "Meta": _("Meta"),
         "Theorie": _("Theorie"),
         "Management": _("Management"),
@@ -3671,14 +3663,16 @@ class concat:
         "Richtung": _("Richtung"),
         " für 1/n statt n": _(" für 1/n statt n"),
         " für n": _(" für n"),
-    )
-    innenAussen = (
+    }
+    innenAussen = {
         "für innen": _("für innen"),
         "für außen": _("für außen"),
+        '"für seitlich und gegen Schwächlinge innen"':
         _('"für seitlich und gegen Schwächlinge innen"'),
+        '"gegen seitlich und für Schwächlinge innen"':
         _('"gegen seitlich und für Schwächlinge innen"'),
         "für außen": _("für außen"),
-    )
+    }
     spaltenNamen = OrderedDict(
         {
             5: "Transzendentalien, Strukturalien, Universum n": _("Transzendentalien, Strukturalien, Universum n"),
@@ -3705,9 +3699,9 @@ class concat:
 
 
 class lib4tables:
-    zaehlung = _("zaehlung")
-    nummerier = _("nummerierung")
-    alles = _("alles")
+    zaehlung = {"zaehlung:" _("zaehlung")}
+    nummerier = {"nummerierung":  _("nummerierung")}
+    alles = {"alles": _("alles")}
 
 
 class center:
@@ -3726,11 +3720,11 @@ class center:
 
 
 class nested:
-    gal = _("galaxie")  # eigtl aus reta.py
-    uni = _("universum")  # eigtl aus reta.py
-    typ = _("typ")  # eigtl aus reta.py
-    zeit = _("zeit")  # eigtl aus reta.py
-    art = _("art")  # eigtl aus reta.py
+    galWort = retapy.galaxieParameter
+    uniWort = retapy.universumParameter
+    artWort = retapy.ausgabeParas["art"]
+    zeitWort = retapy.zeilenParas["zeit"]
+    typWort = retapy.ausgabeParas["typ"]
 
 
 class retapy:
@@ -3779,8 +3773,8 @@ class retapy:
         _("Es ist nur möglich: --"),
         _(", --keinenummerierung"),
     )
-    galaxie = _("--galaxie=")
-    universum = _("--universum=")
+    galaxieParameter = _("galaxie")
+    universumParameter = _("universum")
     kombinationen = _("kombinationen")
     cliout5 = (
         _('Die Kombispalte "'),
