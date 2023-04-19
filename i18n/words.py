@@ -902,7 +902,7 @@ paraNdataMatrix: list[Tuple[Any, dict[str, str], set[int], Optional[set]]] = [
     ),
     (
         ParametersMain.universummetakonkret,
-        (_("meta")),
+        (_("meta"),),
         set(),
         set(),
         set(),
@@ -916,7 +916,7 @@ paraNdataMatrix: list[Tuple[Any, dict[str, str], set[int], Optional[set]]] = [
     ),
     (
         ParametersMain.universummetakonkret,
-        (_("konkret")),
+        (_("konkret"),),
         set(),
         set(),
         set(),
@@ -2339,7 +2339,7 @@ paraNdataMatrix: list[Tuple[Any, dict[str, str], set[int], Optional[set]]] = [
     ),
     (
         ParametersMain.procontra,
-        (_("nervig")),
+        (_("nervig"),),
         {120},
     ),
     (
@@ -2443,7 +2443,7 @@ paraNdataMatrix: list[Tuple[Any, dict[str, str], set[int], Optional[set]]] = [
     ),
     (
         ParametersMain.procontra,
-        (_("unmotivierbar")),
+        (_("unmotivierbar"),),
         {130},
     ),
     (
@@ -2781,7 +2781,7 @@ paraNdataMatrix: list[Tuple[Any, dict[str, str], set[int], Optional[set]]] = [
     ),
     (
         ParametersMain.konzept,
-        (_("familiebrauchen")),
+        (_("familiebrauchen"),),
         set(),
         {(279, 280)},
     ),
@@ -3108,9 +3108,9 @@ paraNdataMatrix: list[Tuple[Any, dict[str, str], set[int], Optional[set]]] = [
         {(194, 195)},
     ),
     (ParametersMain.inkrementieren, set(), {43, 54, 74, 95}),
-    (ParametersMain.inkrementieren, (_("um1")), {155}),
-    (ParametersMain.inkrementieren, (_("um2")), {156}),
-    (ParametersMain.inkrementieren, (_("um3")), {157}),
+    (ParametersMain.inkrementieren, (_("um1"),), {155}),
+    (ParametersMain.inkrementieren, (_("um2"),), {156}),
+    (ParametersMain.inkrementieren, (_("um3"),), {157}),
     (
         ParametersMain.inkrementieren,
         (
@@ -3254,7 +3254,7 @@ paraNdataMatrix: list[Tuple[Any, dict[str, str], set[int], Optional[set]]] = [
     ),
     (
         ParametersMain.primvielfache,
-        (_("beschrieben")),
+        (_("beschrieben"),),
         set(),
         set(),
         set(),
@@ -3269,174 +3269,170 @@ paraNdataMatrix = paraNdataMatrix
 
 kombiParaNdataMatrix: OrderedDict[int, tuple[str]] = OrderedDict(
     {
-        1: {
-            "Lebewesen": _("Lebewesen"),
-            "tiere": _("tiere"),
-            "tier": _("tier"),
-            "lebewesen": _("lebewesen"),
-        },
-        2: {"Berufe": _("Berufe"), "berufe": _("berufe"), "beruf": _("beruf")},
-        3: {
-            "Kreativität_und_Intelligenz": _("Kreativität_und_Intelligenz"),
-            "kreativität": _("kreativität"),
-            "intelligenz": _("intelligenz"),
-            "kreativitaet": _("kreativitaet"),
-        },
-        4: {
-            "Liebe": _("Liebe"),
-            "liebe": _("liebe"),
-        },
-        7: {
-            "Männer": _("Männer"),
-            "männer": _("männer"),
-            "maenner": _("maenner"),
-            "frauen": _("frauen"),
-        },
-        8: {
-            "Persönlichkeit_evolutionär_erwerben": _(
-                "Persönlichkeit_evolutionär_erwerben"
-            ),
-            "evolution": _("evolution"),
-            "erwerben": _("erwerben"),
-            "persoenlichkeit": _("persoenlichkeit"),
-            "persönlichkeit": _("persönlichkeit"),
-        },
-        9: {
-            "Religion": _("Religion"),
-            "religion": _("religion"),
-            "religionen": _("religionen"),
-        },
-        10: {
-            "Motive_Ziele": _("Motive_Ziele"),
-            "motivation": _("motivation"),
-            "ziele": _("ziele"),
-            "ziel": _("ziel"),
-            "motive": _("motive"),
-        },
-        12: {
-            "Emotionen": _("Emotionen"),
-            "emotionen": _("emotionen"),
-            "gefuehle": _("gefuehle"),
-            "emotion": _("emotion"),
-            "gefühl": _("gefühl"),
-            "gefühle": _("gefühle"),
-        },
-        13: {
-            "Personen": _("Personen"),
-            "personen": _("personen"),
-            "berühmtheiten": _("berühmtheiten"),
-            "beruehmtheiten": _("beruehmtheiten"),
-        },
-        16: {
-            "Wirtschaftssysteme": _("Wirtschaftssysteme"),
-            "wirtschaftssystem": _("wirtschaftssystem"),
-            "wirtschaftssysteme": _("wirtschaftssysteme"),
-            "kombinierteswirtschaftssystem": _("kombinierteswirtschaftssystem"),
-            "kombiniertewirtschaftssysteme": _("kombiniertewirtschaftssysteme"),
-        },
+        1: (
+            _("Lebewesen"),
+            _("tiere"),
+            _("tier"),
+            _("lebewesen"),
+        ),
+        2: (_("Berufe"), _("berufe"), _("beruf")),
+        3: (
+            _("Kreativität_und_Intelligenz"),
+            _("kreativität"),
+            _("intelligenz"),
+            _("kreativitaet"),
+        ),
+        4: (
+            _("Liebe"),
+            _("liebe"),
+        ),
+        7: (
+            _("Männer"),
+            _("männer"),
+            _("maenner"),
+            _("frauen"),
+        ),
+        8: (
+            _("Persönlichkeit_evolutionär_erwerben"),
+            _("evolution"),
+            _("erwerben"),
+            _("persoenlichkeit"),
+            _("persönlichkeit"),
+        ),
+        9: (
+            _("Religion"),
+            _("religion"),
+            _("religionen"),
+        ),
+        10: (
+            _("Motive_Ziele"),
+            _("motivation"),
+            _("ziele"),
+            _("ziel"),
+            _("motive"),
+        ),
+        12: (
+            _("Emotionen"),
+            _("emotionen"),
+            _("gefuehle"),
+            _("emotion"),
+            _("gefühl"),
+            _("gefühle"),
+        ),
+        13: (
+            _("Personen"),
+            _("personen"),
+            _("berühmtheiten"),
+            _("beruehmtheiten"),
+        ),
+        16: (
+            _("Wirtschaftssysteme"),
+            _("wirtschaftssystem"),
+            _("wirtschaftssysteme"),
+            _("kombinierteswirtschaftssystem"),
+            _("kombiniertewirtschaftssysteme"),
+        ),
     }
 )
 
 kombiParaNdataMatrix2: OrderedDict[int, tuple[str]] = OrderedDict(
     {
-        1: {
-            "Lebewesen": _("Lebewesen"),
-            "tiere": _("tiere"),
-            "tier": _("tier"),
-            "lebewesen": _("lebewesen"),
-        },
-        2: {"Berufe": _("Berufe"), "berufe": _("berufe"), "beruf": _("beruf")},
-        # 3: {
-        #    "Kreativität_und_Intelligenz": _("Kreativität_und_Intelligenz"),
-        #    "kreativität": _("kreativität"),
-        #    "intelligenz": _("intelligenz"),
-        #    "kreativitaet": _("kreativitaet"),
-        # },
-        # 4: {
-        #    "Liebe": _("Liebe"),
-        #    "liebe": _("liebe"),
-        # },
-        5: {
-            "Transzendentalien_Strukturalien": _("Transzendentalien_Strukturalien"),
-            "transzendenz": _("transzendenz"),
-            "transzendentalien": _("transzendentalien"),
-            "strukturalien": _("strukturalien"),
-            "alien": _("alien"),
-        },
-        6: {
-            "Primzahlkreuz": _("Primzahlkreuz"),
-            "leibnitz": _("leibnitz"),
-            "primzahlkreuz": _("primzahlkreuz"),
-        },
-        # 7: {
-        #    "Männer": _("Männer"),
-        #    "männer": _("männer"),
-        #    "maenner": _("maenner"),
-        #    "frauen": _("frauen"),
-        # },
-        8: {
-            "Persönlichkeit_evolutionär_erwerben": _(
-                "Persönlichkeit_evolutionär_erwerben"
-            ),
-            "evolution": _("evolution"),
-            "erwerben": _("erwerben"),
-            "persoenlichkeit": _("persoenlichkeit"),
-            "persönlichkeit": _("persönlichkeit"),
-        },
-        # 9: {
-        #    "Religion": _("Religion"),
-        #    "religion": _("religion"),
-        #    "religionen": _("religionen"),
-        # },
-        10: {
-            "Motive_Ziele": _("Motive_Ziele"),
-            "motivation": _("motivation"),
-            "motive": _("motive"),
-            "ziele": _("ziele"),
-            "ziel": _("ziel"),
-        },
-        11: {
-            "analytische_Ontologie": _("analytische_Ontologie"),
-            "analytischeontologie": _("analytischeontologie"),
-            "ontologie": _("ontologie"),
-        },
-        # 12: {
-        #    "Emotionen": _("Emotionen"),
-        #    "emotionen": _("emotionen"),
-        #    "gefuehle": _("gefuehle"),
-        #    "gefühle": _("gefühle"),
-        #    "emotion": _("emotion"),
-        #    "gefühl": _("gefühl"),
-        #    "gefühle": _("gefühle"),
-        # },
-        # 13: {"Personen": _("Personen"), "personen": _("personen"), "berühmtheiten": _("berühmtheiten"), "beruehmtheiten": _("beruehmtheiten")},
-        14: {
-            "Mechanismen_der_Zuechtung": _("Mechanismen_der_Zuechtung"),
-            "mechanismen": _("mechanismen"),
-            "wesen": _("wesen"),
-            "zuechten": _("zuechten"),
-            "züchten": _("züchten"),
-        },
-        15: {
-            "Gegentranszendentalien": _("Gegentranszendentalien"),
-            "gegentranszendentalien": _("gegentranszendentalien"),
-            "gegenstrukturalien": _("gegenstrukturalien"),
-        },
-        # 16: {
-        #    "Wirtschaftssysteme": _("Wirtschaftssysteme"),
-        #    "wirtschaftssystem": _("wirtschaftssystem"),
-        #    "wirtschaftssysteme": _("wirtschaftssysteme"),
-        #    "kombinierteswirtschaftssystem": _("kombinierteswirtschaftssystem"),
-        #    "kombiniertewirtschaftssysteme": _("kombiniertewirtschaftssysteme"),
-        # },
-        17: {
-            "Maschinen": _("Maschinen"),
-            "maschinen": _("maschinen"),
-            "geräte": _("geräte"),
-            "geraete": _("geraete"),
-        },
-        18: {"Geist": _("Geist"), "geist": _("geist")},
-        19: {"Bewusstsein": _("Bewusstsein"), "bewusstsein": _("bewusstsein")},
+        1: (
+            _("Lebewesen"),
+            _("tiere"),
+            _("tier"),
+            _("lebewesen"),
+        ),
+        2: (_("Berufe"), _("berufe"), _("beruf")),
+        # 3: (
+        #    _("Kreativität_und_Intelligenz"),
+        #    _("kreativität"),
+        #    _("intelligenz"),
+        #    _("kreativitaet"),
+        # ),
+        # 4: (
+        #    _("Liebe"),
+        #    _("liebe"),
+        # ),
+        5: (
+            _("Transzendentalien_Strukturalien"),
+            _("transzendenz"),
+            _("transzendentalien"),
+            _("strukturalien"),
+            _("alien"),
+        ),
+        6: (
+            _("Primzahlkreuz"),
+            _("leibnitz"),
+            _("primzahlkreuz"),
+        ),
+        # 7: (
+        #    _("Männer"),
+        #    _("männer"),
+        #    _("maenner"),
+        #    _("frauen"),
+        # ),
+        8: (
+            _("Persönlichkeit_evolutionär_erwerben"),
+            _("evolution"),
+            _("erwerben"),
+            _("persoenlichkeit"),
+            _("persönlichkeit"),
+        ),
+        # 9: (
+        #    _("Religion"),
+        #    _("religion"),
+        #    _("religionen"),
+        # ),
+        10: (
+            _("Motive_Ziele"),
+            _("motivation"),
+            _("motive"),
+            _("ziele"),
+            _("ziel"),
+        ),
+        11: (
+            _("analytische_Ontologie"),
+            _("analytischeontologie"),
+            _("ontologie"),
+        ),
+        # 12: (
+        #    _("Emotionen"),
+        #    _("emotionen"),
+        #    _("gefuehle"),
+        #    _("gefühle"),
+        #    _("emotion"),
+        #    _("gefühl"),
+        #    _("gefühle"),
+        # ),
+        # 13: (_("Personen"), "personen": _("personen"), "berühmtheiten": _("berühmtheiten"), "beruehmtheiten": _("beruehmtheiten")),
+        14: (
+            _("Mechanismen_der_Zuechtung"),
+            _("mechanismen"),
+            _("wesen"),
+            _("zuechten"),
+            _("züchten"),
+        ),
+        15: (
+            _("Gegentranszendentalien"),
+            _("gegentranszendentalien"),
+            _("gegenstrukturalien"),
+        ),
+        # 16: (
+        #    _("Wirtschaftssysteme"),
+        #    _("wirtschaftssystem"),
+        #    _("wirtschaftssysteme"),
+        #    _("kombinierteswirtschaftssystem"),
+        #    _("kombiniertewirtschaftssysteme"),
+        # ),
+        17: (
+            _("Maschinen"),
+            _("maschinen"),
+            _("geräte"),
+            _("geraete"),
+        ),
+        18: (_("Geist"), _("geist")),
+        19: (_("Bewusstsein"), _("bewusstsein")),
     }
 )
 
@@ -3667,20 +3663,20 @@ class concat:
         }
     )
     metaKonkret = {
-        "Meta": _("Meta"),
-        "Theorie": _("Theorie"),
-        "Management": _("Management"),
-        "ganzheitlich": _("ganzheitlich"),
-        "Verwertung, Unternehmung, Geschäft": _("Verwertung, Unternehmung, Geschäft"),
-        "regieren, beherrschen": _("regieren, beherrschen"),
-        "Konkretes": _("Konkretes"),
-        "Praxis": _("Praxis"),
-        "verändernd": _("verändernd"),
-        "darüber hinaus gehend": _("darüber hinaus gehend"),
-        "wertvoll": _("wertvoll"),
-        "Richtung": _("Richtung"),
-        " für 1/n statt n": _(" für 1/n statt n"),
-        " für n": _(" für n"),
+        _("Meta"),
+        _("Theorie"),
+        _("Management"),
+        _("ganzheitlich"),
+        _("Verwertung, Unternehmung, Geschäft"),
+        _("regieren, beherrschen"),
+        _("Konkretes"),
+        _("Praxis"),
+        _("verändernd"),
+        _("darüber hinaus gehend"),
+        _("wertvoll"),
+        _("Richtung"),
+        _(" für 1/n statt n"),
+        _(" für n"),
     }
     innenAussen = {
         "für innen": _("für innen"),
