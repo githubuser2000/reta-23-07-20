@@ -213,7 +213,7 @@ class Prepare:
             #    "_2 ja, breiten=",
             #    [len(self.rowsAsNumbers), combiRows, len(self.breiten)],
             # )
-            breiten: list = self.breiten[len(self.rowsAsNumbers) - combiRows]
+            breiten: list = self.breiten[len(self.rowsAsNumbers) - combiRows :]
         else:
             # x("_2 nein, breiten=", [])
             breiten: list = []
