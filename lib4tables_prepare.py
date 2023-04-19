@@ -539,30 +539,32 @@ class Prepare:
             # exit()
         ifTypAtAll = False
         numRangeYesZ = set()
+        if len(numRange) == 0 and len(set(paramLines) - {"ka", "ka2"}) > 0:
+            numRange = set(range(1, self.hoechsteZeile[1024] + 1))
 
-        for condition in paramLines:
-            if "mond" in condition:
-                numRangeYesZ, ifTypAtAll = (
-                    self.moonsun(True, numRangeYesZ, numRange, ifZaehlungenAtAll),
-                    True,
-                )
-            elif "schwarzesonne" in condition:
-                ifTypAtAll = True
-                for n in numRange:
-                    if n % 3 == 0:
-                        numRangeYesZ.add(n)
-            elif "sonne" in condition:
-                numRangeYesZ, ifTypAtAll = (
-                    self.moonsun(False, numRangeYesZ, numRange, ifZaehlungenAtAll),
-                    True,
-                )
-            elif "planet" in condition:
-                ifTypAtAll = True
-                for n in numRange:
-                    if n % 2 == 0:
-                        numRangeYesZ.add(n)
+            for condition in paramLines:
+                if "mond" in condition:
+                    numRangeYesZ, ifTypAtAll = (
+                        self.moonsun(True, numRangeYesZ, numRange, ifZaehlungenAtAll),
+                        True,
+                    )
+                elif "schwarzesonne" in condition:
+                    ifTypAtAll = True
+                    for n in numRange:
+                        if n % 3 == 0:
+                            numRangeYesZ.add(n)
+                elif "sonne" in condition:
+                    numRangeYesZ, ifTypAtAll = (
+                        self.moonsun(False, numRangeYesZ, numRange, ifZaehlungenAtAll),
+                        True,
+                    )
+                elif "planet" in condition:
+                    ifTypAtAll = True
+                    for n in numRange:
+                        if n % 2 == 0:
+                            numRangeYesZ.add(n)
 
-        numRange = cutset(ifTypAtAll, numRange, numRangeYesZ)
+            numRange = cutset(ifTypAtAll, numRange, numRangeYesZ)
 
         primMultiples: list = []
         ifPrimAtAll = False
@@ -599,17 +601,20 @@ class Prepare:
         #
         if ifPowerAtall:
             numRangeYesZ = set()
-            lastEl = list(numRange)
-            lastEl.sort()
-            lastEl = lastEl[-1]
-            for base in toPowerIt:
-                for n in range(lastEl):
-                    onePower = pow(base, n)
-                    # if onePower <= numRangeMax:
-                    numRangeYesZ |= {onePower}
-                    # else:
-                    #    break
-            numRange = cutset(ifPowerAtall, numRange, numRangeYesZ) - {1}
+            if len(numRange) == 0 and len(set(paramLines) - {"ka", "ka2"}) > 0:
+                numRange = set(range(1, self.hoechsteZeile[1024] + 1))
+            if len(numRange) > 0:
+                lastEl = list(numRange)
+                lastEl.sort()
+                lastEl = lastEl[-1]
+                for base in toPowerIt:
+                    for n in range(lastEl):
+                        onePower = pow(base, n)
+                        # if onePower <= numRangeMax:
+                        numRangeYesZ |= {onePower}
+                        # else:
+                        #    break
+                numRange = cutset(ifPowerAtall, numRange, numRangeYesZ) - {1}
 
         numRangeYesZ = set()
 
@@ -641,7 +646,7 @@ class Prepare:
 
         numRangeList = list(numRange)
         numRangeList.sort()
-        numRange2Map = {i: a for i, a in enumerate(numRangeList)}
+        numRange2Map = {i + 1: a for i, a in enumerate(numRangeList)}
         zJa = False
         numRangeNeu2 = set()
         for condition in paramLines:
