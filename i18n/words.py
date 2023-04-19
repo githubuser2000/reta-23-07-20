@@ -3501,182 +3501,207 @@ kombiParaNdataMatrix2: OrderedDict[int, tuple[str]] = OrderedDict(
 )
 
 
+class tableHandling:
+    parameterName: dict[str, str] = {"kombination": _("kombination")}
+    art = {"bbcode": _("bbcode"), "html": _("html"), "markdown": _("markdown")}
+    into = {
+        "Kombination_(Galaxie_und_schwarzes_Loch)_(14_mit_13)": _(
+            "Kombination_(Galaxie_und_schwarzes_Loch)_(14_mit_13)"
+        ),
+        "Wichtigstes_zum_gedanklich_einordnen": _(
+            "Wichtigstes_zum_gedanklich_einordnen"
+        ),
+        "Zweitwichtigste": _("Zweitwichtigste"),
+        "berufe": _("berufe"),
+        "intelligenz": _("intelligenz"),
+        "Kombination_(Universum_und_Galaxie)_(14_mit_15)": _(
+            "Kombination_(Universum_und_Galaxie)_(14_mit_15)"
+        ),
+    }
+    gestirn = {
+        "Gestirn": _("Gestirn"),
+        "Mond": _("Mond"),
+        "Sonne": _("Sonne"),
+        "Planet": _("Planet"),
+    }
+
+
 class concat:
-    polygon1 = _(" der eigenen Strukturgröße (")
-    polygon2 = _(") auf dich bei gleichförmigen Polygonen")
-    energietopologie1 = (
-        _("eine Denkart"),
-        _("eine Gefühlsart"),
-        _("total eine Art, etwas geistig zu erzeugen"),
-        _("total eine Art zu erleben"),
-        _("total eine Energie-Art"),
-        _("etwas eine Art zu erleben"),
-        _("etwas eine Art, etwas geistig zu erzeugen"),
-        _("wenig eine Art, etwas geistig zu erzeugen"),
-        _("einigermaßen eine Energie-Art"),
-        _("kaum eine Energie-Art"),
-        _("kaum eine Art, etwas geistig zu erzeugen"),
-        _("eine Denkart"),
-        _("eine Gefühlsart"),
-        _("total eine Art, etwas geistig zu erzeugen"),
-        _("total eine Art zu erleben"),
-        _("total eine Energie-Art"),
-        _("etwas eine Art zu erleben"),
-        _("etwas eine Art, etwas geistig zu erzeugen"),
-        _("wenig eine Art, etwas geistig zu erzeugen"),
-        _("einigermaßen eine Energie-Art"),
-        _("kaum eine Energie-Art"),
-        _("kaum eine Art, etwas geistig zu erzeugen"),
-    )
-    ausgabeString = _(
+    polygon1 = {" der eigenen Strukturgröße (": _(" der eigenen Strukturgröße (")}
+    polygon2 = {") auf dich bei gleichförmigen Polygonen": _(") auf dich bei gleichförmigen Polygonen")}
+    energietopologie1 = {
+        "eine Denkart": _("eine Denkart"),
+        "eine Gefühlsart": _("eine Gefühlsart"),
+        "total eine Art, etwas geistig zu erzeugen": _("total eine Art, etwas geistig zu erzeugen"),
+        "total eine Art zu erleben": _("total eine Art zu erleben"),
+        "total eine Energie-Art": _("total eine Energie-Art"),
+        "etwas eine Art zu erleben": _("etwas eine Art zu erleben"),
+        "etwas eine Art, etwas geistig zu erzeugen": _("etwas eine Art, etwas geistig zu erzeugen"),
+        "wenig eine Art, etwas geistig zu erzeugen": _("wenig eine Art, etwas geistig zu erzeugen"),
+        "einigermaßen eine Energie-Art": _("einigermaßen eine Energie-Art"),
+        "kaum eine Energie-Art": _("kaum eine Energie-Art"),
+        "kaum eine Art, etwas geistig zu erzeugen": _("kaum eine Art, etwas geistig zu erzeugen"),
+        "eine Denkart": _("eine Denkart"),
+        "eine Gefühlsart": _("eine Gefühlsart"),
+        "total eine Art, etwas geistig zu erzeugen": _("total eine Art, etwas geistig zu erzeugen"),
+        "total eine Art zu erleben": _("total eine Art zu erleben"),
+        "total eine Energie-Art": _("total eine Energie-Art"),
+        "etwas eine Art zu erleben": _("etwas eine Art zu erleben"),
+        "etwas eine Art, etwas geistig zu erzeugen": _("etwas eine Art, etwas geistig zu erzeugen"),
+        "wenig eine Art, etwas geistig zu erzeugen": _("wenig eine Art, etwas geistig zu erzeugen"),
+        "einigermaßen eine Energie-Art": _("einigermaßen eine Energie-Art"),
+        "kaum eine Energie-Art": _("kaum eine Energie-Art"),
+        "kaum eine Art, etwas geistig zu erzeugen": _("kaum eine Art, etwas geistig zu erzeugen"),
+    }
+    ausgabeString = {"Energie oder Denkart oder Gefühlsart oder Materie-Art oder Topologie-Art": _(
         "Energie oder Denkart oder Gefühlsart oder Materie-Art oder Topologie-Art"
-    )
-    kreaZahl = (
-        _("Evolutions-Züchtungs-Kreativität"),
-        _("0. Primzahl 1"),
-        _("1. Primzahl und Sonnenzahl"),
-        _("2. Sonnenzahl, aber keine Primzahl"),
-        _("3. Mondzahl"),
-    )
-    mondExpLog1 = (
-        _("Mond-Typ eines Sternpolygons"),
-        _("Mond-Typ eines gleichförmigen Polygons"),
-    )
+    )}
+    kreaZahl = {
+        "Evolutions-Züchtungs-Kreativität": _("Evolutions-Züchtungs-Kreativität"),
+        "0. Primzahl 1": _("0. Primzahl 1"),
+        "1. Primzahl und Sonnenzahl": _("1. Primzahl und Sonnenzahl"),
+        "2. Sonnenzahl, aber keine Primzahl": _("2. Sonnenzahl, aber keine Primzahl"),
+        "3. Mondzahl": _("3. Mondzahl"),
+    }
+    mondExpLog1 = {
+        "Mond-Typ eines Sternpolygons": _("Mond-Typ eines Sternpolygons"),
+        "Mond-Typ eines gleichförmigen Polygons": _("Mond-Typ eines gleichförmigen Polygons"),
+    }
 
-    mondExpLog2 = _("kein Mond")
+    mondExpLog2 = {"kein Mond": _("kein Mond")}
     # wohl nich nötig zu übersetzen modalA_
-    modalA1 = _("modalS")
-    modalA2 = _("vervielfachter")
-    modalA3 = _("i_origS")
+    modalA1 = {"modalS": _("modalS")}
+    modalA2 = {"vervielfachter": _("vervielfachter")}
+    modalA3 = {"i_origS": _("i_origS")}
 
-    modalB = (
-        "mittelstark überdurchschnittlich: ",
-        "überdurchschnittlich: ",
-        "mittelleicht überdurchschnittlich: ",
-        "sehr: ",
-        "sehr leicht überdurchschnittlich: ",
-    )
-    modalC = (_("intrinsisch"), _("zuerst"), _("extrinsisch"), _("als zweites"))
-    modalD = (
-        _(", nicht: "),
-        _(" (das alles nicht): "),
-        _("extrinsisch"),
-        _("als zweites"),
-        _("intrinsisch"),
-        _("zuerst"),
-    )
-    generiert = _("Generiert: ")
-    allesNurBezogen = (_("Alles nur bezogen auf die selbe Strukturgröße einer "),)
+    modalB = {
+        "mittelstark überdurchschnittlich: ": _("mittelstark überdurchschnittlich: "),
+        "überdurchschnittlich: ": _("überdurchschnittlich: "),
+        "mittelleicht überdurchschnittlich: ": _("mittelleicht überdurchschnittlich: "),
+        "sehr: ": _("sehr: "),
+        "sehr leicht überdurchschnittlich: ": _("sehr leicht überdurchschnittlich: "),
+    }
+    modalC = {"intrinsisch": _("intrinsisch"), "zuerst": _("zuerst"), "extrinsisch": _("extrinsisch"), "als zweites": _("als zweites")}
+    modalD = {
+        ", nicht: ": _(", nicht: "),
+        " (das alles nicht): ": _(" (das alles nicht): "),
+        "extrinsisch": _("extrinsisch"),
+        "als zweites": _("als zweites"),
+        "intrinsisch": _("intrinsisch"),
+        "zuerst": _("zuerst"),
+
+    generiert = {"Generiert: ": _("Generiert: ")}
+    allesNurBezogen = ("Alles nur bezogen auf die selbe Strukturgröße einer ": _("Alles nur bezogen auf die selbe Strukturgröße einer "),)
     headline1 = _(
         "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
     )
-    gegen = _("gegen ")
-    pro = _("pro ")
+    gegen = "gegen ": _("gegen ")
+    pro = "pro ": _("pro ")
     hineinversetzen = (
-        _(" Darin kann sich die "),
-        _(" am Besten hineinversetzten."),
+        " Darin kann sich die ": _(" Darin kann sich die "),
+        " am Besten hineinversetzten.": _(" am Besten hineinversetzten."),
     )
-    proIst = (_("pro dieser Zahl sind: _("), _(")pro dieser Zahl ist "))
-    contraIst = (_(" contra dieser Zahl sind: _("), _(") contra dieser Zahl ist "))
+    proIst = ("pro dieser Zahl sind: _(": _("pro dieser Zahl sind: _("), ")pro dieser Zahl ist ": _(")pro dieser Zahl ist "))
+    contraIst = (" contra dieser Zahl sind: _(": _(" contra dieser Zahl sind: _("), ") contra dieser Zahl ist ": _(") contra dieser Zahl ist "))
     hineinversetzen = _(
         _(
             " - Die Zahlen, die für oder gegen diese Zahlen hier sind, können sich in diese am Besten gedanklich hineinversetzen."
         )
     )
-    polygone = (_("Sternpolygone"), _("gleichförmige Polygone"))
+    polygone = ("Sternpolygone": _("Sternpolygone"), "gleichförmige Polygone": _("gleichförmige Polygone"))
 
     kombisNamen: tuple = (
-        _("Motiv -> Motiv"),
-        _("Motiv -> Strukur"),
-        _("Struktur -> Motiv"),
-        _("Struktur -> Strukur"),
+        "Motiv -> Motiv": _("Motiv -> Motiv"),
+        "Motiv -> Strukur": _("Motiv -> Strukur"),
+        "Struktur -> Motiv": _("Struktur -> Motiv"),
+        "Struktur -> Strukur": _("Struktur -> Strukur"),
     )
     kombisNamen2: tuple = (
-        _("GalGal"),
-        _("GalUni"),
-        _("UniGal"),
-        _("UniUni"),
+        "GalGal": _("GalGal"),
+        "GalUni": _("GalUni"),
+        "UniGal": _("UniGal"),
+        "UniUni": _("UniUni"),
     )
 
-    faktorenbla = _(", mit Faktoren aus gebrochen-rationalen Zahlen")
-    genMul = _("generierte Multiplikationen ")
-    ausserdem = _(", außerdem: ")
-    Multiplikationen_ = _("Multiplikationen")
-    nWichtigste = (_("Wichtigstes_zum_verstehen"), _("Viertwichtigste"))
+    faktorenbla = ", mit Faktoren aus gebrochen-rationalen Zahlen": _(", mit Faktoren aus gebrochen-rationalen Zahlen")
+    genMul = "generierte Multiplikationen ": _("generierte Multiplikationen ")
+    ausserdem = ", außerdem: ": _(", außerdem: ")
+    Multiplikationen_ = "Multiplikationen": _("Multiplikationen")
+    nWichtigste = ("Wichtigstes_zum_verstehen": _("Wichtigstes_zum_verstehen"), "Viertwichtigste": _("Viertwichtigste"))
     metaOrWhat = OrderedDict(
         {
             2: (
-                (_("Meta-Thema: _("), _(")Konkretes: _(")),
-                _((")Meta-_("), _(")Konkret-")),
+                ("Meta-Thema: _(": _("Meta-Thema: _("), ")Konkretes: _(": _(")Konkretes: _(")),
+                _((")Meta-"), _(": _("), _(")Konkret-")),
             ),
             3: (
-                (_("Theorie-Thema: _("), _(")Praxis: _(")),
-                _((")Theorie-_("), _(")Praxis-")),
+                ("Theorie-Thema: _(": _("Theorie-Thema: _("), ")Praxis: _(": _(")Praxis: _(")),
+                _((")Theorie-"), _(": _("), _(")Praxis-")),
             ),
             4: (
-                (_("Planungs-Thema: _("), _(")Umsetzungs-Thema: ")),
-                (_("Planung-"), _("Umsetzung-")),
+                ("Planungs-Thema: _(": _("Planungs-Thema: _("), ")Umsetzungs-Thema: ": _(")Umsetzungs-Thema: ")),
+                ("Planung-": _("Planung-"), "Umsetzung-": _("Umsetzung-")),
             ),
             5: (
-                (_("Anlass-Thema: _("), _(")Wirkungs-Thema: ")),
-                (_("Anlass-"), _("wirkung-")),
+                ("Anlass-Thema: _(": _("Anlass-Thema: _("), ")Wirkungs-Thema: ": _(")Wirkungs-Thema: ")),
+                ("Anlass-": _("Anlass-"), "wirkung-": _("wirkung-")),
             ),
             6: (
-                (_("Kraft-Gebung: _("), _(")Verstärkungs-Thema: ")),
-                (_("Kraft-geben-"), _("Verstärkung-")),
+                ("Kraft-Gebung: _(": _("Kraft-Gebung: _("), ")Verstärkungs-Thema: ": _(")Verstärkungs-Thema: ")),
+                ("Kraft-geben-": _("Kraft-geben-"), "Verstärkung-": _("Verstärkung-")),
             ),
             7: (
-                (_("Beherrschung: _("), _(")Richtung-Thema: ")),
-                (_("beherrschend-"), _("Richtung-")),
+                ("Beherrschung: _(": _("Beherrschung: _("), ")Richtung-Thema: ": _(")Richtung-Thema: ")),
+                ("beherrschend-": _("beherrschend-"), "Richtung-": _("Richtung-")),
             ),
         }
     )
     metaKonkret = (
-        _("Meta"),
-        _("Theorie"),
-        _("Management"),
-        _("ganzheitlich"),
-        _("Verwertung, Unternehmung, Geschäft"),
-        _("regieren, beherrschen"),
-        _("Konkretes"),
-        _("Praxis"),
-        _("verändernd"),
-        _("darüber hinaus gehend"),
-        _("wertvoll"),
-        _("Richtung"),
-        _(" für 1/n statt n"),
-        _(" für n"),
+        "Meta": _("Meta"),
+        "Theorie": _("Theorie"),
+        "Management": _("Management"),
+        "ganzheitlich": _("ganzheitlich"),
+        "Verwertung, Unternehmung, Geschäft": _("Verwertung, Unternehmung, Geschäft"),
+        "regieren, beherrschen": _("regieren, beherrschen"),
+        "Konkretes": _("Konkretes"),
+        "Praxis": _("Praxis"),
+        "verändernd": _("verändernd"),
+        "darüber hinaus gehend": _("darüber hinaus gehend"),
+        "wertvoll": _("wertvoll"),
+        "Richtung": _("Richtung"),
+        " für 1/n statt n": _(" für 1/n statt n"),
+        " für n": _(" für n"),
     )
     innenAussen = (
-        _("für innen"),
-        _("für außen"),
+        "für innen": _("für innen"),
+        "für außen": _("für außen"),
         _('"für seitlich und gegen Schwächlinge innen"'),
         _('"gegen seitlich und für Schwächlinge innen"'),
-        _("für außen"),
+        "für außen": _("für außen"),
     )
     spaltenNamen = OrderedDict(
         {
-            5: _("Transzendentalien, Strukturalien, Universum n"),
-            10: _("Galaxie n"),
-            42: _("Galaxie 1/n"),
-            131: _("Transzendentalien, Strukturalien, Universum 1/n"),
-            138: _("Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n"),
+            5: "Transzendentalien, Strukturalien, Universum n": _("Transzendentalien, Strukturalien, Universum n"),
+            10: "Galaxie n": _("Galaxie n"),
+            42: "Galaxie 1/n": _("Galaxie 1/n"),
+            131: "Transzendentalien, Strukturalien, Universum 1/n": _("Transzendentalien, Strukturalien, Universum 1/n"),
+            138: "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n": _("Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n"),
             202: _(
                 "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n"
             ),
-            None: _("Richtung-Richtung"),
+            None: "Richtung-Richtung": _("Richtung-Richtung"),
         }
     )
 
-    primRicht = _("Primzahlwirkung (7, Richtung) ")
+    primRicht = {"Primzahlwirkung (7, Richtung) ": _("Primzahlwirkung (7, Richtung) ")}
 
-    letztEnd = _("] * letztendlich: ")
+    letztEnd = {"] * letztendlich: ": _("] * letztendlich: ")}
 
-    primVielGen = _("Primzahlvielfache, nicht generiert")
-    GalOrUniOrFehler = (_("Fehler"), _(" Universum"), _(" Galaxie"))
+    primVielGen = {"Primzahlvielfache, nicht generiert": _("Primzahlvielfache, nicht generiert")}
+    GalOrUniOrFehler = {("Fehler": _("Fehler"), " Universum": _(" Universum"), " Galaxie": _(" Galaxie"))}
 
-    multipl = _("Multiplikationen")
-    notGen = _("Nicht_generiert")
+    multipl = {"Multiplikationen": _("Multiplikationen")}
+    notGen = {"Nicht_generiert": _("Nicht_generiert")}
 
 
 class lib4tables:
@@ -3709,11 +3734,12 @@ class nested:
 
 
 class retapy:
+
     beschrieben = _("beschrieben")
     mainParaCmds: dict = {
         _("zeilen"): 0,
         _("spalten"): 1,
-        # _(self.tables.getCombis.parameterName: 2,
+        tableHandling.parameterName["kombination"]: 2,
         _("ausgabe"): 3,
         _("debug"): None,
         _("h"): None,
