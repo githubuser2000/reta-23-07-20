@@ -149,6 +149,7 @@ wahl15 = {
 zumVergleich = []
 gebrochenErlaubteZahlen: set = set()
 for a in reta.Program(["reta", "-zeilen"]).paraNdataMatrix:
+    x("F§$FG", a[0])
     for b in a[1]:
         zumVergleich += [b]
         if len(set(a[0]) & {"gebrochenuniversum", "gebrochengalaxie"}) > 0:
