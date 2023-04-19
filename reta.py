@@ -80,7 +80,6 @@ class Program:
                             (len(neg), 6)
                         ] |= Program.lambdaGebrUnivUndGalax(paraValue)
                     else:
-                        print(befehlName)
                         raise ValueError
                 elif (
                     paraValue == i18nR.beschriebenWort
@@ -111,7 +110,6 @@ class Program:
                     (0, el2Type)
                 ] -= self.spaltenArtenKey_SpaltennummernValue.pop((1, el2Type))
 
-        print(i18n.mainParaCmds[tuple(i18n.tableHandling.parameterName.keys())[0]])
         self.mainParaCmds: dict = {
             i18n.mainParaCmds["zeilen"]: 0,
             i18n.mainParaCmds["spalten"]: 1,
@@ -288,12 +286,6 @@ class Program:
                                 yes1 = True if len(neg) == 0 else False
                             if yes1:
                                 try:
-                                    print("Sss")
-                                    # print(cmd.find("=") == len(galWort) - 1)
-                                    print(self.kombiReverseDict)
-                                    print(oneKombiSpalte)
-                                    print(self.kombiReverseDict[oneKombiSpalte])
-                                    # print(oneKombiSpalte)
                                     resultingSpaltenFromTuple(
                                         (
                                             OrderedSet(),
@@ -793,14 +785,14 @@ class Program:
                     ):
                         self.obZeilenBereicheAngegeben = True
                         for word in arg[3 + i18n.zeilenParasLen["typ"] :].split(","):
-                            if word == neg + i18n.zeilenParasLen["sonne"]:
-                                paramLines.add(i18n.zeilenParasLen["sonne"])
-                            elif word == neg + i18n.zeilenParasLen["schwarzesonne"]:
-                                paramLines.add(i18n.zeilenParasLen["schwarzesonne"])
-                            elif word == neg + i18n.zeilenParasLen["planet"]:
-                                paramLines.add(i18n.zeilenParasLen["planet"])
-                            elif word == neg + i18n.zeilenParasLen["mond"]:
-                                paramLines.add(i18n.zeilenParasLen["mond"])
+                            if word == neg + i18n.zeilenParas["sonne"]:
+                                paramLines.add("sonne")
+                            elif word == neg + i18n.zeilenParas["schwarzesonne"]:
+                                paramLines.add("schwarzesonne")
+                            elif word == neg + i18n.zeilenParas["planet"]:
+                                paramLines.add("planet")
+                            elif word == neg + i18n.zeilenParas["mond"]:
+                                paramLines.add("mond")
                     elif (
                         arg[2 : 3 + i18n.zeilenParasLen["potenzenvonzahlen"]]
                         == i18n.zeilenParas["potenzenvonzahlen"] + "="
@@ -836,7 +828,7 @@ class Program:
                         self.obZeilenBereicheAngegeben = True
                         if neg == "":
                             zahlenMenge = BereichToNumbers2(
-                                arg[3 + i18n.zeilenParasLen["primvielfache"] :]
+                                arg[3 + i18n.zeilenParasLen["primzahlvielfache"] :]
                             )
                             for zahl in zahlenMenge:
                                 paramLines.add(str(zahl) + "p")
@@ -924,7 +916,6 @@ class Program:
                     and len(self.bigParamaeter) > 0
                     and self.bigParamaeter[-1] == i18n.mainParaCmds["ausgabe"]
                 ):  # unteres Kommando
-                    # print(arg[2:])
                     if self.breiteBreitenSysArgvPara(arg[2:], neg):
                         pass
                     elif (

@@ -3808,13 +3808,13 @@ class retapy:
     cliout9Saetze = (
         _('Den Neben-Parameter "'),
         _('" gibt es hier nicht für den Hauptparameter "-'),
-        _('".'),
+        _('". Oder ein = fehlt dahinter.'),
         _(" Möglich sind: "),
     )
     cliout10Saetze = (
         _('Den Neben-Parameter "'),
         _('" gibt es hier nicht für den Hauptparameter "-'),
-        _('".'),
+        _('". Oder es fehlt ein = dahinter.'),
     )
 
 
