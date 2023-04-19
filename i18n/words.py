@@ -425,8 +425,8 @@ ParametersMain: NamedTuple = ParametersMain(
         _("Primzahlwirkung"),
         _("primzahlwirkung"),
     ),
-    (_("gebrochenuniversum")),
-    (_("gebrochengalaxie")),
+    (_("gebrochenuniversum"),),
+    (_("gebrochengalaxie"),),
     (
         _("Multiplikationen"),
         _("multiplikationen"),
