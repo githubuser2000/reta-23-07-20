@@ -18,7 +18,6 @@ except:
 
 from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
                     output, primfaktoren, primRepeat, re, x)
-from i18n.words import tableHandlinig as i18n
 from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz, csvSyntax,
                         divisorGenerator, emacsSyntax, htmlSyntax,
@@ -30,16 +29,6 @@ from lib4tables_prepare import Prepare, setShellRowsAmount, shellRowsAmount
 
 
 class Tables:
-    # def getRowAmountofAnyPart(self):
-    #    return {
-    #        "numerierung": 1 if self.nummeriere else 0,
-    #        "main prepare relitable orignal | combi & concat-prim drin": self.getPrepare.rowsAsNumbers,
-    #        "prim (concat)": self.puniverseprims,
-    #        "combi": (self.getCombis.rowsOfcombi, self.getCombis.ChosenKombiLines),
-    #        "len(AllCombiRows)": self.getCombis.sumOfAllCombiRowsAmount,
-    #        "row of prim multi generated": self.primUniverseRow,
-    #    }
-
     @property
     def markdownOutputYes(self) -> bool:
         return type(self.getOut.outType) is markdownSyntax
@@ -144,11 +133,6 @@ class Tables:
     @textWidth.setter
     def textWidth(self, value: int):
         shellRowsAmount, _, _, _ = getTextWrapThings()
-        # alxp(
-        #    "shellRowsAmount war im Setter von Tables() auf {} gesetzt und wird jetzt überall (3 Klassen) auf {} gesetzt".format(
-        #        shellRowsAmount,value
-        #    )
-        # )
         value = (
             value
             if (shellRowsAmount > value + 7 or shellRowsAmount == 0)
@@ -326,9 +310,6 @@ class Tables:
             """
             global output, shellRowsAmount, h_de, dic, fill
             shellRowsAmount, h_de, dic, fill = getTextWrapThings()
-            # x("breite Alt: ", [shellRowsAmount, type(shellRowsAmount)])
-            # shellRowsAmount = os.get_terminal_size().columns
-            # x("breite Neu: ", [shellRowsAmount, type(shellRowsAmount)])
 
             def findMaxCellTextLen(
                 finallyDisplayLines: set, newTable: list, rowsRange: range
@@ -375,7 +356,6 @@ class Tables:
 
             def determineRowWidth(i, maxCellTextLen):
                 if i < len(self.breiten):
-                    # if i + (1 if self.nummerierung else 0) <= len(self.breiten):
                     certaintextwidth = self.breiten[i]
                 else:
                     certaintextwidth = self.textwidth
@@ -399,18 +379,11 @@ class Tables:
             )
             self.finallyDisplayLines: list = list(finallyDisplayLinesSet)
             self.finallyDisplayLines.sort()
-            # ColumnsRowsAmount, shellRowsAmount1 = (
-            ##    os.popen("stty size", "r").read().split()
-            # )  # Wie viele Zeilen und Spalten hat die Shell ?
             shellRowsAmount -= (
                 len(str(self.finallyDisplayLines[-1])) + 1
                 if len(self.finallyDisplayLines) > 0 and shellRowsAmount != 0
                 else 0
             )
-            # x(
-            #    "und dann: ",
-            #    [shellRowsAmount, len(str(self.finallyDisplayLines[-1])) + 1],
-            # )
             self.finallyDisplayLines[0] = ""
             lastSubCellIndex = -1
             lastlastSubCellIndex = -2
@@ -636,20 +609,6 @@ class Tables:
                             else:
                                 rowsEmpty += 1
 
-                        # x(
-                        #    "AUSGABE-3",
-                        #    [
-                        #        rowsEmpty,
-                        #        "!=",
-                        #        len(self.rowsAsNumbers),
-                        #        "and",
-                        #        iterWholeLine,
-                        #        "<",
-                        #        self.textheight,
-                        #        "or 0 ==",
-                        #        self.textheight,
-                        #    ],
-                        # )
                         if rowsEmpty != len(self.rowsAsNumbers) and (
                             iterWholeLine < self.textheight or self.textheight == 0
                         ):  # and m < actualPartLineLen:
@@ -796,7 +755,6 @@ class Tables:
             @rtype: str
             @return: der colorierte Text
             """
-            # \033[0;34mblaues Huhn\033[0m.
             num = int(num) if str(num).isdecimal() else 0
             if num == 0:
                 return "\033[41m" + "\033[30m" + "\033[4m" + text + "\033[0m"
@@ -806,7 +764,6 @@ class Tables:
                 else:
                     return "\033[40m" + "\033[37m" + text + "\033[0m" + "\033[0m"
             elif moonNumber(num)[1] != []:
-                # 00;33
                 if num % 2 == 0:
                     return "\033[106m" + "\033[30m" + text + "\033[0m" + "\033[0m"
                 else:
@@ -825,8 +782,8 @@ class Tables:
         def __init__(self, tables):
             self.sumOfAllCombiRowsAmount = 0
             self.tables = tables
-            self.parameterName = i18n.parameterName
-            "alle  Schritte für kombi:
+            self.parameterName = "kombination"
+            """alle  Schritte für kombi:
             1. lesen: KombiTable und relation, was von kombitable zu haupt gehört
                       und matrix mit zellen sind zahlen der kombinationen
                       d.h. 3 Sachen sind das Ergebnis
@@ -882,7 +839,6 @@ class Tables:
                             tables[key] += [into[0]]
                         else:
                             tables[key] = [into[0]]
-                    # cliOut({0,kombiLineNumber}, oneTable, 2, rowsRange_kombi_1)
                     """ Liste aus Tabellen: eine Untertabelle = was in Haupttabellenzeilennummer rein soll aus der Kombitabelle
                     Zusammen ist das die Matrix der Kombis, die an die Haupt+Anzeige Tabelle deneben ran soll
                 """
@@ -938,11 +894,7 @@ class Tables:
                         numListPart = []
                         for listEl in liste:
                             assert len(listEl.strip()) != 0
-                            if (
-                                # len(listEl.strip()) == 0 or
-                                abs(int(colNum)) != abs(int(listEl))
-                                or len(liste) != 1
-                            ):
+                            if abs(int(colNum)) != abs(int(listEl)) or len(liste) != 1:
                                 numListPart += [listEl]
 
                         newNumListList += [numListPart]
@@ -1000,8 +952,6 @@ class Tables:
             """ Hätte ich mich gleich für SQL entschieden, oder hätte ich Pandas gewählt, dann hätte ich diesen Komplizierten Mist nicht programmieren müssen!
             """
 
-            # regex = re.compile(r"\s|\s+")
-            # if self.tables.textWidth == 0 and type(self.tables.getOut.outType) in [
             if type(self.tables.getOut.outType) in [
                 htmlSyntax,
                 bbCodeSyntax,
@@ -1124,33 +1074,20 @@ class Tables:
                 key = haupttabellenzeilennummer
                 value = kombitabellenzeilennummer
             """
-            # kombitypes = {"displaying": False, "or": False, "and": False}
-            # self.ChosenKombiLines: dict = OrderedDict()
-            # #x("AAA6", displayingZeilen)
 
             ChosenKombiLines: dict = OrderedDict()
             for condition in paramLines:
                 if condition in ("ka", "ka2"):
-                    # kombitypes["displaying"] = True
-                    # for ZeilennummerOfOnlyDisplayingOnes in displayingZeilen:
                     for kombiLineNumber, kombiLine in enumerate(kombiTable_Kombis):
                         """kombiLineNumber ist die csv Zeilennummer in der Kombitabelle
                         kombiLine ist aus der ersten Spalte die jeweilige Liste an Zahlenkombinationen pro Zeile"""
-                        # #x("AAA7", (kombiLineNumber, kombiLine, ))
                         for kombiNumber in kombiLine:
                             """kombiNumber ist demzufolge eine so eine Zahl
                             von n*m Zahlen
                             if: wenn eine dieser Zahlen zu denen gehört, die am Ende angezeigt werden sollen und
                             wenn diese Zahl eine ist, die genau der richtigen Anzeigezeile entspricht"""
 
-                            # x ("AAA5", (ZeilennummerOfOnlyDisplayingOnes, kombiLineNumber, kombiLine, kombiNumber in displayingZeilen, kombiNumber, ZeilennummerOfOnlyDisplayingOnes))
-                            # #x("AAA5", (kombiLineNumber, kombiNumber == 125,))
-                            if (
-                                # kombiNumber == ZeilennummerOfOnlyDisplayingOnes
-                                kombiNumber
-                                in displayingZeilen
-                            ):
-                                # #x("AAA8", (ZeilennummerOfOnlyDisplayingOnes, kombiLineNumber, kombiLine,))
+                            if kombiNumber in displayingZeilen:
                                 try:
                                     """Zugehörig zur richtigen Anzeigeezeile wird diese Kombizeile ausgewählt
                                     d.h. anzeige in zeile enthält die richtige kombizeile
@@ -1165,7 +1102,6 @@ class Tables:
                                     ChosenKombiLines[kombiNumber] = OrderedSet(
                                         {kombiLineNumber + 1}
                                     )
-            # #x("AAA4", self.ChosenKombiLines)
             return ChosenKombiLines
 
         def readKombiCsv(
@@ -1295,10 +1231,6 @@ class Tables:
                                             in self.tables.generatedSpaltenParameter
                                         ):
                                             raise ValueError
-                                        # x(
-                                        #    "sss",
-                                        #    len(self.tables.generatedSpaltenParameter),
-                                        # )
 
                                         into: list = []
                                         into2: list = []
@@ -1350,7 +1282,6 @@ class Tables:
             else:
                 self.kombiTable = [[]]
                 self.kombiTable_Kombis = [[]]
-            # #x("idiot", self.tables.generatedSpaltenParameter)
 
             return (
                 self.kombiTable,
@@ -1389,7 +1320,6 @@ class Tables:
 
     class Maintable:
         def __init__(self, tables):
-            # self.spaltegestirn = False
             self.tables = tables
 
         def createSpalteGestirn(self, relitable: list, rowsAsNumbers: set):
@@ -1406,7 +1336,6 @@ class Tables:
             self.relitable = relitable
             if set(rowsAsNumbers) >= {64}:
                 if len(self.relitable) > 0:
-                    # self.tables.dataDict[0][len(self.relitable[0])] = [(), ()]
                     if (
                         len(self.tables.generatedSpaltenParameter)
                         + self.tables.SpaltenVanillaAmount
@@ -1422,7 +1351,6 @@ class Tables:
                         len(rowsAsNumbers) - 1
                     ] = frozenset({ST.sternPolygon, ST.universum, ST.galaxie})
 
-                # moonNumber
                 for i, line in enumerate(self.relitable):
                     if i == 0:
                         line += ["Gestirn"]
