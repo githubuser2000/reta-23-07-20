@@ -17,8 +17,6 @@ localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)), "locale")
 translate = gettext.translation("handroll", localedir, fallback=True)
 _ = translate.gettext
 Multiplikationen = [(_("Multiplikationen"), "")]
-print(type(Multiplikationen))
-print(type(Multiplikationen[0]))
 """
 ES FEHLEN NOCH ALLE ''
 fertig: in prepare ist nichts
