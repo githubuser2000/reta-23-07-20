@@ -100,7 +100,7 @@ zeilenParas = [
     "--" + i18n.zeilenParas["vielfachevonzahlen"] + "=",
     "--" + i18n.zeilenParas["oberesmaximum"] + "=",
 ]
-hauptForNeben = tuple(set(i18n.hauptForNeben.values()) - {"debug"})
+hauptForNeben = ["-" + s for s in set(i18n.hauptForNeben.values()) - {"debug"}]
 # hauptForNeben = ("-zeilen", "-spalten", "-kombination", "-ausgabe", "-h", "-help")
 
 notParameterValues = ausgabeParas + zeilenParas + kombiMainParas + spalten + mainParas

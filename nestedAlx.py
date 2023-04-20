@@ -178,16 +178,6 @@ class NestedCompleter(Completer):
                 completer.situationsTyp = ComplSitua.befehleNichtReta
 
             else:
-                # elif (
-                # self.situationsTyp
-                # in (
-                # ComplSitua.hauptPara,
-                # ComplSitua.retaAnfang,
-                # ComplSitua.spaltenPara,
-                # ComplSitua.spaltenValPara,
-                # )
-                # or True
-                # ):
                 if len({first_term, self.nebenParaWort} & hauptForNebenSet) > 0:
                     if "-" + i18n.hauptForNeben["zeilen"] == first_term:
                         var1, var2 = self.paraZeilen(completer)
@@ -229,37 +219,36 @@ class NestedCompleter(Completer):
                             **completer.optionsTypes,
                             **{key: ComplSitua.hauptPara for key in hauptForNeben},
                         }
-
         elif gleich or komma:
-            if "-spalten" == first_term:
+            if "-" + i18n.hauptForNeben["spalten"] == first_term:
                 var2, var3, var4 = self.gleichKommaSpalten(
                     completer, first_term, gleich, komma
                 )
-            elif "-zeilen" == first_term:
+            elif "-" + i18n.hauptForNeben["zeilen"] == first_term:
                 var2, var3, var4 = self.gleichKommaZeilen(
                     completer, first_term, gleich, komma
                 )
-            elif "-kombination" == first_term:
+            elif "-" + i18n.hauptForNeben["kombination"] == first_term:
                 var2, var3, var4 = self.gleichKommaKombi(
                     completer, first_term, gleich, komma
                 )
-            elif "-ausgabe" == first_term:
+            elif "-" + i18n.hauptForNeben["ausgabe"] == first_term:
                 var2, var3, var4 = self.gleichKommaAusg(
                     completer, first_term, gleich, komma
                 )
-            elif "-spalten" == self.nebenParaWort:
+            elif "-" + i18n.hauptForNeben["spalten"] == self.nebenParaWort:
                 var2, var3, var4 = self.gleichKommaSpalten(
                     completer, first_term, gleich, komma
                 )
-            elif "-zeilen" == self.nebenParaWort:
+            elif "-" + i18n.hauptForNeben["zeilen"] == self.nebenParaWort:
                 var2, var3, var4 = self.gleichKommaZeilen(
                     completer, first_term, gleich, komma
                 )
-            elif "-kombination" == self.nebenParaWort:
+            elif "-" + i18n.hauptForNeben["kombination"] == self.nebenParaWort:
                 var2, var3, var4 = self.gleichKommaKombi(
                     completer, first_term, gleich, komma
                 )
-            elif "-ausgabe" == self.nebenParaWort:
+            elif "-" + i18n.hauptForNeben["ausgabe"] == self.nebenParaWort:
                 var2, var3, var4 = self.gleichKommaAusg(
                     completer, first_term, gleich, komma
                 )
@@ -287,12 +276,12 @@ class NestedCompleter(Completer):
             first_term if gleich else self.kombiParaWort if komma else None
         )
         var4 = {
-            "galaxie": [
+            i18n.gebrochenUniGal["galaxie"]: [
                 item
                 for sublist in retaProgram.kombiParaNdataMatrix.values()
                 for item in sublist
             ],
-            "universum": [
+            i18n.gebrochenUniGal["universum"]: [
                 item
                 for sublist in retaProgram.kombiParaNdataMatrix2.values()
                 for item in sublist
@@ -308,8 +297,8 @@ class NestedCompleter(Completer):
             first_term if gleich else self.zeilenParaWort if komma else None
         )
         var4 = {key: [] for key in zeilenParas}
-        var4["typ"] = zeilenTypen
-        var4["zeit"] = zeilenZeit
+        var4[i18n.zeilenParas["typ"]] = zeilenTypen
+        var4[i18n.zeilenParas["zeit"]] = zeilenZeit
         var2 = ComplSitua.zeilenPara
         var3 = self.zeilenParaWort
         completer.situationsTyp = ComplSitua.zeilenValPara
@@ -320,7 +309,7 @@ class NestedCompleter(Completer):
             first_term if gleich else self.ausgabeParaWort if komma else None
         )
         var4 = {key: [] for key in ausgabeParas}
-        var4["art"] = ausgabeArt
+        var4[i18n.ausgabeParas["art"]] = ausgabeArt
         var2 = ComplSitua.ausgabeValPara
         var3 = self.ausgabeParaWort
         completer.situationsTyp = ComplSitua.ausgabeValPara
