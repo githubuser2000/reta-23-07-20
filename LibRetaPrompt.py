@@ -293,7 +293,6 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, textDazu):
                 pass
 
             if n is not None:
-                x("YESSS", "")
                 (
                     bruchAndGanzZahlEtwaKorrekterBereich,
                     bruchBereichsAngaben,
@@ -339,21 +338,9 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, textDazu):
                         == 1
                     )
 
-                    x(
-                        "CCCC",
-                        [
-                            buchst,
-                            s_[:n],
-                            setTextLenIs1,
-                            fullBlockIsZahlenbereichAndBruch_Z,
-                            s_,
-                            s_m,
-                        ],
-                    )
                     if (len(buchst) != len(s_[:n]) or len(buchst) == 0) and not (
                         setTextLenIs1 and fullBlockIsZahlenbereichAndBruch_Z
                     ):
-                        x("AAAA", "")
                         s_ = s_m
                     else:
                         ifKurzKurz = True
@@ -366,7 +353,6 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, textDazu):
                                 for a in buchst
                             ]
                             textDazu += buchst2 + [str(s_[n:])]
-                            x("BBBB", textDazu)
                         if (
                             setTextLenIs1
                             and len(buchst) == 0
@@ -399,7 +385,6 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, textDazu):
             stext2 += [str(s_)]
     if stext[0] != "reta":
         stext = stext2
-    x("ENJDE", stext)
     return ifKurzKurz, stext
 
 

@@ -847,8 +847,6 @@ def PromptGrosseAusgabe(
                 "2",
             )
 
-    alxp(Txt.liste)
-    alxp(Txt.listeE)
     if fullBlockIsZahlenbereichAndBruch and (bedingungZahl or bedingungBrueche):
         if len(
             {
@@ -1014,7 +1012,7 @@ def PromptGrosseAusgabe(
                                 "--",
                                 i18n.ParametersMain.universum[0],
                                 "=",
-                                i18n.transzentenalienreziprokeWort,
+                                i18n.transzendentaliereziprokeWort,
                             )
                         )
                     ],
@@ -1883,17 +1881,13 @@ def promptVorbereitungGrosseAusgabe(
     if len(Txt.menge & befehleBeenden) > 0:
         Txt.liste = [tuple(befehleBeenden)[0]]
     replacements = i18nRP.replacements
-    x("replace a", replacements["a"])
     listeNeu: list = []
-    x("Fw3e", Txt.liste)
     for token in Txt.liste:
         try:
             listeNeu += [replacements[token]]
         except KeyError:
             listeNeu += [token]
     Txt.liste = listeNeu
-    x("Fw3e", listeNeu)
-    x("Fw3e", Txt.liste)
     if Txt.liste[:1] != ["reta"]:
         Txt.liste = list(Txt.menge)
     return (
