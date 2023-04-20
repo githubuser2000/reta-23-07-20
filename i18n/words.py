@@ -20,10 +20,10 @@ Multiplikationen = [(_("Multiplikationen"), "")]
 """
 ES FEHLEN NOCH ALLE ''
 fertig: in prepare ist nichts
-fertig: concat
-fertig: center
-fertig: lib4tables
-fertig: reta.py
+fertig: concat fertig
+fertig: center fertig
+fertig: lib4tables fertig
+fertig: reta.py fertig
 nichts drin: enum
 nichts drin: multis
 nichts drin: grundstruk html
@@ -3711,7 +3711,7 @@ class concat:
 
 
 class lib4tables:
-    zaehlung = {"zaehlung:": _("zaehlung")}
+    zaehlung = {"zaehlung": _("zaehlung")}
     nummerier = {"nummerierung": _("nummerierung")}
     alles = {"alles": _("alles")}
 

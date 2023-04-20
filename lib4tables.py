@@ -6,8 +6,10 @@ from enum import Enum
 from fractions import Fraction
 from functools import lru_cache
 
-from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
-                    multiples, output, re, x)
+from center import (Multiplikationen, alxp, cliout, getTextWrapThings, i18n,
+                    infoLog, multiples, output, re, x)
+
+i18n = i18n.lib4tables
 
 
 class OutputSyntax:
@@ -169,13 +171,13 @@ class htmlSyntax(OutputSyntax):
         if spalte == -2:
             tupleOfListsOfCouples = (
                 [
-                    ("zaehlung", ""),
+                    (i18n.zaehlung["zaehlung"], ""),
                 ],
             )
         elif spalte == -1:
             tupleOfListsOfCouples = (
                 [
-                    ("nummerierung", ""),
+                    (i18n.nummerier["nummerierung"], ""),
                 ],
             )
         else:
@@ -219,7 +221,7 @@ class htmlSyntax(OutputSyntax):
 
         for key, values in things1.items():
             for i, el in enumerate(values):
-                if el != "alles":
+                if el != i18n.alles["alles"]:
                     try:
                         things[key] += (
                             el,
@@ -485,27 +487,3 @@ def couldBePrimeNumberPrimzahlkreuz_fuer_innen(num: int) -> bool:
 def couldBePrimeNumberPrimzahlkreuz_fuer_aussen(num: int) -> bool:
     Under24 = (1, 7, 13, 19)
     return num % 24 in Under24
-
-
-# @lru_cache(maxsize=10489)
-# def multiples(a, mul1=True):
-#    """
-#    findet für eine Zahl alle Kombinationen aus möglichen Multiplikationen aus ganzen Zahlen, die diese Zahl ergibt
-#    @type a: int
-#    @param a: Produkt von mehreren möglichen Faktoren
-#    @type mul1: bool
-#    @param mul1: ob auch 1 * a als Faktor als geordnetes Paar mit am Ende dazu kommen soll
-#    @return: gibt Liste an Paaren von Faktoren aus
-#    """
-#    menge = set()
-#    for b in range(2, math.floor(math.sqrt(a) + 1)):
-#        c = a / b * 1000
-#        c = round(c) / 1000
-#        if c == round(c):
-#            menge |= {(int(c), b)}
-#    if mul1:
-#        menge = list(menge) + [(a, 1)]
-#    else:
-#        menge = list(menge)
-#    # menge.sort()
-#    return menge

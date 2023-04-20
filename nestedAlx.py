@@ -11,6 +11,7 @@ from prompt_toolkit.completion import (CompleteEvent, Completer, Completion,
                                        FuzzyWordCompleter)
 from prompt_toolkit.document import Document
 
+from center import i18n
 from LibRetaPrompt import (PromptModus, ausgabeArt, ausgabeParas, befehle,
                            befehle2, hauptForNeben, hauptForNebenSet,
                            isReTaParameter, isZeilenBruchOrGanzZahlAngabe,
@@ -188,21 +189,21 @@ class NestedCompleter(Completer):
                 # or True
                 # ):
                 if len({first_term, self.nebenParaWort} & hauptForNebenSet) > 0:
-                    if "-zeilen" == first_term:
+                    if "-" + i18n.hauptForNeben["zeilen"] == first_term:
                         var1, var2 = self.paraZeilen(completer)
-                    elif "-spalten" == first_term:
+                    elif "-" + i18n.hauptForNeben["spalten"] == first_term:
                         var1, var2 = self.paraSpalten(completer)
-                    elif "-ausgabe" == first_term:
+                    elif "-" + i18n.hauptForNeben["ausgabe"] == first_term:
                         var1, var2 = self.paraAusgabe(completer)
-                    elif "-kombination" == first_term:
+                    elif "-" + i18n.hauptForNeben["kombination"] == first_term:
                         var1, var2 = self.paraKombination(completer)
-                    elif "-zeilen" == self.nebenParaWort:
+                    elif "-" + i18n.hauptForNeben["zeilen"] == self.nebenParaWort:
                         var1, var2 = self.paraZeilen(completer)
-                    elif "-spalten" == self.nebenParaWort:
+                    elif "-" + i18n.hauptForNeben["spalten"] == self.nebenParaWort:
                         var1, var2 = self.paraSpalten(completer)
-                    elif "-ausgabe" == self.nebenParaWort:
+                    elif "-" + i18n.hauptForNeben["ausgabe"] == self.nebenParaWort:
                         var1, var2 = self.paraAusgabe(completer)
-                    elif "-kombination" == self.nebenParaWort:
+                    elif "-" + i18n.hauptForNeben["kombination"] == self.nebenParaWort:
                         var1, var2 = self.paraKombination(completer)
 
                     if not ifRetaAnfang:
