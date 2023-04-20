@@ -219,6 +219,7 @@ befehle = ["15" + a for a in wahl15.keys()] + [
     # "x",
     "BefehlSpeichernDavor",
     "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
+    "abstand",
 ]
 befehle += ["EIGN" + a for a in eigsN] + ["EIGR" + a for a in eigsR]
 

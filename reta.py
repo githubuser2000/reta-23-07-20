@@ -25,6 +25,7 @@ from tableHandling import (Enum, Iterable, Multiplikationen, OutputSyntax,
 
 gebrochenSpaltenMaximumPlus1 = 21
 
+csvFileNames = i18n.csvFileNames
 i18nR = i18n.retapy
 
 
@@ -1057,10 +1058,10 @@ class Program:
             place = os.path.join(
                 os.getcwd(),
                 os.path.dirname(__file__),
-                os.path.basename("./religion.csv"),
+                os.path.basename("./" + csvFileNames.religion),
             )
         else:
-            place = "religion.csv"
+            place = csvFileNames.religion
         with open(place, mode="r", encoding="utf-8") as csv_file:
             self.relitable: list = []
             # maxi: dict = {}
@@ -1348,7 +1349,10 @@ class Program:
                 kombiTable_Kombis,
                 maintable2subtable_Relation,
             ) = self.tables.getCombis.readKombiCsv(
-                self.relitable, self.rowsAsNumbers, self.rowsOfcombi, "kombi.csv"
+                self.relitable,
+                self.rowsAsNumbers,
+                self.rowsOfcombi,
+                csvFileNames.kombi13,
             )
         else:
             animalsProfessionsTable = []
@@ -1362,7 +1366,10 @@ class Program:
                 kombiTable_Kombis2,
                 maintable2subtable_Relation2,
             ) = self.tables.getCombis.readKombiCsv(
-                self.relitable, self.rowsAsNumbers, self.rowsOfcombi2, "kombi-meta.csv"
+                self.relitable,
+                self.rowsAsNumbers,
+                self.rowsOfcombi2,
+                csvFileNames.kombi15,
             )
         else:
             animalsProfessionsTable2 = []
@@ -1505,7 +1512,7 @@ class Program:
                 newTable,
                 old2newTable,
                 paramLines,
-                "kombi.csv",
+                csvFileNames.kombi13,
             )
 
         if len(self.rowsOfcombi2) > 0:
@@ -1517,7 +1524,7 @@ class Program:
                 newTable,
                 old2newTable,
                 paramLines,
-                "kombi-meta.csv",
+                csvFileNames.kombi15,
             )
 
         newTable = self.tables.getOut.onlyThatColumns(
@@ -1569,8 +1576,8 @@ class Program:
         )
         komb_rows = (
             self.rowsOfcombi
-            if csvFileName == "kombi.csv"
-            else (self.rowsOfcombi2 if csvFileName == "kombi-meta.csv" else None)
+            if csvFileName == csvFileNames.kombi13
+            else (self.rowsOfcombi2 if csvFileName == csvFileNames.kombi15 else None)
         )
         (
             finallyDisplayLines_kombi,
@@ -1587,15 +1594,15 @@ class Program:
             reliTableLenUntilNow=len(newTable[0])
             - (
                 len(self.rowsOfcombi) + len(self.rowsOfcombi2)
-                if csvFileName == "kombi.csv"
+                if csvFileName == csvFileNames.kombi13
                 else len(self.rowsOfcombi2)
-                if csvFileName == "kombi-meta.csv"
+                if csvFileName == csvFileNames.kombi15
                 else None
             ),
             kombiCSVNumber=0
-            if csvFileName == "kombi.csv"
+            if csvFileName == csvFileNames.kombi13
             else 1
-            if csvFileName == "kombi-meta.csv"
+            if csvFileName == csvFileNames.kombi15
             else None,
         )
         KombiTables = self.tables.getCombis.prepareTableJoin(

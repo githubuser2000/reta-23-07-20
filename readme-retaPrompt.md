@@ -51,7 +51,7 @@ weight = -7
 -   Befehl "u" und "a", also "universum" und "absicht", gibt auch das Reziproke der angebenen Brüche aus, z.B. bei 2/3,3/4 auch 3/2,4/3.
 -   Einige der Kurzbefehle aus Buchstaben wie "a" oder "u" lassen sich auch ohne Leerzeichen dazwischen als Befehl verwenden. Beispiel: statt "a u 1,2" geht auch "au1,2".
 -   Kurzbefehl "e" macht, dass Zeilen mit fast keiner Information nicht angezeigt werden, also Zeilen mit nur einem Minus oder Fragezeichen
-
+-   Der Befehl "abstand", zusammen 2 weiteren Angaben durch Leerzeichen getrennt, einer Zahl und zwei Zahlen zwischen denen unmittelbar ein Bindestrich steht, z.B. "abstand 7 17-25": berechnet einfach die Subtraktion zwischen der Zahl 7 und dem Zahlenbereich 17 bis 25.
 
 ### mathematisch Ausgabe-Befehle {#mathematisch-ausgabe-befehle}
 

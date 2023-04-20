@@ -26,8 +26,8 @@ from lib4tables import (OutputSyntax, bbCodeSyntax,
                         primCreativity, primFak, primMultiple, primRepeat)
 from lib4tables_Enum import ST
 
+csvNames = i18n.csvFileNames
 i18n = i18n.concat
-
 # Primzahlkreuz_pro_contra_strs = (
 #    "Primzahlkreuz pro contra",
 #    "nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)",
@@ -1289,9 +1289,9 @@ class Concat:
                             if len(pro2) > 0 and len(contra2) > 0
                             else ""
                         ),
-                        " contra dieser Zahl sind: "
+                        i18n.contraIst[" contra dieser Zahl sind: "]
                         if len(contra2) > 1
-                        else " contra dieser Zahl ist "
+                        else i18n.contraIst[" contra dieser Zahl ist "]
                         if len(contra2) == 1
                         else "",
                         str(contra2)[1:-1],
@@ -1322,7 +1322,7 @@ class Concat:
                         else "</ul>"
                         if self.tables.htmlOutputYes
                         else "",
-                        " - Die Zahlen, die für oder gegen diese Zahlen hier sind, können sich in diese am Besten gedanklich hineinversetzen.",
+                        i18n.hineinversetzenSatz,
                     ]
                 else:
                     kette2 = [
@@ -1628,17 +1628,17 @@ class Concat:
             # stern vs gleichf:
             self.transzendentalien: dict = OrderedDict(
                 {
-                    "Sternpolygone": [],
-                    "gleichförmige Polygone": [],
+                    i18n.polygone["Sternpolygone"]: [],
+                    i18n.polygone["gleichförmige Polygone"]: [],
                 }
             )
 
             relitableCopy = deepcopy(self.relitable[: self.tables.lastLineNumber + 1])
             kombisNamen: tuple = (
-                "Motiv -> Motiv",
-                "Motiv -> Strukur",
-                "Struktur -> Motiv",
-                "Struktur -> Strukur",
+                i18n.kombisNamen["Motiv -> Motiv"],
+                i18n.kombisNamen["Motiv -> Strukur"],
+                i18n.kombisNamen["Struktur -> Motiv"],
+                i18n.kombisNamen["Struktur -> Strukur"],
             )
             kombisNamen2: tuple = (
                 "GalGal",
@@ -1649,13 +1649,19 @@ class Concat:
 
             # self.rolle = []
             self.motivation: dict = OrderedDict(
-                {"Sternpolygone": [], "gleichförmige Polygone": []}
+                {
+                    i18n.polygone["Sternpolygone"]: [],
+                    i18n.polygone["gleichförmige Polygone"]: [],
+                }
             )
             # self.ziel = []
             for zwei, (polytype, polytypename, transzType) in enumerate(
                 zip(
                     hardCodedCouple,
-                    ["Sternpolygone", "gleichförmige Polygone"],
+                    [
+                        i18n.polygone["Sternpolygone"],
+                        i18n.polygone["gleichförmige Polygone"],
+                    ],
                     transzendentalienNrezi,
                 )
             ):
@@ -1666,7 +1672,7 @@ class Concat:
                     # self.ziel += [cols[11]]
 
             for brr, ganzOrGebr in enumerate(
-                ["", ", mit Faktoren aus gebrochen-rationalen Zahlen"]
+                ["", i18n.faktorenbla[", mit Faktoren aus gebrochen-rationalen Zahlen"]]
             ):
                 for zwei, (
                     polytype,
@@ -1676,7 +1682,10 @@ class Concat:
                 ) in enumerate(
                     zip(
                         hardCodedCouple,
-                        ["Sternpolygone", "gleichförmige Polygone"],
+                        [
+                            i18n.polygone["Sternpolygone"],
+                            i18n.polygone["gleichförmige Polygone"],
+                        ],
                         transzendentalienNrezi,
                         kombis1.keys(),
                     )
@@ -1723,7 +1732,7 @@ class Concat:
                             for i, cols in enumerate(relitableCopy):
                                 if i == 0:
                                     into = [
-                                        "generierte Multiplikationen ",
+                                        i18n.genMul["generierte Multiplikationen "],
                                         polytypename,
                                         " ",
                                         kombiUeberschrift,
@@ -1744,7 +1753,7 @@ class Concat:
                                                 and not self.tables.htmlOutputYes
                                                 and not self.tables.bbcodeOutputYes
                                             ):
-                                                into += [", außerdem: "]
+                                                into += [i18n.ausserdem[", außerdem: "]]
                                             into += [
                                                 "<li>"
                                                 if self.tables.htmlOutputYes
@@ -1822,7 +1831,11 @@ class Concat:
                                                         and not self.tables.bbcodeOutputYes
                                                         and len(into) > 0
                                                     ):
-                                                        into += ["| außerdem: "]
+                                                        into += [
+                                                            i18n.ausserdem[
+                                                                "| außerdem: "
+                                                            ]
+                                                        ]
                                                     into += [
                                                         "<li>"
                                                         if self.tables.htmlOutputYes
@@ -1881,7 +1894,7 @@ class Concat:
                             kette = (
                                 [
                                     (
-                                        "Multiplikationen",
+                                        i18n.Multiplikationen_["Multiplikationen"],
                                         htmlTagParaClassWoerter[para][0][0][0][1],
                                     )
                                 ]
@@ -1892,7 +1905,14 @@ class Concat:
                                 in koord2Parameter[(zwei, nullBisDrei, brr)]
                             ):
                                 kette = list(kette) + [
-                                    [("Wichtigstes_zum_verstehen", "Viertwichtigste")]
+                                    [
+                                        (
+                                            i18n.nWichtigste[
+                                                "Wichtigstes_zum_verstehen"
+                                            ],
+                                            i18n.nWichtigste["Viertwichtigste"],
+                                        )
+                                    ]
                                 ]
 
                             self.tables.generatedSpaltenParameter[
@@ -2073,23 +2093,41 @@ class Concat:
 
         metaOrWhat = OrderedDict(
             {
-                2: (("Meta-Thema: ", "Konkretes: "), ("Meta-", "Konkret-")),
-                3: (("Theorie-Thema: ", "Praxis: "), ("Theorie-", "Praxis-")),
+                2: (
+                    (i18n.metaOrWhat["Meta-Thema: "], i18n.metaOrWhat["Konkretes: "]),
+                    (i18n.metaOrWhat["Meta-"], i18n.metaOrWhat["Konkret-"]),
+                ),
+                3: (
+                    (i18n.metaOrWhat["Theorie-Thema: "], i18n.metaOrWhat["Praxis: "]),
+                    (i18n.metaOrWhat["Theorie-"], i18n.metaOrWhat["Praxis-"]),
+                ),
                 4: (
-                    ("Planungs-Thema: ", "Umsetzungs-Thema: "),
-                    ("Planung-", "Umsetzung-"),
+                    (
+                        i18n.metaOrWhat["Planungs-Thema: "],
+                        i18n.metaOrWhat["Umsetzungs-Thema: "],
+                    ),
+                    (i18n.metaOrWhat["Planung-"], i18n.metaOrWhat["Umsetzung-"]),
                 ),
                 5: (
-                    ("Anlass-Thema: ", "Wirkungs-Thema: "),
-                    ("Anlass-", "wirkung-"),
+                    (
+                        i18n.metaOrWhat["Anlass-Thema: "],
+                        i18n.metaOrWhat["Wirkungs-Thema: "],
+                    ),
+                    (i18n.metaOrWhat["Anlass-"], i18n.metaOrWhat["wirkung-"]),
                 ),
                 6: (
-                    ("Kraft-Gebung: ", "Verstärkungs-Thema: "),
-                    ("Kraft-geben-", "Verstärkung-"),
+                    (
+                        i18n.metaOrWhat["Kraft-Gebung: "],
+                        i18n.metaOrWhat["Verstärkungs-Thema: "],
+                    ),
+                    (i18n.metaOrWhat["Kraft-geben-"], i18n.metaOrWhat["Verstärkung-"]),
                 ),
                 7: (
-                    ("Beherrschung: ", "Richtung-Thema: "),
-                    ("beherrschend-", "Richtung-"),
+                    (
+                        i18n.metaOrWhat["Beherrschung: "],
+                        i18n.metaOrWhat["Richtung-Thema: "],
+                    ),
+                    (i18n.metaOrWhat["beherrschend-"], i18n.metaOrWhat["Richtung-"]),
                 ),
             }
         )
@@ -2361,7 +2399,7 @@ class Concat:
                     # vier[0][1] = None
                     # vier[0] = (vier[0][0], None)
                     # intoList = [None]
-            thema = "Thema: "
+            thema = i18n.themaWort
         self.relitable[i] += [
             "".join(
                 (
@@ -2563,31 +2601,37 @@ class Concat:
         self.relitable[1] += [""]
         if bothRows == 0:
             if metavariable == 2:
-                self.relitable[0] += ["Meta"]
+                self.relitable[0] += [i18n.metaKonkret["Meta"]]
             if metavariable == 3:
-                self.relitable[0] += ["Theorie"]
+                self.relitable[0] += [i18n.metaKonkret["Theorie"]]
             if metavariable == 4:
-                self.relitable[0] += ["Management"]
+                self.relitable[0] += [i18n.metaKonkret["Management"]]
             if metavariable == 5:
-                self.relitable[0] += ["ganzheitlich"]
+                self.relitable[0] += [i18n.metaKonkret["ganzheitlich"]]
             if metavariable == 6:
-                self.relitable[0] += ["Verwertung, Unternehmung, Geschäft"]
+                self.relitable[0] += [
+                    i18n.metaKonkret["Verwertung, Unternehmung, Geschäft"]
+                ]
             if metavariable == 7:
-                self.relitable[0] += ["regieren, beherrschen"]
+                self.relitable[0] += [i18n.metaKonkret["regieren, beherrschen"]]
         if bothRows == 1:
             if metavariable == 2:
-                self.relitable[0] += ["Konkretes"]
+                self.relitable[0] += [i18n.metaKonkret["Konkretes"]]
             if metavariable == 3:
-                self.relitable[0] += ["Praxis"]
+                self.relitable[0] += [i18n.metaKonkret["Praxis"]]
             if metavariable == 4:
-                self.relitable[0] += ["verändernd"]
+                self.relitable[0] += [i18n.metaKonkret["verändernd"]]
             if metavariable == 5:
-                self.relitable[0] += ["darüber hinaus gehend"]
+                self.relitable[0] += [i18n.metaKonkret["darüber hinaus gehend"]]
             if metavariable == 6:
-                self.relitable[0] += ["wertvoll"]
+                self.relitable[0] += [i18n.metaKonkret["wertvoll"]]
             if metavariable == 7:
-                self.relitable[0] += ["Richtung"]
-        self.relitable[0][-1] += " für 1/n statt n" if ifInvers == 1 else " für n"
+                self.relitable[0] += [i18n.metaKonkret["Richtung"]]
+        self.relitable[0][-1] += (
+            i18n.metaKonkret[" für 1/n statt n"]
+            if ifInvers == 1
+            else i18n.metaKonkret[" für n"]
+        )
         return rowsAsNumbers
 
     def spalteFuerGegenInnenAussenSeitlichPrim(
@@ -2600,17 +2644,17 @@ class Concat:
             if i > 3:
                 if self.primAmounts != self.oldPrimAmounts:
                     if self.primAmounts % 2 == 0:
-                        return "für innen"
+                        return i18n.innenAussen["für innen"]
                     else:
-                        return "für außen"
+                        return i18n.innenAussen["für außen"]
                 else:
                     return ""
             elif i == 2:
-                return '"für seitlich und gegen Schwächlinge innen"'
+                return i18n.innenAussen['"für seitlich und gegen Schwächlinge innen"']
             elif i == 3:
-                return '"gegen seitlich und für Schwächlinge innen"'
+                return i18n.innenAussen['"gegen seitlich und für Schwächlinge innen"']
             elif i == 1:
-                return "für außen"
+                return i18n.innenAussen["für außen"]
             else:
                 return ""
 
@@ -2623,13 +2667,19 @@ class Concat:
         )
         spaltenNamen = OrderedDict(
             {
-                5: "Transzendentalien, Strukturalien, Universum n",
-                10: "Galaxie n",
-                42: "Galaxie 1/n",
-                131: "Transzendentalien, Strukturalien, Universum 1/n",
-                138: "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n",
-                202: "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n",
-                None: "Richtung-Richtung",
+                5: i18n.spaltenNamen["Transzendentalien, Strukturalien, Universum n"],
+                10: i18n.spaltenNamen["Galaxie n"],
+                42: i18n.spaltenNamen["Galaxie 1/n"],
+                131: i18n.spaltenNamen[
+                    "Transzendentalien, Strukturalien, Universum 1/n"
+                ],
+                138: i18n.spaltenNamen[
+                    "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n"
+                ],
+                202: i18n.spaltenNamen[
+                    "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n"
+                ],
+                None: i18n.spaltenNamen["Richtung-Richtung"],
             }
         )
         tags = [
@@ -2657,7 +2707,10 @@ class Concat:
                 into = (
                     [""]
                     if i != 0
-                    else ["Primzahlwirkung (7, Richtung) ", spaltenNamen[kk]]
+                    else [
+                        i18n.primRicht["Primzahlwirkung (7, Richtung) "],
+                        spaltenNamen[kk],
+                    ]
                 )
 
                 self.oldPrimAmounts = self.primAmounts
@@ -2682,7 +2735,7 @@ class Concat:
                             into += [
                                 "[",
                                 str(vergangenheit[couple[1]]),
-                                "] * letztendlich: ",
+                                i18n.letztEnd["] * letztendlich: "],
                                 PrimAnswer2(couple[0]),
                                 " + ",
                             ]
@@ -2773,7 +2826,7 @@ class Concat:
                 concatTable, tableToAdd, transpose
             )
             if concatTable == 1:
-                tableToAdd2 = [["Primzahlvielfache, nicht generiert"]]
+                tableToAdd2 = [[i18n.primVielGen["Primzahlvielfache, nicht generiert"]]]
                 for t, zeile in enumerate(tableToAdd[1:], 1):
                     zeileNeu = []
                     for zelle in zeile:
@@ -2856,11 +2909,11 @@ class Concat:
             os.getcwd(),
             os.path.dirname(__file__),
             os.path.basename(
-                "./primenumbers.csv"
+                "./" + csvNames.prim
                 if concatTable == 1
-                else "./gebrochen-rational-universum.csv"
+                else "./" + csvNames.bruch15
                 if concatTable in (2, 4)
-                else "./gebrochen-rational-galaxie.csv"
+                else "./" + csvNames.bruch13
                 if concatTable in (3, 5)
                 else None
             ),
@@ -2878,14 +2931,14 @@ class Concat:
                         if concatTable in (2, 3)
                         else (str(n + 1) + "/n")
                         if concatTable in (4, 5)
-                        else "Fehler"
+                        else i18n.GalOrUniOrFehler["Fehler"]
                     )
                     + (
-                        " Universum"
+                        " " + i18n.GalOrUniOrFehler["Universum"]
                         if concatTable in (2, 4)
-                        else " Galaxie"
+                        else " " + i18n.GalOrUniOrFehler["Galaxie"]
                         if concatTable in (3, 5)
-                        else "Fehler"
+                        else i18n.GalOrUniOrFehler["Fehler"]
                     )
                     for n in range(len(tableToAdd[0]))
                 ]
@@ -2929,8 +2982,8 @@ class Concat:
             intoHtmlPara = (
                 [
                     (
-                        "Multiplikationen",
-                        "Nicht_generiert",
+                        i18n.multipl["Multiplikationen"],
+                        i18n.notGen["Nicht_generiert"],
                     )
                 ],
             )

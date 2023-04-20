@@ -3478,6 +3478,7 @@ class tableHandling:
 
 
 class concat:
+    themaWort = "Thema: "
     polygon1 = {" der eigenen Strukturgröße (": _(" der eigenen Strukturgröße (")}
     polygon2 = {
         ") auf dich bei gleichförmigen Polygonen": _(
@@ -3600,12 +3601,12 @@ class concat:
         "Struktur -> Motiv": _("Struktur -> Motiv"),
         "Struktur -> Strukur": _("Struktur -> Strukur"),
     }
-    kombisNamen2: dict[str, str] = {
-        "GalGal": _("GalGal"),
-        "GalUni": _("GalUni"),
-        "UniGal": _("UniGal"),
-        "UniUni": _("UniUni"),
-    }
+    # kombisNamen2: dict[str, str] = {
+    #    "GalGal": _("GalGal"),
+    #    "GalUni": _("GalUni"),
+    #    "UniGal": _("UniGal"),
+    #    "UniUni": _("UniUni"),
+    # }
 
     faktorenbla = {
         ", mit Faktoren aus gebrochen-rationalen Zahlen": _(
@@ -3613,67 +3614,53 @@ class concat:
         )
     }
     genMul = {"generierte Multiplikationen ": _("generierte Multiplikationen ")}
-    ausserdem = {", außerdem: ": _(", außerdem: ")}
+    ausserdem = {", außerdem: ": _(", außerdem: "), "| außerdem: ": _("| außerdem: ")}
     Multiplikationen_ = {"Multiplikationen": _("Multiplikationen")}
     nWichtigste = {
         "Wichtigstes_zum_verstehen": _("Wichtigstes_zum_verstehen"),
         "Viertwichtigste": _("Viertwichtigste"),
     }
-    metaOrWhat = OrderedDict(
-        {
-            2: (
-                {"Meta-Thema: ": _("Meta-Thema: "), "Konkretes: ": _("Konkretes: ")},
-                {"Meta-": _("Meta-"), "Konkret-": _("Konkret-")},
-            ),
-            3: (
-                {"Theorie-Thema: ": _("Theorie-Thema: "), "Praxis: ": _("Praxis: ")},
-                {"Theorie-": _("Theorie-"), "Praxis-": _("Praxis-")},
-            ),
-            4: (
-                {
-                    "Planungs-Thema: ": _("Planungs-Thema: "),
-                    "Umsetzungs-Thema: ": _("Umsetzungs-Thema: "),
-                },
-                {"Planung-": _("Planung-"), "Umsetzung-": _("Umsetzung-")},
-            ),
-            5: (
-                {
-                    "Anlass-Thema: ": _("Anlass-Thema: "),
-                    "Wirkungs-Thema: ": _("Wirkungs-Thema: "),
-                },
-                {"Anlass-": _("Anlass-"), "wirkung-": _("wirkung-")},
-            ),
-            6: (
-                {
-                    "Kraft-Gebung: ": _("Kraft-Gebung: "),
-                    "Verstärkungs-Thema: ": _("Verstärkungs-Thema: "),
-                },
-                {"Kraft-geben-": _("Kraft-geben-"), "Verstärkung-": _("Verstärkung-")},
-            ),
-            7: (
-                {
-                    "Beherrschung: ": _("Beherrschung: "),
-                    "Richtung-Thema: ": _("Richtung-Thema: "),
-                },
-                {"beherrschend-": _("beherrschend-"), "Richtung-": _("Richtung-")},
-            ),
-        }
-    )
+    metaOrWhat = {
+        "Meta-Thema: ": _("Meta-Thema: "),
+        "Konkretes: ": _("Konkretes: "),
+        "Meta-": _("Meta-"),
+        "Konkret-": _("Konkret-"),
+        "Theorie-Thema: ": _("Theorie-Thema: "),
+        "Praxis: ": _("Praxis: "),
+        "Theorie-": _("Theorie-"),
+        "Praxis-": _("Praxis-"),
+        "Planungs-Thema: ": _("Planungs-Thema: "),
+        "Umsetzungs-Thema: ": _("Umsetzungs-Thema: "),
+        "Planung-": _("Planung-"),
+        "Umsetzung-": _("Umsetzung-"),
+        "Anlass-Thema: ": _("Anlass-Thema: "),
+        "Wirkungs-Thema: ": _("Wirkungs-Thema: "),
+        "Anlass-": _("Anlass-"),
+        "wirkung-": _("wirkung-"),
+        "Kraft-Gebung: ": _("Kraft-Gebung: "),
+        "Verstärkungs-Thema: ": _("Verstärkungs-Thema: "),
+        "Kraft-geben-": _("Kraft-geben-"),
+        "Verstärkung-": _("Verstärkung-"),
+        "Beherrschung: ": _("Beherrschung: "),
+        "Richtung-Thema: ": _("Richtung-Thema: "),
+        "beherrschend-": _("beherrschend-"),
+        "Richtung-": _("Richtung-"),
+    }
     metaKonkret = {
-        _("Meta"),
-        _("Theorie"),
-        _("Management"),
-        _("ganzheitlich"),
-        _("Verwertung, Unternehmung, Geschäft"),
-        _("regieren, beherrschen"),
-        _("Konkretes"),
-        _("Praxis"),
-        _("verändernd"),
-        _("darüber hinaus gehend"),
-        _("wertvoll"),
-        _("Richtung"),
-        _(" für 1/n statt n"),
-        _(" für n"),
+        "Meta": _("Meta"),
+        "Theorie": _("Theorie"),
+        "Management": _("Management"),
+        "ganzheitlich": _("ganzheitlich"),
+        "Verwertung, Unternehmung, Geschäft": _("Verwertung, Unternehmung, Geschäft"),
+        "regieren, beherrschen": _("regieren, beherrschen"),
+        "Konkretes": _("Konkretes"),
+        "Praxis": _("Praxis"),
+        "verändernd": _("verändernd"),
+        "darüber hinaus gehend": _("darüber hinaus gehend"),
+        "wertvoll": _("wertvoll"),
+        "Richtung": _("Richtung"),
+        " für 1/n statt n": _(" für 1/n statt n"),
+        " für n": _(" für n"),
     }
     innenAussen = {
         "für innen": _("für innen"),
@@ -3688,29 +3675,21 @@ class concat:
     }
     spaltenNamen = OrderedDict(
         {
-            5: {
-                "Transzendentalien, Strukturalien, Universum n": _(
-                    "Transzendentalien, Strukturalien, Universum n"
-                )
-            },
-            10: {"Galaxie n": _("Galaxie n")},
-            42: {"Galaxie 1/n": _("Galaxie 1/n")},
-            131: {
-                "Transzendentalien, Strukturalien, Universum 1/n": _(
-                    "Transzendentalien, Strukturalien, Universum 1/n"
-                )
-            },
-            138: {
-                "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n": _(
-                    "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n"
-                )
-            },
-            202: {
-                "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n": _(
-                    "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n)"
-                )
-            },
-            None: {"Richtung-Richtung": _("Richtung-Richtung")},
+            "Transzendentalien, Strukturalien, Universum n": _(
+                "Transzendentalien, Strukturalien, Universum n"
+            ),
+            "Galaxie n": _("Galaxie n"),
+            "Galaxie 1/n": _("Galaxie 1/n"),
+            "Transzendentalien, Strukturalien, Universum 1/n": _(
+                "Transzendentalien, Strukturalien, Universum 1/n"
+            ),
+            "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n": _(
+                "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n"
+            ),
+            "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n": _(
+                "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n"
+            ),
+            "Richtung-Richtung": _("Richtung-Richtung"),
         }
     )
 
@@ -3723,8 +3702,8 @@ class concat:
     }
     GalOrUniOrFehler = {
         "Fehler": _("Fehler"),
-        " Universum": _(" Universum"),
-        " Galaxie": _(" Galaxie"),
+        "Universum": _("Universum"),
+        "Galaxie": _("Galaxie"),
     }
 
     multipl = {"Multiplikationen": _("Multiplikationen")}

@@ -1354,6 +1354,23 @@ def PromptGrosseAusgabe(
                 )
             except:
                 pass
+    if len(stext) == 3 and "abstand" in stext and any([s.isdecimal() for s in stext]):
+        flag = False
+        for i, s in enumerate(stext):
+            if s.isdecimal():
+                zahlNum = i
+            s = s.split("-")
+            if len(s) == 2 and s[0].isdecimal() and s[1].isdecimal():
+                flag = True
+                bereich = (int(s[0]), int(s[1]))
+        if flag:
+            warBefehl = True
+            zahl = int(stext[zahlNum])
+            zeige = []
+            for b in range(bereich[0], bereich[1] + 1):
+                zeige += [abs(b - zahl)]
+            print(str(zeige)[1:-1])
+
     loggingSwitch, warBefehl = PromptVonGrosserAusgabeSonderBefehlAusgaben(
         loggingSwitch, stext, text, warBefehl
     )
