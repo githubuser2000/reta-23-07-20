@@ -956,6 +956,7 @@ def PromptGrosseAusgabe(
                     ketten,
                     Txt.listeE,
                     zeiln1,
+                    zeiln2,
                     ["".join(("--", i18n.konzeptE["konzept"], "=", (",".join(eigN))))],
                     None,
                 )
@@ -968,7 +969,7 @@ def PromptGrosseAusgabe(
                     Txt.listeE,
                     zeiln1,
                     zeiln2,
-                    ["".join(("--", i18n.konzeptE["konzept"], "=", (",".join(eigR))))],
+                    ["".join(("--", i18n.konzeptE["konzept2"], "=", (",".join(eigR))))],
                     None,
                 )
 
