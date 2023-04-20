@@ -644,8 +644,8 @@ def PromptGrosseAusgabe(
             stext,
         ) = bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_)
     if i18n.befehle2["mulpri"] in stextE or i18n.befehle2["p"] in stextE:
-        stext += [i18n.befehle2["multis"], i18n.befehle2["prim"]]
-        stextE += [i18n.befehle2["multis"], i18n.befehle2["prim"]]
+        stext += [i18n.befehle2["multis"], i18n.befehle2[i18n.befehle2["prim"]]]
+        stextE += [i18n.befehle2["multis"], i18n.befehle2[i18n.befehle2["prim"]]]
 
     if (
         "".join(("--", i18n.ausgabeParas["art"], "=", i18n.ausgabeArt["bbcode"]))
@@ -703,7 +703,10 @@ def PromptGrosseAusgabe(
         reta.Program(stextE)
 
     if len(bruch_GanzZahlReziproke) > 0 and textHatZiffer(bruch_GanzZahlReziproke):
-        zeiln3 = "--vorhervonausschnitt=" + bruch_GanzZahlReziproke
+        zeiln3 = (
+            "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
+            + bruch_GanzZahlReziproke
+        )
         zeiln4 = ""
     else:
         zeiln3 = "--vorhervonausschnitt=0"
@@ -721,12 +724,15 @@ def PromptGrosseAusgabe(
                 )
             ):
                 if len(set(stext) & {i18n.befehle2["teiler"], i18n.befehle2["w"]}) == 0:
-                    zeiln1 = "--vielfachevonzahlen=" + zahlenReiheKeineWteiler
+                    zeiln1 = (
+                        "".join(("--", i18n.zeilenParas["vielfachevonzahlen"], "="))
+                        + zahlenReiheKeineWteiler
+                    )
                 else:
                     zeiln1 = ""
                 zeiln2 = "".join(
                     [
-                        "--vorhervonausschnitt=",
+                        "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "=")),
                         zahlenBereiche,
                         ",",
                         ",".join(
@@ -740,7 +746,10 @@ def PromptGrosseAusgabe(
 
                 # zeiln2 = ""
             else:
-                zeiln1 = "--vorhervonausschnitt=" + zahlenBereiche
+                zeiln1 = (
+                    "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
+                    + zahlenBereiche
+                )
 
                 zeiln2 = anotherOberesMaximum(c, maxNum)
         else:
@@ -762,7 +771,7 @@ def PromptGrosseAusgabe(
 
             kette = [
                 "reta",
-                "-zeilen",
+                "".join(("-", i18n.hauptForNeben["zeilen"])),
                 zeiln1,
                 zeiln2,
                 "-spalten",
@@ -824,7 +833,8 @@ def PromptGrosseAusgabe(
                     retaExecuteNprint(
                         ketten,
                         stextE,
-                        "--vorhervonausschnitt=" + ",".join(zaehler),
+                        "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
+                        + ",".join(zaehler),
                         "",
                         ["--gebrochengalaxie=" + str(nenner)],
                         "2",
@@ -835,7 +845,8 @@ def PromptGrosseAusgabe(
                     retaExecuteNprint(
                         ketten,
                         stextE,
-                        "--vorhervonausschnitt=" + ",".join(zaehler),
+                        "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
+                        + ",".join(zaehler),
                         "",
                         ["--gebrochengalaxie=" + str(nenner)],
                         "1",
@@ -908,7 +919,8 @@ def PromptGrosseAusgabe(
                     retaExecuteNprint(
                         ketten,
                         stextE,
-                        "--vorhervonausschnitt=" + hierBereich,
+                        "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
+                        + hierBereich,
                         "",
                         ["--gebrochenuniversum=" + str(nenner)],
                         "2",
@@ -917,11 +929,11 @@ def PromptGrosseAusgabe(
             elif len(rangesBruecheDictReverse) > 0:
                 for nenner, zaehler in rangesBruecheDictReverse.items():
                     hierBereich = ",".join(zaehler)
-                    print("S")
                     retaExecuteNprint(
                         ketten,
                         stextE,
-                        "--vorhervonausschnitt=" + hierBereich,
+                        "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
+                        + hierBereich,
                         "",
                         ["--gebrochenuniversum=" + str(nenner)],
                         "1",
@@ -934,13 +946,20 @@ def PromptGrosseAusgabe(
                 retaExecuteNprint(
                     ketten,
                     stextE,
-                    "--vorhervonausschnitt=" + nennerZaehlerGleich,
+                    "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
+                    + nennerZaehlerGleich,
                     "",
                     ["--universum=verhaeltnisgleicherzahl"],
                     "1",
                 )
     if bedingungZahl:
-        if len({"prim24", "primfaktorzerlegungModulo24"} & set(stextE)) > 0:
+        if (
+            len(
+                {i18n.befehle2["prim24"], i18n.befehle2["primfaktorzerlegungModulo24"]}
+                & set(stextE)
+            )
+            > 0
+        ):
             warBefehl = True
             for arg in zahlenReiheKeineWteiler.split(","):
                 if arg.isdecimal():
@@ -952,7 +971,13 @@ def PromptGrosseAusgabe(
                         .replace(", ", " ")
                     )
 
-        if len({"prim", "primfaktorzerlegung"} & set(stextE)) > 0:
+        if (
+            len(
+                {i18n.befehle2["prim"], i18n.befehle2["primfaktorzerlegung"]}
+                & set(stextE)
+            )
+            > 0
+        ):
             warBefehl = True
             for arg in zahlenReiheKeineWteiler.split(","):
                 if arg.isdecimal():
@@ -980,7 +1005,7 @@ def PromptGrosseAusgabe(
 
                 mult(listeStrWerte)
 
-            # externCommand("prim", c)
+            # externCommand(i18n.befehle2["prim"], c)
 
         if len({"mond"} & set(stextE)) > 0:
             warBefehl = True
@@ -1126,7 +1151,7 @@ def retaExecuteNprint(
 
     kette = [
         "reta",
-        "-zeilen",
+        "".join(("-", i18n.hauptForNeben["zeilen"])),
         zeiln1,
         zeiln2,
         "-spalten",
@@ -1668,13 +1693,18 @@ def promptVorbereitungGrosseAusgabe(
                 pass
 
         if len({i18n.befehle2["v"], i18n.befehle2["vielfache"]} & set(stext)) == 0:
-            stext += ["-zeilen", "--vorhervonausschnitt=" + zahlenBereichNeu[True]]
+            stext += [
+                "".join(("-", i18n.hauptForNeben["zeilen"])),
+                "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
+                + zahlenBereichNeu[True],
+            ]
 
         else:
-            # stext += ["-zeilen", "--vorhervonausschnitt=" + zahlenBereichNeu[True]]
+            # stext += ["".join(("-",i18n.hauptForNeben["zeilen"])), "".join(("--",i18n.zeilenParas["vorhervonausschnitt"],"=")) + zahlenBereichNeu[True]]
             stext += [
-                "-zeilen",
-                "--vielfachevonzahlen=" + zahlenBereichNeu[True],
+                "".join(("-", i18n.hauptForNeben["zeilen"])),
+                "".join(("--", i18n.zeilenParas["vielfachevonzahlen"], "="))
+                + zahlenBereichNeu[True],
             ]
             try:
                 stext.remove(i18n.befehle2["v"])
