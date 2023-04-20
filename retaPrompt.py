@@ -39,6 +39,77 @@ befehleBeenden = i18nRP.befehleBeenden
 infoLog = False
 
 
+class TXT:
+    _text = ""
+    _platzhalter = ""
+    _stext = []
+    _stextE = []
+    _e = []
+    _stextEmenge = {}
+    _stextSet = {}
+
+    class __metaclass__(type):
+        @property
+        def e(cls):
+            return cls._e
+
+        @property
+        def menge(cls):
+            return cls._stextSet
+
+        @property
+        def listeE(cls):
+            return cls._stextE
+
+        @property
+        def liste(cls):
+            return cls._stext
+
+        @property
+        def mengeE(cls):
+            return cls._stextEmenge
+
+        @property
+        def listeE(cls):
+            return cls._stext
+
+        @property
+        def platzhalter(cls):
+            return cls._platzhalter
+
+        @property
+        def text(cls):
+            return cls._text
+
+        @platzhalter.setter
+        def platzhalter(cls, value):
+            cls._platzhalter = value
+
+        @text.setter
+        def text(cls, value):
+            assert type(value) is str
+            cls._text = value
+            cls._stext = value.split()
+            cls._stextSet = set(value)
+            cls._stextEmenge = cls._stextSet | set(cls._e)
+            cls._stextE = cls._stext + cls._e
+
+        @liste.setter
+        def liste(cls, value):
+            assert type(value) in (list[str], tuple[str])
+            cls._stext = value
+            cls._stextSet = set(value)
+            cls._stextEmenge = cls._stextSet | set(cls._e)
+            cls._stextE = cls._stext + cls._e
+
+        @e.setter
+        def e(cls, value):
+            assert type(value) in (list[str], tuple[str])
+            cls._e = value
+            cls._stextEmenge = cls._stextSet | set(cls._e)
+            cls._stextE = cls._stext + cls._e
+
+
 def anotherOberesMaximum(c, maxNum):
     maximizing = list(BereichToNumbers2(c, False, 0))
     if len(maximizing) > 0:
@@ -417,7 +488,7 @@ def speichern(ketten, platzhalter, text):
 
     else:
         platzhalter = "" if text is None else str(text)
-    text = ""
+    TXT.text = ""
     if platzhalter != "":
         promptMode2 = PromptModus.AusgabeSelektiv
     else:
@@ -484,11 +555,11 @@ def PromptScope():
             )
 
         else:
-            text = promptSpeicherungB(nochAusageben, platzhalter, promptMode, text)
-            textE = []
+            TXT.text = promptSpeicherungB(nochAusageben, platzhalter, promptMode, text)
+            # textE = []
 
         if promptMode == PromptModus.loeschenSelect:
-            platzhalter, promptMode, text = PromptLoescheVorSpeicherungBefehle(
+            platzhalter, promptMode, TXT.text = PromptLoescheVorSpeicherungBefehle(
                 platzhalter, promptMode, text
             )
             continue
@@ -511,7 +582,7 @@ def PromptScope():
             (i18n.befehle2["s"] in stext)
             or (i18n.befehle2["BefehlSpeichernDavor"] in stext)
         ) and len(stext) == 1:
-            ketten, platzhalter, text = speichern(ketten, platzhalter, befehlDavor)
+            ketten, platzhalter, TXT.text = speichern(ketten, platzhalter, befehlDavor)
             promptMode = PromptModus.normal
             continue
         elif len(
@@ -545,10 +616,12 @@ def PromptScope():
                     stextB.remove(val)
                 except ValueError:
                     pass
-            ketten, platzhalter, text = speichern(ketten, platzhalter, " ".join(stextB))
-            stext = []
-            stextE = []
-            text = ""
+            ketten, platzhalter, TXT.text = speichern(
+                ketten, platzhalter, " ".join(stextB)
+            )
+            TXT.stext = []
+            TXT.stextE = []
+            TXT.text = ""
             befehlDavor = ""
             promptMode = PromptModus.normal
             continue
@@ -1214,7 +1287,7 @@ def PromptGrosseAusgabe(
         loggingSwitch, stext, text, warBefehl
     )
     if len(nurEinBefehl) > 0:
-        stext = copy(befehleBeenden)
+        TXT.stext = copy(befehleBeenden)
         stextE = copy(befehleBeenden)
         nurEinBefehl = " ".join(befehleBeenden)
         exit()
@@ -1691,7 +1764,7 @@ def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, stext, text, warB
                 process.wait()
             except:
                 pass
-    stext = text.split()
+    TXT.stext = text.split()
     if i18n.befehle2["loggen"] in stext:
         warBefehl = True
         loggingSwitch = True
@@ -1742,7 +1815,7 @@ def promptVorbereitungGrosseAusgabe(
         promptMode2 == PromptModus.AusgabeSelektiv
         and promptModeLast == PromptModus.normal
     ):
-        stext = textDazu0 + stext
+        TXT.stext = textDazu0 + stext
     if (
         promptMode == PromptModus.normal
         and len(platzhalter) > 1
@@ -1763,7 +1836,7 @@ def promptVorbereitungGrosseAusgabe(
         stextDict = {i: swort for i, swort in enumerate(stext)}
         for todel in woerterToDel:
             del stextDict[todel]
-        stext = list(stextDict.values())
+        TXT.stext = list(stextDict.values())
 
         if len({i18n.befehle2["w"], i18n.befehle2["teiler"]} & set(stext)) > 0:
             # print(zahlenBereichNeu[True])
@@ -1809,7 +1882,7 @@ def promptVorbereitungGrosseAusgabe(
     zahlenAngaben_ = []
     c = ""
     if len(set(stext) & befehleBeenden) > 0:
-        stext = [tuple(befehleBeenden)[0]]
+        TXT.stext = [tuple(befehleBeenden)[0]]
     replacements = i18nRP.replacements
     for i, token in enumerate(stext):
         try:
@@ -1817,7 +1890,7 @@ def promptVorbereitungGrosseAusgabe(
         except KeyError:
             pass
     if stext[:1] != ["reta"]:
-        stext = list(set(stext))
+        TXT.stext = list(set(stext))
     return (
         IsPureOnlyReTaCmd,
         brueche,
@@ -1832,9 +1905,6 @@ def promptVorbereitungGrosseAusgabe(
 
 def PromptAllesVorGroesserSchleife():
     global promptMode2, textDazu0, befehleBeenden
-    # pp1 = pprint.PrettyPrinter(indent=2)
-    # pp = pp1.pprint
-
     if "-" + i18nRP.retaPromptParameter["vi"] not in sys.argv:
         retaPromptHilfe()
     if "-" + i18nRP.retaPromptParameter["log"] in sys.argv:
@@ -1845,14 +1915,6 @@ def PromptAllesVorGroesserSchleife():
         "-" + i18nRP.retaPromptParameter["help"] in sys.argv
     ):
         print(i18nRP.helptext)
-        # print(
-        #    """Erlaubte Parameter sind
-        #    -vi für vi mode statt emacs mode,
-        #    -log, um Logging zu aktivieren,
-        #    -debug, um Debugging-Log-Ausgabe zu aktivieren. Das ist nur für Entwickler gedacht.
-        #    -befehl bewirkt, dass bis zum letzten Programmparameter retaPrompt Befehl nur ein RetaPrompt-Befehl ausgeführt wird.
-        #    -e bewirkt, dass bei allen Befehlen das 'e' Kommando bzw. 'keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar' jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil dieser anders funktioniert """
-        # )
         exit()
     if "-" + i18nRP.retaPromptParameter["debug"] in sys.argv:
         retaProgram.propInfoLog = True
@@ -1880,28 +1942,21 @@ def PromptAllesVorGroesserSchleife():
         },
     )
     text: Optional[str] = None
-
     promptMode = PromptModus.normal
     promptMode2 = PromptModus.normal
-    warBefehl: bool
-    platzhalter = ""
-    ketten = []
-    text = ""
     promptDavorDict = defaultdict(lambda: ">")
     promptDavorDict[PromptModus.speichern] = i18nRP.wspeichernWort
     promptDavorDict[PromptModus.loeschenSelect] = i18nRP.wloeschenWort
-    nochAusageben = ""
-    textDazu0 = []
     return (
         befehleBeenden,
-        ketten,
+        [],
         loggingSwitch,
-        nochAusageben,
-        platzhalter,
+        "",
+        "",
         promptDavorDict,
         promptMode,
         startpunkt1,
-        text,
+        "",
         nurEinBefehl,
         immerEbefehlJa,
     )
@@ -1909,7 +1964,7 @@ def PromptAllesVorGroesserSchleife():
 
 def PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text):
     global promptMode2, textDazu0
-    text = str(text).strip()
+    TXT.text = str(text).strip()
     s_text = text.split()
     zuloeschen = text
     loeschbares1 = {i + 1: a for i, a in enumerate(platzhalter.split())}
@@ -1945,9 +2000,9 @@ def PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text):
 
 def promptSpeicherungB(nochAusageben, platzhalter, promptMode, text):
     if promptMode == PromptModus.speicherungAusgaben:
-        text = platzhalter
+        TXT.text = platzhalter
     elif promptMode == PromptModus.speicherungAusgabenMitZusatz:
-        text = platzhalter + " " + nochAusageben
+        TXT.text = platzhalter + " " + nochAusageben
     return text
 
 
@@ -1972,7 +2027,7 @@ def promptInput(
         session = newSession(loggingSwitch)
         try:
             befehlDavor = text
-            text = session.prompt(
+            TXT.text = session.prompt(
                 # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
                 # ">",
                 [("class:bla", promptDavorDict[promptMode])],
@@ -2006,7 +2061,7 @@ def promptInput(
             sys.exit()
 
     else:
-        text = " ".join(nurEinBefehl)
+        TXT.text = " ".join(nurEinBefehl)
         textE = []
         befehlDavor = ""
     return befehlDavor, text, textE

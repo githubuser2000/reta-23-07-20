@@ -29,8 +29,6 @@ NestedDict = Mapping[str, Union[Any, Set[str], None, Completer]]
 
 ifRetaAnfang = False
 
-print(i18n.ausgabeParas["art"])
-
 
 class ComplSitua(Enum):
     hauptPara = 0
