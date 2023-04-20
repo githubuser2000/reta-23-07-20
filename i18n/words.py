@@ -522,6 +522,8 @@ ParametersMain: NamedTuple = ParametersMain(
     (_("alles"),),
 )
 
+thomasWort = _("thomas")
+motivationWort = _("motivation")
 paraNdataMatrix: list = [
     (
         ParametersMain.wichtigste,
@@ -871,11 +873,7 @@ paraNdataMatrix: list = [
     ),
     (
         ParametersMain.galaxie,
-        (
-            _("Thomasevangelium"),
-            _("thomasevangelium"),
-            _("thomas"),
-        ),
+        (_("Thomasevangelium"), _("thomasevangelium"), thomasWort),
         {0, 3, 303},
     ),
     (
@@ -2236,7 +2234,7 @@ paraNdataMatrix: list = [
         (
             _("Motive"),
             _("motive"),
-            _("motivation"),
+            motivationWort,
             _("motiv"),
             _("absicht"),
             _("absichten"),

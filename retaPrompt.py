@@ -774,7 +774,9 @@ def PromptGrosseAusgabe(
                 zeiln1,
                 zeiln2,
                 [
-                    "--galaxie=thomas",
+                    "".join(
+                        ("--", i18n.ParametersMain.galaxie[0], "=", i18n.thomasWort)
+                    ),
                 ],
                 "2",
             )
@@ -797,7 +799,12 @@ def PromptGrosseAusgabe(
 
             if len(c) > 0:
                 retaExecuteNprint(
-                    ketten, stextE, zeiln1, zeiln2, ["--menschliches=motivation"], "1"
+                    ketten,
+                    stextE,
+                    zeiln1,
+                    zeiln2,
+                    ["--", i18n.ParametersMain.menschliches[0], "=", "motivation"],
+                    "1",
                 )
             if (
                 len(bruch_GanzZahlReziproke) > 0
@@ -805,7 +812,12 @@ def PromptGrosseAusgabe(
                 and zeiln3 != ""
             ):
                 retaExecuteNprint(
-                    ketten, stextE, zeiln3, zeiln4, ["--menschliches=motivation"], "3"
+                    ketten,
+                    stextE,
+                    zeiln3,
+                    zeiln4,
+                    ["--", i18n.ParametersMain.menschliches[0], "=", "motivation"],
+                    "3",
                 )
 
             if len(rangesBruecheDict) > 0:
@@ -816,7 +828,14 @@ def PromptGrosseAusgabe(
                         "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
                         + ",".join(zaehler),
                         "",
-                        ["--gebrochengalaxie=" + str(nenner)],
+                        "".join(
+                            (
+                                "--",
+                                i18n.gebrochenUniGal["gebrochengalaxie"],
+                                "=",
+                                str(nenner),
+                            )
+                        ),
                         "2",
                     )
             elif len(rangesBruecheDictReverse) > 0:
@@ -828,7 +847,14 @@ def PromptGrosseAusgabe(
                         "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
                         + ",".join(zaehler),
                         "",
-                        ["--gebrochengalaxie=" + str(nenner)],
+                        "".join(
+                            (
+                                "--",
+                                i18n.gebrochenUniGal["gebrochengalaxie"],
+                                "=",
+                                str(nenner),
+                            )
+                        ),
                         "1",
                     )
 
@@ -902,7 +928,14 @@ def PromptGrosseAusgabe(
                         "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
                         + hierBereich,
                         "",
-                        ["--gebrochenuniversum=" + str(nenner)],
+                        "".join(
+                            (
+                                "--",
+                                i18n.gebrochenUniGal["gebrochenuniversum"],
+                                "=",
+                                str(nenner),
+                            )
+                        ),
                         "2",
                     )
                     nennerZaehlerGleich += findEqualNennerZaehler(
@@ -918,7 +951,14 @@ def PromptGrosseAusgabe(
                         "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
                         + hierBereich,
                         "",
-                        ["--gebrochenuniversum=" + str(nenner)],
+                        "".join(
+                            (
+                                "--",
+                                i18n.gebrochenUniGal["gebrochenuniversum"],
+                                "=",
+                                str(nenner),
+                            )
+                        ),
                         "1",
                     )
                     nennerZaehlerGleich += findEqualNennerZaehler(
