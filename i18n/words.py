@@ -41,21 +41,20 @@ Primzahlkreuz_pro_contra_strs_Fkt: tuple[str, str] = (
     _("Primzahlkreuz_pro_contra"),
     _("nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)"),
 )
-
-Primzahlkreuz_pro_contra_strs_Dict: dict[tuple, tuple] = {
+Primzahlkreuz_pro_contra_strs_Dict = {
     Primzahlkreuz_pro_contra_strs: Primzahlkreuz_pro_contra_strs_Fkt,
 }
 gebrochenSpaltenMaximumPlus1: int = 21  # Das ist nicht die Spaltenbreite, sondern wie weit gebrochene Zahlen gehen dürfen bei Zähler und Nenner
 
 # DOPPELT
-# spalten: dict[str, str] = {}
+# spalten: dict = {}
 # spalten |= {
 #    "breite": _("breite"),
 #    "breiten": _("breiten"),
 #    "keinenummerierung": _("keinenummerierung"),
 # }
 
-ausgabeParas: dict[str, str] = {
+ausgabeParas: dict = {
     "nocolor": _("nocolor"),
     "justtext": _("justtext"),
     "art": _("art"),
@@ -70,13 +69,28 @@ ausgabeParas: dict[str, str] = {
     "keinenummerierung": _("keinenummerierung"),
     "keineueberschriften": _("keineueberschriften"),
 }
+ausgabeParasEqSign: dict = {
+    "nocolor": False,
+    "justtext": False,
+    "art": True,
+    "onetable": False,
+    "spaltenreihenfolgeundnurdiese": True,
+    "endlessscreen": False,
+    "endless": False,
+    "dontwrap": False,
+    "breite": True,
+    "breiten": True,
+    "keineleereninhalte": False,
+    "keinenummerierung": False,
+    "keineueberschriften": False,
+}
 
 ausgabeParasLen = {key: len(value) for (key, value) in ausgabeParas.items()}
-kombiMainParas: dict[str, str] = {
+kombiMainParas: dict = {
     "galaxie": _("galaxie"),
     "universum": _("universum"),
 }
-zeilenParas: dict[str, str] = {
+zeilenParas: dict = {
     "alles": _("alles"),
     "gestern": _("gestern"),
     "heute": _("heute"),
@@ -101,7 +115,7 @@ zeilenParas: dict[str, str] = {
 
 zeilenParasLen = {key: len(value) for (key, value) in zeilenParas.items()}
 # zeilenParasLenPlus2 = {key: len(value) + 2 for (key, value) in zeilenParas.items()}
-hauptForNeben: dict[str, str] = {
+hauptForNeben: dict = {
     "zeilen": _("zeilen"),
     "spalten": _("spalten"),
     "kombination": _("kombination"),
@@ -112,7 +126,7 @@ hauptForNeben: dict[str, str] = {
 }
 
 
-ausgabeArt: dict[str, str] = {
+ausgabeArt: dict = {
     "bbcode": _("bbcode"),
     "html": _("html"),
     "csv": _("csv"),
@@ -122,7 +136,7 @@ ausgabeArt: dict[str, str] = {
 }
 
 
-wahl15Words: dict[str, str] = {
+wahl15Words: dict = {
     "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15),Model_of_Hierarchical_Complexity,"
     + Primzahlkreuz_pro_contra_strs[1]: ",".join(
         (
@@ -198,7 +212,7 @@ wahl15Words: dict[str, str] = {
     ),
 }
 
-wahl15: dict[str, str] = {
+wahl15: dict = {
     #    "_": _("Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15)"),
     "_15": ",".join(
         (
@@ -261,8 +275,7 @@ wahl15: dict[str, str] = {
     "_13_13": _("Absicht_13_ist_Helfen"),
     "_1pro12": _("Karte_Filter_und_Unterscheidung_(1/12)"),
 }
-
-befehle: dict[str, str] = {"15" + a: "15" + a for a in wahl15.keys()} | {
+befehle2: dict = {"15" + a: "15" + a for a in wahl15.keys()} | {
     "mond": _("mond"),
     "reta": _("reta"),
     "absicht": _("absicht"),
@@ -301,7 +314,7 @@ befehle: dict[str, str] = {"15" + a: "15" + a for a in wahl15.keys()} | {
     "exit": _("exit"),
     "quit": _("quit"),
     "q": _("q"),
-    ":q": ":q",
+    ":q": _(":q"),
     "shell": _("shell"),
     "s": _("s"),
     "math": _("math"),
@@ -326,11 +339,77 @@ befehle: dict[str, str] = {"15" + a: "15" + a for a in wahl15.keys()} | {
     ),
 }
 
+befehle: dict = ["15" + a for a in wahl15.keys()] + [
+    _("mond"),
+    _("reta"),
+    _("absicht"),
+    _("motiv"),
+    _("thomas"),
+    _("universum"),
+    _("motive"),
+    _("absichten"),
+    _("vielfache"),
+    _("einzeln"),
+    _("multis"),
+    _("modulo"),
+    _("prim"),
+    _("primfaktorzerlegung"),
+    _("procontra"),
+    _("prim24"),
+    _("primfaktorzerlegungModulo24"),
+    _("help"),
+    _("hilfe"),
+    _("abc"),
+    _("abcd"),
+    _("alles"),
+    _("a"),
+    _("u"),
+    _("befehle"),
+    _("t"),
+    _("richtung"),
+    _("r"),
+    _("v"),
+    _("h"),
+    _("p"),
+    _("mo"),
+    _("mu"),
+    _("primzahlkreuz"),
+    _("ende"),
+    _("exit"),
+    _("quit"),
+    _("q"),
+    ":q",
+    _("shell"),
+    _("s"),
+    _("math"),
+    _("loggen"),
+    _("nichtloggen"),
+    _("mulpri"),
+    _("python"),
+    _("w"),
+    _("teiler"),
+    _("BefehlSpeichernDanach"),
+    _("S"),
+    _("BefehlSpeicherungLöschen"),
+    _("l"),
+    _("BefehlSpeicherungAusgeben"),
+    _("o"),
+    _("e"),
+    # _("BefehlsSpeicherungsModusAus"),
+    # _("x"),
+    _("BefehlSpeichernDavor"),
+    _("keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"),
+]
+
 ParametersMain: NamedTuple = namedtuple(
     "ParametersMain",
     "wichtigste wichtigste2 religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept konzept2 inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache planet strukturenkleinere grundstrukturen alles",
 )
-
+konzeptE = {"konzept": _("konzept"), "konzept2": _("konzept2")}
+gebrochenUniGal = {
+    "gebrochenuniversum": _("gebrochenuniversum"),
+    "gebrochengalaxie": _("gebrochengalaxie"),
+}
 ParametersMain: NamedTuple = ParametersMain(
     (
         _("Wichtigstes_zum_verstehen"),
@@ -402,12 +481,12 @@ ParametersMain: NamedTuple = ParametersMain(
         _("Eigenschaften_n"),
         _("eigenschaften"),
         _("eigenschaft"),
-        _("konzept"),
+        konzeptE["konzept"],
         _("konzepte"),
     ),
     (
         _("Eigenschaften_1/n"),
-        _("konzept2"),
+        konzeptE["konzept2"],
         _("konzepte2"),
     ),
     (
@@ -426,8 +505,8 @@ ParametersMain: NamedTuple = ParametersMain(
         _("Primzahlwirkung"),
         _("primzahlwirkung"),
     ),
-    (_("gebrochenuniversum"),),
-    (_("gebrochengalaxie"),),
+    (gebrochenUniGal["gebrochenuniversum"],),
+    (gebrochenUniGal["gebrochengalaxie"],),
     (
         _("Multiplikationen"),
         _("multiplikationen"),
@@ -441,8 +520,7 @@ ParametersMain: NamedTuple = ParametersMain(
     (_("alles"),),
 )
 
-
-paraNdataMatrix: list[Tuple[Any, dict[str, str], set[int], Optional[set]]] = [
+paraNdataMatrix: list = [
     (
         ParametersMain.wichtigste,
         (
@@ -3268,7 +3346,7 @@ paraNdataMatrix: list[Tuple[Any, dict[str, str], set[int], Optional[set]]] = [
 ]
 paraNdataMatrix = paraNdataMatrix
 
-kombiParaNdataMatrix: OrderedDict[int, tuple[str]] = OrderedDict(
+kombiParaNdataMatrix: OrderedDict = OrderedDict(
     {
         1: (
             _("Lebewesen"),
@@ -3336,7 +3414,7 @@ kombiParaNdataMatrix: OrderedDict[int, tuple[str]] = OrderedDict(
     }
 )
 
-kombiParaNdataMatrix2: OrderedDict[int, tuple[str]] = OrderedDict(
+kombiParaNdataMatrix2: OrderedDict = OrderedDict(
     {
         1: (
             _("Lebewesen"),
@@ -3453,7 +3531,7 @@ def classify(cls, mod):
 
 
 class tableHandling:
-    parameterName: dict[str, str] = {"kombination": _("kombination")}
+    parameterName: dict = {"kombination": _("kombination")}
     art = ausgabeArt
     into = {
         "Kombination_(Galaxie_und_schwarzes_Loch)_(14_mit_13)": _(
@@ -3595,13 +3673,13 @@ class concat:
         "gleichförmige Polygone": _("gleichförmige Polygone"),
     }
 
-    kombisNamen: dict[str, str] = {
+    kombisNamen: dict = {
         "Motiv -> Motiv": _("Motiv -> Motiv"),
         "Motiv -> Strukur": _("Motiv -> Strukur"),
         "Struktur -> Motiv": _("Struktur -> Motiv"),
         "Struktur -> Strukur": _("Struktur -> Strukur"),
     }
-    # kombisNamen2: dict[str, str] = {
+    # kombisNamen2: dict = {
     #    "GalGal": _("GalGal"),
     #    "GalUni": _("GalUni"),
     #    "UniGal": _("UniGal"),
@@ -3812,20 +3890,20 @@ class retaPrompt:
         'Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\nDas ist eine Design-Entscheidung, die getroffen worden ist.'
     )
     replacements = {
-        befehle["e"]: befehle[
+        befehle2["e"]: befehle2[
             "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
         ],
-        befehle["a"]: befehle["absicht"],
-        befehle["u"]: befehle["universum"],
-        befehle["t"]: befehle["thomas"],
-        befehle["r"]: befehle["richtung"],
-        befehle["v"]: befehle["vielfache"],
-        befehle["h"]: befehle["help"],
-        befehle["w"]: befehle["teiler"],
-        befehle["S"]: befehle["BefehlSpeichernDanach"],
-        befehle["s"]: befehle["BefehlSpeichernDavor"],
-        befehle["l"]: befehle["BefehlSpeicherungLöschen"],
-        befehle["o"]: befehle["BefehlSpeicherungAusgeben"],
+        befehle2["a"]: befehle2["absicht"],
+        befehle2["u"]: befehle2["universum"],
+        befehle2["t"]: befehle2["thomas"],
+        befehle2["r"]: befehle2["richtung"],
+        befehle2["v"]: befehle2["vielfache"],
+        befehle2["h"]: befehle2["help"],
+        befehle2["w"]: befehle2["teiler"],
+        befehle2["S"]: befehle2["BefehlSpeichernDanach"],
+        befehle2["s"]: befehle2["BefehlSpeichernDavor"],
+        befehle2["l"]: befehle2["BefehlSpeicherungLöschen"],
+        befehle2["o"]: befehle2["BefehlSpeicherungAusgeben"],
     }
     retaPromptParameter = {
         "vi": _("vi"),
@@ -3856,9 +3934,9 @@ class retaPrompt:
             -""",
             retaPromptParameter["e"],
             _(" bewirkt, dass bei allen Befehlen das '"),
-            befehle["e"],
+            befehle2["e"],
             ("' Kommando bzw. '"),
-            befehle["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"],
+            befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"],
             _(
                 "' jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil dieser anders funktioniert "
             ),
@@ -3902,3 +3980,6 @@ class csvFileNames:
     sunMoon = _("sunMoonEtc.csv")
     meaningOfLife = _("meaningOfLife.csv")
     dualitaetenTrinities = _("dualism-trinities-etc.csv")
+
+
+EIGS_N_R = (_("EIGN"), _("EIGR"))
