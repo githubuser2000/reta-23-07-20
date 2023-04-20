@@ -82,6 +82,7 @@ class TXT(object):
 
     @platzhalter.setter
     def platzhalter(self, value):
+        x("platziii", value)
         self._platzhalter = value
 
     @text.setter
@@ -458,6 +459,7 @@ def speichern(ketten, platzhalter, text):
                     alt_i = -1
 
                     Txt2 = TXT()
+                    # Txt2.platzhalter = Txt.platzhalter
                     Txt2.liste = textUndPlatzHalterNeu
                     ifKurzKurz, Txt2.liste = stextFromKleinKleinKleinBefehl(
                         PromptModus.AusgabeSelektiv, Txt2.liste, []
@@ -526,6 +528,7 @@ def speichern(ketten, platzhalter, text):
 
     else:
         Txt.platzhalter = "" if Txt.text is None else str(Txt.text)
+    x("PLATZZHH", Txt.platzhalter)
     Txt.text = ""
     if Txt.platzhalter != "":
         promptMode2 = PromptModus.AusgabeSelektiv
@@ -542,6 +545,7 @@ def speichern(ketten, platzhalter, text):
         ifKurzKurz_X,
     ) = promptVorbereitungGrosseAusgabe(
         ketten,
+        Txt.platzhalter,
         PromptModus.normal,
         PromptModus.normal,
         PromptModus.normal,
@@ -685,6 +689,7 @@ def PromptScope():
             ifKurzKurz,
         ) = promptVorbereitungGrosseAusgabe(
             ketten,
+            Txt.platzhalter,
             promptMode,
             promptMode2,
             promptModeLast,
@@ -1799,9 +1804,10 @@ def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, Txt, warBefehl):
 
 
 def promptVorbereitungGrosseAusgabe(
-    ketten, promptMode, promptMode2, promptModeLast, text, textDazu0
+    ketten, platzhalter, promptMode, promptMode2, promptModeLast, text, textDazu0
 ):
     Txt = TXT(text)
+    Txt.platzhalter = platzhalter
     ketten = []
     # AusgabeSelektiv = 5
     ifKurzKurz = False
