@@ -10,7 +10,7 @@ from itertools import zip_longest
 
 try:
     from orderedset import OrderedSet
-except ModuleNotFoundError:
+except (ModuleNotFoundError, ImportError):
     OrderedSet = set
 
 from center import (DefaultOrderedDict, Multiplikationen,

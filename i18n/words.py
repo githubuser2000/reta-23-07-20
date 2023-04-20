@@ -9,7 +9,7 @@ from typing import Any, NamedTuple, Optional, Tuple, Union
 
 try:
     from orderedset import OrderedSet
-except ModuleNotFoundError:
+except (ModuleNotFoundError, ImportError):
     OrderedSet = set
 
 # sys.path.insert(1, "./..")
