@@ -552,27 +552,27 @@ def PromptScope():
             befehlDavor = ""
             promptMode = PromptModus.normal
             continue
-        elif (("o" in stext) or ("BefehlSpeicherungAusgeben" in stext)) and len(
-            stext
-        ) == 1:
+        elif (
+            (i18n.befehle2["o"] in stext) or ("BefehlSpeicherungAusgeben" in stext)
+        ) and len(stext) == 1:
             promptMode = PromptModus.speicherungAusgaben
             continue
-        elif (("o" in stext) or ("BefehlSpeicherungAusgeben" in stext)) and len(
-            set(stext) - {"o", "BefehlSpeicherungAusgeben"}
-        ) > 1:
+        elif (
+            (i18n.befehle2["o"] in stext) or ("BefehlSpeicherungAusgeben" in stext)
+        ) and len(set(stext) - {i18n.befehle2["o"], "BefehlSpeicherungAusgeben"}) > 1:
             nochAusageben = stext
             promptMode = PromptModus.speicherungAusgabenMitZusatz
             continue
-        elif (("l" in stext) or ("BefehlSpeicherungLöschen" in stext)) and len(
-            stext
-        ) == 1:
+        elif (
+            (i18n.befehle2["l"] in stext) or ("BefehlSpeicherungLöschen" in stext)
+        ) and len(stext) == 1:
             print(str([{i + 1, a} for i, a in enumerate(platzhalter.split())]))
             print(i18nRP.promptModeSatz.format(promptMode, promptMode2))
             promptMode = PromptModus.loeschenSelect
             continue
 
         (
-            bedingung,
+            IsPureOnlyReTaCmd,
             brueche,
             c,
             ketten,
@@ -591,7 +591,7 @@ def PromptScope():
         )
         stextE = stext + textE
         loggingSwitch = PromptGrosseAusgabe(
-            bedingung,
+            IsPureOnlyReTaCmd,
             befehleBeenden,
             brueche,
             c,
@@ -609,7 +609,7 @@ def PromptScope():
 
 
 def PromptGrosseAusgabe(
-    bedingung,
+    IsPureOnlyReTaCmd,
     befehleBeenden,
     brueche,
     c,
@@ -632,7 +632,7 @@ def PromptGrosseAusgabe(
         rangesBruecheDict,
         rangesBruecheDictReverse,
     ) = (False, "", [], False, {}, {})
-    if not bedingung:
+    if not IsPureOnlyReTaCmd:
         (
             bruch_GanzZahlReziproke,
             c,
@@ -681,7 +681,7 @@ def PromptGrosseAusgabe(
                 )
             )
         )
-    if len({"befehle"} & set(stextE)) > 0:
+    if len({i18n.befehle2["befehle"]} & set(stextE)) > 0:
         warBefehl = True
         print("Befehle: " + str(befehle)[1:-1])
     if len({"help", "hilfe"} & set(stextE)) > 0 or (
@@ -696,7 +696,7 @@ def PromptGrosseAusgabe(
         (len(bruch_GanzZahlReziproke) > 0 or len(rangesBruecheDict) > 0)
         or len(rangesBruecheDictReverse) > 0,
     )
-    if bedingung:
+    if IsPureOnlyReTaCmd:
         warBefehl = True
         import reta
 
@@ -789,8 +789,6 @@ def PromptGrosseAusgabe(
                 kette,
             )
 
-    # if bedingungZahl or bedingungBrueche:
-    # x("90ß234wrfn", [zeiln1, zeiln2])
     if fullBlockIsZahlenbereichAndBruch and (bedingungZahl or bedingungBrueche):
         if len(
             {
@@ -906,10 +904,11 @@ def PromptGrosseAusgabe(
             nennerZaehlerGleich = []
             if len(rangesBruecheDict) > 0:
                 for nenner, zaehler in rangesBruecheDict.items():
+                    hierBereich = ",".join(zaehler)
                     retaExecuteNprint(
                         ketten,
                         stextE,
-                        "--vorhervonausschnitt=" + ",".join(zaehler),
+                        "--vorhervonausschnitt=" + hierBereich,
                         "",
                         ["--gebrochenuniversum=" + str(nenner)],
                         "2",
@@ -918,12 +917,13 @@ def PromptGrosseAusgabe(
             elif len(rangesBruecheDictReverse) > 0:
                 for nenner, zaehler in rangesBruecheDictReverse.items():
                     hierBereich = ",".join(zaehler)
+                    print("S")
                     retaExecuteNprint(
                         ketten,
                         stextE,
                         "--vorhervonausschnitt=" + hierBereich,
                         "",
-                        ["--universum=verhaeltnisgleicherzahl"],
+                        ["--gebrochenuniversum=" + str(nenner)],
                         "1",
                     )
                     nennerZaehlerGleich += findEqualNennerZaehler(
@@ -936,7 +936,7 @@ def PromptGrosseAusgabe(
                     stextE,
                     "--vorhervonausschnitt=" + nennerZaehlerGleich,
                     "",
-                    ["--gebrochenuniversum=" + str(nenner)],
+                    ["--universum=verhaeltnisgleicherzahl"],
                     "1",
                 )
     if bedingungZahl:
@@ -1684,7 +1684,7 @@ def promptVorbereitungGrosseAusgabe(
                 stext.remove(i18n.befehle2["vielfache"])
             except:
                 pass
-    bedingung: bool = len(stext) > 0 and stext[0] == "reta"
+    IsPureOnlyReTaCmd: bool = len(stext) > 0 and stext[0] == "reta"
     brueche = []
     zahlenAngaben_ = []
     c = ""
@@ -1702,8 +1702,8 @@ def promptVorbereitungGrosseAusgabe(
     #    i18n.befehle2["w"]: i18n.befehle2["teiler"],
     #    "S": "BefehlSpeichernDanach",
     #    "s": "BpromptMode = PromptModus.speichernefehlSpeichernDavor",
-    #    "l": "BefehlSpeicherungLöschen",
-    #    "o": "BefehlSpeicherungAusgeben",
+    #    i18n.befehle2["l"]: "BefehlSpeicherungLöschen",
+    #    i18n.befehle2["o"]: "BefehlSpeicherungAusgeben",
     # }
     for i, token in enumerate(stext):
         try:
@@ -1713,7 +1713,7 @@ def promptVorbereitungGrosseAusgabe(
     if stext[:1] != ["reta"]:
         stext = list(set(stext))
     return (
-        bedingung,
+        IsPureOnlyReTaCmd,
         brueche,
         c,
         ketten,
