@@ -847,6 +847,8 @@ def PromptGrosseAusgabe(
                 "2",
             )
 
+    alxp(Txt.liste)
+    alxp(Txt.listeE)
     if fullBlockIsZahlenbereichAndBruch and (bedingungZahl or bedingungBrueche):
         if len(
             {
@@ -1306,7 +1308,7 @@ def retaExecuteNprint(
         zeiln1,
         zeiln2,
         "".join(("-", i18n.hauptForNeben["spalten"])),
-        *welcheSpalten,
+        "".join(welcheSpalten),
         "".join(("--", i18n.ausgabeParas["breite"], "=0")),
         "".join(("-", i18n.hauptForNeben["ausgabe"])),
         "".join(
@@ -1363,6 +1365,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
     Minusse = {}
     pfaue = {}
     pfaueAbzug = {}
+
     for g, a in enumerate(stext):
         bruchAndGanzZahlEtwaKorrekterBereich = []
         bruchBereichsAngaben = []
@@ -1720,6 +1723,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
         zahlenReiheKeineWteiler
     except (UnboundLocalError, NameError):
         zahlenReiheKeineWteiler = ""
+
     return (
         bruch_GanzZahlReziproke,
         c,
@@ -1775,7 +1779,7 @@ def promptVorbereitungGrosseAusgabe(
         textDazu: list = []
         s_2: list
 
-        ifKurzKurz, stext = stextFromKleinKleinKleinBefehl(
+        ifKurzKurz, Txt.liste = stextFromKleinKleinKleinBefehl(
             ifKurzKurz, promptMode2, Txt.liste, textDazu
         )
     if Txt.liste is not None:
@@ -1871,18 +1875,24 @@ def promptVorbereitungGrosseAusgabe(
                 Txt.liste = x
             except:
                 pass
-    IsPureOnlyReTaCmd: bool = len(stext) > 0 and Txt.liste[0] == "reta"
+    IsPureOnlyReTaCmd: bool = len(Txt.liste) > 0 and Txt.liste[0] == "reta"
     brueche = []
     zahlenAngaben_ = []
     c = ""
     if len(Txt.menge & befehleBeenden) > 0:
         Txt.liste = [tuple(befehleBeenden)[0]]
     replacements = i18nRP.replacements
-    for i, token in enumerate(stext):
+    x("replace a", replacements["a"])
+    listeNeu: list = []
+    x("Fw3e", Txt.liste)
+    for token in Txt.liste:
         try:
-            stext[i] = replacements[token]
+            listeNeu += [replacements[token]]
         except KeyError:
-            pass
+            listeNeu += [token]
+    Txt.liste = listeNeu
+    x("Fw3e", listeNeu)
+    x("Fw3e", Txt.liste)
     if Txt.liste[:1] != ["reta"]:
         Txt.liste = list(Txt.menge)
     return (
