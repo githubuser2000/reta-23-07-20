@@ -794,8 +794,16 @@ def PromptGrosseAusgabe(
     # if bedingungZahl or bedingungBrueche:
     # x("90ß234wrfn", [zeiln1, zeiln2])
     if fullBlockIsZahlenbereichAndBruch and (bedingungZahl or bedingungBrueche):
-        if len({"absicht", "absichten", "motiv", "motive"} & set(stextE)) > 0 or (
-            (("a" in stextE) != ("mo" in stextE))
+        if len(
+            {
+                i18n.befehle2["absicht"],
+                i18n.befehle2["absichten"],
+                i18n.befehle2["motiv"],
+                i18n.befehle2["motive"],
+            }
+            & set(stextE)
+        ) > 0 or (
+            ((i18n.befehle2["a"] in stextE) != (i18n.befehle2["mo"] in stextE))
             and i18n.befehle2["abc"] not in stextE
             and i18n.befehle2["abcd"] not in stextE
         ):
@@ -803,38 +811,8 @@ def PromptGrosseAusgabe(
 
             if len(c) > 0:
                 # print(c)
-                import reta
-
-                kette = [
-                    "reta",
-                    "-zeilen",
-                    zeiln1,
-                    zeiln2,
-                    "-spalten",
-                    "--menschliches=motivation",
-                    "--breite=0",
-                    "-ausgabe",
-                    "--spaltenreihenfolgeundnurdiese=1",
-                    *[
-                        "--keineleereninhalte"
-                        if i18n.befehle2[
-                            "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                        ]
-                        in stextE
-                        else ""
-                    ],
-                ] + returnOnlyParasAsList(stextE)
-                kette += ketten
-                # print("a")
-                if (
-                    i18n.befehle2[
-                        "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                    ]
-                    not in stextE
-                ):
-                    print(" ".join(kette))
-                reta.Program(
-                    kette,
+                retaExecuteNprint(
+                    ketten, stextE, zeiln1, zeiln2, ["--menschliches=motivation"], "1"
                 )
             # x("9vnw3dfg345", bruch_GanzZahlReziproke)
             if (
@@ -842,75 +820,19 @@ def PromptGrosseAusgabe(
                 and textHatZiffer(bruch_GanzZahlReziproke)
                 and zeiln3 != ""
             ):
-                import reta
-
-                kette = [
-                    "reta",
-                    "-zeilen",
-                    zeiln3,
-                    zeiln4,
-                    "-spalten",
-                    "--menschliches=motivation",
-                    "--breite=0",
-                    "-ausgabe",
-                    "--spaltenreihenfolgeundnurdiese=3",
-                    *[
-                        "--keineleereninhalte"
-                        if i18n.befehle2[
-                            "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                        ]
-                        in stextE
-                        else ""
-                    ],
-                ] + returnOnlyParasAsList(stextE)
-                kette += ketten
-                if (
-                    i18n.befehle2[
-                        "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                    ]
-                    not in stextE
-                ):
-                    print(" ".join(kette))
-                reta.Program(
-                    kette,
+                retaExecuteNprint(
+                    ketten, stextE, zeiln3, zeiln4, ["--menschliches=motivation"], "3"
                 )
 
             if len(rangesBruecheDict) > 0:
                 for nenner, zaehler in rangesBruecheDict.items():
-                    import reta
-
-                    # zaehler = [s for s in zaehler if s]
-                    # hierBereich = ",".join(zaehler)
-                    hierBereich = ",".join(zaehler)
-                    kette = [
-                        "reta",
-                        "-zeilen",
-                        "--vorhervonausschnitt=" + hierBereich,
-                        "-spalten",
-                        "--gebrochengalaxie=" + str(nenner),
-                        "--breite=0",
-                        "-kombination",
-                        "-ausgabe",
-                        "--spaltenreihenfolgeundnurdiese=2",
-                        *[
-                            "--keineleereninhalte"
-                            if i18n.befehle2[
-                                "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                            ]
-                            in stextE
-                            else ""
-                        ],
-                    ] + returnOnlyParasAsList(stextE)
-                    kette += ketten
-                    if (
-                        i18n.befehle2[
-                            "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                        ]
-                        not in stextE
-                    ) and not len(BereichToNumbers2(hierBereich)) == 0:
-                        print(" ".join(kette))
-                    reta.Program(
-                        kette,
+                    retaExecuteNprint(
+                        ketten,
+                        stextE,
+                        "--vorhervonausschnitt=" + ",".join(zaehler),
+                        "",
+                        ["--gebrochengalaxie=" + str(nenner)],
+                        "2",
                     )
             elif len(rangesBruecheDictReverse) > 0:
                 for nenner, zaehler in rangesBruecheDictReverse.items():
@@ -1522,6 +1444,46 @@ def PromptGrosseAusgabe(
     return loggingSwitch
 
 
+def retaExecuteNprint(
+    ketten: list,
+    stextE: list,
+    zeiln1: str,
+    zeiln2: str,
+    welcheSpalten: list[str],
+    ErlaubteSpalten: str,
+):
+    import reta
+
+    kette = [
+        "reta",
+        "-zeilen",
+        zeiln1,
+        zeiln2,
+        "-spalten",
+        *welcheSpalten,
+        "--breite=0",
+        "-ausgabe",
+        "--spaltenreihenfolgeundnurdiese=" + ErlaubteSpalten,
+        *[
+            "--keineleereninhalte"
+            if i18n.befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"]
+            in stextE
+            else ""
+        ],
+    ] + returnOnlyParasAsList(stextE)
+    kette += ketten
+    # print(i18n.befehle2["a"])
+    if (
+        True
+        or i18n.befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"]
+        not in stextE
+    ):
+        print(" ".join(kette))
+    reta.Program(
+        kette,
+    )
+
+
 def findEqualNennerZaehler(hierBereich, nenner, nennerZaehlerGleich):
     hierBereich2 = BereichToNumbers2(str(hierBereich))
     nenner2 = BereichToNumbers2(str(nenner))
@@ -2062,7 +2024,7 @@ def promptVorbereitungGrosseAusgabe(
     replacements = i18nRP.replacements
     # replacements = {
     #    "e": i18n.befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"],
-    #    "a": "absicht",
+    #    i18n.befehle2["a"]: i18n.befehle2["absicht"],
     #    "u": "universum",
     #    "t": i18n.befehle2["thomas"],
     #    "r": "richtung",
@@ -2117,7 +2079,7 @@ def PromptAllesVorGroesserSchleife():
         #    -e bewirkt, dass bei allen Befehlen das 'e' Kommando bzw. 'keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar' jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil dieser anders funktioniert """
         # )
         exit()
-    if "-" + i18nRP.retaPrompt.retaPromptParameter["debug"] in sys.argv:
+    if "-" + i18nRP.retaPromptParameter["debug"] in sys.argv:
         retaProgram.propInfoLog = True
         if "-" + i18nRP.retaPromptParameter["e"] not in sys.argv:
             alxp("Debug Log aktiviert.")

@@ -17,6 +17,8 @@ localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)), "locale")
 translate = gettext.translation("handroll", localedir, fallback=True)
 _ = translate.gettext
 Multiplikationen = [(_("Multiplikationen"), "")]
+print(type(Multiplikationen))
+print(type(Multiplikationen[0]))
 """
 ES FEHLEN NOCH ALLE ''
 fertig: in prepare ist nichts
@@ -478,7 +480,7 @@ ParametersMain: NamedTuple = ParametersMain(
         _("Symbole"),
         _("symbole"),
     ),
-    (a[0] for a in Multiplikationen),
+    [a[0] for a in Multiplikationen],
     (
         _("Eigenschaften_n"),
         _("eigenschaften"),
