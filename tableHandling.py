@@ -648,13 +648,12 @@ class Tables:
                                     line += ["\n"] + addionalLine
                             if emptyEntries != entriesHere:
                                 if type(self.__outType) is csvSyntax:
-                                    strio = io.StringIO(newline="\n")
+                                    strio = io.StringIO(newline="")
                                     writer = csv.writer(
                                         strio,
-                                        quoting=csv.QUOTE_NONE,
+                                        quoting=csv.QUOTE_MINIMAL,
                                         delimiter=";",
-                                        quotechar="",
-                                        escapechar="\\",
+                                        quotechar='"',
                                     )
 
                                     writer.writerow(line)

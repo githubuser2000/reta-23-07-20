@@ -63,8 +63,8 @@ zeilenZeit = [
 ]
 
 ausgabeParas = [
-    "--" + s + ("-" if l else "")
-    for s, l in zip(i18n.ausgabeParas.values(), i18n.ausgabeParasLen.values())
+    "--" + s + ("=" if l else "")
+    for s, l in zip(i18n.ausgabeParas.values(), i18n.ausgabeParasEqSign.values())
 ]
 # ausgabeParas = [
 #    "--nocolor",
