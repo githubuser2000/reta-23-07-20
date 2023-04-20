@@ -683,9 +683,11 @@ def PromptGrosseAusgabe(
         )
     if len({i18n.befehle2["befehle"]} & set(stextE)) > 0:
         warBefehl = True
-        print("Befehle: " + str(befehle)[1:-1])
-    if len({"help", "hilfe"} & set(stextE)) > 0 or (
-        "h" in stextE
+        print(
+            "{}: {}".format(i18n.retaPrompt.befehleWort["Befehle"], str(befehle)[1:-1])
+        )
+    if len({i18n.befehle2["help"], i18n.befehle2["hilfe"]} & set(stextE)) > 0 or (
+        i18n.befehle2["h"] in stextE
         and i18n.befehle2["abc"] not in stextE
         and i18n.befehle2["abcd"] not in stextE
     ):
@@ -709,11 +711,10 @@ def PromptGrosseAusgabe(
         )
         zeiln4 = ""
     else:
-        zeiln3 = "--vorhervonausschnitt=0"
+        zeiln3 = "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "=0"))
         zeiln4 = ""
     if bedingungZahl:
         zahlenBereiche = str(c).strip()
-        # x("890ßfvsdwer", [zahlenBereiche, textHatZiffer(zahlenBereiche)])
         if textHatZiffer(zahlenBereiche):
             if i18n.befehle2["einzeln"] not in stextE and (
                 (i18n.befehle2["vielfache"] in stextE)
@@ -753,7 +754,7 @@ def PromptGrosseAusgabe(
 
                 zeiln2 = anotherOberesMaximum(c, maxNum)
         else:
-            zeiln1 = "--vorhervonausschnitt=0"
+            zeiln1 = "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "=0"))
             zeiln2 = ""
 
     else:
@@ -762,40 +763,20 @@ def PromptGrosseAusgabe(
 
     if bedingungZahl:
         if (len({i18n.befehle2["thomas"]} & set(stextE)) > 0) or (
-            "t" in stextE
+            i18n.befehle2["t"] in stextE
             and i18n.befehle2["abc"] not in stextE
             and i18n.befehle2["abcd"] not in stextE
         ):
             warBefehl = True
-            import reta
-
-            kette = [
-                "reta",
-                "".join(("-", i18n.hauptForNeben["zeilen"])),
+            retaExecuteNprint(
+                ketten,
+                stextE,
                 zeiln1,
                 zeiln2,
-                "-spalten",
-                "--galaxie=thomas",
-                "--breite=0",
-                "-ausgabe",
-                "--spaltenreihenfolgeundnurdiese=2",
-                *[
-                    "--keineleereninhalte"
-                    if i18n.befehle2[
-                        "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                    ]
-                    in stextE
-                    else ""
+                [
+                    "--galaxie=thomas",
                 ],
-            ] + returnOnlyParasAsList(stextE)
-            kette += ketten
-            if (
-                i18n.befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"]
-                not in stextE
-            ):
-                print(" ".join(kette))
-            reta.Program(
-                kette,
+                "2",
             )
 
     if fullBlockIsZahlenbereichAndBruch and (bedingungZahl or bedingungBrueche):
@@ -818,7 +799,6 @@ def PromptGrosseAusgabe(
                 retaExecuteNprint(
                     ketten, stextE, zeiln1, zeiln2, ["--menschliches=motivation"], "1"
                 )
-            # x("9vnw3dfg345", bruch_GanzZahlReziproke)
             if (
                 len(bruch_GanzZahlReziproke) > 0
                 and textHatZiffer(bruch_GanzZahlReziproke)
@@ -925,6 +905,9 @@ def PromptGrosseAusgabe(
                         ["--gebrochenuniversum=" + str(nenner)],
                         "2",
                     )
+                    nennerZaehlerGleich += findEqualNennerZaehler(
+                        hierBereich, nenner, nennerZaehlerGleich
+                    )
 
             elif len(rangesBruecheDictReverse) > 0:
                 for nenner, zaehler in rangesBruecheDictReverse.items():
@@ -942,6 +925,7 @@ def PromptGrosseAusgabe(
                         hierBereich, nenner, nennerZaehlerGleich
                     )
             if len(nennerZaehlerGleich) != 0:
+                nennerZaehlerGleich = set(nennerZaehlerGleich)
                 nennerZaehlerGleich = ",".join(nennerZaehlerGleich)
                 retaExecuteNprint(
                     ketten,
@@ -1154,15 +1138,22 @@ def retaExecuteNprint(
         "".join(("-", i18n.hauptForNeben["zeilen"])),
         zeiln1,
         zeiln2,
-        "-spalten",
+        "".join(("-", i18n.hauptForNeben["spalten"])),
         *welcheSpalten,
-        "--breite=0",
-        "-ausgabe",
-        ("--spaltenreihenfolgeundnurdiese=" + ErlaubteSpalten)
+        "".join(("--", i18n.ausgabeParas["breite"], "=0")),
+        "".join(("-", i18n.hauptForNeben["ausgabe"])),
+        "".join(
+            (
+                "--",
+                i18n.ausgabeParas["spaltenreihenfolgeundnurdiese"],
+                "=",
+                ErlaubteSpalten,
+            )
+        )
         if ErlaubteSpalten is not None
         else "",
         *[
-            "--keineleereninhalte"
+            "--" + i18n.ausgabeParas["keineleereninhalte"]
             if i18n.befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"]
             in stextE
             else ""
@@ -1725,10 +1716,10 @@ def promptVorbereitungGrosseAusgabe(
     #    i18n.befehle2["e"]: i18n.befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"],
     #    i18n.befehle2["a"]: i18n.befehle2["absicht"],
     #    "u": "universum",
-    #    "t": i18n.befehle2["thomas"],
+    #    i18n.befehle2["t"]: i18n.befehle2["thomas"],
     #    "r": i18n.befehle2["richtung"],
     #    i18n.befehle2["v"]: i18n.befehle2["vielfache"],
-    #    "h": "help",
+    #    i18n.befehle2["h"]: i18n.befehle2["help"],
     #    i18n.befehle2["w"]: i18n.befehle2["teiler"],
     #    "S": "BefehlSpeichernDanach",
     #    "s": "BpromptMode = PromptModus.speichernefehlSpeichernDavor",

@@ -3880,6 +3880,7 @@ class nested:
 
 class retaPrompt:
     befehleBeenden = {_("ende"), _("exit"), _("quit"), _("q"), _(":q")}
+    befehleWort = {"Befehle": _("Befehle")}
     promptModeSatz = _("promptmode vorher: {} , {}")
     promptModeSatz2 = _("'{}' ergibt sich aus '{}' und ergibt danach reta-Befehl:")
     out1Satze = (
