@@ -1837,6 +1837,15 @@ def promptVorbereitungGrosseAusgabe(
         and promptModeLast == PromptModus.normal
     ):
         Txt.liste = textDazu0 + Txt.liste
+    x(
+        "BSDFCF",
+        [
+            promptMode,
+            Txt.platzhalter,
+            zahlenBereichMatch,
+            zahlenBereichMatch.count(True),
+        ],
+    )
     if (
         promptMode == PromptModus.normal
         and len(Txt.platzhalter) > 1
@@ -1844,6 +1853,8 @@ def promptVorbereitungGrosseAusgabe(
         and any(zahlenBereichMatch)
         and zahlenBereichMatch.count(True) == 1
     ):
+        x("REDA", Txt.platzhalter)
+        x("REDA", Txt.liste)
         zeilenn = False
         woerterToDel = []
         for i, wort in enumerate(Txt.liste):
@@ -1857,8 +1868,9 @@ def promptVorbereitungGrosseAusgabe(
         stextDict = {i: swort for i, swort in enumerate(Txt.liste)}
         for todel in woerterToDel:
             del stextDict[todel]
-        stext = list(stextDict.values())
+        Txt.liste = list(stextDict.values())
 
+        x("REDA", Txt.liste)
         if len({i18n.befehle2["w"], i18n.befehle2["teiler"]} & Txt.menge) > 0:
             BereichMenge = BereichToNumbers2(zahlenBereichNeu[True], False, 0)
             BereichMengeNeu = teiler(",".join([str(b) for b in BereichMenge]))[1]
