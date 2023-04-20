@@ -683,9 +683,7 @@ def PromptGrosseAusgabe(
         )
     if len({i18n.befehle2["befehle"]} & set(stextE)) > 0:
         warBefehl = True
-        print(
-            "{}: {}".format(i18n.retaPrompt.befehleWort["Befehle"], str(befehle)[1:-1])
-        )
+        print("{}: {}".format(i18nRP.befehleWort["Befehle"], str(befehle)[1:-1]))
     if len({i18n.befehle2["help"], i18n.befehle2["hilfe"]} & set(stextE)) > 0 or (
         i18n.befehle2["h"] in stextE
         and i18n.befehle2["abc"] not in stextE
@@ -796,14 +794,22 @@ def PromptGrosseAusgabe(
             and i18n.befehle2["abcd"] not in stextE
         ):
             warBefehl = True
-
             if len(c) > 0:
                 retaExecuteNprint(
                     ketten,
                     stextE,
                     zeiln1,
                     zeiln2,
-                    ["--", i18n.ParametersMain.menschliches[0], "=", "motivation"],
+                    [
+                        "".join(
+                            (
+                                "--",
+                                i18n.ParametersMain.menschliches[0],
+                                "=",
+                                i18n.motivationWort,
+                            )
+                        )
+                    ],
                     "1",
                 )
             if (
@@ -816,7 +822,12 @@ def PromptGrosseAusgabe(
                     stextE,
                     zeiln3,
                     zeiln4,
-                    ["--", i18n.ParametersMain.menschliches[0], "=", "motivation"],
+                    [
+                        "--",
+                        i18n.ParametersMain.menschliches[0],
+                        "=",
+                        i18n.motivationWort,
+                    ],
                     "3",
                 )
 
@@ -828,33 +839,36 @@ def PromptGrosseAusgabe(
                         "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
                         + ",".join(zaehler),
                         "",
-                        "".join(
-                            (
-                                "--",
-                                i18n.gebrochenUniGal["gebrochengalaxie"],
-                                "=",
-                                str(nenner),
+                        [
+                            "".join(
+                                (
+                                    "--",
+                                    i18n.gebrochenUniGal["gebrochengalaxie"],
+                                    "=",
+                                    str(nenner),
+                                )
                             )
-                        ),
+                        ],
                         "2",
                     )
             elif len(rangesBruecheDictReverse) > 0:
                 for nenner, zaehler in rangesBruecheDictReverse.items():
-                    # x("346dfg", rangesBruecheDictReverse)
                     retaExecuteNprint(
                         ketten,
                         stextE,
                         "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
                         + ",".join(zaehler),
                         "",
-                        "".join(
-                            (
-                                "--",
-                                i18n.gebrochenUniGal["gebrochengalaxie"],
-                                "=",
-                                str(nenner),
+                        [
+                            "".join(
+                                (
+                                    "--",
+                                    i18n.gebrochenUniGal["gebrochengalaxie"],
+                                    "=",
+                                    str(nenner),
+                                )
                             )
-                        ),
+                        ],
                         "1",
                     )
 
@@ -872,7 +886,7 @@ def PromptGrosseAusgabe(
                     ketten,
                     stextE,
                     zeiln1,
-                    ["--konzept=" + ",".join(eigN)],
+                    ["".join(("--", i18n.konzeptE["konzept"], "=", (",".join(eigN))))],
                     None,
                 )
 
@@ -884,12 +898,12 @@ def PromptGrosseAusgabe(
                     stextE,
                     zeiln1,
                     zeiln2,
-                    ["--konzept=" + ",".join(eigR)],
+                    ["".join(("--", i18n.konzeptE["konzept"], "=", (",".join(eigR))))],
                     None,
                 )
 
-        if len({"universum"} & set(stextE)) > 0 or (
-            "u" in stextE
+        if len({i18n.befehle2["universum"]} & set(stextE)) > 0 or (
+            i18n.befehle2["u"] in stextE
             and i18n.befehle2["abc"] not in stextE
             and i18n.befehle2["abcd"] not in stextE
         ):
@@ -900,8 +914,17 @@ def PromptGrosseAusgabe(
                     stextE,
                     zeiln1,
                     zeiln2,
-                    ["--universum=transzendentalien,komplexitaet,ontologie"],
-                    "1,3,4",
+                    [
+                        "".join(
+                            (
+                                "--",
+                                i18n.ParametersMain.universum[0],
+                                "=",
+                                i18n.transzendentalienWort,
+                            )
+                        )
+                    ],
+                    "1",
                 )
 
             if (
@@ -914,7 +937,16 @@ def PromptGrosseAusgabe(
                     stextE,
                     zeiln3,
                     zeiln4,
-                    ["--universum=transzendentaliereziproke"],
+                    [
+                        "".join(
+                            (
+                                "--",
+                                i18n.ParametersMain.universum[0],
+                                "=",
+                                i18n.transzentenalienreziprokeWort,
+                            )
+                        )
+                    ],
                     "1",
                 )
 
@@ -928,14 +960,16 @@ def PromptGrosseAusgabe(
                         "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
                         + hierBereich,
                         "",
-                        "".join(
-                            (
-                                "--",
-                                i18n.gebrochenUniGal["gebrochenuniversum"],
-                                "=",
-                                str(nenner),
+                        [
+                            "".join(
+                                (
+                                    "--",
+                                    i18n.gebrochenUniGal["gebrochenuniversum"],
+                                    "=",
+                                    str(nenner),
+                                )
                             )
-                        ),
+                        ],
                         "2",
                     )
                     nennerZaehlerGleich += findEqualNennerZaehler(
@@ -951,14 +985,16 @@ def PromptGrosseAusgabe(
                         "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
                         + hierBereich,
                         "",
-                        "".join(
-                            (
-                                "--",
-                                i18n.gebrochenUniGal["gebrochenuniversum"],
-                                "=",
-                                str(nenner),
+                        [
+                            "".join(
+                                (
+                                    "--",
+                                    i18n.gebrochenUniGal["gebrochenuniversum"],
+                                    "=",
+                                    str(nenner),
+                                )
                             )
-                        ),
+                        ],
                         "1",
                     )
                     nennerZaehlerGleich += findEqualNennerZaehler(
@@ -973,7 +1009,16 @@ def PromptGrosseAusgabe(
                     "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
                     + nennerZaehlerGleich,
                     "",
-                    ["--universum=verhaeltnisgleicherzahl"],
+                    [
+                        "".join(
+                            (
+                                "--",
+                                i18n.ParametersMain.universum[0],
+                                "=",
+                                i18n.verhaeltnisgleicherzahlWort,
+                            )
+                        )
+                    ],
                     "1",
                 )
     if bedingungZahl:
@@ -1013,7 +1058,7 @@ def PromptGrosseAusgabe(
                         .replace(", ", " ")
                     )
 
-        if len({"multis"} & set(stextE)) > 0 or (
+        if len({i18n.befehle2["multis"]} & set(stextE)) > 0 or (
             "mu" in stextE
             and i18n.befehle2["abc"] not in stextE
             and i18n.befehle2["abcd"] not in stextE
@@ -1031,18 +1076,7 @@ def PromptGrosseAusgabe(
 
             # externCommand(i18n.befehle2["prim"], c)
 
-        if len({"mond"} & set(stextE)) > 0:
-            warBefehl = True
-            retaExecuteNprint(
-                ketten,
-                stextE,
-                zeiln1,
-                zeiln2,
-                ["--bedeutung=gestirn"],
-                "3-6",
-            )
-
-        if len({"procontra"} & set(stextE)) > 0:
+        if len({i18n.befehle2["mond"]} & set(stextE)) > 0:
             warBefehl = True
             retaExecuteNprint(
                 ketten,
@@ -1050,38 +1084,55 @@ def PromptGrosseAusgabe(
                 zeiln1,
                 zeiln2,
                 [
-                    "--procontra=pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit"
+                    "".join(
+                        (
+                            "--",
+                            i18n.ParametersMain.bedeutung[0],
+                            "=",
+                            i18n.gestirnWort,
+                        )
+                    )
                 ],
-                None,
+                "3-6",
             )
-        if len({"modulo"} & set(stextE)) > 0:
+
+        if len({i18n.befehle2["modulo"]} & set(stextE)) > 0:
             warBefehl = True
             moduloA([str(num) for num in BereichToNumbers2(c)])
-        if len({"alles"} & set(stextE)) > 0:
+        if len({i18n.befehle2["alles"]} & set(stextE)) > 0:
             warBefehl = True
             retaExecuteNprint(
                 ketten,
                 stextE,
                 zeiln1,
                 zeiln2,
-                ["--alles"],
+                ["--" + i18n.ParametersMain.alles[0]],
                 None,
             )
 
-        if len({"primzahlkreuz"} & set(stextE)) > 0:
+        if len({i18n.befehle2["primzahlkreuz"]} & set(stextE)) > 0:
             warBefehl = True
             retaExecuteNprint(
                 ketten,
                 stextE,
                 zeiln1,
                 anotherOberesMaximum(c, 1028),
-                ["--bedeutung=primzahlkreuz"],
+                [
+                    "".join(
+                        (
+                            "--",
+                            i18n.ParametersMain.bedeutung[0],
+                            "=",
+                            i18n.primzahlkreuzWort,
+                        )
+                    )
+                ],
                 None,
             )
             import reta
 
         if (len({i18n.befehle2["richtung"]} & set(stextE)) > 0) or (
-            "r" in stextE
+            i18n.befehle2["r"] in stextE
             and i18n.befehle2["abc"] not in stextE
             and i18n.befehle2["abcd"] not in stextE
         ):
@@ -1091,7 +1142,16 @@ def PromptGrosseAusgabe(
                 stextE,
                 zeiln1,
                 zeiln2,
-                ["--primzahlwirkung=Galaxieabsicht"],
+                [
+                    "".join(
+                        (
+                            "--",
+                            i18n.ParametersMain.primzahlwirkung[0],
+                            "=",
+                            i18n.GalaxieabsichtWort,
+                        )
+                    )
+                ],
                 None,
             )
 
@@ -1115,7 +1175,16 @@ def PromptGrosseAusgabe(
                     stextE,
                     zeiln1,
                     zeiln2,
-                    ["--grundstrukturen=" + grundstruk],
+                    [
+                        "".join(
+                            (
+                                "--",
+                                i18n.ParametersMain.grundstrukturen[0],
+                                "=",
+                                grundstruk,
+                            )
+                        )
+                    ],
                     None,
                 )
             except:
@@ -1139,9 +1208,7 @@ def PromptGrosseAusgabe(
             zeige = {b: abs(b - zahl) for b in range(bereich[0], bereich[1] + 1)}
             print(str(zeige)[1:-1])
     elif i18n.befehle2["abstand"] in stext:
-        print(
-            "der Befehl 'abstand' ist nur erlaubt mit 2 weiteren Angaben mit Leerzeichen getrennt, einer Zahl und einem Zahlenbereich, z.B. 'abstand 7 17-25'"
-        )
+        print(i18nRP.abstandMeldung)
 
     loggingSwitch, warBefehl = PromptVonGrosserAusgabeSonderBefehlAusgaben(
         loggingSwitch, stext, text, warBefehl
@@ -1153,13 +1220,9 @@ def PromptGrosseAusgabe(
         exit()
     if not warBefehl and len(stext) > 0 and stextE[0] not in befehleBeenden:
         if len(set(stext) & set(befehle)) > 0:
-            print(
-                "Dies ('"
-                + " ".join(stextE)
-                + "') ist tatsächlich ein Befehl (oder es sind mehrere), aber es gibt nichts auszugeben.",
-            )
+            print(i18nRP.out1Saetze[0] + " ".join(stextE) + i18nRP.out1Saetze[1])
         else:
-            print("Das ist kein Befehl! -> '{}''".format(" ".join(stextE)))
+            print(i18nRP.out2Satz.format(" ".join(stextE)))
     return loggingSwitch
 
 
@@ -1355,9 +1418,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                 or EsGabzahlenAngaben
             ):
 
-                print(
-                    'Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\nDas ist eine Design-Entscheidung, die getroffen worden ist.'
-                )
+                print(i18nRP.out3Saetze)
         bdNeu = set()
         for bDazu in bruch_GanzZahlReziproke:
             for bDazu in BereichToNumbers2(bDazu):
@@ -1608,21 +1669,21 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
 
 
 def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, stext, text, warBefehl):
-    if len(stext) > 0 and stext[0] in ("shell"):
+    if len(stext) > 0 and stext[0] in (i18n.befehle2["shell"]):
         warBefehl = True
         try:
             process = subprocess.Popen([*stext[1:]])
             process.wait()
         except:
             pass
-    if len(stext) > 0 and "python" == stext[0]:
+    if len(stext) > 0 and i18n.befehle2["python"] == stext[0]:
         warBefehl = True
         try:
             process = subprocess.Popen(["python3", "-c", " ".join(stext[1:])])
             process.wait()
         except:
             pass
-    if len(stext) > 0 and "math" == stext[0]:
+    if len(stext) > 0 and i18n.befehle2["math"] == stext[0]:
         warBefehl = True
         for st in "".join(stext[1:2]).split(","):
             try:
@@ -1631,10 +1692,10 @@ def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, stext, text, warB
             except:
                 pass
     stext = text.split()
-    if "loggen" in stext:
+    if i18n.befehle2["loggen"] in stext:
         warBefehl = True
         loggingSwitch = True
-    elif "nichtloggen" in stext:
+    elif i18n.befehle2["nichtloggen"] in stext:
         warBefehl = True
         loggingSwitch = False
     return loggingSwitch, warBefehl
@@ -1686,7 +1747,6 @@ def promptVorbereitungGrosseAusgabe(
         promptMode == PromptModus.normal
         and len(platzhalter) > 1
         and platzhalter[:4] == "reta"
-        # and not any([("--vorhervonausschnitt" in a or "--vielfachevonzahlen" in a) for a in stext])
         and any(zahlenBereichMatch)
         and zahlenBereichMatch.count(True) == 1
     ):
@@ -1731,7 +1791,6 @@ def promptVorbereitungGrosseAusgabe(
             ]
 
         else:
-            # stext += ["".join(("-",i18n.hauptForNeben["zeilen"])), "".join(("--",i18n.zeilenParas["vorhervonausschnitt"],"=")) + zahlenBereichNeu[True]]
             stext += [
                 "".join(("-", i18n.hauptForNeben["zeilen"])),
                 "".join(("--", i18n.zeilenParas["vielfachevonzahlen"], "="))
@@ -1752,20 +1811,6 @@ def promptVorbereitungGrosseAusgabe(
     if len(set(stext) & befehleBeenden) > 0:
         stext = [tuple(befehleBeenden)[0]]
     replacements = i18nRP.replacements
-    # replacements = {
-    #    i18n.befehle2["e"]: i18n.befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"],
-    #    i18n.befehle2["a"]: i18n.befehle2["absicht"],
-    #    "u": "universum",
-    #    i18n.befehle2["t"]: i18n.befehle2["thomas"],
-    #    "r": i18n.befehle2["richtung"],
-    #    i18n.befehle2["v"]: i18n.befehle2["vielfache"],
-    #    i18n.befehle2["h"]: i18n.befehle2["help"],
-    #    i18n.befehle2["w"]: i18n.befehle2["teiler"],
-    #    "S": "BefehlSpeichernDanach",
-    #    "s": "BpromptMode = PromptModus.speichernefehlSpeichernDavor",
-    #    i18n.befehle2["l"]: "BefehlSpeicherungLöschen",
-    #    i18n.befehle2["o"]: "BefehlSpeicherungAusgeben",
-    # }
     for i, token in enumerate(stext):
         try:
             stext[i] = replacements[token]
@@ -1812,7 +1857,7 @@ def PromptAllesVorGroesserSchleife():
     if "-" + i18nRP.retaPromptParameter["debug"] in sys.argv:
         retaProgram.propInfoLog = True
         if "-" + i18nRP.retaPromptParameter["e"] not in sys.argv:
-            alxp("Debug Log aktiviert.")
+            alxp(i18nRP.infoDebugAktiv)
 
     if "-" + i18nRP.retaPromptParameter["befehl"] in sys.argv:
         von = "-" + sys.argv.index(i18nRP.retaPromptParameter["befehl"]) + 1
@@ -1820,7 +1865,7 @@ def PromptAllesVorGroesserSchleife():
     else:
         nurEinBefehl = []
     if "-" + i18nRP.retaPromptParameter["e"] in sys.argv:
-        alxp("Debug Log aktiviert.")
+        alxp(i18nRP.infoDebugAktiv)
         immerEbefehlJa = True
     else:
         immerEbefehlJa = False
@@ -1843,8 +1888,8 @@ def PromptAllesVorGroesserSchleife():
     ketten = []
     text = ""
     promptDavorDict = defaultdict(lambda: ">")
-    promptDavorDict[PromptModus.speichern] = "was speichern>"
-    promptDavorDict[PromptModus.loeschenSelect] = "was löschen>"
+    promptDavorDict[PromptModus.speichern] = i18nRP.wspeichernWort
+    promptDavorDict[PromptModus.loeschenSelect] = i18nRP.wloeschenWort
     nochAusageben = ""
     textDazu0 = []
     return (
@@ -1939,7 +1984,9 @@ def promptInput(
                 else None,
                 wrap_lines=True,
                 complete_while_typing=True,
-                vi_mode=True if "-vi" in sys.argv else False,
+                vi_mode=True
+                if "-" + i18nRP.retaPromptParameter["vi"] in sys.argv
+                else False,
                 style=Style.from_dict({"bla": "#0000ff bg:#ffff00"})
                 if loggingSwitch
                 else Style.from_dict({"bla": "#0000ff bg:#ff0000"}),

@@ -290,7 +290,6 @@ befehle2: dict = {"15" + a: "15" + a for a in wahl15.keys()} | {
     "modulo": _("modulo"),
     "prim": _("prim"),
     "primfaktorzerlegung": _("primfaktorzerlegung"),
-    "procontra": _("procontra"),
     "prim24": _("prim24"),
     "primfaktorzerlegungModulo24": _("primfaktorzerlegungModulo24"),
     "help": _("help"),
@@ -355,7 +354,6 @@ befehle: dict = ["15" + a for a in wahl15.keys()] + [
     _("modulo"),
     _("prim"),
     _("primfaktorzerlegung"),
-    _("procontra"),
     _("prim24"),
     _("primfaktorzerlegungModulo24"),
     _("help"),
@@ -524,6 +522,12 @@ ParametersMain: NamedTuple = ParametersMain(
 
 thomasWort = _("thomas")
 motivationWort = _("motivation")
+transzendentalienWort = _("transzendentalien")
+transzendentaliereziprokeWort = _("transzendentaliereziproke")
+verhaeltnisgleicherzahlWort = _("verhaeltnisgleicherzahl")
+gestirnWort = _("gestirn")
+primzahlkreuzWort = _("primzahlkreuz")
+GalaxieabsichtWort = _("Galaxieabsicht")
 paraNdataMatrix: list = [
     (
         ParametersMain.wichtigste,
@@ -783,10 +787,7 @@ paraNdataMatrix: list = [
     ),
     (
         ParametersMain.universum,
-        (
-            _("Universelles_Verhältnis_gleicher_Zahlen"),
-            _("verhaeltnisgleicherzahl"),
-        ),
+        (_("Universelles_Verhältnis_gleicher_Zahlen"), verhaeltnisgleicherzahlWort),
         {383},
     ),
     (
@@ -1114,7 +1115,7 @@ paraNdataMatrix: list = [
             _("universum"),
             _("strukturalie"),
             _("strukturalien"),
-            _("transzendentalien"),
+            transzendentalienWort,
             _("transzendentalie"),
         ),
         set(),
@@ -1138,7 +1139,7 @@ paraNdataMatrix: list = [
     (
         ParametersMain.primzahlwirkung,
         (
-            _("Galaxieabsicht"),
+            GalaxieabsichtWort,
             _("absichtgalaxie"),
             _("absicht"),
             _("motive"),
@@ -1177,7 +1178,7 @@ paraNdataMatrix: list = [
             _("strukturaliereziproke"),
             _("strukturalienreziproke"),
             _("transzendentalienreziproke"),
-            _("transzendentaliereziproke"),
+            transzendentaliereziprokeWort,
         ),
         set(),
         set(),
@@ -2569,7 +2570,7 @@ paraNdataMatrix: list = [
         ParametersMain.bedeutung,
         (
             Primzahlkreuz_pro_contra_strs_Fkt[0],
-            _("primzahlkreuz"),
+            primzahlkreuzWort,
         ),
         set(),
         set(),
@@ -2650,7 +2651,7 @@ paraNdataMatrix: list = [
         ParametersMain.bedeutung,
         (
             _("Gestirn"),
-            _("gestirn"),
+            "gestirnWort",
             _("mond"),
             _("sonne"),
             _("planet"),
@@ -3877,11 +3878,13 @@ class nested:
 
 
 class retaPrompt:
+    infoDebugAktiv = "Debug Log aktiviert."
+    abstandMeldung = "der Befehl 'abstand' ist nur erlaubt mit 2 weiteren Angaben mit Leerzeichen getrennt, einer Zahl und einem Zahlenbereich, z.B. 'abstand 7 17-25'"
     befehleBeenden = {_("ende"), _("exit"), _("quit"), _("q"), _(":q")}
     befehleWort = {"Befehle": _("Befehle")}
     promptModeSatz = _("promptmode vorher: {} , {}")
     promptModeSatz2 = _("'{}' ergibt sich aus '{}' und ergibt danach reta-Befehl:")
-    out1Satze = (
+    out1Saetze = (
         _("Dies ('"),
         _(
             "') ist tatsächlich ein Befehl (oder es sind mehrere), aber es gibt nichts auszugeben."
