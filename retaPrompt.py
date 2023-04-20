@@ -110,7 +110,7 @@ class TXT(object):
 
     @property
     def befehlDavor(self):
-        return self._text
+        return self._befehlDavor
 
     @befehlDavor.setter
     def befehlDavor(self, value):
@@ -415,6 +415,7 @@ def createRangesForBruchLists(bruchList: list) -> tuple:
 
 def speichern(ketten, platzhalter, text):
     global promptMode2, textDazu0
+    x("blaaa", [platzhalter, text])
     bedingung1 = len(platzhalter) > 0
     bedingung2 = len(ketten) > 0
     Txt = TXT(text)
@@ -451,36 +452,64 @@ def speichern(ketten, platzhalter, text):
                 if ifJoinReTaBefehle:
                     rpBefehle2 = " "
                     charTuep = CharType.begin
-                    stilbruch = False
+                    # stilbruch = False
                     zeichenKette = []
                     zahlenBereich = " "
                     alt_i = -1
-                    for i, rpBefehl in enumerate(textUndPlatzHalterNeu):
-                        for zeichen in rpBefehl:
-                            charTuepDavor = charTuep
-                            if zeichen.isalpha():
-                                charTuep = CharType.alpha
-                            elif zeichen.isdecimal():
-                                charTuep = CharType.decimal
-                            else:
-                                charTuep = CharType.neithernor
-                            if (
-                                charTuep != charTuepDavor
-                                and charTuepDavor != CharType.begin
-                            ):
-                                stilbruch = True
-                            if not zeichen.isspace():
-                                if zeichen in [",", "-"] or zeichen.isdecimal():
-                                    if i == alt_i:
-                                        zahlenBereich += " " + zeichen + " "
-                                    else:
-                                        zahlenBereich += zeichen
+
+                    Txt2 = TXT()
+                    Txt2.liste = textUndPlatzHalterNeu
+                    ifKurzKurz, Txt2.liste = stextFromKleinKleinKleinBefehl(
+                        PromptModus.AusgabeSelektiv, Txt2.liste, []
+                    )
+                    replacements = i18nRP.replacements
+                    x("SDFF", Txt2.liste)
+                    if len(textUndPlatzHalterNeu) > 0 and Txt2.liste[0] not in [
+                        "reta",
+                        "shell",
+                        "python",
+                        "abstand",
+                    ]:
+                        listeNeu: list = []
+                        for token in Txt2.liste:
+                            try:
+                                listeNeu += [replacements[token]]
+                            except KeyError:
+                                listeNeu += [token]
+                        Txt2.liste = listeNeu
+
+                    x("SDFF 2", Txt2.liste)
+                    if False:
+                        for i, rpBefehl in enumerate(Txt2.liste):
+                            x("rpBefehl", rpBefehl)
+                            for zeichen in rpBefehl:
+                                charTuepDavor = charTuep
+                                if zeichen.isalpha():
+                                    charTuep = CharType.alpha
+                                elif zeichen.isdecimal():
+                                    charTuep = CharType.decimal
                                 else:
-                                    zeichenKette += [zeichen]
-                        alt_i = i
-                    if stilbruch:
-                        rpBefehle2 = " ".join(zeichenKette) + zahlenBereich
+                                    charTuep = CharType.neithernor
+                                if (
+                                    charTuep != charTuepDavor
+                                    and charTuepDavor != CharType.begin
+                                ):
+                                    stilbruch = True
+                                if not zeichen.isspace():
+                                    if zeichen in [",", "-"] or zeichen.isdecimal():
+                                        if i == alt_i:
+                                            zahlenBereich += " " + zeichen + " "
+                                        else:
+                                            zahlenBereich += zeichen
+                                    else:
+                                        zeichenKette += [zeichen]
+                            alt_i = i
+                        if stilbruch:
+                            x("NEEEi 0", [" ".join(zeichenKette), zahlenBereich])
+                            rpBefehle2 = " ".join(zeichenKette) + zahlenBereich
+                    x("NEEE", [rpBefehle2, " ", (" ".join(langKurzBefehle))])
                     Txt.platzhalter = rpBefehle2 + " " + (" ".join(langKurzBefehle))
+                    Txt.platzhalter = " ".join(Txt2.liste)
 
         # vielleicht programmier ich hier noch weiter
         if bedingung2 and False:
@@ -522,6 +551,8 @@ def speichern(ketten, platzhalter, text):
 
     # textDazu0 = platzhalter.split()
     textDazu0 = stextX
+
+    x("blaaa", [Txt.text, Txt.platzhalter, Txt.liste])
     return ketten, Txt
 
 
@@ -580,6 +611,7 @@ def PromptScope():
             (i18n.befehle2["s"] in Txt.liste)
             or (i18n.befehle2["BefehlSpeichernDavor"] in Txt.liste)
         ) and len(Txt.liste) == 1:
+            x("bfehldavor", Txt.befehlDavor)
             ketten, Txt = speichern(ketten, Txt.platzhalter, Txt.befehlDavor)
             promptMode = PromptModus.normal
             continue
@@ -637,7 +669,6 @@ def PromptScope():
             (i18n.befehle2["l"] in Txt.liste)
             or ("BefehlSpeicherungLöschen" in Txt.liste)
         ) and len(Txt.liste) == 1:
-            x("WAS LOESC", Txt.platzhalter)
             print(str([{i + 1, a} for i, a in enumerate(Txt.platzhalter.split())]))
             alxp(i18nRP.promptModeSatz.format(promptMode, promptMode2))
             promptMode = PromptModus.loeschenSelect
@@ -1779,7 +1810,7 @@ def promptVorbereitungGrosseAusgabe(
         s_2: list
 
         ifKurzKurz, Txt.liste = stextFromKleinKleinKleinBefehl(
-            ifKurzKurz, promptMode2, Txt.liste, textDazu
+            promptMode2, Txt.liste, textDazu
         )
     if Txt.liste is not None:
         nstextnum: list = []
@@ -2027,6 +2058,8 @@ def promptInput(
         session = newSession(loggingSwitch)
         try:
             Txt.befehlDavor = Txt.text
+
+            x("bfehldavor a1", Txt.befehlDavor)
             Txt.text = session.prompt(
                 # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
                 # ">",

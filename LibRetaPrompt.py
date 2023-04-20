@@ -266,8 +266,9 @@ def isReTaParameter(t: str):
     )
 
 
-def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, textDazu):
+def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
     stext2 = []
+    ifKurzKurz = False
     for s_ in tuple(deepcopy(stext)):
         s_m = s_
         if s_[2:] not in wahl15 and s_ not in befehle and stext[0] != "reta":

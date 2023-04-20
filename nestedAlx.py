@@ -164,7 +164,7 @@ class NestedCompleter(Completer):
                         )
                     )
                     or stextFromKleinKleinKleinBefehl(
-                        False, PromptModus.normal, list(self.lastCommands), []
+                        PromptModus.normal, list(self.lastCommands), []
                     )[0]
                     or not ifRetaAnfang
                 ):
