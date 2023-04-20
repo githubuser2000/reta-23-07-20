@@ -1366,10 +1366,12 @@ def PromptGrosseAusgabe(
         if flag:
             warBefehl = True
             zahl = int(stext[zahlNum])
-            zeige = []
-            for b in range(bereich[0], bereich[1] + 1):
-                zeige += [abs(b - zahl)]
+            zeige = {b: abs(b - zahl) for b in range(bereich[0], bereich[1] + 1)}
             print(str(zeige)[1:-1])
+    elif "abstand" in stext:
+        print(
+            "der Befehl 'abstand' ist nur erlaubt mit 2 weiteren Angaben mit Leerzeichen getrennt, einer Zahl und einem Zahlenbereich, z.B. 'abstand 7 17-25'"
+        )
 
     loggingSwitch, warBefehl = PromptVonGrosserAusgabeSonderBefehlAusgaben(
         loggingSwitch, stext, text, warBefehl
