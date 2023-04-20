@@ -492,7 +492,7 @@ def speichern(ketten, platzhalter, Txt):
                 else:
                     ifJoinReTaBefehle = False
             if ifJoinReTaBefehle:
-                platzhalter = "reta " + rpBefehlE
+                Txt.platzhalter = "reta " + rpBefehlE
 
     else:
         Txt.platzhalter = "" if Txt.text is None else str(Txt.text)
@@ -517,12 +517,11 @@ def speichern(ketten, platzhalter, Txt):
         PromptModus.normal,
         Txt.platzhalter,
         [],
-        Txt
     )
 
     # textDazu0 = platzhalter.split()
     textDazu0 = stextX
-    return ketten, platzhalter, text
+    return ketten, Txt
 
 
 def PromptScope():
@@ -558,43 +557,37 @@ def PromptScope():
                 nurEinBefehl,
                 immerEbefehlJa,
             )
-            ketten, Txt.text = promptSpeicherungA(
-                ketten, promptMode, text
+            ketten, Txt = promptSpeicherungA(
+                ketten, promptMode, Txt
             )
 
         else:
-            Txt.text = promptSpeicherungB(nochAusageben, platzhalter, promptMode, text)
+            Txt = promptSpeicherungB(nochAusageben, promptMode, Txt)
             # textE = []
 
         if promptMode == PromptModus.loeschenSelect:
-            platzhalter, promptMode, Txt.text = PromptLoescheVorSpeicherungBefehle(
-                platzhalter, promptMode, text
+            Txt.platzhalter, promptMode, Txt.text = PromptLoescheVorSpeicherungBefehle(
+                Txt.platzhalter, promptMode, Txt.text
             )
             continue
 
         promptMode = PromptModus.normal
 
-        if Txt.text is not None:
-            stext: list = text.split()
-        else:
-            stext: list = []
-
-        Txt.listeE = Txt.liste + textE
         if (
-            (i18n.befehle2["S"] in stext)
-            or (i18n.befehle2["BefehlSpeichernDanach"] in stext)
-        ) and len(stext) == 1:
+            (i18n.befehle2["S"] in Txt.liste)
+            or (i18n.befehle2["BefehlSpeichernDanach"] in Txt.liste)
+        ) and len(Txt.liste) == 1:
             promptMode = PromptModus.speichern
             continue
         elif (
-            (i18n.befehle2["s"] in stext)
-            or (i18n.befehle2["BefehlSpeichernDavor"] in stext)
-        ) and len(stext) == 1:
-            ketten, platzhalter, Txt.text = speichern(ketten, platzhalter, befehlDavor)
+            (i18n.befehle2["s"] in Txt.liste)
+            or (i18n.befehle2["BefehlSpeichernDavor"] in Txt.liste)
+        ) and len(Txt.liste) == 1:
+            ketten, Txt = speichern(ketten, platzhalter, befehlDavor)
             promptMode = PromptModus.normal
             continue
         elif len(
-            set(stext)
+            Txt.menge
             - {
                 i18n.befehle2["s"],
                 i18n.befehle2["BefehlSpeichernDavor"],
@@ -603,7 +596,7 @@ def PromptScope():
             }
         ) > 0 and (
             len(
-                set(stext)
+                Txt.menge
                 & {
                     i18n.befehle2["s"],
                     i18n.befehle2["BefehlSpeichernDavor"],
@@ -613,7 +606,7 @@ def PromptScope():
             )
             == 1
         ):
-            stextB = copy(stext)
+            stextB = copy(Txt.liste)
             for val in (
                 i18n.befehle2["s"],
                 i18n.befehle2["S"],
@@ -624,8 +617,8 @@ def PromptScope():
                     stextB.remove(val)
                 except ValueError:
                     pass
-            ketten, platzhalter, Txt.text = speichern(
-                ketten, platzhalter, " ".join(stextB)
+            ketten, Txt = speichern(
+                ketten, Txt.platzhalter, " ".join(stextB)
             )
             Txt.liste = []
             Txt.listeE = []
@@ -634,19 +627,19 @@ def PromptScope():
             promptMode = PromptModus.normal
             continue
         elif (
-            (i18n.befehle2["o"] in stext) or ("BefehlSpeicherungAusgeben" in stext)
-        ) and len(stext) == 1:
+            (i18n.befehle2["o"] in Txt.liste) or ("BefehlSpeicherungAusgeben" in Txt.liste)
+        ) and len(Txt.liste) == 1:
             promptMode = PromptModus.speicherungAusgaben
             continue
         elif (
-            (i18n.befehle2["o"] in stext) or ("BefehlSpeicherungAusgeben" in stext)
-        ) and len(set(stext) - {i18n.befehle2["o"], "BefehlSpeicherungAusgeben"}) > 1:
-            nochAusageben = stext
+            (i18n.befehle2["o"] in Txt.liste) or ("BefehlSpeicherungAusgeben" in Txt.liste)
+        ) and len(Txt.menge - {i18n.befehle2["o"], "BefehlSpeicherungAusgeben"}) > 1:
+            nochAusageben = Txt.liste
             promptMode = PromptModus.speicherungAusgabenMitZusatz
             continue
         elif (
-            (i18n.befehle2["l"] in stext) or ("BefehlSpeicherungLöschen" in stext)
-        ) and len(stext) == 1:
+            (i18n.befehle2["l"] in Txt.liste) or ("BefehlSpeicherungLöschen" in Txt.liste)
+        ) and len(Txt.liste) == 1:
             print(str([{i + 1, a} for i, a in enumerate(platzhalter.split())]))
             print(i18nRP.promptModeSatz.format(promptMode, promptMode2))
             promptMode = PromptModus.loeschenSelect
@@ -658,7 +651,7 @@ def PromptScope():
             c,
             ketten,
             maxNum,
-            stext,
+            Txt.liste,
             zahlenAngaben_,
             ifKurzKurz,
         ) = promptVorbereitungGrosseAusgabe(
@@ -668,7 +661,6 @@ def PromptScope():
             promptModeLast,
             Txt.text,
             textDazu0,
-            Txt
         )
         loggingSwitch = PromptGrosseAusgabe(
             IsPureOnlyReTaCmd,
@@ -737,16 +729,16 @@ def PromptGrosseAusgabe(
         and i18n.befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"]
         not in Txt.listeE
     ):
-        print(i18nRP.promptModeSatz2.format(" ".join(stextE), text))
+        print(i18nRP.promptModeSatz2.format(" ".join(Txt.listeE), Txt.text))
     if (i18n.befehle2["abc"] in Txt.listeE or i18n.befehle2["abcd"] in Txt.listeE) and len(
-        stext
+        Txt.liste
     ) == 2:
         warBefehl = True
         buchstabe: str
-        if stext[0] == i18n.befehle2["abc"] or stext[0] == i18n.befehle2["abcd"]:
-            buchstaben = stext[1]
+        if Txt.liste[0] == i18n.befehle2["abc"] or Txt.liste[0] == i18n.befehle2["abcd"]:
+            buchstaben = Txt.liste[1]
         else:
-            buchstaben = stext[0]
+            buchstaben = Txt.liste[0]
         print(
             str(
                 " ".join(
@@ -757,10 +749,10 @@ def PromptGrosseAusgabe(
                 )
             )
         )
-    if len({i18n.befehle2["befehle"]} & set(stextE)) > 0:
+    if len({i18n.befehle2["befehle"]} & Txt.mengeE) > 0:
         warBefehl = True
         print("{}: {}".format(i18nRP.befehleWort["Befehle"], str(befehle)[1:-1]))
-    if len({i18n.befehle2["help"], i18n.befehle2["hilfe"]} & set(stextE)) > 0 or (
+    if len({i18n.befehle2["help"], i18n.befehle2["hilfe"]} & Txt.mengeE) > 0 or (
         i18n.befehle2["h"] in Txt.listeE
         and i18n.befehle2["abc"] not in Txt.listeE
         and i18n.befehle2["abcd"] not in Txt.listeE
@@ -776,7 +768,7 @@ def PromptGrosseAusgabe(
         warBefehl = True
         import reta
 
-        reta.Program(stextE)
+        reta.Program(Txt.liste)
 
     if len(bruch_GanzZahlReziproke) > 0 and textHatZiffer(bruch_GanzZahlReziproke):
         zeiln3 = (
@@ -798,7 +790,7 @@ def PromptGrosseAusgabe(
                     and i18n.befehle2["abcd"] not in Txt.listeE
                 )
             ):
-                if len(set(stext) & {i18n.befehle2["teiler"], i18n.befehle2["w"]}) == 0:
+                if len(Txt.menge & {i18n.befehle2["teiler"], i18n.befehle2["w"]}) == 0:
                     zeiln1 = (
                         "".join(("--", i18n.zeilenParas["vielfachevonzahlen"], "="))
                         + zahlenReiheKeineWteiler
@@ -836,7 +828,7 @@ def PromptGrosseAusgabe(
         zeiln2 = ""
 
     if bedingungZahl:
-        if (len({i18n.befehle2["thomas"]} & set(stextE)) > 0) or (
+        if (len({i18n.befehle2["thomas"]} & Txt.mengeE) > 0) or (
             i18n.befehle2["t"] in Txt.listeE
             and i18n.befehle2["abc"] not in Txt.listeE
             and i18n.befehle2["abcd"] not in Txt.listeE
@@ -863,7 +855,7 @@ def PromptGrosseAusgabe(
                 i18n.befehle2["motiv"],
                 i18n.befehle2["motive"],
             }
-            & set(stextE)
+            & Txt.mengeE
         ) > 0 or (
             ((i18n.befehle2["a"] in Txt.listeE) != (i18n.befehle2["mo"] in Txt.listeE))
             and i18n.befehle2["abc"] not in Txt.listeE
@@ -978,7 +970,7 @@ def PromptGrosseAusgabe(
                     None,
                 )
 
-        if len({i18n.befehle2["universum"]} & set(stextE)) > 0 or (
+        if len({i18n.befehle2["universum"]} & Txt.mengeE) > 0 or (
             i18n.befehle2["u"] in Txt.listeE
             and i18n.befehle2["abc"] not in Txt.listeE
             and i18n.befehle2["abcd"] not in Txt.listeE
@@ -1101,7 +1093,7 @@ def PromptGrosseAusgabe(
         if (
             len(
                 {i18n.befehle2["prim24"], i18n.befehle2["primfaktorzerlegungModulo24"]}
-                & set(stextE)
+                & Txt.mengeE
             )
             > 0
         ):
@@ -1119,7 +1111,7 @@ def PromptGrosseAusgabe(
         if (
             len(
                 {i18n.befehle2["prim"], i18n.befehle2["primfaktorzerlegung"]}
-                & set(stextE)
+                & Txt.mengeE
             )
             > 0
         ):
@@ -1134,7 +1126,7 @@ def PromptGrosseAusgabe(
                         .replace(", ", " ")
                     )
 
-        if len({i18n.befehle2["multis"]} & set(stextE)) > 0 or (
+        if len({i18n.befehle2["multis"]} & Txt.mengeE) > 0 or (
             "mu" in Txt.listeE
             and i18n.befehle2["abc"] not in Txt.listeE
             and i18n.befehle2["abcd"] not in Txt.listeE
@@ -1152,7 +1144,7 @@ def PromptGrosseAusgabe(
 
             # externCommand(i18n.befehle2["prim"], c)
 
-        if len({i18n.befehle2["mond"]} & set(stextE)) > 0:
+        if len({i18n.befehle2["mond"]} & Txt.mengeE) > 0:
             warBefehl = True
             retaExecuteNprint(
                 ketten,
@@ -1172,10 +1164,10 @@ def PromptGrosseAusgabe(
                 "3-6",
             )
 
-        if len({i18n.befehle2["modulo"]} & set(stextE)) > 0:
+        if len({i18n.befehle2["modulo"]} & Txt.mengeE) > 0:
             warBefehl = True
             moduloA([str(num) for num in BereichToNumbers2(c)])
-        if len({i18n.befehle2["alles"]} & set(stextE)) > 0:
+        if len({i18n.befehle2["alles"]} & Txt.mengeE) > 0:
             warBefehl = True
             retaExecuteNprint(
                 ketten,
@@ -1186,7 +1178,7 @@ def PromptGrosseAusgabe(
                 None,
             )
 
-        if len({i18n.befehle2["primzahlkreuz"]} & set(stextE)) > 0:
+        if len({i18n.befehle2["primzahlkreuz"]} & Txt.mengeE) > 0:
             warBefehl = True
             retaExecuteNprint(
                 ketten,
@@ -1207,7 +1199,7 @@ def PromptGrosseAusgabe(
             )
             import reta
 
-        if (len({i18n.befehle2["richtung"]} & set(stextE)) > 0) or (
+        if (len({i18n.befehle2["richtung"]} & Txt.mengeE) > 0) or (
             i18n.befehle2["r"] in Txt.listeE
             and i18n.befehle2["abc"] not in Txt.listeE
             and i18n.befehle2["abcd"] not in Txt.listeE
@@ -1232,7 +1224,7 @@ def PromptGrosseAusgabe(
             )
 
         if (
-            len(stextE) > 0
+            len(Txt.listeE) > 0
             and any([token[:3] == "15_" for token in Txt.listeE])
             and i18n.befehle2["abc"] not in Txt.listeE
             and i18n.befehle2["abcd"] not in Txt.listeE
@@ -1240,38 +1232,35 @@ def PromptGrosseAusgabe(
             warBefehl = True
             import reta
 
-            try:
-                befehle15 = []
-                for token in Txt.listeE:
-                    if token[:3] == "15_":
-                        befehle15 += [wahl15[token[2:]]]
-                grundstruk = ",".join(befehle15)
-                retaExecuteNprint(
-                    ketten,
-                    Txt.listeE,
-                    zeiln1,
-                    zeiln2,
-                    [
-                        "".join(
-                            (
-                                "--",
-                                i18n.ParametersMain.grundstrukturen[0],
-                                "=",
-                                grundstruk,
-                            )
+            befehle15 = []
+            for token in Txt.listeE:
+                if token[:3] == "15_":
+                    befehle15 += [wahl15[token[2:]]]
+            grundstruk = ",".join(befehle15)
+            retaExecuteNprint(
+                ketten,
+                Txt.listeE,
+                zeiln1,
+                zeiln2,
+                [
+                    "".join(
+                        (
+                            "--",
+                            i18n.ParametersMain.grundstrukturen[0],
+                            "=",
+                            grundstruk,
                         )
-                    ],
-                    None,
-                )
-            except:
-                pass
+                    )
+                ],
+                None,
+            )
     if (
-        len(stext) == 3
-        and i18n.befehle2["abstand"] in stext
-        and any([s.isdecimal() for s in stext])
+        len(Txt.liste) == 3
+        and i18n.befehle2["abstand"] in Txt.liste
+        and any([s.isdecimal() for s in Txt.liste])
     ):
         flag = False
-        for i, s in enumerate(stext):
+        for i, s in enumerate(Txt.liste):
             if s.isdecimal():
                 zahlNum = i
             s = s.split("-")
@@ -1280,30 +1269,30 @@ def PromptGrosseAusgabe(
                 bereich = (int(s[0]), int(s[1]))
         if flag:
             warBefehl = True
-            zahl = int(stext[zahlNum])
+            zahl = int(Txt.liste[zahlNum])
             zeige = {b: abs(b - zahl) for b in range(bereich[0], bereich[1] + 1)}
             print(str(zeige)[1:-1])
-    elif i18n.befehle2["abstand"] in stext:
+    elif i18n.befehle2["abstand"] in Txt.liste:
         print(i18nRP.abstandMeldung)
 
     loggingSwitch, warBefehl = PromptVonGrosserAusgabeSonderBefehlAusgaben(
-        loggingSwitch, stext, text, warBefehl
+        loggingSwitch, Txt, warBefehl
     )
     if len(nurEinBefehl) > 0:
         Txt.liste = copy(befehleBeenden)
         nurEinBefehl = " ".join(befehleBeenden)
         exit()
-    if not warBefehl and len(stext) > 0 and Txt.listeE[0] not in befehleBeenden:
-        if len(set(stext) & set(befehle)) > 0:
-            print(i18nRP.out1Saetze[0] + " ".join(stextE) + i18nRP.out1Saetze[1])
+    if not warBefehl and len(Txt.liste) > 0 and Txt.listeE[0] not in befehleBeenden:
+        if len(Txt.menge & set(befehle)) > 0:
+            print(i18nRP.out1Saetze[0] + " ".join(Txt.listeE) + i18nRP.out1Saetze[1])
         else:
-            print(i18nRP.out2Satz.format(" ".join(stextE)))
+            print(i18nRP.out2Satz.format(" ".join(Txt.listeE)))
     return loggingSwitch
 
 
 def retaExecuteNprint(
     ketten: list,
-    Txt.listeE: list,
+    stextE,
     zeiln1: str,
     zeiln2: str,
     welcheSpalten: list[str],
@@ -1333,10 +1322,10 @@ def retaExecuteNprint(
         *[
             "--" + i18n.ausgabeParas["keineleereninhalte"]
             if i18n.befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"]
-            in Txt.listeE
+            in stextE
             else ""
         ],
-    ] + returnOnlyParasAsList(stextE)
+    ] + returnOnlyParasAsList(Txt.listeE)
     kette += ketten
     if (
         i18n.befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"]
@@ -1743,59 +1732,55 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
     )
 
 
-def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, stext, text, warBefehl):
-    if len(stext) > 0 and stext[0] in (i18n.befehle2["shell"]):
+def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, Txt, warBefehl):
+    if len(Txt.liste) > 0 and Txt.liste[0] in (i18n.befehle2["shell"]):
         warBefehl = True
         try:
-            process = subprocess.Popen([*stext[1:]])
+            process = subprocess.Popen([*Txt.liste[1:]])
             process.wait()
         except:
             pass
-    if len(stext) > 0 and i18n.befehle2["python"] == stext[0]:
+    if len(Txt.liste) > 0 and i18n.befehle2["python"] == Txt.liste[0]:
         warBefehl = True
         try:
-            process = subprocess.Popen(["python3", "-c", " ".join(stext[1:])])
+            process = subprocess.Popen(["python3", "-c", " ".join(Txt.liste[1:])])
             process.wait()
         except:
             pass
-    if len(stext) > 0 and i18n.befehle2["math"] == stext[0]:
+    if len(Txt.Liste) > 0 and i18n.befehle2["math"] == Txt.liste[0]:
         warBefehl = True
-        for st in "".join(stext[1:2]).split(","):
+        for st in "".join(Txt.liste[1:2]).split(","):
             try:
                 process = subprocess.Popen(["python3", "-c", "print(" + st + ")"])
                 process.wait()
             except:
                 pass
-    Txt.liste = text.split()
-    if i18n.befehle2["loggen"] in stext:
+    if i18n.befehle2["loggen"] in Txt.liste:
         warBefehl = True
         loggingSwitch = True
-    elif i18n.befehle2["nichtloggen"] in stext:
+    elif i18n.befehle2["nichtloggen"] in Txt.liste:
         warBefehl = True
         loggingSwitch = False
     return loggingSwitch, warBefehl
 
 
 def promptVorbereitungGrosseAusgabe(
-    ketten, promptMode, promptMode2, promptModeLast, text, textDazu0, Txt
+    ketten, promptMode, promptMode2, promptModeLast, text, textDazu0
 ):
-    if text is not None:
-        stext: list = text.split()
-    else:
-        stext: list = []
+    Txt = TXT(text)
     ketten = []
     # AusgabeSelektiv = 5
     ifKurzKurz = False
-    if len(stext) > 0:
+    if len(Txt.liste) > 0:
         textDazu: list = []
         s_2: list
 
         ifKurzKurz, stext = stextFromKleinKleinKleinBefehl(
-            ifKurzKurz, promptMode2, stext, textDazu
+            ifKurzKurz, promptMode2, Txt.liste, textDazu
         )
-    if stext is not None:
+    if Txt.liste is not None:
         nstextnum: list = []
-        for astext in stext:
+        for astext in Txt.liste:
             if astext.isdecimal():
                 nstextnum += [int(astext)]
         if len(nstextnum) > 0:
@@ -1804,7 +1789,7 @@ def promptVorbereitungGrosseAusgabe(
             maxNum = 1024
     zahlenBereichNeu: map = {}
     zahlenBereichNeu1: map = {}
-    for swort in stext:
+    for swort in Txt.liste:
         try:
             zahlenBereichNeu1[bool(isZeilenAngabe(swort))] += [swort]
         except KeyError:
@@ -1817,7 +1802,7 @@ def promptVorbereitungGrosseAusgabe(
         promptMode2 == PromptModus.AusgabeSelektiv
         and promptModeLast == PromptModus.normal
     ):
-        stext = textDazu0 + stext
+        Txt.liste = textDazu0 + Txt.liste
     if (
         promptMode == PromptModus.normal
         and len(Txt.platzhalter) > 1
@@ -1827,7 +1812,7 @@ def promptVorbereitungGrosseAusgabe(
     ):
         zeilenn = False
         woerterToDel = []
-        for i, wort in enumerate(stext):
+        for i, wort in enumerate(Txt.liste):
             if len(wort) > 1 and wort[0] == "-" and wort[1] != "-":
                 zeilenn = False
             if zeilenn is True or wort == zahlenBereichNeu[True]:
@@ -1835,13 +1820,12 @@ def promptVorbereitungGrosseAusgabe(
             if wort == "-" + i18n.hauptForNeben["zeilen"]:
                 zeilenn = True
                 woerterToDel += [i]
-        stextDict = {i: swort for i, swort in enumerate(stext)}
+        stextDict = {i: swort for i, swort in enumerate(Txt.liste)}
         for todel in woerterToDel:
             del stextDict[todel]
         stext = list(stextDict.values())
 
-        if len({i18n.befehle2["w"], i18n.befehle2["teiler"]} & set(stext)) > 0:
-            # print(zahlenBereichNeu[True])
+        if len({i18n.befehle2["w"], i18n.befehle2["teiler"]} & Txt.menge) > 0:
             BereichMenge = BereichToNumbers2(zahlenBereichNeu[True], False, 0)
             BereichMengeNeu = teiler(",".join([str(b) for b in BereichMenge]))[1]
             zahlenBereichNeu[True] = ""
@@ -1850,56 +1834,64 @@ def promptVorbereitungGrosseAusgabe(
             zahlenBereichNeu[True] = zahlenBereichNeu[True][:-1]
 
             try:
-                stext.remove(i18n.befehle2["w"])
+                tx = Txt.liste
+                tx.remove(i18n.befehle2["w"])
+                Txt.liste = x
             except:
                 pass
             try:
-                stext.remove(i18n.befehle2["teiler"])
+                tx = Txt.liste
+                tx.remove(i18n.befehle2["teiler"])
+                Txt.liste = x
             except:
                 pass
 
-        if len({i18n.befehle2["v"], i18n.befehle2["vielfache"]} & set(stext)) == 0:
-            stext += [
+        if len({i18n.befehle2["v"], i18n.befehle2["vielfache"]} & Txt.menge) == 0:
+            Txt.liste += [
                 "".join(("-", i18n.hauptForNeben["zeilen"])),
                 "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
                 + zahlenBereichNeu[True],
             ]
 
         else:
-            stext += [
+            Txt.liste += [
                 "".join(("-", i18n.hauptForNeben["zeilen"])),
                 "".join(("--", i18n.zeilenParas["vielfachevonzahlen"], "="))
                 + zahlenBereichNeu[True],
             ]
             try:
-                stext.remove(i18n.befehle2["v"])
+                tx = Txt.liste
+                tx.remove(i18n.befehle2["v"])
+                Txt.liste = x
             except:
                 pass
             try:
-                stext.remove(i18n.befehle2["vielfache"])
+                tx = Txt.liste
+                tx.remove(i18n.befehle2["vielfache"])
+                Txt.liste = x
             except:
                 pass
-    IsPureOnlyReTaCmd: bool = len(stext) > 0 and stext[0] == "reta"
+    IsPureOnlyReTaCmd: bool = len(stext) > 0 and Txt.liste[0] == "reta"
     brueche = []
     zahlenAngaben_ = []
     c = ""
-    if len(set(stext) & befehleBeenden) > 0:
-        stext = [tuple(befehleBeenden)[0]]
+    if len(Txt.menge & befehleBeenden) > 0:
+        Txt.liste = [tuple(befehleBeenden)[0]]
     replacements = i18nRP.replacements
     for i, token in enumerate(stext):
         try:
             stext[i] = replacements[token]
         except KeyError:
             pass
-    if stext[:1] != ["reta"]:
-        stext = list(set(stext))
+    if Txt.liste[:1] != ["reta"]:
+        Txt.liste = list(Txt.menge)
     return (
         IsPureOnlyReTaCmd,
         brueche,
         c,
         ketten,
         maxNum,
-        stext,
+        Txt.liste,
         zahlenAngaben_,
         ifKurzKurz,
     )
@@ -1998,18 +1990,18 @@ def PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text):
     return platzhalter, promptMode, text
 
 
-def promptSpeicherungB(nochAusageben, platzhalter, promptMode, text):
+def promptSpeicherungB(nochAusageben, promptMode, Txt):
     if promptMode == PromptModus.speicherungAusgaben:
-        Txt.text = platzhalter
+        Txt.text = Txt.platzhalter
     elif promptMode == PromptModus.speicherungAusgabenMitZusatz:
-        Txt.text = platzhalter + " " + nochAusageben
-    return text
+        Txt.text = Txt.platzhalter + " " + nochAusageben
+    return Txt
 
 
-def promptSpeicherungA(ketten, promptMode, text):
+def promptSpeicherungA(ketten, promptMode, Txt):
     if promptMode == PromptModus.speichern:
         ketten, Txt = speichern(ketten, Txt)
-    return ketten, platzhalter, text
+    return ketten, Txt
 
 
 def promptInput(
