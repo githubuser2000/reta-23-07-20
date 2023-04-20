@@ -29,6 +29,8 @@ NestedDict = Mapping[str, Union[Any, Set[str], None, Completer]]
 
 ifRetaAnfang = False
 
+befehle2List = list(befehle2)
+
 
 class ComplSitua(Enum):
     hauptPara = 0
@@ -166,9 +168,9 @@ class NestedCompleter(Completer):
                     )[0]
                     or not ifRetaAnfang
                 ):
-                    liste = tuple(befehle2) + hauptForNeben
+                    liste = befehle2List + hauptForNeben
                 else:
-                    liste = tuple(befehle2)
+                    liste = befehle2List
                     ifRetaAnfang = False
                 completer.options = {key: None for key in liste}
                 completer.optionsTypes = {
@@ -198,7 +200,7 @@ class NestedCompleter(Completer):
 
                     if not ifRetaAnfang:
                         try:
-                            var1 += tuple(befehle2)
+                            var1 += befehle2List
                         except:
                             var1 = []
                     completer.options = {key: None for key in var1}
