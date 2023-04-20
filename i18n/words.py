@@ -2,13 +2,14 @@ import gettext
 import os
 # import sys
 from collections import OrderedDict, namedtuple
+# from dataclasses import dataclass
 from typing import Any, NamedTuple, Optional, Tuple, Union
 
 # from typing import Optional, Union
 
 try:
     from orderedset import OrderedSet
-except:
+except ModuleNotFoundError:
     OrderedSet = set
 
 # sys.path.insert(1, "./..")
@@ -3544,9 +3545,9 @@ class concat:
 
     mondExpLog2 = {"kein Mond": _("kein Mond")}
     # wohl nich nötig zu übersetzen modalA_
-    modalA1 = {"modalS": _("modalS")}
-    modalA2 = {"vervielfachter": _("vervielfachter")}
-    modalA3 = {"i_origS": _("i_origS")}
+    # modalA1 = {"modalS": _("modalS")}
+    # modalA2 = {"vervielfachter": _("vervielfachter")}
+    # modalA3 = {"i_origS": _("i_origS")}
 
     modalB = {
         "mittelstark überdurchschnittlich: ": _("mittelstark überdurchschnittlich: "),
@@ -3572,11 +3573,7 @@ class concat:
 
     generiertWort = {"Generiert: ": _("Generiert: ")}
     allesNurBezogenAufSatz = _("Alles nur bezogen auf die selbe Strukturgröße einer ")
-    headline1 = {
-        _(
-            "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
-        )
-    }
+    headline1 = "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
     gegen = {"gegen ": _("gegen ")}
     pro = {"pro ": _("pro ")}
     hineinversetzen = {
@@ -3584,12 +3581,12 @@ class concat:
         " am Besten hineinversetzten.": _(" am Besten hineinversetzten."),
     }
     proIst = {
-        "pro dieser Zahl sind: _(": _("pro dieser Zahl sind: _("),
-        ")pro dieser Zahl ist ": _(")pro dieser Zahl ist "),
+        "pro dieser Zahl sind: ": _("pro dieser Zahl sind: "),
+        "pro dieser Zahl ist ": _("pro dieser Zahl ist "),
     }
     contraIst = {
-        " contra dieser Zahl sind: _(": _(" contra dieser Zahl sind: _("),
-        ") contra dieser Zahl ist ": _(") contra dieser Zahl ist "),
+        " contra dieser Zahl sind: ": _(" contra dieser Zahl sind: "),
+        " contra dieser Zahl ist ": _(" contra dieser Zahl ist "),
     }
     hineinversetzenSatz = " - Die Zahlen, die für oder gegen diese Zahlen hier sind, können sich in diese am Besten gedanklich hineinversetzen."
     polygone = {
@@ -3907,3 +3904,22 @@ mainParaCmds: dict = {
     "h": _("h"),
     "help": _("help"),
 }
+
+
+# @dataclass
+class csvFileNames:
+    kombi13 = _("kombi.csv")
+    kombi15 = _("kombi-meta.csv")
+    religion = _("religion.csv")
+    prim = _("primenumbers.csv")
+    bruch15 = _("gebrochen-rational-universum.csv")
+    bruch13 = _("gebrochen-rational-galaxie.csv")
+    bruch7 = _("gebrochen-rational-emotionen.csv")
+    burchGroesse = _("gebrochen-rational-strukturgroesse.csv")
+    kombi_17_13_15 = _("kombi-gedanken17-absichten13-bewusstsein15.csv")
+    kombi_11_15 = _("kombi-meta-systeme.csv")
+    kombi_10_15 = _("kombi-universelle-wirklichkeit.csv")
+    kreis18 = _("kreisVomTyp18.csv")
+    sunMoon = _("sunMoonEtc.csv")
+    meaningOfLife = _("meaningOfLife.csv")
+    dualitaetenTrinities = _("dualism-trinities-etc.csv")
