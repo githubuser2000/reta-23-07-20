@@ -337,6 +337,7 @@ befehle2: dict = {"15" + a: "15" + a for a in wahl15.keys()} | {
     "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar": _(
         "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
     ),
+    "abstand": _("abstand"),
 }
 
 befehle: dict = ["15" + a for a in wahl15.keys()] + [
@@ -399,6 +400,7 @@ befehle: dict = ["15" + a for a in wahl15.keys()] + [
     # _("x"),
     _("BefehlSpeichernDavor"),
     _("keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"),
+    _("abstand"),
 ]
 
 ParametersMain: NamedTuple = namedtuple(
@@ -3879,6 +3881,7 @@ class nested:
 class retaPrompt:
     befehleBeenden = {_("ende"), _("exit"), _("quit"), _("q"), _(":q")}
     promptModeSatz = _("promptmode vorher: {} , {}")
+    promptModeSatz2 = _("'{}' ergibt sich aus '{}' und ergibt danach reta-Befehl:")
     out1Satze = (
         _("Dies ('"),
         _(
