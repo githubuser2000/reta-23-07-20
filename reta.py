@@ -56,8 +56,6 @@ class Program:
                         eineSpaltenArtmitSpaltenNummern = set(
                             eineSpaltenArtmitSpaltenNummern[0]
                         )
-                x("sdf39", [tupl, neg, paraValue, befehlName])
-                x("sdf39777", Program.ParametersMain.gebrochengalaxie[0])
                 if i == 2 and (
                     type(eineSpaltenArtmitSpaltenNummern)
                     in [

@@ -413,10 +413,12 @@ def createRangesForBruchLists(bruchList: list) -> tuple:
     return listenRange, ergebnis2
 
 
-def speichern(ketten, platzhalter, Txt):
+def speichern(ketten, platzhalter, text):
     global promptMode2, textDazu0
-    bedingung1 = len(Txt.platzhalter) > 0
+    bedingung1 = len(platzhalter) > 0
     bedingung2 = len(ketten) > 0
+    Txt = TXT(text)
+    Txt.platzhalter = platzhalter
     if bedingung1 or bedingung2:
         if bedingung1:
             ifJoinReTaBefehle = True
@@ -433,7 +435,7 @@ def speichern(ketten, platzhalter, Txt):
                 # nochmal für nicht Kurzbefehle befehle, also ohne "reta" am Anfang
                 textUndPlatzHalterNeu = []
                 langKurzBefehle = []
-                for rpBefehl in Txt.liste + Txt.platzhalter:
+                for rpBefehl in Txt.liste + Txt.platzhalter.split():
                     if rpBefehl in befehle and len(rpBefehl) > 1:
                         langKurzBefehle += [rpBefehl]
                     else:
@@ -527,10 +529,7 @@ def PromptScope():
     global promptMode2, textDazu0
     (
         befehleBeenden,
-        ketten,
         loggingSwitch,
-        nochAusageben,
-        platzhalter,
         promptDavorDict,
         promptMode,
         startpunkt1,
@@ -538,6 +537,8 @@ def PromptScope():
         immerEbefehlJa,
     ) = PromptAllesVorGroesserSchleife()
     Txt = TXT("")
+    nochAusageben = ""
+    ketten = []
     while len(Txt.menge & befehleBeenden) == 0:
         warBefehl = False
         promptModeLast = promptMode
@@ -579,7 +580,7 @@ def PromptScope():
             (i18n.befehle2["s"] in Txt.liste)
             or (i18n.befehle2["BefehlSpeichernDavor"] in Txt.liste)
         ) and len(Txt.liste) == 1:
-            ketten, Txt = speichern(ketten, platzhalter, Txt.befehlDavor)
+            ketten, Txt = speichern(ketten, Txt.platzhalter, Txt.befehlDavor)
             promptMode = PromptModus.normal
             continue
         elif len(
@@ -615,7 +616,6 @@ def PromptScope():
                     pass
             ketten, Txt = speichern(ketten, Txt.platzhalter, " ".join(stextB))
             Txt.liste = []
-            Txt.listeE = []
             Txt.text = ""
             Txt.befehlDavor = ""
             promptMode = PromptModus.normal
@@ -637,8 +637,9 @@ def PromptScope():
             (i18n.befehle2["l"] in Txt.liste)
             or ("BefehlSpeicherungLöschen" in Txt.liste)
         ) and len(Txt.liste) == 1:
-            print(str([{i + 1, a} for i, a in enumerate(platzhalter.split())]))
-            print(i18nRP.promptModeSatz.format(promptMode, promptMode2))
+            x("WAS LOESC", Txt.platzhalter)
+            print(str([{i + 1, a} for i, a in enumerate(Txt.platzhalter.split())]))
+            alxp(i18nRP.promptModeSatz.format(promptMode, promptMode2))
             promptMode = PromptModus.loeschenSelect
             continue
 
@@ -1264,14 +1265,13 @@ def PromptGrosseAusgabe(
         for i, s in enumerate(Txt.liste):
             if s.isdecimal():
                 zahlNum = i
-            s = s.split("-")
-            if len(s) == 2 and s[0].isdecimal() and s[1].isdecimal():
+            if isZeilenAngabe(s):
                 flag = True
-                bereich = (int(s[0]), int(s[1]))
+                bereich = s
         if flag:
             warBefehl = True
             zahl = int(Txt.liste[zahlNum])
-            zeige = {b: abs(b - zahl) for b in range(bereich[0], bereich[1] + 1)}
+            zeige = {b: abs(b - zahl) for b in BereichToNumbers2(bereich)}
             print(str(zeige)[1:-1])
     elif i18n.befehle2["abstand"] in Txt.liste:
         print(i18nRP.abstandMeldung)
@@ -1881,13 +1881,19 @@ def promptVorbereitungGrosseAusgabe(
     if len(Txt.menge & befehleBeenden) > 0:
         Txt.liste = [tuple(befehleBeenden)[0]]
     replacements = i18nRP.replacements
-    listeNeu: list = []
-    for token in Txt.liste:
-        try:
-            listeNeu += [replacements[token]]
-        except KeyError:
-            listeNeu += [token]
-    Txt.liste = listeNeu
+    if len(Txt.liste) > 0 and Txt.liste[0] not in [
+        "reta",
+        "shell",
+        "python",
+        "abstand",
+    ]:
+        listeNeu: list = []
+        for token in Txt.liste:
+            try:
+                listeNeu += [replacements[token]]
+            except KeyError:
+                listeNeu += [token]
+        Txt.liste = listeNeu
     if Txt.liste[:1] != ["reta"]:
         Txt.liste = list(Txt.menge)
     return (
@@ -1948,10 +1954,7 @@ def PromptAllesVorGroesserSchleife():
     textDazu0 = []
     return (
         befehleBeenden,
-        [],
         loggingSwitch,
-        "",
-        "",
         promptDavorDict,
         promptMode,
         startpunkt1,
@@ -1962,9 +1965,10 @@ def PromptAllesVorGroesserSchleife():
 
 def PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text):
     global promptMode2, textDazu0
-    Txt.text = str(text).strip()
-    s_text = text.split()
-    zuloeschen = text
+    Txt = TXT(text)
+    Txt.platzhalter = platzhalter
+    zuloeschen = Txt.text
+    x("WAs LOES", platzhalter)
     loeschbares1 = {i + 1: a for i, a in enumerate(platzhalter.split())}
     loeschbares2 = {a: i + 1 for i, a in enumerate(platzhalter.split())}
     flag = False
@@ -1976,24 +1980,24 @@ def PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text):
                     del loeschbares1[todel]
                 except:
                     pass
-            platzhalter = " ".join(loeschbares1.values())
+            Txt.platzhalter = " ".join(loeschbares1.values())
         else:
             flag = True
     else:
         flag = True
     if flag:
-        for wort in s_text:
+        for wort in Txt.liste:
             try:
                 del loeschbares2[wort]
             except:
                 pass
-        platzhalter = " ".join(loeschbares2.keys())
+        Txt.platzhalter = " ".join(loeschbares2.keys())
     promptMode = PromptModus.normal
-    if len(platzhalter.strip()) == 0:
+    if len(Txt.platzhalter.strip()) == 0:
         promptMode2 = PromptModus.normal
         textDazu0 = []
-    textDazu0 = platzhalter.split()
-    return platzhalter, promptMode, text
+    textDazu0 = Txt.platzhalter.split()
+    return Txt.platzhalter, promptMode, Txt.text
 
 
 def promptSpeicherungB(nochAusageben, promptMode, Txt):
@@ -2006,7 +2010,7 @@ def promptSpeicherungB(nochAusageben, promptMode, Txt):
 
 def promptSpeicherungA(ketten, promptMode, Txt):
     if promptMode == PromptModus.speichern:
-        ketten, Txt = speichern(ketten, Txt)
+        ketten, Txt = speichern(ketten, Txt.platzhalter, Txt.text)
     return ketten, Txt
 
 

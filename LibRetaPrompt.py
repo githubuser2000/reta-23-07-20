@@ -383,7 +383,11 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, textDazu):
             stext2 += textDazu
         else:
             stext2 += [str(s_)]
-    if stext[0] != "reta":
+    if stext[0] not in [
+        "reta",
+        "shell",
+        "python",
+    ]:
         stext = stext2
     return ifKurzKurz, stext
 
