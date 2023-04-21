@@ -19,8 +19,9 @@ from prompt_toolkit.history import FileHistory
 from prompt_toolkit.styles import Style
 
 from center import (alxp, cliout, i18n, invert_dict_B, isZeilenAngabe,
-                    isZeilenAngabe_betweenKommas, moduloA, primfaktoren,
-                    primRepeat, retaPromptHilfe, teiler, textHatZiffer, x)
+                    isZeilenAngabe_betweenKommas, isZeilenBruchAngabe, moduloA,
+                    primfaktoren, primRepeat, retaPromptHilfe, teiler,
+                    textHatZiffer, x)
 from LibRetaPrompt import (BereichToNumbers2, PromptModus,
                            gebrochenErlaubteZahlen, isReTaParameter,
                            notParameterValues, stextFromKleinKleinKleinBefehl,
@@ -778,62 +779,9 @@ def PromptGrosseAusgabe(
 
         reta.Program(Txt.liste)
 
-    if len(bruch_GanzZahlReziproke) > 0 and textHatZiffer(bruch_GanzZahlReziproke):
-        zeiln3 = (
-            "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
-            + bruch_GanzZahlReziproke
-        )
-        zeiln4 = ""
-    else:
-        zeiln3 = "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "=0"))
-        zeiln4 = ""
-    if bedingungZahl:
-        zahlenBereiche = str(c).strip()
-        if textHatZiffer(zahlenBereiche):
-            if i18n.befehle2["einzeln"] not in Txt.listeE and (
-                (i18n.befehle2["vielfache"] in Txt.listeE)
-                or (
-                    i18n.befehle2["v"] in Txt.listeE
-                    and i18n.befehle2["abc"] not in Txt.listeE
-                    and i18n.befehle2["abcd"] not in Txt.listeE
-                )
-            ):
-                if len(Txt.menge & {i18n.befehle2["teiler"], i18n.befehle2["w"]}) == 0:
-                    zeiln1 = (
-                        "".join(("--", i18n.zeilenParas["vielfachevonzahlen"], "="))
-                        + zahlenReiheKeineWteiler
-                    )
-                else:
-                    zeiln1 = ""
-                zeiln2 = "".join(
-                    [
-                        "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "=")),
-                        zahlenBereiche,
-                        ",",
-                        ",".join(
-                            [
-                                i18n.befehle2["v"] + str(z)
-                                for z in zahlenReiheKeineWteiler.split(",")
-                            ]
-                        ),
-                    ]
-                )
-
-                # zeiln2 = ""
-            else:
-                zeiln1 = (
-                    "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
-                    + zahlenBereiche
-                )
-
-                zeiln2 = anotherOberesMaximum(c, maxNum)
-        else:
-            zeiln1 = "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "=0"))
-            zeiln2 = ""
-
-    else:
-        zeiln1 = ""
-        zeiln2 = ""
+    zeiln1, zeiln2, zeiln3, zeiln4 = zeiln1234create(
+        Txt, bedingungZahl, bruch_GanzZahlReziproke, c, maxNum, zahlenReiheKeineWteiler
+    )
 
     if bedingungZahl:
         if (len({i18n.befehle2["thomas"]} & Txt.mengeE) > 0) or (
@@ -969,12 +917,55 @@ def PromptGrosseAusgabe(
 
         if len(eigR) > 0:
             warBefehl = True
+            zeilenAusReziprokenDazu = ",".join(
+                [
+                    bruch.split("/")[0]
+                    for bruch in bruch_GanzZahlReziproke.split(",")
+                    if bruch.split("/")[0] != ""
+                ]
+            )
+
+            # if len(zeiln1) > 1 and i18n.zeilenParas["oberesmaximum"] not in zeiln1:
+            #    zeiln1 += (
+            #        "," if zeiln1[-1].isdecimal() else ""
+            #    ) + zeilenAusReziprokenDazu
+            # if len(zeiln2) > 1 and i18n.zeilenParas["oberesmaximum"] not in zeiln2:
+            #    zeiln2 += (
+            #        "," if zeiln2[-1].isdecimal() else ""
+            #    ) + zeilenAusReziprokenDazu
+            c += ("," if len(c) > 0 else "") + zeilenAusReziprokenDazu
+
+            TxtNeu = deepcopy(Txt)
+            TxtNeu.text += " " + zeilenAusReziprokenDazu
+            zeiln1Neu, zeiln2Neu, _, _ = zeiln1234create(
+                TxtNeu,
+                len(zeilenAusReziprokenDazu) > 0,
+                "",
+                c,
+                maxNum,
+                zahlenReiheKeineWteiler
+                + ("," if len(zahlenReiheKeineWteiler) > 0 else "")
+                + zeilenAusReziprokenDazu,
+            )
+            x(
+                "EIGR",
+                [
+                    TxtNeu.text,
+                    zeilenAusReziprokenDazu,
+                    c,
+                    zeiln1Neu,
+                    zeiln2Neu,
+                    zahlenReiheKeineWteiler
+                    + ("," if len(zahlenReiheKeineWteiler) > 0 else "")
+                    + zeilenAusReziprokenDazu,
+                ],
+            )
             if len(c) > 0:
                 retaExecuteNprint(
                     ketten,
                     Txt.listeE,
-                    zeiln1,
-                    zeiln2,
+                    zeiln1Neu,
+                    zeiln2Neu,
                     ["".join(("--", i18n.konzeptE["konzept2"], "=", (",".join(eigR))))],
                     None,
                 )
@@ -1289,6 +1280,73 @@ def PromptGrosseAusgabe(
         else:
             print(i18nRP.out2Satz.format(" ".join(Txt.listeE)))
     return loggingSwitch
+
+
+def zeiln1234create(
+    Txt, bedingungZahl, bruch_GanzZahlReziproke, c, maxNum, zahlenReiheKeineWteiler
+):
+    if len(bruch_GanzZahlReziproke) > 0 and textHatZiffer(bruch_GanzZahlReziproke):
+        zeiln3 = (
+            "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
+            + bruch_GanzZahlReziproke
+        )
+        zeiln4 = ""
+    else:
+        zeiln3 = "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "=0"))
+        zeiln4 = ""
+    x("SDGSDGdfgdfgdsfhdsfhdsfh", bedingungZahl)
+    x("SDGSDGdfgdfgdsfhdsfhdsfh", c)
+    if bedingungZahl:
+        x("SDGSDGdfgdfgdsfhdsfhdsfh", c)
+        zahlenBereiche = str(c).strip()
+        if textHatZiffer(zahlenBereiche):
+            alxp("SDGSDGdfgdfgdsfhdsfhdsfh")
+            if i18n.befehle2["einzeln"] not in Txt.listeE and (
+                (i18n.befehle2["vielfache"] in Txt.listeE)
+                or (
+                    i18n.befehle2["v"] in Txt.listeE
+                    and i18n.befehle2["abc"] not in Txt.listeE
+                    and i18n.befehle2["abcd"] not in Txt.listeE
+                )
+            ):
+                alxp("SDGSDGdfgdfgdsfhdsfhdsfh")
+                if len(Txt.menge & {i18n.befehle2["teiler"], i18n.befehle2["w"]}) == 0:
+                    zeiln1 = (
+                        "".join(("--", i18n.zeilenParas["vielfachevonzahlen"], "="))
+                        + zahlenReiheKeineWteiler
+                    )
+                else:
+                    zeiln1 = ""
+                zeiln2 = "".join(
+                    [
+                        "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "=")),
+                        zahlenBereiche,
+                        ",",
+                        ",".join(
+                            [
+                                i18n.befehle2["v"] + str(z)
+                                for z in zahlenReiheKeineWteiler.split(",")
+                            ]
+                        ),
+                    ]
+                )
+
+                # zeiln2 = ""
+            else:
+                zeiln1 = (
+                    "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
+                    + zahlenBereiche
+                )
+
+                zeiln2 = anotherOberesMaximum(c, maxNum)
+        else:
+            zeiln1 = "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "=0"))
+            zeiln2 = ""
+
+    else:
+        zeiln1 = ""
+        zeiln2 = ""
+    return zeiln1, zeiln2, zeiln3, zeiln4
 
 
 def retaExecuteNprint(
