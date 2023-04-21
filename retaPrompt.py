@@ -622,7 +622,9 @@ def PromptScope():
             promptMode = PromptModus.loeschenSelect
             continue
 
-        text1, text2, text3 = verdreheWoReTaBefehl(Txt.platzhalter, Txt.text, textDazu0)
+        text1, text2, text3 = verdreheWoReTaBefehl(
+            Txt.platzhalter, Txt.text, textDazu0, promptMode
+        )
 
         (
             IsPureOnlyReTaCmd,
@@ -746,8 +748,10 @@ def PromptGrosseAusgabe(
         (len(bruch_GanzZahlReziproke) > 0 or len(rangesBruecheDict) > 0)
         or len(rangesBruecheDictReverse) > 0,
     )
+    x("EXE X ?", IsPureOnlyReTaCmd)
     if IsPureOnlyReTaCmd:
         warBefehl = True
+        alxp("EXE X")
         import reta
 
         reta.Program(Txt.liste)
@@ -1438,7 +1442,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                                 ]
                     if EinsInBereichHier:
                         neueRange = ",".join([str(zahl) for zahl in bruchRange])
-                        Txt.liste += [neueRange]
+                        stext += [neueRange]
                         EsGabzahlenAngaben = True
                         zahlenAngaben_mehrere += [neueRange]
         zahlenAngaben_mehrere += zahlenAngaben_
@@ -1748,9 +1752,13 @@ def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, Txt, warBefehl):
     return loggingSwitch, warBefehl
 
 
-def verdreheWoReTaBefehl(text1: str, text2: str, text3: str):
-    if text2[:4] == "reta":
+def verdreheWoReTaBefehl(text1: str, text2: str, text3: str, PromptMode: PromptModus):
+
+    x("VERDREHT ?", [text1, text2, text3, PromptMode])
+    if text2[:4] == "reta" and text1[:4] != "reta" and len(text3) > 0:
+        x("VERDREHT", PromptMode)
         return text2, text1, text2.split()
+    x("NICHT VERDREHT", PromptMode)
     return text1, text2, text3
 
 
@@ -1762,6 +1770,7 @@ def promptVorbereitungGrosseAusgabe(
     ketten = []
     # AusgabeSelektiv = 5
     ifKurzKurz = False
+    x("EXE ????", [Txt.liste, textDazu0])
     if len(Txt.liste) > 0:
         textDazu: list = []
         s_2: list
@@ -1863,6 +1872,7 @@ def promptVorbereitungGrosseAusgabe(
             except:
                 pass
     IsPureOnlyReTaCmd: bool = len(Txt.liste) > 0 and Txt.liste[0] == "reta"
+    x("EXE ????", Txt.liste)
     brueche = []
     zahlenAngaben_ = []
     c = ""
