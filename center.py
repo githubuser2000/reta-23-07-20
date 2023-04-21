@@ -15,13 +15,12 @@ try:
 except ImportError:
     from typing import Callable
 
-import html
 from itertools import filterfalse
 from typing import Optional
 
 try:
     from orderedset import OrderedSet
-except:
+except (ModuleNotFoundError, ImportError):
     OrderedSet = set
 
 from rich.console import Console
@@ -132,7 +131,7 @@ def getTextWrapThings(maxLen=None) -> tuple:
             dic = pyphen.Pyphen(
                 lang="de_DE"
             )  # Bibliothek für Worteilumbruch bei Zeilenumbruch
-        except:
+        except (ModuleNotFoundError, ImportError):
             dic = None
         # from hyphen import Hyphenator
         from textwrap2 import fill

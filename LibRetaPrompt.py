@@ -4,18 +4,18 @@ from enum import Enum
 from typing import Optional
 
 import reta
-from center import (BereichToNumbers2, Primzahlkreuz_pro_contra_strs,
+from center import (BereichToNumbers2, Primzahlkreuz_pro_contra_strs, i18n,
                     isZeilenAngabe, isZeilenAngabe_betweenKommas,
                     isZeilenBruchOrGanzZahlAngabe, x)
 
-retaProgram = reta.Program([sys.argv[0], "-nichts"])
+retaProgram = reta.Program([sys.argv[0], "-" + i18n.retapy.nichtsWort])
 mainParas = ["-" + a for a in retaProgram.mainParaCmds]
 spalten = ["--" + a[0] + "=" for a in retaProgram.paraDict.keys()]
 eigsN, eigsR = [], []
 for pp in retaProgram.paraDict.keys():
-    if pp[0] == "konzept":
+    if pp[0] == i18n.konzeptE["konzept"]:
         eigsN += [pp[1]]
-    elif pp[0] == "konzept2":
+    elif pp[0] == i18n.konzeptE["konzept2"]:
         eigsR += [pp[1]]
 
 
@@ -44,114 +44,145 @@ for tupel in retaProgram.paraNdataMatrix:
         except KeyError:
             spaltenDict[haupt] = list(tupel[1])
 
-spalten += ["--breite=", "--breiten=", "--keinenummerierung"]
+spalten += [
+    "--" + i18n.ausgabeParas["breite"] + "=",
+    "--" + i18n.ausgabeParas["breiten"] + "=",
+    "--" + i18n.ausgabeParas["keinenummerierung"],
+]
 
-zeilenTypen = ["sonne", "mond", "planet", "schwarzesonne"]
-zeilenZeit = ["heute", "gestern", "morgen"]
-
+zeilenTypen = [
+    i18n.zeilenParas["sonne"],
+    i18n.zeilenParas["mond"],
+    i18n.zeilenParas["planet"],
+    i18n.zeilenParas["schwarzesonne"],
+]
+zeilenZeit = [
+    i18n.zeilenParas["heute"],
+    i18n.zeilenParas["gestern"],
+    i18n.zeilenParas["morgen"],
+]
 
 ausgabeParas = [
-    "--nocolor",
-    "--justtext",
-    "--art=",
-    "--onetable",
-    "--spaltenreihenfolgeundnurdiese=",
-    "--endlessscreen",
-    "--endless",
-    "--dontwrap",
-    "--breite=",
-    "--breiten=",
-    "--keineleereninhalte",
-    "--keinenummerierung",
-    "--keineueberschriften",
+    "--" + s + ("=" if l else "")
+    for s, l in zip(i18n.ausgabeParas.values(), i18n.ausgabeParasEqSign.values())
 ]
-kombiMainParas = ["--galaxie=", "--universum="]
+# ausgabeParas = [
+#    "--nocolor",
+#    "--justtext",
+#    "--art=",
+#    "--onetable",
+#    "--spaltenreihenfolgeundnurdiese=",
+#    "--endlessscreen",
+#    "--endless",
+#    "--dontwrap",
+#    "--breite=",
+#    "--breiten=",
+#    "--keineleereninhalte",
+#    "--keinenummerierung",
+#    "--keineueberschriften",
+# ]
+kombiMainParas = [
+    "--" + i18n.kombiMainParas["galaxie"] + "=",
+    "--" + i18n.kombiMainParas["universum"] + "=",
+]
 zeilenParas = [
-    # "--nichts",
-    "--zeit=",
-    "--zaehlung=",
-    "--vorhervonausschnitt=",
-    "--vorhervonausschnittteiler",
-    "--primzahlvielfache=",
-    "--nachtraeglichneuabzaehlung=",
-    "--nachtraeglichneuabzaehlungvielfache=",
-    "--alles",
-    "--potenzenvonzahlen=",
-    "--typ=",
-    "--vielfachevonzahlen=",
-    "--oberesmaximum=",
+    # "--"+i18n.zeilenParas["nichts"]+"",
+    "--" + i18n.zeilenParas["zeit"] + "=",
+    "--" + i18n.zeilenParas["zaehlung"] + "=",
+    "--" + i18n.zeilenParas["vorhervonausschnitt"] + "=",
+    "--" + i18n.zeilenParas["vorhervonausschnittteiler"],
+    "--" + i18n.zeilenParas["primzahlvielfache"] + "=",
+    "--" + i18n.zeilenParas["nachtraeglichneuabzaehlung"] + "=",
+    "--" + i18n.zeilenParas["nachtraeglichneuabzaehlungvielfache"] + "=",
+    "--" + i18n.zeilenParas["alles"],
+    "--" + i18n.zeilenParas["potenzenvonzahlen"] + "=",
+    "--" + i18n.zeilenParas["typ"] + "=",
+    "--" + i18n.zeilenParas["vielfachevonzahlen"] + "=",
+    "--" + i18n.zeilenParas["oberesmaximum"] + "=",
 ]
-hauptForNeben = ("-zeilen", "-spalten", "-kombination", "-ausgabe", "-h", "-help")
+hauptForNeben = ["-" + s for s in set(i18n.hauptForNeben.values()) - {"debug"}]
+# hauptForNeben = ("-zeilen", "-spalten", "-kombination", "-ausgabe", "-h", "-help")
 
 notParameterValues = ausgabeParas + zeilenParas + kombiMainParas + spalten + mainParas
 hauptForNebenSet = set(hauptForNeben)
 
-ausgabeArt = ["bbcode", "html", "csv", "shell", "markdown", "emacs"]
+ausgabeArt = list(i18n.ausgabeArt.values())
+# ausgabeArt = ["bbcode", "html", "csv", "shell", "markdown", "emacs"]
 
-wahl15 = {
-    #    "_": "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15)",
-    "_15": "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15),Model_of_Hierarchical_Complexity,"
-    + Primzahlkreuz_pro_contra_strs[1],
-    "_2": "Konkreta_und_Focus_(2)",
-    "_5": "Impulse_(5)",
-    "_7": "Gefühle_(7)",
-    "_8": "Modus_und_Sein_(8)",
-    "_10": "Wirklichkeiten_Wahrheit_Wahrnehmung_(10)",
-    "_12": "Meta-Systeme_(12),Ordnung_und_Filterung_12_und_1pro12",
-    "_13": "Paradigmen_sind_Absichten_(13)",
-    "_17": "Gedanken_sind_Positionen_(17)",
-    "_18": "Verbundenheiten_(18)",
-    "_6": "Triebe_und_Bedürfnisse_(6)",
-    "_9": "Lust_(9)",
-    "_3": "Reflexe_(3),Existenzialien_(3)",
-    "_13_6": "Absicht_6_ist_Vorteilsmaximierung",
-    "_13_7": "Absicht_7_ist_Selbstlosigkeit",
-    "_13_10": "Absicht_10_ist_Wirklichkeit_erkennen",
-    "_13_17": "Absicht_17_ist_zu_meinen",
-    "_10_4": "Zeit_(4)_als_Wirklichkeit",
-    "_16": "Funktionen_Vorstellungen_(16)",
-    "_4": "Achtung_(4)",
-    "_13_1pro8": "Absicht_1/8",
-    "_13_1pro6": "Absicht_1/6_ist_Reinigung_und_Klarheit",
-    "_1pro15": "Reflektion_und_Kategorien_(1/15)",
-    "_1": "Regungen_(1)",
-    "_30": "Energie_und_universelle_Eigenschaften_(30)",
-    "_14": "Stimmungen_Kombinationen_(14)",
-    "_20": "Klassen_(20)",
-    "_37": "Empathie_(37)",
-    "_31": "Garben_und_Verhalten_nachfühlen(31)",
-    "_11": "Verhalten_(11)",
-    "_5_10": "Bedeutung_(10)",
-    "_17_6": "Themen_(6)",
-    "_17_6_10mit4": "Optimierung_(10)",
-    "_36": "Attraktionen_(36)",
-    "_13_16": "Absicht_16_ist_zu_genügen",
-    "_18_7": "Liebe_(7)",
-    "_18_10": "Koalitionen_(10)",
-    "_18_17": "Ansichten_Standpunkte_(18_17)",
-    "_1pro8": "Prinzipien(1/8)",
-    "_1pro5": "Bestrebungen(1/5)",
-    "_1pro3": "Bedingung_und_Auslöser_(1/3)",
-    "_10_4_18_6": "relativer_Zeit-Betrag_(15_10_4_18_6)",
-    "_18_6": "Zahlenvergleich_(15_18_6)",
-    "_21": "Leidenschaften_(21)",
-    "_26": "Erwartungshaltungen_(26)",
-    "_19": "Extremalien_(19),Ziele_(19)",
-    "_18_15": "universeller_Komperativ_(18→15)",
-    "_18_15_n-vs-1pron": "Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)",
-    "_1pro13": "Sollen_Frage_Vorgehensweise_(1/13)",
-    "_1pro19": "Fundament_(1/19)",
-    "_90": "abhängige_Verbundenheit_(90)",
-    "_13_13": "Absicht_13_ist_Helfen",
-    "_1pro12": "Karte_Filter_und_Unterscheidung_(1/12)",
-}
+wahl15 = i18n.wahl15
+# wahl15 = {
+#    #    "_": "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15)",
+#    "_15": "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15),Model_of_Hierarchical_Complexity,"
+#    + Primzahlkreuz_pro_contra_strs[1],
+#    "_2": "Konkreta_und_Focus_(2)",
+#    "_5": "Impulse_(5)",
+#    "_7": "Gefühle_(7)",
+#    "_8": "Modus_und_Sein_(8)",
+#    "_10": "Wirklichkeiten_Wahrheit_Wahrnehmung_(10)",
+#    "_12": "Meta-Systeme_(12),Ordnung_und_Filterung_12_und_1pro12",
+#    "_13": "Paradigmen_sind_Absichten_(13)",
+#    "_17": "Gedanken_sind_Positionen_(17)",
+#    "_18": "Verbundenheiten_(18)",
+#    "_6": "Triebe_und_Bedürfnisse_(6)",
+#    "_9": "Lust_(9)",
+#    "_3": "Reflexe_(3),Existenzialien_(3)",
+#    "_13_6": "Absicht_6_ist_Vorteilsmaximierung",
+#    "_13_7": "Absicht_7_ist_Selbstlosigkeit",
+#    "_13_10": "Absicht_10_ist_Wirklichkeit_erkennen",
+#    "_13_17": "Absicht_17_ist_zu_meinen",
+#    "_10_4": "Zeit_(4)_als_Wirklichkeit",
+#    "_16": "Funktionen_Vorstellungen_(16)",
+#    "_4": "Achtung_(4)",
+#    "_13_1pro8": "Absicht_1/8",
+#    "_13_1pro6": "Absicht_1/6_ist_Reinigung_und_Klarheit",
+#    "_1pro15": "Reflektion_und_Kategorien_(1/15)",
+#    "_1": "Regungen_(1)",
+#    "_30": "Energie_und_universelle_Eigenschaften_(30)",
+#    "_14": "Stimmungen_Kombinationen_(14)",
+#    "_20": "Klassen_(20)",
+#    "_37": "Empathie_(37)",
+#    "_31": "Garben_und_Verhalten_nachfühlen(31)",
+#    "_11": "Verhalten_(11)",
+#    "_5_10": "Bedeutung_(10)",
+#    "_17_6": "Themen_(6)",
+#    "_17_6_10mit4": "Optimierung_(10)",
+#    "_36": "Attraktionen_(36)",
+#    "_13_16": "Absicht_16_ist_zu_genügen",
+#    "_18_7": "Liebe_(7)",
+#    "_18_10": "Koalitionen_(10)",
+#    "_18_17": "Ansichten_Standpunkte_(18_17)",
+#    "_1pro8": "Prinzipien(1/8)",
+#    "_1pro5": "Bestrebungen(1/5)",
+#    "_1pro3": "Bedingung_und_Auslöser_(1/3)",
+#    "_10_4_18_6": "relativer_Zeit-Betrag_(15_10_4_18_6)",
+#    "_18_6": "Zahlenvergleich_(15_18_6)",
+#    "_21": "Leidenschaften_(21)",
+#    "_26": "Erwartungshaltungen_(26)",
+#    "_19": "Extremalien_(19),Ziele_(19)",
+#    "_18_15": "universeller_Komperativ_(18→15)",
+#    "_18_15_n-vs-1pron": "Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)",
+#    "_1pro13": "Sollen_Frage_Vorgehensweise_(1/13)",
+#    "_1pro19": "Fundament_(1/19)",
+#    "_90": "abhängige_Verbundenheit_(90)",
+#    "_13_13": "Absicht_13_ist_Helfen",
+#    "_1pro12": "Karte_Filter_und_Unterscheidung_(1/12)",
+# }
 
 zumVergleich = []
 gebrochenErlaubteZahlen: set = set()
-for a in reta.Program(["reta", "-zeilen"]).paraNdataMatrix:
+for a in reta.Program(["reta", "-" + i18n.mainParaCmds["zeilen"]]).paraNdataMatrix:
     for b in a[1]:
         zumVergleich += [b]
-        if len(set(a[0]) & {"gebrochenuniversum", "gebrochengalaxie"}) > 0:
+        if (
+            len(
+                set(a[0])
+                & {
+                    i18n.gebrochenUniGal["gebrochenuniversum"],
+                    i18n.gebrochenUniGal["gebrochengalaxie"],
+                }
+            )
+            > 0
+        ):
             gebrochenErlaubteZahlen |= {int(b)}
 gebrochenErlaubteZahlen -= {max(gebrochenErlaubteZahlen)}
 
@@ -159,68 +190,69 @@ for a in wahl15.values():
     for b in a.split(","):
         assert b in zumVergleich
 
-
-befehle = ["15" + a for a in wahl15.keys()] + [
-    "mond",
-    "reta",
-    "absicht",
-    "motiv",
-    "thomas",
-    "universum",
-    "motive",
-    "absichten",
-    "vielfache",
-    "einzeln",
-    "multis",
-    "modulo",
-    "prim",
-    "primfaktorzerlegung",
-    "procontra",
-    "prim24",
-    "primfaktorzerlegungModulo24",
-    "help",
-    "hilfe",
-    "abc",
-    "abcd",
-    "alles",
-    "a",
-    "u",
-    "befehle",
-    "t",
-    "richtung",
-    "r",
-    "v",
-    "h",
-    "p",
-    "mo",
-    "mu",
-    "primzahlkreuz",
-    "ende",
-    "exit",
-    "quit",
-    "q",
-    ":q",
-    "shell",
-    "s",
-    "math",
-    "loggen",
-    "nichtloggen",
-    "mulpri",
-    "python",
-    "w",
-    "teiler",
-    "BefehlSpeichernDanach",
-    "S",
-    "BefehlSpeicherungLöschen",
-    "l",
-    "BefehlSpeicherungAusgeben",
-    "o",
-    # "BefehlsSpeicherungsModusAus",
-    # "x",
-    "BefehlSpeichernDavor",
-    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
-]
-befehle += ["EIGN" + a for a in eigsN] + ["EIGR" + a for a in eigsR]
+befehle = i18n.befehle
+# befehle = ["15" + a for a in wahl15.keys()] + [
+#    "mond",
+#    "reta",
+#    "absicht",
+#    "motiv",
+#    "thomas",
+#    "universum",
+#    "motive",
+#    "absichten",
+#    "vielfache",
+#    "einzeln",
+#    "multis",
+#    "modulo",
+#    "prim",
+#    "primfaktorzerlegung",
+#    "procontra",
+#    "prim24",
+#    "primfaktorzerlegungModulo24",
+#    "help",
+#    "hilfe",
+#    "abc",
+#    "abcd",
+#    "alles",
+#    "a",
+#    "u",
+#    "befehle",
+#    "t",
+#    "richtung",
+#    "r",
+#    "v",
+#    "h",
+#    "p",
+#    "mo",
+#    "mu",
+#    "primzahlkreuz",
+#    "ende",
+#    "exit",
+#    "quit",
+#    "q",
+#    ":q",
+#    "shell",
+#    "s",
+#    "math",
+#    "loggen",
+#    "nichtloggen",
+#    "mulpri",
+#    "python",
+#    "w",
+#    "teiler",
+#    "BefehlSpeichernDanach",
+#    "S",
+#    "BefehlSpeicherungLöschen",
+#    "l",
+#    "BefehlSpeicherungAusgeben",
+#    "o",
+#    # "BefehlsSpeicherungsModusAus",
+#    # "x",
+#    "BefehlSpeichernDavor",
+#    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
+#    "abstand",
+# ]
+befehle += [i18n.EIGS_N_R[0] + a for a in eigsN] + [i18n.EIGS_N_R[1] + a for a in eigsR]
 
 befehle2: set = set(befehle) - {"reta"}
 
@@ -229,14 +261,15 @@ def isReTaParameter(t: str):
     return (
         len(t) > 0
         and t[0] == "-"
-        and not isZeilenAngabe(t)
+        and not isZeilenBruchOrGanzZahlAngabe(t)
         and t.split("=")[0] in [str(c).split("=")[0] for c in notParameterValues]
     )
 
 
-def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, textDazu):
+def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
+    x("KleinKlein", [promptMode2, stext, textDazu])
     stext2 = []
-    x("RIIDA", [stext, textDazu])
+    ifKurzKurz = False
     for s_ in tuple(deepcopy(stext)):
         s_m = s_
         if s_[2:] not in wahl15 and s_ not in befehle and stext[0] != "reta":
@@ -262,11 +295,6 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, textDazu):
                 pass
 
             if n is not None:
-                # (
-                #    brueche_Z,
-                #    zahlenAngaben__Z,
-                #    fullBlockIsZahlenbereichAndBruch_Z,
-                # ) = getFromZahlenBereichBruchAndZahlenbereich(s_b[n:], [], [])
                 (
                     bruchAndGanzZahlEtwaKorrekterBereich,
                     bruchBereichsAngaben,
@@ -286,25 +314,27 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, textDazu):
                 if fullBlockIsZahlenbereichAndBruch_Z:
                     s_ = s_b
                     buchst = set(s_[:n]) & {
-                        "a",
-                        "t",
-                        "v",
-                        "u",
-                        "p",
-                        "r",
-                        "w",
-                        "s",
-                        "o",
-                        "S",
-                        "e",
-                        # "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
+                        i18n.befehle2["a"],
+                        i18n.befehle2["t"],
+                        i18n.befehle2["v"],
+                        i18n.befehle2["u"],
+                        i18n.befehle2["p"],
+                        i18n.befehle2["r"],
+                        i18n.befehle2["w"],
+                        i18n.befehle2["s"],
+                        i18n.befehle2["o"],
+                        i18n.befehle2["S"],
+                        i18n.befehle2["e"],
+                        # i18n.befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"],
                     }
                     setTextLenIs1 = (
                         len(
                             set(stext)
                             - {
-                                "e",
-                                "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
+                                i18n.befehle2["e"],
+                                i18n.befehle2[
+                                    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                                ],
                             }
                         )
                         == 1
@@ -319,7 +349,10 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, textDazu):
                         # erst hier passiert wirklich etwas
                         if n == len(buchst):
                             buchst2: list = [
-                                a if a != "p" else "mulpri" for a in buchst
+                                a
+                                if a != i18n.befehle2["p"]
+                                else i18n.befehle2["mulpri"]
+                                for a in buchst
                             ]
                             textDazu += buchst2 + [str(s_[n:])]
                         if (
@@ -328,25 +361,36 @@ def stextFromKleinKleinKleinBefehl(ifKurzKurz, promptMode2, stext, textDazu):
                             and promptMode2 != PromptModus.AusgabeSelektiv
                         ):
                             textDazu += [
-                                "mulpri",
-                                "a",
-                                "t",
-                                "w",
-                                "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar",
+                                i18n.befehle2["mulpri"],
+                                i18n.befehle2["a"],
+                                i18n.befehle2["t"],
+                                i18n.befehle2["w"],
+                                i18n.befehle2[
+                                    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                                ],
                             ]
                             if "/" in stext[0]:
-                                textDazu += ["u"]
-                            if "-e" in sys.argv:
-                                textDazu += ["-ausgabe", "--keineueberschriften"]
+                                textDazu += i18n.befehle2["u"]
+                            if (
+                                "-" + i18n.retaPrompt.retaPromptParameter["e"]
+                                in sys.argv
+                            ):
+                                textDazu += [
+                                    "-" + i18n.mainParaCmds["ausgabe"],
+                                    "--" + i18n.ausgabeParas["keineueberschriften"],
+                                ]
         else:
             textDazu += [s_]
         if len(textDazu) > 0:
             stext2 += textDazu
         else:
             stext2 += [str(s_)]
-    if stext[0] != "reta":
+    if stext[0] not in [
+        "reta",
+        "shell",
+        "python",
+    ]:
         stext = stext2
-    x("REEEDA__7", [stext, textDazu, stext2])
     return ifKurzKurz, stext
 
 

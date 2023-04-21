@@ -51,7 +51,7 @@ weight = -7
 -   Befehl "u" und "a", also "universum" und "absicht", gibt auch das Reziproke der angebenen Brüche aus, z.B. bei 2/3,3/4 auch 3/2,4/3.
 -   Einige der Kurzbefehle aus Buchstaben wie "a" oder "u" lassen sich auch ohne Leerzeichen dazwischen als Befehl verwenden. Beispiel: statt "a u 1,2" geht auch "au1,2".
 -   Kurzbefehl "e" macht, dass Zeilen mit fast keiner Information nicht angezeigt werden, also Zeilen mit nur einem Minus oder Fragezeichen
-
+-   Der Befehl "abstand", zusammen 2 weiteren Angaben durch Leerzeichen getrennt, einer Zahl und zwei Zahlen zwischen denen unmittelbar ein Bindestrich steht, z.B. "abstand 7 17-25": berechnet einfach die Subtraktion zwischen der Zahl 7 und dem Zahlenbereich 17 bis 25.
 
 ### mathematisch Ausgabe-Befehle {#mathematisch-ausgabe-befehle}
 
@@ -71,7 +71,7 @@ Zeilenangaben oder Zahlenbereiche für andere Angaben können sein (ohne Anführ
 -   "4,9" das wäre Zeile 4 und 9
 -   "2,3-5" das wäre Zeile 2,3,4,5
 -   "5+2+4" das wären die Nachbarn der 5 mit Abstand 2 und 4, also 1,3,7,9
--   "10+2" Als Angabe, wenn die Vielfacher gemeint wären, dann wäre das nicht nur 8 und 12, sondern auch 18 und 22, und 28 und 32, usw.
+-   "10+2" Als Angabe, wenn die Vielfacher gemeint wären (Es sind dann immer vielfacher hier bei "v10+2" [und nicht nur bei Eingaben für explizit vielfacher, sondern dann überall]), dann wäre das nicht nur 8 und 12, sondern auch 18 und 22, und 28 und 32, usw.
 -   In der Readme von reta, statt retaPrompt, wird das nochmal erklärt
 -  5,v20-22 meint Zeile 5 und außerdem alle Vielfacher von 20,21,22, also z.B. 40,42,44
 -  -20,v10 meint alle Vielfacher von 10 ohne die 20 dabei
@@ -82,11 +82,13 @@ Zeilenangaben oder Zahlenbereiche für andere Angaben können sein (ohne Anführ
 -  Die Syntax, bei der ein Minus und Plus vorkommt, lässt sich zusammen auch kombinieren. Für Ganz-Zahlwerte wie für Brüche.
 -  Diese Syntax kann mehrfach hintereinader eingesetzt werden, wenn sie mit Kommas voneinader getrennt wird. Innerhalb dieser Kommas dürfen entweder Brüche oder ganze Zahlen als Bereichsangabe enthalten sein und dadurch zusammen angegeben werden durch viele Kommas.
 -  Diese Syntax für Brüche und ganze Zahlen funktioniert mit dem "v" oder "vielfache" Befehl und mit dieser Minus Syntax, welche für das Herausnehmen von Bereichen da ist.
+-   Beispiel
+    -  Die 7 ist das Gute und die 6 der Wert und beides ergibt das Wohl: 7-6+1 müssten dann die Antagonisten davon sein (Das ist nicht nur 5 und 8, sondern auch 6 und 7 noch mal dummerweise.). Da muss noch 7-6 abgezogen werden und gesucht sind auch die Vielfacher, also sind "v7-6+1,v-6-7" alle Antagonisten vom "Wohl".
 
-### Die Befehle 15\_.... {#die-befehle-15-dot-dot-dot-dot}
+### Die Befehle 15\_.... und EIG..... {#die-befehle-15-dot-dot-dot-dot}
 
 -   Die Befehle, die mit 15\_ beginnen, bilden zusammen eine Baumstruktur und sind Ausgabe-Befehle der Grundstrukuren und des Geistes (15), wie "u" oder "a" Ausgabe-Befehle sind. Eine Zeilenangabe wird benötigt. Dann kann etwas ausgeben werden.
-
+-   Die Befehle, die mit EIG ... anfangen handeln zusammen mit einer Zeilenangabe betreffen die Eigenschaften von Sternpolygonen und gleichförmigen Polygonen.
 
 ### sonstige Befehle {#sonstige-befehle}
 
@@ -101,16 +103,20 @@ Zeilenangaben oder Zahlenbereiche für andere Angaben können sein (ohne Anführ
 
 ### Speicher-Befehle {#speicher-befehle}
 
--   "S" bzw. "BefehlSpeichernDanach" speichert den als nächstes eingegeben Befehl ab."S" ein weiteres mal ausgeführt, fügt dieser Speicherung weitere Befehle hinzu.
--   "s" bzw. "BefehlSpeichernDavor" speichert den davor eingebene Befehl ab. Es kann bisher immer nur der letzte Befehl als eine Sache abgespeichert werden.
-    Befehl "s" oder "S", mehrmals ausgeführt, addieren Befehlseingaben.
--   Werden diese 2 bzw. 4 Speicherbefehle ("s" und "S") zusammen mit anderen Befehlen eingegeben, so werden die anderen Befehle gespeichert.
--   Wenn man dann in der Befehlseingabe einen Befehl oder Teile eines Befehles eingibt, dann kombinieren sich der gespeicherte Befehl mit dieser Befehlseingabe.
-    Beispielsweise hat man den Befehl a ohne Zeilenangabe gespeichert. Wenn man dann eine Zeilenangabe eingibt, z.B. 2, dann ist das der Befehl "a 2". Auf diese Art kann man schneller Befehle eingeben.
+-   Speichern
+    -   "S" bzw. "BefehlSpeichernDanach" speichert den als nächstes eingegeben Befehl ab."S" ein weiteres mal ausgeführt, fügt dieser Speicherung weitere Befehle hinzu.
+    -   "s" bzw. "BefehlSpeichernDavor" speichert den davor eingebene Befehl ab. Es kann bisher immer nur der letzte Befehl als eine Sache abgespeichert werden.
+        Befehl "s" oder "S", mehrmals ausgeführt, addieren Befehlseingaben.
+    -   Werden diese 2 bzw. 4 Speicherbefehle ("s" und "S") zusammen mit anderen Befehlen eingegeben, so werden die anderen Befehle sofort gespeichert, ohne dass diese davor oder danach hätten eingegeben werden müssen.
+-   Ausgabe
+    -   Wenn man dann in der Befehlseingabe einen Befehl oder Teile eines Befehles eingibt, dann kombinieren sich der gespeicherte Befehl mit dieser Befehlseingabe.
+    -    Beispielsweise hat man den Befehl a ohne Zeilenangabe gespeichert. Wenn man dann eine Zeilenangabe eingibt, z.B. 2, dann ist das der Befehl "a 2". Auf diese Art kann man schneller Befehle eingeben.
     Normalerweise, ohne Speicherung, kann man in der Befehlseingabe ausschließlich eine Zeilenangabe tippen und damit sind das die Befehle w a t p.
--   "o" bzw. "BefehlSpeicherungAusgeben" gibt den gespeicherten Befehl aus.
--   Es möglich einen vollständigen reta Befehl (statt eines Kurzbefehles) zu speichern, also z.B. "reta -spalten --licht" und dann bei der Nächsten Befehlseingabe kann man eine Zeilenangabe machen, z.B. 4,7-10 und dann werden von den Spalten über Licht Zeilen 4,7,8,9,10 ausgegeben. So kann man schneller alles tippen. Außerdem lässt sich das mit den Kurzbefehlen w und v Kombinieren, also kann man tippen "3,7-10 v w".
--   "l" bzw. "BefehlSpeicherungLöschen" eröffnet eine Auswahl, was an gespeicherten Befehlen gelöscht werden soll.
+    -   "o" bzw. "BefehlSpeicherungAusgeben" gibt den gespeicherten Befehl aus. Einfach Enter tippen tut das auch.
+    -   Es möglich einen vollständigen reta Befehl (statt eines Kurzbefehles) zu speichern, also z.B. "reta -spalten --licht" und dann bei der Nächsten Befehlseingabe kann man eine Zeilenangabe machen, z.B. 4,7-10 und dann werden von den Spalten über Licht Zeilen 4,7,8,9,10 ausgegeben. So kann man schneller alles tippen. Außerdem lässt sich das mit den Kurzbefehlen w und v Kombinieren, also kann man tippen "3,7-10 v w".
+        - Umgekehrt geht das auch: Man speichert eine Zeilenangabe und kann nach der Speicherung einen reta Befehl angeben, ohne Zeilenangabe, und automatisch wird dann die Zeile für den reta Befehl ausgeben. So kann man mehrere RetaBefehle angeben, ohne jedes Mal neu die Zeile für diesen angeben zu müssen.
+-  Löschen
+    -   "l" bzw. "BefehlSpeicherungLöschen" eröffnet eine Auswahl, was an gespeicherten Befehlen gelöscht werden soll.
     Zahlenbereiche können angegeben werden oder die entsprechenden Zeichen, die gelöscht werden sollen.
 
 

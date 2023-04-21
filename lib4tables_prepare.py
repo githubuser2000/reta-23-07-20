@@ -200,43 +200,17 @@ class Prepare:
     def setWidth(self, rowToDisplay: int, combiRows1: int = 0) -> int:
 
         if self.shellRowsAmount == 0:
-            # x("_1", 0)
             return 0
         combiRows = combiRows1 if combiRows1 != 0 else len(self.rowsAsNumbers)
-        # alxp(
-        #    "if rowsLen {} - combiRows {} < Anzahl breiten Angaben {}".format(
-        #        len(self.rowsAsNumbers), combiRows, len(self.breiten)
-        #    )
-        # )
         if len(self.rowsAsNumbers) - combiRows < len(self.breiten):
-            # x(
-            #    "_2 ja, breiten=",
-            #    [len(self.rowsAsNumbers), combiRows, len(self.breiten)],
-            # )
             breiten: list = self.breiten[len(self.rowsAsNumbers) - combiRows :]
         else:
-            # x("_2 nein, breiten=", [])
             breiten: list = []
-        # delta = -1 if not self.nummerierung and combiRows1 != 0 else -1
         delta = -1
-        # alxp(
-        #    "_3 if rowsDisplay {} + delta {} < BreitenLen {} and DisplayRows {} + delta {}".format(
-        #        rowToDisplay, delta, len(breiten), rowToDisplay, delta
-        #    )
-        # )
         if rowToDisplay + delta < len(breiten) and rowToDisplay + delta >= 0:
             certaintextwidth = breiten[rowToDisplay + delta]
-            # x(
-            #    "_4 certaintextwidth=",
-            #    [
-            #        certaintextwidth,
-            #        [rowToDisplay, delta, len(breiten), rowToDisplay, delta],
-            #    ],
-            # )
         else:
-            # x("_5 certaintextwidth=", self.textwidth)
             certaintextwidth = self.textwidth
-        # x("setWidth() return", certaintextwidth)
         return certaintextwidth
 
     def parametersCmdWithSomeBereich(
@@ -484,7 +458,6 @@ class Prepare:
         numRangeYesZ = set()
         ifZaehlungenAtAll = False
         mehrere = []
-        x("paramLines", paramLines)
         for condition in paramLines:
             if "_n_" in condition[:3] and len(condition) > 3:
                 numRangeYesZ |= BereichToNumbers2(

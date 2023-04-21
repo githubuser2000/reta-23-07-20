@@ -2,13 +2,14 @@ import gettext
 import os
 # import sys
 from collections import OrderedDict, namedtuple
+# from dataclasses import dataclass
 from typing import Any, NamedTuple, Optional, Tuple, Union
 
 # from typing import Optional, Union
 
 try:
     from orderedset import OrderedSet
-except:
+except (ModuleNotFoundError, ImportError):
     OrderedSet = set
 
 # sys.path.insert(1, "./..")
@@ -19,10 +20,10 @@ Multiplikationen = [(_("Multiplikationen"), "")]
 """
 ES FEHLEN NOCH ALLE ''
 fertig: in prepare ist nichts
-fertig: concat
-fertig: center
-fertig: lib4tables
-fertig: reta.py
+fertig: concat fertig
+fertig: center fertig
+fertig: lib4tables fertig
+fertig: reta.py fertig
 nichts drin: enum
 nichts drin: multis
 nichts drin: grundstruk html
@@ -40,21 +41,20 @@ Primzahlkreuz_pro_contra_strs_Fkt: tuple[str, str] = (
     _("Primzahlkreuz_pro_contra"),
     _("nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)"),
 )
-
-Primzahlkreuz_pro_contra_strs_Dict: dict[tuple, tuple] = {
+Primzahlkreuz_pro_contra_strs_Dict = {
     Primzahlkreuz_pro_contra_strs: Primzahlkreuz_pro_contra_strs_Fkt,
 }
 gebrochenSpaltenMaximumPlus1: int = 21  # Das ist nicht die Spaltenbreite, sondern wie weit gebrochene Zahlen gehen dürfen bei Zähler und Nenner
 
 # DOPPELT
-# spalten: dict[str, str] = {}
+# spalten: dict = {}
 # spalten |= {
 #    "breite": _("breite"),
 #    "breiten": _("breiten"),
 #    "keinenummerierung": _("keinenummerierung"),
 # }
 
-ausgabeParas: dict[str, str] = {
+ausgabeParas: dict = {
     "nocolor": _("nocolor"),
     "justtext": _("justtext"),
     "art": _("art"),
@@ -69,13 +69,28 @@ ausgabeParas: dict[str, str] = {
     "keinenummerierung": _("keinenummerierung"),
     "keineueberschriften": _("keineueberschriften"),
 }
+ausgabeParasEqSign: dict = {
+    "nocolor": False,
+    "justtext": False,
+    "art": True,
+    "onetable": False,
+    "spaltenreihenfolgeundnurdiese": True,
+    "endlessscreen": False,
+    "endless": False,
+    "dontwrap": False,
+    "breite": True,
+    "breiten": True,
+    "keineleereninhalte": False,
+    "keinenummerierung": False,
+    "keineueberschriften": False,
+}
 
 ausgabeParasLen = {key: len(value) for (key, value) in ausgabeParas.items()}
-kombiMainParas: dict[str, str] = {
+kombiMainParas: dict = {
     "galaxie": _("galaxie"),
     "universum": _("universum"),
 }
-zeilenParas: dict[str, str] = {
+zeilenParas: dict = {
     "alles": _("alles"),
     "gestern": _("gestern"),
     "heute": _("heute"),
@@ -100,7 +115,7 @@ zeilenParas: dict[str, str] = {
 
 zeilenParasLen = {key: len(value) for (key, value) in zeilenParas.items()}
 # zeilenParasLenPlus2 = {key: len(value) + 2 for (key, value) in zeilenParas.items()}
-hauptForNeben: dict[str, str] = {
+hauptForNeben: dict = {
     "zeilen": _("zeilen"),
     "spalten": _("spalten"),
     "kombination": _("kombination"),
@@ -111,7 +126,7 @@ hauptForNeben: dict[str, str] = {
 }
 
 
-ausgabeArt: dict[str, str] = {
+ausgabeArt: dict = {
     "bbcode": _("bbcode"),
     "html": _("html"),
     "csv": _("csv"),
@@ -121,7 +136,7 @@ ausgabeArt: dict[str, str] = {
 }
 
 
-wahl15Words: dict[str, str] = {
+wahl15Words: dict = {
     "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15),Model_of_Hierarchical_Complexity,"
     + Primzahlkreuz_pro_contra_strs[1]: ",".join(
         (
@@ -197,7 +212,7 @@ wahl15Words: dict[str, str] = {
     ),
 }
 
-wahl15: dict[str, str] = {
+wahl15: dict = {
     #    "_": _("Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15)"),
     "_15": ",".join(
         (
@@ -261,7 +276,8 @@ wahl15: dict[str, str] = {
     "_1pro12": _("Karte_Filter_und_Unterscheidung_(1/12)"),
 }
 
-befehle: dict[str, str] = {"15" + a: "15" + a for a in wahl15.keys()} | {
+# WICHTIG WICHTIG: die Befehle mit nur einem zeichen dürfen  nur ein Zeichen haben !!!!!!!
+befehle2: dict = {"15" + a: "15" + a for a in wahl15.keys()} | {
     "mond": _("mond"),
     "reta": _("reta"),
     "absicht": _("absicht"),
@@ -276,7 +292,6 @@ befehle: dict[str, str] = {"15" + a: "15" + a for a in wahl15.keys()} | {
     "modulo": _("modulo"),
     "prim": _("prim"),
     "primfaktorzerlegung": _("primfaktorzerlegung"),
-    "procontra": _("procontra"),
     "prim24": _("prim24"),
     "primfaktorzerlegungModulo24": _("primfaktorzerlegungModulo24"),
     "help": _("help"),
@@ -300,7 +315,7 @@ befehle: dict[str, str] = {"15" + a: "15" + a for a in wahl15.keys()} | {
     "exit": _("exit"),
     "quit": _("quit"),
     "q": _("q"),
-    ":q": ":q",
+    ":q": _(":q"),
     "shell": _("shell"),
     "s": _("s"),
     "math": _("math"),
@@ -323,13 +338,89 @@ befehle: dict[str, str] = {"15" + a: "15" + a for a in wahl15.keys()} | {
     "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar": _(
         "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
     ),
+    "abstand": _("abstand"),
 }
+
+# KurzLangBefehle sind die Befehle, die mehr als ein Zeichen groß sind und für reta dennoch Abkürzungen sind.
+
+# KurzKurzBefehle müssen auch in Fremdsprachen ein Zeichen groß bleiben!
+assert all(
+    [len(value) == 1 if len(key) == 1 else True for (key, value) in befehle2.items()]
+)
+
+# WICHTIG WICHTIG: die Befehle mit nur einem zeichen dürfen  nur ein Zeichen haben !!!!!!!
+befehle: list = list(befehle2.values())
+# ["15" + a for a in wahl15.keys()] + [
+#    _("mond"),
+#    _("reta"),
+#    _("absicht"),
+#    _("motiv"),
+#    _("thomas"),
+#    _("universum"),
+#    _("motive"),
+#    _("absichten"),
+#    _("vielfache"),
+#    _("einzeln"),
+#    _("multis"),
+#    _("modulo"),
+#    _("prim"),
+#    _("primfaktorzerlegung"),
+#    _("prim24"),
+#    _("primfaktorzerlegungModulo24"),
+#    _("help"),
+#    _("hilfe"),
+#    _("abc"),
+#    _("abcd"),
+#    _("alles"),
+#    _("a"),
+#    _("u"),
+#    _("befehle"),
+#    _("t"),
+#    _("richtung"),
+#    _("r"),
+#    _("v"),
+#    _("h"),
+#    _("p"),
+#    _("mo"),
+#    _("mu"),
+#    _("primzahlkreuz"),
+#    _("ende"),
+#    _("exit"),
+#    _("quit"),
+#    _("q"),
+#    ":q",
+#    _("shell"),
+#    _("s"),
+#    _("math"),
+#    _("loggen"),
+#    _("nichtloggen"),
+#    _("mulpri"),
+#    _("python"),
+#    _("w"),
+#    _("teiler"),
+#    _("BefehlSpeichernDanach"),
+#    _("S"),
+#    _("BefehlSpeicherungLöschen"),
+#    _("l"),
+#    _("BefehlSpeicherungAusgeben"),
+#    _("o"),
+#    _("e"),
+#    # _("BefehlsSpeicherungsModusAus"),
+#    # _("x"),
+#    _("BefehlSpeichernDavor"),
+#    _("keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"),
+#    _("abstand"),
+# ]
 
 ParametersMain: NamedTuple = namedtuple(
     "ParametersMain",
     "wichtigste wichtigste2 religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept konzept2 inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache planet strukturenkleinere grundstrukturen alles",
 )
-
+konzeptE = {"konzept": _("konzept"), "konzept2": _("konzept2")}
+gebrochenUniGal = {
+    "gebrochenuniversum": _("gebrochenuniversum"),
+    "gebrochengalaxie": _("gebrochengalaxie"),
+}
 ParametersMain: NamedTuple = ParametersMain(
     (
         _("Wichtigstes_zum_verstehen"),
@@ -396,17 +487,17 @@ ParametersMain: NamedTuple = ParametersMain(
         _("Symbole"),
         _("symbole"),
     ),
-    (a[0] for a in Multiplikationen),
+    [a[0] for a in Multiplikationen],
     (
         _("Eigenschaften_n"),
         _("eigenschaften"),
         _("eigenschaft"),
-        _("konzept"),
+        konzeptE["konzept"],
         _("konzepte"),
     ),
     (
         _("Eigenschaften_1/n"),
-        _("konzept2"),
+        konzeptE["konzept2"],
         _("konzepte2"),
     ),
     (
@@ -425,8 +516,8 @@ ParametersMain: NamedTuple = ParametersMain(
         _("Primzahlwirkung"),
         _("primzahlwirkung"),
     ),
-    (_("gebrochenuniversum"),),
-    (_("gebrochengalaxie"),),
+    (gebrochenUniGal["gebrochenuniversum"],),
+    (gebrochenUniGal["gebrochengalaxie"],),
     (
         _("Multiplikationen"),
         _("multiplikationen"),
@@ -440,8 +531,15 @@ ParametersMain: NamedTuple = ParametersMain(
     (_("alles"),),
 )
 
-
-paraNdataMatrix: list[Tuple[Any, dict[str, str], set[int], Optional[set]]] = [
+thomasWort = _("thomas")
+motivationWort = _("motivation")
+transzendentalienWort = _("transzendentalien")
+transzendentaliereziprokeWort = _("transzendentaliereziproke")
+verhaeltnisgleicherzahlWort = _("verhaeltnisgleicherzahl")
+gestirnWort = _("gestirn")
+primzahlkreuzWort = _("primzahlkreuz")
+GalaxieabsichtWort = _("Galaxieabsicht")
+paraNdataMatrix: list = [
     (
         ParametersMain.wichtigste,
         (
@@ -700,10 +798,7 @@ paraNdataMatrix: list[Tuple[Any, dict[str, str], set[int], Optional[set]]] = [
     ),
     (
         ParametersMain.universum,
-        (
-            _("Universelles_Verhältnis_gleicher_Zahlen"),
-            _("verhaeltnisgleicherzahl"),
-        ),
+        (_("Universelles_Verhältnis_gleicher_Zahlen"), verhaeltnisgleicherzahlWort),
         {383},
     ),
     (
@@ -790,11 +885,7 @@ paraNdataMatrix: list[Tuple[Any, dict[str, str], set[int], Optional[set]]] = [
     ),
     (
         ParametersMain.galaxie,
-        (
-            _("Thomasevangelium"),
-            _("thomasevangelium"),
-            _("thomas"),
-        ),
+        (_("Thomasevangelium"), _("thomasevangelium"), thomasWort),
         {0, 3, 303},
     ),
     (
@@ -1035,7 +1126,7 @@ paraNdataMatrix: list[Tuple[Any, dict[str, str], set[int], Optional[set]]] = [
             _("universum"),
             _("strukturalie"),
             _("strukturalien"),
-            _("transzendentalien"),
+            transzendentalienWort,
             _("transzendentalie"),
         ),
         set(),
@@ -1059,7 +1150,7 @@ paraNdataMatrix: list[Tuple[Any, dict[str, str], set[int], Optional[set]]] = [
     (
         ParametersMain.primzahlwirkung,
         (
-            _("Galaxieabsicht"),
+            GalaxieabsichtWort,
             _("absichtgalaxie"),
             _("absicht"),
             _("motive"),
@@ -1098,7 +1189,7 @@ paraNdataMatrix: list[Tuple[Any, dict[str, str], set[int], Optional[set]]] = [
             _("strukturaliereziproke"),
             _("strukturalienreziproke"),
             _("transzendentalienreziproke"),
-            _("transzendentaliereziproke"),
+            transzendentaliereziprokeWort,
         ),
         set(),
         set(),
@@ -2155,7 +2246,7 @@ paraNdataMatrix: list[Tuple[Any, dict[str, str], set[int], Optional[set]]] = [
         (
             _("Motive"),
             _("motive"),
-            _("motivation"),
+            motivationWort,
             _("motiv"),
             _("absicht"),
             _("absichten"),
@@ -2490,7 +2581,7 @@ paraNdataMatrix: list[Tuple[Any, dict[str, str], set[int], Optional[set]]] = [
         ParametersMain.bedeutung,
         (
             Primzahlkreuz_pro_contra_strs_Fkt[0],
-            _("primzahlkreuz"),
+            primzahlkreuzWort,
         ),
         set(),
         set(),
@@ -2571,7 +2662,7 @@ paraNdataMatrix: list[Tuple[Any, dict[str, str], set[int], Optional[set]]] = [
         ParametersMain.bedeutung,
         (
             _("Gestirn"),
-            _("gestirn"),
+            "gestirnWort",
             _("mond"),
             _("sonne"),
             _("planet"),
@@ -3267,7 +3358,7 @@ paraNdataMatrix: list[Tuple[Any, dict[str, str], set[int], Optional[set]]] = [
 ]
 paraNdataMatrix = paraNdataMatrix
 
-kombiParaNdataMatrix: OrderedDict[int, tuple[str]] = OrderedDict(
+kombiParaNdataMatrix: OrderedDict = OrderedDict(
     {
         1: (
             _("Lebewesen"),
@@ -3335,7 +3426,7 @@ kombiParaNdataMatrix: OrderedDict[int, tuple[str]] = OrderedDict(
     }
 )
 
-kombiParaNdataMatrix2: OrderedDict[int, tuple[str]] = OrderedDict(
+kombiParaNdataMatrix2: OrderedDict = OrderedDict(
     {
         1: (
             _("Lebewesen"),
@@ -3452,7 +3543,7 @@ def classify(cls, mod):
 
 
 class tableHandling:
-    parameterName: dict[str, str] = {"kombination": _("kombination")}
+    parameterName: dict = {"kombination": _("kombination")}
     art = ausgabeArt
     into = {
         "Kombination_(Galaxie_und_schwarzes_Loch)_(14_mit_13)": _(
@@ -3477,6 +3568,7 @@ class tableHandling:
 
 
 class concat:
+    themaWort = "Thema: "
     polygon1 = {" der eigenen Strukturgröße (": _(" der eigenen Strukturgröße (")}
     polygon2 = {
         ") auf dich bei gleichförmigen Polygonen": _(
@@ -3544,9 +3636,9 @@ class concat:
 
     mondExpLog2 = {"kein Mond": _("kein Mond")}
     # wohl nich nötig zu übersetzen modalA_
-    modalA1 = {"modalS": _("modalS")}
-    modalA2 = {"vervielfachter": _("vervielfachter")}
-    modalA3 = {"i_origS": _("i_origS")}
+    # modalA1 = {"modalS": _("modalS")}
+    # modalA2 = {"vervielfachter": _("vervielfachter")}
+    # modalA3 = {"i_origS": _("i_origS")}
 
     modalB = {
         "mittelstark überdurchschnittlich: ": _("mittelstark überdurchschnittlich: "),
@@ -3572,11 +3664,7 @@ class concat:
 
     generiertWort = {"Generiert: ": _("Generiert: ")}
     allesNurBezogenAufSatz = _("Alles nur bezogen auf die selbe Strukturgröße einer ")
-    headline1 = {
-        _(
-            "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
-        )
-    }
+    headline1 = "Gegen / pro: Nach Rechenregeln auf Primzahlkreuz und Vielfachern von Primzahlen"
     gegen = {"gegen ": _("gegen ")}
     pro = {"pro ": _("pro ")}
     hineinversetzen = {
@@ -3584,12 +3672,12 @@ class concat:
         " am Besten hineinversetzten.": _(" am Besten hineinversetzten."),
     }
     proIst = {
-        "pro dieser Zahl sind: _(": _("pro dieser Zahl sind: _("),
-        ")pro dieser Zahl ist ": _(")pro dieser Zahl ist "),
+        "pro dieser Zahl sind: ": _("pro dieser Zahl sind: "),
+        "pro dieser Zahl ist ": _("pro dieser Zahl ist "),
     }
     contraIst = {
-        " contra dieser Zahl sind: _(": _(" contra dieser Zahl sind: _("),
-        ") contra dieser Zahl ist ": _(") contra dieser Zahl ist "),
+        " contra dieser Zahl sind: ": _(" contra dieser Zahl sind: "),
+        " contra dieser Zahl ist ": _(" contra dieser Zahl ist "),
     }
     hineinversetzenSatz = " - Die Zahlen, die für oder gegen diese Zahlen hier sind, können sich in diese am Besten gedanklich hineinversetzen."
     polygone = {
@@ -3597,18 +3685,18 @@ class concat:
         "gleichförmige Polygone": _("gleichförmige Polygone"),
     }
 
-    kombisNamen: dict[str, str] = {
+    kombisNamen: dict = {
         "Motiv -> Motiv": _("Motiv -> Motiv"),
         "Motiv -> Strukur": _("Motiv -> Strukur"),
         "Struktur -> Motiv": _("Struktur -> Motiv"),
         "Struktur -> Strukur": _("Struktur -> Strukur"),
     }
-    kombisNamen2: dict[str, str] = {
-        "GalGal": _("GalGal"),
-        "GalUni": _("GalUni"),
-        "UniGal": _("UniGal"),
-        "UniUni": _("UniUni"),
-    }
+    # kombisNamen2: dict = {
+    #    "GalGal": _("GalGal"),
+    #    "GalUni": _("GalUni"),
+    #    "UniGal": _("UniGal"),
+    #    "UniUni": _("UniUni"),
+    # }
 
     faktorenbla = {
         ", mit Faktoren aus gebrochen-rationalen Zahlen": _(
@@ -3616,67 +3704,53 @@ class concat:
         )
     }
     genMul = {"generierte Multiplikationen ": _("generierte Multiplikationen ")}
-    ausserdem = {", außerdem: ": _(", außerdem: ")}
+    ausserdem = {", außerdem: ": _(", außerdem: "), "| außerdem: ": _("| außerdem: ")}
     Multiplikationen_ = {"Multiplikationen": _("Multiplikationen")}
     nWichtigste = {
         "Wichtigstes_zum_verstehen": _("Wichtigstes_zum_verstehen"),
         "Viertwichtigste": _("Viertwichtigste"),
     }
-    metaOrWhat = OrderedDict(
-        {
-            2: (
-                {"Meta-Thema: ": _("Meta-Thema: "), "Konkretes: ": _("Konkretes: ")},
-                {"Meta-": _("Meta-"), "Konkret-": _("Konkret-")},
-            ),
-            3: (
-                {"Theorie-Thema: ": _("Theorie-Thema: "), "Praxis: ": _("Praxis: ")},
-                {"Theorie-": _("Theorie-"), "Praxis-": _("Praxis-")},
-            ),
-            4: (
-                {
-                    "Planungs-Thema: ": _("Planungs-Thema: "),
-                    "Umsetzungs-Thema: ": _("Umsetzungs-Thema: "),
-                },
-                {"Planung-": _("Planung-"), "Umsetzung-": _("Umsetzung-")},
-            ),
-            5: (
-                {
-                    "Anlass-Thema: ": _("Anlass-Thema: "),
-                    "Wirkungs-Thema: ": _("Wirkungs-Thema: "),
-                },
-                {"Anlass-": _("Anlass-"), "wirkung-": _("wirkung-")},
-            ),
-            6: (
-                {
-                    "Kraft-Gebung: ": _("Kraft-Gebung: "),
-                    "Verstärkungs-Thema: ": _("Verstärkungs-Thema: "),
-                },
-                {"Kraft-geben-": _("Kraft-geben-"), "Verstärkung-": _("Verstärkung-")},
-            ),
-            7: (
-                {
-                    "Beherrschung: ": _("Beherrschung: "),
-                    "Richtung-Thema: ": _("Richtung-Thema: "),
-                },
-                {"beherrschend-": _("beherrschend-"), "Richtung-": _("Richtung-")},
-            ),
-        }
-    )
+    metaOrWhat = {
+        "Meta-Thema: ": _("Meta-Thema: "),
+        "Konkretes: ": _("Konkretes: "),
+        "Meta-": _("Meta-"),
+        "Konkret-": _("Konkret-"),
+        "Theorie-Thema: ": _("Theorie-Thema: "),
+        "Praxis: ": _("Praxis: "),
+        "Theorie-": _("Theorie-"),
+        "Praxis-": _("Praxis-"),
+        "Planungs-Thema: ": _("Planungs-Thema: "),
+        "Umsetzungs-Thema: ": _("Umsetzungs-Thema: "),
+        "Planung-": _("Planung-"),
+        "Umsetzung-": _("Umsetzung-"),
+        "Anlass-Thema: ": _("Anlass-Thema: "),
+        "Wirkungs-Thema: ": _("Wirkungs-Thema: "),
+        "Anlass-": _("Anlass-"),
+        "wirkung-": _("wirkung-"),
+        "Kraft-Gebung: ": _("Kraft-Gebung: "),
+        "Verstärkungs-Thema: ": _("Verstärkungs-Thema: "),
+        "Kraft-geben-": _("Kraft-geben-"),
+        "Verstärkung-": _("Verstärkung-"),
+        "Beherrschung: ": _("Beherrschung: "),
+        "Richtung-Thema: ": _("Richtung-Thema: "),
+        "beherrschend-": _("beherrschend-"),
+        "Richtung-": _("Richtung-"),
+    }
     metaKonkret = {
-        _("Meta"),
-        _("Theorie"),
-        _("Management"),
-        _("ganzheitlich"),
-        _("Verwertung, Unternehmung, Geschäft"),
-        _("regieren, beherrschen"),
-        _("Konkretes"),
-        _("Praxis"),
-        _("verändernd"),
-        _("darüber hinaus gehend"),
-        _("wertvoll"),
-        _("Richtung"),
-        _(" für 1/n statt n"),
-        _(" für n"),
+        "Meta": _("Meta"),
+        "Theorie": _("Theorie"),
+        "Management": _("Management"),
+        "ganzheitlich": _("ganzheitlich"),
+        "Verwertung, Unternehmung, Geschäft": _("Verwertung, Unternehmung, Geschäft"),
+        "regieren, beherrschen": _("regieren, beherrschen"),
+        "Konkretes": _("Konkretes"),
+        "Praxis": _("Praxis"),
+        "verändernd": _("verändernd"),
+        "darüber hinaus gehend": _("darüber hinaus gehend"),
+        "wertvoll": _("wertvoll"),
+        "Richtung": _("Richtung"),
+        " für 1/n statt n": _(" für 1/n statt n"),
+        " für n": _(" für n"),
     }
     innenAussen = {
         "für innen": _("für innen"),
@@ -3691,29 +3765,21 @@ class concat:
     }
     spaltenNamen = OrderedDict(
         {
-            5: {
-                "Transzendentalien, Strukturalien, Universum n": _(
-                    "Transzendentalien, Strukturalien, Universum n"
-                )
-            },
-            10: {"Galaxie n": _("Galaxie n")},
-            42: {"Galaxie 1/n": _("Galaxie 1/n")},
-            131: {
-                "Transzendentalien, Strukturalien, Universum 1/n": _(
-                    "Transzendentalien, Strukturalien, Universum 1/n"
-                )
-            },
-            138: {
-                "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n": _(
-                    "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n"
-                )
-            },
-            202: {
-                "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n": _(
-                    "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n)"
-                )
-            },
-            None: {"Richtung-Richtung": _("Richtung-Richtung")},
+            "Transzendentalien, Strukturalien, Universum n": _(
+                "Transzendentalien, Strukturalien, Universum n"
+            ),
+            "Galaxie n": _("Galaxie n"),
+            "Galaxie 1/n": _("Galaxie 1/n"),
+            "Transzendentalien, Strukturalien, Universum 1/n": _(
+                "Transzendentalien, Strukturalien, Universum 1/n"
+            ),
+            "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n": _(
+                "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n"
+            ),
+            "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n": _(
+                "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n"
+            ),
+            "Richtung-Richtung": _("Richtung-Richtung"),
         }
     )
 
@@ -3726,8 +3792,8 @@ class concat:
     }
     GalOrUniOrFehler = {
         "Fehler": _("Fehler"),
-        " Universum": _(" Universum"),
-        " Galaxie": _(" Galaxie"),
+        "Universum": _("Universum"),
+        "Galaxie": _("Galaxie"),
     }
 
     multipl = {"Multiplikationen": _("Multiplikationen")}
@@ -3735,7 +3801,7 @@ class concat:
 
 
 class lib4tables:
-    zaehlung = {"zaehlung:": _("zaehlung")}
+    zaehlung = {"zaehlung": _("zaehlung")}
     nummerier = {"nummerierung": _("nummerierung")}
     alles = {"alles": _("alles")}
 
@@ -3788,8 +3854,9 @@ class retapy:
                 'kein Unter-Parameter "--',
                 kombiMainParas["galaxie"],
                 '=" oder "--',
-                kombiMainParas["galaxie"],
+                kombiMainParas["universum"],
                 '=" angegeben für Hauptparameter -' + hauptForNeben["kombination"],
+                " oder einen nicht zugehörigen Parameter: ",
             )
         )
     )
@@ -3823,9 +3890,13 @@ class nested:
 
 
 class retaPrompt:
+    infoDebugAktiv = "Debug Log aktiviert."
+    abstandMeldung = "der Befehl 'abstand' ist nur erlaubt mit 2 weiteren Angaben mit Leerzeichen getrennt, einer Zahl und einem Zahlenbereich, z.B. 'abstand 7 17-25'"
     befehleBeenden = {_("ende"), _("exit"), _("quit"), _("q"), _(":q")}
+    befehleWort = {"Befehle": _("Befehle")}
     promptModeSatz = _("promptmode vorher: {} , {}")
-    out1Satze = (
+    promptModeSatz2 = _("'{}' ergibt sich aus '{}' und ergibt danach reta-Befehl:")
+    out1Saetze = (
         _("Dies ('"),
         _(
             "') ist tatsächlich ein Befehl (oder es sind mehrere), aber es gibt nichts auszugeben."
@@ -3836,20 +3907,20 @@ class retaPrompt:
         'Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\nDas ist eine Design-Entscheidung, die getroffen worden ist.'
     )
     replacements = {
-        befehle["e"]: befehle[
+        befehle2["e"]: befehle2[
             "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
         ],
-        befehle["a"]: befehle["absicht"],
-        befehle["u"]: befehle["universum"],
-        befehle["t"]: befehle["thomas"],
-        befehle["r"]: befehle["richtung"],
-        befehle["v"]: befehle["vielfache"],
-        befehle["h"]: befehle["help"],
-        befehle["w"]: befehle["teiler"],
-        befehle["S"]: befehle["BefehlSpeichernDanach"],
-        befehle["s"]: befehle["BefehlSpeichernDavor"],
-        befehle["l"]: befehle["BefehlSpeicherungLöschen"],
-        befehle["o"]: befehle["BefehlSpeicherungAusgeben"],
+        befehle2["a"]: befehle2["absicht"],
+        befehle2["u"]: befehle2["universum"],
+        befehle2["t"]: befehle2["thomas"],
+        befehle2["r"]: befehle2["richtung"],
+        befehle2["v"]: befehle2["vielfache"],
+        befehle2["h"]: befehle2["help"],
+        befehle2["w"]: befehle2["teiler"],
+        befehle2["S"]: befehle2["BefehlSpeichernDanach"],
+        befehle2["s"]: befehle2["BefehlSpeichernDavor"],
+        befehle2["l"]: befehle2["BefehlSpeicherungLöschen"],
+        befehle2["o"]: befehle2["BefehlSpeicherungAusgeben"],
     }
     retaPromptParameter = {
         "vi": _("vi"),
@@ -3880,9 +3951,9 @@ class retaPrompt:
             -""",
             retaPromptParameter["e"],
             _(" bewirkt, dass bei allen Befehlen das '"),
-            befehle["e"],
+            befehle2["e"],
             ("' Kommando bzw. '"),
-            befehle["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"],
+            befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"],
             _(
                 "' jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil dieser anders funktioniert "
             ),
@@ -3907,3 +3978,25 @@ mainParaCmds: dict = {
     "h": _("h"),
     "help": _("help"),
 }
+
+
+# @dataclass
+class csvFileNames:
+    kombi13 = _("kombi.csv")
+    kombi15 = _("kombi-meta.csv")
+    religion = _("religion.csv")
+    prim = _("primenumbers.csv")
+    bruch15 = _("gebrochen-rational-universum.csv")
+    bruch13 = _("gebrochen-rational-galaxie.csv")
+    bruch7 = _("gebrochen-rational-emotionen.csv")
+    burchGroesse = _("gebrochen-rational-strukturgroesse.csv")
+    kombi_17_13_15 = _("kombi-gedanken17-absichten13-bewusstsein15.csv")
+    kombi_11_15 = _("kombi-meta-systeme.csv")
+    kombi_10_15 = _("kombi-universelle-wirklichkeit.csv")
+    kreis18 = _("kreisVomTyp18.csv")
+    sunMoon = _("sunMoonEtc.csv")
+    meaningOfLife = _("meaningOfLife.csv")
+    dualitaetenTrinities = _("dualism-trinities-etc.csv")
+
+
+EIGS_N_R = (_("EIGN"), _("EIGR"))

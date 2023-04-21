@@ -16,8 +16,8 @@ try:
 except:
     OrderedSet = set
 
-from center import (Multiplikationen, alxp, cliout, getTextWrapThings, infoLog,
-                    output, primfaktoren, primRepeat, re, x)
+from center import (Multiplikationen, alxp, cliout, getTextWrapThings, i18n,
+                    infoLog, output, primfaktoren, primRepeat, re, x)
 from lib4tables import (OutputSyntax, bbCodeSyntax,
                         couldBePrimeNumberPrimzahlkreuz, csvSyntax,
                         divisorGenerator, emacsSyntax, htmlSyntax,
@@ -648,13 +648,12 @@ class Tables:
                                     line += ["\n"] + addionalLine
                             if emptyEntries != entriesHere:
                                 if type(self.__outType) is csvSyntax:
-                                    strio = io.StringIO(newline="\n")
+                                    strio = io.StringIO(newline="")
                                     writer = csv.writer(
                                         strio,
-                                        quoting=csv.QUOTE_NONE,
+                                        quoting=csv.QUOTE_MINIMAL,
                                         delimiter=";",
-                                        quotechar="",
-                                        escapechar="\\",
+                                        quotechar='"',
                                     )
 
                                     writer.writerow(line)
@@ -1250,7 +1249,7 @@ class Tables:
                                         into: list = []
                                         into2: list = []
 
-                                        if csvFileName == "kombi.csv":
+                                        if csvFileName == i18n.csvFileNames.kombi13:
                                             for (
                                                 elementParameter
                                             ) in self.tables.dataDict[3][a]:
@@ -1278,7 +1277,7 @@ class Tables:
                                                             "Zweitwichtigste",
                                                         )
                                                     ]
-                                        elif csvFileName == "kombi-meta.csv":
+                                        elif csvFileName == i18n.csvFileNames.kombi15:
                                             for (
                                                 elementParameter
                                             ) in self.tables.dataDict[8][a]:
