@@ -277,13 +277,14 @@ class NestedCompleter(Completer):
         completer.kombiParaWort = (
             first_term if gleich else self.kombiParaWort if komma else None
         )
+
         var4 = {
-            i18n.gebrochenUniGal["galaxie"]: [
+            i18n.kombiMainParas["galaxie"]: [
                 item
                 for sublist in retaProgram.kombiParaNdataMatrix.values()
                 for item in sublist
             ],
-            i18n.gebrochenUniGal["universum"]: [
+            i18n.kombiMainParas["universum"]: [
                 item
                 for sublist in retaProgram.kombiParaNdataMatrix2.values()
                 for item in sublist

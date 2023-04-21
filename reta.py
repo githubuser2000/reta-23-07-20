@@ -316,17 +316,31 @@ class Program:
                                         + cmd[: cmd.find("=") + 1]
                                         + " "
                                         + (
-                                            str(self.kombiReverseDict.keys())[11:-1]
+                                            str(
+                                                tuple(
+                                                    [
+                                                        element
+                                                        for row in i18n.kombiParaNdataMatrix.values()
+                                                        for element in row
+                                                    ]
+                                                )
+                                            )[1:-1]
                                             if cmd[: cmd.find("=")] == galWort[:-1]
-                                            else str(self.kombiReverseDict2.keys())[
-                                                11:-1
-                                            ]
+                                            else str(
+                                                tuple(
+                                                    [
+                                                        element
+                                                        for row in i18n.kombiParaNdataMatrix2.values()
+                                                        for element in row
+                                                    ]
+                                                )
+                                            )[1:-1]
                                             if cmd[: cmd.find("=")] == uniWort[:-1]
                                             else ""
                                         )
                                     )
 
-                    else:
+                    elif neg == "":
                         cliout(i18nR.cliout6Satz)
                 elif lastMainCmd not in self.mainParaCmds.values():
                     cliout(

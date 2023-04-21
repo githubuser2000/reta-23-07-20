@@ -3846,7 +3846,7 @@ class retapy:
                 'kein Unter-Parameter "--',
                 kombiMainParas["galaxie"],
                 '=" oder "--',
-                kombiMainParas["galaxie"],
+                kombiMainParas["universum"],
                 '=" angegeben für Hauptparameter -' + hauptForNeben["kombination"],
             )
         )

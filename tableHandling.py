@@ -1249,7 +1249,7 @@ class Tables:
                                         into: list = []
                                         into2: list = []
 
-                                        if csvFileName == i18n.csvFileName.kombi13:
+                                        if csvFileName == i18n.csvFileNames.kombi13:
                                             for (
                                                 elementParameter
                                             ) in self.tables.dataDict[3][a]:
@@ -1277,7 +1277,7 @@ class Tables:
                                                             "Zweitwichtigste",
                                                         )
                                                     ]
-                                        elif csvFileName == i18n.csvFileName.kombi15:
+                                        elif csvFileName == i18n.csvFileNames.kombi15:
                                             for (
                                                 elementParameter
                                             ) in self.tables.dataDict[8][a]:
