@@ -908,13 +908,13 @@ def PromptGrosseAusgabe(
 
         if len(eigR) > 0:
             warBefehl = True
-            zeilenAusReziprokenDazu = ",".join(
-                [
-                    bruch.split("/")[0]
-                    for bruch in bruch_GanzZahlReziproke.split(",")
-                    if bruch.split("/")[0] != ""
-                ]
-            )
+            # zeilenAusReziprokenDazu = ",".join(
+            #    [
+            #        bruch.split("/")[0]
+            #        for bruch in bruch_GanzZahlReziproke.split(",")
+            #        if bruch.split("/")[0] != ""
+            #    ]
+            # )
 
             # if len(zeiln1) > 1 and i18n.zeilenParas["oberesmaximum"] not in zeiln1:
             #    zeiln1 += (
@@ -924,32 +924,32 @@ def PromptGrosseAusgabe(
             #    zeiln2 += (
             #        "," if zeiln2[-1].isdecimal() else ""
             #    ) + zeilenAusReziprokenDazu
-            cNeu = c + "," + zeilenAusReziprokenDazu
+            cNeu = c + "," + bruch_GanzZahlReziproke
             x("CNEU", cNeu)
             cNeu = cNeu.replace(",,", ",")
             cNeu = cNeu.strip(",")
             x("CNEU", cNeu)
 
             TxtNeu = deepcopy(Txt)
-            TxtNeu.text += " " + zeilenAusReziprokenDazu
-            zeiln1Neu, zeiln2Neu, _, _ = zeiln1234create(
-                TxtNeu,
-                len(zeilenAusReziprokenDazu) > 0,
-                "",
-                cNeu,
-                maxNum,
-                zahlenReiheKeineWteiler
-                + ("," if len(zahlenReiheKeineWteiler) > 0 else "")
-                + zeilenAusReziprokenDazu,
-            )
+            TxtNeu.text += " " + bruch_GanzZahlReziproke
+            # zeiln1Neu, zeiln2Neu, _, _ = zeiln1234create(
+            #    TxtNeu,
+            #    lenbruch_GanzZahlReziproke > 0,
+            #    "",
+            #    cNeu,
+            #    maxNum,
+            #    zahlenReiheKeineWteiler
+            #    + ("," if len(zahlenReiheKeineWteiler) > 0 else "")
+            #    + bruch_GanzZahlReziproke,
+            # )
             x(
                 "EIGR",
                 (
                     cNeu,
                     ketten,
                     Txt.listeE,
-                    " ".join((zeiln1Neu, zeiln1)),
-                    " ".join((zeiln2Neu, zeiln2)),
+                    " ".join((zeiln3, zeiln1)),
+                    " ".join((zeiln4, zeiln2)),
                     zahlenReiheKeineWteiler,
                 ),
             )
@@ -957,15 +957,12 @@ def PromptGrosseAusgabe(
                 retaExecuteNprint(
                     ketten + ["-zeilen", zeiln1, zeiln2],
                     Txt.listeE,
-                    zeiln1Neu,
-                    zeiln2Neu,
+                    zeiln3,
+                    zeiln4,
                     ["".join(("--", i18n.konzeptE["konzept2"], "=", (",".join(eigR))))],
                     None,
                 )
             del cNeu
-            del zeiln1Neu
-            del zeiln2Neu
-            del zeilenAusReziprokenDazu
 
         if len({i18n.befehle2["universum"]} & Txt.mengeE) > 0 or (
             i18n.befehle2["u"] in Txt.listeE
