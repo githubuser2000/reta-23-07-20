@@ -423,25 +423,33 @@ def speichern(ketten, platzhalter, text):
     Txt.platzhalter = platzhalter
     if bedingung1 or bedingung2:
         if bedingung1:
-            ifJoinReTaBefehle = True
-            rpBefehlE = " "
-            for rpBefehl in (Txt.text, Txt.platzhalter):
-                rpBefehlSplitted = str(rpBefehl).split()
-                if len(rpBefehlSplitted) > 0 and rpBefehlSplitted[0] == "reta":
-                    rpBefehlE += " ".join(rpBefehlSplitted[1:]) + " "
-                else:
-                    ifJoinReTaBefehle = False
-            if ifJoinReTaBefehle:
-                Txt.platzhalter = "reta " + rpBefehlE
+            woRetaBefehl = []
+            TxtPlatzhalter = TXT(Txt.platzhalter)
+            x("ALX 0", [Txt.liste, TxtPlatzhalter.liste])
+            if Txt.liste[:1] == ["reta"]:
+                woRetaBefehl += ["bereits-dabei"]
+                x("ALX", Txt.liste)
+                Txt.liste.pop(0)
+                x("ALX2", Txt.liste)
+            if TxtPlatzhalter.liste[:1] == ["reta"]:
+                woRetaBefehl += ["bei-dazu"]
+                x("ALX3", TxtPlatzhalter.liste)
+                TxtPlatzhalter.liste.pop(0)
+                x("ALX4", TxtPlatzhalter.liste)
+            if len(woRetaBefehl) > 0:
+                Txt.platzhalter = (
+                    "reta " + " ".join(TxtPlatzhalter.liste) + " " + " ".join(Txt.liste)
+                )
             else:
                 # nochmal für nicht Kurzbefehle befehle, also ohne "reta" am Anfang
                 textUndPlatzHalterNeu = []
                 langKurzBefehle = []
-                for rpBefehl in Txt.liste + Txt.platzhalter.split():
+                for rpBefehl in Txt.platzhalter.split() + Txt.liste:
                     if rpBefehl in befehle and len(rpBefehl) > 1:
                         langKurzBefehle += [rpBefehl]
                     else:
                         textUndPlatzHalterNeu += [rpBefehl]
+                x("WASSS", textUndPlatzHalterNeu)
                 ifJoinReTaBefehle = True
                 rpBefehlE = " "
                 for rpBefehl in textUndPlatzHalterNeu:
@@ -481,56 +489,14 @@ def speichern(ketten, platzhalter, text):
                         Txt2.liste = listeNeu
 
                     x("SDFF 2", Txt2.liste)
-                    if False:
-                        for i, rpBefehl in enumerate(Txt2.liste):
-                            x("rpBefehl", rpBefehl)
-                            for zeichen in rpBefehl:
-                                charTuepDavor = charTuep
-                                if zeichen.isalpha():
-                                    charTuep = CharType.alpha
-                                elif zeichen.isdecimal():
-                                    charTuep = CharType.decimal
-                                else:
-                                    charTuep = CharType.neithernor
-                                if (
-                                    charTuep != charTuepDavor
-                                    and charTuepDavor != CharType.begin
-                                ):
-                                    stilbruch = True
-                                if not zeichen.isspace():
-                                    if zeichen in [",", "-"] or zeichen.isdecimal():
-                                        if i == alt_i:
-                                            zahlenBereich += " " + zeichen + " "
-                                        else:
-                                            zahlenBereich += zeichen
-                                    else:
-                                        zeichenKette += [zeichen]
-                            alt_i = i
-                        if stilbruch:
-                            x("NEEEi 0", [" ".join(zeichenKette), zahlenBereich])
-                            rpBefehle2 = " ".join(zeichenKette) + zahlenBereich
                     x("NEEE", [rpBefehle2, " ", (" ".join(langKurzBefehle))])
                     Txt.platzhalter = rpBefehle2 + " " + (" ".join(langKurzBefehle))
                     Txt.platzhalter = " ".join(Txt2.liste)
-
-        # vielleicht programmier ich hier noch weiter
-        if bedingung2 and False:
-            ifJoinReTaBefehle = True
-            rpBefehlE = ""
-            for rpBefehl in ketten:
-                rpBefehlSplitted = rpBefehl
-                if len(rpBefehl) > 0 and rpBefehl[0] == "reta":
-                    rpBefehlE += " ".join(rpBefehl[1:]) + " "
-                else:
-                    ifJoinReTaBefehle = False
-            if ifJoinReTaBefehle:
-                Txt.platzhalter = "reta " + rpBefehlE
-
     else:
         Txt.platzhalter = "" if Txt.text is None else str(Txt.text)
-    x("PLATZZHH", Txt.platzhalter)
+    x("PLATZZHH - vor zweiter PromptVorbereitung", Txt.platzhalter)
     Txt.text = ""
-    if Txt.platzhalter != "":
+    if Txt.platzhalter != "" or not (bedingung1 or bedingung2):
         promptMode2 = PromptModus.AusgabeSelektiv
     else:
         promptMode2 = PromptModus.normal
@@ -544,10 +510,9 @@ def speichern(ketten, platzhalter, text):
         zahlenAngaben_X,
         ifKurzKurz_X,
     ) = promptVorbereitungGrosseAusgabe(
-        ketten,
         Txt.platzhalter,
-        PromptModus.normal,
-        PromptModus.normal,
+        promptMode2,
+        promptMode2,
         PromptModus.normal,
         Txt.platzhalter,
         [],
@@ -678,6 +643,9 @@ def PromptScope():
             promptMode = PromptModus.loeschenSelect
             continue
 
+        text1, text2, text3 = verdreheWoReTaBefehl(Txt.platzhalter, Txt.text, textDazu0)
+
+        x("PLATZZHH - vor erster PromptVorbereitung", [ketten, textDazu0, text1, text2])
         (
             IsPureOnlyReTaCmd,
             brueche,
@@ -688,13 +656,12 @@ def PromptScope():
             zahlenAngaben_,
             ifKurzKurz,
         ) = promptVorbereitungGrosseAusgabe(
-            ketten,
-            Txt.platzhalter,
+            text1,
             promptMode,
             promptMode2,
             promptModeLast,
-            Txt.text,
-            textDazu0,
+            text2,
+            text3,
         )
         loggingSwitch = PromptGrosseAusgabe(
             IsPureOnlyReTaCmd,
@@ -1803,8 +1770,16 @@ def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, Txt, warBefehl):
     return loggingSwitch, warBefehl
 
 
+def verdreheWoReTaBefehl(text1: str, text2: str, text3: str):
+    if text2[:4] == "reta":
+        x("verdrehe platzhalter mit stext liste", [text2, text1])
+        return text2, text1, text2.split()
+    x("NICHT: verdrehe platzhalter mit stext liste", [text1, text2])
+    return text1, text2, text3
+
+
 def promptVorbereitungGrosseAusgabe(
-    ketten, platzhalter, promptMode, promptMode2, promptModeLast, text, textDazu0
+    platzhalter, promptMode, promptMode2, promptModeLast, text, textDazu0
 ):
     Txt = TXT(text)
     Txt.platzhalter = platzhalter
@@ -1876,7 +1851,7 @@ def promptVorbereitungGrosseAusgabe(
             del stextDict[todel]
         Txt.liste = list(stextDict.values())
 
-        x("REDA", Txt.liste)
+        x("REDA i", [Txt.liste, Txt.platzhalter])
         if len({i18n.befehle2["w"], i18n.befehle2["teiler"]} & Txt.menge) > 0:
             BereichMenge = BereichToNumbers2(zahlenBereichNeu[True], False, 0)
             BereichMengeNeu = teiler(",".join([str(b) for b in BereichMenge]))[1]
@@ -1898,6 +1873,7 @@ def promptVorbereitungGrosseAusgabe(
             except:
                 pass
 
+        x("REDA u", [Txt.liste, Txt.platzhalter])
         if len({i18n.befehle2["v"], i18n.befehle2["vielfache"]} & Txt.menge) == 0:
             Txt.liste += [
                 "".join(("-", i18n.hauptForNeben["zeilen"])),
@@ -1923,6 +1899,7 @@ def promptVorbereitungGrosseAusgabe(
                 Txt.liste = x
             except:
                 pass
+    x("REDA k", [Txt.liste, Txt.platzhalter])
     IsPureOnlyReTaCmd: bool = len(Txt.liste) > 0 and Txt.liste[0] == "reta"
     brueche = []
     zahlenAngaben_ = []

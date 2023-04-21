@@ -267,6 +267,7 @@ def isReTaParameter(t: str):
 
 
 def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
+    x("KleinKlein", [promptMode2, stext, textDazu])
     stext2 = []
     ifKurzKurz = False
     for s_ in tuple(deepcopy(stext)):
