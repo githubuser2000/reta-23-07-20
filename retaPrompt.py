@@ -525,10 +525,13 @@ def PromptScope():
         nurEinBefehl,
         immerEbefehlJa,
     ) = PromptAllesVorGroesserSchleife()
+    global textDazu0
     Txt = TXT("")
     nochAusageben = ""
     ketten = []
     while len(Txt.menge & befehleBeenden) == 0:
+
+        x("BBBB", Txt.platzhalter)
         warBefehl = False
         promptModeLast = promptMode
 
@@ -552,9 +555,12 @@ def PromptScope():
             # textE = []
 
         if promptMode == PromptModus.loeschenSelect:
-            Txt.platzhalter, promptMode, Txt.text = PromptLoescheVorSpeicherungBefehle(
+            Txt.text, promptMode, _ = PromptLoescheVorSpeicherungBefehle(
                 Txt.platzhalter, promptMode, Txt.text
             )
+            Txt.platzhalter = Txt.text
+            textDazu0 = Txt.liste
+            print([Txt.liste])
             continue
 
         promptMode = PromptModus.normal
@@ -2047,6 +2053,7 @@ def promptInput(
         try:
             Txt.befehlDavor = Txt.text
 
+            x("AAAA", Txt.platzhalter)
             x("bfehldavor a1", Txt.befehlDavor)
             Txt.text = session.prompt(
                 # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
