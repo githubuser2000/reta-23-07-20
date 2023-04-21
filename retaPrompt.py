@@ -924,7 +924,11 @@ def PromptGrosseAusgabe(
             #    zeiln2 += (
             #        "," if zeiln2[-1].isdecimal() else ""
             #    ) + zeilenAusReziprokenDazu
-            cNeu = c + ("," if len(c) > 0 else "") + zeilenAusReziprokenDazu
+            cNeu = c + "," + zeilenAusReziprokenDazu
+            x("CNEU", cNeu)
+            cNeu = cNeu.replace(",,", ",")
+            cNeu = cNeu.strip(",")
+            x("CNEU", cNeu)
 
             TxtNeu = deepcopy(Txt)
             TxtNeu.text += " " + zeilenAusReziprokenDazu
@@ -938,9 +942,20 @@ def PromptGrosseAusgabe(
                 + ("," if len(zahlenReiheKeineWteiler) > 0 else "")
                 + zeilenAusReziprokenDazu,
             )
-            if len(c) > 0:
-                retaExecuteNprint(
+            x(
+                "EIGR",
+                (
+                    cNeu,
                     ketten,
+                    Txt.listeE,
+                    " ".join((zeiln1Neu, zeiln1)),
+                    " ".join((zeiln2Neu, zeiln2)),
+                    zahlenReiheKeineWteiler,
+                ),
+            )
+            if len(cNeu) > 0:
+                retaExecuteNprint(
+                    ketten + ["-zeilen", zeiln1, zeiln2],
                     Txt.listeE,
                     zeiln1Neu,
                     zeiln2Neu,
@@ -1372,6 +1387,7 @@ def retaExecuteNprint(
             cliout(" ".join(kette), True)
         else:
             print(" ".join(kette))
+    x("ENDE", kette)
     reta.Program(
         kette,
     )
