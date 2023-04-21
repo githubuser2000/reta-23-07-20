@@ -83,7 +83,6 @@ class TXT(object):
 
     @platzhalter.setter
     def platzhalter(self, value):
-        x("platziii", value)
         self._platzhalter = value
 
     @text.setter
@@ -417,7 +416,6 @@ def createRangesForBruchLists(bruchList: list) -> tuple:
 
 def speichern(ketten, platzhalter, text):
     global promptMode2, textDazu0
-    x("blaaa", [platzhalter, text])
     bedingung1 = len(platzhalter) > 0
     bedingung2 = len(ketten) > 0
     Txt = TXT(text)
@@ -426,17 +424,12 @@ def speichern(ketten, platzhalter, text):
         if bedingung1:
             woRetaBefehl = []
             TxtPlatzhalter = TXT(Txt.platzhalter)
-            x("ALX 0", [Txt.liste, TxtPlatzhalter.liste])
             if Txt.liste[:1] == ["reta"]:
                 woRetaBefehl += ["bereits-dabei"]
-                x("ALX", Txt.liste)
                 Txt.liste.pop(0)
-                x("ALX2", Txt.liste)
             if TxtPlatzhalter.liste[:1] == ["reta"]:
                 woRetaBefehl += ["bei-dazu"]
-                x("ALX3", TxtPlatzhalter.liste)
                 TxtPlatzhalter.liste.pop(0)
-                x("ALX4", TxtPlatzhalter.liste)
             if len(woRetaBefehl) > 0:
                 Txt.platzhalter = (
                     "reta " + " ".join(TxtPlatzhalter.liste) + " " + " ".join(Txt.liste)
@@ -450,7 +443,6 @@ def speichern(ketten, platzhalter, text):
                         langKurzBefehle += [rpBefehl.strip()]
                     else:  # Kurzbefehl oder irgendwas anderes
                         textUndPlatzHalterNeu += [rpBefehl.strip()]
-                x("WASSS", textUndPlatzHalterNeu)
                 rpBefehlE = ""
                 for rpBefehl in textUndPlatzHalterNeu:
                     rpBefehlSplitted = str(rpBefehl).split()
@@ -463,7 +455,6 @@ def speichern(ketten, platzhalter, text):
                     PromptModus.AusgabeSelektiv, Txt2.liste, []
                 )
                 replacements = i18nRP.replacements
-                x("SDFF", Txt2.liste)
                 if len(textUndPlatzHalterNeu) > 0 and Txt2.liste[0] not in [
                     "reta",
                     "shell",
@@ -478,12 +469,9 @@ def speichern(ketten, platzhalter, text):
                             listeNeu += [token]
                     Txt2.liste = listeNeu
 
-                x("SDFF 2", Txt2.liste)
-                x("NEEE", [" ", (" ".join(langKurzBefehle))])
                 Txt.platzhalter = " ".join(Txt2.liste + langKurzBefehle)
     else:
         Txt.platzhalter = "" if Txt.text is None else str(Txt.text)
-    x("PLATZZHH - vor zweiter PromptVorbereitung", Txt.platzhalter)
     Txt.text = ""
     if Txt.platzhalter != "" or not (bedingung1 or bedingung2):
         promptMode2 = PromptModus.AusgabeSelektiv
@@ -510,7 +498,6 @@ def speichern(ketten, platzhalter, text):
     # textDazu0 = platzhalter.split()
     textDazu0 = stextX
 
-    x("blaaa", [Txt.text, Txt.platzhalter, Txt.liste])
     return ketten, Txt
 
 
@@ -531,7 +518,6 @@ def PromptScope():
     ketten = []
     while len(Txt.menge & befehleBeenden) == 0:
 
-        x("BBBB", Txt.platzhalter)
         warBefehl = False
         promptModeLast = promptMode
 
@@ -560,7 +546,6 @@ def PromptScope():
             )
             Txt.platzhalter = Txt.text
             textDazu0 = Txt.liste
-            print([Txt.liste])
             continue
 
         promptMode = PromptModus.normal
@@ -575,7 +560,6 @@ def PromptScope():
             (i18n.befehle2["s"] in Txt.liste)
             or (i18n.befehle2["BefehlSpeichernDavor"] in Txt.liste)
         ) and len(Txt.liste) == 1:
-            x("bfehldavor", Txt.befehlDavor)
             ketten, Txt = speichern(ketten, Txt.platzhalter, Txt.befehlDavor)
             promptMode = PromptModus.normal
             continue
@@ -640,7 +624,6 @@ def PromptScope():
 
         text1, text2, text3 = verdreheWoReTaBefehl(Txt.platzhalter, Txt.text, textDazu0)
 
-        x("PLATZZHH - vor erster PromptVorbereitung", [ketten, textDazu0, text1, text2])
         (
             IsPureOnlyReTaCmd,
             brueche,
@@ -1767,9 +1750,7 @@ def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, Txt, warBefehl):
 
 def verdreheWoReTaBefehl(text1: str, text2: str, text3: str):
     if text2[:4] == "reta":
-        x("verdrehe platzhalter mit stext liste", [text2, text1])
         return text2, text1, text2.split()
-    x("NICHT: verdrehe platzhalter mit stext liste", [text1, text2])
     return text1, text2, text3
 
 
@@ -1813,15 +1794,6 @@ def promptVorbereitungGrosseAusgabe(
         and promptModeLast == PromptModus.normal
     ):
         Txt.liste = textDazu0 + Txt.liste
-    x(
-        "BSDFCF",
-        [
-            promptMode,
-            Txt.platzhalter,
-            zahlenBereichMatch,
-            zahlenBereichMatch.count(True),
-        ],
-    )
     if (
         promptMode == PromptModus.normal
         and len(Txt.platzhalter) > 1
@@ -1829,8 +1801,6 @@ def promptVorbereitungGrosseAusgabe(
         and any(zahlenBereichMatch)
         and zahlenBereichMatch.count(True) == 1
     ):
-        x("REDA", Txt.platzhalter)
-        x("REDA", Txt.liste)
         zeilenn = False
         woerterToDel = []
         for i, wort in enumerate(Txt.liste):
@@ -1846,7 +1816,6 @@ def promptVorbereitungGrosseAusgabe(
             del stextDict[todel]
         Txt.liste = list(stextDict.values())
 
-        x("REDA i", [Txt.liste, Txt.platzhalter])
         if len({i18n.befehle2["w"], i18n.befehle2["teiler"]} & Txt.menge) > 0:
             BereichMenge = BereichToNumbers2(zahlenBereichNeu[True], False, 0)
             BereichMengeNeu = teiler(",".join([str(b) for b in BereichMenge]))[1]
@@ -1868,7 +1837,6 @@ def promptVorbereitungGrosseAusgabe(
             except:
                 pass
 
-        x("REDA u", [Txt.liste, Txt.platzhalter])
         if len({i18n.befehle2["v"], i18n.befehle2["vielfache"]} & Txt.menge) == 0:
             Txt.liste += [
                 "".join(("-", i18n.hauptForNeben["zeilen"])),
@@ -1894,7 +1862,6 @@ def promptVorbereitungGrosseAusgabe(
                 Txt.liste = x
             except:
                 pass
-    x("REDA k", [Txt.liste, Txt.platzhalter])
     IsPureOnlyReTaCmd: bool = len(Txt.liste) > 0 and Txt.liste[0] == "reta"
     brueche = []
     zahlenAngaben_ = []
@@ -1990,11 +1957,12 @@ def PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text):
     TxtLoeschbereiche = TXT(platzhalter)
     loeschbares1 = {i + 1: a for i, a in enumerate(TxtLoeschbereiche.liste)}
     loeschbares2 = {a: i + 1 for i, a in enumerate(TxtLoeschbereiche.liste)}
-    alxp(loeschbares2)
     flag = False
-    x("WAs LOES 1", [text, TxtZuloeschen, TxtLoeschbereiche.text])
     if isZeilenAngabe(TxtZuloeschen.text):
-        if TxtZuloeschen.text not in loeschbares2.keys():
+        if (
+            TxtZuloeschen.text not in loeschbares2.keys()
+            or not TxtZuloeschen.text.isdecimal()
+        ):
             zuloeschen2 = BereichToNumbers2(TxtZuloeschen.text, False, 0)
             for todel in zuloeschen2:
                 try:
@@ -2006,10 +1974,8 @@ def PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text):
             flag = True
     else:
         flag = True
-    x("WAs LOES 2", [text, TxtZuloeschen, TxtLoeschbereiche.text])
     if flag:
         zuloeschen2 = set()
-        alxp(loeschbares2)
         for wort in TxtZuloeschen.liste:
             try:
                 TxtLoeschbereiche.liste = list(
@@ -2017,7 +1983,6 @@ def PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text):
                 )
             except:
                 pass
-        alxp(loeschbares2)
         TxtZuloeschen = TXT(",".join(zuloeschen2))
         TxtLoeschbereiche.platzhalter = " ".join(TxtLoeschbereiche.liste)
 
@@ -2053,8 +2018,6 @@ def promptInput(
         try:
             Txt.befehlDavor = Txt.text
 
-            x("AAAA", Txt.platzhalter)
-            x("bfehldavor a1", Txt.befehlDavor)
             Txt.text = session.prompt(
                 # print_formatted_text("Enter HTML: ", sep="", end=""), completer=html_completer
                 # ">",
