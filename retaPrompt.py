@@ -617,10 +617,17 @@ def PromptScope():
             (i18n.befehle2["l"] in Txt.liste)
             or ("BefehlSpeicherungLöschen" in Txt.liste)
         ) and len(Txt.liste) == 1:
-            print(str([{i + 1, a} for i, a in enumerate(Txt.platzhalter.split())]))
-            alxp(i18nRP.promptModeSatz.format(promptMode, promptMode2))
-            promptMode = PromptModus.loeschenSelect
-            continue
+
+            if "--" + i18n.ausgabeParas["nocolor"] in Txt.listeE:
+                print(str([{i + 1, a} for i, a in enumerate(Txt.platzhalter.split())]))
+            else:
+                cliout(
+                    str([{i + 1, a} for i, a in enumerate(Txt.platzhalter.split())]),
+                    True,
+                )
+                alxp(i18nRP.promptModeSatz.format(promptMode, promptMode2))
+                promptMode = PromptModus.loeschenSelect
+                continue
 
         text1, text2, text3 = verdreheWoReTaBefehl(
             Txt.platzhalter, Txt.text, textDazu0, promptMode
@@ -710,7 +717,13 @@ def PromptGrosseAusgabe(
         and i18n.befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"]
         not in Txt.listeE
     ):
-        print(i18nRP.promptModeSatz2.format(" ".join(Txt.listeE), Txt.text))
+
+        if "--" + i18n.ausgabeParas["nocolor"] in Txt.listeE:
+            print(i18nRP.promptModeSatz2.format(" ".join(Txt.listeE), Txt.text))
+        else:
+            cliout(
+                i18nRP.promptModeSatz2.format(" ".join(Txt.listeE), Txt.text), True, ""
+            )
     if (
         i18n.befehle2["abc"] in Txt.listeE or i18n.befehle2["abcd"] in Txt.listeE
     ) and len(Txt.liste) == 2:
@@ -753,6 +766,14 @@ def PromptGrosseAusgabe(
         warBefehl = True
         alxp("EXE X")
         import reta
+
+        if (
+            i18n.befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"]
+            not in Txt.listeE
+            and not ifKurzKurz
+        ):
+
+            cliout(" ".join(Txt.liste), True, "")
 
         reta.Program(Txt.liste)
 
@@ -1317,7 +1338,11 @@ def retaExecuteNprint(
         i18n.befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"]
         not in stextE
     ):
-        print(" ".join(kette))
+
+        if "--" + i18n.ausgabeParas["nocolor"] in stextE:
+            cliout(" ".join(kette), True)
+        else:
+            print(" ".join(kette))
     reta.Program(
         kette,
     )
