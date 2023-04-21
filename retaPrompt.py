@@ -26,6 +26,7 @@ from LibRetaPrompt import (BereichToNumbers2, PromptModus,
                            notParameterValues, stextFromKleinKleinKleinBefehl,
                            verifyBruchNganzZahlBetweenCommas, verkuerze_dict,
                            wahl15)
+from multis import mult
 # import reta
 from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
                        befehle2, hauptForNeben, kombiMainParas, mainParas,
@@ -1106,15 +1107,15 @@ def PromptGrosseAusgabe(
             > 0
         ):
             warBefehl = True
-            for arg in zahlenReiheKeineWteiler.split(","):
-                if arg.isdecimal():
-                    print(
-                        str(arg)
-                        + ": "
-                        + str(primRepeat(primfaktoren(int(arg), True)))[1:-1]
-                        .replace("'", "")
-                        .replace(", ", " ")
-                    )
+
+            for arg in BereichToNumbers2(zahlenReiheKeineWteiler):
+                print(
+                    str(arg)
+                    + ": "
+                    + str(primRepeat(primfaktoren(int(arg), True)))[1:-1]
+                    .replace("'", "")
+                    .replace(", ", " ")
+                )
 
         if (
             len(
@@ -1124,15 +1125,14 @@ def PromptGrosseAusgabe(
             > 0
         ):
             warBefehl = True
-            for arg in zahlenReiheKeineWteiler.split(","):
-                if arg.isdecimal():
-                    print(
-                        str(arg)
-                        + ": "
-                        + str(primRepeat(primfaktoren(int(arg))))[1:-1]
-                        .replace("'", "")
-                        .replace(", ", " ")
-                    )
+            for arg in BereichToNumbers2(zahlenReiheKeineWteiler):
+                print(
+                    str(arg)
+                    + ": "
+                    + str(primRepeat(primfaktoren(int(arg))))[1:-1]
+                    .replace("'", "")
+                    .replace(", ", " ")
+                )
 
         if len({i18n.befehle2["multis"]} & Txt.mengeE) > 0 or (
             "mu" in Txt.listeE
@@ -1140,15 +1140,9 @@ def PromptGrosseAusgabe(
             and i18n.befehle2["abcd"] not in Txt.listeE
         ):
             warBefehl = True
-            import reta
 
-            listeStrWerte = zahlenReiheKeineWteiler.split(",")
-            try:
-                mult(listeStrWerte)
-            except NameError:
-                from multis import mult
-
-                mult(listeStrWerte)
+            listeStrWerte = BereichToNumbers2(zahlenReiheKeineWteiler)
+            mult(listeStrWerte)
 
             # externCommand(i18n.befehle2["prim"], c)
 
