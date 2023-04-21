@@ -1278,7 +1278,7 @@ def PromptGrosseAusgabe(
         loggingSwitch, Txt, warBefehl
     )
     if len(nurEinBefehl) > 0:
-        Txt.liste = copy(befehleBeenden)
+        Txt.liste = list(befehleBeenden)
         nurEinBefehl = " ".join(befehleBeenden)
         exit()
     if not warBefehl and len(Txt.liste) > 0 and Txt.listeE[0] not in befehleBeenden:
@@ -1948,7 +1948,7 @@ def PromptAllesVorGroesserSchleife():
             alxp(i18nRP.infoDebugAktiv)
 
     if "-" + i18nRP.retaPromptParameter["befehl"] in sys.argv:
-        von = "-" + sys.argv.index(i18nRP.retaPromptParameter["befehl"]) + 1
+        von = sys.argv.index("-" + i18nRP.retaPromptParameter["befehl"]) + 1
         nurEinBefehl = sys.argv[von:]
     else:
         nurEinBefehl = []
