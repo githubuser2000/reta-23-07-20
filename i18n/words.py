@@ -3856,6 +3856,7 @@ class retapy:
                 '=" oder "--',
                 kombiMainParas["universum"],
                 '=" angegeben für Hauptparameter -' + hauptForNeben["kombination"],
+                " oder einen nicht zugehörigen Parameter: ",
             )
         )
     )

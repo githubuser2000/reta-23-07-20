@@ -261,7 +261,7 @@ def isReTaParameter(t: str):
     return (
         len(t) > 0
         and t[0] == "-"
-        and not isZeilenAngabe(t)
+        and not isZeilenBruchOrGanzZahlAngabe(t)
         and t.split("=")[0] in [str(c).split("=")[0] for c in notParameterValues]
     )
 

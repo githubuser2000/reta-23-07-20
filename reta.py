@@ -341,7 +341,7 @@ class Program:
                                     )
 
                     elif neg == "":
-                        cliout(i18nR.cliout6Satz)
+                        cliout(i18nR.cliout6Satz + str(cmd))
                 elif lastMainCmd not in self.mainParaCmds.values():
                     cliout(
                         i18nR.cliout7Saetzetz[0]

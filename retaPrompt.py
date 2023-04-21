@@ -132,13 +132,6 @@ def anotherOberesMaximum(c, maxNum):
     )
 
 
-class CharType(Enum):
-    decimal = 0
-    alpha = 1
-    neithernor = 2
-    begin = 3
-
-
 def newSession(history=False):
     if history:
         return PromptSession(
@@ -763,10 +756,8 @@ def PromptGrosseAusgabe(
         (len(bruch_GanzZahlReziproke) > 0 or len(rangesBruecheDict) > 0)
         or len(rangesBruecheDictReverse) > 0,
     )
-    x("EXE X ?", IsPureOnlyReTaCmd)
     if IsPureOnlyReTaCmd:
         warBefehl = True
-        alxp("EXE X")
         import reta
 
         if (
@@ -933,7 +924,7 @@ def PromptGrosseAusgabe(
             #    zeiln2 += (
             #        "," if zeiln2[-1].isdecimal() else ""
             #    ) + zeilenAusReziprokenDazu
-            c += ("," if len(c) > 0 else "") + zeilenAusReziprokenDazu
+            cNeu = c + ("," if len(c) > 0 else "") + zeilenAusReziprokenDazu
 
             TxtNeu = deepcopy(Txt)
             TxtNeu.text += " " + zeilenAusReziprokenDazu
@@ -941,24 +932,11 @@ def PromptGrosseAusgabe(
                 TxtNeu,
                 len(zeilenAusReziprokenDazu) > 0,
                 "",
-                c,
+                cNeu,
                 maxNum,
                 zahlenReiheKeineWteiler
                 + ("," if len(zahlenReiheKeineWteiler) > 0 else "")
                 + zeilenAusReziprokenDazu,
-            )
-            x(
-                "EIGR",
-                [
-                    TxtNeu.text,
-                    zeilenAusReziprokenDazu,
-                    c,
-                    zeiln1Neu,
-                    zeiln2Neu,
-                    zahlenReiheKeineWteiler
-                    + ("," if len(zahlenReiheKeineWteiler) > 0 else "")
-                    + zeilenAusReziprokenDazu,
-                ],
             )
             if len(c) > 0:
                 retaExecuteNprint(
@@ -969,6 +947,10 @@ def PromptGrosseAusgabe(
                     ["".join(("--", i18n.konzeptE["konzept2"], "=", (",".join(eigR))))],
                     None,
                 )
+            del cNeu
+            del zeiln1Neu
+            del zeiln2Neu
+            del zeilenAusReziprokenDazu
 
         if len({i18n.befehle2["universum"]} & Txt.mengeE) > 0 or (
             i18n.befehle2["u"] in Txt.listeE
@@ -1294,13 +1276,9 @@ def zeiln1234create(
     else:
         zeiln3 = "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "=0"))
         zeiln4 = ""
-    x("SDGSDGdfgdfgdsfhdsfhdsfh", bedingungZahl)
-    x("SDGSDGdfgdfgdsfhdsfhdsfh", c)
     if bedingungZahl:
-        x("SDGSDGdfgdfgdsfhdsfhdsfh", c)
         zahlenBereiche = str(c).strip()
         if textHatZiffer(zahlenBereiche):
-            alxp("SDGSDGdfgdfgdsfhdsfhdsfh")
             if i18n.befehle2["einzeln"] not in Txt.listeE and (
                 (i18n.befehle2["vielfache"] in Txt.listeE)
                 or (
@@ -1309,7 +1287,6 @@ def zeiln1234create(
                     and i18n.befehle2["abcd"] not in Txt.listeE
                 )
             ):
-                alxp("SDGSDGdfgdfgdsfhdsfhdsfh")
                 if len(Txt.menge & {i18n.befehle2["teiler"], i18n.befehle2["w"]}) == 0:
                     zeiln1 = (
                         "".join(("--", i18n.zeilenParas["vielfachevonzahlen"], "="))
@@ -1847,7 +1824,6 @@ def promptVorbereitungGrosseAusgabe(
     ketten = []
     # AusgabeSelektiv = 5
     ifKurzKurz = False
-    x("EXE ????", [Txt.liste, textDazu0])
     if len(Txt.liste) > 0:
         textDazu: list = []
         s_2: list
@@ -1949,7 +1925,6 @@ def promptVorbereitungGrosseAusgabe(
             except:
                 pass
     IsPureOnlyReTaCmd: bool = len(Txt.liste) > 0 and Txt.liste[0] == "reta"
-    x("EXE ????", Txt.liste)
     brueche = []
     zahlenAngaben_ = []
     c = ""

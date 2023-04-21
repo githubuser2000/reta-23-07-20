@@ -14,9 +14,8 @@ from prompt_toolkit.document import Document
 from center import i18n
 from LibRetaPrompt import (PromptModus, ausgabeArt, ausgabeParas, befehle,
                            befehle2, hauptForNeben, hauptForNebenSet,
-                           isReTaParameter, isZeilenBruchOrGanzZahlAngabe,
-                           kombiMainParas, mainParas, reta, retaProgram,
-                           spalten, spaltenDict,
+                           isZeilenBruchOrGanzZahlAngabe, kombiMainParas,
+                           mainParas, reta, retaProgram, spalten, spaltenDict,
                            stextFromKleinKleinKleinBefehl, zeilenParas,
                            zeilenTypen, zeilenZeit)
 # from prompt_toolkit.completion.word_completer import WordCompleter
