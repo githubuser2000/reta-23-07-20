@@ -275,6 +275,8 @@ wahl15: dict = {
     "_13_13": _("Absicht_13_ist_Helfen"),
     "_1pro12": _("Karte_Filter_und_Unterscheidung_(1/12)"),
 }
+
+# WICHTIG WICHTIG: die Befehle mit nur einem zeichen dürfen  nur ein Zeichen haben !!!!!!!
 befehle2: dict = {"15" + a: "15" + a for a in wahl15.keys()} | {
     "mond": _("mond"),
     "reta": _("reta"),
@@ -339,7 +341,8 @@ befehle2: dict = {"15" + a: "15" + a for a in wahl15.keys()} | {
     "abstand": _("abstand"),
 }
 
-befehle: dict = ["15" + a for a in wahl15.keys()] + [
+# WICHTIG WICHTIG: die Befehle mit nur einem zeichen dürfen  nur ein Zeichen haben !!!!!!!
+befehle: list = ["15" + a for a in wahl15.keys()] + [
     _("mond"),
     _("reta"),
     _("absicht"),

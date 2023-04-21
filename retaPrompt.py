@@ -34,6 +34,7 @@ from word_completerAlx import WordCompleter
 
 i18nRP = i18n.retaPrompt
 wahl15["_"] = wahl15["_15"]
+befehle += ["15_"]
 befehleBeenden = i18nRP.befehleBeenden
 # befehleBeenden = {"ende", "exit", "quit", "q", ":q"}
 infoLog = False
@@ -440,58 +441,46 @@ def speichern(ketten, platzhalter, text):
                 Txt.platzhalter = (
                     "reta " + " ".join(TxtPlatzhalter.liste) + " " + " ".join(Txt.liste)
                 )
-            else:
+            else:  # erstes und zweites heißt nicht reta am Anfang
                 # nochmal für nicht Kurzbefehle befehle, also ohne "reta" am Anfang
                 textUndPlatzHalterNeu = []
                 langKurzBefehle = []
                 for rpBefehl in Txt.platzhalter.split() + Txt.liste:
                     if rpBefehl in befehle and len(rpBefehl) > 1:
-                        langKurzBefehle += [rpBefehl]
-                    else:
-                        textUndPlatzHalterNeu += [rpBefehl]
+                        langKurzBefehle += [rpBefehl.strip()]
+                    else:  # Kurzbefehl oder irgendwas anderes
+                        textUndPlatzHalterNeu += [rpBefehl.strip()]
                 x("WASSS", textUndPlatzHalterNeu)
-                ifJoinReTaBefehle = True
-                rpBefehlE = " "
+                rpBefehlE = ""
                 for rpBefehl in textUndPlatzHalterNeu:
                     rpBefehlSplitted = str(rpBefehl).split()
-                    if len(rpBefehlSplitted) > 0 and rpBefehlSplitted[0] != "reta":
+                    if len(rpBefehlSplitted) > 0:
                         rpBefehlE += " ".join(rpBefehlSplitted) + " "
-                    else:
-                        ifJoinReTaBefehle = False
-                if ifJoinReTaBefehle:
-                    rpBefehle2 = " "
-                    charTuep = CharType.begin
-                    # stilbruch = False
-                    zeichenKette = []
-                    zahlenBereich = " "
-                    alt_i = -1
+                rpBefehlE = rpBefehlE[:-1]
+                Txt2 = TXT()
+                Txt2.liste = textUndPlatzHalterNeu
+                ifKurzKurz, Txt2.liste = stextFromKleinKleinKleinBefehl(
+                    PromptModus.AusgabeSelektiv, Txt2.liste, []
+                )
+                replacements = i18nRP.replacements
+                x("SDFF", Txt2.liste)
+                if len(textUndPlatzHalterNeu) > 0 and Txt2.liste[0] not in [
+                    "reta",
+                    "shell",
+                    "python",
+                    "abstand",
+                ]:
+                    listeNeu: list = []
+                    for token in Txt2.liste:
+                        try:
+                            listeNeu += [replacements[token]]
+                        except KeyError:
+                            listeNeu += [token]
+                    Txt2.liste = listeNeu
 
-                    Txt2 = TXT()
-                    # Txt2.platzhalter = Txt.platzhalter
-                    Txt2.liste = textUndPlatzHalterNeu
-                    ifKurzKurz, Txt2.liste = stextFromKleinKleinKleinBefehl(
-                        PromptModus.AusgabeSelektiv, Txt2.liste, []
-                    )
-                    replacements = i18nRP.replacements
-                    x("SDFF", Txt2.liste)
-                    if len(textUndPlatzHalterNeu) > 0 and Txt2.liste[0] not in [
-                        "reta",
-                        "shell",
-                        "python",
-                        "abstand",
-                    ]:
-                        listeNeu: list = []
-                        for token in Txt2.liste:
-                            try:
-                                listeNeu += [replacements[token]]
-                            except KeyError:
-                                listeNeu += [token]
-                        Txt2.liste = listeNeu
-
-                    x("SDFF 2", Txt2.liste)
-                    x("NEEE", [rpBefehle2, " ", (" ".join(langKurzBefehle))])
-                    Txt.platzhalter = rpBefehle2 + " " + (" ".join(langKurzBefehle))
-                    Txt.platzhalter = " ".join(Txt2.liste)
+                x("SDFF 2", Txt2.liste)
+                x("NEEE", [" ", (" ".join(langKurzBefehle))])
+                Txt.platzhalter = " ".join(Txt2.liste + langKurzBefehle)
     else:
         Txt.platzhalter = "" if Txt.text is None else str(Txt.text)
     x("PLATZZHH - vor zweiter PromptVorbereitung", Txt.platzhalter)
@@ -1991,39 +1980,43 @@ def PromptAllesVorGroesserSchleife():
 
 def PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text):
     global promptMode2, textDazu0
-    Txt = TXT(text)
-    Txt.platzhalter = platzhalter
-    zuloeschen = Txt.text
-    x("WAs LOES", platzhalter)
-    loeschbares1 = {i + 1: a for i, a in enumerate(platzhalter.split())}
-    loeschbares2 = {a: i + 1 for i, a in enumerate(platzhalter.split())}
+    TxtZuloeschen = TXT(text)
+    TxtLoeschbereiche = TXT(platzhalter)
+    loeschbares1 = {i + 1: a for i, a in enumerate(TxtLoeschbereiche.liste)}
+    loeschbares2 = {a: i + 1 for i, a in enumerate(TxtLoeschbereiche.liste)}
+    alxp(loeschbares2)
     flag = False
-    if isZeilenAngabe(zuloeschen):
-        if zuloeschen not in loeschbares2.keys():
-            zuloeschen2 = BereichToNumbers2(zuloeschen, False, 0)
+    x("WAs LOES 1", [text, TxtZuloeschen, TxtLoeschbereiche.text])
+    if isZeilenAngabe(TxtZuloeschen.text):
+        if TxtZuloeschen.text not in loeschbares2.keys():
+            zuloeschen2 = BereichToNumbers2(TxtZuloeschen.text, False, 0)
             for todel in zuloeschen2:
                 try:
                     del loeschbares1[todel]
                 except:
                     pass
-            Txt.platzhalter = " ".join(loeschbares1.values())
+            TxtLoeschbereiche.platzhalter = " ".join(loeschbares1.values())
         else:
             flag = True
     else:
         flag = True
+    x("WAs LOES 2", [text, TxtZuloeschen, TxtLoeschbereiche.text])
     if flag:
-        for wort in Txt.liste:
+        zuloeschen2 = set()
+        alxp(loeschbares2)
+        for wort in TxtZuloeschen.liste:
             try:
-                del loeschbares2[wort]
+                TxtLoeschbereiche.liste = list(
+                    filter(lambda a: a != wort, TxtLoeschbereiche.liste)
+                )
             except:
                 pass
-        Txt.platzhalter = " ".join(loeschbares2.keys())
+        alxp(loeschbares2)
+        TxtZuloeschen = TXT(",".join(zuloeschen2))
+        TxtLoeschbereiche.platzhalter = " ".join(TxtLoeschbereiche.liste)
+
     promptMode = PromptModus.normal
-    if len(Txt.platzhalter.strip()) == 0:
-        promptMode2 = PromptModus.normal
-        textDazu0 = []
-    textDazu0 = Txt.platzhalter.split()
-    return Txt.platzhalter, promptMode, Txt.text
+    return TxtLoeschbereiche.platzhalter, promptMode, TxtZuloeschen.text
 
 
 def promptSpeicherungB(nochAusageben, promptMode, Txt):
