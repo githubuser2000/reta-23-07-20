@@ -864,6 +864,7 @@ class Concat:
         # for key, value in result.items():
         #    result2[key] = list(value)
 
+        x("BRUCH?", result)
         return result
 
     def combineDicts(
@@ -1350,6 +1351,7 @@ class Concat:
         @return: relitable + weitere Tabelle daneben
         """
         self.relitable = relitable
+        alxp("gebrochen")
 
         hardCodedCouple = (10, 42)
         transzendentalienNrezi = (5, 131)
@@ -2429,6 +2431,7 @@ class Concat:
                     frac = Fraction(i + 2, k + 2)
                     if frac.denominator != 1 and frac.numerator != 1:
                         menge |= {frac}
+        x("BRUCH", menge)
         return menge
 
     def readOneCSVAndReturn(self, wahl) -> list:

@@ -44,7 +44,7 @@ Primzahlkreuz_pro_contra_strs_Fkt: tuple[str, str] = (
 Primzahlkreuz_pro_contra_strs_Dict = {
     Primzahlkreuz_pro_contra_strs: Primzahlkreuz_pro_contra_strs_Fkt,
 }
-gebrochenSpaltenMaximumPlus1: int = 21  # Das ist nicht die Spaltenbreite, sondern wie weit gebrochene Zahlen gehen dürfen bei Zähler und Nenner
+gebrochenSpaltenMaximumPlus1: int = 24  # Das ist nicht die Spaltenbreite, sondern wie weit gebrochene Zahlen gehen dürfen bei Zähler und Nenner
 
 # DOPPELT
 # spalten: dict = {}

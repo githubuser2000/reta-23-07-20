@@ -23,7 +23,7 @@ from tableHandling import (Enum, Iterable, Multiplikationen, OutputSyntax,
                            markdownSyntax, math, os, output, primCreativity,
                            re, setShellRowsAmount, shellRowsAmount, sys, x)
 
-gebrochenSpaltenMaximumPlus1 = 21
+gebrochenSpaltenMaximumPlus1 = i18n.gebrochenSpaltenMaximumPlus1
 
 csvFileNames = i18n.csvFileNames
 i18nR = i18n.retapy
