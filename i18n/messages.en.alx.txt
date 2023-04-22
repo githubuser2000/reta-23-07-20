@@ -2143,7 +2143,7 @@ Reinforcement-
 __
 Mastery:
 __
-Direction-theme:
+Direction-topic:
 __
 mastery-
 __
@@ -2181,7 +2181,7 @@ Against-counter-transcendentalia, counter-structuralia, universe n
 __
 neutral counter-transcendentalia, counter-structuralia, universe n
 __
-Direction-direction
+direction-direction
 __
 prime number effect (7, direction)
 __
@@ -2232,9 +2232,9 @@ __
 A main parameter, or the correct one, must be set so that a
 __
 __
-\ __ can be executed. Main parameters are: -"
+\ can be executed. Main parameters are: -"
 __
-Attempts parameters -h
+try parameters -h
 __
 __
 \ does not exist here for the main parameter \"-"
@@ -2281,29 +2281,29 @@ save what>
 __
 delete what>
 __
-combi.csv
+kombi.csv
 __
-combi-meta.csv
+kombi-meta.csv
 __
 religion.csv
 __
 primenumbers.csv
 __
-fractioned-rational-universe.csv
+gebrochen-rational-universum.csv
 __
-fractional-rational-galaxy.csv
+gebrochen-rational-galaxie.csv
 __
-fractioned-rational-emotions.csv
+gebrochen-rational-emotionen.csv
 __
-fractional-rational-structure-size.csv
+gebrochen-rational-strukturgroesse.csv
 __
-combined-thoughts17-intentions13-consciousness15.csv
+kombi-gedanken17-absichten13-bewusstsein15.csv
 __
-combi-meta-systems.csv
+kombi-meta-systeme.csv
 __
-combi-universal-reality.csv
+kombi-universelle-wirklichkeit.csv
 __
-circleFromType18.csv
+kreisVomTyp18.csv
 __
 sunMoonEtc.csv
 __
@@ -2311,7 +2311,7 @@ meaningOfLife.csv
 __
 dualism-trinities-etc.csv
 __
-EIGN
+PROPN
 __
-EIGR
+PROPR
 

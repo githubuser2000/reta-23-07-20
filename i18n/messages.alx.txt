@@ -1,2316 +1,2336 @@
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-22 20:53+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 __
-Multiplikationen
+ "Multiplikationen"
 __
-Primzahlkreuz_pro_contra
+ "Primzahlkreuz_pro_contra"
 __
-nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)
+"nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)"
 __
-nocolor
+ "nocolor"
 __
-justtext
+ "justtext"
 __
-art
+ "art"
 __
-onetable
+ "onetable"
 __
-spaltenreihenfolgeundnurdiese
+ "spaltenreihenfolgeundnurdiese"
 __
-endlessscreen
+ "endlessscreen"
 __
-endless
+ "endless"
 __
-dontwrap
+ "dontwrap"
 __
-breite
+ "breite"
 __
-breiten
+ "breiten"
 __
-keineleereninhalte
+ "keineleereninhalte"
 __
-keinenummerierung
+ "keinenummerierung"
 __
-keineueberschriften
+ "keineueberschriften"
 __
-galaxie
+ "galaxie"
 __
-universum
+ "universum"
 __
-alles
+ "alles"
 __
-gestern
+ "gestern"
 __
-heute
+ "heute"
 __
-hoehemaximal
+ "hoehemaximal"
 __
-mond
+ "mond"
 __
-morgen
+ "morgen"
 __
-nachtraeglichneuabzaehlung
+ "nachtraeglichneuabzaehlung"
 __
-nachtraeglichneuabzaehlungvielfache
+ "nachtraeglichneuabzaehlungvielfache"
 __
-oberesmaximum
+ "oberesmaximum"
 __
-planet
+ "planet"
 __
-potenzenvonzahlen
+ "potenzenvonzahlen"
 __
-primzahlvielfache
+ "primzahlvielfache"
 __
-schwarzesonne
+ "schwarzesonne"
 __
-sonne
+ "sonne"
 __
-typ
+ "typ"
 __
-vielfachevonzahlen
+ "vielfachevonzahlen"
 __
-vorhervonausschnitt
+ "vorhervonausschnitt"
 __
-vorhervonausschnittteiler
+ "vorhervonausschnittteiler"
 __
-zaehlung
+ "zaehlung"
 __
-zeit
+ "zeit"
 __
-zeilen
+ "zeilen"
 __
-spalten
+ "spalten"
 __
-kombination
+ "kombination"
 __
-ausgabe
+ "ausgabe"
 __
-h
+ "h"
 __
-help
+ "help"
 __
-debug
+ "debug"
 __
-bbcode
+ "bbcode"
 __
-html
+ "html"
 __
-csv
+ "csv"
 __
-shell
+ "shell"
 __
-markdown
+ "markdown"
 __
-emacs
+ "emacs"
 __
-Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15)
+ "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15)"
 __
-Geist_(15)
+ "Geist_(15)"
 __
-Model_of_Hierarchical_Complexity),
+ "Model_of_Hierarchical_Complexity),"
 __
-Konkreta_und_Focus_(2)
+ "Konkreta_und_Focus_(2)"
 __
-Impulse_(5)
+ "Impulse_(5)"
 __
-Gefühle_(7)
+ "Gefühle_(7)"
 __
-Modus_und_Sein_(8)
+ "Modus_und_Sein_(8)"
 __
-Wirklichkeiten_Wahrheit_Wahrnehmung_(10)
+ "Wirklichkeiten_Wahrheit_Wahrnehmung_(10)"
 __
-Meta-Systeme_(12),Ordnung_und_Filterung_12_und_1pro12
+ "Meta-Systeme_(12),Ordnung_und_Filterung_12_und_1pro12"
 __
-Paradigmen_sind_Absichten_(13)
+ "Paradigmen_sind_Absichten_(13)"
 __
-Gedanken_sind_Positionen_(17)
+ "Gedanken_sind_Positionen_(17)"
 __
-Verbundenheiten_(18)
+ "Verbundenheiten_(18)"
 __
-Triebe_und_Bedürfnisse_(6)
+ "Triebe_und_Bedürfnisse_(6)"
 __
-Lust_(9)
+ "Lust_(9)"
 __
-Reflexe_(3),Existenzialien_(3)
+ "Reflexe_(3),Existenzialien_(3)"
 __
-Absicht_6_ist_Vorteilsmaximierung
+ "Absicht_6_ist_Vorteilsmaximierung"
 __
-Absicht_7_ist_Selbstlosigkeit
+ "Absicht_7_ist_Selbstlosigkeit"
 __
-Absicht_10_ist_Wirklichkeit_erkennen
+ "Absicht_10_ist_Wirklichkeit_erkennen"
 __
-Absicht_17_ist_zu_meinen
+ "Absicht_17_ist_zu_meinen"
 __
-Zeit_(4)_als_Wirklichkeit
+ "Zeit_(4)_als_Wirklichkeit"
 __
-Funktionen_Vorstellungen_(16)
+ "Funktionen_Vorstellungen_(16)"
 __
-Achtung_(4)
+ "Achtung_(4)"
 __
-Absicht_1/8
+ "Absicht_1/8"
 __
-Absicht_1/6_ist_Reinigung_und_Klarheit
+ "Absicht_1/6_ist_Reinigung_und_Klarheit"
 __
-Reflektion_und_Kategorien_(1/15)
+ "Reflektion_und_Kategorien_(1/15)"
 __
-Regungen_(1)
+ "Regungen_(1)"
 __
-Energie_und_universelle_Eigenschaften_(30)
+ "Energie_und_universelle_Eigenschaften_(30)"
 __
-Stimmungen_Kombinationen_(14)
+ "Stimmungen_Kombinationen_(14)"
 __
-Klassen_(20)
+ "Klassen_(20)"
 __
-Empathie_(37)
+ "Empathie_(37)"
 __
-Garben_und_Verhalten_nachfühlen(31)
+ "Garben_und_Verhalten_nachfühlen(31)"
 __
-Verhalten_(11)
+ "Verhalten_(11)"
 __
-Bedeutung_(10)
+ "Bedeutung_(10)"
 __
-Themen_(6)
+ "Themen_(6)"
 __
-Optimierung_(10)
+ "Optimierung_(10)"
 __
-Attraktionen_(36)
+ "Attraktionen_(36)"
 __
-Absicht_16_ist_zu_genügen
+ "Absicht_16_ist_zu_genügen"
 __
-Liebe_(7)
+ "Liebe_(7)"
 __
-Koalitionen_(10)
+ "Koalitionen_(10)"
 __
-Ansichten_Standpunkte_(18_17)
+ "Ansichten_Standpunkte_(18_17)"
 __
-Prinzipien(1/8)
+ "Prinzipien(1/8)"
 __
-Bestrebungen(1/5)
+ "Bestrebungen(1/5)"
 __
-Bedingung_und_Auslöser_(1/3)
+ "Bedingung_und_Auslöser_(1/3)"
 __
-relativer_Zeit-Betrag_(15_10_4_18_6)
+ "relativer_Zeit-Betrag_(15_10_4_18_6)"
 __
-Zahlenvergleich_(15_18_6)
+ "Zahlenvergleich_(15_18_6)"
 __
-Leidenschaften_(21)
+ "Leidenschaften_(21)"
 __
-Erwartungshaltungen_(26)
+ "Erwartungshaltungen_(26)"
 __
-Extremalien_(19),Ziele_(19)
+ "Extremalien_(19),Ziele_(19)"
 __
-universeller_Komperativ_(18→15)
+ "universeller_Komperativ_(18→15)"
 __
-Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)
+ "Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)"
 __
-Sollen_Frage_Vorgehensweise_(1/13)
+ "Sollen_Frage_Vorgehensweise_(1/13)"
 __
-Fundament_(1/19)
+ "Fundament_(1/19)"
 __
-abhängige_Verbundenheit_(90)
+ "abhängige_Verbundenheit_(90)"
 __
-Absicht_13_ist_Helfen
+ "Absicht_13_ist_Helfen"
 __
-Karte_Filter_und_Unterscheidung_(1/12)
+ "Karte_Filter_und_Unterscheidung_(1/12)"
 __
-Model_of_Hierarchical_Complexity
+ "Model_of_Hierarchical_Complexity"
 __
-Meta-Systeme_(12)
+ "Meta-Systeme_(12)"
 __
-Ordnung_und_Filterung_12_und_1pro12
+ "Ordnung_und_Filterung_12_und_1pro12"
 __
-reta
+ "reta"
 __
-absicht
+ "absicht"
 __
-motiv
+ "motiv"
 __
-thomas
+ "thomas"
 __
-motive
+ "motive"
 __
-absichten
+ "absichten"
 __
-vielfache
+ "vielfache"
 __
-einzeln
+ "einzeln"
 __
-multis
+ "multis"
 __
-modulo
+ "modulo"
 __
-prim
+ "prim"
 __
-primfaktorzerlegung
+ "primfaktorzerlegung"
 __
-prim24
+ "prim24"
 __
-primfaktorzerlegungModulo24
+ "primfaktorzerlegungModulo24"
 __
-hilfe
+ "hilfe"
 __
-abc
+ "abc"
 __
-abcd
+ "abcd"
 __
-a
+ "a"
 __
-u
+ "u"
 __
-befehle
+ "befehle"
 __
-t
+ "t"
 __
-richtung
+ "richtung"
 __
-r
+ "r"
 __
-v
+ "v"
 __
-p
+ "p"
 __
-mo
+ "mo"
 __
-mu
+ "mu"
 __
-primzahlkreuz
+ "primzahlkreuz"
 __
-ende
+ "ende"
 __
-exit
+ "exit"
 __
-quit
+ "quit"
 __
-q
+ "q"
 __
-:q
+ ":q"
 __
-s
+ "s"
 __
-math
+ "math"
 __
-loggen
+ "loggen"
 __
-nichtloggen
+ "nichtloggen"
 __
-mulpri
+ "mulpri"
 __
-python
+ "python"
 __
-w
+ "w"
 __
-teiler
+ "teiler"
 __
-BefehlSpeichernDanach
+ "BefehlSpeichernDanach"
 __
-S
+ "S"
 __
-BefehlSpeicherungLöschen
+ "BefehlSpeicherungLöschen"
 __
-l
+ "l"
 __
-BefehlSpeicherungAusgeben
+ "BefehlSpeicherungAusgeben"
 __
-o
+ "o"
 __
-e
+ "e"
 __
-BefehlSpeichernDavor
+ "BefehlSpeichernDavor"
 __
-keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar
+ "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
 __
-abstand
+ "abstand"
 __
-konzept
+ "konzept"
 __
-konzept2
+ "konzept2"
 __
-gebrochenuniversum
+ "gebrochenuniversum"
 __
-gebrochengalaxie
+ "gebrochengalaxie"
 __
-Wichtigstes_zum_verstehen
+ "Wichtigstes_zum_verstehen"
 __
-wichtigsteverstehen
+ "wichtigsteverstehen"
 __
-Wichtigstes_zum_gedanklich_einordnen
+ "Wichtigstes_zum_gedanklich_einordnen"
 __
-wichtigsteeinordnen
+ "wichtigsteeinordnen"
 __
-Religionen
+ "Religionen"
 __
-religionen
+ "religionen"
 __
-religion
+ "religion"
 __
-Galaxie
+ "Galaxie"
 __
-alteschriften
+ "alteschriften"
 __
-kreis
+ "kreis"
 __
-galaxien
+ "galaxien"
 __
-kreise
+ "kreise"
 __
-Größenordnung
+ "Größenordnung"
 __
-groessenordnung
+ "groessenordnung"
 __
-strukturgroesse
+ "strukturgroesse"
 __
-strukturgroeße
+ "strukturgroeße"
 __
-strukturgrösse
+ "strukturgrösse"
 __
-strukturgröße
+ "strukturgröße"
 __
-groesse
+ "groesse"
 __
-stufe
+ "stufe"
 __
-organisationen
+ "organisationen"
 __
-Universum
+ "Universum"
 __
-transzendentalien
+ "transzendentalien"
 __
-strukturalien
+ "strukturalien"
 __
-kugel
+ "kugel"
 __
-kugeln
+ "kugeln"
 __
-ball
+ "ball"
 __
-baelle
+ "baelle"
 __
-bälle
+ "bälle"
 __
-Wirtschaft
+ "Wirtschaft"
 __
-wirtschaft
+ "wirtschaft"
 __
-Menschliches
+ "Menschliches"
 __
-menschliches
+ "menschliches"
 __
-Pro_Contra
+ "Pro_Contra"
 __
-procontra
+ "procontra"
 __
-dagegendafuer
+ "dagegendafuer"
 __
-Licht
+ "Licht"
 __
-licht
+ "licht"
 __
-Bedeutung
+ "Bedeutung"
 __
-bedeutung
+ "bedeutung"
 __
-Symbole
+ "Symbole"
 __
-symbole
+ "symbole"
 __
-Eigenschaften_n
+ "Eigenschaften_n"
 __
-eigenschaften
+ "eigenschaften"
 __
-eigenschaft
+ "eigenschaft"
 __
-konzepte
+ "konzepte"
 __
-Eigenschaften_1/n
+ "Eigenschaften_1/n"
 __
-konzepte2
+ "konzepte2"
 __
-Inkrementieren
+ "Inkrementieren"
 __
-inkrementieren
+ "inkrementieren"
 __
-Operationen
+ "Operationen"
 __
-operationen
+ "operationen"
 __
-Meta_vs_Konkret_(Universum)
+ "Meta_vs_Konkret_(Universum)"
 __
-universummetakonkret
+ "universummetakonkret"
 __
-Primzahlwirkung
+ "Primzahlwirkung"
 __
-primzahlwirkung
+ "primzahlwirkung"
 __
-multiplikationen
+ "multiplikationen"
 __
-Planet_(10_und_oder_12)
+ "Planet_(10_und_oder_12)"
 __
-Strukturen_1_bis_9
+ "Strukturen_1_bis_9"
 __
-strukturkleinerzehn
+ "strukturkleinerzehn"
 __
-Grundstrukturen
+ "Grundstrukturen"
 __
-grundstrukturen
+ "grundstrukturen"
 __
-motivation
+ "motivation"
 __
-transzendentaliereziproke
+ "transzendentaliereziproke"
 __
-verhaeltnisgleicherzahl
+ "verhaeltnisgleicherzahl"
 __
-gestirn
+ "gestirn"
 __
-Galaxieabsicht
+ "Galaxieabsicht"
 __
-Wichtigste
+ "Wichtigste"
 __
-wichtigste
+ "wichtigste"
 __
-Mensch-zu-Tier
+ "Mensch-zu-Tier"
 __
-menschtier
+ "menschtier"
 __
-tiermensch
+ "tiermensch"
 __
-ansichten
+ "ansichten"
 __
-(politische)_Richtungen_(7)
+ "(politische)_Richtungen_(7)"
 __
-richtungen
+ "richtungen"
 __
-politische
+ "politische"
 __
-Wirklichkeiten_(10)
+ "Wirklichkeiten_(10)"
 __
-wirklichkeit
+ "wirklichkeit"
 __
-wirklichkeiten
+ "wirklichkeiten"
 __
-metasysteme
+ "metasysteme"
 __
-metasystem
+ "metasystem"
 __
-meta-systeme
+ "meta-systeme"
 __
-meta-system
+ "meta-system"
 __
-Intelligenz
+ "Intelligenz"
 __
-intelligenz
+ "intelligenz"
 __
-Gleichheit_Freiheit_Ordnung
+ "Gleichheit_Freiheit_Ordnung"
 __
-gleichheit
+ "gleichheit"
 __
-freiheit
+ "freiheit"
 __
-ordnung
+ "ordnung"
 __
-Komplexität
+ "Komplexität"
 __
-komplexität
+ "komplexität"
 __
-komplexitaet
+ "komplexitaet"
 __
-Mechanismen
+ "Mechanismen"
 __
-mechanismen
+ "mechanismen"
 __
-mechanismus
+ "mechanismus"
 __
-Zweitwichtigste
+ "Zweitwichtigste"
 __
-zweitwichtigste
+ "zweitwichtigste"
 __
-Drittwichtigste
+ "Drittwichtigste"
 __
-drittwichtigste
+ "drittwichtigste"
 __
-Motive_Sternpolygone
+ "Motive_Sternpolygone"
 __
-viertwichtigste
+ "viertwichtigste"
 __
-wichtigstes
+ "wichtigstes"
 __
-Halbierung
+ "Halbierung"
 __
-halbierung
+ "halbierung"
 __
-halbierungen
+ "halbierungen"
 __
-Religions-Gründer-Typ
+ "Religions-Gründer-Typ"
 __
-religionsgründertyp
+ "religionsgründertyp"
 __
-prophet
+ "prophet"
 __
-archon
+ "archon"
 __
-religionsgruendertyp
+ "religionsgruendertyp"
 __
-Hinduismus
+ "Hinduismus"
 __
-hinduismus
+ "hinduismus"
 __
-Sternpolygon
+ "Sternpolygon"
 __
-sternpolygon
+ "sternpolygon"
 __
-der_Tierkreiszeichen
+ "der_Tierkreiszeichen"
 __
-dertierkreiszeichen
+ "dertierkreiszeichen"
 __
-babylon
+ "babylon"
 __
-Sternpolygon_vs_gleichförmiges
+ "Sternpolygon_vs_gleichförmiges"
 __
-vergleich
+ "vergleich"
 __
-sternpolygonvsgleichfoermiges
+ "sternpolygonvsgleichfoermiges"
 __
-vergleichnvs1divn
+ "vergleichnvs1divn"
 __
-Messias
+ "Messias"
 __
-messias
+ "messias"
 __
-heptagramm
+ "heptagramm"
 __
-hund
+ "hund"
 __
-messiase
+ "messiase"
 __
-messiasse
+ "messiasse"
 __
-gleichförmiges_Polygon
+ "gleichförmiges_Polygon"
 __
-gleichförmigespolygon
+ "gleichförmigespolygon"
 __
-gleichfoermigespolygon
+ "gleichfoermigespolygon"
 __
-nichtsternpolygon
+ "nichtsternpolygon"
 __
-polygon
+ "polygon"
 __
-Vertreter_höherer_Konzepte
+ "Vertreter_höherer_Konzepte"
 __
-vertreterhoehererkonzepte
+ "vertreterhoehererkonzepte"
 __
-schwarzesonnen
+ "schwarzesonnen"
 __
-universen
+ "universen"
 __
-Offenbarung_des_Johannes
+ "Offenbarung_des_Johannes"
 __
-offenbarung
+ "offenbarung"
 __
-offenbarungdesjohannes
+ "offenbarungdesjohannes"
 __
-johannes
+ "johannes"
 __
-bibel
+ "bibel"
 __
-offenbarungjohannes
+ "offenbarungjohannes"
 __
-Teilchen-Meta-Physik
+ "Teilchen-Meta-Physik"
 __
-addition
+ "addition"
 __
-identitaet
+ "identitaet"
 __
-Identität
+ "Identität"
 __
-Hochzüchten
+ "Hochzüchten"
 __
-hochzüchten
+ "hochzüchten"
 __
-hochzuechten
+ "hochzuechten"
 __
-Universelles_Verhältnis_gleicher_Zahlen
+ "Universelles_Verhältnis_gleicher_Zahlen"
 __
-universelles_Recht
+ "universelles_Recht"
 __
-recht
+ "recht"
 __
-jura
+ "jura"
 __
-sowas_wie_Kombinieren_Verknüpfen
+ "sowas_wie_Kombinieren_Verknüpfen"
 __
-kombinierenetc
+ "kombinierenetc"
 __
-keine_Nur-Paradigma-Religionen
+ "keine_Nur-Paradigma-Religionen"
 __
-metaparadigmareligion
+ "metaparadigmareligion"
 __
-Kugeln_Kreise
+ "Kugeln_Kreise"
 __
-kugelnkreise
+ "kugelnkreise"
 __
-chinesisches_Horoskop
+ "chinesisches_Horoskop"
 __
-chinesischeshoroskop
+ "chinesischeshoroskop"
 __
-china
+ "china"
 __
-babylonische_Tierkreiszeichen
+ "babylonische_Tierkreiszeichen"
 __
-tierkreiszeichen
+ "tierkreiszeichen"
 __
-Thomasevangelium
+ "Thomasevangelium"
 __
-thomasevangelium
+ "thomasevangelium"
 __
-analytische_Ontologie
+ "analytische_Ontologie"
 __
-analytischeontologie
+ "analytischeontologie"
 __
-ontologie
+ "ontologie"
 __
-Transzendentalien_innen_außen
+ "Transzendentalien_innen_außen"
 __
-innenaussenstrukur
+ "innenaussenstrukur"
 __
-strukturalieninnenaußen
+ "strukturalieninnenaußen"
 __
-strukturalieninnenaussen
+ "strukturalieninnenaussen"
 __
-innenaußenstrukur
+ "innenaußenstrukur"
 __
-transzendentalieninnenaußen
+ "transzendentalieninnenaußen"
 __
-transzendentalieninnenaussen
+ "transzendentalieninnenaussen"
 __
-Modallogik
+ "Modallogik"
 __
-modallogik
+ "modallogik"
 __
-5
+ "5"
 __
-fünf
+ "fünf"
 __
-fünfer
+ "fünfer"
 __
-fünferstruktur
+ "fünferstruktur"
 __
-fuenf
+ "fuenf"
 __
-fuenfer
+ "fuenfer"
 __
-fuenferstruktur
+ "fuenferstruktur"
 __
-9
+ "9"
 __
-neun
+ "neun"
 __
-neuner
+ "neuner"
 __
-neunerstruktur
+ "neunerstruktur"
 __
-3
+ "3"
 __
-drei
+ "drei"
 __
-dreier
+ "dreier"
 __
-dreierstruktur
+ "dreierstruktur"
 __
-Strukturgrösse
+ "Strukturgrösse"
 __
-größe
+ "größe"
 __
-gross
+ "gross"
 __
-Organisationen
+ "Organisationen"
 __
-organisation
+ "organisation"
 __
-politische_Systeme
+ "politische_Systeme"
 __
-politischesysteme
+ "politischesysteme"
 __
-politik
+ "politik"
 __
-meta
+ "meta"
 __
-konkret
+ "konkret"
 __
-Theorie
+ "Theorie"
 __
-theorie
+ "theorie"
 __
-Praxis
+ "Praxis"
 __
-praxis
+ "praxis"
 __
-Management
+ "Management"
 __
-management
+ "management"
 __
-stau
+ "stau"
 __
-verändernd
+ "verändernd"
 __
-veraendernd
+ "veraendernd"
 __
-fluss
+ "fluss"
 __
-ganzheitlich
+ "ganzheitlich"
 __
-mathematisch_diskret
+ "mathematisch_diskret"
 __
-diskret
+ "diskret"
 __
-darüber_hinausgehend
+ "darüber_hinausgehend"
 __
-hinausgehend
+ "hinausgehend"
 __
-kontinuierlich
+ "kontinuierlich"
 __
-Universum_Strukturalien_Transzendentalien
+ "Universum_Strukturalien_Transzendentalien"
 __
-strukturalie
+ "strukturalie"
 __
-transzendentalie
+ "transzendentalie"
 __
-Richtung_als_Richtung
+ "Richtung_als_Richtung"
 __
-richtungrichtung
+ "richtungrichtung"
 __
-absichtgalaxie
+ "absichtgalaxie"
 __
-Absicht_Reziproke_Galaxie
+ "Absicht_Reziproke_Galaxie"
 __
-absichtgalaxiereziproke
+ "absichtgalaxiereziproke"
 __
-absichtreziproke
+ "absichtreziproke"
 __
-motivereziproke
+ "motivereziproke"
 __
-motivreziproke
+ "motivreziproke"
 __
-absichtenreziproke
+ "absichtenreziproke"
 __
-galaxiereziproke
+ "galaxiereziproke"
 __
-Universum_Reziproke
+ "Universum_Reziproke"
 __
-universumreziproke
+ "universumreziproke"
 __
-strukturaliereziproke
+ "strukturaliereziproke"
 __
-strukturalienreziproke
+ "strukturalienreziproke"
 __
-transzendentalienreziproke
+ "transzendentalienreziproke"
 __
-Dagegen-Gegentranszendentalie
+ "Dagegen-Gegentranszendentalie"
 __
-dagegengegentranszendentalie
+ "dagegengegentranszendentalie"
 __
-dagegengegentranszendentalien
+ "dagegengegentranszendentalien"
 __
-dagegengegenstrukturalien
+ "dagegengegenstrukturalien"
 __
-dagegengegenstrukturalie
+ "dagegengegenstrukturalie"
 __
-neutrale_Gegentranszendentalie
+ "neutrale_Gegentranszendentalie"
 __
-neutralegegentranszendentalie
+ "neutralegegentranszendentalie"
 __
-neutralegegentranszendentalien
+ "neutralegegentranszendentalien"
 __
-neutralegegenstrukturalien
+ "neutralegegenstrukturalien"
 __
-neutralegegenstrukturalie
+ "neutralegegenstrukturalie"
 __
-Unternehmung_Geschäft
+ "Unternehmung_Geschäft"
 __
-unternehmen
+ "unternehmen"
 __
-unternehmung
+ "unternehmung"
 __
-geschaeft
+ "geschaeft"
 __
-geschäft
+ "geschäft"
 __
-wertvoll
+ "wertvoll"
 __
-wert
+ "wert"
 __
-Beherrschen
+ "Beherrschen"
 __
-regieren
+ "regieren"
 __
-beherrschen
+ "beherrschen"
 __
-Richtung
+ "Richtung"
 __
-gut
+ "gut"
 __
-Gegentranszendentalien
+ "Gegentranszendentalien"
 __
-gegentranszendentalien
+ "gegentranszendentalien"
 __
-gegentranszendentalie
+ "gegentranszendentalie"
 __
-gegenstrukturalien
+ "gegenstrukturalien"
 __
-gegenalien
+ "gegenalien"
 __
-gegenuniversalien
+ "gegenuniversalien"
 __
-Systemsachen
+ "Systemsachen"
 __
-systemsachen
+ "systemsachen"
 __
-Transzendentalien
+ "Transzendentalien"
 __
-alien
+ "alien"
 __
-universalien
+ "universalien"
 __
-Reziproke_von_Transzendentalien
+ "Reziproke_von_Transzendentalien"
 __
-alienreziproke
+ "alienreziproke"
 __
-universalienreziproke
+ "universalienreziproke"
 __
-Netzwerk
+ "Netzwerk"
 __
-netzwerk
+ "netzwerk"
 __
-warum_Transzendentalie_=_Strukturgroesse_=_Charakter
+ "warum_Transzendentalie_=_Strukturgroesse_=_Charakter"
 __
-warumtranszendentaliezustrukturgroesseundcharakter
+ "warumtranszendentaliezustrukturgroesseundcharakter"
 __
-Kategorie
+ "Kategorie"
 __
-kategorie
+ "kategorie"
 __
-Raum-Missionen
+ "Raum-Missionen"
 __
-weltall
+ "weltall"
 __
-Programmier-Paradigmen
+ "Programmier-Paradigmen"
 __
-programmierparadigmen
+ "programmierparadigmen"
 __
-Geist__(15)
+ "Geist__(15)"
 __
-geist
+ "geist"
 __
-warum_Transzendentalie_=_Komplexität_von_Michael_Commons
+ "warum_Transzendentalie_=_Komplexität_von_Michael_Commons"
 __
-warumtranszendentaliegleichkomplexitaet
+ "warumtranszendentaliegleichkomplexitaet"
 __
-modelofhierarchicalcomplexity
+ "modelofhierarchicalcomplexity"
 __
-komplex
+ "komplex"
 __
-complexity
+ "complexity"
 __
-model
+ "model"
 __
-abstraktion
+ "abstraktion"
 __
-2
+ "2"
 __
-zwei
+ "zwei"
 __
-gerade
+ "gerade"
 __
-ungerade
+ "ungerade"
 __
-alternierung
+ "alternierung"
 __
-alternierend
+ "alternierend"
 __
-zweierstruktur
+ "zweierstruktur"
 __
-Multiplikation
+ "Multiplikation"
 __
-multiplikation
+ "multiplikation"
 __
-4
+ "4"
 __
-vier
+ "vier"
 __
-viererstruktur
+ "viererstruktur"
 __
-viererabfolgen
+ "viererabfolgen"
 __
-Gesellschaftsschicht
+ "Gesellschaftsschicht"
 __
-klasse
+ "klasse"
 __
-klassen
+ "klassen"
 __
-Moral
+ "Moral"
 __
-moral
+ "moral"
 __
-warummoral
+ "warummoral"
 __
-Fachgebiete
+ "Fachgebiete"
 __
-fachgebiete
+ "fachgebiete"
 __
-fachbereiche
+ "fachbereiche"
 __
-themen
+ "themen"
 __
-Pflanzen
+ "Pflanzen"
 __
-pflanzen
+ "pflanzen"
 __
-Maschinen
+ "Maschinen"
 __
-maschinen
+ "maschinen"
 __
-maschine
+ "maschine"
 __
-gerät
+ "gerät"
 __
-geräte
+ "geräte"
 __
-geraete
+ "geraete"
 __
-geraet
+ "geraet"
 __
-Organisationsform
+ "Organisationsform"
 __
-organisationsform
+ "organisationsform"
 __
-organisationsart
+ "organisationsart"
 __
-firma
+ "firma"
 __
-verein
+ "verein"
 __
-System
+ "System"
 __
-system
+ "system"
 __
-realistisch
+ "realistisch"
 __
-funktioniert
+ "funktioniert"
 __
-Erklärung
+ "Erklärung"
 __
-erklärung
+ "erklärung"
 __
-erklaerung
+ "erklaerung"
 __
-BWL
+ "BWL"
 __
-bwl
+ "bwl"
 __
-Sinn_des_Lebens
+ "Sinn_des_Lebens"
 __
-sinndeslebens
+ "sinndeslebens"
 __
-lebenssinn
+ "lebenssinn"
 __
-sinn
+ "sinn"
 __
-sinnsuche
+ "sinnsuche"
 __
-Intelligenzprobleme
+ "Intelligenzprobleme"
 __
-intelligenzprobleme
+ "intelligenzprobleme"
 __
-intelligenzmaengel
+ "intelligenzmaengel"
 __
-intelligenzmängel
+ "intelligenzmängel"
 __
-Denkweise_von_Lebewesen
+ "Denkweise_von_Lebewesen"
 __
-lebewesendenkweise
+ "lebewesendenkweise"
 __
-denkweise
+ "denkweise"
 __
-Gleichheit_Freiheit
+ "Gleichheit_Freiheit"
 __
-gleichheitfreiheit
+ "gleichheitfreiheit"
 __
-ungleichheit
+ "ungleichheit"
 __
-dominieren
+ "dominieren"
 __
-Gefühle
+ "Gefühle"
 __
-emotionen
+ "emotionen"
 __
-gefuehle
+ "gefuehle"
 __
-emotion
+ "emotion"
 __
-gefühl
+ "gefühl"
 __
-gefuehl
+ "gefuehl"
 __
-Egoismus
+ "Egoismus"
 __
-egoismus
+ "egoismus"
 __
-altruismus
+ "altruismus"
 __
-selbstlosigkeit
+ "selbstlosigkeit"
 __
-Wirkung
+ "Wirkung"
 __
-wirkung
+ "wirkung"
 __
-INCELs
+ "INCELs"
 __
-incel
+ "incel"
 __
-incels
+ "incels"
 __
-irrationale_Zahlen_durch_Wurzelbildung
+ "irrationale_Zahlen_durch_Wurzelbildung"
 __
-irrationalezahlendurchwurzelbildung
+ "irrationalezahlendurchwurzelbildung"
 __
-ausgangslage
+ "ausgangslage"
 __
-dominierendes_Geschlecht
+ "dominierendes_Geschlecht"
 __
-dominierendesgeschlecht
+ "dominierendesgeschlecht"
 __
-maennlich
+ "maennlich"
 __
-männlich
+ "männlich"
 __
-weiblich
+ "weiblich"
 __
-Liebe
+ "Liebe"
 __
-liebe
+ "liebe"
 __
-ethik
+ "ethik"
 __
-Glaube_Erkenntnis
+ "Glaube_Erkenntnis"
 __
-glauben
+ "glauben"
 __
-erkenntnis
+ "erkenntnis"
 __
-glaube
+ "glaube"
 __
-Angreifbarkeit
+ "Angreifbarkeit"
 __
-angreifbarkeit
+ "angreifbarkeit"
 __
-angreifbar
+ "angreifbar"
 __
-meta-paradigmen
+ "meta-paradigmen"
 __
-bedingung
+ "bedingung"
 __
-bedingungen
+ "bedingungen"
 __
-auslöser
+ "auslöser"
 __
-ausloeser
+ "ausloeser"
 __
-relativreziprokuniversell
+ "relativreziprokuniversell"
 __
-universellerkomperativ
+ "universellerkomperativ"
 __
-Existenzialien_(3)
+ "Existenzialien_(3)"
 __
-existenzialien
+ "existenzialien"
 __
-Extremalien_(19)
+ "Extremalien_(19)"
 __
-extremalien
+ "extremalien"
 __
-erwartungen
+ "erwartungen"
 __
-erwartungshaltungen
+ "erwartungshaltungen"
 __
-leidenschaft
+ "leidenschaft"
 __
-leidenschaften
+ "leidenschaften"
 __
-relativerzeitbetrag
+ "relativerzeitbetrag"
 __
-zahlenvergleich
+ "zahlenvergleich"
 __
-bestrebung
+ "bestrebung"
 __
-bestrebungen
+ "bestrebungen"
 __
-prinzipien
+ "prinzipien"
 __
-attraktionen
+ "attraktionen"
 __
-optimierung
+ "optimierung"
 __
-thema
+ "thema"
 __
-Reziprokes
+ "Reziprokes"
 __
-reziproke
+ "reziproke"
 __
-reziprokes
+ "reziprokes"
 __
-achtung
+ "achtung"
 __
-achten
+ "achten"
 __
-absicht16
+ "absicht16"
 __
-absicht17
+ "absicht17"
 __
-absicht6
+ "absicht6"
 __
-absicht7
+ "absicht7"
 __
-regung
+ "regung"
 __
-regungen
+ "regungen"
 __
-verhalten
+ "verhalten"
 __
-energie
+ "energie"
 __
-universelleeigenschaften
+ "universelleeigenschaften"
 __
-lebensenergie
+ "lebensenergie"
 __
-garben
+ "garben"
 __
-verhaltenfuehlen
+ "verhaltenfuehlen"
 __
-verhaltenfühlen
+ "verhaltenfühlen"
 __
-nachvollziehen
+ "nachvollziehen"
 __
-empathie
+ "empathie"
 __
-mitgefuehl
+ "mitgefuehl"
 __
-absicht1/6
+ "absicht1/6"
 __
-absicht1pro6
+ "absicht1pro6"
 __
-absicht10
+ "absicht10"
 __
-bewusstsein
+ "bewusstsein"
 __
-Reflexe_(3)
+ "Reflexe_(3)"
 __
-reflex
+ "reflex"
 __
-reflexe
+ "reflexe"
 __
-lust
+ "lust"
 __
-paradigmen
+ "paradigmen"
 __
-wahrheit
+ "wahrheit"
 __
-wahrnehmung
+ "wahrnehmung"
 __
-stimmung
+ "stimmung"
 __
-stimmungen
+ "stimmungen"
 __
-kombinationen
+ "kombinationen"
 __
-ordnen
+ "ordnen"
 __
-ordnenundfiltern
+ "ordnenundfiltern"
 __
-filtern
+ "filtern"
 __
-menge
+ "menge"
 __
-mengen
+ "mengen"
 __
-absicht1pro8
+ "absicht1pro8"
 __
-absicht1/8
+ "absicht1/8"
 __
-Ziele_(19)
+ "Ziele_(19)"
 __
-ziele
+ "ziele"
 __
-maxima
+ "maxima"
 __
-höhenvorstellungen
+ "höhenvorstellungen"
 __
-konkreta
+ "konkreta"
 __
-focus
+ "focus"
 __
-fokus
+ "fokus"
 __
-gefühle
+ "gefühle"
 __
-abhaengigkeit
+ "abhaengigkeit"
 __
-abhängigkeit
+ "abhängigkeit"
 __
-karte
+ "karte"
 __
-filter
+ "filter"
 __
-unterscheidung
+ "unterscheidung"
 __
-fundament
+ "fundament"
 __
-positionen
+ "positionen"
 __
-gedanken
+ "gedanken"
 __
-vorstellungen
+ "vorstellungen"
 __
-vorstellung
+ "vorstellung"
 __
-funktionen
+ "funktionen"
 __
-sollen
+ "sollen"
 __
-frage
+ "frage"
 __
-vorgehensweise
+ "vorgehensweise"
 __
-verbundenheiten
+ "verbundenheiten"
 __
-absicht13
+ "absicht13"
 __
-helfen
+ "helfen"
 __
-koalitionen
+ "koalitionen"
 __
-impulse
+ "impulse"
 __
-trieb
+ "trieb"
 __
-triebe
+ "triebe"
 __
-bedürfnis
+ "bedürfnis"
 __
-bedürfnisse
+ "bedürfnisse"
 __
-reflektion
+ "reflektion"
 __
-kategorien
+ "kategorien"
 __
-zustaende
+ "zustaende"
 __
-zustände
+ "zustände"
 __
-modus
+ "modus"
 __
-modi
+ "modi"
 __
-sein
+ "sein"
 __
-Motive
+ "Motive"
 __
-Bewusstsein_und_Wahrnehmung
+ "Bewusstsein_und_Wahrnehmung"
 __
-Errungenschaften
+ "Errungenschaften"
 __
-errungenschaften
+ "errungenschaften"
 __
-erhalten
+ "erhalten"
 __
-evolutionär_erwerben_und_Intelligenz_Kreativität
+ "evolutionär_erwerben_und_Intelligenz_Kreativität"
 __
-evolutionärerwerbenundintelligenz
+ "evolutionärerwerbenundintelligenz"
 __
-erwerben
+ "erwerben"
 __
-erlernen
+ "erlernen"
 __
-lernen
+ "lernen"
 __
-evolutionaer
+ "evolutionaer"
 __
-evolutionär
+ "evolutionär"
 __
-kreativität
+ "kreativität"
 __
-kreativitaet
+ "kreativitaet"
 __
-kreativ
+ "kreativ"
 __
-brauchen
+ "brauchen"
 __
-benoetigen
+ "benoetigen"
 __
-benötigen
+ "benötigen"
 __
-notwendig
+ "notwendig"
 __
-Krankheit
+ "Krankheit"
 __
-krankheit
+ "krankheit"
 __
-krankheiten
+ "krankheiten"
 __
-pathologisch
+ "pathologisch"
 __
-pathologie
+ "pathologie"
 __
-psychiatrisch
+ "psychiatrisch"
 __
-alpha_beta
+ "alpha_beta"
 __
-alphabeta
+ "alphabeta"
 __
-alpha
+ "alpha"
 __
-beta
+ "beta"
 __
-omega
+ "omega"
 __
-sigma
+ "sigma"
 __
-Anführer
+ "Anführer"
 __
-anfuehrer
+ "anfuehrer"
 __
-chef
+ "chef"
 __
-Manipulation
+ "Manipulation"
 __
-manipulation
+ "manipulation"
 __
-Berufe
+ "Berufe"
 __
-berufe
+ "berufe"
 __
-beruf
+ "beruf"
 __
-Lösungen
+ "Lösungen"
 __
-lösungen
+ "lösungen"
 __
-loesungen
+ "loesungen"
 __
-loesung
+ "loesung"
 __
-Musik
+ "Musik"
 __
-musik
+ "musik"
 __
-ergibt_Sinn
+ "ergibt_Sinn"
 __
-ergibtsinn
+ "ergibtsinn"
 __
-machtsinn
+ "machtsinn"
 __
-Veränderung
+ "Veränderung"
 __
-veraenderung
+ "veraenderung"
 __
-veraendern
+ "veraendern"
 __
-veränderung
+ "veränderung"
 __
-verändern
+ "verändern"
 __
-bändigen_kontrollieren
+ "bändigen_kontrollieren"
 __
-baendigenkontrollieren
+ "baendigenkontrollieren"
 __
-kontrollieren
+ "kontrollieren"
 __
-baendigen
+ "baendigen"
 __
-bändigen
+ "bändigen"
 __
-vereinen
+ "vereinen"
 __
-einheit
+ "einheit"
 __
-Vorteile
+ "Vorteile"
 __
-vorteile
+ "vorteile"
 __
-veraenderungnutzen
+ "veraenderungnutzen"
 __
-Gegenspieler
+ "Gegenspieler"
 __
-gegenspieler
+ "gegenspieler"
 __
-antagonist
+ "antagonist"
 __
-nervig
+ "nervig"
 __
-pro_nutzen
+ "pro_nutzen"
 __
-pronutzen
+ "pronutzen"
 __
-Gegenposition
+ "Gegenposition"
 __
-gegenposition
+ "gegenposition"
 __
-Hilfe_erhalten
+ "Hilfe_erhalten"
 __
-hilfeerhalten
+ "hilfeerhalten"
 __
-Helfen
+ "Helfen"
 __
-Pro
+ "Pro"
 __
-pro
+ "pro"
 __
-dafür
+ "dafür"
 __
-dafuer
+ "dafuer"
 __
-nicht_miteinander_auskommen
+ "nicht_miteinander_auskommen"
 __
-nichtauskommen
+ "nichtauskommen"
 __
-nicht_dagegen
+ "nicht_dagegen"
 __
-nichtdagegen
+ "nichtdagegen"
 __
-kein_Gegenteil
+ "kein_Gegenteil"
 __
-keingegenteil
+ "keingegenteil"
 __
-nicht_dafür
+ "nicht_dafür"
 __
-nichtdafuer
+ "nichtdafuer"
 __
-Hilfe_nicht_gebrauchen
+ "Hilfe_nicht_gebrauchen"
 __
-hilfenichtgebrauchen
+ "hilfenichtgebrauchen"
 __
-nicht_helfen_können
+ "nicht_helfen_können"
 __
-nichthelfenkoennen
+ "nichthelfenkoennen"
 __
-nicht_abgeneigt
+ "nicht_abgeneigt"
 __
-nichtabgeneigt
+ "nichtabgeneigt"
 __
-unmotivierbar
+ "unmotivierbar"
 __
-contra
+ "contra"
 __
-dagegen
+ "dagegen"
 __
-Gegenteil
+ "Gegenteil"
 __
-gegenteil
+ "gegenteil"
 __
-Harmonie
+ "Harmonie"
 __
-harmonie
+ "harmonie"
 __
-in_ReTa
+ "in_ReTa"
 __
-inreta
+ "inreta"
 __
-Vorzeichen
+ "Vorzeichen"
 __
-vorzeichen
+ "vorzeichen"
 __
-Primzahlen
+ "Primzahlen"
 __
-primzahlen
+ "primzahlen"
 __
-vielfacher
+ "vielfacher"
 __
-Anwendung_der_Sonnen_und_Monde
+ "Anwendung_der_Sonnen_und_Monde"
 __
-anwendungdersonnenundmonde
+ "anwendungdersonnenundmonde"
 __
-anwendungdersonnen
+ "anwendungdersonnen"
 __
-anwendungenfuermonde
+ "anwendungenfuermonde"
 __
-Zählungen
+ "Zählungen"
 __
-zählungen
+ "zählungen"
 __
-zaehlungen
+ "zaehlungen"
 __
-zählung
+ "zählung"
 __
-Jura
+ "Jura"
 __
-gesetzeslehre
+ "gesetzeslehre"
 __
-Vollkommenheit_des_Geistes
+ "Vollkommenheit_des_Geistes"
 __
-vollkommenheit
+ "vollkommenheit"
 __
-Gestirn
+ "Gestirn"
 __
-Konjunktiv_Wurzelbildung
+ "Konjunktiv_Wurzelbildung"
 __
-konjunktiv
+ "konjunktiv"
 __
-wurzel
+ "wurzel"
 __
-Mechanismen_der_Züchtung
+ "Mechanismen_der_Züchtung"
 __
-wesen
+ "wesen"
 __
-zuechtung
+ "zuechtung"
 __
-züchtung
+ "züchtung"
 __
-züchten
+ "züchten"
 __
-zuechten
+ "zuechten"
 __
-Weisheit_etc
+ "Weisheit_etc"
 __
-weisheit
+ "weisheit"
 __
-metaweisheit
+ "metaweisheit"
 __
-meta-weisheit
+ "meta-weisheit"
 __
-idiot
+ "idiot"
 __
-weise
+ "weise"
 __
-optimal
+ "optimal"
 __
-optimum
+ "optimum"
 __
-Dein_Recht_bekommen
+ "Dein_Recht_bekommen"
 __
-rechte
+ "rechte"
 __
-selbstgerecht
+ "selbstgerecht"
 __
-unterlegen_überlegen
+ "unterlegen_überlegen"
 __
-unterlegen
+ "unterlegen"
 __
-ueberlegen
+ "ueberlegen"
 __
-Ehrlichkeit_und_Streit
+ "Ehrlichkeit_und_Streit"
 __
-streit
+ "streit"
 __
-ehrlichkeit
+ "ehrlichkeit"
 __
-Würdig
+ "Würdig"
 __
-wuerdig
+ "wuerdig"
 __
-würdig
+ "würdig"
 __
-Regel_vs_Ausnahme
+ "Regel_vs_Ausnahme"
 __
-regel
+ "regel"
 __
-ausnahme
+ "ausnahme"
 __
-Filterart_Widrigkeit
+ "Filterart_Widrigkeit"
 __
-filterart
+ "filterart"
 __
-widrigkeit
+ "widrigkeit"
 __
-Werte
+ "Werte"
 __
-werte
+ "werte"
 __
-Gutartigkeits-Egoismus
+ "Gutartigkeits-Egoismus"
 __
-position
+ "position"
 __
-gutesreziprok
+ "gutesreziprok"
 __
-Reflektieren_Erkenntnis-Erkennen
+ "Reflektieren_Erkenntnis-Erkennen"
 __
-reflektieren
+ "reflektieren"
 __
-Vertrauen_wollen
+ "Vertrauen_wollen"
 __
-vertrauenwollen
+ "vertrauenwollen"
 __
-einklinken_vertrauen_anprangern
+ "einklinken_vertrauen_anprangern"
 __
-einklinken
+ "einklinken"
 __
-vertrauenerhalten
+ "vertrauenerhalten"
 __
-anprangern
+ "anprangern"
 __
-Ausrichten_Einrichten
+ "Ausrichten_Einrichten"
 __
-einrichten
+ "einrichten"
 __
-ausrichten
+ "ausrichten"
 __
-Toleranz_Respekt_Akzeptanz_Willkommen
+ "Toleranz_Respekt_Akzeptanz_Willkommen"
 __
-toleranz
+ "toleranz"
 __
-respekt
+ "respekt"
 __
-akzeptanz
+ "akzeptanz"
 __
-willkommen
+ "willkommen"
 __
-familiebrauchen
+ "familiebrauchen"
 __
-ego
+ "ego"
 __
-bescheiden
+ "bescheiden"
 __
-Selbstsucht_Ichsucht_etc
+ "Selbstsucht_Ichsucht_etc"
 __
-selbstsucht
+ "selbstsucht"
 __
-ichsucht
+ "ichsucht"
 __
-Forschen_Erfinden_Einklinken
+ "Forschen_Erfinden_Einklinken"
 __
-wissenschaft
+ "wissenschaft"
 __
-forschen
+ "forschen"
 __
-erfinden
+ "erfinden"
 __
-Kooperation_vs_Arsch
+ "Kooperation_vs_Arsch"
 __
-arschloch
+ "arschloch"
 __
-kooperation
+ "kooperation"
 __
-arsch
+ "arsch"
 __
-Liebe_usw
+ "Liebe_usw"
 __
-zuneigung
+ "zuneigung"
 __
-Selbstlosigkeit_Ichlosigkeit_etc
+ "Selbstlosigkeit_Ichlosigkeit_etc"
 __
-selbstlos
+ "selbstlos"
 __
-ichlos
+ "ichlos"
 __
-variationsreich_eintönig
+ "variationsreich_eintönig"
 __
-eintönig
+ "eintönig"
 __
-eintoenig
+ "eintoenig"
 __
-variationsreich
+ "variationsreich"
 __
-Zuneigung_Abneigung
+ "Zuneigung_Abneigung"
 __
-abgeneigt
+ "abgeneigt"
 __
-zugewandt
+ "zugewandt"
 __
-reserviert
+ "reserviert"
 __
-zugeneigt
+ "zugeneigt"
 __
-ehrlich vs höflich
+ "ehrlich_vs_höflich"
 __
-ehrlich
+ "ehrlich"
 __
-höflich
+ "höflich"
 __
-hoeflich
+ "hoeflich"
 __
-Tragweite
+ "Tragweite"
 __
-tragweite
+ "tragweite"
 __
-wertlos
+ "wertlos"
 __
-Götter_Propheten_Familien_Freunde
+ "Götter_Propheten_Familien_Freunde"
 __
-familiaer
+ "familiaer"
 __
-goettlich
+ "goettlich"
 __
-freunde
+ "freunde"
 __
-propheten
+ "propheten"
 __
-sanft_vs_hart
+ "sanft_vs_hart"
 __
-sanft
+ "sanft"
 __
-hart
+ "hart"
 __
-vereinen_vs_verbinden
+ "vereinen_vs_verbinden"
 __
-vereinenverbinden
+ "vereinenverbinden"
 __
-verbinden
+ "verbinden"
 __
-verbindung
+ "verbindung"
 __
-ähnlich
+ "ähnlich"
 __
-aehnlich
+ "aehnlich"
 __
-gut_böse_lieb_schlecht
+ "gut_böse_lieb_schlecht"
 __
-böse
+ "böse"
 __
-boese
+ "boese"
 __
-lieb
+ "lieb"
 __
-schlecht
+ "schlecht"
 __
-Sinn_und_Zweck_des_Lebens
+ "Sinn_und_Zweck_des_Lebens"
 __
-zweck
+ "zweck"
 __
-Zeit_vs_Raum
+ "Zeit_vs_Raum"
 __
-raum
+ "raum"
 __
-zeitlich
+ "zeitlich"
 __
-räumlich
+ "räumlich"
 __
-egalitär_vs_autoritär
+ "egalitär_vs_autoritär"
 __
-egalitaerautoritaer
+ "egalitaerautoritaer"
 __
-egalitaer
+ "egalitaer"
 __
-autoritaer
+ "autoritaer"
 __
-egalitär
+ "egalitär"
 __
-autoritär
+ "autoritär"
 __
-Meinungen_und_Ruf
+ "Meinungen_und_Ruf"
 __
-meinungen
+ "meinungen"
 __
-anderemenschen
+ "anderemenschen"
 __
-ruf
+ "ruf"
 __
-Meinungsintelligenz
+ "Meinungsintelligenz"
 __
-meinungsintelligenz
+ "meinungsintelligenz"
 __
-ursprungsintelligenz
+ "ursprungsintelligenz"
 __
-Sittlichkeit
+ "Sittlichkeit"
 __
-sittlichkeit
+ "sittlichkeit"
 __
-annaehrerung
+ "annaehrerung"
 __
-Führung
+ "Führung"
 __
-führung
+ "führung"
 __
-fuehrung
+ "fuehrung"
 __
-Durchleuchten
+ "Durchleuchten"
 __
-durchleuchten
+ "durchleuchten"
 __
-erleuchten
+ "erleuchten"
 __
-Fördern_Sensiblisieren_und_Gedeihen
+ "Fördern_Sensiblisieren_und_Gedeihen"
 __
-foerdern
+ "foerdern"
 __
-fördern
+ "fördern"
 __
-begrenzen
+ "begrenzen"
 __
-sensibilisieren
+ "sensibilisieren"
 __
-gedeihen
+ "gedeihen"
 __
-verderben
+ "verderben"
 __
-Überheblichkeit
+ "Überheblichkeit"
 __
-überheblich
+ "überheblich"
 __
-ueberheblichkeit
+ "ueberheblichkeit"
 __
-ueberheblich
+ "ueberheblich"
 __
-überheblichkeit
+ "überheblichkeit"
 __
-Polung_der_Liebe
+ "Polung_der_Liebe"
 __
-liebepolung
+ "liebepolung"
 __
-Egoismus_vs_Altruismus
+ "Egoismus_vs_Altruismus"
 __
-egoist
+ "egoist"
 __
-altruist
+ "altruist"
 __
-kausal
+ "kausal"
 __
-geltung
+ "geltung"
 __
-genese
+ "genese"
 __
-Gleichheit
+ "Gleichheit"
 __
-gleich
+ "gleich"
 __
-Überleben
+ "Überleben"
 __
-ueberleben
+ "ueberleben"
 __
-um1
+ "um1"
 __
-um2
+ "um2"
 __
-um3
+ "um3"
 __
-Rahmen-Bedingungen
+ "Rahmen-Bedingungen"
 __
-rahmen
+ "rahmen"
 __
-Motive_gleichförmige_Polygone
+ "Motive_gleichförmige_Polygone"
 __
-motivgleichfoermig
+ "motivgleichfoermig"
 __
-Struktur_gleichförmige_Polygone
+ "Struktur_gleichförmige_Polygone"
 __
-strukturgleichfoermig
+ "strukturgleichfoermig"
 __
-motivstern
+ "motivstern"
 __
-Struktur_Sternpolygone
+ "Struktur_Sternpolygone"
 __
-strukturstern
+ "strukturstern"
 __
-Motiv_Sternpolygon_gebrochen-rational
+ "Motiv_Sternpolygon_gebrochen-rational"
 __
-motivgebrstern
+ "motivgebrstern"
 __
-Struktur_Sternpolyon_gebrochen-rational
+ "Struktur_Sternpolyon_gebrochen-rational"
 __
-strukgebrstern
+ "strukgebrstern"
 __
-Motiv_gleichförmige_Polygone_gebrochen-rational
+ "Motiv_gleichförmige_Polygone_gebrochen-rational"
 __
-motivgebrgleichf
+ "motivgebrgleichf"
 __
-Struktur_gleichförmige_Polygone_gebrochen-rational
+ "Struktur_gleichförmige_Polygone_gebrochen-rational"
 __
-strukgebrgleichf
+ "strukgebrgleichf"
 __
-beschrieben
+ "beschrieben"
 __
-Lebewesen
+ "Lebewesen"
 __
-tiere
+ "tiere"
 __
-tier
+ "tier"
 __
-lebewesen
+ "lebewesen"
 __
-Kreativität_und_Intelligenz
+ "Kreativität_und_Intelligenz"
 __
-Männer
+ "Männer"
 __
-männer
+ "männer"
 __
-maenner
+ "maenner"
 __
-frauen
+ "frauen"
 __
-Persönlichkeit_evolutionär_erwerben
+ "Persönlichkeit_evolutionär_erwerben"
 __
-evolution
+ "evolution"
 __
-persoenlichkeit
+ "persoenlichkeit"
 __
-persönlichkeit
+ "persönlichkeit"
 __
-Religion
+ "Religion"
 __
-Motive_Ziele
+ "Motive_Ziele"
 __
-ziel
+ "ziel"
 __
-Emotionen
+ "Emotionen"
 __
-Personen
+ "Personen"
 __
-personen
+ "personen"
 __
-berühmtheiten
+ "berühmtheiten"
 __
-beruehmtheiten
+ "beruehmtheiten"
 __
-Wirtschaftssysteme
+ "Wirtschaftssysteme"
 __
-wirtschaftssystem
+ "wirtschaftssystem"
 __
-wirtschaftssysteme
+ "wirtschaftssysteme"
 __
-kombinierteswirtschaftssystem
+ "kombinierteswirtschaftssystem"
 __
-kombiniertewirtschaftssysteme
+ "kombiniertewirtschaftssysteme"
 __
-Transzendentalien_Strukturalien
+ "Transzendentalien_Strukturalien"
 __
-transzendenz
+ "transzendenz"
 __
-Primzahlkreuz
+ "Primzahlkreuz"
 __
-leibnitz
+ "leibnitz"
 __
-Mechanismen_der_Zuechtung
+ "Mechanismen_der_Zuechtung"
 __
-Geist
+ "Geist"
 __
-Bewusstsein
+ "Bewusstsein"
 __
-ja
+ "ja"
 __
-entferntes Gegenteil
+ "entferntes Gegenteil"
 __
-entfernt ähnlich
+ "entfernt ähnlich"
 __
-Kombination_(Galaxie_und_schwarzes_Loch)_(14_mit_13)
+ "Kombination_(Galaxie_und_schwarzes_Loch)_(14_mit_13)"
 __
-Kombination_(Universum_und_Galaxie)_(14_mit_15)
+ "Kombination_(Universum_und_Galaxie)_(14_mit_15)"
 __
-Mond
+ "Mond"
 __
-Sonne
+ "Sonne"
 __
-Planet
+ "Planet"
 __
- der eigenen Strukturgröße (
+ "Thema: "
 __
-) auf dich bei gleichförmigen Polygonen
+ " der eigenen Strukturgröße ("
 __
-eine Denkart
+ ") auf dich bei gleichförmigen Polygonen"
 __
-eine Gefühlsart
+ "eine Denkart"
 __
-total eine Art, etwas geistig zu erzeugen
+ "eine Gefühlsart"
 __
-total eine Art zu erleben
+ "total eine Art, etwas geistig zu erzeugen"
 __
-total eine Energie-Art
+ "total eine Art zu erleben"
 __
-etwas eine Art zu erleben
+ "total eine Energie-Art"
 __
-etwas eine Art, etwas geistig zu erzeugen
+ "etwas eine Art zu erleben"
 __
-wenig eine Art, etwas geistig zu erzeugen
+ "etwas eine Art, etwas geistig zu erzeugen"
 __
-einigermaßen eine Energie-Art
+ "wenig eine Art, etwas geistig zu erzeugen"
 __
-kaum eine Energie-Art
+ "einigermaßen eine Energie-Art"
 __
-kaum eine Art, etwas geistig zu erzeugen
+ "kaum eine Energie-Art"
+__
+ "kaum eine Art, etwas geistig zu erzeugen"
 __
 "Energie oder Denkart oder Gefühlsart oder Materie-Art oder Topologie-Art"
 __
-Evolutions-Züchtungs-Kreativität
+ "Evolutions-Züchtungs-Kreativität"
 __
-0. Primzahl 1
+ "0. Primzahl 1"
 __
-1. Primzahl und Sonnenzahl
+ "1. Primzahl und Sonnenzahl"
 __
-2. Sonnenzahl, aber keine Primzahl
+ "2. Sonnenzahl, aber keine Primzahl"
 __
-3. Mondzahl
+ "3. Mondzahl"
 __
-Mond-Typ eines Sternpolygons
+ "Mond-Typ eines Sternpolygons"
 __
-Mond-Typ eines gleichförmigen Polygons
+ "Mond-Typ eines gleichförmigen Polygons"
 __
-kein Mond
+ "kein Mond"
 __
-mittelstark überdurchschnittlich:
+ "mittelstark überdurchschnittlich: "
 __
-überdurchschnittlich:
+ "überdurchschnittlich: "
 __
-mittelleicht überdurchschnittlich:
+ "mittelleicht überdurchschnittlich: "
 __
-sehr:
+ "sehr: "
 __
-sehr leicht überdurchschnittlich:
+ "sehr leicht überdurchschnittlich: "
 __
-intrinsisch
+ "intrinsisch"
 __
-zuerst
+ "zuerst"
 __
-extrinsisch
+ "extrinsisch"
 __
-als zweites
+ "als zweites"
 __
-, nicht:
+ ", nicht: "
 __
- (das alles nicht):
+ " (das alles nicht): "
 __
-Generiert:
+ "Generiert: "
 __
-Alles nur bezogen auf die selbe Strukturgröße einer
+ "Alles nur bezogen auf die selbe Strukturgröße einer "
 __
-gegen
+ "gegen "
 __
-pro
+ "pro "
 __
- Darin kann sich die
+ " Darin kann sich die "
 __
- am Besten hineinversetzten.
+ " am Besten hineinversetzten."
 __
-pro dieser Zahl sind:
+ "pro dieser Zahl sind: "
 __
-pro dieser Zahl ist
+ "pro dieser Zahl ist "
 __
- contra dieser Zahl sind:
+ " contra dieser Zahl sind: "
 __
- contra dieser Zahl ist
+ " contra dieser Zahl ist "
 __
-Sternpolygone
+ "Sternpolygone"
 __
-gleichförmige Polygone
+ "gleichförmige Polygone"
 __
-Motiv -> Motiv
+ "Motiv -> Motiv"
 __
-Motiv -> Strukur
+ "Motiv -> Strukur"
 __
-Struktur -> Motiv
+ "Struktur -> Motiv"
 __
-Struktur -> Strukur
+ "Struktur -> Strukur"
 __
-, mit Faktoren aus gebrochen-rationalen Zahlen
+ ", mit Faktoren aus gebrochen-rationalen Zahlen"
 __
-generierte Multiplikationen
+ "generierte Multiplikationen "
 __
-, außerdem:
+ ", außerdem: "
 __
-| außerdem:
+ "| außerdem: "
 __
-Viertwichtigste
+ "Viertwichtigste"
 __
-Meta-Thema:
+ "Meta-Thema: "
 __
-Konkretes:
+ "Konkretes: "
 __
-Meta-
+ "Meta-"
 __
-Konkret-
+ "Konkret-"
 __
-Theorie-Thema:
+ "Theorie-Thema: "
 __
-Praxis:
+ "Praxis: "
 __
-Theorie-
+ "Theorie-"
 __
-Praxis-
+ "Praxis-"
 __
-Planungs-Thema:
+ "Planungs-Thema: "
 __
-Umsetzungs-Thema:
+ "Umsetzungs-Thema: "
 __
-Planung-
+ "Planung-"
 __
-Umsetzung-
+ "Umsetzung-"
 __
-Anlass-Thema:
+ "Anlass-Thema: "
 __
-Wirkungs-Thema:
+ "Wirkungs-Thema: "
 __
-Anlass-
+ "Anlass-"
 __
-wirkung-
+ "wirkung-"
 __
-Kraft-Gebung:
+ "Kraft-Gebung: "
 __
-Verstärkungs-Thema:
+ "Verstärkungs-Thema: "
 __
-Kraft-geben-
+ "Kraft-geben-"
 __
-Verstärkung-
+ "Verstärkung-"
 __
-Beherrschung:
+ "Beherrschung: "
 __
-Richtung-Thema:
+ "Richtung-Thema: "
 __
-beherrschend-
+ "beherrschend-"
 __
-Richtung-
+ "Richtung-"
 __
-Meta
+ "Meta"
 __
-Verwertung, Unternehmung, Geschäft
+ "Verwertung, Unternehmung, Geschäft"
 __
-regieren, beherrschen
+ "regieren, beherrschen"
 __
-Konkretes
+ "Konkretes"
 __
-darüber hinaus gehend
+ "darüber hinaus gehend"
 __
- für 1/n statt n
+ " für 1/n statt n"
 __
- für n
+ " für n"
 __
-für innen
+ "für innen"
 __
-für außen
+ "für außen"
 __
 __
 __
-Transzendentalien, Strukturalien, Universum n
+ "Transzendentalien, Strukturalien, Universum n"
 __
-Galaxie n
+ "Galaxie n"
 __
-Galaxie 1/n
+ "Galaxie 1/n"
 __
-Transzendentalien, Strukturalien, Universum 1/n
+ "Transzendentalien, Strukturalien, Universum 1/n"
 __
-Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n
+ "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n"
 __
-neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n
+ "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n"
 __
-Richtung-Richtung
+ "Richtung-Richtung"
 __
-Primzahlwirkung (7, Richtung)
+ "Primzahlwirkung (7, Richtung) "
 __
-] * letztendlich:
+ "] * letztendlich: "
 __
-Primzahlvielfache, nicht generiert
+ "Primzahlvielfache, nicht generiert"
 __
-Fehler
+ "Fehler"
 __
-Nicht_generiert
+ "Nicht_generiert"
 __
-nummerierung
+ "nummerierung"
 __
-nichts
+ "nichts"
 __
 __
-\ existiert hier nicht als Befehl!"
+ "\" existiert hier nicht als Befehl!"
 __
- Es ist nur möglich: -
+ " Es ist nur möglich: -"
 __
-Der Unter-Paramaeter \--"
+ "Der Unter-Paramaeter \"--"
 __
 __
 __
-\. Stattdessen gibt keine Nebenparameter-Textwerte."
+ "\". Stattdessen gibt keine Nebenparameter-Textwerte."
 __
 __
-\ existiert hier nicht als Befehl für Haupt-Parameter"
+ "\" existiert hier nicht als Befehl für Haupt-Parameter"
 __
- !
+ " !"
 __
-" Es ist nur möglich:\n"
-"--"
+ " Es ist nur möglich:"
 __
-"\n"
-"mit dem Werten dahinter:\n"
+ "mit dem Werten dahinter:"
 __
-Der Unter-Parameter \--"
+ "Der Unter-Parameter \"--"
 __
-", oder dieser Parameter braucht Werte analog wie: \n"
-"--unterParameter=Wert1\n"
+ ", oder dieser Parameter braucht Werte analog wie:"
 __
-Es ist nur möglich: --
+ "--unterParameter=Wert1"
 __
+ "Es ist nur möglich: --"
 __
-\ existiert so nicht als Befehl. Möglich sind die Parameter für "
 __
-Es muss ein Hauptparameter, bzw. der richtige, gesetzt sein, damit ein
+ "\" existiert so nicht als Befehl. Möglich sind die Parameter für "
 __
+ "Es muss ein Hauptparameter, bzw. der richtige, gesetzt sein, damit ein"
 __
-\ ausgeführt werden kann. Hauptparameter sind: -"
 __
-Versuche Parameter -h
+ "\" ausgeführt werden kann. Hauptparameter sind: -"
 __
+ "Versuche Parameter -h"
 __
-\ gibt es hier nicht für den Hauptparameter \"-"
 __
-\. Oder ein = fehlt dahinter."
+ "\" gibt es hier nicht für den Hauptparameter \"-"
 __
- Möglich sind:
+ "\". Oder ein = fehlt dahinter."
 __
-\. Oder es fehlt ein = dahinter."
+ " Möglich sind: "
 __
-Befehle
+ "\". Oder es fehlt ein = dahinter."
 __
-promptmode vorher: {} , {}
+ "Debug Log aktiviert."
 __
-'{}' ergibt sich aus '{}' und ergibt danach reta-Befehl:
+ "der Befehl "
 __
-Dies ('
+" ist nur erlaubt mit 2 weiteren Angaben mit Leerzeichen getrennt, einer Zahl "
+"und einem Zahlenbereich, z.B. "
 __
-"') ist tatsächlich ein Befehl (oder es sind mehrere), aber es gibt nichts "
-"auszugeben."
+ "Befehle"
 __
-Das ist kein Befehl! -> '{}''
+ "promptmode vorher: {} , {}"
 __
-"Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) "
-"keine Vielfacher gebildet.\n"
-"Für Brüche \"n/1=ganze Zahl\" gibt es die gewöhnlichen Befehle für ganze "
-"Zahlen.\n"
-"Das ist eine Design-Entscheidung, die getroffen worden ist."
+ "'{}' ergibt sich aus '{}' und ergibt danach reta-Befehl:"
 __
-vi
+ "Dies ("
 __
-log
+ ") ist tatsächlich ein Befehl (oder es sind mehrere),"
 __
-befehl
+ " aber es gibt nichts auszugeben."
 __
-Debug Log aktiviert.
+ "Das ist kein Befehl! -> '{}''"
 __
- bewirkt, dass bei allen Befehlen das '
+"Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer)"
 __
-"' jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil "
-"dieser anders funktioniert "
+ " keine Vielfacher gebildet."
 __
-was speichern>
+"Für Brüche n/1=ganze Zahl gibt es die gewöhnlichen Befehle für ganze Zahlen."
 __
-was löschen>
+ "vi"
 __
-kombi.csv
+ "log"
 __
-kombi-meta.csv
+ "befehl"
 __
-religion.csv
+ " bewirkt, dass bei allen Befehlen das '"
 __
-primenumbers.csv
+"jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil dieser"
 __
-gebrochen-rational-universum.csv
+ " anders funktioniert "
 __
-gebrochen-rational-galaxie.csv
+ "was speichern>"
 __
-gebrochen-rational-emotionen.csv
+ "was löschen>"
 __
-gebrochen-rational-strukturgroesse.csv
+ "Das ist eine Design-Entscheidung, die getroffen worden ist."
 __
-kombi-gedanken17-absichten13-bewusstsein15.csv
+ "kombi.csv"
 __
-kombi-meta-systeme.csv
+ "kombi-meta.csv"
 __
-kombi-universelle-wirklichkeit.csv
+ "religion.csv"
 __
-kreisVomTyp18.csv
+ "primenumbers.csv"
 __
-sunMoonEtc.csv
+ "gebrochen-rational-universum.csv"
 __
-meaningOfLife.csv
+ "gebrochen-rational-galaxie.csv"
 __
-dualism-trinities-etc.csv
+ "gebrochen-rational-emotionen.csv"
 __
-EIGN
+ "gebrochen-rational-strukturgroesse.csv"
 __
-EIGR
+ "kombi-gedanken17-absichten13-bewusstsein15.csv"
+__
+ "kombi-meta-systeme.csv"
+__
+ "kombi-universelle-wirklichkeit.csv"
+__
+ "kreisVomTyp18.csv"
+__
+ "sunMoonEtc.csv"
+__
+ "meaningOfLife.csv"
+__
+ "dualism-trinities-etc.csv"
+__
+ "EIGN"
+__
+ "EIGR"

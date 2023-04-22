@@ -3829,17 +3829,17 @@ class retapy:
         _('" existiert hier nicht als Befehl für Haupt-Parameter'),
         " -" + hauptForNeben["spalten"],
         _(" !"),
-        _(" Es ist nur möglich:\n--"),
+        _(" Es ist nur möglich:") + "\n--",
         "".join((", --", ausgabeParas["breiten"], " --", ausgabeParas["breite"])),
-        _("\nmit dem Werten dahinter:\n"),
+        "\n" + _("mit dem Werten dahinter:") + "\n",
     )
     cliout4Saetze = (
         _('Der Unter-Parameter "--'),
         _('" existiert hier nicht als Befehl für Haupt-Parameter'),
         " -" + hauptForNeben["spalten"],
-        _(
-            ", oder dieser Parameter braucht Werte analog wie: \n--unterParameter=Wert1\n"
-        ),
+        _(", oder dieser Parameter braucht Werte analog wie:")
+        + "\n"
+        + _("--unterParameter=Wert1"),
         _("Es ist nur möglich: --"),
         ", --" + ausgabeParas["keinenummerierung"],
     )
@@ -3891,23 +3891,27 @@ class nested:
 
 class retaPrompt:
     infoDebugAktiv = _("Debug Log aktiviert.")
-    abstandMeldung = _(
-        "der Befehl 'abstand' ist nur erlaubt mit 2 weiteren Angaben mit Leerzeichen getrennt, einer Zahl und einem Zahlenbereich, z.B. 'abstand 7 17-25'"
+    abstandMeldung = _('der Befehl ')+befehle2["abstand"]+_(" ist nur erlaubt mit 2 weiteren Angaben mit Leerzeichen getrennt, einer Zahl und einem Zahlenbereich, z.B. "abstand 7 17-25"'
     )
     befehleBeenden = {_("ende"), _("exit"), _("quit"), _("q"), _(":q")}
     befehleWort = {"Befehle": _("Befehle")}
     promptModeSatz = _("promptmode vorher: {} , {}")
     promptModeSatz2 = _("'{}' ergibt sich aus '{}' und ergibt danach reta-Befehl:")
     out1Saetze = (
-        _("Dies ('"),
-        _(
-            "') ist tatsächlich ein Befehl (oder es sind mehrere), aber es gibt nichts auszugeben."
-        ),
+        _("Dies (") + "'",
+        "'"
+        + _(") ist tatsächlich ein Befehl (oder es sind mehrere),")
+        + _(" aber es gibt nichts auszugeben."),
     )
     out2Satz = _("Das ist kein Befehl! -> '{}''")
-    out3Saetze = _(
-        'Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\nDas ist eine Design-Entscheidung, die getroffen worden ist.'
+    a1 = _("Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer)")
+    a2 = _(" keine Vielfacher gebildet.")
+    a3 = _(
+        "Für Brüche n/1=ganze Zahl gibt es die gewöhnlichen Befehle für ganze Zahlen."
     )
+    a4 = "Das ist eine Design-Entscheidung, die getroffen worden ist."
+    out3Saetze = a1 + a2 + "\n" + a3 + "\n" + a4
+
     replacements = {
         befehle2["e"]: befehle2[
             "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
@@ -3956,16 +3960,25 @@ class retaPrompt:
             befehle2["e"],
             ("' Kommando bzw. '"),
             befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"],
-            _(
-                "' jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil dieser anders funktioniert "
-            ),
+            "'"
+            + _(
+                "jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil dieser"
+            )
+            + _(" anders funktioniert "),
         )
     )
 
     wspeichernWort = _("was speichern>")
     wloeschenWort = _("was löschen>")
-    reziInfoText = _(
-        'Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\nDas ist eine Design-Entscheidung, die getroffen worden ist.'
+    reziInfoText = (
+        _("Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer)")
+        + _(" keine Vielfacher gebildet.")
+        + "\n"
+        + _(
+            'Für Brüche n/1=ganze Zahl gibt es die gewöhnlichen Befehle für ganze Zahlen.'
+        )
+        + "\n"
+        + _("Das ist eine Design-Entscheidung, die getroffen worden ist.")
     )
 
 
