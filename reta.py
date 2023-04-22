@@ -125,6 +125,8 @@ class Program:
                     lastMainCmd = self.mainParaCmds[cmd[1:]]
                 elif cmd[1:] == i18nR.nichtsWort:
                     pass
+                elif cmd == "-language=english":
+                    pass
                 elif len(neg) == 0:
                     # else:
                     cliout(
@@ -344,10 +346,10 @@ class Program:
                         cliout(i18nR.cliout6Satz + str(cmd))
                 elif lastMainCmd not in self.mainParaCmds.values():
                     cliout(
-                        i18nR.cliout7Saetzetz[0]
-                        + i18nR.cliout7Saetzetz[1]
+                        i18nR.cliout7Saetze[0]
+                        + i18nR.cliout7Saetze[1]
                         + cmd
-                        + i18nR.cliout7Saetzetz[2]
+                        + i18nR.cliout7Saetze[2]
                         + " -".join(self.mainParaCmds)
                     )
         breiteIstNull = "".join(("--", i18n.ausgabeParas["breite"], "=0"))

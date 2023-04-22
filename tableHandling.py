@@ -796,7 +796,7 @@ class Tables:
         def __init__(self, tables):
             self.sumOfAllCombiRowsAmount = 0
             self.tables = tables
-            self.parameterName = "kombination"
+            self.parameterName = i18n.hauptForNeben["kombination"]
             """alle  Schritte für kombi:
             1. lesen: KombiTable und relation, was von kombitable zu haupt gehört
                       und matrix mit zellen sind zahlen der kombinationen

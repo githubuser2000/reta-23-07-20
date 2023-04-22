@@ -4,7 +4,7 @@ import os
 from collections import OrderedDict, namedtuple
 # from dataclasses import dataclass
 from typing import Any, NamedTuple, Optional, Tuple, Union
-
+import sys
 # from typing import Optional, Union
 
 try:
@@ -12,15 +12,17 @@ try:
 except (ModuleNotFoundError, ImportError):
     OrderedSet = set
 
-i18nPath = os.path.join(os.path.dirname(__file__))
-t = gettext.translation("messages", localedir=i18nPath, languages=["en"])
-t.install()
+if "-language=english" in sys.argv:
+    i18nPath = os.path.join(os.path.dirname(__file__))
+    t = gettext.translation("messages", localedir=i18nPath, languages=["en"])
+    t.install()
+    _ = t.gettext
+else:
+    localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)))
+    translate = gettext.translation("messages", localedir, fallback=True)
+    _ = translate.gettext
 
 # sys.path.insert(1, "./..")
-localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)), "locale")
-translate = gettext.translation("handroll", localedir, fallback=True)
-#_ = translate.gettext
-_ = t.gettext
 Multiplikationen = [(_("Multiplikationen"), "")]
 """
 ES FEHLEN NOCH ALLE ''

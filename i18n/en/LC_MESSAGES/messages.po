@@ -4632,7 +4632,7 @@ msgstr "command"
 
 #: i18n/words.py:3956
 msgid " bewirkt, dass bei allen Befehlen das '"
-msgstr "causes all commands to display the '"
+msgstr " causes all commands to display the '"
 
 #: i18n/words.py:3961
 msgid ""
