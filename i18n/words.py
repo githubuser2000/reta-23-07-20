@@ -2957,7 +2957,7 @@ paraNdataMatrix: list = [
     (
         ParametersMain.menschliches,
         (
-            _("ehrlich vs höflich"),
+            _("ehrlich_vs_höflich"),
             _("ehrlich"),
             _("höflich"),
             _("hoeflich"),
@@ -2974,7 +2974,7 @@ paraNdataMatrix: list = [
     (
         ParametersMain.konzept,
         (
-            _("ehrlich vs höflich"),
+            _("ehrlich_vs_höflich"),
             _("ehrlich"),
             _("höflich"),
             _("hoeflich"),
@@ -3568,7 +3568,7 @@ class tableHandling:
 
 
 class concat:
-    themaWort = "Thema: "
+    themaWort = _("Thema: ")
     polygon1 = {" der eigenen Strukturgröße (": _(" der eigenen Strukturgröße (")}
     polygon2 = {
         ") auf dich bei gleichförmigen Polygonen": _(
@@ -3890,8 +3890,10 @@ class nested:
 
 
 class retaPrompt:
-    infoDebugAktiv = "Debug Log aktiviert."
-    abstandMeldung = "der Befehl 'abstand' ist nur erlaubt mit 2 weiteren Angaben mit Leerzeichen getrennt, einer Zahl und einem Zahlenbereich, z.B. 'abstand 7 17-25'"
+    infoDebugAktiv = _("Debug Log aktiviert.")
+    abstandMeldung = _(
+        "der Befehl 'abstand' ist nur erlaubt mit 2 weiteren Angaben mit Leerzeichen getrennt, einer Zahl und einem Zahlenbereich, z.B. 'abstand 7 17-25'"
+    )
     befehleBeenden = {_("ende"), _("exit"), _("quit"), _("q"), _(":q")}
     befehleWort = {"Befehle": _("Befehle")}
     promptModeSatz = _("promptmode vorher: {} , {}")

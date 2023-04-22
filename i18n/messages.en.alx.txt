@@ -3,17 +3,17 @@ Multiplications
 __
 prime_cross_pro_contra
 __
-"comprehend_emotionally_or_mentally_by_prime_cross_algorithm_(15)"
+comprehend_emotionally_or_mentally_by_prime_cross_algorithm_(15)
 __
 nocolor
 __
 justtext
 __
-art
+type
 __
 onetable
 __
-column orderandonlythis
+columnorderandonlythese
 __
 endlessscreen
 __
@@ -21,13 +21,13 @@ endless
 __
 dontwrap
 __
-wide
+width
 __
-wide
+widths
 __
-no blank contents
+no_blank_contents
 __
-no numbering
+no_numbering
 __
 noheadings
 __
@@ -35,7 +35,7 @@ galaxy
 __
 universe
 __
-everything
+all
 __
 yesterday
 __
@@ -47,9 +47,9 @@ moon
 __
 tomorrow
 __
-retrospective recount
+retrospectiverecount
 __
-retrospective recount multiples
+retrospectiverecountmultiples
 __
 uppermaximum
 __
@@ -57,9 +57,9 @@ planet
 __
 potenciesofnumbers
 __
-prime multiples
+primemultiples
 __
-black sun
+black_sun
 __
 sun
 __
@@ -67,13 +67,13 @@ type
 __
 multiples
 __
-FORECAST
+multiplesofnumbers
 __
-vorhervonausschnittteiler
+thisrangebefore
 __
-COUNT
+thisrangebeforedividers
 __
-time
+counting
 __
 lines
 __
@@ -137,7 +137,7 @@ Intention_7_is_selflessness
 __
 Intention_10_is_recognition_of_reality
 __
-Intention_17_is_to_mean
+Intention_17_is_to_mean_opionions
 __
 Time_(4)_as_reality
 __
@@ -151,7 +151,7 @@ Intention_1/6_is_cleaning_and_clarity
 __
 Reflection_and_Categories_(1/15)
 __
-Emotions_(1)
+not_Emotions_not_impulses_but_similar_and_being_less_(1)
 __
 Energy_and_universal_properties_(30)
 __
@@ -173,7 +173,7 @@ Optimization_(10)
 __
 Attractions_(36)
 __
-Intention_16_is_enough
+Intention_16_is_to_be_enough
 __
 Love_(7)
 __
@@ -187,9 +187,9 @@ Aspirations(1/5)
 __
 Condition_and_trigger_(1/3)
 __
-relativer_Zeit-Betrag_(15_10_4_18_6)
+relative_time_amount_(15_10_4_18_6)
 __
-Zahlenvergleich_(15_18_6)
+comparision_of_numbers_(15_18_6)
 __
 Passions_(21)
 __
@@ -237,13 +237,13 @@ multis
 __
 modulo
 __
-prim
+prime
 __
-prime factorization
+primefactorization
 __
 prime24
 __
-prime factorizationModulo24
+primefactorizationModulo24
 __
 help
 __
@@ -251,7 +251,7 @@ abc
 __
 abcd
 __
-a
+i
 __
 u
 __
@@ -263,7 +263,7 @@ direction
 __
 r
 __
-v
+m
 __
 p
 __
@@ -271,7 +271,7 @@ mo
 __
 mu
 __
-prime cross
+primecross
 __
 end
 __
@@ -287,15 +287,15 @@ s
 __
 math
 __
-log
+logging_yes
 __
-not logging
+tlogging_no
 __
 mulpri
 __
 python
 __
-w
+d
 __
 divider
 __
@@ -303,9 +303,9 @@ CommandSaveAfter
 __
 S
 __
-CommandSaveClear
+CommandClearSaves
 __
-l
+c
 __
 CommandSaveOutput
 __
@@ -323,9 +323,9 @@ concept
 __
 concept2
 __
-brokenuniverse
+fractionaluniverse
 __
-fractional galaxy
+fractionalgalaxy
 __
 most_important_to_understand
 __
@@ -335,7 +335,7 @@ most_important_to_think_about
 __
 most_important_to_classify
 __
-Religions
+religions
 __
 religions
 __
@@ -343,7 +343,7 @@ religion
 __
 galaxy
 __
-ancient scripts
+ancientscripts
 __
 circle
 __
@@ -355,13 +355,13 @@ scale
 __
 scale
 __
-structure size
+structuresize
 __
-structure size
+structuresize
 __
-structure size
+structuresize
 __
-structure size
+structuresize
 __
 size
 __
@@ -389,7 +389,7 @@ Economy
 __
 economy
 __
-Human
+human
 __
 human
 __
@@ -397,9 +397,9 @@ Pro_Contra
 __
 procontra
 __
-dagegendafuer
+againstorpro
 __
-Light
+light
 __
 light
 __
@@ -407,7 +407,7 @@ Meaning
 __
 meaning
 __
-Symbols
+symbols
 __
 symbols
 __
@@ -427,7 +427,7 @@ Increment
 __
 increment
 __
-Operations
+operations
 __
 operations
 __
@@ -435,9 +435,9 @@ meta_vs_concrete_(universe)
 __
 universe_metaconcrete
 __
-Prime effect
+primeeffect
 __
-prime number effect
+primenumbereffect
 __
 multiplications
 __
@@ -453,17 +453,17 @@ basic structures
 __
 motivation
 __
-transcendental reciprocal
+transcendentalreciprocal
 __
 ratio equals
 __
-star
+spaceobject
 __
-galaxy intention
+galaxyintention
 __
-Main
+main
 __
-Most important
+mostimportant
 __
 Human-to-Animal
 __
@@ -479,17 +479,17 @@ directions
 __
 political
 __
-realities_(10)
+truth_realities_(10)
 __
-reality
+truth_reality
 __
-realities
+truth_realities
 __
 metasystems
 __
 metasystem
 __
-meta systems
+metasystems
 __
 meta-system
 __
@@ -517,19 +517,19 @@ mechanisms
 __
 mechanism
 __
-Second most important
+Secondmostimportant
 __
-second most important
+secondmostimportant
 __
-Third most important
+Thirdmostimportant
 __
-third most important
+thirdmostimportant
 __
-Motifs_star polygons
+Motifs_starpolygons
 __
-fourth most important
+fourthmostimportant
 __
-most important
+mostimportant
 __
 Halving
 __
@@ -537,27 +537,27 @@ bisection
 __
 bisections
 __
-Religion founder type
+Religion-founder-type
 __
-religion-founder type
+religion-founder-type
 __
 prophet
 __
 archon
 __
-religion founder type
+religionfoundertype
 __
 Hinduism
 __
 hinduism
 __
-Star polygon
+Starpolygon
 __
-star polygon
+starpolygon
 __
 of_the_zodiac
 __
-dertierpolygon
+ofthezodiac
 __
 babylon
 __
@@ -565,7 +565,7 @@ star_polygon_vs_uniform
 __
 compare
 __
-star_polygon_vs_uniform
+starpolygonvsuniform
 __
 comparevs1divn
 __
@@ -583,7 +583,7 @@ messiases
 __
 uniform_polygon
 __
-uniform_polygon
+uniformpolygon
 __
 uniform_polygon
 __
@@ -605,13 +605,13 @@ revelation_
 __
 revelation_of_john
 __
-JOHN
+john
 __
 bible
 __
-revelation johannes
+revelationofjohn
 __
-particle meta-physics
+particle-meta-physics
 __
 addition
 __
@@ -653,11 +653,11 @@ china
 __
 babylonian_zodiac
 __
-zodiac signs
+zodiacsigns
 __
-Gospel of Thomas
+GospelofThomas
 __
-gospel of thomas
+gospelofthomas
 __
 analytic_ontology
 __
@@ -671,17 +671,17 @@ inside_outside_structure
 __
 structure_alien_inside_outside
 __
-structure inside outside
+structureinsideoutside
 __
-interior exterior structure
+interiorexteriorstructure
 __
 transcendentalieninsideoutside
 __
 transcendentalieninnenaussen
 __
-modal logic
+modallogic
 __
-modal logic
+modallogic
 __
 5
 __
@@ -695,7 +695,7 @@ five
 __
 five
 __
-fuenfer structure
+structureoffive
 __
 9
 __
@@ -721,363 +721,11 @@ large
 __
 organizations
 __
-Universe
-__
-transcendentals
-__
-structurals
-__
-sphere
-__
-spheres
-__
-ball
-__
-balls
-__
-balls
-__
-economy
-__
-economy
-__
-Human
-__
-human
-__
-Pro_Contra
-__
-procontra
-__
-dagegendafuer
-__
-Light
-__
-light
-__
-Meaning
-__
-meaning
-__
-Symbols
-__
-symbols
-__
-Properties_n
-__
-properties
-__
-property
-__
-concepts
-__
-properties_1/n
-__
-concepts2
-__
-Increment
-__
-increment
-__
-Operations
-__
-operations
-__
-meta_vs_concrete_(universe)
-__
-universe_metaconcrete
-__
-Prime effect
-__
-prime number effect
-__
-multiplications
-__
-Planet_(10_und_oder_12)
-__
-structures_1_to_9
-__
-structure_less_ten
-__
-Basic structures
-__
-basic structures
-__
-motivation
-__
-transcendental reciprocal
-__
-ratio equals
-__
-star
-__
-galaxy intention
-__
-Most important
-__
-Most important
-__
-Human-to-Animal
-__
-human-animal
-__
-animal-man
-__
-views
-__
-(political)_directions_(7)
-__
-directions
-__
-political
-__
-realities_(10)
-__
-reality
-__
-realities
-__
-metasystems
-__
-metasystem
-__
-meta systems
-__
-meta-system
-__
-intelligence
-__
-intelligence
-__
-equality_freedom_order
-__
-equality
-__
-freedom
-__
-order
-__
-complexity
-__
-complexity
-__
-complexity
-__
-mechanisms
-__
-mechanisms
-__
-mechanism
-__
-Second most important
-__
-second most important
-__
-Third most important
-__
-third most important
-__
-Motifs_star polygons
-__
-fourth most important
-__
-most important
-__
-Halving
-__
-bisection
-__
-bisections
-__
-Religion founder type
-__
-religion-founder type
-__
-prophet
-__
-archon
-__
-religion founder type
-__
-Hinduism
-__
-hinduism
-__
-Star polygon
-__
-star polygon
-__
-of_the_zodiac
-__
-dertierpolygon
-__
-babylon
-__
-star_polygon_vs_uniform
-__
-compare
-__
-star_polygon_vs_uniform
-__
-comparevs1divn
-__
-Messiah
-__
-messiah
-__
-heptagram
-__
-dog
-__
-messiah
-__
-messiases
-__
-uniform_polygon
-__
-uniform_polygon
-__
-uniform_polygon
-__
-non-star polygon
-__
-polygon
-__
-representative_higher_concepts
-__
-representative_higher_concepts
-__
-black_sun
-__
-universes
-__
-Revelation_of_John
-__
-revelation_
-__
-revelation_of_john
-__
-JOHN
-__
-bible
-__
-revelation johannes
-__
-particle meta-physics
-__
-addition
-__
-identity
-__
-identity
-__
-breeding up
-__
-highbred
-__
-hochzuechten
-__
-Universal_ratio_of_equal_numbers
-__
-universal_right
-__
-law_
-__
-law
-__
-such_as_combining_linking
-__
-combineetc
-__
-no_only_paradigm_religions
-__
-metaparadigmreligion
-__
-spheres_circles
-__
-spheres_circles
-__
-chinese_horoscope
-__
-chinese_horoscope
-__
-china
-__
-babylonian_zodiac
-__
-zodiac signs
-__
-Gospel of Thomas
-__
-gospel of thomas
-__
-analytic_ontology
-__
-analytic_ontology
-__
-ontology
-__
-transcendentals_inside_outside
-__
-inside_outside_structure
-__
-structure_alien_inside_outside
-__
-structure inside outside
-__
-interior exterior structure
-__
-transcendentalieninsideoutside
-__
-transcendentalieninnenaussen
-__
-modal logic
-__
-modal logic
-__
-5
-__
-five
-__
-five
-__
-structure of five
-__
-five
-__
-five
-__
-fuenfer structure
-__
-9
-__
-nine
-__
-nine
-__
-nine structure
-__
-3
-__
-three
-__
-three
-__
-triad structure
-__
-Structure size
-__
-size
-__
-large
-__
-organizations
-__
 organization
 __
 political_systems
 __
-political_systems
+politicalsystems
 __
 politics
 __
@@ -1113,21 +761,21 @@ discrete
 __
 beyond_that
 __
-going beyond
+goingbeyond
 __
 continuous
 __
 Universe_Structurals_Transcendentals
 __
-structural __
+structuralia
 __
 transcendentalia
 __
 direction_as_direction
 __
-direction_as_direction
+directiondirection
 __
-view_galaxy
+intention_galaxy
 __
 intention_reciprocal_galaxy
 __
@@ -1137,11 +785,11 @@ intent_reciprocal
 __
 motivereciprocal
 __
-motive reciprocal
+motivereciprocal
 __
-reciprocal of intention
+reciprocalofintention
 __
-galaxy reciprocal
+galaxyreciprocal
 __
 universe_reciprocal
 __
@@ -1149,9 +797,9 @@ universe_reciprocal
 __
 structural_reciprocal
 __
-structural reciprocal
+structuralreciprocal
 __
-transcendental reciprocal
+transcendentalreciprocal
 __
 counter-transcendental
 __
@@ -1161,7 +809,7 @@ against-against-transcendentalism
 __
 against-against-structurals
 __
-against-against-structural __
+against-against-structural 
 __
 neutral_opposite_transcendentalia
 __
@@ -1171,7 +819,7 @@ neutral_countertranscendentalism
 __
 neutralcounterstructuralism
 __
-neutral-versus-structural __
+neutral-versus-structural
 __
 enterprise_business
 __
@@ -1197,57 +845,57 @@ direction
 __
 good
 __
-Countertranscendentals
+countertranscendentals
 __
 counter-transcendentals
 __
 counter-transcendentals
 __
-counter-structural __
+counter-structuralias
 __
-counter-alia
+counter-philoalias
 __
 counteruniversals
 __
-System things
+systemthings
 __
-system things
+systemthings
 __
 transcendentals
 __
-alien
+philoalias
 __
 universals
 __
-Reciprocal_of_Transcendentalia
+reciprocal_of_transcendentalia
 __
-alienreciprocal
+philoalienreciprocal
 __
 universals_reciprocal
 __
-Network
+network
 __
 network
 __
 why_transcendental_=_structure_size_=_character
 __
-why_transcendental_=structural_size_and_character
-__
-Category
+whytranscendentalstructuralsizeandcharacter
 __
 category
 __
-Space missions
+category
+__
+Spac missions
 __
 space
 __
-Programming paradigms
+Programming-paradigms
 __
-programming paradigms
+programmingparadigms
 __
 mind__(15)
 __
-spirit
+mindandspirit
 __
 why_transcendental_=_complexity_by_Michael_Commons
 __
@@ -1275,7 +923,7 @@ alternation
 __
 alternating
 __
-dual structure
+dualstructure
 __
 multiplication
 __
@@ -1285,11 +933,11 @@ __
 __
 four
 __
-four structure
+fourstructure
 __
-sequences of four
+sequencesoffour
 __
-social class
+socialclass
 __
 class
 __
@@ -1299,9 +947,9 @@ Morale
 __
 morality
 __
-warummoral
+whymorals
 __
-Fields of expertise
+fieldsofexpertise
 __
 specialties
 __
@@ -1345,33 +993,33 @@ realistic
 __
 works
 __
-Explanation
+explanation
 __
 explanation
 __
 declaration
 __
-BWL
+businessadministration
 __
-bwl
+businessadministration
 __
-sense_of_life
+sense_and_meaning_of_life
 __
-sense_of_life
+sense_and_meaning_of_life
 __
-sense_of_life
+sense_and_meaning_of_life
 __
-sense
+sense_and_meaning
 __
-search for meaning
+searchformeaning
 __
-intelligence problems
+intelligenceproblems
 __
-intelligence problems
+intelligenceproblems
 __
-intelligence problems
+intelligenceproblems
 __
-intelligence deficiencies
+intelligencedeficiencies
 __
 way_of_thinking
 __
@@ -1391,7 +1039,7 @@ feelings
 __
 emotions
 __
-FEELINGS
+feelings
 __
 emotion
 __
@@ -1419,9 +1067,9 @@ incels
 __
 irrational_numbers_by_rooting
 __
-irrational_numbers_by_rooting
+irrationa_numbersbyrooting
 __
-OUTPUT
+initialposition
 __
 dominant_gender
 __
@@ -1439,11 +1087,11 @@ love
 __
 ethics
 __
-faith_knowledge
+faith_and_epistemology
 __
 faith
 __
-cognition
+epistemology
 __
 belief
 __
@@ -1467,7 +1115,7 @@ relativereciprocal
 __
 universalcomparative
 __
-existential_(3)
+existentials_(3)
 __
 existentials
 __
@@ -1483,9 +1131,9 @@ passion
 __
 passions
 __
-relative time amount
+relativetimeamount
 __
-numerical comparison
+numericalcomparison
 __
 aspiration
 __
@@ -1517,21 +1165,21 @@ intention6
 __
 intention7
 __
-emotion
+notemotionnotimpulsesbutsimilar
 __
-emotions
+notemotionnotimpulsesbutsimilar
 __
 behavior
 __
 energy
 __
-universal properties
+universalproperties
 __
-energy of life
+energyoflife
 __
-YARN
+sheafs
 __
-__ behavioral __
+behavioralandfeels
 __
 behavefeel
 __
@@ -1615,7 +1263,7 @@ positions
 __
 thoughts
 __
-ideas
+imaginations
 __
 imagination
 __
@@ -1639,7 +1287,7 @@ impulses
 __
 impetus
 __
-drives
+drive
 __
 need
 __
@@ -1679,7 +1327,7 @@ learn
 __
 learn
 __
-evolutionaer
+evolutionary
 __
 evolutionary
 __
@@ -1699,7 +1347,7 @@ need
 __
 illness
 __
-illness
+disease
 __
 diseases
 __
@@ -1721,7 +1369,7 @@ omega
 __
 sigma
 __
-Leader
+leader
 __
 leader
 __
@@ -1753,7 +1401,7 @@ results_Sense
 __
 yields_sense
 __
-sense_of_power
+makes_sense
 __
 change
 __
@@ -1771,7 +1419,7 @@ baendigenkontrollieren
 __
 control
 __
-baendigen
+tame
 __
 tame
 __
@@ -1783,7 +1431,7 @@ advantages
 __
 advantages
 __
-CHANGING BENEFITS
+usechange
 __
 opponents
 __
@@ -1797,13 +1445,13 @@ pro_benefit
 __
 pronutzen
 __
-counter_position
+counterposition
 __
 counterposition
 __
 help_receive
 __
-help_received
+helpreceived
 __
 help
 __
@@ -1811,7 +1459,7 @@ Per
 __
 per
 __
-for it
+forit
 __
 for
 __
@@ -1853,7 +1501,7 @@ opposite
 __
 opposite
 __
-Harmony
+harmony
 __
 harmony
 __
@@ -1861,13 +1509,13 @@ in_ReTa
 __
 inreta
 __
-Sign
+signbefore
 __
-sign
+signbefore
 __
-prime numbers
+primenumbers
 __
-prime numbers
+primenumbers
 __
 multiples
 __
@@ -1919,7 +1567,7 @@ wisdom_etc
 __
 wisdom
 __
-meta-wisdom
+metawisdom
 __
 meta-wisdom
 __
@@ -1935,7 +1583,7 @@ get_your_right
 __
 right
 __
-self-righteous
+selfrighteous
 __
 inferior_superior
 __
@@ -1959,9 +1607,9 @@ rule_vs_exception
 __
 rule
 __
-EXCEPTION
+exception
 __
-filter type_violation
+filter_type_and_violation
 __
 filter_type
 __
@@ -1971,7 +1619,7 @@ values
 __
 values
 __
-Goodness egoism
+Goodnessegoism
 __
 position
 __
@@ -2009,17 +1657,17 @@ acceptance
 __
 welcome
 __
-family needs
+familyneeds
 __
 ego
 __
 humble
 __
-selfishness_ego_etc
+selfishness_wantingYourI_etc
 __
 selfishness
 __
-__self_addiction
+I_addiction
 __
 research_invention_engagement
 __
@@ -2045,7 +1693,7 @@ selflessness_egolessness_etc
 __
 selfless
 __
-selfless
+I_less
 __
 varied_monotonous
 __
@@ -2065,7 +1713,7 @@ reserved
 __
 inclined
 __
-honest vs polite
+honest_vs_polite
 __
 honest
 __
@@ -2073,7 +1721,7 @@ polite
 __
 courteous
 __
-Scope
+scope
 __
 scope
 __
@@ -2145,15 +1793,15 @@ opinions_and_calls
 __
 opinions
 __
-OTHERS
+otherpeople
 __
 reputation
 __
-opinion intelligence
+opinionintelligence
 __
-opinion intelligence
+opinionintelligence
 __
-origin intelligence
+originintelligence
 __
 morality
 __
@@ -2165,7 +1813,7 @@ leadership
 __
 leadership
 __
-LEADING
+leading
 __
 X-ray
 __
@@ -2181,7 +1829,7 @@ promote
 __
 limit
 __
-raise awareness
+raiseawareness
 __
 thrive
 __
@@ -2199,7 +1847,7 @@ arrogance
 __
 polarity_of_love
 __
-__polarity_of_love
+polarity_of_love
 __
 egoism_vs_altruism
 __
@@ -2209,7 +1857,7 @@ altruist
 __
 causal
 __
-application
+cachet_prestige_validity
 __
 genesis
 __
@@ -2221,13 +1869,13 @@ Survival
 __
 survive
 __
-um1
+of1
 __
-um2
+of2
 __
-um3
+of3
 __
-Framework conditions
+Framework-conditions
 __
 frame
 __
@@ -2245,25 +1893,25 @@ structure_star_polygons
 __
 structure star
 __
-motif_star_polygon_broken-rational
+motif_star_polygon_fractioned-rational
 __
 motif_star
 __
-structure_star_polygon_broken-rational
+structure_star_polygon_fractioned-rational
 __
 strukgebrstern
 __
-motif_similar_polygons_broken-rational
+motif_similar_polygons_fractioned-rational
 __
 motif_similarf
 __
-structure_similar_polygons_broken-rational
+structure_similar_polygons_fractioned-rational
 __
 strukgebrgleichf
 __
 described
 __
-living being
+livingbeing
 __
 animals
 __
@@ -2292,7 +1940,7 @@ __
 religion
 __
 motives_goals
-__
+__d
 goal
 __
 Emotions
@@ -2305,21 +1953,21 @@ celebrities
 __
 celebrities
 __
-economic systems
+economicsystems
 __
-economic system
+economicsystem
 __
-economic systems
+economicsystems
 __
-combined economic system
+combinedeconomicsystem
 __
-combined economic systems
+combinedeconomicsystems
 __
 transcendentalia_structuralia
 __
 transcendence
 __
-prime cross
+primecross
 __
 leibnitz
 __
@@ -2327,7 +1975,7 @@ mechanisms_of_breeding
 __
 mind
 __
-Awareness
+consciousness
 __
 yes
 __
@@ -2443,7 +2091,7 @@ Structure -> Motif
 __
 Structure -> Structure
 __
-with factors from fractional-rational numbers
+, with factors from fractional-rational numbers
 __
 generated multiplications
 __
@@ -2453,7 +2101,7 @@ __
 __
 Fourth most important
 __
-Meta-theme:
+Meta-topic:
 __
 Specific:
 __
@@ -2477,7 +2125,7 @@ Planning-
 __
 Implementation-
 __
-Occasion- __ Topic:
+Occasion-Topic:
 __
 Impact Theme:
 __
@@ -2487,7 +2135,7 @@ effect-
 __
 Force-feeling:
 __
-Reinforcement Theme:
+Reinforcement-Theme:
 __
 Force-giving-
 __
@@ -2495,7 +2143,7 @@ Reinforcement-
 __
 Mastery:
 __
-Direction theme:
+Direction-theme:
 __
 mastery-
 __
@@ -2550,7 +2198,7 @@ __
 nothing
 __
 __
-\ does not exist here as a command!"
+\ does not exist here as a command!
 __
  It is only possible: -
 __
@@ -2641,11 +2289,11 @@ religion.csv
 __
 primenumbers.csv
 __
-broken-rational-universe.csv
+fractioned-rational-universe.csv
 __
 fractional-rational-galaxy.csv
 __
-broken-rational-emotions.csv
+fractioned-rational-emotions.csv
 __
 fractional-rational-structure-size.csv
 __
