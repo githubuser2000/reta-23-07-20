@@ -2957,7 +2957,7 @@ paraNdataMatrix: list = [
     (
         ParametersMain.menschliches,
         (
-            _("ehrlich vs höflich"),
+            _("ehrlich_vs_höflich"),
             _("ehrlich"),
             _("höflich"),
             _("hoeflich"),

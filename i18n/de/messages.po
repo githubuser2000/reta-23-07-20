@@ -3451,7 +3451,7 @@ msgid "zugeneigt"
 msgstr ""
 
 #: i18n/words.py:2960 i18n/words.py:2977
-msgid "ehrlich vs höflich"
+msgid "ehrlich_vs_höflich"
 msgstr ""
 
 #: i18n/words.py:2961 i18n/words.py:2978

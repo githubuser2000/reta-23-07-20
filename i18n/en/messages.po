@@ -2604,19 +2604,19 @@ msgstr "drive"
 
 #: i18n/words.py:2218
 msgid "bedürfnis"
-msgstr ""
+msgstr "need"
 
 #: i18n/words.py:2219
 msgid "bedürfnisse"
-msgstr ""
+msgstr "needs"
 
 #: i18n/words.py:2227
 msgid "reflektion"
-msgstr ""
+msgstr "reflection"
 
 #: i18n/words.py:2228
 msgid "kategorien"
-msgstr ""
+msgstr "categories"
 
 #: i18n/words.py:2236
 msgid "zustaende"
@@ -2624,295 +2624,295 @@ msgstr ""
 
 #: i18n/words.py:2237
 msgid "zustände"
-msgstr ""
+msgstr "states"
 
 #: i18n/words.py:2238
 msgid "modus"
-msgstr ""
+msgstr "mode"
 
 #: i18n/words.py:2239
 msgid "modi"
-msgstr ""
+msgstr "modes"
 
 #: i18n/words.py:2240
 msgid "sein"
-msgstr ""
+msgstr "be"
 
 #: i18n/words.py:2247
 msgid "Motive"
-msgstr ""
+msgstr "motifs"
 
 #: i18n/words.py:2268
 msgid "Bewusstsein_und_Wahrnehmung"
-msgstr ""
+msgstr "consciousness_and_perception"
 
 #: i18n/words.py:2277
 msgid "Errungenschaften"
-msgstr ""
+msgstr "achievements"
 
 #: i18n/words.py:2278
 msgid "errungenschaften"
-msgstr ""
+msgstr "achievements"
 
 #: i18n/words.py:2280
 msgid "erhalten"
-msgstr ""
+msgstr "obtained"
 
 #: i18n/words.py:2287
 msgid "evolutionär_erwerben_und_Intelligenz_Kreativität"
-msgstr ""
+msgstr "evolutionary_acquisition_and_intelligence_creativity"
 
 #: i18n/words.py:2288
 msgid "evolutionärerwerbenundintelligenz"
-msgstr ""
+msgstr "evolutionary_acquire_and_intelligence"
 
 #: i18n/words.py:2290 i18n/words.py:3389 i18n/words.py:3469
 msgid "erwerben"
-msgstr ""
+msgstr "acquire"
 
 #: i18n/words.py:2291
 msgid "erlernen"
-msgstr ""
+msgstr "learn"
 
 #: i18n/words.py:2292
 msgid "lernen"
-msgstr ""
+msgstr "learn"
 
 #: i18n/words.py:2293
 msgid "evolutionaer"
-msgstr ""
+msgstr "evolutionary"
 
 #: i18n/words.py:2294
 msgid "evolutionär"
-msgstr ""
+msgstr "evolutionary"
 
 #: i18n/words.py:2295 i18n/words.py:3372
 msgid "kreativität"
-msgstr ""
+msgstr "creativity"
 
 #: i18n/words.py:2296 i18n/words.py:3374
 msgid "kreativitaet"
-msgstr ""
+msgstr "creativity"
 
 #: i18n/words.py:2297
 msgid "kreativ"
-msgstr ""
+msgstr "creative"
 
 #: i18n/words.py:2304
 msgid "brauchen"
-msgstr ""
+msgstr "need"
 
 #: i18n/words.py:2305
 msgid "benoetigen"
-msgstr ""
+msgstr "need"
 
 #: i18n/words.py:2306
 msgid "benötigen"
-msgstr ""
+msgstr "need"
 
 #: i18n/words.py:2307
 msgid "notwendig"
-msgstr ""
+msgstr "necessary"
 
 #: i18n/words.py:2314
 msgid "Krankheit"
-msgstr ""
+msgstr "illness"
 
 #: i18n/words.py:2315
 msgid "krankheit"
-msgstr ""
+msgstr "disease"
 
 #: i18n/words.py:2316
 msgid "krankheiten"
-msgstr ""
+msgstr "diseases"
 
 #: i18n/words.py:2317
 msgid "pathologisch"
-msgstr ""
+msgstr "pathological"
 
 #: i18n/words.py:2318
 msgid "pathologie"
-msgstr ""
+msgstr "psychiatric"
 
 #: i18n/words.py:2319
 msgid "psychiatrisch"
-msgstr ""
+msgstr "psychiatric"
 
 #: i18n/words.py:2326
 msgid "alpha_beta"
-msgstr ""
+msgstr "alpha_beta"
 
 #: i18n/words.py:2327
 msgid "alphabeta"
-msgstr ""
+msgstr "alphabeta"
 
 #: i18n/words.py:2328
 msgid "alpha"
-msgstr ""
+msgstr "alpha"
 
 #: i18n/words.py:2329
 msgid "beta"
-msgstr ""
+msgstr "beta"
 
 #: i18n/words.py:2330
 msgid "omega"
-msgstr ""
+msgstr "omega"
 
 #: i18n/words.py:2331
 msgid "sigma"
-msgstr ""
+msgstr "sigma"
 
 #: i18n/words.py:2338
 msgid "Anführer"
-msgstr ""
+msgstr "leader"
 
 #: i18n/words.py:2339
 msgid "anfuehrer"
-msgstr ""
+msgstr "lead"
 
 #: i18n/words.py:2340
 msgid "chef"
-msgstr ""
+msgstr "boss"
 
 #: i18n/words.py:2347
 msgid "Manipulation"
-msgstr ""
+msgstr "manipulation"
 
 #: i18n/words.py:2348
 msgid "manipulation"
-msgstr ""
+msgstr "manipulation"
 
 #: i18n/words.py:2355 i18n/words.py:3369 i18n/words.py:3437
 msgid "Berufe"
-msgstr ""
+msgstr "jobs"
 
 #: i18n/words.py:2356 i18n/words.py:3369 i18n/words.py:3437 i18n/words.py:3556
 msgid "berufe"
-msgstr ""
+msgstr "jobs"
 
 #: i18n/words.py:2357 i18n/words.py:3369 i18n/words.py:3437
 msgid "beruf"
-msgstr ""
+msgstr "job"
 
 #: i18n/words.py:2364
 msgid "Lösungen"
-msgstr ""
+msgstr "solutions"
 
 #: i18n/words.py:2365 i18n/words.py:2368
 msgid "lösungen"
-msgstr ""
+msgstr "solutions"
 
 #: i18n/words.py:2366
 msgid "loesungen"
-msgstr ""
+msgstr "solutions"
 
 #: i18n/words.py:2367
 msgid "loesung"
-msgstr ""
+msgstr "solution"
 
 #: i18n/words.py:2372
 msgid "Musik"
-msgstr ""
+msgstr "music"
 
 #: i18n/words.py:2372
 msgid "musik"
-msgstr ""
+msgstr "music"
 
 #: i18n/words.py:2376
 msgid "ergibt_Sinn"
-msgstr ""
+msgstr "makes_sense"
 
 #: i18n/words.py:2377
 msgid "ergibtsinn"
-msgstr ""
+msgstr "results_Sense"
 
 #: i18n/words.py:2378
 msgid "machtsinn"
-msgstr ""
+msgstr "yields_sense"
 
 #: i18n/words.py:2386
 msgid "Veränderung"
-msgstr ""
+msgstr "change"
 
 #: i18n/words.py:2387
 msgid "veraenderung"
-msgstr ""
+msgstr "change"
 
 #: i18n/words.py:2388
 msgid "veraendern"
-msgstr ""
+msgstr "change"
 
 #: i18n/words.py:2389
 msgid "veränderung"
-msgstr ""
+msgstr "change"
 
 #: i18n/words.py:2390
 msgid "verändern"
-msgstr ""
+msgstr "change"
 
 #: i18n/words.py:2397
 msgid "bändigen_kontrollieren"
-msgstr ""
+msgstr "tame_control"
 
 #: i18n/words.py:2398
 msgid "baendigenkontrollieren"
-msgstr ""
+msgstr "tamecontrol"
 
 #: i18n/words.py:2399
 msgid "kontrollieren"
-msgstr ""
+msgstr "control"
 
 #: i18n/words.py:2400
 msgid "baendigen"
-msgstr ""
+msgstr "tame"
 
 #: i18n/words.py:2401
 msgid "bändigen"
-msgstr ""
+msgstr "tame"
 
 #: i18n/words.py:2408 i18n/words.py:3024
 msgid "vereinen"
-msgstr ""
+msgstr "unite"
 
 #: i18n/words.py:2409 i18n/words.py:3026
-msgid "einheit"
+msgid "einheit"unity
 msgstr ""
 
 #: i18n/words.py:2416
 msgid "Vorteile"
-msgstr ""
+msgstr "advantages"
 
 #: i18n/words.py:2417
 msgid "vorteile"
-msgstr ""
+msgstr "advantages"
 
 #: i18n/words.py:2418
 msgid "veraenderungnutzen"
-msgstr ""
+msgstr "usechange"
 
 #: i18n/words.py:2425
 msgid "Gegenspieler"
-msgstr ""
+msgstr "opponent"
 
 #: i18n/words.py:2426
 msgid "gegenspieler"
-msgstr ""
+msgstr "opponent"
 
 #: i18n/words.py:2427
 msgid "antagonist"
-msgstr ""
+msgstr "antagonist"
 
 #: i18n/words.py:2433
 msgid "nervig"
-msgstr ""
+msgstr "annoying"
 
 #: i18n/words.py:2439
 msgid "pro_nutzen"
-msgstr ""
+msgstr "pro_benefit"
 
 #: i18n/words.py:2440
 msgid "pronutzen"
-msgstr ""
+msgstr "probenefit"
 
 #: i18n/words.py:2447
 msgid "Gegenposition"
@@ -2920,303 +2920,303 @@ msgstr ""
 
 #: i18n/words.py:2448
 msgid "gegenposition"
-msgstr ""
+msgstr "counterposition"
 
 #: i18n/words.py:2455
 msgid "Hilfe_erhalten"
-msgstr ""
+msgstr "help_receive"
 
 #: i18n/words.py:2456
 msgid "hilfeerhalten"
-msgstr ""
+msgstr "helpreceive"
 
 #: i18n/words.py:2463
 msgid "Helfen"
-msgstr ""
+msgstr "help"
 
 #: i18n/words.py:2472
 msgid "Pro"
-msgstr ""
+msgstr "pro"
 
 #: i18n/words.py:2473
 msgid "pro"
-msgstr ""
+msgstr "pro"
 
 #: i18n/words.py:2474
 msgid "dafür"
-msgstr ""
+msgstr "forit"
 
 #: i18n/words.py:2475
 msgid "dafuer"
-msgstr ""
+msgstr "forit"
 
 #: i18n/words.py:2482
 msgid "nicht_miteinander_auskommen"
-msgstr ""
+msgstr "not_getting_along_with_another"
 
 #: i18n/words.py:2483
 msgid "nichtauskommen"
-msgstr ""
+msgstr "not_getting_along"
 
 #: i18n/words.py:2490
 msgid "nicht_dagegen"
-msgstr ""
+msgstr "not_against"
 
 #: i18n/words.py:2491
 msgid "nichtdagegen"
-msgstr ""
+msgstr "not_against"
 
 #: i18n/words.py:2498
 msgid "kein_Gegenteil"
-msgstr ""
+msgstr "no_opposite"
 
 #: i18n/words.py:2499
 msgid "keingegenteil"
-msgstr ""
+msgstr "noopposite"
 
 #: i18n/words.py:2506
 msgid "nicht_dafür"
-msgstr ""
+msgstr "not_for"
 
 #: i18n/words.py:2507
 msgid "nichtdafuer"
-msgstr ""
+msgstr "notfor"
 
 #: i18n/words.py:2514
 msgid "Hilfe_nicht_gebrauchen"
-msgstr ""
+msgstr "help_not_need"
 
 #: i18n/words.py:2515
 msgid "hilfenichtgebrauchen"
-msgstr ""
+msgstr "helpnotneed"
 
 #: i18n/words.py:2522
 msgid "nicht_helfen_können"
-msgstr ""
+msgstr "cannot_help"
 
 #: i18n/words.py:2523
 msgid "nichthelfenkoennen"
-msgstr ""
+msgstr "cannothelp"
 
 #: i18n/words.py:2530
 msgid "nicht_abgeneigt"
-msgstr ""
+msgstr "not_disposed"
 
 #: i18n/words.py:2531
 msgid "nichtabgeneigt"
-msgstr ""
+msgstr "notdisposed"
 
 #: i18n/words.py:2537
 msgid "unmotivierbar"
-msgstr ""
+msgstr "unmotivated"
 
 #: i18n/words.py:2543
 msgid "contra"
-msgstr ""
+msgstr "contra"
 
 #: i18n/words.py:2544
 msgid "dagegen"
-msgstr ""
+msgstr "against"
 
 #: i18n/words.py:2551 i18n/words.py:3536
 msgid "Gegenteil"
-msgstr ""
+msgstr "opposite"
 
 #: i18n/words.py:2552
 msgid "gegenteil"
-msgstr ""
+msgstr "opposite"
 
 #: i18n/words.py:2559
 msgid "Harmonie"
-msgstr ""
+msgstr "harmony"
 
 #: i18n/words.py:2560
 msgid "harmonie"
-msgstr ""
+msgstr "harmony"
 
 #: i18n/words.py:2598
 msgid "in_ReTa"
-msgstr ""
+msgstr "in_ReTa"
 
 #: i18n/words.py:2599
 msgid "inreta"
-msgstr ""
+msgstr "inreta"
 
 #: i18n/words.py:2606
 msgid "Vorzeichen"
-msgstr ""
+msgstr "signbefore"
 
 #: i18n/words.py:2607
 msgid "vorzeichen"
-msgstr ""
+msgstr "signbefore"
 
 #: i18n/words.py:2614
 msgid "Primzahlen"
-msgstr ""
+msgstr "primenumbers"
 
 #: i18n/words.py:2615
 msgid "primzahlen"
-msgstr ""
+msgstr "primenumbers"
 
 #: i18n/words.py:2617
 msgid "vielfacher"
-msgstr ""
+msgstr "multiples"
 
 #: i18n/words.py:2624
 msgid "Anwendung_der_Sonnen_und_Monde"
-msgstr ""
+msgstr "application_of_suns_and_moons"
 
 #: i18n/words.py:2625
 msgid "anwendungdersonnenundmonde"
-msgstr ""
+msgstr "applicationofsunsandmoons"
 
 #: i18n/words.py:2626
 msgid "anwendungdersonnen"
-msgstr ""
+msgstr "applicationssuns"
 
 #: i18n/words.py:2627
 msgid "anwendungenfuermonde"
-msgstr ""
+msgstr "applicationsmoons"
 
 #: i18n/words.py:2634
 msgid "Zählungen"
-msgstr ""
+msgstr "counts"
 
 #: i18n/words.py:2635
 msgid "zählungen"
-msgstr ""
+msgstr "counts"
 
 #: i18n/words.py:2637
 msgid "zaehlungen"
-msgstr ""
+msgstr "counts"
 
 #: i18n/words.py:2638
 msgid "zählung"
-msgstr ""
+msgstr "count"
 
 #: i18n/words.py:2645
 msgid "Jura"
-msgstr ""
+msgstr "law"
 
 #: i18n/words.py:2647
 msgid "gesetzeslehre"
-msgstr ""
+msgstr "law"
 
 #: i18n/words.py:2655
 msgid "Vollkommenheit_des_Geistes"
-msgstr ""
+msgstr "perfection_of_the_spirit"
 
 #: i18n/words.py:2656
 msgid "vollkommenheit"
-msgstr ""
+msgstr "perfection"
 
 #: i18n/words.py:2664 i18n/words.py:3563
 msgid "Gestirn"
-msgstr ""
+msgstr "space_object"
 
 #: i18n/words.py:2678
 msgid "Konjunktiv_Wurzelbildung"
-msgstr ""
+msgstr "subjunctive_root"
 
 #: i18n/words.py:2679
 msgid "konjunktiv"
-msgstr ""
+msgstr "subjunctive"
 
 #: i18n/words.py:2680
 msgid "wurzel"
-msgstr ""
+msgstr "root"
 
 #: i18n/words.py:2687
 msgid "Mechanismen_der_Züchtung"
-msgstr ""
+msgstr "mechanisms_of_breeding"
 
 #: i18n/words.py:2689 i18n/words.py:3503
 msgid "wesen"
-msgstr ""
+msgstr "essence"
 
 #: i18n/words.py:2690
 msgid "zuechtung"
-msgstr ""
+msgstr "breeding"
 
 #: i18n/words.py:2691
 msgid "züchtung"
-msgstr ""
+msgstr "breeding"
 
 #: i18n/words.py:2692 i18n/words.py:3505
 msgid "züchten"
-msgstr ""
+msgstr "breed"
 
 #: i18n/words.py:2693 i18n/words.py:3504
 msgid "zuechten"
-msgstr ""
+msgstr "breed"
 
 #: i18n/words.py:2733
 msgid "Weisheit_etc"
-msgstr ""
+msgstr "wisdom_etc"
 
 #: i18n/words.py:2734
 msgid "weisheit"
-msgstr ""
+msgstr "wisdom"
 
 #: i18n/words.py:2735
 msgid "metaweisheit"
-msgstr ""
+msgstr "metawisdom"
 
 #: i18n/words.py:2736
 msgid "meta-weisheit"
-msgstr ""
+msgstr "meta-wisdom"
 
 #: i18n/words.py:2737
 msgid "idiot"
-msgstr ""
+msgstr "idiot"
 
 #: i18n/words.py:2738
 msgid "weise"
-msgstr ""
+msgstr "wise"
 
 #: i18n/words.py:2739
 msgid "optimal"
-msgstr ""
+msgstr "optimal"
 
 #: i18n/words.py:2740
 msgid "optimum"
-msgstr ""
+msgstr "optimum"
 
 #: i18n/words.py:2748
 msgid "Dein_Recht_bekommen"
-msgstr ""
+msgstr "get_your_right"
 
 #: i18n/words.py:2749
 msgid "rechte"
-msgstr ""
+msgstr "rights"
 
 #: i18n/words.py:2751
 msgid "selbstgerecht"
-msgstr ""
+msgstr "selfrighteous"
 
 #: i18n/words.py:2759
 msgid "unterlegen_überlegen"
-msgstr ""
+msgstr "inferior_superior"
 
 #: i18n/words.py:2760
 msgid "unterlegen"
-msgstr ""
+msgstr "inferior"
 
 #: i18n/words.py:2761
 msgid "ueberlegen"
-msgstr ""
+msgstr "outnumber"
 
 #: i18n/words.py:2769
 msgid "Ehrlichkeit_und_Streit"
-msgstr ""
+msgstr "honesty_and_contention"
 
 #: i18n/words.py:2770
 msgid "streit"
-msgstr ""
+msgstr "dispute"
 
 #: i18n/words.py:2771
 msgid "ehrlichkeit"
-msgstr ""
+msgstr "honesty"
 
 #: i18n/words.py:2778
 msgid "Würdig"
@@ -3224,235 +3224,235 @@ msgstr ""
 
 #: i18n/words.py:2778
 msgid "wuerdig"
-msgstr ""
+msgstr "worthy"
 
 #: i18n/words.py:2778
 msgid "würdig"
-msgstr ""
+msgstr "worthy"
 
 #: i18n/words.py:2785
 msgid "Regel_vs_Ausnahme"
-msgstr ""
+msgstr "rule_vs_exception"
 
 #: i18n/words.py:2786
 msgid "regel"
-msgstr ""
+msgstr "rule"
 
 #: i18n/words.py:2787
 msgid "ausnahme"
-msgstr ""
+msgstr "exception"
 
 #: i18n/words.py:2795
 msgid "Filterart_Widrigkeit"
-msgstr ""
+msgstr "filter_type_and_violation"
 
 #: i18n/words.py:2796
 msgid "filterart"
-msgstr ""
+msgstr "filter_type"
 
 #: i18n/words.py:2797
 msgid "widrigkeit"
-msgstr ""
+msgstr "adversity"
 
 #: i18n/words.py:2804
 msgid "Werte"
-msgstr ""
+msgstr "values"
 
 #: i18n/words.py:2805
 msgid "werte"
-msgstr ""
+msgstr "values"
 
 #: i18n/words.py:2813
 msgid "Gutartigkeits-Egoismus"
-msgstr ""
+msgstr "Goodnessegoism"
 
 #: i18n/words.py:2814
 msgid "position"
-msgstr ""
+msgstr "position"
 
 #: i18n/words.py:2815
 msgid "gutesreziprok"
-msgstr ""
+msgstr "goodreciprocal"
 
 #: i18n/words.py:2823
 msgid "Reflektieren_Erkenntnis-Erkennen"
-msgstr ""
+msgstr "reflect_recognize"
 
 #: i18n/words.py:2824
 msgid "reflektieren"
-msgstr ""
+msgstr "reflect"
 
 #: i18n/words.py:2833
 msgid "Vertrauen_wollen"
-msgstr ""
+msgstr "trust_want"
 
 #: i18n/words.py:2834
 msgid "vertrauenwollen"
-msgstr ""
+msgstr "want_to_trust"
 
 #: i18n/words.py:2842
 msgid "einklinken_vertrauen_anprangern"
-msgstr ""
+msgstr "engage_trust_denounce"
 
 #: i18n/words.py:2843 i18n/words.py:2901
 msgid "einklinken"
-msgstr ""
+msgstr "latch_on"
 
 #: i18n/words.py:2844
 msgid "vertrauenerhalten"
-msgstr ""
+msgstr "trust_maintain"
 
 #: i18n/words.py:2845
 msgid "anprangern"
-msgstr ""
+msgstr "denounce"
 
 #: i18n/words.py:2853
 msgid "Ausrichten_Einrichten"
-msgstr ""
+msgstr "align_setup"
 
 #: i18n/words.py:2854
 msgid "einrichten"
-msgstr ""
+msgstr "align"
 
 #: i18n/words.py:2855
 msgid "ausrichten"
-msgstr ""
+msgstr "align"
 
 #: i18n/words.py:2863
 msgid "Toleranz_Respekt_Akzeptanz_Willkommen"
-msgstr ""
+msgstr "tolerance_respect_acceptance_welcome"
 
 #: i18n/words.py:2864
 msgid "toleranz"
-msgstr ""
+msgstr "tolerance"
 
 #: i18n/words.py:2865
 msgid "respekt"
-msgstr ""
+msgstr "respect"
 
 #: i18n/words.py:2866
 msgid "akzeptanz"
-msgstr ""
+msgstr "acceptance"
 
 #: i18n/words.py:2867
 msgid "willkommen"
-msgstr ""
+msgstr "welcome"
 
 #: i18n/words.py:2875
 msgid "familiebrauchen"
-msgstr ""
+msgstr "familyneeds"
 
 #: i18n/words.py:2881
 msgid "ego"
-msgstr ""
+msgstr "ego"
 
 #: i18n/words.py:2881
 msgid "bescheiden"
-msgstr ""
+msgstr "humble"
 
 #: i18n/words.py:2888
 msgid "Selbstsucht_Ichsucht_etc"
-msgstr ""
+msgstr "selfishness_wantingYourI_etc"
 
 #: i18n/words.py:2889
 msgid "selbstsucht"
-msgstr ""
+msgstr "selfishness"
 
 #: i18n/words.py:2890
 msgid "ichsucht"
-msgstr ""
+msgstr "I_addiction"
 
 #: i18n/words.py:2898
 msgid "Forschen_Erfinden_Einklinken"
-msgstr ""
+msgstr "research_invention_engagement"
 
 #: i18n/words.py:2899
 msgid "wissenschaft"
-msgstr ""
+msgstr "science"
 
 #: i18n/words.py:2900
 msgid "forschen"
-msgstr ""
+msgstr "research"
 
 #: i18n/words.py:2902
 msgid "erfinden"
-msgstr ""
+msgstr "invent"
 
 #: i18n/words.py:2910
 msgid "Kooperation_vs_Arsch"
-msgstr ""
+msgstr "cooperation_vs_ass"
 
 #: i18n/words.py:2911
 msgid "arschloch"
-msgstr ""
+msgstr "asshole"
 
 #: i18n/words.py:2912
 msgid "kooperation"
-msgstr ""
+msgstr "cooperation"
 
 #: i18n/words.py:2913
 msgid "arsch"
-msgstr ""
+msgstr "ass"
 
 #: i18n/words.py:2920
 msgid "Liebe_usw"
-msgstr ""
+msgstr "love_etc"
 
 #: i18n/words.py:2920
 msgid "zuneigung"
-msgstr ""
+msgstr "affection"
 
 #: i18n/words.py:2927
 msgid "Selbstlosigkeit_Ichlosigkeit_etc"
-msgstr ""
+msgstr "selflessness_I_lessness_etc"
 
 #: i18n/words.py:2928
 msgid "selbstlos"
-msgstr ""
+msgstr "selfless"
 
 #: i18n/words.py:2929
 msgid "ichlos"
-msgstr ""
+msgstr "I_less"
 
 #: i18n/words.py:2937
 msgid "variationsreich_eintönig"
-msgstr ""
+msgstr "varied_monotonous"
 
 #: i18n/words.py:2938
 msgid "eintönig"
-msgstr ""
+msgstr "monotonous"
 
 #: i18n/words.py:2939
 msgid "eintoenig"
-msgstr ""
+msgstr "monotonous"
 
 #: i18n/words.py:2940
 msgid "variationsreich"
-msgstr ""
+msgstr "varied"
 
 #: i18n/words.py:2948
 msgid "Zuneigung_Abneigung"
-msgstr ""
+msgstr "affection_dislike"
 
 #: i18n/words.py:2949
 msgid "abgeneigt"
-msgstr ""
+msgstr "averse"
 
 #: i18n/words.py:2950
 msgid "zugewandt"
-msgstr ""
+msgstr "affectionate"
 
 #: i18n/words.py:2951
 msgid "reserviert"
-msgstr ""
+msgstr "reserved"
 
 #: i18n/words.py:2952
 msgid "zugeneigt"
-msgstr ""
+msgstr "inclined"
 
 #: i18n/words.py:2960 i18n/words.py:2977
 msgid "ehrlich vs höflich"
-msgstr ""
+msgstr "honest_vs_polite"
 
 #: i18n/words.py:2961 i18n/words.py:2978
 msgid "ehrlich"
