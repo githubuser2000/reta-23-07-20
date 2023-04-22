@@ -868,91 +868,91 @@ msgstr "properties_1/n"
 
 #: i18n/words.py:501
 msgid "konzepte2"
-msgstr ""
+msgstr "concepts2"
 
 #: i18n/words.py:504
 msgid "Inkrementieren"
-msgstr ""
+msgstr "increment"
 
 #: i18n/words.py:505
 msgid "inkrementieren"
-msgstr ""
+msgstr "increment"
 
 #: i18n/words.py:508
 msgid "Operationen"
-msgstr ""
+msgstr "operations"
 
 #: i18n/words.py:509
 msgid "operationen"
-msgstr ""
+msgstr "operations"
 
 #: i18n/words.py:512
 msgid "Meta_vs_Konkret_(Universum)"
-msgstr ""
+msgstr "meta_vs_concrete_(universe)"
 
 #: i18n/words.py:513
 msgid "universummetakonkret"
-msgstr ""
+msgstr "universe_metaconcrete"
 
 #: i18n/words.py:516
 msgid "Primzahlwirkung"
-msgstr ""
+msgstr "primeeffect"
 
 #: i18n/words.py:517
 msgid "primzahlwirkung"
-msgstr ""
+msgstr "primeeffect"
 
 #: i18n/words.py:523
 msgid "multiplikationen"
-msgstr ""
+msgstr "multiplications"
 
 #: i18n/words.py:525
 msgid "Planet_(10_und_oder_12)"
-msgstr ""
+msgstr "Planet_(10_und_oder_12)"
 
 #: i18n/words.py:527
 msgid "Strukturen_1_bis_9"
-msgstr ""
+msgstr "structures_1_to_9"
 
 #: i18n/words.py:528
 msgid "strukturkleinerzehn"
-msgstr ""
+msgstr "structure_less_ten"
 
 #: i18n/words.py:530
 msgid "Grundstrukturen"
-msgstr ""
+msgstr "basic_structures"
 
 #: i18n/words.py:530
 msgid "grundstrukturen"
-msgstr ""
+msgstr "basic_structures"
 
 #: i18n/words.py:535 i18n/words.py:3400 i18n/words.py:3480
 msgid "motivation"
-msgstr ""
+msgstr "motivation"
 
 #: i18n/words.py:537 i18n/words.py:1343
 msgid "transzendentaliereziproke"
-msgstr ""
+msgstr "transcendentalreciprocal"
 
 #: i18n/words.py:538
 msgid "verhaeltnisgleicherzahl"
-msgstr ""
+msgstr "ratio_same_number"
 
 #: i18n/words.py:539
 msgid "gestirn"
-msgstr ""
+msgstr "spaceobject"
 
 #: i18n/words.py:541
 msgid "Galaxieabsicht"
-msgstr ""
+msgstr "galaxyintention"
 
 #: i18n/words.py:546 i18n/words.py:667
 msgid "Wichtigste"
-msgstr ""
+msgstr "mostimportant"
 
 #: i18n/words.py:547
 msgid "wichtigste"
-msgstr ""
+msgstr "mostimportant"
 
 #: i18n/words.py:554
 msgid "Mensch-zu-Tier"
@@ -960,27 +960,27 @@ msgstr ""
 
 #: i18n/words.py:555
 msgid "menschtier"
-msgstr ""
+msgstr "Human-to-Animal"
 
 #: i18n/words.py:556
 msgid "tiermensch"
-msgstr ""
+msgstr "human-animal"
 
 #: i18n/words.py:564 i18n/words.py:2175
 msgid "ansichten"
-msgstr ""
+msgstr "views"
 
 #: i18n/words.py:571
 msgid "(politische)_Richtungen_(7)"
-msgstr ""
+msgstr "(political)_directions_(7)"
 
 #: i18n/words.py:572
 msgid "richtungen"
-msgstr ""
+msgstr "directions"
 
 #: i18n/words.py:573
 msgid "politische"
-msgstr ""
+msgstr "political"
 
 #: i18n/words.py:580
 msgid "Wirklichkeiten_(10)"
@@ -988,27 +988,27 @@ msgstr ""
 
 #: i18n/words.py:581 i18n/words.py:2029
 msgid "wirklichkeit"
-msgstr ""
+msgstr "truth_realities_"
 
 #: i18n/words.py:582 i18n/words.py:2030
 msgid "wirklichkeiten"
-msgstr ""
+msgstr "truth_realities_"
 
 #: i18n/words.py:590 i18n/words.py:2070
 msgid "metasysteme"
-msgstr ""
+msgstr "metasystems"
 
 #: i18n/words.py:591 i18n/words.py:2071
 msgid "metasystem"
-msgstr ""
+msgstr "metasystem"
 
 #: i18n/words.py:592 i18n/words.py:2072
 msgid "meta-systeme"
-msgstr ""
+msgstr "metasystems"
 
 #: i18n/words.py:593 i18n/words.py:2073
 msgid "meta-system"
-msgstr ""
+msgstr "metasystem"
 
 #: i18n/words.py:599
 msgid "Intelligenz"
@@ -1016,35 +1016,35 @@ msgstr ""
 
 #: i18n/words.py:599 i18n/words.py:2289 i18n/words.py:3373 i18n/words.py:3557
 msgid "intelligenz"
-msgstr ""
+msgstr "intelligence"
 
 #: i18n/words.py:605
 msgid "Gleichheit_Freiheit_Ordnung"
-msgstr ""
+msgstr "equality_freedom_order"
 
 #: i18n/words.py:606 i18n/words.py:1605
 msgid "gleichheit"
-msgstr ""
+msgstr "equality"
 
 #: i18n/words.py:607 i18n/words.py:1606
 msgid "freiheit"
-msgstr ""
+msgstr "freedom"
 
 #: i18n/words.py:608
 msgid "ordnung"
-msgstr ""
+msgstr "order"
 
 #: i18n/words.py:615
 msgid "Komplexität"
-msgstr ""
+msgstr "complexity"
 
 #: i18n/words.py:616 i18n/words.py:1405 i18n/words.py:1419
 msgid "komplexität"
-msgstr ""
+msgstr "complexity"
 
 #: i18n/words.py:617 i18n/words.py:1406 i18n/words.py:1420
 msgid "komplexitaet"
-msgstr ""
+msgstr "complexity"
 
 #: i18n/words.py:624
 msgid "Mechanismen"
@@ -1052,19 +1052,19 @@ msgstr ""
 
 #: i18n/words.py:625 i18n/words.py:2688 i18n/words.py:3502
 msgid "mechanismen"
-msgstr ""
+msgstr "mechanisms"
 
 #: i18n/words.py:626
 msgid "mechanismus"
-msgstr ""
+msgstr "mechanism"
 
 #: i18n/words.py:633 i18n/words.py:673 i18n/words.py:3555
 msgid "Zweitwichtigste"
-msgstr ""
+msgstr "second_most_important"
 
 #: i18n/words.py:634 i18n/words.py:674
 msgid "zweitwichtigste"
-msgstr ""
+msgstr "secondmostimportant"
 
 #: i18n/words.py:645
 msgid "Drittwichtigste"
@@ -1072,19 +1072,19 @@ msgstr ""
 
 #: i18n/words.py:646
 msgid "drittwichtigste"
-msgstr ""
+msgstr "third_most_important"
 
 #: i18n/words.py:653 i18n/words.py:3259
 msgid "Motive_Sternpolygone"
-msgstr ""
+msgstr "Motifs_starpolygons"
 
 #: i18n/words.py:654
 msgid "viertwichtigste"
-msgstr ""
+msgstr "fourth_most_important"
 
 #: i18n/words.py:667
 msgid "wichtigstes"
-msgstr ""
+msgstr "most_important"
 
 #: i18n/words.py:681
 msgid "Halbierung"
@@ -1092,627 +1092,627 @@ msgstr ""
 
 #: i18n/words.py:682
 msgid "halbierung"
-msgstr ""
+msgstr "halving"
 
 #: i18n/words.py:683
 msgid "halbierungen"
-msgstr ""
+msgstr "halving"
 
 #: i18n/words.py:690
 msgid "Religions-Gründer-Typ"
-msgstr ""
+msgstr "religion-founder-type"
 
 #: i18n/words.py:691
 msgid "religionsgründertyp"
-msgstr ""
+msgstr "religionfoundertype"
 
 #: i18n/words.py:692
 msgid "prophet"
-msgstr ""
+msgstr "Prophet"
 
 #: i18n/words.py:693
 msgid "archon"
-msgstr ""
+msgstr "Archon"
 
 #: i18n/words.py:694
 msgid "religionsgruendertyp"
-msgstr ""
+msgstr "religionfoundertype"
 
 #: i18n/words.py:700
 msgid "Hinduismus"
-msgstr ""
+msgstr "Hinduism"
 
 #: i18n/words.py:700
 msgid "hinduismus"
-msgstr ""
+msgstr "hinduism"
 
 #: i18n/words.py:705
 msgid "Sternpolygon"
-msgstr ""
+msgstr "Starpolygon"
 
 #: i18n/words.py:705
 msgid "sternpolygon"
-msgstr ""
+msgstr "starpolygon"
 
 #: i18n/words.py:711
 msgid "der_Tierkreiszeichen"
-msgstr ""
+msgstr "of_the_zodiac"
 
 #: i18n/words.py:712
 msgid "dertierkreiszeichen"
-msgstr ""
+msgstr "ofthezodiac"
 
 #: i18n/words.py:713 i18n/words.py:882
 msgid "babylon"
-msgstr ""
+msgstr "babylon"
 
 #: i18n/words.py:720
 msgid "Sternpolygon_vs_gleichförmiges"
-msgstr ""
+msgstr "star_polygon_vs_uniform_polygon"
 
 #: i18n/words.py:721
 msgid "vergleich"
-msgstr ""
+msgstr "compare"
 
 #: i18n/words.py:722
 msgid "sternpolygonvsgleichfoermiges"
-msgstr ""
+msgstr "starpolygonvsuniformpolygon"
 
 #: i18n/words.py:723
 msgid "vergleichnvs1divn"
-msgstr ""
+msgstr "comparevs1divn"
 
 #: i18n/words.py:730
 msgid "Messias"
-msgstr ""
+msgstr "Messiah"
 
 #: i18n/words.py:731
 msgid "messias"
-msgstr ""
+msgstr "messiah"
 
 #: i18n/words.py:732
 msgid "heptagramm"
-msgstr ""
+msgstr "heptagram"
 
 #: i18n/words.py:733
 msgid "hund"
-msgstr ""
+msgstr "dog"
 
 #: i18n/words.py:734
 msgid "messiase"
-msgstr ""
+msgstr "messiases"
 
 #: i18n/words.py:735
 msgid "messiasse"
-msgstr ""
+msgstr "messiases"
 
 #: i18n/words.py:742
 msgid "gleichförmiges_Polygon"
-msgstr ""
+msgstr "uniform_polygon"
 
 #: i18n/words.py:743
 msgid "gleichförmigespolygon"
-msgstr ""
+msgstr "uniformpolygon"
 
 #: i18n/words.py:744
 msgid "gleichfoermigespolygon"
-msgstr ""
+msgstr "uniformpolygon"
 
 #: i18n/words.py:745
 msgid "nichtsternpolygon"
-msgstr ""
+msgstr "non-star polygon"
 
 #: i18n/words.py:746
 msgid "polygon"
-msgstr ""
+msgstr "polygon"
 
 #: i18n/words.py:753
 msgid "Vertreter_höherer_Konzepte"
-msgstr ""
+msgstr "representative_higher_concepts"
 
 #: i18n/words.py:754
 msgid "vertreterhoehererkonzepte"
-msgstr ""
+msgstr "representativehigherconcepts"
 
 #: i18n/words.py:758
 msgid "schwarzesonnen"
-msgstr ""
+msgstr "black_sun"
 
 #: i18n/words.py:760
 msgid "universen"
-msgstr ""
+msgstr "universes"
 
 #: i18n/words.py:771
 msgid "Offenbarung_des_Johannes"
-msgstr ""
+msgstr "Revelation_of_John"
 
 #: i18n/words.py:772
 msgid "offenbarung"
-msgstr ""
+msgstr "revelation"
 
 #: i18n/words.py:773
 msgid "offenbarungdesjohannes"
-msgstr ""
+msgstr "revelationofjohn"
 
 #: i18n/words.py:774
 msgid "johannes"
-msgstr ""
+msgstr "john"
 
 #: i18n/words.py:775
 msgid "bibel"
-msgstr ""
+msgstr "bible"
 
 #: i18n/words.py:776
 msgid "offenbarungjohannes"
-msgstr ""
+msgstr "revelationofjohn"
 
 #: i18n/words.py:783 i18n/words.py:833
 msgid "Teilchen-Meta-Physik"
-msgstr ""
+msgstr "particle-meta-physics"
 
 #: i18n/words.py:784 i18n/words.py:834
 msgid "addition"
-msgstr ""
+msgstr "addition"
 
 #: i18n/words.py:785 i18n/words.py:835
 msgid "identitaet"
-msgstr ""
+msgstr "identity"
 
 #: i18n/words.py:786 i18n/words.py:836
 msgid "Identität"
-msgstr ""
+msgstr "identity"
 
 #: i18n/words.py:793 i18n/words.py:824
 msgid "Hochzüchten"
-msgstr ""
+msgstr "breeding_up"
 
 #: i18n/words.py:794 i18n/words.py:825
 msgid "hochzüchten"
-msgstr ""
+msgstr "breedingup"
 
 #: i18n/words.py:795 i18n/words.py:826
 msgid "hochzuechten"
-msgstr ""
+msgstr "breedingup"
 
 #: i18n/words.py:801
 msgid "Universelles_Verhältnis_gleicher_Zahlen"
-msgstr ""
+msgstr "Universal_ratio_of_equal_numbers"
 
 #: i18n/words.py:807
 msgid "universelles_Recht"
-msgstr ""
+msgstr "universal_right"
 
 #: i18n/words.py:808 i18n/words.py:2648 i18n/words.py:2750
 msgid "recht"
-msgstr ""
+msgstr "law"
 
 #: i18n/words.py:809 i18n/words.py:2646
 msgid "jura"
-msgstr ""
+msgstr "law"
 
 #: i18n/words.py:816
 msgid "sowas_wie_Kombinieren_Verknüpfen"
-msgstr ""
+msgstr "such_as_combining_linking"
 
 #: i18n/words.py:817
 msgid "kombinierenetc"
-msgstr ""
+msgstr "combineetc"
 
 #: i18n/words.py:843
 msgid "keine_Nur-Paradigma-Religionen"
-msgstr ""
+msgstr "no_only_paradigm_religions"
 
 #: i18n/words.py:844
 msgid "metaparadigmareligion"
-msgstr ""
+msgstr "metaparadigmreligion"
 
 #: i18n/words.py:851 i18n/words.py:861
 msgid "Kugeln_Kreise"
-msgstr ""
+msgstr "spheres_circles"
 
 #: i18n/words.py:852 i18n/words.py:862
 msgid "kugelnkreise"
-msgstr ""
+msgstr "spherescircles"
 
 #: i18n/words.py:871
 msgid "chinesisches_Horoskop"
-msgstr ""
+msgstr "chinese_horoscope"
 
 #: i18n/words.py:872
 msgid "chinesischeshoroskop"
-msgstr ""
+msgstr "chinesehoroscope"
 
 #: i18n/words.py:873
 msgid "china"
-msgstr ""
+msgstr "china"
 
 #: i18n/words.py:880
 msgid "babylonische_Tierkreiszeichen"
-msgstr ""
+msgstr "babylonian_zodiac"
 
 #: i18n/words.py:881
 msgid "tierkreiszeichen"
-msgstr ""
+msgstr "zodiacsigns"
 
 #: i18n/words.py:888
 msgid "Thomasevangelium"
-msgstr ""
+msgstr "GospelofThomas"
 
 #: i18n/words.py:888
 msgid "thomasevangelium"
-msgstr ""
+msgstr "gospelofthomas"
 
 #: i18n/words.py:894 i18n/words.py:1303 i18n/words.py:3486
 msgid "analytische_Ontologie"
-msgstr ""
+msgstr "analytic_ontology"
 
 #: i18n/words.py:895 i18n/words.py:1304 i18n/words.py:3487
 msgid "analytischeontologie"
-msgstr ""
+msgstr "analyticontology"
 
 #: i18n/words.py:896 i18n/words.py:1305 i18n/words.py:3488
 msgid "ontologie"
-msgstr ""
+msgstr "ontology"
 
 #: i18n/words.py:903
 msgid "Transzendentalien_innen_außen"
-msgstr ""
+msgstr "transcendentals_inside_outside"
 
 #: i18n/words.py:904
 msgid "innenaussenstrukur"
-msgstr ""
+msgstr "inside_outside_structure"
 
 #: i18n/words.py:905
 msgid "strukturalieninnenaußen"
-msgstr ""
+msgstr "structurealien_inside_outside"
 
 #: i18n/words.py:906
 msgid "strukturalieninnenaussen"
-msgstr ""
+msgstr "structurealieninsideoutside"
 
 #: i18n/words.py:907
 msgid "innenaußenstrukur"
-msgstr ""
+msgstr "structureinsideoutside"
 
 #: i18n/words.py:908
 msgid "transzendentalieninnenaußen"
-msgstr ""
+msgstr "interiorexteriorstructure"
 
 #: i18n/words.py:909
 msgid "transzendentalieninnenaussen"
-msgstr ""
+msgstr "transcendentalieninsideoutside"
 
 #: i18n/words.py:916
 msgid "Modallogik"
-msgstr ""
+msgstr "modallogic"
 
 #: i18n/words.py:917
 msgid "modallogik"
-msgstr ""
+msgstr "modallogic"
 
 #: i18n/words.py:924
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: i18n/words.py:925
 msgid "fünf"
-msgstr ""
+msgstr "five"
 
 #: i18n/words.py:926
 msgid "fünfer"
-msgstr ""
+msgstr "five"
 
 #: i18n/words.py:927
 msgid "fünferstruktur"
-msgstr ""
+msgstr "structure_of_five"
 
 #: i18n/words.py:928
 msgid "fuenf"
-msgstr ""
+msgstr "five"
 
 #: i18n/words.py:929
 msgid "fuenfer"
-msgstr ""
+msgstr "five"
 
 #: i18n/words.py:930
 msgid "fuenferstruktur"
-msgstr ""
+msgstr "structureoffive"
 
 #: i18n/words.py:937
 msgid "9"
-msgstr ""
+msgstr "9"
 
 #: i18n/words.py:938
 msgid "neun"
-msgstr ""
+msgstr "nine"
 
 #: i18n/words.py:939
 msgid "neuner"
-msgstr ""
+msgstr "nine"
 
 #: i18n/words.py:940
 msgid "neunerstruktur"
-msgstr ""
+msgstr "nine_structure"
 
 #: i18n/words.py:947
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #: i18n/words.py:948
 msgid "drei"
-msgstr ""
+msgstr "three"
 
 #: i18n/words.py:949
 msgid "dreier"
-msgstr ""
+msgstr "three"
 
 #: i18n/words.py:950
 msgid "dreierstruktur"
-msgstr ""
+msgstr "three_structure"
 
 #: i18n/words.py:965
 msgid "Strukturgrösse"
-msgstr ""
+msgstr "structure_size"
 
 #: i18n/words.py:966
 msgid "größe"
-msgstr ""
+msgstr "size"
 
 #: i18n/words.py:968
 msgid "gross"
-msgstr ""
+msgstr "size"
 
 #: i18n/words.py:979
 msgid "Organisationen"
-msgstr ""
+msgstr "organizations"
 
 #: i18n/words.py:981
 msgid "organisation"
-msgstr ""
+msgstr "organization"
 
 #: i18n/words.py:988
 msgid "politische_Systeme"
-msgstr ""
+msgstr "political_systems"
 
 #: i18n/words.py:989
 msgid "politischesysteme"
-msgstr ""
+msgstr "politicalsystems"
 
 #: i18n/words.py:990
 msgid "politik"
-msgstr ""
+msgstr "politics"
 
 #: i18n/words.py:996
 msgid "meta"
-msgstr ""
+msgstr "meta"
 
 #: i18n/words.py:1010
 msgid "konkret"
-msgstr ""
+msgstr "concrete"
 
 #: i18n/words.py:1024 i18n/words.py:3741
 msgid "Theorie"
-msgstr ""
+msgstr "theory"
 
 #: i18n/words.py:1024
 msgid "theorie"
-msgstr ""
+msgstr "theory"
 
 #: i18n/words.py:1038 i18n/words.py:3747
 msgid "Praxis"
-msgstr ""
+msgstr "practice"
 
 #: i18n/words.py:1038
 msgid "praxis"
-msgstr ""
+msgstr "practice"
 
 #: i18n/words.py:1053 i18n/words.py:3742
 msgid "Management"
-msgstr ""
+msgstr "management"
 
 #: i18n/words.py:1054
 msgid "management"
-msgstr ""
+msgstr "management"
 
 #: i18n/words.py:1055
 msgid "stau"
-msgstr ""
+msgstr "congestion"
 
 #: i18n/words.py:1071 i18n/words.py:3748
 msgid "verändernd"
-msgstr ""
+msgstr "changing"
 
 #: i18n/words.py:1072
 msgid "veraendernd"
-msgstr ""
+msgstr "changing"
 
 #: i18n/words.py:1073
 msgid "fluss"
-msgstr ""
+msgstr "flow"
 
 #: i18n/words.py:1089 i18n/words.py:3743
 msgid "ganzheitlich"
-msgstr ""
+msgstr "discrete"
 
 #: i18n/words.py:1090
 msgid "mathematisch_diskret"
-msgstr ""
+msgstr "mathematical_discrete"
 
 #: i18n/words.py:1091
 msgid "diskret"
-msgstr ""
+msgstr "discrete"
 
 #: i18n/words.py:1107
 msgid "darüber_hinausgehend"
-msgstr ""
+msgstr "beyond_that"
 
 #: i18n/words.py:1108
 msgid "hinausgehend"
-msgstr ""
+msgstr "beyond"
 
 #: i18n/words.py:1109
 msgid "kontinuierlich"
-msgstr ""
+msgstr "continuous"
 
 #: i18n/words.py:1125
 msgid "Universum_Strukturalien_Transzendentalien"
-msgstr ""
+msgstr "Universe_Structurals_Transcendentals"
 
 #: i18n/words.py:1127
 msgid "strukturalie"
-msgstr ""
+msgstr "structuralia"
 
 #: i18n/words.py:1130 i18n/words.py:1331 i18n/words.py:1705
 msgid "transzendentalie"
-msgstr ""
+msgstr "transcendentalia"
 
 #: i18n/words.py:1141
 msgid "Richtung_als_Richtung"
-msgstr ""
+msgstr "direction_as_direction"
 
 #: i18n/words.py:1142
 msgid "richtungrichtung"
-msgstr ""
+msgstr "directiondirection"
 
 #: i18n/words.py:1154
 msgid "absichtgalaxie"
-msgstr ""
+msgstr "intention_galaxy"
 
 #: i18n/words.py:1170
 msgid "Absicht_Reziproke_Galaxie"
-msgstr ""
+msgstr "intention_reciprocal_galaxy"
 
 #: i18n/words.py:1171
 msgid "absichtgalaxiereziproke"
-msgstr ""
+msgstr "intent_galaxy_reciprocal"
 
 #: i18n/words.py:1172
 msgid "absichtreziproke"
-msgstr ""
+msgstr "intent_reciprocal"
 
 #: i18n/words.py:1173
 msgid "motivereziproke"
-msgstr ""
+msgstr "motivereciprocal"
 
 #: i18n/words.py:1174
 msgid "motivreziproke"
-msgstr ""
+msgstr "motivereciprocal"
 
 #: i18n/words.py:1175
 msgid "absichtenreziproke"
-msgstr ""
+msgstr "reciprocalofintention"
 
 #: i18n/words.py:1176
 msgid "galaxiereziproke"
-msgstr ""
+msgstr "galaxyreciprocal"
 
 #: i18n/words.py:1187
 msgid "Universum_Reziproke"
-msgstr ""
+msgstr "universe_reciprocal"
 
 #: i18n/words.py:1188
 msgid "universumreziproke"
-msgstr ""
+msgstr "universe_reciprocal"
 
 #: i18n/words.py:1189
 msgid "strukturaliereziproke"
-msgstr ""
+msgstr "structural_reciprocal"
 
 #: i18n/words.py:1190 i18n/words.py:1344
 msgid "strukturalienreziproke"
-msgstr ""
+msgstr "structuralreciprocal"
 
 #: i18n/words.py:1191 i18n/words.py:1342
 msgid "transzendentalienreziproke"
-msgstr ""
+msgstr "transcendentalreciprocal"
 
 #: i18n/words.py:1203
 msgid "Dagegen-Gegentranszendentalie"
-msgstr ""
+msgstr "counter-transcendental"
 
 #: i18n/words.py:1204
 msgid "dagegengegentranszendentalie"
-msgstr ""
+msgstr "against-against-transcendentalism"
 
 #: i18n/words.py:1205
 msgid "dagegengegentranszendentalien"
-msgstr ""
+msgstr "against-against-transcendentalism"
 
 #: i18n/words.py:1206
 msgid "dagegengegenstrukturalien"
-msgstr ""
+msgstr "against-against-structurals"
 
 #: i18n/words.py:1207
 msgid "dagegengegenstrukturalie"
-msgstr ""
+msgstr "against-against-structural"
 
 #: i18n/words.py:1218
 msgid "neutrale_Gegentranszendentalie"
-msgstr ""
+msgstr "neutral_opposite_transcendentalia"
 
 #: i18n/words.py:1219
 msgid "neutralegegentranszendentalie"
-msgstr ""
+msgstr "neutral_against_transcendentalism"
 
 #: i18n/words.py:1220
 msgid "neutralegegentranszendentalien"
-msgstr ""
+msgstr "neutral_countertranscendentalism"
 
 #: i18n/words.py:1221
 msgid "neutralegegenstrukturalien"
-msgstr ""
+msgstr "neutralcounterstructuralism"
 
 #: i18n/words.py:1222
 msgid "neutralegegenstrukturalie"
-msgstr ""
+msgstr "neutral-versus-structural"
 
 #: i18n/words.py:1233
 msgid "Unternehmung_Geschäft"
-msgstr ""
+msgstr "enterprise_business"
 
 #: i18n/words.py:1234
 msgid "unternehmen"
-msgstr ""
+msgstr "enterprise"
 
 #: i18n/words.py:1235
 msgid "unternehmung"
-msgstr ""
+msgstr "enterprise"
 
 #: i18n/words.py:1236
 msgid "geschaeft"
-msgstr ""
+msgstr "business"
 
 #: i18n/words.py:1237
 msgid "geschäft"
-msgstr ""
+msgstr "business"
 
 #: i18n/words.py:1252 i18n/words.py:2993 i18n/words.py:3750
 msgid "wertvoll"
-msgstr ""
+msgstr "valuable"
 
 #: i18n/words.py:1252
 msgid "wert"
-msgstr ""
+msgstr "value"
 
 #: i18n/words.py:1267
 msgid "Beherrschen"
-msgstr ""
+msgstr "mastery"
 
 #: i18n/words.py:1268
 msgid "regieren"
-msgstr ""
+msgstr "rule"
 
 #: i18n/words.py:1269
 msgid "beherrschen"
-msgstr ""
+msgstr "rule"
 
 #: i18n/words.py:1285 i18n/words.py:3751
 msgid "Richtung"
-msgstr ""
+msgstr "direction"
 
 #: i18n/words.py:1287 i18n/words.py:3044
 msgid "gut"
-msgstr ""
+msgstr "good"
 
 #: i18n/words.py:1312 i18n/words.py:1592 i18n/words.py:3508
 msgid "Gegentranszendentalien"
@@ -1720,539 +1720,539 @@ msgstr ""
 
 #: i18n/words.py:1313 i18n/words.py:1593 i18n/words.py:3509
 msgid "gegentranszendentalien"
-msgstr ""
+msgstr "countertranscendentals"
 
 #: i18n/words.py:1314
 msgid "gegentranszendentalie"
-msgstr ""
+msgstr "counter-transcendental"
 
 #: i18n/words.py:1315 i18n/words.py:1594 i18n/words.py:3510
 msgid "gegenstrukturalien"
-msgstr ""
+msgstr "counter-structuralias"
 
 #: i18n/words.py:1316
 msgid "gegenalien"
-msgstr ""
+msgstr "counter-philoalias"
 
 #: i18n/words.py:1317
 msgid "gegenuniversalien"
-msgstr ""
+msgstr "counteruniversals"
 
 #: i18n/words.py:1323
 msgid "Systemsachen"
-msgstr ""
+msgstr "systemthings"
 
 #: i18n/words.py:1323
 msgid "systemsachen"
-msgstr ""
+msgstr "systemthings"
 
 #: i18n/words.py:1329 i18n/words.py:1703
 msgid "Transzendentalien"
-msgstr ""
+msgstr "transcendentals"
 
 #: i18n/words.py:1333 i18n/words.py:1707 i18n/words.py:3453
 msgid "alien"
-msgstr ""
+msgstr "philoalias"
 
 #: i18n/words.py:1334 i18n/words.py:1708
 msgid "universalien"
-msgstr ""
+msgstr "universals"
 
 #: i18n/words.py:1341
 msgid "Reziproke_von_Transzendentalien"
-msgstr ""
+msgstr "reciprocal_of_transcendentalia"
 
 #: i18n/words.py:1345
 msgid "alienreziproke"
-msgstr ""
+msgstr "philoalienreciprocal"
 
 #: i18n/words.py:1346
 msgid "universalienreziproke"
-msgstr ""
+msgstr "universals_reciprocal"
 
 #: i18n/words.py:1352
 msgid "Netzwerk"
-msgstr ""
+msgstr "network"
 
 #: i18n/words.py:1352
 msgid "netzwerk"
-msgstr ""
+msgstr "network"
 
 #: i18n/words.py:1358 i18n/words.py:3208
 msgid "warum_Transzendentalie_=_Strukturgroesse_=_Charakter"
-msgstr ""
+msgstr "why_transcendental_=_structure_size_=_character"
 
 #: i18n/words.py:1359 i18n/words.py:3209
 msgid "warumtranszendentaliezustrukturgroesseundcharakter"
-msgstr ""
+msgstr "whytranscendentalstructuralsizeandcharacter"
 
 #: i18n/words.py:1365
 msgid "Kategorie"
-msgstr ""
+msgstr "category"
 
 #: i18n/words.py:1365
 msgid "kategorie"
-msgstr ""
+msgstr "category"
 
 #: i18n/words.py:1370 i18n/words.py:1383
 msgid "Raum-Missionen"
-msgstr ""
+ msgstr "space-missions"
 
 #: i18n/words.py:1370 i18n/words.py:1383
 msgid "weltall"
-msgstr ""
+msgstr "space"
 
 #: i18n/words.py:1376
 msgid "Programmier-Paradigmen"
-msgstr ""
+msgstr "programming-paradigms"
 
 #: i18n/words.py:1377
 msgid "programmierparadigmen"
-msgstr ""
+msgstr "programmingparadigms"
 
 #: i18n/words.py:1388
 msgid "Geist__(15)"
-msgstr ""
+msgstr "mind__(15)"
 
 #: i18n/words.py:1388 i18n/words.py:1994 i18n/words.py:2657 i18n/words.py:3525
 msgid "geist"
-msgstr ""
+msgstr "mind"
 
 #: i18n/words.py:1394 i18n/words.py:3216
 msgid "warum_Transzendentalie_=_Komplexität_von_Michael_Commons"
-msgstr ""
+msgstr "why_transcendental_=_complexity_by_Michael_Commons"
 
 #: i18n/words.py:1395 i18n/words.py:3217
 msgid "warumtranszendentaliegleichkomplexitaet"
-msgstr ""
+msgstr "why_transcendental_equals_complexity"
 
 #: i18n/words.py:1403 i18n/words.py:1417
 msgid "modelofhierarchicalcomplexity"
-msgstr ""
+msgstr "modelofhierarchicalcomplexity"
 
 #: i18n/words.py:1404 i18n/words.py:1418
 msgid "komplex"
-msgstr ""
+msgstr "complex"
 
 #: i18n/words.py:1407 i18n/words.py:1421
 msgid "complexity"
-msgstr ""
+msgstr "complexity"
 
 #: i18n/words.py:1408 i18n/words.py:1422
 msgid "model"
-msgstr ""
+msgstr "model"
 
 #: i18n/words.py:1409 i18n/words.py:1423
 msgid "abstraktion"
-msgstr ""
+msgstr "abstraction"
 
 #: i18n/words.py:1430
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: i18n/words.py:1431
 msgid "zwei"
-msgstr ""
+msgstr "two"
 
 #: i18n/words.py:1432
 msgid "gerade"
-msgstr ""
+msgstr "even"
 
 #: i18n/words.py:1433
 msgid "ungerade"
-msgstr ""
+msgstr "odd"
 
 #: i18n/words.py:1434
 msgid "alternierung"
-msgstr ""
+msgstr "alternation"
 
 #: i18n/words.py:1435
 msgid "alternierend"
-msgstr ""
+msgstr "alternating"
 
 #: i18n/words.py:1436
 msgid "zweierstruktur"
-msgstr ""
+msgstr "dualstructure"
 
 #: i18n/words.py:1443
 msgid "Multiplikation"
-msgstr ""
+msgstr "multiplication"
 
 #: i18n/words.py:1444
 msgid "multiplikation"
-msgstr ""
+msgstr "multiplication"
 
 #: i18n/words.py:1451
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: i18n/words.py:1452
 msgid "vier"
-msgstr ""
+msgstr "four"
 
 #: i18n/words.py:1453
 msgid "viererstruktur"
-msgstr ""
+msgstr "fourstructure"
 
 #: i18n/words.py:1454
 msgid "viererabfolgen"
-msgstr ""
+msgstr "sequencesoffour"
 
 #: i18n/words.py:1461
 msgid "Gesellschaftsschicht"
-msgstr ""
+msgstr "socialclass"
 
 #: i18n/words.py:1462 i18n/words.py:2051
 msgid "klasse"
-msgstr ""
+msgstr "class"
 
 #: i18n/words.py:1463 i18n/words.py:2052
 msgid "klassen"
-msgstr ""
+msgstr "classes"
 
 #: i18n/words.py:1469
 msgid "Moral"
-msgstr ""
+msgstr "Morale"
 
 #: i18n/words.py:1469
 msgid "moral"
-msgstr ""
+msgstr "morality"
 
 #: i18n/words.py:1469
 msgid "warummoral"
-msgstr ""
+msgstr "whymorals"
 
 #: i18n/words.py:1476 i18n/words.py:1486
 msgid "Fachgebiete"
-msgstr ""
+msgstr "specialties"
 
 #: i18n/words.py:1477 i18n/words.py:1487
 msgid "fachgebiete"
-msgstr ""
+msgstr "specialties"
 
 #: i18n/words.py:1478 i18n/words.py:1488
 msgid "fachbereiche"
-msgstr ""
+msgstr "specialties"
 
 #: i18n/words.py:1479 i18n/words.py:1489 i18n/words.py:1821
 msgid "themen"
-msgstr ""
+msgstr "topics"
 
 #: i18n/words.py:1496
 msgid "Pflanzen"
-msgstr ""
+msgstr "plants"
 
 #: i18n/words.py:1497
 msgid "pflanzen"
-msgstr ""
+msgstr "plants"
 
 #: i18n/words.py:1504 i18n/words.py:3520
 msgid "Maschinen"
-msgstr ""
+msgstr "machines"
 
 #: i18n/words.py:1505 i18n/words.py:3521
 msgid "maschinen"
-msgstr ""
+msgstr "machines"
 
 #: i18n/words.py:1506
 msgid "maschine"
-msgstr ""
+msgstr "machine"
 
 #: i18n/words.py:1507
 msgid "gerät"
-msgstr ""
+msgstr "machine"
 
 #: i18n/words.py:1508 i18n/words.py:3522
 msgid "geräte"
-msgstr ""
+msgstr "devices"
 
 #: i18n/words.py:1509 i18n/words.py:3523
 msgid "geraete"
-msgstr ""
+msgstr "equipment"
 
 #: i18n/words.py:1510
 msgid "geraet"
-msgstr ""
+msgstr "device"
 
 #: i18n/words.py:1517
 msgid "Organisationsform"
-msgstr ""
+msgstr "type_of_organization"
 
 #: i18n/words.py:1518
 msgid "organisationsform"
-msgstr ""
+msgstr "typeoforganization"
 
 #: i18n/words.py:1519
 msgid "organisationsart"
-msgstr ""
+msgstr "typeoforganization"
 
 #: i18n/words.py:1520
 msgid "firma"
-msgstr ""
+msgstr "company"
 
 #: i18n/words.py:1521
 msgid "verein"
-msgstr ""
+msgstr "association"
 
 #: i18n/words.py:1528
 msgid "System"
-msgstr ""
+msgstr "system"
 
 #: i18n/words.py:1529
 msgid "system"
-msgstr ""
+msgstr "system"
 
 #: i18n/words.py:1536
 msgid "realistisch"
-msgstr ""
+msgstr "realistic"
 
 #: i18n/words.py:1537
 msgid "funktioniert"
-msgstr ""
+msgstr "works"
 
 #: i18n/words.py:1544
 msgid "Erklärung"
-msgstr ""
+msgstr "explanation"
 
 #: i18n/words.py:1545
 msgid "erklärung"
-msgstr ""
+msgstr "explanation"
 
 #: i18n/words.py:1546
 msgid "erklaerung"
-msgstr ""
+msgstr "explanation"
 
 #: i18n/words.py:1553
 msgid "BWL"
-msgstr ""
+msgstr "business_administration"
 
 #: i18n/words.py:1554
 msgid "bwl"
-msgstr ""
+msgstr "businessadministration"
 
 #: i18n/words.py:1561
 msgid "Sinn_des_Lebens"
-msgstr ""
+msgstr "sense_and_meaning_of_life"
 
 #: i18n/words.py:1562
 msgid "sinndeslebens"
-msgstr ""
+msgstr "senseandmeaningoflife"
 
 #: i18n/words.py:1563
 msgid "lebenssinn"
-msgstr ""
+msgstr "sense_and_meaning"
 
 #: i18n/words.py:1564 i18n/words.py:2379 i18n/words.py:3057
 msgid "sinn"
-msgstr ""
+msgstr "sense_and_meaning"
 
 #: i18n/words.py:1565
 msgid "sinnsuche"
-msgstr ""
+msgstr "searchformeaning"
 
 #: i18n/words.py:1573
 msgid "Intelligenzprobleme"
-msgstr ""
+msgstr "intelligenceproblems"
 
 #: i18n/words.py:1574
 msgid "intelligenzprobleme"
-msgstr ""
+msgstr "intelligenceproblems"
 
 #: i18n/words.py:1575
 msgid "intelligenzmaengel"
-msgstr ""
+msgstr "intelligencedeficiencies"
 
 #: i18n/words.py:1576
 msgid "intelligenzmängel"
-msgstr ""
+msgstr "intelligencedeficiencies"
 
 #: i18n/words.py:1583
 msgid "Denkweise_von_Lebewesen"
-msgstr ""
+msgstr "way_of_thinking"
 
 #: i18n/words.py:1584
 msgid "lebewesendenkweise"
-msgstr ""
+msgstr "way_of_thinking_of_living_beings"
 
 #: i18n/words.py:1585
 msgid "denkweise"
-msgstr ""
+msgstr "wayofthinking"
 
 #: i18n/words.py:1601
 msgid "Gleichheit_Freiheit"
-msgstr ""
+msgstr "equality_freedom"
 
 #: i18n/words.py:1602
 msgid "gleichheitfreiheit"
-msgstr ""
+msgstr "equalityfreedom"
 
 #: i18n/words.py:1603
 msgid "ungleichheit"
-msgstr ""
+msgstr "inequality"
 
 #: i18n/words.py:1604
 msgid "dominieren"
-msgstr ""
+msgstr "dominate"
 
 #: i18n/words.py:1613
 msgid "Gefühle"
-msgstr ""
+msgstr "feelings"
 
 #: i18n/words.py:1614 i18n/words.py:2113 i18n/words.py:3407
 msgid "emotionen"
-msgstr ""
+msgstr "emotions"
 
 #: i18n/words.py:1615 i18n/words.py:2112 i18n/words.py:3408
 msgid "gefuehle"
-msgstr ""
+msgstr "emotions"
 
 #: i18n/words.py:1616 i18n/words.py:3409
 msgid "emotion"
-msgstr ""
+msgstr "emotions"
 
 #: i18n/words.py:1617 i18n/words.py:3410
 msgid "gefühl"
-msgstr ""
+msgstr "emotion"
 
 #: i18n/words.py:1618
 msgid "gefuehl"
-msgstr ""
+msgstr "feel"
 
 #: i18n/words.py:1625
 msgid "Egoismus"
-msgstr ""
+msgstr "egoism"
 
 #: i18n/words.py:1626 i18n/words.py:3175
 msgid "egoismus"
-msgstr ""
+msgstr "egoism"
 
 #: i18n/words.py:1627 i18n/words.py:3176
 msgid "altruismus"
-msgstr ""
+msgstr "altruism"
 
 #: i18n/words.py:1628
 msgid "selbstlosigkeit"
-msgstr ""
+msgstr "selflessness"
 
 #: i18n/words.py:1636
 msgid "Wirkung"
-msgstr ""
+msgstr "effect"
 
 #: i18n/words.py:1637
 msgid "wirkung"
-msgstr ""
+msgstr "effect"
 
 #: i18n/words.py:1644
 msgid "INCELs"
-msgstr ""
+msgstr "INCELs"
 
 #: i18n/words.py:1645
 msgid "incel"
-msgstr ""
+msgstr "incel"
 
 #: i18n/words.py:1646
 msgid "incels"
-msgstr ""
+msgstr "incels"
 
 #: i18n/words.py:1653
 msgid "irrationale_Zahlen_durch_Wurzelbildung"
-msgstr ""
+msgstr "irrational_numbers_by_rooting"
 
 #: i18n/words.py:1654
 msgid "irrationalezahlendurchwurzelbildung"
-msgstr ""
+msgstr "irrationa_numbersbyrooting"
 
 #: i18n/words.py:1655
 msgid "ausgangslage"
-msgstr ""
+msgstr "initialposition"
 
 #: i18n/words.py:1662
 msgid "dominierendes_Geschlecht"
-msgstr ""
+msgstr "dominant_gender"
 
 #: i18n/words.py:1663
 msgid "dominierendesgeschlecht"
-msgstr ""
+msgstr "dominantgender"
 
 #: i18n/words.py:1664
 msgid "maennlich"
-msgstr ""
+msgstr "male"
 
 #: i18n/words.py:1665
 msgid "männlich"
-msgstr ""
+msgstr "male"
 
 #: i18n/words.py:1666
 msgid "weiblich"
-msgstr ""
+msgstr "female"
 
 #: i18n/words.py:1673 i18n/words.py:3377
 msgid "Liebe"
-msgstr ""
+msgstr "love"
 
 #: i18n/words.py:1674 i18n/words.py:2198 i18n/words.py:2920 i18n/words.py:3378
 msgid "liebe"
-msgstr ""
+msgstr "love"
 
 #: i18n/words.py:1675
 msgid "ethik"
-msgstr ""
+msgstr "ethics"
 
 #: i18n/words.py:1683
 msgid "Glaube_Erkenntnis"
-msgstr ""
+msgstr "faith_and_epistemology"
 
 #: i18n/words.py:1684
 msgid "glauben"
-msgstr ""
+msgstr "faith"
 
 #: i18n/words.py:1685 i18n/words.py:2825
 msgid "erkenntnis"
-msgstr ""
+msgstr "epistemology"
 
 #: i18n/words.py:1686
 msgid "glaube"
-msgstr ""
+msgstr "faith"
 
 #: i18n/words.py:1693
 msgid "Angreifbarkeit"
-msgstr ""
+msgstr "vulnerability"
 
 #: i18n/words.py:1694
 msgid "angreifbarkeit"
-msgstr ""
+msgstr "vulnerability"
 
 #: i18n/words.py:1695
 msgid "angreifbar"
-msgstr ""
+msgstr "vulnerable"
 
 #: i18n/words.py:1709
 msgid "meta-paradigmen"
-msgstr ""
+msgstr "meta-paradigms"
 
 #: i18n/words.py:1717
 msgid "bedingung"
-msgstr ""
+msgstr "condition"
 
 #: i18n/words.py:1718
 msgid "bedingungen"
-msgstr ""
+msgstr "conditions"
 
 #: i18n/words.py:1719
 msgid "auslöser"
-msgstr ""
+msgstr "trigger"
 
 #: i18n/words.py:1720
 msgid "ausloeser"
-msgstr ""
+msgstr "trigger"
 
 #: i18n/words.py:1728
 msgid "relativreziprokuniversell"
-msgstr ""
+msgstr "relativereciprocal"
 
 #: i18n/words.py:1736
 msgid "universellerkomperativ"
-msgstr ""
+msgstr "universalcomparative"
 
 #: i18n/words.py:1743
 msgid "Existenzialien_(3)"
@@ -2260,347 +2260,347 @@ msgstr ""
 
 #: i18n/words.py:1744
 msgid "existenzialien"
-msgstr ""
+msgstr "existentials"
 
 #: i18n/words.py:1750
 msgid "Extremalien_(19)"
-msgstr ""
+msgstr "Extremalia_"
 
 #: i18n/words.py:1750
 msgid "extremalien"
-msgstr ""
+msgstr "extremalia"
 
 #: i18n/words.py:1757
 msgid "erwartungen"
-msgstr ""
+msgstr "expectations"
 
 #: i18n/words.py:1758
 msgid "erwartungshaltungen"
-msgstr ""
+msgstr "expectations"
 
 #: i18n/words.py:1766
 msgid "leidenschaft"
-msgstr ""
+msgstr "passion"
 
 #: i18n/words.py:1767
 msgid "leidenschaften"
-msgstr ""
+msgstr "passions"
 
 #: i18n/words.py:1775
 msgid "relativerzeitbetrag"
-msgstr ""
+msgstr "relativetimeamount"
 
 #: i18n/words.py:1783
 msgid "zahlenvergleich"
-msgstr ""
+msgstr "numericalcomparison"
 
 #: i18n/words.py:1791
 msgid "bestrebung"
-msgstr ""
+msgstr "aspiration"
 
 #: i18n/words.py:1792
 msgid "bestrebungen"
-msgstr ""
+msgstr "aspirations"
 
 #: i18n/words.py:1798
 msgid "prinzipien"
-msgstr ""
+msgstr "principles"
 
 #: i18n/words.py:1805
 msgid "attraktionen"
-msgstr ""
+msgstr "attractions"
 
 #: i18n/words.py:1813
 msgid "optimierung"
-msgstr ""
+msgstr "optimization"
 
 #: i18n/words.py:1822
 msgid "thema"
-msgstr ""
+msgstr "topic"
 
 #: i18n/words.py:1837
 msgid "Reziprokes"
-msgstr ""
+msgstr "reciprocal"
 
 #: i18n/words.py:1838
 msgid "reziproke"
-msgstr ""
+msgstr "reciprocal"
 
 #: i18n/words.py:1839
 msgid "reziprokes"
-msgstr ""
+msgstr "reciprocal"
 
 #: i18n/words.py:1870
 msgid "achtung"
-msgstr ""
+msgstr "attention"
 
 #: i18n/words.py:1871
 msgid "achten"
-msgstr ""
+msgstr "attention_or_respect"
 
 #: i18n/words.py:1887
 msgid "absicht16"
-msgstr ""
+msgstr "intention16"
 
 #: i18n/words.py:1895
 msgid "absicht17"
-msgstr ""
+msgstr "intention17"
 
 #: i18n/words.py:1903
 msgid "absicht6"
-msgstr ""
+msgstr "intention6"
 
 #: i18n/words.py:1911
 msgid "absicht7"
-msgstr ""
+msgstr "intention7"
 
 #: i18n/words.py:1919
 msgid "regung"
-msgstr ""
+msgstr "notemotionnotimpulsesbutsimilar"
 
 #: i18n/words.py:1920
 msgid "regungen"
-msgstr ""
+msgstr "notemotionnotimpulsesbutsimilar"
 
 #: i18n/words.py:1926
 msgid "verhalten"
-msgstr ""
+msgstr "behavior"
 
 #: i18n/words.py:1933
 msgid "energie"
-msgstr ""
+msgstr "energy"
 
 #: i18n/words.py:1934
 msgid "universelleeigenschaften"
-msgstr ""
+msgstr "universalproperties"
 
 #: i18n/words.py:1935
 msgid "lebensenergie"
-msgstr ""
+msgstr "energyoflife"
 
 #: i18n/words.py:1943
 msgid "garben"
-msgstr ""
+msgstr "sheafs"
 
 #: i18n/words.py:1944
 msgid "verhaltenfuehlen"
-msgstr ""
+msgstr "behavioralandfeels"
 
 #: i18n/words.py:1945
 msgid "verhaltenfühlen"
-msgstr ""
+msgstr "behavefeel"
 
 #: i18n/words.py:1953
 msgid "nachvollziehen"
-msgstr ""
+msgstr "comprehend"
 
 #: i18n/words.py:1968
 msgid "empathie"
-msgstr ""
+msgstr "empathy"
 
 #: i18n/words.py:1969
 msgid "mitgefuehl"
-msgstr ""
+msgstr "empathy"
 
 #: i18n/words.py:1977
 msgid "absicht1/6"
-msgstr ""
+msgstr "intention1/6"
 
 #: i18n/words.py:1978
 msgid "absicht1pro6"
-msgstr ""
+msgstr "intention1pro6"
 
 #: i18n/words.py:1986
 msgid "absicht10"
-msgstr ""
+msgstr "intention10"
 
 #: i18n/words.py:1995 i18n/words.py:2269 i18n/words.py:3526
 msgid "bewusstsein"
-msgstr ""
+msgstr "consciousness"
 
 #: i18n/words.py:2002
 msgid "Reflexe_(3)"
-msgstr ""
+msgstr "reflexes"
 
 #: i18n/words.py:2003
 msgid "reflex"
-msgstr ""
+msgstr "reflex"
 
 #: i18n/words.py:2004
 msgid "reflexe"
-msgstr ""
+msgstr "reflexes"
 
 #: i18n/words.py:2012
 msgid "lust"
-msgstr ""
+msgstr "lust"
 
 #: i18n/words.py:2020
 msgid "paradigmen"
-msgstr ""
+msgstr "paradigms"
 
 #: i18n/words.py:2031
 msgid "wahrheit"
-msgstr ""
+msgstr "truth"
 
 #: i18n/words.py:2032 i18n/words.py:2270
 msgid "wahrnehmung"
-msgstr ""
+msgstr "perception"
 
 #: i18n/words.py:2040
 msgid "stimmung"
-msgstr ""
+msgstr "mood"
 
 #: i18n/words.py:2041
 msgid "stimmungen"
-msgstr ""
+msgstr "moods"
 
 #: i18n/words.py:2043 i18n/words.py:3846
 msgid "kombinationen"
-msgstr ""
+msgstr "combinations"
 
 #: i18n/words.py:2060
 msgid "ordnen"
-msgstr ""
+msgstr "order"
 
 #: i18n/words.py:2061
 msgid "ordnenundfiltern"
-msgstr ""
+msgstr "orderandfilter"
 
 #: i18n/words.py:2062
 msgid "filtern"
-msgstr ""
+msgstr "filter"
 
 #: i18n/words.py:2074
 msgid "menge"
-msgstr ""
+msgstr "set"
 
 #: i18n/words.py:2075
 msgid "mengen"
-msgstr ""
+msgstr "sets"
 
 #: i18n/words.py:2083
 msgid "absicht1pro8"
-msgstr ""
+msgstr "intention1pro8"
 
 #: i18n/words.py:2084
 msgid "absicht1/8"
-msgstr ""
+msgstr "intention1/8"
 
 #: i18n/words.py:2091
 msgid "Ziele_(19)"
-msgstr ""
+msgstr "goals_"
 
 #: i18n/words.py:2092 i18n/words.py:2279 i18n/words.py:3401 i18n/words.py:3482
 msgid "ziele"
-msgstr ""
+msgstr "goals"
 
 #: i18n/words.py:2093
 msgid "maxima"
-msgstr ""
+msgstr "maxima"
 
 #: i18n/words.py:2094
 msgid "höhenvorstellungen"
-msgstr ""
+msgstr "altitudes"
 
 #: i18n/words.py:2102
 msgid "konkreta"
-msgstr ""
+msgstr "concreta"
 
 #: i18n/words.py:2103
 msgid "focus"
-msgstr ""
+msgstr "fcous"
 
 #: i18n/words.py:2104
 msgid "fokus"
-msgstr ""
+msgstr "focus"
 
 #: i18n/words.py:2114 i18n/words.py:3411
 msgid "gefühle"
-msgstr ""
+msgstr "feelings"
 
 #: i18n/words.py:2122
 msgid "abhaengigkeit"
-msgstr ""
+msgstr "dependence"
 
 #: i18n/words.py:2123
 msgid "abhängigkeit"
-msgstr ""
+msgstr "dependence"
 
 #: i18n/words.py:2131
 msgid "karte"
-msgstr ""
+msgstr "map"
 
 #: i18n/words.py:2132
 msgid "filter"
-msgstr ""
+msgstr "filter"
 
 #: i18n/words.py:2133
 msgid "unterscheidung"
-msgstr ""
+msgstr "distinction"
 
 #: i18n/words.py:2139
 msgid "fundament"
-msgstr ""
+msgstr "foundation"
 
 #: i18n/words.py:2146 i18n/words.py:2260
 msgid "positionen"
-msgstr ""
+msgstr "positions"
 
 #: i18n/words.py:2147 i18n/words.py:2261
 msgid "gedanken"
-msgstr ""
+msgstr "thoughts"
 
 #: i18n/words.py:2155
 msgid "vorstellungen"
-msgstr ""
+msgstr "imaginations"
 
 #: i18n/words.py:2156
 msgid "vorstellung"
-msgstr ""
+msgstr "imagination"
 
 #: i18n/words.py:2157
 msgid "funktionen"
-msgstr ""
+msgstr "functions"
 
 #: i18n/words.py:2165
 msgid "sollen"
-msgstr ""
+msgstr "shall"
 
 #: i18n/words.py:2166
 msgid "frage"
-msgstr ""
+msgstr "question"
 
 #: i18n/words.py:2167
 msgid "vorgehensweise"
-msgstr ""
+msgstr "procedure"
 
 #: i18n/words.py:2183
 msgid "verbundenheiten"
-msgstr ""
+msgstr "affiliations"
 
 #: i18n/words.py:2191
 msgid "absicht13"
-msgstr ""
+msgstr "intention13"
 
 #: i18n/words.py:2192 i18n/words.py:2464
 msgid "helfen"
-msgstr ""
+msgstr "help"
 
 #: i18n/words.py:2204
 msgid "koalitionen"
-msgstr ""
+msgstr "coalitions"
 
 #: i18n/words.py:2209
 msgid "impulse"
-msgstr ""
+msgstr "impulses"
 
 #: i18n/words.py:2216
 msgid "trieb"
-msgstr ""
+msgstr "drive"
 
 #: i18n/words.py:2217
 msgid "triebe"
-msgstr ""
+msgstr "drive"
 
 #: i18n/words.py:2218
 msgid "bedürfnis"
