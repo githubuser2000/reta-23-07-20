@@ -395,7 +395,7 @@ human
 __
 Pro_Contra
 __
-procontra
+pro_contra
 __
 againstorpro
 __
@@ -468,7 +468,6 @@ __
 Human-to-Animal
 __
 human-animal
-__
 animal-man
 __
 views
@@ -479,7 +478,7 @@ directions
 __
 political
 __
-truth_realities_(10)
+truth_realities_
 __
 truth_reality
 __
@@ -512,7 +511,6 @@ __
 complexity
 __
 mechanisms
-__
 mechanisms
 __
 mechanism
@@ -669,7 +667,7 @@ transcendentals_inside_outside
 __
 inside_outside_structure
 __
-structure_alien_inside_outside
+structurealien_inside_outside
 __
 structureinsideoutside
 __
@@ -1197,7 +1195,7 @@ intention10
 __
 awareness
 __
-reflexes_(3)
+awareness
 __
 reflex
 __
@@ -1789,7 +1787,7 @@ egalitarian
 __
 authoritarian
 __
-opinions_and_calls
+opinions_and_reputation
 __
 opinions
 __

@@ -3456,395 +3456,395 @@ msgstr "honest_vs_polite"
 
 #: i18n/words.py:2961 i18n/words.py:2978
 msgid "ehrlich"
-msgstr ""
+msgstr "honest"
 
 #: i18n/words.py:2962 i18n/words.py:2979
 msgid "höflich"
-msgstr ""
+msgstr "polite"
 
 #: i18n/words.py:2963 i18n/words.py:2980
 msgid "hoeflich"
-msgstr ""
+msgstr "courteous"
 
 #: i18n/words.py:2987
 msgid "Tragweite"
-msgstr ""
+msgstr "scope"
 
 #: i18n/words.py:2987
 msgid "tragweite"
-msgstr ""
+msgstr "scope"
 
 #: i18n/words.py:2993
 msgid "wertlos"
-msgstr ""
+msgstr "worthless"
 
 #: i18n/words.py:3000
 msgid "Götter_Propheten_Familien_Freunde"
-msgstr ""
+msgstr "gods_prophets_families_friends"
 
 #: i18n/words.py:3001
 msgid "familiaer"
-msgstr ""
+msgstr "familial"
 
 #: i18n/words.py:3002
 msgid "goettlich"
-msgstr ""
+msgstr "godly"
 
 #: i18n/words.py:3003
 msgid "freunde"
-msgstr ""
+msgstr "friends"
 
 #: i18n/words.py:3004
 msgid "propheten"
-msgstr ""
+msgstr "prophets"
 
 #: i18n/words.py:3012
 msgid "sanft_vs_hart"
-msgstr ""
+msgstr "gentle_vs_hard"
 
 #: i18n/words.py:3013
 msgid "sanft"
-msgstr ""
+msgstr "soft"
 
 #: i18n/words.py:3014
 msgid "hart"
-msgstr ""
+msgstr "hard"
 
 #: i18n/words.py:3022
 msgid "vereinen_vs_verbinden"
-msgstr ""
+msgstr "unite_vs_connect"
 
 #: i18n/words.py:3023
 msgid "vereinenverbinden"
-msgstr ""
+msgstr "unite_connect"
 
 #: i18n/words.py:3025
 msgid "verbinden"
-msgstr ""
+msgstr "connect"
 
 #: i18n/words.py:3027
 msgid "verbindung"
-msgstr ""
+msgstr "connect"
 
 #: i18n/words.py:3035 i18n/words.py:3538
 msgid "ähnlich"
-msgstr ""
+msgstr "similar"
 
 #: i18n/words.py:3036
 msgid "aehnlich"
-msgstr ""
+msgstr "similar"
 
 #: i18n/words.py:3043
 msgid "gut_böse_lieb_schlecht"
-msgstr ""
+msgstr "good_evil_love_bad"
 
 #: i18n/words.py:3045
 msgid "böse"
-msgstr ""
+msgstr "evil"
 
 #: i18n/words.py:3046
 msgid "boese"
-msgstr ""
+msgstr "evil"
 
 #: i18n/words.py:3047
 msgid "lieb"
-msgstr ""
+msgstr "kind"
 
 #: i18n/words.py:3048
 msgid "schlecht"
-msgstr ""
+msgstr "bad"
 
 #: i18n/words.py:3056
 msgid "Sinn_und_Zweck_des_Lebens"
-msgstr ""
+msgstr "meaning_and_purpose_of_life"
 
 #: i18n/words.py:3058
 msgid "zweck"
-msgstr ""
+msgstr "purpose"
 
 #: i18n/words.py:3067
 msgid "Zeit_vs_Raum"
-msgstr ""
+msgstr "time_vs_space"
 
 #: i18n/words.py:3069
 msgid "raum"
-msgstr ""
+msgstr "space"
 
 #: i18n/words.py:3070
 msgid "zeitlich"
-msgstr ""
+msgstr "time"
 
 #: i18n/words.py:3071
 msgid "räumlich"
-msgstr ""
+msgstr "spatially"
 
 #: i18n/words.py:3079
 msgid "egalitär_vs_autoritär"
-msgstr ""
+msgstr "egalitarian_vs_authoritarian"
 
 #: i18n/words.py:3080
 msgid "egalitaerautoritaer"
-msgstr ""
+msgstr "egalitarian_authoritarian"
 
 #: i18n/words.py:3081
 msgid "egalitaer"
-msgstr ""
+msgstr "egalitarian"
 
 #: i18n/words.py:3082
 msgid "autoritaer"
-msgstr ""
+msgstr "authoritarian"
 
 #: i18n/words.py:3083
 msgid "egalitär"
-msgstr ""
+msgstr "egalitarian"
 
 #: i18n/words.py:3084
 msgid "autoritär"
-msgstr ""
+msgstr "authoritarian"
 
 #: i18n/words.py:3092
 msgid "Meinungen_und_Ruf"
-msgstr ""
+msgstr "opinions_and_reputation"
 
 #: i18n/words.py:3093
 msgid "meinungen"
-msgstr ""
+msgstr "opinions"
 
 #: i18n/words.py:3094
 msgid "anderemenschen"
-msgstr ""
+msgstr "otherpeople"
 
 #: i18n/words.py:3095
 msgid "ruf"
-msgstr ""
+msgstr "reputation"
 
 #: i18n/words.py:3103
 msgid "Meinungsintelligenz"
-msgstr ""
+msgstr "opinionintelligence"
 
 #: i18n/words.py:3104
 msgid "meinungsintelligenz"
-msgstr ""
+msgstr "opinionintelligence"
 
 #: i18n/words.py:3105
 msgid "ursprungsintelligenz"
-msgstr ""
+msgstr "originintelligence"
 
 #: i18n/words.py:3113
 msgid "Sittlichkeit"
-msgstr ""
+msgstr "morality"
 
 #: i18n/words.py:3114
 msgid "sittlichkeit"
-msgstr ""
+msgstr "morality"
 
 #: i18n/words.py:3115
 msgid "annaehrerung"
-msgstr ""
+msgstr "getting_near"
 
 #: i18n/words.py:3122
 msgid "Führung"
-msgstr ""
+msgstr "leadership"
 
 #: i18n/words.py:3122
 msgid "führung"
-msgstr ""
+msgstr "leadership"
 
 #: i18n/words.py:3122
 msgid "fuehrung"
-msgstr ""
+msgstr "leadership"
 
 #: i18n/words.py:3129
 msgid "Durchleuchten"
-msgstr ""
+msgstr "X-ray"
 
 #: i18n/words.py:3130
 msgid "durchleuchten"
-msgstr ""
+msgstr "X-ray"
 
 #: i18n/words.py:3131
 msgid "erleuchten"
-msgstr ""
+msgstr "illuminate"
 
 #: i18n/words.py:3139
 msgid "Fördern_Sensiblisieren_und_Gedeihen"
-msgstr ""
+msgstr "encourage_sensitize_and_grant"
 
 #: i18n/words.py:3140
 msgid "foerdern"
-msgstr ""
+msgstr "encourage"
 
 #: i18n/words.py:3141
 msgid "fördern"
-msgstr ""
+msgstr "promote"
 
 #: i18n/words.py:3142
 msgid "begrenzen"
-msgstr ""
+msgstr "limit"
 
 #: i18n/words.py:3143
 msgid "sensibilisieren"
-msgstr ""
+msgstr "raiseawareness"
 
 #: i18n/words.py:3144
 msgid "gedeihen"
-msgstr ""
+msgstr "thrive"
 
 #: i18n/words.py:3145
 msgid "verderben"
-msgstr ""
+msgstr "spoil"
 
 #: i18n/words.py:3153
 msgid "Überheblichkeit"
-msgstr ""
+msgstr "arrogance"
 
 #: i18n/words.py:3154
 msgid "überheblich"
-msgstr ""
+msgstr "arrogant"
 
 #: i18n/words.py:3155
 msgid "ueberheblichkeit"
-msgstr ""
+msgstr "arrogance"
 
 #: i18n/words.py:3156
 msgid "ueberheblich"
-msgstr ""
+msgstr "arrogance"
 
 #: i18n/words.py:3157
 msgid "überheblichkeit"
-msgstr ""
+msgstr "arrogant"
 
 #: i18n/words.py:3165
 msgid "Polung_der_Liebe"
-msgstr ""
+msgstr "polarity_of_love"
 
 #: i18n/words.py:3166
 msgid "liebepolung"
-msgstr ""
+msgstr "polarity_of_love"
 
 #: i18n/words.py:3174
 msgid "Egoismus_vs_Altruismus"
-msgstr ""
+msgstr "egoism_vs_altruism"
 
 #: i18n/words.py:3177
 msgid "egoist"
-msgstr ""
+msgstr "egoist"
 
 #: i18n/words.py:3178
 msgid "altruist"
-msgstr ""
+msgstr "altruist"
 
 #: i18n/words.py:3185
 msgid "kausal"
-msgstr ""
+msgstr "causal"
 
 #: i18n/words.py:3185
 msgid "geltung"
-msgstr ""
+msgstr "cachet_prestige_validity"
 
 #: i18n/words.py:3185
 msgid "genese"
-msgstr ""
+msgstr "genesis"
 
 #: i18n/words.py:3191
 msgid "Gleichheit"
-msgstr ""
+msgstr "equality"
 
 #: i18n/words.py:3191
 msgid "gleich"
-msgstr ""
+msgstr "equal"
 
 #: i18n/words.py:3197
 msgid "Überleben"
-msgstr ""
+msgstr "survival"
 
 #: i18n/words.py:3197
 msgid "ueberleben"
-msgstr ""
+msgstr "survive"
 
 #: i18n/words.py:3202
 msgid "um1"
-msgstr ""
+msgstr "of1"
 
 #: i18n/words.py:3203
 msgid "um2"
-msgstr ""
+msgstr "of2"
 
 #: i18n/words.py:3204
 msgid "um3"
-msgstr ""
+msgstr "of3"
 
 #: i18n/words.py:3223
 msgid "Rahmen-Bedingungen"
-msgstr ""
+msgstr "Framework-conditions"
 
 #: i18n/words.py:3223
 msgid "rahmen"
-msgstr ""
+msgstr "frame"
 
 #: i18n/words.py:3229
 msgid "Motive_gleichförmige_Polygone"
-msgstr ""
+msgstr "motifs_uniform_polygons"
 
 #: i18n/words.py:3230
 msgid "motivgleichfoermig"
-msgstr ""
+msgstr "motif_regular_polygons"
 
 #: i18n/words.py:3244
 msgid "Struktur_gleichförmige_Polygone"
-msgstr ""
+msgstr "structure_regular_polygons"
 
 #: i18n/words.py:3245
 msgid "strukturgleichfoermig"
-msgstr ""
+msgstr "structure_regular_polygons"
 
 #: i18n/words.py:3260
 msgid "motivstern"
-msgstr ""
+msgstr "motif_star"
 
 #: i18n/words.py:3274
 msgid "Struktur_Sternpolygone"
-msgstr ""
+msgstr "structure_star_polygons"
 
 #: i18n/words.py:3275
 msgid "strukturstern"
-msgstr ""
+msgstr "structure_star"
 
 #: i18n/words.py:3289
 msgid "Motiv_Sternpolygon_gebrochen-rational"
-msgstr ""
+msgstr "motif_star_polygon_fractioned-rational"
 
 #: i18n/words.py:3290
 msgid "motivgebrstern"
-msgstr ""
+msgstr "motif_star"
 
 #: i18n/words.py:3304
 msgid "Struktur_Sternpolyon_gebrochen-rational"
-msgstr ""
+msgstr "structure_star_polygon_fractioned-rational"
 
 #: i18n/words.py:3305
 msgid "strukgebrstern"
-msgstr ""
+msgstr "strukgebrstern"
 
 #: i18n/words.py:3319
 msgid "Motiv_gleichförmige_Polygone_gebrochen-rational"
-msgstr ""
+msgstr "motif_regular_polygons_fractioned-rational"
 
 #: i18n/words.py:3320
 msgid "motivgebrgleichf"
-msgstr ""
+msgstr "motif_regularf"
 
 #: i18n/words.py:3334
 msgid "Struktur_gleichförmige_Polygone_gebrochen-rational"
-msgstr ""
+msgstr "structure_regular_polygons_fractioned-rationall"
 
 #: i18n/words.py:3335
 msgid "strukgebrgleichf"
-msgstr ""
+msgstr "structure_regular_f"
 
 #: i18n/words.py:3348 i18n/words.py:3811
 msgid "beschrieben"
-msgstr ""
+msgstr "described"
 
 #: i18n/words.py:3364 i18n/words.py:3432
 msgid "Lebewesen"
