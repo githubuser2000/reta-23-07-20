@@ -13,8 +13,8 @@ except (ModuleNotFoundError, ImportError):
     OrderedSet = set
 
 # sys.path.insert(1, "./..")
-localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)), "locale")
-translate = gettext.translation("handroll", localedir, fallback=True)
+localedir = os.path.abspath(os.path.dirname(__file__))
+translate = gettext.translation("handroll", localedir, fallback=True, languages=["de"])
 _ = translate.gettext
 Multiplikationen = [(_("Multiplikationen"), "")]
 """
