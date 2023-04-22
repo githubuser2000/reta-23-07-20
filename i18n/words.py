@@ -13,8 +13,8 @@ except (ModuleNotFoundError, ImportError):
     OrderedSet = set
 
 # sys.path.insert(1, "./..")
-localedir = os.path.abspath(os.path.dirname(__file__))
-translate = gettext.translation("handroll", localedir, fallback=True, languages=["de"])
+localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)), "locale")
+translate = gettext.translation("handroll", localedir, fallback=True)
 _ = translate.gettext
 Multiplikationen = [(_("Multiplikationen"), "")]
 """
@@ -2957,7 +2957,7 @@ paraNdataMatrix: list = [
     (
         ParametersMain.menschliches,
         (
-            _("ehrlich_vs_höflich"),
+            _("ehrlich vs höflich"),
             _("ehrlich"),
             _("höflich"),
             _("hoeflich"),
@@ -2974,7 +2974,7 @@ paraNdataMatrix: list = [
     (
         ParametersMain.konzept,
         (
-            _("ehrlich_vs_höflich"),
+            _("ehrlich vs höflich"),
             _("ehrlich"),
             _("höflich"),
             _("hoeflich"),
@@ -3829,17 +3829,17 @@ class retapy:
         _('" existiert hier nicht als Befehl für Haupt-Parameter'),
         " -" + hauptForNeben["spalten"],
         _(" !"),
-        _(" Es ist nur möglich:") + "\n--",
+        _(" Es ist nur möglich:\n--"),
         "".join((", --", ausgabeParas["breiten"], " --", ausgabeParas["breite"])),
-        "\n" + _("mit dem Werten dahinter:") + "\n",
+        _("\nmit dem Werten dahinter:\n"),
     )
     cliout4Saetze = (
         _('Der Unter-Parameter "--'),
         _('" existiert hier nicht als Befehl für Haupt-Parameter'),
         " -" + hauptForNeben["spalten"],
-        _(", oder dieser Parameter braucht Werte analog wie:")
-        + "\n"
-        + _("--unterParameter=Wert1"),
+        _(
+            ", oder dieser Parameter braucht Werte analog wie: \n--unterParameter=Wert1\n"
+        ),
         _("Es ist nur möglich: --"),
         ", --" + ausgabeParas["keinenummerierung"],
     )
@@ -3848,16 +3848,13 @@ class retapy:
         _('Die Kombispalte "'),
         _('" existiert so nicht als Befehl. Möglich sind die Parameter für '),
     )
-    cliout6Satz = _(
-        "".join(
-            (
-                'kein Unter-Parameter "--',
+    cliout6Satz = "".join((
+                _('kein Unter-Parameter'), '--',
                 kombiMainParas["galaxie"],
-                '=" oder "--',
+                '= ",' _(", oder"), ', "--',
                 kombiMainParas["universum"],
-                '=" angegeben für Hauptparameter -' + hauptForNeben["kombination"],
-                " oder einen nicht zugehörigen Parameter: ",
-            )
+                '=", ', _('angegeben für Hauptparameter'), ' -' + hauptForNeben["kombination"],
+                _(" oder einen nicht zugehörigen Parameter: "),
         )
     )
     cliout7Saetze = (
@@ -3891,27 +3888,27 @@ class nested:
 
 class retaPrompt:
     infoDebugAktiv = _("Debug Log aktiviert.")
-    abstandMeldung = _('der Befehl ')+befehle2["abstand"]+_(" ist nur erlaubt mit 2 weiteren Angaben mit Leerzeichen getrennt, einer Zahl und einem Zahlenbereich, z.B. "abstand 7 17-25"'
+    abstandMeldung = (
+        _("der Befehl '")
+        + befehle2["abstand"]
+        + _(
+            "' ist nur erlaubt mit 2 weiteren Angaben mit Leerzeichen getrennt, einer Zahl und einem Zahlenbereich, z.B. '")+befehle2["abstand"]+" 7 17-25'"
+        )
     )
     befehleBeenden = {_("ende"), _("exit"), _("quit"), _("q"), _(":q")}
     befehleWort = {"Befehle": _("Befehle")}
     promptModeSatz = _("promptmode vorher: {} , {}")
     promptModeSatz2 = _("'{}' ergibt sich aus '{}' und ergibt danach reta-Befehl:")
     out1Saetze = (
-        _("Dies (") + "'",
-        "'"
-        + _(") ist tatsächlich ein Befehl (oder es sind mehrere),")
-        + _(" aber es gibt nichts auszugeben."),
+        _("Dies ('"),
+        _(
+            "') ist tatsächlich ein Befehl (oder es sind mehrere), aber es gibt nichts auszugeben."
+        ),
     )
     out2Satz = _("Das ist kein Befehl! -> '{}''")
-    a1 = _("Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer)")
-    a2 = _(" keine Vielfacher gebildet.")
-    a3 = _(
-        "Für Brüche n/1=ganze Zahl gibt es die gewöhnlichen Befehle für ganze Zahlen."
+    out3Saetze = _(
+        'Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\nDas ist eine Design-Entscheidung, die getroffen worden ist.'
     )
-    a4 = "Das ist eine Design-Entscheidung, die getroffen worden ist."
-    out3Saetze = a1 + a2 + "\n" + a3 + "\n" + a4
-
     replacements = {
         befehle2["e"]: befehle2[
             "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
@@ -3960,25 +3957,16 @@ class retaPrompt:
             befehle2["e"],
             ("' Kommando bzw. '"),
             befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"],
-            "'"
-            + _(
-                "jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil dieser"
-            )
-            + _(" anders funktioniert "),
+            _(
+                "' jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil dieser anders funktioniert "
+            ),
         )
     )
 
     wspeichernWort = _("was speichern>")
     wloeschenWort = _("was löschen>")
-    reziInfoText = (
-        _("Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer)")
-        + _(" keine Vielfacher gebildet.")
-        + "\n"
-        + _(
-            'Für Brüche n/1=ganze Zahl gibt es die gewöhnlichen Befehle für ganze Zahlen.'
-        )
-        + "\n"
-        + _("Das ist eine Design-Entscheidung, die getroffen worden ist.")
+    reziInfoText = _(
+        'Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\nDas ist eine Design-Entscheidung, die getroffen worden ist.'
     )
 
 

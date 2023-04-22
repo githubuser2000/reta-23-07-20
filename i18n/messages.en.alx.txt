@@ -809,7 +809,7 @@ against-against-transcendentalism
 __
 against-against-structurals
 __
-against-against-structural 
+against-against-structural
 __
 neutral_opposite_transcendentalia
 __
@@ -1987,11 +1987,13 @@ combination_(galaxy_and_black_hole)_(14_with_13)
 __
 Combination_(universe_and_galaxy)_(14_with_15)
 __
-Moon
+moon
 __
-Sun
+sun
 __
-Planet
+lPanet
+--
+topic:
 __
  own structure size (
 __
@@ -2228,6 +2230,17 @@ It is only possible: --
 __
 __
 \ does not exist as a command like this. Possible are the parameters for "
+--
+--
+\" does not exist as a command. Possible are the parameters for
+--
+no sub-parameter
+--
+, or
+--
+specified for main parameters
+--
+or an unrelated parameter:
 __
 A main parameter, or the correct one, must be set so that a
 __
@@ -2244,6 +2257,17 @@ __
  Possible are:
 __
 \. Or a = is missing behind it."
+--
+Debug log is activated.
+--
+This command
+--
+is only allowed with only another
+--
+The command ''
+--
+'is only allowed with 2 further specifications separated by spaces, a
+number and a number range, e.g.
 __
 Commands
 __
