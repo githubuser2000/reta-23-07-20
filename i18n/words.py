@@ -12,10 +12,15 @@ try:
 except (ModuleNotFoundError, ImportError):
     OrderedSet = set
 
+i18nPath = os.path.join(os.path.dirname(__file__))
+t = gettext.translation("messages", localedir=i18nPath, languages=["en"])
+t.install()
+
 # sys.path.insert(1, "./..")
 localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)), "locale")
 translate = gettext.translation("handroll", localedir, fallback=True)
-_ = translate.gettext
+#_ = translate.gettext
+_ = t.gettext
 Multiplikationen = [(_("Multiplikationen"), "")]
 """
 ES FEHLEN NOCH ALLE ''
@@ -3848,13 +3853,19 @@ class retapy:
         _('Die Kombispalte "'),
         _('" existiert so nicht als Befehl. Möglich sind die Parameter für '),
     )
-    cliout6Satz = "".join((
-                _('kein Unter-Parameter'), '--',
-                kombiMainParas["galaxie"],
-                '= ",', _(", oder"), ', "--',
-                kombiMainParas["universum"],
-                '=", ', _('angegeben für Hauptparameter'), ' -' + hauptForNeben["kombination"],
-                _(" oder einen nicht zugehörigen Parameter: "),
+    cliout6Satz = "".join(
+        (
+            _("kein Unter-Parameter"),
+            "--",
+            kombiMainParas["galaxie"],
+            '= ",',
+            _(", oder"),
+            ', "--',
+            kombiMainParas["universum"],
+            '=", ',
+            _("angegeben für Hauptparameter"),
+            " -" + hauptForNeben["kombination"],
+            _(" oder einen nicht zugehörigen Parameter: "),
         )
     )
     cliout7Saetze = (
@@ -3892,8 +3903,11 @@ class retaPrompt:
         _("der Befehl '")
         + befehle2["abstand"]
         + _(
-            "' ist nur erlaubt mit 2 weiteren Angaben mit Leerzeichen getrennt, einer Zahl und einem Zahlenbereich, z.B. '")+befehle2["abstand"]+" 7 17-25'"
+            "' ist nur erlaubt mit 2 weiteren Angaben mit Leerzeichen getrennt, einer Zahl und einem Zahlenbereich, z.B. '"
         )
+        + befehle2["abstand"]
+        + " 7 17-25'"
+    )
     befehleBeenden = {_("ende"), _("exit"), _("quit"), _("q"), _(":q")}
     befehleWort = {"Befehle": _("Befehle")}
     promptModeSatz = _("promptmode vorher: {} , {}")

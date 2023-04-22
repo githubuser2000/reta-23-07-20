@@ -233,95 +233,95 @@ msgstr "mind_(15)"
 
 #: i18n/words.py:145
 msgid "Model_of_Hierarchical_Complexity),"
-msgstr "Model_of_Hierarchical_Complexity),"
+msgstr "model_of_Hierarchical_Complexity),"
 
 #: i18n/words.py:149 i18n/words.py:225 i18n/words.py:2101
 msgid "Konkreta_und_Focus_(2)"
-msgstr "Concretes_and_Focus_(2)"
+msgstr "concretes_and_Focus_(2)"
 
 #: i18n/words.py:150 i18n/words.py:226 i18n/words.py:2209
 msgid "Impulse_(5)"
-msgstr "Impulses_(5)"
+msgstr "impulses_(5)"
 
 #: i18n/words.py:151 i18n/words.py:227 i18n/words.py:2111
 msgid "Gefühle_(7)"
-msgstr "Feelings_(7)"
+msgstr "feelings_(7)"
 
 #: i18n/words.py:152 i18n/words.py:228 i18n/words.py:2235
 msgid "Modus_und_Sein_(8)"
-msgstr "Mode_and_being_(8)"
+msgstr "mode_and_being_(8)"
 
 #: i18n/words.py:154 i18n/words.py:229 i18n/words.py:2028
 msgid "Wirklichkeiten_Wahrheit_Wahrnehmung_(10)"
-msgstr "Realities_truth_perception_(10)"
+msgstr "realities_truth_perception_(10)"
 
 #: i18n/words.py:157
 msgid "Meta-Systeme_(12),Ordnung_und_Filterung_12_und_1pro12"
-msgstr "Meta-systems_(12),order_and_filtering_12_and_1pro12"
+msgstr "meta-systems_(12),order_and_filtering_12_and_1pro12"
 
 #: i18n/words.py:159 i18n/words.py:231 i18n/words.py:2019
 msgid "Paradigmen_sind_Absichten_(13)"
-msgstr "Paradigms_are_intentions_(13)"
+msgstr "paradigms_are_intentions_(13)"
 
 #: i18n/words.py:160 i18n/words.py:232 i18n/words.py:2145 i18n/words.py:2259
 msgid "Gedanken_sind_Positionen_(17)"
-msgstr "Thoughts_are_positions_(17)"
+msgstr "thoughts_are_positions_(17)"
 
 #: i18n/words.py:161 i18n/words.py:233 i18n/words.py:2182
 msgid "Verbundenheiten_(18)"
-msgstr "Connections_(18)"
+msgstr "connections_(18)"
 
 #: i18n/words.py:162 i18n/words.py:234 i18n/words.py:2215
 msgid "Triebe_und_Bedürfnisse_(6)"
-msgstr "Drives_and_needs_(6)"
+msgstr "drives_and_needs_(6)"
 
 #: i18n/words.py:163 i18n/words.py:235 i18n/words.py:2011
 msgid "Lust_(9)"
-msgstr "Lust_(9)"
+msgstr "lust_(9)"
 
 #: i18n/words.py:164 i18n/words.py:236
 msgid "Reflexe_(3),Existenzialien_(3)"
-msgstr "Reflexes_(3),Existentials_(3)."
+msgstr "reflexes_(3),existentials_(3)"
 
 #: i18n/words.py:165 i18n/words.py:237 i18n/words.py:1902
 msgid "Absicht_6_ist_Vorteilsmaximierung"
-msgstr "Intention_6_is_advantage_maximization."
+msgstr "intention_6_is_advantage_maximization."
 
 #: i18n/words.py:166 i18n/words.py:238 i18n/words.py:1910
 msgid "Absicht_7_ist_Selbstlosigkeit"
-msgstr "Intention_7_is_selflessness"
+msgstr "intention_7_is_selflessness"
 
 #: i18n/words.py:167 i18n/words.py:239 i18n/words.py:1985
 msgid "Absicht_10_ist_Wirklichkeit_erkennen"
-msgstr "Intention_10_is_recognition_of_reality"
+msgstr "intention_10_is_recognition_of_reality"
 
 #: i18n/words.py:168 i18n/words.py:240 i18n/words.py:1894
 msgid "Absicht_17_ist_zu_meinen"
-msgstr "Intention_17_is_to_mean_opionions"
+msgstr "intention_17_is_to_mean_opionions"
 
 #: i18n/words.py:169 i18n/words.py:241 i18n/words.py:1878
 msgid "Zeit_(4)_als_Wirklichkeit"
-msgstr "Time_(4)_as_reality"
+msgstr "time_(4)_as_reality"
 
 #: i18n/words.py:170 i18n/words.py:242 i18n/words.py:2154
 msgid "Funktionen_Vorstellungen_(16)"
-msgstr "Functions_Conceptions_(16)"
+msgstr "functions_Conceptions_(16)"
 
 #: i18n/words.py:171 i18n/words.py:243 i18n/words.py:1869
 msgid "Achtung_(4)"
-msgstr "Attention_(4)"
+msgstr "attention_(4)"
 
 #: i18n/words.py:172 i18n/words.py:244 i18n/words.py:2082
 msgid "Absicht_1/8"
-msgstr "Intention_1/8"
+msgstr "intention_1/8"
 
 #: i18n/words.py:174 i18n/words.py:245 i18n/words.py:1976
 msgid "Absicht_1/6_ist_Reinigung_und_Klarheit"
-msgstr "Intention_1/6_is_cleaning_and_clarity"
+msgstr "intention_1/6_is_cleaning_and_clarity"
 
 #: i18n/words.py:176 i18n/words.py:246 i18n/words.py:2226
 msgid "Reflektion_und_Kategorien_(1/15)"
-msgstr "Reflection_and_Categories_(1/15)"
+msgstr "reflection_and_Categories_(1/15)"
 
 #: i18n/words.py:177 i18n/words.py:247 i18n/words.py:1918
 msgid "Regungen_(1)"
@@ -329,71 +329,71 @@ msgstr "not_Emotions_not_impulses_but_similar_and_being_less_(1)"
 
 #: i18n/words.py:179 i18n/words.py:248 i18n/words.py:1932
 msgid "Energie_und_universelle_Eigenschaften_(30)"
-msgstr "Energy_and_universal_properties_(30)"
+msgstr "energy_and_universal_properties_(30)"
 
 #: i18n/words.py:181 i18n/words.py:249 i18n/words.py:2039
 msgid "Stimmungen_Kombinationen_(14)"
-msgstr "Moods_combinations_(14)"
+msgstr "moods_combinations_(14)"
 
 #: i18n/words.py:182 i18n/words.py:250 i18n/words.py:2050
 msgid "Klassen_(20)"
-msgstr "Classes_(20)"
+msgstr "classes_(20)"
 
 #: i18n/words.py:183 i18n/words.py:251 i18n/words.py:1967
 msgid "Empathie_(37)"
-msgstr "Empathy_(37)"
+msgstr "empathy_(37)"
 
 #: i18n/words.py:184 i18n/words.py:252 i18n/words.py:1942
 msgid "Garben_und_Verhalten_nachfühlen(31)"
-msgstr "Sheaf_and_behavior_empathy_(31)"
+msgstr "sheaf_and_behavior_empathy_(31)"
 
 #: i18n/words.py:185 i18n/words.py:253 i18n/words.py:1926
 msgid "Verhalten_(11)"
-msgstr "Behavior_(11)"
+msgstr "behavior_(11)"
 
 #: i18n/words.py:186 i18n/words.py:254 i18n/words.py:1829
 msgid "Bedeutung_(10)"
-msgstr "Meaning_(10)"
+msgstr "meaning_(10)"
 
 #: i18n/words.py:187 i18n/words.py:255 i18n/words.py:1820
 msgid "Themen_(6)"
-msgstr "Topics_(6)"
+msgstr "topics_(6)"
 
 #: i18n/words.py:188 i18n/words.py:256 i18n/words.py:1812
 msgid "Optimierung_(10)"
-msgstr "Optimization_(10)"
+msgstr "optimization_(10)"
 
 #: i18n/words.py:189 i18n/words.py:257 i18n/words.py:1804
 msgid "Attraktionen_(36)"
-msgstr "Attractions_(36)"
+msgstr "attractions_(36)"
 
 #: i18n/words.py:190 i18n/words.py:258 i18n/words.py:1886
 msgid "Absicht_16_ist_zu_genügen"
-msgstr "Intention_16_is_to_be_enough"
+msgstr "intention_16_is_to_be_enough"
 
 #: i18n/words.py:191 i18n/words.py:259 i18n/words.py:2198
 msgid "Liebe_(7)"
-msgstr "Love_(7)"
+msgstr "love_(7)"
 
 #: i18n/words.py:192 i18n/words.py:260 i18n/words.py:2204
 msgid "Koalitionen_(10)"
-msgstr "Coalitions_(10)"
+msgstr "coalitions_(10)"
 
 #: i18n/words.py:193 i18n/words.py:261 i18n/words.py:563 i18n/words.py:2174
 msgid "Ansichten_Standpunkte_(18_17)"
-msgstr "Views_Stances_(18_17)"
+msgstr "views_Stances_(18_17)"
 
 #: i18n/words.py:194 i18n/words.py:262 i18n/words.py:1798
 msgid "Prinzipien(1/8)"
-msgstr "Principles(1/8)"
+msgstr "principles(1/8)"
 
 #: i18n/words.py:195 i18n/words.py:263 i18n/words.py:1790
 msgid "Bestrebungen(1/5)"
-msgstr "Aspirations(1/5)"
+msgstr "aspirations(1/5)"
 
 #: i18n/words.py:196 i18n/words.py:264 i18n/words.py:1716
 msgid "Bedingung_und_Auslöser_(1/3)"
-msgstr "Condition_and_trigger_(1/3)"
+msgstr "condition_and_trigger_(1/3)"
 
 #: i18n/words.py:197 i18n/words.py:265 i18n/words.py:1774
 msgid "relativer_Zeit-Betrag_(15_10_4_18_6)"
@@ -405,15 +405,15 @@ msgstr "comparision_of_numbers_(15_18_6)"
 
 #: i18n/words.py:199 i18n/words.py:267 i18n/words.py:1765
 msgid "Leidenschaften_(21)"
-msgstr "Passions_(21)"
+msgstr "passions_(21)"
 
 #: i18n/words.py:200 i18n/words.py:268 i18n/words.py:1756
 msgid "Erwartungshaltungen_(26)"
-msgstr "Expectations_(26)"
+msgstr "expectations_(26)"
 
 #: i18n/words.py:201 i18n/words.py:269
 msgid "Extremalien_(19),Ziele_(19)"
-msgstr "Extremalies_(19),Goals_(19)"
+msgstr "extremalias_(19),goals_(19)"
 
 #: i18n/words.py:202 i18n/words.py:270 i18n/words.py:1735
 msgid "universeller_Komperativ_(18→15)"
@@ -421,15 +421,15 @@ msgstr "universal_comperative_(18→15)"
 
 #: i18n/words.py:204 i18n/words.py:271 i18n/words.py:1727
 msgid "Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)"
-msgstr "Relation_to_each_other_reciprocal_universal_(18→n_vs._1/n)"
+msgstr "relation_to_each_other_reciprocal_universal_(18→n_vs._1/n)"
 
 #: i18n/words.py:206 i18n/words.py:272 i18n/words.py:2164
 msgid "Sollen_Frage_Vorgehensweise_(1/13)"
-msgstr "Shall_question_procedure_(1/13)"
+msgstr "shall_question_procedure_(1/13)"
 
 #: i18n/words.py:207 i18n/words.py:273 i18n/words.py:2139
 msgid "Fundament_(1/19)"
-msgstr "Foundation_(1/19)"
+msgstr "foundation_(1/19)"
 
 #: i18n/words.py:208 i18n/words.py:274 i18n/words.py:2121
 msgid "abhängige_Verbundenheit_(90)"
@@ -437,7 +437,7 @@ msgstr "dependent_connectedness_(90)"
 
 #: i18n/words.py:209 i18n/words.py:275 i18n/words.py:2190
 msgid "Absicht_13_ist_Helfen"
-msgstr "Intention_13_is_helping"
+msgstr "intention_13_is_helping"
 
 #: i18n/words.py:211 i18n/words.py:276 i18n/words.py:2130
 msgid "Karte_Filter_und_Unterscheidung_(1/12)"
@@ -445,7 +445,7 @@ msgstr "map_filter_and_distinction_(1/12)"
 
 #: i18n/words.py:221 i18n/words.py:1402 i18n/words.py:1416
 msgid "Model_of_Hierarchical_Complexity"
-msgstr "Model_of_Hierarchical_Complexity"
+msgstr "model_of_Hierarchical_Complexity"
 
 #: i18n/words.py:230 i18n/words.py:589 i18n/words.py:2069
 msgid "Meta-Systeme_(12)"
@@ -453,7 +453,7 @@ msgstr "Meta-Systems_(12)"
 
 #: i18n/words.py:230 i18n/words.py:2059
 msgid "Ordnung_und_Filterung_12_und_1pro12"
-msgstr "Order_and_Filtering_12_and_1pro12"
+msgstr "order_and_Filtering_12_and_1pro12"
 
 #: i18n/words.py:282
 msgid "reta"
@@ -2256,7 +2256,7 @@ msgstr "universalcomparative"
 
 #: i18n/words.py:1743
 msgid "Existenzialien_(3)"
-msgstr ""
+msgstr "existentials_(3)"
 
 #: i18n/words.py:1744
 msgid "existenzialien"
@@ -2264,7 +2264,7 @@ msgstr "existentials"
 
 #: i18n/words.py:1750
 msgid "Extremalien_(19)"
-msgstr "Extremalia_"
+msgstr "extremalias_(19)"
 
 #: i18n/words.py:1750
 msgid "extremalien"
@@ -2420,7 +2420,7 @@ msgstr "consciousness"
 
 #: i18n/words.py:2002
 msgid "Reflexe_(3)"
-msgstr "reflexes"
+msgstr "reflexes_(3)"
 
 #: i18n/words.py:2003
 msgid "reflex"
@@ -2488,7 +2488,7 @@ msgstr "intention1/8"
 
 #: i18n/words.py:2091
 msgid "Ziele_(19)"
-msgstr "goals_"
+msgstr "goals_(19)"
 
 #: i18n/words.py:2092 i18n/words.py:2279 i18n/words.py:3401 i18n/words.py:3482
 msgid "ziele"

@@ -186,9 +186,18 @@ for a in reta.Program(["reta", "-" + i18n.mainParaCmds["zeilen"]]).paraNdataMatr
             gebrochenErlaubteZahlen |= {int(b)}
 gebrochenErlaubteZahlen -= {max(gebrochenErlaubteZahlen)}
 
+flagX = False
 for a in wahl15.values():
     for b in a.split(","):
-        assert b in zumVergleich
+        try:
+            assert b in zumVergleich
+        except:
+            print(b)
+            flagX = True
+if flagX:
+    print()
+    print("assert fehlgeschlagen")
+    exit()
 
 befehle = i18n.befehle
 # befehle = ["15" + a for a in wahl15.keys()] + [
