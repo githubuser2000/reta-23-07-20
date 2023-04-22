@@ -289,7 +289,7 @@ math
 __
 logging_yes
 __
-tlogging_no
+logging_no
 __
 mulpri
 __

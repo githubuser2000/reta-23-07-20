@@ -3,13 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: i18n/words.py:3852
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-22 17:51+0200\n"
+"POT-Creation-Date: 2023-04-22 22:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -172,11 +171,11 @@ msgstr ""
 msgid "zeit"
 msgstr ""
 
-#: i18n/words.py:119 i18n/words.py:3971
+#: i18n/words.py:119 i18n/words.py:3974
 msgid "zeilen"
 msgstr ""
 
-#: i18n/words.py:120 i18n/words.py:3972
+#: i18n/words.py:120 i18n/words.py:3975
 msgid "spalten"
 msgstr ""
 
@@ -184,19 +183,19 @@ msgstr ""
 msgid "kombination"
 msgstr ""
 
-#: i18n/words.py:122 i18n/words.py:3976
+#: i18n/words.py:122 i18n/words.py:3979
 msgid "ausgabe"
 msgstr ""
 
-#: i18n/words.py:123 i18n/words.py:309 i18n/words.py:3928 i18n/words.py:3978
+#: i18n/words.py:123 i18n/words.py:309 i18n/words.py:3931 i18n/words.py:3981
 msgid "h"
 msgstr ""
 
-#: i18n/words.py:124 i18n/words.py:297 i18n/words.py:3929 i18n/words.py:3979
+#: i18n/words.py:124 i18n/words.py:297 i18n/words.py:3932 i18n/words.py:3982
 msgid "help"
 msgstr ""
 
-#: i18n/words.py:125 i18n/words.py:3931 i18n/words.py:3977
+#: i18n/words.py:125 i18n/words.py:3934 i18n/words.py:3980
 msgid "debug"
 msgstr ""
 
@@ -569,23 +568,23 @@ msgstr ""
 msgid "primzahlkreuz"
 msgstr ""
 
-#: i18n/words.py:314 i18n/words.py:3895
+#: i18n/words.py:314 i18n/words.py:3898
 msgid "ende"
 msgstr ""
 
-#: i18n/words.py:315 i18n/words.py:3895
+#: i18n/words.py:315 i18n/words.py:3898
 msgid "exit"
 msgstr ""
 
-#: i18n/words.py:316 i18n/words.py:3895
+#: i18n/words.py:316 i18n/words.py:3898
 msgid "quit"
 msgstr ""
 
-#: i18n/words.py:317 i18n/words.py:3895
+#: i18n/words.py:317 i18n/words.py:3898
 msgid "q"
 msgstr ""
 
-#: i18n/words.py:318 i18n/words.py:3895
+#: i18n/words.py:318 i18n/words.py:3898
 msgid ":q"
 msgstr ""
 
@@ -645,7 +644,7 @@ msgstr ""
 msgid "o"
 msgstr ""
 
-#: i18n/words.py:334 i18n/words.py:3930
+#: i18n/words.py:334 i18n/words.py:3933
 msgid "e"
 msgstr ""
 
@@ -3452,7 +3451,7 @@ msgid "zugeneigt"
 msgstr ""
 
 #: i18n/words.py:2960 i18n/words.py:2977
-msgid "ehrlich_vs_höflich"
+msgid "ehrlich vs höflich"
 msgstr ""
 
 #: i18n/words.py:2961 i18n/words.py:2978
@@ -4011,6 +4010,10 @@ msgstr ""
 msgid "Planet"
 msgstr ""
 
+#: i18n/words.py:3571
+msgid "Thema: "
+msgstr ""
+
 #: i18n/words.py:3572
 msgid " der eigenen Strukturgröße ("
 msgstr ""
@@ -4499,69 +4502,99 @@ msgstr ""
 msgid "\" existiert so nicht als Befehl. Möglich sind die Parameter für "
 msgstr ""
 
-#: i18n/words.py:3864
+#: i18n/words.py:3852
+msgid "kein Unter-Parameter"
+msgstr ""
+
+#: i18n/words.py:3854
+msgid ", oder"
+msgstr ""
+
+#: i18n/words.py:3856
+msgid "angegeben für Hauptparameter"
+msgstr ""
+
+#: i18n/words.py:3857
+msgid " oder einen nicht zugehörigen Parameter: "
+msgstr ""
+
+#: i18n/words.py:3861
 msgid "Es muss ein Hauptparameter, bzw. der richtige, gesetzt sein, damit ein"
 msgstr ""
 
-#: i18n/words.py:3865
+#: i18n/words.py:3862
 msgid " Nebenparameter, wie möglicherweise: \""
 msgstr ""
 
-#: i18n/words.py:3866
+#: i18n/words.py:3863
 msgid "\" ausgeführt werden kann. Hauptparameter sind: -"
 msgstr ""
 
-#: i18n/words.py:3870
+#: i18n/words.py:3867
 msgid "Versuche Parameter -h"
 msgstr ""
 
-#: i18n/words.py:3872 i18n/words.py:3878
+#: i18n/words.py:3869 i18n/words.py:3875
 msgid "Den Neben-Parameter \""
 msgstr ""
 
-#: i18n/words.py:3873 i18n/words.py:3879
+#: i18n/words.py:3870 i18n/words.py:3876
 msgid "\" gibt es hier nicht für den Hauptparameter \"-"
 msgstr ""
 
-#: i18n/words.py:3874
+#: i18n/words.py:3871
 msgid "\". Oder ein = fehlt dahinter."
 msgstr ""
 
-#: i18n/words.py:3875
+#: i18n/words.py:3872
 msgid " Möglich sind: "
 msgstr ""
 
-#: i18n/words.py:3880
+#: i18n/words.py:3877
 msgid "\". Oder es fehlt ein = dahinter."
 msgstr ""
 
-#: i18n/words.py:3896
+#: i18n/words.py:3890 i18n/words.py:3938
+msgid "Debug Log aktiviert."
+msgstr ""
+
+#: i18n/words.py:3892
+msgid "der Befehl '"
+msgstr ""
+
+#: i18n/words.py:3895
+msgid ""
+"' ist nur erlaubt mit 2 weiteren Angaben mit Leerzeichen getrennt, einer "
+"Zahl und einem Zahlenbereich, z.B. '"
+msgstr ""
+
+#: i18n/words.py:3899
 msgid "Befehle"
 msgstr ""
 
-#: i18n/words.py:3897
+#: i18n/words.py:3900
 msgid "promptmode vorher: {} , {}"
 msgstr ""
 
-#: i18n/words.py:3898
+#: i18n/words.py:3901
 msgid "'{}' ergibt sich aus '{}' und ergibt danach reta-Befehl:"
 msgstr ""
 
-#: i18n/words.py:3900
+#: i18n/words.py:3903
 msgid "Dies ('"
 msgstr ""
 
-#: i18n/words.py:3902
+#: i18n/words.py:3905
 msgid ""
 "') ist tatsächlich ein Befehl (oder es sind mehrere), aber es gibt nichts "
 "auszugeben."
 msgstr ""
 
-#: i18n/words.py:3905
+#: i18n/words.py:3908
 msgid "Das ist kein Befehl! -> '{}''"
 msgstr ""
 
-#: i18n/words.py:3907 i18n/words.py:3966
+#: i18n/words.py:3910 i18n/words.py:3969
 msgid ""
 "Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) "
 "keine Vielfacher gebildet.\n"
@@ -4570,104 +4603,100 @@ msgid ""
 "Das ist eine Design-Entscheidung, die getroffen worden ist."
 msgstr ""
 
-#: i18n/words.py:3926
+#: i18n/words.py:3929
 msgid "vi"
 msgstr ""
 
-#: i18n/words.py:3927
+#: i18n/words.py:3930
 msgid "log"
 msgstr ""
 
-#: i18n/words.py:3932
+#: i18n/words.py:3935
 msgid "befehl"
 msgstr ""
 
-#: i18n/words.py:3935
-msgid "Debug Log aktiviert."
-msgstr ""
-
-#: i18n/words.py:3953
+#: i18n/words.py:3956
 msgid " bewirkt, dass bei allen Befehlen das '"
 msgstr ""
 
-#: i18n/words.py:3958
+#: i18n/words.py:3961
 msgid ""
 "' jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil "
 "dieser anders funktioniert "
 msgstr ""
 
-#: i18n/words.py:3963
+#: i18n/words.py:3966
 msgid "was speichern>"
 msgstr ""
 
-#: i18n/words.py:3964
+#: i18n/words.py:3967
 msgid "was löschen>"
 msgstr ""
 
-#: i18n/words.py:3985
+#: i18n/words.py:3988
 msgid "kombi.csv"
 msgstr ""
 
-#: i18n/words.py:3986
+#: i18n/words.py:3989
 msgid "kombi-meta.csv"
 msgstr ""
 
-#: i18n/words.py:3987
+#: i18n/words.py:3990
 msgid "religion.csv"
 msgstr ""
 
-#: i18n/words.py:3988
+#: i18n/words.py:3991
 msgid "primenumbers.csv"
 msgstr ""
 
-#: i18n/words.py:3989
+#: i18n/words.py:3992
 msgid "gebrochen-rational-universum.csv"
 msgstr ""
 
-#: i18n/words.py:3990
+#: i18n/words.py:3993
 msgid "gebrochen-rational-galaxie.csv"
 msgstr ""
 
-#: i18n/words.py:3991
+#: i18n/words.py:3994
 msgid "gebrochen-rational-emotionen.csv"
 msgstr ""
 
-#: i18n/words.py:3992
+#: i18n/words.py:3995
 msgid "gebrochen-rational-strukturgroesse.csv"
 msgstr ""
 
-#: i18n/words.py:3993
+#: i18n/words.py:3996
 msgid "kombi-gedanken17-absichten13-bewusstsein15.csv"
 msgstr ""
 
-#: i18n/words.py:3994
+#: i18n/words.py:3997
 msgid "kombi-meta-systeme.csv"
 msgstr ""
 
-#: i18n/words.py:3995
+#: i18n/words.py:3998
 msgid "kombi-universelle-wirklichkeit.csv"
 msgstr ""
 
-#: i18n/words.py:3996
+#: i18n/words.py:3999
 msgid "kreisVomTyp18.csv"
 msgstr ""
 
-#: i18n/words.py:3997
+#: i18n/words.py:4000
 msgid "sunMoonEtc.csv"
 msgstr ""
 
-#: i18n/words.py:3998
+#: i18n/words.py:4001
 msgid "meaningOfLife.csv"
 msgstr ""
 
-#: i18n/words.py:3999
+#: i18n/words.py:4002
 msgid "dualism-trinities-etc.csv"
 msgstr ""
 
-#: i18n/words.py:4002
+#: i18n/words.py:4005
 msgid "EIGN"
 msgstr ""
 
-#: i18n/words.py:4002
+#: i18n/words.py:4005
 msgid "EIGR"
 msgstr ""
