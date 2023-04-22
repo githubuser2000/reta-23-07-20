@@ -3851,7 +3851,7 @@ class retapy:
     cliout6Satz = "".join((
                 _('kein Unter-Parameter'), '--',
                 kombiMainParas["galaxie"],
-                '= ",' _(", oder"), ', "--',
+                '= ",', _(", oder"), ', "--',
                 kombiMainParas["universum"],
                 '=", ', _('angegeben für Hauptparameter'), ' -' + hauptForNeben["kombination"],
                 _(" oder einen nicht zugehörigen Parameter: "),
@@ -3894,7 +3894,6 @@ class retaPrompt:
         + _(
             "' ist nur erlaubt mit 2 weiteren Angaben mit Leerzeichen getrennt, einer Zahl und einem Zahlenbereich, z.B. '")+befehle2["abstand"]+" 7 17-25'"
         )
-    )
     befehleBeenden = {_("ende"), _("exit"), _("quit"), _("q"), _(":q")}
     befehleWort = {"Befehle": _("Befehle")}
     promptModeSatz = _("promptmode vorher: {} , {}")

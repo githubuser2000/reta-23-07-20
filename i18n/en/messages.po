@@ -2875,8 +2875,8 @@ msgid "vereinen"
 msgstr "unite"
 
 #: i18n/words.py:2409 i18n/words.py:3026
-msgid "einheit"unity
-msgstr ""
+msgid "einheit"
+msgstr "unity"
 
 #: i18n/words.py:2416
 msgid "Vorteile"
@@ -4506,7 +4506,7 @@ msgstr "The combination column \""
 
 #: i18n/words.py:3849
 msgid "\" existiert so nicht als Befehl. Möglich sind die Parameter für "
-msgstr "\" does not exist as a command like this. Possible are the parameters for ""
+msgstr "\" does not exist as a command like this. Possible are the parameters for "
 
 #: i18n/words.py:3852
 msgid "kein Unter-Parameter"
@@ -4546,11 +4546,11 @@ msgstr "The sub parameter \""
 
 #: i18n/words.py:3870 i18n/words.py:3876
 msgid "\" gibt es hier nicht für den Hauptparameter \"-"
-msgstr "\n does not exist here for the main parameter \"-""
+msgstr "\" does not exist here for the main parameter \"-"
 
 #: i18n/words.py:3871
 msgid "\". Oder ein = fehlt dahinter."
-msgstr "\" Or a = is missing behind it.""
+msgstr "\" Or a = is missing behind it."
 
 #: i18n/words.py:3872
 msgid " Möglich sind: "
@@ -4558,7 +4558,7 @@ msgstr "Possible are: "
 
 #: i18n/words.py:3877
 msgid "\". Oder es fehlt ein = dahinter."
-msgstr "\" Or a = is missing behind it.""
+msgstr "\" Or a = is missing behind it."
 
 #: i18n/words.py:3890 i18n/words.py:3938
 msgid "Debug Log aktiviert."
