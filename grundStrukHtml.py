@@ -7,6 +7,7 @@ from copy import deepcopy
 from functools import cmp_to_key
 from pprint import pprint
 
+import i18n.words as i18n
 from LibRetaPrompt import wahl15
 
 
@@ -166,7 +167,9 @@ def myprint(d, tiefe):
                             "".join(
                                 (
                                     ' class="ordGru" onchange="toggleP2(this,-10,',
-                                    "'Grundstrukturen,",
+                                    "'",
+                                    i18n.ParametersMain.grundstrukturen[0],
+                                    ",",
                                     k,
                                     "');\"",
                                     ' id="ordGru',

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-23 13:33+0200\n"
+"POT-Creation-Date: 2023-04-23 15:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #~ msgid "Multiplikationen"
-#~ msgstr "Multiplications"
+#~ msgstr "multiplications"
 
 #~ msgid "Primzahlkreuz_pro_contra"
 #~ msgstr "prime_cross_pro_contra"
@@ -59,10 +59,10 @@ msgstr ""
 #~ msgstr "widths"
 
 #~ msgid "keineleereninhalte"
-#~ msgstr "no_blank_contents"
+#~ msgstr "noblankcontents"
 
 #~ msgid "keinenummerierung"
-#~ msgstr "no_numbering"
+#~ msgstr "nonumbering"
 
 #~ msgid "keineueberschriften"
 #~ msgstr "noheadings"
@@ -110,7 +110,7 @@ msgstr ""
 #~ msgstr "primemultiples"
 
 #~ msgid "schwarzesonne"
-#~ msgstr "black_sun"
+#~ msgstr "blacksun"
 
 #~ msgid "sonne"
 #~ msgstr "sun"
@@ -341,7 +341,7 @@ msgstr ""
 #~ msgstr "model_of_Hierarchical_Complexity"
 
 #~ msgid "Meta-Systeme_(12)"
-#~ msgstr "Meta-Systems_(12)"
+#~ msgstr "meta-systems_(12)"
 
 #~ msgid "Ordnung_und_Filterung_12_und_1pro12"
 #~ msgstr "order_and_Filtering_12_and_1pro12"
@@ -512,16 +512,16 @@ msgstr ""
 #~ msgstr "fractionalgalaxy"
 
 #~ msgid "Wichtigstes_zum_verstehen"
-#~ msgstr "most_important_to_understand"
+#~ msgstr "mostImportantToUnderstand"
 
 #~ msgid "wichtigsteverstehen"
-#~ msgstr "most_important_to_understand"
+#~ msgstr "mostimportanttounderstand"
 
 #~ msgid "Wichtigstes_zum_gedanklich_einordnen"
-#~ msgstr "most_important_to_think_about"
+#~ msgstr "mostImportantToThinkAbout"
 
 #~ msgid "wichtigsteeinordnen"
-#~ msgstr "most_important_to_classify"
+#~ msgstr "mostImportantToClassify"
 
 #~ msgid "Religionen"
 #~ msgstr "religions"
@@ -617,7 +617,7 @@ msgstr ""
 #~ msgstr "procontra"
 
 #~ msgid "dagegendafuer"
-#~ msgstr "pro_contra"
+#~ msgstr "procontra"
 
 #~ msgid "Licht"
 #~ msgstr "light"
@@ -671,7 +671,7 @@ msgstr ""
 #~ msgstr "meta_vs_concrete_(universe)"
 
 #~ msgid "universummetakonkret"
-#~ msgstr "universe_metaconcrete"
+#~ msgstr "universeMetaConcrete"
 
 #~ msgid "Primzahlwirkung"
 #~ msgstr "primeeffect"
@@ -683,19 +683,19 @@ msgstr ""
 #~ msgstr "multiplications"
 
 #~ msgid "Planet_(10_und_oder_12)"
-#~ msgstr "Planet_(10_und_oder_12)"
+#~ msgstr "planet_(10_and_or_12)"
 
 #~ msgid "Strukturen_1_bis_9"
 #~ msgstr "structures_1_to_9"
 
 #~ msgid "strukturkleinerzehn"
-#~ msgstr "structure_less_ten"
+#~ msgstr "structureLessTen"
 
 #~ msgid "Grundstrukturen"
-#~ msgstr "basic_structures"
+#~ msgstr "basicStructures"
 
 #~ msgid "grundstrukturen"
-#~ msgstr "basic_structures"
+#~ msgstr "basicStructures"
 
 #~ msgid "motivation"
 #~ msgstr "motivation"
@@ -704,10 +704,10 @@ msgstr ""
 #~ msgstr "transcendentalreciprocal"
 
 #~ msgid "verhaeltnisgleicherzahl"
-#~ msgstr "ratio_same_number"
+#~ msgstr "ratioSameNumber"
 
 #~ msgid "gestirn"
-#~ msgstr "space_object"
+#~ msgstr "spaceObject"
 
 #~ msgid "Galaxieabsicht"
 #~ msgstr "galaxyintention"
@@ -740,13 +740,13 @@ msgstr ""
 #~ msgstr "political"
 
 #~ msgid "Wirklichkeiten_(10)"
-#~ msgstr "truth_realities_(10)"
+#~ msgstr "truthRealities_(10)"
 
 #~ msgid "wirklichkeit"
-#~ msgstr "truth_realities_"
+#~ msgstr "truthRealities"
 
 #~ msgid "wirklichkeiten"
-#~ msgstr "truth_realities_"
+#~ msgstr "truthRealities"
 
 #~ msgid "metasysteme"
 #~ msgstr "metasystems"
@@ -797,25 +797,25 @@ msgstr ""
 #~ msgstr "mechanism"
 
 #~ msgid "Zweitwichtigste"
-#~ msgstr "second_most_important"
+#~ msgstr "secondmostimportant"
 
 #~ msgid "zweitwichtigste"
 #~ msgstr "secondmostimportant"
 
 #~ msgid "Drittwichtigste"
-#~ msgstr "third_most_important"
+#~ msgstr "thirdmostimportant"
 
 #~ msgid "drittwichtigste"
-#~ msgstr "third_most_important"
+#~ msgstr "thirdmostimportant"
 
 #~ msgid "Motive_Sternpolygone"
 #~ msgstr "Motifs_starpolygons"
 
 #~ msgid "viertwichtigste"
-#~ msgstr "fourth_most_important"
+#~ msgstr "fourthmostimportant"
 
 #~ msgid "wichtigstes"
-#~ msgstr "most_important"
+#~ msgstr "mostimportant"
 
 #~ msgid "Halbierung"
 #~ msgstr "halving"
@@ -902,7 +902,7 @@ msgstr ""
 #~ msgstr "uniformpolygon"
 
 #~ msgid "nichtsternpolygon"
-#~ msgstr "non-star polygon"
+#~ msgstr "nonstarpolygon"
 
 #~ msgid "polygon"
 #~ msgstr "polygon"
@@ -914,7 +914,7 @@ msgstr ""
 #~ msgstr "representativehigherconcepts"
 
 #~ msgid "schwarzesonnen"
-#~ msgstr "black_sun"
+#~ msgstr "blackSuns"
 
 #~ msgid "universen"
 #~ msgstr "universes"
@@ -950,7 +950,7 @@ msgstr ""
 #~ msgstr "identity"
 
 #~ msgid "Hochzüchten"
-#~ msgstr "breeding_up"
+#~ msgstr "breedingUp"
 
 #~ msgid "hochzüchten"
 #~ msgstr "breedingup"
@@ -1022,10 +1022,10 @@ msgstr ""
 #~ msgstr "transcendentals_inside_outside"
 
 #~ msgid "innenaussenstrukur"
-#~ msgstr "inside_outside_structure"
+#~ msgstr "insideOutsideStructure"
 
 #~ msgid "strukturalieninnenaußen"
-#~ msgstr "structurealien_inside_outside"
+#~ msgstr "structurealiasInsideOutside"
 
 #~ msgid "strukturalieninnenaussen"
 #~ msgstr "structurealieninsideoutside"
@@ -1055,7 +1055,7 @@ msgstr ""
 #~ msgstr "five"
 
 #~ msgid "fünferstruktur"
-#~ msgstr "structure_of_five"
+#~ msgstr "structureOfFive"
 
 #~ msgid "fuenf"
 #~ msgstr "five"
@@ -1076,7 +1076,7 @@ msgstr ""
 #~ msgstr "nine"
 
 #~ msgid "neunerstruktur"
-#~ msgstr "nine_structure"
+#~ msgstr "nineStructure"
 
 #~ msgid "3"
 #~ msgstr "3"
@@ -1088,10 +1088,10 @@ msgstr ""
 #~ msgstr "three"
 
 #~ msgid "dreierstruktur"
-#~ msgstr "three_structure"
+#~ msgstr "threeStructure"
 
 #~ msgid "Strukturgrösse"
-#~ msgstr "structure_size"
+#~ msgstr "structureSize"
 
 #~ msgid "größe"
 #~ msgstr "size"
@@ -1184,16 +1184,16 @@ msgstr ""
 #~ msgstr "directiondirection"
 
 #~ msgid "absichtgalaxie"
-#~ msgstr "intention_galaxy"
+#~ msgstr "intentionGalaxy"
 
 #~ msgid "Absicht_Reziproke_Galaxie"
 #~ msgstr "intention_reciprocal_galaxy"
 
 #~ msgid "absichtgalaxiereziproke"
-#~ msgstr "intent_galaxy_reciprocal"
+#~ msgstr "intentGalaxyReciprocal"
 
 #~ msgid "absichtreziproke"
-#~ msgstr "intent_reciprocal"
+#~ msgstr "intentReciprocal"
 
 #~ msgid "motivereziproke"
 #~ msgstr "motivereciprocal"
@@ -1211,10 +1211,10 @@ msgstr ""
 #~ msgstr "universe_reciprocal"
 
 #~ msgid "universumreziproke"
-#~ msgstr "universe_reciprocal"
+#~ msgstr "universeReciprocal"
 
 #~ msgid "strukturaliereziproke"
-#~ msgstr "structural_reciprocal"
+#~ msgstr "structuralReciprocal"
 
 #~ msgid "strukturalienreziproke"
 #~ msgstr "structuralreciprocal"
@@ -1244,7 +1244,7 @@ msgstr ""
 #~ msgstr "neutral_against_transcendentalism"
 
 #~ msgid "neutralegegentranszendentalien"
-#~ msgstr "neutral_countertranscendentalism"
+#~ msgstr "neutralCounterTranscendentalism"
 
 #~ msgid "neutralegegenstrukturalien"
 #~ msgstr "neutralcounterstructuralism"
@@ -1328,7 +1328,7 @@ msgstr ""
 #~ msgstr "philoalienreciprocal"
 
 #~ msgid "universalienreziproke"
-#~ msgstr "universals_reciprocal"
+#~ msgstr "universalsReciprocal"
 
 #~ msgid "Netzwerk"
 #~ msgstr "network"
@@ -1370,7 +1370,7 @@ msgstr ""
 #~ msgstr "why_transcendental_=_complexity_by_Michael_Commons"
 
 #~ msgid "warumtranszendentaliegleichkomplexitaet"
-#~ msgstr "why_transcendental_equals_complexity"
+#~ msgstr "whyTranscendentalEqualsComplexity"
 
 #~ msgid "modelofhierarchicalcomplexity"
 #~ msgstr "modelofhierarchicalcomplexity"
@@ -1484,7 +1484,7 @@ msgstr ""
 #~ msgstr "device"
 
 #~ msgid "Organisationsform"
-#~ msgstr "type_of_organization"
+#~ msgstr "typeOfOrganization"
 
 #~ msgid "organisationsform"
 #~ msgstr "typeoforganization"
@@ -1520,7 +1520,7 @@ msgstr ""
 #~ msgstr "explanation"
 
 #~ msgid "BWL"
-#~ msgstr "business_administration"
+#~ msgstr "businessAdministration"
 
 #~ msgid "bwl"
 #~ msgstr "businessadministration"
@@ -1532,10 +1532,10 @@ msgstr ""
 #~ msgstr "senseandmeaningoflife"
 
 #~ msgid "lebenssinn"
-#~ msgstr "sense_and_meaning"
+#~ msgstr "senseAndMeaningOfLife"
 
 #~ msgid "sinn"
-#~ msgstr "sense_and_meaning"
+#~ msgstr "senseAndMeaning"
 
 #~ msgid "sinnsuche"
 #~ msgstr "searchformeaning"
@@ -1622,7 +1622,7 @@ msgstr ""
 #~ msgstr "irrational_numbers_by_rooting"
 
 #~ msgid "irrationalezahlendurchwurzelbildung"
-#~ msgstr "irrationa_numbersbyrooting"
+#~ msgstr "irrationalNumbersbyrooting"
 
 #~ msgid "ausgangslage"
 #~ msgstr "initialposition"
@@ -1754,7 +1754,7 @@ msgstr ""
 #~ msgstr "attention"
 
 #~ msgid "achten"
-#~ msgstr "attention_or_respect"
+#~ msgstr "attentionOrRespect"
 
 #~ msgid "absicht16"
 #~ msgstr "intention16"
@@ -2120,10 +2120,10 @@ msgstr ""
 #~ msgstr "makes_sense"
 
 #~ msgid "ergibtsinn"
-#~ msgstr "results_Sense"
+#~ msgstr "resultsSense"
 
 #~ msgid "machtsinn"
-#~ msgstr "yields_sense"
+#~ msgstr "yieldsSense"
 
 #~ msgid "Veränderung"
 #~ msgstr "change"
@@ -2219,13 +2219,13 @@ msgstr ""
 #~ msgstr "not_getting_along_with_another"
 
 #~ msgid "nichtauskommen"
-#~ msgstr "not_getting_along"
+#~ msgstr "notGettingAlong"
 
 #~ msgid "nicht_dagegen"
 #~ msgstr "not_against"
 
 #~ msgid "nichtdagegen"
-#~ msgstr "not_against"
+#~ msgstr "notAgainst"
 
 #~ msgid "kein_Gegenteil"
 #~ msgstr "no_opposite"
@@ -2336,7 +2336,7 @@ msgstr ""
 #~ msgstr "perfection"
 
 #~ msgid "Gestirn"
-#~ msgstr "space_object"
+#~ msgstr "spaceObject"
 
 #~ msgid "Konjunktiv_Wurzelbildung"
 #~ msgstr "subjunctive_root"
@@ -2438,7 +2438,7 @@ msgstr ""
 #~ msgstr "filter_type_and_violation"
 
 #~ msgid "filterart"
-#~ msgstr "filter_type"
+#~ msgstr "filterType"
 
 #~ msgid "widrigkeit"
 #~ msgstr "adversity"
@@ -2468,16 +2468,16 @@ msgstr ""
 #~ msgstr "trust_want"
 
 #~ msgid "vertrauenwollen"
-#~ msgstr "want_to_trust"
+#~ msgstr "wantToTrust"
 
 #~ msgid "einklinken_vertrauen_anprangern"
 #~ msgstr "engage_trust_denounce"
 
 #~ msgid "einklinken"
-#~ msgstr "latch_on"
+#~ msgstr "latchOn"
 
 #~ msgid "vertrauenerhalten"
-#~ msgstr "trust_maintain"
+#~ msgstr "trustMaintain"
 
 #~ msgid "anprangern"
 #~ msgstr "denounce"
@@ -2516,13 +2516,13 @@ msgstr ""
 #~ msgstr "humble"
 
 #~ msgid "Selbstsucht_Ichsucht_etc"
-#~ msgstr "selfishness_wantingYourI_etc"
+#~ msgstr "selfishness_wantingYourOwnI_etc"
 
 #~ msgid "selbstsucht"
 #~ msgstr "selfishness"
 
 #~ msgid "ichsucht"
-#~ msgstr "I_addiction"
+#~ msgstr "IAddiction"
 
 #~ msgid "Forschen_Erfinden_Einklinken"
 #~ msgstr "research_invention_engagement"
@@ -2555,13 +2555,13 @@ msgstr ""
 #~ msgstr "affection"
 
 #~ msgid "Selbstlosigkeit_Ichlosigkeit_etc"
-#~ msgstr "selflessness_I_lessness_etc"
+#~ msgstr "selflessness_Ilessness_etc"
 
 #~ msgid "selbstlos"
 #~ msgstr "selfless"
 
 #~ msgid "ichlos"
-#~ msgstr "I_less"
+#~ msgstr "Iless"
 
 #~ msgid "variationsreich_eintönig"
 #~ msgstr "varied_monotonous"
@@ -2589,9 +2589,6 @@ msgstr ""
 
 #~ msgid "zugeneigt"
 #~ msgstr "inclined"
-
-#~ msgid "ehrlich vs höflich"
-#~ msgstr "honest_vs_polite"
 
 #~ msgid "ehrlich"
 #~ msgstr "honest"
@@ -2639,7 +2636,7 @@ msgstr ""
 #~ msgstr "unite_vs_connect"
 
 #~ msgid "vereinenverbinden"
-#~ msgstr "unite_connect"
+#~ msgstr "uniteConnect"
 
 #~ msgid "verbinden"
 #~ msgstr "connect"
@@ -2690,7 +2687,7 @@ msgstr ""
 #~ msgstr "egalitarian_vs_authoritarian"
 
 #~ msgid "egalitaerautoritaer"
-#~ msgstr "egalitarian_authoritarian"
+#~ msgstr "egalitarianAuthoritarian"
 
 #~ msgid "egalitaer"
 #~ msgstr "egalitarian"
@@ -2732,7 +2729,7 @@ msgstr ""
 #~ msgstr "morality"
 
 #~ msgid "annaehrerung"
-#~ msgstr "getting_near"
+#~ msgstr "gettingNear"
 
 #~ msgid "Führung"
 #~ msgstr "leadership"
@@ -2792,7 +2789,7 @@ msgstr ""
 #~ msgstr "polarity_of_love"
 
 #~ msgid "liebepolung"
-#~ msgstr "polarity_of_love"
+#~ msgstr "polarityOfLove"
 
 #~ msgid "Egoismus_vs_Altruismus"
 #~ msgstr "egoism_vs_altruism"
@@ -2807,7 +2804,7 @@ msgstr ""
 #~ msgstr "causal"
 
 #~ msgid "geltung"
-#~ msgstr "cachet_prestige_validity"
+#~ msgstr "cachetPrestigeValidity"
 
 #~ msgid "genese"
 #~ msgstr "genesis"
@@ -2843,28 +2840,28 @@ msgstr ""
 #~ msgstr "motifs_uniform_polygons"
 
 #~ msgid "motivgleichfoermig"
-#~ msgstr "motif_regular_polygons"
+#~ msgstr "motifRegularPolygons"
 
 #~ msgid "Struktur_gleichförmige_Polygone"
 #~ msgstr "structure_regular_polygons"
 
 #~ msgid "strukturgleichfoermig"
-#~ msgstr "structure_regular_polygons"
+#~ msgstr "structureRegularPolygons"
 
 #~ msgid "motivstern"
-#~ msgstr "motif_star"
+#~ msgstr "motifStar"
 
 #~ msgid "Struktur_Sternpolygone"
 #~ msgstr "structure_star_polygons"
 
 #~ msgid "strukturstern"
-#~ msgstr "structure_star"
+#~ msgstr "structureStar"
 
 #~ msgid "Motiv_Sternpolygon_gebrochen-rational"
 #~ msgstr "motif_star_polygon_fractioned-rational"
 
 #~ msgid "motivgebrstern"
-#~ msgstr "motif_star"
+#~ msgstr "motifStar"
 
 #~ msgid "Struktur_Sternpolyon_gebrochen-rational"
 #~ msgstr "structure_star_polygon_fractioned-rational"
@@ -2876,13 +2873,13 @@ msgstr ""
 #~ msgstr "motif_regular_polygons_fractioned-rational"
 
 #~ msgid "motivgebrgleichf"
-#~ msgstr "motif_regularf"
+#~ msgstr "motifRegularf"
 
 #~ msgid "Struktur_gleichförmige_Polygone_gebrochen-rational"
 #~ msgstr "structure_regular_polygons_fractioned-rationall"
 
 #~ msgid "strukgebrgleichf"
-#~ msgstr "structure_regular_f"
+#~ msgstr "structureRegularF"
 
 #~ msgid "beschrieben"
 #~ msgstr "described"
@@ -3260,7 +3257,7 @@ msgstr ""
 #~ msgstr "rule, dominate"
 
 #~ msgid "Konkretes"
-#~ msgstr "concrete_things"
+#~ msgstr "concreteThings"
 
 #~ msgid "darüber hinaus gehend"
 #~ msgstr "going beyond"
@@ -3615,3 +3612,6 @@ msgstr ""
 
 #~ msgid "für '-languages=' sind die Paramter-Werte erlaubt: "
 #~ msgstr "for '-languages=' parameter values are allowed: "
+
+#~ msgid ",  um eine andere Sprache zu wählen und möglich sind: "
+#~ msgstr ", to select another language and possible are: "

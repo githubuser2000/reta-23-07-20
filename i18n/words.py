@@ -3564,6 +3564,7 @@ class tableHandling:
         "Zweitwichtigste": _("Zweitwichtigste"),
         "berufe": _("berufe"),
         "intelligenz": _("intelligenz"),
+        "tiere": _("tiere"),
         "Kombination_(Universum_und_Galaxie)_(14_mit_15)": _(
             "Kombination_(Universum_und_Galaxie)_(14_mit_15)"
         ),

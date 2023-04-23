@@ -743,15 +743,15 @@ class Tables:
 
         def cliout2(self, text):
             janee: tuple[bool, str] = (
-                (True, "bbcode")
+                (True, i18n.ausgabeArt["bbcode"])
                 if self.tables.bbcodeOutputYes
-                else (True, "html")
+                else (True, i18n.ausgabeArt["html"])
                 if self.tables.htmlOutputYes
-                else (True, "markdown")
+                else (True, i18n.ausgabeArt["markdown"])
                 if type(self.__outType) is emacsSyntax
-                else (True, "markdown")
+                else (True, i18n.ausgabeArt["markdown"])
                 if type(self.__outType) is csvSyntax
-                else (True, "markdown")
+                else (True, i18n.ausgabeArt["markdown"])
                 if self.tables.markdownOutputYes
                 else (False, "")
             )
@@ -1255,26 +1255,41 @@ class Tables:
                                             ) in self.tables.dataDict[3][a]:
                                                 into += [
                                                     (
-                                                        "Kombination_(Galaxie_und_schwarzes_Loch)_(14_mit_13)",
+                                                        i18n.tableHandling.into[
+                                                            "Kombination_(Galaxie_und_schwarzes_Loch)_(14_mit_13)"
+                                                        ],
                                                         elementParameter,
                                                     )
                                                 ]
 
-                                                if elementParameter == "tiere":
+                                                if (
+                                                    elementParameter
+                                                    == i18n.tableHandling.into["tiere"]
+                                                ):
                                                     into2 = [
                                                         (
-                                                            "Wichtigstes_zum_gedanklich_einordnen",
-                                                            "Zweitwichtigste",
+                                                            i18n.tableHandling.into[
+                                                                "Wichtigstes_zum_gedanklich_einordnen"
+                                                            ],
+                                                            i18n.tableHandling.into[
+                                                                "Zweitwichtigste"
+                                                            ],
                                                         )
                                                     ]
                                                 elif elementParameter in [
-                                                    "berufe",
-                                                    "intelligenz",
+                                                    i18n.tableHandling.into["berufe"],
+                                                    i18n.tableHandling.into[
+                                                        "intelligenz"
+                                                    ],
                                                 ]:
                                                     into2 = [
                                                         (
-                                                            "Wichtigstes_zum_gedanklich_einordnen",
-                                                            "Zweitwichtigste",
+                                                            i18n.tableHandling.into[
+                                                                "Wichtigstes_zum_gedanklich_einordnen"
+                                                            ],
+                                                            i18n.tableHandling.into[
+                                                                "Zweitwichtigste"
+                                                            ],
                                                         )
                                                     ]
                                         elif csvFileName == i18n.csvFileNames.kombi15:
@@ -1283,7 +1298,9 @@ class Tables:
                                             ) in self.tables.dataDict[8][a]:
                                                 into += [
                                                     (
-                                                        "Kombination_(Universum_und_Galaxie)_(14_mit_15)",
+                                                        i18n.tableHandling.into[
+                                                            "Kombination_(Universum_und_Galaxie)_(14_mit_15)"
+                                                        ],
                                                         elementParameter,
                                                     )
                                                 ]
@@ -1367,14 +1384,24 @@ class Tables:
 
                 for i, line in enumerate(self.relitable):
                     if i == 0:
-                        line += ["Gestirn"]
+                        line += i18n.tableHandling.gestirnGrossschrift["Gestirn"]
                     else:
                         if moonNumber(i)[1] != []:
-                            text = "Mond"
+                            text = i18n.tableHandling.gestirnGrossschrift["Mond"]
                         else:
-                            text = "Sonne"
+                            text = i18n.tableHandling.gestirnGrossschrift["Sonne"]
                         if i % 2 == 0:
-                            line += [text + ", Planet"]
+                            line += [
+                                "".join(
+                                    (
+                                        text,
+                                        ", ",
+                                        i18n.tableHandling.gestirnGrossschrift[
+                                            "Planet"
+                                        ],
+                                    )
+                                )
+                            ]
                         else:
                             line += [text]
 
