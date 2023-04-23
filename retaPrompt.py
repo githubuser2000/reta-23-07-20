@@ -695,8 +695,7 @@ def PromptGrosseAusgabe(
             Txt.liste,
         ) = bruchBereichsManagementAndWbefehl(c, Txt.liste, zahlenAngaben_)
     if i18n.befehle2["mulpri"] in Txt.listeE or i18n.befehle2["p"] in Txt.listeE:
-        Txt.liste += [i18n.befehle2["multis"], i18n.befehle2[i18n.befehle2["prim"]]]
-        # Txt.listeE += [i18n.befehle2["multis"], i18n.befehle2[i18n.befehle2["prim"]]]
+        Txt.liste += [i18n.befehle2["multis"], i18n.befehle2["prim"]]
 
     if (
         "".join(("--", i18n.ausgabeParas["art"], "=", i18n.ausgabeArt["bbcode"]))
@@ -889,10 +888,10 @@ def PromptGrosseAusgabe(
 
         eigN, eigR = [], []
         for aa in Txt.listeE:
-            if i18n.EIGS_N_R[0] == aa[:4]:
-                eigN += [aa[4:]]
-            if i18n.EIGS_N_R[1] == aa[:4]:
-                eigR += [aa[4:]]
+            if i18n.EIGS_N_R[0] == aa[: len(i18n.EIGS_N_R[0])]:
+                eigN += [aa[len(i18n.EIGS_N_R[0]) :]]
+            if i18n.EIGS_N_R[1] == aa[: len(i18n.EIGS_N_R[1])]:
+                eigR += [aa[len(i18n.EIGS_N_R[0]) :]]
 
         if len(eigN) > 0:
             warBefehl = True
@@ -955,7 +954,7 @@ def PromptGrosseAusgabe(
             )
             if len(cNeu) > 0:
                 retaExecuteNprint(
-                    ketten + ["-zeilen", zeiln1, zeiln2],
+                    ketten + ["-" + i18n.hauptForNeben["zeilen"], zeiln1, zeiln2],
                     Txt.listeE,
                     zeiln3,
                     zeiln4,

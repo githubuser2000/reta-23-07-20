@@ -2670,7 +2670,7 @@ paraNdataMatrix: list = [
         ParametersMain.bedeutung,
         (
             _("Gestirn"),
-            "gestirnWort",
+            gestirnWort,
             _("mond"),
             _("sonne"),
             _("planet"),
@@ -3536,8 +3536,7 @@ kombiParaNdataMatrix2: OrderedDict = OrderedDict(
 )
 
 
-@classmethod
-def classify(cls, mod):
+def classify(mod):
     if mod == 0:
         return _("ja")
     elif mod == 1:

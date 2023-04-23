@@ -1416,9 +1416,9 @@ class Program:
         if (
             arg[2 : 3 + i18n.zeilenParasLen["oberesmaximum"]]
             == i18n.zeilenParas["oberesmaximum"] + "="
-            and arg[16:].isdecimal()
+            and arg[3 + i18n.zeilenParasLen["oberesmaximum"] :].isdecimal()
         ):
-            werte = [int(arg[16:])]
+            werte = [int(arg[3 + i18n.zeilenParasLen["oberesmaximum"] :])]
             return werte, True
         elif (
             arg[2 : 3 + i18n.zeilenParasLen["vorhervonausschnitt"]]

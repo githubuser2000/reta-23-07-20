@@ -44,7 +44,6 @@ weight = -7
 -   "v" bzw. "einzeln" bzw. "vielfache" bewirkt in Ausgabe-Befehlen außer "reta", dass deren Zeilenangaben z.B. 7 nicht nur Zeile 7 meinen, sondern alle vielfacher dieser Zeilengaben auch, also auch 14,21, usw.
 -   "einzeln" ist bei Kurzbefehlen der Standard: Dass Zeilenangaben nicht Vielfache meinen, sondern einzelne Zeilen.
 -   "mond" gibt, zusammen mit einer Zeilenangabe, Informationen über Gestirne aus: wie Monde, Planeten, Sonnen
--   "procontra" gibt, zusammen mit einer Zeilenangabe, viele Spalten aus, wie sich dies Zeilengaben mit vielen andern Zeilen wie verträgt.
 -   "alles" gibt, zusammen mit einer Zeilenangabe einfach alle Spalten aus. Das dauert.
 -   "primzahlkreuz" gibt, zusammen mit einer Zeilenangabe die Spalten des Primzahlkreuz-Algorithmusses aus. Diese stehen im Zusammenhang mit den Spalten über Geist (15). Das dauert.
 -   "r" bzw. "richtung" gibt, zusammen mit einer Zeilenangabe, die Spalten an, die ausgeben, inwiefern eine Zeile pro außen, pro innen, pro seitlich, gegen seitlich funktioniert.

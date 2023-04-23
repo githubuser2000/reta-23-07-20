@@ -733,7 +733,7 @@ msgstr "noOneCharacterLinePlusNoOutputWhichCommandItWas"
 
 #: i18n/words.py:341 ../../words.py:349
 msgid "abstand"
-msgstr "spacing"
+msgstr "distance"
 
 #: i18n/words.py:419 ../../words.py:427
 msgid "konzept"
@@ -1021,7 +1021,7 @@ msgstr "ratio_same_number"
 
 #: i18n/words.py:539 ../../words.py:547
 msgid "gestirn"
-msgstr "spaceobject"
+msgstr "space_object"
 
 #: i18n/words.py:541 ../../words.py:549
 msgid "Galaxieabsicht"
@@ -3386,7 +3386,7 @@ msgstr "honesty"
 
 #: i18n/words.py:2778 ../../words.py:2786
 msgid "Würdig"
-msgstr ""
+msgstr "dignified"
 
 #: i18n/words.py:2778 ../../words.py:2786
 msgid "wuerdig"
