@@ -94,7 +94,7 @@ def isZeilenAngabe_betweenKommas(g):
 
 
 def retaPromptHilfe():
-    readMe = "readme-retaPrompt.md"
+    readMe = i18n.readMeFileNames.retaPrompt
     place = os.path.join(
         os.getcwd(), os.path.dirname(__file__), os.path.basename("./" + readMe)
     )
@@ -109,7 +109,7 @@ def retaPromptHilfe():
 
 
 def retaHilfe():
-    readMe = "readme-reta.md"
+    readMe = i18n.readMeFileNames.reta
     place = os.path.join(
         os.getcwd(), os.path.dirname(__file__), os.path.basename("./" + readMe)
     )

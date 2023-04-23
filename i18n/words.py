@@ -1,10 +1,11 @@
 import gettext
 import os
+import sys
 # import sys
 from collections import OrderedDict, namedtuple
 # from dataclasses import dataclass
 from typing import Any, NamedTuple, Optional, Tuple, Union
-import sys
+
 # from typing import Optional, Union
 
 try:
@@ -2981,7 +2982,7 @@ paraNdataMatrix: list = [
     (
         ParametersMain.konzept,
         (
-            _("ehrlich vs höflich"),
+            _("ehrlich_vs_höflich"),
             _("ehrlich"),
             _("höflich"),
             _("hoeflich"),
@@ -3953,24 +3954,34 @@ class retaPrompt:
     debugLog = _("Debug Log aktiviert.")
     helptext = "".join(
         (
-            """Erlaube Parameter sind
-            -""",
+            _(
+                """Erlaube Parameter sind
+            -"""
+            ),
             retaPromptParameter["vi"],
-            """, für vi mode statt emacs mode,
-            -""",
+            _(
+                """, für vi mode statt emacs mode,
+            -"""
+            ),
             retaPromptParameter["log"],
-            """,  um Logging zu aktivieren,
-            -""",
+            _(
+                """,  um Logging zu aktivieren,
+            -"""
+            ),
             retaPromptParameter["debug"],
-            """, um Debugging-Log-Ausgabe zu aktivieren. Das ist nur für Entwickler gedacht.
-            -""",
+            _(
+                """, um Debugging-Log-Ausgabe zu aktivieren. Das ist nur für Entwickler gedacht.
+            -"""
+            ),
             retaPromptParameter["befehl"],
-            """ bewirkt, dass bis zum letzten Programmparameter retaPrompt Befehl nur ein RetaPrompt-Befehl ausgeführt wird.
-            -""",
+            _(
+                """ bewirkt, dass bis zum letzten Programmparameter retaPrompt Befehl nur ein RetaPrompt-Befehl ausgeführt wird.
+            -"""
+            ),
             retaPromptParameter["e"],
             _(" bewirkt, dass bei allen Befehlen das '"),
             befehle2["e"],
-            ("' Kommando bzw. '"),
+            _("' Kommando bzw. '"),
             befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"],
             _(
                 "' jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil dieser anders funktioniert "
@@ -4018,3 +4029,10 @@ class csvFileNames:
 
 
 EIGS_N_R = (_("EIGN"), _("EIGR"))
+
+
+class readMeFileNames:
+    reta = _("readme-reta.md")
+    retaPrompt = _("readme-retaPrompt.md")
+    startFiles = _("readme-startFiles.md")
+    developer = _("readme.org")
