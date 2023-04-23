@@ -8,6 +8,12 @@ var tdStyleFontSize: string = "100%";
 var tdStyleFontSizeKl:string = "80%";
 var tdStyleColorKl:string = "grey";
 var Enume : Set<number> = new Set([0, 1, 3, 4, 5, 6]);
+var mapMapMapTags: Map<number, string> = new Map(),
+var chks1: HTMLCollectionOf<HTMLInputElement>;
+var chks2: string[];
+var spaltenTags: Array<Array<any> > = [],
+var spalten4spaltenTags: Map<number,Array<HTMLTableCellElement>> = new Map(),
+var Achks: HTMLCollectionOf<HTMLInputElement | Element>;
 
 function returnChangeButtons(number1: number | string): string {
   var number = number1.toString()
@@ -56,9 +62,6 @@ for (i = 0; i < tdClasses1.length; i++)
   let mapMapMap: Map<string, string | Map<string , string | Map<any, any>>> = new Map();
   // str: string = "",
   //let p1Bmap = new Map();
-  var mapMapMapTags: Map<number, string> = new Map(),
-  spaltenTags: Array<string | Element | Array<any>> = [],
-  spalten4spaltenTags: Map<number,Array<HTMLTableCellElement>> = new Map(),
   str3: string = "",
   trStyles: Array<string> = [];
 
@@ -226,9 +229,8 @@ for (i = 0; i < tdClasses1.length; i++)
   }
   var str2: string = checkboxes + "</span></div>";
   div.innerHTML += str2;
-  // @ts-expect-error TS(2304): Cannot find name 'chks1'.
-  var chks1: HHTMLCollectionOf<Element[]> = document.getElementsByClassName("chks");
-  var chks2: string[] = [];
+  chks1 = document.getElementsByClassName("chks");
+  chks2 = [];
   for (var i = 0; i < chks1.length; i++) {
     chks2.push(
       // @ts-expect-error TS(2304): Cannot find name 'chks1'.
@@ -346,7 +348,7 @@ for (i = 0; i < tdClasses1.length; i++)
   if (ifpreselect != "nothing") {
     inputs[checkbox_i[1]].checked = true;
     // @ts-expect-error TS(2721): Cannot invoke an object which is possibly 'null'.
-    inputs[checkbox_i[1]].onchange();
+    inputs[checkbox_i[1]].onchange(this);
   }
 
   //var sheets: StyleSheetList = document.styleSheets;
@@ -388,7 +390,7 @@ for (i = 0; i < tdClasses1.length; i++)
     "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15)",
   ];
   if (ifpreselect != "no_universal" && ifpreselect != "nothing") {
-    var dinge2: Array<HTMLCollectionOf<HTMLInputElement>> = [Achks, Achks, chks1, chks1];
+    var dinge2: Array<HTMLCollectionOf<HTMLInputElement| Element>> = [Achks, Achks, chks1, chks1];
     for (var x: number = 0; x < dinge.length; x++) {
       var checkx: HTMLInputElement[] = [];
       for (var k: number = 0; k < dinge2[x].length; k++)
@@ -409,25 +411,18 @@ for (i = 0; i < tdClasses1.length; i++)
   );*/
 };
 
-// @ts-expect-error TS(7006): Parameter 'p1' implicitly has an 'any' type.
-function makeMapsOfHeadLCheckB(p1, p2, num, tags) {
-  // @ts-expect-error TS(2304): Cannot find name 'mapMapMap'.
+function makeMapsOfHeadLCheckB(p1: string, p2: string, num: string | number, tags: any): void {
   if (typeof mapMapMap[p1][p2] === "undefined") mapMapMap[p1][p2] = new Set();
-  // @ts-expect-error TS(2304): Cannot find name 'mapMapMap'.
   mapMapMap[p1][p2].add(num);
-  // @ts-expect-error TS(2304): Cannot find name 'mapMapMapTags'.
   if (typeof mapMapMapTags[p1] === "undefined") mapMapMapTags[p1] = {};
-  // @ts-expect-error TS(2304): Cannot find name 'mapMapMapTags'.
   if (typeof mapMapMapTags[p1][p2] === "undefined")
-    // @ts-expect-error TS(2304): Cannot find name 'mapMapMapTags'.
     mapMapMapTags[p1][p2] = new Set();
   if (typeof tags != "undefined" && tags != "null")
-    // @ts-expect-error TS(2304): Cannot find name 'mapMapMapTags'.
     mapMapMapTags[p1][p2] = Set.union(mapMapMapTags[p1][p2], tags);
 }
 
 // @ts-expect-error TS(2339): Property 'union' does not exist on type 'SetConstr... Remove this comment to see the full error message
-Set.union = function (s1, s2) {
+Set.union = function (s1: any, s2: any): set<any> | null {
   if (typeof s1 == "undefined" || typeof s2 == "undefined") return null;
   // @ts-expect-error TS(2358): The left-hand side of an 'instanceof' expression m... Remove this comment to see the full error message
   if (!s1 instanceof Set || !s2 instanceof Set) {
@@ -436,7 +431,7 @@ Set.union = function (s1, s2) {
   }
   //if ( s1 == null || s2 == null)
   //   return null;
-  let newSet = new Set();
+  let newSet: Set<any> = new Set();
   // @ts-expect-error TS(7006): Parameter 'elem' implicitly has an 'any' type.
   s1.forEach((elem) => newSet.add(elem));
   // @ts-expect-error TS(7006): Parameter 'elem' implicitly has an 'any' type.
@@ -444,126 +439,78 @@ Set.union = function (s1, s2) {
   return newSet;
 };
 
-// @ts-expect-error TS(7006): Parameter 'Enums' implicitly has an 'any' type.
-function disEnAbleChks(Enums) {
-  Enums = new Set(Enums);
-  // @ts-expect-error TS(2304): Cannot find name 'abzug'.
-  abzug = [];
-  // @ts-expect-error TS(2304): Cannot find name 'abzug'.
+function disEnAbleChks(Enums1: Array<number> | Set<number> | HTMLCollectionOf<any>) {
+  var Enums: Set<number> | Array<number> = new Set(Enums1);
+  var abzug: number[] = [];
   if (Enums.has(6) && !Enums.has(0)) abzug.push(0);
-  // @ts-expect-error TS(2304): Cannot find name 'abzug'.
   if (Enums.has(6) && !Enums.has(1)) abzug.push(1);
-  // @ts-expect-error TS(2304): Cannot find name 'abzug'.
   if (Enums.has(1) && !Enums.has(0)) abzug.push(0);
-  // @ts-expect-error TS(2304): Cannot find name 'abzug'.
   if (Enums.has(1) && !Enums.has(6)) abzug.push(6);
-  // @ts-expect-error TS(2304): Cannot find name 'abzug'.
   if (Enums.has(0) && !Enums.has(1)) abzug.push(1);
-  // @ts-expect-error TS(2304): Cannot find name 'abzug'.
   if (Enums.has(0) && !Enums.has(6)) abzug.push(6);
-  // @ts-expect-error TS(2304): Cannot find name 'abzug'.
   if (Enums.has(3) && !Enums.has(4)) abzug.push(4);
-  // @ts-expect-error TS(2304): Cannot find name 'abzug'.
   if (Enums.has(3) && !Enums.has(5)) abzug.push(5);
-  // @ts-expect-error TS(2304): Cannot find name 'abzug'.
   if (Enums.has(4) && !Enums.has(3)) abzug.push(3);
-  // @ts-expect-error TS(2304): Cannot find name 'abzug'.
   if (Enums.has(4) && !Enums.has(5)) abzug.push(5);
-  // @ts-expect-error TS(2304): Cannot find name 'abzug'.
   if (Enums.has(5) && !Enums.has(3)) abzug.push(3);
-  // @ts-expect-error TS(2304): Cannot find name 'abzug'.
   if (Enums.has(5) && !Enums.has(4)) abzug.push(4);
-  // @ts-expect-error TS(2339): Property 'union' does not exist on type 'SetConstr... Remove this comment to see the full error message
-  Enume = Set.union(Enums, Enume);
-  // @ts-expect-error TS(2304): Cannot find name 'abzug'.
+  var Enume: Set<number> = Set.union(Enums, Enume);
   for (var i = 0; i < abzug.length; i++) Enume.delete(abzug[i]);
-  Enums = Array.from(Enume);
+  Enums  = Array.from(Enume);
 
-  // @ts-expect-error TS(2304): Cannot find name 'chks2'.
-  for (var i = 0; i < chks2.length; i++) {
-    // @ts-expect-error TS(2304): Cannot find name 'enumi'.
-    enumi = new Set();
-    // @ts-expect-error TS(2304): Cannot find name 'chks2'.
-    for (var k = 0; k < chks2[i].length; k++)
-      for (var l = 0; l < Enums.length; l++)
-        // @ts-expect-error TS(2304): Cannot find name 'chks2'.
-        if (chks2[i][k] == Enums[l]) enumi.add(Enums[l]);
+  for (var i: number = 0; i < chks2.length; i++) {
+    var enumi: Set<number> = new Set();
+    for (var k: number = 0; k < chks2[i].length; k++)
+      for (var l: number = 0; l < Enums.length; l++)
+        if (chks2[i][k] == Enums[l].toString()) enumi.add(Enums[l]);
     if (
-      // @ts-expect-error TS(2304): Cannot find name 'enumi'.
       (!enumi.has(0) && !enumi.has(1) && !enumi.has(6)) ||
-      // @ts-expect-error TS(2304): Cannot find name 'enumi'.
       (!enumi.has(3) && !enumi.has(4) && !enumi.has(5)) ||
-      // @ts-expect-error TS(2304): Cannot find name 'enumi'.
       enumi.size == 0
     ) {
-      // @ts-expect-error TS(2304): Cannot find name 'chks1'.
       chks1[i].disabled = true;
-      //chks1[i].style = labelstylekl;
-      // @ts-expect-error TS(2304): Cannot find name 'chks1'.
       chks1[i].style.fontSize = tdStyleFontSizeKl;
-      // @ts-expect-error TS(2304): Cannot find name 'chks1'.
       chks1[i].style.color = tdStyleColorKl;
-      // @ts-expect-error TS(2304): Cannot find name 'chks1'.
       chks1[i].style.whiteSpace = tdStyleWhiteSpace;
     } else {
-      // @ts-expect-error TS(2304): Cannot find name 'chks1'.
       chks1[i].disabled = false;
-      //chks1[i].style = labelstyle;
-      // @ts-expect-error TS(2304): Cannot find name 'chks1'.
       chks1[i].style.fontSize = tdStyleFontSize;
-      // @ts-expect-error TS(2304): Cannot find name 'chks1'.
       chks1[i].style.color = "";
-      // @ts-expect-error TS(2304): Cannot find name 'chks1'.
       chks1[i].style.whiteSpace = tdStyleWhiteSpace;
     }
   }
 
-  // @ts-expect-error TS(2304): Cannot find name 'spaltenTags'.
-  for (var i = 2; i < spaltenTags.length; i++) {
-    // @ts-expect-error TS(2304): Cannot find name 'enumi'.
-    enumi = new Set();
-    // @ts-expect-error TS(2304): Cannot find name 'spaltenTags'.
-    for (var k = 0; k < spaltenTags[i].length; k++)
-      for (var l = 0; l < Enums.length; l++)
-        // @ts-expect-error TS(2304): Cannot find name 'spaltenTags'.
+  for (var i: number = 2; i < spaltenTags.length; i++) {
+    var enumi: Set<number> = new Set();
+    for (var k: number = 0; k < spaltenTags[i].length; k++)
+      for (var l: number = 0; l < Enums.length; l++)
         if (spaltenTags[i][k] == Enums[l]) enumi.add(Enums[l]);
 
     if (
-      // @ts-expect-error TS(2304): Cannot find name 'enumi'.
       (!enumi.has(0) && !enumi.has(1) && !enumi.has(6)) ||
-      // @ts-expect-error TS(2304): Cannot find name 'enumi'.
       (!enumi.has(3) && !enumi.has(4) && !enumi.has(5)) ||
-      // @ts-expect-error TS(2304): Cannot find name 'enumi'.
       enumi.size == 0
     ) {
-      // @ts-expect-error TS(2304): Cannot find name 'spalten4spaltenTags'.
-      for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
-        // @ts-expect-error TS(2304): Cannot find name 'spaltenTags2'.
+      var spaltenTags2: any;
+      for (var k: number = 0; k < spalten4spaltenTags[i].length; k++) {
         spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "80%";
-        // @ts-expect-error TS(2304): Cannot find name 'spaltenTags2'.
         spaltenTags2 = spalten4spaltenTags[i][k].style.opacity = "0.4";
       }
     } else {
-      // @ts-expect-error TS(2304): Cannot find name 'spalten4spaltenTags'.
       for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
-        // @ts-expect-error TS(2304): Cannot find name 'spaltenTags2'.
         spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "100%";
-        // @ts-expect-error TS(2304): Cannot find name 'spaltenTags2'.
         spaltenTags2 = spalten4spaltenTags[i][k].style.opacity = "1.0";
       }
     }
   }
-  var Achks = document.getElementsByClassName("chksA");
-  for (var i = 0; i < Achks.length; i++) {
-    // @ts-expect-error TS(2304): Cannot find name 'Bchks'.
+  Achks = document.getElementsByClassName("chksA");
+  var Bchks: HTMLCollectionOf<HTMLInputElement>;
+  for (var i: number = 0; i < Achks.length; i++) {
     Bchks = Achks[i]
       .getElementsByTagName("div")[0]
       .getElementsByTagName("input");
-    // @ts-expect-error TS(2304): Cannot find name 'deakAmount'.
-    deakAmount = 0;
-    // @ts-expect-error TS(2304): Cannot find name 'Bchks'.
-    for (var k = 0; k < Bchks.length; k++) if (Bchks[k].disabled) deakAmount++;
-    // @ts-expect-error TS(2304): Cannot find name 'deakAmount'.
+    var deakAmount: number = 0;
+    for (var k: number = 0; k < Bchks.length; k++) if (Bchks[k].disabled) deakAmount++;
     if (deakAmount == Bchks.length && deakAmount != 0) {
       Achks[i].getElementsByTagName("label")[0].style.fontSize =
         tdStyleFontSizeKl;
@@ -578,42 +525,26 @@ function disEnAbleChks(Enums) {
         tdStyleWhiteSpace;
     }
   }
-  //'"><label class="chksA1 c1_' +
-  // @ts-expect-error TS(2304): Cannot find name 'chksA1label'.
-  chksA1label = document.getElementsByClassName("chksA1");
-  // @ts-expect-error TS(2304): Cannot find name 'chksA1label'.
-  for (var i = 0; i < chksA1label.length; i++) {
-    // @ts-expect-error TS(2304): Cannot find name 'tagsPerA1Label'.
-    tagsPerA1Label = chksA1label[i].className.match(/c1_([\d,]+)/g);
-    // @ts-expect-error TS(2304): Cannot find name 'tagsPerA1Label'.
+  var chksA1label: HTMLCollectionOf<HTMLInputElement | Element> = document.getElementsByClassName("chksA1");
+  for (var i: number = 0; i < chksA1label.length; i++) {
+    var tagsPerA1Label: string[] | null = chksA1label[i].className.match(/c1_([\d,]+)/g);
     if (tagsPerA1Label == null) tagsPerA1Label = [];
     else
-      // @ts-expect-error TS(2304): Cannot find name 'tagsPerA1Label'.
-      tagsPerA1Label = String(chksA1label[i].className.match(/c1_([\d,]+)/g))
+      var tagsPerA1Label: string[] | null = String(chksA1label[i].className.match(/c1_([\d,]+)/g))
         .substr(3)
         .split(",");
-    // @ts-expect-error TS(2304): Cannot find name 'tagsPerA1Label'.
     if (tagsPerA1Label.length != 0) {
-      // @ts-expect-error TS(2304): Cannot find name 'enumo'.
-      enumo = new Set();
-      // @ts-expect-error TS(2304): Cannot find name 'tagsPerA1Label'.
-      for (var k = 0; k < tagsPerA1Label.length; k++)
-        for (var l = 0; l < Enums.length; l++)
-          // @ts-expect-error TS(2304): Cannot find name 'tagsPerA1Label'.
-          if (tagsPerA1Label[k] == Enums[l]) enumo.add(Enums[l]);
+      var enumo: Set<number> = new Set();
+      for (var k: number = 0; k < tagsPerA1Label.length; k++)
+        for (var l:number  = 0; l < Enums.length; l++)
+          if (tagsPerA1Label[k] == Enums[l].toString()) enumo.add(Enums[l]);
       if (
-        // @ts-expect-error TS(2304): Cannot find name 'enumo'.
         (!enumo.has(0) && !enumo.has(1) && !enumo.has(6)) ||
-        // @ts-expect-error TS(2304): Cannot find name 'enumo'.
         (!enumo.has(3) && !enumo.has(4) && !enumo.has(5)) ||
-        // @ts-expect-error TS(2304): Cannot find name 'enumo'.
         enumo.size == 0
       ) {
-        // @ts-expect-error TS(2304): Cannot find name 'chksA1label'.
         chksA1label[i].style.fontSize = tdStyleFontSizeKl;
-        // @ts-expect-error TS(2304): Cannot find name 'chksA1label'.
         chksA1label[i].style.color = tdStyleColorKl;
-        // @ts-expect-error TS(2304): Cannot find name 'chksA1label'.
         chksA1label[i].style.whiteSpace = tdStyleWhiteSpace;
       }
     }
@@ -642,8 +573,7 @@ primZahlen = [
   1021,
 ];
 
-// @ts-expect-error TS(7006): Parameter 'text' implicitly has an 'any' type.
-function makeSpacesOutOf_(text) {
+function makeSpacesOutOf_(text: string): string {
   if (text.length == 10) if (text == "Wichtigste") return "<b>Wichtigste</b>";
   if (text.length == 25)
     if (text == "Wichtigstes_zum_verstehen")
