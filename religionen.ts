@@ -1,16 +1,16 @@
 var col = document.getElementsByClassName("RowNumber 1");
-var selectedSpaltenMany1 = {};
-var selectedSpaltenMany2 = {};
-var labelstyle = "white-space: nowrap;font-size: 100%;";
-var labelstylekl = "white-space: nowrap;font-size: 80%;color: grey;";
-var tdStyleWhiteSpace = "nowrap";
-var tdStyleFontSize = "100%";
-var tdStyleFontSizeKl = "80%";
-var tdStyleColorKl = "grey";
-var Enume = new Set([0, 1, 3, 4, 5, 6]);
+var selectedSpaltenMany1: Map<number,string> = new Map();
+var selectedSpaltenMany2: Map<number,string> = new Map();
+var labelstyle: string = "white-space: nowrap;font-size: 100%;";
+var labelstylekl: string = "white-space: nowrap;font-size: 80%;color: grey;";
+var tdStyleWhiteSpace: string = "nowrap";
+var tdStyleFontSize: string = "100%";
+var tdStyleFontSizeKl:string = "80%";
+var tdStyleColorKl:string = "grey";
+var Enume : Set<number> = new Set([0, 1, 3, 4, 5, 6]);
 window.onload = function () {
-  let div = document.createElement("div");
-  let div2 = document.createElement("div");
+  let div: HTMLDivElement = document.createElement("div");
+  let div2: HTMLDivElement = document.createElement("div");
   div.className = "headingsDiv";
   /*
     sternPolygon = 0
@@ -21,141 +21,87 @@ window.onload = function () {
 */
   document.body.insertBefore(div, document.getElementById("bigtable"));
 
-  // @ts-expect-error TS(2304): Cannot find name 'chk_spalten'.
-  chk_spalten =
+  let chk_spalten: string =
     '<fieldset><label style="white-space: nowrap;"><input type="radio" id="spaltenWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);" checked="true">Spalten (Einheiten [9]) wählen</label> <label style="white-space: nowrap;"><input type="radio" id="zeilenWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);">Zeilen, welche ja nein, (6,13,14,15) (wenig: 7,8,10,12)</label> <label style="white-space: nowrap;"><input type="radio" id="keinsWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);">frei machen zur Tabellenansicht <!-- | Lädt schneller mit Firefox statt Chrome --> </label></fieldset>';
-  // @ts-expect-error TS(2304): Cannot find name 'radio_tags'.
-  radio_tags =
+  let radio_tags: string =
     '<fieldset><label style="white-space: nowrap;"><input type="radio" id="galaxieuniversum" name="galaxieuniversum" onchange="disEnAbleChks([3,4,5]);" checked="true">alles</label> <label style="white-space: nowrap;"><input type="radio" id="planet" name="galaxieuniversum" onchange="disEnAbleChks([5]);">alles andere als 13,15, ggf. jeweils mit 14</label> <label style="white-space: nowrap;"><input type="radio" id="galaxie" name="galaxieuniversum" onchange="disEnAbleChks([3]);">Himmelskörper um schwarzes Loch (13), z.B. eine Galaxie (14)</label> <label style="white-space: nowrap;"><input type="radio" id="universum" name="galaxieuniversum" onchange="disEnAbleChks([4]);">Universum (15)</label></fieldset><fieldset><label style="white-space: nowrap;"><input type="radio" id="sternpolygongleichfoermigespolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([0,1,6]);" checked="true">Sternpolygon und gleichförmiges Polygon und gebrochen-rational</label> <label style="white-space: nowrap;"><input type="radio" id="sternpolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([0]);">Sternpolygon (n)</label> <label style="white-space: nowrap;"><input type="radio" id="gleichfoermigespolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([1]);">gleichförmiges Polygon (1/n)</label> <label style="white-space: nowrap;"><input type="radio" id="gebrrat" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([6]);">gebrochen-rational (m/n)</label></fieldset>';
-  // @ts-expect-error TS(2304): Cannot find name 'chk_spalten'.
   div.innerHTML = chk_spalten;
-  // @ts-expect-error TS(2304): Cannot find name 'tdClasses'.
-  tdClasses = document.getElementsByClassName("z_0");
+  let tdClasses: HTMLCollectionOf<Element> = document.getElementsByClassName("z_0");
   /*tdClasses = []
 for (i = 0; i < tdClasses1.length; i++)
 	if (tdClasses1[i].className.includes("z_0"))
 		tdClasses.push(tdClasses1[i]);*/
-  // @ts-expect-error TS(2304): Cannot find name 'p1map'.
-  (p1map = {}),
-    // @ts-expect-error TS(2304): Cannot find name 'p2map'.
-    (p2map = {}),
-    // @ts-expect-error TS(2304): Cannot find name 'mapMapMap'.
-    (mapMapMap = {}),
-    // @ts-expect-error TS(2304): Cannot find name 'str'.
-    (str = ""),
-    // @ts-expect-error TS(2304): Cannot find name 'p1Bmap'.
-    (p1Bmap = {}),
-    // @ts-expect-error TS(2304): Cannot find name 'mapMapMapTags'.
-    (mapMapMapTags = {}),
-    // @ts-expect-error TS(2304): Cannot find name 'spaltenTags'.
-    (spaltenTags = []),
-    // @ts-expect-error TS(2304): Cannot find name 'spalten4spaltenTags'.
-    (spalten4spaltenTags = {});
-  // @ts-expect-error TS(2304): Cannot find name 'str3'.
-  str3 = "";
+  //let p1map = new Map();
+  //let p2map = new Map();
+  let mapMapMap: Map<string,Map<string | Map<any, any>, any>> = new Map(),
+   str: string = "",
+  //let p1Bmap = new Map();
+  mapMapMapTags: Map<number, string> = new Map(),
+  spaltenTags: Array<string | Element | Array<any>> = [],
+  spalten4spaltenTags: Map<number,Array<HTMLTableCellElement> | undefined> = new Map(),
+  str3: string = "",
+  trStyles: Array<string> = [];
 
-  // @ts-expect-error TS(2304): Cannot find name 'trStyles'.
-  trStyles = [];
-
-  // @ts-expect-error TS(2304): Cannot find name 'TRs'.
-  TRs = document.getElementById("bigtable").rows;
-  // @ts-expect-error TS(2304): Cannot find name 'TRs'.
-  for (var i = 0; i < TRs.length; i++) {
-    // @ts-expect-error TS(2304): Cannot find name 'trStyles'.
+  const tAble:  HTMLTableElement = document.getElementById("bigtable") as HTMLTableElement;
+  const TRs: HTMLCollectionOf<HTMLTableRowElement> = tAble.rows;
+  for (var i: number = 0; i < TRs.length; i++) {
     trStyles.push(TRs[i].style.cssText);
-    // @ts-expect-error TS(2304): Cannot find name 'TDs'.
-    TDs = TRs[i].cells;
-    // @ts-expect-error TS(2304): Cannot find name 'TDs'.
-    for (var k = 0; k < TDs.length; k++) {
-      // @ts-expect-error TS(2304): Cannot find name 'spalten4spaltenTags'.
-      if (typeof spalten4spaltenTags[k] == "undefined")
-        // @ts-expect-error TS(2304): Cannot find name 'spalten4spaltenTags'.
+    let TDs: HTMLCollectionOf<HTMLTableCellElement> = TRs[i].cells;
+    for (var k: number = 0; k < TDs.length; k++) {
+      if (typeof spalten4spaltenTags[k] === "undefined")
         spalten4spaltenTags[k] = [];
-      // @ts-expect-error TS(2304): Cannot find name 'spalten4spaltenTags'.
       spalten4spaltenTags[k].push(TDs[k]);
     }
   }
 
-  // @ts-expect-error TS(2304): Cannot find name 'tdClasses'.
-  for (i = 0; i < tdClasses.length; i++) {
-    // @ts-expect-error TS(2588): Cannot assign to 'name' because it is a constant.
-    name = tdClasses[i].className;
-    // @ts-expect-error TS(2339): Property 'match' does not exist on type 'void'.
-    var num = name.match(/r_(\d+)/);
+  for (var i: number = 0; i < tdClasses.length; i++) {
+    var name: string = tdClasses[i].className;
+    var num: Array<string> | number | null | null = name.match(/r_(\d+)/);
 
-    // @ts-expect-error TS(2339): Property 'match' does not exist on type 'void'.
-    var tags = name.match(/p4_([\d,]+)/g);
+    var tags: Array<string> | null = name.match(/p4_([\d,]+)/g);
     if (tags === null) tags = [];
     else tags = String(tags).substr(3).split(",");
     tags = Array.from(new Set(tags));
-    // @ts-expect-error TS(2304): Cannot find name 'spaltenTags'.
     spaltenTags.push(tags);
 
     if (num != null) {
       //num = num.substring(2,0);
       num = parseInt(num[1]);
-      // @ts-expect-error TS(2304): Cannot find name 'str'.
-      str = num[1];
+      //let str = num[1];
       //num = i
-      // @ts-expect-error TS(2339): Property 'match' does not exist on type 'void'.
-      var p1a = name.match(/p1_([^\s])+/g);
-      // @ts-expect-error TS(2339): Property 'match' does not exist on type 'void'.
-      var p2a = name.match(/p2_([^\s])+/g);
+      var p1a: Array<string> | null = name.match(/p1_([^\s])+/g);
+      var p2a: Array<string> | null = name.match(/p2_([^\s])+/g);
       if (p1a != null) {
-        // @ts-expect-error TS(2304): Cannot find name 'p1i'.
-        for (p1i = 0; p1i < p1a.length; p1i++) {
-          // @ts-expect-error TS(2304): Cannot find name 'p1i'.
+        for (var p1i: number = 0; p1i < p1a.length; p1i++) {
           if (p1a[p1i].includes("p1_")) p1a[p1i] = p1a[p1i].substring(3);
-          // @ts-expect-error TS(2304): Cannot find name 'p1b'.
-          p1b = p1a[p1i].match(/[^,]+/g);
-          // @ts-expect-error TS(2304): Cannot find name 'p1b'.
+          var p1b : Array<string> | null= p1a[p1i].match(/[^,]+/g);
           if (p1b != null) {
-            // @ts-expect-error TS(2304): Cannot find name 'p1k'.
-            for (p1k = 0; p1k < p1b.length; p1k++) {
-              // @ts-expect-error TS(2304): Cannot find name 'p1'.
-              p1 = p1b[p1k];
-              // @ts-expect-error TS(2304): Cannot find name 'mapMapMap'.
+            for (let p1k: number = 0; p1k < p1b.length; p1k++) {
+              var p1: string = p1b[p1k];
               if (typeof mapMapMap[p1] === "undefined") mapMapMap[p1] = {};
               if (p2a != null) {
-                // @ts-expect-error TS(2304): Cannot find name 'p2i'.
-                for (p2i = 0; p2i < p2a.length; p2i++) {
-                  // @ts-expect-error TS(2304): Cannot find name 'p2i'.
+                for (var p2i: number = 0; p2i < p2a.length; p2i++) {
                   if (p2a[p2i].includes("p2_"))
-                    // @ts-expect-error TS(2304): Cannot find name 'p2i'.
                     p2a[p2i] = p2a[p2i].substring(3);
-                  // @ts-expect-error TS(2304): Cannot find name 'p2b'.
-                  p2b = p2a[p2i].match(/[^,]+/g);
-                  // @ts-expect-error TS(2304): Cannot find name 'p2b'.
+                  var p2b: string[] | null = p2a[p2i].match(/[^,]+/g);
                   if (p2b != null) {
-                    // @ts-expect-error TS(2304): Cannot find name 'p2k'.
-                    for (p2k = 0; p2k < p2b.length; p2k++) {
-                      // @ts-expect-error TS(2304): Cannot find name 'p2'.
-                      p2 = p2b[p2k];
-                      // @ts-expect-error TS(2304): Cannot find name 'p2'.
+                    for (var p2k: number = 0; p2k < p2b.length; p2k++) {
+                      var p2: string = p2b[p2k];
                       if (p2 != null) {
-                        // @ts-expect-error TS(2304): Cannot find name 'p2'.
-                        var p3a = p2.match(/p3_(\d+)_/);
+                        var p3a: strin[] | null = p2.match(/p3_(\d+)_/);
                         if (p3a != null) {
-                          // @ts-expect-error TS(2304): Cannot find name 'p3b'.
-                          p3b = parseInt(p3a[1], 10);
-                          // @ts-expect-error TS(2304): Cannot find name 'p2'.
-                          p2 = p2.substring(p3a[1].length + 4);
-                          // @ts-expect-error TS(2304): Cannot find name 'p3b'.
+                          var p3b: number = parseInt(p3a[1], 10);
+                          var p2: string = p2.substring(p3a[1].length + 4);
                           if (p3b == p1k) {
-                            // @ts-expect-error TS(2304): Cannot find name 'p2'.
                             if (p2.length > 0)
-                              // @ts-expect-error TS(2304): Cannot find name 'p1'.
                               makeMapsOfHeadLCheckB(p1, p2, num, tags);
-                            // @ts-expect-error TS(2304): Cannot find name 'p1'.
                             else makeMapsOfHeadLCheckB(p1, null, num, tags);
                           }
                         }
-                      // @ts-expect-error TS(2304): Cannot find name 'p1'.
                       } else makeMapsOfHeadLCheckB(p1, null, num, tags);
                     }
                   }
                 }
-              // @ts-expect-error TS(2304): Cannot find name 'p1'.
               } else makeMapsOfHeadLCheckB(p1, null, num, tags);
             }
           }
@@ -164,15 +110,11 @@ for (i = 0; i < tdClasses1.length; i++)
     }
   }
 
-  // @ts-expect-error TS(2304): Cannot find name 'mapMapMap'.
-  var p1keys = Object.keys(mapMapMap);
-  // @ts-expect-error TS(2304): Cannot find name 'p1Bmap'.
-  var p1Bkeys = Object.keys(p1Bmap);
+  var p1keys: string[] = Object.keys(mapMapMap);
+  //var p1Bkeys = Object.keys(p1Bmap);
   //checkboxes = "<span style=\"white-space: nowrap;\"><input type=\"checkbox\" onchange=\"toggleSpalten(\'r_0\');\"><label>Nummererierung</label>";
-  // @ts-expect-error TS(2304): Cannot find name 'checkboxes'.
-  checkboxes =
+  var checkboxes : string =
     '<div id="chk_spalten" style="display:none;">' +
-    // @ts-expect-error TS(2304): Cannot find name 'radio_tags'.
     radio_tags +
     '<span style="">';
   for (i = 0; i < p1keys.length; i++) {
@@ -219,15 +161,11 @@ for (i = 0; i < tdClasses1.length; i++)
     }
     // @ts-expect-error TS(2304): Cannot find name 'mapMapMap'.
     if (mapMapMap[p1keys[i]][null] !== undefined) {
-      // @ts-expect-error TS(2304): Cannot find name 'numbers'.
-      numbers = Array.from(mapMapMap[p1keys[i]][null]);
-      // @ts-expect-error TS(2304): Cannot find name 'insertnull'.
-      insertnull =
-        // @ts-expect-error TS(2304): Cannot find name 'numbers'.
-        "toggleP2(this,'" + numbers + "','" + [p1keys[i], null] + "');";
+      let numbers: Array  = Array.from(mapMapMap[p1keys[i]][null]);
+      let insertnull: string = "toggleP2(this,'" + numbers + "','" + [p1keys[i], null] + "');";
     } else {
       // @ts-expect-error TS(2304): Cannot find name 'insertnull'.
-      insertnull = "";
+      let insertnull: string = "";
     }
     // @ts-expect-error TS(2304): Cannot find name 'mapsTagsif'.
     mapsTagsif = mapMapMapTags[p1keys[i]][null];
