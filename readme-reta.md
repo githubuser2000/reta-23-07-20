@@ -24,7 +24,6 @@ Nebenparameter beginnen mit 2 Minus --.
         bedeutet Religionen > 10
     * "gestern,heute,morgen"
         bedeutet Religion 1-10 und höher als 10,
-        Anmerkenung: Anführungszeichen setzen, weil < > sind in Unix Steuersymbole!
 * --zaehlung=
     * 1,2,3,4,5,...
 * --typ=
@@ -129,7 +128,8 @@ Nebenparameter beginnen mit 2 Minus --.
     * Das macht, dass Zeilen nicht ausgegeben werden, die nur ein Minus oder Fragezeichen oder sonst fast keine Information enthalten
 * --keineueberschriften
     * Überschriften werden nicht ausgegeben.
-
+* --keinenummerierung
+    * Die Zeilennummer und die Zählungen mehrerer Zeilen fällt weg.
 
 
 ## Umkehrungen

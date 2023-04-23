@@ -4982,7 +4982,7 @@ msgstr "' command \trespectively '"
 
 #: ../../words.py:4035
 msgid "readme-reta.md"
-msgstr "readme-reta.md"
+msgstr "readme-reta-en.md"
 
 #: ../../words.py:4036
 msgid "readme-retaPrompt.md"

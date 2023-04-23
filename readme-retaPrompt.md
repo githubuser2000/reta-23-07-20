@@ -126,3 +126,4 @@ Zeilenangaben oder Zahlenbereiche für andere Angaben können sein (ohne Anführ
 -   Hilfe aufrufen mit h oder help oder hilfe,
 -   rp (statt retaPrompt zu starten) ist retaPrompt mit vi mode, rpl ist retaPrompt mit vi mode und aktiviertem logging bei Programmstart.
 -   retaPrompt Parameter -log aktiviert logging bei Programmstart.
+-   retaPrompt Parameter -language=english bewirkt, dass alle Befehle in Englisch sind. Die Inhalte sind bisher noch in deutsch.

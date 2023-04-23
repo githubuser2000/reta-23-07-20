@@ -1456,10 +1456,10 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                     EinsInBereichHier = 1 in EinsInBereichHier1
                     if (
                         bruchBereichsAngabe[:1] == "-"
-                        or bruchBereichsAngabe[:2] == "v-"
+                        or bruchBereichsAngabe[:2] == i18n.befehle2["v"] + "-"
                     ):
                         minusHier = True
-                        if bruchBereichsAngabe[:2] == "v-":
+                        if bruchBereichsAngabe[:2] == i18n.befehle2["v"] + "-":
                             pass
                         if bruchBereichsAngabe[:1] == "-":
                             pass
