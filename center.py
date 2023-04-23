@@ -59,7 +59,10 @@ shellRowsAmount: int
 
 
 def isZeilenBruchAngabe_betweenKommas(g):
-    pattern = r"^(v?-?\d+\/\d+)(-\d+\/\d+)?((\+)(\d+\/\d+))*$"
+    patternStr = "".join(
+        ("^(", i18n.befehle2["v"], "?-?\d+\/\d+)(-\d+\/\d+)?((\+)(\d+\/\d+))*$")
+    )
+    pattern = re.compile(patternStr)
     return bool(re.fullmatch(pattern, g))
 
 
@@ -89,7 +92,8 @@ def isZeilenAngabe(text):
 
 
 def isZeilenAngabe_betweenKommas(g):
-    pattern = r"^(v?-?\d+)(-\d+)?((\+)(\d+))*$"
+    patternStr = "".join(("^(", i18n.befehle2["v"], "?-?\d+)(-\d+)?((\+)(\d+))*$"))
+    pattern = re.compile(patternStr)
     return bool(re.fullmatch(pattern, g))
 
 
@@ -372,7 +376,7 @@ def BereichToNumbers2(
     menge: Optional[set[int]]
 
     for EinBereich in Bereiche:
-        if len(EinBereich) > 0 and EinBereich[0] == "v":
+        if len(EinBereich) > 0 and EinBereich[0] == i18n.befehle2["v"]:
             EinBereich = EinBereich[1:]
             vielfache2 = True
         else:

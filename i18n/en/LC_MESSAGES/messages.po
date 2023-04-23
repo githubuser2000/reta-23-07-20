@@ -4986,7 +4986,7 @@ msgstr "readme-reta.md"
 
 #: ../../words.py:4036
 msgid "readme-retaPrompt.md"
-msgstr "readme-retaPrompt.md"
+msgstr "readme-retaPrompt-en.md"
 
 #: ../../words.py:4037
 msgid "readme-startFiles.md"
