@@ -1123,7 +1123,7 @@ msgstr "structureLessTen"
 
 #: i18n/words.py:530 ../../words.py:538 ../../words.py:540
 msgid "Grundstrukturen"
-msgstr "Grundstrukturen"
+msgstr "GrundstrukturenBasicStructures"
 
 #: i18n/words.py:530 ../../words.py:538 ../../words.py:540
 msgid "grundstrukturen"
