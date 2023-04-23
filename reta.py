@@ -125,8 +125,16 @@ class Program:
                     lastMainCmd = self.mainParaCmds[cmd[1:]]
                 elif cmd[1:] == i18nR.nichtsWort:
                     pass
-                elif cmd == "-language=english":
+                elif (
+                    cmd[: len("-language=")] == "-language="
+                    and cmd[len("-language=") :] in i18n.sprachen.values()
+                ):
                     pass
+                elif (
+                    cmd[: len("-language=")] == "-language="
+                    and cmd[len("-language=") :] not in i18n.sprachen.values()
+                ):
+                    print(i18n.wrongLangSentence)
                 elif len(neg) == 0:
                     # else:
                     cliout(

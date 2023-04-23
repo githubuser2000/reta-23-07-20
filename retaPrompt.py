@@ -941,17 +941,17 @@ def PromptGrosseAusgabe(
             #    + ("," if len(zahlenReiheKeineWteiler) > 0 else "")
             #    + bruch_GanzZahlReziproke,
             # )
-            x(
-                "EIGR",
-                (
-                    cNeu,
-                    ketten,
-                    Txt.listeE,
-                    " ".join((zeiln3, zeiln1)),
-                    " ".join((zeiln4, zeiln2)),
-                    zahlenReiheKeineWteiler,
-                ),
-            )
+            # x(
+            #    "EIGR",
+            #    (
+            #        cNeu,
+            #        ketten,
+            #        Txt.listeE,
+            #        " ".join((zeiln3, zeiln1)),
+            #        " ".join((zeiln4, zeiln2)),
+            #        zahlenReiheKeineWteiler,
+            #    ),
+            # )
             if len(cNeu) > 0:
                 retaExecuteNprint(
                     ketten + ["-" + i18n.hauptForNeben["zeilen"], zeiln1, zeiln2],
@@ -1383,7 +1383,7 @@ def retaExecuteNprint(
             cliout(" ".join(kette), True)
         else:
             print(" ".join(kette))
-    x("ENDE", kette)
+    # x("ENDE", kette)
     reta.Program(
         kette,
     )
@@ -1820,11 +1820,11 @@ def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, Txt, warBefehl):
 
 def verdreheWoReTaBefehl(text1: str, text2: str, text3: str, PromptMode: PromptModus):
 
-    x("VERDREHT ?", [text1, text2, text3, PromptMode])
+    # x("VERDREHT ?", [text1, text2, text3, PromptMode])
     if text2[:4] == "reta" and text1[:4] != "reta" and len(text3) > 0:
-        x("VERDREHT", PromptMode)
+        # x("VERDREHT", PromptMode)
         return text2, text1, text2.split()
-    x("NICHT VERDREHT", PromptMode)
+    # x("NICHT VERDREHT", PromptMode)
     return text1, text2, text3
 
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-23 10:52+0200\n"
+"POT-Creation-Date: 2023-04-23 13:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -497,7 +497,7 @@ msgstr ""
 #~ msgstr "noOneCharacterLinePlusNoOutputWhichCommandItWas"
 
 #~ msgid "abstand"
-#~ msgstr "spacing"
+#~ msgstr "distance"
 
 #~ msgid "konzept"
 #~ msgstr "concept"
@@ -707,7 +707,7 @@ msgstr ""
 #~ msgstr "ratio_same_number"
 
 #~ msgid "gestirn"
-#~ msgstr "spaceobject"
+#~ msgstr "space_object"
 
 #~ msgid "Galaxieabsicht"
 #~ msgstr "galaxyintention"
@@ -718,8 +718,11 @@ msgstr ""
 #~ msgid "wichtigste"
 #~ msgstr "mostimportant"
 
+#~ msgid "Mensch-zu-Tier"
+#~ msgstr "human-to-animal"
+
 #~ msgid "menschtier"
-#~ msgstr "Human-to-Animal"
+#~ msgstr "human-animal"
 
 #~ msgid "tiermensch"
 #~ msgstr "human-animal"
@@ -735,6 +738,9 @@ msgstr ""
 
 #~ msgid "politische"
 #~ msgstr "political"
+
+#~ msgid "Wirklichkeiten_(10)"
+#~ msgstr "truth_realities_(10)"
 
 #~ msgid "wirklichkeit"
 #~ msgstr "truth_realities_"
@@ -753,6 +759,9 @@ msgstr ""
 
 #~ msgid "meta-system"
 #~ msgstr "metasystem"
+
+#~ msgid "Intelligenz"
+#~ msgstr "intelligence"
 
 #~ msgid "intelligenz"
 #~ msgstr "intelligence"
@@ -778,6 +787,9 @@ msgstr ""
 #~ msgid "komplexitaet"
 #~ msgstr "complexity"
 
+#~ msgid "Mechanismen"
+#~ msgstr "mechanisms"
+
 #~ msgid "mechanismen"
 #~ msgstr "mechanisms"
 
@@ -790,6 +802,9 @@ msgstr ""
 #~ msgid "zweitwichtigste"
 #~ msgstr "secondmostimportant"
 
+#~ msgid "Drittwichtigste"
+#~ msgstr "third_most_important"
+
 #~ msgid "drittwichtigste"
 #~ msgstr "third_most_important"
 
@@ -801,6 +816,9 @@ msgstr ""
 
 #~ msgid "wichtigstes"
 #~ msgstr "most_important"
+
+#~ msgid "Halbierung"
+#~ msgstr "halving"
 
 #~ msgid "halbierung"
 #~ msgstr "halving"
@@ -1269,6 +1287,9 @@ msgstr ""
 
 #~ msgid "gut"
 #~ msgstr "good"
+
+#~ msgid "Gegentranszendentalien"
+#~ msgstr "countertranscendentals"
 
 #~ msgid "gegentranszendentalien"
 #~ msgstr "countertranscendentals"
@@ -1945,6 +1966,9 @@ msgstr ""
 #~ msgid "kategorien"
 #~ msgstr "categories"
 
+#~ msgid "zustaende"
+#~ msgstr "states"
+
 #~ msgid "zustände"
 #~ msgstr "states"
 
@@ -2163,6 +2187,9 @@ msgstr ""
 
 #~ msgid "pronutzen"
 #~ msgstr "probenefit"
+
+#~ msgid "Gegenposition"
+#~ msgstr "counterposition"
 
 #~ msgid "gegenposition"
 #~ msgstr "counterposition"
@@ -2388,6 +2415,9 @@ msgstr ""
 
 #~ msgid "ehrlichkeit"
 #~ msgstr "honesty"
+
+#~ msgid "Würdig"
+#~ msgstr "dignified"
 
 #~ msgid "wuerdig"
 #~ msgstr "worthy"
@@ -3570,3 +3600,18 @@ msgstr ""
 
 #~ msgid "' Kommando bzw. '"
 #~ msgstr "' command \trespectively '"
+
+#~ msgid "readme-reta.md"
+#~ msgstr "readme-reta-en.md"
+
+#~ msgid "readme-retaPrompt.md"
+#~ msgstr "readme-retaPrompt-en.md"
+
+#~ msgid "readme-startFiles.md"
+#~ msgstr "readme-startFiles.md"
+
+#~ msgid "readme.org"
+#~ msgstr "readme.org"
+
+#~ msgid "für '-languages=' sind die Paramter-Werte erlaubt: "
+#~ msgstr "for '-languages=' parameter values are allowed: "

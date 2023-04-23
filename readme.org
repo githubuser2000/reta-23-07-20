@@ -44,6 +44,7 @@
 ***** unwichtiges
 + Ich könnte erweitern aus welchen Dingen ich noch bestehe, der höheren Art, wie höhere Gefühle und Impulse, etc. Denn das gabs vorher nicht.
 *** 2. Feature Ideen
++ Teile der reta readme einfach besser generieren lassen: sparrt am Ende Zeit und sparrt noch mehr Zeit bei Mehrsprachigkeit und sorgt für weniger Fehler!
 + statt text und stext, sollte ich in retaPrompt.py noch eine weitere Variable einführen, für das mitschleppen von äußeren zusätzlichen Variablen. Eine Fkt führt beide jedes Mal zusammen, wenn stext oder text mit dieser zusätzlichen Variablen abgefragt werden. Das ist also eine Form von Refactoring irgendwie.
   + Ich sollte das nicht vernachlässigen und bald einprogrammieren. Es geht schnell einzuprogrammieren. Ich verhindere damit Fehler in der Zukunft.
   + refactoring: besser wäre eine Funktion oder Klasse, die alle stext, text, textE, stextE Variablen rumschleppt und diese als list tuple oder set abfragen lassen kann: So wiederholen sich mehrere redundante Umwandlungen nicht ständig: Programmier-Muster: besser

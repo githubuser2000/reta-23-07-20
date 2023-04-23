@@ -13,7 +13,9 @@ try:
 except (ModuleNotFoundError, ImportError):
     OrderedSet = set
 
-if "-language=english" in sys.argv:
+sprachen = {"english": "english", "deutsch": "deutsch"}
+
+if "-language=" + sprachen["english"] in sys.argv:
     i18nPath = os.path.join(os.path.dirname(__file__))
     t = gettext.translation("messages", localedir=i18nPath, languages=["en"])
     t.install()
@@ -3962,6 +3964,11 @@ class retaPrompt:
                 """, für vi mode statt emacs mode,
             -"""
             ),
+            "-language=",
+            _(""",  um eine andere Sprache zu wählen und möglich sind: """),
+            str(tuple(sprachen.values()))[1:-1],
+            """,
+            -""",
             retaPromptParameter["log"],
             _(
                 """,  um Logging zu aktivieren,
@@ -4035,3 +4042,9 @@ class readMeFileNames:
     retaPrompt = _("readme-retaPrompt.md")
     startFiles = _("readme-startFiles.md")
     developer = _("readme.org")
+
+
+wrongLangSentence = (
+    _("für '-languages=' sind die Paramter-Werte erlaubt: ")
+    + str(tuple(sprachen.values()))[1:-1]
+)
