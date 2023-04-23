@@ -8,6 +8,26 @@ var tdStyleFontSize: string = "100%";
 var tdStyleFontSizeKl:string = "80%";
 var tdStyleColorKl:string = "grey";
 var Enume : Set<number> = new Set([0, 1, 3, 4, 5, 6]);
+
+function returnChangeButtons(number1: number | string): string {
+  var number = number1.toString()
+  return (
+    '<label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="neuErlauben" name="zeilenDazuOrWeg' +
+    number +
+    '" onchange="" checked="true">neu sichtbar</label><label style="white-space: normal;">&nbsp; </label><label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="neuHinfort" name="zeilenDazuOrWeg' +
+    number +
+    '" onchange="">neu unsichtbar</label><label style="white-space: normal;">&nbsp; </label><label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="dazuErlauben" name="zeilenDazuOrWeg' +
+    number +
+    '" onchange="">zusätzlich sichtbar</label><label style="white-space: normal;">&nbsp; </label><label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="dazuEinschraenkend" name="zeilenDazuOrWeg' +
+    number +
+    '">zusätzlich eingeschränkt</label><label style="white-space: normal;">&nbsp; </label><label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="dazuHinfort" name="zeilenDazuOrWeg' +
+    number +
+    '" onchange="">zusätzlich unsichtbar</label>'
+  );
+}
+
+
+
 window.onload = function () {
   let div: HTMLDivElement = document.createElement("div");
   let div2: HTMLDivElement = document.createElement("div");
@@ -33,12 +53,12 @@ for (i = 0; i < tdClasses1.length; i++)
 		tdClasses.push(tdClasses1[i]);*/
   //let p1map = new Map();
   //let p2map = new Map();
-  let mapMapMap: Map<string,Map<string | Map<any, any>, any>> = new Map(),
-   str: string = "",
+  let mapMapMap: Map<string, string | Map<string , string | Map<any, any>>> = new Map();
+  // str: string = "",
   //let p1Bmap = new Map();
-  mapMapMapTags: Map<number, string> = new Map(),
+  var mapMapMapTags: Map<number, string> = new Map(),
   spaltenTags: Array<string | Element | Array<any>> = [],
-  spalten4spaltenTags: Map<number,Array<HTMLTableCellElement> | undefined> = new Map(),
+  spalten4spaltenTags: Map<number,Array<HTMLTableCellElement>> = new Map(),
   str3: string = "",
   trStyles: Array<string> = [];
 
@@ -78,7 +98,7 @@ for (i = 0; i < tdClasses1.length; i++)
           if (p1b != null) {
             for (let p1k: number = 0; p1k < p1b.length; p1k++) {
               var p1: string = p1b[p1k];
-              if (typeof mapMapMap[p1] === "undefined") mapMapMap[p1] = {};
+              if (typeof mapMapMap[p1] === "undefined") mapMapMap[p1] = new Map();
               if (p2a != null) {
                 for (var p2i: number = 0; p2i < p2a.length; p2i++) {
                   if (p2a[p2i].includes("p2_"))
@@ -88,7 +108,7 @@ for (i = 0; i < tdClasses1.length; i++)
                     for (var p2k: number = 0; p2k < p2b.length; p2k++) {
                       var p2: string = p2b[p2k];
                       if (p2 != null) {
-                        var p3a: strin[] | null = p2.match(/p3_(\d+)_/);
+                        var p3a: string[] | null = p2.match(/p3_(\d+)_/);
                         if (p3a != null) {
                           var p3b: number = parseInt(p3a[1], 10);
                           var p2: string = p2.substring(p3a[1].length + 4);
@@ -118,19 +138,18 @@ for (i = 0; i < tdClasses1.length; i++)
     radio_tags +
     '<span style="">';
   for (i = 0; i < p1keys.length; i++) {
-    var chk2s = "";
+    var chk2s: string = "";
     // @ts-expect-error TS(2304): Cannot find name 'mapMapMap'.
-    var p2keys = Object.keys(mapMapMap[p1keys[i]]);
-    for (k = 0; k < p2keys.length; k++) {
+    var p2keys: Array<string | Map<any, any>> = Object.keys(mapMapMap[p1keys[i]]);
+    for (var k: number = 0; k < p2keys.length; k++) {
       // @ts-expect-error TS(2304): Cannot find name 'numbers'.
-      numbers = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
+      numbers: Array<string, Map<any,any> = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
       if (p2keys[k] != null && p2keys[k] != "null") {
         // window.alert(p1keys[i]); 'Grundstrukturen'
         // window.alert(p2keys[i]); klar
         // window.alert(numbers); // ach einfach die und daraus!
         // window.alert(Array.from(mapMapMapTags[p1keys[i]][p2keys[k]]).join(",")); // diese Zahlen
-        // @ts-expect-error TS(2304): Cannot find name 'chk2'.
-        chk2 =
+        var chk2: string =
           '<label style="' +
           labelstyle +
           '" class="chks c_' +
@@ -149,7 +168,6 @@ for (i = 0; i < tdClasses1.length; i++)
           "');\">" +
           makeSpacesOutOf_(p2keys[k]) +
           '</input></label><label style="white-space: normal;">&nbsp; </label>';
-        // @ts-expect-error TS(2304): Cannot find name 'chk2'.
         chk2s += chk2;
       }
     }
@@ -161,21 +179,19 @@ for (i = 0; i < tdClasses1.length; i++)
     }
     // @ts-expect-error TS(2304): Cannot find name 'mapMapMap'.
     if (mapMapMap[p1keys[i]][null] !== undefined) {
-      let numbers: Array  = Array.from(mapMapMap[p1keys[i]][null]);
+      let numbers: Array<string, Map<any, any>>  = Array.from(mapMapMap[p1keys[i]][null]);
       let insertnull: string = "toggleP2(this,'" + numbers + "','" + [p1keys[i], null] + "');";
     } else {
-      // @ts-expect-error TS(2304): Cannot find name 'insertnull'.
       let insertnull: string = "";
     }
     // @ts-expect-error TS(2304): Cannot find name 'mapsTagsif'.
-    mapsTagsif = mapMapMapTags[p1keys[i]][null];
+    var mapsTagsif: string | Map<any,any> = mapMapMapTags[p1keys[i]][null];
     // @ts-expect-error TS(2304): Cannot find name 'mapsTagsif'.
     if (typeof mapsTagsif == "undefined") mapsTagsif = [];
     // @ts-expect-error TS(2304): Cannot find name 'mapsTagsif'.
     else mapsTagsif = Array.from(mapMapMapTags[p1keys[i]][null]);
 
-    // @ts-expect-error TS(2304): Cannot find name 'checkbox'.
-    checkbox =
+    var checkbox: string =
       '<div class="chksA"><label class="chksA1 c1_' +
       // @ts-expect-error TS(2304): Cannot find name 'mapsTagsif'.
       mapsTagsif.join(",") +
@@ -206,20 +222,14 @@ for (i = 0; i < tdClasses1.length; i++)
         : "") +
       "</div></div>";
 
-    // @ts-expect-error TS(2304): Cannot find name 'checkboxes'.
     checkboxes += checkbox;
   }
-  // @ts-expect-error TS(2304): Cannot find name 'str2'.
-  str2 = checkboxes + "</span></div>";
-  // @ts-expect-error TS(2304): Cannot find name 'str2'.
+  var str2: string = checkboxes + "</span></div>";
   div.innerHTML += str2;
   // @ts-expect-error TS(2304): Cannot find name 'chks1'.
-  chks1 = document.getElementsByClassName("chks");
-  // @ts-expect-error TS(2304): Cannot find name 'chks2'.
-  chks2 = [];
-  // @ts-expect-error TS(2304): Cannot find name 'chks1'.
+  var chks1: HHTMLCollectionOf<Element[]> = document.getElementsByClassName("chks");
+  var chks2: string[] = [];
   for (var i = 0; i < chks1.length; i++) {
-    // @ts-expect-error TS(2304): Cannot find name 'chks2'.
     chks2.push(
       // @ts-expect-error TS(2304): Cannot find name 'chks1'.
       String(chks1[i].className.match(/c_([\d,]+)/g))
@@ -229,75 +239,59 @@ for (i = 0; i < tdClasses1.length; i++)
     //window.alert(chks2[i]);
   }
 
-  // @ts-expect-error TS(2304): Cannot find name 'str4'.
-  str4 =
+  var str4: string =
     '<div id="inputZeilen" style="display:none"><table borders="0" id="table2">';
-  // @ts-expect-error TS(2304): Cannot find name 'str5'.
-  str5 =
+  var str5: string =
     '<tr><td><label>von bis und Einzelnes: </label></td><td><input typ="text" id="zeilenErlaubtText" value="1-10,12"></input></td><td>' +
     returnChangeButtons(1) +
-    '<input onclick="clickZeilenErlaubenUsw();" type="submit" value="auswählen"></td></tr>';
-  // @ts-expect-error TS(2304): Cannot find name 'str6'.
-  str6 =
-    '<tr><td><label>Vielfacher und Nachbarn: </label></td><td><input typ="text" id="VielfacheErlaubtText" value="10+0+1,7+0"></td><td>' +
+    '<input onclick="clickZeilenErlaubenUsw();" type="submit" value="auswählen"></td></tr>',;
+  var str6: string = '<tr><td><label>Vielfacher und Nachbarn: </label></td><td><input typ="text" id="VielfacheErlaubtText" value="10+0+1,7+0"></td><td>' +
     returnChangeButtons(2) +
     '<input onclick="clickVielfacheErlaubenUsw();" type="submit" value="auswählen"></td></tr>';
-  // @ts-expect-error TS(2304): Cannot find name 'str8'.
-  str8 =
-    '<tr><td><label>Potenzen: </label></td><td><input typ="text" id="potenzenErlaubtText" value="3,5"></input></td><td>' +
+  var str8: string =
+    '<tr><td><label>Potenzen: </label></td><td><input typ="text" id="potenzenErlaubtText" value="3,5"></input></td><td>' ,
     returnChangeButtons(3) +
     '<input onclick="clickPotenzenErlaubenUsw();" type="submit" value="auswählen"></td></tr>';
-  // @ts-expect-error TS(2304): Cannot find name 'str9'.
-  str9 =
+  var str9: string =
     '<tr><td colspan="2"><input type="radio" id="sonneWahl" name="sunmoonplanetblackhole" onchange="" checked="true"><label>Sonne</label><input type="radio" id="mondWahl" name="sunmoonplanetblackhole" onchange=""><label>Mond</label><input type="radio" id="planetWahl" name="sunmoonplanetblackhole" onchange=""><label>Planet</label><input type="radio" id="schwarzeSonneWahl" name="sunmoonplanetblackhole" onchange="" onclick="window.alert(\'Schwarze Sonnen kehren die Originalbedeutung der 3*n ins Gegenteil (Paradigmen in Gegen-Paradigmen; und auch: Meta-Paradigmen, Transzendentalien in Gegen-Meta-Paradigmen, Gegen-Transzendentalien).\');"><label>schwarze Sonne</label></td><td>' +
     returnChangeButtons(4) +
-    '<input onclick="clickHimmelskoerperErlaubenUsw();" type="submit" value="auswählen"></td></tr>';
-  // @ts-expect-error TS(2304): Cannot find name 'str10'.
-  str10 =
+    '<input onclick="clickHimmelskoerperErlaubenUsw();" type="submit" value="auswählen"></td></tr>',
+  var str10: string =
     '<tr><td><label>Zählung: </label></td><td><input typ="text" id="zaehlungErlaubtText" value="1,3-4"></input></td><td>' +
     returnChangeButtons(5) +
     '<input onclick="clickZaehlungenErlaubenUsw();" type="submit" value="auswählen"></td></tr>';
-  // @ts-expect-error TS(2304): Cannot find name 'str11'.
-  str11 =
+  var str11: string =
     '<tr><td><label>Primzahlvielfacher: </label></td><td><input typ="text" id="primVielfache" value="1"></input></td><td>' +
     returnChangeButtons(6) +
-    '<input onclick="clickPrimVielfacheErlaubenUsw();" type="submit" value="auswählen"></td></tr>';
-  // @ts-expect-error TS(2304): Cannot find name 'str12'.
-  str12 =
+    '<input onclick="clickPrimVielfacheErlaubenUsw();" type="submit" value="auswählen"></td></tr>',
+  var str12: string =
     '<tr><td colspan="2"><input type="radio" id="proInnen" name="proContra4Richtungen" onchange="" checked="true"><label>pro innen</label><input type="radio" id="proAussen" name="proContra4Richtungen" onchange=""><label>pro außen</label><input type="radio" id="gegenDritte" name="proContra4Richtungen" onchange=""><label>gegen Dritte</label><input type="radio" id="proDritte" name="proContra4Richtungen" onchange="" onclick=""><label>pro Dritte</label></td><td>' +
     returnChangeButtons(7) +
-    '<input onclick="clickPrimRichtungenErlaubenUsw();" type="submit" value="auswählen"></td></tr>';
-  // @ts-expect-error TS(2304): Cannot find name 'str13'.
-  str13 =
+    '<input onclick="clickPrimRichtungenErlaubenUsw();" type="submit" value="auswählen"></td></tr>',
+  var str13: string =
     '<tr><td><label>Primzahlkreuzradius: </label></td><td><input typ="text" id="primZahlKreuzRadius" value="1"></input></td><td>' +
     returnChangeButtons(8) +
-    '<input onclick="clickPrimZahlKreuzRadiusErlaubenUsw();" type="submit" value="auswählen"></td></tr>';
-  // @ts-expect-error TS(2304): Cannot find name 'str7'.
-  str7 = "</table></div>";
+    '<input onclick="clickPrimZahlKreuzRadiusErlaubenUsw();" type="submit" value="auswählen"></td></tr>',
+  var str7: string = "</table></div>";
   div.innerHTML +=
-    // @ts-expect-error TS(2304): Cannot find name 'str4'.
     str4 + str5 + str6 + str8 + str9 + str10 + str11 + str12 + str13 + str7;
   // Spaltenreihenfolge
-  // @ts-expect-error TS(2531): Object is possibly 'null'.
-  tableHeadline = document.getElementById("bigtable").rows[0].cells;
-  for (var u = 0; u < tableHeadline.length; u++) {
-    tableHeadline[u].innerHTML =
+  var tableHeadline: HTMLCollectionOf<HTMLTableCellElement>= document.getElementById("bigtable").rows[0].cells;
+  for (var u: number = 0; u < tableHeadline.length; u++) {
+    tableHeadline[ u].innerHTML =
       '<select id="hselec_' +
-      u +
+      u.toString() +
       '" value="' +
-      u +
+      u.toString() +
       '" onchange="headingSelected(this, ' +
-      u +
+      u.toString() +
       ');"></select>' +
       tableHeadline[u].innerHTML;
   }
-  // @ts-expect-error TS(2554): Expected 1 arguments, but got 0.
   toggleChkSpalten();
 
-  // @ts-expect-error TS(2304): Cannot find name 'tabelle'.
-  tabelle = document.getElementById("bigtable");
-  // @ts-expect-error TS(2304): Cannot find name 'tds'.
-  tds = tabelle.cells;
+  var tabelle: HTMLElement | null = document.getElementById("bigtable");
+  var tds: HTMLCollectionOf<HTMLTableCellElement>  = tabelle.cells;
   /*
   for (var i = 0; i < tds.length; i++) {
     text = tds[i];
@@ -310,47 +304,27 @@ for (i = 0; i < tdClasses1.length; i++)
   }
   */
 
-  // @ts-expect-error TS(2304): Cannot find name 'trs'.
-  trs = tabelle.rows;
-  // @ts-expect-error TS(2304): Cannot find name 'tdsHeadlines'.
-  tdsHeadlines = trs[0].cells;
-  // @ts-expect-error TS(2304): Cannot find name 'classnames'.
-  classnames = [];
-  // @ts-expect-error TS(2304): Cannot find name 'tdsHeadlines'.
-  for (var i = 0; i < tdsHeadlines.length; i++)
-    // @ts-expect-error TS(2304): Cannot find name 'classnames'.
+  var trs: HTMLCollectionOf<HTMLTableRowElement> = tabelle.rows;
+  var tdsHeadlines: HTMLCollectionOf<HTMLTableCellElement> = trs[0].cells;
+  var classnames: string[] = [];
+  for (var i: number = 0; i < tdsHeadlines.length; i++)
     classnames.push(tdsHeadlines[i].className);
-  // @ts-expect-error TS(2304): Cannot find name 'trs'.
-  for (var k = 1; k < trs.length; k++) {
-    // @ts-expect-error TS(2304): Cannot find name 'tds'.
+  for (var k: number = 1; k < trs.length; k++) {
     tds = trs[k].cells;
-    // @ts-expect-error TS(2304): Cannot find name 'tds'.
-    for (var i = 0; i < tds.length; i++)
-      // @ts-expect-error TS(2304): Cannot find name 'tds'.
+    for (var i: number = 0; i < tds.length; i++)
       tds[i].className = classnames[i].replace("z_0", "z_" + tds[1].innerHTML);
   }
 
-  // @ts-expect-error TS(2304): Cannot find name 'trs'.
-  for (var k = 0; k < trs.length; k++) {
-    // @ts-expect-error TS(2304): Cannot find name 'tds'.
-    tds = trs[k].cells;
-    // @ts-expect-error TS(2304): Cannot find name 'tds'.
+  for (var k: number = 0; k < trs.length; k++) {
+    var tds: HTMLCollectionOf<HTMLTableCellElement>  = trs[k].cells;
     tds[0].style.cssText += "display:none;";
-    // @ts-expect-error TS(2304): Cannot find name 'tds'.
-    for (var i = 1; i < tds.length; i++)
-      // @ts-expect-error TS(2304): Cannot find name 'tds'.
+    for (var i: number = 1; i < tds.length; i++)
       tds[i].style.cssText = [
-        // @ts-expect-error TS(2304): Cannot find name 'tds'.
-        tds[i].style.cssText,
         "display:none;",
-        // @ts-expect-error TS(2304): Cannot find name 'trs'.
         trs[k].style.cssText,
       ].join("");
-    // @ts-expect-error TS(2304): Cannot find name 'tds'.
     tds[0].style.textAlign = "center";
-    // @ts-expect-error TS(2304): Cannot find name 'tds'.
     tds[1].style.textAlign = "center";
-    // @ts-expect-error TS(2304): Cannot find name 'trs'.
     trs[k].style.cssText = "";
   }
   /*
@@ -360,23 +334,23 @@ for (i = 0; i < tdClasses1.length; i++)
       tds[i].style.cssText = tds[1].style.cssText;
   }*/
 
-  var inputs = document.getElementsByTagName("input");
-  var checkbox_i = [];
-  for (var i = 0; i < inputs.length; i++) {
+  var inputs: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
+  var checkbox_i: Array<any> = [];
+  for (var i: number = 0; i < inputs.length; i++) {
     if (inputs[i].type == "checkbox") checkbox_i.push(i);
     if (checkbox_i.length > 1) i = inputs.length;
   }
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  const ifpreselect = urlParams.get("preselect");
+  const queryString: string = window.location.search;
+  const urlParams: URLSearchParams = new URLSearchParams(queryString);
+  const ifpreselect: string | null = urlParams.get("preselect");
   if (ifpreselect != "nothing") {
     inputs[checkbox_i[1]].checked = true;
     // @ts-expect-error TS(2721): Cannot invoke an object which is possibly 'null'.
     inputs[checkbox_i[1]].onchange();
   }
 
-  var sheets = document.styleSheets;
-  var sheet, rules, rule;
+  //var sheets: StyleSheetList = document.styleSheets;
+  //var sheet, rules, rule;
   // @ts-expect-error TS(2403): Subsequent variable declarations must have the sam... Remove this comment to see the full error message
   var i, j, k, l;
 
@@ -401,26 +375,23 @@ for (i = 0; i < tdClasses1.length; i++)
       }
     }
   }*/
-  // @ts-expect-error TS(2531): Object is possibly 'null'.
   document.getElementById("grundSDiv1").innerHTML =
-    // @ts-expect-error TS(2531): Object is possibly 'null'.
     document.getElementById("grundstrukturenDiv").innerHTML;
   //window.alert(String(checkbox_i.length));
   // Grundstrukturen
   // chksss = chks1 + Achks;
-  var Achks = document.getElementsByClassName("chksA2");
-  var dinge = [
+  var Achks: HTMLCollectionOf<Element> = document.getElementsByClassName("chksA2");
+  var dinge: string[] = [
     "Grundstrukturen",
     "Universum",
     "Geist__(15)",
     "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15)",
   ];
   if (ifpreselect != "no_universal" && ifpreselect != "nothing") {
-    // @ts-expect-error TS(2304): Cannot find name 'chks1'.
-    var dinge2 = [Achks, Achks, chks1, chks1];
-    for (var x = 0; x < dinge.length; x++) {
-      var checkx = [];
-      for (var k = 0; k < dinge2[x].length; k++)
+    var dinge2: Array<HTMLCollectionOf<HTMLInputElement>> = [Achks, Achks, chks1, chks1];
+    for (var x: number = 0; x < dinge.length; x++) {
+      var checkx: HTMLInputElement[] = [];
+      for (var k: number = 0; k < dinge2[x].length; k++)
         if (dinge2[x][k].value == dinge[x]) checkx.push(dinge2[x][k]);
       if (checkx.length > 0) {
         checkx[0].checked = true;
@@ -648,23 +619,6 @@ function disEnAbleChks(Enums) {
     }
   }
 }
-// @ts-expect-error TS(7006): Parameter 'number' implicitly has an 'any' type.
-function returnChangeButtons(number) {
-  return (
-    '<label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="neuErlauben" name="zeilenDazuOrWeg' +
-    number +
-    '" onchange="" checked="true">neu sichtbar</label><label style="white-space: normal;">&nbsp; </label><label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="neuHinfort" name="zeilenDazuOrWeg' +
-    number +
-    '" onchange="">neu unsichtbar</label><label style="white-space: normal;">&nbsp; </label><label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="dazuErlauben" name="zeilenDazuOrWeg' +
-    number +
-    '" onchange="">zusätzlich sichtbar</label><label style="white-space: normal;">&nbsp; </label><label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="dazuEinschraenkend" name="zeilenDazuOrWeg' +
-    number +
-    '">zusätzlich eingeschränkt</label><label style="white-space: normal;">&nbsp; </label><label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="dazuHinfort" name="zeilenDazuOrWeg' +
-    number +
-    '" onchange="">zusätzlich unsichtbar</label>'
-  );
-}
-
 // @ts-expect-error TS(2304): Cannot find name 'alleMonde'.
 alleMonde = [
   4, 8, 9, 16, 25, 27, 32, 36, 49, 64, 81, 100, 121, 125, 128, 144, 169, 196,
@@ -1448,8 +1402,7 @@ function setAllListsInHeadings() {
   }
 }
 
-// @ts-expect-error TS(7006): Parameter 'radiobutton' implicitly has an 'any' ty... Remove this comment to see the full error message
-function toggleChkSpalten(radiobutton) {
+function toggleChkSpalten() {
   // @ts-expect-error TS(2304): Cannot find name 'chk_spalten'.
   chk_spalten = document.getElementById("chk_spalten");
   // @ts-expect-error TS(2304): Cannot find name 'inputZeilen'.
