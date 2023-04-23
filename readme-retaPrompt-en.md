@@ -126,3 +126,5 @@ Line specifications or number ranges for other specifications can be (without qu
 -   call help with h or help,
 -   rp (instead of starting retaPrompt) is retaPrompt with vi mode, rpl is retaPrompt with vi mode and logging enabled at program start.
 -   retaPrompt parameter -log activates logging at program start.
+-   "-command" causes that up to the last program parameter retaPrompt command only one RetaPrompt command is executed.
+-   "-e" causes all commands to display the 'e' command   respectively 'noOneCharacterLinePlusNoOutputWhichCommandItWas' is used every time - except if the first command was reta, because  this one works differently
