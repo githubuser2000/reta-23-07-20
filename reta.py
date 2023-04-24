@@ -126,15 +126,17 @@ class Program:
                 elif cmd[1:] == i18nR.nichtsWort:
                     pass
                 elif (
-                    cmd[: len("-language=")] == "-language="
-                    and cmd[len("-language=") :] in i18n.sprachen.values()
+                    cmd[: len(i18n.sprachenParameterWort)] == i18n.sprachenParameterWort
+                    and cmd[len(i18n.sprachenParameterWort) :] in i18n.sprachen.keys()
                 ):
                     pass
                 elif (
-                    cmd[: len("-language=")] == "-language="
-                    and cmd[len("-language=") :] not in i18n.sprachen.values()
+                    cmd[: len(i18n.sprachenParameterWort)] == i18n.sprachenParameterWort
+                    and cmd[len(i18n.sprachenParameterWort) :]
+                    not in i18n.sprachen.keys()
                 ):
                     print(i18n.wrongLangSentence)
+                    exit()
                 elif len(neg) == 0:
                     # else:
                     cliout(

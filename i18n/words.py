@@ -2,7 +2,7 @@ import gettext
 import os
 import sys
 # import sys
-from collections import OrderedDict, namedtuple
+from collections import OrderedDict, defaultdict, namedtuple
 # from dataclasses import dataclass
 from typing import Any, NamedTuple, Optional, Tuple, Union
 
@@ -13,17 +13,49 @@ try:
 except (ModuleNotFoundError, ImportError):
     OrderedSet = set
 
-sprachen = {"english": "english", "deutsch": "deutsch"}
 
-if "-language=" + sprachen["english"] in sys.argv:
+sprachen: defaultdict[str, str] = defaultdict(lambda: "de")
+sprachen["english"] = "en"
+sprachen["englisch"] = "en"
+sprachen["deutsch"] = "de"
+sprachen["german"] = "de"
+
+sprachen2: defaultdict[str, str] = defaultdict(lambda: "messages")
+sprachen2["english"] = "messages"
+sprachen2["englisch"] = "messages"
+sprachen2["deutsch"] = "messages"
+sprachen2["german"] = "messages"
+
+
+sprachenWahl = ""
+sprachenParameterWort = "-language="
+
+flagS = False
+for arg in sys.argv:
+    if arg[: len(sprachenParameterWort)] == sprachenParameterWort:
+        sprachenWahl = arg[len(sprachenParameterWort) :]
+        flagS = True
+        break
+if flagS and sprachenWahl not in sprachen.keys():
+    print(
+        "allowed are: {}\nwrong: {}".format(
+            str(tuple(sprachen.keys()))[1:-1], sprachenWahl
+        )
+    )
+
+if True:
+    subFolder = sprachen[sprachenWahl]
+    sprachenFileName = sprachen2[sprachenWahl]
     i18nPath = os.path.join(os.path.dirname(__file__))
-    t = gettext.translation("messages", localedir=i18nPath, languages=["en"])
+    t = gettext.translation(
+        sprachenFileName, localedir=i18nPath, languages=[subFolder], fallback=True
+    )
     t.install()
     _ = t.gettext
-else:
-    localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)))
-    translate = gettext.translation("messages", localedir, fallback=True)
-    _ = translate.gettext
+# else:
+#    localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)))
+#    translate = gettext.translation("messages", localedir, fallback=True)
+#    _ = translate.gettext
 
 # sys.path.insert(1, "./..")
 Multiplikationen = [(_("Multiplikationen"), "")]
