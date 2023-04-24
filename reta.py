@@ -123,7 +123,7 @@ class Program:
             if len(cmd) > 1 and cmd[0] == "-" and cmd[1] != "-":
                 if cmd[1:] in self.mainParaCmds.keys():
                     lastMainCmd = self.mainParaCmds[cmd[1:]]
-                elif cmd[1:] == i18nR.nichtsWort:
+                elif cmd[1:] in (i18nR.nichtsWort, "nichts", "nothing"):
                     pass
                 elif (
                     cmd[: len(i18n.sprachenParameterWort)] == i18n.sprachenParameterWort
