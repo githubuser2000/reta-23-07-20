@@ -40,6 +40,7 @@ befehle += ["15_"]
 befehleBeenden = i18nRP.befehleBeenden
 # befehleBeenden = {"ende", "exit", "quit", "q", ":q"}
 infoLog = False
+sprachenWahl = "deutsch"
 
 
 class TXT(object):
@@ -507,11 +508,11 @@ def PromptScope():
         nurEinBefehl,
         immerEbefehlJa,
     ) = PromptAllesVorGroesserSchleife()
-    global textDazu0
+    global textDazu0, sprachenWahl
     Txt = TXT("")
     nochAusageben = ""
     ketten = []
-    while len(Txt.menge & befehleBeenden) == 0:
+    while len(Txt.menge & befehleBeenden) == 0 and sprachenWahl != "english":
 
         warBefehl = False
         promptModeLast = promptMode
@@ -675,6 +676,9 @@ def PromptGrosseAusgabe(
     nurEinBefehl,
     Txt,
 ):
+    # global alxp, cliout, i18n, invert_dict_B, isZeilenAngabe, isZeilenAngabe_betweenKommas, isZeilenBruchAngabe, moduloA, primfaktoren, primRepeat, retaPromptHilfe, teiler, textHatZiffer, x
+    global i18nRP, sprachenWahl
+
     (
         EsGabzahlenAngaben,
         zahlenReiheKeineWteiler,
@@ -792,6 +796,53 @@ def PromptGrosseAusgabe(
                 ],
                 "2",
             )
+
+    if {"english", "englisch"} & Txt.menge != set() and sys.argv[0].split("/")[
+        -1
+    ] == "rpl":
+        warBefehl = True
+        sprachenWahl = "english"
+        print("set to english")
+        return loggingSwitch
+        from importlib import reload
+
+        import __main__
+        import prompt_toolkit
+        import prompt_toolkit.completion
+        import prompt_toolkit.history
+        import prompt_toolkit.styles
+
+        import center
+        import lib4tables
+        import lib4tables_concat
+        import lib4tables_Enum
+        import lib4tables_prepare
+        import LibRetaPrompt
+        import nestedAlx
+        import reta
+        import retaPrompt
+        import tableHandling
+        import word_completerAlx
+
+        for a in range(2):
+            reload(center)
+            reload(i18n)
+            reload(LibRetaPrompt)
+            reload(tableHandling)
+            reload(reta)
+            reload(nestedAlx)
+            reload(word_completerAlx)
+            reload(tableHandling)
+            reload(lib4tables_Enum)
+            reload(lib4tables_prepare)
+            reload(lib4tables)
+            reload(lib4tables_concat)
+            reload(prompt_toolkit)
+            reload(prompt_toolkit.completion)
+            reload(prompt_toolkit.history)
+            reload(prompt_toolkit.styles)
+            reload(retaPrompt)
+            i18nRP = i18n.retaPrompt
 
     if fullBlockIsZahlenbereichAndBruch and (bedingungZahl or bedingungBrueche):
         if len(
@@ -2135,5 +2186,8 @@ if __name__ == "__main__":
     PromptScope()
 
 
-def start():
+def start(sprachenWahl1="deutsch"):
+    global sprachenWahl
+    alxp(sys.argv)
     PromptScope()
+    return sprachenWahl

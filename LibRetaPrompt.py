@@ -8,6 +8,7 @@ from center import (BereichToNumbers2, Primzahlkreuz_pro_contra_strs, i18n,
                     isZeilenAngabe, isZeilenAngabe_betweenKommas,
                     isZeilenBruchOrGanzZahlAngabe, x)
 
+# retaProgram = reta.Program([sys.argv[0], "-" + i18n.retapy.nichtsWort])
 retaProgram = reta.Program([sys.argv[0], "-" + i18n.retapy.nichtsWort])
 mainParas = ["-" + a for a in retaProgram.mainParaCmds]
 spalten = ["--" + a[0] + "=" for a in retaProgram.paraDict.keys()]
@@ -200,6 +201,9 @@ if flagX:
     exit()
 
 befehle = i18n.befehle
+print(sys.argv[0].split("/")[-1])
+if sys.argv[0].split("/")[-1] == "rpl":
+    befehle += ["englisch", "english"]
 # befehle = ["15" + a for a in wahl15.keys()] + [
 #    "mond",
 #    "reta",
