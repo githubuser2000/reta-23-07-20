@@ -195,15 +195,15 @@ wahl15Words: dict = {
     "Wirklichkeiten_Wahrheit_Wahrnehmung_(10)": _(
         "Wirklichkeiten_Wahrheit_Wahrnehmung_(10)"
     ),
-    "Meta-Systeme_(12),Ordnung_und_Filterung_12_und_1pro12": _(
-        "Meta-Systeme_(12),Ordnung_und_Filterung_12_und_1pro12"
-    ),
+    "Meta-Systeme_(12),Ordnung_und_Filterung_12_und_1pro12": ",".join(((
+        "Meta-Systeme_(12)"),_("Ordnung_und_Filterung_12_und_1pro12"
+    )),
     "Paradigmen_sind_Absichten_(13)": _("Paradigmen_sind_Absichten_(13)"),
     "Gedanken_sind_Positionen_(17)": _("Gedanken_sind_Positionen_(17)"),
     "Verbundenheiten_(18)": _("Verbundenheiten_(18)"),
     "Triebe_und_Bedürfnisse_(6)": _("Triebe_und_Bedürfnisse_(6)"),
     "Lust_(9)": _("Lust_(9)"),
-    "Reflexe_(3),Existenzialien_(3)": _("Reflexe_(3),Existenzialien_(3)"),
+    "Reflexe_(3),Existenzialien_(3)": ",".join((_("Reflexe_(3)"), _("Existenzialien_(3)")),
     "Absicht_6_ist_Vorteilsmaximierung": _("Absicht_6_ist_Vorteilsmaximierung"),
     "Absicht_7_ist_Selbstlosigkeit": _("Absicht_7_ist_Selbstlosigkeit"),
     "Absicht_10_ist_Wirklichkeit_erkennen": _("Absicht_10_ist_Wirklichkeit_erkennen"),
@@ -240,7 +240,7 @@ wahl15Words: dict = {
     "Zahlenvergleich_(15_18_6)": _("Zahlenvergleich_(15_18_6)"),
     "Leidenschaften_(21)": _("Leidenschaften_(21)"),
     "Erwartungshaltungen_(26)": _("Erwartungshaltungen_(26)"),
-    "Extremalien_(19),Ziele_(19)": _("Extremalien_(19),Ziele_(19)"),
+    "Extremalien_(19),Ziele_(19)": ",".join(( _("Extremalien_(19)"),_("Ziele_(19)"))),
     "universeller_Komperativ_(18→15)": _("universeller_Komperativ_(18→15)"),
     "Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)": _(
         "Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)"
