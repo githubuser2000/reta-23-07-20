@@ -797,7 +797,7 @@ def PromptGrosseAusgabe(
                 "2",
             )
 
-    if {"english", "englisch"} & Txt.menge != set() and sys.argv[0].split("/")[
+    if {"english", "englisch"} & Txt.menge != set() and sys.argv[0].split(os.sep)[
         -1
     ] == "rpl":
         warBefehl = True
