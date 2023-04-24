@@ -6,7 +6,7 @@ ABS_DIRECTORY="/home/alex/myRepos/reta"
 GIT_DIRECTORY="${ABS_DIRECTORY}/.git"
 function ctrl_c() {
     cat ${ABS_DIRECTORY}/head1.alx
-    cat ${ABS_DIRECTORY}/religionen.js | sed 's/Grundstrukturen/GrundstrukturenBasicStructures/g'
+    cat ${ABS_DIRECTORY}/religionen.js | sed 's/Grundstrukturen/basic_structures/g'
     cat ${ABS_DIRECTORY}/head2.alx
     cat ~/middle.alx
     pypy3 ${ABS_DIRECTORY}/grundStrukHtml.py blank -language=english

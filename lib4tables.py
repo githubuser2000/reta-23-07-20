@@ -191,7 +191,9 @@ class htmlSyntax(OutputSyntax):
         things1: OrderedDict[int, list] = OrderedDict()
 
         listOfListsOfCouples: list = list(tupleOfListsOfCouples)
-        listOfListsOfCouples.sort()  # damit pypy3 == python3
+        # listOfListsOfCouples.sort(
+        #    key=lambda x: sorted([(s.upper(), v) for s, v in x])
+        # )  # damit pypy3 == python3
         for c, couples in enumerate(listOfListsOfCouples):
             for paraNum in (0, 1):
                 if len(couples[0]) > paraNum:
@@ -210,7 +212,7 @@ class htmlSyntax(OutputSyntax):
                                 para1o2name = "".join(["p3_", str(c), "_", para1o2name])
                             try:
                                 things1[paraNum] += [para1o2name]
-                                things1[paraNum].sort()
+                                # things1[paraNum].sort(key=lambda x: x.upper())
 
                             except KeyError:
                                 things1[paraNum]: list = [
@@ -224,11 +226,13 @@ class htmlSyntax(OutputSyntax):
                 if el != i18n.alles["alles"]:
                     try:
                         things[key] += (
+                            "✗" if key == 0 else "",
                             el,
                             ",",
                         )
                     except KeyError:
                         things[key] = (
+                            "✗" if key == 0 else "",
                             el,
                             ",",
                         )
@@ -245,7 +249,7 @@ class htmlSyntax(OutputSyntax):
                 p4b: list = []
                 for a in p4a:
                     p4b += [str(a.value)]
-                p4b.sort()
+                # p4b.sort(key=lambda x: x.upper())
                 p4 = ",".join(p4b)
             except KeyError:
                 p4 = ""
@@ -263,6 +267,7 @@ class htmlSyntax(OutputSyntax):
                         str(spalte),
                         " p1_",
                         things[0],
+                        ",",
                         " p2_",
                         (things[1] if len(things) > 1 else ""),
                         " p4_",
