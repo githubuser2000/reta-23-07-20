@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-23 15:43+0200\n"
+"POT-Creation-Date: 2023-04-24 17:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #~ msgid "Multiplikationen"
-#~ msgstr "multiplications"
+#~ msgstr "Multiplikationen_multiplications"
 
 #~ msgid "Primzahlkreuz_pro_contra"
 #~ msgstr "prime_cross_pro_contra"
@@ -506,25 +506,25 @@ msgstr ""
 #~ msgstr "concept2"
 
 #~ msgid "gebrochenuniversum"
-#~ msgstr "fractionaluniverse"
+#~ msgstr "gebrochenuniversum_fractionaluniverse"
 
 #~ msgid "gebrochengalaxie"
-#~ msgstr "fractionalgalaxy"
+#~ msgstr "gebrochengalaxie_fractionalgalaxy"
 
 #~ msgid "Wichtigstes_zum_verstehen"
-#~ msgstr "mostImportantToUnderstand"
+#~ msgstr "Wichtigstes_zum_verstehen_MostImportantToUnderstand"
 
 #~ msgid "wichtigsteverstehen"
 #~ msgstr "mostimportanttounderstand"
 
 #~ msgid "Wichtigstes_zum_gedanklich_einordnen"
-#~ msgstr "mostImportantToThinkAbout"
+#~ msgstr "Wichtigstes_zum_gedanklich_einordnen_mostImportantToThinkAbout"
 
 #~ msgid "wichtigsteeinordnen"
 #~ msgstr "mostImportantToClassify"
 
 #~ msgid "Religionen"
-#~ msgstr "religions"
+#~ msgstr "Religionenreligions"
 
 #~ msgid "religionen"
 #~ msgstr "religions"
@@ -533,7 +533,7 @@ msgstr ""
 #~ msgstr "religion"
 
 #~ msgid "Galaxie"
-#~ msgstr "galaxy"
+#~ msgstr "GalaxieGalaxy"
 
 #~ msgid "alteschriften"
 #~ msgstr "ancientscripts"
@@ -548,7 +548,7 @@ msgstr ""
 #~ msgstr "circles"
 
 #~ msgid "Größenordnung"
-#~ msgstr "scale"
+#~ msgstr "GrößenordnungScale"
 
 #~ msgid "groessenordnung"
 #~ msgstr "scale"
@@ -575,7 +575,7 @@ msgstr ""
 #~ msgstr "organizations"
 
 #~ msgid "Universum"
-#~ msgstr "universe"
+#~ msgstr "UniversumUniverse"
 
 #~ msgid "transzendentalien"
 #~ msgstr "transcendentals"
@@ -599,19 +599,19 @@ msgstr ""
 #~ msgstr "balls"
 
 #~ msgid "Wirtschaft"
-#~ msgstr "economy"
+#~ msgstr "WirtschaftEconomy"
 
 #~ msgid "wirtschaft"
 #~ msgstr "economy"
 
 #~ msgid "Menschliches"
-#~ msgstr "human"
+#~ msgstr "Menschlicheshuman"
 
 #~ msgid "menschliches"
 #~ msgstr "human"
 
 #~ msgid "Pro_Contra"
-#~ msgstr "pro_contra"
+#~ msgstr "Pro_Contra_pro_contra"
 
 #~ msgid "procontra"
 #~ msgstr "procontra"
@@ -620,25 +620,25 @@ msgstr ""
 #~ msgstr "procontra"
 
 #~ msgid "Licht"
-#~ msgstr "light"
+#~ msgstr "LichtLight"
 
 #~ msgid "licht"
 #~ msgstr "light"
 
 #~ msgid "Bedeutung"
-#~ msgstr "meaning"
+#~ msgstr "BedeutungMeaning"
 
 #~ msgid "bedeutung"
 #~ msgstr "meaning"
 
 #~ msgid "Symbole"
-#~ msgstr "symbols"
+#~ msgstr "SymboleSymbols"
 
 #~ msgid "symbole"
 #~ msgstr "symbols"
 
 #~ msgid "Eigenschaften_n"
-#~ msgstr "properties_n"
+#~ msgstr "Eigenschaften_n_properties_n"
 
 #~ msgid "eigenschaften"
 #~ msgstr "properties"
@@ -650,31 +650,31 @@ msgstr ""
 #~ msgstr "concepts"
 
 #~ msgid "Eigenschaften_1/n"
-#~ msgstr "properties_1/n"
+#~ msgstr "Eigenschaften_1/n_properties_1/n"
 
 #~ msgid "konzepte2"
 #~ msgstr "concepts2"
 
 #~ msgid "Inkrementieren"
-#~ msgstr "increment"
+#~ msgstr "InkrementierenIncrement"
 
 #~ msgid "inkrementieren"
 #~ msgstr "increment"
 
 #~ msgid "Operationen"
-#~ msgstr "operations"
+#~ msgstr "OperationenOperations"
 
 #~ msgid "operationen"
 #~ msgstr "operations"
 
 #~ msgid "Meta_vs_Konkret_(Universum)"
-#~ msgstr "meta_vs_concrete_(universe)"
+#~ msgstr "Meta_vs_Konkret_(Universum)_meta_vs_concrete_(universe)"
 
 #~ msgid "universummetakonkret"
 #~ msgstr "universeMetaConcrete"
 
 #~ msgid "Primzahlwirkung"
-#~ msgstr "primeeffect"
+#~ msgstr "Primzahlwirkung_primeeffect"
 
 #~ msgid "primzahlwirkung"
 #~ msgstr "primeeffect"
@@ -683,7 +683,7 @@ msgstr ""
 #~ msgstr "multiplications"
 
 #~ msgid "Planet_(10_und_oder_12)"
-#~ msgstr "planet_(10_and_or_12)"
+#~ msgstr "Planet_(10_und_oder_12)_planet_(10_and_or_12)"
 
 #~ msgid "Strukturen_1_bis_9"
 #~ msgstr "structures_1_to_9"
@@ -692,10 +692,10 @@ msgstr ""
 #~ msgstr "structureLessTen"
 
 #~ msgid "Grundstrukturen"
-#~ msgstr "basicStructures"
+#~ msgstr "GrundstrukturenBasicStructures"
 
 #~ msgid "grundstrukturen"
-#~ msgstr "basicStructures"
+#~ msgstr "grundstrukturen"
 
 #~ msgid "motivation"
 #~ msgstr "motivation"
