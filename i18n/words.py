@@ -197,13 +197,13 @@ wahl15Words: dict = {
     ),
     "Meta-Systeme_(12),Ordnung_und_Filterung_12_und_1pro12": ",".join(((
         "Meta-Systeme_(12)"),_("Ordnung_und_Filterung_12_und_1pro12"
-    )),
+    ))),
     "Paradigmen_sind_Absichten_(13)": _("Paradigmen_sind_Absichten_(13)"),
     "Gedanken_sind_Positionen_(17)": _("Gedanken_sind_Positionen_(17)"),
     "Verbundenheiten_(18)": _("Verbundenheiten_(18)"),
     "Triebe_und_Bedürfnisse_(6)": _("Triebe_und_Bedürfnisse_(6)"),
     "Lust_(9)": _("Lust_(9)"),
-    "Reflexe_(3),Existenzialien_(3)": ",".join((_("Reflexe_(3)"), _("Existenzialien_(3)")),
+    "Reflexe_(3),Existenzialien_(3)": ",".join((_("Reflexe_(3)"), _("Existenzialien_(3)"))),
     "Absicht_6_ist_Vorteilsmaximierung": _("Absicht_6_ist_Vorteilsmaximierung"),
     "Absicht_7_ist_Selbstlosigkeit": _("Absicht_7_ist_Selbstlosigkeit"),
     "Absicht_10_ist_Wirklichkeit_erkennen": _("Absicht_10_ist_Wirklichkeit_erkennen"),
