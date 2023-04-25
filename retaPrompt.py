@@ -512,8 +512,7 @@ def PromptScope():
     Txt = TXT("")
     nochAusageben = ""
     ketten = []
-    while len(Txt.menge & befehleBeenden) == 0 and sprachenWahl != "english":
-
+    while len(Txt.menge & befehleBeenden) == 0:
         warBefehl = False
         promptModeLast = promptMode
 
@@ -797,9 +796,11 @@ def PromptGrosseAusgabe(
                 "2",
             )
 
-    if {"english", "englisch"} & Txt.menge != set() and sys.argv[0].split(os.sep)[
-        -1
-    ] == "rpl":
+    if (
+        False
+        and {"english", "englisch"} & Txt.menge != set()
+        and sys.argv[0].split(os.sep)[-1] == "rpl"
+    ):
         warBefehl = True
         sprachenWahl = "english"
         print("set to english")
@@ -1993,6 +1994,7 @@ def promptVorbereitungGrosseAusgabe(
     c = ""
     if len(Txt.menge & befehleBeenden) > 0:
         Txt.liste = [tuple(befehleBeenden)[0]]
+        exit()
     replacements = i18nRP.replacements
     if len(Txt.liste) > 0 and Txt.liste[0] not in [
         "reta",
