@@ -168,6 +168,7 @@ def myprint(d, tiefe):
                                 (
                                     ' class="ordGru" onchange="toggleP2(this,-10,',
                                     "'",
+                                    "✗",
                                     i18n.ParametersMain.grundstrukturen[0],
                                     ",",
                                     k,
