@@ -1441,7 +1441,7 @@ msgstr "basic_structures"
 #: i18n/words.py:530 ../../words.py:538 ../../words.py:540 ../../words.py:572
 #: ../../words.py:576
 msgid "grundstrukturen"
-msgstr "grundstrukturen"
+msgstr "basic_structures"
 
 #: i18n/words.py:535 i18n/words.py:3400 i18n/words.py:3480 ../../words.py:543
 #: ../../words.py:3408 ../../words.py:3488 ../../words.py:545
