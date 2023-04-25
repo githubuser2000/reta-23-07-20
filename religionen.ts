@@ -140,15 +140,15 @@ for (i = 0; i < tdClasses1.length; i++)
     '<div id="chk_spalten" style="display:none;">' +
     radio_tags +
     '<span style="">';
-  for (i = 0; i < p1keys.length; i++) {
+  for (var i: number = 0; i < p1keys.length; i++) {
     var chk2s: string = "";
     // @ts-expect-error TS(2304): Cannot find name 'mapMapMap'.
     var p2keys: Array<string | Map<any, any>> = Object.keys(mapMapMap[p1keys[i]]);
     for (var k: number = 0; k < p2keys.length; k++) {
       // @ts-expect-error TS(2304): Cannot find name 'numbers'.
-      numbers: Array<string, Map<any,any> = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
+      var numbers: Array<Map<any,any> = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
       if (p2keys[k] != null && p2keys[k] != "null") {
-        // window.alert(p1keys[i]); 'Grundstrukturen'
+        // window.alert(p1keys[i]); '✗Grundstrukturen'
         // window.alert(p2keys[i]); klar
         // window.alert(numbers); // ach einfach die und daraus!
         // window.alert(Array.from(mapMapMapTags[p1keys[i]][p2keys[k]]).join(",")); // diese Zahlen
@@ -164,7 +164,6 @@ for (i = 0; i < tdClasses1.length; i++)
           '" value="' +
           p2keys[k] +
           '" onchange="toggleP2(this,\'' +
-          // @ts-expect-error TS(2304): Cannot find name 'numbers'.
           numbers +
           "','" +
           [p1keys[i], p2keys[k]] +
@@ -174,11 +173,10 @@ for (i = 0; i < tdClasses1.length; i++)
         chk2s += chk2;
       }
     }
-    if (p1keys[i] === "Grundstrukturen") {
-      // @ts-expect-error TS(2304): Cannot find name 'grunSi'.
-      grunSi = i;
+    if (p1keys[i] === "✗Grundstrukturen") {
+      var grunSi: number = i;
       // @ts-expect-error TS(2304): Cannot find name 'grunp2Keys'.
-      grunp2Keys = p2keys;
+      grunp2Keys: Array<string | Map<any, any>> = p2keys;
     }
     // @ts-expect-error TS(2304): Cannot find name 'mapMapMap'.
     if (mapMapMap[p1keys[i]][null] !== undefined) {
@@ -216,11 +214,11 @@ for (i = 0; i < tdClasses1.length; i++)
       '<div id="' +
       String(p1keys[i]) +
       '" style="display:none;white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">' +
-      (p1keys[i] === "Grundstrukturen"
+      (p1keys[i] === "✗Grundstrukturen"
         ? '<input type="radio" class="grundRadio" id="grundRadioChaos" checked onchange="grundSDivToggle(0)"><label>unübersichtlich</label></input> <input type="radio" class="grundRadio" id="grundRadioOrdnung" onchange="grundSDivToggle(1)"><label>ordentlich</label></input><div id="grundSDiv0">'
         : "") +
       String(chk2s) +
-      (p1keys[i] === "Grundstrukturen"
+      (p1keys[i] === "✗Grundstrukturen"
         ? '</div><div id="grundSDiv1" style="display:none;"></div>'
         : "") +
       "</div></div>";
@@ -380,11 +378,11 @@ for (i = 0; i < tdClasses1.length; i++)
   document.getElementById("grundSDiv1").innerHTML =
     document.getElementById("grundstrukturenDiv").innerHTML;
   //window.alert(String(checkbox_i.length));
-  // Grundstrukturen
+  // ✗Grundstrukturen
   // chksss = chks1 + Achks;
   var Achks: HTMLCollectionOf<Element> = document.getElementsByClassName("chksA2");
   var dinge: string[] = [
-    "Grundstrukturen",
+    "✗Grundstrukturen",
     "Universum",
     "Geist__(15)",
     "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15)",
@@ -597,64 +595,44 @@ function makeSpacesOutOf_(text: string): string {
 }
 
 function copyClassNameToOrderedGrunstruk(
-  // @ts-expect-error TS(7006): Parameter 'mapMapMap' implicitly has an 'any' type... Remove this comment to see the full error message
-  mapMapMap,
-  // @ts-expect-error TS(7006): Parameter 'mapMapMapTags' implicitly has an 'any' ... Remove this comment to see the full error message
-  mapMapMapTags,
-  // @ts-expect-error TS(7006): Parameter 'p1keys' implicitly has an 'any' type.
-  p1keys,
-  // @ts-expect-error TS(7006): Parameter 'p2keys' implicitly has an 'any' type.
-  p2keys,
-  // @ts-expect-error TS(7006): Parameter 'grunSi' implicitly has an 'any' type.
-  grunSi,
-  // @ts-expect-error TS(7006): Parameter 'grunp2Keys' implicitly has an 'any' typ... Remove this comment to see the full error message
-  grunp2Keys
+  mapMapMap: Map<string, string | Map<string , string | Map<any, any>>> ,
+  mapMapMapTags: Map<number, string>,
+  p1keys: string[],
+  p2keys: Array<string | Map<any, any>>,
+  grunSi: number,
+  grunp2Keys: Array<string | Map<any, any>>
 ) {
   //checkboxesOrdnung = document.getElementsByClassName("ordGru");
   //checkboxesChaos = document.getElementsByClassName("chks");
 
   //var p1keysB = Object.keys(mapMapMap);
-  //var p2keysB = Object.keys(mapMapMap["Grundstrukturen"]);
-  //numbers = Array.from(mapMapMap["Grundstrukturen"][p2keys[0]]);
-  //grundstrukThings = Array.from(mapMapMap["Grundstrukturen"]);
+  //var p2keysB = Object.keys(mapMapMap["✗Grundstrukturen"]);
+  //numbers = Array.from(mapMapMap["✗Grundstrukturen"][p2keys[0]]);
+  //grundstrukThings = Array.from(mapMapMap["✗Grundstrukturen"]);
   //window.alert(String(numbers.join(",")));
   //window.alert(String(grundstrukThings[0].join(",")));
-  // (p1keys[i] === "Grundstrukturen"
+  // (p1keys[i] === "✗Grundstrukturen"
   // var p1keys = Object.keys(mapMapMap);
-  //var p1keyGrund = Object.keys(mapMapMap["Grundstrukturen"]);
+  //var p1keyGrund = Object.keys(mapMapMap["✗Grundstrukturen"]);
   //var p2keys = Object.keys(mapMapMap[p1);
   // var thingsB = Array.from(mapMapMapTags[p2keyGrund][p2keys[k]]).join(",");
   //var thingsB = Array.from(mapMapMapTags[p1keyGrund]);
-  // @ts-expect-error TS(2304): Cannot find name 'TagIdGrustruk'.
-  TagIdGrustruk = document.getElementById("Grundstrukturen");
-  // @ts-expect-error TS(2304): Cannot find name 'chaotische'.
-  chaotische = [];
-  // @ts-expect-error TS(2304): Cannot find name 'ordentliche'.
-  ordentliche = [];
-  // @ts-expect-error TS(2304): Cannot find name 'ordentliche2'.
-  ordentliche2 = [];
-  for (var i = 0; i < grunp2Keys.length; i++) {
-    // @ts-expect-error TS(2304): Cannot find name 'nummern'.
-    nummern = Array.from(mapMapMapTags[p1keys[grunSi]][grunp2Keys[i]]).join(
+  var TagIdGrustruk: any = document.getElementById("✗Grundstrukturen");
+  var chaotische: Array<any> = [];
+  var ordentliche: Array<any> = [];
+  var ordentliche2: Array<any> = [];
+  for (var i: number = 0; i < grunp2Keys.length; i++) {
+    var nummern: Array<string> = Array.from(mapMapMapTags[p1keys[grunSi]][grunp2Keys[i]]).join(
       ","
     );
-    // @ts-expect-error TS(2304): Cannot find name 'ordentlich'.
-    ordentlich = document.getElementById("ordGru" + grunp2Keys[i]);
-    // @ts-expect-error TS(2304): Cannot find name 'ordentlich2'.
-    ordentlich2 = document.getElementById("ordGruB" + grunp2Keys[i]);
-    // @ts-expect-error TS(2304): Cannot find name 'chaotisch'.
-    chaotisch = TagIdGrustruk.getElementsByClassName("chks c_" + nummern);
-    // @ts-expect-error TS(2304): Cannot find name 'chaotisch'.
+    var ordentlich: any = document.getElementById("ordGru" + grunp2Keys[i]);
+    var ordentlich2: any = document.getElementById("ordGruB" + grunp2Keys[i]);
+    var chaotisch: HTMLCollectionOf<HTMLInputElement> | null = TagIdGrustruk.getElementsByClassName("chks c_" + nummern);
     if (typeof chaotisch !== "undefined" && chaotisch !== null)
-      // @ts-expect-error TS(2304): Cannot find name 'chaotische'.
       chaotische.push(chaotisch);
-    // @ts-expect-error TS(2304): Cannot find name 'ordentlich'.
     if (typeof ordentlich !== "undefined" && ordentlich !== null)
-      // @ts-expect-error TS(2304): Cannot find name 'ordentliche'.
       ordentliche.push(ordentlich);
-    // @ts-expect-error TS(2304): Cannot find name 'ordentlich2'.
     if (typeof ordentlich2 !== "undefined" && ordentlich2 !== null)
-      // @ts-expect-error TS(2304): Cannot find name 'ordentliche2'.
       ordentliche2.push(ordentlich2);
     /*
     if (ordentlich !== null) {
@@ -697,29 +675,19 @@ function copyClassNameToOrderedGrunstruk(
   }
   //window.alert(String(chaotische.length));
   //window.alert(String(ordentliche.length));
-  // @ts-expect-error TS(2304): Cannot find name 'chaotische'.
-  for (var i = 0; i < chaotische.length; i++) {
-    // @ts-expect-error TS(2304): Cannot find name 'chaotisch'.
+  for (var i: number = 0; i < chaotische.length; i++) {
     chaotisch = chaotische[i];
-    // @ts-expect-error TS(2304): Cannot find name 'chaotisch'.
-    for (var m = 0; m < chaotisch.length; m++) {
-      // @ts-expect-error TS(2304): Cannot find name 'ordentliche'.
-      for (var k = 0; k < ordentliche.length; k++) {
+    for (var m: number = 0; m < chaotisch.length; m++) {
+      for (var k: number = 0; k < ordentliche.length; k++) {
         if (
-          // @ts-expect-error TS(2304): Cannot find name 'ordentliche'.
           typeof ordentliche[k].value !== "undefined" &&
-          // @ts-expect-error TS(2304): Cannot find name 'chaotisch'.
           typeof chaotisch[m].value !== "undefined" &&
-          // @ts-expect-error TS(2304): Cannot find name 'chaotisch'.
           chaotisch[m].className.substring(0, 4) === "chks" &&
-          // @ts-expect-error TS(2304): Cannot find name 'ordentliche'.
           ordentliche[k].value === chaotisch[m].value
         ) {
-          // @ts-expect-error TS(2304): Cannot find name 'ordentliche'.
           ordentliche[k].className =
             // @ts-expect-error TS(2304): Cannot find name 'chaotisch'.
             "chks " + chaotisch[m].className.substring(4);
-          // @ts-expect-error TS(2304): Cannot find name 'ordentliche2'.
           ordentliche2[k].className =
             // @ts-expect-error TS(2304): Cannot find name 'chaotisch'.
             "chks " + chaotisch[m].className.substring(4);
@@ -732,54 +700,37 @@ function copyClassNameToOrderedGrunstruk(
     }
   }
 }
-function grundSDivToggleBeachte(para = "", dasTag = false) {
-  // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
-  checkboxesOrdnung = document.getElementsByClassName("ordGru");
-  // @ts-expect-error TS(2304): Cannot find name 'checkboxesChaos'.
-  checkboxesChaos = document.getElementsByClassName("chks");
+function grundSDivToggleBeachte(para: string = "", dasTag: boolean = false) {
+  var checkboxesOrdnung: HTMLCollectionOf<any> = document.getElementsByClassName("ordGru");
+  var checkboxesChaos: HTMLCollectionOf<any> = document.getElementsByClassName("chks");
   if (para !== "") {
-    // @ts-expect-error TS(2339): Property 'checked' does not exist on type 'boolean... Remove this comment to see the full error message
     if (!dasTag.checked) {
-      // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
-      for (var i = 0; i < checkboxesOrdnung.length; i++) {
-        // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
-        for (var k = 0; k < checkboxesOrdnung.length; k++) {
-          // @ts-expect-error TS(2304): Cannot find name 'checkboxesChaos'.
+      for (var i: number = 0; i < checkboxesOrdnung.length; i++) {
+        for (var k: number = 0; k < checkboxesOrdnung.length; k++) {
           if (typeof checkboxesChaos[i].value !== "undefined" && k != i) {
             //window.alert(String(checkboxesChaos[i].value));
             if (
-              // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
               checkboxesOrdnung[k].value === checkboxesOrdnung[i].value
               // checkboxesOrdnung[k].checked != checkboxesOrdnung[i].checked
             ) {
-              // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
               if (checkboxesOrdnung[k].value === para) {
-                // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
                 checkboxesOrdnung[k].checked = false;
-                // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
                 checkboxesOrdnung[i].checked = false;
               }
             }
           }
         }
       }
-      // @ts-expect-error TS(2304): Cannot find name 'checkboxesChaos'.
-      for (var i = 0; i < checkboxesChaos.length; i++) {
-        // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
-        for (var k = 0; k < checkboxesOrdnung.length; k++) {
-          // @ts-expect-error TS(2304): Cannot find name 'checkboxesChaos'.
+      for (var i: number = 0; i < checkboxesChaos.length; i++) {
+        for (var k: number = 0; k < checkboxesOrdnung.length; k++) {
           if (typeof checkboxesChaos[i].value !== "undefined") {
             //window.alert(String(checkboxesChaos[i].value));
             if (
-              // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
               checkboxesOrdnung[k].value === checkboxesChaos[i].value
               //checkboxesOrdnung[k].checked != checkboxesChaos[i].checked
             ) {
-              // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
               if (checkboxesOrdnung[k].value === para) {
-                // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
                 checkboxesOrdnung[k].checked = false;
-                // @ts-expect-error TS(2304): Cannot find name 'checkboxesChaos'.
                 checkboxesChaos[i].checked = false;
               }
             }
@@ -789,46 +740,32 @@ function grundSDivToggleBeachte(para = "", dasTag = false) {
     } else {
       // @ts-expect-error TS(2339): Property 'checked' does not exist on type 'boolean... Remove this comment to see the full error message
       if (dasTag.checked) {
-        // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
-        for (var i = 0; i < checkboxesOrdnung.length; i++) {
-          // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
-          for (var k = 0; k < checkboxesOrdnung.length; k++) {
-            // @ts-expect-error TS(2304): Cannot find name 'checkboxesChaos'.
+        for (var i: number = 0; i < checkboxesOrdnung.length; i++) {
+          for (var k: number = 0; k < checkboxesOrdnung.length; k++) {
             if (typeof checkboxesChaos[i].value !== "undefined" && k != i) {
               //window.alert(String(checkboxesChaos[i].value));
               if (
-                // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
                 checkboxesOrdnung[k].value === checkboxesOrdnung[i].value
                 //checkboxesOrdnung[k].checked != checkboxesOrdnung[i].checked
               ) {
-                // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
                 if (checkboxesOrdnung[k].value === para) {
-                  // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
                   checkboxesOrdnung[k].checked = true;
-                  // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
                   checkboxesOrdnung[i].checked = true;
                 }
               }
             }
           }
         }
-        // @ts-expect-error TS(2304): Cannot find name 'checkboxesChaos'.
-        for (var i = 0; i < checkboxesChaos.length; i++) {
-          // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
-          for (var k = 0; k < checkboxesOrdnung.length; k++) {
-            // @ts-expect-error TS(2304): Cannot find name 'checkboxesChaos'.
+        for (var i: number = 0; i < checkboxesChaos.length; i++) {
+          for (var k: number = 0; k < checkboxesOrdnung.length; k++) {
             if (typeof checkboxesChaos[i].value !== "undefined") {
               //window.alert(String(checkboxesChaos[i].value));
               if (
-                // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
                 checkboxesOrdnung[k].value === checkboxesChaos[i].value
                 // checkboxesOrdnung[k].checked != checkboxesChaos[i].checked
               ) {
-                // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
                 if (checkboxesOrdnung[k].value === para) {
-                  // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
                   checkboxesOrdnung[k].checked = true;
-                  // @ts-expect-error TS(2304): Cannot find name 'checkboxesChaos'.
                   checkboxesChaos[i].checked = true;
                 }
               }
@@ -838,46 +775,31 @@ function grundSDivToggleBeachte(para = "", dasTag = false) {
       }
     }
   } else {
-    // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
-    for (var k = 0; k < checkboxesOrdnung.length; k++) {
-      // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
-      for (var k2 = 0; k2 < checkboxesOrdnung.length; k2++) {
+    for (var k: number = 0; k < checkboxesOrdnung.length; k++) {
+      for (var k2: number = 0; k2 < checkboxesOrdnung.length; k2++) {
         if (k != k2) {
           //window.alert(String(checkboxesChaos[i].value));
           if (
-            // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
             checkboxesOrdnung[k2].value === checkboxesOrdnung[k].value &&
-            // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
             checkboxesOrdnung[k2].checked != checkboxesOrdnung[k].checked
           ) {
-            // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
             if (checkboxesOrdnung[k2].checked == false)
-              // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
               checkboxesOrdnung[k2].checked = true;
           }
         }
       }
     }
-    // @ts-expect-error TS(2304): Cannot find name 'checkboxesChaos'.
-    for (var i = 0; i < checkboxesChaos.length; i++) {
-      // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
-      for (var k = 0; k < checkboxesOrdnung.length; k++) {
-        // @ts-expect-error TS(2304): Cannot find name 'checkboxesChaos'.
+    for (var i: number = 0; i < checkboxesChaos.length; i++) {
+      for (var k: number = 0; k < checkboxesOrdnung.length; k++) {
         if (typeof checkboxesChaos[i].value !== "undefined" && k != k2) {
           //window.alert(String(checkboxesChaos[i].value));
           if (
-            // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
             checkboxesOrdnung[k].value === checkboxesChaos[i].value &&
-            // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
             checkboxesOrdnung[k].checked != checkboxesChaos[i].checked
           ) {
-            // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
             if (checkboxesOrdnung[k].checked == false)
-              // @ts-expect-error TS(2304): Cannot find name 'checkboxesOrdnung'.
               checkboxesOrdnung[k].checked = true;
-            // @ts-expect-error TS(2304): Cannot find name 'checkboxesChaos'.
             if (checkboxesChaos[i].checked == false)
-              // @ts-expect-error TS(2304): Cannot find name 'checkboxesChaos'.
               checkboxesChaos[i].checked = true;
           }
         }
@@ -885,26 +807,17 @@ function grundSDivToggleBeachte(para = "", dasTag = false) {
     }
   }
 }
-// @ts-expect-error TS(7006): Parameter 'id_' implicitly has an 'any' type.
-function grundSDivToggle(id_) {
+function grundSDivToggle(id_: number) {
   //checkboxesChaos = document.getElementsByTagName("input");
   if (id_ == 1) {
-    // @ts-expect-error TS(2531): Object is possibly 'null'.
     document.getElementById("grundRadioChaos").checked = false;
-    // @ts-expect-error TS(2531): Object is possibly 'null'.
     document.getElementById("grundRadioOrdnung").checked = true;
-    // @ts-expect-error TS(2531): Object is possibly 'null'.
     document.getElementById("grundSDiv0").style.display = "none";
-    // @ts-expect-error TS(2531): Object is possibly 'null'.
     document.getElementById("grundSDiv1").style.display = "inline";
   } else {
-    // @ts-expect-error TS(2531): Object is possibly 'null'.
     document.getElementById("grundRadioChaos").checked = true;
-    // @ts-expect-error TS(2531): Object is possibly 'null'.
     document.getElementById("grundRadioOrdnung").checked = false;
-    // @ts-expect-error TS(2531): Object is possibly 'null'.
     document.getElementById("grundSDiv0").style.display = "inline";
-    // @ts-expect-error TS(2531): Object is possibly 'null'.
     document.getElementById("grundSDiv1").style.display = "none";
     //checkboxes = document.getElementsByClassName("ordentlicheGrundStrukChk");
     //for (var checkbox in checkboxes) {
@@ -916,42 +829,33 @@ function grundSDivToggle(id_) {
   //
 }
 
-// @ts-expect-error TS(7006): Parameter 'dasTag' implicitly has an 'any' type.
-function toggleP2(dasTag, spaltenNummern, para1u2) {
-  // @ts-expect-error TS(2304): Cannot find name 'pa1u2'.
-  pa1u2 = para1u2.split(",");
+function toggleP2(dasTag: any, spaltenNummern: Array<Map<any,any>>, para1u2: Array<Array<string | Map<any, any>>>) {
+  var pa1u2: string = para1u2.split(",");
   try {
     /*window.alert(String();
     window.alert(String(pa1u2[1]));
     window.alert(String(Array.from(mapMapMap[pa1u2[0]][pa1u2[1]])));*/
     // @ts-expect-error TS(2304): Cannot find name 'mapMapMap'.
-    spaltenNummern = Array.from(mapMapMap[pa1u2[0]][pa1u2[1]]);
+    var spaltenNummern: Array<Array<string | Map<any, any>>> = Array.from(mapMapMap[pa1u2[0]][pa1u2[1]]);
     //window.alert(String(spaltenNummern));
   } catch (error) {
-    spaltenNummern = spaltenNummern.split(",");
+    var spaltenNummern: string[] = spaltenNummern.split(",");
   }
   // @ts-expect-error TS(2304): Cannot find name 'existingParameterNamesArrayIndex... Remove this comment to see the full error message
   existingParameterNamesArrayIndex = MatrixHasCouple(
     para1u2,
     selectedSpaltenMany2
   );
-  // @ts-expect-error TS(2304): Cannot find name 'existingParameterNamesArrayIndex... Remove this comment to see the full error message
   if (existingParameterNamesArrayIndex.size > 0) {
     // @ts-expect-error TS(2304): Cannot find name 'existingParameterNamesKeys'.
-    existingParameterNamesKeys = Array.from(existingParameterNamesArrayIndex);
-    // @ts-expect-error TS(2304): Cannot find name 'i'.
-    for (i = 0; i < existingParameterNamesKeys.length; i++) {
+    var existingParameterNamesKeys: any[] = Array.from(existingParameterNamesArrayIndex);
+    for (var i: number = 0; i < existingParameterNamesKeys.length; i++) {
       for (
-        // @ts-expect-error TS(2304): Cannot find name 'k'.
-        k = 0;
-        // @ts-expect-error TS(2304): Cannot find name 'k'.
+        var k: number = 0;
         k < selectedSpaltenMany2[existingParameterNamesKeys[i]].length;
-        // @ts-expect-error TS(2304): Cannot find name 'k'.
         k++
       ) {
-        // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
         if (selectedSpaltenMany2[existingParameterNamesKeys[i]][k] == para1u2) {
-          // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
           selectedSpaltenMany2[existingParameterNamesKeys[i]].splice(k, 1);
         } else {
         }
@@ -959,17 +863,12 @@ function toggleP2(dasTag, spaltenNummern, para1u2) {
     }
     toggleForNums(spaltenNummern);
   } else {
-    // @ts-expect-error TS(2304): Cannot find name 'i'.
-    for (i = 0; i < spaltenNummern.length; i++)
-      // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
+    for (var i: number = 0; i < spaltenNummern.length; i++)
       if (typeof selectedSpaltenMany2[spaltenNummern[i]] !== "undefined")
-        // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
         selectedSpaltenMany2[spaltenNummern[i]].push(para1u2);
-      // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
       else selectedSpaltenMany2[spaltenNummern[i]] = [para1u2];
     toggleForNums(spaltenNummern);
   }
-  // @ts-expect-error TS(2304): Cannot find name 'pa1u2'.
   grundSDivToggleBeachte(pa1u2[1], dasTag);
 }
 
