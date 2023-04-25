@@ -4003,8 +4003,8 @@ class retaPrompt:
             ),
             "-language=",
             _(""",  um eine andere Sprache zu wählen und möglich sind: """),
-            str(tuple(sprachen.values()))[1:-1],
-            """,
+            str([s for s in sprachen.keys() if s.strip() != ""])[1:-1],
+            """
             -""",
             retaPromptParameter["log"],
             _(
