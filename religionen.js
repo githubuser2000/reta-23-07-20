@@ -123,7 +123,7 @@ for (i = 0; i < tdClasses1.length; i++)
     for (k = 0; k < p2keys.length; k++) {
       numbers = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
       if (p2keys[k] != null && p2keys[k] != "null") {
-        // window.alert(p1keys[i]); 'Grundstrukturen'
+        // window.alert(p1keys[i]); '✗Grundstrukturen'
         // window.alert(p2keys[i]); klar
         // window.alert(numbers); // ach einfach die und daraus!
         // window.alert(Array.from(mapMapMapTags[p1keys[i]][p2keys[k]]).join(",")); // diese Zahlen
@@ -146,7 +146,7 @@ for (i = 0; i < tdClasses1.length; i++)
         chk2s += chk2;
       }
     }
-    if (p1keys[i] === "Grundstrukturen") {
+    if (p1keys[i] === "✗Grundstrukturen") {
       grunSi = i;
       grunp2Keys = p2keys;
     }
@@ -181,11 +181,11 @@ for (i = 0; i < tdClasses1.length; i++)
       '<div id="' +
       String(p1keys[i]) +
       '" style="display:none;white-space: normal; border-left: 40px solid rgba(0, 0, 0, .0);">' +
-      (p1keys[i] === "Grundstrukturen"
+      (p1keys[i] === "✗Grundstrukturen"
         ? '<input type="radio" class="grundRadio" id="grundRadioChaos" checked onchange="grundSDivToggle(0)"><label>unübersichtlich</label></input> <input type="radio" class="grundRadio" id="grundRadioOrdnung" onchange="grundSDivToggle(1)"><label>ordentlich</label></input><div id="grundSDiv0">'
         : "") +
       String(chk2s) +
-      (p1keys[i] === "Grundstrukturen"
+      (p1keys[i] === "✗Grundstrukturen"
         ? '</div><div id="grundSDiv1" style="display:none;"></div>'
         : "") +
       "</div></div>";
@@ -344,12 +344,12 @@ for (i = 0; i < tdClasses1.length; i++)
   document.getElementById("grundSDiv1").innerHTML =
     document.getElementById("grundstrukturenDiv").innerHTML;
   //window.alert(String(checkbox_i.length));
-  // Grundstrukturen
+  // ✗Grundstrukturen
   // chksss = chks1 + Achks;
   var Achks = document.getElementsByClassName("chksA2");
   var dinge = [
-    "Grundstrukturen",
-    "Universum",
+    "✗Grundstrukturen",
+    "✗Universum",
     "Geist__(15)",
     "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15)",
   ];
@@ -585,18 +585,18 @@ function copyClassNameToOrderedGrunstruk(
   //checkboxesChaos = document.getElementsByClassName("chks");
 
   //var p1keysB = Object.keys(mapMapMap);
-  //var p2keysB = Object.keys(mapMapMap["Grundstrukturen"]);
-  //numbers = Array.from(mapMapMap["Grundstrukturen"][p2keys[0]]);
-  //grundstrukThings = Array.from(mapMapMap["Grundstrukturen"]);
+  //var p2keysB = Object.keys(mapMapMap["✗Grundstrukturen"]);
+  //numbers = Array.from(mapMapMap["✗Grundstrukturen"][p2keys[0]]);
+  //grundstrukThings = Array.from(mapMapMap["✗Grundstrukturen"]);
   //window.alert(String(numbers.join(",")));
   //window.alert(String(grundstrukThings[0].join(",")));
-  // (p1keys[i] === "Grundstrukturen"
+  // (p1keys[i] === "✗Grundstrukturen"
   // var p1keys = Object.keys(mapMapMap);
-  //var p1keyGrund = Object.keys(mapMapMap["Grundstrukturen"]);
+  //var p1keyGrund = Object.keys(mapMapMap["✗Grundstrukturen"]);
   //var p2keys = Object.keys(mapMapMap[p1);
   // var thingsB = Array.from(mapMapMapTags[p2keyGrund][p2keys[k]]).join(",");
   //var thingsB = Array.from(mapMapMapTags[p1keyGrund]);
-  TagIdGrustruk = document.getElementById("Grundstrukturen");
+  TagIdGrustruk = document.getElementById("✗Grundstrukturen");
   chaotische = [];
   ordentliche = [];
   ordentliche2 = [];
