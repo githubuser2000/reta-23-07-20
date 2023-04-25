@@ -203,8 +203,8 @@ if flagX:
 
 befehle = i18n.befehle
 # print(sys.argv[0].split(os.sep)[-1])
-if sys.argv[0].split(os.sep)[-1] == "rpl":
-    befehle += ["englisch", "english"]
+# if sys.argv[0].split(os.sep)[-1] == "rpl":
+#    befehle += ["englisch", "english"]
 # befehle = ["15" + a for a in wahl15.keys()] + [
 #    "mond",
 #    "reta",
