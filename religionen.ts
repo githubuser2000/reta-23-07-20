@@ -829,19 +829,17 @@ function grundSDivToggle(id_: number) {
   //
 }
 
-function toggleP2(dasTag: any, spaltenNummern: Array<Map<any,any>>, para1u2: Array<Array<string | Map<any, any>>>) {
-  var pa1u2: string = para1u2.split(",");
+function toggleP2(dasTag: any, spaltenNummern: Array<Map<any,any>>, para1u2: Array<Array<string | Map<any, any>>> | string) {
+  var pa1u2: string[] = para1u2.split(",");
   try {
     /*window.alert(String();
     window.alert(String(pa1u2[1]));
     window.alert(String(Array.from(mapMapMap[pa1u2[0]][pa1u2[1]])));*/
-    // @ts-expect-error TS(2304): Cannot find name 'mapMapMap'.
     var spaltenNummern: Array<Array<string | Map<any, any>>> = Array.from(mapMapMap[pa1u2[0]][pa1u2[1]]);
     //window.alert(String(spaltenNummern));
   } catch (error) {
     var spaltenNummern: string[] = spaltenNummern.split(",");
   }
-  // @ts-expect-error TS(2304): Cannot find name 'existingParameterNamesArrayIndex... Remove this comment to see the full error message
   existingParameterNamesArrayIndex = MatrixHasCouple(
     para1u2,
     selectedSpaltenMany2
@@ -872,39 +870,29 @@ function toggleP2(dasTag: any, spaltenNummern: Array<Map<any,any>>, para1u2: Arr
   grundSDivToggleBeachte(pa1u2[1], dasTag);
 }
 
-// @ts-expect-error TS(7006): Parameter 'couple' implicitly has an 'any' type.
-function MatrixHasCouple(couple, SpaltenNumberToParameters) {
-  // @ts-expect-error TS(2304): Cannot find name 'existing'.
-  existing = new Set();
+function MatrixHasCouple(couple: string[], SpaltenNumberToParameters: Map<number,string>): Array<Set<Map<number,string>>> {
+  var existing: Set<any> = new Set();
   for (var key in SpaltenNumberToParameters) {
-    // @ts-expect-error TS(2304): Cannot find name 'i'.
-    for (i = 0; i < SpaltenNumberToParameters[key].length; i++) {
-      // @ts-expect-error TS(2304): Cannot find name 'k'.
-      for (k = 0; k < SpaltenNumberToParameters[key].length; k++) {
-        // @ts-expect-error TS(2304): Cannot find name 'k'.
+    for (var i: number = 0; i < SpaltenNumberToParameters[key].length; i++) {
+      for (var k: number = 0; k < SpaltenNumberToParameters[key].length; k++) {
         if (SpaltenNumberToParameters[key][k] != couple) {
         } else {
-          // @ts-expect-error TS(2304): Cannot find name 'existing'.
           existing.add(key);
         }
       }
     }
   }
-  // @ts-expect-error TS(2304): Cannot find name 'existing'.
   return existing;
 }
 
-// @ts-expect-error TS(7006): Parameter 'colNums' implicitly has an 'any' type.
-function toggleForNums(colNums) {
-  // @ts-expect-error TS(2304): Cannot find name 'n'.
-  for (n = 0; n < colNums.length; n++) {
+function toggleForNums(colNums: string[]) {
+  for (var n: number = 0; n < colNums.length; n++) {
     /*if (typeof(selectedSpaltenMany2[colNums]) === 'undefined')
 			toggleSpalten(colNums[n]);
 		else {
 			toggleSpalten(colNums[n]);
 		}*/
-    // @ts-expect-error TS(2304): Cannot find name 'n'.
-    toggleSpalten(colNums[n]);
+    toggleSpalten(parseInt(colNums[n]));
   }
   //window.alert("colNums 0:"+colNums[0])
   refresh();
