@@ -45,19 +45,19 @@ if flagS and sprachenWahl not in sprachen.keys():
         )
     )
 
-if True:
+if len({"deutsch", "german", ""} & {sprachenWahl}) == 0:
     subFolder = sprachen[sprachenWahl]
     sprachenFileName = sprachen2[sprachenWahl]
     i18nPath = os.path.join(os.path.dirname(__file__))
     t = gettext.translation(
-        sprachenFileName, localedir=i18nPath, languages=[subFolder], fallback=True
+        sprachenFileName, localedir=i18nPath, languages=[subFolder], fallback=False
     )
     t.install()
     _ = t.gettext
-# else:
-#    localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)))
-#    translate = gettext.translation("messages", localedir, fallback=True)
-#    _ = translate.gettext
+else:
+    localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)))
+    translate = gettext.translation("messages", localedir, fallback=True)
+    _ = translate.gettext
 
 # sys.path.insert(1, "./..")
 Multiplikationen = [(_("Multiplikationen"), "")]
@@ -4001,7 +4001,7 @@ class retaPrompt:
                 """, für vi mode statt emacs mode,
             -"""
             ),
-            "-language=",
+            "language=",
             _(""",  um eine andere Sprache zu wählen und möglich sind: """),
             str([s for s in sprachen.keys() if s.strip() != ""])[1:-1],
             """
