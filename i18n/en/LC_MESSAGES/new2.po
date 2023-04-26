@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-24 22:05+0200\n"
+"POT-Creation-Date: 2023-04-26 19:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #~ msgid "Multiplikationen"
-#~ msgstr "Multiplikationen_multiplications"
+#~ msgstr "multiplications"
 
 #~ msgid "Primzahlkreuz_pro_contra"
 #~ msgstr "prime_cross_pro_contra"
@@ -512,19 +512,19 @@ msgstr ""
 #~ msgstr "gebrochengalaxie_fractionalgalaxy"
 
 #~ msgid "Wichtigstes_zum_verstehen"
-#~ msgstr "Wichtigstes_zum_verstehen_MostImportantToUnderstand"
+#~ msgstr "most_important_to_understand"
 
 #~ msgid "wichtigsteverstehen"
 #~ msgstr "mostimportanttounderstand"
 
 #~ msgid "Wichtigstes_zum_gedanklich_einordnen"
-#~ msgstr "Wichtigstes_zum_gedanklich_einordnen_mostImportantToThinkAbout"
+#~ msgstr "most_important_to_think_about"
 
 #~ msgid "wichtigsteeinordnen"
 #~ msgstr "mostImportantToClassify"
 
 #~ msgid "Religionen"
-#~ msgstr "Religionenreligions"
+#~ msgstr "religions"
 
 #~ msgid "religionen"
 #~ msgstr "religions"
@@ -533,7 +533,7 @@ msgstr ""
 #~ msgstr "religion"
 
 #~ msgid "Galaxie"
-#~ msgstr "GalaxieGalaxy"
+#~ msgstr "galaxy"
 
 #~ msgid "alteschriften"
 #~ msgstr "ancientscripts"
@@ -548,7 +548,7 @@ msgstr ""
 #~ msgstr "circles"
 
 #~ msgid "Größenordnung"
-#~ msgstr "GrößenordnungScale"
+#~ msgstr "scale"
 
 #~ msgid "groessenordnung"
 #~ msgstr "scale"
@@ -575,7 +575,7 @@ msgstr ""
 #~ msgstr "organizations"
 
 #~ msgid "Universum"
-#~ msgstr "UniversumUniverse"
+#~ msgstr "universe"
 
 #~ msgid "transzendentalien"
 #~ msgstr "transcendentals"
@@ -599,19 +599,19 @@ msgstr ""
 #~ msgstr "balls"
 
 #~ msgid "Wirtschaft"
-#~ msgstr "WirtschaftEconomy"
+#~ msgstr "economy"
 
 #~ msgid "wirtschaft"
 #~ msgstr "economy"
 
 #~ msgid "Menschliches"
-#~ msgstr "Menschlicheshuman"
+#~ msgstr "human"
 
 #~ msgid "menschliches"
 #~ msgstr "human"
 
 #~ msgid "Pro_Contra"
-#~ msgstr "Pro_Contra_pro_contra"
+#~ msgstr "pro_contra"
 
 #~ msgid "procontra"
 #~ msgstr "procontra"
@@ -620,25 +620,25 @@ msgstr ""
 #~ msgstr "procontra"
 
 #~ msgid "Licht"
-#~ msgstr "LichtLight"
+#~ msgstr "light"
 
 #~ msgid "licht"
 #~ msgstr "light"
 
 #~ msgid "Bedeutung"
-#~ msgstr "BedeutungMeaning"
+#~ msgstr "meaning"
 
 #~ msgid "bedeutung"
 #~ msgstr "meaning"
 
 #~ msgid "Symbole"
-#~ msgstr "SymboleSymbols"
+#~ msgstr "symbols"
 
 #~ msgid "symbole"
 #~ msgstr "symbols"
 
 #~ msgid "Eigenschaften_n"
-#~ msgstr "Eigenschaften_n_properties_n"
+#~ msgstr "properties_n"
 
 #~ msgid "eigenschaften"
 #~ msgstr "properties"
@@ -650,31 +650,31 @@ msgstr ""
 #~ msgstr "concepts"
 
 #~ msgid "Eigenschaften_1/n"
-#~ msgstr "Eigenschaften_1/n_properties_1/n"
+#~ msgstr "properties_1/n"
 
 #~ msgid "konzepte2"
 #~ msgstr "concepts2"
 
 #~ msgid "Inkrementieren"
-#~ msgstr "InkrementierenIncrement"
+#~ msgstr "increment"
 
 #~ msgid "inkrementieren"
 #~ msgstr "increment"
 
 #~ msgid "Operationen"
-#~ msgstr "OperationenOperations"
+#~ msgstr "operations"
 
 #~ msgid "operationen"
 #~ msgstr "operations"
 
 #~ msgid "Meta_vs_Konkret_(Universum)"
-#~ msgstr "Meta_vs_Konkret_(Universum)_meta_vs_concrete_(universe)"
+#~ msgstr "meta_vs_concrete_(universe)"
 
 #~ msgid "universummetakonkret"
 #~ msgstr "universeMetaConcrete"
 
 #~ msgid "Primzahlwirkung"
-#~ msgstr "Primzahlwirkung_primeeffect"
+#~ msgstr "prime_effect"
 
 #~ msgid "primzahlwirkung"
 #~ msgstr "primeeffect"
@@ -683,7 +683,7 @@ msgstr ""
 #~ msgstr "multiplications"
 
 #~ msgid "Planet_(10_und_oder_12)"
-#~ msgstr "Planet_(10_und_oder_12)_planet_(10_and_or_12)"
+#~ msgstr "planet_(10_and_or_12)"
 
 #~ msgid "Strukturen_1_bis_9"
 #~ msgstr "structures_1_to_9"
@@ -692,10 +692,10 @@ msgstr ""
 #~ msgstr "structureLessTen"
 
 #~ msgid "Grundstrukturen"
-#~ msgstr "GrundstrukturenBasicStructures"
+#~ msgstr "basic_structures"
 
 #~ msgid "grundstrukturen"
-#~ msgstr "grundstrukturen"
+#~ msgstr "basic_structures"
 
 #~ msgid "motivation"
 #~ msgstr "motivation"
@@ -3615,3 +3615,15 @@ msgstr ""
 
 #~ msgid ",  um eine andere Sprache zu wählen und möglich sind: "
 #~ msgstr ", to select another language and possible are: "
+
+#~ msgid "gebrochen-rational_Universum_n/m"
+#~ msgstr "fractional_universe_n/m"
+
+#~ msgid "gebrochen-rational_Galaxie n/m"
+#~ msgstr "fractional_galaxy_n/m"
+
+#~ msgid "Maßnahmen_(39)"
+#~ msgstr "measures_(39)"
+
+#~ msgid "massnahmen"
+#~ msgstr "measures"
