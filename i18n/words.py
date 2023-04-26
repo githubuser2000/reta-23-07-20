@@ -256,6 +256,7 @@ wahl15Words: dict = {
     "Karte_Filter_und_Unterscheidung_(1/12)": _(
         "Karte_Filter_und_Unterscheidung_(1/12)"
     ),
+    "Maßnahmen_39": _("Maßnahmen_(39)"),
 }
 
 wahl15: dict = {
@@ -320,6 +321,7 @@ wahl15: dict = {
     "_90": _("abhängige_Verbundenheit_(90)"),
     "_13_13": _("Absicht_13_ist_Helfen"),
     "_1pro12": _("Karte_Filter_und_Unterscheidung_(1/12)"),
+    "_39": _("Maßnahmen_(39)"),
 }
 
 # WICHTIG WICHTIG: die Befehle mit nur einem zeichen dürfen  nur ein Zeichen haben !!!!!!!
@@ -1766,6 +1768,14 @@ paraNdataMatrix: list = [
             _("ausloeser"),
         ),
         {338},
+    ),
+    (
+        ParametersMain.grundstrukturen,
+        (
+            _("Maßnahmen_(39)"),
+            _("massnahmen"),
+        ),
+        {384},
     ),
     (
         ParametersMain.grundstrukturen,

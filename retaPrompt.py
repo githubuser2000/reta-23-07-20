@@ -700,11 +700,7 @@ def PromptGrosseAusgabe(
     if i18n.befehle2["mulpri"] in Txt.listeE or i18n.befehle2["p"] in Txt.listeE:
         Txt.liste += [i18n.befehle2["multis"], i18n.befehle2["prim"]]
 
-    if (
-        "".join(("--", i18n.ausgabeParas["art"], "=", i18n.ausgabeArt["bbcode"]))
-        in Txt.listeE
-        and "reta" == Txt.listeE[0]
-    ):
+    if ifPrintCmdAgain(Txt):
         if "--" + i18n.ausgabeParas["nocolor"] in Txt.listeE:
             print("[code]" + Txt.text + "[/code]")
         else:
@@ -767,9 +763,9 @@ def PromptGrosseAusgabe(
             not in Txt.listeE
             and not ifKurzKurz
         ):
-
-            cliout(" ".join(Txt.liste), True, "")
-
+            if not ifPrintCmdAgain(Txt):
+                # weil sonst das doppelt gemacht wird
+                cliout(" ".join(Txt.liste), True, "")
         reta.Program(Txt.liste)
 
     zeiln1, zeiln2, zeiln3, zeiln4 = zeiln1234create(
@@ -859,8 +855,8 @@ def PromptGrosseAusgabe(
             and i18n.befehle2["abc"] not in Txt.listeE
             and i18n.befehle2["abcd"] not in Txt.listeE
         ):
-            warBefehl = True
             if len(c) > 0:
+                warBefehl = True
                 retaExecuteNprint(
                     ketten,
                     Txt.listeE,
@@ -946,8 +942,8 @@ def PromptGrosseAusgabe(
                 eigR += [aa[len(i18n.EIGS_N_R[0]) :]]
 
         if len(eigN) > 0:
-            warBefehl = True
             if len(c) > 0:
+                warBefehl = True
                 retaExecuteNprint(
                     ketten,
                     Txt.listeE,
@@ -1020,8 +1016,8 @@ def PromptGrosseAusgabe(
             and i18n.befehle2["abc"] not in Txt.listeE
             and i18n.befehle2["abcd"] not in Txt.listeE
         ):
-            warBefehl = True
             if len(c) > 0:
+                warBefehl = True
                 retaExecuteNprint(
                     ketten,
                     Txt.listeE,
@@ -1160,8 +1156,8 @@ def PromptGrosseAusgabe(
             )
             > 0
         ):
-            warBefehl = True
             for arg in BereichToNumbers2(zahlenReiheKeineWteiler):
+                warBefehl = True
                 print(
                     str(arg)
                     + ": "
@@ -1325,6 +1321,14 @@ def PromptGrosseAusgabe(
         else:
             print(i18nRP.out2Satz.format(" ".join(Txt.listeE)))
     return loggingSwitch
+
+
+def ifPrintCmdAgain(Txt):
+    return (
+        "".join(("--", i18n.ausgabeParas["art"], "=", i18n.ausgabeArt["bbcode"]))
+        in Txt.listeE
+        and "reta" == Txt.listeE[0]
+    )
 
 
 def zeiln1234create(

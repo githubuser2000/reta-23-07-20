@@ -7,8 +7,8 @@ from typing import Iterable, Optional, Union
 
 import lib4tables_Enum
 from center import (BereichToNumbers2, Multiplikationen, alxp, cliout,
-                    getTextWrapThings, infoLog, isZeilenAngabe, output, re,
-                    teiler, x)
+                    getTextWrapThings, i18n, infoLog, isZeilenAngabe, output,
+                    re, teiler, x)
 from lib4tables import isPrimMultiple, moonNumber
 from lib4tables_Enum import ST
 
@@ -388,12 +388,12 @@ class Prepare:
             if len(numRange) != 0:
                 mehrere = (",".join(mehrere)).split(",")
                 for eins in mehrere:
-                    ja1, ja2 = eins[:1] == "-", eins[:2] == "v-"
+                    ja1, ja2 = eins[:1] == "-", eins[:2] == i18n.befehle2["v"] + "-"
                     if ja1 or ja2:
                         if ja1:
                             eins = eins[1:]
                         if ja2:
-                            eins = "v" + eins[2:]
+                            eins = i18n.befehle2["v"] + eins[2:]
                         numRange -= BereichToNumbers2(
                             eins, False, self.hoechsteZeile[1024] + 1
                         )
@@ -419,12 +419,12 @@ class Prepare:
             if len(numRange) != 0:
                 mehrere = (",".join(mehrere)).split(",")
                 for eins in mehrere:
-                    ja1, ja2 = eins[:1] == "-", eins[:2] == "v-"
+                    ja1, ja2 = eins[:1] == "-", eins[:2] == i18n.befehle2["v"] + "-"
                     if ja1 or ja2:
                         if ja1:
                             eins = eins[1:]
                         if ja2:
-                            eins = "v" + eins[2:]
+                            eins = i18n.befehle2["v"] + eins[2:]
                         numRange -= BereichToNumbers2(
                             eins, True, self.hoechsteZeile[1024] + 1
                         )
@@ -493,12 +493,12 @@ class Prepare:
                 # print(mehrere)
                 minusBereiche = set()
                 for eins in mehrere:
-                    ja1, ja2 = eins[:1] == "-", eins[:2] == "v-"
+                    ja1, ja2 = eins[:1] == "-", eins[:2] == i18n.befehle2["v"] + "-"
                     if ja1 or ja2:
                         if ja1:
                             eins = eins[1:]
                         if ja2:
-                            eins = "v" + eins[2:]
+                            eins = i18n.befehle2["v"] + eins[2:]
                         minusBereiche |= BereichToNumbers2(
                             eins, False, self.hoechsteZeile[1024] + 1
                         )
