@@ -879,6 +879,7 @@ def PromptGrosseAusgabe(
                 and textHatZiffer(bruch_GanzZahlReziproke)
                 and zeiln3 != ""
             ):
+                warBefehl = True
                 retaExecuteNprint(
                     ketten,
                     Txt.listeE,
@@ -894,6 +895,7 @@ def PromptGrosseAusgabe(
                 )
 
             if len(rangesBruecheDict) > 0:
+                warBefehl = True
                 for nenner, zaehler in rangesBruecheDict.items():
                     retaExecuteNprint(
                         ketten,
@@ -914,6 +916,7 @@ def PromptGrosseAusgabe(
                         "2",
                     )
             elif len(rangesBruecheDictReverse) > 0:
+                warBefehl = True
                 for nenner, zaehler in rangesBruecheDictReverse.items():
                     retaExecuteNprint(
                         ketten,
@@ -1041,6 +1044,7 @@ def PromptGrosseAusgabe(
                 and textHatZiffer(bruch_GanzZahlReziproke)
                 and zeiln3 != ""
             ):
+                warBefehl = True
                 retaExecuteNprint(
                     ketten,
                     Txt.listeE,
@@ -1061,6 +1065,7 @@ def PromptGrosseAusgabe(
 
             nennerZaehlerGleich = []
             if len(rangesBruecheDict) > 0:
+                warBefehl = True
                 for nenner, zaehler in rangesBruecheDict.items():
                     hierBereich = ",".join(zaehler)
                     retaExecuteNprint(
@@ -1086,6 +1091,7 @@ def PromptGrosseAusgabe(
                     )
 
             elif len(rangesBruecheDictReverse) > 0:
+                warBefehl = True
                 for nenner, zaehler in rangesBruecheDictReverse.items():
                     hierBereich = ",".join(zaehler)
                     retaExecuteNprint(
@@ -1110,6 +1116,7 @@ def PromptGrosseAusgabe(
                         hierBereich, nenner, nennerZaehlerGleich
                     )
             if len(nennerZaehlerGleich) != 0:
+                warBefehl = True
                 nennerZaehlerGleich = set(nennerZaehlerGleich)
                 nennerZaehlerGleich = ",".join(nennerZaehlerGleich)
                 retaExecuteNprint(
