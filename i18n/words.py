@@ -846,6 +846,11 @@ paraNdataMatrix: list = [
     ),
     (
         ParametersMain.universum,
+        (_("Strategie_Taktik"),_("strategie"), _("taktik")),
+        {385},
+    ),
+    (
+        ParametersMain.universum,
         (_("Universelles_Verhältnis_gleicher_Zahlen"), verhaeltnisgleicherzahlWort),
         {383},
     ),
