@@ -767,7 +767,7 @@ function grundSDivToggleBeachte(para = "", dasTag = false) {
     }
     for (var i = 0; i < checkboxesChaos.length; i++) {
       for (var k = 0; k < checkboxesOrdnung.length; k++) {
-        if (typeof checkboxesChaos[i].value !== "undefined" && k != k2) {
+        if (typeof checkboxesChaos[i].value !== "undefined" && k != i) {
           //window.alert(String(checkboxesChaos[i].value));
           if (
             checkboxesOrdnung[k].value === checkboxesChaos[i].value &&
