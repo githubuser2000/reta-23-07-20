@@ -8,13 +8,15 @@ var tdStyleFontSize: string = "100%";
 var tdStyleFontSizeKl:string = "80%";
 var tdStyleColorKl:string = "grey";
 var Enume : Set<number> = new Set([0, 1, 3, 4, 5, 6]);
-var mapMapMapTags: Map<number, string> = new Map<number, string>(),
+var mapMapMapTags: Map<number, string[]> = new Map<number, string[]>(),
 var chks1: HTMLCollectionOf<HTMLInputElement>;
 var chks2: string[];
 var spaltenTags: Array<Array<any> > = [],
 var spalten4spaltenTags: Map<number,Array<HTMLTableCellElement>> = new Map<number,Array<HTMLTableCellElement>>(),
 var Achks: HTMLCollectionOf<HTMLInputElement | Element>;
 let tdClasses: HTMLCollectionOf<HTMLTableCellElement> = document.getElementsByClassName("z_0");
+var mapMapMap: Map<string, string | Map<string , string | Map<any, any>>> = new Map<string, string | Map<string , string | Map<any, any>>>();
+
 
 function returnChangeButtons(number1: number | string): string {
   var number = number1.toString()
@@ -59,17 +61,16 @@ for (i = 0; i < tdClasses1.length; i++)
 		tdClasses.push(tdClasses1[i]);*/
   //let p1map = new Map();
   //let p2map = new Map();
-  let mapMapMap: Map<string, string | Map<string , string | Map<any, any>>> = new Map<string, string | Map<string , string | Map<any, any>>>();
   // str: string = "",
   //let p1Bmap = new Map();
-  str3: string = "",
-  trStyles: Array<string> = [];
+  var str3: string = "",
+  var trStyles: Array<string> = [];
 
   const tAble:  HTMLTableElement = document.getElementById("bigtable") as HTMLTableElement;
   const TRs: HTMLCollectionOf<HTMLTableRowElement> = tAble.rows;
   for (var i: number = 0; i < TRs.length; i++) {
     trStyles.push(TRs[i].style.cssText);
-    let TDs: HTMLCollectionOf<HTMLTableCellElement> = TRs[i].cells;
+    var TDs: HTMLCollectionOf<HTMLTableCellElement> = TRs[i].cells;
     for (var k: number = 0; k < TDs.length; k++) {
       if (typeof spalten4spaltenTags[k] === "undefined")
         spalten4spaltenTags[k] = [];
@@ -142,10 +143,8 @@ for (i = 0; i < tdClasses1.length; i++)
     '<span style="">';
   for (var i: number = 0; i < p1keys.length; i++) {
     var chk2s: string = "";
-    // @ts-expect-error TS(2304): Cannot find name 'mapMapMap'.
     var p2keys: Array<string | Map<any, any>> = Object.keys(mapMapMap[p1keys[i]]);
     for (var k: number = 0; k < p2keys.length; k++) {
-      // @ts-expect-error TS(2304): Cannot find name 'numbers'.
       var numbers: Array<Map<any,any> = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
       if (p2keys[k] != null && p2keys[k] != "null") {
         // window.alert(p1keys[i]); '✗Grundstrukturen'
@@ -156,10 +155,8 @@ for (i = 0; i < tdClasses1.length; i++)
           '<label style="' +
           labelstyle +
           '" class="chks c_' +
-          // @ts-expect-error TS(2304): Cannot find name 'mapMapMapTags'.
           Array.from(mapMapMapTags[p1keys[i]][p2keys[k]]).join(",") +
           '" ><input type="checkbox" class="chks c_' +
-          // @ts-expect-error TS(2304): Cannot find name 'mapMapMapTags'.
           Array.from(mapMapMapTags[p1keys[i]][p2keys[k]]).join(",") +
           '" value="' +
           p2keys[k] +
@@ -175,21 +172,16 @@ for (i = 0; i < tdClasses1.length; i++)
     }
     if (p1keys[i] === "✗Grundstrukturen") {
       var grunSi: number = i;
-      // @ts-expect-error TS(2304): Cannot find name 'grunp2Keys'.
       grunp2Keys: Array<string | Map<any, any>> = p2keys;
     }
-    // @ts-expect-error TS(2304): Cannot find name 'mapMapMap'.
     if (mapMapMap[p1keys[i]][null] !== undefined) {
-      let numbers: Array<string, Map<any, any>>  = Array.from(mapMapMap[p1keys[i]][null]);
+      let numbers: Array<string, Map<any, any> | null>  = Array.from(mapMapMap[p1keys[i]][null]);
       let insertnull: string = "toggleP2(this,'" + numbers + "','" + [p1keys[i], null] + "');";
     } else {
       let insertnull: string = "";
     }
-    // @ts-expect-error TS(2304): Cannot find name 'mapsTagsif'.
-    var mapsTagsif: string | Map<any,any> = mapMapMapTags[p1keys[i]][null];
-    // @ts-expect-error TS(2304): Cannot find name 'mapsTagsif'.
+    var mapsTagsif: string[] | Set<string> = mapMapMapTags[p1keys[i]][null];
     if (typeof mapsTagsif == "undefined") mapsTagsif = [];
-    // @ts-expect-error TS(2304): Cannot find name 'mapsTagsif'.
     else mapsTagsif = Array.from(mapMapMapTags[p1keys[i]][null]);
 
     var checkbox: string =
@@ -231,7 +223,6 @@ for (i = 0; i < tdClasses1.length; i++)
   chks2 = [];
   for (var i = 0; i < chks1.length; i++) {
     chks2.push(
-      // @ts-expect-error TS(2304): Cannot find name 'chks1'.
       String(chks1[i].className.match(/c_([\d,]+)/g))
         .substr(2)
         .split(",")
@@ -320,6 +311,7 @@ for (i = 0; i < tdClasses1.length; i++)
     tds[0].style.cssText += "display:none;";
     for (var i: number = 1; i < tds.length; i++)
       tds[i].style.cssText = [
+        tds[i].style.cssText,
         "display:none;",
         trs[k].style.cssText,
       ].join("");
@@ -351,8 +343,7 @@ for (i = 0; i < tdClasses1.length; i++)
 
   //var sheets: StyleSheetList = document.styleSheets;
   //var sheet, rules, rule;
-  // @ts-expect-error TS(2403): Subsequent variable declarations must have the sam... Remove this comment to see the full error message
-  var i, j, k, l;
+  var i, j, k, l: number;
 
   document.body.style.display = "initial";
   /*
@@ -409,7 +400,7 @@ for (i = 0; i < tdClasses1.length; i++)
   );*/
 };
 
-function makeMapsOfHeadLCheckB(p1: string, p2: string, num: string | number, tags: any): void {
+function makeMapsOfHeadLCheckB(p1: string, p2: string | null, num: string | number, tags: any): void {
   if (typeof mapMapMap[p1][p2] === "undefined") mapMapMap[p1][p2] = new Set();
   mapMapMap[p1][p2].add(num);
   if (typeof mapMapMapTags[p1] === "undefined") mapMapMapTags[p1] = {};
@@ -422,7 +413,6 @@ function makeMapsOfHeadLCheckB(p1: string, p2: string, num: string | number, tag
 // @ts-expect-error TS(2339): Property 'union' does not exist on type 'SetConstr... Remove this comment to see the full error message
 Set.union = function (s1: any, s2: any): set<any> | null {
   if (typeof s1 == "undefined" || typeof s2 == "undefined") return null;
-  // @ts-expect-error TS(2358): The left-hand side of an 'instanceof' expression m... Remove this comment to see the full error message
   if (!s1 instanceof Set || !s2 instanceof Set) {
     //console.log("The given objects are not of type Set");
     return null;
@@ -430,9 +420,7 @@ Set.union = function (s1: any, s2: any): set<any> | null {
   //if ( s1 == null || s2 == null)
   //   return null;
   let newSet: Set<any> = new Set();
-  // @ts-expect-error TS(7006): Parameter 'elem' implicitly has an 'any' type.
   s1.forEach((elem) => newSet.add(elem));
-  // @ts-expect-error TS(7006): Parameter 'elem' implicitly has an 'any' type.
   s2.forEach((elem) => newSet.add(elem));
   return newSet;
 };
@@ -489,7 +477,7 @@ function disEnAbleChks(Enums1: Array<number> | Set<number> | HTMLCollectionOf<an
       (!enumi.has(3) && !enumi.has(4) && !enumi.has(5)) ||
       enumi.size == 0
     ) {
-      var spaltenTags2: any;
+      var spaltenTags2: HTMLTableCellElement;
       for (var k: number = 0; k < spalten4spaltenTags[i].length; k++) {
         spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "80%";
         spaltenTags2 = spalten4spaltenTags[i][k].style.opacity = "0.4";
@@ -570,13 +558,14 @@ const primZahlen: number[] = [
 ];
 
 function makeSpacesOutOf_(text: string): string {
-  if (text.length == 10) if (text == "Wichtigste") return "<b>Wichtigste</b>";
+  //if (text.length == 10) if (text == "Wichtigste") return "<b>Wichtigste</b>";
   if (text.length == 25)
     if (text == "Wichtigstes_zum_verstehen")
       return "<b>Wichtigstes zum verstehen</b>";
   if (text.length == 36)
     if (text == "Wichtigstes_zum_gedanklich_einordnen")
       return "<b>Wichtigstes zum gedanklich einordnen</b>";
+  /*
   if (text.length == 8) if (text == "zaehlung") return "Zählung";
   if (text.length == 12) if (text == "nummerierung") return "Nummerierung";
   if (text.length == 11)
@@ -585,6 +574,7 @@ function makeSpacesOutOf_(text: string): string {
     if (text == "gebrochenuniversum") return "gebrochen-rational Universum n/m";
   if (text.length == 16)
     if (text == "gebrochengalaxie") return "gebrochen-rational Galaxie n/m";
+  */
   var forNewString = [];
   for (var i = 0; i < text.length; i++)
     if (text[i] == "_") forNewString.push(" ");
@@ -679,15 +669,14 @@ function copyClassNameToOrderedGrunstruk(
       for (var k: number = 0; k < ordentliche.length; k++) {
         if (
           typeof ordentliche[k].value !== "undefined" &&
+          chaotisch != null &&
           typeof chaotisch[m].value !== "undefined" &&
           chaotisch[m].className.substring(0, 4) === "chks" &&
           ordentliche[k].value === chaotisch[m].value
         ) {
           ordentliche[k].className =
-            // @ts-expect-error TS(2304): Cannot find name 'chaotisch'.
             "chks " + chaotisch[m].className.substring(4);
           ordentliche2[k].className =
-            // @ts-expect-error TS(2304): Cannot find name 'chaotisch'.
             "chks " + chaotisch[m].className.substring(4);
           //window.alert(String(ordentliche[k].className));
         }
@@ -702,7 +691,7 @@ function grundSDivToggleBeachte(para: string = "", dasTag: boolean = false) {
   var checkboxesOrdnung: HTMLCollectionOf<any> = document.getElementsByClassName("ordGru");
   var checkboxesChaos: HTMLCollectionOf<any> = document.getElementsByClassName("chks");
   if (para !== "") {
-    if (!dasTag.checked) {
+    if (!dasTag) {
       for (var i: number = 0; i < checkboxesOrdnung.length; i++) {
         for (var k: number = 0; k < checkboxesOrdnung.length; k++) {
           if (typeof checkboxesChaos[i].value !== "undefined" && k != i) {
@@ -736,8 +725,7 @@ function grundSDivToggleBeachte(para: string = "", dasTag: boolean = false) {
         }
       }
     } else {
-      // @ts-expect-error TS(2339): Property 'checked' does not exist on type 'boolean... Remove this comment to see the full error message
-      if (dasTag.checked) {
+      if (dasTag) {
         for (var i: number = 0; i < checkboxesOrdnung.length; i++) {
           for (var k: number = 0; k < checkboxesOrdnung.length; k++) {
             if (typeof checkboxesChaos[i].value !== "undefined" && k != i) {
@@ -827,7 +815,7 @@ function grundSDivToggle(id_: number) {
   //
 }
 
-function toggleP2(dasTag: any, spaltenNummern: Array<Map<any,any>>, para1u2: Array<Array<string | Map<any, any>>> | string) {
+function toggleP2(dasTag: HTMLInputElement, spaltenNummern: Array<Map<any,any>>, para1u2: string) {
   var pa1u2: string[] = para1u2.split(",");
   try {
     /*window.alert(String();
@@ -838,7 +826,7 @@ function toggleP2(dasTag: any, spaltenNummern: Array<Map<any,any>>, para1u2: Arr
   } catch (error) {
     var spaltenNummern: string[] = spaltenNummern.split(",");
   }
-  existingParameterNamesArrayIndex = MatrixHasCouple(
+  var existingParameterNamesArrayIndex: Set<number> = MatrixHasCouple(
     para1u2,
     selectedSpaltenMany2
   );
@@ -864,10 +852,10 @@ function toggleP2(dasTag: any, spaltenNummern: Array<Map<any,any>>, para1u2: Arr
       else selectedSpaltenMany2[spaltenNummern[i]] = [para1u2];
     toggleForNums(spaltenNummern);
   }
-  grundSDivToggleBeachte(pa1u2[1], dasTag);
+  grundSDivToggleBeachte(pa1u2[1], dasTag.checked);
 }
 
-function MatrixHasCouple(couple: string[], SpaltenNumberToParameters: Map<number,string>): Array<Set<Map<number,string>>> {
+function MatrixHasCouple(couple: string, SpaltenNumberToParameters: Map<number,string>): Set<number> {
   var existing: Set<any> = new Set();
   for (var key in SpaltenNumberToParameters) {
     for (var i: number = 0; i < SpaltenNumberToParameters[key].length; i++) {
