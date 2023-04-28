@@ -1,4 +1,4 @@
-var col = document.getElementsByClassName("RowNumber 1");
+var col;
 var selectedSpaltenMany1: Map<number, HTMLElement> = new Map<number, HTMLElement>();
 var selectedSpaltenMany2: Map<number,string> = new Map<number,string>();
 var labelstyle: string = "white-space: nowrap;font-size: 100%;";
@@ -14,6 +14,7 @@ var chks2: string[];
 var spaltenTags: Array<Array<any> > = [],
 var spalten4spaltenTags: Map<number,Array<HTMLTableCellElement>> = new Map<number,Array<HTMLTableCellElement>>(),
 var Achks: HTMLCollectionOf<HTMLInputElement | Element>;
+let tdClasses: HTMLCollectionOf<HTMLTableCellElement> = document.getElementsByClassName("z_0");
 
 function returnChangeButtons(number1: number | string): string {
   var number = number1.toString()
@@ -52,7 +53,6 @@ window.onload = function () {
   let radio_tags: string =
     '<fieldset><label style="white-space: nowrap;"><input type="radio" id="galaxieuniversum" name="galaxieuniversum" onchange="disEnAbleChks([3,4,5]);" checked="true">alles</label> <label style="white-space: nowrap;"><input type="radio" id="planet" name="galaxieuniversum" onchange="disEnAbleChks([5]);">alles andere als 13,15, ggf. jeweils mit 14</label> <label style="white-space: nowrap;"><input type="radio" id="galaxie" name="galaxieuniversum" onchange="disEnAbleChks([3]);">Himmelskörper um schwarzes Loch (13), z.B. eine Galaxie (14)</label> <label style="white-space: nowrap;"><input type="radio" id="universum" name="galaxieuniversum" onchange="disEnAbleChks([4]);">Universum (15)</label></fieldset><fieldset><label style="white-space: nowrap;"><input type="radio" id="sternpolygongleichfoermigespolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([0,1,6]);" checked="true">Sternpolygon und gleichförmiges Polygon und gebrochen-rational</label> <label style="white-space: nowrap;"><input type="radio" id="sternpolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([0]);">Sternpolygon (n)</label> <label style="white-space: nowrap;"><input type="radio" id="gleichfoermigespolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([1]);">gleichförmiges Polygon (1/n)</label> <label style="white-space: nowrap;"><input type="radio" id="gebrrat" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([6]);">gebrochen-rational (m/n)</label></fieldset>';
   div.innerHTML = chk_spalten;
-  let tdClasses: HTMLCollectionOf<Element> = document.getElementsByClassName("z_0");
   /*tdClasses = []
 for (i = 0; i < tdClasses1.length; i++)
 	if (tdClasses1[i].className.includes("z_0"))
@@ -548,15 +548,13 @@ function disEnAbleChks(Enums1: Array<number> | Set<number> | HTMLCollectionOf<an
     }
   }
 }
-// @ts-expect-error TS(2304): Cannot find name 'alleMonde'.
-alleMonde = [
+const alleMonde: number[] = [
   4, 8, 9, 16, 25, 27, 32, 36, 49, 64, 81, 100, 121, 125, 128, 144, 169, 196,
   216, 225, 243, 256, 289, 324, 343, 361, 400, 441, 484, 512, 529, 576, 625,
   676, 729, 784, 841, 900, 961, 1000, 1024,
 ];
 
-// @ts-expect-error TS(2304): Cannot find name 'primZahlen'.
-primZahlen = [
+const primZahlen: number[] = [
   2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
   73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151,
   157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233,
@@ -1103,19 +1101,18 @@ function sortedKeysOfHeadingNumbersByVisibility() {
 }
 
 function setAllListsInHeadings() {
-  var options;
-  optionsS = [];
-  var keys = Object.keys(visibleHeadingsSelectUnsorted);
-  var len = keys.length;
-  for (var k = 0; k < len; k++) {
+  var options: string[];
+  var optionsS: string[][]  = [];
+  var keys: Array<number | string> = Object.keys(visibleHeadingsSelectUnsorted);
+  var len: number = keys.length;
+  for (var k: number = 0; k < len; k++) {
     options = ["<option value='-,null'>-</option>"];
-    for (var i = 0; i < len; i++)
+    for (var i: number = 0; i < len; i++)
       if (i != k)
         options.push(
           "<option value='" +
             i +
             "," +
-            // @ts-expect-error TS(7005): Variable 'sichtbareSpaltenNummern' implicitly has ... Remove this comment to see the full error message
             sichtbareSpaltenNummern[i] +
             "'>" +
             (i + 1) +
@@ -1126,16 +1123,13 @@ function setAllListsInHeadings() {
           "<option selected value='" +
             i +
             "," +
-            // @ts-expect-error TS(7005): Variable 'sichtbareSpaltenNummern' implicitly has ... Remove this comment to see the full error message
             sichtbareSpaltenNummern[i] +
             "'>" +
             (i + 1) +
             "</option>"
         );
-        // @ts-expect-error TS(2304): Cannot find name 'selection'.
-        selection = i;
+        var selection: number = i;
       }
-    // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
     selectionsBefore[k] = k;
     optionsS.push(options);
   }
@@ -1147,35 +1141,24 @@ function setAllListsInHeadings() {
         len
     );
   }
-  for (var i = 0; i < sichtbareSpaltenNummern.length; i++) {
-    // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
+  for (var i: number = 0; i < sichtbareSpaltenNummern.length; i++) {
     visibleHeadingsSelectUnsorted[sichtbareSpaltenNummern[i]].innerHTML =
       optionsS[i].join("");
   }
 }
 
 function toggleChkSpalten() {
-  // @ts-expect-error TS(2304): Cannot find name 'chk_spalten'.
   chk_spalten = document.getElementById("chk_spalten");
-  // @ts-expect-error TS(2304): Cannot find name 'inputZeilen'.
   inputZeilen = document.getElementById("inputZeilen");
-  // @ts-expect-error TS(2304): Cannot find name 'spaltenWahl'.
   spaltenWahl = document.getElementById("spaltenWahl");
-  // @ts-expect-error TS(2304): Cannot find name 'zeilenWahl'.
   zeilenWahl = document.getElementById("zeilenWahl");
 
-  // @ts-expect-error TS(2304): Cannot find name 'inputZeilen'.
   if (inputZeilen.style.display == "none" && zeilenWahl.checked)
-    // @ts-expect-error TS(2304): Cannot find name 'inputZeilen'.
     inputZeilen.style.display = "initial";
-  // @ts-expect-error TS(2304): Cannot find name 'zeilenWahl'.
   else if (!zeilenWahl.checked) inputZeilen.style.display = "none";
 
-  // @ts-expect-error TS(2304): Cannot find name 'chk_spalten'.
   if (chk_spalten.style.display == "none" && spaltenWahl.checked)
-    // @ts-expect-error TS(2304): Cannot find name 'chk_spalten'.
     chk_spalten.style.display = "initial";
-  // @ts-expect-error TS(2304): Cannot find name 'spaltenWahl'.
   else if (!spaltenWahl.checked) chk_spalten.style.display = "none";
 }
 
@@ -1201,10 +1184,9 @@ function potenzenAngabenToContainer() {
     !/--|\+\+|\+\-|\-\+|,\+|\+,|-,/.test(g)
   );
 }*/
-// @ts-expect-error TS(7006): Parameter 'g' implicitly has an 'any' type.
-function isZeilenAngabe_betweenKommas(g) {
-  const pattern = /^(v?-?\d+)(-\d+)?((\+)(\d+))*$/;
-  return g.match(pattern);
+function isZeilenAngabe_betweenKommas(g: string): boolean {
+  const pattern: RegExp = /^(v?-?\d+)(-\d+)?((\+)(\d+))*$/;
+  return !!g.match(pattern);
   /*const x = (g.match(/[0-9]+-[0-9]+/g) || []).length;
   const y = (g.match(/[0-9]+-[0-9]+-[0-9]+/g) || []).length;
   return (
@@ -1214,13 +1196,13 @@ function isZeilenAngabe_betweenKommas(g) {
     !/--|\+\+|\+\-|\-\+|,\+|\+,|-,/.test(g)
   );*/
 }
-// @ts-expect-error TS(7006): Parameter 'text' implicitly has an 'any' type.
-function isZeilenAngabe(text) {
+function isZeilenAngabe(text: string): boolean {
+  var text: string;
   if (text.length > 0 && text[0] === "v") {
     text = text.substring(1);
   }
-  var a = [];
-  var splittedText = text.split(",");
+  var a: boolean[] = [];
+  var splittedText: string[] = text.split(",");
   for (var i = 0; i < splittedText.length; i++) {
     a.push(isZeilenAngabe_betweenKommas(splittedText[i]));
   }
@@ -1257,13 +1239,11 @@ function isZeilenAngabe(g) {
   );
 }
 */
-// @ts-expect-error TS(7006): Parameter 'MehrereBereiche' implicitly has an 'any... Remove this comment to see the full error message
-function BereichToNumbers2(MehrereBereiche, vielfache = false, maxZahl = 1028) {
-  MehrereBereiche = MehrereBereiche.split(",")
-    // @ts-expect-error TS(7006): Parameter 's' implicitly has an 'any' type.
+function BereichToNumbers2(MehrereBereiche: string, vielfache: boolean = false, maxZahl: number = 1028): Set<number> {
+  var MehrereBereiche: string = MehrereBereiche.split(",")
     .filter((s) => s.trim())
     .join(",");
-  const Bereiche = MehrereBereiche.split(",");
+  const Bereiche: string[] = MehrereBereiche.split(",");
   if (!isZeilenAngabe(MehrereBereiche)) {
     return new Set();
   }
@@ -1272,67 +1252,56 @@ function BereichToNumbers2(MehrereBereiche, vielfache = false, maxZahl = 1028) {
     maxZahl = Infinity;
   }
 
-  const dazu = new Set();
-  const hinfort = new Set();
-  let menge;
+  var dazu: Set<number> = new Set();
+  var hinfort: Set<number> = new Set();
+  var menge: Set<number> | null = null;
+  var EinBereich: string;
+  var EinBereich2: string;
+  var vielfache2: boolean = true;
+  var vielfache: boolean;
 
   for (const EinBereich of Bereiche) {
     if (EinBereich.length > 0 && EinBereich[0] === "v") {
-      // @ts-expect-error TS(2304): Cannot find name 'EinBereich2'.
       EinBereich2 = EinBereich.slice(1);
-      // @ts-expect-error TS(2304): Cannot find name 'vielfache2'.
       vielfache2 = true;
     } else {
-      // @ts-expect-error TS(2304): Cannot find name 'EinBereich2'.
       EinBereich2 = EinBereich;
-      // @ts-expect-error TS(2304): Cannot find name 'vielfache2'.
       vielfache2 = false;
     }
     //window.alert(EinBereich);
     BereichToNumbers2_EinBereich(
-      // @ts-expect-error TS(2304): Cannot find name 'EinBereich2'.
       EinBereich2,
       dazu,
       hinfort,
-      // @ts-expect-error TS(2304): Cannot find name 'vielfache2'.
       (vielfache || vielfache2) && maxZahl == Infinity ? 1028 : maxZahl,
-      // @ts-expect-error TS(2304): Cannot find name 'vielfache2'.
-      vielfache || vielfache2
+      vielfache || vielfache2,
+      menge
     );
   }
 
-  return new Set([...dazu].filter((x) => !hinfort.has(x)));
+  return new Set<number>([...dazu].filter((x) => !hinfort.has(x)));
 }
 
 function BereichToNumbers2_EinBereich(
-  // @ts-expect-error TS(7006): Parameter 'EinBereich' implicitly has an 'any' typ... Remove this comment to see the full error message
-  EinBereich,
-  // @ts-expect-error TS(7006): Parameter 'dazu' implicitly has an 'any' type.
-  dazu,
-  // @ts-expect-error TS(7006): Parameter 'hinfort' implicitly has an 'any' type.
-  hinfort,
-  // @ts-expect-error TS(7006): Parameter 'maxZahl' implicitly has an 'any' type.
-  maxZahl,
-  // @ts-expect-error TS(7006): Parameter 'vielfache' implicitly has an 'any' type... Remove this comment to see the full error message
-  vielfache
+  EinBereich: string,
+  dazu: Set<number>,
+  hinfort: Set<number>,
+  maxZahl: number,
+  vielfache: boolean,
+  menge: Set<number> | null
 ) {
   if (EinBereich.length > 1 && EinBereich[0] === "-") {
     EinBereich = EinBereich.substring(1);
-    // @ts-expect-error TS(2304): Cannot find name 'menge'.
     menge = hinfort;
   } else if (EinBereich.length > 0 && EinBereich[0] !== "-") {
-    // @ts-expect-error TS(2304): Cannot find name 'menge'.
     menge = dazu;
   } else {
-    // @ts-expect-error TS(2304): Cannot find name 'menge'.
     menge = null;
   }
 
-  // @ts-expect-error TS(7034): Variable 'around' implicitly has type 'any[]' in s... Remove this comment to see the full error message
-  const around = [];
-  // @ts-expect-error TS(2304): Cannot find name 'menge'.
+  const around: number[] = [];
   if (menge !== null) {
-    const BereichTuple2 = EinBereich.split("+");
+    const BereichTuple2: string[] = EinBereich.split("+");
     if (EinBereich.match(/^\d+$/)) {
       EinBereich = EinBereich + "-" + EinBereich;
     } else if (BereichTuple2.length > 0 && BereichTuple2[0].match(/^\d+$/)) {
@@ -1341,13 +1310,11 @@ function BereichToNumbers2_EinBereich(
         EinBereich += "+" + BereichTuple2.slice(1).join("+");
       }
     }
-    const BereichCouple = EinBereich.split("-");
+    const BereichCouple: string[] = EinBereich.split("-");
     BereichToNumbers2_EinBereich_Menge(
       BereichCouple,
-      // @ts-expect-error TS(7005): Variable 'around' implicitly has an 'any[]' type.
       around,
       maxZahl,
-      // @ts-expect-error TS(2304): Cannot find name 'menge'.
       menge,
       vielfache
     );
@@ -1355,17 +1322,13 @@ function BereichToNumbers2_EinBereich(
 }
 
 function BereichToNumbers2_EinBereich_Menge(
-  // @ts-expect-error TS(7006): Parameter 'BereichCouple' implicitly has an 'any' ... Remove this comment to see the full error message
-  BereichCouple,
-  // @ts-expect-error TS(7006): Parameter 'around' implicitly has an 'any' type.
-  around,
-  // @ts-expect-error TS(7006): Parameter 'maxZahl' implicitly has an 'any' type.
-  maxZahl,
-  // @ts-expect-error TS(7006): Parameter 'menge' implicitly has an 'any' type.
-  menge,
-  // @ts-expect-error TS(7006): Parameter 'vielfache' implicitly has an 'any' type... Remove this comment to see the full error message
-  vielfache
+  BereichCouple: string[],
+  around: number[],
+  maxZahl: number,
+  menge: Set<number>,
+  vielfache: boolean
 ) {
+  var richtig: boolean;
   if (
     BereichCouple.length == 2 &&
     /^\d+$/.test(BereichCouple[0]) &&
@@ -1386,7 +1349,7 @@ function BereichToNumbers2_EinBereich_Menge(
       }
       if (richtig && numList.length > 0) {
         around = numList.slice(1);
-        BereichCouple[1] = numList[0];
+        BereichCouple[1] = numList[0].toString();
       }
     }
     if (vielfache) {
@@ -1408,24 +1371,16 @@ function BereichToNumbers2_EinBereich_Menge(
 }
 
 function BereichToNumbers2_EinBereich_Menge_vielfache(
-  // @ts-expect-error TS(7006): Parameter 'BereichCouple' implicitly has an 'any' ... Remove this comment to see the full error message
-  BereichCouple,
-  // @ts-expect-error TS(7006): Parameter 'around' implicitly has an 'any' type.
-  around,
-  // @ts-expect-error TS(7006): Parameter 'maxZahl' implicitly has an 'any' type.
-  maxZahl,
-  // @ts-expect-error TS(7006): Parameter 'menge' implicitly has an 'any' type.
-  menge
+  BereichCouple: string[],
+  around: number[],
+  maxZahl: number,
+  menge: Set<number>
 ) {
-  let i = 0;
-  // @ts-expect-error TS(2304): Cannot find name 'aroundSet'.
-  aroundSet = new Set(around);
-  // @ts-expect-error TS(2304): Cannot find name 'aroundSet'.
+  let i: number = 0;
+  var aroundSet: Set<number> = new Set(around);
   aroundSet.delete(0);
   //window.alert(Array.from(around).join(","));
-  // @ts-expect-error TS(2304): Cannot find name 'aroundSet'.
   if (around.length === 0 || aroundSet.size == 0) {
-    // @ts-expect-error TS(7006): Parameter 'a' implicitly has an 'any' type.
     while (around.every((a) => parseInt(BereichCouple[0]) * i < maxZahl - a)) {
       i += 1;
       for (
@@ -1442,7 +1397,6 @@ function BereichToNumbers2_EinBereich_Menge_vielfache(
       }
     }
   } else {
-    // @ts-expect-error TS(7006): Parameter 'a' implicitly has an 'any' type.
     while (around.every((a) => parseInt(BereichCouple[0]) * i < maxZahl - a)) {
       i += 1;
       for (
@@ -1465,14 +1419,10 @@ function BereichToNumbers2_EinBereich_Menge_vielfache(
   }
 }
 function BereichToNumbers2_EinBereich_Menge_nichtVielfache(
-  // @ts-expect-error TS(7006): Parameter 'BereichCouple' implicitly has an 'any' ... Remove this comment to see the full error message
-  BereichCouple,
-  // @ts-expect-error TS(7006): Parameter 'around' implicitly has an 'any' type.
-  around,
-  // @ts-expect-error TS(7006): Parameter 'maxZahl' implicitly has an 'any' type.
-  maxZahl,
-  // @ts-expect-error TS(7006): Parameter 'menge' implicitly has an 'any' type.
-  menge
+  BereichCouple: string[],
+  around: number[],
+  maxZahl: number,
+  menge: Set<number>
 ) {
   for (
     let number = parseInt(BereichCouple[0]);
@@ -1491,39 +1441,32 @@ function BereichToNumbers2_EinBereich_Menge_nichtVielfache(
     }
   }
 }
-function zeilenAngabenToMengeDirekt(welches = 0, v = false) {
+function zeilenAngabenToMengeDirekt(welches: number = 0, v: boolean = false) {
+  let text: string;
   switch (welches) {
     case 1:
-      // @ts-expect-error TS(2304): Cannot find name 'text'.
       text = document.getElementById("zeilenErlaubtText").value;
       break;
     case 2:
-      // @ts-expect-error TS(2304): Cannot find name 'text'.
       text = document.getElementById("zaehlungErlaubtText").value;
       break;
     case 3:
-      // @ts-expect-error TS(2304): Cannot find name 'text'.
       text = document.getElementById("primVielfache").value;
       break;
     case 4:
-      // @ts-expect-error TS(2304): Cannot find name 'text'.
       text = document.getElementById("primZahlKreuzRadius").value;
       break;
     case 5:
-      // @ts-expect-error TS(2304): Cannot find name 'text'.
       text = document.getElementById("VielfacheErlaubtText").value;
       break;
     case 6:
-      // @ts-expect-error TS(2304): Cannot find name 'text'.
       text = document.getElementById("potenzenErlaubtText").value;
       break;
     default:
-      // @ts-expect-error TS(2304): Cannot find name 'text'.
       text = "Ungültige Auswahl";
       break;
   }
-  // @ts-expect-error TS(2304): Cannot find name 'text'.
-  erlaubteZeilen = BereichToNumbers2(text, welches == 5 || v ? true : false);
+  const erlaubteZeilen: Set<number> = BereichToNumbers2(text, welches == 5 || v ? true : false);
   //window.alert(Array.from(erlaubteZeilen).join(" "));
   return erlaubteZeilen;
 }
@@ -1570,35 +1513,29 @@ function vielfacherAngabentoContainer() {
   return vielfacherAngaben;
 }
 */
-var erlaubteZeilen = new Set();
+var erlaubteZeilen: Set<number> = new Set();
 
-// @ts-expect-error TS(7006): Parameter 'zeilenAngaben' implicitly has an 'any' ... Remove this comment to see the full error message
-function makeAllerlaubteZeilenVielfacher(zeilenAngaben) {
-  zeilenAngaben = Array.from(zeilenAngaben);
-  var muls;
+function makeAllerlaubteZeilenVielfacher(zeilenAngaben1: Set<number[]>) {
+  const zeilenAngaben: number[][] = Array.from(zeilenAngaben1);
+  var muls: number[];
+  var mul: number
   erlaubteZeilen = new Set();
-  for (var i = 0; i < zeilenAngaben.length; i++) {
-    // @ts-expect-error TS(2304): Cannot find name 'last'.
+  var last: number;
+  for (var i: number = 0; i < zeilenAngaben.length; i++) {
     last = zeilenAngaben[i][0];
     muls = [];
-    // @ts-expect-error TS(2304): Cannot find name 'mul'.
     mul = 1;
-    // @ts-expect-error TS(2304): Cannot find name 'last'.
     last = mul * zeilenAngaben[i][0];
-    // @ts-expect-error TS(2304): Cannot find name 'last'.
     while (last < 1025) {
-      // @ts-expect-error TS(2304): Cannot find name 'last'.
       muls.push(last);
-      // @ts-expect-error TS(2304): Cannot find name 'last'.
       last = mul * zeilenAngaben[i][0];
-      // @ts-expect-error TS(2304): Cannot find name 'mul'.
       mul++;
     }
-    for (var h = 0; h < muls.length; h++) {
+    for (var h: number = 0; h < muls.length; h++) {
       if (zeilenAngaben[i].length == 1) {
         erlaubteZeilen.add(muls[h]);
       } else
-        for (var k = 1; k < zeilenAngaben[i].length; k++) {
+        for (var k: number = 1; k < zeilenAngaben[i].length; k++) {
           erlaubteZeilen.add(muls[h] - zeilenAngaben[i][k]);
           //window.alert(parseInt(muls[h]}-zeilenAngaben[i][k]));
           erlaubteZeilen.add(zeilenAngaben[i][k] + muls[h]);
@@ -1608,24 +1545,18 @@ function makeAllerlaubteZeilenVielfacher(zeilenAngaben) {
   return erlaubteZeilen;
 }
 
-// @ts-expect-error TS(7006): Parameter 'zeilenAngaben' implicitly has an 'any' ... Remove this comment to see the full error message
-function makeAllerlaubteZeilenPotenzen(zeilenAngaben) {
-  zeilenAngaben = Array.from(zeilenAngaben);
-  erlaubteZeilen = new Set();
-  for (var i = 0; i < zeilenAngaben.length; i++) {
+function makeAllerlaubteZeilenPotenzen(zeilenAngaben1: Set<number>) {
+  const zeilenAngaben: number[] = Array.from(zeilenAngaben1);
+  var erlaubteZeilen: Set<number> = new Set();
+  var exponent, potenz: number;
+  for (var i: number = 0; i < zeilenAngaben.length; i++) {
     if (zeilenAngaben[i] > 0) {
-      // @ts-expect-error TS(2304): Cannot find name 'exponent'.
       exponent = 1;
-      // @ts-expect-error TS(2304): Cannot find name 'potenz'.
       potenz = Math.pow(zeilenAngaben[i], exponent);
-      // @ts-expect-error TS(2304): Cannot find name 'potenz'.
       while (potenz < 1025) {
-        // @ts-expect-error TS(2304): Cannot find name 'potenz'.
         erlaubteZeilen.add(potenz);
-        // @ts-expect-error TS(2304): Cannot find name 'potenz'.
         potenz = Math.pow(zeilenAngaben[i], exponent);
         //window.alert(potenz);
-        // @ts-expect-error TS(2304): Cannot find name 'exponent'.
         exponent++;
       }
     }
@@ -1633,8 +1564,7 @@ function makeAllerlaubteZeilenPotenzen(zeilenAngaben) {
   return erlaubteZeilen;
 }
 
-// @ts-expect-error TS(7006): Parameter 'setA' implicitly has an 'any' type.
-function intersection(setA, setB) {
+function intersection(setA: Set<any>, setB: Set<any>) {
   var _intersection = new Set();
   for (var elem of setB) {
     if (setA.has(elem)) {
@@ -1645,56 +1575,39 @@ function intersection(setA, setB) {
 }
 
 function makeAllAllowedZeilenPrimRichtungen() {
-  // @ts-expect-error TS(2304): Cannot find name 'innen'.
-  innen = document.getElementById("proInnen").checked;
-  // @ts-expect-error TS(2304): Cannot find name 'aussen'.
-  aussen = document.getElementById("proAussen").checked;
-  // @ts-expect-error TS(2304): Cannot find name 'hand'.
-  hand = document.getElementById("gegenDritte").checked;
-  // @ts-expect-error TS(2304): Cannot find name 'faehig'.
-  faehig = document.getElementById("proDritte").checked;
-  erlaubteZeilen = new Set();
+  var innen: boolean = document.getElementById("proInnen").checked;
+  var aussen: boolean = document.getElementById("proAussen").checked;
+  var hand: boolean = document.getElementById("gegenDritte").checked;
+  var faehig: boolean = document.getElementById("proDritte").checked;
+  var erlaubteZeilen: Set<number> = new Set();
+  var inkrement: number;
 
-  // @ts-expect-error TS(2304): Cannot find name 'hand'.
   if (hand || faehig) {
-    // @ts-expect-error TS(2304): Cannot find name 'hand'.
     if (hand) inkrement = 3;
-    // @ts-expect-error TS(2304): Cannot find name 'inkrement'.
     else inkrement = 2;
-    // @ts-expect-error TS(2304): Cannot find name 'inkrement'.
-    for (var i = 0; i < 1025; i += inkrement) erlaubteZeilen.add(i);
+    for (var i: number = 0; i < 1025; i += inkrement) erlaubteZeilen.add(i);
     return erlaubteZeilen;
   }
 
-  // @ts-expect-error TS(2304): Cannot find name 'innen'.
   if (innen || aussen) {
-    var innenAussen;
-    // @ts-expect-error TS(2304): Cannot find name 'aussen'.
+    var innenAussen: Set<number> = new Set();
     if (aussen) innenAussen = new Set([1, 7, 13, 19]);
-    // @ts-expect-error TS(2304): Cannot find name 'innen'.
     if (innen) innenAussen = new Set([5, 11, 17, 23]);
+    var primZahlenModulo: Set<number>;
+    var vielfacher: number;
 
-    for (var i = 0; i < 1025; i++) {
-      // @ts-expect-error TS(2304): Cannot find name 'primZahlenModulo'.
+    for (var i: number = 0; i < 1025; i++) {
       primZahlenModulo = new Set();
-      // @ts-expect-error TS(2304): Cannot find name 'k'.
-      for (k = 2; k < primZahlen.length; k += 1) {
-        // @ts-expect-error TS(2304): Cannot find name 'vielfacher'.
+      for (var k: number = 2; k < primZahlen.length; k += 1) {
         vielfacher = 1;
-        // @ts-expect-error TS(2304): Cannot find name 'vielfacher'.
         while (i / vielfacher > 2) {
-          // @ts-expect-error TS(2304): Cannot find name 'primZahlen'.
           if (primZahlen[k] == i / vielfacher) {
-            // @ts-expect-error TS(2304): Cannot find name 'vielfacher'.
             vielfacher = i;
-            // @ts-expect-error TS(2304): Cannot find name 'primZahlenModulo'.
             primZahlenModulo.add(primZahlen[k] % 24);
           }
-          // @ts-expect-error TS(2304): Cannot find name 'vielfacher'.
           vielfacher++;
         }
       }
-      // @ts-expect-error TS(2304): Cannot find name 'primZahlenModulo'.
       if (intersection(primZahlenModulo, innenAussen).size != 0)
         erlaubteZeilen.add(i);
     }
@@ -1703,48 +1616,35 @@ function makeAllAllowedZeilenPrimRichtungen() {
 }
 
 function makeAllAllowedZeilenHimmelskoerper() {
-  // @ts-expect-error TS(2304): Cannot find name 'sonneWahl'.
-  sonneWahl = document.getElementById("sonneWahl").checked;
-  // @ts-expect-error TS(2304): Cannot find name 'mondWahl'.
-  mondWahl = document.getElementById("mondWahl").checked;
-  // @ts-expect-error TS(2304): Cannot find name 'planetWahl'.
-  planetWahl = document.getElementById("planetWahl").checked;
-  // @ts-expect-error TS(2304): Cannot find name 'schwarzeSonneWahl'.
-  schwarzeSonneWahl = document.getElementById("schwarzeSonneWahl").checked;
-  erlaubteZeilen = new Set();
-  // @ts-expect-error TS(2304): Cannot find name 'mondWahl'.
+  const sonneWahl: boolean = document.getElementById("sonneWahl").checked;
+  const mondWahl: boolean = document.getElementById("mondWahl").checked;
+  const planetWahl: boolean = document.getElementById("planetWahl").checked;
+  const schwarzeSonneWahl: boolean = document.getElementById("schwarzeSonneWahl").checked;
+  var erlaubteZeilen: Set<number> = new Set();
   if (mondWahl) {
-    // @ts-expect-error TS(2304): Cannot find name 'alleMonde'.
     erlaubteZeilen = new Set(alleMonde);
     return erlaubteZeilen;
   }
-  // @ts-expect-error TS(2304): Cannot find name 'sonneWahl'.
   if (sonneWahl) {
-    // @ts-expect-error TS(2304): Cannot find name 'alleMondeSet'.
-    alleMondeSet = new Set(alleMonde);
-    for (var i = 1; i < 1025; i++) {
-      // @ts-expect-error TS(2304): Cannot find name 'alleMondeSet'.
+    const alleMondeSet: Set<number> = new Set(alleMonde);
+    for (var i: number = 1; i < 1025; i++) {
       if (!alleMondeSet.has(i)) erlaubteZeilen.add(i);
     }
     return erlaubteZeilen;
   }
-  // @ts-expect-error TS(2304): Cannot find name 'planetWahl'.
   if (planetWahl) {
-    for (var i = 2; i < 1025; i += 2) erlaubteZeilen.add(i);
+    for (var i: number = 2; i < 1025; i += 2) erlaubteZeilen.add(i);
     return erlaubteZeilen;
   }
-  // @ts-expect-error TS(2304): Cannot find name 'schwarzeSonneWahl'.
   if (schwarzeSonneWahl) {
-    for (var i = 3; i < 1025; i += 3) erlaubteZeilen.add(i);
+    for (var i: number = 3; i < 1025; i += 3) erlaubteZeilen.add(i);
     return erlaubteZeilen;
   }
 }
-// @ts-expect-error TS(7006): Parameter 'zeilenAngaben' implicitly has an 'any' ... Remove this comment to see the full error message
-function makeAllowedZeilenFromPrimVielfacher(zeilenAngaben) {
-  zeilenAngaben = Array.from(zeilenAngaben);
-  erlaubteZeilen = new Set();
-  // @ts-expect-error TS(2304): Cannot find name 'ersteSpalte'.
-  ersteSpalte = document
+function makeAllowedZeilenFromPrimVielfacher(zeilenAngaben1: Set<number>): Set<number> {
+  const zeilenAngaben: number[] = Array.from(zeilenAngaben1);
+  const erlaubteZeilen: Set<number> = new Set();
+  const ersteSpalte: HTMLCollectionOf<HTMLTableCellElement> = document
     .getElementById("bigtable")
     .getElementsByClassName("r_0");
   for (var i = 0; i < 1025; i++)
@@ -1754,97 +1654,90 @@ function makeAllowedZeilenFromPrimVielfacher(zeilenAngaben) {
   return erlaubteZeilen;
 }
 
-// @ts-expect-error TS(7006): Parameter 'zahl' implicitly has an 'any' type.
-function zahlIstVielfacherEinerPrimzahl(zahl, vielfacher) {
-  zahl = parseInt(zahl);
-  vielfacher = parseInt(vielfacher);
-  if (zahl === "NaN" || vielfacher === "Nan") return false;
+function zahlIstVielfacherEinerPrimzahl(zahl1: number | string, vielfacher1: string | number): boolean {
+  const zahl: number = parseInt(zahl1);
+  const vielfacher: number = parseInt(vielfacher1);
+  if (isNaN(zahl) || isNaN(vielfacher)) return false;
 
-  // @ts-expect-error TS(2304): Cannot find name 'stimmt'.
-  stimmt = false;
-  // @ts-expect-error TS(2304): Cannot find name 'primZahlen'.
-  for (var i = 0; i < primZahlen.length; i++)
-    // @ts-expect-error TS(2304): Cannot find name 'primZahlen'.
+  var stimmt: boolean = false;
+  for (var i: number = 0; i < primZahlen.length; i++)
     if (primZahlen[i] == zahl / vielfacher) stimmt = true;
-  // @ts-expect-error TS(2304): Cannot find name 'stimmt'.
   return stimmt;
 }
 
-// @ts-expect-error TS(7006): Parameter 'zeilenMenge' implicitly has an 'any' ty... Remove this comment to see the full error message
-function makeAllowedZeilenFromZaehlung(zeilenMenge) {
-  // @ts-expect-error TS(2304): Cannot find name 'ersteSpalte'.
-  ersteSpalte = document
+function makeAllowedZeilenFromZaehlung(zeilenMenge: Set<number>): Set<number> {
+  const ersteSpalte: HTMLCollectionOf<HTMLTableCellElement> = document
     .getElementById("bigtable")
     .getElementsByClassName("r_0");
-  // @ts-expect-error TS(2304): Cannot find name 'erlaubteZaehlungen'.
-  erlaubteZaehlungen = zeilenMenge;
-  erlaubteZeilen = new Set();
+  const erlaubteZaehlungen: Set<number> = zeilenMenge;
+  const erlaubteZeilen: Set<number> = new Set();
   //window.alert(Array.from(erlaubteZaehlungen).join(" "));
   //window.alert(ersteSpalte.length.toString());
+  var zaehlung: number;
+  var wirklicheZeile1: RegExpMatchArray | null;
+  var wirklicheZeile: string;
 
-  // @ts-expect-error TS(2304): Cannot find name 'i'.
-  for (i = 0; i < ersteSpalte.length; i++) {
+  for (var i: number = 0; i < ersteSpalte.length; i++) {
     //window.alert(ersteSpalte[i].getElementsByTagName("label")[0].innerHTML);
-    // @ts-expect-error TS(2304): Cannot find name 'zaehlung'.
     zaehlung = parseInt(ersteSpalte[i].innerHTML.trim());
     //window.alert(zaehlung.toString());
-    // @ts-expect-error TS(2304): Cannot find name 'zaehlung'.
-    if (zaehlung != "NaN" && erlaubteZaehlungen.has(zaehlung)) {
-      // @ts-expect-error TS(2304): Cannot find name 'wirklicheZeile'.
-      wirklicheZeile = ersteSpalte[i].className.match(/z_\s*(\d+)/g);
-      //window.alert(ersteSpalte[i].className);
-      //window.alert(wirklicheZeile);
-      // @ts-expect-error TS(2304): Cannot find name 'wirklicheZeile'.
-      if (wirklicheZeile.length > 0) {
-        // @ts-expect-error TS(2304): Cannot find name 'wirklicheZeile'.
-        wirklicheZeile = wirklicheZeile[0].substr(2);
-        // @ts-expect-error TS(2304): Cannot find name 'wirklicheZeile'.
-        erlaubteZeilen.add(parseInt(wirklicheZeile));
-      }
+    if (isNaN(zaehlung) && erlaubteZaehlungen.has(zaehlung)) {
+        wirklicheZeile1 = ersteSpalte[i].className.match(/z_\s*(\d+)/g);
+        if (wirklicheZeile1 != null) {
+            wirklicheZeile = wirklicheZeile1.toString();
+            //window.alert(ersteSpalte[i].className);
+            //window.alert(wirklicheZeile);
+            if (wirklicheZeile.length > 0) {
+                wirklicheZeile = wirklicheZeile[0].substr(2);
+                erlaubteZeilen.add(parseInt(wirklicheZeile));
+            }
+        }
     }
   }
   return erlaubteZeilen;
 }
 
-// @ts-expect-error TS(7006): Parameter 'zeilenAngaben' implicitly has an 'any' ... Remove this comment to see the full error message
-function makeAllAllowedZeilen(zeilenAngaben) {
-  zeilenAngaben = Array.from(zeilenAngaben);
-  erlaubteZeilen = new Set();
-  for (var i = 0; i < zeilenAngaben.length; i++) {
-    for (var k = zeilenAngaben[i][0]; k <= zeilenAngaben[i][1]; k++) {
+function makeAllAllowedZeilen(zeilenAngaben1: Set<number[]>): Set<number> {
+  const zeilenAngaben: number[][] = Array.from(zeilenAngaben1);
+  const erlaubteZeilen: Set<number> = new Set();
+  for (var i: number = 0; i < zeilenAngaben.length; i++) {
+    for (var k: number = zeilenAngaben[i][0]; k <= zeilenAngaben[i][1]; k++) {
       erlaubteZeilen.add(k);
     }
   }
   return erlaubteZeilen;
 }
 
-// @ts-expect-error TS(7006): Parameter 'zeilenAngaben' implicitly has an 'any' ... Remove this comment to see the full error message
-function makeAllowedZeilenFromPrimZahlKreuzRadius(zeilenAngaben) {
-  zeilenAngaben = Array.from(zeilenAngaben);
-  erlaubteZeilen = new Set();
-  for (var i = 1; i < 1025; i++)
-    for (var k = 0; k < zeilenAngaben.length; k++)
+function makeAllowedZeilenFromPrimZahlKreuzRadius(zeilenAngaben1: Set<number>): number[] {
+  const zeilenAngaben: number[] = Array.from(zeilenAngaben1);
+  const erlaubteZeilen: Set<number> = new Set();
+  for (var i: number = 1; i < 1025; i++)
+    for (var k: number = 0; k < zeilenAngaben.length; k++)
       if (zeilenAngaben[k] == Math.floor((i - 1) / 24) + 1)
         erlaubteZeilen.add(i);
 
   return zeilenAngaben;
 }
 
-var spalten_r__ = new Set();
+var spalten_r__: Set<number> = new Set();
 
 function get_r__SpaltenNummern() {
-  // @ts-expect-error TS(2304): Cannot find name 'tabelenkopfZeile'.
+  let tabelenkopfZeile : HTMLCollectionOf<HTMLTableCellElement>;
   tabelenkopfZeile = tdClasses;
-  // @ts-expect-error TS(2304): Cannot find name 'tabelenkopfZeile'.
-  for (var i = 0; i < tabelenkopfZeile.length; i++) {
-    // @ts-expect-error TS(2304): Cannot find name 'tabelenkopfZeile'.
+  var num1: RegExpMatchArray | null;
+  var num: RegExpMatchArray;
+  var num2: number;
+  for (var i: number = 0; i < tabelenkopfZeile.length; i++) {
     if (tabelenkopfZeile[i].style.display === "table-cell") {
-      // @ts-expect-error TS(2304): Cannot find name 'num'.
-      num = tabelenkopfZeile[i].className.match(/r_(\d+)/);
-      // @ts-expect-error TS(2304): Cannot find name 'num'.
-      if (num != null && num.length > 1) num = num[1];
-      // @ts-expect-error TS(2304): Cannot find name 'num'.
-      spalten_r__.add(num);
+      num1 = tabelenkopfZeile[i].className.match(/r_(\d+)/);
+      if (num1 != null) {
+      num = num1
+      if (num.length > 1) {
+            num2 = parseInt(num[1]);
+            spalten_r__.add(num2);
+
+          }
+      }
     }
   }
 }
@@ -1861,70 +1754,44 @@ function invertErlaubteZeilen() {
 }
 */
 
-// @ts-expect-error TS(7006): Parameter 'which' implicitly has an 'any' type.
-function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which) {
-  // @ts-expect-error TS(2304): Cannot find name 'Spalten_r__Array'.
-  Spalten_r__Array = Array.from(spalten_r__);
-  // @ts-expect-error TS(2304): Cannot find name 'erlaubteZeilen_Array'.
-  erlaubteZeilen_Array = Array.from(erlaubteZeilen);
-  // @ts-expect-error TS(2304): Cannot find name 'erlaubteZeilen_String'.
-  erlaubteZeilen_String = erlaubteZeilen_Array.join(",");
-  // @ts-expect-error TS(2304): Cannot find name 'neuErlauben'.
-  neuErlauben = document.getElementsByClassName("neuErlauben")[which].checked;
-  // @ts-expect-error TS(2304): Cannot find name 'neuHinfort'.
-  neuHinfort = document.getElementsByClassName("neuHinfort")[which].checked;
-  // @ts-expect-error TS(2304): Cannot find name 'dazuErlauben'.
-  dazuErlauben = document.getElementsByClassName("dazuErlauben")[which].checked;
-  // @ts-expect-error TS(2304): Cannot find name 'dazuHinfort'.
-  dazuHinfort = document.getElementsByClassName("dazuHinfort")[which].checked;
-  // @ts-expect-error TS(2304): Cannot find name 'dazuEinschraenkend'.
-  dazuEinschraenkend =
-    // @ts-expect-error TS(2339): Property 'checked' does not exist on type 'Element... Remove this comment to see the full error message
+function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which: number) {
+  const Spalten_r__Array: number[] = Array.from(spalten_r__);
+  const erlaubteZeilen_Array: number[] = Array.from(erlaubteZeilen);
+  const erlaubteZeilen_String: string = erlaubteZeilen_Array.join(",");
+  const neuErlauben: boolean = document.getElementsByClassName("neuErlauben")[which].checked;
+  const neuHinfort: boolean = document.getElementsByClassName("neuHinfort")[which].checked;
+  const dazuErlauben: boolean = document.getElementsByClassName("dazuErlauben")[which].checked;
+  const dazuHinfort: boolean = document.getElementsByClassName("dazuHinfort")[which].checked;
+  const dazuEinschraenkend: boolean =
     document.getElementsByClassName("dazuEinschraenkend")[which].checked;
   //window.alert(neuErlauben+" "+neuHinfort+" "+dazuErlauben+" "+dazuHinfort);
-  // @ts-expect-error TS(2304): Cannot find name 'spalte'.
-  spalte = document.getElementById("bigtable").rows;
-  // @ts-expect-error TS(2304): Cannot find name 'spalte'.
-  for (var s = 1; s < spalte.length; s++) {
-    // @ts-expect-error TS(2304): Cannot find name 'tabellenZelle'.
+  const spalte: HTMLCollectionOf<HTMLTableRowElement> = document.getElementById("bigtable").rows;
+  var tabellenZelle: HTMLTableRowElement;
+  var echteZeilenNummer1: RegExpMatchArray | null;
+  var echteZeilenNummer: number;
+  for (var s: number = 1; s < spalte.length; s++) {
     tabellenZelle = spalte[s];
     if (s < 115)
       zeilenLetztendlichZeigenVerstecken(
         s,
-        // @ts-expect-error TS(2304): Cannot find name 'neuErlauben'.
         neuErlauben,
-        // @ts-expect-error TS(2304): Cannot find name 'dazuErlauben'.
         dazuErlauben,
-        // @ts-expect-error TS(2304): Cannot find name 'neuHinfort'.
         neuHinfort,
-        // @ts-expect-error TS(2304): Cannot find name 'dazuHinfort'.
         dazuHinfort,
-        // @ts-expect-error TS(2304): Cannot find name 'tabellenZelle'.
         tabellenZelle,
-        // @ts-expect-error TS(2304): Cannot find name 'dazuEinschraenkend'.
         dazuEinschraenkend
       );
     else {
-      // @ts-expect-error TS(2304): Cannot find name 'echteZeilenNummer'.
-      echteZeilenNummer = spalte[s].cells[0].className.match(/z_\s*(\d+)/g);
-      // @ts-expect-error TS(2304): Cannot find name 'echteZeilenNummer'.
-      if (echteZeilenNummer != null && echteZeilenNummer.length > 0) {
-        // @ts-expect-error TS(2304): Cannot find name 'echteZeilenNummer'.
-        echteZeilenNummer = parseInt(echteZeilenNummer[0].substr(2));
+      echteZeilenNummer1 = spalte[s].cells[0].className.match(/z_\s*(\d+)/g);
+      if (echteZeilenNummer1 != null && echteZeilenNummer1.length > 0) {
+        echteZeilenNummer = parseInt(echteZeilenNummer1[0].substr(2));
         zeilenLetztendlichZeigenVerstecken(
-          // @ts-expect-error TS(2304): Cannot find name 'echteZeilenNummer'.
           echteZeilenNummer,
-          // @ts-expect-error TS(2304): Cannot find name 'neuErlauben'.
           neuErlauben,
-          // @ts-expect-error TS(2304): Cannot find name 'dazuErlauben'.
           dazuErlauben,
-          // @ts-expect-error TS(2304): Cannot find name 'neuHinfort'.
           neuHinfort,
-          // @ts-expect-error TS(2304): Cannot find name 'dazuHinfort'.
           dazuHinfort,
-          // @ts-expect-error TS(2304): Cannot find name 'tabellenZelle'.
           tabellenZelle,
-          // @ts-expect-error TS(2304): Cannot find name 'dazuEinschraenkend'.
           dazuEinschraenkend
         );
       }
@@ -1933,20 +1800,13 @@ function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which) {
 }
 
 function zeilenLetztendlichZeigenVerstecken(
-  // @ts-expect-error TS(7006): Parameter 's' implicitly has an 'any' type.
-  s,
-  // @ts-expect-error TS(7006): Parameter 'neuErlauben' implicitly has an 'any' ty... Remove this comment to see the full error message
-  neuErlauben,
-  // @ts-expect-error TS(7006): Parameter 'dazuErlauben' implicitly has an 'any' t... Remove this comment to see the full error message
-  dazuErlauben,
-  // @ts-expect-error TS(7006): Parameter 'neuHinfort' implicitly has an 'any' typ... Remove this comment to see the full error message
-  neuHinfort,
-  // @ts-expect-error TS(7006): Parameter 'dazuHinfort' implicitly has an 'any' ty... Remove this comment to see the full error message
-  dazuHinfort,
-  // @ts-expect-error TS(7006): Parameter 'tabellenZelle' implicitly has an 'any' ... Remove this comment to see the full error message
-  tabellenZelle,
-  // @ts-expect-error TS(7006): Parameter 'dazuEinschraenkend' implicitly has an '... Remove this comment to see the full error message
-  dazuEinschraenkend
+  s: number,
+  neuErlauben: boolean,
+  dazuErlauben: boolean,
+  neuHinfort: boolean,
+  dazuHinfort: boolean,
+  tabellenZelle: HTMLTableRowElement,
+  dazuEinschraenkend: boolean
 ) {
   if (
     ((erlaubteZeilen.has(s) && (neuErlauben || dazuErlauben)) ||
