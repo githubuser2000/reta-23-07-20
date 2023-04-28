@@ -815,16 +815,17 @@ function grundSDivToggle(id_: number) {
   //
 }
 
-function toggleP2(dasTag: HTMLInputElement, spaltenNummern: Array<Map<any,any>>, para1u2: string) {
+function toggleP2(dasTag: HTMLInputElement, spaltenNummern1: Array<Map<any,any>>, para1u2: string) {
   var pa1u2: string[] = para1u2.split(",");
+  var spaltenNummern: string[];
   try {
     /*window.alert(String();
     window.alert(String(pa1u2[1]));
     window.alert(String(Array.from(mapMapMap[pa1u2[0]][pa1u2[1]])));*/
-    var spaltenNummern: Array<Array<string | Map<any, any>>> = Array.from(mapMapMap[pa1u2[0]][pa1u2[1]]);
+    spaltenNummern = Array.from(mapMapMap[pa1u2[0]][pa1u2[1]]);
     //window.alert(String(spaltenNummern));
   } catch (error) {
-    var spaltenNummern: string[] = spaltenNummern.split(",");
+    spaltenNummern = spaltenNummern1.split(",");
   }
   var existingParameterNamesArrayIndex: Set<number> = MatrixHasCouple(
     para1u2,
@@ -919,6 +920,7 @@ function toggleP1(p1: string) {
           (p2.style.display != "none")
         ) {
           selectedSpaltenMany1[num] = p2;
+          toggleName(p2);
         } else {
           toggleName(p2);
           delete selectedSpaltenMany1[num];
@@ -991,7 +993,7 @@ function changeHeadline(oneColHeading: HTMLTableCellElement, addTrueRemoveFalse:
 }
 
 function makeSpalteUnsichtbar(
-  spalteToUnsichtbar: HTMLCollectionOf<HTMLTableCellElement | Element>,
+  spalteToUnsichtbar: HTMLCollectionOf<HTMLTableCellElement>,
   momentaneSpalte_als_r_: number,
   hiddenTrueVisibleFalse: boolean
 ) {
@@ -1135,11 +1137,11 @@ function setAllListsInHeadings() {
   }
 }
 
-function toggleChkSpalten() {
-  chk_spalten = document.getElementById("chk_spalten");
-  inputZeilen = document.getElementById("inputZeilen");
-  spaltenWahl = document.getElementById("spaltenWahl");
-  zeilenWahl = document.getElementById("zeilenWahl");
+function toggleChkSpalten(radiobutton: HTMLInputElement) {
+  chk_spalten: HTMLDivElement = document.getElementById("chk_spalten");
+  inputZeilen: HTMLDivElement = document.getElementById("inputZeilen");
+  spaltenWahl: HTMLInputElement = document.getElementById("spaltenWahl");
+  zeilenWahl: HTMLInputElement = document.getElementById("zeilenWahl");
 
   if (inputZeilen.style.display == "none" && zeilenWahl.checked)
     inputZeilen.style.display = "initial";
@@ -1242,7 +1244,6 @@ function BereichToNumbers2(MehrereBereiche: string, vielfache: boolean = false, 
 
   var dazu: Set<number> = new Set();
   var hinfort: Set<number> = new Set();
-  var menge: Set<number> | null = null;
   var EinBereich: string;
   var EinBereich2: string;
   var vielfache2: boolean = true;
@@ -1263,7 +1264,6 @@ function BereichToNumbers2(MehrereBereiche: string, vielfache: boolean = false, 
       hinfort,
       (vielfache || vielfache2) && maxZahl == Infinity ? 1028 : maxZahl,
       vielfache || vielfache2,
-      menge
     );
   }
 
@@ -1276,8 +1276,8 @@ function BereichToNumbers2_EinBereich(
   hinfort: Set<number>,
   maxZahl: number,
   vielfache: boolean,
-  menge: Set<number> | null
 ) {
+  var menge: Set<number> | null = null;
   if (EinBereich.length > 1 && EinBereich[0] === "-") {
     EinBereich = EinBereich.substring(1);
     menge = hinfort;
@@ -1562,7 +1562,7 @@ function intersection(setA: Set<any>, setB: Set<any>) {
   return _intersection;
 }
 
-function makeAllAllowedZeilenPrimRichtungen() {
+function makeAllAllowedZeilenPrimRichtungen(): Set<number> {
   var innen: boolean = document.getElementById("proInnen").checked;
   var aussen: boolean = document.getElementById("proAussen").checked;
   var hand: boolean = document.getElementById("gegenDritte").checked;
@@ -1603,7 +1603,7 @@ function makeAllAllowedZeilenPrimRichtungen() {
   }
 }
 
-function makeAllAllowedZeilenHimmelskoerper() {
+function makeAllAllowedZeilenHimmelskoerper(): Set<number> {
   const sonneWahl: boolean = document.getElementById("sonneWahl").checked;
   const mondWahl: boolean = document.getElementById("mondWahl").checked;
   const planetWahl: boolean = document.getElementById("planetWahl").checked;
@@ -1824,8 +1824,7 @@ function clickVielfacheErlaubenUsw() {
 }
 
 function clickHimmelskoerperErlaubenUsw() {
-  // @ts-expect-error TS(2322): Type 'Set<unknown> | undefined' is not assignable ... Remove this comment to see the full error message
-  erlaubteZeilen = makeAllAllowedZeilenHimmelskoerper();
+  const erlaubteZeilen: Set<number> = makeAllAllowedZeilenHimmelskoerper();
   get_r__SpaltenNummern();
   erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(3);
 }
@@ -1842,14 +1841,13 @@ function clickZaehlungenErlaubenUsw() {
   erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(4);
 }
 function clickPrimVielfacheErlaubenUsw() {
-  //makeAllowedZeilenFromPrimVielfacher(zeilenAngabenToContainer(3));
   makeAllowedZeilenFromPrimVielfacher(zeilenAngabenToMengeDirekt(3));
   get_r__SpaltenNummern();
   erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(5);
 }
 function clickPrimRichtungenErlaubenUsw() {
   // @ts-expect-error TS(2322): Type 'Set<unknown> | undefined' is not assignable ... Remove this comment to see the full error message
-  erlaubteZeilen = makeAllAllowedZeilenPrimRichtungen();
+  const erlaubteZeilen: Set<number> = makeAllAllowedZeilenPrimRichtungen();
   get_r__SpaltenNummern();
   erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(6);
 }
