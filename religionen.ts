@@ -1,6 +1,6 @@
 var col = document.getElementsByClassName("RowNumber 1");
-var selectedSpaltenMany1: Map<number,string> = new Map();
-var selectedSpaltenMany2: Map<number,string> = new Map();
+var selectedSpaltenMany1: Map<number, HTMLElement> = new Map<number, HTMLElement>();
+var selectedSpaltenMany2: Map<number,string> = new Map<number,string>();
 var labelstyle: string = "white-space: nowrap;font-size: 100%;";
 var labelstylekl: string = "white-space: nowrap;font-size: 80%;color: grey;";
 var tdStyleWhiteSpace: string = "nowrap";
@@ -8,11 +8,11 @@ var tdStyleFontSize: string = "100%";
 var tdStyleFontSizeKl:string = "80%";
 var tdStyleColorKl:string = "grey";
 var Enume : Set<number> = new Set([0, 1, 3, 4, 5, 6]);
-var mapMapMapTags: Map<number, string> = new Map(),
+var mapMapMapTags: Map<number, string> = new Map<number, string>(),
 var chks1: HTMLCollectionOf<HTMLInputElement>;
 var chks2: string[];
 var spaltenTags: Array<Array<any> > = [],
-var spalten4spaltenTags: Map<number,Array<HTMLTableCellElement>> = new Map(),
+var spalten4spaltenTags: Map<number,Array<HTMLTableCellElement>> = new Map<number,Array<HTMLTableCellElement>>(),
 var Achks: HTMLCollectionOf<HTMLInputElement | Element>;
 
 function returnChangeButtons(number1: number | string): string {
@@ -59,7 +59,7 @@ for (i = 0; i < tdClasses1.length; i++)
 		tdClasses.push(tdClasses1[i]);*/
   //let p1map = new Map();
   //let p2map = new Map();
-  let mapMapMap: Map<string, string | Map<string , string | Map<any, any>>> = new Map();
+  let mapMapMap: Map<string, string | Map<string , string | Map<any, any>>> = new Map<string, string | Map<string , string | Map<any, any>>>();
   // str: string = "",
   //let p1Bmap = new Map();
   str3: string = "",
@@ -791,7 +791,7 @@ function grundSDivToggleBeachte(para: string = "", dasTag: boolean = false) {
     }
     for (var i: number = 0; i < checkboxesChaos.length; i++) {
       for (var k: number = 0; k < checkboxesOrdnung.length; k++) {
-        if (typeof checkboxesChaos[i].value !== "undefined" && k != k2) {
+        if (typeof checkboxesChaos[i].value !== "undefined" && k != i) {
           //window.alert(String(checkboxesChaos[i].value));
           if (
             checkboxesOrdnung[k].value === checkboxesChaos[i].value &&
@@ -845,7 +845,6 @@ function toggleP2(dasTag: any, spaltenNummern: Array<Map<any,any>>, para1u2: Arr
     selectedSpaltenMany2
   );
   if (existingParameterNamesArrayIndex.size > 0) {
-    // @ts-expect-error TS(2304): Cannot find name 'existingParameterNamesKeys'.
     var existingParameterNamesKeys: any[] = Array.from(existingParameterNamesArrayIndex);
     for (var i: number = 0; i < existingParameterNamesKeys.length; i++) {
       for (
@@ -905,23 +904,17 @@ function refresh() {
 }
 
 function updateVisibleHeadingsNumbersAndItsKeysList() {
-  // @ts-expect-error TS(2304): Cannot find name 'keys'.
-  keys = Object.keys(visibleHeadingsSelectUnsorted);
-  // @ts-expect-error TS(2304): Cannot find name 'keys'.
-  for (var i = 0; i < keys.length; i++) {
-    // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
+  var keys: Array<number | string> = Object.keys(visibleHeadingsSelectUnsorted);
+  for (var i: number = 0; i < keys.length; i++) {
     visibleHeadingsNumbers[keys[i]] =
-      // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
       visibleHeadingsSelectUnsorted[keys[i]].value;
   }
-  // @ts-expect-error TS(2304): Cannot find name 'keys2'.
-  keys2 = Object.keys(visibleHeadingsNumbers);
+  var keys2: string[] = Object.keys(visibleHeadingsNumbers);
   //window.alert("vis num"+ keys2.length)
   //window.alert("vis num 0: "+ visibleHeadingsNumbers[keys2[0]])
 }
 
-// @ts-expect-error TS(7006): Parameter 'p2' implicitly has an 'any' type.
-function toggleName(p2) {
+function toggleName(p2: HTMLElement) {
   if (p2.style.display != "none") p2.style.display = "none";
   else if (p2.getElementsByTagName("input").length > 0) {
     p2.style.display = "block";
@@ -929,141 +922,97 @@ function toggleName(p2) {
   }
 }
 
-// @ts-expect-error TS(7006): Parameter 'p1' implicitly has an 'any' type.
-function toggleP1(p1) {
-  // @ts-expect-error TS(2304): Cannot find name 'p2'.
-  p2 = document.getElementById(p1);
-  // @ts-expect-error TS(2304): Cannot find name 'p2'.
-  if (typeof p2.style != "undefined") {
-    // @ts-expect-error TS(2304): Cannot find name 'p2'.
-    var num = p2.className.match(/r_(\d+)/);
-    if (num != null && num.length > 1) num = num[1];
-    if (
-      // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
-      (selectedSpaltenMany1[num] === "undefined") ===
-      // @ts-expect-error TS(2304): Cannot find name 'p2'.
-      (p2.style.display != "none")
-    ) {
-      // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
-      selectedSpaltenMany1[num] = p2;
-      // @ts-expect-error TS(2304): Cannot find name 'p2'.
-      toggleName(p2);
-    } else {
-      // @ts-expect-error TS(2304): Cannot find name 'p2'.
-      toggleName(p2);
-      // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
-      delete selectedSpaltenMany1[num];
+function toggleP1(p1: string) {
+  var p2: HTMLElement | null = document.getElementById(p1);
+  if (p2 != null && typeof p2.style != "undefined") {
+    var num1: string[] | null = p2.className.match(/r_(\d+)/);
+    if (num1 != null && num1.length > 1) {
+        var num: number = parseInt(num1[1]);
+        if (
+          (selectedSpaltenMany1[num] === "undefined") ===
+          (p2.style.display != "none")
+        ) {
+          selectedSpaltenMany1[num] = p2;
+        } else {
+          toggleName(p2);
+          delete selectedSpaltenMany1[num];
+        }
+      } else window.alert(p2.innerHTML + " ! ");
+
     }
-  // @ts-expect-error TS(2304): Cannot find name 'p2'.
-  } else window.alert(p2.innerHTML + " ! ");
 }
 
-// @ts-expect-error TS(7006): Parameter 'colNumber' implicitly has an 'any' type... Remove this comment to see the full error message
-function toggleSpalten(colNumber) {
-  // @ts-expect-error TS(2304): Cannot find name 'ZeileIhreZellen'.
-  ZeileIhreZellen = document.getElementsByClassName("r_" + colNumber);
-  // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
+function toggleSpalten(colNumber: number) {
+  var ZeileIhreZellen: HTMLCollectionOf<HTMLElement> | HTMLElement[] = document.getElementsByClassName("r_" + colNumber);
   if (typeof selectedSpaltenMany2[colNumber] === "undefined") {
-    // @ts-expect-error TS(2304): Cannot find name 'away'.
-    away = true;
-    //window.alert("undefined "+colNumber);
-  // @ts-expect-error TS(2304): Cannot find name 'away'.
+    var away: boolean = true;
   } else away = selectedSpaltenMany2[colNumber].length == 0;
   //window.alert("Stelle "+colNumber+"hat Länge "+selectedSpaltenMany2[colNumber].length);
-  // @ts-expect-error TS(2304): Cannot find name 'ZeileIhreZellen'.
   if (typeof ZeileIhreZellen[0].style != "undefined") {
-    // @ts-expect-error TS(2304): Cannot find name 'ZeileIhreZellen'.
     if (ZeileIhreZellen[0].style.display == "none")
-      // @ts-expect-error TS(2304): Cannot find name 'ZeileIhreZellen'.
       changeHeadline(ZeileIhreZellen[0], true);
-    // @ts-expect-error TS(2304): Cannot find name 'away'.
     else if (away) changeHeadline(ZeileIhreZellen[0], false);
 
-    // @ts-expect-error TS(2304): Cannot find name 'ZeileIhreZellen'.
     if (ZeileIhreZellen[0].getElementsByTagName("option").length == 0)
-      // @ts-expect-error TS(2304): Cannot find name 'spalteEinzelnDeaktiviertWorden'.
-      spalteEinzelnDeaktiviertWorden = false;
-    // @ts-expect-error TS(2304): Cannot find name 'ZeileIhreZellen'.
+      var spalteEinzelnDeaktiviertWorden: boolean = false;
     else if (ZeileIhreZellen[0].getElementsByTagName("option")[0].selected)
-      // @ts-expect-error TS(2304): Cannot find name 'spalteEinzelnDeaktiviertWorden'.
       spalteEinzelnDeaktiviertWorden = true;
-    // @ts-expect-error TS(2304): Cannot find name 'spalteEinzelnDeaktiviertWorden'.
     else spalteEinzelnDeaktiviertWorden = false;
 
-    // @ts-expect-error TS(2304): Cannot find name 'i'.
-    for (i = 0; i < ZeileIhreZellen.length; i++) {
+    for (var i: number = 0; i < ZeileIhreZellen.length; i++) {
       if (
-        // @ts-expect-error TS(2304): Cannot find name 'ZeileIhreZellen'.
         ZeileIhreZellen[i].style.display == "none" &&
-        // @ts-expect-error TS(2304): Cannot find name 'spalteEinzelnDeaktiviertWorden'.
         !spalteEinzelnDeaktiviertWorden
       ) {
-        // @ts-expect-error TS(2304): Cannot find name 'ZeileIhreZellen'.
         ZeileIhreZellen[i].style.display = "table-cell";
-        // @ts-expect-error TS(2304): Cannot find name 'ZeileIhreZellen'.
         ZeileIhreZellen[i].style.fontSize = "100%";
-      // @ts-expect-error TS(2304): Cannot find name 'away'.
       } else if (away || spalteEinzelnDeaktiviertWorden) {
-        // @ts-expect-error TS(2304): Cannot find name 'ZeileIhreZellen'.
         ZeileIhreZellen[i].style.display = "none";
       }
     }
-    // @ts-expect-error TS(2304): Cannot find name 'spalteEinzelnDeaktiviertWorden'.
     if (spalteEinzelnDeaktiviertWorden) {
       //window.alert('B '+ZeileIhreZellen[0].className.match(/r_(\d+)/g)[0]);
       //window.alert('B '+ZeileIhreZellen[0].className.match(/r_(\d+)/g)[0].substring(2));
-      // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
       delete visibleHeadingsSelectUnsorted[
-        // @ts-expect-error TS(2304): Cannot find name 'ZeileIhreZellen'.
         parseInt(ZeileIhreZellen[0].className.match(/r_(\d+)/g)[0].substring(2))
       ];
       // sie wieder zu aktivieren, auf 1 statt 0 setzen (wobei hier die richtige zahl eigentlich besser wäre)
       // auf 1 setzen ist aber okay, weil die durch refresh usw. sowieso wieder umgesetzt wird
-      // @ts-expect-error TS(2304): Cannot find name 'ZeileIhreZellen'.
       ZeileIhreZellen[0].getElementsByTagName("option")[1].selected =
         "selected";
     }
-  // @ts-expect-error TS(2304): Cannot find name 'ZeileIhreZellen'.
   } else window.alert(ZeileIhreZellen[0].innerHTML + " ! " + colNumber);
 }
 
-var tableHeadline;
-var visibleHeadingsSelectUnsorted = {};
-var visibleHeadingsNumbers = {};
+var tableHeadline: HTMLTableCellElement;
+var visibleHeadingsSelectUnsorted: Map<number, HTMLElement> = new Map();
+//var visibleHeadingsNumbers: Map<number, Map<number, HTMLElement>> = new Map();
+var visibleHeadingsNumbers: Map<number, string[]> = new Map();
 
-// @ts-expect-error TS(7006): Parameter 'oneColHeading' implicitly has an 'any' ... Remove this comment to see the full error message
-function changeHeadline(oneColHeading, addTrueRemoveFalse) {
-  // @ts-expect-error TS(2304): Cannot find name 'sel'.
-  sel = oneColHeading.getElementsByTagName("select")[0];
-  var num = oneColHeading.className.match(/r_(\d+)/g);
-  if (num.length > 0) num = parseInt(num[0].substring(2));
+function changeHeadline(oneColHeading: HTMLTableCellElement, addTrueRemoveFalse: boolean) {
+  var sel: HTMLSelectElement = oneColHeading.getElementsByTagName("select")[0];
+  var num1: string[] | null = oneColHeading.className.match(/r_(\d+)/g);
+  var num: number;
+  if (!!num1 && num1.length > 0) num = parseInt(num[0].substring(2));
   else num = 0;
   //window.alert(num);
 
-  // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
   if (addTrueRemoveFalse) visibleHeadingsSelectUnsorted[num] = sel;
   else if (num in visibleHeadingsSelectUnsorted)
-    // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
     delete visibleHeadingsSelectUnsorted[num];
   //window.alert(Object.keys(visibleHeadingsSelectUnsorted).length);
   //
 }
 
 function makeSpalteUnsichtbar(
-  // @ts-expect-error TS(7006): Parameter 'spalteToUnsichtbar' implicitly has an '... Remove this comment to see the full error message
-  spalteToUnsichtbar,
-  // @ts-expect-error TS(7006): Parameter 'momentaneSpalte_als_r_' implicitly has ... Remove this comment to see the full error message
-  momentaneSpalte_als_r_,
-  // @ts-expect-error TS(7006): Parameter 'hiddenTrueVisibleFalse' implicitly has ... Remove this comment to see the full error message
-  hiddenTrueVisibleFalse
+  spalteToUnsichtbar: HTMLCollectionOf<HTMLTableCellElement | Element>,
+  momentaneSpalte_als_r_: number,
+  hiddenTrueVisibleFalse: boolean
 ) {
   //spalteToUnsichtbar = document.getElementsByClassName("r_"+momentaneSpalte_als_r_);
-  // @ts-expect-error TS(2304): Cannot find name 'len'.
-  len = spalteToUnsichtbar.length;
+  var len: number = spalteToUnsichtbar.length;
   if (hiddenTrueVisibleFalse) {
-    // @ts-expect-error TS(2304): Cannot find name 'len'.
-    for (var i = 0; i < len; i++) spalteToUnsichtbar[i].style.display = "none";
-    // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
+    for (var i: number = 0; i < len; i++) spalteToUnsichtbar[i].style.display = "none";
     delete visibleHeadingsSelectUnsorted[momentaneSpalte_als_r_];
   } /*else {
         for (var i=0; i<len; i++)
@@ -1072,19 +1021,16 @@ function makeSpalteUnsichtbar(
     }*/
 }
 
-var erstesMal = true;
+var erstesMal: boolean = true;
 
-// @ts-expect-error TS(7006): Parameter 'gewaehlteSpalte_plusgleich1' implicitly... Remove this comment to see the full error message
-function headingSelected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
-  gewaehlteSpalte_plusgleich1 = gewaehlteSpalte_plusgleich1.value;
+function headingSelected(gewaehlteSpalte_plusgleich1a: HTMLSelectElement, momentaneSpalte_als_r_1: string) {
+  var momentaneSpalte_als_r_ : number = parseInt(momentaneSpalte_als_r_1)
+  var gewaehlteSpalte_plusgleich1: string = gewaehlteSpalte_plusgleich1a.value;
   //for (var i=0; i<optionsS.length; i++) {
-  // @ts-expect-error TS(2304): Cannot find name 'zwei'.
-  zwei = gewaehlteSpalte_plusgleich1.split(",");
-  // @ts-expect-error TS(2304): Cannot find name 'zwei'.
+  var zwei: string[] = gewaehlteSpalte_plusgleich1.split(",");
   gewaehlteSpalte_plusgleich1 = zwei[0];
-  // @ts-expect-error TS(2304): Cannot find name 'gewaehlteSpalte_als_r_'.
-  gewaehlteSpalte_als_r_ = zwei[1];
-  var spalte2ToChange = document.getElementsByClassName(
+  var gewaehlteSpalte_als_r_: string = zwei[1];
+  var spalte2ToChange: HTMLCollectionOf<HTMLTableCellElement | Element> = document.getElementsByClassName(
     "r_" + momentaneSpalte_als_r_
   );
   if (gewaehlteSpalte_plusgleich1 == "-") {
@@ -1096,26 +1042,19 @@ function headingSelected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
     //window.alert("Das Dauert! Geduld mitbringen! Alles friert kurz ein!");
     erstesMal = false;
   }
-  // @ts-expect-error TS(2304): Cannot find name 'momentaneSpalte_plusgleich1'.
-  momentaneSpalte_plusgleich1 = visibleHeadingsNumbers[momentaneSpalte_als_r_]; // dieses mal als +=1 angabe statt als r_
-  // @ts-expect-error TS(2304): Cannot find name 'zwei'.
-  zwei = momentaneSpalte_plusgleich1.split(",");
-  // @ts-expect-error TS(2304): Cannot find name 'momentaneSpalte_plusgleich1'.
-  momentaneSpalte_plusgleich1 = zwei[0];
-  var spalte1ToChange = document.getElementsByClassName(
-    // @ts-expect-error TS(2304): Cannot find name 'gewaehlteSpalte_als_r_'.
+  //var momentaneSpalte_plusgleich1: Map<number, HTMLElement> = visibleHeadingsNumbers[momentaneSpalte_als_r_]; // dieses mal als +=1 angabe statt als r_
+  var momentaneSpalte_plusgleich1: string[] = visibleHeadingsNumbers[momentaneSpalte_als_r_]; // dieses mal als +=1 angabe statt als r_
+  var zwei: string[] = momentaneSpalte_plusgleich1.split(",");
+  var momentaneSpalte_plusgleich1: string = zwei[0];
+  var spalte1ToChange: HTMLCollectionOf<HTMLTableCellElement | Element> = document.getElementsByClassName(
     "r_" + gewaehlteSpalte_als_r_
   );
-  // @ts-expect-error TS(2304): Cannot find name 'seli'.
-  seli = spalte1ToChange[0]
+  var seli: HTMLCollectionOf<HTMLOptionElement> = spalte1ToChange[0]
     .getElementsByTagName("select")[0]
     .getElementsByTagName("option");
-  // @ts-expect-error TS(2304): Cannot find name 'selival'.
-  selival = selectionsBefore[momentaneSpalte_plusgleich1] + 1;
-  // @ts-expect-error TS(2304): Cannot find name 'selival'.
-  gewaehlteSpalte_plusgleich1 = selival - 2; // 1 bis +=1
-  // @ts-expect-error TS(2304): Cannot find name 'seli'.
-  seli[selival].selected = "selected";
+  var selival: number = selectionsBefore[momentaneSpalte_plusgleich1] + 1;
+  var gewaehlteSpalte_plusgleich1: number = selival - 2; // 1 bis +=1
+  seli[selival].selected = true;
   var tabellenKopf = document.getElementsByClassName("z_0");
   var aa = 0;
   var bb = 0;
@@ -1138,24 +1077,20 @@ function headingSelected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
       spalte2ToChange[i].outerHTML = merke;
     }
 
-  // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
   visibleHeadingsSelectUnsorted[gewaehlteSpalte_als_r_] =
     spalte1ToChange[0].getElementsByTagName("select")[0];
-  // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
   visibleHeadingsSelectUnsorted[momentaneSpalte_als_r_] =
     spalte2ToChange[0].getElementsByTagName("select")[0];
   refresh();
 }
 
-var selectionsBefore = {};
-var optionsS = [];
-// @ts-expect-error TS(7034): Variable 'sichtbareSpaltenNummern' implicitly has ... Remove this comment to see the full error message
-var sichtbareSpaltenNummern;
+var selectionsBefore: number;
+var optionsS: string[][]  = [];
+var sichtbareSpaltenNummern: string[];
 
 function sortedKeysOfHeadingNumbersByVisibility() {
-  // @ts-expect-error TS(2531): Object is possibly 'null'.
-  tableHeadline = document.getElementById("bigtable").rows[0].cells;
-  sichtbareSpaltenNummern = [];
+  var tableHeadline: HTMLCollectionOf<HTMLTableCellElement> = document.getElementById("bigtable").rows[0].cells;
+  var sichtbareSpaltenNummern: string[] = [];
   for (var i = 0; i < tableHeadline.length; i++) {
     if (tableHeadline[i].style.display == "table-cell") {
       sichtbareSpaltenNummern.push(
