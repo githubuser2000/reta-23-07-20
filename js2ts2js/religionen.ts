@@ -186,7 +186,6 @@ for (i = 0; i < tdClasses1.length; i++)
 
     var checkbox: string =
       '<div class="chksA"><label class="chksA1 c1_' +
-      // @ts-expect-error TS(2304): Cannot find name 'mapsTagsif'.
       mapsTagsif.join(",") +
       '" style="' +
       labelstyle +
@@ -198,7 +197,6 @@ for (i = 0; i < tdClasses1.length; i++)
       '" onchange="toggleP1(\'' +
       String(p1keys[i]) +
       "');" +
-      // @ts-expect-error TS(2304): Cannot find name 'insertnull'.
       String(insertnull) +
       '">' +
       String(makeSpacesOutOf_(p1keys[i])) +
@@ -335,25 +333,22 @@ for (i = 0; i < tdClasses1.length; i++)
   const queryString: string = window.location.search;
   const urlParams: URLSearchParams = new URLSearchParams(queryString);
   const ifpreselect: string | null = urlParams.get("preselect");
-  if (ifpreselect != "nothing") {
+  if (ifpreselect != "nothing" && checkbox_i != null && this != null) {
     inputs[checkbox_i[1]].checked = true;
-    // @ts-expect-error TS(2721): Cannot invoke an object which is possibly 'null'.
     inputs[checkbox_i[1]].onchange(this);
   }
 
   //var sheets: StyleSheetList = document.styleSheets;
   //var sheet, rules, rule;
-  var i, j, k, l: number;
-
   document.body.style.display = "initial";
   /*
-  for (i = 0, iLen = sheets.length; i < iLen; i++) {
+  for (var i: number = 0, iLen = sheets.length; i < iLen; i++) {
     sheet = sheets[i];
     // W3C model
     if (sheet.cssRules) {
       rules = sheet.cssRules;
 
-      for (j = 0, jLen = rules.length; j < jLen; j++) {
+      for (var j: number = 0, jLen = rules.length; j < jLen; j++) {
         rule = rules[j];
         if (rule.cssText == "body { display: none; }") {
           //window.alert(rule.cssText);
@@ -410,7 +405,6 @@ function makeMapsOfHeadLCheckB(p1: string, p2: string | null, num: string | numb
     mapMapMapTags[p1][p2] = Set.union(mapMapMapTags[p1][p2], tags);
 }
 
-// @ts-expect-error TS(2339): Property 'union' does not exist on type 'SetConstr... Remove this comment to see the full error message
 Set.union = function (s1: any, s2: any): set<any> | null {
   if (typeof s1 == "undefined" || typeof s2 == "undefined") return null;
   if (!s1 instanceof Set || !s2 instanceof Set) {
@@ -1846,7 +1840,6 @@ function clickPrimVielfacheErlaubenUsw() {
   erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(5);
 }
 function clickPrimRichtungenErlaubenUsw() {
-  // @ts-expect-error TS(2322): Type 'Set<unknown> | undefined' is not assignable ... Remove this comment to see the full error message
   const erlaubteZeilen: Set<number> = makeAllAllowedZeilenPrimRichtungen();
   get_r__SpaltenNummern();
   erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(6);

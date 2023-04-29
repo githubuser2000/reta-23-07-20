@@ -44,7 +44,9 @@
 ***** unwichtiges
 + Ich könnte erweitern aus welchen Dingen ich noch bestehe, der höheren Art, wie höhere Gefühle und Impulse, etc. Denn das gabs vorher nicht.
 *** 2. Feature Ideen
-+ Ich habe einen Programmierfehler: k2 wird verglichen, das eigentlich nur aus einer vorherigen schleifen stammt in der js funktion function grundSDivToggleBeachte
++ Halb-Mond-Halb-Sonne Zahlen, wie 12 und 18 markieren: Für die Zeilenfilterung
++ Filtern nach Primzahlarten und deren Vielfachern und nach 6*n zusätzlich, wegen besonderer Bedeutung (obwohl "grins" oder "lach" alle Zahlen besonders sind.)
++ Filtern wie die HTML: Dafür ein System ausdenken
 + Parameter hinzufügen für das Nicht-Printen von Spalten, in welchen nur ein Zeichen oder keins vorhanden ist.
 + Teile der reta readme einfach besser generieren lassen: sparrt am Ende Zeit und sparrt noch mehr Zeit bei Mehrsprachigkeit und sorgt für weniger Fehler!
 + statt text und stext, sollte ich in retaPrompt.py noch eine weitere Variable einführen, für das mitschleppen von äußeren zusätzlichen Variablen. Eine Fkt führt beide jedes Mal zusammen, wenn stext oder text mit dieser zusätzlichen Variablen abgefragt werden. Das ist also eine Form von Refactoring irgendwie.
