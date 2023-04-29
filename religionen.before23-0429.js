@@ -1,45 +1,16 @@
-var col;
-var selectedSpaltenMany1: Map<number, HTMLElement> = new Map<number, HTMLElement>();
-var selectedSpaltenMany2: Map<number,string> = new Map<number,string>();
-var labelstyle: string = "white-space: nowrap;font-size: 100%;";
-var labelstylekl: string = "white-space: nowrap;font-size: 80%;color: grey;";
-var tdStyleWhiteSpace: string = "nowrap";
-var tdStyleFontSize: string = "100%";
-var tdStyleFontSizeKl:string = "80%";
-var tdStyleColorKl:string = "grey";
-var Enume : Set<number> = new Set([0, 1, 3, 4, 5, 6]);
-var mapMapMapTags: Map<number, string[]> = new Map<number, string[]>(),
-var chks1: HTMLCollectionOf<HTMLInputElement>;
-var chks2: string[];
-var spaltenTags: Array<Array<any> > = [],
-var spalten4spaltenTags: Map<number,Array<HTMLTableCellElement>> = new Map<number,Array<HTMLTableCellElement>>(),
-var Achks: HTMLCollectionOf<HTMLInputElement | Element>;
-let tdClasses: HTMLCollectionOf<HTMLTableCellElement> = document.getElementsByClassName("z_0");
-var mapMapMap: Map<string, string | Map<string , string | Map<any, any>>> = new Map<string, string | Map<string , string | Map<any, any>>>();
-
-
-function returnChangeButtons(number1: number | string): string {
-  var number = number1.toString()
-  return (
-    '<label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="neuErlauben" name="zeilenDazuOrWeg' +
-    number +
-    '" onchange="" checked="true">neu sichtbar</label><label style="white-space: normal;">&nbsp; </label><label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="neuHinfort" name="zeilenDazuOrWeg' +
-    number +
-    '" onchange="">neu unsichtbar</label><label style="white-space: normal;">&nbsp; </label><label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="dazuErlauben" name="zeilenDazuOrWeg' +
-    number +
-    '" onchange="">zusätzlich sichtbar</label><label style="white-space: normal;">&nbsp; </label><label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="dazuEinschraenkend" name="zeilenDazuOrWeg' +
-    number +
-    '">zusätzlich eingeschränkt</label><label style="white-space: normal;">&nbsp; </label><label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="dazuHinfort" name="zeilenDazuOrWeg' +
-    number +
-    '" onchange="">zusätzlich unsichtbar</label>'
-  );
-}
-
-
-
+var col = document.getElementsByClassName("RowNumber 1");
+var selectedSpaltenMany1 = {};
+var selectedSpaltenMany2 = {};
+var labelstyle = "white-space: nowrap;font-size: 100%;";
+var labelstylekl = "white-space: nowrap;font-size: 80%;color: grey;";
+var tdStyleWhiteSpace = "nowrap";
+var tdStyleFontSize = "100%";
+var tdStyleFontSizeKl = "80%";
+var tdStyleColorKl = "grey";
+var Enume = new Set([0, 1, 3, 4, 5, 6]);
 window.onload = function () {
-  let div: HTMLDivElement = document.createElement("div");
-  let div2: HTMLDivElement = document.createElement("div");
+  let div = document.createElement("div");
+  let div2 = document.createElement("div");
   div.className = "headingsDiv";
   /*
     sternPolygon = 0
@@ -50,39 +21,44 @@ window.onload = function () {
 */
   document.body.insertBefore(div, document.getElementById("bigtable"));
 
-  let chk_spalten: string =
+  chk_spalten =
     '<fieldset><label style="white-space: nowrap;"><input type="radio" id="spaltenWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);" checked="true">Spalten (Einheiten [9]) wählen</label> <label style="white-space: nowrap;"><input type="radio" id="zeilenWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);">Zeilen, welche ja nein, (6,13,14,15) (wenig: 7,8,10,12)</label> <label style="white-space: nowrap;"><input type="radio" id="keinsWahl" name="spaltOrZeilWahl" onchange="toggleChkSpalten(this);">frei machen zur Tabellenansicht <!-- | Lädt schneller mit Firefox statt Chrome --> </label></fieldset>';
-  let radio_tags: string =
+  radio_tags =
     '<fieldset><label style="white-space: nowrap;"><input type="radio" id="galaxieuniversum" name="galaxieuniversum" onchange="disEnAbleChks([3,4,5]);" checked="true">alles</label> <label style="white-space: nowrap;"><input type="radio" id="planet" name="galaxieuniversum" onchange="disEnAbleChks([5]);">alles andere als 13,15, ggf. jeweils mit 14</label> <label style="white-space: nowrap;"><input type="radio" id="galaxie" name="galaxieuniversum" onchange="disEnAbleChks([3]);">Himmelskörper um schwarzes Loch (13), z.B. eine Galaxie (14)</label> <label style="white-space: nowrap;"><input type="radio" id="universum" name="galaxieuniversum" onchange="disEnAbleChks([4]);">Universum (15)</label></fieldset><fieldset><label style="white-space: nowrap;"><input type="radio" id="sternpolygongleichfoermigespolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([0,1,6]);" checked="true">Sternpolygon und gleichförmiges Polygon und gebrochen-rational</label> <label style="white-space: nowrap;"><input type="radio" id="sternpolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([0]);">Sternpolygon (n)</label> <label style="white-space: nowrap;"><input type="radio" id="gleichfoermigespolygon" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([1]);">gleichförmiges Polygon (1/n)</label> <label style="white-space: nowrap;"><input type="radio" id="gebrrat" name="sternpolygongleichfoermigespolygon" onchange="disEnAbleChks([6]);">gebrochen-rational (m/n)</label></fieldset>';
   div.innerHTML = chk_spalten;
+  tdClasses = document.getElementsByClassName("z_0");
   /*tdClasses = []
 for (i = 0; i < tdClasses1.length; i++)
 	if (tdClasses1[i].className.includes("z_0"))
 		tdClasses.push(tdClasses1[i]);*/
-  //let p1map = new Map();
-  //let p2map = new Map();
-  // str: string = "",
-  //let p1Bmap = new Map();
-  var str3: string = "",
-  var trStyles: Array<string> = [];
+  (p1map = {}),
+    (p2map = {}),
+    (mapMapMap = {}),
+    (str = ""),
+    (p1Bmap = {}),
+    (mapMapMapTags = {}),
+    (spaltenTags = []),
+    (spalten4spaltenTags = {});
+  str3 = "";
 
-  const tAble:  HTMLTableElement = document.getElementById("bigtable") as HTMLTableElement;
-  const TRs: HTMLCollectionOf<HTMLTableRowElement> = tAble.rows;
-  for (var i: number = 0; i < TRs.length; i++) {
+  trStyles = [];
+
+  TRs = document.getElementById("bigtable").rows;
+  for (var i = 0; i < TRs.length; i++) {
     trStyles.push(TRs[i].style.cssText);
-    var TDs: HTMLCollectionOf<HTMLTableCellElement> = TRs[i].cells;
-    for (var k: number = 0; k < TDs.length; k++) {
-      if (typeof spalten4spaltenTags[k] === "undefined")
+    TDs = TRs[i].cells;
+    for (var k = 0; k < TDs.length; k++) {
+      if (typeof spalten4spaltenTags[k] == "undefined")
         spalten4spaltenTags[k] = [];
       spalten4spaltenTags[k].push(TDs[k]);
     }
   }
 
-  for (var i: number = 0; i < tdClasses.length; i++) {
-    var name: string = tdClasses[i].className;
-    var num: Array<string> | number | null | null = name.match(/r_(\d+)/);
+  for (i = 0; i < tdClasses.length; i++) {
+    name = tdClasses[i].className;
+    var num = name.match(/r_(\d+)/);
 
-    var tags: Array<string> | null = name.match(/p4_([\d,]+)/g);
+    var tags = name.match(/p4_([\d,]+)/g);
     if (tags === null) tags = [];
     else tags = String(tags).substr(3).split(",");
     tags = Array.from(new Set(tags));
@@ -91,31 +67,31 @@ for (i = 0; i < tdClasses1.length; i++)
     if (num != null) {
       //num = num.substring(2,0);
       num = parseInt(num[1]);
-      //let str = num[1];
+      str = num[1];
       //num = i
-      var p1a: Array<string> | null = name.match(/p1_([^\s])+/g);
-      var p2a: Array<string> | null = name.match(/p2_([^\s])+/g);
+      var p1a = name.match(/p1_([^\s])+/g);
+      var p2a = name.match(/p2_([^\s])+/g);
       if (p1a != null) {
-        for (var p1i: number = 0; p1i < p1a.length; p1i++) {
+        for (p1i = 0; p1i < p1a.length; p1i++) {
           if (p1a[p1i].includes("p1_")) p1a[p1i] = p1a[p1i].substring(3);
-          var p1b : Array<string> | null= p1a[p1i].match(/[^,]+/g);
+          p1b = p1a[p1i].match(/[^,]+/g);
           if (p1b != null) {
-            for (let p1k: number = 0; p1k < p1b.length; p1k++) {
-              var p1: string = p1b[p1k];
-              if (typeof mapMapMap[p1] === "undefined") mapMapMap[p1] = new Map();
+            for (p1k = 0; p1k < p1b.length; p1k++) {
+              p1 = p1b[p1k];
+              if (typeof mapMapMap[p1] === "undefined") mapMapMap[p1] = {};
               if (p2a != null) {
-                for (var p2i: number = 0; p2i < p2a.length; p2i++) {
+                for (p2i = 0; p2i < p2a.length; p2i++) {
                   if (p2a[p2i].includes("p2_"))
                     p2a[p2i] = p2a[p2i].substring(3);
-                  var p2b: string[] | null = p2a[p2i].match(/[^,]+/g);
+                  p2b = p2a[p2i].match(/[^,]+/g);
                   if (p2b != null) {
-                    for (var p2k: number = 0; p2k < p2b.length; p2k++) {
-                      var p2: string = p2b[p2k];
+                    for (p2k = 0; p2k < p2b.length; p2k++) {
+                      p2 = p2b[p2k];
                       if (p2 != null) {
-                        var p3a: string[] | null = p2.match(/p3_(\d+)_/);
+                        var p3a = p2.match(/p3_(\d+)_/);
                         if (p3a != null) {
-                          var p3b: number = parseInt(p3a[1], 10);
-                          var p2: string = p2.substring(p3a[1].length + 4);
+                          p3b = parseInt(p3a[1], 10);
+                          p2 = p2.substring(p3a[1].length + 4);
                           if (p3b == p1k) {
                             if (p2.length > 0)
                               makeMapsOfHeadLCheckB(p1, p2, num, tags);
@@ -134,24 +110,24 @@ for (i = 0; i < tdClasses1.length; i++)
     }
   }
 
-  var p1keys: string[] = Object.keys(mapMapMap);
-  //var p1Bkeys = Object.keys(p1Bmap);
+  var p1keys = Object.keys(mapMapMap);
+  var p1Bkeys = Object.keys(p1Bmap);
   //checkboxes = "<span style=\"white-space: nowrap;\"><input type=\"checkbox\" onchange=\"toggleSpalten(\'r_0\');\"><label>Nummererierung</label>";
-  var checkboxes : string =
+  checkboxes =
     '<div id="chk_spalten" style="display:none;">' +
     radio_tags +
     '<span style="">';
-  for (var i: number = 0; i < p1keys.length; i++) {
-    var chk2s: string = "";
-    var p2keys: Array<string | Map<any, any>> = Object.keys(mapMapMap[p1keys[i]]);
-    for (var k: number = 0; k < p2keys.length; k++) {
-      var numbers: Array<Map<any,any> = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
+  for (i = 0; i < p1keys.length; i++) {
+    var chk2s = "";
+    var p2keys = Object.keys(mapMapMap[p1keys[i]]);
+    for (k = 0; k < p2keys.length; k++) {
+      numbers = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
       if (p2keys[k] != null && p2keys[k] != "null") {
         // window.alert(p1keys[i]); '✗Grundstrukturen'
         // window.alert(p2keys[i]); klar
         // window.alert(numbers); // ach einfach die und daraus!
         // window.alert(Array.from(mapMapMapTags[p1keys[i]][p2keys[k]]).join(",")); // diese Zahlen
-        var chk2: string =
+        chk2 =
           '<label style="' +
           labelstyle +
           '" class="chks c_' +
@@ -171,20 +147,21 @@ for (i = 0; i < tdClasses1.length; i++)
       }
     }
     if (p1keys[i] === "✗Grundstrukturen") {
-      var grunSi: number = i;
-      grunp2Keys: Array<string | Map<any, any>> = p2keys;
+      grunSi = i;
+      grunp2Keys = p2keys;
     }
     if (mapMapMap[p1keys[i]][null] !== undefined) {
-      let numbers: Array<string, Map<any, any> | null>  = Array.from(mapMapMap[p1keys[i]][null]);
-      let insertnull: string = "toggleP2(this,'" + numbers + "','" + [p1keys[i], null] + "');";
+      numbers = Array.from(mapMapMap[p1keys[i]][null]);
+      insertnull =
+        "toggleP2(this,'" + numbers + "','" + [p1keys[i], null] + "');";
     } else {
-      let insertnull: string = "";
+      insertnull = "";
     }
-    var mapsTagsif: string[] | Set<string> = mapMapMapTags[p1keys[i]][null];
+    mapsTagsif = mapMapMapTags[p1keys[i]][null];
     if (typeof mapsTagsif == "undefined") mapsTagsif = [];
     else mapsTagsif = Array.from(mapMapMapTags[p1keys[i]][null]);
 
-    var checkbox: string =
+    checkbox =
       '<div class="chksA"><label class="chksA1 c1_' +
       mapsTagsif.join(",") +
       '" style="' +
@@ -215,7 +192,7 @@ for (i = 0; i < tdClasses1.length; i++)
 
     checkboxes += checkbox;
   }
-  var str2: string = checkboxes + "</span></div>";
+  str2 = checkboxes + "</span></div>";
   div.innerHTML += str2;
   chks1 = document.getElementsByClassName("chks");
   chks2 = [];
@@ -228,59 +205,60 @@ for (i = 0; i < tdClasses1.length; i++)
     //window.alert(chks2[i]);
   }
 
-  var str4: string =
+  str4 =
     '<div id="inputZeilen" style="display:none"><table borders="0" id="table2">';
-  var str5: string =
+  str5 =
     '<tr><td><label>von bis und Einzelnes: </label></td><td><input typ="text" id="zeilenErlaubtText" value="1-10,12"></input></td><td>' +
     returnChangeButtons(1) +
-    '<input onclick="clickZeilenErlaubenUsw();" type="submit" value="auswählen"></td></tr>',;
-  var str6: string = '<tr><td><label>Vielfacher und Nachbarn: </label></td><td><input typ="text" id="VielfacheErlaubtText" value="10+0+1,7+0"></td><td>' +
+    '<input onclick="clickZeilenErlaubenUsw();" type="submit" value="auswählen"></td></tr>';
+  str6 =
+    '<tr><td><label>Vielfacher und Nachbarn: </label></td><td><input typ="text" id="VielfacheErlaubtText" value="10+0+1,7+0"></td><td>' +
     returnChangeButtons(2) +
     '<input onclick="clickVielfacheErlaubenUsw();" type="submit" value="auswählen"></td></tr>';
-  var str8: string =
-    '<tr><td><label>Potenzen: </label></td><td><input typ="text" id="potenzenErlaubtText" value="3,5"></input></td><td>' ,
+  str8 =
+    '<tr><td><label>Potenzen: </label></td><td><input typ="text" id="potenzenErlaubtText" value="3,5"></input></td><td>' +
     returnChangeButtons(3) +
     '<input onclick="clickPotenzenErlaubenUsw();" type="submit" value="auswählen"></td></tr>';
-  var str9: string =
+  str9 =
     '<tr><td colspan="2"><input type="radio" id="sonneWahl" name="sunmoonplanetblackhole" onchange="" checked="true"><label>Sonne</label><input type="radio" id="mondWahl" name="sunmoonplanetblackhole" onchange=""><label>Mond</label><input type="radio" id="planetWahl" name="sunmoonplanetblackhole" onchange=""><label>Planet</label><input type="radio" id="schwarzeSonneWahl" name="sunmoonplanetblackhole" onchange="" onclick="window.alert(\'Schwarze Sonnen kehren die Originalbedeutung der 3*n ins Gegenteil (Paradigmen in Gegen-Paradigmen; und auch: Meta-Paradigmen, Transzendentalien in Gegen-Meta-Paradigmen, Gegen-Transzendentalien).\');"><label>schwarze Sonne</label></td><td>' +
     returnChangeButtons(4) +
-    '<input onclick="clickHimmelskoerperErlaubenUsw();" type="submit" value="auswählen"></td></tr>',
-  var str10: string =
+    '<input onclick="clickHimmelskoerperErlaubenUsw();" type="submit" value="auswählen"></td></tr>';
+  str10 =
     '<tr><td><label>Zählung: </label></td><td><input typ="text" id="zaehlungErlaubtText" value="1,3-4"></input></td><td>' +
     returnChangeButtons(5) +
     '<input onclick="clickZaehlungenErlaubenUsw();" type="submit" value="auswählen"></td></tr>';
-  var str11: string =
+  str11 =
     '<tr><td><label>Primzahlvielfacher: </label></td><td><input typ="text" id="primVielfache" value="1"></input></td><td>' +
     returnChangeButtons(6) +
-    '<input onclick="clickPrimVielfacheErlaubenUsw();" type="submit" value="auswählen"></td></tr>',
-  var str12: string =
+    '<input onclick="clickPrimVielfacheErlaubenUsw();" type="submit" value="auswählen"></td></tr>';
+  str12 =
     '<tr><td colspan="2"><input type="radio" id="proInnen" name="proContra4Richtungen" onchange="" checked="true"><label>pro innen</label><input type="radio" id="proAussen" name="proContra4Richtungen" onchange=""><label>pro außen</label><input type="radio" id="gegenDritte" name="proContra4Richtungen" onchange=""><label>gegen Dritte</label><input type="radio" id="proDritte" name="proContra4Richtungen" onchange="" onclick=""><label>pro Dritte</label></td><td>' +
     returnChangeButtons(7) +
-    '<input onclick="clickPrimRichtungenErlaubenUsw();" type="submit" value="auswählen"></td></tr>',
-  var str13: string =
+    '<input onclick="clickPrimRichtungenErlaubenUsw();" type="submit" value="auswählen"></td></tr>';
+  str13 =
     '<tr><td><label>Primzahlkreuzradius: </label></td><td><input typ="text" id="primZahlKreuzRadius" value="1"></input></td><td>' +
     returnChangeButtons(8) +
-    '<input onclick="clickPrimZahlKreuzRadiusErlaubenUsw();" type="submit" value="auswählen"></td></tr>',
-  var str7: string = "</table></div>";
+    '<input onclick="clickPrimZahlKreuzRadiusErlaubenUsw();" type="submit" value="auswählen"></td></tr>';
+  str7 = "</table></div>";
   div.innerHTML +=
     str4 + str5 + str6 + str8 + str9 + str10 + str11 + str12 + str13 + str7;
   // Spaltenreihenfolge
-  var tableHeadline: HTMLCollectionOf<HTMLTableCellElement>= document.getElementById("bigtable").rows[0].cells;
-  for (var u: number = 0; u < tableHeadline.length; u++) {
-    tableHeadline[ u].innerHTML =
+  tableHeadline = document.getElementById("bigtable").rows[0].cells;
+  for (var u = 0; u < tableHeadline.length; u++) {
+    tableHeadline[u].innerHTML =
       '<select id="hselec_' +
-      u.toString() +
+      u +
       '" value="' +
-      u.toString() +
+      u +
       '" onchange="headingSelected(this, ' +
-      u.toString() +
+      u +
       ');"></select>' +
       tableHeadline[u].innerHTML;
   }
   toggleChkSpalten();
 
-  var tabelle: HTMLElement | null = document.getElementById("bigtable");
-  var tds: HTMLCollectionOf<HTMLTableCellElement>  = tabelle.cells;
+  tabelle = document.getElementById("bigtable");
+  tds = tabelle.cells;
   /*
   for (var i = 0; i < tds.length; i++) {
     text = tds[i];
@@ -293,21 +271,21 @@ for (i = 0; i < tdClasses1.length; i++)
   }
   */
 
-  var trs: HTMLCollectionOf<HTMLTableRowElement> = tabelle.rows;
-  var tdsHeadlines: HTMLCollectionOf<HTMLTableCellElement> = trs[0].cells;
-  var classnames: string[] = [];
-  for (var i: number = 0; i < tdsHeadlines.length; i++)
+  trs = tabelle.rows;
+  tdsHeadlines = trs[0].cells;
+  classnames = [];
+  for (var i = 0; i < tdsHeadlines.length; i++)
     classnames.push(tdsHeadlines[i].className);
-  for (var k: number = 1; k < trs.length; k++) {
+  for (var k = 1; k < trs.length; k++) {
     tds = trs[k].cells;
-    for (var i: number = 0; i < tds.length; i++)
+    for (var i = 0; i < tds.length; i++)
       tds[i].className = classnames[i].replace("z_0", "z_" + tds[1].innerHTML);
   }
 
-  for (var k: number = 0; k < trs.length; k++) {
-    var tds: HTMLCollectionOf<HTMLTableCellElement>  = trs[k].cells;
+  for (var k = 0; k < trs.length; k++) {
+    tds = trs[k].cells;
     tds[0].style.cssText += "display:none;";
-    for (var i: number = 1; i < tds.length; i++)
+    for (var i = 1; i < tds.length; i++)
       tds[i].style.cssText = [
         tds[i].style.cssText,
         "display:none;",
@@ -324,31 +302,33 @@ for (i = 0; i < tdClasses1.length; i++)
       tds[i].style.cssText = tds[1].style.cssText;
   }*/
 
-  var inputs: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
-  var checkbox_i: Array<any> = [];
-  for (var i: number = 0; i < inputs.length; i++) {
+  var inputs = document.getElementsByTagName("input");
+  var checkbox_i = [];
+  for (var i = 0; i < inputs.length; i++) {
     if (inputs[i].type == "checkbox") checkbox_i.push(i);
     if (checkbox_i.length > 1) i = inputs.length;
   }
-  const queryString: string = window.location.search;
-  const urlParams: URLSearchParams = new URLSearchParams(queryString);
-  const ifpreselect: string | null = urlParams.get("preselect");
-  if (ifpreselect != "nothing" && checkbox_i != null && this != null) {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const ifpreselect = urlParams.get("preselect");
+  if (ifpreselect != "nothing") {
     inputs[checkbox_i[1]].checked = true;
-    inputs[checkbox_i[1]].onchange(this);
+    inputs[checkbox_i[1]].onchange();
   }
 
-  //var sheets: StyleSheetList = document.styleSheets;
-  //var sheet, rules, rule;
+  var sheets = document.styleSheets;
+  var sheet, rules, rule;
+  var i, j, k, l;
+
   document.body.style.display = "initial";
   /*
-  for (var i: number = 0, iLen = sheets.length; i < iLen; i++) {
+  for (i = 0, iLen = sheets.length; i < iLen; i++) {
     sheet = sheets[i];
     // W3C model
     if (sheet.cssRules) {
       rules = sheet.cssRules;
 
-      for (var j: number = 0, jLen = rules.length; j < jLen; j++) {
+      for (j = 0, jLen = rules.length; j < jLen; j++) {
         rule = rules[j];
         if (rule.cssText == "body { display: none; }") {
           //window.alert(rule.cssText);
@@ -366,18 +346,18 @@ for (i = 0; i < tdClasses1.length; i++)
   //window.alert(String(checkbox_i.length));
   // ✗Grundstrukturen
   // chksss = chks1 + Achks;
-  var Achks: HTMLCollectionOf<Element> = document.getElementsByClassName("chksA2");
-  var dinge: string[] = [
+  var Achks = document.getElementsByClassName("chksA2");
+  var dinge = [
     "✗Grundstrukturen",
-    "Universum",
+    "✗Universum",
     "Geist__(15)",
     "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15)",
   ];
   if (ifpreselect != "no_universal" && ifpreselect != "nothing") {
-    var dinge2: Array<HTMLCollectionOf<HTMLInputElement| Element>> = [Achks, Achks, chks1, chks1];
-    for (var x: number = 0; x < dinge.length; x++) {
-      var checkx: HTMLInputElement[] = [];
-      for (var k: number = 0; k < dinge2[x].length; k++)
+    var dinge2 = [Achks, Achks, chks1, chks1];
+    for (var x = 0; x < dinge.length; x++) {
+      var checkx = [];
+      for (var k = 0; k < dinge2[x].length; k++)
         if (dinge2[x][k].value == dinge[x]) checkx.push(dinge2[x][k]);
       if (checkx.length > 0) {
         checkx[0].checked = true;
@@ -395,7 +375,7 @@ for (i = 0; i < tdClasses1.length; i++)
   );*/
 };
 
-function makeMapsOfHeadLCheckB(p1: string, p2: string | null, num: string | number, tags: any): void {
+function makeMapsOfHeadLCheckB(p1, p2, num, tags) {
   if (typeof mapMapMap[p1][p2] === "undefined") mapMapMap[p1][p2] = new Set();
   mapMapMap[p1][p2].add(num);
   if (typeof mapMapMapTags[p1] === "undefined") mapMapMapTags[p1] = {};
@@ -405,7 +385,7 @@ function makeMapsOfHeadLCheckB(p1: string, p2: string | null, num: string | numb
     mapMapMapTags[p1][p2] = Set.union(mapMapMapTags[p1][p2], tags);
 }
 
-Set.union = function (s1: any, s2: any): set<any> | null {
+Set.union = function (s1, s2) {
   if (typeof s1 == "undefined" || typeof s2 == "undefined") return null;
   if (!s1 instanceof Set || !s2 instanceof Set) {
     //console.log("The given objects are not of type Set");
@@ -413,15 +393,15 @@ Set.union = function (s1: any, s2: any): set<any> | null {
   }
   //if ( s1 == null || s2 == null)
   //   return null;
-  let newSet: Set<any> = new Set();
+  let newSet = new Set();
   s1.forEach((elem) => newSet.add(elem));
   s2.forEach((elem) => newSet.add(elem));
   return newSet;
 };
 
-function disEnAbleChks(Enums1: Array<number> | Set<number> | HTMLCollectionOf<any>) {
-  var Enums: Set<number> | Array<number> = new Set(Enums1);
-  var abzug: number[] = [];
+function disEnAbleChks(Enums) {
+  Enums = new Set(Enums);
+  abzug = [];
   if (Enums.has(6) && !Enums.has(0)) abzug.push(0);
   if (Enums.has(6) && !Enums.has(1)) abzug.push(1);
   if (Enums.has(1) && !Enums.has(0)) abzug.push(0);
@@ -434,36 +414,38 @@ function disEnAbleChks(Enums1: Array<number> | Set<number> | HTMLCollectionOf<an
   if (Enums.has(4) && !Enums.has(5)) abzug.push(5);
   if (Enums.has(5) && !Enums.has(3)) abzug.push(3);
   if (Enums.has(5) && !Enums.has(4)) abzug.push(4);
-  var Enume: Set<number> = Set.union(Enums, Enume);
+  Enume = Set.union(Enums, Enume);
   for (var i = 0; i < abzug.length; i++) Enume.delete(abzug[i]);
-  Enums  = Array.from(Enume);
+  Enums = Array.from(Enume);
 
-  for (var i: number = 0; i < chks2.length; i++) {
-    var enumi: Set<number> = new Set();
-    for (var k: number = 0; k < chks2[i].length; k++)
-      for (var l: number = 0; l < Enums.length; l++)
-        if (chks2[i][k] == Enums[l].toString()) enumi.add(Enums[l]);
+  for (var i = 0; i < chks2.length; i++) {
+    enumi = new Set();
+    for (var k = 0; k < chks2[i].length; k++)
+      for (var l = 0; l < Enums.length; l++)
+        if (chks2[i][k] == Enums[l]) enumi.add(Enums[l]);
     if (
       (!enumi.has(0) && !enumi.has(1) && !enumi.has(6)) ||
       (!enumi.has(3) && !enumi.has(4) && !enumi.has(5)) ||
       enumi.size == 0
     ) {
       chks1[i].disabled = true;
+      //chks1[i].style = labelstylekl;
       chks1[i].style.fontSize = tdStyleFontSizeKl;
       chks1[i].style.color = tdStyleColorKl;
       chks1[i].style.whiteSpace = tdStyleWhiteSpace;
     } else {
       chks1[i].disabled = false;
+      //chks1[i].style = labelstyle;
       chks1[i].style.fontSize = tdStyleFontSize;
       chks1[i].style.color = "";
       chks1[i].style.whiteSpace = tdStyleWhiteSpace;
     }
   }
 
-  for (var i: number = 2; i < spaltenTags.length; i++) {
-    var enumi: Set<number> = new Set();
-    for (var k: number = 0; k < spaltenTags[i].length; k++)
-      for (var l: number = 0; l < Enums.length; l++)
+  for (var i = 2; i < spaltenTags.length; i++) {
+    enumi = new Set();
+    for (var k = 0; k < spaltenTags[i].length; k++)
+      for (var l = 0; l < Enums.length; l++)
         if (spaltenTags[i][k] == Enums[l]) enumi.add(Enums[l]);
 
     if (
@@ -471,8 +453,7 @@ function disEnAbleChks(Enums1: Array<number> | Set<number> | HTMLCollectionOf<an
       (!enumi.has(3) && !enumi.has(4) && !enumi.has(5)) ||
       enumi.size == 0
     ) {
-      var spaltenTags2: HTMLTableCellElement;
-      for (var k: number = 0; k < spalten4spaltenTags[i].length; k++) {
+      for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
         spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "80%";
         spaltenTags2 = spalten4spaltenTags[i][k].style.opacity = "0.4";
       }
@@ -483,14 +464,13 @@ function disEnAbleChks(Enums1: Array<number> | Set<number> | HTMLCollectionOf<an
       }
     }
   }
-  Achks = document.getElementsByClassName("chksA");
-  var Bchks: HTMLCollectionOf<HTMLInputElement>;
-  for (var i: number = 0; i < Achks.length; i++) {
+  var Achks = document.getElementsByClassName("chksA");
+  for (var i = 0; i < Achks.length; i++) {
     Bchks = Achks[i]
       .getElementsByTagName("div")[0]
       .getElementsByTagName("input");
-    var deakAmount: number = 0;
-    for (var k: number = 0; k < Bchks.length; k++) if (Bchks[k].disabled) deakAmount++;
+    deakAmount = 0;
+    for (var k = 0; k < Bchks.length; k++) if (Bchks[k].disabled) deakAmount++;
     if (deakAmount == Bchks.length && deakAmount != 0) {
       Achks[i].getElementsByTagName("label")[0].style.fontSize =
         tdStyleFontSizeKl;
@@ -505,19 +485,20 @@ function disEnAbleChks(Enums1: Array<number> | Set<number> | HTMLCollectionOf<an
         tdStyleWhiteSpace;
     }
   }
-  var chksA1label: HTMLCollectionOf<HTMLInputElement | Element> = document.getElementsByClassName("chksA1");
-  for (var i: number = 0; i < chksA1label.length; i++) {
-    var tagsPerA1Label: string[] | null = chksA1label[i].className.match(/c1_([\d,]+)/g);
+  //'"><label class="chksA1 c1_' +
+  chksA1label = document.getElementsByClassName("chksA1");
+  for (var i = 0; i < chksA1label.length; i++) {
+    tagsPerA1Label = chksA1label[i].className.match(/c1_([\d,]+)/g);
     if (tagsPerA1Label == null) tagsPerA1Label = [];
     else
-      var tagsPerA1Label: string[] | null = String(chksA1label[i].className.match(/c1_([\d,]+)/g))
+      tagsPerA1Label = String(chksA1label[i].className.match(/c1_([\d,]+)/g))
         .substr(3)
         .split(",");
     if (tagsPerA1Label.length != 0) {
-      var enumo: Set<number> = new Set();
-      for (var k: number = 0; k < tagsPerA1Label.length; k++)
-        for (var l:number  = 0; l < Enums.length; l++)
-          if (tagsPerA1Label[k] == Enums[l].toString()) enumo.add(Enums[l]);
+      enumo = new Set();
+      for (var k = 0; k < tagsPerA1Label.length; k++)
+        for (var l = 0; l < Enums.length; l++)
+          if (tagsPerA1Label[k] == Enums[l]) enumo.add(Enums[l]);
       if (
         (!enumo.has(0) && !enumo.has(1) && !enumo.has(6)) ||
         (!enumo.has(3) && !enumo.has(4) && !enumo.has(5)) ||
@@ -530,13 +511,29 @@ function disEnAbleChks(Enums1: Array<number> | Set<number> | HTMLCollectionOf<an
     }
   }
 }
-const alleMonde: number[] = [
+function returnChangeButtons(number) {
+  return (
+    '<label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="neuErlauben" name="zeilenDazuOrWeg' +
+    number +
+    '" onchange="" checked="true">neu sichtbar</label><label style="white-space: normal;">&nbsp; </label><label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="neuHinfort" name="zeilenDazuOrWeg' +
+    number +
+    '" onchange="">neu unsichtbar</label><label style="white-space: normal;">&nbsp; </label><label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="dazuErlauben" name="zeilenDazuOrWeg' +
+    number +
+    '" onchange="">zusätzlich sichtbar</label><label style="white-space: normal;">&nbsp; </label><label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="dazuEinschraenkend" name="zeilenDazuOrWeg' +
+    number +
+    '">zusätzlich eingeschränkt</label><label style="white-space: normal;">&nbsp; </label><label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="dazuHinfort" name="zeilenDazuOrWeg' +
+    number +
+    '" onchange="">zusätzlich unsichtbar</label>'
+  );
+}
+
+alleMonde = [
   4, 8, 9, 16, 25, 27, 32, 36, 49, 64, 81, 100, 121, 125, 128, 144, 169, 196,
   216, 225, 243, 256, 289, 324, 343, 361, 400, 441, 484, 512, 529, 576, 625,
   676, 729, 784, 841, 900, 961, 1000, 1024,
 ];
 
-const primZahlen: number[] = [
+primZahlen = [
   2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
   73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151,
   157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233,
@@ -551,15 +548,15 @@ const primZahlen: number[] = [
   1021,
 ];
 
-function makeSpacesOutOf_(text: string): string {
-  //if (text.length == 10) if (text == "Wichtigste") return "<b>Wichtigste</b>";
+function makeSpacesOutOf_(text) {
+  /*
+  if (text.length == 10) if (text == "Wichtigste") return "<b>Wichtigste</b>";
   if (text.length == 25)
     if (text == "Wichtigstes_zum_verstehen")
       return "<b>Wichtigstes zum verstehen</b>";
   if (text.length == 36)
     if (text == "Wichtigstes_zum_gedanklich_einordnen")
       return "<b>Wichtigstes zum gedanklich einordnen</b>";
-  /*
   if (text.length == 8) if (text == "zaehlung") return "Zählung";
   if (text.length == 12) if (text == "nummerierung") return "Nummerierung";
   if (text.length == 11)
@@ -577,12 +574,12 @@ function makeSpacesOutOf_(text: string): string {
 }
 
 function copyClassNameToOrderedGrunstruk(
-  mapMapMap: Map<string, string | Map<string , string | Map<any, any>>> ,
-  mapMapMapTags: Map<number, string>,
-  p1keys: string[],
-  p2keys: Array<string | Map<any, any>>,
-  grunSi: number,
-  grunp2Keys: Array<string | Map<any, any>>
+  mapMapMap,
+  mapMapMapTags,
+  p1keys,
+  p2keys,
+  grunSi,
+  grunp2Keys
 ) {
   //checkboxesOrdnung = document.getElementsByClassName("ordGru");
   //checkboxesChaos = document.getElementsByClassName("chks");
@@ -599,17 +596,17 @@ function copyClassNameToOrderedGrunstruk(
   //var p2keys = Object.keys(mapMapMap[p1);
   // var thingsB = Array.from(mapMapMapTags[p2keyGrund][p2keys[k]]).join(",");
   //var thingsB = Array.from(mapMapMapTags[p1keyGrund]);
-  var TagIdGrustruk: any = document.getElementById("✗Grundstrukturen");
-  var chaotische: Array<any> = [];
-  var ordentliche: Array<any> = [];
-  var ordentliche2: Array<any> = [];
-  for (var i: number = 0; i < grunp2Keys.length; i++) {
-    var nummern: Array<string> = Array.from(mapMapMapTags[p1keys[grunSi]][grunp2Keys[i]]).join(
+  TagIdGrustruk = document.getElementById("✗Grundstrukturen");
+  chaotische = [];
+  ordentliche = [];
+  ordentliche2 = [];
+  for (var i = 0; i < grunp2Keys.length; i++) {
+    nummern = Array.from(mapMapMapTags[p1keys[grunSi]][grunp2Keys[i]]).join(
       ","
     );
-    var ordentlich: any = document.getElementById("ordGru" + grunp2Keys[i]);
-    var ordentlich2: any = document.getElementById("ordGruB" + grunp2Keys[i]);
-    var chaotisch: HTMLCollectionOf<HTMLInputElement> | null = TagIdGrustruk.getElementsByClassName("chks c_" + nummern);
+    ordentlich = document.getElementById("ordGru" + grunp2Keys[i]);
+    ordentlich2 = document.getElementById("ordGruB" + grunp2Keys[i]);
+    chaotisch = TagIdGrustruk.getElementsByClassName("chks c_" + nummern);
     if (typeof chaotisch !== "undefined" && chaotisch !== null)
       chaotische.push(chaotisch);
     if (typeof ordentlich !== "undefined" && ordentlich !== null)
@@ -657,13 +654,12 @@ function copyClassNameToOrderedGrunstruk(
   }
   //window.alert(String(chaotische.length));
   //window.alert(String(ordentliche.length));
-  for (var i: number = 0; i < chaotische.length; i++) {
+  for (var i = 0; i < chaotische.length; i++) {
     chaotisch = chaotische[i];
-    for (var m: number = 0; m < chaotisch.length; m++) {
-      for (var k: number = 0; k < ordentliche.length; k++) {
+    for (var m = 0; m < chaotisch.length; m++) {
+      for (var k = 0; k < ordentliche.length; k++) {
         if (
           typeof ordentliche[k].value !== "undefined" &&
-          chaotisch != null &&
           typeof chaotisch[m].value !== "undefined" &&
           chaotisch[m].className.substring(0, 4) === "chks" &&
           ordentliche[k].value === chaotisch[m].value
@@ -681,13 +677,13 @@ function copyClassNameToOrderedGrunstruk(
     }
   }
 }
-function grundSDivToggleBeachte(para: string = "", dasTag: boolean = false) {
-  var checkboxesOrdnung: HTMLCollectionOf<any> = document.getElementsByClassName("ordGru");
-  var checkboxesChaos: HTMLCollectionOf<any> = document.getElementsByClassName("chks");
+function grundSDivToggleBeachte(para = "", dasTag = false) {
+  checkboxesOrdnung = document.getElementsByClassName("ordGru");
+  checkboxesChaos = document.getElementsByClassName("chks");
   if (para !== "") {
-    if (!dasTag) {
-      for (var i: number = 0; i < checkboxesOrdnung.length; i++) {
-        for (var k: number = 0; k < checkboxesOrdnung.length; k++) {
+    if (!dasTag.checked) {
+      for (var i = 0; i < checkboxesOrdnung.length; i++) {
+        for (var k = 0; k < checkboxesOrdnung.length; k++) {
           if (typeof checkboxesChaos[i].value !== "undefined" && k != i) {
             //window.alert(String(checkboxesChaos[i].value));
             if (
@@ -702,8 +698,8 @@ function grundSDivToggleBeachte(para: string = "", dasTag: boolean = false) {
           }
         }
       }
-      for (var i: number = 0; i < checkboxesChaos.length; i++) {
-        for (var k: number = 0; k < checkboxesOrdnung.length; k++) {
+      for (var i = 0; i < checkboxesChaos.length; i++) {
+        for (var k = 0; k < checkboxesOrdnung.length; k++) {
           if (typeof checkboxesChaos[i].value !== "undefined") {
             //window.alert(String(checkboxesChaos[i].value));
             if (
@@ -719,9 +715,9 @@ function grundSDivToggleBeachte(para: string = "", dasTag: boolean = false) {
         }
       }
     } else {
-      if (dasTag) {
-        for (var i: number = 0; i < checkboxesOrdnung.length; i++) {
-          for (var k: number = 0; k < checkboxesOrdnung.length; k++) {
+      if (dasTag.checked) {
+        for (var i = 0; i < checkboxesOrdnung.length; i++) {
+          for (var k = 0; k < checkboxesOrdnung.length; k++) {
             if (typeof checkboxesChaos[i].value !== "undefined" && k != i) {
               //window.alert(String(checkboxesChaos[i].value));
               if (
@@ -736,8 +732,8 @@ function grundSDivToggleBeachte(para: string = "", dasTag: boolean = false) {
             }
           }
         }
-        for (var i: number = 0; i < checkboxesChaos.length; i++) {
-          for (var k: number = 0; k < checkboxesOrdnung.length; k++) {
+        for (var i = 0; i < checkboxesChaos.length; i++) {
+          for (var k = 0; k < checkboxesOrdnung.length; k++) {
             if (typeof checkboxesChaos[i].value !== "undefined") {
               //window.alert(String(checkboxesChaos[i].value));
               if (
@@ -755,8 +751,8 @@ function grundSDivToggleBeachte(para: string = "", dasTag: boolean = false) {
       }
     }
   } else {
-    for (var k: number = 0; k < checkboxesOrdnung.length; k++) {
-      for (var k2: number = 0; k2 < checkboxesOrdnung.length; k2++) {
+    for (var k = 0; k < checkboxesOrdnung.length; k++) {
+      for (var k2 = 0; k2 < checkboxesOrdnung.length; k2++) {
         if (k != k2) {
           //window.alert(String(checkboxesChaos[i].value));
           if (
@@ -769,8 +765,8 @@ function grundSDivToggleBeachte(para: string = "", dasTag: boolean = false) {
         }
       }
     }
-    for (var i: number = 0; i < checkboxesChaos.length; i++) {
-      for (var k: number = 0; k < checkboxesOrdnung.length; k++) {
+    for (var i = 0; i < checkboxesChaos.length; i++) {
+      for (var k = 0; k < checkboxesOrdnung.length; k++) {
         if (typeof checkboxesChaos[i].value !== "undefined" && k != i) {
           //window.alert(String(checkboxesChaos[i].value));
           if (
@@ -787,7 +783,7 @@ function grundSDivToggleBeachte(para: string = "", dasTag: boolean = false) {
     }
   }
 }
-function grundSDivToggle(id_: number) {
+function grundSDivToggle(id_) {
   //checkboxesChaos = document.getElementsByTagName("input");
   if (id_ == 1) {
     document.getElementById("grundRadioChaos").checked = false;
@@ -809,9 +805,8 @@ function grundSDivToggle(id_: number) {
   //
 }
 
-function toggleP2(dasTag: HTMLInputElement, spaltenNummern1: Array<Map<any,any>>, para1u2: string) {
-  var pa1u2: string[] = para1u2.split(",");
-  var spaltenNummern: string[];
+function toggleP2(dasTag, spaltenNummern, para1u2) {
+  pa1u2 = para1u2.split(",");
   try {
     /*window.alert(String();
     window.alert(String(pa1u2[1]));
@@ -819,17 +814,17 @@ function toggleP2(dasTag: HTMLInputElement, spaltenNummern1: Array<Map<any,any>>
     spaltenNummern = Array.from(mapMapMap[pa1u2[0]][pa1u2[1]]);
     //window.alert(String(spaltenNummern));
   } catch (error) {
-    spaltenNummern = spaltenNummern1.split(",");
+    spaltenNummern = spaltenNummern.split(",");
   }
-  var existingParameterNamesArrayIndex: Set<number> = MatrixHasCouple(
+  existingParameterNamesArrayIndex = MatrixHasCouple(
     para1u2,
     selectedSpaltenMany2
   );
   if (existingParameterNamesArrayIndex.size > 0) {
-    var existingParameterNamesKeys: any[] = Array.from(existingParameterNamesArrayIndex);
-    for (var i: number = 0; i < existingParameterNamesKeys.length; i++) {
+    existingParameterNamesKeys = Array.from(existingParameterNamesArrayIndex);
+    for (i = 0; i < existingParameterNamesKeys.length; i++) {
       for (
-        var k: number = 0;
+        k = 0;
         k < selectedSpaltenMany2[existingParameterNamesKeys[i]].length;
         k++
       ) {
@@ -841,20 +836,20 @@ function toggleP2(dasTag: HTMLInputElement, spaltenNummern1: Array<Map<any,any>>
     }
     toggleForNums(spaltenNummern);
   } else {
-    for (var i: number = 0; i < spaltenNummern.length; i++)
+    for (i = 0; i < spaltenNummern.length; i++)
       if (typeof selectedSpaltenMany2[spaltenNummern[i]] !== "undefined")
         selectedSpaltenMany2[spaltenNummern[i]].push(para1u2);
       else selectedSpaltenMany2[spaltenNummern[i]] = [para1u2];
     toggleForNums(spaltenNummern);
   }
-  grundSDivToggleBeachte(pa1u2[1], dasTag.checked);
+  grundSDivToggleBeachte(pa1u2[1], dasTag);
 }
 
-function MatrixHasCouple(couple: string, SpaltenNumberToParameters: Map<number,string>): Set<number> {
-  var existing: Set<any> = new Set();
+function MatrixHasCouple(couple, SpaltenNumberToParameters) {
+  existing = new Set();
   for (var key in SpaltenNumberToParameters) {
-    for (var i: number = 0; i < SpaltenNumberToParameters[key].length; i++) {
-      for (var k: number = 0; k < SpaltenNumberToParameters[key].length; k++) {
+    for (i = 0; i < SpaltenNumberToParameters[key].length; i++) {
+      for (k = 0; k < SpaltenNumberToParameters[key].length; k++) {
         if (SpaltenNumberToParameters[key][k] != couple) {
         } else {
           existing.add(key);
@@ -865,14 +860,14 @@ function MatrixHasCouple(couple: string, SpaltenNumberToParameters: Map<number,s
   return existing;
 }
 
-function toggleForNums(colNums: string[]) {
-  for (var n: number = 0; n < colNums.length; n++) {
+function toggleForNums(colNums) {
+  for (n = 0; n < colNums.length; n++) {
     /*if (typeof(selectedSpaltenMany2[colNums]) === 'undefined')
 			toggleSpalten(colNums[n]);
 		else {
 			toggleSpalten(colNums[n]);
 		}*/
-    toggleSpalten(parseInt(colNums[n]));
+    toggleSpalten(colNums[n]);
   }
   //window.alert("colNums 0:"+colNums[0])
   refresh();
@@ -885,17 +880,17 @@ function refresh() {
 }
 
 function updateVisibleHeadingsNumbersAndItsKeysList() {
-  var keys: Array<number | string> = Object.keys(visibleHeadingsSelectUnsorted);
-  for (var i: number = 0; i < keys.length; i++) {
+  keys = Object.keys(visibleHeadingsSelectUnsorted);
+  for (var i = 0; i < keys.length; i++) {
     visibleHeadingsNumbers[keys[i]] =
       visibleHeadingsSelectUnsorted[keys[i]].value;
   }
-  var keys2: string[] = Object.keys(visibleHeadingsNumbers);
+  keys2 = Object.keys(visibleHeadingsNumbers);
   //window.alert("vis num"+ keys2.length)
   //window.alert("vis num 0: "+ visibleHeadingsNumbers[keys2[0]])
 }
 
-function toggleName(p2: HTMLElement) {
+function toggleName(p2) {
   if (p2.style.display != "none") p2.style.display = "none";
   else if (p2.getElementsByTagName("input").length > 0) {
     p2.style.display = "block";
@@ -903,31 +898,29 @@ function toggleName(p2: HTMLElement) {
   }
 }
 
-function toggleP1(p1: string) {
-  var p2: HTMLElement | null = document.getElementById(p1);
-  if (p2 != null && typeof p2.style != "undefined") {
-    var num1: string[] | null = p2.className.match(/r_(\d+)/);
-    if (num1 != null && num1.length > 1) {
-        var num: number = parseInt(num1[1]);
-        if (
-          (selectedSpaltenMany1[num] === "undefined") ===
-          (p2.style.display != "none")
-        ) {
-          selectedSpaltenMany1[num] = p2;
-          toggleName(p2);
-        } else {
-          toggleName(p2);
-          delete selectedSpaltenMany1[num];
-        }
-      } else window.alert(p2.innerHTML + " ! ");
-
+function toggleP1(p1) {
+  p2 = document.getElementById(p1);
+  if (typeof p2.style != "undefined") {
+    var num = p2.className.match(/r_(\d+)/);
+    if (num != null && num.length > 1) num = num[1];
+    if (
+      (selectedSpaltenMany1[num] === "undefined") ===
+      (p2.style.display != "none")
+    ) {
+      selectedSpaltenMany1[num] = p2;
+      toggleName(p2);
+    } else {
+      toggleName(p2);
+      delete selectedSpaltenMany1[num];
     }
+  } else window.alert(p2.innerHTML + " ! ");
 }
 
-function toggleSpalten(colNumber: number) {
-  var ZeileIhreZellen: HTMLCollectionOf<HTMLElement> | HTMLElement[] = document.getElementsByClassName("r_" + colNumber);
+function toggleSpalten(colNumber) {
+  ZeileIhreZellen = document.getElementsByClassName("r_" + colNumber);
   if (typeof selectedSpaltenMany2[colNumber] === "undefined") {
-    var away: boolean = true;
+    away = true;
+    //window.alert("undefined "+colNumber);
   } else away = selectedSpaltenMany2[colNumber].length == 0;
   //window.alert("Stelle "+colNumber+"hat Länge "+selectedSpaltenMany2[colNumber].length);
   if (typeof ZeileIhreZellen[0].style != "undefined") {
@@ -936,12 +929,12 @@ function toggleSpalten(colNumber: number) {
     else if (away) changeHeadline(ZeileIhreZellen[0], false);
 
     if (ZeileIhreZellen[0].getElementsByTagName("option").length == 0)
-      var spalteEinzelnDeaktiviertWorden: boolean = false;
+      spalteEinzelnDeaktiviertWorden = false;
     else if (ZeileIhreZellen[0].getElementsByTagName("option")[0].selected)
       spalteEinzelnDeaktiviertWorden = true;
     else spalteEinzelnDeaktiviertWorden = false;
 
-    for (var i: number = 0; i < ZeileIhreZellen.length; i++) {
+    for (i = 0; i < ZeileIhreZellen.length; i++) {
       if (
         ZeileIhreZellen[i].style.display == "none" &&
         !spalteEinzelnDeaktiviertWorden
@@ -966,16 +959,14 @@ function toggleSpalten(colNumber: number) {
   } else window.alert(ZeileIhreZellen[0].innerHTML + " ! " + colNumber);
 }
 
-var tableHeadline: HTMLTableCellElement;
-var visibleHeadingsSelectUnsorted: Map<number, HTMLElement> = new Map();
-//var visibleHeadingsNumbers: Map<number, Map<number, HTMLElement>> = new Map();
-var visibleHeadingsNumbers: Map<number, string[]> = new Map();
+var tableHeadline;
+var visibleHeadingsSelectUnsorted = {};
+var visibleHeadingsNumbers = {};
 
-function changeHeadline(oneColHeading: HTMLTableCellElement, addTrueRemoveFalse: boolean) {
-  var sel: HTMLSelectElement = oneColHeading.getElementsByTagName("select")[0];
-  var num1: string[] | null = oneColHeading.className.match(/r_(\d+)/g);
-  var num: number;
-  if (!!num1 && num1.length > 0) num = parseInt(num[0].substring(2));
+function changeHeadline(oneColHeading, addTrueRemoveFalse) {
+  sel = oneColHeading.getElementsByTagName("select")[0];
+  var num = oneColHeading.className.match(/r_(\d+)/g);
+  if (num.length > 0) num = parseInt(num[0].substring(2));
   else num = 0;
   //window.alert(num);
 
@@ -987,14 +978,14 @@ function changeHeadline(oneColHeading: HTMLTableCellElement, addTrueRemoveFalse:
 }
 
 function makeSpalteUnsichtbar(
-  spalteToUnsichtbar: HTMLCollectionOf<HTMLTableCellElement>,
-  momentaneSpalte_als_r_: number,
-  hiddenTrueVisibleFalse: boolean
+  spalteToUnsichtbar,
+  momentaneSpalte_als_r_,
+  hiddenTrueVisibleFalse
 ) {
   //spalteToUnsichtbar = document.getElementsByClassName("r_"+momentaneSpalte_als_r_);
-  var len: number = spalteToUnsichtbar.length;
+  len = spalteToUnsichtbar.length;
   if (hiddenTrueVisibleFalse) {
-    for (var i: number = 0; i < len; i++) spalteToUnsichtbar[i].style.display = "none";
+    for (var i = 0; i < len; i++) spalteToUnsichtbar[i].style.display = "none";
     delete visibleHeadingsSelectUnsorted[momentaneSpalte_als_r_];
   } /*else {
         for (var i=0; i<len; i++)
@@ -1003,16 +994,15 @@ function makeSpalteUnsichtbar(
     }*/
 }
 
-var erstesMal: boolean = true;
+var erstesMal = true;
 
-function headingSelected(gewaehlteSpalte_plusgleich1a: HTMLSelectElement, momentaneSpalte_als_r_1: string) {
-  var momentaneSpalte_als_r_ : number = parseInt(momentaneSpalte_als_r_1)
-  var gewaehlteSpalte_plusgleich1: string = gewaehlteSpalte_plusgleich1a.value;
+function headingSelected(gewaehlteSpalte_plusgleich1, momentaneSpalte_als_r_) {
+  gewaehlteSpalte_plusgleich1 = gewaehlteSpalte_plusgleich1.value;
   //for (var i=0; i<optionsS.length; i++) {
-  var zwei: string[] = gewaehlteSpalte_plusgleich1.split(",");
+  zwei = gewaehlteSpalte_plusgleich1.split(",");
   gewaehlteSpalte_plusgleich1 = zwei[0];
-  var gewaehlteSpalte_als_r_: string = zwei[1];
-  var spalte2ToChange: HTMLCollectionOf<HTMLTableCellElement | Element> = document.getElementsByClassName(
+  gewaehlteSpalte_als_r_ = zwei[1];
+  var spalte2ToChange = document.getElementsByClassName(
     "r_" + momentaneSpalte_als_r_
   );
   if (gewaehlteSpalte_plusgleich1 == "-") {
@@ -1024,19 +1014,18 @@ function headingSelected(gewaehlteSpalte_plusgleich1a: HTMLSelectElement, moment
     //window.alert("Das Dauert! Geduld mitbringen! Alles friert kurz ein!");
     erstesMal = false;
   }
-  //var momentaneSpalte_plusgleich1: Map<number, HTMLElement> = visibleHeadingsNumbers[momentaneSpalte_als_r_]; // dieses mal als +=1 angabe statt als r_
-  var momentaneSpalte_plusgleich1: string[] = visibleHeadingsNumbers[momentaneSpalte_als_r_]; // dieses mal als +=1 angabe statt als r_
-  var zwei: string[] = momentaneSpalte_plusgleich1.split(",");
-  var momentaneSpalte_plusgleich1: string = zwei[0];
-  var spalte1ToChange: HTMLCollectionOf<HTMLTableCellElement | Element> = document.getElementsByClassName(
+  momentaneSpalte_plusgleich1 = visibleHeadingsNumbers[momentaneSpalte_als_r_]; // dieses mal als +=1 angabe statt als r_
+  zwei = momentaneSpalte_plusgleich1.split(",");
+  momentaneSpalte_plusgleich1 = zwei[0];
+  var spalte1ToChange = document.getElementsByClassName(
     "r_" + gewaehlteSpalte_als_r_
   );
-  var seli: HTMLCollectionOf<HTMLOptionElement> = spalte1ToChange[0]
+  seli = spalte1ToChange[0]
     .getElementsByTagName("select")[0]
     .getElementsByTagName("option");
-  var selival: number = selectionsBefore[momentaneSpalte_plusgleich1] + 1;
-  var gewaehlteSpalte_plusgleich1: number = selival - 2; // 1 bis +=1
-  seli[selival].selected = true;
+  selival = selectionsBefore[momentaneSpalte_plusgleich1] + 1;
+  gewaehlteSpalte_plusgleich1 = selival - 2; // 1 bis +=1
+  seli[selival].selected = "selected";
   var tabellenKopf = document.getElementsByClassName("z_0");
   var aa = 0;
   var bb = 0;
@@ -1066,13 +1055,13 @@ function headingSelected(gewaehlteSpalte_plusgleich1a: HTMLSelectElement, moment
   refresh();
 }
 
-var selectionsBefore: number;
-var optionsS: string[][]  = [];
-var sichtbareSpaltenNummern: string[];
+var selectionsBefore = {};
+var optionsS = [];
+var sichtbareSpaltenNummern;
 
 function sortedKeysOfHeadingNumbersByVisibility() {
-  var tableHeadline: HTMLCollectionOf<HTMLTableCellElement> = document.getElementById("bigtable").rows[0].cells;
-  var sichtbareSpaltenNummern: string[] = [];
+  tableHeadline = document.getElementById("bigtable").rows[0].cells;
+  sichtbareSpaltenNummern = [];
   for (var i = 0; i < tableHeadline.length; i++) {
     if (tableHeadline[i].style.display == "table-cell") {
       sichtbareSpaltenNummern.push(
@@ -1085,13 +1074,13 @@ function sortedKeysOfHeadingNumbersByVisibility() {
 }
 
 function setAllListsInHeadings() {
-  var options: string[];
-  var optionsS: string[][]  = [];
-  var keys: Array<number | string> = Object.keys(visibleHeadingsSelectUnsorted);
-  var len: number = keys.length;
-  for (var k: number = 0; k < len; k++) {
+  var options;
+  optionsS = [];
+  var keys = Object.keys(visibleHeadingsSelectUnsorted);
+  var len = keys.length;
+  for (var k = 0; k < len; k++) {
     options = ["<option value='-,null'>-</option>"];
-    for (var i: number = 0; i < len; i++)
+    for (var i = 0; i < len; i++)
       if (i != k)
         options.push(
           "<option value='" +
@@ -1112,7 +1101,7 @@ function setAllListsInHeadings() {
             (i + 1) +
             "</option>"
         );
-        var selection: number = i;
+        selection = i;
       }
     selectionsBefore[k] = k;
     optionsS.push(options);
@@ -1125,17 +1114,17 @@ function setAllListsInHeadings() {
         len
     );
   }
-  for (var i: number = 0; i < sichtbareSpaltenNummern.length; i++) {
+  for (var i = 0; i < sichtbareSpaltenNummern.length; i++) {
     visibleHeadingsSelectUnsorted[sichtbareSpaltenNummern[i]].innerHTML =
       optionsS[i].join("");
   }
 }
 
-function toggleChkSpalten(radiobutton: HTMLInputElement) {
-  chk_spalten: HTMLDivElement = document.getElementById("chk_spalten");
-  inputZeilen: HTMLDivElement = document.getElementById("inputZeilen");
-  spaltenWahl: HTMLInputElement = document.getElementById("spaltenWahl");
-  zeilenWahl: HTMLInputElement = document.getElementById("zeilenWahl");
+function toggleChkSpalten(radiobutton) {
+  chk_spalten = document.getElementById("chk_spalten");
+  inputZeilen = document.getElementById("inputZeilen");
+  spaltenWahl = document.getElementById("spaltenWahl");
+  zeilenWahl = document.getElementById("zeilenWahl");
 
   if (inputZeilen.style.display == "none" && zeilenWahl.checked)
     inputZeilen.style.display = "initial";
@@ -1168,9 +1157,9 @@ function potenzenAngabenToContainer() {
     !/--|\+\+|\+\-|\-\+|,\+|\+,|-,/.test(g)
   );
 }*/
-function isZeilenAngabe_betweenKommas(g: string): boolean {
-  const pattern: RegExp = /^(v?-?\d+)(-\d+)?((\+)(\d+))*$/;
-  return !!g.match(pattern);
+function isZeilenAngabe_betweenKommas(g) {
+  const pattern = /^(v?-?\d+)(-\d+)?((\+)(\d+))*$/;
+  return g.match(pattern);
   /*const x = (g.match(/[0-9]+-[0-9]+/g) || []).length;
   const y = (g.match(/[0-9]+-[0-9]+-[0-9]+/g) || []).length;
   return (
@@ -1180,13 +1169,12 @@ function isZeilenAngabe_betweenKommas(g: string): boolean {
     !/--|\+\+|\+\-|\-\+|,\+|\+,|-,/.test(g)
   );*/
 }
-function isZeilenAngabe(text: string): boolean {
-  var text: string;
+function isZeilenAngabe(text) {
   if (text.length > 0 && text[0] === "v") {
     text = text.substring(1);
   }
-  var a: boolean[] = [];
-  var splittedText: string[] = text.split(",");
+  var a = [];
+  var splittedText = text.split(",");
   for (var i = 0; i < splittedText.length; i++) {
     a.push(isZeilenAngabe_betweenKommas(splittedText[i]));
   }
@@ -1223,11 +1211,11 @@ function isZeilenAngabe(g) {
   );
 }
 */
-function BereichToNumbers2(MehrereBereiche: string, vielfache: boolean = false, maxZahl: number = 1028): Set<number> {
-  var MehrereBereiche: string = MehrereBereiche.split(",")
+function BereichToNumbers2(MehrereBereiche, vielfache = false, maxZahl = 1028) {
+  MehrereBereiche = MehrereBereiche.split(",")
     .filter((s) => s.trim())
     .join(",");
-  const Bereiche: string[] = MehrereBereiche.split(",");
+  const Bereiche = MehrereBereiche.split(",");
   if (!isZeilenAngabe(MehrereBereiche)) {
     return new Set();
   }
@@ -1236,12 +1224,9 @@ function BereichToNumbers2(MehrereBereiche: string, vielfache: boolean = false, 
     maxZahl = Infinity;
   }
 
-  var dazu: Set<number> = new Set();
-  var hinfort: Set<number> = new Set();
-  var EinBereich: string;
-  var EinBereich2: string;
-  var vielfache2: boolean = true;
-  var vielfache: boolean;
+  const dazu = new Set();
+  const hinfort = new Set();
+  let menge;
 
   for (const EinBereich of Bereiche) {
     if (EinBereich.length > 0 && EinBereich[0] === "v") {
@@ -1257,21 +1242,20 @@ function BereichToNumbers2(MehrereBereiche: string, vielfache: boolean = false, 
       dazu,
       hinfort,
       (vielfache || vielfache2) && maxZahl == Infinity ? 1028 : maxZahl,
-      vielfache || vielfache2,
+      vielfache || vielfache2
     );
   }
 
-  return new Set<number>([...dazu].filter((x) => !hinfort.has(x)));
+  return new Set([...dazu].filter((x) => !hinfort.has(x)));
 }
 
 function BereichToNumbers2_EinBereich(
-  EinBereich: string,
-  dazu: Set<number>,
-  hinfort: Set<number>,
-  maxZahl: number,
-  vielfache: boolean,
+  EinBereich,
+  dazu,
+  hinfort,
+  maxZahl,
+  vielfache
 ) {
-  var menge: Set<number> | null = null;
   if (EinBereich.length > 1 && EinBereich[0] === "-") {
     EinBereich = EinBereich.substring(1);
     menge = hinfort;
@@ -1281,9 +1265,9 @@ function BereichToNumbers2_EinBereich(
     menge = null;
   }
 
-  const around: number[] = [];
+  const around = [];
   if (menge !== null) {
-    const BereichTuple2: string[] = EinBereich.split("+");
+    const BereichTuple2 = EinBereich.split("+");
     if (EinBereich.match(/^\d+$/)) {
       EinBereich = EinBereich + "-" + EinBereich;
     } else if (BereichTuple2.length > 0 && BereichTuple2[0].match(/^\d+$/)) {
@@ -1292,7 +1276,7 @@ function BereichToNumbers2_EinBereich(
         EinBereich += "+" + BereichTuple2.slice(1).join("+");
       }
     }
-    const BereichCouple: string[] = EinBereich.split("-");
+    const BereichCouple = EinBereich.split("-");
     BereichToNumbers2_EinBereich_Menge(
       BereichCouple,
       around,
@@ -1304,13 +1288,12 @@ function BereichToNumbers2_EinBereich(
 }
 
 function BereichToNumbers2_EinBereich_Menge(
-  BereichCouple: string[],
-  around: number[],
-  maxZahl: number,
-  menge: Set<number>,
-  vielfache: boolean
+  BereichCouple,
+  around,
+  maxZahl,
+  menge,
+  vielfache
 ) {
-  var richtig: boolean;
   if (
     BereichCouple.length == 2 &&
     /^\d+$/.test(BereichCouple[0]) &&
@@ -1331,7 +1314,7 @@ function BereichToNumbers2_EinBereich_Menge(
       }
       if (richtig && numList.length > 0) {
         around = numList.slice(1);
-        BereichCouple[1] = numList[0].toString();
+        BereichCouple[1] = numList[0];
       }
     }
     if (vielfache) {
@@ -1353,13 +1336,13 @@ function BereichToNumbers2_EinBereich_Menge(
 }
 
 function BereichToNumbers2_EinBereich_Menge_vielfache(
-  BereichCouple: string[],
-  around: number[],
-  maxZahl: number,
-  menge: Set<number>
+  BereichCouple,
+  around,
+  maxZahl,
+  menge
 ) {
-  let i: number = 0;
-  var aroundSet: Set<number> = new Set(around);
+  let i = 0;
+  aroundSet = new Set(around);
   aroundSet.delete(0);
   //window.alert(Array.from(around).join(","));
   if (around.length === 0 || aroundSet.size == 0) {
@@ -1401,10 +1384,10 @@ function BereichToNumbers2_EinBereich_Menge_vielfache(
   }
 }
 function BereichToNumbers2_EinBereich_Menge_nichtVielfache(
-  BereichCouple: string[],
-  around: number[],
-  maxZahl: number,
-  menge: Set<number>
+  BereichCouple,
+  around,
+  maxZahl,
+  menge
 ) {
   for (
     let number = parseInt(BereichCouple[0]);
@@ -1423,8 +1406,7 @@ function BereichToNumbers2_EinBereich_Menge_nichtVielfache(
     }
   }
 }
-function zeilenAngabenToMengeDirekt(welches: number = 0, v: boolean = false) {
-  let text: string;
+function zeilenAngabenToMengeDirekt(welches = 0, v = false) {
   switch (welches) {
     case 1:
       text = document.getElementById("zeilenErlaubtText").value;
@@ -1448,7 +1430,7 @@ function zeilenAngabenToMengeDirekt(welches: number = 0, v: boolean = false) {
       text = "Ungültige Auswahl";
       break;
   }
-  const erlaubteZeilen: Set<number> = BereichToNumbers2(text, welches == 5 || v ? true : false);
+  erlaubteZeilen = BereichToNumbers2(text, welches == 5 || v ? true : false);
   //window.alert(Array.from(erlaubteZeilen).join(" "));
   return erlaubteZeilen;
 }
@@ -1495,15 +1477,13 @@ function vielfacherAngabentoContainer() {
   return vielfacherAngaben;
 }
 */
-var erlaubteZeilen: Set<number> = new Set();
+var erlaubteZeilen = new Set();
 
-function makeAllerlaubteZeilenVielfacher(zeilenAngaben1: Set<number[]>) {
-  const zeilenAngaben: number[][] = Array.from(zeilenAngaben1);
-  var muls: number[];
-  var mul: number
+function makeAllerlaubteZeilenVielfacher(zeilenAngaben) {
+  zeilenAngaben = Array.from(zeilenAngaben);
+  var muls;
   erlaubteZeilen = new Set();
-  var last: number;
-  for (var i: number = 0; i < zeilenAngaben.length; i++) {
+  for (var i = 0; i < zeilenAngaben.length; i++) {
     last = zeilenAngaben[i][0];
     muls = [];
     mul = 1;
@@ -1513,11 +1493,11 @@ function makeAllerlaubteZeilenVielfacher(zeilenAngaben1: Set<number[]>) {
       last = mul * zeilenAngaben[i][0];
       mul++;
     }
-    for (var h: number = 0; h < muls.length; h++) {
+    for (var h = 0; h < muls.length; h++) {
       if (zeilenAngaben[i].length == 1) {
         erlaubteZeilen.add(muls[h]);
       } else
-        for (var k: number = 1; k < zeilenAngaben[i].length; k++) {
+        for (var k = 1; k < zeilenAngaben[i].length; k++) {
           erlaubteZeilen.add(muls[h] - zeilenAngaben[i][k]);
           //window.alert(parseInt(muls[h]}-zeilenAngaben[i][k]));
           erlaubteZeilen.add(zeilenAngaben[i][k] + muls[h]);
@@ -1527,11 +1507,10 @@ function makeAllerlaubteZeilenVielfacher(zeilenAngaben1: Set<number[]>) {
   return erlaubteZeilen;
 }
 
-function makeAllerlaubteZeilenPotenzen(zeilenAngaben1: Set<number>) {
-  const zeilenAngaben: number[] = Array.from(zeilenAngaben1);
-  var erlaubteZeilen: Set<number> = new Set();
-  var exponent, potenz: number;
-  for (var i: number = 0; i < zeilenAngaben.length; i++) {
+function makeAllerlaubteZeilenPotenzen(zeilenAngaben) {
+  zeilenAngaben = Array.from(zeilenAngaben);
+  erlaubteZeilen = new Set();
+  for (var i = 0; i < zeilenAngaben.length; i++) {
     if (zeilenAngaben[i] > 0) {
       exponent = 1;
       potenz = Math.pow(zeilenAngaben[i], exponent);
@@ -1546,7 +1525,7 @@ function makeAllerlaubteZeilenPotenzen(zeilenAngaben1: Set<number>) {
   return erlaubteZeilen;
 }
 
-function intersection(setA: Set<any>, setB: Set<any>) {
+function intersection(setA, setB) {
   var _intersection = new Set();
   for (var elem of setB) {
     if (setA.has(elem)) {
@@ -1556,31 +1535,28 @@ function intersection(setA: Set<any>, setB: Set<any>) {
   return _intersection;
 }
 
-function makeAllAllowedZeilenPrimRichtungen(): Set<number> {
-  var innen: boolean = document.getElementById("proInnen").checked;
-  var aussen: boolean = document.getElementById("proAussen").checked;
-  var hand: boolean = document.getElementById("gegenDritte").checked;
-  var faehig: boolean = document.getElementById("proDritte").checked;
-  var erlaubteZeilen: Set<number> = new Set();
-  var inkrement: number;
+function makeAllAllowedZeilenPrimRichtungen() {
+  innen = document.getElementById("proInnen").checked;
+  aussen = document.getElementById("proAussen").checked;
+  hand = document.getElementById("gegenDritte").checked;
+  faehig = document.getElementById("proDritte").checked;
+  erlaubteZeilen = new Set();
 
   if (hand || faehig) {
     if (hand) inkrement = 3;
     else inkrement = 2;
-    for (var i: number = 0; i < 1025; i += inkrement) erlaubteZeilen.add(i);
+    for (var i = 0; i < 1025; i += inkrement) erlaubteZeilen.add(i);
     return erlaubteZeilen;
   }
 
   if (innen || aussen) {
-    var innenAussen: Set<number> = new Set();
+    var innenAussen;
     if (aussen) innenAussen = new Set([1, 7, 13, 19]);
     if (innen) innenAussen = new Set([5, 11, 17, 23]);
-    var primZahlenModulo: Set<number>;
-    var vielfacher: number;
 
-    for (var i: number = 0; i < 1025; i++) {
+    for (var i = 0; i < 1025; i++) {
       primZahlenModulo = new Set();
-      for (var k: number = 2; k < primZahlen.length; k += 1) {
+      for (k = 2; k < primZahlen.length; k += 1) {
         vielfacher = 1;
         while (i / vielfacher > 2) {
           if (primZahlen[k] == i / vielfacher) {
@@ -1597,36 +1573,36 @@ function makeAllAllowedZeilenPrimRichtungen(): Set<number> {
   }
 }
 
-function makeAllAllowedZeilenHimmelskoerper(): Set<number> {
-  const sonneWahl: boolean = document.getElementById("sonneWahl").checked;
-  const mondWahl: boolean = document.getElementById("mondWahl").checked;
-  const planetWahl: boolean = document.getElementById("planetWahl").checked;
-  const schwarzeSonneWahl: boolean = document.getElementById("schwarzeSonneWahl").checked;
-  var erlaubteZeilen: Set<number> = new Set();
+function makeAllAllowedZeilenHimmelskoerper() {
+  sonneWahl = document.getElementById("sonneWahl").checked;
+  mondWahl = document.getElementById("mondWahl").checked;
+  planetWahl = document.getElementById("planetWahl").checked;
+  schwarzeSonneWahl = document.getElementById("schwarzeSonneWahl").checked;
+  erlaubteZeilen = new Set();
   if (mondWahl) {
     erlaubteZeilen = new Set(alleMonde);
     return erlaubteZeilen;
   }
   if (sonneWahl) {
-    const alleMondeSet: Set<number> = new Set(alleMonde);
-    for (var i: number = 1; i < 1025; i++) {
+    alleMondeSet = new Set(alleMonde);
+    for (var i = 1; i < 1025; i++) {
       if (!alleMondeSet.has(i)) erlaubteZeilen.add(i);
     }
     return erlaubteZeilen;
   }
   if (planetWahl) {
-    for (var i: number = 2; i < 1025; i += 2) erlaubteZeilen.add(i);
+    for (var i = 2; i < 1025; i += 2) erlaubteZeilen.add(i);
     return erlaubteZeilen;
   }
   if (schwarzeSonneWahl) {
-    for (var i: number = 3; i < 1025; i += 3) erlaubteZeilen.add(i);
+    for (var i = 3; i < 1025; i += 3) erlaubteZeilen.add(i);
     return erlaubteZeilen;
   }
 }
-function makeAllowedZeilenFromPrimVielfacher(zeilenAngaben1: Set<number>): Set<number> {
-  const zeilenAngaben: number[] = Array.from(zeilenAngaben1);
-  const erlaubteZeilen: Set<number> = new Set();
-  const ersteSpalte: HTMLCollectionOf<HTMLTableCellElement> = document
+function makeAllowedZeilenFromPrimVielfacher(zeilenAngaben) {
+  zeilenAngaben = Array.from(zeilenAngaben);
+  erlaubteZeilen = new Set();
+  ersteSpalte = document
     .getElementById("bigtable")
     .getElementsByClassName("r_0");
   for (var i = 0; i < 1025; i++)
@@ -1636,90 +1612,74 @@ function makeAllowedZeilenFromPrimVielfacher(zeilenAngaben1: Set<number>): Set<n
   return erlaubteZeilen;
 }
 
-function zahlIstVielfacherEinerPrimzahl(zahl1: number | string, vielfacher1: string | number): boolean {
-  const zahl: number = parseInt(zahl1);
-  const vielfacher: number = parseInt(vielfacher1);
-  if (isNaN(zahl) || isNaN(vielfacher)) return false;
+function zahlIstVielfacherEinerPrimzahl(zahl, vielfacher) {
+  zahl = parseInt(zahl);
+  vielfacher = parseInt(vielfacher);
+  if (zahl === "NaN" || vielfacher === "Nan") return false;
 
-  var stimmt: boolean = false;
-  for (var i: number = 0; i < primZahlen.length; i++)
+  stimmt = false;
+  for (var i = 0; i < primZahlen.length; i++)
     if (primZahlen[i] == zahl / vielfacher) stimmt = true;
   return stimmt;
 }
 
-function makeAllowedZeilenFromZaehlung(zeilenMenge: Set<number>): Set<number> {
-  const ersteSpalte: HTMLCollectionOf<HTMLTableCellElement> = document
+function makeAllowedZeilenFromZaehlung(zeilenMenge) {
+  ersteSpalte = document
     .getElementById("bigtable")
     .getElementsByClassName("r_0");
-  const erlaubteZaehlungen: Set<number> = zeilenMenge;
-  const erlaubteZeilen: Set<number> = new Set();
+  erlaubteZaehlungen = zeilenMenge;
+  erlaubteZeilen = new Set();
   //window.alert(Array.from(erlaubteZaehlungen).join(" "));
   //window.alert(ersteSpalte.length.toString());
-  var zaehlung: number;
-  var wirklicheZeile1: RegExpMatchArray | null;
-  var wirklicheZeile: string;
 
-  for (var i: number = 0; i < ersteSpalte.length; i++) {
+  for (i = 0; i < ersteSpalte.length; i++) {
     //window.alert(ersteSpalte[i].getElementsByTagName("label")[0].innerHTML);
     zaehlung = parseInt(ersteSpalte[i].innerHTML.trim());
     //window.alert(zaehlung.toString());
-    if (isNaN(zaehlung) && erlaubteZaehlungen.has(zaehlung)) {
-        wirklicheZeile1 = ersteSpalte[i].className.match(/z_\s*(\d+)/g);
-        if (wirklicheZeile1 != null) {
-            wirklicheZeile = wirklicheZeile1.toString();
-            //window.alert(ersteSpalte[i].className);
-            //window.alert(wirklicheZeile);
-            if (wirklicheZeile.length > 0) {
-                wirklicheZeile = wirklicheZeile[0].substr(2);
-                erlaubteZeilen.add(parseInt(wirklicheZeile));
-            }
-        }
+    if (zaehlung != "NaN" && erlaubteZaehlungen.has(zaehlung)) {
+      wirklicheZeile = ersteSpalte[i].className.match(/z_\s*(\d+)/g);
+      //window.alert(ersteSpalte[i].className);
+      //window.alert(wirklicheZeile);
+      if (wirklicheZeile.length > 0) {
+        wirklicheZeile = wirklicheZeile[0].substr(2);
+        erlaubteZeilen.add(parseInt(wirklicheZeile));
+      }
     }
   }
   return erlaubteZeilen;
 }
 
-function makeAllAllowedZeilen(zeilenAngaben1: Set<number[]>): Set<number> {
-  const zeilenAngaben: number[][] = Array.from(zeilenAngaben1);
-  const erlaubteZeilen: Set<number> = new Set();
-  for (var i: number = 0; i < zeilenAngaben.length; i++) {
-    for (var k: number = zeilenAngaben[i][0]; k <= zeilenAngaben[i][1]; k++) {
+function makeAllAllowedZeilen(zeilenAngaben) {
+  zeilenAngaben = Array.from(zeilenAngaben);
+  erlaubteZeilen = new Set();
+  for (var i = 0; i < zeilenAngaben.length; i++) {
+    for (var k = zeilenAngaben[i][0]; k <= zeilenAngaben[i][1]; k++) {
       erlaubteZeilen.add(k);
     }
   }
   return erlaubteZeilen;
 }
 
-function makeAllowedZeilenFromPrimZahlKreuzRadius(zeilenAngaben1: Set<number>): number[] {
-  const zeilenAngaben: number[] = Array.from(zeilenAngaben1);
-  const erlaubteZeilen: Set<number> = new Set();
-  for (var i: number = 1; i < 1025; i++)
-    for (var k: number = 0; k < zeilenAngaben.length; k++)
+function makeAllowedZeilenFromPrimZahlKreuzRadius(zeilenAngaben) {
+  zeilenAngaben = Array.from(zeilenAngaben);
+  erlaubteZeilen = new Set();
+  for (var i = 1; i < 1025; i++)
+    for (var k = 0; k < zeilenAngaben.length; k++)
       if (zeilenAngaben[k] == Math.floor((i - 1) / 24) + 1)
         erlaubteZeilen.add(i);
 
   return zeilenAngaben;
 }
 
-var spalten_r__: Set<number> = new Set();
+var spalten_r__ = new Set();
 
 function get_r__SpaltenNummern() {
-  let tabelenkopfZeile : HTMLCollectionOf<HTMLTableCellElement>;
   tabelenkopfZeile = tdClasses;
-  var num1: RegExpMatchArray | null;
-  var num: RegExpMatchArray;
-  var num2: number;
-  for (var i: number = 0; i < tabelenkopfZeile.length; i++) {
+  for (var i = 0; i < tabelenkopfZeile.length; i++) {
     if (tabelenkopfZeile[i].style.display === "table-cell") {
-      num1 = tabelenkopfZeile[i].className.match(/r_(\d+)/);
-      if (num1 != null) {
-      num = num1
-      if (num.length > 1) {
-            num2 = parseInt(num[1]);
-            spalten_r__.add(num2);
-
-          }
-      }
+      num = tabelenkopfZeile[i].className.match(/r_(\d+)/);
+      if (num != null && num.length > 1) num = num[1];
+      spalten_r__.add(num);
     }
   }
 }
@@ -1736,22 +1696,19 @@ function invertErlaubteZeilen() {
 }
 */
 
-function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which: number) {
-  const Spalten_r__Array: number[] = Array.from(spalten_r__);
-  const erlaubteZeilen_Array: number[] = Array.from(erlaubteZeilen);
-  const erlaubteZeilen_String: string = erlaubteZeilen_Array.join(",");
-  const neuErlauben: boolean = document.getElementsByClassName("neuErlauben")[which].checked;
-  const neuHinfort: boolean = document.getElementsByClassName("neuHinfort")[which].checked;
-  const dazuErlauben: boolean = document.getElementsByClassName("dazuErlauben")[which].checked;
-  const dazuHinfort: boolean = document.getElementsByClassName("dazuHinfort")[which].checked;
-  const dazuEinschraenkend: boolean =
+function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which) {
+  Spalten_r__Array = Array.from(spalten_r__);
+  erlaubteZeilen_Array = Array.from(erlaubteZeilen);
+  erlaubteZeilen_String = erlaubteZeilen_Array.join(",");
+  neuErlauben = document.getElementsByClassName("neuErlauben")[which].checked;
+  neuHinfort = document.getElementsByClassName("neuHinfort")[which].checked;
+  dazuErlauben = document.getElementsByClassName("dazuErlauben")[which].checked;
+  dazuHinfort = document.getElementsByClassName("dazuHinfort")[which].checked;
+  dazuEinschraenkend =
     document.getElementsByClassName("dazuEinschraenkend")[which].checked;
   //window.alert(neuErlauben+" "+neuHinfort+" "+dazuErlauben+" "+dazuHinfort);
-  const spalte: HTMLCollectionOf<HTMLTableRowElement> = document.getElementById("bigtable").rows;
-  var tabellenZelle: HTMLTableRowElement;
-  var echteZeilenNummer1: RegExpMatchArray | null;
-  var echteZeilenNummer: number;
-  for (var s: number = 1; s < spalte.length; s++) {
+  spalte = document.getElementById("bigtable").rows;
+  for (var s = 1; s < spalte.length; s++) {
     tabellenZelle = spalte[s];
     if (s < 115)
       zeilenLetztendlichZeigenVerstecken(
@@ -1764,9 +1721,9 @@ function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which: number) {
         dazuEinschraenkend
       );
     else {
-      echteZeilenNummer1 = spalte[s].cells[0].className.match(/z_\s*(\d+)/g);
-      if (echteZeilenNummer1 != null && echteZeilenNummer1.length > 0) {
-        echteZeilenNummer = parseInt(echteZeilenNummer1[0].substr(2));
+      echteZeilenNummer = spalte[s].cells[0].className.match(/z_\s*(\d+)/g);
+      if (echteZeilenNummer != null && echteZeilenNummer.length > 0) {
+        echteZeilenNummer = parseInt(echteZeilenNummer[0].substr(2));
         zeilenLetztendlichZeigenVerstecken(
           echteZeilenNummer,
           neuErlauben,
@@ -1782,13 +1739,13 @@ function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which: number) {
 }
 
 function zeilenLetztendlichZeigenVerstecken(
-  s: number,
-  neuErlauben: boolean,
-  dazuErlauben: boolean,
-  neuHinfort: boolean,
-  dazuHinfort: boolean,
-  tabellenZelle: HTMLTableRowElement,
-  dazuEinschraenkend: boolean
+  s,
+  neuErlauben,
+  dazuErlauben,
+  neuHinfort,
+  dazuHinfort,
+  tabellenZelle,
+  dazuEinschraenkend
 ) {
   if (
     ((erlaubteZeilen.has(s) && (neuErlauben || dazuErlauben)) ||
@@ -1818,7 +1775,7 @@ function clickVielfacheErlaubenUsw() {
 }
 
 function clickHimmelskoerperErlaubenUsw() {
-  const erlaubteZeilen: Set<number> = makeAllAllowedZeilenHimmelskoerper();
+  erlaubteZeilen = makeAllAllowedZeilenHimmelskoerper();
   get_r__SpaltenNummern();
   erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(3);
 }
@@ -1835,12 +1792,13 @@ function clickZaehlungenErlaubenUsw() {
   erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(4);
 }
 function clickPrimVielfacheErlaubenUsw() {
+  //makeAllowedZeilenFromPrimVielfacher(zeilenAngabenToContainer(3));
   makeAllowedZeilenFromPrimVielfacher(zeilenAngabenToMengeDirekt(3));
   get_r__SpaltenNummern();
   erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(5);
 }
 function clickPrimRichtungenErlaubenUsw() {
-  const erlaubteZeilen: Set<number> = makeAllAllowedZeilenPrimRichtungen();
+  erlaubteZeilen = makeAllAllowedZeilenPrimRichtungen();
   get_r__SpaltenNummern();
   erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(6);
 }
