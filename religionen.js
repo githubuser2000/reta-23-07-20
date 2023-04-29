@@ -1,3 +1,7 @@
+/*interface MapStringNelse<T> extends Map<string, T> {
+  [key: string]: T;
+}*/
+//const MapStringNelse: Map<{[key: string]: string}> = new Map();
 var col;
 var selectedSpaltenMany1 = new Map();
 var selectedSpaltenMany2 = new Map();
@@ -17,20 +21,6 @@ var Achks;
 let tdClasses = document.getElementsByClassName("z_0");
 var mapMapMap = new Map();
 var insertnull;
-Set.union = function (s1, s2) {
-    if (typeof s1 == "undefined" || typeof s2 == "undefined")
-        return null;
-    if (!s1 instanceof Set || !s2 instanceof Set) {
-        //console.log("The given objects are not of type Set");
-        return null;
-    }
-    //if ( s1 == null || s2 == null)
-    //   return null;
-    let newSet = new Set();
-    s1.forEach((elem) => newSet.add(elem));
-    s2.forEach((elem) => newSet.add(elem));
-    return newSet;
-};
 function returnChangeButtons(number1) {
     var number = number1.toString();
     return ('<label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="neuErlauben" name="zeilenDazuOrWeg' +
@@ -76,24 +66,23 @@ window.onload = function () {
         trStyles.push(TRs[i].style.cssText);
         var TDs = TRs[i].cells;
         for (var k = 0; k < TDs.length; k++) {
-            if (typeof spalten4spaltenTags[k] === "undefined")
-                spalten4spaltenTags[k] = [];
+            if (!spalten4spaltenTags.has(k))
+                spalten4spaltenTags[k] = new Array();
             spalten4spaltenTags[k].push(TDs[k]);
         }
     }
     for (var i = 0; i < tdClasses.length; i++) {
         var name = tdClasses[i].className;
-        var num = name.match(/r_(\d+)/);
-        var tags = name.match(/p4_([\d,]+)/g);
-        if (tags === null)
-            tags = [];
+        var num1 = name.match(/r_(\d+)/);
+        var tags1 = name.match(/p4_([\d,]+)/g);
+        if (tags1 === null)
+            var tags = [];
         else
-            tags = String(tags).substr(3).split(",");
-        tags = Array.from(new Set(tags));
+            var tags = String(tags1).substr(3).split(",");
         spaltenTags.push(tags);
-        if (num != null) {
+        if (num1 != null) {
             //num = num.substring(2,0);
-            num = parseInt(num[1]);
+            var num = parseInt(num1[1]);
             //let str = num[1];
             //num = i
             var p1a = name.match(/p1_([^\s])+/g);
@@ -106,7 +95,7 @@ window.onload = function () {
                     if (p1b != null) {
                         for (let p1k = 0; p1k < p1b.length; p1k++) {
                             var p1 = p1b[p1k];
-                            if (typeof mapMapMap[p1] === "undefined")
+                            if (!mapMapMap.has(p1))
                                 mapMapMap[p1] = new Map();
                             if (p2a != null) {
                                 for (var p2i = 0; p2i < p2a.length; p2i++) {
@@ -152,13 +141,39 @@ window.onload = function () {
     for (var i = 0; i < p1keys.length; i++) {
         var chk2s = "";
         var p2keys = Object.keys(mapMapMap[p1keys[i]]);
+        console.log("das Array Objekt 1: " + Array);
+        console.log("das Array Objekt 2: " + Array);
         for (var k = 0; k < p2keys.length; k++) {
-            var numbers = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
+            console.log(typeof mapMapMap[p1keys[i]][p2keys[k]]);
+            console.log(mapMapMap[p1keys[i]][p2keys[k]]);
+            var mapMapMapSetValue = mapMapMap[p1keys[i]][p2keys[k]];
+            console.log("das Array Objekt 3: " + Array);
+            console.log(mapMapMapSetValue);
+            console.log(p1keys[i]);
+            console.log(p2keys[k]);
+            /*
+            if ("Liebe" == p2keys[k]) {
+                console.log("break 1");
+                break;
+            }
+            if ("Maßnahmen_(39)" == p2keys[k]) {
+                console.log("break 2");
+                break;
+            }*/
+            //try {
+            console.log("das Array Objekt A: " + Array);
+            console.log("das Array Objekt A Methode: " + Array.from);
+            var numbers = Array.from(mapMapMapSetValue);
+            /*} catch {
+              var numbers: Array<number> = Array.from(mapMapMapSetValue);
+            }*/
+            console.log("das Array Objekt 4: " + Array);
             if (p2keys[k] != null && p2keys[k] != "null") {
                 // window.alert(p1keys[i]); '✗Grundstrukturen'
                 // window.alert(p2keys[i]); klar
                 // window.alert(numbers); // ach einfach die und daraus!
                 // window.alert(Array.from(mapMapMapTags[p1keys[i]][p2keys[k]]).join(",")); // diese Zahlen
+                console.log("das Array Objekt 5: " + Array);
                 var chk2 = '<label style="' +
                     labelstyle +
                     '" class="chks c_' +
@@ -175,15 +190,17 @@ window.onload = function () {
                     makeSpacesOutOf_(p2keys[k].toString()) +
                     '</input></label><label style="white-space: normal;">&nbsp; </label>';
                 chk2s += chk2;
+                console.log("das Array Objekt 6: " + Array);
             }
+            console.log("das Array Objekt 7: " + Array);
         }
         if (p1keys[i] === "✗Grundstrukturen") {
             var grunSi = i;
-            grunp2Keys: (Array) = p2keys;
+            var grunp2Keys = p2keys;
         }
-        if (mapMapMap[p1keys[i]][null] !== undefined) {
-            let numbers = Array.from(mapMapMap[p1keys[i]][null]);
-            insertnull = "toggleP2(this,'" + numbers + "','" + [p1keys[i], null] + "');";
+        if (typeof mapMapMap[p1keys[i]][null] !== "undefined") {
+            var numbers = Array.from(mapMapMap[p1keys[i]][null]);
+            insertnull = "toggleP2(this,'" + numbers.toString() + "','" + [p1keys[i], null] + "');";
         }
         else {
             insertnull = "";
@@ -397,7 +414,7 @@ function makeMapsOfHeadLCheckB(p1, p2, num, tags) {
     if (typeof mapMapMapTags[p1][p2] === "undefined")
         mapMapMapTags[p1][p2] = new Set();
     if (typeof tags != "undefined" && tags != "null")
-        mapMapMapTags[p1][p2] = Set.union(mapMapMapTags[p1][p2], tags);
+        mapMapMapTags[p1][p2] = new Set([...mapMapMapTags[p1][p2], ...tags]);
 }
 function disEnAbleChks(Enums1) {
     var Enums = new Set(Enums1);
@@ -426,7 +443,7 @@ function disEnAbleChks(Enums1) {
         abzug.push(3);
     if (Enums.has(5) && !Enums.has(4))
         abzug.push(4);
-    var Enume = Set.union(Enums, Enume);
+    var Enume = new Set([...Enums, ...Enume]);
     for (var i = 0; i < abzug.length; i++)
         Enume.delete(abzug[i]);
     Enums = Array.from(Enume);
@@ -874,7 +891,7 @@ function toggleP1(p1) {
         var num1 = p2.className.match(/r_(\d+)/);
         if (num1 != null && num1.length > 1) {
             var num = parseInt(num1[1]);
-            if ((selectedSpaltenMany1[num] === "undefined") ===
+            if ((typeof selectedSpaltenMany1[num] === "undefined") ===
                 (p2.style.display != "none")) {
                 selectedSpaltenMany1[num] = p2;
                 toggleName(p2);
@@ -941,7 +958,7 @@ function changeHeadline(oneColHeading, addTrueRemoveFalse) {
     var num1 = oneColHeading.className.match(/r_(\d+)/g);
     var num;
     if (!!num1 && num1.length > 0)
-        num = parseInt(num[0].substring(2));
+        num = parseInt(num1[0].substring(2));
     else
         num = 0;
     //window.alert(num);
@@ -1690,4 +1707,3 @@ function clickPrimZahlKreuzRadiusErlaubenUsw() {
     get_r__SpaltenNummern();
     erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(7);
 }
-//# sourceMappingURL=religionen.js.map

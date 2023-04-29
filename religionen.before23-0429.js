@@ -121,6 +121,8 @@ for (i = 0; i < tdClasses1.length; i++)
     var chk2s = "";
     var p2keys = Object.keys(mapMapMap[p1keys[i]]);
     for (k = 0; k < p2keys.length; k++) {
+      console.log(typeof mapMapMap[p1keys[i]][p2keys[k]])
+      console.log(mapMapMap[p1keys[i]][p2keys[k]])
       numbers = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
       if (p2keys[k] != null && p2keys[k] != "null") {
         // window.alert(p1keys[i]); '✗Grundstrukturen'

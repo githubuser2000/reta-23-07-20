@@ -1,3 +1,7 @@
+/*interface MapStringNelse<T> extends Map<string, T> {
+  [key: string]: T;
+}*/
+//const MapStringNelse: Map<{[key: string]: string}> = new Map();
 var col;
 var selectedSpaltenMany1: Map<number, HTMLElement> = new Map<number, HTMLElement>();
 var selectedSpaltenMany2: Map<number,string> = new Map<number,string>();
@@ -12,27 +16,14 @@ var mapMapMapTags: Map<number, string[]> = new Map<number, string[]>();
 var chks1: HTMLCollectionOf<HTMLInputElement>;
 var chks2: string[][];
 var spaltenTags: Array<Array<any> > = [];
-var spalten4spaltenTags: Map<number,Array<HTMLTableCellElement>> = new Map<number,Array<HTMLTableCellElement>>();
-var Achks: HTMLCollectionOf<HTMLInputElement | Element>;
-let tdClasses: HTMLCollectionOf<HTMLTableCellElement> = document.getElementsByClassName("z_0");
-var mapMapMap: Map<string, string | Map<string , string | Map<any, any>>> = new Map<string, string | Map<string , string | Map<any, any>>>();
+var spalten4spaltenTags: Map<number, HTMLTableCellElement[]> = new Map();
+var Achks: HTMLCollectionOf<HTMLInputElement>;
+let tdClasses: HTMLCollectionOf<HTMLTableCellElement> = document.getElementsByClassName("z_0") as HTMLCollectionOf<HTMLTableCellElement>;
+var mapMapMap: Map<string,Map<string, number>> = new Map();
 var insertnull: string;
 
-Set.union = function (s1: Set<any>, s2: Set<any>): Set<any> | null {
-  if (typeof s1 == "undefined" || typeof s2 == "undefined") return null;
-  if (!s1 instanceof Set || !s2 instanceof Set) {
-    //console.log("The given objects are not of type Set");
-    return null;
-  }
-  //if ( s1 == null || s2 == null)
-  //   return null;
-  let newSet: Set<any> = new Set();
-  s1.forEach((elem) => newSet.add(elem));
-  s2.forEach((elem) => newSet.add(elem));
-  return newSet;
-};
 
-function returnChangeButtons(number1: number | string): string {
+function returnChangeButtons(number1: number): string {
   var number = number1.toString()
   return (
     '<label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="neuErlauben" name="zeilenDazuOrWeg' +
@@ -86,47 +77,46 @@ for (i = 0; i < tdClasses1.length; i++)
     trStyles.push(TRs[i].style.cssText);
     var TDs: HTMLCollectionOf<HTMLTableCellElement> = TRs[i].cells;
     for (var k: number = 0; k < TDs.length; k++) {
-      if (typeof spalten4spaltenTags[k] === "undefined")
-        spalten4spaltenTags[k] = [];
+      if (!spalten4spaltenTags.has(k))
+        spalten4spaltenTags[k] = new Array();
       spalten4spaltenTags[k].push(TDs[k]);
     }
   }
 
   for (var i: number = 0; i < tdClasses.length; i++) {
     var name: string = tdClasses[i].className;
-    var num: Array<string> | number | null | null = name.match(/r_(\d+)/);
+    var num1: RegExpMatchArray | null   = name.match(/r_(\d+)/);
 
-    var tags: Array<string> | null = name.match(/p4_([\d,]+)/g);
-    if (tags === null) tags = [];
-    else tags = String(tags).substr(3).split(",");
-    tags = Array.from(new Set(tags));
+    var tags1: RegExpMatchArray | null = name.match(/p4_([\d,]+)/g);
+    if (tags1 === null) var tags: string[] = [];
+    else var tags: string[] = String(tags1).substr(3).split(",");
     spaltenTags.push(tags);
 
-    if (num != null) {
+    if (num1 != null) {
       //num = num.substring(2,0);
-      num = parseInt(num[1]);
+      var num: number = parseInt(num1[1]);
       //let str = num[1];
       //num = i
-      var p1a: Array<string> | null = name.match(/p1_([^\s])+/g);
-      var p2a: Array<string> | null = name.match(/p2_([^\s])+/g);
+      var p1a: RegExpMatchArray | null  = name.match(/p1_([^\s])+/g);
+      var p2a: RegExpMatchArray | null  = name.match(/p2_([^\s])+/g);
       if (p1a != null) {
         for (var p1i: number = 0; p1i < p1a.length; p1i++) {
           if (p1a[p1i].includes("p1_")) p1a[p1i] = p1a[p1i].substring(3);
-          var p1b : Array<string> | null= p1a[p1i].match(/[^,]+/g);
+          var p1b : RegExpMatchArray | null = p1a[p1i].match(/[^,]+/g);
           if (p1b != null) {
             for (let p1k: number = 0; p1k < p1b.length; p1k++) {
               var p1: string = p1b[p1k];
-              if (typeof mapMapMap[p1] === "undefined") mapMapMap[p1] = new Map();
+              if (!mapMapMap.has(p1)) mapMapMap[p1] = new Map();
               if (p2a != null) {
                 for (var p2i: number = 0; p2i < p2a.length; p2i++) {
                   if (p2a[p2i].includes("p2_"))
                     p2a[p2i] = p2a[p2i].substring(3);
-                  var p2b: string[] | null = p2a[p2i].match(/[^,]+/g);
+                  var p2b: RegExpMatchArray | null = p2a[p2i].match(/[^,]+/g);
                   if (p2b != null) {
                     for (var p2k: number = 0; p2k < p2b.length; p2k++) {
                       var p2: string = p2b[p2k];
                       if (p2 != null) {
-                        var p3a: string[] | null = p2.match(/p3_(\d+)_/);
+                        var p3a: RegExpMatchArray | null  = p2.match(/p3_(\d+)_/);
                         if (p3a != null) {
                           var p3b: number = parseInt(p3a[1], 10);
                           var p2: string = p2.substring(p3a[1].length + 4);
@@ -157,14 +147,40 @@ for (i = 0; i < tdClasses1.length; i++)
     '<span style="">';
   for (var i: number = 0; i < p1keys.length; i++) {
     var chk2s: string = "";
-    var p2keys: Array<string | Map<any, any>> = Object.keys(mapMapMap[p1keys[i]]);
+    var p2keys: string[] = Object.keys(mapMapMap[p1keys[i]]);
+    console.log("das Array Objekt 1: "+Array)
+    console.log("das Array Objekt 2: "+Array)
     for (var k: number = 0; k < p2keys.length; k++) {
-      var numbers: Array<Map<any,any>> = Array.from(mapMapMap[p1keys[i]][p2keys[k]]);
+      console.log(typeof mapMapMap[p1keys[i]][p2keys[k]]);
+      console.log(mapMapMap[p1keys[i]][p2keys[k]]);
+      var mapMapMapSetValue: Set<number> = mapMapMap[p1keys[i]][p2keys[k]];
+      console.log("das Array Objekt 3: "+Array)
+      console.log(mapMapMapSetValue);
+      console.log(p1keys[i]);
+      console.log(p2keys[k]);
+      /*
+      if ("Liebe" == p2keys[k]) {
+          console.log("break 1");
+          break;
+      }
+      if ("Maßnahmen_(39)" == p2keys[k]) {
+          console.log("break 2");
+          break;
+      }*/
+      //try {
+       console.log("das Array Objekt A: "+Array)
+       console.log("das Array Objekt A Methode: "+Array.from)
+        var numbers: Array<number> = Array.from(mapMapMapSetValue);
+      /*} catch {
+        var numbers: Array<number> = Array.from(mapMapMapSetValue);
+      }*/
+      console.log("das Array Objekt 4: "+Array)
       if (p2keys[k] != null && p2keys[k] != "null") {
         // window.alert(p1keys[i]); '✗Grundstrukturen'
         // window.alert(p2keys[i]); klar
         // window.alert(numbers); // ach einfach die und daraus!
         // window.alert(Array.from(mapMapMapTags[p1keys[i]][p2keys[k]]).join(",")); // diese Zahlen
+        console.log("das Array Objekt 5: "+Array)
         var chk2: string =
           '<label style="' +
           labelstyle +
@@ -182,19 +198,21 @@ for (i = 0; i < tdClasses1.length; i++)
           makeSpacesOutOf_(p2keys[k].toString()) +
           '</input></label><label style="white-space: normal;">&nbsp; </label>';
         chk2s += chk2;
+        console.log("das Array Objekt 6: "+Array)
       }
+      console.log("das Array Objekt 7: "+Array)
     }
     if (p1keys[i] === "✗Grundstrukturen") {
       var grunSi: number = i;
-      grunp2Keys: Array<string | Map<any, any>> = p2keys;
+      var grunp2Keys: string[] = p2keys;
     }
-    if (mapMapMap[p1keys[i]][null] !== undefined) {
-      let numbers: Array<string | Map<any, any> | null>  = Array.from(mapMapMap[p1keys[i]][null]);
-      insertnull = "toggleP2(this,'" + numbers + "','" + [p1keys[i], null] + "');";
+    if (typeof mapMapMap[p1keys[i]][null] !== "undefined") {
+      var numbers: number[]  = Array.from(mapMapMap[p1keys[i]][null]);
+      insertnull = "toggleP2(this,'" + numbers.toString() + "','" + [p1keys[i], null] + "');";
     } else {
       insertnull = "";
     }
-    var mapsTagsif: string[] | Set<string> = mapMapMapTags[p1keys[i]][null];
+    var mapsTagsif: string[]  = mapMapMapTags[p1keys[i]][null];
     if (typeof mapsTagsif == "undefined") mapsTagsif = [];
     else mapsTagsif = Array.from(mapMapMapTags[p1keys[i]][null]);
 
@@ -231,7 +249,7 @@ for (i = 0; i < tdClasses1.length; i++)
   }
   var str2: string = checkboxes + "</span></div>";
   div.innerHTML += str2;
-  chks1 = document.getElementsByClassName("chks");
+  chks1 = document.getElementsByClassName("chks") as HTMLCollectionOf<HTMLInputElement>;
   chks2 = [];
   for (var i = 0; i < chks1.length; i++) {
     chks2.push(
@@ -346,7 +364,7 @@ for (i = 0; i < tdClasses1.length; i++)
   }
   const queryString: string = window.location.search;
   const urlParams: URLSearchParams = new URLSearchParams(queryString);
-  const ifpreselect: string | null = urlParams.get("preselect");
+  const ifpreselect: string  = urlParams.get("preselect");
   if (ifpreselect != "nothing" && checkbox_i != null && this != null) {
     inputs[checkbox_i[1]].checked = true;
     inputs[checkbox_i[1]].onchange(this);
@@ -416,7 +434,7 @@ function makeMapsOfHeadLCheckB(p1: string, p2: string | null, num: string | numb
   if (typeof mapMapMapTags[p1][p2] === "undefined")
     mapMapMapTags[p1][p2] = new Set();
   if (typeof tags != "undefined" && tags != "null")
-    mapMapMapTags[p1][p2] = Set.union(mapMapMapTags[p1][p2], tags);
+    mapMapMapTags[p1][p2] = new Set([...mapMapMapTags[p1][p2], ...tags]);
 }
 
 function disEnAbleChks(Enums1: Array<number> | Set<number> | HTMLCollectionOf<any>) {
@@ -434,7 +452,7 @@ function disEnAbleChks(Enums1: Array<number> | Set<number> | HTMLCollectionOf<an
   if (Enums.has(4) && !Enums.has(5)) abzug.push(5);
   if (Enums.has(5) && !Enums.has(3)) abzug.push(3);
   if (Enums.has(5) && !Enums.has(4)) abzug.push(4);
-  var Enume: Set<number> = Set.union(Enums, Enume);
+  var Enume: Set<number> = new Set([...Enums, ...Enume]);
   for (var i = 0; i < abzug.length; i++) Enume.delete(abzug[i]);
   Enums  = Array.from(Enume);
 
@@ -507,10 +525,10 @@ function disEnAbleChks(Enums1: Array<number> | Set<number> | HTMLCollectionOf<an
   }
   var chksA1label: HTMLCollectionOf<HTMLInputElement> = document.getElementsByClassName("chksA1");
   for (var i: number = 0; i < chksA1label.length; i++) {
-    var tagsPerA1Label: string[] | null = chksA1label[i].className.match(/c1_([\d,]+)/g);
+    var tagsPerA1Label: RegExpMatchArray  = chksA1label[i].className.match(/c1_([\d,]+)/g);
     if (tagsPerA1Label == null) tagsPerA1Label = [];
     else
-      var tagsPerA1Label: string[] | null = String(chksA1label[i].className.match(/c1_([\d,]+)/g))
+      var tagsPerA1Label: RegExpMatchArray  = String(chksA1label[i].className.match(/c1_([\d,]+)/g))
         .substr(3)
         .split(",");
     if (tagsPerA1Label.length != 0) {
@@ -569,7 +587,7 @@ function makeSpacesOutOf_(text: string): string {
   if (text.length == 16)
     if (text == "gebrochengalaxie") return "gebrochen-rational Galaxie n/m";
   */
-  var forNewString = [];
+  var forNewString: string[] = [];
   for (var i = 0; i < text.length; i++)
     if (text[i] == "_") forNewString.push(" ");
     else forNewString.push(text[i]);
@@ -609,7 +627,7 @@ function copyClassNameToOrderedGrunstruk(
     );
     var ordentlich: any = document.getElementById("ordGru" + grunp2Keys[i]);
     var ordentlich2: any = document.getElementById("ordGruB" + grunp2Keys[i]);
-    var chaotisch: HTMLCollectionOf<HTMLInputElement> | null = TagIdGrustruk.getElementsByClassName("chks c_" + nummern);
+    var chaotisch: HTMLCollectionOf<HTMLInputElement>  = TagIdGrustruk.getElementsByClassName("chks c_" + nummern);
     if (typeof chaotisch !== "undefined" && chaotisch !== null)
       chaotische.push(chaotisch);
     if (typeof ordentlich !== "undefined" && ordentlich !== null)
@@ -904,13 +922,13 @@ function toggleName(p2: HTMLElement) {
 }
 
 function toggleP1(p1: string) {
-  var p2: HTMLElement | null = document.getElementById(p1);
+  var p2: HTMLElement | null  = document.getElementById(p1);
   if (p2 != null && typeof p2.style != "undefined") {
-    var num1: string[] | null = p2.className.match(/r_(\d+)/);
+    var num1: RegExpMatchArray | null  = p2.className.match(/r_(\d+)/);
     if (num1 != null && num1.length > 1) {
         var num: number = parseInt(num1[1]);
         if (
-          (selectedSpaltenMany1[num] === "undefined") ===
+          (typeof selectedSpaltenMany1[num] === "undefined") ===
           (p2.style.display != "none")
         ) {
           selectedSpaltenMany1[num] = p2;
@@ -974,9 +992,9 @@ var visibleHeadingsNumbers: Map<number, string[]> = new Map();
 
 function changeHeadline(oneColHeading: HTMLTableCellElement, addTrueRemoveFalse: boolean) {
   var sel: HTMLSelectElement = oneColHeading.getElementsByTagName("select")[0];
-  var num1: string[] | null = oneColHeading.className.match(/r_(\d+)/g);
+  var num1: RegExpMatchArray  = oneColHeading.className.match(/r_(\d+)/g);
   var num: number;
-  if (!!num1 && num1.length > 0) num = parseInt(num[0].substring(2));
+  if (!!num1 && num1.length > 0) num = parseInt(num1[0].substring(2));
   else num = 0;
   //window.alert(num);
 
@@ -1074,7 +1092,7 @@ var sichtbareSpaltenNummern: string[];
 function sortedKeysOfHeadingNumbersByVisibility() {
   var tableHeadline: HTMLCollectionOf<HTMLTableCellElement> = document.getElementById("bigtable").rows[0].cells;
   var sichtbareSpaltenNummern: string[] = [];
-  for (var i = 0; i < tableHeadline.length; i++) {
+  for (var i: number = 0; i < tableHeadline.length; i++) {
     if (tableHeadline[i].style.display == "table-cell") {
       sichtbareSpaltenNummern.push(
         tableHeadline[i].className.match(/r_(\d+)/g)[0].substring(2)
@@ -1272,7 +1290,7 @@ function BereichToNumbers2_EinBereich(
   maxZahl: number,
   vielfache: boolean,
 ) {
-  var menge: Set<number> | null = null;
+  var menge: Set<number>  = null;
   if (EinBereich.length > 1 && EinBereich[0] === "-") {
     EinBereich = EinBereich.substring(1);
     menge = hinfort;
@@ -1657,7 +1675,7 @@ function makeAllowedZeilenFromZaehlung(zeilenMenge: Set<number>): Set<number> {
   //window.alert(Array.from(erlaubteZaehlungen).join(" "));
   //window.alert(ersteSpalte.length.toString());
   var zaehlung: number;
-  var wirklicheZeile1: RegExpMatchArray | null;
+  var wirklicheZeile1: RegExpMatchArray ;
   var wirklicheZeile: string;
 
   for (var i: number = 0; i < ersteSpalte.length; i++) {
@@ -1707,7 +1725,7 @@ var spalten_r__: Set<number> = new Set();
 function get_r__SpaltenNummern() {
   let tabelenkopfZeile : HTMLCollectionOf<HTMLTableCellElement>;
   tabelenkopfZeile = tdClasses;
-  var num1: RegExpMatchArray | null;
+  var num1: RegExpMatchArray ;
   var num: RegExpMatchArray;
   var num2: number;
   for (var i: number = 0; i < tabelenkopfZeile.length; i++) {
@@ -1750,7 +1768,7 @@ function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which: number) {
   //window.alert(neuErlauben+" "+neuHinfort+" "+dazuErlauben+" "+dazuHinfort);
   const spalte: HTMLCollectionOf<HTMLTableRowElement> = document.getElementById("bigtable").rows;
   var tabellenZelle: HTMLTableRowElement;
-  var echteZeilenNummer1: RegExpMatchArray | null;
+  var echteZeilenNummer1: RegExpMatchArray ;
   var echteZeilenNummer: number;
   for (var s: number = 1; s < spalte.length; s++) {
     tabellenZelle = spalte[s];
