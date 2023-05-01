@@ -7589,8 +7589,8 @@ msgid "massnahmen"
 msgstr "measures"
 
 #: ../../words.py:849
-msgid "Strategie_Taktik"
-msgstr "strategy_tactics"
+msgid "Strategie_Taktik_(15m8)"
+msgstr "strategy_tactics_(15m8)"
 
 #: ../../words.py:849
 msgid "strategie"

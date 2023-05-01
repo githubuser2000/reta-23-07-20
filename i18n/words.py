@@ -846,7 +846,7 @@ paraNdataMatrix: list = [
     ),
     (
         ParametersMain.universum,
-        (_("Strategie_Taktik"),_("strategie"), _("taktik")),
+        (_("Strategie_Taktik_(15m8)"), _("strategie"), _("taktik")),
         {385},
     ),
     (
