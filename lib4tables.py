@@ -171,7 +171,7 @@ class htmlSyntax(OutputSyntax):
         if spalte == -2:
             tupleOfListsOfCouples = (
                 [
-                    (i18n.zaehlung["zaehlung"], ""),
+                    (i18n.zaehlung["Zählung"], ""),
                 ],
             )
         elif spalte == -1:

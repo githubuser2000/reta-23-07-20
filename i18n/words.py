@@ -153,7 +153,7 @@ zeilenParas: dict = {
     "vielfachevonzahlen": _("vielfachevonzahlen"),
     "vorhervonausschnitt": _("vorhervonausschnitt"),
     "vorhervonausschnittteiler": _("vorhervonausschnittteiler"),
-    "zaehlung": _("zaehlung"),
+    "Zählung": _("Zählung"),
     "zeit": _("zeit"),
 }
 
@@ -1403,7 +1403,7 @@ paraNdataMatrix: list = [
     (
         ParametersMain.universum,
         (_("Netzwerk"), _("netzwerk")),
-        {25},
+        {25, 386},
     ),
     (
         ParametersMain.universum,
@@ -2698,7 +2698,7 @@ paraNdataMatrix: list = [
             _("zaehlungen"),
             _("zählung"),
         ),
-        {25, 45, 169, 188},
+        {25, 45, 169, 188, 386},
     ),
     (
         ParametersMain.bedeutung,
@@ -3862,7 +3862,7 @@ class concat:
 
 
 class lib4tables:
-    zaehlung = {"zaehlung": _("zaehlung")}
+    zaehlung = {"Zählung": _("Zählung")}
     nummerier = {"nummerierung": _("nummerierung")}
     alles = {"alles": _("alles")}
 

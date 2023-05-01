@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-27 15:29+0200\n"
+"POT-Creation-Date: 2023-05-01 02:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: ../../words.py:3750 ../../words.py:3841 ../../words.py:63 ../../words.py:568
 #: ../../words.py:3754 ../../words.py:3845 ../../words.py:570
 #: ../../words.py:3764 ../../words.py:3855 ../../words.py:3769
-#: ../../words.py:3860
+#: ../../words.py:3860 ../../words.py:3777 ../../words.py:3868
 msgid "Multiplikationen"
 msgstr "multiplications"
 
@@ -97,7 +97,7 @@ msgstr "noblankcontents"
 #: i18n/words.py:69 i18n/words.py:3819 ../../words.py:77 ../../words.py:3827
 #: ../../words.py:79 ../../words.py:3828 ../../words.py:3829 ../../words.py:111
 #: ../../words.py:3861 ../../words.py:113 ../../words.py:3865
-#: ../../words.py:3875 ../../words.py:3880
+#: ../../words.py:3875 ../../words.py:3880 ../../words.py:3888
 msgid "keinenummerierung"
 msgstr "nonumbering"
 
@@ -133,7 +133,7 @@ msgstr "universe"
 #: ../../words.py:3816 ../../words.py:136 ../../words.py:343 ../../words.py:573
 #: ../../words.py:3848 ../../words.py:138 ../../words.py:347 ../../words.py:577
 #: ../../words.py:3852 ../../words.py:349 ../../words.py:579
-#: ../../words.py:3862 ../../words.py:3867
+#: ../../words.py:3862 ../../words.py:3867 ../../words.py:3875
 msgid "alles"
 msgstr "all"
 
@@ -157,7 +157,7 @@ msgstr "heightmaximum"
 #: ../../words.py:2676 ../../words.py:140 ../../words.py:323
 #: ../../words.py:2708 ../../words.py:142 ../../words.py:327
 #: ../../words.py:2712 ../../words.py:329 ../../words.py:2722
-#: ../../words.py:2727
+#: ../../words.py:2727 ../../words.py:2735
 msgid "mond"
 msgstr "moon"
 
@@ -186,7 +186,7 @@ msgstr "uppermaximum"
 #: ../../words.py:2678 ../../words.py:145 ../../words.py:567
 #: ../../words.py:2710 ../../words.py:147 ../../words.py:571
 #: ../../words.py:2714 ../../words.py:573 ../../words.py:2724
-#: ../../words.py:2729
+#: ../../words.py:2729 ../../words.py:2737
 msgid "planet"
 msgstr "planet"
 
@@ -209,7 +209,7 @@ msgstr "blacksun"
 #: i18n/words.py:107 i18n/words.py:2667 ../../words.py:115 ../../words.py:2675
 #: ../../words.py:117 ../../words.py:2677 ../../words.py:149
 #: ../../words.py:2709 ../../words.py:151 ../../words.py:2713
-#: ../../words.py:2723 ../../words.py:2728
+#: ../../words.py:2723 ../../words.py:2728 ../../words.py:2736
 msgid "sonne"
 msgstr "sun"
 
@@ -239,9 +239,9 @@ msgstr "thisrangebeforedividers"
 #: ../../words.py:154 ../../words.py:2678 ../../words.py:3846
 #: ../../words.py:156 ../../words.py:2682 ../../words.py:3850
 #: ../../words.py:2692 ../../words.py:3860 ../../words.py:2697
-#: ../../words.py:3865
-msgid "zaehlung"
-msgstr "counting"
+#: ../../words.py:3865 ../../words.py:2705 ../../words.py:3873
+msgid "Zählung"
+msgstr "range"
 
 #: i18n/words.py:113 i18n/words.py:1879 i18n/words.py:3068 ../../words.py:121
 #: ../../words.py:1887 ../../words.py:3076 ../../words.py:123
@@ -249,6 +249,7 @@ msgstr "counting"
 #: ../../words.py:1921 ../../words.py:3110 ../../words.py:157
 #: ../../words.py:1925 ../../words.py:3114 ../../words.py:1935
 #: ../../words.py:3124 ../../words.py:1940 ../../words.py:3129
+#: ../../words.py:3137
 msgid "zeit"
 msgstr "time"
 
@@ -256,7 +257,7 @@ msgstr "time"
 #: ../../words.py:129 ../../words.py:4001 ../../words.py:4006
 #: ../../words.py:4007 ../../words.py:161 ../../words.py:4039
 #: ../../words.py:163 ../../words.py:4043 ../../words.py:4053
-#: ../../words.py:4058
+#: ../../words.py:4058 ../../words.py:4066
 msgid "zeilen"
 msgstr "lines"
 
@@ -264,7 +265,7 @@ msgstr "lines"
 #: ../../words.py:130 ../../words.py:4002 ../../words.py:4007
 #: ../../words.py:4008 ../../words.py:162 ../../words.py:4040
 #: ../../words.py:164 ../../words.py:4044 ../../words.py:4054
-#: ../../words.py:4059
+#: ../../words.py:4059 ../../words.py:4067
 msgid "spalten"
 msgstr "columns"
 
@@ -274,6 +275,7 @@ msgstr "columns"
 #: ../../words.py:2084 ../../words.py:3587 ../../words.py:165
 #: ../../words.py:2088 ../../words.py:3591 ../../words.py:2098
 #: ../../words.py:3601 ../../words.py:2103 ../../words.py:3606
+#: ../../words.py:3614
 msgid "kombination"
 msgstr "combination"
 
@@ -281,7 +283,7 @@ msgstr "combination"
 #: ../../words.py:132 ../../words.py:4006 ../../words.py:4011
 #: ../../words.py:4012 ../../words.py:164 ../../words.py:4044
 #: ../../words.py:166 ../../words.py:4048 ../../words.py:4058
-#: ../../words.py:4063
+#: ../../words.py:4063 ../../words.py:4071
 msgid "ausgabe"
 msgstr "output"
 
@@ -294,6 +296,7 @@ msgstr "output"
 #: ../../words.py:167 ../../words.py:355 ../../words.py:3985
 #: ../../words.py:4050 ../../words.py:357 ../../words.py:3995
 #: ../../words.py:4060 ../../words.py:4000 ../../words.py:4065
+#: ../../words.py:4073
 msgid "h"
 msgstr "h"
 
@@ -306,6 +309,7 @@ msgstr "h"
 #: ../../words.py:168 ../../words.py:343 ../../words.py:3986
 #: ../../words.py:4051 ../../words.py:345 ../../words.py:3996
 #: ../../words.py:4061 ../../words.py:4001 ../../words.py:4066
+#: ../../words.py:4074
 msgid "help"
 msgstr "help"
 
@@ -316,6 +320,7 @@ msgstr "help"
 #: ../../words.py:3984 ../../words.py:4045 ../../words.py:169
 #: ../../words.py:3988 ../../words.py:4049 ../../words.py:3998
 #: ../../words.py:4059 ../../words.py:4003 ../../words.py:4064
+#: ../../words.py:4011 ../../words.py:4072
 msgid "debug"
 msgstr "debug"
 
@@ -902,6 +907,7 @@ msgstr "thomas"
 #: ../../words.py:335 ../../words.py:1204 ../../words.py:2304
 #: ../../words.py:3459 ../../words.py:3537 ../../words.py:1209
 #: ../../words.py:2309 ../../words.py:3464 ../../words.py:3542
+#: ../../words.py:3472 ../../words.py:3550
 msgid "motive"
 msgstr "motifs"
 
@@ -921,6 +927,7 @@ msgstr "intentions"
 #: ../../words.py:299 ../../words.py:2626 ../../words.py:331
 #: ../../words.py:2658 ../../words.py:335 ../../words.py:2662
 #: ../../words.py:337 ../../words.py:2672 ../../words.py:2677
+#: ../../words.py:2685
 msgid "vielfache"
 msgstr "multiple"
 
@@ -1036,7 +1043,7 @@ msgstr "mu"
 #: ../../words.py:359 ../../words.py:586 ../../words.py:2615
 #: ../../words.py:3504 ../../words.py:361 ../../words.py:588
 #: ../../words.py:2625 ../../words.py:3514 ../../words.py:2630
-#: ../../words.py:3519
+#: ../../words.py:3519 ../../words.py:3527
 msgid "primzahlkreuz"
 msgstr "primecross"
 
@@ -1044,7 +1051,7 @@ msgstr "primecross"
 #: ../../words.py:324 ../../words.py:3915 ../../words.py:3916
 #: ../../words.py:356 ../../words.py:3948 ../../words.py:360
 #: ../../words.py:3952 ../../words.py:362 ../../words.py:3962
-#: ../../words.py:3967
+#: ../../words.py:3967 ../../words.py:3975
 msgid "ende"
 msgstr "end"
 
@@ -1052,7 +1059,7 @@ msgstr "end"
 #: ../../words.py:325 ../../words.py:3915 ../../words.py:3916
 #: ../../words.py:357 ../../words.py:3948 ../../words.py:361
 #: ../../words.py:3952 ../../words.py:363 ../../words.py:3962
-#: ../../words.py:3967
+#: ../../words.py:3967 ../../words.py:3975
 msgid "exit"
 msgstr "exit"
 
@@ -1060,7 +1067,7 @@ msgstr "exit"
 #: ../../words.py:326 ../../words.py:3915 ../../words.py:3916
 #: ../../words.py:358 ../../words.py:3948 ../../words.py:362
 #: ../../words.py:3952 ../../words.py:364 ../../words.py:3962
-#: ../../words.py:3967
+#: ../../words.py:3967 ../../words.py:3975
 msgid "quit"
 msgstr "quit"
 
@@ -1068,7 +1075,7 @@ msgstr "quit"
 #: ../../words.py:327 ../../words.py:3915 ../../words.py:3916
 #: ../../words.py:359 ../../words.py:3948 ../../words.py:363
 #: ../../words.py:3952 ../../words.py:365 ../../words.py:3962
-#: ../../words.py:3967
+#: ../../words.py:3967 ../../words.py:3975
 msgid "q"
 msgstr "q"
 
@@ -1076,7 +1083,7 @@ msgstr "q"
 #: ../../words.py:328 ../../words.py:3915 ../../words.py:3916
 #: ../../words.py:360 ../../words.py:3948 ../../words.py:364
 #: ../../words.py:3952 ../../words.py:366 ../../words.py:3962
-#: ../../words.py:3967
+#: ../../words.py:3967 ../../words.py:3975
 msgid ":q"
 msgstr ":q"
 
@@ -1154,7 +1161,7 @@ msgstr "o"
 #: ../../words.py:344 ../../words.py:3950 ../../words.py:3951
 #: ../../words.py:376 ../../words.py:3983 ../../words.py:380
 #: ../../words.py:3987 ../../words.py:382 ../../words.py:3997
-#: ../../words.py:4002
+#: ../../words.py:4002 ../../words.py:4010
 msgid "e"
 msgstr "e"
 
@@ -1195,7 +1202,7 @@ msgstr "gebrochengalaxie_fractionalgalaxy"
 #: ../../words.py:436 ../../words.py:3719 ../../words.py:3720
 #: ../../words.py:468 ../../words.py:3752 ../../words.py:472
 #: ../../words.py:3756 ../../words.py:474 ../../words.py:3766
-#: ../../words.py:3771
+#: ../../words.py:3771 ../../words.py:3779
 msgid "Wichtigstes_zum_verstehen"
 msgstr "most_important_to_understand"
 
@@ -1208,6 +1215,7 @@ msgstr "mostimportanttounderstand"
 #: ../../words.py:440 ../../words.py:3562 ../../words.py:472
 #: ../../words.py:3594 ../../words.py:476 ../../words.py:3598
 #: ../../words.py:478 ../../words.py:3608 ../../words.py:3613
+#: ../../words.py:3621
 msgid "Wichtigstes_zum_gedanklich_einordnen"
 msgstr "most_important_to_think_about"
 
@@ -1225,6 +1233,7 @@ msgstr "religions"
 #: ../../words.py:445 ../../words.py:3406 ../../words.py:477
 #: ../../words.py:3438 ../../words.py:481 ../../words.py:3442
 #: ../../words.py:483 ../../words.py:3452 ../../words.py:3457
+#: ../../words.py:3465
 msgid "religionen"
 msgstr "religions"
 
@@ -1232,6 +1241,7 @@ msgstr "religions"
 #: ../../words.py:446 ../../words.py:3405 ../../words.py:478
 #: ../../words.py:3437 ../../words.py:482 ../../words.py:3441
 #: ../../words.py:484 ../../words.py:3451 ../../words.py:3456
+#: ../../words.py:3464
 msgid "religion"
 msgstr "religion"
 
@@ -1239,6 +1249,7 @@ msgstr "religion"
 #: ../../words.py:449 ../../words.py:3805 ../../words.py:3806
 #: ../../words.py:481 ../../words.py:3838 ../../words.py:3842
 #: ../../words.py:487 ../../words.py:3852 ../../words.py:3857
+#: ../../words.py:3865
 msgid "Galaxie"
 msgstr "galaxy"
 
@@ -1330,7 +1341,7 @@ msgstr "organizations"
 #: ../../words.py:468 ../../words.py:3804 ../../words.py:3805
 #: ../../words.py:500 ../../words.py:3837 ../../words.py:504
 #: ../../words.py:3841 ../../words.py:506 ../../words.py:3851
-#: ../../words.py:3856
+#: ../../words.py:3856 ../../words.py:3864
 msgid "Universum"
 msgstr "universe"
 
@@ -1344,7 +1355,7 @@ msgstr "universe"
 #: ../../words.py:1750 ../../words.py:3497 ../../words.py:508
 #: ../../words.py:584 ../../words.py:1378 ../../words.py:1752
 #: ../../words.py:3507 ../../words.py:1383 ../../words.py:1757
-#: ../../words.py:3512
+#: ../../words.py:3512 ../../words.py:3520
 msgid "transzendentalien"
 msgstr "transcendentals"
 
@@ -1359,6 +1370,7 @@ msgstr "transcendentals"
 #: ../../words.py:509 ../../words.py:1176 ../../words.py:1380
 #: ../../words.py:1754 ../../words.py:3508 ../../words.py:1181
 #: ../../words.py:1385 ../../words.py:1759 ../../words.py:3513
+#: ../../words.py:3521
 msgid "strukturalien"
 msgstr "structurals"
 
@@ -1453,7 +1465,7 @@ msgstr "meaning"
 #: ../../words.py:1872 ../../words.py:3101 ../../words.py:530
 #: ../../words.py:1876 ../../words.py:3105 ../../words.py:532
 #: ../../words.py:1886 ../../words.py:3115 ../../words.py:1891
-#: ../../words.py:3120
+#: ../../words.py:3120 ../../words.py:3128
 msgid "bedeutung"
 msgstr "meaning"
 
@@ -1573,7 +1585,7 @@ msgstr "basic_structures"
 #: ../../words.py:3442 ../../words.py:3522 ../../words.py:581
 #: ../../words.py:3446 ../../words.py:3526 ../../words.py:583
 #: ../../words.py:3456 ../../words.py:3536 ../../words.py:3461
-#: ../../words.py:3541
+#: ../../words.py:3541 ../../words.py:3469 ../../words.py:3549
 msgid "motivation"
 msgstr "motivation"
 
@@ -1707,7 +1719,8 @@ msgstr "intelligence"
 #: ../../words.py:645 ../../words.py:2335 ../../words.py:3419
 #: ../../words.py:3602 ../../words.py:647 ../../words.py:2345
 #: ../../words.py:3429 ../../words.py:3612 ../../words.py:2350
-#: ../../words.py:3434 ../../words.py:3617
+#: ../../words.py:3434 ../../words.py:3617 ../../words.py:3442
+#: ../../words.py:3625
 msgid "intelligenz"
 msgstr "intelligence"
 
@@ -1771,7 +1784,7 @@ msgstr "mechanisms"
 #: ../../words.py:2730 ../../words.py:3544 ../../words.py:671
 #: ../../words.py:2734 ../../words.py:3548 ../../words.py:673
 #: ../../words.py:2744 ../../words.py:3558 ../../words.py:2749
-#: ../../words.py:3563
+#: ../../words.py:3563 ../../words.py:2757 ../../words.py:3571
 msgid "mechanismen"
 msgstr "mechanisms"
 
@@ -1785,7 +1798,7 @@ msgstr "mechanism"
 #: ../../words.py:3564 ../../words.py:675 ../../words.py:715
 #: ../../words.py:3596 ../../words.py:679 ../../words.py:719
 #: ../../words.py:3600 ../../words.py:721 ../../words.py:3610
-#: ../../words.py:3615
+#: ../../words.py:3615 ../../words.py:3623
 msgid "Zweitwichtigste"
 msgstr "secondmostimportant"
 
@@ -1809,6 +1822,7 @@ msgstr "thirdmostimportant"
 #: ../../words.py:663 ../../words.py:3269 ../../words.py:695
 #: ../../words.py:3301 ../../words.py:699 ../../words.py:3305
 #: ../../words.py:701 ../../words.py:3315 ../../words.py:3320
+#: ../../words.py:3328
 msgid "Motive_Sternpolygone"
 msgstr "Motifs_starpolygons"
 
@@ -2089,7 +2103,8 @@ msgstr "universal_right"
 #: ../../words.py:2690 ../../words.py:2792 ../../words.py:854
 #: ../../words.py:2694 ../../words.py:2796 ../../words.py:856
 #: ../../words.py:2704 ../../words.py:2806 ../../words.py:861
-#: ../../words.py:2709 ../../words.py:2811
+#: ../../words.py:2709 ../../words.py:2811 ../../words.py:2717
+#: ../../words.py:2819
 msgid "recht"
 msgstr "law"
 
@@ -2097,7 +2112,7 @@ msgstr "law"
 #: ../../words.py:819 ../../words.py:2656 ../../words.py:851
 #: ../../words.py:2688 ../../words.py:855 ../../words.py:2692
 #: ../../words.py:857 ../../words.py:2702 ../../words.py:862
-#: ../../words.py:2707
+#: ../../words.py:2707 ../../words.py:2715
 msgid "jura"
 msgstr "law"
 
@@ -2176,7 +2191,7 @@ msgstr "gospelofthomas"
 #: ../../words.py:1345 ../../words.py:3528 ../../words.py:940
 #: ../../words.py:1349 ../../words.py:3532 ../../words.py:942
 #: ../../words.py:1351 ../../words.py:3542 ../../words.py:947
-#: ../../words.py:1356 ../../words.py:3547
+#: ../../words.py:1356 ../../words.py:3547 ../../words.py:3555
 msgid "analytische_Ontologie"
 msgstr "analytic_ontology"
 
@@ -2186,7 +2201,7 @@ msgstr "analytic_ontology"
 #: ../../words.py:1346 ../../words.py:3529 ../../words.py:941
 #: ../../words.py:1350 ../../words.py:3533 ../../words.py:943
 #: ../../words.py:1352 ../../words.py:3543 ../../words.py:948
-#: ../../words.py:1357 ../../words.py:3548
+#: ../../words.py:1357 ../../words.py:3548 ../../words.py:3556
 msgid "analytischeontologie"
 msgstr "analyticontology"
 
@@ -2196,7 +2211,7 @@ msgstr "analyticontology"
 #: ../../words.py:1347 ../../words.py:3530 ../../words.py:942
 #: ../../words.py:1351 ../../words.py:3534 ../../words.py:944
 #: ../../words.py:1353 ../../words.py:3544 ../../words.py:949
-#: ../../words.py:1358 ../../words.py:3549
+#: ../../words.py:1358 ../../words.py:3549 ../../words.py:3557
 msgid "ontologie"
 msgstr "ontology"
 
@@ -2377,6 +2392,7 @@ msgstr "concrete"
 #: ../../words.py:3751 ../../words.py:1066 ../../words.py:3783
 #: ../../words.py:1070 ../../words.py:3787 ../../words.py:1072
 #: ../../words.py:3797 ../../words.py:1077 ../../words.py:3802
+#: ../../words.py:3810
 msgid "Theorie"
 msgstr "theory"
 
@@ -2391,6 +2407,7 @@ msgstr "theory"
 #: ../../words.py:3757 ../../words.py:1080 ../../words.py:3789
 #: ../../words.py:1084 ../../words.py:3793 ../../words.py:1086
 #: ../../words.py:3803 ../../words.py:1091 ../../words.py:3808
+#: ../../words.py:3816
 msgid "Praxis"
 msgstr "practice"
 
@@ -2405,6 +2422,7 @@ msgstr "practice"
 #: ../../words.py:3752 ../../words.py:1095 ../../words.py:3784
 #: ../../words.py:1099 ../../words.py:3788 ../../words.py:1101
 #: ../../words.py:3798 ../../words.py:1106 ../../words.py:3803
+#: ../../words.py:3811
 msgid "Management"
 msgstr "management"
 
@@ -2425,6 +2443,7 @@ msgstr "congestion"
 #: ../../words.py:3758 ../../words.py:1113 ../../words.py:3790
 #: ../../words.py:1117 ../../words.py:3794 ../../words.py:1119
 #: ../../words.py:3804 ../../words.py:1124 ../../words.py:3809
+#: ../../words.py:3817
 msgid "verändernd"
 msgstr "changing"
 
@@ -2445,6 +2464,7 @@ msgstr "flow"
 #: ../../words.py:3753 ../../words.py:1131 ../../words.py:3785
 #: ../../words.py:1135 ../../words.py:3789 ../../words.py:1137
 #: ../../words.py:3799 ../../words.py:1142 ../../words.py:3804
+#: ../../words.py:3812
 msgid "ganzheitlich"
 msgstr "discrete"
 
@@ -2691,6 +2711,7 @@ msgstr "business"
 #: ../../words.py:1298 ../../words.py:3039 ../../words.py:3796
 #: ../../words.py:1300 ../../words.py:3049 ../../words.py:3806
 #: ../../words.py:1305 ../../words.py:3054 ../../words.py:3811
+#: ../../words.py:3062 ../../words.py:3819
 msgid "wertvoll"
 msgstr "valuable"
 
@@ -2723,6 +2744,7 @@ msgstr "rule"
 #: ../../words.py:3761 ../../words.py:1327 ../../words.py:3793
 #: ../../words.py:1331 ../../words.py:3797 ../../words.py:1333
 #: ../../words.py:3807 ../../words.py:1338 ../../words.py:3812
+#: ../../words.py:3820
 msgid "Richtung"
 msgstr "direction"
 
@@ -2730,7 +2752,7 @@ msgstr "direction"
 #: ../../words.py:3052 ../../words.py:1297 ../../words.py:3054
 #: ../../words.py:1329 ../../words.py:3086 ../../words.py:1333
 #: ../../words.py:3090 ../../words.py:1335 ../../words.py:3100
-#: ../../words.py:1340 ../../words.py:3105
+#: ../../words.py:1340 ../../words.py:3105 ../../words.py:3113
 msgid "gut"
 msgstr "good"
 
@@ -2740,7 +2762,7 @@ msgstr "good"
 #: ../../words.py:1634 ../../words.py:3550 ../../words.py:1358
 #: ../../words.py:1638 ../../words.py:3554 ../../words.py:1360
 #: ../../words.py:1640 ../../words.py:3564 ../../words.py:1365
-#: ../../words.py:1645 ../../words.py:3569
+#: ../../words.py:1645 ../../words.py:3569 ../../words.py:3577
 msgid "Gegentranszendentalien"
 msgstr "countertranscendentals"
 
@@ -2750,7 +2772,7 @@ msgstr "countertranscendentals"
 #: ../../words.py:1635 ../../words.py:3551 ../../words.py:1359
 #: ../../words.py:1639 ../../words.py:3555 ../../words.py:1361
 #: ../../words.py:1641 ../../words.py:3565 ../../words.py:1366
-#: ../../words.py:1646 ../../words.py:3570
+#: ../../words.py:1646 ../../words.py:3570 ../../words.py:3578
 msgid "gegentranszendentalien"
 msgstr "countertranscendentals"
 
@@ -2766,7 +2788,7 @@ msgstr "counter-transcendental"
 #: ../../words.py:1636 ../../words.py:3552 ../../words.py:1361
 #: ../../words.py:1640 ../../words.py:3556 ../../words.py:1363
 #: ../../words.py:1642 ../../words.py:3566 ../../words.py:1368
-#: ../../words.py:1647 ../../words.py:3571
+#: ../../words.py:1647 ../../words.py:3571 ../../words.py:3579
 msgid "gegenstrukturalien"
 msgstr "counter-structuralias"
 
@@ -2808,7 +2830,7 @@ msgstr "transcendentals"
 #: ../../words.py:1749 ../../words.py:3495 ../../words.py:1379
 #: ../../words.py:1753 ../../words.py:3499 ../../words.py:1381
 #: ../../words.py:1755 ../../words.py:3509 ../../words.py:1386
-#: ../../words.py:1760 ../../words.py:3514
+#: ../../words.py:1760 ../../words.py:3514 ../../words.py:3522
 msgid "alien"
 msgstr "philoalias"
 
@@ -2854,7 +2876,7 @@ msgstr "network"
 #: ../../words.py:3216 ../../words.py:1368 ../../words.py:3218
 #: ../../words.py:1400 ../../words.py:3250 ../../words.py:1404
 #: ../../words.py:3254 ../../words.py:1406 ../../words.py:3264
-#: ../../words.py:1411 ../../words.py:3269
+#: ../../words.py:1411 ../../words.py:3269 ../../words.py:3277
 msgid "warum_Transzendentalie_=_Strukturgroesse_=_Charakter"
 msgstr "why_transcendental_=_structure_size_=_character"
 
@@ -2862,7 +2884,7 @@ msgstr "why_transcendental_=_structure_size_=_character"
 #: ../../words.py:3217 ../../words.py:1369 ../../words.py:3219
 #: ../../words.py:1401 ../../words.py:3251 ../../words.py:1405
 #: ../../words.py:3255 ../../words.py:1407 ../../words.py:3265
-#: ../../words.py:1412 ../../words.py:3270
+#: ../../words.py:1412 ../../words.py:3270 ../../words.py:3278
 msgid "warumtranszendentaliezustrukturgroesseundcharakter"
 msgstr "whytranscendentalstructuralsizeandcharacter"
 
@@ -2921,6 +2943,7 @@ msgstr "mind__(15)"
 #: ../../words.py:3571 ../../words.py:1436 ../../words.py:2050
 #: ../../words.py:2713 ../../words.py:3581 ../../words.py:1441
 #: ../../words.py:2055 ../../words.py:2718 ../../words.py:3586
+#: ../../words.py:2726 ../../words.py:3594
 msgid "geist"
 msgstr "mind"
 
@@ -2928,7 +2951,7 @@ msgstr "mind"
 #: ../../words.py:3224 ../../words.py:1404 ../../words.py:3226
 #: ../../words.py:1436 ../../words.py:3258 ../../words.py:1440
 #: ../../words.py:3262 ../../words.py:1442 ../../words.py:3272
-#: ../../words.py:1447 ../../words.py:3277
+#: ../../words.py:1447 ../../words.py:3277 ../../words.py:3285
 msgid "warum_Transzendentalie_=_Komplexität_von_Michael_Commons"
 msgstr "why_transcendental_=_complexity_by_Michael_Commons"
 
@@ -2936,7 +2959,7 @@ msgstr "why_transcendental_=_complexity_by_Michael_Commons"
 #: ../../words.py:3225 ../../words.py:1405 ../../words.py:3227
 #: ../../words.py:1437 ../../words.py:3259 ../../words.py:1441
 #: ../../words.py:3263 ../../words.py:1443 ../../words.py:3273
-#: ../../words.py:1448 ../../words.py:3278
+#: ../../words.py:1448 ../../words.py:3278 ../../words.py:3286
 msgid "warumtranszendentaliegleichkomplexitaet"
 msgstr "whyTranscendentalEqualsComplexity"
 
@@ -3148,7 +3171,7 @@ msgstr "plants"
 #: ../../words.py:3528 ../../words.py:1514 ../../words.py:3530
 #: ../../words.py:1546 ../../words.py:3562 ../../words.py:1550
 #: ../../words.py:3566 ../../words.py:1552 ../../words.py:3576
-#: ../../words.py:1557 ../../words.py:3581
+#: ../../words.py:1557 ../../words.py:3581 ../../words.py:3589
 msgid "Maschinen"
 msgstr "machines"
 
@@ -3156,7 +3179,7 @@ msgstr "machines"
 #: ../../words.py:3529 ../../words.py:1515 ../../words.py:3531
 #: ../../words.py:1547 ../../words.py:3563 ../../words.py:1551
 #: ../../words.py:3567 ../../words.py:1553 ../../words.py:3577
-#: ../../words.py:1558 ../../words.py:3582
+#: ../../words.py:1558 ../../words.py:3582 ../../words.py:3590
 msgid "maschinen"
 msgstr "machines"
 
@@ -3176,7 +3199,7 @@ msgstr "machine"
 #: ../../words.py:3530 ../../words.py:1518 ../../words.py:3532
 #: ../../words.py:1550 ../../words.py:3564 ../../words.py:1554
 #: ../../words.py:3568 ../../words.py:1556 ../../words.py:3578
-#: ../../words.py:1561 ../../words.py:3583
+#: ../../words.py:1561 ../../words.py:3583 ../../words.py:3591
 msgid "geräte"
 msgstr "devices"
 
@@ -3184,7 +3207,7 @@ msgstr "devices"
 #: ../../words.py:3531 ../../words.py:1519 ../../words.py:3533
 #: ../../words.py:1551 ../../words.py:3565 ../../words.py:1555
 #: ../../words.py:3569 ../../words.py:1557 ../../words.py:3579
-#: ../../words.py:1562 ../../words.py:3584
+#: ../../words.py:1562 ../../words.py:3584 ../../words.py:3592
 msgid "geraete"
 msgstr "equipment"
 
@@ -3302,7 +3325,7 @@ msgstr "senseAndMeaningOfLife"
 #: ../../words.py:2421 ../../words.py:3099 ../../words.py:1610
 #: ../../words.py:2425 ../../words.py:3103 ../../words.py:1612
 #: ../../words.py:2435 ../../words.py:3113 ../../words.py:1617
-#: ../../words.py:2440 ../../words.py:3118
+#: ../../words.py:2440 ../../words.py:3118 ../../words.py:3126
 msgid "sinn"
 msgstr "senseAndMeaning"
 
@@ -3390,7 +3413,7 @@ msgstr "feelings"
 #: ../../words.py:2155 ../../words.py:3449 ../../words.py:1660
 #: ../../words.py:2159 ../../words.py:3453 ../../words.py:1662
 #: ../../words.py:2169 ../../words.py:3463 ../../words.py:1667
-#: ../../words.py:2174 ../../words.py:3468
+#: ../../words.py:2174 ../../words.py:3468 ../../words.py:3476
 msgid "emotionen"
 msgstr "emotions"
 
@@ -3400,7 +3423,7 @@ msgstr "emotions"
 #: ../../words.py:2154 ../../words.py:3450 ../../words.py:1661
 #: ../../words.py:2158 ../../words.py:3454 ../../words.py:1663
 #: ../../words.py:2168 ../../words.py:3464 ../../words.py:1668
-#: ../../words.py:2173 ../../words.py:3469
+#: ../../words.py:2173 ../../words.py:3469 ../../words.py:3477
 msgid "gefuehle"
 msgstr "emotions"
 
@@ -3408,7 +3431,7 @@ msgstr "emotions"
 #: ../../words.py:3417 ../../words.py:1626 ../../words.py:3419
 #: ../../words.py:1658 ../../words.py:3451 ../../words.py:1662
 #: ../../words.py:3455 ../../words.py:1664 ../../words.py:3465
-#: ../../words.py:1669 ../../words.py:3470
+#: ../../words.py:1669 ../../words.py:3470 ../../words.py:3478
 msgid "emotion"
 msgstr "emotions"
 
@@ -3416,7 +3439,7 @@ msgstr "emotions"
 #: ../../words.py:3418 ../../words.py:1627 ../../words.py:3420
 #: ../../words.py:1659 ../../words.py:3452 ../../words.py:1663
 #: ../../words.py:3456 ../../words.py:1665 ../../words.py:3466
-#: ../../words.py:1670 ../../words.py:3471
+#: ../../words.py:1670 ../../words.py:3471 ../../words.py:3479
 msgid "gefühl"
 msgstr "emotion"
 
@@ -3436,7 +3459,7 @@ msgstr "egoism"
 #: ../../words.py:3183 ../../words.py:1636 ../../words.py:3185
 #: ../../words.py:1668 ../../words.py:3217 ../../words.py:1672
 #: ../../words.py:3221 ../../words.py:1674 ../../words.py:3231
-#: ../../words.py:1679 ../../words.py:3236
+#: ../../words.py:1679 ../../words.py:3236 ../../words.py:3244
 msgid "egoismus"
 msgstr "egoism"
 
@@ -3444,7 +3467,7 @@ msgstr "egoism"
 #: ../../words.py:3184 ../../words.py:1637 ../../words.py:3186
 #: ../../words.py:1669 ../../words.py:3218 ../../words.py:1673
 #: ../../words.py:3222 ../../words.py:1675 ../../words.py:3232
-#: ../../words.py:1680 ../../words.py:3237
+#: ../../words.py:1680 ../../words.py:3237 ../../words.py:3245
 msgid "altruismus"
 msgstr "altruism"
 
@@ -3536,7 +3559,7 @@ msgstr "female"
 #: ../../words.py:3385 ../../words.py:1683 ../../words.py:3387
 #: ../../words.py:1715 ../../words.py:3419 ../../words.py:1719
 #: ../../words.py:3423 ../../words.py:1721 ../../words.py:3433
-#: ../../words.py:1726 ../../words.py:3438
+#: ../../words.py:1726 ../../words.py:3438 ../../words.py:3446
 msgid "Liebe"
 msgstr "love"
 
@@ -3549,6 +3572,7 @@ msgstr "love"
 #: ../../words.py:3424 ../../words.py:1722 ../../words.py:2254
 #: ../../words.py:2976 ../../words.py:3434 ../../words.py:1727
 #: ../../words.py:2259 ../../words.py:2981 ../../words.py:3439
+#: ../../words.py:2989 ../../words.py:3447
 msgid "liebe"
 msgstr "love"
 
@@ -3574,7 +3598,7 @@ msgstr "faith"
 #: ../../words.py:2833 ../../words.py:1695 ../../words.py:2835
 #: ../../words.py:1727 ../../words.py:2867 ../../words.py:1731
 #: ../../words.py:2871 ../../words.py:1733 ../../words.py:2881
-#: ../../words.py:1738 ../../words.py:2886
+#: ../../words.py:1738 ../../words.py:2886 ../../words.py:2894
 msgid "erkenntnis"
 msgstr "epistemology"
 
@@ -3890,7 +3914,7 @@ msgstr "intention10"
 #: ../../words.py:2311 ../../words.py:3568 ../../words.py:2041
 #: ../../words.py:2315 ../../words.py:3572 ../../words.py:2051
 #: ../../words.py:2325 ../../words.py:3582 ../../words.py:2056
-#: ../../words.py:2330 ../../words.py:3587
+#: ../../words.py:2330 ../../words.py:3587 ../../words.py:3595
 msgid "bewusstsein"
 msgstr "consciousness"
 
@@ -3955,6 +3979,7 @@ msgstr "moods"
 #: ../../words.py:3856 ../../words.py:2085 ../../words.py:3888
 #: ../../words.py:2089 ../../words.py:3892 ../../words.py:2099
 #: ../../words.py:3902 ../../words.py:2104 ../../words.py:3907
+#: ../../words.py:3915
 msgid "kombinationen"
 msgstr "combinations"
 
@@ -4015,6 +4040,7 @@ msgstr "goals_(19)"
 #: ../../words.py:3528 ../../words.py:2148 ../../words.py:2335
 #: ../../words.py:3457 ../../words.py:3538 ../../words.py:2153
 #: ../../words.py:2340 ../../words.py:3462 ../../words.py:3543
+#: ../../words.py:3470 ../../words.py:3551
 msgid "ziele"
 msgstr "goals"
 
@@ -4052,7 +4078,7 @@ msgstr "focus"
 #: ../../words.py:3419 ../../words.py:2124 ../../words.py:3421
 #: ../../words.py:2156 ../../words.py:3453 ../../words.py:2160
 #: ../../words.py:3457 ../../words.py:2170 ../../words.py:3467
-#: ../../words.py:2175 ../../words.py:3472
+#: ../../words.py:2175 ../../words.py:3472 ../../words.py:3480
 msgid "gefühle"
 msgstr "feelings"
 
@@ -4290,7 +4316,8 @@ msgstr "evolutionary_acquire_and_intelligence"
 #: ../../words.py:3431 ../../words.py:3511 ../../words.py:2336
 #: ../../words.py:3435 ../../words.py:3515 ../../words.py:2346
 #: ../../words.py:3445 ../../words.py:3525 ../../words.py:2351
-#: ../../words.py:3450 ../../words.py:3530
+#: ../../words.py:3450 ../../words.py:3530 ../../words.py:3458
+#: ../../words.py:3538
 msgid "erwerben"
 msgstr "acquire"
 
@@ -4322,7 +4349,7 @@ msgstr "evolutionary"
 #: ../../words.py:3380 ../../words.py:2305 ../../words.py:3382
 #: ../../words.py:2337 ../../words.py:3414 ../../words.py:2341
 #: ../../words.py:3418 ../../words.py:2351 ../../words.py:3428
-#: ../../words.py:2356 ../../words.py:3433
+#: ../../words.py:2356 ../../words.py:3433 ../../words.py:3441
 msgid "kreativität"
 msgstr "creativity"
 
@@ -4330,7 +4357,7 @@ msgstr "creativity"
 #: ../../words.py:3382 ../../words.py:2306 ../../words.py:3384
 #: ../../words.py:2338 ../../words.py:3416 ../../words.py:2342
 #: ../../words.py:3420 ../../words.py:2352 ../../words.py:3430
-#: ../../words.py:2357 ../../words.py:3435
+#: ../../words.py:2357 ../../words.py:3435 ../../words.py:3443
 msgid "kreativitaet"
 msgstr "creativity"
 
@@ -4472,7 +4499,8 @@ msgstr "manipulation"
 #: ../../words.py:3411 ../../words.py:3479 ../../words.py:2401
 #: ../../words.py:3415 ../../words.py:3483 ../../words.py:2411
 #: ../../words.py:3425 ../../words.py:3493 ../../words.py:2416
-#: ../../words.py:3430 ../../words.py:3498
+#: ../../words.py:3430 ../../words.py:3498 ../../words.py:3438
+#: ../../words.py:3506
 msgid "Berufe"
 msgstr "jobs"
 
@@ -4485,6 +4513,7 @@ msgstr "jobs"
 #: ../../words.py:3601 ../../words.py:2412 ../../words.py:3425
 #: ../../words.py:3493 ../../words.py:3611 ../../words.py:2417
 #: ../../words.py:3430 ../../words.py:3498 ../../words.py:3616
+#: ../../words.py:3438 ../../words.py:3506 ../../words.py:3624
 msgid "berufe"
 msgstr "jobs"
 
@@ -4494,7 +4523,8 @@ msgstr "jobs"
 #: ../../words.py:3411 ../../words.py:3479 ../../words.py:2403
 #: ../../words.py:3415 ../../words.py:3483 ../../words.py:2413
 #: ../../words.py:3425 ../../words.py:3493 ../../words.py:2418
-#: ../../words.py:3430 ../../words.py:3498
+#: ../../words.py:3430 ../../words.py:3498 ../../words.py:3438
+#: ../../words.py:3506
 msgid "beruf"
 msgstr "job"
 
@@ -4618,7 +4648,7 @@ msgstr "tame"
 #: ../../words.py:3032 ../../words.py:2418 ../../words.py:3034
 #: ../../words.py:2450 ../../words.py:3066 ../../words.py:2454
 #: ../../words.py:3070 ../../words.py:2464 ../../words.py:3080
-#: ../../words.py:2469 ../../words.py:3085
+#: ../../words.py:2469 ../../words.py:3085 ../../words.py:3093
 msgid "vereinen"
 msgstr "unite"
 
@@ -4626,7 +4656,7 @@ msgstr "unite"
 #: ../../words.py:3034 ../../words.py:2419 ../../words.py:3036
 #: ../../words.py:2451 ../../words.py:3068 ../../words.py:2455
 #: ../../words.py:3072 ../../words.py:2465 ../../words.py:3082
-#: ../../words.py:2470 ../../words.py:3087
+#: ../../words.py:2470 ../../words.py:3087 ../../words.py:3095
 msgid "einheit"
 msgstr "unity"
 
@@ -4844,7 +4874,7 @@ msgstr "against"
 #: ../../words.py:3544 ../../words.py:2561 ../../words.py:3545
 #: ../../words.py:2593 ../../words.py:3577 ../../words.py:2597
 #: ../../words.py:3581 ../../words.py:2607 ../../words.py:3591
-#: ../../words.py:2612 ../../words.py:3596
+#: ../../words.py:2612 ../../words.py:3596 ../../words.py:3604
 msgid "Gegenteil"
 msgstr "opposite"
 
@@ -4868,115 +4898,115 @@ msgstr "harmony"
 
 #: i18n/words.py:2598 ../../words.py:2606 ../../words.py:2608
 #: ../../words.py:2640 ../../words.py:2644 ../../words.py:2654
-#: ../../words.py:2659
+#: ../../words.py:2659 ../../words.py:2667
 msgid "in_ReTa"
 msgstr "in_ReTa"
 
 #: i18n/words.py:2599 ../../words.py:2607 ../../words.py:2609
 #: ../../words.py:2641 ../../words.py:2645 ../../words.py:2655
-#: ../../words.py:2660
+#: ../../words.py:2660 ../../words.py:2668
 msgid "inreta"
 msgstr "inreta"
 
 #: i18n/words.py:2606 ../../words.py:2614 ../../words.py:2616
 #: ../../words.py:2648 ../../words.py:2652 ../../words.py:2662
-#: ../../words.py:2667
+#: ../../words.py:2667 ../../words.py:2675
 msgid "Vorzeichen"
 msgstr "signbefore"
 
 #: i18n/words.py:2607 ../../words.py:2615 ../../words.py:2617
 #: ../../words.py:2649 ../../words.py:2653 ../../words.py:2663
-#: ../../words.py:2668
+#: ../../words.py:2668 ../../words.py:2676
 msgid "vorzeichen"
 msgstr "signbefore"
 
 #: i18n/words.py:2614 ../../words.py:2622 ../../words.py:2624
 #: ../../words.py:2656 ../../words.py:2660 ../../words.py:2670
-#: ../../words.py:2675
+#: ../../words.py:2675 ../../words.py:2683
 msgid "Primzahlen"
 msgstr "primenumbers"
 
 #: i18n/words.py:2615 ../../words.py:2623 ../../words.py:2625
 #: ../../words.py:2657 ../../words.py:2661 ../../words.py:2671
-#: ../../words.py:2676
+#: ../../words.py:2676 ../../words.py:2684
 msgid "primzahlen"
 msgstr "primenumbers"
 
 #: i18n/words.py:2617 ../../words.py:2625 ../../words.py:2627
 #: ../../words.py:2659 ../../words.py:2663 ../../words.py:2673
-#: ../../words.py:2678
+#: ../../words.py:2678 ../../words.py:2686
 msgid "vielfacher"
 msgstr "multiples"
 
 #: i18n/words.py:2624 ../../words.py:2632 ../../words.py:2634
 #: ../../words.py:2666 ../../words.py:2670 ../../words.py:2680
-#: ../../words.py:2685
+#: ../../words.py:2685 ../../words.py:2693
 msgid "Anwendung_der_Sonnen_und_Monde"
 msgstr "application_of_suns_and_moons"
 
 #: i18n/words.py:2625 ../../words.py:2633 ../../words.py:2635
 #: ../../words.py:2667 ../../words.py:2671 ../../words.py:2681
-#: ../../words.py:2686
+#: ../../words.py:2686 ../../words.py:2694
 msgid "anwendungdersonnenundmonde"
 msgstr "applicationofsunsandmoons"
 
 #: i18n/words.py:2626 ../../words.py:2634 ../../words.py:2636
 #: ../../words.py:2668 ../../words.py:2672 ../../words.py:2682
-#: ../../words.py:2687
+#: ../../words.py:2687 ../../words.py:2695
 msgid "anwendungdersonnen"
 msgstr "applicationssuns"
 
 #: i18n/words.py:2627 ../../words.py:2635 ../../words.py:2637
 #: ../../words.py:2669 ../../words.py:2673 ../../words.py:2683
-#: ../../words.py:2688
+#: ../../words.py:2688 ../../words.py:2696
 msgid "anwendungenfuermonde"
 msgstr "applicationsmoons"
 
 #: i18n/words.py:2634 ../../words.py:2642 ../../words.py:2644
 #: ../../words.py:2676 ../../words.py:2680 ../../words.py:2690
-#: ../../words.py:2695
+#: ../../words.py:2695 ../../words.py:2703
 msgid "Zählungen"
-msgstr "counts"
+msgstr "ranges"
 
 #: i18n/words.py:2635 ../../words.py:2643 ../../words.py:2645
 #: ../../words.py:2677 ../../words.py:2681 ../../words.py:2691
-#: ../../words.py:2696
+#: ../../words.py:2696 ../../words.py:2704
 msgid "zählungen"
-msgstr "counts"
+msgstr "ranges"
 
 #: i18n/words.py:2637 ../../words.py:2645 ../../words.py:2647
 #: ../../words.py:2679 ../../words.py:2683 ../../words.py:2693
-#: ../../words.py:2698
+#: ../../words.py:2698 ../../words.py:2706
 msgid "zaehlungen"
-msgstr "counts"
+msgstr "ranges"
 
 #: i18n/words.py:2638 ../../words.py:2646 ../../words.py:2648
 #: ../../words.py:2680 ../../words.py:2684 ../../words.py:2694
-#: ../../words.py:2699
+#: ../../words.py:2699 ../../words.py:2707
 msgid "zählung"
-msgstr "count"
+msgstr "range"
 
 #: i18n/words.py:2645 ../../words.py:2653 ../../words.py:2655
 #: ../../words.py:2687 ../../words.py:2691 ../../words.py:2701
-#: ../../words.py:2706
+#: ../../words.py:2706 ../../words.py:2714
 msgid "Jura"
 msgstr "law"
 
 #: i18n/words.py:2647 ../../words.py:2655 ../../words.py:2657
 #: ../../words.py:2689 ../../words.py:2693 ../../words.py:2703
-#: ../../words.py:2708
+#: ../../words.py:2708 ../../words.py:2716
 msgid "gesetzeslehre"
 msgstr "law"
 
 #: i18n/words.py:2655 ../../words.py:2663 ../../words.py:2665
 #: ../../words.py:2697 ../../words.py:2701 ../../words.py:2711
-#: ../../words.py:2716
+#: ../../words.py:2716 ../../words.py:2724
 msgid "Vollkommenheit_des_Geistes"
 msgstr "perfection_of_the_spirit"
 
 #: i18n/words.py:2656 ../../words.py:2664 ../../words.py:2666
 #: ../../words.py:2698 ../../words.py:2702 ../../words.py:2712
-#: ../../words.py:2717
+#: ../../words.py:2717 ../../words.py:2725
 msgid "vollkommenheit"
 msgstr "perfection"
 
@@ -4985,30 +5015,31 @@ msgstr "perfection"
 #: ../../words.py:3573 ../../words.py:2706 ../../words.py:3605
 #: ../../words.py:2710 ../../words.py:3609 ../../words.py:2720
 #: ../../words.py:3619 ../../words.py:2725 ../../words.py:3624
+#: ../../words.py:2733 ../../words.py:3632
 msgid "Gestirn"
 msgstr "spaceObject"
 
 #: i18n/words.py:2678 ../../words.py:2686 ../../words.py:2688
 #: ../../words.py:2720 ../../words.py:2724 ../../words.py:2734
-#: ../../words.py:2739
+#: ../../words.py:2739 ../../words.py:2747
 msgid "Konjunktiv_Wurzelbildung"
 msgstr "subjunctive_root"
 
 #: i18n/words.py:2679 ../../words.py:2687 ../../words.py:2689
 #: ../../words.py:2721 ../../words.py:2725 ../../words.py:2735
-#: ../../words.py:2740
+#: ../../words.py:2740 ../../words.py:2748
 msgid "konjunktiv"
 msgstr "subjunctive"
 
 #: i18n/words.py:2680 ../../words.py:2688 ../../words.py:2690
 #: ../../words.py:2722 ../../words.py:2726 ../../words.py:2736
-#: ../../words.py:2741
+#: ../../words.py:2741 ../../words.py:2749
 msgid "wurzel"
 msgstr "root"
 
 #: i18n/words.py:2687 ../../words.py:2695 ../../words.py:2697
 #: ../../words.py:2729 ../../words.py:2733 ../../words.py:2743
-#: ../../words.py:2748
+#: ../../words.py:2748 ../../words.py:2756
 msgid "Mechanismen_der_Züchtung"
 msgstr "mechanisms_of_breeding"
 
@@ -5016,19 +5047,20 @@ msgstr "mechanisms_of_breeding"
 #: ../../words.py:3511 ../../words.py:2699 ../../words.py:3513
 #: ../../words.py:2731 ../../words.py:3545 ../../words.py:2735
 #: ../../words.py:3549 ../../words.py:2745 ../../words.py:3559
-#: ../../words.py:2750 ../../words.py:3564
+#: ../../words.py:2750 ../../words.py:3564 ../../words.py:2758
+#: ../../words.py:3572
 msgid "wesen"
 msgstr "essence"
 
 #: i18n/words.py:2690 ../../words.py:2698 ../../words.py:2700
 #: ../../words.py:2732 ../../words.py:2736 ../../words.py:2746
-#: ../../words.py:2751
+#: ../../words.py:2751 ../../words.py:2759
 msgid "zuechtung"
 msgstr "breeding"
 
 #: i18n/words.py:2691 ../../words.py:2699 ../../words.py:2701
 #: ../../words.py:2733 ../../words.py:2737 ../../words.py:2747
-#: ../../words.py:2752
+#: ../../words.py:2752 ../../words.py:2760
 msgid "züchtung"
 msgstr "breeding"
 
@@ -5036,7 +5068,8 @@ msgstr "breeding"
 #: ../../words.py:3513 ../../words.py:2702 ../../words.py:3515
 #: ../../words.py:2734 ../../words.py:3547 ../../words.py:2738
 #: ../../words.py:3551 ../../words.py:2748 ../../words.py:3561
-#: ../../words.py:2753 ../../words.py:3566
+#: ../../words.py:2753 ../../words.py:3566 ../../words.py:2761
+#: ../../words.py:3574
 msgid "züchten"
 msgstr "breed"
 
@@ -5044,223 +5077,224 @@ msgstr "breed"
 #: ../../words.py:3512 ../../words.py:2703 ../../words.py:3514
 #: ../../words.py:2735 ../../words.py:3546 ../../words.py:2739
 #: ../../words.py:3550 ../../words.py:2749 ../../words.py:3560
-#: ../../words.py:2754 ../../words.py:3565
+#: ../../words.py:2754 ../../words.py:3565 ../../words.py:2762
+#: ../../words.py:3573
 msgid "zuechten"
 msgstr "breed"
 
 #: i18n/words.py:2733 ../../words.py:2741 ../../words.py:2743
 #: ../../words.py:2775 ../../words.py:2779 ../../words.py:2789
-#: ../../words.py:2794
+#: ../../words.py:2794 ../../words.py:2802
 msgid "Weisheit_etc"
 msgstr "wisdom_etc"
 
 #: i18n/words.py:2734 ../../words.py:2742 ../../words.py:2744
 #: ../../words.py:2776 ../../words.py:2780 ../../words.py:2790
-#: ../../words.py:2795
+#: ../../words.py:2795 ../../words.py:2803
 msgid "weisheit"
 msgstr "wisdom"
 
 #: i18n/words.py:2735 ../../words.py:2743 ../../words.py:2745
 #: ../../words.py:2777 ../../words.py:2781 ../../words.py:2791
-#: ../../words.py:2796
+#: ../../words.py:2796 ../../words.py:2804
 msgid "metaweisheit"
 msgstr "metawisdom"
 
 #: i18n/words.py:2736 ../../words.py:2744 ../../words.py:2746
 #: ../../words.py:2778 ../../words.py:2782 ../../words.py:2792
-#: ../../words.py:2797
+#: ../../words.py:2797 ../../words.py:2805
 msgid "meta-weisheit"
 msgstr "meta-wisdom"
 
 #: i18n/words.py:2737 ../../words.py:2745 ../../words.py:2747
 #: ../../words.py:2779 ../../words.py:2783 ../../words.py:2793
-#: ../../words.py:2798
+#: ../../words.py:2798 ../../words.py:2806
 msgid "idiot"
 msgstr "idiot"
 
 #: i18n/words.py:2738 ../../words.py:2746 ../../words.py:2748
 #: ../../words.py:2780 ../../words.py:2784 ../../words.py:2794
-#: ../../words.py:2799
+#: ../../words.py:2799 ../../words.py:2807
 msgid "weise"
 msgstr "wise"
 
 #: i18n/words.py:2739 ../../words.py:2747 ../../words.py:2749
 #: ../../words.py:2781 ../../words.py:2785 ../../words.py:2795
-#: ../../words.py:2800
+#: ../../words.py:2800 ../../words.py:2808
 msgid "optimal"
 msgstr "optimal"
 
 #: i18n/words.py:2740 ../../words.py:2748 ../../words.py:2750
 #: ../../words.py:2782 ../../words.py:2786 ../../words.py:2796
-#: ../../words.py:2801
+#: ../../words.py:2801 ../../words.py:2809
 msgid "optimum"
 msgstr "optimum"
 
 #: i18n/words.py:2748 ../../words.py:2756 ../../words.py:2758
 #: ../../words.py:2790 ../../words.py:2794 ../../words.py:2804
-#: ../../words.py:2809
+#: ../../words.py:2809 ../../words.py:2817
 msgid "Dein_Recht_bekommen"
 msgstr "get_your_right"
 
 #: i18n/words.py:2749 ../../words.py:2757 ../../words.py:2759
 #: ../../words.py:2791 ../../words.py:2795 ../../words.py:2805
-#: ../../words.py:2810
+#: ../../words.py:2810 ../../words.py:2818
 msgid "rechte"
 msgstr "rights"
 
 #: i18n/words.py:2751 ../../words.py:2759 ../../words.py:2761
 #: ../../words.py:2793 ../../words.py:2797 ../../words.py:2807
-#: ../../words.py:2812
+#: ../../words.py:2812 ../../words.py:2820
 msgid "selbstgerecht"
 msgstr "selfrighteous"
 
 #: i18n/words.py:2759 ../../words.py:2767 ../../words.py:2769
 #: ../../words.py:2801 ../../words.py:2805 ../../words.py:2815
-#: ../../words.py:2820
+#: ../../words.py:2820 ../../words.py:2828
 msgid "unterlegen_überlegen"
 msgstr "inferior_superior"
 
 #: i18n/words.py:2760 ../../words.py:2768 ../../words.py:2770
 #: ../../words.py:2802 ../../words.py:2806 ../../words.py:2816
-#: ../../words.py:2821
+#: ../../words.py:2821 ../../words.py:2829
 msgid "unterlegen"
 msgstr "inferior"
 
 #: i18n/words.py:2761 ../../words.py:2769 ../../words.py:2771
 #: ../../words.py:2803 ../../words.py:2807 ../../words.py:2817
-#: ../../words.py:2822
+#: ../../words.py:2822 ../../words.py:2830
 msgid "ueberlegen"
 msgstr "outnumber"
 
 #: i18n/words.py:2769 ../../words.py:2777 ../../words.py:2779
 #: ../../words.py:2811 ../../words.py:2815 ../../words.py:2825
-#: ../../words.py:2830
+#: ../../words.py:2830 ../../words.py:2838
 msgid "Ehrlichkeit_und_Streit"
 msgstr "honesty_and_contention"
 
 #: i18n/words.py:2770 ../../words.py:2778 ../../words.py:2780
 #: ../../words.py:2812 ../../words.py:2816 ../../words.py:2826
-#: ../../words.py:2831
+#: ../../words.py:2831 ../../words.py:2839
 msgid "streit"
 msgstr "dispute"
 
 #: i18n/words.py:2771 ../../words.py:2779 ../../words.py:2781
 #: ../../words.py:2813 ../../words.py:2817 ../../words.py:2827
-#: ../../words.py:2832
+#: ../../words.py:2832 ../../words.py:2840
 msgid "ehrlichkeit"
 msgstr "honesty"
 
 #: i18n/words.py:2778 ../../words.py:2786 ../../words.py:2788
 #: ../../words.py:2820 ../../words.py:2824 ../../words.py:2834
-#: ../../words.py:2839
+#: ../../words.py:2839 ../../words.py:2847
 msgid "Würdig"
 msgstr "dignified"
 
 #: i18n/words.py:2778 ../../words.py:2786 ../../words.py:2788
 #: ../../words.py:2820 ../../words.py:2824 ../../words.py:2834
-#: ../../words.py:2839
+#: ../../words.py:2839 ../../words.py:2847
 msgid "wuerdig"
 msgstr "worthy"
 
 #: i18n/words.py:2778 ../../words.py:2786 ../../words.py:2788
 #: ../../words.py:2820 ../../words.py:2824 ../../words.py:2834
-#: ../../words.py:2839
+#: ../../words.py:2839 ../../words.py:2847
 msgid "würdig"
 msgstr "worthy"
 
 #: i18n/words.py:2785 ../../words.py:2793 ../../words.py:2795
 #: ../../words.py:2827 ../../words.py:2831 ../../words.py:2841
-#: ../../words.py:2846
+#: ../../words.py:2846 ../../words.py:2854
 msgid "Regel_vs_Ausnahme"
 msgstr "rule_vs_exception"
 
 #: i18n/words.py:2786 ../../words.py:2794 ../../words.py:2796
 #: ../../words.py:2828 ../../words.py:2832 ../../words.py:2842
-#: ../../words.py:2847
+#: ../../words.py:2847 ../../words.py:2855
 msgid "regel"
 msgstr "rule"
 
 #: i18n/words.py:2787 ../../words.py:2795 ../../words.py:2797
 #: ../../words.py:2829 ../../words.py:2833 ../../words.py:2843
-#: ../../words.py:2848
+#: ../../words.py:2848 ../../words.py:2856
 msgid "ausnahme"
 msgstr "exception"
 
 #: i18n/words.py:2795 ../../words.py:2803 ../../words.py:2805
 #: ../../words.py:2837 ../../words.py:2841 ../../words.py:2851
-#: ../../words.py:2856
+#: ../../words.py:2856 ../../words.py:2864
 msgid "Filterart_Widrigkeit"
 msgstr "filter_type_and_violation"
 
 #: i18n/words.py:2796 ../../words.py:2804 ../../words.py:2806
 #: ../../words.py:2838 ../../words.py:2842 ../../words.py:2852
-#: ../../words.py:2857
+#: ../../words.py:2857 ../../words.py:2865
 msgid "filterart"
 msgstr "filterType"
 
 #: i18n/words.py:2797 ../../words.py:2805 ../../words.py:2807
 #: ../../words.py:2839 ../../words.py:2843 ../../words.py:2853
-#: ../../words.py:2858
+#: ../../words.py:2858 ../../words.py:2866
 msgid "widrigkeit"
 msgstr "adversity"
 
 #: i18n/words.py:2804 ../../words.py:2812 ../../words.py:2814
 #: ../../words.py:2846 ../../words.py:2850 ../../words.py:2860
-#: ../../words.py:2865
+#: ../../words.py:2865 ../../words.py:2873
 msgid "Werte"
 msgstr "values"
 
 #: i18n/words.py:2805 ../../words.py:2813 ../../words.py:2815
 #: ../../words.py:2847 ../../words.py:2851 ../../words.py:2861
-#: ../../words.py:2866
+#: ../../words.py:2866 ../../words.py:2874
 msgid "werte"
 msgstr "values"
 
 #: i18n/words.py:2813 ../../words.py:2821 ../../words.py:2823
 #: ../../words.py:2855 ../../words.py:2859 ../../words.py:2869
-#: ../../words.py:2874
+#: ../../words.py:2874 ../../words.py:2882
 msgid "Gutartigkeits-Egoismus"
 msgstr "Goodnessegoism"
 
 #: i18n/words.py:2814 ../../words.py:2822 ../../words.py:2824
 #: ../../words.py:2856 ../../words.py:2860 ../../words.py:2870
-#: ../../words.py:2875
+#: ../../words.py:2875 ../../words.py:2883
 msgid "position"
 msgstr "position"
 
 #: i18n/words.py:2815 ../../words.py:2823 ../../words.py:2825
 #: ../../words.py:2857 ../../words.py:2861 ../../words.py:2871
-#: ../../words.py:2876
+#: ../../words.py:2876 ../../words.py:2884
 msgid "gutesreziprok"
 msgstr "goodreciprocal"
 
 #: i18n/words.py:2823 ../../words.py:2831 ../../words.py:2833
 #: ../../words.py:2865 ../../words.py:2869 ../../words.py:2879
-#: ../../words.py:2884
+#: ../../words.py:2884 ../../words.py:2892
 msgid "Reflektieren_Erkenntnis-Erkennen"
 msgstr "reflect_recognize"
 
 #: i18n/words.py:2824 ../../words.py:2832 ../../words.py:2834
 #: ../../words.py:2866 ../../words.py:2870 ../../words.py:2880
-#: ../../words.py:2885
+#: ../../words.py:2885 ../../words.py:2893
 msgid "reflektieren"
 msgstr "reflect"
 
 #: i18n/words.py:2833 ../../words.py:2841 ../../words.py:2843
 #: ../../words.py:2875 ../../words.py:2879 ../../words.py:2889
-#: ../../words.py:2894
+#: ../../words.py:2894 ../../words.py:2902
 msgid "Vertrauen_wollen"
 msgstr "trust_want"
 
 #: i18n/words.py:2834 ../../words.py:2842 ../../words.py:2844
 #: ../../words.py:2876 ../../words.py:2880 ../../words.py:2890
-#: ../../words.py:2895
+#: ../../words.py:2895 ../../words.py:2903
 msgid "vertrauenwollen"
 msgstr "wantToTrust"
 
 #: i18n/words.py:2842 ../../words.py:2850 ../../words.py:2852
 #: ../../words.py:2884 ../../words.py:2888 ../../words.py:2898
-#: ../../words.py:2903
+#: ../../words.py:2903 ../../words.py:2911
 msgid "einklinken_vertrauen_anprangern"
 msgstr "engage_trust_denounce"
 
@@ -5268,235 +5302,236 @@ msgstr "engage_trust_denounce"
 #: ../../words.py:2909 ../../words.py:2853 ../../words.py:2911
 #: ../../words.py:2885 ../../words.py:2943 ../../words.py:2889
 #: ../../words.py:2947 ../../words.py:2899 ../../words.py:2957
-#: ../../words.py:2904 ../../words.py:2962
+#: ../../words.py:2904 ../../words.py:2962 ../../words.py:2912
+#: ../../words.py:2970
 msgid "einklinken"
 msgstr "latchOn"
 
 #: i18n/words.py:2844 ../../words.py:2852 ../../words.py:2854
 #: ../../words.py:2886 ../../words.py:2890 ../../words.py:2900
-#: ../../words.py:2905
+#: ../../words.py:2905 ../../words.py:2913
 msgid "vertrauenerhalten"
 msgstr "trustMaintain"
 
 #: i18n/words.py:2845 ../../words.py:2853 ../../words.py:2855
 #: ../../words.py:2887 ../../words.py:2891 ../../words.py:2901
-#: ../../words.py:2906
+#: ../../words.py:2906 ../../words.py:2914
 msgid "anprangern"
 msgstr "denounce"
 
 #: i18n/words.py:2853 ../../words.py:2861 ../../words.py:2863
 #: ../../words.py:2895 ../../words.py:2899 ../../words.py:2909
-#: ../../words.py:2914
+#: ../../words.py:2914 ../../words.py:2922
 msgid "Ausrichten_Einrichten"
 msgstr "align_setup"
 
 #: i18n/words.py:2854 ../../words.py:2862 ../../words.py:2864
 #: ../../words.py:2896 ../../words.py:2900 ../../words.py:2910
-#: ../../words.py:2915
+#: ../../words.py:2915 ../../words.py:2923
 msgid "einrichten"
 msgstr "align"
 
 #: i18n/words.py:2855 ../../words.py:2863 ../../words.py:2865
 #: ../../words.py:2897 ../../words.py:2901 ../../words.py:2911
-#: ../../words.py:2916
+#: ../../words.py:2916 ../../words.py:2924
 msgid "ausrichten"
 msgstr "align"
 
 #: i18n/words.py:2863 ../../words.py:2871 ../../words.py:2873
 #: ../../words.py:2905 ../../words.py:2909 ../../words.py:2919
-#: ../../words.py:2924
+#: ../../words.py:2924 ../../words.py:2932
 msgid "Toleranz_Respekt_Akzeptanz_Willkommen"
 msgstr "tolerance_respect_acceptance_welcome"
 
 #: i18n/words.py:2864 ../../words.py:2872 ../../words.py:2874
 #: ../../words.py:2906 ../../words.py:2910 ../../words.py:2920
-#: ../../words.py:2925
+#: ../../words.py:2925 ../../words.py:2933
 msgid "toleranz"
 msgstr "tolerance"
 
 #: i18n/words.py:2865 ../../words.py:2873 ../../words.py:2875
 #: ../../words.py:2907 ../../words.py:2911 ../../words.py:2921
-#: ../../words.py:2926
+#: ../../words.py:2926 ../../words.py:2934
 msgid "respekt"
 msgstr "respect"
 
 #: i18n/words.py:2866 ../../words.py:2874 ../../words.py:2876
 #: ../../words.py:2908 ../../words.py:2912 ../../words.py:2922
-#: ../../words.py:2927
+#: ../../words.py:2927 ../../words.py:2935
 msgid "akzeptanz"
 msgstr "acceptance"
 
 #: i18n/words.py:2867 ../../words.py:2875 ../../words.py:2877
 #: ../../words.py:2909 ../../words.py:2913 ../../words.py:2923
-#: ../../words.py:2928
+#: ../../words.py:2928 ../../words.py:2936
 msgid "willkommen"
 msgstr "welcome"
 
 #: i18n/words.py:2875 ../../words.py:2883 ../../words.py:2885
 #: ../../words.py:2917 ../../words.py:2921 ../../words.py:2931
-#: ../../words.py:2936
+#: ../../words.py:2936 ../../words.py:2944
 msgid "familiebrauchen"
 msgstr "familyneeds"
 
 #: i18n/words.py:2881 ../../words.py:2889 ../../words.py:2891
 #: ../../words.py:2923 ../../words.py:2927 ../../words.py:2937
-#: ../../words.py:2942
+#: ../../words.py:2942 ../../words.py:2950
 msgid "ego"
 msgstr "ego"
 
 #: i18n/words.py:2881 ../../words.py:2889 ../../words.py:2891
 #: ../../words.py:2923 ../../words.py:2927 ../../words.py:2937
-#: ../../words.py:2942
+#: ../../words.py:2942 ../../words.py:2950
 msgid "bescheiden"
 msgstr "humble"
 
 #: i18n/words.py:2888 ../../words.py:2896 ../../words.py:2898
 #: ../../words.py:2930 ../../words.py:2934 ../../words.py:2944
-#: ../../words.py:2949
+#: ../../words.py:2949 ../../words.py:2957
 msgid "Selbstsucht_Ichsucht_etc"
 msgstr "selfishness_wantingYourOwnI_etc"
 
 #: i18n/words.py:2889 ../../words.py:2897 ../../words.py:2899
 #: ../../words.py:2931 ../../words.py:2935 ../../words.py:2945
-#: ../../words.py:2950
+#: ../../words.py:2950 ../../words.py:2958
 msgid "selbstsucht"
 msgstr "selfishness"
 
 #: i18n/words.py:2890 ../../words.py:2898 ../../words.py:2900
 #: ../../words.py:2932 ../../words.py:2936 ../../words.py:2946
-#: ../../words.py:2951
+#: ../../words.py:2951 ../../words.py:2959
 msgid "ichsucht"
 msgstr "IAddiction"
 
 #: i18n/words.py:2898 ../../words.py:2906 ../../words.py:2908
 #: ../../words.py:2940 ../../words.py:2944 ../../words.py:2954
-#: ../../words.py:2959
+#: ../../words.py:2959 ../../words.py:2967
 msgid "Forschen_Erfinden_Einklinken"
 msgstr "research_invention_engagement"
 
 #: i18n/words.py:2899 ../../words.py:2907 ../../words.py:2909
 #: ../../words.py:2941 ../../words.py:2945 ../../words.py:2955
-#: ../../words.py:2960
+#: ../../words.py:2960 ../../words.py:2968
 msgid "wissenschaft"
 msgstr "science"
 
 #: i18n/words.py:2900 ../../words.py:2908 ../../words.py:2910
 #: ../../words.py:2942 ../../words.py:2946 ../../words.py:2956
-#: ../../words.py:2961
+#: ../../words.py:2961 ../../words.py:2969
 msgid "forschen"
 msgstr "research"
 
 #: i18n/words.py:2902 ../../words.py:2910 ../../words.py:2912
 #: ../../words.py:2944 ../../words.py:2948 ../../words.py:2958
-#: ../../words.py:2963
+#: ../../words.py:2963 ../../words.py:2971
 msgid "erfinden"
 msgstr "invent"
 
 #: i18n/words.py:2910 ../../words.py:2918 ../../words.py:2920
 #: ../../words.py:2952 ../../words.py:2956 ../../words.py:2966
-#: ../../words.py:2971
+#: ../../words.py:2971 ../../words.py:2979
 msgid "Kooperation_vs_Arsch"
 msgstr "cooperation_vs_ass"
 
 #: i18n/words.py:2911 ../../words.py:2919 ../../words.py:2921
 #: ../../words.py:2953 ../../words.py:2957 ../../words.py:2967
-#: ../../words.py:2972
+#: ../../words.py:2972 ../../words.py:2980
 msgid "arschloch"
 msgstr "asshole"
 
 #: i18n/words.py:2912 ../../words.py:2920 ../../words.py:2922
 #: ../../words.py:2954 ../../words.py:2958 ../../words.py:2968
-#: ../../words.py:2973
+#: ../../words.py:2973 ../../words.py:2981
 msgid "kooperation"
 msgstr "cooperation"
 
 #: i18n/words.py:2913 ../../words.py:2921 ../../words.py:2923
 #: ../../words.py:2955 ../../words.py:2959 ../../words.py:2969
-#: ../../words.py:2974
+#: ../../words.py:2974 ../../words.py:2982
 msgid "arsch"
 msgstr "ass"
 
 #: i18n/words.py:2920 ../../words.py:2928 ../../words.py:2930
 #: ../../words.py:2962 ../../words.py:2966 ../../words.py:2976
-#: ../../words.py:2981
+#: ../../words.py:2981 ../../words.py:2989
 msgid "Liebe_usw"
 msgstr "love_etc"
 
 #: i18n/words.py:2920 ../../words.py:2928 ../../words.py:2930
 #: ../../words.py:2962 ../../words.py:2966 ../../words.py:2976
-#: ../../words.py:2981
+#: ../../words.py:2981 ../../words.py:2989
 msgid "zuneigung"
 msgstr "affection"
 
 #: i18n/words.py:2927 ../../words.py:2935 ../../words.py:2937
 #: ../../words.py:2969 ../../words.py:2973 ../../words.py:2983
-#: ../../words.py:2988
+#: ../../words.py:2988 ../../words.py:2996
 msgid "Selbstlosigkeit_Ichlosigkeit_etc"
 msgstr "selflessness_Ilessness_etc"
 
 #: i18n/words.py:2928 ../../words.py:2936 ../../words.py:2938
 #: ../../words.py:2970 ../../words.py:2974 ../../words.py:2984
-#: ../../words.py:2989
+#: ../../words.py:2989 ../../words.py:2997
 msgid "selbstlos"
 msgstr "selfless"
 
 #: i18n/words.py:2929 ../../words.py:2937 ../../words.py:2939
 #: ../../words.py:2971 ../../words.py:2975 ../../words.py:2985
-#: ../../words.py:2990
+#: ../../words.py:2990 ../../words.py:2998
 msgid "ichlos"
 msgstr "Iless"
 
 #: i18n/words.py:2937 ../../words.py:2945 ../../words.py:2947
 #: ../../words.py:2979 ../../words.py:2983 ../../words.py:2993
-#: ../../words.py:2998
+#: ../../words.py:2998 ../../words.py:3006
 msgid "variationsreich_eintönig"
 msgstr "varied_monotonous"
 
 #: i18n/words.py:2938 ../../words.py:2946 ../../words.py:2948
 #: ../../words.py:2980 ../../words.py:2984 ../../words.py:2994
-#: ../../words.py:2999
+#: ../../words.py:2999 ../../words.py:3007
 msgid "eintönig"
 msgstr "monotonous"
 
 #: i18n/words.py:2939 ../../words.py:2947 ../../words.py:2949
 #: ../../words.py:2981 ../../words.py:2985 ../../words.py:2995
-#: ../../words.py:3000
+#: ../../words.py:3000 ../../words.py:3008
 msgid "eintoenig"
 msgstr "monotonous"
 
 #: i18n/words.py:2940 ../../words.py:2948 ../../words.py:2950
 #: ../../words.py:2982 ../../words.py:2986 ../../words.py:2996
-#: ../../words.py:3001
+#: ../../words.py:3001 ../../words.py:3009
 msgid "variationsreich"
 msgstr "varied"
 
 #: i18n/words.py:2948 ../../words.py:2956 ../../words.py:2958
 #: ../../words.py:2990 ../../words.py:2994 ../../words.py:3004
-#: ../../words.py:3009
+#: ../../words.py:3009 ../../words.py:3017
 msgid "Zuneigung_Abneigung"
 msgstr "affection_dislike"
 
 #: i18n/words.py:2949 ../../words.py:2957 ../../words.py:2959
 #: ../../words.py:2991 ../../words.py:2995 ../../words.py:3005
-#: ../../words.py:3010
+#: ../../words.py:3010 ../../words.py:3018
 msgid "abgeneigt"
 msgstr "averse"
 
 #: i18n/words.py:2950 ../../words.py:2958 ../../words.py:2960
 #: ../../words.py:2992 ../../words.py:2996 ../../words.py:3006
-#: ../../words.py:3011
+#: ../../words.py:3011 ../../words.py:3019
 msgid "zugewandt"
 msgstr "affectionate"
 
 #: i18n/words.py:2951 ../../words.py:2959 ../../words.py:2961
 #: ../../words.py:2993 ../../words.py:2997 ../../words.py:3007
-#: ../../words.py:3012
+#: ../../words.py:3012 ../../words.py:3020
 msgid "reserviert"
 msgstr "reserved"
 
 #: i18n/words.py:2952 ../../words.py:2960 ../../words.py:2962
 #: ../../words.py:2994 ../../words.py:2998 ../../words.py:3008
-#: ../../words.py:3013
+#: ../../words.py:3013 ../../words.py:3021
 msgid "zugeneigt"
 msgstr "inclined"
 
@@ -5504,7 +5539,8 @@ msgstr "inclined"
 #: ../../words.py:2986 ../../words.py:2971 ../../words.py:2988
 #: ../../words.py:3003 ../../words.py:3020 ../../words.py:3007
 #: ../../words.py:3024 ../../words.py:3017 ../../words.py:3034
-#: ../../words.py:3022 ../../words.py:3039
+#: ../../words.py:3022 ../../words.py:3039 ../../words.py:3030
+#: ../../words.py:3047
 msgid "ehrlich"
 msgstr "honest"
 
@@ -5512,7 +5548,8 @@ msgstr "honest"
 #: ../../words.py:2987 ../../words.py:2972 ../../words.py:2989
 #: ../../words.py:3004 ../../words.py:3021 ../../words.py:3008
 #: ../../words.py:3025 ../../words.py:3018 ../../words.py:3035
-#: ../../words.py:3023 ../../words.py:3040
+#: ../../words.py:3023 ../../words.py:3040 ../../words.py:3031
+#: ../../words.py:3048
 msgid "höflich"
 msgstr "polite"
 
@@ -5520,97 +5557,98 @@ msgstr "polite"
 #: ../../words.py:2988 ../../words.py:2973 ../../words.py:2990
 #: ../../words.py:3005 ../../words.py:3022 ../../words.py:3009
 #: ../../words.py:3026 ../../words.py:3019 ../../words.py:3036
-#: ../../words.py:3024 ../../words.py:3041
+#: ../../words.py:3024 ../../words.py:3041 ../../words.py:3032
+#: ../../words.py:3049
 msgid "hoeflich"
 msgstr "courteous"
 
 #: i18n/words.py:2987 ../../words.py:2995 ../../words.py:2997
 #: ../../words.py:3029 ../../words.py:3033 ../../words.py:3043
-#: ../../words.py:3048
+#: ../../words.py:3048 ../../words.py:3056
 msgid "Tragweite"
 msgstr "scope"
 
 #: i18n/words.py:2987 ../../words.py:2995 ../../words.py:2997
 #: ../../words.py:3029 ../../words.py:3033 ../../words.py:3043
-#: ../../words.py:3048
+#: ../../words.py:3048 ../../words.py:3056
 msgid "tragweite"
 msgstr "scope"
 
 #: i18n/words.py:2993 ../../words.py:3001 ../../words.py:3003
 #: ../../words.py:3035 ../../words.py:3039 ../../words.py:3049
-#: ../../words.py:3054
+#: ../../words.py:3054 ../../words.py:3062
 msgid "wertlos"
 msgstr "worthless"
 
 #: i18n/words.py:3000 ../../words.py:3008 ../../words.py:3010
 #: ../../words.py:3042 ../../words.py:3046 ../../words.py:3056
-#: ../../words.py:3061
+#: ../../words.py:3061 ../../words.py:3069
 msgid "Götter_Propheten_Familien_Freunde"
 msgstr "gods_prophets_families_friends"
 
 #: i18n/words.py:3001 ../../words.py:3009 ../../words.py:3011
 #: ../../words.py:3043 ../../words.py:3047 ../../words.py:3057
-#: ../../words.py:3062
+#: ../../words.py:3062 ../../words.py:3070
 msgid "familiaer"
 msgstr "familial"
 
 #: i18n/words.py:3002 ../../words.py:3010 ../../words.py:3012
 #: ../../words.py:3044 ../../words.py:3048 ../../words.py:3058
-#: ../../words.py:3063
+#: ../../words.py:3063 ../../words.py:3071
 msgid "goettlich"
 msgstr "godly"
 
 #: i18n/words.py:3003 ../../words.py:3011 ../../words.py:3013
 #: ../../words.py:3045 ../../words.py:3049 ../../words.py:3059
-#: ../../words.py:3064
+#: ../../words.py:3064 ../../words.py:3072
 msgid "freunde"
 msgstr "friends"
 
 #: i18n/words.py:3004 ../../words.py:3012 ../../words.py:3014
 #: ../../words.py:3046 ../../words.py:3050 ../../words.py:3060
-#: ../../words.py:3065
+#: ../../words.py:3065 ../../words.py:3073
 msgid "propheten"
 msgstr "prophets"
 
 #: i18n/words.py:3012 ../../words.py:3020 ../../words.py:3022
 #: ../../words.py:3054 ../../words.py:3058 ../../words.py:3068
-#: ../../words.py:3073
+#: ../../words.py:3073 ../../words.py:3081
 msgid "sanft_vs_hart"
 msgstr "gentle_vs_hard"
 
 #: i18n/words.py:3013 ../../words.py:3021 ../../words.py:3023
 #: ../../words.py:3055 ../../words.py:3059 ../../words.py:3069
-#: ../../words.py:3074
+#: ../../words.py:3074 ../../words.py:3082
 msgid "sanft"
 msgstr "soft"
 
 #: i18n/words.py:3014 ../../words.py:3022 ../../words.py:3024
 #: ../../words.py:3056 ../../words.py:3060 ../../words.py:3070
-#: ../../words.py:3075
+#: ../../words.py:3075 ../../words.py:3083
 msgid "hart"
 msgstr "hard"
 
 #: i18n/words.py:3022 ../../words.py:3030 ../../words.py:3032
 #: ../../words.py:3064 ../../words.py:3068 ../../words.py:3078
-#: ../../words.py:3083
+#: ../../words.py:3083 ../../words.py:3091
 msgid "vereinen_vs_verbinden"
 msgstr "unite_vs_connect"
 
 #: i18n/words.py:3023 ../../words.py:3031 ../../words.py:3033
 #: ../../words.py:3065 ../../words.py:3069 ../../words.py:3079
-#: ../../words.py:3084
+#: ../../words.py:3084 ../../words.py:3092
 msgid "vereinenverbinden"
 msgstr "uniteConnect"
 
 #: i18n/words.py:3025 ../../words.py:3033 ../../words.py:3035
 #: ../../words.py:3067 ../../words.py:3071 ../../words.py:3081
-#: ../../words.py:3086
+#: ../../words.py:3086 ../../words.py:3094
 msgid "verbinden"
 msgstr "connect"
 
 #: i18n/words.py:3027 ../../words.py:3035 ../../words.py:3037
 #: ../../words.py:3069 ../../words.py:3073 ../../words.py:3083
-#: ../../words.py:3088
+#: ../../words.py:3088 ../../words.py:3096
 msgid "verbindung"
 msgstr "connect"
 
@@ -5618,475 +5656,476 @@ msgstr "connect"
 #: ../../words.py:3546 ../../words.py:3045 ../../words.py:3547
 #: ../../words.py:3077 ../../words.py:3579 ../../words.py:3081
 #: ../../words.py:3583 ../../words.py:3091 ../../words.py:3593
-#: ../../words.py:3096 ../../words.py:3598
+#: ../../words.py:3096 ../../words.py:3598 ../../words.py:3104
+#: ../../words.py:3606
 msgid "ähnlich"
 msgstr "similar"
 
 #: i18n/words.py:3036 ../../words.py:3044 ../../words.py:3046
 #: ../../words.py:3078 ../../words.py:3082 ../../words.py:3092
-#: ../../words.py:3097
+#: ../../words.py:3097 ../../words.py:3105
 msgid "aehnlich"
 msgstr "similar"
 
 #: i18n/words.py:3043 ../../words.py:3051 ../../words.py:3053
 #: ../../words.py:3085 ../../words.py:3089 ../../words.py:3099
-#: ../../words.py:3104
+#: ../../words.py:3104 ../../words.py:3112
 msgid "gut_böse_lieb_schlecht"
 msgstr "good_evil_love_bad"
 
 #: i18n/words.py:3045 ../../words.py:3053 ../../words.py:3055
 #: ../../words.py:3087 ../../words.py:3091 ../../words.py:3101
-#: ../../words.py:3106
+#: ../../words.py:3106 ../../words.py:3114
 msgid "böse"
 msgstr "evil"
 
 #: i18n/words.py:3046 ../../words.py:3054 ../../words.py:3056
 #: ../../words.py:3088 ../../words.py:3092 ../../words.py:3102
-#: ../../words.py:3107
+#: ../../words.py:3107 ../../words.py:3115
 msgid "boese"
 msgstr "evil"
 
 #: i18n/words.py:3047 ../../words.py:3055 ../../words.py:3057
 #: ../../words.py:3089 ../../words.py:3093 ../../words.py:3103
-#: ../../words.py:3108
+#: ../../words.py:3108 ../../words.py:3116
 msgid "lieb"
 msgstr "kind"
 
 #: i18n/words.py:3048 ../../words.py:3056 ../../words.py:3058
 #: ../../words.py:3090 ../../words.py:3094 ../../words.py:3104
-#: ../../words.py:3109
+#: ../../words.py:3109 ../../words.py:3117
 msgid "schlecht"
 msgstr "bad"
 
 #: i18n/words.py:3056 ../../words.py:3064 ../../words.py:3066
 #: ../../words.py:3098 ../../words.py:3102 ../../words.py:3112
-#: ../../words.py:3117
+#: ../../words.py:3117 ../../words.py:3125
 msgid "Sinn_und_Zweck_des_Lebens"
 msgstr "meaning_and_purpose_of_life"
 
 #: i18n/words.py:3058 ../../words.py:3066 ../../words.py:3068
 #: ../../words.py:3100 ../../words.py:3104 ../../words.py:3114
-#: ../../words.py:3119
+#: ../../words.py:3119 ../../words.py:3127
 msgid "zweck"
 msgstr "purpose"
 
 #: i18n/words.py:3067 ../../words.py:3075 ../../words.py:3077
 #: ../../words.py:3109 ../../words.py:3113 ../../words.py:3123
-#: ../../words.py:3128
+#: ../../words.py:3128 ../../words.py:3136
 msgid "Zeit_vs_Raum"
 msgstr "time_vs_space"
 
 #: i18n/words.py:3069 ../../words.py:3077 ../../words.py:3079
 #: ../../words.py:3111 ../../words.py:3115 ../../words.py:3125
-#: ../../words.py:3130
+#: ../../words.py:3130 ../../words.py:3138
 msgid "raum"
 msgstr "space"
 
 #: i18n/words.py:3070 ../../words.py:3078 ../../words.py:3080
 #: ../../words.py:3112 ../../words.py:3116 ../../words.py:3126
-#: ../../words.py:3131
+#: ../../words.py:3131 ../../words.py:3139
 msgid "zeitlich"
 msgstr "time"
 
 #: i18n/words.py:3071 ../../words.py:3079 ../../words.py:3081
 #: ../../words.py:3113 ../../words.py:3117 ../../words.py:3127
-#: ../../words.py:3132
+#: ../../words.py:3132 ../../words.py:3140
 msgid "räumlich"
 msgstr "spatially"
 
 #: i18n/words.py:3079 ../../words.py:3087 ../../words.py:3089
 #: ../../words.py:3121 ../../words.py:3125 ../../words.py:3135
-#: ../../words.py:3140
+#: ../../words.py:3140 ../../words.py:3148
 msgid "egalitär_vs_autoritär"
 msgstr "egalitarian_vs_authoritarian"
 
 #: i18n/words.py:3080 ../../words.py:3088 ../../words.py:3090
 #: ../../words.py:3122 ../../words.py:3126 ../../words.py:3136
-#: ../../words.py:3141
+#: ../../words.py:3141 ../../words.py:3149
 msgid "egalitaerautoritaer"
 msgstr "egalitarianAuthoritarian"
 
 #: i18n/words.py:3081 ../../words.py:3089 ../../words.py:3091
 #: ../../words.py:3123 ../../words.py:3127 ../../words.py:3137
-#: ../../words.py:3142
+#: ../../words.py:3142 ../../words.py:3150
 msgid "egalitaer"
 msgstr "egalitarian"
 
 #: i18n/words.py:3082 ../../words.py:3090 ../../words.py:3092
 #: ../../words.py:3124 ../../words.py:3128 ../../words.py:3138
-#: ../../words.py:3143
+#: ../../words.py:3143 ../../words.py:3151
 msgid "autoritaer"
 msgstr "authoritarian"
 
 #: i18n/words.py:3083 ../../words.py:3091 ../../words.py:3093
 #: ../../words.py:3125 ../../words.py:3129 ../../words.py:3139
-#: ../../words.py:3144
+#: ../../words.py:3144 ../../words.py:3152
 msgid "egalitär"
 msgstr "egalitarian"
 
 #: i18n/words.py:3084 ../../words.py:3092 ../../words.py:3094
 #: ../../words.py:3126 ../../words.py:3130 ../../words.py:3140
-#: ../../words.py:3145
+#: ../../words.py:3145 ../../words.py:3153
 msgid "autoritär"
 msgstr "authoritarian"
 
 #: i18n/words.py:3092 ../../words.py:3100 ../../words.py:3102
 #: ../../words.py:3134 ../../words.py:3138 ../../words.py:3148
-#: ../../words.py:3153
+#: ../../words.py:3153 ../../words.py:3161
 msgid "Meinungen_und_Ruf"
 msgstr "opinions_and_reputation"
 
 #: i18n/words.py:3093 ../../words.py:3101 ../../words.py:3103
 #: ../../words.py:3135 ../../words.py:3139 ../../words.py:3149
-#: ../../words.py:3154
+#: ../../words.py:3154 ../../words.py:3162
 msgid "meinungen"
 msgstr "opinions"
 
 #: i18n/words.py:3094 ../../words.py:3102 ../../words.py:3104
 #: ../../words.py:3136 ../../words.py:3140 ../../words.py:3150
-#: ../../words.py:3155
+#: ../../words.py:3155 ../../words.py:3163
 msgid "anderemenschen"
 msgstr "otherpeople"
 
 #: i18n/words.py:3095 ../../words.py:3103 ../../words.py:3105
 #: ../../words.py:3137 ../../words.py:3141 ../../words.py:3151
-#: ../../words.py:3156
+#: ../../words.py:3156 ../../words.py:3164
 msgid "ruf"
 msgstr "reputation"
 
 #: i18n/words.py:3103 ../../words.py:3111 ../../words.py:3113
 #: ../../words.py:3145 ../../words.py:3149 ../../words.py:3159
-#: ../../words.py:3164
+#: ../../words.py:3164 ../../words.py:3172
 msgid "Meinungsintelligenz"
 msgstr "opinionintelligence"
 
 #: i18n/words.py:3104 ../../words.py:3112 ../../words.py:3114
 #: ../../words.py:3146 ../../words.py:3150 ../../words.py:3160
-#: ../../words.py:3165
+#: ../../words.py:3165 ../../words.py:3173
 msgid "meinungsintelligenz"
 msgstr "opinionintelligence"
 
 #: i18n/words.py:3105 ../../words.py:3113 ../../words.py:3115
 #: ../../words.py:3147 ../../words.py:3151 ../../words.py:3161
-#: ../../words.py:3166
+#: ../../words.py:3166 ../../words.py:3174
 msgid "ursprungsintelligenz"
 msgstr "originintelligence"
 
 #: i18n/words.py:3113 ../../words.py:3121 ../../words.py:3123
 #: ../../words.py:3155 ../../words.py:3159 ../../words.py:3169
-#: ../../words.py:3174
+#: ../../words.py:3174 ../../words.py:3182
 msgid "Sittlichkeit"
 msgstr "morality"
 
 #: i18n/words.py:3114 ../../words.py:3122 ../../words.py:3124
 #: ../../words.py:3156 ../../words.py:3160 ../../words.py:3170
-#: ../../words.py:3175
+#: ../../words.py:3175 ../../words.py:3183
 msgid "sittlichkeit"
 msgstr "morality"
 
 #: i18n/words.py:3115 ../../words.py:3123 ../../words.py:3125
 #: ../../words.py:3157 ../../words.py:3161 ../../words.py:3171
-#: ../../words.py:3176
+#: ../../words.py:3176 ../../words.py:3184
 msgid "annaehrerung"
 msgstr "gettingNear"
 
 #: i18n/words.py:3122 ../../words.py:3130 ../../words.py:3132
 #: ../../words.py:3164 ../../words.py:3168 ../../words.py:3178
-#: ../../words.py:3183
+#: ../../words.py:3183 ../../words.py:3191
 msgid "Führung"
 msgstr "leadership"
 
 #: i18n/words.py:3122 ../../words.py:3130 ../../words.py:3132
 #: ../../words.py:3164 ../../words.py:3168 ../../words.py:3178
-#: ../../words.py:3183
+#: ../../words.py:3183 ../../words.py:3191
 msgid "führung"
 msgstr "leadership"
 
 #: i18n/words.py:3122 ../../words.py:3130 ../../words.py:3132
 #: ../../words.py:3164 ../../words.py:3168 ../../words.py:3178
-#: ../../words.py:3183
+#: ../../words.py:3183 ../../words.py:3191
 msgid "fuehrung"
 msgstr "leadership"
 
 #: i18n/words.py:3129 ../../words.py:3137 ../../words.py:3139
 #: ../../words.py:3171 ../../words.py:3175 ../../words.py:3185
-#: ../../words.py:3190
+#: ../../words.py:3190 ../../words.py:3198
 msgid "Durchleuchten"
 msgstr "X-ray"
 
 #: i18n/words.py:3130 ../../words.py:3138 ../../words.py:3140
 #: ../../words.py:3172 ../../words.py:3176 ../../words.py:3186
-#: ../../words.py:3191
+#: ../../words.py:3191 ../../words.py:3199
 msgid "durchleuchten"
 msgstr "X-ray"
 
 #: i18n/words.py:3131 ../../words.py:3139 ../../words.py:3141
 #: ../../words.py:3173 ../../words.py:3177 ../../words.py:3187
-#: ../../words.py:3192
+#: ../../words.py:3192 ../../words.py:3200
 msgid "erleuchten"
 msgstr "illuminate"
 
 #: i18n/words.py:3139 ../../words.py:3147 ../../words.py:3149
 #: ../../words.py:3181 ../../words.py:3185 ../../words.py:3195
-#: ../../words.py:3200
+#: ../../words.py:3200 ../../words.py:3208
 msgid "Fördern_Sensiblisieren_und_Gedeihen"
 msgstr "encourage_sensitize_and_grant"
 
 #: i18n/words.py:3140 ../../words.py:3148 ../../words.py:3150
 #: ../../words.py:3182 ../../words.py:3186 ../../words.py:3196
-#: ../../words.py:3201
+#: ../../words.py:3201 ../../words.py:3209
 msgid "foerdern"
 msgstr "encourage"
 
 #: i18n/words.py:3141 ../../words.py:3149 ../../words.py:3151
 #: ../../words.py:3183 ../../words.py:3187 ../../words.py:3197
-#: ../../words.py:3202
+#: ../../words.py:3202 ../../words.py:3210
 msgid "fördern"
 msgstr "promote"
 
 #: i18n/words.py:3142 ../../words.py:3150 ../../words.py:3152
 #: ../../words.py:3184 ../../words.py:3188 ../../words.py:3198
-#: ../../words.py:3203
+#: ../../words.py:3203 ../../words.py:3211
 msgid "begrenzen"
 msgstr "limit"
 
 #: i18n/words.py:3143 ../../words.py:3151 ../../words.py:3153
 #: ../../words.py:3185 ../../words.py:3189 ../../words.py:3199
-#: ../../words.py:3204
+#: ../../words.py:3204 ../../words.py:3212
 msgid "sensibilisieren"
 msgstr "raiseawareness"
 
 #: i18n/words.py:3144 ../../words.py:3152 ../../words.py:3154
 #: ../../words.py:3186 ../../words.py:3190 ../../words.py:3200
-#: ../../words.py:3205
+#: ../../words.py:3205 ../../words.py:3213
 msgid "gedeihen"
 msgstr "thrive"
 
 #: i18n/words.py:3145 ../../words.py:3153 ../../words.py:3155
 #: ../../words.py:3187 ../../words.py:3191 ../../words.py:3201
-#: ../../words.py:3206
+#: ../../words.py:3206 ../../words.py:3214
 msgid "verderben"
 msgstr "spoil"
 
 #: i18n/words.py:3153 ../../words.py:3161 ../../words.py:3163
 #: ../../words.py:3195 ../../words.py:3199 ../../words.py:3209
-#: ../../words.py:3214
+#: ../../words.py:3214 ../../words.py:3222
 msgid "Überheblichkeit"
 msgstr "arrogance"
 
 #: i18n/words.py:3154 ../../words.py:3162 ../../words.py:3164
 #: ../../words.py:3196 ../../words.py:3200 ../../words.py:3210
-#: ../../words.py:3215
+#: ../../words.py:3215 ../../words.py:3223
 msgid "überheblich"
 msgstr "arrogant"
 
 #: i18n/words.py:3155 ../../words.py:3163 ../../words.py:3165
 #: ../../words.py:3197 ../../words.py:3201 ../../words.py:3211
-#: ../../words.py:3216
+#: ../../words.py:3216 ../../words.py:3224
 msgid "ueberheblichkeit"
 msgstr "arrogance"
 
 #: i18n/words.py:3156 ../../words.py:3164 ../../words.py:3166
 #: ../../words.py:3198 ../../words.py:3202 ../../words.py:3212
-#: ../../words.py:3217
+#: ../../words.py:3217 ../../words.py:3225
 msgid "ueberheblich"
 msgstr "arrogance"
 
 #: i18n/words.py:3157 ../../words.py:3165 ../../words.py:3167
 #: ../../words.py:3199 ../../words.py:3203 ../../words.py:3213
-#: ../../words.py:3218
+#: ../../words.py:3218 ../../words.py:3226
 msgid "überheblichkeit"
 msgstr "arrogant"
 
 #: i18n/words.py:3165 ../../words.py:3173 ../../words.py:3175
 #: ../../words.py:3207 ../../words.py:3211 ../../words.py:3221
-#: ../../words.py:3226
+#: ../../words.py:3226 ../../words.py:3234
 msgid "Polung_der_Liebe"
 msgstr "polarity_of_love"
 
 #: i18n/words.py:3166 ../../words.py:3174 ../../words.py:3176
 #: ../../words.py:3208 ../../words.py:3212 ../../words.py:3222
-#: ../../words.py:3227
+#: ../../words.py:3227 ../../words.py:3235
 msgid "liebepolung"
 msgstr "polarityOfLove"
 
 #: i18n/words.py:3174 ../../words.py:3182 ../../words.py:3184
 #: ../../words.py:3216 ../../words.py:3220 ../../words.py:3230
-#: ../../words.py:3235
+#: ../../words.py:3235 ../../words.py:3243
 msgid "Egoismus_vs_Altruismus"
 msgstr "egoism_vs_altruism"
 
 #: i18n/words.py:3177 ../../words.py:3185 ../../words.py:3187
 #: ../../words.py:3219 ../../words.py:3223 ../../words.py:3233
-#: ../../words.py:3238
+#: ../../words.py:3238 ../../words.py:3246
 msgid "egoist"
 msgstr "egoist"
 
 #: i18n/words.py:3178 ../../words.py:3186 ../../words.py:3188
 #: ../../words.py:3220 ../../words.py:3224 ../../words.py:3234
-#: ../../words.py:3239
+#: ../../words.py:3239 ../../words.py:3247
 msgid "altruist"
 msgstr "altruist"
 
 #: i18n/words.py:3185 ../../words.py:3193 ../../words.py:3195
 #: ../../words.py:3227 ../../words.py:3231 ../../words.py:3241
-#: ../../words.py:3246
+#: ../../words.py:3246 ../../words.py:3254
 msgid "kausal"
 msgstr "causal"
 
 #: i18n/words.py:3185 ../../words.py:3193 ../../words.py:3195
 #: ../../words.py:3227 ../../words.py:3231 ../../words.py:3241
-#: ../../words.py:3246
+#: ../../words.py:3246 ../../words.py:3254
 msgid "geltung"
 msgstr "cachetPrestigeValidity"
 
 #: i18n/words.py:3185 ../../words.py:3193 ../../words.py:3195
 #: ../../words.py:3227 ../../words.py:3231 ../../words.py:3241
-#: ../../words.py:3246
+#: ../../words.py:3246 ../../words.py:3254
 msgid "genese"
 msgstr "genesis"
 
 #: i18n/words.py:3191 ../../words.py:3199 ../../words.py:3201
 #: ../../words.py:3233 ../../words.py:3237 ../../words.py:3247
-#: ../../words.py:3252
+#: ../../words.py:3252 ../../words.py:3260
 msgid "Gleichheit"
 msgstr "equality"
 
 #: i18n/words.py:3191 ../../words.py:3199 ../../words.py:3201
 #: ../../words.py:3233 ../../words.py:3237 ../../words.py:3247
-#: ../../words.py:3252
+#: ../../words.py:3252 ../../words.py:3260
 msgid "gleich"
 msgstr "equal"
 
 #: i18n/words.py:3197 ../../words.py:3205 ../../words.py:3207
 #: ../../words.py:3239 ../../words.py:3243 ../../words.py:3253
-#: ../../words.py:3258
+#: ../../words.py:3258 ../../words.py:3266
 msgid "Überleben"
 msgstr "survival"
 
 #: i18n/words.py:3197 ../../words.py:3205 ../../words.py:3207
 #: ../../words.py:3239 ../../words.py:3243 ../../words.py:3253
-#: ../../words.py:3258
+#: ../../words.py:3258 ../../words.py:3266
 msgid "ueberleben"
 msgstr "survive"
 
 #: i18n/words.py:3202 ../../words.py:3210 ../../words.py:3212
 #: ../../words.py:3244 ../../words.py:3248 ../../words.py:3258
-#: ../../words.py:3263
+#: ../../words.py:3263 ../../words.py:3271
 msgid "um1"
 msgstr "of1"
 
 #: i18n/words.py:3203 ../../words.py:3211 ../../words.py:3213
 #: ../../words.py:3245 ../../words.py:3249 ../../words.py:3259
-#: ../../words.py:3264
+#: ../../words.py:3264 ../../words.py:3272
 msgid "um2"
 msgstr "of2"
 
 #: i18n/words.py:3204 ../../words.py:3212 ../../words.py:3214
 #: ../../words.py:3246 ../../words.py:3250 ../../words.py:3260
-#: ../../words.py:3265
+#: ../../words.py:3265 ../../words.py:3273
 msgid "um3"
 msgstr "of3"
 
 #: i18n/words.py:3223 ../../words.py:3231 ../../words.py:3233
 #: ../../words.py:3265 ../../words.py:3269 ../../words.py:3279
-#: ../../words.py:3284
+#: ../../words.py:3284 ../../words.py:3292
 msgid "Rahmen-Bedingungen"
 msgstr "Framework-conditions"
 
 #: i18n/words.py:3223 ../../words.py:3231 ../../words.py:3233
 #: ../../words.py:3265 ../../words.py:3269 ../../words.py:3279
-#: ../../words.py:3284
+#: ../../words.py:3284 ../../words.py:3292
 msgid "rahmen"
 msgstr "frame"
 
 #: i18n/words.py:3229 ../../words.py:3237 ../../words.py:3239
 #: ../../words.py:3271 ../../words.py:3275 ../../words.py:3285
-#: ../../words.py:3290
+#: ../../words.py:3290 ../../words.py:3298
 msgid "Motive_gleichförmige_Polygone"
 msgstr "motifs_uniform_polygons"
 
 #: i18n/words.py:3230 ../../words.py:3238 ../../words.py:3240
 #: ../../words.py:3272 ../../words.py:3276 ../../words.py:3286
-#: ../../words.py:3291
+#: ../../words.py:3291 ../../words.py:3299
 msgid "motivgleichfoermig"
 msgstr "motifRegularPolygons"
 
 #: i18n/words.py:3244 ../../words.py:3252 ../../words.py:3254
 #: ../../words.py:3286 ../../words.py:3290 ../../words.py:3300
-#: ../../words.py:3305
+#: ../../words.py:3305 ../../words.py:3313
 msgid "Struktur_gleichförmige_Polygone"
 msgstr "structure_regular_polygons"
 
 #: i18n/words.py:3245 ../../words.py:3253 ../../words.py:3255
 #: ../../words.py:3287 ../../words.py:3291 ../../words.py:3301
-#: ../../words.py:3306
+#: ../../words.py:3306 ../../words.py:3314
 msgid "strukturgleichfoermig"
 msgstr "structureRegularPolygons"
 
 #: i18n/words.py:3260 ../../words.py:3268 ../../words.py:3270
 #: ../../words.py:3302 ../../words.py:3306 ../../words.py:3316
-#: ../../words.py:3321
+#: ../../words.py:3321 ../../words.py:3329
 msgid "motivstern"
 msgstr "motifStar"
 
 #: i18n/words.py:3274 ../../words.py:3282 ../../words.py:3284
 #: ../../words.py:3316 ../../words.py:3320 ../../words.py:3330
-#: ../../words.py:3335
+#: ../../words.py:3335 ../../words.py:3343
 msgid "Struktur_Sternpolygone"
 msgstr "structure_star_polygons"
 
 #: i18n/words.py:3275 ../../words.py:3283 ../../words.py:3285
 #: ../../words.py:3317 ../../words.py:3321 ../../words.py:3331
-#: ../../words.py:3336
+#: ../../words.py:3336 ../../words.py:3344
 msgid "strukturstern"
 msgstr "structureStar"
 
 #: i18n/words.py:3289 ../../words.py:3297 ../../words.py:3299
 #: ../../words.py:3331 ../../words.py:3335 ../../words.py:3345
-#: ../../words.py:3350
+#: ../../words.py:3350 ../../words.py:3358
 msgid "Motiv_Sternpolygon_gebrochen-rational"
 msgstr "motif_star_polygon_fractioned-rational"
 
 #: i18n/words.py:3290 ../../words.py:3298 ../../words.py:3300
 #: ../../words.py:3332 ../../words.py:3336 ../../words.py:3346
-#: ../../words.py:3351
+#: ../../words.py:3351 ../../words.py:3359
 msgid "motivgebrstern"
 msgstr "motifStar"
 
 #: i18n/words.py:3304 ../../words.py:3312 ../../words.py:3314
 #: ../../words.py:3346 ../../words.py:3350 ../../words.py:3360
-#: ../../words.py:3365
+#: ../../words.py:3365 ../../words.py:3373
 msgid "Struktur_Sternpolyon_gebrochen-rational"
 msgstr "structure_star_polygon_fractioned-rational"
 
 #: i18n/words.py:3305 ../../words.py:3313 ../../words.py:3315
 #: ../../words.py:3347 ../../words.py:3351 ../../words.py:3361
-#: ../../words.py:3366
+#: ../../words.py:3366 ../../words.py:3374
 msgid "strukgebrstern"
 msgstr "strukgebrstern"
 
 #: i18n/words.py:3319 ../../words.py:3327 ../../words.py:3329
 #: ../../words.py:3361 ../../words.py:3365 ../../words.py:3375
-#: ../../words.py:3380
+#: ../../words.py:3380 ../../words.py:3388
 msgid "Motiv_gleichförmige_Polygone_gebrochen-rational"
 msgstr "motif_regular_polygons_fractioned-rational"
 
 #: i18n/words.py:3320 ../../words.py:3328 ../../words.py:3330
 #: ../../words.py:3362 ../../words.py:3366 ../../words.py:3376
-#: ../../words.py:3381
+#: ../../words.py:3381 ../../words.py:3389
 msgid "motivgebrgleichf"
 msgstr "motifRegularf"
 
 #: i18n/words.py:3334 ../../words.py:3342 ../../words.py:3344
 #: ../../words.py:3376 ../../words.py:3380 ../../words.py:3390
-#: ../../words.py:3395
+#: ../../words.py:3395 ../../words.py:3403
 msgid "Struktur_gleichförmige_Polygone_gebrochen-rational"
 msgstr "structure_regular_polygons_fractioned-rationall"
 
 #: i18n/words.py:3335 ../../words.py:3343 ../../words.py:3345
 #: ../../words.py:3377 ../../words.py:3381 ../../words.py:3391
-#: ../../words.py:3396
+#: ../../words.py:3396 ../../words.py:3404
 msgid "strukgebrgleichf"
 msgstr "structureRegularF"
 
@@ -6095,6 +6134,7 @@ msgstr "structureRegularF"
 #: ../../words.py:3821 ../../words.py:3390 ../../words.py:3853
 #: ../../words.py:3394 ../../words.py:3857 ../../words.py:3404
 #: ../../words.py:3867 ../../words.py:3409 ../../words.py:3872
+#: ../../words.py:3417 ../../words.py:3880
 msgid "beschrieben"
 msgstr "described"
 
@@ -6102,7 +6142,8 @@ msgstr "described"
 #: ../../words.py:3440 ../../words.py:3374 ../../words.py:3442
 #: ../../words.py:3406 ../../words.py:3474 ../../words.py:3410
 #: ../../words.py:3478 ../../words.py:3420 ../../words.py:3488
-#: ../../words.py:3425 ../../words.py:3493
+#: ../../words.py:3425 ../../words.py:3493 ../../words.py:3433
+#: ../../words.py:3501
 msgid "Lebewesen"
 msgstr "livingbeing"
 
@@ -6112,7 +6153,8 @@ msgstr "livingbeing"
 #: ../../words.py:3599 ../../words.py:3411 ../../words.py:3479
 #: ../../words.py:3603 ../../words.py:3421 ../../words.py:3489
 #: ../../words.py:3613 ../../words.py:3426 ../../words.py:3494
-#: ../../words.py:3618
+#: ../../words.py:3618 ../../words.py:3434 ../../words.py:3502
+#: ../../words.py:3626
 msgid "tiere"
 msgstr "animals"
 
@@ -6120,7 +6162,8 @@ msgstr "animals"
 #: ../../words.py:3442 ../../words.py:3376 ../../words.py:3444
 #: ../../words.py:3408 ../../words.py:3476 ../../words.py:3412
 #: ../../words.py:3480 ../../words.py:3422 ../../words.py:3490
-#: ../../words.py:3427 ../../words.py:3495
+#: ../../words.py:3427 ../../words.py:3495 ../../words.py:3435
+#: ../../words.py:3503
 msgid "tier"
 msgstr "animal"
 
@@ -6128,37 +6171,38 @@ msgstr "animal"
 #: ../../words.py:3443 ../../words.py:3377 ../../words.py:3445
 #: ../../words.py:3409 ../../words.py:3477 ../../words.py:3413
 #: ../../words.py:3481 ../../words.py:3423 ../../words.py:3491
-#: ../../words.py:3428 ../../words.py:3496
+#: ../../words.py:3428 ../../words.py:3496 ../../words.py:3436
+#: ../../words.py:3504
 msgid "lebewesen"
 msgstr "creatures"
 
 #: i18n/words.py:3371 ../../words.py:3379 ../../words.py:3381
 #: ../../words.py:3413 ../../words.py:3417 ../../words.py:3427
-#: ../../words.py:3432
+#: ../../words.py:3432 ../../words.py:3440
 msgid "Kreativität_und_Intelligenz"
 msgstr "creativity_and_intelligence"
 
 #: i18n/words.py:3381 ../../words.py:3389 ../../words.py:3391
 #: ../../words.py:3423 ../../words.py:3427 ../../words.py:3437
-#: ../../words.py:3442
+#: ../../words.py:3442 ../../words.py:3450
 msgid "Männer"
 msgstr "men"
 
 #: i18n/words.py:3382 ../../words.py:3390 ../../words.py:3392
 #: ../../words.py:3424 ../../words.py:3428 ../../words.py:3438
-#: ../../words.py:3443
+#: ../../words.py:3443 ../../words.py:3451
 msgid "männer"
 msgstr "men"
 
 #: i18n/words.py:3383 ../../words.py:3391 ../../words.py:3393
 #: ../../words.py:3425 ../../words.py:3429 ../../words.py:3439
-#: ../../words.py:3444
+#: ../../words.py:3444 ../../words.py:3452
 msgid "maenner"
 msgstr "men"
 
 #: i18n/words.py:3384 ../../words.py:3392 ../../words.py:3394
 #: ../../words.py:3426 ../../words.py:3430 ../../words.py:3440
-#: ../../words.py:3445
+#: ../../words.py:3445 ../../words.py:3453
 msgid "frauen"
 msgstr "women"
 
@@ -6166,7 +6210,8 @@ msgstr "women"
 #: ../../words.py:3475 ../../words.py:3397 ../../words.py:3477
 #: ../../words.py:3429 ../../words.py:3509 ../../words.py:3433
 #: ../../words.py:3513 ../../words.py:3443 ../../words.py:3523
-#: ../../words.py:3448 ../../words.py:3528
+#: ../../words.py:3448 ../../words.py:3528 ../../words.py:3456
+#: ../../words.py:3536
 msgid "Persönlichkeit_evolutionär_erwerben"
 msgstr "personality_evolutionary_acquisition"
 
@@ -6174,7 +6219,8 @@ msgstr "personality_evolutionary_acquisition"
 #: ../../words.py:3476 ../../words.py:3398 ../../words.py:3478
 #: ../../words.py:3430 ../../words.py:3510 ../../words.py:3434
 #: ../../words.py:3514 ../../words.py:3444 ../../words.py:3524
-#: ../../words.py:3449 ../../words.py:3529
+#: ../../words.py:3449 ../../words.py:3529 ../../words.py:3457
+#: ../../words.py:3537
 msgid "evolution"
 msgstr "evolution"
 
@@ -6182,7 +6228,8 @@ msgstr "evolution"
 #: ../../words.py:3478 ../../words.py:3400 ../../words.py:3480
 #: ../../words.py:3432 ../../words.py:3512 ../../words.py:3436
 #: ../../words.py:3516 ../../words.py:3446 ../../words.py:3526
-#: ../../words.py:3451 ../../words.py:3531
+#: ../../words.py:3451 ../../words.py:3531 ../../words.py:3459
+#: ../../words.py:3539
 msgid "persoenlichkeit"
 msgstr "personality"
 
@@ -6190,13 +6237,14 @@ msgstr "personality"
 #: ../../words.py:3479 ../../words.py:3401 ../../words.py:3481
 #: ../../words.py:3433 ../../words.py:3513 ../../words.py:3437
 #: ../../words.py:3517 ../../words.py:3447 ../../words.py:3527
-#: ../../words.py:3452 ../../words.py:3532
+#: ../../words.py:3452 ../../words.py:3532 ../../words.py:3460
+#: ../../words.py:3540
 msgid "persönlichkeit"
 msgstr "personality"
 
 #: i18n/words.py:3394 ../../words.py:3402 ../../words.py:3404
 #: ../../words.py:3436 ../../words.py:3440 ../../words.py:3450
-#: ../../words.py:3455
+#: ../../words.py:3455 ../../words.py:3463
 msgid "Religion"
 msgstr "religion"
 
@@ -6204,7 +6252,8 @@ msgstr "religion"
 #: ../../words.py:3487 ../../words.py:3409 ../../words.py:3489
 #: ../../words.py:3441 ../../words.py:3521 ../../words.py:3445
 #: ../../words.py:3525 ../../words.py:3455 ../../words.py:3535
-#: ../../words.py:3460 ../../words.py:3540
+#: ../../words.py:3460 ../../words.py:3540 ../../words.py:3468
+#: ../../words.py:3548
 msgid "Motive_Ziele"
 msgstr "motives_goals"
 
@@ -6212,175 +6261,176 @@ msgstr "motives_goals"
 #: ../../words.py:3491 ../../words.py:3412 ../../words.py:3493
 #: ../../words.py:3444 ../../words.py:3525 ../../words.py:3448
 #: ../../words.py:3529 ../../words.py:3458 ../../words.py:3539
-#: ../../words.py:3463 ../../words.py:3544
+#: ../../words.py:3463 ../../words.py:3544 ../../words.py:3471
+#: ../../words.py:3552
 msgid "ziel"
 msgstr "goal"
 
 #: i18n/words.py:3406 ../../words.py:3414 ../../words.py:3416
 #: ../../words.py:3448 ../../words.py:3452 ../../words.py:3462
-#: ../../words.py:3467
+#: ../../words.py:3467 ../../words.py:3475
 msgid "Emotionen"
 msgstr "Emotions"
 
 #: i18n/words.py:3414 ../../words.py:3422 ../../words.py:3424
 #: ../../words.py:3456 ../../words.py:3460 ../../words.py:3470
-#: ../../words.py:3475
+#: ../../words.py:3475 ../../words.py:3483
 msgid "Personen"
 msgstr "people"
 
 #: i18n/words.py:3415 ../../words.py:3423 ../../words.py:3425
 #: ../../words.py:3457 ../../words.py:3461 ../../words.py:3471
-#: ../../words.py:3476
+#: ../../words.py:3476 ../../words.py:3484
 msgid "personen"
 msgstr "persons"
 
 #: i18n/words.py:3416 ../../words.py:3424 ../../words.py:3426
 #: ../../words.py:3458 ../../words.py:3462 ../../words.py:3472
-#: ../../words.py:3477
+#: ../../words.py:3477 ../../words.py:3485
 msgid "berühmtheiten"
 msgstr "celebrities"
 
 #: i18n/words.py:3417 ../../words.py:3425 ../../words.py:3427
 #: ../../words.py:3459 ../../words.py:3463 ../../words.py:3473
-#: ../../words.py:3478
+#: ../../words.py:3478 ../../words.py:3486
 msgid "beruehmtheiten"
 msgstr "celebrities"
 
 #: i18n/words.py:3420 ../../words.py:3428 ../../words.py:3430
 #: ../../words.py:3462 ../../words.py:3466 ../../words.py:3476
-#: ../../words.py:3481
+#: ../../words.py:3481 ../../words.py:3489
 msgid "Wirtschaftssysteme"
 msgstr "economicsystems"
 
 #: i18n/words.py:3421 ../../words.py:3429 ../../words.py:3431
 #: ../../words.py:3463 ../../words.py:3467 ../../words.py:3477
-#: ../../words.py:3482
+#: ../../words.py:3482 ../../words.py:3490
 msgid "wirtschaftssystem"
 msgstr "economicsystem"
 
 #: i18n/words.py:3422 ../../words.py:3430 ../../words.py:3432
 #: ../../words.py:3464 ../../words.py:3468 ../../words.py:3478
-#: ../../words.py:3483
+#: ../../words.py:3483 ../../words.py:3491
 msgid "wirtschaftssysteme"
 msgstr "economicsystems"
 
 #: i18n/words.py:3423 ../../words.py:3431 ../../words.py:3433
 #: ../../words.py:3465 ../../words.py:3469 ../../words.py:3479
-#: ../../words.py:3484
+#: ../../words.py:3484 ../../words.py:3492
 msgid "kombinierteswirtschaftssystem"
 msgstr "combinedeconomicsystem"
 
 #: i18n/words.py:3424 ../../words.py:3432 ../../words.py:3434
 #: ../../words.py:3466 ../../words.py:3470 ../../words.py:3480
-#: ../../words.py:3485
+#: ../../words.py:3485 ../../words.py:3493
 msgid "kombiniertewirtschaftssysteme"
 msgstr "combinedeconomicsystems"
 
 #: i18n/words.py:3449 ../../words.py:3457 ../../words.py:3459
 #: ../../words.py:3491 ../../words.py:3495 ../../words.py:3505
-#: ../../words.py:3510
+#: ../../words.py:3510 ../../words.py:3518
 msgid "Transzendentalien_Strukturalien"
 msgstr "transcendentalia_structuralia"
 
 #: i18n/words.py:3450 ../../words.py:3458 ../../words.py:3460
 #: ../../words.py:3492 ../../words.py:3496 ../../words.py:3506
-#: ../../words.py:3511
+#: ../../words.py:3511 ../../words.py:3519
 msgid "transzendenz"
 msgstr "transcendence"
 
 #: i18n/words.py:3456 ../../words.py:3464 ../../words.py:3466
 #: ../../words.py:3498 ../../words.py:3502 ../../words.py:3512
-#: ../../words.py:3517
+#: ../../words.py:3517 ../../words.py:3525
 msgid "Primzahlkreuz"
 msgstr "primecross"
 
 #: i18n/words.py:3457 ../../words.py:3465 ../../words.py:3467
 #: ../../words.py:3499 ../../words.py:3503 ../../words.py:3513
-#: ../../words.py:3518
+#: ../../words.py:3518 ../../words.py:3526
 msgid "leibnitz"
 msgstr "leibnitz"
 
 #: i18n/words.py:3501 ../../words.py:3509 ../../words.py:3511
 #: ../../words.py:3543 ../../words.py:3547 ../../words.py:3557
-#: ../../words.py:3562
+#: ../../words.py:3562 ../../words.py:3570
 msgid "Mechanismen_der_Zuechtung"
 msgstr "mechanisms_of_breeding"
 
 #: i18n/words.py:3525 ../../words.py:3533 ../../words.py:3535
 #: ../../words.py:3567 ../../words.py:3571 ../../words.py:3581
-#: ../../words.py:3586
+#: ../../words.py:3586 ../../words.py:3594
 msgid "Geist"
 msgstr "mind"
 
 #: i18n/words.py:3526 ../../words.py:3534 ../../words.py:3536
 #: ../../words.py:3568 ../../words.py:3572 ../../words.py:3582
-#: ../../words.py:3587
+#: ../../words.py:3587 ../../words.py:3595
 msgid "Bewusstsein"
 msgstr "consciousness"
 
 #: i18n/words.py:3534 ../../words.py:3542 ../../words.py:3543
 #: ../../words.py:3575 ../../words.py:3579 ../../words.py:3589
-#: ../../words.py:3594
+#: ../../words.py:3594 ../../words.py:3602
 msgid "ja"
 msgstr "yes"
 
 #: i18n/words.py:3540 ../../words.py:3548 ../../words.py:3549
 #: ../../words.py:3581 ../../words.py:3585 ../../words.py:3595
-#: ../../words.py:3600
+#: ../../words.py:3600 ../../words.py:3608
 msgid "entferntes Gegenteil"
 msgstr "distant opposite"
 
 #: i18n/words.py:3542 ../../words.py:3550 ../../words.py:3551
 #: ../../words.py:3583 ../../words.py:3587 ../../words.py:3597
-#: ../../words.py:3602
+#: ../../words.py:3602 ../../words.py:3610
 msgid "entfernt ähnlich"
 msgstr "remotely similar"
 
 #: i18n/words.py:3550 ../../words.py:3558 ../../words.py:3559
 #: ../../words.py:3591 ../../words.py:3595 ../../words.py:3605
-#: ../../words.py:3610
+#: ../../words.py:3610 ../../words.py:3618
 msgid "Kombination_(Galaxie_und_schwarzes_Loch)_(14_mit_13)"
 msgstr "combination_(galaxy_and_black_hole)_(14_with_13)"
 
 #: i18n/words.py:3559 ../../words.py:3567 ../../words.py:3568
 #: ../../words.py:3569 ../../words.py:3601 ../../words.py:3605
-#: ../../words.py:3615 ../../words.py:3620
+#: ../../words.py:3615 ../../words.py:3620 ../../words.py:3628
 msgid "Kombination_(Universum_und_Galaxie)_(14_mit_15)"
 msgstr "Combination_(universe_and_galaxy)_(14_with_15)"
 
 #: i18n/words.py:3564 ../../words.py:3572 ../../words.py:3573
 #: ../../words.py:3574 ../../words.py:3606 ../../words.py:3610
-#: ../../words.py:3620 ../../words.py:3625
+#: ../../words.py:3620 ../../words.py:3625 ../../words.py:3633
 msgid "Mond"
 msgstr "moon"
 
 #: i18n/words.py:3565 ../../words.py:3573 ../../words.py:3574
 #: ../../words.py:3575 ../../words.py:3607 ../../words.py:3611
-#: ../../words.py:3621 ../../words.py:3626
+#: ../../words.py:3621 ../../words.py:3626 ../../words.py:3634
 msgid "Sonne"
 msgstr "sun"
 
 #: i18n/words.py:3566 ../../words.py:3574 ../../words.py:3575
 #: ../../words.py:3576 ../../words.py:3608 ../../words.py:3612
-#: ../../words.py:3622 ../../words.py:3627
+#: ../../words.py:3622 ../../words.py:3627 ../../words.py:3635
 msgid "Planet"
 msgstr "planet"
 
 #: i18n/words.py:3571 ../../words.py:3579 ../../words.py:3580
 #: ../../words.py:3581 ../../words.py:3613 ../../words.py:3617
-#: ../../words.py:3627 ../../words.py:3632
+#: ../../words.py:3627 ../../words.py:3632 ../../words.py:3640
 msgid "Thema: "
 msgstr "topic: "
 
 #: i18n/words.py:3572 ../../words.py:3580 ../../words.py:3581
 #: ../../words.py:3582 ../../words.py:3614 ../../words.py:3618
-#: ../../words.py:3628 ../../words.py:3633
+#: ../../words.py:3628 ../../words.py:3633 ../../words.py:3641
 msgid " der eigenen Strukturgröße ("
 msgstr " own structure size ("
 
 #: i18n/words.py:3575 ../../words.py:3583 ../../words.py:3584
 #: ../../words.py:3585 ../../words.py:3617 ../../words.py:3621
-#: ../../words.py:3631 ../../words.py:3636
+#: ../../words.py:3631 ../../words.py:3636 ../../words.py:3644
 msgid ") auf dich bei gleichförmigen Polygonen"
 msgstr ") on you with regular polygons"
 
@@ -6389,6 +6439,7 @@ msgstr ") on you with regular polygons"
 #: ../../words.py:3589 ../../words.py:3608 ../../words.py:3621
 #: ../../words.py:3640 ../../words.py:3625 ../../words.py:3644
 #: ../../words.py:3635 ../../words.py:3654 ../../words.py:3659
+#: ../../words.py:3648 ../../words.py:3667
 msgid "eine Denkart"
 msgstr "a way of thinking"
 
@@ -6397,6 +6448,7 @@ msgstr "a way of thinking"
 #: ../../words.py:3590 ../../words.py:3609 ../../words.py:3622
 #: ../../words.py:3641 ../../words.py:3626 ../../words.py:3645
 #: ../../words.py:3636 ../../words.py:3655 ../../words.py:3660
+#: ../../words.py:3649 ../../words.py:3668
 msgid "eine Gefühlsart"
 msgstr "a way of feeling"
 
@@ -6405,6 +6457,7 @@ msgstr "a way of feeling"
 #: ../../words.py:3592 ../../words.py:3611 ../../words.py:3624
 #: ../../words.py:3643 ../../words.py:3628 ../../words.py:3647
 #: ../../words.py:3638 ../../words.py:3657 ../../words.py:3662
+#: ../../words.py:3651 ../../words.py:3670
 msgid "total eine Art, etwas geistig zu erzeugen"
 msgstr "totally a way of producing something mentally"
 
@@ -6413,6 +6466,7 @@ msgstr "totally a way of producing something mentally"
 #: ../../words.py:3594 ../../words.py:3613 ../../words.py:3626
 #: ../../words.py:3645 ../../words.py:3630 ../../words.py:3649
 #: ../../words.py:3640 ../../words.py:3659 ../../words.py:3664
+#: ../../words.py:3653 ../../words.py:3672
 msgid "total eine Art zu erleben"
 msgstr "totally a way of experiencing"
 
@@ -6421,6 +6475,7 @@ msgstr "totally a way of experiencing"
 #: ../../words.py:3595 ../../words.py:3614 ../../words.py:3627
 #: ../../words.py:3646 ../../words.py:3631 ../../words.py:3650
 #: ../../words.py:3641 ../../words.py:3660 ../../words.py:3665
+#: ../../words.py:3654 ../../words.py:3673
 msgid "total eine Energie-Art"
 msgstr "totally a way of energy"
 
@@ -6429,6 +6484,7 @@ msgstr "totally a way of energy"
 #: ../../words.py:3596 ../../words.py:3615 ../../words.py:3628
 #: ../../words.py:3647 ../../words.py:3632 ../../words.py:3651
 #: ../../words.py:3642 ../../words.py:3661 ../../words.py:3666
+#: ../../words.py:3655 ../../words.py:3674
 msgid "etwas eine Art zu erleben"
 msgstr "something a way of experiencing"
 
@@ -6437,6 +6493,7 @@ msgstr "something a way of experiencing"
 #: ../../words.py:3598 ../../words.py:3617 ../../words.py:3630
 #: ../../words.py:3649 ../../words.py:3634 ../../words.py:3653
 #: ../../words.py:3644 ../../words.py:3663 ../../words.py:3668
+#: ../../words.py:3657 ../../words.py:3676
 msgid "etwas eine Art, etwas geistig zu erzeugen"
 msgstr "something a way of generating something mentally"
 
@@ -6445,6 +6502,7 @@ msgstr "something a way of generating something mentally"
 #: ../../words.py:3601 ../../words.py:3620 ../../words.py:3633
 #: ../../words.py:3652 ../../words.py:3637 ../../words.py:3656
 #: ../../words.py:3647 ../../words.py:3666 ../../words.py:3671
+#: ../../words.py:3660 ../../words.py:3679
 msgid "wenig eine Art, etwas geistig zu erzeugen"
 msgstr "little a way to generate something mentally"
 
@@ -6453,6 +6511,7 @@ msgstr "little a way to generate something mentally"
 #: ../../words.py:3603 ../../words.py:3622 ../../words.py:3635
 #: ../../words.py:3654 ../../words.py:3639 ../../words.py:3658
 #: ../../words.py:3649 ../../words.py:3668 ../../words.py:3673
+#: ../../words.py:3662 ../../words.py:3681
 msgid "einigermaßen eine Energie-Art"
 msgstr "somewhat a kind of energy"
 
@@ -6461,6 +6520,7 @@ msgstr "somewhat a kind of energy"
 #: ../../words.py:3604 ../../words.py:3623 ../../words.py:3636
 #: ../../words.py:3655 ../../words.py:3640 ../../words.py:3659
 #: ../../words.py:3650 ../../words.py:3669 ../../words.py:3674
+#: ../../words.py:3663 ../../words.py:3682
 msgid "kaum eine Energie-Art"
 msgstr "hardly a kind of energy"
 
@@ -6469,12 +6529,13 @@ msgstr "hardly a kind of energy"
 #: ../../words.py:3606 ../../words.py:3625 ../../words.py:3638
 #: ../../words.py:3657 ../../words.py:3642 ../../words.py:3661
 #: ../../words.py:3652 ../../words.py:3671 ../../words.py:3676
+#: ../../words.py:3665 ../../words.py:3684
 msgid "kaum eine Art, etwas geistig zu erzeugen"
 msgstr "hardly a way to generate something mentally"
 
 #: i18n/words.py:3620 ../../words.py:3628 ../../words.py:3629
 #: ../../words.py:3630 ../../words.py:3662 ../../words.py:3666
-#: ../../words.py:3676 ../../words.py:3681
+#: ../../words.py:3676 ../../words.py:3681 ../../words.py:3689
 msgid ""
 "Energie oder Denkart oder Gefühlsart oder Materie-Art oder Topologie-Art"
 msgstr ""
@@ -6482,79 +6543,79 @@ msgstr ""
 
 #: i18n/words.py:3624 ../../words.py:3632 ../../words.py:3633
 #: ../../words.py:3634 ../../words.py:3666 ../../words.py:3670
-#: ../../words.py:3680 ../../words.py:3685
+#: ../../words.py:3680 ../../words.py:3685 ../../words.py:3693
 msgid "Evolutions-Züchtungs-Kreativität"
 msgstr "Evolution-breeding-creativity"
 
 #: i18n/words.py:3625 ../../words.py:3633 ../../words.py:3634
 #: ../../words.py:3635 ../../words.py:3667 ../../words.py:3671
-#: ../../words.py:3681 ../../words.py:3686
+#: ../../words.py:3681 ../../words.py:3686 ../../words.py:3694
 msgid "0. Primzahl 1"
 msgstr "0. prime number 1"
 
 #: i18n/words.py:3626 ../../words.py:3634 ../../words.py:3635
 #: ../../words.py:3636 ../../words.py:3668 ../../words.py:3672
-#: ../../words.py:3682 ../../words.py:3687
+#: ../../words.py:3682 ../../words.py:3687 ../../words.py:3695
 msgid "1. Primzahl und Sonnenzahl"
 msgstr "1. prime number and sun number"
 
 #: i18n/words.py:3627 ../../words.py:3635 ../../words.py:3636
 #: ../../words.py:3637 ../../words.py:3669 ../../words.py:3673
-#: ../../words.py:3683 ../../words.py:3688
+#: ../../words.py:3683 ../../words.py:3688 ../../words.py:3696
 msgid "2. Sonnenzahl, aber keine Primzahl"
 msgstr "2. sun number, but no prime number"
 
 #: i18n/words.py:3628 ../../words.py:3636 ../../words.py:3637
 #: ../../words.py:3638 ../../words.py:3670 ../../words.py:3674
-#: ../../words.py:3684 ../../words.py:3689
+#: ../../words.py:3684 ../../words.py:3689 ../../words.py:3697
 msgid "3. Mondzahl"
 msgstr "3. lunar number"
 
 #: i18n/words.py:3631 ../../words.py:3639 ../../words.py:3640
 #: ../../words.py:3641 ../../words.py:3673 ../../words.py:3677
-#: ../../words.py:3687 ../../words.py:3692
+#: ../../words.py:3687 ../../words.py:3692 ../../words.py:3700
 msgid "Mond-Typ eines Sternpolygons"
 msgstr "moon type of a star polygon"
 
 #: i18n/words.py:3633 ../../words.py:3641 ../../words.py:3642
 #: ../../words.py:3643 ../../words.py:3675 ../../words.py:3679
-#: ../../words.py:3689 ../../words.py:3694
+#: ../../words.py:3689 ../../words.py:3694 ../../words.py:3702
 msgid "Mond-Typ eines gleichförmigen Polygons"
 msgstr "moon type of a uniform polygon"
 
 #: i18n/words.py:3637 ../../words.py:3645 ../../words.py:3646
 #: ../../words.py:3647 ../../words.py:3679 ../../words.py:3683
-#: ../../words.py:3693 ../../words.py:3698
+#: ../../words.py:3693 ../../words.py:3698 ../../words.py:3706
 msgid "kein Mond"
 msgstr "no moon"
 
 #: i18n/words.py:3644 ../../words.py:3652 ../../words.py:3653
 #: ../../words.py:3654 ../../words.py:3686 ../../words.py:3690
-#: ../../words.py:3700 ../../words.py:3705
+#: ../../words.py:3700 ../../words.py:3705 ../../words.py:3713
 msgid "mittelstark überdurchschnittlich: "
 msgstr "medium above average: "
 
 #: i18n/words.py:3645 ../../words.py:3653 ../../words.py:3654
 #: ../../words.py:3655 ../../words.py:3687 ../../words.py:3691
-#: ../../words.py:3701 ../../words.py:3706
+#: ../../words.py:3701 ../../words.py:3706 ../../words.py:3714
 msgid "überdurchschnittlich: "
 msgstr "above average: "
 
 #: i18n/words.py:3646 ../../words.py:3654 ../../words.py:3655
 #: ../../words.py:3656 ../../words.py:3688 ../../words.py:3692
-#: ../../words.py:3702 ../../words.py:3707
+#: ../../words.py:3702 ../../words.py:3707 ../../words.py:3715
 msgid "mittelleicht überdurchschnittlich: "
 msgstr "moderately above average: "
 
 #: i18n/words.py:3647 ../../words.py:3655 ../../words.py:3656
 #: ../../words.py:3657 ../../words.py:3689 ../../words.py:3693
-#: ../../words.py:3703 ../../words.py:3708
+#: ../../words.py:3703 ../../words.py:3708 ../../words.py:3716
 msgid "sehr: "
 msgstr "very: "
 
 #: i18n/words.py:3648 ../../words.py:3656 ../../words.py:3657
 #: ../../words.py:3658 ../../words.py:3690 ../../words.py:3694
-#: ../../words.py:3704 ../../words.py:3709
+#: ../../words.py:3704 ../../words.py:3709 ../../words.py:3717
 msgid "sehr leicht überdurchschnittlich: "
 msgstr "very slightly above average: "
 
@@ -6563,6 +6624,7 @@ msgstr "very slightly above average: "
 #: ../../words.py:3661 ../../words.py:3671 ../../words.py:3693
 #: ../../words.py:3703 ../../words.py:3697 ../../words.py:3707
 #: ../../words.py:3717 ../../words.py:3712 ../../words.py:3722
+#: ../../words.py:3720 ../../words.py:3730
 msgid "intrinsisch"
 msgstr "intrinsic"
 
@@ -6571,6 +6633,7 @@ msgstr "intrinsic"
 #: ../../words.py:3662 ../../words.py:3672 ../../words.py:3694
 #: ../../words.py:3704 ../../words.py:3698 ../../words.py:3708
 #: ../../words.py:3718 ../../words.py:3713 ../../words.py:3723
+#: ../../words.py:3721 ../../words.py:3731
 msgid "zuerst"
 msgstr "first"
 
@@ -6579,7 +6642,7 @@ msgstr "first"
 #: ../../words.py:3663 ../../words.py:3669 ../../words.py:3695
 #: ../../words.py:3701 ../../words.py:3699 ../../words.py:3705
 #: ../../words.py:3709 ../../words.py:3715 ../../words.py:3714
-#: ../../words.py:3720
+#: ../../words.py:3720 ../../words.py:3722 ../../words.py:3728
 msgid "extrinsisch"
 msgstr "extrinsic"
 
@@ -6588,337 +6651,337 @@ msgstr "extrinsic"
 #: ../../words.py:3664 ../../words.py:3670 ../../words.py:3696
 #: ../../words.py:3702 ../../words.py:3700 ../../words.py:3706
 #: ../../words.py:3710 ../../words.py:3716 ../../words.py:3715
-#: ../../words.py:3721
+#: ../../words.py:3721 ../../words.py:3723 ../../words.py:3729
 msgid "als zweites"
 msgstr "second"
 
 #: i18n/words.py:3657 ../../words.py:3665 ../../words.py:3666
 #: ../../words.py:3667 ../../words.py:3699 ../../words.py:3703
-#: ../../words.py:3713 ../../words.py:3718
+#: ../../words.py:3713 ../../words.py:3718 ../../words.py:3726
 msgid ", nicht: "
 msgstr ", not: "
 
 #: i18n/words.py:3658 ../../words.py:3666 ../../words.py:3667
 #: ../../words.py:3668 ../../words.py:3700 ../../words.py:3704
-#: ../../words.py:3714 ../../words.py:3719
+#: ../../words.py:3714 ../../words.py:3719 ../../words.py:3727
 msgid " (das alles nicht): "
 msgstr " (not all that): "
 
 #: i18n/words.py:3665 ../../words.py:3673 ../../words.py:3674
 #: ../../words.py:3675 ../../words.py:3707 ../../words.py:3711
-#: ../../words.py:3721 ../../words.py:3726
+#: ../../words.py:3721 ../../words.py:3726 ../../words.py:3734
 msgid "Generiert: "
 msgstr "Generated: "
 
 #: i18n/words.py:3666 ../../words.py:3674 ../../words.py:3675
 #: ../../words.py:3676 ../../words.py:3708 ../../words.py:3712
-#: ../../words.py:3722 ../../words.py:3727
+#: ../../words.py:3722 ../../words.py:3727 ../../words.py:3735
 msgid "Alles nur bezogen auf die selbe Strukturgröße einer "
 msgstr "All only related to the same structure size of a "
 
 #: i18n/words.py:3668 ../../words.py:3676 ../../words.py:3677
 #: ../../words.py:3678 ../../words.py:3710 ../../words.py:3714
-#: ../../words.py:3724 ../../words.py:3729
+#: ../../words.py:3724 ../../words.py:3729 ../../words.py:3737
 msgid "gegen "
 msgstr "against "
 
 #: i18n/words.py:3669 ../../words.py:3677 ../../words.py:3678
 #: ../../words.py:3679 ../../words.py:3711 ../../words.py:3715
-#: ../../words.py:3725 ../../words.py:3730
+#: ../../words.py:3725 ../../words.py:3730 ../../words.py:3738
 msgid "pro "
 msgstr "per "
 
 #: i18n/words.py:3671 ../../words.py:3679 ../../words.py:3680
 #: ../../words.py:3681 ../../words.py:3713 ../../words.py:3717
-#: ../../words.py:3727 ../../words.py:3732
+#: ../../words.py:3727 ../../words.py:3732 ../../words.py:3740
 msgid " Darin kann sich die "
 msgstr " In this "
 
 #: i18n/words.py:3672 ../../words.py:3680 ../../words.py:3681
 #: ../../words.py:3682 ../../words.py:3714 ../../words.py:3718
-#: ../../words.py:3728 ../../words.py:3733
+#: ../../words.py:3728 ../../words.py:3733 ../../words.py:3741
 msgid " am Besten hineinversetzten."
 msgstr " can put himself in the best position."
 
 #: i18n/words.py:3675 ../../words.py:3683 ../../words.py:3684
 #: ../../words.py:3685 ../../words.py:3717 ../../words.py:3721
-#: ../../words.py:3731 ../../words.py:3736
+#: ../../words.py:3731 ../../words.py:3736 ../../words.py:3744
 msgid "pro dieser Zahl sind: "
 msgstr "per this number are: "
 
 #: i18n/words.py:3676 ../../words.py:3684 ../../words.py:3685
 #: ../../words.py:3686 ../../words.py:3718 ../../words.py:3722
-#: ../../words.py:3732 ../../words.py:3737
+#: ../../words.py:3732 ../../words.py:3737 ../../words.py:3745
 msgid "pro dieser Zahl ist "
 msgstr "per this number is "
 
 #: i18n/words.py:3679 ../../words.py:3687 ../../words.py:3688
 #: ../../words.py:3689 ../../words.py:3721 ../../words.py:3725
-#: ../../words.py:3735 ../../words.py:3740
+#: ../../words.py:3735 ../../words.py:3740 ../../words.py:3748
 msgid " contra dieser Zahl sind: "
 msgstr " contra this number are: "
 
 #: i18n/words.py:3680 ../../words.py:3688 ../../words.py:3689
 #: ../../words.py:3690 ../../words.py:3722 ../../words.py:3726
-#: ../../words.py:3736 ../../words.py:3741
+#: ../../words.py:3736 ../../words.py:3741 ../../words.py:3749
 msgid " contra dieser Zahl ist "
 msgstr " contra this number is "
 
 #: i18n/words.py:3684 ../../words.py:3692 ../../words.py:3693
 #: ../../words.py:3694 ../../words.py:3726 ../../words.py:3730
-#: ../../words.py:3740 ../../words.py:3745
+#: ../../words.py:3740 ../../words.py:3745 ../../words.py:3753
 msgid "Sternpolygone"
 msgstr "star polygons"
 
 #: i18n/words.py:3685 ../../words.py:3693 ../../words.py:3694
 #: ../../words.py:3695 ../../words.py:3727 ../../words.py:3731
-#: ../../words.py:3741 ../../words.py:3746
+#: ../../words.py:3741 ../../words.py:3746 ../../words.py:3754
 msgid "gleichförmige Polygone"
 msgstr "regular polygons"
 
 #: i18n/words.py:3689 ../../words.py:3697 ../../words.py:3698
 #: ../../words.py:3699 ../../words.py:3731 ../../words.py:3735
-#: ../../words.py:3745 ../../words.py:3750
+#: ../../words.py:3745 ../../words.py:3750 ../../words.py:3758
 msgid "Motiv -> Motiv"
 msgstr "Motif -> Motif"
 
 #: i18n/words.py:3690 ../../words.py:3698 ../../words.py:3699
 #: ../../words.py:3700 ../../words.py:3732 ../../words.py:3736
-#: ../../words.py:3746 ../../words.py:3751
+#: ../../words.py:3746 ../../words.py:3751 ../../words.py:3759
 msgid "Motiv -> Strukur"
 msgstr "Motif -> Structure"
 
 #: i18n/words.py:3691 ../../words.py:3699 ../../words.py:3700
 #: ../../words.py:3701 ../../words.py:3733 ../../words.py:3737
-#: ../../words.py:3747 ../../words.py:3752
+#: ../../words.py:3747 ../../words.py:3752 ../../words.py:3760
 msgid "Struktur -> Motiv"
 msgstr "Structure -> Motif"
 
 #: i18n/words.py:3692 ../../words.py:3700 ../../words.py:3701
 #: ../../words.py:3702 ../../words.py:3734 ../../words.py:3738
-#: ../../words.py:3748 ../../words.py:3753
+#: ../../words.py:3748 ../../words.py:3753 ../../words.py:3761
 msgid "Struktur -> Strukur"
 msgstr "Structure -> Structure"
 
 #: i18n/words.py:3703 ../../words.py:3711 ../../words.py:3712
 #: ../../words.py:3713 ../../words.py:3745 ../../words.py:3749
-#: ../../words.py:3759 ../../words.py:3764
+#: ../../words.py:3759 ../../words.py:3764 ../../words.py:3772
 msgid ", mit Faktoren aus gebrochen-rationalen Zahlen"
 msgstr ", with factors from fractional-rational numbers"
 
 #: i18n/words.py:3706 ../../words.py:3714 ../../words.py:3715
 #: ../../words.py:3716 ../../words.py:3748 ../../words.py:3752
-#: ../../words.py:3762 ../../words.py:3767
+#: ../../words.py:3762 ../../words.py:3767 ../../words.py:3775
 msgid "generierte Multiplikationen "
 msgstr "generated multiplications"
 
 #: i18n/words.py:3707 ../../words.py:3715 ../../words.py:3716
 #: ../../words.py:3717 ../../words.py:3749 ../../words.py:3753
-#: ../../words.py:3763 ../../words.py:3768
+#: ../../words.py:3763 ../../words.py:3768 ../../words.py:3776
 msgid ", außerdem: "
 msgstr ", furthermore: "
 
 #: i18n/words.py:3707 ../../words.py:3715 ../../words.py:3716
 #: ../../words.py:3717 ../../words.py:3749 ../../words.py:3753
-#: ../../words.py:3763 ../../words.py:3768
+#: ../../words.py:3763 ../../words.py:3768 ../../words.py:3776
 msgid "| außerdem: "
 msgstr "| moreover:"
 
 #: i18n/words.py:3711 ../../words.py:3719 ../../words.py:3720
 #: ../../words.py:3721 ../../words.py:3753 ../../words.py:3757
-#: ../../words.py:3767 ../../words.py:3772
+#: ../../words.py:3767 ../../words.py:3772 ../../words.py:3780
 msgid "Viertwichtigste"
 msgstr "fourth most important"
 
 #: i18n/words.py:3714 ../../words.py:3722 ../../words.py:3723
 #: ../../words.py:3724 ../../words.py:3756 ../../words.py:3760
-#: ../../words.py:3770 ../../words.py:3775
+#: ../../words.py:3770 ../../words.py:3775 ../../words.py:3783
 msgid "Meta-Thema: "
 msgstr "meta-topic:"
 
 #: i18n/words.py:3715 ../../words.py:3723 ../../words.py:3724
 #: ../../words.py:3725 ../../words.py:3757 ../../words.py:3761
-#: ../../words.py:3771 ../../words.py:3776
+#: ../../words.py:3771 ../../words.py:3776 ../../words.py:3784
 msgid "Konkretes: "
 msgstr "sonrete things: "
 
 #: i18n/words.py:3716 ../../words.py:3724 ../../words.py:3725
 #: ../../words.py:3726 ../../words.py:3758 ../../words.py:3762
-#: ../../words.py:3772 ../../words.py:3777
+#: ../../words.py:3772 ../../words.py:3777 ../../words.py:3785
 msgid "Meta-"
 msgstr "meta-"
 
 #: i18n/words.py:3717 ../../words.py:3725 ../../words.py:3726
 #: ../../words.py:3727 ../../words.py:3759 ../../words.py:3763
-#: ../../words.py:3773 ../../words.py:3778
+#: ../../words.py:3773 ../../words.py:3778 ../../words.py:3786
 msgid "Konkret-"
 msgstr "concrete-"
 
 #: i18n/words.py:3718 ../../words.py:3726 ../../words.py:3727
 #: ../../words.py:3728 ../../words.py:3760 ../../words.py:3764
-#: ../../words.py:3774 ../../words.py:3779
+#: ../../words.py:3774 ../../words.py:3779 ../../words.py:3787
 msgid "Theorie-Thema: "
 msgstr "theory-topic: "
 
 #: i18n/words.py:3719 ../../words.py:3727 ../../words.py:3728
 #: ../../words.py:3729 ../../words.py:3761 ../../words.py:3765
-#: ../../words.py:3775 ../../words.py:3780
+#: ../../words.py:3775 ../../words.py:3780 ../../words.py:3788
 msgid "Praxis: "
 msgstr "practise: "
 
 #: i18n/words.py:3720 ../../words.py:3728 ../../words.py:3729
 #: ../../words.py:3730 ../../words.py:3762 ../../words.py:3766
-#: ../../words.py:3776 ../../words.py:3781
+#: ../../words.py:3776 ../../words.py:3781 ../../words.py:3789
 msgid "Theorie-"
 msgstr "theory-"
 
 #: i18n/words.py:3721 ../../words.py:3729 ../../words.py:3730
 #: ../../words.py:3731 ../../words.py:3763 ../../words.py:3767
-#: ../../words.py:3777 ../../words.py:3782
+#: ../../words.py:3777 ../../words.py:3782 ../../words.py:3790
 msgid "Praxis-"
 msgstr "practise-"
 
 #: i18n/words.py:3722 ../../words.py:3730 ../../words.py:3731
 #: ../../words.py:3732 ../../words.py:3764 ../../words.py:3768
-#: ../../words.py:3778 ../../words.py:3783
+#: ../../words.py:3778 ../../words.py:3783 ../../words.py:3791
 msgid "Planungs-Thema: "
 msgstr "planning topic: "
 
 #: i18n/words.py:3723 ../../words.py:3731 ../../words.py:3732
 #: ../../words.py:3733 ../../words.py:3765 ../../words.py:3769
-#: ../../words.py:3779 ../../words.py:3784
+#: ../../words.py:3779 ../../words.py:3784 ../../words.py:3792
 msgid "Umsetzungs-Thema: "
 msgstr "realization-topic: "
 
 #: i18n/words.py:3724 ../../words.py:3732 ../../words.py:3733
 #: ../../words.py:3734 ../../words.py:3766 ../../words.py:3770
-#: ../../words.py:3780 ../../words.py:3785
+#: ../../words.py:3780 ../../words.py:3785 ../../words.py:3793
 msgid "Planung-"
 msgstr "planing-"
 
 #: i18n/words.py:3725 ../../words.py:3733 ../../words.py:3734
 #: ../../words.py:3735 ../../words.py:3767 ../../words.py:3771
-#: ../../words.py:3781 ../../words.py:3786
+#: ../../words.py:3781 ../../words.py:3786 ../../words.py:3794
 msgid "Umsetzung-"
 msgstr "realization-"
 
 #: i18n/words.py:3726 ../../words.py:3734 ../../words.py:3735
 #: ../../words.py:3736 ../../words.py:3768 ../../words.py:3772
-#: ../../words.py:3782 ../../words.py:3787
+#: ../../words.py:3782 ../../words.py:3787 ../../words.py:3795
 msgid "Anlass-Thema: "
 msgstr "occasion-topic: "
 
 #: i18n/words.py:3727 ../../words.py:3735 ../../words.py:3736
 #: ../../words.py:3737 ../../words.py:3769 ../../words.py:3773
-#: ../../words.py:3783 ../../words.py:3788
+#: ../../words.py:3783 ../../words.py:3788 ../../words.py:3796
 msgid "Wirkungs-Thema: "
 msgstr "effect-topic: "
 
 #: i18n/words.py:3728 ../../words.py:3736 ../../words.py:3737
 #: ../../words.py:3738 ../../words.py:3770 ../../words.py:3774
-#: ../../words.py:3784 ../../words.py:3789
+#: ../../words.py:3784 ../../words.py:3789 ../../words.py:3797
 msgid "Anlass-"
 msgstr "occasion-"
 
 #: i18n/words.py:3729 ../../words.py:3737 ../../words.py:3738
 #: ../../words.py:3739 ../../words.py:3771 ../../words.py:3775
-#: ../../words.py:3785 ../../words.py:3790
+#: ../../words.py:3785 ../../words.py:3790 ../../words.py:3798
 msgid "wirkung-"
 msgstr "effect-"
 
 #: i18n/words.py:3730 ../../words.py:3738 ../../words.py:3739
 #: ../../words.py:3740 ../../words.py:3772 ../../words.py:3776
-#: ../../words.py:3786 ../../words.py:3791
+#: ../../words.py:3786 ../../words.py:3791 ../../words.py:3799
 msgid "Kraft-Gebung: "
 msgstr "power-geving: "
 
 #: i18n/words.py:3731 ../../words.py:3739 ../../words.py:3740
 #: ../../words.py:3741 ../../words.py:3773 ../../words.py:3777
-#: ../../words.py:3787 ../../words.py:3792
+#: ../../words.py:3787 ../../words.py:3792 ../../words.py:3800
 msgid "Verstärkungs-Thema: "
 msgstr "amplification-topic: "
 
 #: i18n/words.py:3732 ../../words.py:3740 ../../words.py:3741
 #: ../../words.py:3742 ../../words.py:3774 ../../words.py:3778
-#: ../../words.py:3788 ../../words.py:3793
+#: ../../words.py:3788 ../../words.py:3793 ../../words.py:3801
 msgid "Kraft-geben-"
 msgstr "give-power-"
 
 #: i18n/words.py:3733 ../../words.py:3741 ../../words.py:3742
 #: ../../words.py:3743 ../../words.py:3775 ../../words.py:3779
-#: ../../words.py:3789 ../../words.py:3794
+#: ../../words.py:3789 ../../words.py:3794 ../../words.py:3802
 msgid "Verstärkung-"
 msgstr "empower-"
 
 #: i18n/words.py:3734 ../../words.py:3742 ../../words.py:3743
 #: ../../words.py:3744 ../../words.py:3776 ../../words.py:3780
-#: ../../words.py:3790 ../../words.py:3795
+#: ../../words.py:3790 ../../words.py:3795 ../../words.py:3803
 msgid "Beherrschung: "
 msgstr "rule: "
 
 #: i18n/words.py:3735 ../../words.py:3743 ../../words.py:3744
 #: ../../words.py:3745 ../../words.py:3777 ../../words.py:3781
-#: ../../words.py:3791 ../../words.py:3796
+#: ../../words.py:3791 ../../words.py:3796 ../../words.py:3804
 msgid "Richtung-Thema: "
 msgstr "direction-topic: "
 
 #: i18n/words.py:3736 ../../words.py:3744 ../../words.py:3745
 #: ../../words.py:3746 ../../words.py:3778 ../../words.py:3782
-#: ../../words.py:3792 ../../words.py:3797
+#: ../../words.py:3792 ../../words.py:3797 ../../words.py:3805
 msgid "beherrschend-"
 msgstr "rule-"
 
 #: i18n/words.py:3737 ../../words.py:3745 ../../words.py:3746
 #: ../../words.py:3747 ../../words.py:3779 ../../words.py:3783
-#: ../../words.py:3793 ../../words.py:3798
+#: ../../words.py:3793 ../../words.py:3798 ../../words.py:3806
 msgid "Richtung-"
 msgstr "direction-"
 
 #: i18n/words.py:3740 ../../words.py:3748 ../../words.py:3749
 #: ../../words.py:3750 ../../words.py:3782 ../../words.py:3786
-#: ../../words.py:3796 ../../words.py:3801
+#: ../../words.py:3796 ../../words.py:3801 ../../words.py:3809
 msgid "Meta"
 msgstr "meta"
 
 #: i18n/words.py:3744 ../../words.py:3752 ../../words.py:3753
 #: ../../words.py:3754 ../../words.py:3786 ../../words.py:3790
-#: ../../words.py:3800 ../../words.py:3805
+#: ../../words.py:3800 ../../words.py:3805 ../../words.py:3813
 msgid "Verwertung, Unternehmung, Geschäft"
 msgstr "utilization, enterprise, business"
 
 #: i18n/words.py:3745 ../../words.py:3753 ../../words.py:3754
 #: ../../words.py:3755 ../../words.py:3787 ../../words.py:3791
-#: ../../words.py:3801 ../../words.py:3806
+#: ../../words.py:3801 ../../words.py:3806 ../../words.py:3814
 msgid "regieren, beherrschen"
 msgstr "rule, dominate"
 
 #: i18n/words.py:3746 ../../words.py:3754 ../../words.py:3755
 #: ../../words.py:3756 ../../words.py:3788 ../../words.py:3792
-#: ../../words.py:3802 ../../words.py:3807
+#: ../../words.py:3802 ../../words.py:3807 ../../words.py:3815
 msgid "Konkretes"
 msgstr "concreteThings"
 
 #: i18n/words.py:3749 ../../words.py:3757 ../../words.py:3758
 #: ../../words.py:3759 ../../words.py:3791 ../../words.py:3795
-#: ../../words.py:3805 ../../words.py:3810
+#: ../../words.py:3805 ../../words.py:3810 ../../words.py:3818
 msgid "darüber hinaus gehend"
 msgstr "going beyond"
 
 #: i18n/words.py:3752 ../../words.py:3760 ../../words.py:3761
 #: ../../words.py:3762 ../../words.py:3794 ../../words.py:3798
-#: ../../words.py:3808 ../../words.py:3813
+#: ../../words.py:3808 ../../words.py:3813 ../../words.py:3821
 msgid " für 1/n statt n"
 msgstr "for 1/n instead of n"
 
 #: i18n/words.py:3753 ../../words.py:3761 ../../words.py:3762
 #: ../../words.py:3763 ../../words.py:3795 ../../words.py:3799
-#: ../../words.py:3809 ../../words.py:3814
+#: ../../words.py:3809 ../../words.py:3814 ../../words.py:3822
 msgid " für n"
 msgstr " for n"
 
 #: i18n/words.py:3756 ../../words.py:3764 ../../words.py:3765
 #: ../../words.py:3766 ../../words.py:3798 ../../words.py:3802
-#: ../../words.py:3812 ../../words.py:3817
+#: ../../words.py:3812 ../../words.py:3817 ../../words.py:3825
 msgid "für innen"
 msgstr "for inside"
 
@@ -6927,121 +6990,121 @@ msgstr "for inside"
 #: ../../words.py:3767 ../../words.py:3774 ../../words.py:3799
 #: ../../words.py:3806 ../../words.py:3803 ../../words.py:3810
 #: ../../words.py:3813 ../../words.py:3820 ../../words.py:3818
-#: ../../words.py:3825
+#: ../../words.py:3825 ../../words.py:3826 ../../words.py:3833
 msgid "für außen"
 msgstr "for outside"
 
 #: i18n/words.py:3759 ../../words.py:3767 ../../words.py:3768
 #: ../../words.py:3769 ../../words.py:3801 ../../words.py:3805
-#: ../../words.py:3815 ../../words.py:3820
+#: ../../words.py:3815 ../../words.py:3820 ../../words.py:3828
 msgid "\"für seitlich und gegen Schwächlinge innen\""
 msgstr "\"for other sides and against weaklings inside\""
 
 #: i18n/words.py:3762 ../../words.py:3770 ../../words.py:3771
 #: ../../words.py:3772 ../../words.py:3804 ../../words.py:3808
-#: ../../words.py:3818 ../../words.py:3823
+#: ../../words.py:3818 ../../words.py:3823 ../../words.py:3831
 msgid "\"gegen seitlich und für Schwächlinge innen\""
 msgstr "\"against other sides and  pro weaklings inside\""
 
 #: i18n/words.py:3769 ../../words.py:3777 ../../words.py:3778
 #: ../../words.py:3779 ../../words.py:3811 ../../words.py:3815
-#: ../../words.py:3825 ../../words.py:3830
+#: ../../words.py:3825 ../../words.py:3830 ../../words.py:3838
 msgid "Transzendentalien, Strukturalien, Universum n"
 msgstr "Transcendentalia, structuralia, universe n"
 
 #: i18n/words.py:3771 ../../words.py:3779 ../../words.py:3780
 #: ../../words.py:3781 ../../words.py:3813 ../../words.py:3817
-#: ../../words.py:3827 ../../words.py:3832
+#: ../../words.py:3827 ../../words.py:3832 ../../words.py:3840
 msgid "Galaxie n"
 msgstr "galaxy n"
 
 #: i18n/words.py:3772 ../../words.py:3780 ../../words.py:3781
 #: ../../words.py:3782 ../../words.py:3814 ../../words.py:3818
-#: ../../words.py:3828 ../../words.py:3833
+#: ../../words.py:3828 ../../words.py:3833 ../../words.py:3841
 msgid "Galaxie 1/n"
 msgstr "galaxy 1/n"
 
 #: i18n/words.py:3774 ../../words.py:3782 ../../words.py:3783
 #: ../../words.py:3784 ../../words.py:3816 ../../words.py:3820
-#: ../../words.py:3830 ../../words.py:3835
+#: ../../words.py:3830 ../../words.py:3835 ../../words.py:3843
 msgid "Transzendentalien, Strukturalien, Universum 1/n"
 msgstr "transcendentalia, structuralia, universe 1/n"
 
 #: i18n/words.py:3777 ../../words.py:3785 ../../words.py:3786
 #: ../../words.py:3787 ../../words.py:3819 ../../words.py:3823
-#: ../../words.py:3833 ../../words.py:3838
+#: ../../words.py:3833 ../../words.py:3838 ../../words.py:3846
 msgid "Dagegen-Gegen-Transzendentalien, Gegen-Strukturalien, Universum n"
 msgstr "against-counter-transcendentalia, counter-structuralia, universe n"
 
 #: i18n/words.py:3780 ../../words.py:3788 ../../words.py:3789
 #: ../../words.py:3790 ../../words.py:3822 ../../words.py:3826
-#: ../../words.py:3836 ../../words.py:3841
+#: ../../words.py:3836 ../../words.py:3841 ../../words.py:3849
 msgid "neutrale Gegen-Transzendentalien, Gegen-Strukturalien, Universum n"
 msgstr "neutral counter-transcendentalia, counter-structuralia, universe n"
 
 #: i18n/words.py:3782 ../../words.py:3790 ../../words.py:3791
 #: ../../words.py:3792 ../../words.py:3824 ../../words.py:3828
-#: ../../words.py:3838 ../../words.py:3843
+#: ../../words.py:3838 ../../words.py:3843 ../../words.py:3851
 msgid "Richtung-Richtung"
 msgstr "direction-direction"
 
 #: i18n/words.py:3786 ../../words.py:3794 ../../words.py:3795
 #: ../../words.py:3796 ../../words.py:3828 ../../words.py:3832
-#: ../../words.py:3842 ../../words.py:3847
+#: ../../words.py:3842 ../../words.py:3847 ../../words.py:3855
 msgid "Primzahlwirkung (7, Richtung) "
 msgstr "prime number effect (7, direction)"
 
 #: i18n/words.py:3788 ../../words.py:3796 ../../words.py:3797
 #: ../../words.py:3798 ../../words.py:3830 ../../words.py:3834
-#: ../../words.py:3844 ../../words.py:3849
+#: ../../words.py:3844 ../../words.py:3849 ../../words.py:3857
 msgid "] * letztendlich: "
 msgstr "] * finally: "
 
 #: i18n/words.py:3791 ../../words.py:3799 ../../words.py:3800
 #: ../../words.py:3801 ../../words.py:3833 ../../words.py:3837
-#: ../../words.py:3847 ../../words.py:3852
+#: ../../words.py:3847 ../../words.py:3852 ../../words.py:3860
 msgid "Primzahlvielfache, nicht generiert"
 msgstr "prime multiples, not generated"
 
 #: i18n/words.py:3794 ../../words.py:3802 ../../words.py:3803
 #: ../../words.py:3804 ../../words.py:3836 ../../words.py:3840
-#: ../../words.py:3850 ../../words.py:3855
+#: ../../words.py:3850 ../../words.py:3855 ../../words.py:3863
 msgid "Fehler"
 msgstr "Error"
 
 #: i18n/words.py:3800 ../../words.py:3808 ../../words.py:3809
 #: ../../words.py:3810 ../../words.py:3842 ../../words.py:3846
-#: ../../words.py:3856 ../../words.py:3861
+#: ../../words.py:3856 ../../words.py:3861 ../../words.py:3869
 msgid "Nicht_generiert"
 msgstr "Not_generated"
 
 #: i18n/words.py:3805 ../../words.py:3813 ../../words.py:3814
 #: ../../words.py:3815 ../../words.py:3847 ../../words.py:3851
-#: ../../words.py:3861 ../../words.py:3866
+#: ../../words.py:3861 ../../words.py:3866 ../../words.py:3874
 msgid "nummerierung"
 msgstr "numbering"
 
 #: i18n/words.py:3812 ../../words.py:3820 ../../words.py:3821
 #: ../../words.py:3822 ../../words.py:3854 ../../words.py:3858
-#: ../../words.py:3868 ../../words.py:3873
+#: ../../words.py:3868 ../../words.py:3873 ../../words.py:3881
 msgid "nichts"
 msgstr "nothing"
 
 #: i18n/words.py:3814 ../../words.py:3822 ../../words.py:3823
 #: ../../words.py:3824 ../../words.py:3856 ../../words.py:3860
-#: ../../words.py:3870 ../../words.py:3875
+#: ../../words.py:3870 ../../words.py:3875 ../../words.py:3883
 msgid "Der Haupt-Parameter \""
 msgstr "The Main-Paramter \""
 
 #: i18n/words.py:3815 ../../words.py:3823 ../../words.py:3824
 #: ../../words.py:3825 ../../words.py:3857 ../../words.py:3861
-#: ../../words.py:3871 ../../words.py:3876
+#: ../../words.py:3871 ../../words.py:3876 ../../words.py:3884
 msgid "\" existiert hier nicht als Befehl!"
 msgstr "\" does not exist here als a command!"
 
 #: i18n/words.py:3816 ../../words.py:3824 ../../words.py:3825
 #: ../../words.py:3826 ../../words.py:3858 ../../words.py:3862
-#: ../../words.py:3872 ../../words.py:3877
+#: ../../words.py:3872 ../../words.py:3877 ../../words.py:3885
 msgid " Es ist nur möglich: -"
 msgstr " It is only possible: -"
 
@@ -7050,13 +7113,13 @@ msgstr " It is only possible: -"
 #: ../../words.py:3831 ../../words.py:3837 ../../words.py:3863
 #: ../../words.py:3869 ../../words.py:3867 ../../words.py:3873
 #: ../../words.py:3877 ../../words.py:3883 ../../words.py:3882
-#: ../../words.py:3888
+#: ../../words.py:3888 ../../words.py:3890 ../../words.py:3896
 msgid "Der Unter-Paramaeter \"--"
 msgstr "The sub-paramaeter \" --"
 
 #: i18n/words.py:3822 ../../words.py:3830 ../../words.py:3831
 #: ../../words.py:3832 ../../words.py:3864 ../../words.py:3868
-#: ../../words.py:3878 ../../words.py:3883
+#: ../../words.py:3878 ../../words.py:3883 ../../words.py:3891
 msgid "\" existiert, aber nicht mit dem Textwert \""
 msgstr "\" exists,but not with the text value \""
 
@@ -7066,13 +7129,13 @@ msgstr ""
 
 #: i18n/words.py:3824 ../../words.py:3832 ../../words.py:3833
 #: ../../words.py:3834 ../../words.py:3866 ../../words.py:3870
-#: ../../words.py:3880 ../../words.py:3885
+#: ../../words.py:3880 ../../words.py:3885 ../../words.py:3893
 msgid "\". Stattdessen gibt keine Nebenparameter-Textwerte."
 msgstr "\". Instead there are not sub parameter text values."
 
 #: i18n/words.py:3828 ../../words.py:3836 ../../words.py:3837
 #: ../../words.py:3838 ../../words.py:3870 ../../words.py:3874
-#: ../../words.py:3884 ../../words.py:3889
+#: ../../words.py:3884 ../../words.py:3889 ../../words.py:3897
 msgid "\" mit dem Textwert \""
 msgstr "\" with the text value \""
 
@@ -7081,19 +7144,19 @@ msgstr "\" with the text value \""
 #: ../../words.py:3839 ../../words.py:3848 ../../words.py:3871
 #: ../../words.py:3880 ../../words.py:3875 ../../words.py:3884
 #: ../../words.py:3885 ../../words.py:3894 ../../words.py:3890
-#: ../../words.py:3899
+#: ../../words.py:3899 ../../words.py:3898 ../../words.py:3907
 msgid "\" existiert hier nicht als Befehl für Haupt-Parameter"
 msgstr "\" does not exist here als a command for the main parameterr"
 
 #: i18n/words.py:3831 ../../words.py:3839 ../../words.py:3840
 #: ../../words.py:3841 ../../words.py:3873 ../../words.py:3877
-#: ../../words.py:3887 ../../words.py:3892
+#: ../../words.py:3887 ../../words.py:3892 ../../words.py:3900
 msgid " !"
 msgstr "!"
 
 #: i18n/words.py:3832 ../../words.py:3840 ../../words.py:3841
 #: ../../words.py:3842 ../../words.py:3874 ../../words.py:3878
-#: ../../words.py:3888 ../../words.py:3893
+#: ../../words.py:3888 ../../words.py:3893 ../../words.py:3901
 msgid ""
 " Es ist nur möglich:\n"
 "--"
@@ -7103,7 +7166,7 @@ msgstr ""
 
 #: i18n/words.py:3834 ../../words.py:3842 ../../words.py:3843
 #: ../../words.py:3844 ../../words.py:3876 ../../words.py:3880
-#: ../../words.py:3890 ../../words.py:3895
+#: ../../words.py:3890 ../../words.py:3895 ../../words.py:3903
 msgid ""
 "\n"
 "mit dem Werten dahinter:\n"
@@ -7113,13 +7176,13 @@ msgstr ""
 
 #: i18n/words.py:3837 ../../words.py:3845 ../../words.py:3846
 #: ../../words.py:3847 ../../words.py:3879 ../../words.py:3883
-#: ../../words.py:3893 ../../words.py:3898
+#: ../../words.py:3893 ../../words.py:3898 ../../words.py:3906
 msgid "Der Unter-Parameter \"--"
 msgstr "The sub parameter \"--"
 
 #: i18n/words.py:3841 ../../words.py:3849 ../../words.py:3850
 #: ../../words.py:3851 ../../words.py:3883 ../../words.py:3887
-#: ../../words.py:3897 ../../words.py:3902
+#: ../../words.py:3897 ../../words.py:3902 ../../words.py:3910
 msgid ""
 ", oder dieser Parameter braucht Werte analog wie: \n"
 "--unterParameter=Wert1\n"
@@ -7129,68 +7192,68 @@ msgstr ""
 
 #: i18n/words.py:3843 ../../words.py:3851 ../../words.py:3852
 #: ../../words.py:3853 ../../words.py:3885 ../../words.py:3889
-#: ../../words.py:3899 ../../words.py:3904
+#: ../../words.py:3899 ../../words.py:3904 ../../words.py:3912
 msgid "Es ist nur möglich: --"
 msgstr "It is only possible: --"
 
 #: i18n/words.py:3848 ../../words.py:3856 ../../words.py:3857
 #: ../../words.py:3858 ../../words.py:3890 ../../words.py:3894
-#: ../../words.py:3904 ../../words.py:3909
+#: ../../words.py:3904 ../../words.py:3909 ../../words.py:3917
 msgid "Die Kombispalte \""
 msgstr "The combination column \""
 
 #: i18n/words.py:3849 ../../words.py:3857 ../../words.py:3858
 #: ../../words.py:3859 ../../words.py:3891 ../../words.py:3895
-#: ../../words.py:3905 ../../words.py:3910
+#: ../../words.py:3905 ../../words.py:3910 ../../words.py:3918
 msgid "\" existiert so nicht als Befehl. Möglich sind die Parameter für "
 msgstr ""
 "\" does not exist as a command like this. Possible are the parameters for "
 
 #: i18n/words.py:3852 ../../words.py:3861 ../../words.py:3862
 #: ../../words.py:3863 ../../words.py:3895 ../../words.py:3899
-#: ../../words.py:3909 ../../words.py:3914
+#: ../../words.py:3909 ../../words.py:3914 ../../words.py:3922
 msgid "kein Unter-Parameter"
 msgstr "no sub parameter"
 
 #: i18n/words.py:3854 ../../words.py:3865 ../../words.py:3866
 #: ../../words.py:3867 ../../words.py:3899 ../../words.py:3903
-#: ../../words.py:3913 ../../words.py:3918
+#: ../../words.py:3913 ../../words.py:3918 ../../words.py:3926
 msgid ", oder"
 msgstr ", or"
 
 #: i18n/words.py:3856 ../../words.py:3869 ../../words.py:3870
 #: ../../words.py:3871 ../../words.py:3903 ../../words.py:3907
-#: ../../words.py:3917 ../../words.py:3922
+#: ../../words.py:3917 ../../words.py:3922 ../../words.py:3930
 msgid "angegeben für Hauptparameter"
 msgstr "specified for main parameters"
 
 #: i18n/words.py:3857 ../../words.py:3871 ../../words.py:3872
 #: ../../words.py:3873 ../../words.py:3905 ../../words.py:3909
-#: ../../words.py:3919 ../../words.py:3924
+#: ../../words.py:3919 ../../words.py:3924 ../../words.py:3932
 msgid " oder einen nicht zugehörigen Parameter: "
 msgstr " or an unrelated parameter: "
 
 #: i18n/words.py:3861 ../../words.py:3875 ../../words.py:3876
 #: ../../words.py:3877 ../../words.py:3909 ../../words.py:3913
-#: ../../words.py:3923 ../../words.py:3928
+#: ../../words.py:3923 ../../words.py:3928 ../../words.py:3936
 msgid "Es muss ein Hauptparameter, bzw. der richtige, gesetzt sein, damit ein"
 msgstr "A main parameter, or the correct one, must be set so that a"
 
 #: i18n/words.py:3862 ../../words.py:3876 ../../words.py:3877
 #: ../../words.py:3878 ../../words.py:3910 ../../words.py:3914
-#: ../../words.py:3924 ../../words.py:3929
+#: ../../words.py:3924 ../../words.py:3929 ../../words.py:3937
 msgid " Nebenparameter, wie möglicherweise: \""
 msgstr " sub paramter, as maybe: \""
 
 #: i18n/words.py:3863 ../../words.py:3877 ../../words.py:3878
 #: ../../words.py:3879 ../../words.py:3911 ../../words.py:3915
-#: ../../words.py:3925 ../../words.py:3930
+#: ../../words.py:3925 ../../words.py:3930 ../../words.py:3938
 msgid "\" ausgeführt werden kann. Hauptparameter sind: -"
 msgstr "\" can be executed. Main parameters are: -"
 
 #: i18n/words.py:3867 ../../words.py:3881 ../../words.py:3882
 #: ../../words.py:3883 ../../words.py:3915 ../../words.py:3919
-#: ../../words.py:3929 ../../words.py:3934
+#: ../../words.py:3929 ../../words.py:3934 ../../words.py:3942
 msgid "Versuche Parameter -h"
 msgstr "try parameters -h"
 
@@ -7199,7 +7262,7 @@ msgstr "try parameters -h"
 #: ../../words.py:3885 ../../words.py:3891 ../../words.py:3917
 #: ../../words.py:3923 ../../words.py:3921 ../../words.py:3927
 #: ../../words.py:3931 ../../words.py:3937 ../../words.py:3936
-#: ../../words.py:3942
+#: ../../words.py:3942 ../../words.py:3944 ../../words.py:3950
 msgid "Den Neben-Parameter \""
 msgstr "The sub parameter \""
 
@@ -7208,25 +7271,25 @@ msgstr "The sub parameter \""
 #: ../../words.py:3886 ../../words.py:3892 ../../words.py:3918
 #: ../../words.py:3924 ../../words.py:3922 ../../words.py:3928
 #: ../../words.py:3932 ../../words.py:3938 ../../words.py:3937
-#: ../../words.py:3943
+#: ../../words.py:3943 ../../words.py:3945 ../../words.py:3951
 msgid "\" gibt es hier nicht für den Hauptparameter \"-"
 msgstr "\" does not exist here for the main parameter \"-"
 
 #: i18n/words.py:3871 ../../words.py:3885 ../../words.py:3886
 #: ../../words.py:3887 ../../words.py:3919 ../../words.py:3923
-#: ../../words.py:3933 ../../words.py:3938
+#: ../../words.py:3933 ../../words.py:3938 ../../words.py:3946
 msgid "\". Oder ein = fehlt dahinter."
 msgstr "\" Or a = is missing behind it."
 
 #: i18n/words.py:3872 ../../words.py:3886 ../../words.py:3887
 #: ../../words.py:3888 ../../words.py:3920 ../../words.py:3924
-#: ../../words.py:3934 ../../words.py:3939
+#: ../../words.py:3934 ../../words.py:3939 ../../words.py:3947
 msgid " Möglich sind: "
 msgstr "Possible are: "
 
 #: i18n/words.py:3877 ../../words.py:3891 ../../words.py:3892
 #: ../../words.py:3893 ../../words.py:3925 ../../words.py:3929
-#: ../../words.py:3939 ../../words.py:3944
+#: ../../words.py:3939 ../../words.py:3944 ../../words.py:3952
 msgid "\". Oder es fehlt ein = dahinter."
 msgstr "\" Or a = is missing behind it."
 
@@ -7235,19 +7298,19 @@ msgstr "\" Or a = is missing behind it."
 #: ../../words.py:3906 ../../words.py:3956 ../../words.py:3938
 #: ../../words.py:3988 ../../words.py:3942 ../../words.py:3992
 #: ../../words.py:3952 ../../words.py:4002 ../../words.py:3957
-#: ../../words.py:4007
+#: ../../words.py:4007 ../../words.py:3965 ../../words.py:4015
 msgid "Debug Log aktiviert."
 msgstr "Debug log is activated."
 
 #: i18n/words.py:3892 ../../words.py:3906 ../../words.py:3907
 #: ../../words.py:3908 ../../words.py:3940 ../../words.py:3944
-#: ../../words.py:3954 ../../words.py:3959
+#: ../../words.py:3954 ../../words.py:3959 ../../words.py:3967
 msgid "der Befehl '"
 msgstr "the command "
 
 #: i18n/words.py:3895 ../../words.py:3909 ../../words.py:3910
 #: ../../words.py:3911 ../../words.py:3943 ../../words.py:3947
-#: ../../words.py:3957 ../../words.py:3962
+#: ../../words.py:3957 ../../words.py:3962 ../../words.py:3970
 msgid ""
 "' ist nur erlaubt mit 2 weiteren Angaben mit Leerzeichen getrennt, einer "
 "Zahl und einem Zahlenbereich, z.B. '"
@@ -7257,31 +7320,31 @@ msgstr ""
 
 #: i18n/words.py:3899 ../../words.py:3915 ../../words.py:3916
 #: ../../words.py:3917 ../../words.py:3949 ../../words.py:3953
-#: ../../words.py:3963 ../../words.py:3968
+#: ../../words.py:3963 ../../words.py:3968 ../../words.py:3976
 msgid "Befehle"
 msgstr "commands"
 
 #: i18n/words.py:3900 ../../words.py:3916 ../../words.py:3917
 #: ../../words.py:3918 ../../words.py:3950 ../../words.py:3954
-#: ../../words.py:3964 ../../words.py:3969
+#: ../../words.py:3964 ../../words.py:3969 ../../words.py:3977
 msgid "promptmode vorher: {} , {}"
 msgstr "promptmode before: {} , {}"
 
 #: i18n/words.py:3901 ../../words.py:3917 ../../words.py:3918
 #: ../../words.py:3919 ../../words.py:3951 ../../words.py:3955
-#: ../../words.py:3965 ../../words.py:3970
+#: ../../words.py:3965 ../../words.py:3970 ../../words.py:3978
 msgid "'{}' ergibt sich aus '{}' und ergibt danach reta-Befehl:"
 msgstr "'{}' results from '{}' and results reta command after:"
 
 #: i18n/words.py:3903 ../../words.py:3919 ../../words.py:3920
 #: ../../words.py:3921 ../../words.py:3953 ../../words.py:3957
-#: ../../words.py:3967 ../../words.py:3972
+#: ../../words.py:3967 ../../words.py:3972 ../../words.py:3980
 msgid "Dies ('"
 msgstr "This ('"
 
 #: i18n/words.py:3905 ../../words.py:3921 ../../words.py:3922
 #: ../../words.py:3923 ../../words.py:3955 ../../words.py:3959
-#: ../../words.py:3969 ../../words.py:3974
+#: ../../words.py:3969 ../../words.py:3974 ../../words.py:3982
 msgid ""
 "') ist tatsächlich ein Befehl (oder es sind mehrere), aber es gibt nichts "
 "auszugeben."
@@ -7291,7 +7354,7 @@ msgstr ""
 
 #: i18n/words.py:3908 ../../words.py:3924 ../../words.py:3925
 #: ../../words.py:3926 ../../words.py:3958 ../../words.py:3962
-#: ../../words.py:3972 ../../words.py:3977
+#: ../../words.py:3972 ../../words.py:3977 ../../words.py:3985
 msgid "Das ist kein Befehl! -> '{}''"
 msgstr "This is not a command! -> '{}''"
 
@@ -7300,7 +7363,8 @@ msgstr "This is not a command! -> '{}''"
 #: ../../words.py:4001 ../../words.py:3928 ../../words.py:4002
 #: ../../words.py:3960 ../../words.py:4034 ../../words.py:3964
 #: ../../words.py:4038 ../../words.py:3974 ../../words.py:4048
-#: ../../words.py:3979 ../../words.py:4053
+#: ../../words.py:3979 ../../words.py:4053 ../../words.py:3987
+#: ../../words.py:4061
 msgid ""
 "Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) "
 "keine Vielfacher gebildet.\n"
@@ -7316,31 +7380,33 @@ msgstr ""
 
 #: i18n/words.py:3929 ../../words.py:3945 ../../words.py:3946
 #: ../../words.py:3947 ../../words.py:3979 ../../words.py:3983
-#: ../../words.py:3993 ../../words.py:3998
+#: ../../words.py:3993 ../../words.py:3998 ../../words.py:4006
 msgid "vi"
 msgstr "vi"
 
 #: i18n/words.py:3930 ../../words.py:3946 ../../words.py:3947
 #: ../../words.py:3948 ../../words.py:3980 ../../words.py:3984
-#: ../../words.py:3994 ../../words.py:3999
+#: ../../words.py:3994 ../../words.py:3999 ../../words.py:4007
 msgid "log"
 msgstr "log"
 
 #: i18n/words.py:3935 ../../words.py:3951 ../../words.py:3952
 #: ../../words.py:3953 ../../words.py:3985 ../../words.py:3989
-#: ../../words.py:3999 ../../words.py:4004
+#: ../../words.py:3999 ../../words.py:4004 ../../words.py:4012
 msgid "befehl"
 msgstr "command"
 
 #: i18n/words.py:3956 ../../words.py:3982 ../../words.py:3983
 #: ../../words.py:3988 ../../words.py:3989 ../../words.py:4021
 #: ../../words.py:4025 ../../words.py:4035 ../../words.py:4040
+#: ../../words.py:4048
 msgid " bewirkt, dass bei allen Befehlen das '"
 msgstr " causes all commands to display the '"
 
 #: i18n/words.py:3961 ../../words.py:3987 ../../words.py:3988
 #: ../../words.py:3993 ../../words.py:3994 ../../words.py:4026
 #: ../../words.py:4030 ../../words.py:4040 ../../words.py:4045
+#: ../../words.py:4053
 msgid ""
 "' jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil "
 "dieser anders funktioniert "
@@ -7351,114 +7417,132 @@ msgstr ""
 #: i18n/words.py:3966 ../../words.py:3992 ../../words.py:3993
 #: ../../words.py:3998 ../../words.py:3999 ../../words.py:4031
 #: ../../words.py:4035 ../../words.py:4045 ../../words.py:4050
+#: ../../words.py:4058
 msgid "was speichern>"
 msgstr "save what>"
 
 #: i18n/words.py:3967 ../../words.py:3993 ../../words.py:3994
 #: ../../words.py:3999 ../../words.py:4000 ../../words.py:4032
 #: ../../words.py:4036 ../../words.py:4046 ../../words.py:4051
+#: ../../words.py:4059
 msgid "was löschen>"
 msgstr "delete what>"
 
 #: i18n/words.py:3988 ../../words.py:4014 ../../words.py:4015
 #: ../../words.py:4020 ../../words.py:4021 ../../words.py:4053
 #: ../../words.py:4057 ../../words.py:4067 ../../words.py:4072
+#: ../../words.py:4080
 msgid "kombi.csv"
 msgstr "kombi.csv"
 
 #: i18n/words.py:3989 ../../words.py:4015 ../../words.py:4016
 #: ../../words.py:4021 ../../words.py:4022 ../../words.py:4054
 #: ../../words.py:4058 ../../words.py:4068 ../../words.py:4073
+#: ../../words.py:4081
 msgid "kombi-meta.csv"
 msgstr "kombi-meta.csv"
 
 #: i18n/words.py:3990 ../../words.py:4016 ../../words.py:4017
 #: ../../words.py:4022 ../../words.py:4023 ../../words.py:4055
 #: ../../words.py:4059 ../../words.py:4069 ../../words.py:4074
+#: ../../words.py:4082
 msgid "religion.csv"
 msgstr "religion.csv"
 
 #: i18n/words.py:3991 ../../words.py:4017 ../../words.py:4018
 #: ../../words.py:4023 ../../words.py:4024 ../../words.py:4056
 #: ../../words.py:4060 ../../words.py:4070 ../../words.py:4075
+#: ../../words.py:4083
 msgid "primenumbers.csv"
 msgstr "primenumbers.csv"
 
 #: i18n/words.py:3992 ../../words.py:4018 ../../words.py:4019
 #: ../../words.py:4024 ../../words.py:4025 ../../words.py:4057
 #: ../../words.py:4061 ../../words.py:4071 ../../words.py:4076
+#: ../../words.py:4084
 msgid "gebrochen-rational-universum.csv"
 msgstr "gebrochen-rational-universum.csv"
 
 #: i18n/words.py:3993 ../../words.py:4019 ../../words.py:4020
 #: ../../words.py:4025 ../../words.py:4026 ../../words.py:4058
 #: ../../words.py:4062 ../../words.py:4072 ../../words.py:4077
+#: ../../words.py:4085
 msgid "gebrochen-rational-galaxie.csv"
 msgstr "gebrochen-rational-galaxie.csv"
 
 #: i18n/words.py:3994 ../../words.py:4020 ../../words.py:4021
 #: ../../words.py:4026 ../../words.py:4027 ../../words.py:4059
 #: ../../words.py:4063 ../../words.py:4073 ../../words.py:4078
+#: ../../words.py:4086
 msgid "gebrochen-rational-emotionen.csv"
 msgstr "gebrochen-rational-emotionen.csv"
 
 #: i18n/words.py:3995 ../../words.py:4021 ../../words.py:4022
 #: ../../words.py:4027 ../../words.py:4028 ../../words.py:4060
 #: ../../words.py:4064 ../../words.py:4074 ../../words.py:4079
+#: ../../words.py:4087
 msgid "gebrochen-rational-strukturgroesse.csv"
 msgstr "gebrochen-rational-strukturgroesse.csv"
 
 #: i18n/words.py:3996 ../../words.py:4022 ../../words.py:4023
 #: ../../words.py:4028 ../../words.py:4029 ../../words.py:4061
 #: ../../words.py:4065 ../../words.py:4075 ../../words.py:4080
+#: ../../words.py:4088
 msgid "kombi-gedanken17-absichten13-bewusstsein15.csv"
 msgstr "kombi-gedanken17-absichten13-bewusstsein15.csv"
 
 #: i18n/words.py:3997 ../../words.py:4023 ../../words.py:4024
 #: ../../words.py:4029 ../../words.py:4030 ../../words.py:4062
 #: ../../words.py:4066 ../../words.py:4076 ../../words.py:4081
+#: ../../words.py:4089
 msgid "kombi-meta-systeme.csv"
 msgstr "kombi-meta-systeme.csv"
 
 #: i18n/words.py:3998 ../../words.py:4024 ../../words.py:4025
 #: ../../words.py:4030 ../../words.py:4031 ../../words.py:4063
 #: ../../words.py:4067 ../../words.py:4077 ../../words.py:4082
+#: ../../words.py:4090
 msgid "kombi-universelle-wirklichkeit.csv"
 msgstr "kombi-universelle-wirklichkeit.csv"
 
 #: i18n/words.py:3999 ../../words.py:4025 ../../words.py:4026
 #: ../../words.py:4031 ../../words.py:4032 ../../words.py:4064
 #: ../../words.py:4068 ../../words.py:4078 ../../words.py:4083
+#: ../../words.py:4091
 msgid "kreisVomTyp18.csv"
 msgstr "kreisVomTyp18.csv"
 
 #: i18n/words.py:4000 ../../words.py:4026 ../../words.py:4027
 #: ../../words.py:4032 ../../words.py:4033 ../../words.py:4065
 #: ../../words.py:4069 ../../words.py:4079 ../../words.py:4084
+#: ../../words.py:4092
 msgid "sunMoonEtc.csv"
 msgstr "sunMoonEtc.csv"
 
 #: i18n/words.py:4001 ../../words.py:4027 ../../words.py:4028
 #: ../../words.py:4033 ../../words.py:4034 ../../words.py:4066
 #: ../../words.py:4070 ../../words.py:4080 ../../words.py:4085
+#: ../../words.py:4093
 msgid "meaningOfLife.csv"
 msgstr "meaningOfLife.csv"
 
 #: i18n/words.py:4002 ../../words.py:4028 ../../words.py:4029
 #: ../../words.py:4034 ../../words.py:4035 ../../words.py:4067
 #: ../../words.py:4071 ../../words.py:4081 ../../words.py:4086
+#: ../../words.py:4094
 msgid "dualism-trinities-etc.csv"
 msgstr "dualism-trinities-etc.csv"
 
 #: i18n/words.py:4005 ../../words.py:4031 ../../words.py:4032
 #: ../../words.py:4037 ../../words.py:4038 ../../words.py:4070
 #: ../../words.py:4074 ../../words.py:4084 ../../words.py:4089
+#: ../../words.py:4097
 msgid "EIGN"
 msgstr "PROPN"
 
 #: ../../words.py:4031 ../../words.py:4032 ../../words.py:4037
 #: ../../words.py:4038 ../../words.py:4070 ../../words.py:4074
-#: ../../words.py:4084 ../../words.py:4089
+#: ../../words.py:4084 ../../words.py:4089 ../../words.py:4097
 msgid "EIGR"
 msgstr "PROPR"
 
@@ -7466,12 +7550,13 @@ msgstr "PROPR"
 #: ../../words.py:2987 ../../words.py:3002 ../../words.py:3019
 #: ../../words.py:3006 ../../words.py:3023 ../../words.py:3016
 #: ../../words.py:3033 ../../words.py:3021 ../../words.py:3038
+#: ../../words.py:3029 ../../words.py:3046
 msgid "ehrlich_vs_höflich"
 msgstr "honest_vs_polite"
 
 #: ../../words.py:3831 ../../words.py:3832 ../../words.py:3833
 #: ../../words.py:3865 ../../words.py:3869 ../../words.py:3879
-#: ../../words.py:3884
+#: ../../words.py:3884 ../../words.py:3892
 msgid ""
 "\". Mögliche Nebenparameter-Textwerte, für diesen Unter-Parameter, sind: \""
 msgstr ""
@@ -7479,7 +7564,7 @@ msgstr ""
 
 #: ../../words.py:3958 ../../words.py:3959 ../../words.py:3960
 #: ../../words.py:3992 ../../words.py:3996 ../../words.py:4006
-#: ../../words.py:4011
+#: ../../words.py:4011 ../../words.py:4019
 msgid ""
 "Erlaube Parameter sind\n"
 "            -"
@@ -7489,7 +7574,7 @@ msgstr ""
 
 #: ../../words.py:3963 ../../words.py:3964 ../../words.py:3965
 #: ../../words.py:3997 ../../words.py:4001 ../../words.py:4011
-#: ../../words.py:4016
+#: ../../words.py:4016 ../../words.py:4024
 msgid ""
 ", für vi mode statt emacs mode,\n"
 "            -"
@@ -7499,7 +7584,7 @@ msgstr ""
 
 #: ../../words.py:3968 ../../words.py:3969 ../../words.py:3974
 #: ../../words.py:3975 ../../words.py:4007 ../../words.py:4011
-#: ../../words.py:4021 ../../words.py:4026
+#: ../../words.py:4021 ../../words.py:4026 ../../words.py:4034
 msgid ""
 ",  um Logging zu aktivieren,\n"
 "            -"
@@ -7509,7 +7594,7 @@ msgstr ""
 
 #: ../../words.py:3973 ../../words.py:3974 ../../words.py:3979
 #: ../../words.py:3980 ../../words.py:4012 ../../words.py:4016
-#: ../../words.py:4026 ../../words.py:4031
+#: ../../words.py:4026 ../../words.py:4031 ../../words.py:4039
 msgid ""
 ", um Debugging-Log-Ausgabe zu aktivieren. Das ist nur für Entwickler "
 "gedacht.\n"
@@ -7520,7 +7605,7 @@ msgstr ""
 
 #: ../../words.py:3978 ../../words.py:3979 ../../words.py:3984
 #: ../../words.py:3985 ../../words.py:4017 ../../words.py:4021
-#: ../../words.py:4031 ../../words.py:4036
+#: ../../words.py:4031 ../../words.py:4036 ../../words.py:4044
 msgid ""
 " bewirkt, dass bis zum letzten Programmparameter retaPrompt Befehl nur ein "
 "RetaPrompt-Befehl ausgeführt wird.\n"
@@ -7532,42 +7617,43 @@ msgstr ""
 
 #: ../../words.py:3984 ../../words.py:3985 ../../words.py:3990
 #: ../../words.py:3991 ../../words.py:4023 ../../words.py:4027
-#: ../../words.py:4037 ../../words.py:4042
+#: ../../words.py:4037 ../../words.py:4042 ../../words.py:4050
 msgid "' Kommando bzw. '"
 msgstr "' command \trespectively '"
 
 #: ../../words.py:4035 ../../words.py:4036 ../../words.py:4041
 #: ../../words.py:4042 ../../words.py:4074 ../../words.py:4078
-#: ../../words.py:4088 ../../words.py:4093
+#: ../../words.py:4088 ../../words.py:4093 ../../words.py:4101
 msgid "readme-reta.md"
 msgstr "readme-reta-en.md"
 
 #: ../../words.py:4036 ../../words.py:4037 ../../words.py:4042
 #: ../../words.py:4043 ../../words.py:4075 ../../words.py:4079
-#: ../../words.py:4089 ../../words.py:4094
+#: ../../words.py:4089 ../../words.py:4094 ../../words.py:4102
 msgid "readme-retaPrompt.md"
 msgstr "readme-retaPrompt-en.md"
 
 #: ../../words.py:4037 ../../words.py:4038 ../../words.py:4043
 #: ../../words.py:4044 ../../words.py:4076 ../../words.py:4080
-#: ../../words.py:4090 ../../words.py:4095
+#: ../../words.py:4090 ../../words.py:4095 ../../words.py:4103
 msgid "readme-startFiles.md"
 msgstr "readme-startFiles.md"
 
 #: ../../words.py:4038 ../../words.py:4039 ../../words.py:4044
 #: ../../words.py:4045 ../../words.py:4077 ../../words.py:4081
-#: ../../words.py:4091 ../../words.py:4096
+#: ../../words.py:4091 ../../words.py:4096 ../../words.py:4104
 msgid "readme.org"
 msgstr "readme.org"
 
 #: ../../words.py:4043 ../../words.py:4048 ../../words.py:4049
 #: ../../words.py:4081 ../../words.py:4085 ../../words.py:4095
-#: ../../words.py:4100
+#: ../../words.py:4100 ../../words.py:4108
 msgid "für '-languages=' sind die Paramter-Werte erlaubt: "
 msgstr "for '-languages=' parameter values are allowed: "
 
 #: ../../words.py:3968 ../../words.py:3969 ../../words.py:4001
 #: ../../words.py:4005 ../../words.py:4015 ../../words.py:4020
+#: ../../words.py:4028
 msgid ",  um eine andere Sprache zu wählen und möglich sind: "
 msgstr ", to select another language and possible are: "
 
@@ -7599,3 +7685,11 @@ msgstr "strategy"
 #: ../../words.py:849
 msgid "taktik"
 msgstr "tactics"
+
+#: ../../words.py:2659
+msgid "Bereich"
+msgstr "range"
+
+#: ../../words.py:2660
+msgid "bereich"
+msgstr "range"
