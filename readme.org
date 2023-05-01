@@ -44,6 +44,10 @@
 ***** unwichtiges
 + Ich könnte erweitern aus welchen Dingen ich noch bestehe, der höheren Art, wie höhere Gefühle und Impulse, etc. Denn das gabs vorher nicht.
 *** 2. Feature Ideen
++ Reziproke und n/m für w Befehl ermöglichen
++ Brucherweiterungen aus Spalte aus der csv in n/m und n/n Dingen in retaPrompt mit dazu ausgeben.
++ andere Primzahlbedeutungen, außer 28 bis 32, der anderen Reihen auch hinzufügen
++ mit AI csvs übersetzen
 + Halb-Mond-Halb-Sonne Zahlen, wie 12 und 18 markieren: Für die Zeilenfilterung
 + Filtern nach Primzahlarten und deren Vielfachern und nach 6*n zusätzlich, wegen besonderer Bedeutung (obwohl "grins" oder "lach" alle Zahlen besonders sind.)
 + Filtern wie die HTML: Dafür ein System ausdenken
