@@ -177,7 +177,7 @@ class htmlSyntax(OutputSyntax):
         elif spalte == -1:
             tupleOfListsOfCouples = (
                 [
-                    (i18n.nummerier["nummerierung"], ""),
+                    (i18n.nummerier["Nummerierung"], ""),
                 ],
             )
         else:

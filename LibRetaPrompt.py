@@ -90,7 +90,7 @@ kombiMainParas = [
 zeilenParas = [
     # "--"+i18n.zeilenParas["nichts"]+"",
     "--" + i18n.zeilenParas["zeit"] + "=",
-    "--" + i18n.zeilenParas["Zählung"] + "=",
+    "--" + i18n.zeilenParas["zaehlung"] + "=",
     "--" + i18n.zeilenParas["vorhervonausschnitt"] + "=",
     "--" + i18n.zeilenParas["vorhervonausschnittteiler"],
     "--" + i18n.zeilenParas["primzahlvielfache"] + "=",

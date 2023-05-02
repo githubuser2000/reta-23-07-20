@@ -153,7 +153,7 @@ zeilenParas: dict = {
     "vielfachevonzahlen": _("vielfachevonzahlen"),
     "vorhervonausschnitt": _("vorhervonausschnitt"),
     "vorhervonausschnittteiler": _("vorhervonausschnittteiler"),
-    "Zählung": _("Zählung"),
+    "zaehlung": _("zaehlung"),
     "zeit": _("zeit"),
 }
 
@@ -3863,7 +3863,7 @@ class concat:
 
 class lib4tables:
     zaehlung = {"Zählung": _("Zählung")}
-    nummerier = {"nummerierung": _("nummerierung")}
+    nummerier = {"Nummerierung": _("Nummerierung")}
     alles = {"alles": _("alles")}
 
 

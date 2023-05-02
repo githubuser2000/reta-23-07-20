@@ -785,14 +785,14 @@ class Program:
                             elif neg + i18n.zeilenParas["morgen"] == subpara:
                                 paramLines.add(">")
                     elif (
-                        arg[2 : 3 + i18n.zeilenParasLen["Zählung"]]
-                        == i18n.zeilenParas["Zählung"] + "="
+                        arg[2 : 3 + i18n.zeilenParasLen["zaehlung"]]
+                        == i18n.zeilenParas["zaehlung"] + "="
                     ):
                         self.obZeilenBereicheAngegeben = True
                         if neg == "":
                             paramLines |= (
                                 self.tables.getPrepare.parametersCmdWithSomeBereich(
-                                    arg[3 + i18n.zeilenParasLen["Zählung"] :],
+                                    arg[3 + i18n.zeilenParasLen["zaehlung"] :],
                                     "n",
                                     "",
                                     True,
