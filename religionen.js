@@ -549,6 +549,7 @@ primZahlen = [
 ];
 
 function makeSpacesOutOf_(text) {
+  if (text.includes("wichtig") || text.includes("Wichtig") || text.includes("Grundstrukturen") || text.includes("(15)")) text = "<b>"+text+"</b>"
   /*
   if (text.length == 10) if (text == "Wichtigste") return "<b>Wichtigste</b>";
   if (text.length == 25)
