@@ -14,13 +14,13 @@ except (ModuleNotFoundError, ImportError):
     OrderedSet = set
 
 
-sprachen: defaultdict[str, str] = defaultdict(lambda: "de")
+sprachen: defaultdict = defaultdict(lambda: "de")
 sprachen["english"] = "en"
 sprachen["englisch"] = "en"
 sprachen["deutsch"] = "de"
 sprachen["german"] = "de"
 
-sprachen2: defaultdict[str, str] = defaultdict(lambda: "messages")
+sprachen2: defaultdict = defaultdict(lambda: "messages")
 sprachen2["english"] = "messages"
 sprachen2["englisch"] = "messages"
 sprachen2["deutsch"] = "messages"
@@ -76,12 +76,12 @@ LibRetaPrompt: größten Teil entnommen
 
 ES FEHLEN NOCH ALLE ''
 """
-Primzahlkreuz_pro_contra_strs: tuple[str, str] = (
+Primzahlkreuz_pro_contra_strs: tuple = (
     "Primzahlkreuz_pro_contra",
     "nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)",
 )
 
-Primzahlkreuz_pro_contra_strs_Fkt: tuple[str, str] = (
+Primzahlkreuz_pro_contra_strs_Fkt: tuple = (
     _("Primzahlkreuz_pro_contra"),
     _("nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)"),
 )
@@ -325,7 +325,8 @@ wahl15: dict = {
 }
 
 # WICHTIG WICHTIG: die Befehle mit nur einem zeichen dürfen  nur ein Zeichen haben !!!!!!!
-befehle2: dict = {"15" + a: "15" + a for a in wahl15.keys()} | {
+befehle2: dict = {"15" + a: "15" + a for a in wahl15.keys()}
+befehle2.update({
     "mond": _("mond"),
     "reta": _("reta"),
     "absicht": _("absicht"),
@@ -387,8 +388,7 @@ befehle2: dict = {"15" + a: "15" + a for a in wahl15.keys()} | {
         "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
     ),
     "abstand": _("abstand"),
-}
-
+})
 # KurzLangBefehle sind die Befehle, die mehr als ein Zeichen groß sind und für reta dennoch Abkürzungen sind.
 
 # KurzKurzBefehle müssen auch in Fremdsprachen ein Zeichen groß bleiben!
