@@ -5,14 +5,22 @@ import sys
 from collections import OrderedDict, defaultdict, namedtuple
 # from dataclasses import dataclass
 from typing import Any, NamedTuple, Optional, Tuple, Union
-
+import pprint
 # from typing import Optional, Union
 
 try:
     from orderedset import OrderedSet
 except (ModuleNotFoundError, ImportError):
     OrderedSet = set
-
+def alxp(text):
+    global output
+    """Für mich, damit ich mal alle prints ausschalten kann zum vorführen,
+    wenn ich noch beim Entwicklen war."""
+    if '-debug' in sys.argv:
+        if type(text) is str:
+            print(text)
+        else:
+            pp.pprint(text)
 
 sprachen: defaultdict = defaultdict(lambda: "de")
 sprachen["english"] = "en"
@@ -46,6 +54,7 @@ if flagS and sprachenWahl not in sprachen.keys():
     )
 
 if len({"deutsch", "german", ""} & {sprachenWahl}) == 0:
+    alxp("not german")
     subFolder = sprachen[sprachenWahl]
     sprachenFileName = sprachen2[sprachenWahl]
     i18nPath = os.path.join(os.path.dirname(__file__))
@@ -55,8 +64,9 @@ if len({"deutsch", "german", ""} & {sprachenWahl}) == 0:
     t.install()
     _ = t.gettext
 else:
+    alxp("german")
     localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)))
-    translate = gettext.translation("messages", localedir, fallback=True)
+    translate = gettext.translation("nichts", localedir, fallback=True)
     _ = translate.gettext
 
 # sys.path.insert(1, "./..")
