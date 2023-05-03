@@ -378,8 +378,6 @@ befehle2.update(
         "v": _("v"),
         "h": _("h"),
         "p": _("p"),
-        "mo": _("mo"),
-        "mu": _("mu"),
         "primzahlkreuz": _("primzahlkreuz"),
         "ende": _("ende"),
         "exit": _("exit"),

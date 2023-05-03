@@ -38,10 +38,11 @@ weight = -7
 -   Line specifications are e.g. a number or a range of numbers like 2-5 or these things separated with comma like 1,3-5,20
     For the command "u" and "i", i.e. "universe" and "intent", you can also specify fractions, like 2/3,4/5,1/2.
 -   These output commands can be combined in one input line.
--   "i" or "intention" or "motive" or "motive" outputs the one column of intrinsic intentions of the star polygons, together with a line specification
--   "u" or "universum" outputs the one column of the universal structurals or transcendentals of the star polygons, together with a line specification
+-   "i" or "intention" or "motive" or "motive" outputs the one column of intrinsic intentions of the star polygons, together with a line specification, (example a1 or a1/2)
+-   "u" or "universum" outputs the one column of the universal structurals or transcendentals of the star polygons, together with a line specification (example u2 or u2/2,1/2)
 -   "t" or "thomas" outputs the one column of the thomas vanglium which corresponds to the intrinsic intentions of the star polygons in coded form, together with a line specification
--   "M" resp. "mind" shows the universal mind
+-   "M" resp. "mind" shows the universal mind (examples: M1/2 or M3)
+-   "E" resp. "emotion" shows the universal mind (examples: E1/2 or E3)
 -   "m" resp. multiple" causes in output commands except "reta" that their line specifications e.g. 7 mean not only line 7, but all multiples of these line specifications as well, i.e. also 14,21, etc.
 -   "single" is the standard for short commands: that line specifications do not mean multiples, but single lines.
 -   "moon", together with a line specification, outputs information about celestial bodies: such as moons, planets, suns.
