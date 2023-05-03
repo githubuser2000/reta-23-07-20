@@ -785,14 +785,14 @@ class Program:
                             elif neg + i18n.zeilenParas["morgen"] == subpara:
                                 paramLines.add(">")
                     elif (
-                        arg[2 : 3 + i18n.zeilenParasLen["Zählung"]]
-                        == i18n.zeilenParas["Zählung"] + "="
+                        arg[2 : 3 + i18n.zeilenParasLen["zaehlung"]]
+                        == i18n.zeilenParas["zaehlung"] + "="
                     ):
                         self.obZeilenBereicheAngegeben = True
                         if neg == "":
                             paramLines |= (
                                 self.tables.getPrepare.parametersCmdWithSomeBereich(
-                                    arg[3 + i18n.zeilenParasLen["Zählung"] :],
+                                    arg[3 + i18n.zeilenParasLen["zaehlung"] :],
                                     "n",
                                     "",
                                     True,
@@ -1422,7 +1422,7 @@ class Program:
         )
 
     def oberesMaximumArg(self, arg) -> tuple:
-        werte: list[int] = []
+        werte: list = []
         if (
             arg[2 : 3 + i18n.zeilenParasLen["oberesmaximum"]]
             == i18n.zeilenParas["oberesmaximum"] + "="
@@ -1434,7 +1434,7 @@ class Program:
             arg[2 : 3 + i18n.zeilenParasLen["vorhervonausschnitt"]]
             == i18n.zeilenParas["vorhervonausschnitt"] + "="
         ):
-            werteList: list[int] = [
+            werteList: list = [
                 a + 1
                 for a in BereichToNumbers2(
                     arg[3 + i18n.zeilenParasLen["vorhervonausschnitt"] :], False, 0
@@ -1447,9 +1447,9 @@ class Program:
 
     def oberesMaximum2(self, argv2) -> Optional[int]:
         try:
-            werte: list[int] = [self.tables.hoechsteZeile[1024]]
+            werte: list = [self.tables.hoechsteZeile[1024]]
         except:
-            werte: list[int] = []
+            werte: list = []
         for arg in argv2:
             werte += self.oberesMaximumArg(arg)[0]
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 02:48+0200\n"
+"POT-Creation-Date: 2023-05-02 12:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -241,7 +241,7 @@ msgstr "thisrangebeforedividers"
 #: ../../words.py:2692 ../../words.py:3860 ../../words.py:2697
 #: ../../words.py:3865 ../../words.py:2705 ../../words.py:3873
 msgid "Zählung"
-msgstr "range"
+msgstr "ranges"
 
 #: i18n/words.py:113 i18n/words.py:1879 i18n/words.py:3068 ../../words.py:121
 #: ../../words.py:1887 ../../words.py:3076 ../../words.py:123
@@ -7081,7 +7081,7 @@ msgstr "Not_generated"
 #: i18n/words.py:3805 ../../words.py:3813 ../../words.py:3814
 #: ../../words.py:3815 ../../words.py:3847 ../../words.py:3851
 #: ../../words.py:3861 ../../words.py:3866 ../../words.py:3874
-msgid "nummerierung"
+msgid "Nummerierung"
 msgstr "numbering"
 
 #: i18n/words.py:3812 ../../words.py:3820 ../../words.py:3821
@@ -7693,3 +7693,7 @@ msgstr "range"
 #: ../../words.py:2660
 msgid "bereich"
 msgstr "range"
+
+#: ../../words.py:2697 ../../words.py:156
+msgid "zaehlung"
+msgstr "ranges"

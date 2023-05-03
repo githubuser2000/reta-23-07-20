@@ -151,9 +151,9 @@ def returnOnlyParasAsList(textList: str):
 
 
 # def externCommand(cmd: str, StrNummern: str):
-#    nummern: list[int] = list(BereichToNumbers2(StrNummern, False, 0))
+#    nummern: list = list(BereichToNumbers2(StrNummern, False, 0))
 #    nummern.sort()
-#    nummernStr: list[str] = [str(nummer) for nummer in nummern]
+#    nummernStr: list = [str(nummer) for nummer in nummern]
 #    try:
 #        process = subprocess.Popen(
 #            [os.path.dirname(__file__) + os.sep + cmd, *nummernStr]
@@ -198,7 +198,7 @@ def bruchSpalt(text) -> list:
     """
     if type(text) is not str:
         return []
-    bruchSpalten: list[str] = text.split("/")
+    bruchSpalten: list = text.split("/")
     bruchSpaltenNeu = []
     bruchSpaltenNeu2 = []
     if len(bruchSpalten) < 2:
@@ -1405,7 +1405,7 @@ def retaExecuteNprint(
     stextE,
     zeiln1: str,
     zeiln2: str,
-    welcheSpalten: list[str],
+    welcheSpalten: list,
     ErlaubteSpalten: str,
 ):
     import reta

@@ -5,22 +5,30 @@ import sys
 from collections import OrderedDict, defaultdict, namedtuple
 # from dataclasses import dataclass
 from typing import Any, NamedTuple, Optional, Tuple, Union
-
+import pprint
 # from typing import Optional, Union
 
 try:
     from orderedset import OrderedSet
 except (ModuleNotFoundError, ImportError):
     OrderedSet = set
+def alxp(text):
+    global output
+    """Für mich, damit ich mal alle prints ausschalten kann zum vorführen,
+    wenn ich noch beim Entwicklen war."""
+    if '-debug' in sys.argv:
+        if type(text) is str:
+            print(text)
+        else:
+            pp.pprint(text)
 
-
-sprachen: defaultdict[str, str] = defaultdict(lambda: "de")
+sprachen: defaultdict = defaultdict(lambda: "de")
 sprachen["english"] = "en"
 sprachen["englisch"] = "en"
 sprachen["deutsch"] = "de"
 sprachen["german"] = "de"
 
-sprachen2: defaultdict[str, str] = defaultdict(lambda: "messages")
+sprachen2: defaultdict = defaultdict(lambda: "messages")
 sprachen2["english"] = "messages"
 sprachen2["englisch"] = "messages"
 sprachen2["deutsch"] = "messages"
@@ -46,6 +54,7 @@ if flagS and sprachenWahl not in sprachen.keys():
     )
 
 if len({"deutsch", "german", ""} & {sprachenWahl}) == 0:
+    alxp("not german")
     subFolder = sprachen[sprachenWahl]
     sprachenFileName = sprachen2[sprachenWahl]
     i18nPath = os.path.join(os.path.dirname(__file__))
@@ -55,8 +64,9 @@ if len({"deutsch", "german", ""} & {sprachenWahl}) == 0:
     t.install()
     _ = t.gettext
 else:
+    alxp("german")
     localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)))
-    translate = gettext.translation("messages", localedir, fallback=True)
+    translate = gettext.translation("nichts", localedir, fallback=True)
     _ = translate.gettext
 
 # sys.path.insert(1, "./..")
@@ -76,12 +86,12 @@ LibRetaPrompt: größten Teil entnommen
 
 ES FEHLEN NOCH ALLE ''
 """
-Primzahlkreuz_pro_contra_strs: tuple[str, str] = (
+Primzahlkreuz_pro_contra_strs: tuple = (
     "Primzahlkreuz_pro_contra",
     "nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)",
 )
 
-Primzahlkreuz_pro_contra_strs_Fkt: tuple[str, str] = (
+Primzahlkreuz_pro_contra_strs_Fkt: tuple = (
     _("Primzahlkreuz_pro_contra"),
     _("nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)"),
 )
@@ -153,7 +163,7 @@ zeilenParas: dict = {
     "vielfachevonzahlen": _("vielfachevonzahlen"),
     "vorhervonausschnitt": _("vorhervonausschnitt"),
     "vorhervonausschnittteiler": _("vorhervonausschnittteiler"),
-    "Zählung": _("Zählung"),
+    "zaehlung": _("zaehlung"),
     "zeit": _("zeit"),
 }
 
@@ -325,7 +335,8 @@ wahl15: dict = {
 }
 
 # WICHTIG WICHTIG: die Befehle mit nur einem zeichen dürfen  nur ein Zeichen haben !!!!!!!
-befehle2: dict = {"15" + a: "15" + a for a in wahl15.keys()} | {
+befehle2: dict = {"15" + a: "15" + a for a in wahl15.keys()}
+befehle2.update({
     "mond": _("mond"),
     "reta": _("reta"),
     "absicht": _("absicht"),
@@ -387,8 +398,7 @@ befehle2: dict = {"15" + a: "15" + a for a in wahl15.keys()} | {
         "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
     ),
     "abstand": _("abstand"),
-}
-
+})
 # KurzLangBefehle sind die Befehle, die mehr als ein Zeichen groß sind und für reta dennoch Abkürzungen sind.
 
 # KurzKurzBefehle müssen auch in Fremdsprachen ein Zeichen groß bleiben!
@@ -3863,7 +3873,7 @@ class concat:
 
 class lib4tables:
     zaehlung = {"Zählung": _("Zählung")}
-    nummerier = {"nummerierung": _("nummerierung")}
+    nummerier = {"Nummerierung": _("Nummerierung")}
     alles = {"alles": _("alles")}
 
 

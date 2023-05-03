@@ -151,9 +151,9 @@ class Tables:
         """eine der beiden Listen erhält so viele Listenelemente
         aus Strings dazu wie die andere hat, bis beide gleich viel haben
 
-        @type liste1: list[str]
+        @type liste1: list
         @param liste1: die erste Liste
-        @type liste2: list[str]
+        @type liste2: list
         @param liste2: die zweite Liste
         @rtype: tuple(list[str],list[str])
         @return: 2 Listen mit gleicher Länger, maximiert statt minimiert

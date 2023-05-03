@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 02:48+0200\n"
+"POT-Creation-Date: 2023-05-02 12:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -127,8 +127,8 @@ msgstr ""
 #~ msgid "vorhervonausschnittteiler"
 #~ msgstr "thisrangebeforedividers"
 
-#~ msgid "zaehlung"
-#~ msgstr "counting"
+#~ msgid "Zählung"
+#~ msgstr "ranges"
 
 #~ msgid "zeit"
 #~ msgstr "time"
@@ -2312,16 +2312,16 @@ msgstr ""
 #~ msgstr "applicationsmoons"
 
 #~ msgid "Zählungen"
-#~ msgstr "counts"
+#~ msgstr "ranges"
 
 #~ msgid "zählungen"
-#~ msgstr "counts"
+#~ msgstr "ranges"
 
 #~ msgid "zaehlungen"
-#~ msgstr "counts"
+#~ msgstr "ranges"
 
 #~ msgid "zählung"
-#~ msgstr "count"
+#~ msgstr "range"
 
 #~ msgid "Jura"
 #~ msgstr "law"
@@ -3316,7 +3316,7 @@ msgstr ""
 #~ msgid "Nicht_generiert"
 #~ msgstr "Not_generated"
 
-#~ msgid "nummerierung"
+#~ msgid "Nummerierung"
 #~ msgstr "numbering"
 
 #~ msgid "nichts"
@@ -3636,3 +3636,12 @@ msgstr ""
 
 #~ msgid "taktik"
 #~ msgstr "tactics"
+
+#~ msgid "Bereich"
+#~ msgstr "range"
+
+#~ msgid "bereich"
+#~ msgstr "range"
+
+#~ msgid "zaehlung"
+#~ msgstr "ranges"

@@ -109,7 +109,7 @@ def traverseHierarchy(liste, thing, listenIndex, value):
 
 wahlNeu: dict[str, dict] = OrderedDict(sorted({}.items(), key=cmp_to_key(cmpx)))
 
-liste: list[str]
+liste: list
 for key, value in wahl15.items():
     liste = key.split("_")
     liste = list(filter(None, liste))
