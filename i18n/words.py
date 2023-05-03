@@ -113,6 +113,7 @@ gebrochenSpaltenMaximumPlus1: int = 24  # Das ist nicht die Spaltenbreite, sonde
 # }
 
 geistWort = _("geist")
+emotionWort = _("emotion")
 ausgabeParas: dict = {
     "nocolor": _("nocolor"),
     "justtext": _("justtext"),
@@ -343,6 +344,7 @@ wahl15: dict = {
 befehle2: dict = {"15" + a: "15" + a for a in wahl15.keys()}
 befehle2.update(
     {
+        "emotion": emotionWort,
         "mond": _("mond"),
         "reta": _("reta"),
         "absicht": _("absicht"),
@@ -366,6 +368,7 @@ befehle2.update(
         "alles": _("alles"),
         "geist": geistWort,
         "a": _("a"),
+        "E": _("E"),
         "G": _("G"),
         "u": _("u"),
         "befehle": _("befehle"),
@@ -1684,7 +1687,7 @@ paraNdataMatrix: list = [
             _("Gefühle"),
             _("emotionen"),
             _("gefuehle"),
-            _("emotion"),
+            emotionWort,
             _("gefühl"),
             _("gefuehl"),
         ),
@@ -2190,6 +2193,7 @@ paraNdataMatrix: list = [
             _("Gefühle_(7)"),
             _("gefuehle"),
             _("emotionen"),
+            emotionWort,
             _("gefühle"),
         ),
         {243, 283, 284, 285, 286, 305},
@@ -3485,7 +3489,7 @@ kombiParaNdataMatrix: OrderedDict = OrderedDict(
             _("Emotionen"),
             _("emotionen"),
             _("gefuehle"),
-            _("emotion"),
+            emotionWort,
             _("gefühl"),
             _("gefühle"),
         ),
@@ -3571,7 +3575,7 @@ kombiParaNdataMatrix2: OrderedDict = OrderedDict(
         #    _("emotionen"),
         #    _("gefuehle"),
         #    _("gefühle"),
-        #    _("emotion"),
+        #    emotionWort,
         #    _("gefühl"),
         #    _("gefühle"),
         # ),
@@ -4002,6 +4006,7 @@ class retaPrompt:
         ],
         befehle2["G"]: geistWort,
         befehle2["a"]: befehle2["absicht"],
+        befehle2["E"]: befehle2["emotion"],
         befehle2["u"]: befehle2["universum"],
         befehle2["t"]: befehle2["thomas"],
         befehle2["r"]: befehle2["richtung"],
