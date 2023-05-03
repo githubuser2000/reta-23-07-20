@@ -842,6 +842,48 @@ def PromptGrosseAusgabe(
             i18nRP = i18n.retaPrompt
 
     if fullBlockIsZahlenbereichAndBruch and (bedingungZahl or bedingungBrueche):
+        if len({i18n.befehle2["geist"], i18n.befehle2["G"]} & Txt.mengeE) > 0 and (
+            i18n.befehle2["abc"] not in Txt.listeE
+            and i18n.befehle2["abcd"] not in Txt.listeE
+        ):
+            if len(c) > 0:
+                warBefehl = True
+                retaExecuteNprint(
+                    ketten,
+                    Txt.listeE,
+                    zeiln1,
+                    zeiln2,
+                    [
+                        "".join(
+                            (
+                                "--",
+                                i18n.ParametersMain.grundstrukturen[0],
+                                "=",
+                                i18n.geistWort,
+                            )
+                        )
+                    ],
+                    "3",
+                )
+            if (
+                len(bruch_GanzZahlReziproke) > 0
+                and textHatZiffer(bruch_GanzZahlReziproke)
+                and zeiln3 != ""
+            ):
+                warBefehl = True
+                retaExecuteNprint(
+                    ketten,
+                    Txt.listeE,
+                    zeiln3,
+                    zeiln4,
+                    [
+                        "--",
+                        i18n.ParametersMain.grundstrukturen[0],
+                        "=",
+                        i18n.geistWort,
+                    ],
+                    "4",
+                )
         if len(
             {
                 i18n.befehle2["absicht"],

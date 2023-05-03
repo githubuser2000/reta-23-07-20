@@ -327,6 +327,7 @@ def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
                 if fullBlockIsZahlenbereichAndBruch_Z:
                     s_ = s_b
                     buchst = set(s_[:n]) & {
+                        i18n.befehle2["G"],
                         i18n.befehle2["a"],
                         i18n.befehle2["t"],
                         i18n.befehle2["v"],

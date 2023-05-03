@@ -1,26 +1,30 @@
 import gettext
 import os
+import pprint
 import sys
 # import sys
 from collections import OrderedDict, defaultdict, namedtuple
 # from dataclasses import dataclass
 from typing import Any, NamedTuple, Optional, Tuple, Union
-import pprint
+
 # from typing import Optional, Union
 
 try:
     from orderedset import OrderedSet
 except (ModuleNotFoundError, ImportError):
     OrderedSet = set
+
+
 def alxp(text):
     global output
     """Für mich, damit ich mal alle prints ausschalten kann zum vorführen,
     wenn ich noch beim Entwicklen war."""
-    if '-debug' in sys.argv:
+    if "-debug" in sys.argv:
         if type(text) is str:
             print(text)
         else:
             pp.pprint(text)
+
 
 sprachen: defaultdict = defaultdict(lambda: "de")
 sprachen["english"] = "en"
@@ -108,6 +112,7 @@ gebrochenSpaltenMaximumPlus1: int = 24  # Das ist nicht die Spaltenbreite, sonde
 #    "keinenummerierung": _("keinenummerierung"),
 # }
 
+geistWort = _("geist")
 ausgabeParas: dict = {
     "nocolor": _("nocolor"),
     "justtext": _("justtext"),
@@ -336,69 +341,73 @@ wahl15: dict = {
 
 # WICHTIG WICHTIG: die Befehle mit nur einem zeichen dürfen  nur ein Zeichen haben !!!!!!!
 befehle2: dict = {"15" + a: "15" + a for a in wahl15.keys()}
-befehle2.update({
-    "mond": _("mond"),
-    "reta": _("reta"),
-    "absicht": _("absicht"),
-    "motiv": _("motiv"),
-    "thomas": _("thomas"),
-    "universum": _("universum"),
-    "motive": _("motive"),
-    "absichten": _("absichten"),
-    "vielfache": _("vielfache"),
-    "einzeln": _("einzeln"),
-    "multis": _("multis"),
-    "modulo": _("modulo"),
-    "prim": _("prim"),
-    "primfaktorzerlegung": _("primfaktorzerlegung"),
-    "prim24": _("prim24"),
-    "primfaktorzerlegungModulo24": _("primfaktorzerlegungModulo24"),
-    "help": _("help"),
-    "hilfe": _("hilfe"),
-    "abc": _("abc"),
-    "abcd": _("abcd"),
-    "alles": _("alles"),
-    "a": _("a"),
-    "u": _("u"),
-    "befehle": _("befehle"),
-    "t": _("t"),
-    "richtung": _("richtung"),
-    "r": _("r"),
-    "v": _("v"),
-    "h": _("h"),
-    "p": _("p"),
-    "mo": _("mo"),
-    "mu": _("mu"),
-    "primzahlkreuz": _("primzahlkreuz"),
-    "ende": _("ende"),
-    "exit": _("exit"),
-    "quit": _("quit"),
-    "q": _("q"),
-    ":q": _(":q"),
-    "shell": _("shell"),
-    "s": _("s"),
-    "math": _("math"),
-    "loggen": _("loggen"),
-    "nichtloggen": _("nichtloggen"),
-    "mulpri": _("mulpri"),
-    "python": _("python"),
-    "w": _("w"),
-    "teiler": _("teiler"),
-    "BefehlSpeichernDanach": _("BefehlSpeichernDanach"),
-    "S": _("S"),
-    "BefehlSpeicherungLöschen": _("BefehlSpeicherungLöschen"),
-    "l": _("l"),
-    "BefehlSpeicherungAusgeben": _("BefehlSpeicherungAusgeben"),
-    "o": _("o"),
-    "e": _("e"),
-    # "BefehlsSpeicherungsModusAus": _("BefehlsSpeicherungsModusAus"),
-    # "x": _("x"),
-    "BefehlSpeichernDavor": _("BefehlSpeichernDavor"),
-    "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar": _(
-        "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-    ),
-    "abstand": _("abstand"),
-})
+befehle2.update(
+    {
+        "mond": _("mond"),
+        "reta": _("reta"),
+        "absicht": _("absicht"),
+        "motiv": _("motiv"),
+        "thomas": _("thomas"),
+        "universum": _("universum"),
+        "motive": _("motive"),
+        "absichten": _("absichten"),
+        "vielfache": _("vielfache"),
+        "einzeln": _("einzeln"),
+        "multis": _("multis"),
+        "modulo": _("modulo"),
+        "prim": _("prim"),
+        "primfaktorzerlegung": _("primfaktorzerlegung"),
+        "prim24": _("prim24"),
+        "primfaktorzerlegungModulo24": _("primfaktorzerlegungModulo24"),
+        "help": _("help"),
+        "hilfe": _("hilfe"),
+        "abc": _("abc"),
+        "abcd": _("abcd"),
+        "alles": _("alles"),
+        "geist": geistWort,
+        "a": _("a"),
+        "G": _("G"),
+        "u": _("u"),
+        "befehle": _("befehle"),
+        "t": _("t"),
+        "richtung": _("richtung"),
+        "r": _("r"),
+        "v": _("v"),
+        "h": _("h"),
+        "p": _("p"),
+        "mo": _("mo"),
+        "mu": _("mu"),
+        "primzahlkreuz": _("primzahlkreuz"),
+        "ende": _("ende"),
+        "exit": _("exit"),
+        "quit": _("quit"),
+        "q": _("q"),
+        ":q": _(":q"),
+        "shell": _("shell"),
+        "s": _("s"),
+        "math": _("math"),
+        "loggen": _("loggen"),
+        "nichtloggen": _("nichtloggen"),
+        "mulpri": _("mulpri"),
+        "python": _("python"),
+        "w": _("w"),
+        "teiler": _("teiler"),
+        "BefehlSpeichernDanach": _("BefehlSpeichernDanach"),
+        "S": _("S"),
+        "BefehlSpeicherungLöschen": _("BefehlSpeicherungLöschen"),
+        "l": _("l"),
+        "BefehlSpeicherungAusgeben": _("BefehlSpeicherungAusgeben"),
+        "o": _("o"),
+        "e": _("e"),
+        # "BefehlsSpeicherungsModusAus": _("BefehlsSpeicherungsModusAus"),
+        # "x": _("x"),
+        "BefehlSpeichernDavor": _("BefehlSpeichernDavor"),
+        "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar": _(
+            "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+        ),
+        "abstand": _("abstand"),
+    }
+)
 # KurzLangBefehle sind die Befehle, die mehr als ein Zeichen groß sind und für reta dennoch Abkürzungen sind.
 
 # KurzKurzBefehle müssen auch in Fremdsprachen ein Zeichen groß bleiben!
@@ -588,7 +597,6 @@ ParametersMain: NamedTuple = ParametersMain(
     (_("Grundstrukturen"), _("grundstrukturen")),
     (_("alles"),),
 )
-
 thomasWort = _("thomas")
 motivationWort = _("motivation")
 transzendentalienWort = _("transzendentalien")
@@ -1448,7 +1456,7 @@ paraNdataMatrix: list = [
     ),
     (
         ParametersMain.universum,
-        (_("Geist__(15)"), _("geist")),
+        (_("Geist__(15)"), geistWort),
         {242},
     ),
     (
@@ -2062,7 +2070,7 @@ paraNdataMatrix: list = [
         ParametersMain.grundstrukturen,
         (
             _("Geist_(15)"),
-            _("geist"),
+            geistWort,
             _("bewusstsein"),
         ),
         {229, 231, 242, 273, 297, 304},
@@ -2725,7 +2733,7 @@ paraNdataMatrix: list = [
         (
             _("Vollkommenheit_des_Geistes"),
             _("vollkommenheit"),
-            _("geist"),
+            geistWort,
         ),
         {35},
     ),
@@ -3593,7 +3601,7 @@ kombiParaNdataMatrix2: OrderedDict = OrderedDict(
             _("geräte"),
             _("geraete"),
         ),
-        18: (_("Geist"), _("geist")),
+        18: (_("Geist"), geistWort),
         19: (_("Bewusstsein"), _("bewusstsein")),
     }
 )
@@ -3992,6 +4000,7 @@ class retaPrompt:
         befehle2["e"]: befehle2[
             "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
         ],
+        befehle2["G"]: geistWort,
         befehle2["a"]: befehle2["absicht"],
         befehle2["u"]: befehle2["universum"],
         befehle2["t"]: befehle2["thomas"],

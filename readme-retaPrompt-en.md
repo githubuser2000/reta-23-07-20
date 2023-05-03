@@ -41,6 +41,7 @@ weight = -7
 -   "i" or "intention" or "motive" or "motive" outputs the one column of intrinsic intentions of the star polygons, together with a line specification
 -   "u" or "universum" outputs the one column of the universal structurals or transcendentals of the star polygons, together with a line specification
 -   "t" or "thomas" outputs the one column of the thomas vanglium which corresponds to the intrinsic intentions of the star polygons in coded form, together with a line specification
+-   "M" resp. "mind" shows the universal mind
 -   "m" resp. multiple" causes in output commands except "reta" that their line specifications e.g. 7 mean not only line 7, but all multiples of these line specifications as well, i.e. also 14,21, etc.
 -   "single" is the standard for short commands: that line specifications do not mean multiples, but single lines.
 -   "moon", together with a line specification, outputs information about celestial bodies: such as moons, planets, suns.

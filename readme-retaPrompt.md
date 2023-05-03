@@ -41,6 +41,7 @@ weight = -7
 -   "a" bzw. "absicht" bzw. "motive" oder "motiv" gibt die eine Spalte der intrinsischen Absichten der Sternpolygone aus, zusammen mit einer Zeilenangabe
 -   "u" bzw. "universum" gibt die eine Spalte der universelllen Strukturalien bzw. Transzendentalien der Sternpolygone aus, zusammen mit einer Zeilenangabe
 -   "t" bzw. "thomas" gibt die eine Spalte des Thomasevangliums aus was den intrinsischen Absichten der Sternpolygone in kodierter Form entspricht, zusammen mit einer Zeilenangabe
+-   "G" bzw. "geist" gibt den universellen Geist aus
 -   "v" bzw. "einzeln" bzw. "vielfache" bewirkt in Ausgabe-Befehlen außer "reta", dass deren Zeilenangaben z.B. 7 nicht nur Zeile 7 meinen, sondern alle vielfacher dieser Zeilengaben auch, also auch 14,21, usw.
 -   "einzeln" ist bei Kurzbefehlen der Standard: Dass Zeilenangaben nicht Vielfache meinen, sondern einzelne Zeilen.
 -   "mond" gibt, zusammen mit einer Zeilenangabe, Informationen über Gestirne aus: wie Monde, Planeten, Sonnen
