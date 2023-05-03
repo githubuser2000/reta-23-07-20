@@ -460,7 +460,7 @@ def isPrimMultiple(isIt: int, multiples1: list, dontReturnList=True):
 
     @type isIt: int
     @param isIt: die Zahl die zu untersuchen ist
-    @type multiples1: list[int]
+    @type multiples1: list
     @param multiple1: Liste an Vielfachern von denen einer zutreffen muss, bei [2,3] ist es True, wenn es das zweifache oder dreifache einer Primzahl ist
     @type dontReturnList: bool
     @param dontReturnList: wenn ja, dann wird nur ausgegeben ob es ein Vielfacher einer Primzahl ist, ansonsten die Liste für welche Vielfacher es zutrifft

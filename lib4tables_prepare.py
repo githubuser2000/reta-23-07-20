@@ -188,7 +188,7 @@ class Prepare:
         @param text: Der Text dessen Zeilen umbgebrochen werden sollen
         @type lenght: int
         @param lenght: ab welcher Zeilenlänge umgebrochen werden soll
-        @rtype: list[str]
+        @rtype: list
         @return: Liste aus umgebrochenen Teilstrings
         """
         if len(text) > length and length != 0:
@@ -904,13 +904,13 @@ class Prepare:
 
         @type cell: str
         @param cell: Text, für in Teilstrings, korrekter Zeilenumbruch!
-        @type newLines: list[str]
+        @type newLines: list
         @param newLines: voran gegangene Versuche dieser Liste aus Strings
         @type certaintextwidth: int
         @param certaintextwidth: an dieser Stelle Zeilenumbruch
         @type t: int
         @param t: welcher Versuch einer Liste aus strings soll von dieser Funktion zurück gegeben werden
-        @rtype: list[str]
+        @rtype: list
         @return: Liste aus Strings mit korrektem Zeilenumbruch
         """
         # certaintextwidth -= 1

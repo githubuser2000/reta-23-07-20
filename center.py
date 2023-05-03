@@ -328,7 +328,7 @@ def unique_everseen(iterable, key=None):
 # @jit(nopython=True, parallel=True, cache=True)
 def BereichToNumbers(MehrereBereiche: str) -> set:
 
-    Bereiche: list[str] = MehrereBereiche.split(",")
+    Bereiche: list = MehrereBereiche.split(",")
     dazu: set[int] = set()
     hinfort: set[int] = set()
     menge: Optional[set[int]]
@@ -345,7 +345,7 @@ def BereichToNumbers(MehrereBereiche: str) -> set:
         if menge is not None:
             if EinBereich.isdecimal():
                 EinBereich = EinBereich + "-" + EinBereich
-            BereichCouple: list[str] = EinBereich.split("-")
+            BereichCouple: list = EinBereich.split("-")
             if (
                 len(BereichCouple) == 2
                 and BereichCouple[0].isdecimal()
@@ -370,7 +370,7 @@ def BereichToNumbers2(
     if not vielfache and maxZahl == 0:
         maxZahl = float("inf")
 
-    Bereiche: list[str] = MehrereBereiche.split(",")
+    Bereiche: list = MehrereBereiche.split(",")
     dazu: set[int] = set()
     hinfort: set[int] = set()
     menge: Optional[set[int]]
@@ -403,14 +403,14 @@ def BereichToNumbers2_EinBereich(EinBereich, dazu, hinfort, maxZahl, vielfache):
         menge = None
     around = []
     if menge is not None:
-        BereichTuple2: list[str] = EinBereich.split("+")
+        BereichTuple2: list = EinBereich.split("+")
         if EinBereich.isdecimal():
             EinBereich = EinBereich + "-" + EinBereich
         elif len(BereichTuple2) > 0 and BereichTuple2[0].isdecimal():
             EinBereich = BereichTuple2[0] + "-" + BereichTuple2[0]
             if len(BereichTuple2) > 1:
                 EinBereich += "+" + "+".join(BereichTuple2[1:])
-        BereichCouple: list[str] = EinBereich.split("-")
+        BereichCouple: list = EinBereich.split("-")
 
         BereichToNumbers2_EinBereich_Menge(
             BereichCouple, around, maxZahl, menge, vielfache
