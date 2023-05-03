@@ -327,18 +327,23 @@ def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
                 if fullBlockIsZahlenbereichAndBruch_Z:
                     s_ = s_b
                     buchst = set(s_[:n]) & {
-                        i18n.befehle2["a"],
-                        i18n.befehle2["t"],
-                        i18n.befehle2["v"],
-                        i18n.befehle2["u"],
-                        i18n.befehle2["p"],
-                        i18n.befehle2["r"],
-                        i18n.befehle2["w"],
-                        i18n.befehle2["s"],
-                        i18n.befehle2["o"],
-                        i18n.befehle2["S"],
-                        i18n.befehle2["e"],
-                        # i18n.befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"],
+                        i18n.befehle2[var]
+                        for var in i18n.befehle2.keys()
+                        if len(var) == 1
+                        # i18n.befehle2["G"],
+                        # i18n.befehle2["E"],
+                        # i18n.befehle2["a"],
+                        # i18n.befehle2["t"],
+                        # i18n.befehle2["v"],
+                        # i18n.befehle2["u"],
+                        # i18n.befehle2["p"],
+                        # i18n.befehle2["r"],
+                        # i18n.befehle2["w"],
+                        # i18n.befehle2["s"],
+                        # i18n.befehle2["o"],
+                        # i18n.befehle2["S"],
+                        # i18n.befehle2["e"],
+                        ## i18n.befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"],
                     }
                     setTextLenIs1 = (
                         len(

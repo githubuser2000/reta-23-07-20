@@ -38,9 +38,11 @@ weight = -7
 -   Zeilenangaben sind z.B. eine Zahl oder ein Zahlenbereich wie 2-5 oder diese Dinge mit Komma getrennt wie z.B. 1,3-5,20
     Für den Befehl "u" und  "a", also "universum" und "absicht", kann man auch Brüche angeben, wie 2/3,4/5,1/2.
 -   Diese Ausgabe-Befehle lassen sich in einer Eingabe-Zeile kombinieren.
--   "a" bzw. "absicht" bzw. "motive" oder "motiv" gibt die eine Spalte der intrinsischen Absichten der Sternpolygone aus, zusammen mit einer Zeilenangabe
--   "u" bzw. "universum" gibt die eine Spalte der universelllen Strukturalien bzw. Transzendentalien der Sternpolygone aus, zusammen mit einer Zeilenangabe
+-   "a" bzw. "absicht" bzw. "motive" oder "motiv" gibt die eine Spalte der intrinsischen Absichten der Sternpolygone aus, zusammen mit einer Zeilenangabe für n oder 1/n aus, z.B. a1/2
+-   "u" bzw. "universum" gibt die eine Spalte der universellen Strukturalien bzw. Transzendentalien der Sternpolygone aus, zusammen mit einer Zeilenangabe, für n oder 1/n aus, z.B. u1/2
 -   "t" bzw. "thomas" gibt die eine Spalte des Thomasevangliums aus was den intrinsischen Absichten der Sternpolygone in kodierter Form entspricht, zusammen mit einer Zeilenangabe
+-   "G" bzw. "geist" gibt den universellen Geist aus, für n oder 1/n aus, z.B. G1/2
+-   "E" bzw. "emotion" gibt die Gefühle für n oder 1/n aus, z.B. E1/2
 -   "v" bzw. "einzeln" bzw. "vielfache" bewirkt in Ausgabe-Befehlen außer "reta", dass deren Zeilenangaben z.B. 7 nicht nur Zeile 7 meinen, sondern alle vielfacher dieser Zeilengaben auch, also auch 14,21, usw.
 -   "einzeln" ist bei Kurzbefehlen der Standard: Dass Zeilenangaben nicht Vielfache meinen, sondern einzelne Zeilen.
 -   "mond" gibt, zusammen mit einer Zeilenangabe, Informationen über Gestirne aus: wie Monde, Planeten, Sonnen

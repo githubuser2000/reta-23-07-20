@@ -53,6 +53,10 @@ class TXT(object):
     _stextSet = {}
     _befehlDavor = ""
 
+    def has(self, hasSet: set) -> bool:
+        """tells if any values of given set exists in TXT.menge"""
+        return len(hasSet & self._stextSet) > 0
+
     def __init__(self, txt=""):
         self.text = txt
 
@@ -121,8 +125,8 @@ class TXT(object):
         self._befehlDavor = value
 
 
-def anotherOberesMaximum(c, maxNum):
-    maximizing = list(BereichToNumbers2(c, False, 0))
+def anotherOberesMaximum(zahlenBereichC, maxNum):
+    maximizing = list(BereichToNumbers2(zahlenBereichC, False, 0))
     if len(maximizing) > 0:
         maximizing.sort()
         maxNum2 = maximizing[-1]
@@ -237,7 +241,7 @@ def bruchSpalt(text) -> list:
                 countNumber = 0
         flag: bool = False
         allVergleich: list[bool] = [
-            zahl > c for c, zahl in zip(keineZahl.keys(), zahl.keys())
+            zahl2 > zahl1 for zahl1, zahl2 in zip(keineZahl.keys(), zahl.keys())
         ]
         """bool Liste wann es keine ist und wann eine zahl im string"""
         zahlSet: set = set(zahl.keys())
@@ -513,7 +517,7 @@ def PromptScope():
     nochAusageben = ""
     ketten = []
     while len(Txt.menge & befehleBeenden) == 0:
-        warBefehl = False
+        cmd_gave_output = False
         promptModeLast = promptMode
 
         if promptMode not in (
@@ -631,7 +635,7 @@ def PromptScope():
         (
             IsPureOnlyReTaCmd,
             brueche,
-            c,
+            zahlenBereichC,
             ketten,
             maxNum,
             Txt.liste,
@@ -649,11 +653,11 @@ def PromptScope():
             IsPureOnlyReTaCmd,
             befehleBeenden,
             brueche,
-            c,
+            zahlenBereichC,
             ketten,
             loggingSwitch,
             maxNum,
-            warBefehl,
+            cmd_gave_output,
             zahlenAngaben_,
             ifKurzKurz,
             nurEinBefehl,
@@ -665,11 +669,11 @@ def PromptGrosseAusgabe(
     IsPureOnlyReTaCmd,
     befehleBeenden,
     brueche,
-    c,
+    zahlenBereichC,
     ketten,
     loggingSwitch,
     maxNum,
-    warBefehl,
+    cmd_gave_output,
     zahlenAngaben_,
     ifKurzKurz,
     nurEinBefehl,
@@ -689,14 +693,14 @@ def PromptGrosseAusgabe(
     if not IsPureOnlyReTaCmd:
         (
             bruch_GanzZahlReziproke,
-            c,
+            zahlenBereichC,
             zahlenReiheKeineWteiler,
             fullBlockIsZahlenbereichAndBruch,
             rangesBruecheDict,
             EsGabzahlenAngaben,
             rangesBruecheDictReverse,
             Txt.liste,
-        ) = bruchBereichsManagementAndWbefehl(c, Txt.liste, zahlenAngaben_)
+        ) = bruchBereichsManagementAndWbefehl(zahlenBereichC, Txt.liste, zahlenAngaben_)
     if i18n.befehle2["mulpri"] in Txt.listeE or i18n.befehle2["p"] in Txt.listeE:
         Txt.liste += [i18n.befehle2["multis"], i18n.befehle2["prim"]]
 
@@ -720,7 +724,7 @@ def PromptGrosseAusgabe(
     if (
         i18n.befehle2["abc"] in Txt.listeE or i18n.befehle2["abcd"] in Txt.listeE
     ) and len(Txt.liste) == 2:
-        warBefehl = True
+        cmd_gave_output = True
         buchstabe: str
         if (
             Txt.liste[0] == i18n.befehle2["abc"]
@@ -740,14 +744,14 @@ def PromptGrosseAusgabe(
             )
         )
     if len({i18n.befehle2["befehle"]} & Txt.mengeE) > 0:
-        warBefehl = True
+        cmd_gave_output = True
         print("{}: {}".format(i18nRP.befehleWort["Befehle"], str(befehle)[1:-1]))
     if len({i18n.befehle2["help"], i18n.befehle2["hilfe"]} & Txt.mengeE) > 0 or (
         i18n.befehle2["h"] in Txt.listeE
         and i18n.befehle2["abc"] not in Txt.listeE
         and i18n.befehle2["abcd"] not in Txt.listeE
     ):
-        warBefehl = True
+        cmd_gave_output = True
         retaPromptHilfe()
     bedingungZahl, bedingungBrueche = (
         EsGabzahlenAngaben,
@@ -755,7 +759,7 @@ def PromptGrosseAusgabe(
         or len(rangesBruecheDictReverse) > 0,
     )
     if IsPureOnlyReTaCmd:
-        warBefehl = True
+        cmd_gave_output = True
         import reta
 
         if (
@@ -769,7 +773,12 @@ def PromptGrosseAusgabe(
         reta.Program(Txt.liste)
 
     zeiln1, zeiln2, zeiln3, zeiln4 = zeiln1234create(
-        Txt, bedingungZahl, bruch_GanzZahlReziproke, c, maxNum, zahlenReiheKeineWteiler
+        Txt,
+        bedingungZahl,
+        bruch_GanzZahlReziproke,
+        zahlenBereichC,
+        maxNum,
+        zahlenReiheKeineWteiler,
     )
 
     if bedingungZahl:
@@ -778,7 +787,7 @@ def PromptGrosseAusgabe(
             and i18n.befehle2["abc"] not in Txt.listeE
             and i18n.befehle2["abcd"] not in Txt.listeE
         ):
-            warBefehl = True
+            cmd_gave_output = True
             retaExecuteNprint(
                 ketten,
                 Txt.listeE,
@@ -797,7 +806,7 @@ def PromptGrosseAusgabe(
         and {"english", "englisch"} & Txt.menge != set()
         and sys.argv[0].split(os.sep)[-1] == "rpl"
     ):
-        warBefehl = True
+        cmd_gave_output = True
         sprachenWahl = "english"
         print("set to english")
         return loggingSwitch
@@ -842,60 +851,89 @@ def PromptGrosseAusgabe(
             i18nRP = i18n.retaPrompt
 
     if fullBlockIsZahlenbereichAndBruch and (bedingungZahl or bedingungBrueche):
-        if len(
-            {
-                i18n.befehle2["absicht"],
-                i18n.befehle2["absichten"],
-                i18n.befehle2["motiv"],
-                i18n.befehle2["motive"],
-            }
-            & Txt.mengeE
-        ) > 0 or (
-            ((i18n.befehle2["a"] in Txt.listeE) != (i18n.befehle2["mo"] in Txt.listeE))
-            and i18n.befehle2["abc"] not in Txt.listeE
-            and i18n.befehle2["abcd"] not in Txt.listeE
-        ):
-            if len(c) > 0:
-                warBefehl = True
-                retaExecuteNprint(
-                    ketten,
-                    Txt.listeE,
-                    zeiln1,
-                    zeiln2,
-                    [
-                        "".join(
-                            (
-                                "--",
-                                i18n.ParametersMain.menschliches[0],
-                                "=",
-                                i18n.motivationWort,
-                            )
-                        )
-                    ],
-                    "1",
+        was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
+            Txt.has({i18n.befehle2["emotion"], i18n.befehle2["E"]}),
+            [
+                "".join(
+                    (
+                        "--",
+                        i18n.ParametersMain.grundstrukturen[0],
+                        "=",
+                        i18n.emotionWort,
+                    )
                 )
-            if (
-                len(bruch_GanzZahlReziproke) > 0
-                and textHatZiffer(bruch_GanzZahlReziproke)
-                and zeiln3 != ""
-            ):
-                warBefehl = True
-                retaExecuteNprint(
-                    ketten,
-                    Txt.listeE,
-                    zeiln3,
-                    zeiln4,
-                    [
+            ],
+            None,
+            ("1,2", "3,4"),
+            Txt,
+            bruch_GanzZahlReziproke,
+            zahlenBereichC,
+            ketten,
+            cmd_gave_output,
+            zeiln1,
+            zeiln2,
+            zeiln3,
+            zeiln4,
+        )
+        was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
+            Txt.has({i18n.befehle2["geist"], i18n.befehle2["G"]}),
+            [
+                "".join(
+                    (
+                        "--",
+                        i18n.ParametersMain.grundstrukturen[0],
+                        "=",
+                        i18n.geistWort,
+                    )
+                )
+            ],
+            None,
+            ("3", "4"),
+            Txt,
+            bruch_GanzZahlReziproke,
+            zahlenBereichC,
+            ketten,
+            cmd_gave_output,
+            zeiln1,
+            zeiln2,
+            zeiln3,
+            zeiln4,
+        )
+        was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
+            Txt.has(
+                {
+                    i18n.befehle2["absicht"],
+                    i18n.befehle2["absichten"],
+                    i18n.befehle2["motiv"],
+                    i18n.befehle2["motive"],
+                    i18n.befehle2["a"],
+                }
+            ),
+            [
+                "".join(
+                    (
                         "--",
                         i18n.ParametersMain.menschliches[0],
                         "=",
                         i18n.motivationWort,
-                    ],
-                    "3",
+                    )
                 )
-
+            ],
+            None,
+            ("1", "3"),
+            Txt,
+            bruch_GanzZahlReziproke,
+            zahlenBereichC,
+            ketten,
+            cmd_gave_output,
+            zeiln1,
+            zeiln2,
+            zeiln3,
+            zeiln4,
+        )
+        if was_n_1proN_cmd:
             if len(rangesBruecheDict) > 0:
-                warBefehl = True
+                cmd_gave_output = True
                 for nenner, zaehler in rangesBruecheDict.items():
                     retaExecuteNprint(
                         ketten,
@@ -916,7 +954,7 @@ def PromptGrosseAusgabe(
                         "2",
                     )
             elif len(rangesBruecheDictReverse) > 0:
-                warBefehl = True
+                cmd_gave_output = True
                 for nenner, zaehler in rangesBruecheDictReverse.items():
                     retaExecuteNprint(
                         ketten,
@@ -945,8 +983,8 @@ def PromptGrosseAusgabe(
                 eigR += [aa[len(i18n.EIGS_N_R[0]) :]]
 
         if len(eigN) > 0:
-            if len(c) > 0:
-                warBefehl = True
+            if len(zahlenBereichC) > 0:
+                cmd_gave_output = True
                 retaExecuteNprint(
                     ketten,
                     Txt.listeE,
@@ -957,7 +995,7 @@ def PromptGrosseAusgabe(
                 )
 
         if len(eigR) > 0:
-            warBefehl = True
+            cmd_gave_output = True
             # zeilenAusReziprokenDazu = ",".join(
             #    [
             #        bruch.split("/")[0]
@@ -974,11 +1012,11 @@ def PromptGrosseAusgabe(
             #    zeiln2 += (
             #        "," if zeiln2[-1].isdecimal() else ""
             #    ) + zeilenAusReziprokenDazu
-            cNeu = c + "," + bruch_GanzZahlReziproke
-            x("CNEU", cNeu)
-            cNeu = cNeu.replace(",,", ",")
-            cNeu = cNeu.strip(",")
-            x("CNEU", cNeu)
+            ZahlenAngabenCneu = zahlenBereichC + "," + bruch_GanzZahlReziproke
+            x("CNEU", ZahlenAngabenCneu)
+            ZahlenAngabenCneu = ZahlenAngabenCneu.replace(",,", ",")
+            ZahlenAngabenCneu = ZahlenAngabenCneu.strip(",")
+            x("CNEU", ZahlenAngabenCneu)
 
             TxtNeu = deepcopy(Txt)
             TxtNeu.text += " " + bruch_GanzZahlReziproke
@@ -1003,7 +1041,7 @@ def PromptGrosseAusgabe(
             #        zahlenReiheKeineWteiler,
             #    ),
             # )
-            if len(cNeu) > 0:
+            if len(ZahlenAngabenCneu) > 0:
                 retaExecuteNprint(
                     ketten + ["-" + i18n.hauptForNeben["zeilen"], zeiln1, zeiln2],
                     Txt.listeE,
@@ -1012,60 +1050,44 @@ def PromptGrosseAusgabe(
                     ["".join(("--", i18n.konzeptE["konzept2"], "=", (",".join(eigR))))],
                     None,
                 )
-            del cNeu
-
-        if len({i18n.befehle2["universum"]} & Txt.mengeE) > 0 or (
-            i18n.befehle2["u"] in Txt.listeE
-            and i18n.befehle2["abc"] not in Txt.listeE
-            and i18n.befehle2["abcd"] not in Txt.listeE
-        ):
-            if len(c) > 0:
-                warBefehl = True
-                retaExecuteNprint(
-                    ketten,
-                    Txt.listeE,
-                    zeiln1,
-                    zeiln2,
-                    [
-                        "".join(
-                            (
-                                "--",
-                                i18n.ParametersMain.universum[0],
-                                "=",
-                                i18n.transzendentalienWort,
-                            )
-                        )
-                    ],
-                    "1",
+            del ZahlenAngabenCneu
+        was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
+            Txt.has({i18n.befehle2["universum"], i18n.befehle2["u"]}),
+            [
+                "".join(
+                    (
+                        "--",
+                        i18n.ParametersMain.universum[0],
+                        "=",
+                        i18n.transzendentalienWort,
+                    )
                 )
-
-            if (
-                len(bruch_GanzZahlReziproke) > 0
-                and textHatZiffer(bruch_GanzZahlReziproke)
-                and zeiln3 != ""
-            ):
-                warBefehl = True
-                retaExecuteNprint(
-                    ketten,
-                    Txt.listeE,
-                    zeiln3,
-                    zeiln4,
-                    [
-                        "".join(
-                            (
-                                "--",
-                                i18n.ParametersMain.universum[0],
-                                "=",
-                                i18n.transzendentaliereziprokeWort,
-                            )
-                        )
-                    ],
-                    "1",
+            ],
+            [
+                "".join(
+                    (
+                        "--",
+                        i18n.ParametersMain.universum[0],
+                        "=",
+                        i18n.transzendentaliereziprokeWort,
+                    )
                 )
-
+            ],
+            ("1", "1"),
+            Txt,
+            bruch_GanzZahlReziproke,
+            zahlenBereichC,
+            ketten,
+            cmd_gave_output,
+            zeiln1,
+            zeiln2,
+            zeiln3,
+            zeiln4,
+        )
+        if was_n_1proN_cmd:
             nennerZaehlerGleich = []
             if len(rangesBruecheDict) > 0:
-                warBefehl = True
+                cmd_gave_output = True
                 for nenner, zaehler in rangesBruecheDict.items():
                     hierBereich = ",".join(zaehler)
                     retaExecuteNprint(
@@ -1091,7 +1113,7 @@ def PromptGrosseAusgabe(
                     )
 
             elif len(rangesBruecheDictReverse) > 0:
-                warBefehl = True
+                cmd_gave_output = True
                 for nenner, zaehler in rangesBruecheDictReverse.items():
                     hierBereich = ",".join(zaehler)
                     retaExecuteNprint(
@@ -1116,7 +1138,7 @@ def PromptGrosseAusgabe(
                         hierBereich, nenner, nennerZaehlerGleich
                     )
             if len(nennerZaehlerGleich) != 0:
-                warBefehl = True
+                cmd_gave_output = True
                 nennerZaehlerGleich = set(nennerZaehlerGleich)
                 nennerZaehlerGleich = ",".join(nennerZaehlerGleich)
                 retaExecuteNprint(
@@ -1145,7 +1167,7 @@ def PromptGrosseAusgabe(
             )
             > 0
         ):
-            warBefehl = True
+            cmd_gave_output = True
 
             for arg in BereichToNumbers2(zahlenReiheKeineWteiler):
                 print(
@@ -1164,7 +1186,7 @@ def PromptGrosseAusgabe(
             > 0
         ):
             for arg in BereichToNumbers2(zahlenReiheKeineWteiler):
-                warBefehl = True
+                cmd_gave_output = True
                 print(
                     str(arg)
                     + ": "
@@ -1174,11 +1196,10 @@ def PromptGrosseAusgabe(
                 )
 
         if len({i18n.befehle2["multis"]} & Txt.mengeE) > 0 or (
-            "mu" in Txt.listeE
-            and i18n.befehle2["abc"] not in Txt.listeE
+            i18n.befehle2["abc"] not in Txt.listeE
             and i18n.befehle2["abcd"] not in Txt.listeE
         ):
-            warBefehl = True
+            cmd_gave_output = True
 
             listeStrWerte = BereichToNumbers2(zahlenReiheKeineWteiler)
             mult(listeStrWerte)
@@ -1186,7 +1207,7 @@ def PromptGrosseAusgabe(
             # externCommand(i18n.befehle2["prim"], c)
 
         if len({i18n.befehle2["mond"]} & Txt.mengeE) > 0:
-            warBefehl = True
+            cmd_gave_output = True
             retaExecuteNprint(
                 ketten,
                 Txt.listeE,
@@ -1206,10 +1227,10 @@ def PromptGrosseAusgabe(
             )
 
         if len({i18n.befehle2["modulo"]} & Txt.mengeE) > 0:
-            warBefehl = True
-            moduloA([str(num) for num in BereichToNumbers2(c)])
+            cmd_gave_output = True
+            moduloA([str(num) for num in BereichToNumbers2(zahlenBereichC)])
         if len({i18n.befehle2["alles"]} & Txt.mengeE) > 0:
-            warBefehl = True
+            cmd_gave_output = True
             retaExecuteNprint(
                 ketten,
                 Txt.listeE,
@@ -1220,12 +1241,12 @@ def PromptGrosseAusgabe(
             )
 
         if len({i18n.befehle2["primzahlkreuz"]} & Txt.mengeE) > 0:
-            warBefehl = True
+            cmd_gave_output = True
             retaExecuteNprint(
                 ketten,
                 Txt.listeE,
                 zeiln1,
-                anotherOberesMaximum(c, 1028),
+                anotherOberesMaximum(zahlenBereichC, 1028),
                 [
                     "".join(
                         (
@@ -1245,7 +1266,7 @@ def PromptGrosseAusgabe(
             and i18n.befehle2["abc"] not in Txt.listeE
             and i18n.befehle2["abcd"] not in Txt.listeE
         ):
-            warBefehl = True
+            cmd_gave_output = True
             retaExecuteNprint(
                 ketten,
                 Txt.listeE,
@@ -1270,7 +1291,7 @@ def PromptGrosseAusgabe(
             and i18n.befehle2["abc"] not in Txt.listeE
             and i18n.befehle2["abcd"] not in Txt.listeE
         ):
-            warBefehl = True
+            cmd_gave_output = True
             import reta
 
             befehle15 = []
@@ -1308,26 +1329,79 @@ def PromptGrosseAusgabe(
                 flag = True
                 bereich = s
         if flag:
-            warBefehl = True
+            cmd_gave_output = True
             zahl = int(Txt.liste[zahlNum])
             zeige = {b: abs(b - zahl) for b in BereichToNumbers2(bereich)}
             print(str(zeige)[1:-1])
     elif i18n.befehle2["abstand"] in Txt.liste:
         print(i18nRP.abstandMeldung)
 
-    loggingSwitch, warBefehl = PromptVonGrosserAusgabeSonderBefehlAusgaben(
-        loggingSwitch, Txt, warBefehl
+    loggingSwitch, cmd_gave_output = PromptVonGrosserAusgabeSonderBefehlAusgaben(
+        loggingSwitch, Txt, cmd_gave_output
     )
     if len(nurEinBefehl) > 0:
         Txt.liste = list(befehleBeenden)
         nurEinBefehl = " ".join(befehleBeenden)
         exit()
-    if not warBefehl and len(Txt.liste) > 0 and Txt.listeE[0] not in befehleBeenden:
+    if (
+        not cmd_gave_output
+        and len(Txt.liste) > 0
+        and Txt.listeE[0] not in befehleBeenden
+    ):
         if len(Txt.menge & set(befehle)) > 0:
             print(i18nRP.out1Saetze[0] + " ".join(Txt.listeE) + i18nRP.out1Saetze[1])
         else:
             print(i18nRP.out2Satz.format(" ".join(Txt.listeE)))
     return loggingSwitch
+
+
+def retaCmdAbstraction_n_and_1pron(
+    condition,
+    paras,
+    paras2,
+    selectedCols,
+    Txt,
+    bruch_GanzZahlReziproke,
+    zahlenBereichC,
+    ketten,
+    cmd_gave_output,
+    zeiln1,
+    zeiln2,
+    zeiln3,
+    zeiln4,
+):
+    """abstraction for commands giving results forr n and 1/n"""
+    was_n_1proN_cmd = False
+    if condition and (
+        i18n.befehle2["abc"] not in Txt.listeE
+        and i18n.befehle2["abcd"] not in Txt.listeE
+    ):
+        was_n_1proN_cmd = True
+        if len(zahlenBereichC) > 0:
+            cmd_gave_output = True
+            retaExecuteNprint(
+                ketten,
+                Txt.listeE,
+                zeiln1,
+                zeiln2,
+                paras,
+                selectedCols[0],
+            )
+        if (
+            len(bruch_GanzZahlReziproke) > 0
+            and textHatZiffer(bruch_GanzZahlReziproke)
+            and zeiln3 != ""
+        ):
+            cmd_gave_output = True
+            retaExecuteNprint(
+                ketten,
+                Txt.listeE,
+                zeiln3,
+                zeiln4,
+                paras if paras2 in [None, [], ()] else paras2,
+                selectedCols[1],
+            )
+    return was_n_1proN_cmd, cmd_gave_output
 
 
 def ifPrintCmdAgain(Txt):
@@ -1339,7 +1413,12 @@ def ifPrintCmdAgain(Txt):
 
 
 def zeiln1234create(
-    Txt, bedingungZahl, bruch_GanzZahlReziproke, c, maxNum, zahlenReiheKeineWteiler
+    Txt,
+    bedingungZahl,
+    bruch_GanzZahlReziproke,
+    zahlenBereichC,
+    maxNum,
+    zahlenReiheKeineWteiler,
 ):
     if len(bruch_GanzZahlReziproke) > 0 and textHatZiffer(bruch_GanzZahlReziproke):
         zeiln3 = (
@@ -1351,7 +1430,7 @@ def zeiln1234create(
         zeiln3 = "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "=0"))
         zeiln4 = ""
     if bedingungZahl:
-        zahlenBereiche = str(c).strip()
+        zahlenBereiche = str(zahlenBereichC).strip()
         if textHatZiffer(zahlenBereiche):
             if i18n.befehle2["einzeln"] not in Txt.listeE and (
                 (i18n.befehle2["vielfache"] in Txt.listeE)
@@ -1389,7 +1468,7 @@ def zeiln1234create(
                     + zahlenBereiche
                 )
 
-                zeiln2 = anotherOberesMaximum(c, maxNum)
+                zeiln2 = anotherOberesMaximum(zahlenBereichC, maxNum)
         else:
             zeiln1 = "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "=0"))
             zeiln2 = ""
@@ -1462,7 +1541,7 @@ def findEqualNennerZaehler(hierBereich, nenner, nennerZaehlerGleich):
     return nennerZaehlerGleich
 
 
-def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
+def bruchBereichsManagementAndWbefehl(zahlenBereichC, stext, zahlenAngaben_):
     bruch_GanzZahlReziproke = []
     bruch_GanzZahlReziprokeAbzug = []
     bruch_KeinGanzZahlReziproke = {}
@@ -1826,11 +1905,11 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
                     )
                 ]
             )
-            c: str = ",".join(teiler(zahlenAngaben_mehrereStr)[0])
+            zahlenBereichC: str = ",".join(teiler(zahlenAngaben_mehrereStr)[0])
             if len(zahlenReiheKeineWteiler) > 1:
-                c += "," + zahlenReiheKeineWteiler
+                zahlenBereichC += "," + zahlenReiheKeineWteiler
         else:
-            c = zahlenAngaben_mehrereStr
+            zahlenBereichC = zahlenAngaben_mehrereStr
 
     try:
         zahlenReiheKeineWteiler
@@ -1839,7 +1918,7 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
 
     return (
         bruch_GanzZahlReziproke,
-        c,
+        zahlenBereichC,
         zahlenReiheKeineWteiler,
         fullBlockIsZahlenbereichAndBruch,
         rangesBruecheDict,
@@ -1849,23 +1928,23 @@ def bruchBereichsManagementAndWbefehl(c, stext, zahlenAngaben_):
     )
 
 
-def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, Txt, warBefehl):
+def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, Txt, cmd_gave_output):
     if len(Txt.liste) > 0 and Txt.liste[0] in (i18n.befehle2["shell"]):
-        warBefehl = True
+        cmd_gave_output = True
         try:
             process = subprocess.Popen([*Txt.liste[1:]])
             process.wait()
         except:
             pass
     if len(Txt.liste) > 0 and i18n.befehle2["python"] == Txt.liste[0]:
-        warBefehl = True
+        cmd_gave_output = True
         try:
             process = subprocess.Popen(["python3", "-c", " ".join(Txt.liste[1:])])
             process.wait()
         except:
             pass
     if len(Txt.liste) > 0 and i18n.befehle2["math"] == Txt.liste[0]:
-        warBefehl = True
+        cmd_gave_output = True
         for st in "".join(Txt.liste[1:2]).split(","):
             try:
                 process = subprocess.Popen(["python3", "-c", "print(" + st + ")"])
@@ -1873,12 +1952,12 @@ def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, Txt, warBefehl):
             except:
                 pass
     if i18n.befehle2["loggen"] in Txt.liste:
-        warBefehl = True
+        cmd_gave_output = True
         loggingSwitch = True
     elif i18n.befehle2["nichtloggen"] in Txt.liste:
-        warBefehl = True
+        cmd_gave_output = True
         loggingSwitch = False
-    return loggingSwitch, warBefehl
+    return loggingSwitch, cmd_gave_output
 
 
 def verdreheWoReTaBefehl(text1: str, text2: str, text3: str, PromptMode: PromptModus):
@@ -2002,7 +2081,7 @@ def promptVorbereitungGrosseAusgabe(
     IsPureOnlyReTaCmd: bool = len(Txt.liste) > 0 and Txt.liste[0] == "reta"
     brueche = []
     zahlenAngaben_ = []
-    c = ""
+    zahlenAngabenC = ""
     if len(Txt.menge & befehleBeenden) > 0:
         Txt.liste = [tuple(befehleBeenden)[0]]
         exit()
@@ -2025,7 +2104,7 @@ def promptVorbereitungGrosseAusgabe(
     return (
         IsPureOnlyReTaCmd,
         brueche,
-        c,
+        zahlenAngabenC,
         ketten,
         maxNum,
         Txt.liste,
