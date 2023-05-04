@@ -53,6 +53,13 @@ class TXT(object):
     _stextSet = {}
     _befehlDavor = ""
 
+    def hasWithoutABC(self, hasSet: set) -> bool:
+        """tells if any values of given set exists in TXT.menge and command abc and abcd is not inside"""
+        return (
+            len(hasSet & self._stextSet) > 0
+            and len({"abc", "abcd"} & self._stextSet) == 0
+        )
+
     def has(self, hasSet: set) -> bool:
         """tells if any values of given set exists in TXT.menge"""
         return len(hasSet & self._stextSet) > 0
@@ -852,7 +859,7 @@ def PromptGrosseAusgabe(
 
     if fullBlockIsZahlenbereichAndBruch and (bedingungZahl or bedingungBrueche):
         was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
-            Txt.has({i18n.befehle2["emotion"], i18n.befehle2["E"]}),
+            Txt.hasWithoutABC({i18n.befehle2["emotion"], i18n.befehle2["E"]}),
             [
                 "".join(
                     (
@@ -876,7 +883,7 @@ def PromptGrosseAusgabe(
             zeiln4,
         )
         was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
-            Txt.has({i18n.befehle2["geist"], i18n.befehle2["G"]}),
+            Txt.hasWithoutABC({i18n.befehle2["geist"], i18n.befehle2["G"]}),
             [
                 "".join(
                     (
@@ -900,7 +907,7 @@ def PromptGrosseAusgabe(
             zeiln4,
         )
         was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
-            Txt.has(
+            Txt.hasWithoutABC(
                 {
                     i18n.befehle2["absicht"],
                     i18n.befehle2["absichten"],
@@ -1052,7 +1059,7 @@ def PromptGrosseAusgabe(
                 )
             del ZahlenAngabenCneu
         was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
-            Txt.has({i18n.befehle2["universum"], i18n.befehle2["u"]}),
+            Txt.hasWithoutABC({i18n.befehle2["universum"], i18n.befehle2["u"]}),
             [
                 "".join(
                     (
@@ -1178,13 +1185,7 @@ def PromptGrosseAusgabe(
                     .replace(", ", " ")
                 )
 
-        if (
-            len(
-                {i18n.befehle2["prim"], i18n.befehle2["primfaktorzerlegung"]}
-                & Txt.mengeE
-            )
-            > 0
-        ):
+        if Txt.hasWithoutABC({"prim", "primfaktorzerlegung"}):
             for arg in BereichToNumbers2(zahlenReiheKeineWteiler):
                 cmd_gave_output = True
                 print(
@@ -1195,10 +1196,7 @@ def PromptGrosseAusgabe(
                     .replace(", ", " ")
                 )
 
-        if len({i18n.befehle2["multis"]} & Txt.mengeE) > 0 or (
-            i18n.befehle2["abc"] not in Txt.listeE
-            and i18n.befehle2["abcd"] not in Txt.listeE
-        ):
+        if Txt.hasWithoutABC({"multis"}) > 0:
             cmd_gave_output = True
 
             listeStrWerte = BereichToNumbers2(zahlenReiheKeineWteiler)

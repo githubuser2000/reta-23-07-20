@@ -2320,7 +2320,7 @@ paraNdataMatrix: list = [
             _("modi"),
             _("sein"),
         ),
-        {234, 337},
+        {234, 337, 385, 387},
     ),
     (
         ParametersMain.menschliches,

@@ -57,7 +57,7 @@ weight = -7
 ###mathematical-output-commands {#mathematical-output-commands}
 
 -   "prime" or "prime factorization" outputs the prime factors of a given number.
--   "multis" or "mu" outputs all multiplications of two numbers that result in the specified number.
+-   "multis" outputs all multiplications of two numbers that result in the specified number.
 -   "abc" or "abcd" outputs, together with an indication of letters, which number corresponds to which letter.
 -   "p" or "mulpri" means that both commands are meant: "prim" and "multis".
 -   "modulo" outputs the remainders for divisions for a number.
