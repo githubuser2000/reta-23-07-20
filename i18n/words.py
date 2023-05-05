@@ -1422,7 +1422,7 @@ paraNdataMatrix: list = [
     (
         ParametersMain.universum,
         (_("Netzwerk"), _("netzwerk")),
-        {25, 386},
+        {25, 55, 386},
     ),
     (
         ParametersMain.universum,
