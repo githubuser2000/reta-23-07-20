@@ -416,6 +416,9 @@ assert all(
     [len(value) == 1 if len(key) == 1 else True for (key, value) in befehle2.items()]
 )
 
+assert len(befehle2.keys()) == len(set(befehle2.keys()))
+assert len(befehle2.values()) == len(set(befehle2.values()))
+
 # WICHTIG WICHTIG: die Befehle mit nur einem zeichen dürfen  nur ein Zeichen haben !!!!!!!
 befehle: list = list(befehle2.values())
 # ["15" + a for a in wahl15.keys()] + [
