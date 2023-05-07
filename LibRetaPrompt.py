@@ -112,6 +112,7 @@ ausgabeArt = list(i18n.ausgabeArt.values())
 # ausgabeArt = ["bbcode", "html", "csv", "shell", "markdown", "emacs"]
 
 wahl15 = i18n.wahl15
+wahl16 = i18n.wahl16
 # wahl15 = {
 #    #    "_": "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15)",
 #    "_15": "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15),Model_of_Hierarchical_Complexity,"
@@ -285,7 +286,7 @@ def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
     ifKurzKurz = False
     for s_ in tuple(deepcopy(stext)):
         s_m = s_
-        if s_[2:] not in wahl15 and s_ not in befehle and stext[0] != "reta":
+        if s_[3:] not in wahl15 and s_ not in befehle and stext[0] != "reta":
             textDazu = []
             nn: Optional[int] = 0
             for iii, s_3 in enumerate(s_[::-1]):

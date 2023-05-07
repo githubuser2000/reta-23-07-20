@@ -26,7 +26,7 @@ from LibRetaPrompt import (BereichToNumbers2, PromptModus,
                            gebrochenErlaubteZahlen, isReTaParameter,
                            notParameterValues, stextFromKleinKleinKleinBefehl,
                            verifyBruchNganzZahlBetweenCommas, verkuerze_dict,
-                           wahl15)
+                           wahl15, wahl16)
 from multis import mult
 # import reta
 from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
@@ -35,8 +35,10 @@ from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
 from word_completerAlx import WordCompleter
 
 i18nRP = i18n.retaPrompt
-wahl15["_"] = wahl15["_15"]
+wahl15[""] = wahl15["15"]
+wahl16[""] = wahl16["16"]
 befehle += ["15_"]
+befehle += ["16_"]
 befehleBeenden = i18nRP.befehleBeenden
 # befehleBeenden = {"ende", "exit", "quit", "q", ":q"}
 infoLog = False
@@ -1282,10 +1284,44 @@ def PromptGrosseAusgabe(
                 ],
                 None,
             )
-
         if (
             len(Txt.listeE) > 0
-            and any([token[:3] == "15_" for token in Txt.listeE])
+            and any(
+                [token[:3] == "16_" and token[:5] != "16_15" for token in Txt.listeE]
+            )
+            and i18n.befehle2["abc"] not in Txt.listeE
+            and i18n.befehle2["abcd"] not in Txt.listeE
+        ):
+            cmd_gave_output = True
+            import reta
+
+            befehle16 = []
+            for token in Txt.listeE:
+                if token[:3] == "16_":
+                    befehle16 += [wahl16[token[3:]]]
+            grundstruk = ",".join(befehle16)
+            retaExecuteNprint(
+                ketten,
+                Txt.listeE,
+                zeiln1,
+                zeiln2,
+                [
+                    "".join(
+                        (
+                            "--",
+                            i18n.ParametersMain.multiversum[0],
+                            "=",
+                            grundstruk,
+                        )
+                    )
+                ],
+                None,
+            )
+        if (
+            len(Txt.listeE) > 0
+            and any(
+                [token[:3] == "15_" or token[:5] == "16_15" for token in Txt.listeE]
+            )
             and i18n.befehle2["abc"] not in Txt.listeE
             and i18n.befehle2["abcd"] not in Txt.listeE
         ):
@@ -1295,7 +1331,11 @@ def PromptGrosseAusgabe(
             befehle15 = []
             for token in Txt.listeE:
                 if token[:3] == "15_":
-                    befehle15 += [wahl15[token[2:]]]
+                    befehle15 += [wahl15[token[3:]]]
+                if token == "16_15":
+                    befehle15 += [wahl15["15"]]
+                if token[:6] == "16_15_":
+                    befehle15 += [wahl15[token[6:]]]
             grundstruk = ",".join(befehle15)
             retaExecuteNprint(
                 ketten,

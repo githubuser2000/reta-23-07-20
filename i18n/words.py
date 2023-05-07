@@ -194,7 +194,10 @@ ausgabeArt: dict = {
     "markdown": _("markdown"),
     "emacs": _("emacs"),
 }
-
+wahl16Words: dict = {
+    "Multiversalien_(16)": _("Multiversalien_(16)"),
+    "Meta-Physik-Teilchen_(1)": _("Meta-Physik-Teilchen_(1)"),
+}
 
 wahl15Words: dict = {
     "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15),Model_of_Hierarchical_Complexity,"
@@ -274,10 +277,9 @@ wahl15Words: dict = {
     ),
     "Maßnahmen_39": _("Maßnahmen_(39)"),
 }
-
 wahl15: dict = {
     #    "_": _("Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15)"),
-    "_15": ",".join(
+    "15": ",".join(
         (
             _("Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15)"),
             _("Geist_(15)"),
@@ -285,63 +287,66 @@ wahl15: dict = {
             Primzahlkreuz_pro_contra_strs_Fkt[1],
         )
     ),
-    "_2": _("Konkreta_und_Focus_(2)"),
-    "_5": _("Impulse_(5)"),
-    "_7": _("Gefühle_(7)"),
-    "_8": _("Modus_und_Sein_(8)"),
-    "_10": _("Wirklichkeiten_Wahrheit_Wahrnehmung_(10)"),
-    "_12": ",".join((_("Meta-Systeme_(12)"), _("Ordnung_und_Filterung_12_und_1pro12"))),
-    "_13": _("Paradigmen_sind_Absichten_(13)"),
-    "_17": _("Gedanken_sind_Positionen_(17)"),
-    "_18": _("Verbundenheiten_(18)"),
-    "_6": _("Triebe_und_Bedürfnisse_(6)"),
-    "_9": _("Lust_(9)"),
-    "_3": _("Reflexe_(3),Existenzialien_(3)"),
-    "_13_6": _("Absicht_6_ist_Vorteilsmaximierung"),
-    "_13_7": _("Absicht_7_ist_Selbstlosigkeit"),
-    "_13_10": _("Absicht_10_ist_Wirklichkeit_erkennen"),
-    "_13_17": _("Absicht_17_ist_zu_meinen"),
-    "_10_4": _("Zeit_(4)_als_Wirklichkeit"),
-    "_16": _("Funktionen_Vorstellungen_(16)"),
-    "_4": _("Achtung_(4)"),
-    "_13_1pro8": _("Absicht_1/8"),
-    "_13_1pro6": _("Absicht_1/6_ist_Reinigung_und_Klarheit"),
-    "_1pro15": _("Reflektion_und_Kategorien_(1/15)"),
-    "_1": _("Regungen_(1)"),
-    "_30": _("Energie_und_universelle_Eigenschaften_(30)"),
-    "_14": _("Stimmungen_Kombinationen_(14)"),
-    "_20": _("Klassen_(20)"),
-    "_37": _("Empathie_(37)"),
-    "_31": _("Garben_und_Verhalten_nachfühlen(31)"),
-    "_11": _("Verhalten_(11)"),
-    "_5_10": _("Bedeutung_(10)"),
-    "_17_6": _("Themen_(6)"),
-    "_17_6_10mit4": _("Optimierung_(10)"),
-    "_36": _("Attraktionen_(36)"),
-    "_13_16": _("Absicht_16_ist_zu_genügen"),
-    "_18_7": _("Liebe_(7)"),
-    "_18_10": _("Koalitionen_(10)"),
-    "_18_17": _("Ansichten_Standpunkte_(18_17)"),
-    "_1pro8": _("Prinzipien(1/8)"),
-    "_1pro5": _("Bestrebungen(1/5)"),
-    "_1pro3": _("Bedingung_und_Auslöser_(1/3)"),
-    "_10_4_18_6": _("relativer_Zeit-Betrag_(15_10_4_18_6)"),
-    "_18_6": _("Zahlenvergleich_(15_18_6)"),
-    "_21": _("Leidenschaften_(21)"),
-    "_26": _("Erwartungshaltungen_(26)"),
-    "_19": _("Extremalien_(19),Ziele_(19)"),
-    "_18_15": _("universeller_Komperativ_(18→15)"),
-    "_18_15_n-vs-1pron": _("Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)"),
-    "_1pro13": _("Sollen_Frage_Vorgehensweise_(1/13)"),
-    "_1pro19": _("Fundament_(1/19)"),
-    "_90": _("abhängige_Verbundenheit_(90)"),
-    "_13_13": _("Absicht_13_ist_Helfen"),
-    "_1pro12": _("Karte_Filter_und_Unterscheidung_(1/12)"),
-    "_39": _("Maßnahmen_(39)"),
+    "2": _("Konkreta_und_Focus_(2)"),
+    "5": _("Impulse_(5)"),
+    "7": _("Gefühle_(7)"),
+    "8": _("Modus_und_Sein_(8)"),
+    "10": _("Wirklichkeiten_Wahrheit_Wahrnehmung_(10)"),
+    "12": ",".join((_("Meta-Systeme_(12)"), _("Ordnung_und_Filterung_12_und_1pro12"))),
+    "13": _("Paradigmen_sind_Absichten_(13)"),
+    "17": _("Gedanken_sind_Positionen_(17)"),
+    "18": _("Verbundenheiten_(18)"),
+    "6": _("Triebe_und_Bedürfnisse_(6)"),
+    "9": _("Lust_(9)"),
+    "3": _("Reflexe_(3),Existenzialien_(3)"),
+    "13_6": _("Absicht_6_ist_Vorteilsmaximierung"),
+    "13_7": _("Absicht_7_ist_Selbstlosigkeit"),
+    "13_10": _("Absicht_10_ist_Wirklichkeit_erkennen"),
+    "13_17": _("Absicht_17_ist_zu_meinen"),
+    "10_4": _("Zeit_(4)_als_Wirklichkeit"),
+    "16": _("Funktionen_Vorstellungen_(16)"),
+    "4": _("Achtung_(4)"),
+    "13_1pro8": _("Absicht_1/8"),
+    "13_1pro6": _("Absicht_1/6_ist_Reinigung_und_Klarheit"),
+    "1pro15": _("Reflektion_und_Kategorien_(1/15)"),
+    "1": _("Regungen_(1)"),
+    "30": _("Energie_und_universelle_Eigenschaften_(30)"),
+    "14": _("Stimmungen_Kombinationen_(14)"),
+    "20": _("Klassen_(20)"),
+    "37": _("Empathie_(37)"),
+    "31": _("Garben_und_Verhalten_nachfühlen(31)"),
+    "11": _("Verhalten_(11)"),
+    "5_10": _("Bedeutung_(10)"),
+    "17_6": _("Themen_(6)"),
+    "17_6_10mit4": _("Optimierung_(10)"),
+    "36": _("Attraktionen_(36)"),
+    "13_16": _("Absicht_16_ist_zu_genügen"),
+    "18_7": _("Liebe_(7)"),
+    "18_10": _("Koalitionen_(10)"),
+    "18_17": _("Ansichten_Standpunkte_(18_17)"),
+    "1pro8": _("Prinzipien(1/8)"),
+    "1pro5": _("Bestrebungen(1/5)"),
+    "1pro3": _("Bedingung_und_Auslöser_(1/3)"),
+    "10_4_18_6": _("relativer_Zeit-Betrag_(15_10_4_18_6)"),
+    "18_6": _("Zahlenvergleich_(15_18_6)"),
+    "21": _("Leidenschaften_(21)"),
+    "26": _("Erwartungshaltungen_(26)"),
+    "19": _("Extremalien_(19),Ziele_(19)"),
+    "18_15": _("universeller_Komperativ_(18→15)"),
+    "18_15_n-vs-1pron": _("Relation_zueinander_reziprok_Universellen_(18→n_vs._1/n)"),
+    "1pro13": _("Sollen_Frage_Vorgehensweise_(1/13)"),
+    "1pro19": _("Fundament_(1/19)"),
+    "90": _("abhängige_Verbundenheit_(90)"),
+    "13_13": _("Absicht_13_ist_Helfen"),
+    "1pro12": _("Karte_Filter_und_Unterscheidung_(1/12)"),
+    "39": _("Maßnahmen_(39)"),
 }
+wahl16 = {"16": ",".join(wahl16Words.keys())}
 
 # WICHTIG WICHTIG: die Befehle mit nur einem zeichen dürfen  nur ein Zeichen haben !!!!!!!
-befehle2: dict = {"15" + a: "15" + a for a in wahl15.keys()}
+befehle2: dict = {"15_" + a: "15_" + a for a in wahl15.keys()}
+befehle2.update({"16_15_" + a: "16_15_" + a for a in wahl15.keys()})
+befehle2.update({"16_" + a: "16_" + a for a in wahl16.keys()})
 befehle2.update(
     {
         "emotion": emotionWort,
@@ -485,7 +490,7 @@ befehle: list = list(befehle2.values())
 
 ParametersMain: NamedTuple = namedtuple(
     "ParametersMain",
-    "wichtigste wichtigste2 religionen galaxie strukturgroesse universum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept konzept2 inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache planet strukturenkleinere grundstrukturen alles",
+    "wichtigste wichtigste2 religionen galaxie strukturgroesse universum multiversum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept konzept2 inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache planet strukturenkleinere grundstrukturen alles",
 )
 konzeptE = {"konzept": _("konzept"), "konzept2": _("konzept2")}
 gebrochenUniGal = {
@@ -536,6 +541,7 @@ ParametersMain: NamedTuple = ParametersMain(
         _("baelle"),
         _("bälle"),
     ),
+    (_("Multiversum"), _("multiversum")),
     (_("Wirtschaft"), _("wirtschaft")),
     (
         _("Menschliches"),
@@ -929,6 +935,22 @@ paraNdataMatrix: list = [
             _("kreise"),
         ),
         {77, 145},
+    ),
+    (
+        ParametersMain.multiversum,
+        (
+            _("Multiversalien_(16)"),
+            _("multiversalien"),
+        ),
+        {389},
+    ),
+    (
+        ParametersMain.multiversum,
+        (
+            _("Meta-Physik-Teilchen_(1)"),
+            _("teilchen"),
+        ),
+        {388},
     ),
     (
         ParametersMain.galaxie,
