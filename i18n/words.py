@@ -341,7 +341,7 @@ wahl15: dict = {
     "1pro12": _("Karte_Filter_und_Unterscheidung_(1/12)"),
     "39": _("Maßnahmen_(39)"),
 }
-wahl16 = {"16": ",".join(wahl16Words.keys())}
+wahl16 = {"16": ",".join(wahl16Words.values())}
 
 # WICHTIG WICHTIG: die Befehle mit nur einem zeichen dürfen  nur ein Zeichen haben !!!!!!!
 befehle2: dict = {"15_" + a: "15_" + a for a in wahl15.keys()}
@@ -366,7 +366,7 @@ befehle2.update(
         "primfaktorzerlegung": _("primfaktorzerlegung"),
         "prim24": _("prim24"),
         "primfaktorzerlegungModulo24": _("primfaktorzerlegungModulo24"),
-        "help": _("help"),
+        "help": _("HELP"),
         "hilfe": _("hilfe"),
         "abc": _("abc"),
         "abcd": _("abcd"),
@@ -421,7 +421,27 @@ assert all(
     [len(value) == 1 if len(key) == 1 else True for (key, value) in befehle2.items()]
 )
 
+
+def finde_mehrfache_vorkommen(stringliste):
+    # Ein Dictionary erstellen, um die Häufigkeit jedes Strings zu zählen
+    haeufigkeiten = {}
+    for string in stringliste:
+        if string in haeufigkeiten:
+            haeufigkeiten[string] += 1
+        else:
+            haeufigkeiten[string] = 1
+
+    # Einträge filtern, deren Häufigkeit größer als 1 ist
+    mehrfach_vorkommende_strings = [
+        string for string, haeufigkeit in haeufigkeiten.items() if haeufigkeit > 1
+    ]
+
+    return mehrfach_vorkommende_strings
+
+
 assert len(befehle2.keys()) == len(set(befehle2.keys()))
+if len(befehle2.values()) != len(set(befehle2.values())):
+    print(finde_mehrfache_vorkommen(befehle2.values()))
 assert len(befehle2.values()) == len(set(befehle2.values()))
 
 # WICHTIG WICHTIG: die Befehle mit nur einem zeichen dürfen  nur ein Zeichen haben !!!!!!!
