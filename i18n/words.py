@@ -341,11 +341,14 @@ wahl15: dict = {
     "1pro12": _("Karte_Filter_und_Unterscheidung_(1/12)"),
     "39": _("Maßnahmen_(39)"),
 }
-wahl16 = {"16": ",".join(wahl16Words.values())}
+wahl16 = {
+    "16": ",".join(wahl16Words.values()),
+    "1": _("Meta-Physik-Teilchen_(1)"),
+}
 
 # WICHTIG WICHTIG: die Befehle mit nur einem zeichen dürfen  nur ein Zeichen haben !!!!!!!
 befehle2: dict = {"15_" + a: "15_" + a for a in wahl15.keys()}
-befehle2.update({"16_15_" + a: "16_15_" + a for a in wahl15.keys()})
+befehle2.update({"16_15_" + a: "16_15_" + a for a in wahl15.keys() if a != "15"})
 befehle2.update({"16_" + a: "16_" + a for a in wahl16.keys()})
 befehle2.update(
     {

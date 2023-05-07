@@ -9,6 +9,9 @@ from center import (BereichToNumbers2, Primzahlkreuz_pro_contra_strs, i18n,
                     isZeilenAngabe, isZeilenAngabe_betweenKommas,
                     isZeilenBruchOrGanzZahlAngabe, x)
 
+wahl15 = i18n.wahl15
+wahl16 = i18n.wahl16
+
 # retaProgram = reta.Program([sys.argv[0], "-" + i18n.retapy.nichtsWort])
 retaProgram = reta.Program([sys.argv[0], "-" + i18n.retapy.nichtsWort])
 mainParas = ["-" + a for a in retaProgram.mainParaCmds]
@@ -111,8 +114,6 @@ hauptForNebenSet = set(hauptForNeben)
 ausgabeArt = list(i18n.ausgabeArt.values())
 # ausgabeArt = ["bbcode", "html", "csv", "shell", "markdown", "emacs"]
 
-wahl15 = i18n.wahl15
-wahl16 = i18n.wahl16
 # wahl15 = {
 #    #    "_": "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15)",
 #    "_15": "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15),Geist_(15),Model_of_Hierarchical_Complexity,"
@@ -281,12 +282,31 @@ def isReTaParameter(t: str):
     )
 
 
+def is15or16command(text: str) -> bool:
+    if text[:3] == "15_":
+        if text[3:] == "":
+            return True
+        if text[3:] in wahl15:
+            return True
+    if text[:3] == "16_":
+        if text[3:] == "":
+            return True
+        if text[:5] == "16_15":
+            if text[5:] == "":
+                return True
+            if text[5] == "_" and text[6:] in wahl15:
+                return True
+        if text[3:] in wahl16:
+            return True
+    return False
+
+
 def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
     stext2 = []
     ifKurzKurz = False
     for s_ in tuple(deepcopy(stext)):
         s_m = s_
-        if s_[3:] not in wahl15 and s_ not in befehle and stext[0] != "reta":
+        if not is15or16command(s_) and s_ not in befehle and stext[0] != "reta":
             textDazu = []
             nn: Optional[int] = 0
             for iii, s_3 in enumerate(s_[::-1]):
