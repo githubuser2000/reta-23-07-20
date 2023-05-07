@@ -885,6 +885,30 @@ def PromptGrosseAusgabe(
             zeiln4,
         )
         was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
+            Txt.hasWithoutABC({i18n.befehle2["B"], i18n.befehle2["bewusstsein"]}),
+            [
+                "".join(
+                    (
+                        "--",
+                        i18n.ParametersMain.grundstrukturen[0],
+                        "=",
+                        wahl15["15"],
+                    )
+                )
+            ],
+            None,
+            ("6", "7"),
+            Txt,
+            bruch_GanzZahlReziproke,
+            zahlenBereichC,
+            ketten,
+            cmd_gave_output,
+            zeiln1,
+            zeiln2,
+            zeiln3,
+            zeiln4,
+        )
+        was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
             Txt.hasWithoutABC({i18n.befehle2["geist"], i18n.befehle2["G"]}),
             [
                 "".join(
@@ -1082,7 +1106,10 @@ def PromptGrosseAusgabe(
                     )
                 )
             ],
-            ("1", "1"),
+            (
+                "1" + (",4" if len(Txt.menge & set(befehle)) <= 2 else ""),
+                "1" + (",2" if len(Txt.menge & set(befehle)) <= 2 else ""),
+            ),
             Txt,
             bruch_GanzZahlReziproke,
             zahlenBereichC,
