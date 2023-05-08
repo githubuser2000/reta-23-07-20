@@ -98,14 +98,14 @@ for (i = 0; i < tdClasses1.length; i++)
       spalten4spaltenTags[k].push(TDs[k]);
     }
   }
-  (async () => {
+  /*(async () => {
   const result = await checksum(TRs);
   console.log("Checksum:", result);
   })();
   (async () => {
   const result = await checksum(spalten4spaltenTags);
   console.log("Checksum:", result);
-  })();
+  })();*/
 
 
   for (var i: number = 0; i < tdClasses.length; i++) {
@@ -117,10 +117,10 @@ for (i = 0; i < tdClasses1.length; i++)
     else var tags: string[] = String(tags1).substr(3).split(",");
     spaltenTags.push(tags);
 
-      (async () => {
+      /*(async () => {
       const result = await checksum(spaltenTags);
       console.log("Checksum:", result);
-      })();
+      })();*/
     if (num1 != null) {
       //num = num.substring(2,0);
       var num: number = parseInt(num1[1]);
@@ -135,7 +135,7 @@ for (i = 0; i < tdClasses1.length; i++)
           if (p1b != null) {
             for (let p1k: number = 0; p1k < p1b.length; p1k++) {
               var p1: string = p1b[p1k];
-              if (!mapMapMap.has(p1)) mapMapMap[p1] = new Map();
+              if (typeof mapMapMap[p1] === "undefined") mapMapMap[p1] = new Map();
               if (p2a != null) {
                 for (var p2i: number = 0; p2i < p2a.length; p2i++) {
                   if (p2a[p2i].includes("p2_"))
@@ -167,10 +167,10 @@ for (i = 0; i < tdClasses1.length; i++)
     }
   }
 
-  (async () => {
+  /*(async () => {
   const result = await checksum(mapMapMap);
   console.log("Checksum:", result);
-  })();
+  })();*/
 
 
   var p1keys: string[] = Object.keys(mapMapMap);
@@ -241,6 +241,15 @@ for (i = 0; i < tdClasses1.length; i++)
       var grunSi: number = i;
       var grunp2Keys: string[] = p2keys;
     }
+
+      /*(async () => {
+      const result = await checksum(p1keys);
+      console.log("Checksum X:", result);
+      })();
+      (async () => {
+      const result = await checksum(p2keys);
+      console.log("Checksum Y:", result);
+      })();*/
     if (typeof mapMapMap[p1keys[i]][null] !== "undefined") {
       var numbers: number[]  = Array.from(mapMapMap[p1keys[i]][null]);
       insertnull = "toggleP2(this,'" + numbers.toString() + "','" + [p1keys[i], null] + "');";
@@ -250,6 +259,10 @@ for (i = 0; i < tdClasses1.length; i++)
     var mapsTagsif: string[]  = mapMapMapTags[p1keys[i]][null];
     if (typeof mapsTagsif == "undefined") mapsTagsif = [];
     else mapsTagsif = Array.from(mapMapMapTags[p1keys[i]][null]);
+      /*(async () => {
+      const result = await checksum(mapMapMapTags);
+      console.log("Checksum:", result);
+      })();*/
 
     var checkbox: string =
       '<div class="chksA"><label class="chksA1 c1_' +
@@ -283,6 +296,10 @@ for (i = 0; i < tdClasses1.length; i++)
     checkboxes += checkbox;
   }
   var str2: string = checkboxes + "</span></div>";
+      (async () => {
+      const result = await checksum(checkboxes);
+      console.log("Checksum A:", result);
+      })();
   div.innerHTML += str2;
   chks1 = document.getElementsByClassName("chks") as HTMLCollectionOf<HTMLInputElement>;
   chks2 = [];
@@ -933,6 +950,7 @@ function toggleForNums(colNums: string[]) {
 
 function refresh() {
   sortedKeysOfHeadingNumbersByVisibility();
+  console.log("refresh");
   setAllListsInHeadings();
   updateVisibleHeadingsNumbersAndItsKeysList();
 }
@@ -957,24 +975,32 @@ function toggleName(p2: HTMLElement) {
 }
 
 function toggleP1(p1: string) {
+
+  (async () => {
+  const result = await checksum(p1);
+  console.log("Checksum E:", result);
+  })();
   var p2: HTMLElement | null  = document.getElementById(p1);
   if (p2 != null && typeof p2.style != "undefined") {
     var num1: RegExpMatchArray | null  = p2.className.match(/r_(\d+)/);
-    if (num1 != null && num1.length > 1) {
-        var num: number = parseInt(num1[1]);
-        if (
-          (typeof selectedSpaltenMany1[num] === "undefined") ===
-          (p2.style.display != "none")
-        ) {
-          selectedSpaltenMany1[num] = p2;
-          toggleName(p2);
-        } else {
-          toggleName(p2);
-          delete selectedSpaltenMany1[num];
-        }
-      } else window.alert(p2.innerHTML + " ! ");
-
+    var num: number | RegExpMatchArray | null;
+    console.log("num A:", num1);
+    if (num1 != null && num1.length > 1) num = parseInt(num1[1]);
+    else num = num1;
+    console.log("num B:", num);
+    console.log("typ", typeof num);
+    if (
+      (typeof selectedSpaltenMany1[num] === "undefined") ===
+      (p2.style.display != "none")
+    ) {
+      selectedSpaltenMany1[num] = p2;
+      toggleName(p2);
+    } else {
+      toggleName(p2);
+      delete selectedSpaltenMany1[num];
     }
+
+  }
 }
 
 function toggleSpalten(colNumber: number) {
@@ -1120,13 +1146,13 @@ function headingSelected(gewaehlteSpalte_plusgleich1a: HTMLSelectElement, moment
   refresh();
 }
 
-var selectionsBefore: number;
+var selectionsBefore: Map<number, number> = new Map();
 var optionsS: string[][]  = [];
 var sichtbareSpaltenNummern: string[];
 
 function sortedKeysOfHeadingNumbersByVisibility() {
   var tableHeadline: HTMLCollectionOf<HTMLTableCellElement> = document.getElementById("bigtable").rows[0].cells;
-  var sichtbareSpaltenNummern: string[] = [];
+  sichtbareSpaltenNummern = [];
   for (var i: number = 0; i < tableHeadline.length; i++) {
     if (tableHeadline[i].style.display == "table-cell") {
       sichtbareSpaltenNummern.push(

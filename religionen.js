@@ -95,14 +95,14 @@ window.onload = function () {
             spalten4spaltenTags[k].push(TDs[k]);
         }
     }
-    (() => __awaiter(this, void 0, void 0, function* () {
-        const result = yield checksum(TRs);
-        console.log("Checksum:", result);
-    }))();
-    (() => __awaiter(this, void 0, void 0, function* () {
-        const result = yield checksum(spalten4spaltenTags);
-        console.log("Checksum:", result);
-    }))();
+    /*(async () => {
+    const result = await checksum(TRs);
+    console.log("Checksum:", result);
+    })();
+    (async () => {
+    const result = await checksum(spalten4spaltenTags);
+    console.log("Checksum:", result);
+    })();*/
     for (var i = 0; i < tdClasses.length; i++) {
         var name = tdClasses[i].className;
         var num1 = name.match(/r_(\d+)/);
@@ -112,10 +112,10 @@ window.onload = function () {
         else
             var tags = String(tags1).substr(3).split(",");
         spaltenTags.push(tags);
-        (() => __awaiter(this, void 0, void 0, function* () {
-            const result = yield checksum(spaltenTags);
-            console.log("Checksum:", result);
-        }))();
+        /*(async () => {
+        const result = await checksum(spaltenTags);
+        console.log("Checksum:", result);
+        })();*/
         if (num1 != null) {
             //num = num.substring(2,0);
             var num = parseInt(num1[1]);
@@ -131,7 +131,7 @@ window.onload = function () {
                     if (p1b != null) {
                         for (let p1k = 0; p1k < p1b.length; p1k++) {
                             var p1 = p1b[p1k];
-                            if (!mapMapMap.has(p1))
+                            if (typeof mapMapMap[p1] === "undefined")
                                 mapMapMap[p1] = new Map();
                             if (p2a != null) {
                                 for (var p2i = 0; p2i < p2a.length; p2i++) {
@@ -168,10 +168,10 @@ window.onload = function () {
             }
         }
     }
-    (() => __awaiter(this, void 0, void 0, function* () {
-        const result = yield checksum(mapMapMap);
-        console.log("Checksum:", result);
-    }))();
+    /*(async () => {
+    const result = await checksum(mapMapMap);
+    console.log("Checksum:", result);
+    })();*/
     var p1keys = Object.keys(mapMapMap);
     //var p1Bkeys = Object.keys(p1Bmap);
     //checkboxes = "<span style=\"white-space: nowrap;\"><input type=\"checkbox\" onchange=\"toggleSpalten(\'r_0\');\"><label>Nummererierung</label>";
@@ -238,6 +238,14 @@ window.onload = function () {
             var grunSi = i;
             var grunp2Keys = p2keys;
         }
+        /*(async () => {
+        const result = await checksum(p1keys);
+        console.log("Checksum X:", result);
+        })();
+        (async () => {
+        const result = await checksum(p2keys);
+        console.log("Checksum Y:", result);
+        })();*/
         if (typeof mapMapMap[p1keys[i]][null] !== "undefined") {
             var numbers = Array.from(mapMapMap[p1keys[i]][null]);
             insertnull = "toggleP2(this,'" + numbers.toString() + "','" + [p1keys[i], null] + "');";
@@ -250,6 +258,10 @@ window.onload = function () {
             mapsTagsif = [];
         else
             mapsTagsif = Array.from(mapMapMapTags[p1keys[i]][null]);
+        /*(async () => {
+        const result = await checksum(mapMapMapTags);
+        console.log("Checksum:", result);
+        })();*/
         var checkbox = '<div class="chksA"><label class="chksA1 c1_' +
             mapsTagsif.join(",") +
             '" style="' +
@@ -280,6 +292,10 @@ window.onload = function () {
         checkboxes += checkbox;
     }
     var str2 = checkboxes + "</span></div>";
+    (() => __awaiter(this, void 0, void 0, function* () {
+        const result = yield checksum(checkboxes);
+        console.log("Checksum A:", result);
+    }))();
     div.innerHTML += str2;
     chks1 = document.getElementsByClassName("chks");
     chks2 = [];
@@ -904,6 +920,7 @@ function toggleForNums(colNums) {
 }
 function refresh() {
     sortedKeysOfHeadingNumbersByVisibility();
+    console.log("refresh");
     setAllListsInHeadings();
     updateVisibleHeadingsNumbersAndItsKeysList();
 }
@@ -926,23 +943,30 @@ function toggleName(p2) {
     }
 }
 function toggleP1(p1) {
+    (() => __awaiter(this, void 0, void 0, function* () {
+        const result = yield checksum(p1);
+        console.log("Checksum E:", result);
+    }))();
     var p2 = document.getElementById(p1);
     if (p2 != null && typeof p2.style != "undefined") {
         var num1 = p2.className.match(/r_(\d+)/);
-        if (num1 != null && num1.length > 1) {
-            var num = parseInt(num1[1]);
-            if ((typeof selectedSpaltenMany1[num] === "undefined") ===
-                (p2.style.display != "none")) {
-                selectedSpaltenMany1[num] = p2;
-                toggleName(p2);
-            }
-            else {
-                toggleName(p2);
-                delete selectedSpaltenMany1[num];
-            }
-        }
+        var num;
+        console.log("num A:", num1);
+        if (num1 != null && num1.length > 1)
+            num = parseInt(num1[1]);
         else
-            window.alert(p2.innerHTML + " ! ");
+            num = num1;
+        console.log("num B:", num);
+        console.log("typ", typeof num);
+        if ((typeof selectedSpaltenMany1[num] === "undefined") ===
+            (p2.style.display != "none")) {
+            selectedSpaltenMany1[num] = p2;
+            toggleName(p2);
+        }
+        else {
+            toggleName(p2);
+            delete selectedSpaltenMany1[num];
+        }
     }
 }
 function toggleSpalten(colNumber) {
@@ -1079,12 +1103,12 @@ function headingSelected(gewaehlteSpalte_plusgleich1a, momentaneSpalte_als_r_1) 
         spalte2ToChange[0].getElementsByTagName("select")[0];
     refresh();
 }
-var selectionsBefore;
+var selectionsBefore = new Map();
 var optionsS = [];
 var sichtbareSpaltenNummern;
 function sortedKeysOfHeadingNumbersByVisibility() {
     var tableHeadline = document.getElementById("bigtable").rows[0].cells;
-    var sichtbareSpaltenNummern = [];
+    sichtbareSpaltenNummern = [];
     for (var i = 0; i < tableHeadline.length; i++) {
         if (tableHeadline[i].style.display == "table-cell") {
             sichtbareSpaltenNummern.push(tableHeadline[i].className.match(/r_(\d+)/g)[0].substring(2));

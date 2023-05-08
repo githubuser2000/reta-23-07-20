@@ -80,7 +80,7 @@ for (i = 0; i < tdClasses1.length; i++)
       spalten4spaltenTags[k].push(TDs[k]);
     }
   }
-   (() => __awaiter(this, void 0, void 0, function* () {
+   /*(() => __awaiter(this, void 0, void 0, function* () {
         const result = yield checksum(TRs);
         console.log("Checksum:", result);
     }))();
@@ -88,7 +88,7 @@ for (i = 0; i < tdClasses1.length; i++)
    (() => __awaiter(this, void 0, void 0, function* () {
         const result = yield checksum(spalten4spaltenTags);
         console.log("Checksum:", result);
-    }))();
+    }))();*/
 
 
   for (i = 0; i < tdClasses.length; i++) {
@@ -101,10 +101,10 @@ for (i = 0; i < tdClasses1.length; i++)
     tags = Array.from(new Set(tags));
     spaltenTags.push(tags);
 
-   (() => __awaiter(this, void 0, void 0, function* () {
+   /*(() => __awaiter(this, void 0, void 0, function* () {
         const result = yield checksum(spaltenTags);
         console.log("Checksum:", result);
-    }))();
+    }))();*/
     if (num != null) {
       //num = num.substring(2,0);
       num = parseInt(num[1]);
@@ -151,10 +151,10 @@ for (i = 0; i < tdClasses1.length; i++)
       }
     }
   }
-   (() => __awaiter(this, void 0, void 0, function* () {
+   /*(() => __awaiter(this, void 0, void 0, function* () {
         const result = yield checksum(mapMapMap);
         console.log("Checksum:", result);
-    }))();
+    }))();*/
 
   var p1keys = Object.keys(mapMapMap);
   var p1Bkeys = Object.keys(p1Bmap);
@@ -198,6 +198,14 @@ for (i = 0; i < tdClasses1.length; i++)
       grunSi = i;
       grunp2Keys = p2keys;
     }
+    /*(() => __awaiter(this, void 0, void 0, function* () {
+        const result = yield checksum(p1keys);
+        console.log("Checksum X:", result);
+    }))();
+    (() => __awaiter(this, void 0, void 0, function* () {
+        const result = yield checksum(p2keys);
+        console.log("Checksum Y:", result);
+    }))();*/
     if (mapMapMap[p1keys[i]][null] !== undefined) {
       numbers = Array.from(mapMapMap[p1keys[i]][null]);
       insertnull =
@@ -209,6 +217,10 @@ for (i = 0; i < tdClasses1.length; i++)
     if (typeof mapsTagsif == "undefined") mapsTagsif = [];
     else mapsTagsif = Array.from(mapMapMapTags[p1keys[i]][null]);
 
+   /*(() => __awaiter(this, void 0, void 0, function* () {
+        const result = yield checksum(mapMapMapTags);
+        console.log("Checksum:", result);
+    }))();*/
     checkbox =
       '<div class="chksA"><label class="chksA1 c1_' +
       mapsTagsif.join(",") +
@@ -241,6 +253,10 @@ for (i = 0; i < tdClasses1.length; i++)
     checkboxes += checkbox;
   }
   str2 = checkboxes + "</span></div>";
+    (() => __awaiter(this, void 0, void 0, function* () {
+        const result = yield checksum(checkboxes);
+        console.log("Checksum A:", result);
+    }))();
   div.innerHTML += str2;
   chks1 = document.getElementsByClassName("chks");
   chks2 = [];
@@ -923,6 +939,7 @@ function toggleForNums(colNums) {
 
 function refresh() {
   sortedKeysOfHeadingNumbersByVisibility();
+  console.log("refresh");
   setAllListsInHeadings();
   updateVisibleHeadingsNumbersAndItsKeysList();
 }
@@ -947,10 +964,18 @@ function toggleName(p2) {
 }
 
 function toggleP1(p1) {
+  (() => __awaiter(this, void 0, void 0, function* () {
+        const result = yield checksum(p1);
+        console.log("Checksum E:", result);
+    }))();
   p2 = document.getElementById(p1);
   if (typeof p2.style != "undefined") {
     var num = p2.className.match(/r_(\d+)/);
+
+    console.log("num A:", num);
     if (num != null && num.length > 1) num = num[1];
+    console.log("num B:", num);
+    console.log("typ", typeof num);
     if (
       (selectedSpaltenMany1[num] === "undefined") ===
       (p2.style.display != "none")
