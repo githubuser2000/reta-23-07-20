@@ -21,6 +21,7 @@ var Achks: HTMLCollectionOf<HTMLInputElement>;
 let tdClasses: HTMLCollectionOf<HTMLTableCellElement> = document.getElementsByClassName("z_0") as HTMLCollectionOf<HTMLTableCellElement>;
 var mapMapMap: Map<string,Map<string, number>> = new Map();
 var insertnull: string;
+var erlaubteZeilen: Set<number> = new Set();
 
 async function checksum(object) {
   // Konvertiert das Objekt in einen String
@@ -1307,6 +1308,7 @@ function BereichToNumbers2(MehrereBereiche: string, vielfache: boolean = false, 
   var MehrereBereiche: string = MehrereBereiche.split(",")
     .filter((s) => s.trim())
     .join(",");
+  console.log(MehrereBereiche)
   const Bereiche: string[] = MehrereBereiche.split(",");
   if (!isZeilenAngabe(MehrereBereiche)) {
     return new Set();
@@ -1341,6 +1343,7 @@ function BereichToNumbers2(MehrereBereiche: string, vielfache: boolean = false, 
     );
   }
 
+  console.log(new Set<number>([...dazu].filter((x) => !hinfort.has(x))));
   return new Set<number>([...dazu].filter((x) => !hinfort.has(x)));
 }
 
@@ -1528,7 +1531,7 @@ function zeilenAngabenToMengeDirekt(welches: number = 0, v: boolean = false) {
       text = "Ungültige Auswahl";
       break;
   }
-  const erlaubteZeilen: Set<number> = BereichToNumbers2(text, welches == 5 || v ? true : false);
+  erlaubteZeilen  = BereichToNumbers2(text, welches == 5 || v ? true : false);
   //window.alert(Array.from(erlaubteZeilen).join(" "));
   return erlaubteZeilen;
 }
@@ -1575,7 +1578,6 @@ function vielfacherAngabentoContainer() {
   return vielfacherAngaben;
 }
 */
-var erlaubteZeilen: Set<number> = new Set();
 
 function makeAllerlaubteZeilenVielfacher(zeilenAngaben1: Set<number[]>) {
   const zeilenAngaben: number[][] = Array.from(zeilenAngaben1);
@@ -1609,7 +1611,7 @@ function makeAllerlaubteZeilenVielfacher(zeilenAngaben1: Set<number[]>) {
 
 function makeAllerlaubteZeilenPotenzen(zeilenAngaben1: Set<number>) {
   const zeilenAngaben: number[] = Array.from(zeilenAngaben1);
-  var erlaubteZeilen: Set<number> = new Set();
+  erlaubteZeilen = new Set();
   var exponent, potenz: number;
   for (var i: number = 0; i < zeilenAngaben.length; i++) {
     if (zeilenAngaben[i] > 0) {
@@ -1641,7 +1643,7 @@ function makeAllAllowedZeilenPrimRichtungen(): Set<number> {
   var aussen: boolean = document.getElementById("proAussen").checked;
   var hand: boolean = document.getElementById("gegenDritte").checked;
   var faehig: boolean = document.getElementById("proDritte").checked;
-  var erlaubteZeilen: Set<number> = new Set();
+  erlaubteZeilen = new Set();
   var inkrement: number;
 
   if (hand || faehig) {
@@ -1682,7 +1684,7 @@ function makeAllAllowedZeilenHimmelskoerper(): Set<number> {
   const mondWahl: boolean = document.getElementById("mondWahl").checked;
   const planetWahl: boolean = document.getElementById("planetWahl").checked;
   const schwarzeSonneWahl: boolean = document.getElementById("schwarzeSonneWahl").checked;
-  var erlaubteZeilen: Set<number> = new Set();
+  erlaubteZeilen = new Set();
   if (mondWahl) {
     erlaubteZeilen = new Set(alleMonde);
     return erlaubteZeilen;
@@ -1705,7 +1707,7 @@ function makeAllAllowedZeilenHimmelskoerper(): Set<number> {
 }
 function makeAllowedZeilenFromPrimVielfacher(zeilenAngaben1: Set<number>): Set<number> {
   const zeilenAngaben: number[] = Array.from(zeilenAngaben1);
-  const erlaubteZeilen: Set<number> = new Set();
+  erlaubteZeilen = new Set();
   const ersteSpalte: HTMLCollectionOf<HTMLTableCellElement> = document
     .getElementById("bigtable")
     .getElementsByClassName("r_0");
@@ -1732,7 +1734,7 @@ function makeAllowedZeilenFromZaehlung(zeilenMenge: Set<number>): Set<number> {
     .getElementById("bigtable")
     .getElementsByClassName("r_0");
   const erlaubteZaehlungen: Set<number> = zeilenMenge;
-  const erlaubteZeilen: Set<number> = new Set();
+  erlaubteZeilen = new Set();
   //window.alert(Array.from(erlaubteZaehlungen).join(" "));
   //window.alert(ersteSpalte.length.toString());
   var zaehlung: number;
@@ -1761,7 +1763,8 @@ function makeAllowedZeilenFromZaehlung(zeilenMenge: Set<number>): Set<number> {
 
 function makeAllAllowedZeilen(zeilenAngaben1: Set<number[]>): Set<number> {
   const zeilenAngaben: number[][] = Array.from(zeilenAngaben1);
-  const erlaubteZeilen: Set<number> = new Set();
+  console.log("zeilenAngaben::-> ",zeilenAngaben)
+  erlaubteZeilen = new Set();
   for (var i: number = 0; i < zeilenAngaben.length; i++) {
     for (var k: number = zeilenAngaben[i][0]; k <= zeilenAngaben[i][1]; k++) {
       erlaubteZeilen.add(k);
@@ -1772,7 +1775,7 @@ function makeAllAllowedZeilen(zeilenAngaben1: Set<number[]>): Set<number> {
 
 function makeAllowedZeilenFromPrimZahlKreuzRadius(zeilenAngaben1: Set<number>): number[] {
   const zeilenAngaben: number[] = Array.from(zeilenAngaben1);
-  const erlaubteZeilen: Set<number> = new Set();
+  erlaubteZeilen = new Set();
   for (var i: number = 1; i < 1025; i++)
     for (var k: number = 0; k < zeilenAngaben.length; k++)
       if (zeilenAngaben[k] == Math.floor((i - 1) / 24) + 1)
@@ -1786,7 +1789,7 @@ var spalten_r__: Set<number> = new Set();
 function get_r__SpaltenNummern() {
   let tabelenkopfZeile : HTMLCollectionOf<HTMLTableCellElement>;
   tabelenkopfZeile = tdClasses;
-  var num1: RegExpMatchArray ;
+  var num1: RegExpMatchArray | null;
   var num: RegExpMatchArray;
   var num2: number;
   for (var i: number = 0; i < tabelenkopfZeile.length; i++) {
@@ -1802,6 +1805,7 @@ function get_r__SpaltenNummern() {
       }
     }
   }
+  console.log(spalten_r__)
 }
 
 /*
@@ -1818,6 +1822,7 @@ function invertErlaubteZeilen() {
 
 function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which: number) {
   const Spalten_r__Array: number[] = Array.from(spalten_r__);
+  console.log("erlaubte Zeilen: ", erlaubteZeilen)
   const erlaubteZeilen_Array: number[] = Array.from(erlaubteZeilen);
   const erlaubteZeilen_String: string = erlaubteZeilen_Array.join(",");
   const neuErlauben: boolean = document.getElementsByClassName("neuErlauben")[which].checked;
@@ -1898,15 +1903,19 @@ function clickVielfacheErlaubenUsw() {
 }
 
 function clickHimmelskoerperErlaubenUsw() {
-  const erlaubteZeilen: Set<number> = makeAllAllowedZeilenHimmelskoerper();
+  erlaubteZeilen = makeAllAllowedZeilenHimmelskoerper();
   get_r__SpaltenNummern();
   erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(3);
 }
 
 function clickZeilenErlaubenUsw() {
+  console.log("ja 1")
   zeilenAngabenToMengeDirekt(1);
+  console.log("ja 2")
   get_r__SpaltenNummern();
+  console.log("ja 3")
   erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(0);
+  console.log("ja 4")
 }
 
 function clickZaehlungenErlaubenUsw() {
@@ -1920,7 +1929,7 @@ function clickPrimVielfacheErlaubenUsw() {
   erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(5);
 }
 function clickPrimRichtungenErlaubenUsw() {
-  const erlaubteZeilen: Set<number> = makeAllAllowedZeilenPrimRichtungen();
+  erlaubteZeilen = makeAllAllowedZeilenPrimRichtungen();
   get_r__SpaltenNummern();
   erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(6);
 }

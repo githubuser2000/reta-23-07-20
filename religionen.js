@@ -31,6 +31,7 @@ var Achks;
 let tdClasses = document.getElementsByClassName("z_0");
 var mapMapMap = new Map();
 var insertnull;
+var erlaubteZeilen = new Set();
 function checksum(object) {
     return __awaiter(this, void 0, void 0, function* () {
         // Konvertiert das Objekt in einen String
@@ -1251,6 +1252,7 @@ function BereichToNumbers2(MehrereBereiche, vielfache = false, maxZahl = 1028) {
     var MehrereBereiche = MehrereBereiche.split(",")
         .filter((s) => s.trim())
         .join(",");
+    console.log(MehrereBereiche);
     const Bereiche = MehrereBereiche.split(",");
     if (!isZeilenAngabe(MehrereBereiche)) {
         return new Set();
@@ -1276,6 +1278,7 @@ function BereichToNumbers2(MehrereBereiche, vielfache = false, maxZahl = 1028) {
         //window.alert(EinBereich);
         BereichToNumbers2_EinBereich(EinBereich2, dazu, hinfort, (vielfache || vielfache2) && maxZahl == Infinity ? 1028 : maxZahl, vielfache || vielfache2);
     }
+    console.log(new Set([...dazu].filter((x) => !hinfort.has(x))));
     return new Set([...dazu].filter((x) => !hinfort.has(x)));
 }
 function BereichToNumbers2_EinBereich(EinBereich, dazu, hinfort, maxZahl, vielfache) {
@@ -1414,7 +1417,7 @@ function zeilenAngabenToMengeDirekt(welches = 0, v = false) {
             text = "Ungültige Auswahl";
             break;
     }
-    const erlaubteZeilen = BereichToNumbers2(text, welches == 5 || v ? true : false);
+    erlaubteZeilen = BereichToNumbers2(text, welches == 5 || v ? true : false);
     //window.alert(Array.from(erlaubteZeilen).join(" "));
     return erlaubteZeilen;
 }
@@ -1461,7 +1464,6 @@ function vielfacherAngabentoContainer() {
   return vielfacherAngaben;
 }
 */
-var erlaubteZeilen = new Set();
 function makeAllerlaubteZeilenVielfacher(zeilenAngaben1) {
     const zeilenAngaben = Array.from(zeilenAngaben1);
     var muls;
@@ -1494,7 +1496,7 @@ function makeAllerlaubteZeilenVielfacher(zeilenAngaben1) {
 }
 function makeAllerlaubteZeilenPotenzen(zeilenAngaben1) {
     const zeilenAngaben = Array.from(zeilenAngaben1);
-    var erlaubteZeilen = new Set();
+    erlaubteZeilen = new Set();
     var exponent, potenz;
     for (var i = 0; i < zeilenAngaben.length; i++) {
         if (zeilenAngaben[i] > 0) {
@@ -1524,7 +1526,7 @@ function makeAllAllowedZeilenPrimRichtungen() {
     var aussen = document.getElementById("proAussen").checked;
     var hand = document.getElementById("gegenDritte").checked;
     var faehig = document.getElementById("proDritte").checked;
-    var erlaubteZeilen = new Set();
+    erlaubteZeilen = new Set();
     var inkrement;
     if (hand || faehig) {
         if (hand)
@@ -1566,7 +1568,7 @@ function makeAllAllowedZeilenHimmelskoerper() {
     const mondWahl = document.getElementById("mondWahl").checked;
     const planetWahl = document.getElementById("planetWahl").checked;
     const schwarzeSonneWahl = document.getElementById("schwarzeSonneWahl").checked;
-    var erlaubteZeilen = new Set();
+    erlaubteZeilen = new Set();
     if (mondWahl) {
         erlaubteZeilen = new Set(alleMonde);
         return erlaubteZeilen;
@@ -1592,7 +1594,7 @@ function makeAllAllowedZeilenHimmelskoerper() {
 }
 function makeAllowedZeilenFromPrimVielfacher(zeilenAngaben1) {
     const zeilenAngaben = Array.from(zeilenAngaben1);
-    const erlaubteZeilen = new Set();
+    erlaubteZeilen = new Set();
     const ersteSpalte = document
         .getElementById("bigtable")
         .getElementsByClassName("r_0");
@@ -1618,7 +1620,7 @@ function makeAllowedZeilenFromZaehlung(zeilenMenge) {
         .getElementById("bigtable")
         .getElementsByClassName("r_0");
     const erlaubteZaehlungen = zeilenMenge;
-    const erlaubteZeilen = new Set();
+    erlaubteZeilen = new Set();
     //window.alert(Array.from(erlaubteZaehlungen).join(" "));
     //window.alert(ersteSpalte.length.toString());
     var zaehlung;
@@ -1645,7 +1647,8 @@ function makeAllowedZeilenFromZaehlung(zeilenMenge) {
 }
 function makeAllAllowedZeilen(zeilenAngaben1) {
     const zeilenAngaben = Array.from(zeilenAngaben1);
-    const erlaubteZeilen = new Set();
+    console.log("zeilenAngaben::-> ", zeilenAngaben);
+    erlaubteZeilen = new Set();
     for (var i = 0; i < zeilenAngaben.length; i++) {
         for (var k = zeilenAngaben[i][0]; k <= zeilenAngaben[i][1]; k++) {
             erlaubteZeilen.add(k);
@@ -1655,7 +1658,7 @@ function makeAllAllowedZeilen(zeilenAngaben1) {
 }
 function makeAllowedZeilenFromPrimZahlKreuzRadius(zeilenAngaben1) {
     const zeilenAngaben = Array.from(zeilenAngaben1);
-    const erlaubteZeilen = new Set();
+    erlaubteZeilen = new Set();
     for (var i = 1; i < 1025; i++)
         for (var k = 0; k < zeilenAngaben.length; k++)
             if (zeilenAngaben[k] == Math.floor((i - 1) / 24) + 1)
@@ -1681,6 +1684,7 @@ function get_r__SpaltenNummern() {
             }
         }
     }
+    console.log(spalten_r__);
 }
 /*
 var verboteneZeilen = [];
@@ -1695,6 +1699,7 @@ function invertErlaubteZeilen() {
 */
 function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which) {
     const Spalten_r__Array = Array.from(spalten_r__);
+    console.log("erlaubte Zeilen: ", erlaubteZeilen);
     const erlaubteZeilen_Array = Array.from(erlaubteZeilen);
     const erlaubteZeilen_String = erlaubteZeilen_Array.join(",");
     const neuErlauben = document.getElementsByClassName("neuErlauben")[which].checked;
@@ -1742,14 +1747,18 @@ function clickVielfacheErlaubenUsw() {
     erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(1);
 }
 function clickHimmelskoerperErlaubenUsw() {
-    const erlaubteZeilen = makeAllAllowedZeilenHimmelskoerper();
+    erlaubteZeilen = makeAllAllowedZeilenHimmelskoerper();
     get_r__SpaltenNummern();
     erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(3);
 }
 function clickZeilenErlaubenUsw() {
+    console.log("ja 1");
     zeilenAngabenToMengeDirekt(1);
+    console.log("ja 2");
     get_r__SpaltenNummern();
+    console.log("ja 3");
     erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(0);
+    console.log("ja 4");
 }
 function clickZaehlungenErlaubenUsw() {
     makeAllowedZeilenFromZaehlung(zeilenAngabenToMengeDirekt(2));
@@ -1762,7 +1771,7 @@ function clickPrimVielfacheErlaubenUsw() {
     erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(5);
 }
 function clickPrimRichtungenErlaubenUsw() {
-    const erlaubteZeilen = makeAllAllowedZeilenPrimRichtungen();
+    erlaubteZeilen = makeAllAllowedZeilenPrimRichtungen();
     get_r__SpaltenNummern();
     erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(6);
 }

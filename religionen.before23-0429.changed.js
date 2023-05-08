@@ -1755,6 +1755,7 @@ function get_r__SpaltenNummern() {
       spalten_r__.add(num);
     }
   }
+  console.log(spalten_r__)
 }
 
 /*
@@ -1771,6 +1772,7 @@ function invertErlaubteZeilen() {
 
 function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which) {
   Spalten_r__Array = Array.from(spalten_r__);
+  console.log("erlaubte Zeilen: ", erlaubteZeilen)
   erlaubteZeilen_Array = Array.from(erlaubteZeilen);
   erlaubteZeilen_String = erlaubteZeilen_Array.join(",");
   neuErlauben = document.getElementsByClassName("neuErlauben")[which].checked;
