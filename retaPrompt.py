@@ -26,7 +26,7 @@ from LibRetaPrompt import (BereichToNumbers2, PromptModus,
                            gebrochenErlaubteZahlen, isReTaParameter,
                            notParameterValues, stextFromKleinKleinKleinBefehl,
                            verifyBruchNganzZahlBetweenCommas, verkuerze_dict,
-                           wahl15)
+                           wahl15, wahl16)
 from multis import mult
 # import reta
 from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
@@ -35,8 +35,10 @@ from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
 from word_completerAlx import WordCompleter
 
 i18nRP = i18n.retaPrompt
-wahl15["_"] = wahl15["_15"]
+wahl15[""] = wahl15["15"]
+wahl16[""] = wahl16["16"]
 befehle += ["15_"]
+befehle += ["16_"]
 befehleBeenden = i18nRP.befehleBeenden
 # befehleBeenden = {"ende", "exit", "quit", "q", ":q"}
 infoLog = False
@@ -52,6 +54,13 @@ class TXT(object):
     _stextEmenge = {}
     _stextSet = {}
     _befehlDavor = ""
+
+    def hasWithoutABC(self, hasSet: set) -> bool:
+        """tells if any values of given set exists in TXT.menge and command abc and abcd is not inside"""
+        return (
+            len(hasSet & self._stextSet) > 0
+            and len({"abc", "abcd"} & self._stextSet) == 0
+        )
 
     def has(self, hasSet: set) -> bool:
         """tells if any values of given set exists in TXT.menge"""
@@ -852,7 +861,7 @@ def PromptGrosseAusgabe(
 
     if fullBlockIsZahlenbereichAndBruch and (bedingungZahl or bedingungBrueche):
         was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
-            Txt.has({i18n.befehle2["emotion"], i18n.befehle2["E"]}),
+            Txt.hasWithoutABC({i18n.befehle2["emotion"], i18n.befehle2["E"]}),
             [
                 "".join(
                     (
@@ -876,7 +885,31 @@ def PromptGrosseAusgabe(
             zeiln4,
         )
         was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
-            Txt.has({i18n.befehle2["geist"], i18n.befehle2["G"]}),
+            Txt.hasWithoutABC({i18n.befehle2["B"], i18n.befehle2["bewusstsein"]}),
+            [
+                "".join(
+                    (
+                        "--",
+                        i18n.ParametersMain.grundstrukturen[0],
+                        "=",
+                        wahl15["15"],
+                    )
+                )
+            ],
+            None,
+            ("6", "7"),
+            Txt,
+            bruch_GanzZahlReziproke,
+            zahlenBereichC,
+            ketten,
+            cmd_gave_output,
+            zeiln1,
+            zeiln2,
+            zeiln3,
+            zeiln4,
+        )
+        was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
+            Txt.hasWithoutABC({i18n.befehle2["geist"], i18n.befehle2["G"]}),
             [
                 "".join(
                     (
@@ -900,7 +933,7 @@ def PromptGrosseAusgabe(
             zeiln4,
         )
         was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
-            Txt.has(
+            Txt.hasWithoutABC(
                 {
                     i18n.befehle2["absicht"],
                     i18n.befehle2["absichten"],
@@ -1052,7 +1085,7 @@ def PromptGrosseAusgabe(
                 )
             del ZahlenAngabenCneu
         was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
-            Txt.has({i18n.befehle2["universum"], i18n.befehle2["u"]}),
+            Txt.hasWithoutABC({i18n.befehle2["universum"], i18n.befehle2["u"]}),
             [
                 "".join(
                     (
@@ -1073,7 +1106,10 @@ def PromptGrosseAusgabe(
                     )
                 )
             ],
-            ("1", "1"),
+            (
+                "1" + (",4" if len(Txt.menge & set(befehle)) <= 2 else ""),
+                "1" + (",2" if len(Txt.menge & set(befehle)) <= 2 else ""),
+            ),
             Txt,
             bruch_GanzZahlReziproke,
             zahlenBereichC,
@@ -1178,13 +1214,7 @@ def PromptGrosseAusgabe(
                     .replace(", ", " ")
                 )
 
-        if (
-            len(
-                {i18n.befehle2["prim"], i18n.befehle2["primfaktorzerlegung"]}
-                & Txt.mengeE
-            )
-            > 0
-        ):
+        if Txt.hasWithoutABC({"prim", "primfaktorzerlegung"}):
             for arg in BereichToNumbers2(zahlenReiheKeineWteiler):
                 cmd_gave_output = True
                 print(
@@ -1195,10 +1225,7 @@ def PromptGrosseAusgabe(
                     .replace(", ", " ")
                 )
 
-        if len({i18n.befehle2["multis"]} & Txt.mengeE) > 0 or (
-            i18n.befehle2["abc"] not in Txt.listeE
-            and i18n.befehle2["abcd"] not in Txt.listeE
-        ):
+        if Txt.hasWithoutABC({"multis"}) > 0:
             cmd_gave_output = True
 
             listeStrWerte = BereichToNumbers2(zahlenReiheKeineWteiler)
@@ -1284,10 +1311,44 @@ def PromptGrosseAusgabe(
                 ],
                 None,
             )
-
         if (
             len(Txt.listeE) > 0
-            and any([token[:3] == "15_" for token in Txt.listeE])
+            and any(
+                [token[:3] == "16_" and token[:5] != "16_15" for token in Txt.listeE]
+            )
+            and i18n.befehle2["abc"] not in Txt.listeE
+            and i18n.befehle2["abcd"] not in Txt.listeE
+        ):
+            cmd_gave_output = True
+            import reta
+
+            befehle16 = []
+            for token in Txt.listeE:
+                if token[:3] == "16_":
+                    befehle16 += [wahl16[token[3:]]]
+            grundstruk = ",".join(befehle16)
+            retaExecuteNprint(
+                ketten,
+                Txt.listeE,
+                zeiln1,
+                zeiln2,
+                [
+                    "".join(
+                        (
+                            "--",
+                            i18n.ParametersMain.multiversum[0],
+                            "=",
+                            grundstruk,
+                        )
+                    )
+                ],
+                None,
+            )
+        if (
+            len(Txt.listeE) > 0
+            and any(
+                [token[:3] == "15_" or token[:5] == "16_15" for token in Txt.listeE]
+            )
             and i18n.befehle2["abc"] not in Txt.listeE
             and i18n.befehle2["abcd"] not in Txt.listeE
         ):
@@ -1297,7 +1358,11 @@ def PromptGrosseAusgabe(
             befehle15 = []
             for token in Txt.listeE:
                 if token[:3] == "15_":
-                    befehle15 += [wahl15[token[2:]]]
+                    befehle15 += [wahl15[token[3:]]]
+                if token == "16_15":
+                    befehle15 += [wahl15["15"]]
+                if token[:6] == "16_15_":
+                    befehle15 += [wahl15[token[6:]]]
             grundstruk = ",".join(befehle15)
             retaExecuteNprint(
                 ketten,

@@ -57,7 +57,7 @@ weight = -7
 ### mathematisch Ausgabe-Befehle {#mathematisch-ausgabe-befehle}
 
 -   "prim" bzw. "primfaktorzerlegung" gibt die Primfaktoren einer angegeben Zahl aus.
--   "multis" bzw. "mu" gibt alle Multiplikationen zweier Zahlen aus, die zur angegeben Zahl führen.
+-   "multis" bzw. gibt alle Multiplikationen zweier Zahlen aus, die zur angegeben Zahl führen.
 -   "abc" oder "abcd" gibt, zusammen mit einer Angabe von Buchstaben aus, welcher Zahl welcher Buchstabe entspricht.
 -   "p" bzw. mulpri" bedeutet, dass beide Befehle gemeint sind: "prim" und "multis".
 -   "modulo" gibt für eine Zahl die Reste bei Divisionen aus.

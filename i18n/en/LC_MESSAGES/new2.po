@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-03 19:52+0200\n"
+"POT-Creation-Date: 2023-05-07 16:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3648,3 +3648,30 @@ msgstr ""
 
 #~ msgid "G"
 #~ msgstr "M"
+
+#~ msgid "E"
+#~ msgstr "E"
+
+#~ msgid "Multiversalien_(16)"
+#~ msgstr "multiversalias_(16)"
+
+#~ msgid "Meta-Physik-Teilchen_(1)"
+#~ msgstr "multiverse_particles_(1)"
+
+#~ msgid "Multiversum"
+#~ msgstr "multiverse"
+
+#~ msgid "multiversum"
+#~ msgstr "multiverse"
+
+#~ msgid "multiversalien"
+#~ msgstr "multiversalias"
+
+#~ msgid "teilchen"
+#~ msgstr "particles"
+
+#~ msgid "HELP"
+#~ msgstr "HELP"
+
+#~ msgid "B"
+#~ msgstr "C"
