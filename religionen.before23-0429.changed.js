@@ -939,7 +939,7 @@ function toggleForNums(colNums) {
 
 function refresh() {
   sortedKeysOfHeadingNumbersByVisibility();
-  console.log("refresh");
+  //console.log("refresh");
   setAllListsInHeadings();
   updateVisibleHeadingsNumbersAndItsKeysList();
 }
@@ -964,10 +964,10 @@ function toggleName(p2) {
 }
 
 function toggleP1(p1) {
-  (() => __awaiter(this, void 0, void 0, function* () {
+  /*(() => __awaiter(this, void 0, void 0, function* () {
         const result = yield checksum(p1);
         console.log("Checksum E:", result);
-    }))();
+    }))();*/
   p2 = document.getElementById(p1);
   if (typeof p2.style != "undefined") {
     var num = p2.className.match(/r_(\d+)/);
@@ -1711,6 +1711,7 @@ function makeAllowedZeilenFromZaehlung(zeilenMenge) {
     //window.alert(zaehlung.toString());
     if (zaehlung != "NaN" && erlaubteZaehlungen.has(zaehlung)) {
       wirklicheZeile = ersteSpalte[i].className.match(/z_\s*(\d+)/g);
+      console.log("wirklicheZeile", wirklicheZeile);
       //window.alert(ersteSpalte[i].className);
       //window.alert(wirklicheZeile);
       if (wirklicheZeile.length > 0) {

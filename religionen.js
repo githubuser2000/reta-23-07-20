@@ -182,16 +182,16 @@ window.onload = function () {
     for (var i = 0; i < p1keys.length; i++) {
         var chk2s = "";
         var p2keys = Object.keys(mapMapMap[p1keys[i]]);
-        console.log("das Array Objekt 1: " + Array);
-        console.log("das Array Objekt 2: " + Array);
+        //console.log("das Array Objekt 1: "+Array)
+        //console.log("das Array Objekt 2: "+Array)
         for (var k = 0; k < p2keys.length; k++) {
-            console.log(typeof mapMapMap[p1keys[i]][p2keys[k]]);
-            console.log(mapMapMap[p1keys[i]][p2keys[k]]);
+            //console.log(typeof mapMapMap[p1keys[i]][p2keys[k]]);
+            //console.log(mapMapMap[p1keys[i]][p2keys[k]]);
             var mapMapMapSetValue = mapMapMap[p1keys[i]][p2keys[k]];
-            console.log("das Array Objekt 3: " + Array);
+            /*console.log("das Array Objekt 3: "+Array)
             console.log(mapMapMapSetValue);
             console.log(p1keys[i]);
-            console.log(p2keys[k]);
+            console.log(p2keys[k]);*/
             /*
             if ("Liebe" == p2keys[k]) {
                 console.log("break 1");
@@ -202,19 +202,19 @@ window.onload = function () {
                 break;
             }*/
             //try {
-            console.log("das Array Objekt A: " + Array);
-            console.log("das Array Objekt A Methode: " + Array.from);
+            //console.log("das Array Objekt A: "+Array)
+            //console.log("das Array Objekt A Methode: "+Array.from)
             var numbers = Array.from(mapMapMapSetValue);
             /*} catch {
               var numbers: Array<number> = Array.from(mapMapMapSetValue);
             }*/
-            console.log("das Array Objekt 4: " + Array);
+            //console.log("das Array Objekt 4: "+Array)
             if (p2keys[k] != null && p2keys[k] != "null") {
                 // window.alert(p1keys[i]); '✗Grundstrukturen'
                 // window.alert(p2keys[i]); klar
                 // window.alert(numbers); // ach einfach die und daraus!
                 // window.alert(Array.from(mapMapMapTags[p1keys[i]][p2keys[k]]).join(",")); // diese Zahlen
-                console.log("das Array Objekt 5: " + Array);
+                //console.log("das Array Objekt 5: "+Array)
                 var chk2 = '<label style="' +
                     labelstyle +
                     '" class="chks c_' +
@@ -231,9 +231,9 @@ window.onload = function () {
                     makeSpacesOutOf_(p2keys[k].toString()) +
                     '</input></label><label style="white-space: normal;">&nbsp; </label>';
                 chk2s += chk2;
-                console.log("das Array Objekt 6: " + Array);
+                //console.log("das Array Objekt 6: "+Array)
             }
-            console.log("das Array Objekt 7: " + Array);
+            //console.log("das Array Objekt 7: "+Array)
         }
         if (p1keys[i] === "✗Grundstrukturen") {
             var grunSi = i;
@@ -293,10 +293,10 @@ window.onload = function () {
         checkboxes += checkbox;
     }
     var str2 = checkboxes + "</span></div>";
-    (() => __awaiter(this, void 0, void 0, function* () {
-        const result = yield checksum(checkboxes);
-        console.log("Checksum A:", result);
-    }))();
+    /*(async () => {
+    const result = await checksum(checkboxes);
+    console.log("Checksum A:", result);
+    })();*/
     div.innerHTML += str2;
     chks1 = document.getElementsByClassName("chks");
     chks2 = [];
@@ -618,12 +618,15 @@ const primZahlen = [
 ];
 function makeSpacesOutOf_(text) {
     //if (text.length == 10) if (text == "Wichtigste") return "<b>Wichtigste</b>";
-    if (text.length == 25)
-        if (text == "Wichtigstes_zum_verstehen")
-            return "<b>Wichtigstes zum verstehen</b>";
+    //
+    if (text.includes("wichtig") || text.includes("Wichtig") || text.includes("Grundstrukturen") || text.includes("(15)"))
+        text = "<b>" + text + "</b>";
+    /*if (text.length == 25)
+      if (text == "Wichtigstes_zum_verstehen")
+        return "<b>Wichtigstes zum verstehen</b>";
     if (text.length == 36)
-        if (text == "Wichtigstes_zum_gedanklich_einordnen")
-            return "<b>Wichtigstes zum gedanklich einordnen</b>";
+      if (text == "Wichtigstes_zum_gedanklich_einordnen")
+        return "<b>Wichtigstes zum gedanklich einordnen</b>";
     /*
     if (text.length == 8) if (text == "zaehlung") return "Zählung";
     if (text.length == 12) if (text == "nummerierung") return "Nummerierung";
@@ -856,6 +859,7 @@ function grundSDivToggle(id_) {
     //
 }
 function toggleP2(dasTag, spaltenNummern1, para1u2) {
+    //console.log("para1u2: ", para1u2)
     var pa1u2 = para1u2.split(",");
     var spaltenNummern;
     try {
@@ -921,7 +925,7 @@ function toggleForNums(colNums) {
 }
 function refresh() {
     sortedKeysOfHeadingNumbersByVisibility();
-    console.log("refresh");
+    //console.log("refresh");
     setAllListsInHeadings();
     updateVisibleHeadingsNumbersAndItsKeysList();
 }
@@ -944,21 +948,19 @@ function toggleName(p2) {
     }
 }
 function toggleP1(p1) {
-    (() => __awaiter(this, void 0, void 0, function* () {
-        const result = yield checksum(p1);
-        console.log("Checksum E:", result);
-    }))();
+    //console.log("p1:", p1)
     var p2 = document.getElementById(p1);
     if (p2 != null && typeof p2.style != "undefined") {
         var num1 = p2.className.match(/r_(\d+)/);
         var num;
-        console.log("num A:", num1);
-        if (num1 != null && num1.length > 1)
+        //console.log("num A:", num1);
+        if (num1 != null && num1.length > 1) {
             num = parseInt(num1[1]);
+        }
         else
             num = num1;
-        console.log("num B:", num);
-        console.log("typ", typeof num);
+        //console.log("num B:", num);
+        //console.log("typ", typeof num);
         if ((typeof selectedSpaltenMany1[num] === "undefined") ===
             (p2.style.display != "none")) {
             selectedSpaltenMany1[num] = p2;
@@ -969,6 +971,8 @@ function toggleP1(p1) {
             delete selectedSpaltenMany1[num];
         }
     }
+    else
+        window.alert(p2.innerHTML + " ! ");
 }
 function toggleSpalten(colNumber) {
     var ZeileIhreZellen = document.getElementsByClassName("r_" + colNumber);
@@ -1252,7 +1256,7 @@ function BereichToNumbers2(MehrereBereiche, vielfache = false, maxZahl = 1028) {
     var MehrereBereiche = MehrereBereiche.split(",")
         .filter((s) => s.trim())
         .join(",");
-    console.log(MehrereBereiche);
+    //console.log(MehrereBereiche)
     const Bereiche = MehrereBereiche.split(",");
     if (!isZeilenAngabe(MehrereBereiche)) {
         return new Set();
@@ -1278,7 +1282,7 @@ function BereichToNumbers2(MehrereBereiche, vielfache = false, maxZahl = 1028) {
         //window.alert(EinBereich);
         BereichToNumbers2_EinBereich(EinBereich2, dazu, hinfort, (vielfache || vielfache2) && maxZahl == Infinity ? 1028 : maxZahl, vielfache || vielfache2);
     }
-    console.log(new Set([...dazu].filter((x) => !hinfort.has(x))));
+    //console.log(new Set<number>([...dazu].filter((x) => !hinfort.has(x))));
     return new Set([...dazu].filter((x) => !hinfort.has(x)));
 }
 function BereichToNumbers2_EinBereich(EinBereich, dazu, hinfort, maxZahl, vielfache) {
@@ -1616,29 +1620,33 @@ function zahlIstVielfacherEinerPrimzahl(zahl1, vielfacher1) {
     return stimmt;
 }
 function makeAllowedZeilenFromZaehlung(zeilenMenge) {
-    const ersteSpalte = document
-        .getElementById("bigtable")
-        .getElementsByClassName("r_0");
+    const ersteSpalte = document.getElementById("bigtable").getElementsByClassName("r_0");
+    //console.log("ersteSpalte", ersteSpalte.length);
     const erlaubteZaehlungen = zeilenMenge;
     erlaubteZeilen = new Set();
     //window.alert(Array.from(erlaubteZaehlungen).join(" "));
     //window.alert(ersteSpalte.length.toString());
+    var zaehlung1;
     var zaehlung;
     var wirklicheZeile1;
     var wirklicheZeile;
     for (var i = 0; i < ersteSpalte.length; i++) {
         //window.alert(ersteSpalte[i].getElementsByTagName("label")[0].innerHTML);
-        zaehlung = parseInt(ersteSpalte[i].innerHTML.trim());
-        //window.alert(zaehlung.toString());
-        if (isNaN(zaehlung) && erlaubteZaehlungen.has(zaehlung)) {
-            wirklicheZeile1 = ersteSpalte[i].className.match(/z_\s*(\d+)/g);
-            if (wirklicheZeile1 != null) {
-                wirklicheZeile = wirklicheZeile1.toString();
-                //window.alert(ersteSpalte[i].className);
-                //window.alert(wirklicheZeile);
-                if (wirklicheZeile.length > 0) {
-                    wirklicheZeile = wirklicheZeile[0].substr(2);
-                    erlaubteZeilen.add(parseInt(wirklicheZeile));
+        zaehlung1 = ersteSpalte[i].innerHTML.trim();
+        if (!isNaN(zaehlung1)) {
+            zaehlung = parseInt(zaehlung1);
+            //window.alert(zaehlung.toString());
+            if (!isNaN(zaehlung) && erlaubteZaehlungen.has(zaehlung)) {
+                wirklicheZeile1 = ersteSpalte[i].className.match(/z_\s*(\d+)/g);
+                //console.log("wirklicheZeile1", wirklicheZeile1);
+                if (wirklicheZeile1 != null) {
+                    wirklicheZeile = wirklicheZeile1; //.toString();
+                    //window.alert(ersteSpalte[i].className);
+                    //window.alert(wirklicheZeile);
+                    if (wirklicheZeile.length > 0) {
+                        wirklicheZeile = wirklicheZeile[0].substr(2);
+                        erlaubteZeilen.add(parseInt(wirklicheZeile));
+                    }
                 }
             }
         }
@@ -1647,7 +1655,7 @@ function makeAllowedZeilenFromZaehlung(zeilenMenge) {
 }
 function makeAllAllowedZeilen(zeilenAngaben1) {
     const zeilenAngaben = Array.from(zeilenAngaben1);
-    console.log("zeilenAngaben::-> ", zeilenAngaben);
+    //console.log("zeilenAngaben::-> ",zeilenAngaben)
     erlaubteZeilen = new Set();
     for (var i = 0; i < zeilenAngaben.length; i++) {
         for (var k = zeilenAngaben[i][0]; k <= zeilenAngaben[i][1]; k++) {
@@ -1684,7 +1692,7 @@ function get_r__SpaltenNummern() {
             }
         }
     }
-    console.log(spalten_r__);
+    //console.log(spalten_r__)
 }
 /*
 var verboteneZeilen = [];
@@ -1699,7 +1707,7 @@ function invertErlaubteZeilen() {
 */
 function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which) {
     const Spalten_r__Array = Array.from(spalten_r__);
-    console.log("erlaubte Zeilen: ", erlaubteZeilen);
+    //console.log("erlaubte Zeilen: ", erlaubteZeilen)
     const erlaubteZeilen_Array = Array.from(erlaubteZeilen);
     const erlaubteZeilen_String = erlaubteZeilen_Array.join(",");
     const neuErlauben = document.getElementsByClassName("neuErlauben")[which].checked;
@@ -1752,13 +1760,9 @@ function clickHimmelskoerperErlaubenUsw() {
     erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(3);
 }
 function clickZeilenErlaubenUsw() {
-    console.log("ja 1");
     zeilenAngabenToMengeDirekt(1);
-    console.log("ja 2");
     get_r__SpaltenNummern();
-    console.log("ja 3");
     erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(0);
-    console.log("ja 4");
 }
 function clickZaehlungenErlaubenUsw() {
     makeAllowedZeilenFromZaehlung(zeilenAngabenToMengeDirekt(2));
