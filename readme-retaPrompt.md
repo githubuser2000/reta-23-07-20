@@ -42,6 +42,7 @@ weight = -7
 -   "u" bzw. "universum" gibt die eine Spalte der universellen Strukturalien bzw. Transzendentalien der Sternpolygone aus, zusammen mit einer Zeilenangabe, für n oder 1/n aus, z.B. u1/2
 -   "t" bzw. "thomas" gibt die eine Spalte des Thomasevangliums aus was den intrinsischen Absichten der Sternpolygone in kodierter Form entspricht, zusammen mit einer Zeilenangabe
 -   "G" bzw. "geist" gibt den universellen Geist aus, für n oder 1/n aus, z.B. G1/2
+-   "B" bzw. "bewusstsein" gibt das Bewusstsein aus, für n oder 1/n aus, z.B. B2
 -   "E" bzw. "emotion" gibt die Gefühle für n oder 1/n aus, z.B. E1/2
 -   "v" bzw. "einzeln" bzw. "vielfache" bewirkt in Ausgabe-Befehlen außer "reta", dass deren Zeilenangaben z.B. 7 nicht nur Zeile 7 meinen, sondern alle vielfacher dieser Zeilengaben auch, also auch 14,21, usw.
 -   "einzeln" ist bei Kurzbefehlen der Standard: Dass Zeilenangaben nicht Vielfache meinen, sondern einzelne Zeilen.

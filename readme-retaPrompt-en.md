@@ -42,6 +42,7 @@ weight = -7
 -   "u" or "universum" outputs the one column of the universal structurals or transcendentals of the star polygons, together with a line specification (example u2 or u2/2,1/2)
 -   "t" or "thomas" outputs the one column of the thomas vanglium which corresponds to the intrinsic intentions of the star polygons in coded form, together with a line specification
 -   "M" resp. "mind" shows the universal mind (examples: M1/2 or M3)
+-   "C" resp. "consciousness" shows consciousness (examples: C1/2 or C3)
 -   "E" resp. "emotion" shows the universal mind (examples: E1/2 or E3)
 -   "m" resp. multiple" causes in output commands except "reta" that their line specifications e.g. 7 mean not only line 7, but all multiples of these line specifications as well, i.e. also 14,21, etc.
 -   "single" is the standard for short commands: that line specifications do not mean multiples, but single lines.

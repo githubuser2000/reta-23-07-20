@@ -436,7 +436,7 @@ window.onload = function () {
     var Achks = document.getElementsByClassName("chksA2");
     var dinge = [
         "✗Grundstrukturen",
-        "Universum",
+        "✗Universum",
         "Geist__(15)",
         "Strukturalien_bzw_Meta-Paradigmen_bzw_Transzendentalien_(15)",
     ];
@@ -500,7 +500,7 @@ function disEnAbleChks(Enums1) {
         abzug.push(3);
     if (Enums.has(5) && !Enums.has(4))
         abzug.push(4);
-    var Enume = new Set([...Enums, ...Enume]);
+    Enume = new Set([...Enums, ...Enume]);
     for (var i = 0; i < abzug.length; i++)
         Enume.delete(abzug[i]);
     Enums = Array.from(Enume);
