@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-07 16:37+0200\n"
+"POT-Creation-Date: 2023-05-12 18:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3675,3 +3675,21 @@ msgstr ""
 
 #~ msgid "B"
 #~ msgstr "C"
+
+#~ msgid "Gleichheit, Freiheit, Dominieren (Ordnungen [12]) Generiert"
+#~ msgstr "Being equal, Freedom, Liberty, Domination (Order [12]) generated"
+
+#~ msgid "Dominieren, Unterordnen"
+#~ msgstr "domination over submission"
+
+#~ msgid "Freiheit"
+#~ msgstr "freedom and or liberty"
+
+#~ msgid "Einschränkung der Freiheit"
+#~ msgstr "reduction of liberty and or freedom"
+
+#~ msgid "den anderen überbieten wollen"
+#~ msgstr "wanting to be better or higher than the other"
+
+#~ msgid "den anderen unterbieten wollen"
+#~ msgstr "wanting to be among or under the other"

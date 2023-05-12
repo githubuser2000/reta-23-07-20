@@ -3706,6 +3706,17 @@ class concat:
             ") auf dich bei gleichförmigen Polygonen"
         )
     }
+    gleichheitFreiheitVergleich: dict = {
+        "Gleichheit, Freiheit, Dominieren (Ordnungen [12]) Generiert": _(
+            "Gleichheit, Freiheit, Dominieren (Ordnungen [12]) Generiert"
+        ),
+        "Dominieren, Unterordnen": _("Dominieren, Unterordnen"),
+        "Freiheit": _("Freiheit"),
+        "Einschränkung der Freiheit": _("Einschränkung der Freiheit"),
+        "Gleichheit": _("Gleichheit"),
+        "den anderen überbieten wollen": _("den anderen überbieten wollen"),
+        "den anderen unterbieten wollen": _("den anderen unterbieten wollen"),
+    }
     energietopologie1 = {
         "eine Denkart": _("eine Denkart"),
         "eine Gefühlsart": _("eine Gefühlsart"),

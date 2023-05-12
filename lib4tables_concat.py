@@ -104,6 +104,33 @@ class Concat:
             ] = self.tables.dataDict[0][9]
         return self.relitable, rowsAsNumbers
 
+    def gleichheitFreiheitVergleich(self, zahl: int) -> str:
+        zahl = int(zahl)
+        ausgabeStringList = []
+        if zahl % 4 == 0:
+            ausgabeStringList += [
+                i18n.gleichheitFreiheitVergleich["Dominieren, Unterordnen"]
+            ]
+        if zahl % 4 == 1:
+            ausgabeStringList += [i18n.gleichheitFreiheitVergleich["Freiheit"]]
+        if zahl % 4 == 3:
+            ausgabeStringList += [
+                i18n.gleichheitFreiheitVergleich["Einschränkung der Freiheit"]
+            ]
+        if zahl % 4 == 2:
+            if (zahl - 2) % 8 == 0:
+                ausgabeStringList += [i18n.gleichheitFreiheitVergleich["Gleichheit"]]
+            if (zahl - 6) % 16 == 0:
+                ausgabeStringList += [
+                    i18n.gleichheitFreiheitVergleich["den anderen überbieten wollen"]
+                ]
+            if (zahl - 14) % 16 == 0:
+                ausgabeStringList += [
+                    i18n.gleichheitFreiheitVergleich["den anderen unterbieten wollen"]
+                ]
+        ausgabeString = "; ".join(ausgabeStringList)
+        return ausgabeString
+
     def geistEmotionEnergieMaterieTopologie(self, zahl: int) -> str:
         zahl = int(zahl)
         prFa = primfaktoren(zahl)
@@ -158,6 +185,41 @@ class Concat:
             ]
         ausgabeString = "; ".join(ausgabeStringList)
         return ausgabeString
+
+    def concatGleichheitFreiheitDominieren(
+        self, relitable: list, rowsAsNumbers: set
+    ) -> tuple:
+        self.relitable = relitable
+        if set(rowsAsNumbers) >= {132}:
+
+            rowsAsNumbers |= {len(self.relitable[0])}
+            self.tables.generatedSpaltenParameter_Tags[
+                len(rowsAsNumbers) - 1
+            ] = frozenset({ST.sternPolygon, ST.universum})
+            for i, cols in enumerate(
+                deepcopy(self.relitable[: self.tables.lastLineNumber + 1])
+            ):
+                if i == 0:
+                    ausgabeString = i18n.gleichheitFreiheitVergleich[
+                        "Gleichheit, Freiheit, Dominieren (Ordnungen [12]) Generiert"
+                    ]
+                else:
+                    ausgabeString = self.gleichheitFreiheitVergleich(i)
+                self.relitable[i] += [ausgabeString]
+
+            if (
+                len(self.tables.generatedSpaltenParameter)
+                + self.tables.SpaltenVanillaAmount
+                in self.tables.generatedSpaltenParameter
+            ):
+                raise ValueError
+
+            self.tables.generatedSpaltenParameter[
+                len(self.tables.generatedSpaltenParameter)
+                + self.tables.SpaltenVanillaAmount
+            ] = self.tables.dataDict[0][132]
+
+        return self.relitable, rowsAsNumbers
 
     def concatGeistEmotionEnergieMaterieTopologie(
         self, relitable: list, rowsAsNumbers: set

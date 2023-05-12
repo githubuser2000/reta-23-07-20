@@ -1306,6 +1306,13 @@ class Program:
         (
             self.relitable,
             self.rowsAsNumbers,
+        ) = self.tables.getConcat.concatGleichheitFreiheitDominieren(
+            self.relitable, self.rowsAsNumbers
+        )
+
+        (
+            self.relitable,
+            self.rowsAsNumbers,
         ) = self.tables.getConcat.concatGeistEmotionEnergieMaterieTopologie(
             self.relitable, self.rowsAsNumbers
         )
