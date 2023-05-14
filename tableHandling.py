@@ -1383,7 +1383,10 @@ class Tables:
                     ] = frozenset({ST.sternPolygon, ST.universum, ST.galaxie})
 
                 self.relitable[0] += [i18n.tableHandling.gestirnGrossschrift["Gestirn"]]
-                for i, line in enumerate(self.relitable[1:]):
+                self.relitable[1] += [
+                    i18n.tableHandling.gestirnGrossschrift["Sonne (keine Potenzen)"]
+                ]
+                for i, line in enumerate(self.relitable[2:]):
                     line1 = []
                     if i % 3 == 0:
                         line1 += [
