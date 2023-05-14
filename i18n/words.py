@@ -3692,9 +3692,14 @@ class tableHandling:
     }
     gestirnGrossschrift = {
         "Gestirn": _("Gestirn"),
-        "Mond": _("Mond"),
+        ", und außerdem ": _(", und außerdem "),
+        "Mond (Potenzen)": _("Mond (Potenzen)"),
         "Sonne": _("Sonne"),
-        "Planet": _("Planet"),
+        "Sonne (keine Potenzen)": _("Sonne (keine Potenzen)"),
+        "Planet (2*n)": _("Planet (2*n)"),
+        "wäre eine schwarze Sonne (-3*n), wenn ins Negative durch eine Typ 13 verdreht": _(
+            "wäre eine schwarze Sonne (-3*n), wenn ins Negative durch eine Typ 13 verdreht"
+        ),
     }
 
 

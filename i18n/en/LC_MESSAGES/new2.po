@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-12 18:03+0200\n"
+"POT-Creation-Date: 2023-05-14 19:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3693,3 +3693,20 @@ msgstr ""
 
 #~ msgid "den anderen unterbieten wollen"
 #~ msgstr "wanting to be among or under the other"
+
+#~ msgid ""
+#~ "wäre eine schwarze Sonne (-3*n), wenn ins Negative durch eine Typ 13 "
+#~ "verdreht"
+#~ msgstr "would be a black sun, if inverted into its negative by a type 13"
+
+#~ msgid ", und außerdem "
+#~ msgstr ", and as well "
+
+#~ msgid "Mond (Potenzen)"
+#~ msgstr "moon (math powers)"
+
+#~ msgid "Sonne (keine Potenzen)"
+#~ msgstr "suns (no math powers)"
+
+#~ msgid "Planet (2*n)"
+#~ msgstr "planets (2*n)"

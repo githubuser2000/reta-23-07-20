@@ -1382,28 +1382,35 @@ class Tables:
                         len(rowsAsNumbers) - 1
                     ] = frozenset({ST.sternPolygon, ST.universum, ST.galaxie})
 
-                for i, line in enumerate(self.relitable):
-                    if i == 0:
-                        line += i18n.tableHandling.gestirnGrossschrift["Gestirn"]
-                    else:
-                        if moonNumber(i)[1] != []:
-                            text = i18n.tableHandling.gestirnGrossschrift["Mond"]
-                        else:
-                            text = i18n.tableHandling.gestirnGrossschrift["Sonne"]
-                        if i % 2 == 0:
-                            line += [
-                                "".join(
-                                    (
-                                        text,
-                                        ", ",
-                                        i18n.tableHandling.gestirnGrossschrift[
-                                            "Planet"
-                                        ],
-                                    )
-                                )
+                self.relitable[0] += [i18n.tableHandling.gestirnGrossschrift["Gestirn"]]
+                for i, line in enumerate(self.relitable[1:]):
+                    line1 = []
+                    if i % 3 == 0:
+                        line1 += [
+                            i18n.tableHandling.gestirnGrossschrift[
+                                "wäre eine schwarze Sonne (-3*n), wenn ins Negative durch eine Typ 13 verdreht"
                             ]
-                        else:
-                            line += [text]
+                        ]
+
+                    if moonNumber(i)[1] != []:
+                        line1 += [
+                            i18n.tableHandling.gestirnGrossschrift["Mond (Potenzen)"]
+                        ]
+                    else:
+                        line1 += [
+                            i18n.tableHandling.gestirnGrossschrift[
+                                "Sonne (keine Potenzen)"
+                            ]
+                        ]
+                    if i % 2 == 0:
+                        line1 += [
+                            i18n.tableHandling.gestirnGrossschrift["Planet (2*n)"],
+                        ]
+                    line += [
+                        i18n.tableHandling.gestirnGrossschrift[", und außerdem "].join(
+                            line1
+                        )
+                    ]
 
     def tableReducedInLinesByTypeSet(self, table: list, linesAllowed: set):
         """nur Zeilen aus dem set aus der Tabelle verwenden als Ausgabe der Tabelle

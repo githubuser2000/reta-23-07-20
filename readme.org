@@ -259,3 +259,8 @@ Sollte ich das umsetzen wollen, dann sollte ich unbedingt einen neuen eigenen Br
 + Oder statische Klassen, statt Instanzen verwenden.
 + Aufhören damit, weg machen: mehrfache Art gleichzeitig Variablen zu übergeben und zu referenzieren: Das ist liederlich, unordentlich.
 + Vielleicht mal besser doch Clean Code umsetzen, obwohl mir das den Spaß wegnimmt.
+*** 9. Typescript
+**** Allgemeines
++ Alles zusammen gleichzeitig refactoren und dabei gleichzeitig Unit-Tests einbauen.
+  + Unit-Tests mit einem leichtgewichtigen Framework dazu
+  + gleichzeitig moderne Typescript-Fähigkeiten und Programmierkonzepte dazu verwenden und diese zuvor recherchieren, welche neuesten es für Typescript dafür gibt!
