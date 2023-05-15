@@ -1455,7 +1455,7 @@ paraNdataMatrix: list = [
             _("alien"),
             _("universalien"),
         ),
-        {5, 54, 55, 198},
+        {5, 54, 55, 198, 390},
     ),
     (
         ParametersMain.universum,
@@ -1472,7 +1472,7 @@ paraNdataMatrix: list = [
     (
         ParametersMain.universum,
         (_("Netzwerk"), _("netzwerk")),
-        {25, 55, 386},
+        {25, 55, 386, 390},
     ),
     (
         ParametersMain.universum,
@@ -2768,7 +2768,7 @@ paraNdataMatrix: list = [
             _("zaehlungen"),
             _("zählung"),
         ),
-        {25, 45, 169, 188, 386},
+        {25, 45, 169, 188, 386, 390},
     ),
     (
         ParametersMain.bedeutung,
@@ -3601,11 +3601,11 @@ kombiParaNdataMatrix2: OrderedDict = OrderedDict(
             _("persoenlichkeit"),
             _("persönlichkeit"),
         ),
-        # 9: (
-        #    _("Religion"),
-        #    _("religion"),
-        #    _("religionen"),
-        # ),
+        9: (
+            _("Religion"),
+            _("religion"),
+            _("religionen"),
+        ),
         10: (
             _("Motive_Ziele"),
             _("motivation"),
@@ -3627,7 +3627,7 @@ kombiParaNdataMatrix2: OrderedDict = OrderedDict(
         #    _("gefühl"),
         #    _("gefühle"),
         # ),
-        # 13: (_("Personen"), "personen": _("personen"), "berühmtheiten": _("berühmtheiten"), "beruehmtheiten": _("beruehmtheiten")),
+        13: (_("Personen"), _("personen"), _("berühmtheiten"), _("beruehmtheiten")),
         14: (
             _("Mechanismen_der_Zuechtung"),
             _("mechanismen"),

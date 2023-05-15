@@ -140,6 +140,7 @@ tableTags = {
         208,
         384,
         388,
+        389,
     },
     frozenset({ST.sternPolygon, ST.galaxie}): {
         0,
@@ -336,6 +337,7 @@ tableTags = {
         308,
         320,
         382,
+        390,
     },
     frozenset({ST.galaxie, ST.gleichfoermigesPolygon}): {
         16,

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-14 19:16+0200\n"
+"POT-Creation-Date: 2023-05-15 22:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1673,7 +1673,7 @@ msgstr "religions"
 #: ../../words.py:503 ../../words.py:3477 ../../words.py:511
 #: ../../words.py:3502 ../../words.py:531 ../../words.py:3522
 #: ../../words.py:535 ../../words.py:3526 ../../words.py:536
-#: ../../words.py:3527
+#: ../../words.py:3527 ../../words.py:3607
 msgid "religionen"
 msgstr "religions"
 
@@ -1685,7 +1685,7 @@ msgstr "religions"
 #: ../../words.py:504 ../../words.py:3476 ../../words.py:512
 #: ../../words.py:3501 ../../words.py:532 ../../words.py:3521
 #: ../../words.py:536 ../../words.py:3525 ../../words.py:537
-#: ../../words.py:3526
+#: ../../words.py:3526 ../../words.py:3606
 msgid "religion"
 msgstr "religion"
 
@@ -8530,7 +8530,7 @@ msgstr "personality"
 #: ../../words.py:3436 ../../words.py:3440 ../../words.py:3450
 #: ../../words.py:3455 ../../words.py:3463 ../../words.py:3473
 #: ../../words.py:3475 ../../words.py:3500 ../../words.py:3520
-#: ../../words.py:3524 ../../words.py:3525
+#: ../../words.py:3524 ../../words.py:3525 ../../words.py:3605
 msgid "Religion"
 msgstr "religion"
 
@@ -8571,7 +8571,7 @@ msgstr "Emotions"
 #: ../../words.py:3456 ../../words.py:3460 ../../words.py:3470
 #: ../../words.py:3475 ../../words.py:3483 ../../words.py:3493
 #: ../../words.py:3495 ../../words.py:3520 ../../words.py:3540
-#: ../../words.py:3544 ../../words.py:3545
+#: ../../words.py:3544 ../../words.py:3545 ../../words.py:3630
 msgid "Personen"
 msgstr "people"
 
@@ -8579,7 +8579,7 @@ msgstr "people"
 #: ../../words.py:3457 ../../words.py:3461 ../../words.py:3471
 #: ../../words.py:3476 ../../words.py:3484 ../../words.py:3494
 #: ../../words.py:3496 ../../words.py:3521 ../../words.py:3541
-#: ../../words.py:3545 ../../words.py:3546
+#: ../../words.py:3545 ../../words.py:3546 ../../words.py:3630
 msgid "personen"
 msgstr "persons"
 
@@ -8587,7 +8587,7 @@ msgstr "persons"
 #: ../../words.py:3458 ../../words.py:3462 ../../words.py:3472
 #: ../../words.py:3477 ../../words.py:3485 ../../words.py:3495
 #: ../../words.py:3497 ../../words.py:3522 ../../words.py:3542
-#: ../../words.py:3546 ../../words.py:3547
+#: ../../words.py:3546 ../../words.py:3547 ../../words.py:3630
 msgid "berühmtheiten"
 msgstr "celebrities"
 
@@ -8595,7 +8595,7 @@ msgstr "celebrities"
 #: ../../words.py:3459 ../../words.py:3463 ../../words.py:3473
 #: ../../words.py:3478 ../../words.py:3486 ../../words.py:3496
 #: ../../words.py:3498 ../../words.py:3523 ../../words.py:3543
-#: ../../words.py:3547 ../../words.py:3548
+#: ../../words.py:3547 ../../words.py:3548 ../../words.py:3630
 msgid "beruehmtheiten"
 msgstr "celebrities"
 
