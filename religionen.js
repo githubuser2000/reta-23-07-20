@@ -63,7 +63,20 @@ class gleichfPolygon {
     }
     drawPolygon(n, centerX, centerY, radius, startAngle = 0) {
         if (n < 2) {
-            console.log("Cannot draw a polygon with less than 2 sides");
+            // Koordinaten des Punkts
+            const x = centerX;
+            const y = centerY;
+            var radius1 = 1;
+            // Größe des Punkts
+            const size = 2;
+            this.context.fillStyle = "white";
+            this.context.strokeStyle = "white";
+            this.context.beginPath();
+            //this.context.fillRect(x - size, y - size, size * 2, size * 2);
+            this.context.arc(x, y, radius1, 0, size * Math.PI);
+            this.context.filter = "blur(1px)";
+            this.context.closePath();
+            this.context.stroke();
             return this.canvas.toDataURL();
         }
         let angleStep = Math.PI * 2 / n;
@@ -138,6 +151,63 @@ class StarPolygon {
         this.context.stroke();
         return this.canvas.toDataURL();
     }
+}
+function giveSetOfPolyTypes(numberList) {
+    var ifDrawPoly = new Set();
+    var Enums = new Set();
+    var abzug = [];
+    if (Enums.has(6) && !Enums.has(0))
+        abzug.push(0);
+    if (Enums.has(6) && !Enums.has(1))
+        abzug.push(1);
+    if (Enums.has(1) && !Enums.has(0))
+        abzug.push(0);
+    if (Enums.has(1) && !Enums.has(6))
+        abzug.push(6);
+    if (Enums.has(0) && !Enums.has(1))
+        abzug.push(1);
+    if (Enums.has(0) && !Enums.has(6))
+        abzug.push(6);
+    if (Enums.has(3) && !Enums.has(4))
+        abzug.push(4);
+    if (Enums.has(3) && !Enums.has(5))
+        abzug.push(5);
+    if (Enums.has(4) && !Enums.has(3))
+        abzug.push(3);
+    if (Enums.has(4) && !Enums.has(5))
+        abzug.push(5);
+    if (Enums.has(5) && !Enums.has(3))
+        abzug.push(3);
+    if (Enums.has(5) && !Enums.has(4))
+        abzug.push(4);
+    Enume = new Set([...Enums, ...Enume]);
+    for (var i3 = 0; i3 < abzug.length; i3++)
+        Enume.delete(abzug[i3]);
+    Enums = Array.from(Enume);
+    for (var i3 = 2; i3 < spaltenTags.length; i3++) {
+        var enumi = new Set();
+        for (var k3 = 0; k3 < spaltenTags[i3].length; k3++)
+            for (var l3 = 0; l3 < Enums.length; l3++)
+                if (spaltenTags[i3][k3] == Enums[l3])
+                    enumi.add(Enums[l3]);
+        if ((!enumi.has(0) && !enumi.has(1) && !enumi.has(6)) ||
+            (!enumi.has(3) && !enumi.has(4) && !enumi.has(5)) ||
+            enumi.size == 0) {
+            /*var spaltenTags2: string;
+            for (var k: number = 0; k < spalten4spaltenTags[i].length; k++) {
+                spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "80%";
+                spaltenTags2 = spalten4spaltenTags[i][k].style.opacity = "0.4";
+            }*/
+        }
+        else {
+            for (var k3 = 0; k3 < spalten4spaltenTags[i3].length; k3++) {
+                ifDrawPoly.add(k3);
+            }
+        }
+    }
+    ifDrawPoly.delete(0);
+    ifDrawPoly.delete(1);
+    return ifDrawPoly;
 }
 function returnChangeButtons(number1) {
     var number = number1.toString();
@@ -501,7 +571,7 @@ window.onload = function () {
     //var sheets: StyleSheetList = document.styleSheets;
     //var sheet, rules, rule;
     document.body.style.display = "initial";
-    animateAllPolygons();
+    //animateAllPolygons();
     /*
     for (var i: number = 0, iLen = sheets.length; i < iLen; i++) {
       sheet = sheets[i];
@@ -561,8 +631,8 @@ window.onload = function () {
     var gfPolygon;
     var polyg1;
     var polyg2;
-    var ifDrawSpoly = [];
-    var ifDrawgfPoly = [];
+    var ifDrawSpoly = new Set();
+    var ifDrawgfPoly = new Set();
     let pSize = 120;
     var i2;
     var ueberschrift;
@@ -572,14 +642,18 @@ window.onload = function () {
     const regex4 = /\(\s*\d+\s*\)|\s+\d+\s+|\s+\d+$/;
     const regex5 = /\(\s*1\/\d+\s*\)|\s+1\/\d+\s+|\s+1\/\d+$/;
     const regex6 = /[a-zA-Z\(]+\d+$|[a-zA-Z\(]+\d+[^\d]+/;
+    ifDrawgfPoly = giveSetOfPolyTypes([1]);
+    ifDrawSpoly = giveSetOfPolyTypes([0]);
+    ifDrawgfPoly = new Set([...ifDrawgfPoly].filter((x) => !ifDrawSpoly.has(x)));
+    ifDrawSpoly = new Set([...ifDrawSpoly].filter((x) => !ifDrawgfPoly.has(x)));
     for (var i = 0; i < TRs.length; i++) {
         TDs = TRs[i].cells;
         for (var k = 0; k < TDs.length; k++) {
             ueberschrift = TDs[k].innerHTML;
-            if (i == 0 && (ueberschrift.includes('gleichförm') || regex2.test(ueberschrift) || regex3.test(ueberschrift) || regex5.test(ueberschrift)) && !((ueberschrift.includes('ternpolygon') && !ueberschrift.includes('nicht-Sternpolygon')) || ueberschrift.includes(' n ') || ueberschrift.trim().slice(-2) === " n" || ueberschrift.includes('(n)') || regex4.test(ueberschrift)))
-                ifDrawgfPoly.push(k);
+            if (i == 0 && (ueberschrift.includes('eziproke') || ueberschrift.includes('gleichförm') || regex2.test(ueberschrift) || regex3.test(ueberschrift) || regex5.test(ueberschrift)) && !((ueberschrift.includes('ternpolygon') && !ueberschrift.includes('nicht-Sternpolygon')) || ueberschrift.includes(' n ') || ueberschrift.trim().slice(-2) === " n" || ueberschrift.includes('(n)')))
+                ifDrawgfPoly.add(k);
             else if (i == 0 && (ueberschrift.includes('ternpolygon') || (regex6.test(ueberschrift.replace(/\s/g, "").trim()) && isNaN(ueberschrift.replace(/\s/g, ""))) || ueberschrift.includes(' n ') || ueberschrift.trim().slice(-2) === " n" || ueberschrift.includes('(n)') && regex4.test(ueberschrift.trim())) && !(ueberschrift.includes('1/') || ueberschrift.includes('gleichförm') || regex2.test(ueberschrift) || regex3.test(ueberschrift) || regex5.test(ueberschrift)))
-                ifDrawSpoly.push(k);
+                ifDrawSpoly.add(k);
         }
         if (i > 4 && i < 21) {
             if (!isNaN(TDs[1].innerHTML.trim())) {
@@ -592,33 +666,33 @@ window.onload = function () {
                 gfPolygon = new gleichfPolygon(pSize * 2, alleMonde.includes(i2) ? 'white' : 'black');
                 polyg2 = gfPolygon.drawPolygon(i, pSize, pSize, 14);
                 for (var k = 0; k < TDs.length; k++) {
-                    if (ifDrawSpoly.includes(k)) {
+                    if (ifDrawSpoly.has(k)) {
                         //window.alert("yes2");
                         TDs[k].style.backgroundImage = 'url(' + polyg1 + ')';
-                        TDs[k].style.backgroundRepeat = 'no-repeat';
+                        //TDs[k].style.backgroundRepeat = 'no-repeat';
                         TDs[k].style.backgroundPosition = 'center';
                     }
-                    if (ifDrawgfPoly.includes(k)) {
+                    if (ifDrawgfPoly.has(k)) {
                         //window.alert("yes2");
                         TDs[k].style.backgroundImage = 'url(' + polyg2 + ')';
-                        TDs[k].style.backgroundRepeat = 'no-repeat';
+                        //TDs[k].style.backgroundRepeat = 'no-repeat';
                         TDs[k].style.backgroundPosition = 'center';
                     }
                 }
                 //}
             }
         }
-        if (i < 5 && i > 1) {
+        if (i < 5) {
             if (!isNaN(TDs[1].innerHTML.trim())) {
                 //window.alert(TDs[1].innerHTML);
                 i2 = parseInt(TDs[1].innerHTML.trim());
                 gfPolygon = new gleichfPolygon(pSize * 2, alleMonde.includes(i2) ? 'white' : 'black');
                 polyg2 = gfPolygon.drawPolygon(i, pSize, pSize, 15);
                 for (var k = 0; k < TDs.length; k++) {
-                    if (ifDrawSpoly.includes(k) || ifDrawgfPoly.includes(k)) {
+                    if (ifDrawSpoly.has(k) || ifDrawgfPoly.has(k)) {
                         //window.alert("yes2");
                         TDs[k].style.backgroundImage = 'url(' + polyg2 + ')';
-                        TDs[k].style.backgroundRepeat = 'no-repeat';
+                        //TDs[k].style.backgroundRepeat = 'no-repeat';
                         TDs[k].style.backgroundPosition = 'center';
                     }
                 }
@@ -1114,7 +1188,7 @@ function toggleName(p2) {
     else if (p2.getElementsByTagName("input").length > 0) {
         p2.style.display = "block";
         p2.style.fontSize = "100%";
-        animateAllPolygons();
+        //animateAllPolygons();
     }
 }
 function toggleP1(p1) {
@@ -1168,7 +1242,7 @@ function toggleSpalten(colNumber) {
                 !spalteEinzelnDeaktiviertWorden) {
                 ZeileIhreZellen[i].style.display = "table-cell";
                 ZeileIhreZellen[i].style.fontSize = "100%";
-                animateAllPolygons();
+                //animateAllPolygons();
             }
             else if (away || spalteEinzelnDeaktiviertWorden) {
                 ZeileIhreZellen[i].style.display = "none";
@@ -1909,7 +1983,7 @@ function zeilenLetztendlichZeigenVerstecken(s, neuErlauben, dazuErlauben, neuHin
         (!erlaubteZeilen.has(s) && neuHinfort)) &&
         !dazuHinfort) {
         tabellenZelle.style.display = "table-row";
-        animateAllPolygons();
+        //animateAllPolygons();
     }
     else if (((neuErlauben || neuHinfort) && !dazuErlauben) ||
         (dazuHinfort && erlaubteZeilen.has(s)) ||
