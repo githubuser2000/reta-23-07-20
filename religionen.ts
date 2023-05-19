@@ -569,11 +569,19 @@ for (i = 0; i < tdClasses1.length; i++)
   var ifDrawgfPoly: number[] = [];
   let pSize: number = 120;
   var i2: number;
+  var ueberschrift: string;
+  //const regex1: RegExp = /(?<!\() n (?!\d|\/)/;
+  const regex2: RegExp = /(?<! )1\/n|(?<!\()1\/n(?!\))/;
+  const regex3: RegExp = /(?<! )1\/|(?<!\()1\/(?!\))/;
+  const regex4 = /\(\s*\d+\s*\)|\s+\d+\s+|\s+\d+$/;
+  const regex5 = /\(\s*1\/\d+\s*\)|\s+1\/\d+\s+|\s+1\/\d+$/;
+  const regex6 = /[a-zA-Z\(]+\d+$|[a-zA-Z\(]+\d+[^\d]+/;
   for (var i: number = 0; i < TRs.length; i++) {
         TDs = TRs[i].cells as HTMLCollectionOf<HTMLTableCellElement>;
         for (var k: number = 0; k < TDs.length; k++) {
-          if (i==0 && TDs[k].innerHTML.includes('gleichförm') && !TDs[k].innerHTML.includes('ternpolygon')) ifDrawgfPoly.push(k);
-          if (i==0 && TDs[k].innerHTML.includes('ternpolygon') && !TDs[k].innerHTML.includes('gleichförm')) ifDrawSpoly.push(k);
+          ueberschrift = TDs[k].innerHTML
+          if (i==0 && (ueberschrift.includes('gleichförm') || regex2.test(ueberschrift)  || regex3.test(ueberschrift) || regex5.test(ueberschrift)) && !((ueberschrift.includes('ternpolygon') && !ueberschrift.includes('nicht-Sternpolygon') ) || ueberschrift.includes(' n ') || ueberschrift.trim().slice(-2) === " n" || ueberschrift.includes('(n)') || regex4.test(ueberschrift))) ifDrawgfPoly.push(k);
+          else if (i==0 && (ueberschrift.includes('ternpolygon') || (regex6.test(ueberschrift.replace(/\s/g, "").trim()) && isNaN(ueberschrift.replace(/\s/g, ""))) || ueberschrift.includes(' n ') || ueberschrift.trim().slice(-2) === " n" || ueberschrift.includes('(n)') && regex4.test(ueberschrift.trim())) && !(ueberschrift.includes('1/') || ueberschrift.includes('gleichförm') || regex2.test(ueberschrift)  || regex3.test(ueberschrift) || regex5.test(ueberschrift))) ifDrawSpoly.push(k);
         }
         if (i>4 && i<21) {
             if (!isNaN(TDs[1].innerHTML.trim())) {

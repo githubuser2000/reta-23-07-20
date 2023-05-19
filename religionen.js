@@ -533,17 +533,22 @@ window.onload = function () {
     var ifDrawgfPoly = [];
     let pSize = 120;
     var i2;
+    var ueberschrift;
+    //const regex1: RegExp = /(?<!\() n (?!\d|\/)/;
+    const regex2 = /(?<! )1\/n|(?<!\()1\/n(?!\))/;
+    const regex3 = /(?<! )1\/|(?<!\()1\/(?!\))/;
+    const regex4 = /\(\s*\d+\s*\)|\s+\d+\s+|\s+\d+$/;
+    const regex5 = /\(\s*1\/\d+\s*\)|\s+1\/\d+\s+|\s+1\/\d+$/;
+    const regex6 = /[a-zA-Z\(]+\d+$|[a-zA-Z\(]+\d+[^\d]+/;
     for (var i = 0; i < TRs.length; i++) {
         TDs = TRs[i].cells;
-        //if (TDs[1].className.includes('Nummerierung')) {
-        //
         for (var k = 0; k < TDs.length; k++) {
-            if (i == 0 && TDs[k].innerHTML.includes('gleichförmiges Polygon'))
+            ueberschrift = TDs[k].innerHTML;
+            if (i == 0 && (ueberschrift.includes('gleichförm') || regex2.test(ueberschrift) || regex3.test(ueberschrift) || regex5.test(ueberschrift)) && !((ueberschrift.includes('ternpolygon') && !ueberschrift.includes('nicht-Sternpolygon')) || ueberschrift.includes(' n ') || ueberschrift.trim().slice(-2) === " n" || ueberschrift.includes('(n)') || regex4.test(ueberschrift)))
                 ifDrawgfPoly.push(k);
-            if (i == 0 && TDs[k].innerHTML.includes('Sternpolygon'))
+            else if (i == 0 && (ueberschrift.includes('ternpolygon') || (regex6.test(ueberschrift.replace(/\s/g, "").trim()) && isNaN(ueberschrift.replace(/\s/g, ""))) || ueberschrift.includes(' n ') || ueberschrift.trim().slice(-2) === " n" || ueberschrift.includes('(n)') && regex4.test(ueberschrift.trim())) && !(ueberschrift.includes('1/') || ueberschrift.includes('gleichförm') || regex2.test(ueberschrift) || regex3.test(ueberschrift) || regex5.test(ueberschrift)))
                 ifDrawSpoly.push(k);
         }
-        //alleMonde
         if (i > 4 && i < 21) {
             if (!isNaN(TDs[1].innerHTML.trim())) {
                 i2 = parseInt(TDs[1].innerHTML.trim());
