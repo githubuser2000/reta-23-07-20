@@ -571,13 +571,10 @@ for (i = 0; i < tdClasses1.length; i++)
   var i2: number;
   for (var i: number = 0; i < TRs.length; i++) {
         TDs = TRs[i].cells as HTMLCollectionOf<HTMLTableCellElement>;
-        //if (TDs[1].className.includes('Nummerierung')) {
-        //
         for (var k: number = 0; k < TDs.length; k++) {
-          if (i==0 && TDs[k].innerHTML.includes('gleichförmiges Polygon')) ifDrawgfPoly.push(k);
-          if (i==0 && TDs[k].innerHTML.includes('Sternpolygon')) ifDrawSpoly.push(k);
+          if (i==0 && TDs[k].innerHTML.includes('gleichförm') && !TDs[k].innerHTML.includes('ternpolygon')) ifDrawgfPoly.push(k);
+          if (i==0 && TDs[k].innerHTML.includes('ternpolygon') && !TDs[k].innerHTML.includes('gleichförm')) ifDrawSpoly.push(k);
         }
-        //alleMonde
         if (i>4 && i<21) {
             if (!isNaN(TDs[1].innerHTML.trim())) {
                     i2 = parseInt(TDs[1].innerHTML.trim())
