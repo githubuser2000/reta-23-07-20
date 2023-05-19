@@ -32,6 +32,12 @@ let tdClasses = document.getElementsByClassName("z_0");
 var mapMapMap = new Map();
 var insertnull;
 var erlaubteZeilen = new Set();
+var starPolygons = [];
+function animateAllPolygons() {
+    for (var i = 0; i < starPolygons.length; i++) {
+        starPolygons[i].animate();
+    }
+}
 function checksum(object) {
     return __awaiter(this, void 0, void 0, function* () {
         // Konvertiert das Objekt in einen String
@@ -53,6 +59,7 @@ class gleichfPolygon {
         this.canvas.width = size;
         this.context = this.canvas.getContext('2d');
         this.context.strokeStyle = farbe;
+        this.context.globalAlpha = 0.6;
     }
     drawPolygon(n, centerX, centerY, radius, startAngle = 0) {
         if (n < 2) {
@@ -72,6 +79,7 @@ class gleichfPolygon {
                 this.context.lineTo(x, y);
             }
         }
+        this.context.filter = "blur(1px)";
         this.context.closePath();
         this.context.stroke();
         return this.canvas.toDataURL();
@@ -84,6 +92,28 @@ class StarPolygon {
         this.canvas.width = size;
         this.context = this.canvas.getContext('2d');
         this.context.strokeStyle = farbe;
+        this.rotationAngle = 10;
+        this.rotationSpeed = 0.1;
+        this.context.globalAlpha = 0.6;
+    }
+    animate() {
+        // Vor jedem Frame die vorherige Zeichnung löschen
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        // Neue Transformation anwenden
+        this.context.save();
+        this.context.translate(this.canvas.width / 2, this.canvas.height / 2);
+        this.context.rotate(this.rotationAngle);
+        // Hier kannst du deine Zeichenoperationen durchführen
+        this.context.beginPath();
+        // ...
+        // Zeichnen
+        this.context.stroke();
+        // Transformation zurücksetzen
+        this.context.restore();
+        // Rotationswinkel aktualisieren
+        this.rotationAngle += this.rotationSpeed;
+        // Nächsten Frame anfordern
+        requestAnimationFrame(this.animate);
     }
     drawStarPolygon(n, centerX, centerY, radius, startAngle = 0) {
         if (n < 5) {
@@ -104,6 +134,7 @@ class StarPolygon {
             this.context.moveTo(x1, y1);
             this.context.lineTo(x2, y2);
         }
+        this.context.filter = "blur(1px)";
         this.context.stroke();
         return this.canvas.toDataURL();
     }
@@ -470,6 +501,7 @@ window.onload = function () {
     //var sheets: StyleSheetList = document.styleSheets;
     //var sheet, rules, rule;
     document.body.style.display = "initial";
+    animateAllPolygons();
     /*
     for (var i: number = 0, iLen = sheets.length; i < iLen; i++) {
       sheet = sheets[i];
@@ -555,8 +587,10 @@ window.onload = function () {
                 //window.alert(TDs[1].innerHTML);
                 sPolygon = new StarPolygon(pSize * 2, alleMonde.includes(i2) ? 'white' : 'black');
                 polyg1 = sPolygon.drawStarPolygon(i, pSize, pSize, 25);
+                starPolygons.push(sPolygon);
+                //sPolygon.animate();
                 gfPolygon = new gleichfPolygon(pSize * 2, alleMonde.includes(i2) ? 'white' : 'black');
-                polyg2 = gfPolygon.drawPolygon(i, pSize, pSize, 15);
+                polyg2 = gfPolygon.drawPolygon(i, pSize, pSize, 14);
                 for (var k = 0; k < TDs.length; k++) {
                     if (ifDrawSpoly.includes(k)) {
                         //window.alert("yes2");
@@ -1080,6 +1114,7 @@ function toggleName(p2) {
     else if (p2.getElementsByTagName("input").length > 0) {
         p2.style.display = "block";
         p2.style.fontSize = "100%";
+        animateAllPolygons();
     }
 }
 function toggleP1(p1) {
@@ -1133,6 +1168,7 @@ function toggleSpalten(colNumber) {
                 !spalteEinzelnDeaktiviertWorden) {
                 ZeileIhreZellen[i].style.display = "table-cell";
                 ZeileIhreZellen[i].style.fontSize = "100%";
+                animateAllPolygons();
             }
             else if (away || spalteEinzelnDeaktiviertWorden) {
                 ZeileIhreZellen[i].style.display = "none";
@@ -1871,8 +1907,10 @@ function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which) {
 function zeilenLetztendlichZeigenVerstecken(s, neuErlauben, dazuErlauben, neuHinfort, dazuHinfort, tabellenZelle, dazuEinschraenkend) {
     if (((erlaubteZeilen.has(s) && (neuErlauben || dazuErlauben)) ||
         (!erlaubteZeilen.has(s) && neuHinfort)) &&
-        !dazuHinfort)
+        !dazuHinfort) {
         tabellenZelle.style.display = "table-row";
+        animateAllPolygons();
+    }
     else if (((neuErlauben || neuHinfort) && !dazuErlauben) ||
         (dazuHinfort && erlaubteZeilen.has(s)) ||
         (dazuEinschraenkend && !erlaubteZeilen.has(s)))

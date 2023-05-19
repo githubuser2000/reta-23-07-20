@@ -22,6 +22,13 @@ let tdClasses: HTMLCollectionOf<HTMLTableCellElement> = document.getElementsByCl
 var mapMapMap: Map<string,Map<string, number>> = new Map();
 var insertnull: string;
 var erlaubteZeilen: Set<number> = new Set();
+var starPolygons: StarPolygon[] = [];
+
+function animateAllPolygons() {
+    for (var i: number=0; i < starPolygons.length; i++) {
+        starPolygons[i].animate();
+    }
+}
 
 async function checksum(object) {
   // Konvertiert das Objekt in einen String
@@ -50,6 +57,7 @@ class gleichfPolygon {
         this.canvas.width = size;
         this.context = this.canvas.getContext('2d') as CanvasRenderingContext2D;
         this.context.strokeStyle = farbe;
+        this.context.globalAlpha = 0.6;
     }
 
     drawPolygon(n: number, centerX: number, centerY: number, radius: number, startAngle: number = 0) {
@@ -72,6 +80,7 @@ class gleichfPolygon {
             }
         }
 
+        this.context.filter = "blur(1px)";
         this.context.closePath();
         this.context.stroke();
         return this.canvas.toDataURL();
@@ -81,6 +90,8 @@ class gleichfPolygon {
 class StarPolygon {
     private canvas: HTMLCanvasElement;
     private context: CanvasRenderingContext2D;
+    private rotationAngle: number;
+    private rotationSpeed: number;
 
     constructor(size: number = 100, farbe: string = 'black') {
         this.canvas = document.createElement('canvas') as HTMLCanvasElement;
@@ -88,8 +99,35 @@ class StarPolygon {
         this.canvas.width = size;
         this.context = this.canvas.getContext('2d') as CanvasRenderingContext2D;
         this.context.strokeStyle = farbe;
+        this.rotationAngle = 10;
+        this.rotationSpeed = 0.1;
+        this.context.globalAlpha = 0.6;
     }
+    animate() {
+        // Vor jedem Frame die vorherige Zeichnung löschen
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
+        // Neue Transformation anwenden
+        this.context.save();
+        this.context.translate(this.canvas.width / 2, this.canvas.height / 2);
+        this.context.rotate(this.rotationAngle);
+
+        // Hier kannst du deine Zeichenoperationen durchführen
+        this.context.beginPath();
+        // ...
+
+        // Zeichnen
+        this.context.stroke();
+
+        // Transformation zurücksetzen
+        this.context.restore();
+
+        // Rotationswinkel aktualisieren
+        this.rotationAngle += this.rotationSpeed;
+
+        // Nächsten Frame anfordern
+        requestAnimationFrame(this.animate);
+    }
     drawStarPolygon(n: number, centerX: number, centerY: number, radius: number, startAngle: number = 0) {
         if (n < 5) {
             console.log("Cannot draw a star polygon with less than 5 points");
@@ -115,6 +153,7 @@ class StarPolygon {
             this.context.lineTo(x2, y2);
         }
 
+        this.context.filter = "blur(1px)";
         this.context.stroke();
         return this.canvas.toDataURL();
     }
@@ -507,6 +546,7 @@ for (i = 0; i < tdClasses1.length; i++)
   //var sheets: StyleSheetList = document.styleSheets;
   //var sheet, rules, rule;
   document.body.style.display = "initial";
+  animateAllPolygons();
   /*
   for (var i: number = 0, iLen = sheets.length; i < iLen; i++) {
     sheet = sheets[i];
@@ -589,8 +629,10 @@ for (i = 0; i < tdClasses1.length; i++)
                     //window.alert(TDs[1].innerHTML);
                     sPolygon = new StarPolygon(pSize*2, alleMonde.includes(i2) ? 'white' : 'black');
                     polyg1 = sPolygon.drawStarPolygon(i, pSize, pSize, 25);
+                    starPolygons.push(sPolygon);
+                    //sPolygon.animate();
                     gfPolygon = new gleichfPolygon(pSize*2, alleMonde.includes(i2) ? 'white' : 'black');
-                    polyg2 = gfPolygon.drawPolygon(i, pSize, pSize, 15);
+                    polyg2 = gfPolygon.drawPolygon(i, pSize, pSize, 14);
                     for (var k: number = 0; k < TDs.length; k++) {
                         if ( ifDrawSpoly.includes(k)) {
                                 //window.alert("yes2");
@@ -1132,6 +1174,7 @@ function toggleName(p2: HTMLElement) {
   else if (p2.getElementsByTagName("input").length > 0) {
     p2.style.display = "block";
     p2.style.fontSize = "100%";
+    animateAllPolygons();
   }
 }
 
@@ -1186,6 +1229,7 @@ function toggleSpalten(colNumber: number) {
       ) {
         ZeileIhreZellen[i].style.display = "table-cell";
         ZeileIhreZellen[i].style.fontSize = "100%";
+        animateAllPolygons();
       } else if (away || spalteEinzelnDeaktiviertWorden) {
         ZeileIhreZellen[i].style.display = "none";
       }
@@ -2042,9 +2086,10 @@ function zeilenLetztendlichZeigenVerstecken(
     ((erlaubteZeilen.has(s) && (neuErlauben || dazuErlauben)) ||
       (!erlaubteZeilen.has(s) && neuHinfort)) &&
     !dazuHinfort
-  )
+  ) {
     tabellenZelle.style.display = "table-row";
-  else if (
+    animateAllPolygons();
+  } else if (
     ((neuErlauben || neuHinfort) && !dazuErlauben) ||
     (dazuHinfort && erlaubteZeilen.has(s)) ||
     (dazuEinschraenkend && !erlaubteZeilen.has(s))
