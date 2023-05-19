@@ -40,6 +40,87 @@ async function checksum(object) {
 }
 
 
+class gleichfPolygon {
+    private canvas: HTMLCanvasElement;
+    private context: CanvasRenderingContext2D;
+
+    constructor(size: number = 100, farbe: string = 'black') {
+        this.canvas = document.createElement('canvas') as HTMLCanvasElement;
+        this.canvas.height = size;
+        this.canvas.width = size;
+        this.context = this.canvas.getContext('2d') as CanvasRenderingContext2D;
+        this.context.strokeStyle = farbe;
+    }
+
+    drawPolygon(n: number, centerX: number, centerY: number, radius: number, startAngle: number = 0) {
+        if (n < 2) {
+            console.log("Cannot draw a polygon with less than 2 sides");
+            return this.canvas.toDataURL();
+        }
+
+        let angleStep = Math.PI * 2 / n;
+        this.context.beginPath();
+
+        for (let i = 0; i <= n; i++) {
+            let angle = i * angleStep + startAngle;
+            let x = centerX + radius * Math.cos(angle);
+            let y = centerY + radius * Math.sin(angle);
+            if (i === 0) {
+                this.context.moveTo(x, y);
+            } else {
+                this.context.lineTo(x, y);
+            }
+        }
+
+        this.context.closePath();
+        this.context.stroke();
+        return this.canvas.toDataURL();
+    }
+}
+
+class StarPolygon {
+    private canvas: HTMLCanvasElement;
+    private context: CanvasRenderingContext2D;
+
+    constructor(size: number = 100, farbe: string = 'black') {
+        this.canvas = document.createElement('canvas') as HTMLCanvasElement;
+        this.canvas.height = size;
+        this.canvas.width = size;
+        this.context = this.canvas.getContext('2d') as CanvasRenderingContext2D;
+        this.context.strokeStyle = farbe;
+    }
+
+    drawStarPolygon(n: number, centerX: number, centerY: number, radius: number, startAngle: number = 0) {
+        if (n < 5) {
+            console.log("Cannot draw a star polygon with less than 5 points");
+            return this.canvas.toDataURL();
+        }
+
+        let angleStep = Math.PI * 2 / n;
+        this.context.beginPath();
+
+        let skip = Math.floor(n/Math.PI**(1/Math.PI));
+
+        for (let i = 0; i < n; i++) {
+            let angle1 = i * angleStep + startAngle;
+            let x1 = centerX + radius * Math.cos(angle1);
+            let y1 = centerY + radius * Math.sin(angle1);
+
+            let j = (i + skip) % n;
+            let angle2 = j * angleStep + startAngle;
+            let x2 = centerX + radius * Math.cos(angle2);
+            let y2 = centerY + radius * Math.sin(angle2);
+
+            this.context.moveTo(x1, y1);
+            this.context.lineTo(x2, y2);
+        }
+
+        this.context.stroke();
+        return this.canvas.toDataURL();
+    }
+}
+
+
 function returnChangeButtons(number1: number): string {
   var number = number1.toString()
   return (
@@ -478,6 +559,76 @@ for (i = 0; i < tdClasses1.length; i++)
     grunSi,
     grunp2Keys
   );*/
+  //window.alert(TRs.length);
+  var TDs: HTMLCollectionOf<HTMLTableCellElement>;
+  var sPolygon: StarPolygon;
+  var gfPolygon: gleichfPolygon;
+  var polyg1: string;
+  var polyg2: string;
+  var ifDrawSpoly: number[] = [];
+  var ifDrawgfPoly: number[] = [];
+  let pSize: number = 120;
+  var i2: number;
+  for (var i: number = 0; i < TRs.length; i++) {
+        TDs = TRs[i].cells as HTMLCollectionOf<HTMLTableCellElement>;
+        //if (TDs[1].className.includes('Nummerierung')) {
+        //
+        for (var k: number = 0; k < TDs.length; k++) {
+          if (i==0 && TDs[k].innerHTML.includes('gleichförmiges Polygon')) ifDrawgfPoly.push(k);
+          if (i==0 && TDs[k].innerHTML.includes('Sternpolygon')) ifDrawSpoly.push(k);
+        }
+        //alleMonde
+        if (i>4 && i<21) {
+            if (!isNaN(TDs[1].innerHTML.trim())) {
+                    i2 = parseInt(TDs[1].innerHTML.trim())
+                    //window.alert(TDs[1].innerHTML);
+                    sPolygon = new StarPolygon(pSize*2, alleMonde.includes(i2) ? 'white' : 'black');
+                    polyg1 = sPolygon.drawStarPolygon(i, pSize, pSize, 25);
+                    gfPolygon = new gleichfPolygon(pSize*2, alleMonde.includes(i2) ? 'white' : 'black');
+                    polyg2 = gfPolygon.drawPolygon(i, pSize, pSize, 15);
+                    for (var k: number = 0; k < TDs.length; k++) {
+                        if ( ifDrawSpoly.includes(k)) {
+                                //window.alert("yes2");
+                                TDs[k].style.backgroundImage = 'url(' + polyg1 + ')';
+                                TDs[k].style.backgroundRepeat = 'no-repeat';
+                                TDs[k].style.backgroundPosition = 'center';
+                        }
+                        if ( ifDrawgfPoly.includes(k)) {
+                                //window.alert("yes2");
+                                TDs[k].style.backgroundImage = 'url(' + polyg2 + ')';
+                                TDs[k].style.backgroundRepeat = 'no-repeat';
+                                TDs[k].style.backgroundPosition = 'center';
+                        }}
+
+            //}
+
+            }
+
+        }
+        if (i<5 && i > 1) {
+            if (!isNaN(TDs[1].innerHTML.trim())) {
+                    //window.alert(TDs[1].innerHTML);
+                    i2 = parseInt(TDs[1].innerHTML.trim())
+                    gfPolygon = new gleichfPolygon(pSize*2, alleMonde.includes(i2) ? 'white' : 'black');
+                    polyg2= gfPolygon.drawPolygon(i, pSize, pSize, 15);
+                    for (var k: number = 0; k < TDs.length; k++) {
+                            if ( ifDrawSpoly.includes(k) || ifDrawgfPoly.includes(k)) {
+                                //window.alert("yes2");
+                                TDs[k].style.backgroundImage = 'url(' + polyg2 + ')';
+                                TDs[k].style.backgroundRepeat = 'no-repeat';
+                                TDs[k].style.backgroundPosition = 'center';
+                        }}
+
+            //}
+
+            }
+
+        }
+  }
+  /*sPolygon = new StarPolygon(150);
+  polyg1 = sPolygon.drawStarPolygon(7, 25, 25, 25);
+  polyg2 = sPolygon.drawStarPolygon(10, 75, 75, 75);
+  document.body.style.backgroundImage = 'url(' + polyg2 + ')';*/
 };
 
 function makeMapsOfHeadLCheckB(p1: string, p2: string | null, num: string | number, tags: any): void {

@@ -255,7 +255,6 @@ class htmlSyntax(OutputSyntax):
                 p4 = ""
             except:
                 p4 = ""
-
             return "".join(
                 ("<td",)
                 + (
@@ -288,6 +287,11 @@ class htmlSyntax(OutputSyntax):
                     if spalte in (0, 1)
                     # else (' style="display:none"',)
                     # if zeile == 0
+                    else (
+                        ' class="tdSymbole" style="background-image: url('
+                        ');background-size: cover;background-repeat: no-repeat;background-position: right; "',
+                    )
+                    if "Symbole" in things1[0]
                     else ()
                 )
                 + (">\n",)
