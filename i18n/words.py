@@ -520,7 +520,7 @@ ParametersMain: NamedTuple = namedtuple(
 konzeptE = {"konzept": _("konzept"), "konzept2": _("konzept2")}
 gebrochenUniGal = {
     "gebrochenuniversum": _("gebrochen-rational_Universum_n/m"),
-    "gebrochengalaxie": _("gebrochen-rational_Galaxie n/m"),
+    "gebrochengalaxie": _("gebrochen-rational_Galaxie_n/m"),
 }
 ParametersMain: NamedTuple = ParametersMain(
     (
