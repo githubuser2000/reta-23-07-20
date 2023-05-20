@@ -9,6 +9,7 @@ import sys
 from collections import OrderedDict, defaultdict
 from copy import copy, deepcopy
 from enum import Enum
+from fractions import Fraction
 from itertools import zip_longest
 from typing import Optional
 
@@ -1622,7 +1623,6 @@ def bruchBereichsManagementAndWbefehl(zahlenBereichC, stext, zahlenAngaben_):
     Minusse = {}
     pfaue = {}
     pfaueAbzug = {}
-
     for g, a in enumerate(stext):
         bruchAndGanzZahlEtwaKorrekterBereich = []
         bruchBereichsAngaben = []
@@ -1980,6 +1980,44 @@ def bruchBereichsManagementAndWbefehl(zahlenBereichC, stext, zahlenAngaben_):
         zahlenReiheKeineWteiler
     except (UnboundLocalError, NameError):
         zahlenReiheKeineWteiler = ""
+
+    # print(zahlenBereichC)
+    #  print(rangesBruecheDict)
+    dazu = []
+    sdazu = []
+    bruch_GanzZahlReziprokeDazu = []
+    for key, values in rangesBruecheDict.items():
+        for values2 in values:
+            for value in values2.split(","):
+                bruch2 = Fraction(int(key), int(value))
+                if bruch2.numerator % bruch2.denominator == 0:
+                    dazu += [str(int(bruch2))]
+                    sdazu += [str(int(bruch2))]
+                    EsGabzahlenAngaben = True
+                if bruch2.denominator % bruch2.numerator == 0:
+                    dazu += ["1/" + str(int(bruch2))]
+                    bruch_GanzZahlReziprokeDazu += [str(int(bruch2))]
+    for key, values in rangesBruecheDictReverse.items():
+        for value in values:
+            for values2 in values:
+                for value in values2.split(","):
+                    bruch2 = Fraction(int(value), int(key))
+                    if bruch2.numerator % bruch2.denominator == 0:
+                        dazu += [str(int(bruch2))]
+                        sdazu += [str(int(bruch2))]
+                        EsGabzahlenAngaben = True
+                    if bruch2.denominator % bruch2.numerator == 0:
+                        dazu += ["1/" + str(int(bruch2))]
+                        bruch_GanzZahlReziprokeDazu += [str(int(bruch2))]
+    # print("C")
+    # print(bruch_GanzZahlReziprokeDazu)
+
+    if len(dazu) > 0:
+        zahlenBereichC = ",".join(filter(None, sdazu + zahlenBereichC.split(",")))
+        stext += [",".join(sdazu + dazu)]
+        bruch_GanzZahlReziproke += "," + (",".join(bruch_GanzZahlReziprokeDazu))
+    print(zahlenBereichC)
+    print(stext)
 
     return (
         bruch_GanzZahlReziproke,

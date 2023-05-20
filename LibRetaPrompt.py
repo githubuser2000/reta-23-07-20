@@ -433,20 +433,6 @@ def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
         "python",
     ]:
         stext = stext2
-    dazu = []
-    for wort in stext:
-        if isZeilenBruchAngabe(wort):
-            for bruchBereich in wort.split(","):
-                bruch1 = bruchBereich.split("/")
-                bruch2 = Fraction(int(bruch1[0]), int(bruch1[1]))
-                bruch3 = Fraction(int(bruch1[1]), int(bruch1[0]))
-                if bruch2.numerator % bruch2.denominator == 0:
-                    dazu += [str(int(bruch2))]
-                if bruch3.numerator % bruch3.denominator == 0:
-                    dazu += ["1/" + str(int(bruch3))]
-    if len(dazu) > 0:
-        stext += [",".join(dazu)]
-
     return ifKurzKurz, stext
 
 
