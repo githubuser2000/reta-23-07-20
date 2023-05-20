@@ -1987,35 +1987,48 @@ def bruchBereichsManagementAndWbefehl(zahlenBereichC, stext, zahlenAngaben_):
     sdazu = []
     bruch_GanzZahlReziprokeDazu = []
     for key, values in rangesBruecheDict.items():
-        for values2 in values:
-            for value in values2.split(","):
-                bruch2 = Fraction(int(key), int(value))
-                if bruch2.numerator % bruch2.denominator == 0:
-                    dazu += [str(int(bruch2))]
-                    sdazu += [str(int(bruch2))]
-                    EsGabzahlenAngaben = True
-                if bruch2.denominator % bruch2.numerator == 0:
-                    dazu += ["1/" + str(int(bruch2))]
-                    bruch_GanzZahlReziprokeDazu += [str(int(bruch2))]
-    for key, values in rangesBruecheDictReverse.items():
-        for value in values:
+        key = int(key)
+        if key != 0:
             for values2 in values:
                 for value in values2.split(","):
-                    bruch2 = Fraction(int(value), int(key))
-                    if bruch2.numerator % bruch2.denominator == 0:
-                        dazu += [str(int(bruch2))]
-                        sdazu += [str(int(bruch2))]
-                        EsGabzahlenAngaben = True
-                    if bruch2.denominator % bruch2.numerator == 0:
-                        dazu += ["1/" + str(int(bruch2))]
-                        bruch_GanzZahlReziprokeDazu += [str(int(bruch2))]
-    # print("C")
-    # print(bruch_GanzZahlReziprokeDazu)
-
+                    value = int(value)
+                    if value != 0:
+                        bruch2 = Fraction(key, value)
+                        if bruch2.numerator % bruch2.denominator == 0:
+                            dazu += [str(int(bruch2))]
+                            sdazu += [str(int(bruch2))]
+                            EsGabzahlenAngaben = True
+                        if bruch2.denominator % bruch2.numerator == 0:
+                            dazu += ["1/" + str(int(bruch2 ** -1))]
+                            bruch_GanzZahlReziprokeDazu += [str(int(bruch2 ** -1))]
+    for key, values in rangesBruecheDictReverse.items():
+        key = int(key)
+        if key != 0:
+            for value2 in values:
+                for value in values2.split(","):
+                    value = int(value)
+                    if value != 0:
+                        bruch2 = Fraction(value, key)
+                        if bruch2.numerator % bruch2.denominator == 0:
+                            dazu += [str(int(bruch2))]
+                            sdazu += [str(int(bruch2))]
+                            EsGabzahlenAngaben = True
+                        if bruch2.denominator % bruch2.numerator == 0:
+                            dazu += ["1/" + str(int(bruch2 ** -1))]
+                            bruch_GanzZahlReziprokeDazu += [str(int(bruch2 ** -1))]
+    print("C")
+    print(bruch_GanzZahlReziproke)
+    print(zahlenBereichC)
+    print(stext)
     if len(dazu) > 0:
         zahlenBereichC = ",".join(filter(None, sdazu + zahlenBereichC.split(",")))
         stext += [",".join(sdazu + dazu)]
-        bruch_GanzZahlReziproke += "," + (",".join(bruch_GanzZahlReziprokeDazu))
+        bruch_GanzZahlReziproke = ",".join(
+            filter(
+                None, bruch_GanzZahlReziprokeDazu + bruch_GanzZahlReziproke.split(",")
+            )
+        )
+    print(bruch_GanzZahlReziproke)
     print(zahlenBereichC)
     print(stext)
 
