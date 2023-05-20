@@ -677,10 +677,12 @@ for (i = 0; i < tdClasses1.length; i++)
   const regex5 = /\(\s*1\/\d+\s*\)|\s+1\/\d+\s+|\s+1\/\d+$/;
   const regex6 = /[a-zA-Z\(]+\d+$|[a-zA-Z\(]+\d+[^\d]+/;
 
-  ifDrawgfPoly =  giveSetOfPolyTypes([1]);
+  ifDrawgfPoly =  new Set();
+  ifDrawSpoly =  new Set();
+  /*ifDrawgfPoly =  giveSetOfPolyTypes([1]);
   ifDrawSpoly =  giveSetOfPolyTypes([0]);
   ifDrawgfPoly = new Set([...ifDrawgfPoly].filter((x) => !ifDrawSpoly.has(x)));
-  ifDrawSpoly = new Set([...ifDrawSpoly].filter((x) => !ifDrawgfPoly.has(x)));
+  ifDrawSpoly = new Set([...ifDrawSpoly].filter((x) => !ifDrawgfPoly.has(x)));*/
   for (var i: number = 0; i < TRs.length; i++) {
         TDs = TRs[i].cells as HTMLCollectionOf<HTMLTableCellElement>;
         for (var k: number = 0; k < TDs.length; k++) {
