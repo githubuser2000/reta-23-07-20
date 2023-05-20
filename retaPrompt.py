@@ -1986,32 +1986,23 @@ def bruchBereichsManagementAndWbefehl(zahlenBereichC, stext, zahlenAngaben_):
     dazu = []
     sdazu = []
     bruch_GanzZahlReziprokeDazu = []
-    for key, values in rangesBruecheDict.items():
-        key = int(key)
-        if key != 0:
-            for value in BereichToNumbers2(",".join(values)):
-                if value != 0:
-                    bruch2 = Fraction(key, value)
-                    if bruch2.numerator % bruch2.denominator == 0:
-                        dazu += [str(int(bruch2))]
-                        sdazu += [str(int(bruch2))]
-                        EsGabzahlenAngaben = True
-                    if bruch2.denominator % bruch2.numerator == 0:
-                        dazu += ["1/" + str(int(bruch2 ** -1))]
-                        bruch_GanzZahlReziprokeDazu += [str(int(bruch2 ** -1))]
-    for key, values in rangesBruecheDictReverse.items():
-        key = int(key)
-        if key != 0:
-            for value in BereichToNumbers2(",".join(values)):
-                if value != 0:
-                    bruch2 = Fraction(value, key)
-                    if bruch2.numerator % bruch2.denominator == 0:
-                        dazu += [str(int(bruch2))]
-                        sdazu += [str(int(bruch2))]
-                        EsGabzahlenAngaben = True
-                    if bruch2.denominator % bruch2.numerator == 0:
-                        dazu += ["1/" + str(int(bruch2 ** -1))]
-                        bruch_GanzZahlReziprokeDazu += [str(int(bruch2 ** -1))]
+    EsGabzahlenAngaben, bruch_GanzZahlReziprokeDazu, dazu, sdazu = addMoreVals2(
+        EsGabzahlenAngaben,
+        bruch_GanzZahlReziprokeDazu,
+        dazu,
+        rangesBruecheDict,
+        sdazu,
+        False,
+    )
+    EsGabzahlenAngaben, bruch_GanzZahlReziprokeDazu, dazu, sdazu = addMoreVals2(
+        EsGabzahlenAngaben,
+        bruch_GanzZahlReziprokeDazu,
+        dazu,
+        rangesBruecheDictReverse,
+        sdazu,
+        True,
+    )
+
     # print("C")
 
     # print(bruch_GanzZahlReziproke)
@@ -2039,6 +2030,48 @@ def bruchBereichsManagementAndWbefehl(zahlenBereichC, stext, zahlenAngaben_):
         rangesBruecheDictReverse,
         stext,
     )
+
+
+def addMoreVals2(
+    EsGabzahlenAngaben,
+    bruch_GanzZahlReziprokeDazu,
+    dazu,
+    rangesBruecheOrReverseDict,
+    sdazu,
+    ifReverse,
+):
+    for key, values in rangesBruecheOrReverseDict.items():
+        key = int(key)
+        if key != 0:
+            for value in BereichToNumbers2(",".join(values)):
+                if value != 0:
+                    bruch2 = (
+                        Fraction(key, value) if not ifReverse else Fraction(value, key)
+                    )
+                    (
+                        EsGabzahlenAngaben,
+                        bruch_GanzZahlReziprokeDazu,
+                        dazu,
+                        sdazu,
+                    ) = addMoreVals(
+                        EsGabzahlenAngaben,
+                        bruch2,
+                        bruch_GanzZahlReziprokeDazu,
+                        dazu,
+                        sdazu,
+                    )
+    return EsGabzahlenAngaben, bruch_GanzZahlReziprokeDazu, dazu, sdazu
+
+
+def addMoreVals(EsGabzahlenAngaben, bruch2, bruch_GanzZahlReziprokeDazu, dazu, sdazu):
+    if bruch2.numerator % bruch2.denominator == 0:
+        dazu += [str(int(bruch2))]
+        sdazu += [str(int(bruch2))]
+        EsGabzahlenAngaben = True
+    if bruch2.denominator % bruch2.numerator == 0:
+        dazu += ["1/" + str(int(bruch2 ** -1))]
+        bruch_GanzZahlReziprokeDazu += [str(int(bruch2 ** -1))]
+    return EsGabzahlenAngaben, bruch_GanzZahlReziprokeDazu, dazu, sdazu
 
 
 def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, Txt, cmd_gave_output):
