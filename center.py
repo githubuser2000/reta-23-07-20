@@ -138,7 +138,11 @@ def getTextWrapThings(maxLen=None) -> tuple:
         except (ModuleNotFoundError, ImportError):
             dic = None
         # from hyphen import Hyphenator
-        from textwrap2 import fill
+        try:
+            from textwrap2 import fill
+        except:
+            fill = None
+            import pyphen
 
         h_de = None
         # h_de = Hyphenator("de_DE")

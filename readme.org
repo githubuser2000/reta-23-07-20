@@ -44,6 +44,7 @@
 ***** unwichtiges
 + Ich könnte erweitern aus welchen Dingen ich noch bestehe, der höheren Art, wie höhere Gefühle und Impulse, etc. Denn das gabs vorher nicht.
 *** 2. Feature Ideen
++ clear befehl zum bildschirm löschen
 + Reziproke und n/m für w Befehl ermöglichen
 + Brucherweiterungen aus Spalte aus der csv in n/m und n/n Dingen in retaPrompt mit dazu ausgeben.
 + andere Primzahlbedeutungen, außer 28 bis 32, der anderen Reihen auch hinzufügen

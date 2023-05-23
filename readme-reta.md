@@ -175,3 +175,4 @@ Nebenparameter beginnen mit 2 Minus --.
 
 ### Beispiel (eine Zeile, nicht mehrere):
         `reta -zeilen --vorhervonausschnitt=1-9 -spalten --religionen=sternpolygon,gleichfoermigespolygon --galaxie=babylon --breite=50`
+

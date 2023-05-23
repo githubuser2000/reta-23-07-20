@@ -202,6 +202,10 @@ class NestedCompleter(Completer):
                             var1 += befehle2List
                         except:
                             var1 = []
+                    try:
+                        var1
+                    except UnboundLocalError:
+                        var1 = []
                     completer.options = {key: None for key in var1}
                     completer.optionsTypes = {key: var2 for key in var1}
                     completer.lastString = first_term
