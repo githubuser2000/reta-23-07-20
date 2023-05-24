@@ -54,6 +54,7 @@ weight = -7
 -   Some of the short commands consisting of letters like "i" or "u" can also be used as commands without spaces in between. Example: instead of "a u 1,2" also "au1,2" works.
 -   Short command "e" makes that lines with almost no information are not displayed, i.e. lines with only a minus or question mark.
 -   The command "distance", together 2 other information separated by spaces, a number and two numbers between which there is immediately a hyphen, e.g. "distance 7 17-25": simply calculates the subtraction between the number 7 and the number range 17 to 25.
+-   Command "clear" clears screen.
 
 ###mathematical-output-commands {#mathematical-output-commands}
 

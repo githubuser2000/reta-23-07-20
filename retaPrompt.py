@@ -861,6 +861,12 @@ def PromptGrosseAusgabe(
             i18nRP = i18n.retaPrompt
 
     if fullBlockIsZahlenbereichAndBruch and (bedingungZahl or bedingungBrueche):
+
+        if Txt.has({i18n.befehle2["leeren"]}):
+            for _ in range(os.get_terminal_size().lines + 1):
+                print()
+            cmd_gave_output = True
+
         was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
             Txt.hasWithoutABC({i18n.befehle2["emotion"], i18n.befehle2["E"]}),
             [

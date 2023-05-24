@@ -353,6 +353,7 @@ befehle2.update({"16_" + a: "16_" + a for a in wahl16.keys()})
 befehle2.update(
     {
         "emotion": emotionWort,
+        "leeren": _("leeren"),
         "mond": _("mond"),
         "reta": _("reta"),
         "absicht": _("absicht"),

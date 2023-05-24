@@ -54,6 +54,7 @@ weight = -7
 -   Einige der Kurzbefehle aus Buchstaben wie "a" oder "u" lassen sich auch ohne Leerzeichen dazwischen als Befehl verwenden. Beispiel: statt "a u 1,2" geht auch "au1,2".
 -   Kurzbefehl "e" macht, dass Zeilen mit fast keiner Information nicht angezeigt werden, also Zeilen mit nur einem Minus oder Fragezeichen
 -   Der Befehl "abstand", zusammen 2 weiteren Angaben durch Leerzeichen getrennt, einer Zahl und zwei Zahlen zwischen denen unmittelbar ein Bindestrich steht, z.B. "abstand 7 17-25": berechnet einfach die Subtraktion zwischen der Zahl 7 und dem Zahlenbereich 17 bis 25.
+-   der Befehl "leeren" macht den Bildschirm frei
 
 ### mathematisch Ausgabe-Befehle {#mathematisch-ausgabe-befehle}
 
@@ -89,7 +90,7 @@ Zeilenangaben oder Zahlenbereiche für andere Angaben können sein (ohne Anführ
 
 ### Die Befehle 15\_.... und EIG..... {#die-befehle-15-dot-dot-dot-dot}
 
--   Die Befehle, die mit 15\_ beginnen, bilden zusammen eine Baumstruktur und sind Ausgabe-Befehle der Grundstrukuren und des Geistes (15), wie "u" oder "a" Ausgabe-Befehle sind. Eine Zeilenangabe wird benötigt. Dann kann etwas ausgeben werden.
+-   Die Befehle (die nur wie Zahlen aussehen, aber Befehle sind), die mit 15\_ beginnen, bilden zusammen eine Baumstruktur und sind Ausgabe-Befehle der Grundstrukuren und des Geistes (15), wie "u" oder "a" Ausgabe-Befehle sind. Eine Zeilenangabe wird benötigt. Dann kann etwas ausgeben werden.
 -   Die Befehle, die mit EIG ... anfangen handeln zusammen mit einer Zeilenangabe betreffen die Eigenschaften von Sternpolygonen und gleichförmigen Polygonen.
 
 ### sonstige Befehle {#sonstige-befehle}
