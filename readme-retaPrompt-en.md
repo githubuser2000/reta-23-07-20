@@ -116,7 +116,7 @@ Line specifications or number ranges for other specifications can be (without qu
     - For example, one has stored the command a without line specification. If you then enter a line specification, e.g. 2, then this is the command "a 2". This way you can enter commands faster.
     Normally, without storing, one can only type a line specification in the command input and thus these are the commands w a t p.
     - "o" or "CommandSaveOutput" outputs the saved command. Simply typing Enter does the same.
-    - It is possible to save a complete reta command (instead of a short command), e.g. "reta -columns --light" and then at the next command input you can enter a line, e.g. 4,7-10 and then from the columns over light lines 4,7,8,9,10 are output. So you can type everything faster. In addition, this can be combined with the short commands w and v, so you can type "3,7-10 v w".
+    - It is possible to save a complete reta command (instead of a short command), e.g. `reta -columns --light` and then at the next command input you can enter a line, e.g. 4,7-10 and then from the columns over light lines 4,7,8,9,10 are output. So you can type everything faster. In addition, this can be combined with the short commands w and v, so you can type "3,7-10 v w".
         - The other way around is also possible: You save a line specification and after saving you can specify a reta command, without line specification, and automatically the line for the reta command will be output. This way you can specify several reta commands without having to specify the line for them each time.
 -   Delete
     - "c" or "CommandClearSavese" opens a selection of what stored commands are to be deleted.
