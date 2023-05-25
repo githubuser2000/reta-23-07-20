@@ -2142,7 +2142,7 @@ paraNdataMatrix: list = [
             _("Lust_(9)"),
             _("lust"),
         ),
-        {255},
+        {255, 391},
     ),
     (
         ParametersMain.grundstrukturen,
