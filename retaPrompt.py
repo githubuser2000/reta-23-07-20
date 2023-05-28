@@ -1246,7 +1246,7 @@ def PromptGrosseAusgabe(
                 )
 
         if Txt.hasWithoutABC({"prim", "primfaktorzerlegung"}):
-            for arg in BereichToNumbers2(zahlenReiheKeineWteiler):
+            for arg in BereichToNumbers2(zahlenReiheKeineWteiler, False, 0):
                 cmd_gave_output = True
                 print(
                     str(arg)
@@ -1259,7 +1259,7 @@ def PromptGrosseAusgabe(
         if Txt.hasWithoutABC({"multis"}) > 0:
             cmd_gave_output = True
 
-            listeStrWerte = BereichToNumbers2(zahlenReiheKeineWteiler)
+            listeStrWerte = BereichToNumbers2(zahlenReiheKeineWteiler, False, 0)
             mult(listeStrWerte)
 
             # externCommand(i18n.befehle2["prim"], c)
