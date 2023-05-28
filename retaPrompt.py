@@ -892,6 +892,30 @@ def PromptGrosseAusgabe(
             zeiln4,
         )
         was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
+            Txt.hasWithoutABC({i18n.befehle2["I"], i18n.befehle2["impulse"]}),
+            [
+                "".join(
+                    (
+                        "--",
+                        i18n.ParametersMain.grundstrukturen[0],
+                        "=",
+                        wahl15["5"],
+                    )
+                )
+            ],
+            None,
+            ("1,4", "3"),
+            Txt,
+            bruch_GanzZahlReziproke,
+            zahlenBereichC,
+            ketten,
+            cmd_gave_output,
+            zeiln1,
+            zeiln2,
+            zeiln3,
+            zeiln4,
+        )
+        was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
             Txt.hasWithoutABC({i18n.befehle2["B"], i18n.befehle2["bewusstsein"]}),
             [
                 "".join(
