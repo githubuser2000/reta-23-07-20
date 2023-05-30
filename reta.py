@@ -1561,6 +1561,10 @@ class Program:
         newTable = self.tables.getOut.onlyThatColumns(
             newTable, spaltenreihenfolgeundnurdiese
         )
+        self.newTable = newTable
+        self.finallyDisplayLines = finallyDisplayLines
+        self.rowsRange = rowsRange
+        self.numlen = numlen
 
         self.tables.getOut.cliOut(finallyDisplayLines, newTable, numlen, rowsRange)
 

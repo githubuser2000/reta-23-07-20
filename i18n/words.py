@@ -346,6 +346,7 @@ wahl16 = {
     "1": _("Meta-Physik-Teilchen_(1)"),
 }
 
+freiheitGleichheit = ("freiheit", "gleichheit")
 # WICHTIG WICHTIG: die Befehle mit nur einem zeichen dürfen  nur ein Zeichen haben !!!!!!!
 befehle2: dict = {"15_" + a: "15_" + a for a in wahl15.keys()}
 befehle2.update({"16_15_" + a: "16_15_" + a for a in wahl15.keys() if a != "15"})
@@ -353,6 +354,8 @@ befehle2.update({"16_" + a: "16_" + a for a in wahl16.keys()})
 befehle2.update(
     {
         "emotion": emotionWort,
+        freiheitGleichheit[0]: _(freiheitGleichheit[0]),
+        freiheitGleichheit[1]: _(freiheitGleichheit[1]),
         "leeren": _("leeren"),
         "mond": _("mond"),
         "reta": _("reta"),
@@ -708,8 +711,8 @@ paraNdataMatrix: list = [
         (
             _("Gleichheit_Freiheit_Ordnung"),
             _("gleichheit"),
-            _("freiheit"),
-            _("ordnung"),
+            _(freiheitGleichheit[0]),
+            _(freiheitGleichheit[1]),
         ),
         {132, 324, 328, 79, 80, 331, 335},
     ),
