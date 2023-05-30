@@ -28,7 +28,33 @@ NestedDict = Mapping[str, Union[Any, Set[str], None, Completer]]
 
 ifRetaAnfang = False
 
-befehle2List = list(befehle2)
+
+def sort_key(key):
+    if not key.startswith("1"):
+        if key in (i18n.befehle2["absicht"], i18n.befehle2["hilfe"]):
+            return (0, key)
+        elif key in (
+            i18n.befehle2["universum"],
+            i18n.befehle2["thomas"],
+        ):
+            return (1, key)
+        elif key in (
+            i18n.befehle2["reta"],
+            i18n.befehle2["bewusstsein"],
+            i18n.befehle2["geist"],
+            i18n.befehle2["emotion"],
+            i18n.befehle2["impulse"],
+        ):
+            return (2, key)
+        else:
+            return (3, key)
+    else:
+        return (4, key)
+
+
+befehle2 = set(sorted(befehle2, key=lambda item: sort_key(item)))
+befehle = list(sorted(befehle, key=lambda item: sort_key(item)))
+befehle2List = list(sorted(befehle2, key=lambda item: sort_key(item)))
 
 
 class ComplSitua(Enum):

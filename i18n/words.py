@@ -347,8 +347,9 @@ wahl16 = {
 }
 
 freiheitGleichheit = ("freiheit", "gleichheit")
+
 # WICHTIG WICHTIG: die Befehle mit nur einem zeichen dürfen  nur ein Zeichen haben !!!!!!!
-befehle2: dict = {"15_" + a: "15_" + a for a in wahl15.keys()}
+befehle2: OrderedDict = OrderedDict({"15_" + a: "15_" + a for a in wahl15.keys()})
 befehle2.update({"16_15_" + a: "16_15_" + a for a in wahl15.keys() if a != "15"})
 befehle2.update({"16_" + a: "16_" + a for a in wahl16.keys()})
 befehle2.update(

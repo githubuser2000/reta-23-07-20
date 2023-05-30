@@ -45,6 +45,7 @@ weight = -7
 -   "B" bzw. "bewusstsein" gibt das Bewusstsein aus, für n oder 1/n aus, z.B. B2
 -   "E" bzw. "emotion" gibt die Gefühle für n oder 1/n aus, z.B. E1/2
 -   "I" bzw. "impulse" gibt die Impulse für n oder 1/n aus, z.B. E1/2
+-   "freiheit" bzw. "gleichheit" gibt entsprechendes für n oder 1/n aus
 -   "v" bzw. "einzeln" bzw. "vielfache" bewirkt in Ausgabe-Befehlen außer "reta", dass deren Zeilenangaben z.B. 7 nicht nur Zeile 7 meinen, sondern alle vielfacher dieser Zeilengaben auch, also auch 14,21, usw.
 -   "einzeln" ist bei Kurzbefehlen der Standard: Dass Zeilenangaben nicht Vielfache meinen, sondern einzelne Zeilen.
 -   "mond" gibt, zusammen mit einer Zeilenangabe, Informationen über Gestirne aus: wie Monde, Planeten, Sonnen
@@ -129,8 +130,8 @@ Zeilenangaben oder Zahlenbereiche für andere Angaben können sein (ohne Anführ
 -   retaPrompt starten mit Parameter -vi für ViMode (Ansonsten gelten Emacs-Tastenkürzel.),
 -   beenden mit q, exit, quit und
 -   Hilfe aufrufen mit h oder help oder hilfe,
--   rp (statt retaPrompt zu starten) ist retaPrompt mit vi mode, rpl ist retaPrompt mit vi mode und aktiviertem logging bei Programmstart.
+-   rp (statt retaPrompt zu starten) ist retaPrompt mit vi mode, rpl ist retaPrompt mit vi mode und aktiviertem logging bei Programmstart und mit weniger hilfreichen Informationsausgaben.
 -   retaPrompt Parameter -log aktiviert logging bei Programmstart.
 -   retaPrompt Parameter -language=english bewirkt, dass alle Befehle in Englisch sind. Die Inhalte sind bisher noch in deutsch.
--   "-befehl"" bewirkt, dass bis zum letzten Programmparameter retaPrompt Befehl nur ein RetaPrompt-Befehl ausgeführt wird.
+-   "-befehl" bewirkt, dass bis zum letzten Programmparameter retaPrompt Befehl nur ein RetaPrompt-Befehl ausgeführt wird.
 -   "-e" bewirkt, dass bei allen Befehlen das 'e' Kommando bzw. 'keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar' jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil dieser anders funktioniert
