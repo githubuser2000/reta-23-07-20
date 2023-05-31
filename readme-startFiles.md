@@ -1,6 +1,13 @@
 ***
 # Welche StartDateien gibt es denn hier?
 ***
+* # Installation
+    - mit install.sh
+    - oder mit pip für pypy3
+    - oder mit poetry
+    * ## install.sh: reta.sh rp.sh rpl.sh
+        - starten der Programme mit Verwenden der Installations-Abhängigkeiten durch install.sh
+        - libs liegen in einem venv
 * ##reta
     - das eigentliche Programm, um das es geht
     - reta -h gibt die Hilfe aus
