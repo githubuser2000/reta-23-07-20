@@ -13,7 +13,8 @@
     - rp -h gibt die Hilfe aus
 * ##rpl
     - Das ist retaPrompt mit anderen vordefinierten Startparametern.
-    - retaPrompt mit logging
+    - mit weniger Info-Ausgaben für Neulinge
+    - retaPrompt ohne logging
     - und vi mode statt normalerweise emacs mode
     - rpl -h gibt die Hilfe aus
 * ##rpb

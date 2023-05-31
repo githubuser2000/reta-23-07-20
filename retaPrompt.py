@@ -16,7 +16,7 @@ from typing import Optional
 from prompt_toolkit import PromptSession, print_formatted_text, prompt
 # from prompt_toolkit.completion import Completer, Completion, WordCompleter
 from prompt_toolkit.completion import Completer, Completion
-from prompt_toolkit.history import FileHistory
+from prompt_toolkit.history import FileHistory, InMemoryHistory
 from prompt_toolkit.styles import Style
 
 from center import (alxp, cliout, i18n, invert_dict_B, isZeilenAngabe,
@@ -155,9 +155,37 @@ def anotherOberesMaximum(zahlenBereichC, maxNum, Txt):
 
 
 def newSession(history=False):
+    class ToggleHistory(FileHistory):
+        def __init__(self, file_path, *args, **kwargs):
+            super().__init__(file_path, *args, **kwargs)
+            self.inner_history = FileHistory(file_path)
+            self.logging_enabled = True
+
+        def append_string(self, string):
+            if (
+                self.logging_enabled
+                and i18n.befehle2["nichtloggen"] not in string.split()
+            ):
+                super().append_string(string)
+
+        def get_strings(self):
+            return self.inner_history.get_strings()
+
+        def enable_logging(self):
+            self.logging_enabled = True
+
+        def disable_logging(self):
+            self.logging_enabled = False
+
+        def add_to_history(self, string):
+            self.append_string(string)
+
     if history:
         return PromptSession(
-            history=FileHistory(os.path.expanduser("~") + os.sep + ".ReTaPromptHistory")
+            # history=FileHistory(os.path.expanduser("~") + os.sep + ".ReTaPromptHistory")
+            history=ToggleHistory(
+                os.path.expanduser("~") + os.sep + ".ReTaPromptHistory"
+            )
         )
     else:
         return PromptSession()
@@ -687,7 +715,7 @@ def vorherVonAusschnittOderZaehlung(Txt: TXT, bereichsAngabe: str) -> str:
         return "".join(("--", i18n.zeilenParas["zaehlung"], "=", bereichsAngabe))
     else:
         return "".join(
-            ("--", i18n.zeilenParas["vorhervonausschnitt"], "=", bereichsAngabe)
+            (("--", i18n.zeilenParas["vorhervonausschnitt"], "=", bereichsAngabe))
         )
 
 
@@ -1042,7 +1070,7 @@ def PromptGrosseAusgabe(
                     retaExecuteNprint(
                         ketten,
                         Txt.listeE,
-                        vorherVonAusschnittOderZaehlung(Txt, zaehler),
+                        vorherVonAusschnittOderZaehlung(Txt, ",".join(zaehler)),
                         "",
                         [
                             "".join(
@@ -1062,7 +1090,7 @@ def PromptGrosseAusgabe(
                     retaExecuteNprint(
                         ketten,
                         Txt.listeE,
-                        vorherVonAusschnittOderZaehlung(Txt, zaehler),
+                        vorherVonAusschnittOderZaehlung(Txt, ",".join(zaehler)),
                         "",
                         [
                             "".join(
@@ -2466,6 +2494,7 @@ def promptInput(
                 ]
             else:
                 Txt.e = []
+
         except KeyboardInterrupt:
             sys.exit()
 
@@ -2473,6 +2502,7 @@ def promptInput(
         Txt.text = " ".join(nurEinBefehl)
         Txt.e = []
         Txt.befehlDavor = ""
+
     return Txt
 
 
