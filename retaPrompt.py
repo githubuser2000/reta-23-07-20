@@ -135,15 +135,22 @@ class TXT(object):
         self._befehlDavor = value
 
 
-def anotherOberesMaximum(zahlenBereichC, maxNum):
+def anotherOberesMaximum(zahlenBereichC, maxNum, Txt):
     maximizing = list(BereichToNumbers2(zahlenBereichC, False, 0))
     if len(maximizing) > 0:
         maximizing.sort()
         maxNum2 = maximizing[-1]
     else:
         maxNum2 = maxNum
+    try:
+        max1024 = Txt.programm.tables.hoechsteZeile[1024]
+    except Exception:
+        max1024 = retaProgram.tables.hoechsteZeile[1024]
     return (
-        "--" + i18n.zeilenParas["oberesmaximum"] + "=" + str(max(maxNum, maxNum2) + 1)
+        "--"
+        + i18n.zeilenParas["oberesmaximum"]
+        + "="
+        + str(max(maxNum, maxNum2, max1024) + 1)
     )
 
 
@@ -675,6 +682,15 @@ def PromptScope():
         )
 
 
+def vorherVonAusschnittOderZaehlung(Txt: TXT, bereichsAngabe: str) -> str:
+    if Txt.has({"range", "R"}):
+        return "".join(("--", i18n.zeilenParas["zaehlung"], "=", bereichsAngabe))
+    else:
+        return "".join(
+            ("--", i18n.zeilenParas["vorhervonausschnitt"], "=", bereichsAngabe)
+        )
+
+
 def PromptGrosseAusgabe(
     IsPureOnlyReTaCmd,
     befehleBeenden,
@@ -780,7 +796,7 @@ def PromptGrosseAusgabe(
             if not ifPrintCmdAgain(Txt):
                 # weil sonst das doppelt gemacht wird
                 cliout(" ".join(Txt.liste), True, "")
-        reta.Program(Txt.liste)
+        Txt.programm = reta.Program(Txt.liste)
 
     zeiln1, zeiln2, zeiln3, zeiln4 = zeiln1234create(
         Txt,
@@ -1026,8 +1042,7 @@ def PromptGrosseAusgabe(
                     retaExecuteNprint(
                         ketten,
                         Txt.listeE,
-                        "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
-                        + ",".join(zaehler),
+                        vorherVonAusschnittOderZaehlung(Txt, zaehler),
                         "",
                         [
                             "".join(
@@ -1047,8 +1062,7 @@ def PromptGrosseAusgabe(
                     retaExecuteNprint(
                         ketten,
                         Txt.listeE,
-                        "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
-                        + ",".join(zaehler),
+                        vorherVonAusschnittOderZaehlung(Txt, zaehler),
                         "",
                         [
                             "".join(
@@ -1184,8 +1198,7 @@ def PromptGrosseAusgabe(
                     retaExecuteNprint(
                         ketten,
                         Txt.listeE,
-                        "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
-                        + hierBereich,
+                        vorherVonAusschnittOderZaehlung(Txt, hierBereich),
                         "",
                         [
                             "".join(
@@ -1210,8 +1223,7 @@ def PromptGrosseAusgabe(
                     retaExecuteNprint(
                         ketten,
                         Txt.listeE,
-                        "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
-                        + hierBereich,
+                        vorherVonAusschnittOderZaehlung(Txt, hierBereich),
                         "",
                         [
                             "".join(
@@ -1235,8 +1247,7 @@ def PromptGrosseAusgabe(
                 retaExecuteNprint(
                     ketten,
                     Txt.listeE,
-                    "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
-                    + nennerZaehlerGleich,
+                    vorherVonAusschnittOderZaehlung(Txt, nennerZaehlerGleich),
                     "",
                     [
                         "".join(
@@ -1328,7 +1339,7 @@ def PromptGrosseAusgabe(
                 ketten,
                 Txt.listeE,
                 zeiln1,
-                anotherOberesMaximum(zahlenBereichC, 1028),
+                anotherOberesMaximum(zahlenBereichC, 1028, Txt),
                 [
                     "".join(
                         (
@@ -1541,10 +1552,7 @@ def zeiln1234create(
     zahlenReiheKeineWteiler,
 ):
     if len(bruch_GanzZahlReziproke) > 0 and textHatZiffer(bruch_GanzZahlReziproke):
-        zeiln3 = (
-            "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
-            + bruch_GanzZahlReziproke
-        )
+        zeiln3 = vorherVonAusschnittOderZaehlung(Txt, bruch_GanzZahlReziproke)
         zeiln4 = ""
     else:
         zeiln3 = "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "=0"))
@@ -1569,8 +1577,7 @@ def zeiln1234create(
                     zeiln1 = ""
                 zeiln2 = "".join(
                     [
-                        "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "=")),
-                        zahlenBereiche,
+                        vorherVonAusschnittOderZaehlung(Txt, zahlenBereiche),
                         ",",
                         ",".join(
                             [
@@ -1583,12 +1590,8 @@ def zeiln1234create(
 
                 # zeiln2 = ""
             else:
-                zeiln1 = (
-                    "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
-                    + zahlenBereiche
-                )
-
-                zeiln2 = anotherOberesMaximum(zahlenBereichC, maxNum)
+                zeiln1 = vorherVonAusschnittOderZaehlung(Txt, zahlenBereiche)
+                zeiln2 = anotherOberesMaximum(zahlenBereichC, maxNum, Txt)
         else:
             zeiln1 = "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "=0"))
             zeiln2 = ""
@@ -2256,8 +2259,7 @@ def promptVorbereitungGrosseAusgabe(
         if len({i18n.befehle2["v"], i18n.befehle2["vielfache"]} & Txt.menge) == 0:
             Txt.liste += [
                 "".join(("-", i18n.hauptForNeben["zeilen"])),
-                "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
-                + zahlenBereichNeu[True],
+                vorherVonAusschnittOderZaehlung(Txt, zahlenBereichNeu[True]),
             ]
 
         else:

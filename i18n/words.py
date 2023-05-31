@@ -95,6 +95,7 @@ Primzahlkreuz_pro_contra_strs: tuple = (
     "nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)",
 )
 
+keineTabellenAusgabe = _("kein Tabelleninhalt")
 Primzahlkreuz_pro_contra_strs_Fkt: tuple = (
     _("Primzahlkreuz_pro_contra"),
     _("nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)"),
@@ -382,6 +383,8 @@ befehle2.update(
         "alles": _("alles"),
         "geist": geistWort,
         "a": _("a"),
+        "R": _("R"),
+        "range": _("range"),
         "B": _("B"),
         "bewusstsein": _("bewusstsein"),
         "E": _("E"),
@@ -4076,6 +4079,7 @@ class retaPrompt:
             "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
         ],
         befehle2["G"]: geistWort,
+        befehle2["R"]: befehle2["range"],
         befehle2["a"]: befehle2["absicht"],
         befehle2["B"]: befehle2["bewusstsein"],
         befehle2["E"]: befehle2["emotion"],

@@ -89,6 +89,7 @@ Line specifications or number ranges for other specifications can be (without qu
 -   This syntax for fractions and integers works with the "m" or "multiple" command and with this minus syntax, which is there for taking out ranges.
 -   Example
     - The 7 is the good and the 6 the value and both result in the good: 7-6+1 would then have to be the antagonists of it (This is not only 5 and 8, but also 6 and 7 again stupidly). Then 7-6 must be subtracted and the multiples are also searched for, so "m7-6+1,m-6-7" are all antagonists of "Wohl".
+-   Command "R" or "range" makes setting your numbers for ranges instead of lines.
 
 ### the commands 15_.... and PROP..... {#die-befehle-15-dot-dot-dot-dot}
 

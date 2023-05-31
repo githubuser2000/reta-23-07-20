@@ -89,6 +89,7 @@ Zeilenangaben oder Zahlenbereiche für andere Angaben können sein (ohne Anführ
 -  Diese Syntax für Brüche und ganze Zahlen funktioniert mit dem "v" oder "vielfache" Befehl und mit dieser Minus Syntax, welche für das Herausnehmen von Bereichen da ist.
 -   Beispiel
     -  Die 7 ist das Gute und die 6 der Wert und beides ergibt das Wohl: 7-6+1 müssten dann die Antagonisten davon sein (Das ist nicht nur 5 und 8, sondern auch 6 und 7 noch mal dummerweise.). Da muss noch 7-6 abgezogen werden und gesucht sind auch die Vielfacher, also sind "v7-6+1,v-6-7" alle Antagonisten vom "Wohl".
+-   Die Angabe von "R" oder "range" bewirkt, dass stattdessen die Zählungen anstelle der Zeilen gesetzt werden.
 
 ### Die Befehle 15\_.... und EIG..... {#die-befehle-15-dot-dot-dot-dot}
 
