@@ -1029,7 +1029,7 @@ function grundSDivToggleBeachte(para: string = "", dasTag: boolean = false) {
     if (!dasTag) {
       for (var i: number = 0; i < checkboxesOrdnung.length; i++) {
         for (var k: number = 0; k < checkboxesOrdnung.length; k++) {
-          if (typeof checkboxesChaos[i].value !== "undefined" && k != i) {
+          if (typeof checkboxesChaos[i] !== "undefined" && typeof checkboxesChaos[i].value !== "undefined" && k != i) {
             //window.alert(String(checkboxesChaos[i].value));
             if (
               checkboxesOrdnung[k].value === checkboxesOrdnung[i].value
@@ -1045,7 +1045,7 @@ function grundSDivToggleBeachte(para: string = "", dasTag: boolean = false) {
       }
       for (var i: number = 0; i < checkboxesChaos.length; i++) {
         for (var k: number = 0; k < checkboxesOrdnung.length; k++) {
-          if (typeof checkboxesChaos[i].value !== "undefined") {
+          if (typeof checkboxesChaos[i] !== "undefined" && typeof checkboxesChaos[i].value !== "undefined") {
             //window.alert(String(checkboxesChaos[i].value));
             if (
               checkboxesOrdnung[k].value === checkboxesChaos[i].value
@@ -1063,7 +1063,7 @@ function grundSDivToggleBeachte(para: string = "", dasTag: boolean = false) {
       if (dasTag) {
         for (var i: number = 0; i < checkboxesOrdnung.length; i++) {
           for (var k: number = 0; k < checkboxesOrdnung.length; k++) {
-            if (typeof checkboxesChaos[i].value !== "undefined" && k != i) {
+            if (typeof checkboxesChaos[i] !== "undefined" && typeof checkboxesChaos[i].value !== "undefined" && k != i) {
               //window.alert(String(checkboxesChaos[i].value));
               if (
                 checkboxesOrdnung[k].value === checkboxesOrdnung[i].value
@@ -1079,7 +1079,7 @@ function grundSDivToggleBeachte(para: string = "", dasTag: boolean = false) {
         }
         for (var i: number = 0; i < checkboxesChaos.length; i++) {
           for (var k: number = 0; k < checkboxesOrdnung.length; k++) {
-            if (typeof checkboxesChaos[i].value !== "undefined") {
+            if (typeof checkboxesChaos[i] !== "undefined" && typeof checkboxesChaos[i].value !== "undefined") {
               //window.alert(String(checkboxesChaos[i].value));
               if (
                 checkboxesOrdnung[k].value === checkboxesChaos[i].value
@@ -1112,7 +1112,7 @@ function grundSDivToggleBeachte(para: string = "", dasTag: boolean = false) {
     }
     for (var i: number = 0; i < checkboxesChaos.length; i++) {
       for (var k: number = 0; k < checkboxesOrdnung.length; k++) {
-        if (typeof checkboxesChaos[i].value !== "undefined" && k != i) {
+        if (typeof checkboxesChaos[i] !== "undefined" && typeof checkboxesChaos[i].value !== "undefined" && k != i) {
           //window.alert(String(checkboxesChaos[i].value));
           if (
             checkboxesOrdnung[k].value === checkboxesChaos[i].value &&
@@ -2064,11 +2064,13 @@ function makeAllowedZeilenFromPrimZahlKreuzRadius(zeilenAngaben1: Set<number>): 
 var spalten_r__: Set<number> = new Set();
 
 function get_r__SpaltenNummern() {
+  //const tAble:  HTMLTableElement = document.getElementById("bigtable") as HTMLTableElement;
   let tabelenkopfZeile : HTMLCollectionOf<HTMLTableCellElement>;
   tabelenkopfZeile = tdClasses;
   var num1: RegExpMatchArray | null;
   var num: RegExpMatchArray;
   var num2: number;
+  //console.log(tAble.rows.length)
   for (var i: number = 0; i < tabelenkopfZeile.length; i++) {
     if (tabelenkopfZeile[i].style.display === "table-cell") {
       num1 = tabelenkopfZeile[i].className.match(/r_(\d+)/);
@@ -2115,7 +2117,8 @@ function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which: number) {
   var echteZeilenNummer: number;
   for (var s: number = 1; s < spalte.length; s++) {
     tabellenZelle = spalte[s];
-    if (s < 115)
+    //if (s < 115)
+    if (false && s < 115)
       zeilenLetztendlichZeigenVerstecken(
         s,
         neuErlauben,

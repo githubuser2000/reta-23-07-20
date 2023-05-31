@@ -988,7 +988,7 @@ function grundSDivToggleBeachte(para = "", dasTag = false) {
         if (!dasTag) {
             for (var i = 0; i < checkboxesOrdnung.length; i++) {
                 for (var k = 0; k < checkboxesOrdnung.length; k++) {
-                    if (typeof checkboxesChaos[i].value !== "undefined" && k != i) {
+                    if (typeof checkboxesChaos[i] !== "undefined" && typeof checkboxesChaos[i].value !== "undefined" && k != i) {
                         //window.alert(String(checkboxesChaos[i].value));
                         if (checkboxesOrdnung[k].value === checkboxesOrdnung[i].value
                         // checkboxesOrdnung[k].checked != checkboxesOrdnung[i].checked
@@ -1003,7 +1003,7 @@ function grundSDivToggleBeachte(para = "", dasTag = false) {
             }
             for (var i = 0; i < checkboxesChaos.length; i++) {
                 for (var k = 0; k < checkboxesOrdnung.length; k++) {
-                    if (typeof checkboxesChaos[i].value !== "undefined") {
+                    if (typeof checkboxesChaos[i] !== "undefined" && typeof checkboxesChaos[i].value !== "undefined") {
                         //window.alert(String(checkboxesChaos[i].value));
                         if (checkboxesOrdnung[k].value === checkboxesChaos[i].value
                         //checkboxesOrdnung[k].checked != checkboxesChaos[i].checked
@@ -1021,7 +1021,7 @@ function grundSDivToggleBeachte(para = "", dasTag = false) {
             if (dasTag) {
                 for (var i = 0; i < checkboxesOrdnung.length; i++) {
                     for (var k = 0; k < checkboxesOrdnung.length; k++) {
-                        if (typeof checkboxesChaos[i].value !== "undefined" && k != i) {
+                        if (typeof checkboxesChaos[i] !== "undefined" && typeof checkboxesChaos[i].value !== "undefined" && k != i) {
                             //window.alert(String(checkboxesChaos[i].value));
                             if (checkboxesOrdnung[k].value === checkboxesOrdnung[i].value
                             //checkboxesOrdnung[k].checked != checkboxesOrdnung[i].checked
@@ -1036,7 +1036,7 @@ function grundSDivToggleBeachte(para = "", dasTag = false) {
                 }
                 for (var i = 0; i < checkboxesChaos.length; i++) {
                     for (var k = 0; k < checkboxesOrdnung.length; k++) {
-                        if (typeof checkboxesChaos[i].value !== "undefined") {
+                        if (typeof checkboxesChaos[i] !== "undefined" && typeof checkboxesChaos[i].value !== "undefined") {
                             //window.alert(String(checkboxesChaos[i].value));
                             if (checkboxesOrdnung[k].value === checkboxesChaos[i].value
                             // checkboxesOrdnung[k].checked != checkboxesChaos[i].checked
@@ -1067,7 +1067,7 @@ function grundSDivToggleBeachte(para = "", dasTag = false) {
         }
         for (var i = 0; i < checkboxesChaos.length; i++) {
             for (var k = 0; k < checkboxesOrdnung.length; k++) {
-                if (typeof checkboxesChaos[i].value !== "undefined" && k != i) {
+                if (typeof checkboxesChaos[i] !== "undefined" && typeof checkboxesChaos[i].value !== "undefined" && k != i) {
                     //window.alert(String(checkboxesChaos[i].value));
                     if (checkboxesOrdnung[k].value === checkboxesChaos[i].value &&
                         checkboxesOrdnung[k].checked != checkboxesChaos[i].checked) {
@@ -1922,11 +1922,13 @@ function makeAllowedZeilenFromPrimZahlKreuzRadius(zeilenAngaben1) {
 }
 var spalten_r__ = new Set();
 function get_r__SpaltenNummern() {
+    //const tAble:  HTMLTableElement = document.getElementById("bigtable") as HTMLTableElement;
     let tabelenkopfZeile;
     tabelenkopfZeile = tdClasses;
     var num1;
     var num;
     var num2;
+    //console.log(tAble.rows.length)
     for (var i = 0; i < tabelenkopfZeile.length; i++) {
         if (tabelenkopfZeile[i].style.display === "table-cell") {
             num1 = tabelenkopfZeile[i].className.match(/r_(\d+)/);
@@ -1969,7 +1971,8 @@ function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which) {
     var echteZeilenNummer;
     for (var s = 1; s < spalte.length; s++) {
         tabellenZelle = spalte[s];
-        if (s < 115)
+        //if (s < 115)
+        if (false && s < 115)
             zeilenLetztendlichZeigenVerstecken(s, neuErlauben, dazuErlauben, neuHinfort, dazuHinfort, tabellenZelle, dazuEinschraenkend);
         else {
             echteZeilenNummer1 = spalte[s].cells[0].className.match(/z_\s*(\d+)/g);

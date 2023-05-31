@@ -46,10 +46,15 @@ def sort_key(key):
             i18n.befehle2["impulse"],
         ):
             return (2, key)
-        else:
+        elif key in (
+            i18n.befehle2["loggen"],
+            i18n.befehle2["nichtloggen"],
+        ):
             return (3, key)
+        else:
+            return (4, key)
     else:
-        return (4, key)
+        return (5, key)
 
 
 befehle2 = set(sorted(befehle2, key=lambda item: sort_key(item)))
