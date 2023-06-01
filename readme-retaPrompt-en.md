@@ -29,6 +29,7 @@ weight = -7
 
 -   "help" prints this help info here
 -   "commands" prints the list of possible commands of ReTaPrompt
+-   "shortcuts" prints the list of possible commands having just one letter of ReTaPrompt
 -   "-h" oder "-help" not in retaPrompt as a command, but before it as a program-start argument for retaPrompt, outputs which program-start arguments are possible for ReTa-Prompt.
 
 ### output commands {#output commands}
@@ -39,6 +40,7 @@ weight = -7
     For the command "u" and "i", i.e. "universe" and "intent", you can also specify fractions, like 2/3,4/5,1/2.
 -   These output commands can be combined in one input line.
 -   "i" or "intention" or "motive" or "motive" outputs the one column of intrinsic intentions of the star polygons, together with a line specification, (example a1 or a1/2)
+-   "spheres" or "circles" displays infos about those some kind of things for Types n
 -   "u" or "universum" outputs the one column of the universal structurals or transcendentals of the star polygons, together with a line specification (example u2 or u2/2,1/2)
 -   "t" or "thomas" outputs the one column of the thomas vanglium which corresponds to the intrinsic intentions of the star polygons in coded form, together with a line specification
 -   "M" resp. "mind" shows the universal mind (examples: M1/2 or M3)

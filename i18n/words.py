@@ -358,7 +358,10 @@ befehle2.update(
         "emotion": emotionWort,
         freiheitGleichheit[0]: _(freiheitGleichheit[0]),
         freiheitGleichheit[1]: _(freiheitGleichheit[1]),
+        "kurzbefehle": _("kurzbefehle"),
         "leeren": _("leeren"),
+        "kugeln": _("kugeln"),
+        "kreise": _("kreise"),
         "mond": _("mond"),
         "reta": _("reta"),
         "absicht": _("absicht"),
@@ -522,7 +525,7 @@ befehle: list = list(befehle2.values())
 #    _("keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"),
 #    _("abstand"),
 # ]
-
+kugelnKreise = ["kugeln", "kreise"]
 ParametersMain: NamedTuple = namedtuple(
     "ParametersMain",
     "wichtigste wichtigste2 religionen galaxie strukturgroesse universum multiversum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept konzept2 inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache planet strukturenkleinere grundstrukturen alles",
@@ -966,8 +969,8 @@ paraNdataMatrix: list = [
         (
             _("Kugeln_Kreise"),
             _("kugelnkreise"),
-            _("kugeln"),
-            _("kreise"),
+            kugelnKreise[0],
+            kugelnKreise[1],
         ),
         {77, 145},
     ),
@@ -4061,7 +4064,7 @@ class retaPrompt:
         + " 7 17-25'"
     )
     befehleBeenden = {_("ende"), _("exit"), _("quit"), _("q"), _(":q")}
-    befehleWort = {"Befehle": _("Befehle")}
+    befehleWort = {"Befehle": _("Befehle"), "Kurzbefehle": _("Kurzbefehle")}
     promptModeSatz = _("promptmode vorher: {} , {}")
     promptModeSatz2 = _("'{}' ergibt sich aus '{}' und ergibt danach reta-Befehl:")
     out1Saetze = (

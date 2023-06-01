@@ -14,9 +14,9 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
-lib64/
-lib64
+#lib/
+#lib64/
+#lib64
 parts/
 sdist/
 var/
@@ -156,5 +156,5 @@ middle.alx
 *.feather.zstd
 *.pkl
 *.pkl.zstd
-bin/
+#bin/
 pyvenv.cfg

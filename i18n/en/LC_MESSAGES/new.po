@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-31 17:35+0200\n"
+"POT-Creation-Date: 2023-06-02 00:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3722,3 +3722,12 @@ msgstr ""
 
 #~ msgid "range"
 #~ msgstr "range"
+
+#~ msgid "kein Tabelleninhalt"
+#~ msgstr "no table content"
+
+#~ msgid "kurzbefehle"
+#~ msgstr "shortcuts"
+
+#~ msgid "Kurzbefehle"
+#~ msgstr "shortcuts"

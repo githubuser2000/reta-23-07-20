@@ -165,6 +165,7 @@ def newSession(history=False):
             if (
                 self.logging_enabled
                 and i18n.befehle2["nichtloggen"] not in string.split()
+                and i18n.befehle2["loggen"] not in string.split()
             ):
                 super().append_string(string)
 
@@ -711,7 +712,7 @@ def PromptScope():
 
 
 def vorherVonAusschnittOderZaehlung(Txt: TXT, bereichsAngabe: str) -> str:
-    if Txt.has({"range", "R"}):
+    if Txt.hasWithoutABC({"range", "R"}):
         return "".join(("--", i18n.zeilenParas["zaehlung"], "=", bereichsAngabe))
     else:
         return "".join(
@@ -797,6 +798,16 @@ def PromptGrosseAusgabe(
                 )
             )
         )
+    if len({i18n.befehle2["kurzbefehle"]} & Txt.mengeE) > 0:
+        cmd_gave_output = True
+        print(
+            "{}: {}\n{}".format(
+                i18nRP.befehleWort["Kurzbefehle"],
+                " ".join([b for b in befehle if len(b) == 1]),
+                str(i18nRP.replacements),
+            )
+        )
+
     if len({i18n.befehle2["befehle"]} & Txt.mengeE) > 0:
         cmd_gave_output = True
         print("{}: {}".format(i18nRP.befehleWort["Befehle"], str(befehle)[1:-1]))
@@ -906,7 +917,7 @@ def PromptGrosseAusgabe(
 
     if fullBlockIsZahlenbereichAndBruch and (bedingungZahl or bedingungBrueche):
 
-        if Txt.has({i18n.befehle2["leeren"]}):
+        if Txt.hasWithoutABC({i18n.befehle2["leeren"]}):
             for _ in range(os.get_terminal_size().lines + 1):
                 print()
             cmd_gave_output = True
@@ -1021,6 +1032,35 @@ def PromptGrosseAusgabe(
             ],
             None,
             ("1-4,8", "5-7"),
+            Txt,
+            bruch_GanzZahlReziproke,
+            zahlenBereichC,
+            ketten,
+            cmd_gave_output,
+            zeiln1,
+            zeiln2,
+            zeiln3,
+            zeiln4,
+        )
+        was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
+            Txt.hasWithoutABC(
+                {
+                    i18n.befehle2["kugeln"],
+                    i18n.befehle2["kreise"],
+                }
+            ),
+            [
+                "".join(
+                    (
+                        "--",
+                        i18n.ParametersMain.universum[0],
+                        "=",
+                        i18n.kugelnKreise[0],
+                    )
+                )
+            ],
+            None,
+            ("1-2", "99"),
             Txt,
             bruch_GanzZahlReziproke,
             zahlenBereichC,

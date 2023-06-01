@@ -31,11 +31,16 @@ ifRetaAnfang = False
 
 def sort_key(key):
     if not key.startswith("1"):
-        if key in (i18n.befehle2["absicht"], i18n.befehle2["hilfe"]):
+        if key in (
+            i18n.befehle2["absicht"],
+            i18n.befehle2["hilfe"],
+            i18n.befehle2["kurzbefehle"],
+        ):
             return (0, key)
         elif key in (
             i18n.befehle2["universum"],
             i18n.befehle2["thomas"],
+            i18n.befehle2["befehle"],
         ):
             return (1, key)
         elif key in (
@@ -49,6 +54,8 @@ def sort_key(key):
         elif key in (
             i18n.befehle2["loggen"],
             i18n.befehle2["nichtloggen"],
+            i18n.befehle2["exit"],
+            i18n.befehle2["quit"],
         ):
             return (3, key)
         else:

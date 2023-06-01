@@ -97,6 +97,7 @@
   + automatische Extraktion von Zeichenfolgen
 + "Mache mir eine Datenstruktur, in der nur alle diese strings drin auf die Art gespeichert sind, dass man mit dem python tool babel diese strings auch mit anderen strings für andere sprachen befüllen kann und programmiere mir, dass diese Datenstruktur aus nur diesen strings, die strings der einen großen Datenstruktur befüllt, sodass sie im einfachen Fall letztlich die gleiche Datenstruktur sein wird, nachdem sie wieder mit den strings befüllt wurde, die sie eigentlich ursprünglich hatte."
 ****  2.2. minder wichtig, aber geht schnell:
++ Dass Py Formeln durch Python als Formeln interpretiert werden und eine Zahl ergeben: Dass es das ist mit regex überprüfen und nur umsetzen, wenn es kein sonstiger üblicher Zahlenbereich von reta ist.
 + +Dass Befehl v und w nicht so kombiniert werden, dass v auch alle Vielfacher von w nimmt.+
   + in reta wie in retaPrompt: bisher nur in ReTaPrompt so umgesetzt, aber nicht in reta
   + Ich sollte aber das gesamte Design in ReTa ändern, von der Kombinierbarkeit der Zeilenangaben und das so machen, wie in der html. Dazu muss ich mir aber geduldig ein neues Design überlegen, das durchdacht genug ist, das alles so perfekt kombiniert werden kann, wie bei SQL-Sprachen und nicht so unflexibel, wie es bisher immer war.
