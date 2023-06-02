@@ -30,13 +30,16 @@ fi
 if [ "$1" == 'tar' ] || [ "$2" == 'tar' ] || [ "$3" == 'tar' ] || [ "$4" == 'tar' ]; then
 	echo sende auch tar
 	cd ${ABS_DIRECTORY}
-	cp -ax {*.{csv,txt,py,js,org,md,png,sh,ts},head*.alx,foot*.alx,retaPrompt,reta,rp*,pypy-reta-all2-to-d2.sh,pypy-reta-all2.sh,math,modulo,prim,prim24,generate_html,out1csv.sh,i18n,*.english} /home/alex/myRepos/religions-tabelle-releasses/31
-	cp -ax pypy-reta-all2-to-d2.sh /home/alex/myRepos/religions-tabelle-releasses/31
-	cp -ax pypy-reta-all2.sh /home/alex/myRepos/religions-tabelle-releasses/31
+	cp -ax {*.{csv,txt,py,js,org,md,png,sh,ts,toml},head*.alx,foot*.alx,retaPrompt,reta,rp*,math,modulo,prim,prim24,generate_html,i18n,*.english,doc} /home/alex/myRepos/religions-tabelle-releasses/31
+	#cp -ax pypy-reta-all2-to-d2.sh /home/alex/myRepos/religions-tabelle-releasses/31
+	#cp -ax pypy-reta-all2.sh /home/alex/myRepos/religions-tabelle-releasses/31
 	cd -
 	cd /home/alex/myRepos/religions-tabelle-releasses/31
-	tar -c {*.{csv,txt,py,js,org,md,png,sh,ts},head*.alx,foot*.alx,retaPrompt,reta,rp*,pypy-reta-all2-to-d2.sh,pypy-reta-all2.sh,math,modulo,prim,prim24,generate_html,out1csv.sh,i18n,*.english}  > /home/alex/myRepos/religions-tabelle-releasses/reta.tar
-	cd -
+	tar -c {*.{csv,txt,py,js,org,md,png,sh,ts,toml},head*.alx,foot*.alx,retaPrompt,reta,rp*,math,modulo,prim,prim24,generate_html,i18n,*.english,doc}  > /home/alex/myRepos/religions-tabelle-releasses/reta.tar
+	tar -c {*.{csv,txt,py,js,org,md,png,sh,ts,toml},head*.alx,foot*.alx,retaPrompt,reta,rp*,math,modulo,prim,prim24,generate_html,i18n,*.english,doc} | xz - --threads=16 -9 --lzma2=dict=256MiB -c - > ~/reta.tar.xz
+    cat ~/religionen.html | xz - --threads=16 -9 --lzma2=dict=256MiB -c - > ~/religionen.html.xz
+    tar -c ~/religionen.html > ~/religionen.html.tar
+    cd -
 	cd /home/alex/myRepos/religions-tabelle-releasses/; tar -c reta.tar | plzip -1 - | ssh root@d2 'plzip -d - | tar --overwrite -xf - -C /media/2TB/data/www/forum/'
 	cd /home/alex/myRepos/religions-tabelle-releasses/; tar -c reta.tar | ssh root@ppp 'tar --overwrite -xf - -C /srv/http/forum'
     SCRIPT_PATH=/home/alex/myRepos/religions-tabelle-releasses/

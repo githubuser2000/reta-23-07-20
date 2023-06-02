@@ -29,6 +29,7 @@ weight = -7
 
 -   "help" prints this help info here
 -   "commands" prints the list of possible commands of ReTaPrompt
+-   "shortcuts" prints the list of possible commands having just one letter of ReTaPrompt
 -   "-h" oder "-help" not in retaPrompt as a command, but before it as a program-start argument for retaPrompt, outputs which program-start arguments are possible for ReTa-Prompt.
 
 ### output commands {#output commands}
@@ -39,11 +40,14 @@ weight = -7
     For the command "u" and "i", i.e. "universe" and "intent", you can also specify fractions, like 2/3,4/5,1/2.
 -   These output commands can be combined in one input line.
 -   "i" or "intention" or "motive" or "motive" outputs the one column of intrinsic intentions of the star polygons, together with a line specification, (example a1 or a1/2)
+-   "spheres" or "circles" displays infos about those some kind of things for Types n
 -   "u" or "universum" outputs the one column of the universal structurals or transcendentals of the star polygons, together with a line specification (example u2 or u2/2,1/2)
 -   "t" or "thomas" outputs the one column of the thomas vanglium which corresponds to the intrinsic intentions of the star polygons in coded form, together with a line specification
 -   "M" resp. "mind" shows the universal mind (examples: M1/2 or M3)
 -   "C" resp. "consciousness" shows consciousness (examples: C1/2 or C3)
 -   "E" resp. "emotion" shows the universal mind (examples: E1/2 or E3)
+-   "I" resp. "impulses" shows the impulses (examples: E1/2 or E3)
+-   "equality" resp. "freedom" shows that information (examples: "freedom 9")
 -   "m" resp. multiple" causes in output commands except "reta" that their line specifications e.g. 7 mean not only line 7, but all multiples of these line specifications as well, i.e. also 14,21, etc.
 -   "single" is the standard for short commands: that line specifications do not mean multiples, but single lines.
 -   "moon", together with a line specification, outputs information about celestial bodies: such as moons, planets, suns.
@@ -54,6 +58,7 @@ weight = -7
 -   Some of the short commands consisting of letters like "i" or "u" can also be used as commands without spaces in between. Example: instead of "a u 1,2" also "au1,2" works.
 -   Short command "e" makes that lines with almost no information are not displayed, i.e. lines with only a minus or question mark.
 -   The command "distance", together 2 other information separated by spaces, a number and two numbers between which there is immediately a hyphen, e.g. "distance 7 17-25": simply calculates the subtraction between the number 7 and the number range 17 to 25.
+-   Command "clear" clears screen.
 
 ###mathematical-output-commands {#mathematical-output-commands}
 
@@ -86,6 +91,7 @@ Line specifications or number ranges for other specifications can be (without qu
 -   This syntax for fractions and integers works with the "m" or "multiple" command and with this minus syntax, which is there for taking out ranges.
 -   Example
     - The 7 is the good and the 6 the value and both result in the good: 7-6+1 would then have to be the antagonists of it (This is not only 5 and 8, but also 6 and 7 again stupidly). Then 7-6 must be subtracted and the multiples are also searched for, so "m7-6+1,m-6-7" are all antagonists of "Wohl".
+-   Command "R" or "range" makes setting your numbers for ranges instead of lines.
 
 ### the commands 15_.... and PROP..... {#die-befehle-15-dot-dot-dot-dot}
 
@@ -115,7 +121,7 @@ Line specifications or number ranges for other specifications can be (without qu
     - For example, one has stored the command a without line specification. If you then enter a line specification, e.g. 2, then this is the command "a 2". This way you can enter commands faster.
     Normally, without storing, one can only type a line specification in the command input and thus these are the commands w a t p.
     - "o" or "CommandSaveOutput" outputs the saved command. Simply typing Enter does the same.
-    - It is possible to save a complete reta command (instead of a short command), e.g. "reta -columns --light" and then at the next command input you can enter a line, e.g. 4,7-10 and then from the columns over light lines 4,7,8,9,10 are output. So you can type everything faster. In addition, this can be combined with the short commands w and v, so you can type "3,7-10 v w".
+    - It is possible to save a complete reta command (instead of a short command), e.g. `reta -columns --light` and then at the next command input you can enter a line, e.g. 4,7-10 and then from the columns over light lines 4,7,8,9,10 are output. So you can type everything faster. In addition, this can be combined with the short commands w and v, so you can type "3,7-10 v w".
         - The other way around is also possible: You save a line specification and after saving you can specify a reta command, without line specification, and automatically the line for the reta command will be output. This way you can specify several reta commands without having to specify the line for them each time.
 -   Delete
     - "c" or "CommandClearSavese" opens a selection of what stored commands are to be deleted.

@@ -29,6 +29,7 @@ weight = -7
 
 -   "help" oder "hilfe" gibt diese Hilfe hier aus.
 -   "befehle" gibt die Liste der möglichen Befehle von ReTaPrompt aus.
+-   "kurzbefehle" gibt die Liste der möglichen Befehle aus einem Buchstaben von ReTaPrompt aus.
 -   "-h" oder "-help" nicht in retaPrompt als Befehl, sondern davor als Programm-Start-Argument für retaPrompt, gibt aus, welche Programm-Start-Argumente für ReTa-Prompt möglich sind.
 
 ### Ausgabe-Befehle {#ausgabe-befehle}
@@ -44,6 +45,9 @@ weight = -7
 -   "G" bzw. "geist" gibt den universellen Geist aus, für n oder 1/n aus, z.B. G1/2
 -   "B" bzw. "bewusstsein" gibt das Bewusstsein aus, für n oder 1/n aus, z.B. B2
 -   "E" bzw. "emotion" gibt die Gefühle für n oder 1/n aus, z.B. E1/2
+-   "I" bzw. "impulse" gibt die Impulse für n oder 1/n aus, z.B. E1/2
+-   "kugeln" bzw. "kreise" gibt die kugeln kreise für n aus, z.B. kugeln 7,14
+-   "freiheit" bzw. "gleichheit" gibt entsprechendes für n oder 1/n aus
 -   "v" bzw. "einzeln" bzw. "vielfache" bewirkt in Ausgabe-Befehlen außer "reta", dass deren Zeilenangaben z.B. 7 nicht nur Zeile 7 meinen, sondern alle vielfacher dieser Zeilengaben auch, also auch 14,21, usw.
 -   "einzeln" ist bei Kurzbefehlen der Standard: Dass Zeilenangaben nicht Vielfache meinen, sondern einzelne Zeilen.
 -   "mond" gibt, zusammen mit einer Zeilenangabe, Informationen über Gestirne aus: wie Monde, Planeten, Sonnen
@@ -54,6 +58,7 @@ weight = -7
 -   Einige der Kurzbefehle aus Buchstaben wie "a" oder "u" lassen sich auch ohne Leerzeichen dazwischen als Befehl verwenden. Beispiel: statt "a u 1,2" geht auch "au1,2".
 -   Kurzbefehl "e" macht, dass Zeilen mit fast keiner Information nicht angezeigt werden, also Zeilen mit nur einem Minus oder Fragezeichen
 -   Der Befehl "abstand", zusammen 2 weiteren Angaben durch Leerzeichen getrennt, einer Zahl und zwei Zahlen zwischen denen unmittelbar ein Bindestrich steht, z.B. "abstand 7 17-25": berechnet einfach die Subtraktion zwischen der Zahl 7 und dem Zahlenbereich 17 bis 25.
+-   der Befehl "leeren" macht den Bildschirm frei
 
 ### mathematisch Ausgabe-Befehle {#mathematisch-ausgabe-befehle}
 
@@ -86,10 +91,11 @@ Zeilenangaben oder Zahlenbereiche für andere Angaben können sein (ohne Anführ
 -  Diese Syntax für Brüche und ganze Zahlen funktioniert mit dem "v" oder "vielfache" Befehl und mit dieser Minus Syntax, welche für das Herausnehmen von Bereichen da ist.
 -   Beispiel
     -  Die 7 ist das Gute und die 6 der Wert und beides ergibt das Wohl: 7-6+1 müssten dann die Antagonisten davon sein (Das ist nicht nur 5 und 8, sondern auch 6 und 7 noch mal dummerweise.). Da muss noch 7-6 abgezogen werden und gesucht sind auch die Vielfacher, also sind "v7-6+1,v-6-7" alle Antagonisten vom "Wohl".
+-   Die Angabe von "R" oder "range" bewirkt, dass stattdessen die Zählungen anstelle der Zeilen gesetzt werden.
 
 ### Die Befehle 15\_.... und EIG..... {#die-befehle-15-dot-dot-dot-dot}
 
--   Die Befehle, die mit 15\_ beginnen, bilden zusammen eine Baumstruktur und sind Ausgabe-Befehle der Grundstrukuren und des Geistes (15), wie "u" oder "a" Ausgabe-Befehle sind. Eine Zeilenangabe wird benötigt. Dann kann etwas ausgeben werden.
+-   Die Befehle (die nur wie Zahlen aussehen, aber Befehle sind), die mit 15\_ beginnen, bilden zusammen eine Baumstruktur und sind Ausgabe-Befehle der Grundstrukuren und des Geistes (15), wie "u" oder "a" Ausgabe-Befehle sind. Eine Zeilenangabe wird benötigt. Dann kann etwas ausgeben werden.
 -   Die Befehle, die mit EIG ... anfangen handeln zusammen mit einer Zeilenangabe betreffen die Eigenschaften von Sternpolygonen und gleichförmigen Polygonen.
 
 ### sonstige Befehle {#sonstige-befehle}
@@ -115,7 +121,7 @@ Zeilenangaben oder Zahlenbereiche für andere Angaben können sein (ohne Anführ
     -    Beispielsweise hat man den Befehl a ohne Zeilenangabe gespeichert. Wenn man dann eine Zeilenangabe eingibt, z.B. 2, dann ist das der Befehl "a 2". Auf diese Art kann man schneller Befehle eingeben.
     Normalerweise, ohne Speicherung, kann man in der Befehlseingabe ausschließlich eine Zeilenangabe tippen und damit sind das die Befehle w a t p.
     -   "o" bzw. "BefehlSpeicherungAusgeben" gibt den gespeicherten Befehl aus. Einfach Enter tippen tut das auch.
-    -   Es möglich einen vollständigen reta Befehl (statt eines Kurzbefehles) zu speichern, also z.B. "reta -spalten --licht" und dann bei der Nächsten Befehlseingabe kann man eine Zeilenangabe machen, z.B. 4,7-10 und dann werden von den Spalten über Licht Zeilen 4,7,8,9,10 ausgegeben. So kann man schneller alles tippen. Außerdem lässt sich das mit den Kurzbefehlen w und v Kombinieren, also kann man tippen "3,7-10 v w".
+    -   Es möglich einen vollständigen reta Befehl (statt eines Kurzbefehles) zu speichern, also z.B. `reta -spalten --licht` und dann bei der Nächsten Befehlseingabe kann man eine Zeilenangabe machen, z.B. 4,7-10 und dann werden von den Spalten über Licht Zeilen 4,7,8,9,10 ausgegeben. So kann man schneller alles tippen. Außerdem lässt sich das mit den Kurzbefehlen w und v Kombinieren, also kann man tippen "3,7-10 v w".
         - Umgekehrt geht das auch: Man speichert eine Zeilenangabe und kann nach der Speicherung einen reta Befehl angeben, ohne Zeilenangabe, und automatisch wird dann die Zeile für den reta Befehl ausgeben. So kann man mehrere RetaBefehle angeben, ohne jedes Mal neu die Zeile für diesen angeben zu müssen.
 -  Löschen
     -   "l" bzw. "BefehlSpeicherungLöschen" eröffnet eine Auswahl, was an gespeicherten Befehlen gelöscht werden soll.
@@ -127,8 +133,8 @@ Zeilenangaben oder Zahlenbereiche für andere Angaben können sein (ohne Anführ
 -   retaPrompt starten mit Parameter -vi für ViMode (Ansonsten gelten Emacs-Tastenkürzel.),
 -   beenden mit q, exit, quit und
 -   Hilfe aufrufen mit h oder help oder hilfe,
--   rp (statt retaPrompt zu starten) ist retaPrompt mit vi mode, rpl ist retaPrompt mit vi mode und aktiviertem logging bei Programmstart.
+-   rp (statt retaPrompt zu starten) ist retaPrompt mit vi mode, rpl ist retaPrompt mit vi mode und aktiviertem logging bei Programmstart und mit weniger hilfreichen Informationsausgaben.
 -   retaPrompt Parameter -log aktiviert logging bei Programmstart.
 -   retaPrompt Parameter -language=english bewirkt, dass alle Befehle in Englisch sind. Die Inhalte sind bisher noch in deutsch.
--   "-befehl"" bewirkt, dass bis zum letzten Programmparameter retaPrompt Befehl nur ein RetaPrompt-Befehl ausgeführt wird.
+-   "-befehl" bewirkt, dass bis zum letzten Programmparameter retaPrompt Befehl nur ein RetaPrompt-Befehl ausgeführt wird.
 -   "-e" bewirkt, dass bei allen Befehlen das 'e' Kommando bzw. 'keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar' jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil dieser anders funktioniert

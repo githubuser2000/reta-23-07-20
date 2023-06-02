@@ -44,6 +44,8 @@
 ***** unwichtiges
 + Ich könnte erweitern aus welchen Dingen ich noch bestehe, der höheren Art, wie höhere Gefühle und Impulse, etc. Denn das gabs vorher nicht.
 *** 2. Feature Ideen
++ KI die höheren Symbolnamen fortsetzen lassen: also nur content
++ clear befehl zum bildschirm löschen
 + Reziproke und n/m für w Befehl ermöglichen
 + Brucherweiterungen aus Spalte aus der csv in n/m und n/n Dingen in retaPrompt mit dazu ausgeben.
 + andere Primzahlbedeutungen, außer 28 bis 32, der anderen Reihen auch hinzufügen
@@ -95,15 +97,16 @@
   + automatische Extraktion von Zeichenfolgen
 + "Mache mir eine Datenstruktur, in der nur alle diese strings drin auf die Art gespeichert sind, dass man mit dem python tool babel diese strings auch mit anderen strings für andere sprachen befüllen kann und programmiere mir, dass diese Datenstruktur aus nur diesen strings, die strings der einen großen Datenstruktur befüllt, sodass sie im einfachen Fall letztlich die gleiche Datenstruktur sein wird, nachdem sie wieder mit den strings befüllt wurde, die sie eigentlich ursprünglich hatte."
 ****  2.2. minder wichtig, aber geht schnell:
-+ Dass Befehl v und w nicht so kombiniert werden, dass v auch alle Vielfacher von w nimmt.
++ Dass Py Formeln durch Python als Formeln interpretiert werden und eine Zahl ergeben: Dass es das ist mit regex überprüfen und nur umsetzen, wenn es kein sonstiger üblicher Zahlenbereich von reta ist.
++ +Dass Befehl v und w nicht so kombiniert werden, dass v auch alle Vielfacher von w nimmt.+
   + in reta wie in retaPrompt: bisher nur in ReTaPrompt so umgesetzt, aber nicht in reta
   + Ich sollte aber das gesamte Design in ReTa ändern, von der Kombinierbarkeit der Zeilenangaben und das so machen, wie in der html. Dazu muss ich mir aber geduldig ein neues Design überlegen, das durchdacht genug ist, das alles so perfekt kombiniert werden kann, wie bei SQL-Sprachen und nicht so unflexibel, wie es bisher immer war.
   + Erst nachdem ich das neu designt habe, sollte ich das mit der besseren Kombinierbarkeit von v und w nicht in rp, sondern reta umsetzen:
     1. Weil das so sehr viel besser geht,
     2. weil es anders nur ein Verschieben von Problemen ist und
     3. weil grundsätzliches Neudesign auch wichtiger ist und eigentlich nicht ewig Zeit beanspruchen dürfte: Es ist nicht hochkomplex.
-+ Für besseres Unit-Testing: dass man mehrere Befehle bei Start von RetaPrompt angeben kann mit anschließendem Beenden.
-+ Bereichsangaben bei von bis speicherbefehlen - retaPrompt
++ +Für besseres Unit-Testing: dass man mehrere Befehle bei Start von RetaPrompt angeben kann mit anschließendem Beenden.+
++ +Bereichsangaben bei von bis speicherbefehlen - retaPrompt+
 + html zstd pro zelle: sukkzessiv mit zentraler lib aber dennoch pro zelle komprimiert: so wie mehrere dateien auch zusammen verschlüsselt werden können, ohne dass die Kompression wieder von vorn beginnen muss: spart platz insgesamt.
 + --nocolor auch für html und bbcode als option umsetzen
 + --parameter=* könnte alle Unter-Parameter meinen, als Kommandozeilenargument. Dürfte nicht so lange dauern einprogrammiert zu werden
@@ -112,7 +115,7 @@
   (1, 2, 3)
   Geht einfach und schnell zu programmieren durch Rekursion.
 + Dass man bei Kombinationen filtern kann nach nur bestimmten Zahlen, dazu und hinweg - am Besten mit den bisherigeen allen Filtermethoden, den Bereichsangaben, aber auch für Brüche dann ja wohl - das aber vorher detailliert und umfangreich und lang genug vorher planen!
-+ minder wichtig, aber geht schnell: nicht loggen, bei befehlen über Logging
++ +minder wichtig, aber geht schnell: nicht loggen, bei befehlen über Logging+
 **** 2.3. aus reta.py
 + kombinationen sortiert ausgeben und als Hierarchiebaum den Zahlenkombinationen entlang
 + kombinationen filterbar machen, dass nicht alle kombinationen bei einer Zahl immer angezeigt werden

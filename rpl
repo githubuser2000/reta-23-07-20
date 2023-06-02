@@ -18,7 +18,7 @@ def externCommand(cmd: str, Parameter1: str):
 
 
 
-sys.argv += ["-vi","-log"]
+sys.argv += ["-vi"]
 if "-debug" not in sys.argv:
     sys.argv += ["-e"]
 import retaPrompt

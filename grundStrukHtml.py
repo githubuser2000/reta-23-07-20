@@ -72,7 +72,10 @@ def merge_dicts(dict1, dict2):
                 ):
                     # print(str(type(dict1[key])))
                     dict1[key] = OrderedDict(
-                        sorted(dict2[key] | {dict1[key]: None}, key=cmp_to_key(cmpx))
+                        sorted(
+                            OrderedDict({dict1[key]: None}).update(dict2[key]),
+                            key=cmp_to_key(cmpx),
+                        )
                     )
             else:
                 dict1[key] = dict2[key]
@@ -93,10 +96,10 @@ def traverseHierarchy(liste, thing, listenIndex, value):
     #    print(liste)
     #    print(listenIndex)
     if listenIndex == 0:
-        thing: dict[dict, list]
+        thing: dict
         newKeys = value.split(",")
         newValues = [None] * len(newKeys)
-        thing |= OrderedDict(sorted(zip(newKeys, newValues), key=cmp_to_key(cmpx)))
+        thing.update(OrderedDict(sorted(zip(newKeys, newValues), key=cmp_to_key(cmpx))))
         # if "relativer_Zeit-Betrag_(15_10_4_18_6)" == value:
         #    print(thing)
     thing = OrderedDict(sorted({knoten: thing}.items(), key=cmp_to_key(cmpx)))
@@ -107,20 +110,20 @@ def traverseHierarchy(liste, thing, listenIndex, value):
     return thing
 
 
-wahlNeu: dict[str, dict] = OrderedDict(sorted({}.items(), key=cmp_to_key(cmpx)))
+wahlNeu: dict = OrderedDict(sorted({}.items(), key=cmp_to_key(cmpx)))
 
 liste: list
 for key, value in wahl15.items():
     key = "_" + key
     liste = key.split("_")
     liste = list(filter(None, liste))
-    thing: dict[str, dict] = OrderedDict(sorted({}.items(), key=cmp_to_key(cmpx)))
+    thing: dict = OrderedDict(sorted({}.items(), key=cmp_to_key(cmpx)))
     if len(liste) > 0:
         thing = traverseHierarchy(tuple(reversed(liste)), thing, 0, value)
         wahlNeu = merge_dicts(thing, wahlNeu)
 
 
-wahlNeu2: OrderedDict[str, dict] = OrderedDict(sorted({}, key=cmp_to_key(cmpx)))
+wahlNeu2: OrderedDict = OrderedDict(sorted({}, key=cmp_to_key(cmpx)))
 wahlNeu2["15"] = OrderedDict(sorted(wahlNeu.items(), key=cmp_to_key(cmpx)))
 wahlNeu2 = merge_dicts(
     wahlNeu2, OrderedDict(sorted(wahlNeu["15"].items(), key=cmp_to_key(cmpx)))

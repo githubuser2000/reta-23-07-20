@@ -2,6 +2,6 @@
 # -*- coding: utf-8 -*-
 import sys
 
-sys.argv = sys.argv[:1]+["-vi"]+ sys.argv[1:]
+sys.argv = sys.argv[:1]+["-vi", "-log"]+ sys.argv[1:]
 import retaPrompt
 retaPrompt.start()

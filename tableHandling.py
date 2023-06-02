@@ -405,6 +405,7 @@ class Tables:
                 if type(self.__outType) in (htmlSyntax, bbCodeSyntax):
                     self.cliout2(self.__outType.beginTable)
                 lastlastSubCellIndex = lastSubCellIndex
+                tabelleLeer = False
                 for (
                     BigCellLineNumber,
                     (TablesLineOfBigCells, filteredLineNumbersofOrignal),
@@ -416,6 +417,21 @@ class Tables:
                     for iterWholeLine, OneWholeScreenLine_AllSubCells in enumerate(
                         rowsRange
                     ):  # eine Bildhschirm-Zeile immer
+                        if (
+                            BigCellLineNumber == 0
+                            and iterWholeLine == 0
+                            and all(
+                                [
+                                    len(element) < 2
+                                    for row in newTable[1:]
+                                    for element in row[lastlastSubCellIndex + 1]
+                                    # if len(a) > 1
+                                ]
+                            )
+                        ):
+                            self.cliout2(i18n.keineTabellenAusgabe + ": ")
+                            tabelleLeer = True
+                            # continue
                         line = (
                             (
                                 (
@@ -729,6 +745,10 @@ class Tables:
                                             )
                                             + "|"
                                         )
+                    if tabelleLeer:
+                        self.cliout2("".join(("(", i18n.keineTabellenAusgabe, ")")))
+                        print()
+                        tabelleLeer = False
                 if type(self.__outType) in (htmlSyntax, bbCodeSyntax):
                     self.cliout2(
                         self.__outType.endTable,

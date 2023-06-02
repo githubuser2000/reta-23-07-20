@@ -16,7 +16,7 @@ from typing import Optional
 from prompt_toolkit import PromptSession, print_formatted_text, prompt
 # from prompt_toolkit.completion import Completer, Completion, WordCompleter
 from prompt_toolkit.completion import Completer, Completion
-from prompt_toolkit.history import FileHistory
+from prompt_toolkit.history import FileHistory, InMemoryHistory
 from prompt_toolkit.styles import Style
 
 from center import (alxp, cliout, i18n, invert_dict_B, isZeilenAngabe,
@@ -135,22 +135,58 @@ class TXT(object):
         self._befehlDavor = value
 
 
-def anotherOberesMaximum(zahlenBereichC, maxNum):
+def anotherOberesMaximum(zahlenBereichC, maxNum, Txt):
     maximizing = list(BereichToNumbers2(zahlenBereichC, False, 0))
     if len(maximizing) > 0:
         maximizing.sort()
         maxNum2 = maximizing[-1]
     else:
         maxNum2 = maxNum
+    try:
+        max1024 = Txt.programm.tables.hoechsteZeile[1024]
+    except Exception:
+        max1024 = retaProgram.tables.hoechsteZeile[1024]
     return (
-        "--" + i18n.zeilenParas["oberesmaximum"] + "=" + str(max(maxNum, maxNum2) + 1)
+        "--"
+        + i18n.zeilenParas["oberesmaximum"]
+        + "="
+        + str(max(maxNum, maxNum2, max1024) + 1)
     )
 
 
 def newSession(history=False):
+    class ToggleHistory(FileHistory):
+        def __init__(self, file_path, *args, **kwargs):
+            super().__init__(file_path, *args, **kwargs)
+            self.inner_history = FileHistory(file_path)
+            self.logging_enabled = True
+
+        def append_string(self, string):
+            if (
+                self.logging_enabled
+                and i18n.befehle2["nichtloggen"] not in string.split()
+                and i18n.befehle2["loggen"] not in string.split()
+            ):
+                super().append_string(string)
+
+        def get_strings(self):
+            return self.inner_history.get_strings()
+
+        def enable_logging(self):
+            self.logging_enabled = True
+
+        def disable_logging(self):
+            self.logging_enabled = False
+
+        def add_to_history(self, string):
+            self.append_string(string)
+
     if history:
         return PromptSession(
-            history=FileHistory(os.path.expanduser("~") + os.sep + ".ReTaPromptHistory")
+            # history=FileHistory(os.path.expanduser("~") + os.sep + ".ReTaPromptHistory")
+            history=ToggleHistory(
+                os.path.expanduser("~") + os.sep + ".ReTaPromptHistory"
+            )
         )
     else:
         return PromptSession()
@@ -675,6 +711,15 @@ def PromptScope():
         )
 
 
+def vorherVonAusschnittOderZaehlung(Txt: TXT, bereichsAngabe: str) -> str:
+    if Txt.hasWithoutABC({"range", "R"}):
+        return "".join(("--", i18n.zeilenParas["zaehlung"], "=", bereichsAngabe))
+    else:
+        return "".join(
+            (("--", i18n.zeilenParas["vorhervonausschnitt"], "=", bereichsAngabe))
+        )
+
+
 def PromptGrosseAusgabe(
     IsPureOnlyReTaCmd,
     befehleBeenden,
@@ -753,6 +798,16 @@ def PromptGrosseAusgabe(
                 )
             )
         )
+    if len({i18n.befehle2["kurzbefehle"]} & Txt.mengeE) > 0:
+        cmd_gave_output = True
+        print(
+            "{}: {}\n{}".format(
+                i18nRP.befehleWort["Kurzbefehle"],
+                " ".join([b for b in befehle if len(b) == 1]),
+                str(i18nRP.replacements),
+            )
+        )
+
     if len({i18n.befehle2["befehle"]} & Txt.mengeE) > 0:
         cmd_gave_output = True
         print("{}: {}".format(i18nRP.befehleWort["Befehle"], str(befehle)[1:-1]))
@@ -780,7 +835,7 @@ def PromptGrosseAusgabe(
             if not ifPrintCmdAgain(Txt):
                 # weil sonst das doppelt gemacht wird
                 cliout(" ".join(Txt.liste), True, "")
-        reta.Program(Txt.liste)
+        Txt.programm = reta.Program(Txt.liste)
 
     zeiln1, zeiln2, zeiln3, zeiln4 = zeiln1234create(
         Txt,
@@ -861,6 +916,12 @@ def PromptGrosseAusgabe(
             i18nRP = i18n.retaPrompt
 
     if fullBlockIsZahlenbereichAndBruch and (bedingungZahl or bedingungBrueche):
+
+        if Txt.hasWithoutABC({i18n.befehle2["leeren"]}):
+            for _ in range(os.get_terminal_size().lines + 1):
+                print()
+            cmd_gave_output = True
+
         was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
             Txt.hasWithoutABC({i18n.befehle2["emotion"], i18n.befehle2["E"]}),
             [
@@ -875,6 +936,30 @@ def PromptGrosseAusgabe(
             ],
             None,
             ("1,2", "3,4"),
+            Txt,
+            bruch_GanzZahlReziproke,
+            zahlenBereichC,
+            ketten,
+            cmd_gave_output,
+            zeiln1,
+            zeiln2,
+            zeiln3,
+            zeiln4,
+        )
+        was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
+            Txt.hasWithoutABC({i18n.befehle2["I"], i18n.befehle2["impulse"]}),
+            [
+                "".join(
+                    (
+                        "--",
+                        i18n.ParametersMain.grundstrukturen[0],
+                        "=",
+                        wahl15["5"],
+                    )
+                )
+            ],
+            None,
+            ("1,4", "3"),
             Txt,
             bruch_GanzZahlReziproke,
             zahlenBereichC,
@@ -934,6 +1019,59 @@ def PromptGrosseAusgabe(
             zeiln4,
         )
         was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
+            Txt.hasWithoutABC({i18n.befehle2["freiheit"], i18n.befehle2["gleichheit"]}),
+            [
+                "".join(
+                    (
+                        "--",
+                        i18n.ParametersMain.planet[0],
+                        "=",
+                        i18n.befehle2["freiheit"],
+                    )
+                )
+            ],
+            None,
+            ("1-4,8", "5-7"),
+            Txt,
+            bruch_GanzZahlReziproke,
+            zahlenBereichC,
+            ketten,
+            cmd_gave_output,
+            zeiln1,
+            zeiln2,
+            zeiln3,
+            zeiln4,
+        )
+        was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
+            Txt.hasWithoutABC(
+                {
+                    i18n.befehle2["kugeln"],
+                    i18n.befehle2["kreise"],
+                }
+            ),
+            [
+                "".join(
+                    (
+                        "--",
+                        i18n.ParametersMain.universum[0],
+                        "=",
+                        i18n.kugelnKreise[0],
+                    )
+                )
+            ],
+            None,
+            ("1-2", "99"),
+            Txt,
+            bruch_GanzZahlReziproke,
+            zahlenBereichC,
+            ketten,
+            cmd_gave_output,
+            zeiln1,
+            zeiln2,
+            zeiln3,
+            zeiln4,
+        )
+        was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
             Txt.hasWithoutABC(
                 {
                     i18n.befehle2["absicht"],
@@ -972,8 +1110,7 @@ def PromptGrosseAusgabe(
                     retaExecuteNprint(
                         ketten,
                         Txt.listeE,
-                        "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
-                        + ",".join(zaehler),
+                        vorherVonAusschnittOderZaehlung(Txt, ",".join(zaehler)),
                         "",
                         [
                             "".join(
@@ -993,8 +1130,7 @@ def PromptGrosseAusgabe(
                     retaExecuteNprint(
                         ketten,
                         Txt.listeE,
-                        "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
-                        + ",".join(zaehler),
+                        vorherVonAusschnittOderZaehlung(Txt, ",".join(zaehler)),
                         "",
                         [
                             "".join(
@@ -1130,8 +1266,7 @@ def PromptGrosseAusgabe(
                     retaExecuteNprint(
                         ketten,
                         Txt.listeE,
-                        "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
-                        + hierBereich,
+                        vorherVonAusschnittOderZaehlung(Txt, hierBereich),
                         "",
                         [
                             "".join(
@@ -1156,8 +1291,7 @@ def PromptGrosseAusgabe(
                     retaExecuteNprint(
                         ketten,
                         Txt.listeE,
-                        "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
-                        + hierBereich,
+                        vorherVonAusschnittOderZaehlung(Txt, hierBereich),
                         "",
                         [
                             "".join(
@@ -1181,8 +1315,7 @@ def PromptGrosseAusgabe(
                 retaExecuteNprint(
                     ketten,
                     Txt.listeE,
-                    "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
-                    + nennerZaehlerGleich,
+                    vorherVonAusschnittOderZaehlung(Txt, nennerZaehlerGleich),
                     "",
                     [
                         "".join(
@@ -1216,7 +1349,7 @@ def PromptGrosseAusgabe(
                 )
 
         if Txt.hasWithoutABC({"prim", "primfaktorzerlegung"}):
-            for arg in BereichToNumbers2(zahlenReiheKeineWteiler):
+            for arg in BereichToNumbers2(zahlenReiheKeineWteiler, False, 0):
                 cmd_gave_output = True
                 print(
                     str(arg)
@@ -1229,7 +1362,7 @@ def PromptGrosseAusgabe(
         if Txt.hasWithoutABC({"multis"}) > 0:
             cmd_gave_output = True
 
-            listeStrWerte = BereichToNumbers2(zahlenReiheKeineWteiler)
+            listeStrWerte = BereichToNumbers2(zahlenReiheKeineWteiler, False, 0)
             mult(listeStrWerte)
 
             # externCommand(i18n.befehle2["prim"], c)
@@ -1274,7 +1407,7 @@ def PromptGrosseAusgabe(
                 ketten,
                 Txt.listeE,
                 zeiln1,
-                anotherOberesMaximum(zahlenBereichC, 1028),
+                anotherOberesMaximum(zahlenBereichC, 1028, Txt),
                 [
                     "".join(
                         (
@@ -1487,10 +1620,7 @@ def zeiln1234create(
     zahlenReiheKeineWteiler,
 ):
     if len(bruch_GanzZahlReziproke) > 0 and textHatZiffer(bruch_GanzZahlReziproke):
-        zeiln3 = (
-            "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
-            + bruch_GanzZahlReziproke
-        )
+        zeiln3 = vorherVonAusschnittOderZaehlung(Txt, bruch_GanzZahlReziproke)
         zeiln4 = ""
     else:
         zeiln3 = "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "=0"))
@@ -1515,8 +1645,7 @@ def zeiln1234create(
                     zeiln1 = ""
                 zeiln2 = "".join(
                     [
-                        "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "=")),
-                        zahlenBereiche,
+                        vorherVonAusschnittOderZaehlung(Txt, zahlenBereiche),
                         ",",
                         ",".join(
                             [
@@ -1529,12 +1658,8 @@ def zeiln1234create(
 
                 # zeiln2 = ""
             else:
-                zeiln1 = (
-                    "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
-                    + zahlenBereiche
-                )
-
-                zeiln2 = anotherOberesMaximum(zahlenBereichC, maxNum)
+                zeiln1 = vorherVonAusschnittOderZaehlung(Txt, zahlenBereiche)
+                zeiln2 = anotherOberesMaximum(zahlenBereichC, maxNum, Txt)
         else:
             zeiln1 = "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "=0"))
             zeiln2 = ""
@@ -2202,8 +2327,7 @@ def promptVorbereitungGrosseAusgabe(
         if len({i18n.befehle2["v"], i18n.befehle2["vielfache"]} & Txt.menge) == 0:
             Txt.liste += [
                 "".join(("-", i18n.hauptForNeben["zeilen"])),
-                "".join(("--", i18n.zeilenParas["vorhervonausschnitt"], "="))
-                + zahlenBereichNeu[True],
+                vorherVonAusschnittOderZaehlung(Txt, zahlenBereichNeu[True]),
             ]
 
         else:
@@ -2410,6 +2534,7 @@ def promptInput(
                 ]
             else:
                 Txt.e = []
+
         except KeyboardInterrupt:
             sys.exit()
 
@@ -2417,6 +2542,7 @@ def promptInput(
         Txt.text = " ".join(nurEinBefehl)
         Txt.e = []
         Txt.befehlDavor = ""
+
     return Txt
 
 

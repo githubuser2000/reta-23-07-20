@@ -95,6 +95,7 @@ Primzahlkreuz_pro_contra_strs: tuple = (
     "nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)",
 )
 
+keineTabellenAusgabe = _("kein Tabelleninhalt")
 Primzahlkreuz_pro_contra_strs_Fkt: tuple = (
     _("Primzahlkreuz_pro_contra"),
     _("nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)"),
@@ -346,19 +347,28 @@ wahl16 = {
     "1": _("Meta-Physik-Teilchen_(1)"),
 }
 
+freiheitGleichheit = ("freiheit", "gleichheit")
+
 # WICHTIG WICHTIG: die Befehle mit nur einem zeichen dürfen  nur ein Zeichen haben !!!!!!!
-befehle2: dict = {"15_" + a: "15_" + a for a in wahl15.keys()}
+befehle2: OrderedDict = OrderedDict({"15_" + a: "15_" + a for a in wahl15.keys()})
 befehle2.update({"16_15_" + a: "16_15_" + a for a in wahl15.keys() if a != "15"})
 befehle2.update({"16_" + a: "16_" + a for a in wahl16.keys()})
 befehle2.update(
     {
         "emotion": emotionWort,
+        freiheitGleichheit[0]: _(freiheitGleichheit[0]),
+        freiheitGleichheit[1]: _(freiheitGleichheit[1]),
+        "kurzbefehle": _("kurzbefehle"),
+        "leeren": _("leeren"),
+        "kugeln": _("kugeln"),
+        "kreise": _("kreise"),
         "mond": _("mond"),
         "reta": _("reta"),
         "absicht": _("absicht"),
         "motiv": _("motiv"),
         "thomas": _("thomas"),
         "universum": _("universum"),
+        "impulse": _("impulse"),
         "motive": _("motive"),
         "absichten": _("absichten"),
         "vielfache": _("vielfache"),
@@ -376,11 +386,14 @@ befehle2.update(
         "alles": _("alles"),
         "geist": geistWort,
         "a": _("a"),
+        "R": _("R"),
+        "range": _("range"),
         "B": _("B"),
         "bewusstsein": _("bewusstsein"),
         "E": _("E"),
         "G": _("G"),
         "u": _("u"),
+        "I": _("I"),
         "befehle": _("befehle"),
         "t": _("t"),
         "richtung": _("richtung"),
@@ -512,7 +525,7 @@ befehle: list = list(befehle2.values())
 #    _("keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"),
 #    _("abstand"),
 # ]
-
+kugelnKreise = ["kugeln", "kreise"]
 ParametersMain: NamedTuple = namedtuple(
     "ParametersMain",
     "wichtigste wichtigste2 religionen galaxie strukturgroesse universum multiversum wirtschaft menschliches procontra licht bedeutung symbole Multiplikationen konzept konzept2 inkrementieren operationen universummetakonkret primzahlwirkung gebrochenuniversum gebrochengalaxie primvielfache planet strukturenkleinere grundstrukturen alles",
@@ -705,8 +718,8 @@ paraNdataMatrix: list = [
         (
             _("Gleichheit_Freiheit_Ordnung"),
             _("gleichheit"),
-            _("freiheit"),
-            _("ordnung"),
+            _(freiheitGleichheit[0]),
+            _(freiheitGleichheit[1]),
         ),
         {132, 324, 328, 79, 80, 331, 335},
     ),
@@ -956,8 +969,8 @@ paraNdataMatrix: list = [
         (
             _("Kugeln_Kreise"),
             _("kugelnkreise"),
-            _("kugeln"),
-            _("kreise"),
+            kugelnKreise[0],
+            kugelnKreise[1],
         ),
         {77, 145},
     ),
@@ -2141,7 +2154,7 @@ paraNdataMatrix: list = [
             _("Lust_(9)"),
             _("lust"),
         ),
-        {255},
+        {255, 391},
     ),
     (
         ParametersMain.grundstrukturen,
@@ -4051,7 +4064,7 @@ class retaPrompt:
         + " 7 17-25'"
     )
     befehleBeenden = {_("ende"), _("exit"), _("quit"), _("q"), _(":q")}
-    befehleWort = {"Befehle": _("Befehle")}
+    befehleWort = {"Befehle": _("Befehle"), "Kurzbefehle": _("Kurzbefehle")}
     promptModeSatz = _("promptmode vorher: {} , {}")
     promptModeSatz2 = _("'{}' ergibt sich aus '{}' und ergibt danach reta-Befehl:")
     out1Saetze = (
@@ -4069,10 +4082,12 @@ class retaPrompt:
             "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
         ],
         befehle2["G"]: geistWort,
+        befehle2["R"]: befehle2["range"],
         befehle2["a"]: befehle2["absicht"],
         befehle2["B"]: befehle2["bewusstsein"],
         befehle2["E"]: befehle2["emotion"],
         befehle2["u"]: befehle2["universum"],
+        befehle2["I"]: befehle2["impulse"],
         befehle2["t"]: befehle2["thomas"],
         befehle2["r"]: befehle2["richtung"],
         befehle2["v"]: befehle2["vielfache"],

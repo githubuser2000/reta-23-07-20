@@ -28,7 +28,45 @@ NestedDict = Mapping[str, Union[Any, Set[str], None, Completer]]
 
 ifRetaAnfang = False
 
-befehle2List = list(befehle2)
+
+def sort_key(key):
+    if not key.startswith("1"):
+        if key in (
+            i18n.befehle2["absicht"],
+            i18n.befehle2["hilfe"],
+            i18n.befehle2["kurzbefehle"],
+        ):
+            return (0, key)
+        elif key in (
+            i18n.befehle2["universum"],
+            i18n.befehle2["thomas"],
+            i18n.befehle2["befehle"],
+        ):
+            return (1, key)
+        elif key in (
+            i18n.befehle2["reta"],
+            i18n.befehle2["bewusstsein"],
+            i18n.befehle2["geist"],
+            i18n.befehle2["emotion"],
+            i18n.befehle2["impulse"],
+        ):
+            return (2, key)
+        elif key in (
+            i18n.befehle2["loggen"],
+            i18n.befehle2["nichtloggen"],
+            i18n.befehle2["exit"],
+            i18n.befehle2["quit"],
+        ):
+            return (3, key)
+        else:
+            return (4, key)
+    else:
+        return (5, key)
+
+
+befehle2 = set(sorted(befehle2, key=lambda item: sort_key(item)))
+befehle = list(sorted(befehle, key=lambda item: sort_key(item)))
+befehle2List = list(sorted(befehle2, key=lambda item: sort_key(item)))
 
 
 class ComplSitua(Enum):
@@ -202,6 +240,10 @@ class NestedCompleter(Completer):
                             var1 += befehle2List
                         except:
                             var1 = []
+                    try:
+                        var1
+                    except UnboundLocalError:
+                        var1 = []
                     completer.options = {key: None for key in var1}
                     completer.optionsTypes = {key: var2 for key in var1}
                     completer.lastString = first_term
