@@ -8,6 +8,7 @@ Hauptparameter beginnen mit einem Minus -.
 Nebenparameter beginnen mit 2 Minus --.
 
 # Hauptparameter
+Besser die Readme aus Markdown mit einem Markdown-Leseprogramm lesen!
 
 ## -debug
     *    hat keine Nebenparameter, ist nur für mich als Programmierer relevant und interesssant
@@ -176,3 +177,10 @@ Nebenparameter beginnen mit 2 Minus --.
 ### Beispiel (eine Zeile, nicht mehrere):
         `reta -zeilen --vorhervonausschnitt=1-9 -spalten --religionen=sternpolygon,gleichfoermigespolygon --galaxie=babylon --breite=50`
 
+    * Bereichsangaben lassen sich mit Python Generatoren angeben, in geschweiften, runden oder eckigen Klammern, neben den anderen Bereichsangaben mit Komma getrennt.
+        * in retaPrompt:
+        `reta -zeilen --vorhervonausschnitt={2*n for n in range(2,5)},10 --oberesmaximum=1025 -spalten --Menschliches=motivation --breite=0 -ausgabe --spaltenreihenfolgeundnurdiese=[3*n for n in range(2)]`
+        * in der Shell z.B. Bash:
+        `reta -zeilen "--vorhervonausschnitt={2*n for n in range(2,5)},10" --oberesmaximum=1025 -spalten --Menschliches=motivation --breite=0 -ausgabe "--spaltenreihenfolgeundnurdiese=[3*n for n in range(2)]"`
+        Ein Minus vor so einem Python Generator würde den Bereich abziehen: -[n for n in range(3)]
+Besser die Readme aus Markdown mit einem Markdown-Leseprogramm lesen!

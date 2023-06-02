@@ -164,7 +164,7 @@ class Tables:
             liste2 += [""]
         return liste1, liste2
 
-    def __init__(self, hoechstZeil=None):
+    def __init__(self, hoechstZeil, Txt):
         if hoechstZeil is None:
             self.__hoechsteZeile = {1024: 1024, 114: 120}
         else:
@@ -177,7 +177,7 @@ class Tables:
         self.getPrepare = Prepare(self, self.hoechsteZeile)
         self.getCombis = self.Combi(self)
         self.getConcat = Concat(self)
-        self.getOut = self.Output(self)
+        self.getOut = self.Output(self, Txt)
         self.getMainTable = self.Maintable(self)
         self.textHeight = 0
         self.textWidth = 21
@@ -200,11 +200,12 @@ class Tables:
         self.__generRows__: set = OrderedSet()
 
     class Output:
-        def __init__(self, tables):
+        def __init__(self, tables, Txt):
             self.tables = tables
             self.__oneTable = False
             self.__color = True
             self.__outType: OutputSyntax = OutputSyntax()
+            self.Txt = Txt
 
         @property
         def outType(self) -> OutputSyntax:
@@ -429,9 +430,18 @@ class Tables:
                                 ]
                             )
                         ):
-                            self.cliout2(i18n.keineTabellenAusgabe + ": ")
-                            tabelleLeer = True
-                            # continue
+                            if self.Txt is not None and self.Txt.has(
+                                {
+                                    i18n.befehle2["e"],
+                                    i18n.befehle2[
+                                        "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                                    ],
+                                }
+                            ):
+                                continue
+                            else:
+                                tabelleLeer = True
+                                self.cliout2(i18n.keineTabellenAusgabe + ": ")
                         line = (
                             (
                                 (

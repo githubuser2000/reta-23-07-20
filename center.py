@@ -125,9 +125,23 @@ def retaHilfe():
     )
     with open(place, encoding="utf-8") as f:
         markdownText = f.read()
-    console = Console()
-    md = Markdown(markdownText)
-    console.print(md)
+    print(markdownText)
+    # for m in markdownText.split("\n"):
+    #    console = Console(soft_wrap=False, width=len(m), markup=False)
+    #    md = Markdown(m, style="emacs")
+    #    console.print(
+    #        md, new_line_start=False, no_wrap=True, soft_wrap=True, width=len(m)
+    #    )
+    # m = markdownText.split("\n")
+    # if True:
+    #    console = Console(soft_wrap=False, markup=False)
+    #    md = Markdown(m, style="emacs")
+    #    console.print(
+    #        md, new_line_start=False, no_wrap=True, soft_wrap=True, width=len(m)
+    #    )
+    # from pygments.styles import get_all_styles
+    # styles = list(get_all_styles())
+    # print(styles)
 
 
 def getTextWrapThings(maxLen=None) -> tuple:
@@ -355,44 +369,44 @@ def unique_everseen(iterable, key=None):
 
 
 # @jit(nopython=True, parallel=True, cache=True)
-def BereichToNumbers(MehrereBereiche: str) -> set:
-
-    Bereiche: list = MehrereBereiche.split(",")
-    dazu: set[int] = set()
-    hinfort: set[int] = set()
-    menge: Optional[set[int]]
-
-    for EinBereich in Bereiche:
-        if len(EinBereich) > 1 and EinBereich[0] == "-":
-            EinBereich = EinBereich[1:]
-            menge = hinfort
-            generated = strAsGeneratorToListOfNumStrs(EinBereich[1:])
-            if generated is not None:
-                hinfort |= generated
-                continue
-        elif len(EinBereich) > 0 and EinBereich[0] != "-":
-            menge = dazu
-            generated = strAsGeneratorToListOfNumStrs(EinBereich)
-            if generated is not None:
-                dazu |= generated
-                continue
-        else:
-            menge = None
-
-        if menge is not None:
-            if EinBereich.isdecimal():
-                EinBereich = EinBereich + "-" + EinBereich
-            BereichCouple: list = EinBereich.split("-")
-            if (
-                len(BereichCouple) == 2
-                and BereichCouple[0].isdecimal()
-                and BereichCouple[0] != "0"
-                and BereichCouple[1].isdecimal()
-                and BereichCouple[1] != "0"
-            ):
-                for number in range(int(BereichCouple[0]), int(BereichCouple[1]) + 1):
-                    menge |= {number}
-    return dazu - hinfort
+# def BereichToNumbers(MehrereBereiche: str) -> set:
+#
+#    Bereiche: list = MehrereBereiche.split(",")
+#    dazu: set[int] = set()
+#    hinfort: set[int] = set()
+#    menge: Optional[set[int]]
+#
+#    for EinBereich in Bereiche:
+#        if len(EinBereich) > 1 and EinBereich[0] == "-":
+#            EinBereich = EinBereich[1:]
+#            menge = hinfort
+#            generated = strAsGeneratorToListOfNumStrs(EinBereich[1:])
+#            if generated is not None:
+#                hinfort |= generated
+#                continue
+#        elif len(EinBereich) > 0 and EinBereich[0] != "-":
+#            menge = dazu
+#            generated = strAsGeneratorToListOfNumStrs(EinBereich)
+#            if generated is not None:
+#                dazu |= generated
+#                continue
+#        else:
+#            menge = None
+#
+#        if menge is not None:
+#            if EinBereich.isdecimal():
+#                EinBereich = EinBereich + "-" + EinBereich
+#            BereichCouple: list = EinBereich.split("-")
+#            if (
+#                len(BereichCouple) == 2
+#                and BereichCouple[0].isdecimal()
+#                and BereichCouple[0] != "0"
+#                and BereichCouple[1].isdecimal()
+#                and BereichCouple[1] != "0"
+#            ):
+#                for number in range(int(BereichCouple[0]), int(BereichCouple[1]) + 1):
+#                    menge |= {number}
+#    return dazu - hinfort
 
 
 # @jit(nopython=True, parallel=True, cache=True)
@@ -416,11 +430,6 @@ def BereichToNumbers2(
     menge: Optional[set[int]]
 
     for EinBereich in Bereiche:
-        if len(EinBereich) > 0 and EinBereich[0] == i18n.befehle2["v"]:
-            EinBereich = EinBereich[1:]
-            vielfache2 = True
-        else:
-            vielfache2 = False
         if len(EinBereich) > 1 and EinBereich[0] == "-":
             generated = strAsGeneratorToListOfNumStrs(EinBereich[1:])
             if generated is not None:
@@ -431,13 +440,18 @@ def BereichToNumbers2(
             if generated is not None:
                 dazu |= generated
                 continue
-    BereichToNumbers2_EinBereich(
-        EinBereich,
-        dazu,
-        hinfort,
-        1028 if (vielfache or vielfache2) and maxZahl == float("inf") else maxZahl,
-        vielfache or vielfache2,
-    )
+        if len(EinBereich) > 0 and EinBereich[0] == i18n.befehle2["v"]:
+            EinBereich = EinBereich[1:]
+            vielfache2 = True
+        else:
+            vielfache2 = False
+        BereichToNumbers2_EinBereich(
+            EinBereich,
+            dazu,
+            hinfort,
+            1028 if (vielfache or vielfache2) and maxZahl == float("inf") else maxZahl,
+            vielfache or vielfache2,
+        )
     return dazu - hinfort
 
 

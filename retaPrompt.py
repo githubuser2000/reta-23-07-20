@@ -771,12 +771,36 @@ def PromptGrosseAusgabe(
         not in Txt.listeE
     ):
 
-        if "--" + i18n.ausgabeParas["nocolor"] in Txt.listeE:
-            print(i18nRP.promptModeSatz2.format(" ".join(Txt.listeE), Txt.text))
+        if ifPrintCmdAgain(Txt):
+            if "--" + i18n.ausgabeParas["nocolor"] in Txt.listeE:
+                print(
+                    i18nRP.promptModeSatz2.format(
+                        "[code]", " ".join(Txt.listeE), "[/code]", Txt.text
+                    )
+                )
+            else:
+                cliout(
+                    i18nRP.promptModeSatz2.format(
+                        "[code]", " ".join(Txt.listeE), "[/code]", Txt.text
+                    ),
+                    True,
+                    "",
+                )
         else:
-            cliout(
-                i18nRP.promptModeSatz2.format(" ".join(Txt.listeE), Txt.text), True, ""
-            )
+            if "--" + i18n.ausgabeParas["nocolor"] in Txt.listeE:
+                print(
+                    i18nRP.promptModeSatz2.format(
+                        "'", " ".join(Txt.listeE), "'", Txt.text
+                    )
+                )
+            else:
+                cliout(
+                    i18nRP.promptModeSatz2.format(
+                        "'", " ".join(Txt.listeE), "'", Txt.text
+                    ),
+                    True,
+                    "",
+                )
     if (
         i18n.befehle2["abc"] in Txt.listeE or i18n.befehle2["abcd"] in Txt.listeE
     ) and len(Txt.liste) == 2:
@@ -869,6 +893,7 @@ def PromptGrosseAusgabe(
                     ),
                 ],
                 "2",
+                Txt,
             )
 
     if (
@@ -1128,6 +1153,7 @@ def PromptGrosseAusgabe(
                             )
                         ],
                         "2",
+                        Txt,
                     )
             elif len(rangesBruecheDictReverse) > 0:
                 cmd_gave_output = True
@@ -1148,6 +1174,7 @@ def PromptGrosseAusgabe(
                             )
                         ],
                         "1",
+                        Txt,
                     )
 
         eigN, eigR = [], []
@@ -1167,6 +1194,7 @@ def PromptGrosseAusgabe(
                     zeiln2,
                     ["".join(("--", i18n.konzeptE["konzept"], "=", (",".join(eigN))))],
                     None,
+                    Txt,
                 )
 
         if len(eigR) > 0:
@@ -1224,6 +1252,7 @@ def PromptGrosseAusgabe(
                     zeiln4,
                     ["".join(("--", i18n.konzeptE["konzept2"], "=", (",".join(eigR))))],
                     None,
+                    Txt,
                 )
             del ZahlenAngabenCneu
         was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
@@ -1284,6 +1313,7 @@ def PromptGrosseAusgabe(
                             )
                         ],
                         "2",
+                        Txt,
                     )
                     nennerZaehlerGleich += findEqualNennerZaehler(
                         hierBereich, nenner, nennerZaehlerGleich
@@ -1309,6 +1339,7 @@ def PromptGrosseAusgabe(
                             )
                         ],
                         "1",
+                        Txt,
                     )
                     nennerZaehlerGleich += findEqualNennerZaehler(
                         hierBereich, nenner, nennerZaehlerGleich
@@ -1333,6 +1364,7 @@ def PromptGrosseAusgabe(
                         )
                     ],
                     "1",
+                    Txt,
                 )
     if bedingungZahl:
         if (
@@ -1390,6 +1422,7 @@ def PromptGrosseAusgabe(
                     )
                 ],
                 "3-6",
+                Txt,
             )
 
         if len({i18n.befehle2["modulo"]} & Txt.mengeE) > 0:
@@ -1404,6 +1437,7 @@ def PromptGrosseAusgabe(
                 zeiln2,
                 ["--" + i18n.ParametersMain.alles[0]],
                 None,
+                Txt,
             )
 
         if len({i18n.befehle2["primzahlkreuz"]} & Txt.mengeE) > 0:
@@ -1424,6 +1458,7 @@ def PromptGrosseAusgabe(
                     )
                 ],
                 None,
+                Txt,
             )
             import reta
 
@@ -1449,6 +1484,7 @@ def PromptGrosseAusgabe(
                     )
                 ],
                 None,
+                Txt,
             )
         if (
             len(Txt.listeE) > 0
@@ -1482,6 +1518,7 @@ def PromptGrosseAusgabe(
                     )
                 ],
                 None,
+                Txt,
             )
         if (
             len(Txt.listeE) > 0
@@ -1519,6 +1556,7 @@ def PromptGrosseAusgabe(
                     )
                 ],
                 None,
+                Txt,
             )
     if (
         len(Txt.liste) == 3
@@ -1556,7 +1594,6 @@ def PromptGrosseAusgabe(
             print(i18nRP.out1Saetze[0] + " ".join(Txt.listeE) + i18nRP.out1Saetze[1])
         else:
             print(i18nRP.out2Satz.format(" ".join(Txt.listeE)))
-            print(Txt.menge)
     return loggingSwitch
 
 
@@ -1585,12 +1622,7 @@ def retaCmdAbstraction_n_and_1pron(
         if len(zahlenBereichC) > 0:
             cmd_gave_output = True
             retaExecuteNprint(
-                ketten,
-                Txt.listeE,
-                zeiln1,
-                zeiln2,
-                paras,
-                selectedCols[0],
+                ketten, Txt.listeE, zeiln1, zeiln2, paras, selectedCols[0], Txt
             )
         if (
             len(bruch_GanzZahlReziproke) > 0
@@ -1605,6 +1637,7 @@ def retaCmdAbstraction_n_and_1pron(
                 zeiln4,
                 paras if paras2 in [None, [], ()] else paras2,
                 selectedCols[1],
+                Txt,
             )
     return was_n_1proN_cmd, cmd_gave_output
 
@@ -1613,7 +1646,7 @@ def ifPrintCmdAgain(Txt):
     return (
         "".join(("--", i18n.ausgabeParas["art"], "=", i18n.ausgabeArt["bbcode"]))
         in Txt.listeE
-        and "reta" == Txt.listeE[0]
+        # and "reta" == Txt.listeE[0]
     )
 
 
@@ -1683,6 +1716,7 @@ def retaExecuteNprint(
     zeiln2: str,
     welcheSpalten: list,
     ErlaubteSpalten: str,
+    Txt: TXT,
 ):
     import reta
 
@@ -1718,14 +1752,18 @@ def retaExecuteNprint(
         not in stextE
     ):
 
-        if "--" + i18n.ausgabeParas["nocolor"] in stextE:
-            cliout(" ".join(kette), True)
+        if ifPrintCmdAgain(Txt):
+            if "--" + i18n.ausgabeParas["nocolor"] in stextE:
+                print("[code]" + (" ".join(kette)) + "[/code]")
+            else:
+                cliout("[code]" + (" ".join(kette)) + "[/code]", True, "bbcode")
         else:
-            print(" ".join(kette))
+            if "--" + i18n.ausgabeParas["nocolor"] in stextE:
+                print(" ".join(kette))
+            else:
+                cliout(" ".join(kette), True)
     # x("ENDE", kette)
-    reta.Program(
-        kette,
-    )
+    reta.Program(kette, Txt=Txt)
 
 
 def findEqualNennerZaehler(hierBereich, nenner, nennerZaehlerGleich):

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-02 00:34+0200\n"
+"POT-Creation-Date: 2023-06-02 09:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13925,3 +13925,7 @@ msgstr "shortcuts"
 #: ../../words.py:4065 ../../words.py:4067
 msgid "Kurzbefehle"
 msgstr "shortcuts"
+
+#: ../../words.py:4069
+msgid "{}{}{} ergibt sich aus '{}' und ergibt danach reta-Befehl:"
+msgstr "{}{}{} results from '{}' and results reta command after:"

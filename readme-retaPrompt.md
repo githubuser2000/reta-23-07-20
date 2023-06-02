@@ -26,6 +26,7 @@ weight = -7
 
 
 ## Befehle {#befehle}
+Besser die Readme Markdown mit einem Markdown-Leseprogramm lesen!
 
 -   "help" oder "hilfe" gibt diese Hilfe hier aus.
 -   "befehle" gibt die Liste der möglichen Befehle von ReTaPrompt aus.
@@ -138,3 +139,4 @@ Zeilenangaben oder Zahlenbereiche für andere Angaben können sein (ohne Anführ
 -   retaPrompt Parameter -language=english bewirkt, dass alle Befehle in Englisch sind. Die Inhalte sind bisher noch in deutsch.
 -   "-befehl" bewirkt, dass bis zum letzten Programmparameter retaPrompt Befehl nur ein RetaPrompt-Befehl ausgeführt wird.
 -   "-e" bewirkt, dass bei allen Befehlen das 'e' Kommando bzw. 'keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar' jedes mal verwendet wird - außer wenn der erste Befehl reta war, weil dieser anders funktioniert
+Besser die Readme Markdown mit einem Markdown-Leseprogramm lesen!

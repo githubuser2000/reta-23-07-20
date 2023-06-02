@@ -4066,7 +4066,7 @@ class retaPrompt:
     befehleBeenden = {_("ende"), _("exit"), _("quit"), _("q"), _(":q")}
     befehleWort = {"Befehle": _("Befehle"), "Kurzbefehle": _("Kurzbefehle")}
     promptModeSatz = _("promptmode vorher: {} , {}")
-    promptModeSatz2 = _("'{}' ergibt sich aus '{}' und ergibt danach reta-Befehl:")
+    promptModeSatz2 = _("{}{}{} ergibt sich aus '{}' und ergibt danach reta-Befehl:")
     out1Saetze = (
         _("Dies ('"),
         _(

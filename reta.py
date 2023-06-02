@@ -1480,11 +1480,13 @@ class Program:
         global Tables, infoLog
         infoLog = value
 
-    def __init__(self, argv=[], alternativeShellRowsAmount: Optional[int] = None):
+    def __init__(
+        self, argv=[], alternativeShellRowsAmount: Optional[int] = None, Txt=None
+    ):
         global Tables, infoLog
         self.argv = argv
         self.allesParameters = 0
-        self.tables = Tables(self.oberesMaximum2(argv[1:]))
+        self.tables = Tables(self.oberesMaximum2(argv[1:]), Txt)
 
         self.breiteHasBeenOnceZero: bool = False
         self.obZeilenBereicheAngegeben = False
