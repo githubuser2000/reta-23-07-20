@@ -84,7 +84,7 @@ def isZeilenBruchAngabe(text):
 
 def isZeilenAngabe(text):
     a = []
-    stext = text.split(",")
+    stext = re.split(r",(?![^\[\]\{\}\(\)]*[\]\}\)])", text)
     anyAtAll = any([len(txt) > 0 for txt in stext])
     for g in stext:
         a += [isZeilenAngabe_betweenKommas(g) or (g == "" and anyAtAll)]
@@ -94,7 +94,13 @@ def isZeilenAngabe(text):
 def isZeilenAngabe_betweenKommas(g):
     patternStr = "".join(("^(", i18n.befehle2["v"], "?-?\d+)(-\d+)?((\+)(\d+))*$"))
     pattern = re.compile(patternStr)
-    return bool(re.fullmatch(pattern, g))
+    generated1 = strAsGeneratorToListOfNumStrs(g)
+    generated2 = strAsGeneratorToListOfNumStrs(g[1:])
+    return (
+        bool(re.fullmatch(pattern, g))
+        or generated1 is not None
+        or generated2 is not None
+    )
 
 
 def retaPromptHilfe():
@@ -266,6 +272,25 @@ def cliout(text, color=False, stype=""):
 # return array
 
 
+def strAsGeneratorToListOfNumStrs(text: str) -> set:
+    try:
+        if (
+            (text[0] == "[" and text[-1] == "]")
+            or (text[0] == "(" and text[-1] == ")")
+            or (text[0] == "{" and text[-1] == "}")
+        ):
+            try:
+                result = eval(text)
+                result = set(result)
+                if type(result) is set and all((type(a) is int for a in result)):
+                    return result  # ",".join((str(a) for a in result))
+            except Exception:
+                return None
+    except Exception:
+        return None
+    return None
+
+
 class DefaultOrderedDict(OrderedDict):
     # Source: http://stackoverflow.com/a/6190500/562769
     def __init__(self, default_factory=None, *a, **kw):
@@ -341,8 +366,16 @@ def BereichToNumbers(MehrereBereiche: str) -> set:
         if len(EinBereich) > 1 and EinBereich[0] == "-":
             EinBereich = EinBereich[1:]
             menge = hinfort
+            generated = strAsGeneratorToListOfNumStrs(EinBereich[1:])
+            if generated is not None:
+                hinfort |= generated
+                continue
         elif len(EinBereich) > 0 and EinBereich[0] != "-":
             menge = dazu
+            generated = strAsGeneratorToListOfNumStrs(EinBereich)
+            if generated is not None:
+                dazu |= generated
+                continue
         else:
             menge = None
 
@@ -366,15 +399,18 @@ def BereichToNumbers(MehrereBereiche: str) -> set:
 def BereichToNumbers2(
     MehrereBereiche: str, vielfache=False, maxZahl: int = 1028
 ) -> set:
-    MehrereBereiche = ",".join([s for s in MehrereBereiche.split(",") if s])
-    # print(MehrereBereiche)
+    # print(re.split(r",(?![^\[\]\{\}\(\)]*[\]\}\)])", MehrereBereiche))
+    # print([s for s in re.split(r",(?![^\[\]\{\}\(\)]*[\]\}\)])", MehrereBereiche) if s])
+    MehrereBereiche = ",".join(
+        [s for s in re.split(r",(?![^\[\]\{\}\(\)]*[\]\}\)])", MehrereBereiche) if s]
+    )
     if not isZeilenAngabe(MehrereBereiche):
         return set()
 
     if not vielfache and maxZahl == 0:
         maxZahl = float("inf")
 
-    Bereiche: list = MehrereBereiche.split(",")
+    Bereiche: list = re.split(r",(?![^\[\]\{\}\(\)]*[\]\}\)])", MehrereBereiche)
     dazu: set[int] = set()
     hinfort: set[int] = set()
     menge: Optional[set[int]]
@@ -385,15 +421,23 @@ def BereichToNumbers2(
             vielfache2 = True
         else:
             vielfache2 = False
-        BereichToNumbers2_EinBereich(
-            EinBereich,
-            dazu,
-            hinfort,
-            1028 if (vielfache or vielfache2) and maxZahl == float("inf") else maxZahl,
-            vielfache or vielfache2,
-        )
-    # print([dazu, hinfort])
-    # print(str(dazu - hinfort))
+        if len(EinBereich) > 1 and EinBereich[0] == "-":
+            generated = strAsGeneratorToListOfNumStrs(EinBereich[1:])
+            if generated is not None:
+                hinfort |= generated
+                continue
+        elif len(EinBereich) > 0 and EinBereich[0] != "-":
+            generated = strAsGeneratorToListOfNumStrs(EinBereich)
+            if generated is not None:
+                dazu |= generated
+                continue
+    BereichToNumbers2_EinBereich(
+        EinBereich,
+        dazu,
+        hinfort,
+        1028 if (vielfache or vielfache2) and maxZahl == float("inf") else maxZahl,
+        vielfache or vielfache2,
+    )
     return dazu - hinfort
 
 

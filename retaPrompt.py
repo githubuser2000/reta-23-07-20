@@ -107,6 +107,7 @@ class TXT(object):
         assert type(value) is str
         self._text = str(value).strip()
         self._stext = self._text.split()
+        # self._stext = re.split(r"\s(?![^\[\]\{\}\(\)]*[\]\}\)])", self._text)
         self._stextSet = set(self._stext)
         self._stextEmenge = self._stextSet | set(self._e)
         self._stextE = self._stext + self._e
@@ -835,7 +836,11 @@ def PromptGrosseAusgabe(
             if not ifPrintCmdAgain(Txt):
                 # weil sonst das doppelt gemacht wird
                 cliout(" ".join(Txt.liste), True, "")
-        Txt.programm = reta.Program(Txt.liste)
+
+        Txt.liste2 = " ".join(Txt.liste)
+        Txt.liste3 = Txt.liste2.split(" -")
+        Txt.liste4 = Txt.liste3[:1] + ["-" + a for a in Txt.liste3[1:]]
+        Txt.programm = reta.Program(Txt.liste4)
 
     zeiln1, zeiln2, zeiln3, zeiln4 = zeiln1234create(
         Txt,
@@ -1551,6 +1556,7 @@ def PromptGrosseAusgabe(
             print(i18nRP.out1Saetze[0] + " ".join(Txt.listeE) + i18nRP.out1Saetze[1])
         else:
             print(i18nRP.out2Satz.format(" ".join(Txt.listeE)))
+            print(Txt.menge)
     return loggingSwitch
 
 
