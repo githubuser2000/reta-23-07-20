@@ -52,9 +52,9 @@ Besser die Readme aus Markdown mit einem Markdown-Leseprogramm lesen!
 ## -spalten
 
     * --alles
-    * --wichtigsteverstehen
+    * --wichtigsteverstehen=
         * wichtigste,zweitwichtigste,drittwichtigste,viertwichtigste
-    * --wichtigsteeinordnen
+    * --wichtigsteeinordnen=
         * wichtigste,zweitwichtigste
     * --breite=
         * 40

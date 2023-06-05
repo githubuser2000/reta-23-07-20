@@ -28,6 +28,10 @@ from lib4tables_Enum import ST
 from lib4tables_prepare import Prepare, setShellRowsAmount, shellRowsAmount
 
 
+class BreakoutException(Exception):
+    pass
+
+
 class Tables:
     @property
     def markdownOutputYes(self) -> bool:
@@ -407,358 +411,394 @@ class Tables:
                     self.cliout2(self.__outType.beginTable)
                 lastlastSubCellIndex = lastSubCellIndex
                 tabelleLeer = False
-                for (
-                    BigCellLineNumber,
-                    (TablesLineOfBigCells, filteredLineNumbersofOrignal),
-                ) in enumerate(
-                    zip(newTable, self.finallyDisplayLines)
-                ):  # n Linien einer Zelle, d.h. 1 EL = n Zellen
-                    if BigCellLineNumber == 0 and self.tables.keineUeberschriften:
-                        continue
-                    for iterWholeLine, OneWholeScreenLine_AllSubCells in enumerate(
-                        rowsRange
-                    ):  # eine Bildhschirm-Zeile immer
-                        if (
-                            BigCellLineNumber == 0
-                            and iterWholeLine == 0
-                            and all(
-                                [
-                                    len(element) < 2
-                                    for row in newTable[1:]
-                                    for element in row[lastlastSubCellIndex + 1]
-                                    # if len(a) > 1
-                                ]
-                            )
-                        ):
-                            if self.Txt is not None and self.Txt.has(
-                                {
-                                    i18n.befehle2["e"],
-                                    i18n.befehle2[
-                                        "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                                    ],
-                                }
-                            ):
-                                continue
-                            else:
-                                tabelleLeer = True
-                                self.cliout2(i18n.keineTabellenAusgabe + ": ")
-                        line = (
-                            (
-                                (
+                try:
+                    for (
+                        BigCellLineNumber,
+                        (TablesLineOfBigCells, filteredLineNumbersofOrignal),
+                    ) in enumerate(
+                        zip(newTable, self.finallyDisplayLines)
+                    ):  # n Linien einer Zelle, d.h. 1 EL = n Zellen
+                        if BigCellLineNumber == 0 and self.tables.keineUeberschriften:
+                            continue
+                        for iterWholeLine, OneWholeScreenLine_AllSubCells in enumerate(
+                            rowsRange
+                        ):  # eine Bildhschirm-Zeile immer
+                            # x(
+                            #    "äää",
+                            #    [
+                            #         BigCellLineNumber,
+                            #         (
+                            #             TablesLineOfBigCells,
+                            #             filteredLineNumbersofOrignal,
+                            #         ),
+                            #     ],
+                            # )
+
+                            if (
+                                BigCellLineNumber == 0
+                                and iterWholeLine == 0
+                                and all(
                                     [
-                                        self.__outType.generateCell(
-                                            -2,
-                                            self.tables.generatedSpaltenParameter,
-                                            self.tables.getPrepare.zeileWhichZaehlung(
-                                                int(filteredLineNumbersofOrignal)
-                                            ),
-                                            zeile=filteredLineNumbersofOrignal,
-                                            tables=self.tables,
-                                        ),
-                                        (
-                                            "█"
-                                            if type(self.__outType) in [OutputSyntax]
-                                            else str(
+                                        len(element) < 2
+                                        for row in newTable[1:]
+                                        for element in row[lastlastSubCellIndex + 1]
+                                        # if len(a) > 1
+                                    ]
+                                )
+                            ):
+                                # funktioniert nicht: ist alles sehr viel komplizierter
+                                # ARGGGHHHH
+                                # ZB Kann ich Überschriften nicht von anderem so einfach unterscheiden!
+                                if (
+                                    False
+                                    and self.Txt is not None
+                                    and self.Txt.has(
+                                        {
+                                            i18n.befehle2["e"],
+                                            i18n.befehle2[
+                                                "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                                            ],
+                                        }
+                                    )
+                                ):
+                                    raise BreakoutException
+                                    # continue
+                                else:
+                                    tabelleLeer = True
+                                    self.cliout2(i18n.keineTabellenAusgabe + ": ")
+                            # x("___", filteredLineNumbersofOrignal)
+                            line = (
+                                (
+                                    (
+                                        [
+                                            self.__outType.generateCell(
+                                                -2,
+                                                self.tables.generatedSpaltenParameter,
                                                 self.tables.getPrepare.zeileWhichZaehlung(
                                                     int(filteredLineNumbersofOrignal)
+                                                ),
+                                                zeile=filteredLineNumbersofOrignal,
+                                                tables=self.tables,
+                                            ),
+                                            (
+                                                "█"
+                                                if type(self.__outType)
+                                                in [OutputSyntax]
+                                                else str(
+                                                    self.tables.getPrepare.zeileWhichZaehlung(
+                                                        int(
+                                                            filteredLineNumbersofOrignal
+                                                        )
+                                                    )
                                                 )
-                                            )
-                                        ),
-                                        self.__outType.endCell,
-                                    ]
-                                    if self.tables.getPrepare.zeileWhichZaehlung(
-                                        int(filteredLineNumbersofOrignal)
+                                            ),
+                                            self.__outType.endCell,
+                                        ]
+                                        if self.tables.getPrepare.zeileWhichZaehlung(
+                                            int(filteredLineNumbersofOrignal)
+                                        )
+                                        % 2
+                                        == 0
+                                        else [
+                                            self.__outType.generateCell(
+                                                -2,
+                                                self.tables.generatedSpaltenParameter,
+                                                self.tables.getPrepare.zeileWhichZaehlung(
+                                                    int(filteredLineNumbersofOrignal)
+                                                ),
+                                                zeile=filteredLineNumbersofOrignal,
+                                                tables=self.tables,
+                                            ),
+                                            (
+                                                " "
+                                                if type(self.__outType)
+                                                in [OutputSyntax]
+                                                else str(
+                                                    self.tables.getPrepare.zeileWhichZaehlung(
+                                                        int(
+                                                            filteredLineNumbersofOrignal
+                                                        )
+                                                    )
+                                                )
+                                            ),
+                                            self.__outType.endCell,
+                                        ]
                                     )
-                                    % 2
-                                    == 0
+                                    if str(filteredLineNumbersofOrignal).isdecimal
+                                    and filteredLineNumbersofOrignal != ""
+                                    and int(filteredLineNumbersofOrignal) > 0
                                     else [
                                         self.__outType.generateCell(
                                             -2,
                                             self.tables.generatedSpaltenParameter,
-                                            self.tables.getPrepare.zeileWhichZaehlung(
-                                                int(filteredLineNumbersofOrignal)
-                                            ),
                                             zeile=filteredLineNumbersofOrignal,
                                             tables=self.tables,
                                         ),
-                                        (
-                                            " "
-                                            if type(self.__outType) in [OutputSyntax]
-                                            else str(
-                                                self.tables.getPrepare.zeileWhichZaehlung(
-                                                    int(filteredLineNumbersofOrignal)
-                                                )
-                                            )
-                                        ),
+                                        " ",
                                         self.__outType.endCell,
                                     ]
                                 )
-                                if str(filteredLineNumbersofOrignal).isdecimal
-                                and filteredLineNumbersofOrignal != ""
-                                and int(filteredLineNumbersofOrignal) > 0
+                                if self.nummerierung
+                                else [""]
+                            )
+                            linePlus = (
+                                [""]
+                                if not self.nummerierung
                                 else [
                                     self.__outType.generateCell(
-                                        -2,
+                                        -1,
                                         self.tables.generatedSpaltenParameter,
                                         zeile=filteredLineNumbersofOrignal,
                                         tables=self.tables,
                                     ),
-                                    " ",
+                                    "".rjust(numlen + 1)
+                                    if iterWholeLine != 0
+                                    else (
+                                        str(filteredLineNumbersofOrignal) + " "
+                                    ).rjust(numlen + 1),
                                     self.__outType.endCell,
                                 ]
                             )
-                            if self.nummerierung
-                            else [""]
-                        )
-                        linePlus = (
-                            [""]
-                            if not self.nummerierung
-                            else [
-                                self.__outType.generateCell(
-                                    -1,
-                                    self.tables.generatedSpaltenParameter,
-                                    zeile=filteredLineNumbersofOrignal,
-                                    tables=self.tables,
-                                ),
-                                "".rjust(numlen + 1)
-                                if iterWholeLine != 0
-                                else (str(filteredLineNumbersofOrignal) + " ").rjust(
-                                    numlen + 1
-                                ),
-                                self.__outType.endCell,
-                            ]
-                        )
-                        if type(self.__outType) is csvSyntax:
-                            line = ["".join(line), "".join(linePlus)]
-                        else:
-                            line += linePlus
-                        rowsEmpty = 0
-                        sumWidths = 0
-                        lastSubCellIndex = 0
-                        emptyEntries: int = 0
-                        entriesHere: int = 0
-                        for subCellIndexRightLeft, subCellContentLeftRight in enumerate(
-                            newTable[BigCellLineNumber]
-                        ):  # SUBzellen: je Teil-Linie für machen nebeneinander als Teil-Spalten
-                            if (
-                                subCellIndexRightLeft > lastlastSubCellIndex
-                                or self.__oneTable
-                            ):
-                                subCellWidth = determineRowWidth(
-                                    subCellIndexRightLeft, maxCellTextLen
-                                )
-                                sumWidths += subCellWidth + 1
-                                # if True:
-                                if sumWidths < shellRowsAmount or self.__oneTable:
-                                    lastSubCellIndex = subCellIndexRightLeft
-                                    try:
-                                        entry = newTable[BigCellLineNumber][
-                                            subCellIndexRightLeft
-                                        ][OneWholeScreenLine_AllSubCells]
-                                        entriesHere += 1
-                                        if len(entry.strip()) == 0 or (
-                                            self.tables.keineleereninhalte
-                                            and len(entry.strip()) < 2
-                                        ):
-                                            emptyEntries += 1
-                                        if (
-                                            self.color
-                                            and type(self.__outType) is OutputSyntax
-                                        ):
-                                            coloredSubCell = self.colorize(
-                                                entry.replace("\n", "").ljust(
-                                                    subCellWidth
-                                                ),
-                                                filteredLineNumbersofOrignal,
-                                            )
-                                        elif type(self.__outType) is csvSyntax:
-                                            coloredSubCell = newTable[
-                                                BigCellLineNumber
-                                            ][subCellIndexRightLeft][
-                                                OneWholeScreenLine_AllSubCells
-                                            ].replace(
-                                                "\n", ""
-                                            )
-                                        else:
-                                            coloredSubCell = (
-                                                self.__outType.generateCell(
-                                                    subCellIndexRightLeft,
-                                                    self.tables.generatedSpaltenParameter,
-                                                    zeile=filteredLineNumbersofOrignal,
-                                                    tables=self.tables,
-                                                )
-                                                + (
+                            if type(self.__outType) is csvSyntax:
+                                line = ["".join(line), "".join(linePlus)]
+                            else:
+                                line += linePlus
+                            rowsEmpty = 0
+                            sumWidths = 0
+                            lastSubCellIndex = 0
+                            emptyEntries: int = 0
+                            entriesHere: int = 0
+                            for (
+                                subCellIndexRightLeft,
+                                subCellContentLeftRight,
+                            ) in enumerate(
+                                newTable[BigCellLineNumber]
+                            ):  # SUBzellen: je Teil-Linie für machen nebeneinander als Teil-Spalten
+                                if (
+                                    subCellIndexRightLeft > lastlastSubCellIndex
+                                    or self.__oneTable
+                                ):
+                                    subCellWidth = determineRowWidth(
+                                        subCellIndexRightLeft, maxCellTextLen
+                                    )
+                                    sumWidths += subCellWidth + 1
+                                    # if True:
+                                    if sumWidths < shellRowsAmount or self.__oneTable:
+                                        lastSubCellIndex = subCellIndexRightLeft
+                                        try:
+                                            entry = newTable[BigCellLineNumber][
+                                                subCellIndexRightLeft
+                                            ][OneWholeScreenLine_AllSubCells]
+                                            entriesHere += 1
+                                            if len(entry.strip()) == 0 or (
+                                                self.tables.keineleereninhalte
+                                                and len(entry.strip()) < 2
+                                            ):
+                                                emptyEntries += 1
+                                            if (
+                                                self.color
+                                                and type(self.__outType) is OutputSyntax
+                                            ):
+                                                coloredSubCell = self.colorize(
                                                     entry.replace("\n", "").ljust(
                                                         subCellWidth
+                                                    ),
+                                                    filteredLineNumbersofOrignal,
+                                                )
+                                            elif type(self.__outType) is csvSyntax:
+                                                coloredSubCell = newTable[
+                                                    BigCellLineNumber
+                                                ][subCellIndexRightLeft][
+                                                    OneWholeScreenLine_AllSubCells
+                                                ].replace(
+                                                    "\n", ""
+                                                )
+                                            else:
+                                                coloredSubCell = (
+                                                    self.__outType.generateCell(
+                                                        subCellIndexRightLeft,
+                                                        self.tables.generatedSpaltenParameter,
+                                                        zeile=filteredLineNumbersofOrignal,
+                                                        tables=self.tables,
                                                     )
+                                                    + (
+                                                        entry.replace("\n", "").ljust(
+                                                            subCellWidth
+                                                        )
+                                                    )
+                                                    + self.__outType.endCell
                                                 )
-                                                + self.__outType.endCell
-                                            )
-                                        if type(self.__outType) is csvSyntax:
-                                            line += [coloredSubCell]
-                                        else:
-                                            line += [
-                                                coloredSubCell,
-                                                " ",
-                                            ]  # neben-Einander
-                                    except:
+                                            if type(self.__outType) is csvSyntax:
+                                                line += [coloredSubCell]
+                                            else:
+                                                line += [
+                                                    coloredSubCell,
+                                                    " ",
+                                                ]  # neben-Einander
+                                        except:
+                                            rowsEmpty += 1
+                                            if (
+                                                self.color
+                                                and type(self.__outType) is OutputSyntax
+                                            ):
+                                                coloredSubCell = self.colorize(
+                                                    "".ljust(subCellWidth),
+                                                    filteredLineNumbersofOrignal,
+                                                    True,
+                                                )
+                                            else:
+                                                coloredSubCell = (
+                                                    self.__outType.generateCell(
+                                                        subCellIndexRightLeft,
+                                                        self.tables.generatedSpaltenParameter,
+                                                        zeile=filteredLineNumbersofOrignal,
+                                                        tables=self.tables,
+                                                    )
+                                                    + "".ljust(subCellWidth)
+                                                    + self.__outType.endCell
+                                                )
+                                            if type(self.__outType) is csvSyntax:
+                                                line += [coloredSubCell]
+                                            else:
+                                                line += [
+                                                    coloredSubCell,
+                                                    " ",
+                                                ]  # neben-Einander
+                                    else:
                                         rowsEmpty += 1
-                                        if (
-                                            self.color
-                                            and type(self.__outType) is OutputSyntax
-                                        ):
-                                            coloredSubCell = self.colorize(
-                                                "".ljust(subCellWidth),
-                                                filteredLineNumbersofOrignal,
-                                                True,
-                                            )
-                                        else:
-                                            coloredSubCell = (
-                                                self.__outType.generateCell(
-                                                    subCellIndexRightLeft,
-                                                    self.tables.generatedSpaltenParameter,
-                                                    zeile=filteredLineNumbersofOrignal,
-                                                    tables=self.tables,
-                                                )
-                                                + "".ljust(subCellWidth)
-                                                + self.__outType.endCell
-                                            )
-                                        if type(self.__outType) is csvSyntax:
-                                            line += [coloredSubCell]
-                                        else:
-                                            line += [
-                                                coloredSubCell,
-                                                " ",
-                                            ]  # neben-Einander
                                 else:
                                     rowsEmpty += 1
-                            else:
-                                rowsEmpty += 1
 
-                        if rowsEmpty != len(self.rowsAsNumbers) and (
-                            iterWholeLine < self.textheight or self.textheight == 0
-                        ):  # and m < actualPartLineLen:
-                            if False and type(self.__outType) is markdownSyntax:
-                                line += [
-                                    self.__outType.generateCell(
-                                        subCellIndexRightLeft,
-                                        self.tables.generatedSpaltenParameter,
-                                        zeile=filteredLineNumbersofOrignal,
-                                        tables=self.tables,
-                                    )
-                                ]
-
-                                if BigCellLineNumber > 0 and not headingfinished:
-                                    headingfinished = True
-                                if BigCellLineNumber == 0 and not headingfinished:
-                                    addionalLine = [""]
-                                    lineB = "".join(line)
-                                    for ll in lineB:
-                                        if ll != self.__outType.generateCell(
+                            if rowsEmpty != len(self.rowsAsNumbers) and (
+                                iterWholeLine < self.textheight or self.textheight == 0
+                            ):  # and m < actualPartLineLen:
+                                if False and type(self.__outType) is markdownSyntax:
+                                    line += [
+                                        self.__outType.generateCell(
                                             subCellIndexRightLeft,
                                             self.tables.generatedSpaltenParameter,
                                             zeile=filteredLineNumbersofOrignal,
                                             tables=self.tables,
+                                        )
+                                    ]
+
+                                    if BigCellLineNumber > 0 and not headingfinished:
+                                        headingfinished = True
+                                    if BigCellLineNumber == 0 and not headingfinished:
+                                        addionalLine = [""]
+                                        lineB = "".join(line)
+                                        for ll in lineB:
+                                            if ll != self.__outType.generateCell(
+                                                subCellIndexRightLeft,
+                                                self.tables.generatedSpaltenParameter,
+                                                zeile=filteredLineNumbersofOrignal,
+                                                tables=self.tables,
+                                            ):
+                                                addionalLine += ["-"]
+                                            else:
+                                                addionalLine += [
+                                                    self.__outType.generateCell(
+                                                        subCellIndexRightLeft,
+                                                        self.tables.generatedSpaltenParameter,
+                                                        zeile=filteredLineNumbersofOrignal,
+                                                        tables=self.tables,
+                                                    )
+                                                ]
+
+                                        line += ["\n"] + addionalLine
+                                if emptyEntries != entriesHere:
+                                    if type(self.__outType) is csvSyntax:
+                                        strio = io.StringIO(newline="")
+                                        writer = csv.writer(
+                                            strio,
+                                            quoting=csv.QUOTE_MINIMAL,
+                                            delimiter=";",
+                                            quotechar='"',
+                                        )
+
+                                        writer.writerow(line)
+                                        self.cliout2(strio.getvalue())
+                                    else:
+                                        if (
+                                            type(filteredLineNumbersofOrignal) is str
+                                            and filteredLineNumbersofOrignal == ""
                                         ):
-                                            addionalLine += ["-"]
-                                        else:
-                                            addionalLine += [
-                                                self.__outType.generateCell(
-                                                    subCellIndexRightLeft,
-                                                    self.tables.generatedSpaltenParameter,
-                                                    zeile=filteredLineNumbersofOrignal,
-                                                    tables=self.tables,
-                                                )
-                                            ]
-
-                                    line += ["\n"] + addionalLine
-                            if emptyEntries != entriesHere:
-                                if type(self.__outType) is csvSyntax:
-                                    strio = io.StringIO(newline="")
-                                    writer = csv.writer(
-                                        strio,
-                                        quoting=csv.QUOTE_MINIMAL,
-                                        delimiter=";",
-                                        quotechar='"',
-                                    )
-
-                                    writer.writerow(line)
-                                    self.cliout2(strio.getvalue())
-                                else:
-                                    if (
-                                        type(filteredLineNumbersofOrignal) is str
-                                        and filteredLineNumbersofOrignal == ""
-                                    ):
-                                        filteredLineNumbersofOrignal = 0
-                                    self.cliout2(
-                                        "".join(
-                                            [
-                                                self.__outType.coloredBeginCol(
-                                                    filteredLineNumbersofOrignal
-                                                )
-                                            ]
-                                            + line
-                                            + [self.__outType.endZeile]
-                                        )
-                                    )
-                                    if (
-                                        type(self.__outType) is markdownSyntax
-                                        and BigCellLineNumber == 0
-                                    ):
+                                            filteredLineNumbersofOrignal = 0
                                         self.cliout2(
-                                            "|:--:"
-                                            * (
-                                                len(newTable[BigCellLineNumber])
-                                                + (2 if self.nummerierung else 0)
-                                            )
-                                            + "|"
-                                        )
-                                    elif type(self.__outType) is emacsSyntax and (
-                                        BigCellLineNumber == 0
-                                        or (
-                                            len(
-                                                set(
-                                                    primfaktoren(
-                                                        filteredLineNumbersofOrignal,
-                                                        True,
+                                            "".join(
+                                                [
+                                                    self.__outType.coloredBeginCol(
+                                                        filteredLineNumbersofOrignal
                                                     )
-                                                )
+                                                ]
+                                                + line
+                                                + [self.__outType.endZeile]
                                             )
-                                            == 1
-                                            and len(
-                                                (
-                                                    primfaktoren(
-                                                        filteredLineNumbersofOrignal,
-                                                        True,
-                                                    )
-                                                )
-                                            )
-                                            != 1
                                         )
-                                    ):
-
-                                        self.cliout2(
-                                            "|----"
-                                            + (
-                                                "+----"
+                                        if (
+                                            type(self.__outType) is markdownSyntax
+                                            and BigCellLineNumber == 0
+                                        ):
+                                            self.cliout2(
+                                                "|:--:"
                                                 * (
-                                                    (
-                                                        len(newTable[BigCellLineNumber])
-                                                        + (
-                                                            2
-                                                            if self.nummerierung
-                                                            else 0
+                                                    len(newTable[BigCellLineNumber])
+                                                    + (2 if self.nummerierung else 0)
+                                                )
+                                                + "|"
+                                            )
+                                        elif type(self.__outType) is emacsSyntax and (
+                                            BigCellLineNumber == 0
+                                            or (
+                                                len(
+                                                    set(
+                                                        primfaktoren(
+                                                            filteredLineNumbersofOrignal,
+                                                            True,
                                                         )
                                                     )
-                                                    - 1
                                                 )
+                                                == 1
+                                                and len(
+                                                    (
+                                                        primfaktoren(
+                                                            filteredLineNumbersofOrignal,
+                                                            True,
+                                                        )
+                                                    )
+                                                )
+                                                != 1
                                             )
-                                            + "|"
-                                        )
-                    if tabelleLeer:
-                        self.cliout2("".join(("(", i18n.keineTabellenAusgabe, ")")))
-                        print()
-                        tabelleLeer = False
+                                        ):
+
+                                            self.cliout2(
+                                                "|----"
+                                                + (
+                                                    "+----"
+                                                    * (
+                                                        (
+                                                            len(
+                                                                newTable[
+                                                                    BigCellLineNumber
+                                                                ]
+                                                            )
+                                                            + (
+                                                                2
+                                                                if self.nummerierung
+                                                                else 0
+                                                            )
+                                                        )
+                                                        - 1
+                                                    )
+                                                )
+                                                + "|"
+                                            )
+                        if tabelleLeer and filteredLineNumbersofOrignal != 0:
+                            self.cliout2("".join(("(", i18n.keineTabellenAusgabe, ")")))
+                            print()
+                            tabelleLeer = False
+                except BreakoutException:
+                    pass
                 if type(self.__outType) in (htmlSyntax, bbCodeSyntax):
                     self.cliout2(
                         self.__outType.endTable,
