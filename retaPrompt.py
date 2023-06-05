@@ -1759,10 +1759,35 @@ def zeiln1234create(
                     and i18n.befehle2["abcd"] not in Txt.listeE
                 )
             ):
+                if (
+                    (
+                        zahlenReiheKeineWteiler[0] == "("
+                        and zahlenReiheKeineWteiler[-1] == ")"
+                    )
+                    or (
+                        zahlenReiheKeineWteiler[0] == "["
+                        and zahlenReiheKeineWteiler[-1] == "]"
+                    )
+                    or (
+                        zahlenReiheKeineWteiler[0] == "{"
+                        and zahlenReiheKeineWteiler[-1] == "}"
+                    )
+                ):
+                    zahlenReiheKeineWteiler2 = ",".join(
+                        [
+                            str(B)
+                            for B in BereichToNumbers2(zahlenReiheKeineWteiler)
+                            if B != 0
+                        ]
+                    )
+
+                else:
+                    zahlenReiheKeineWteiler2 = zahlenReiheKeineWteiler
+
                 if len(Txt.menge & {i18n.befehle2["teiler"], i18n.befehle2["w"]}) == 0:
                     zeiln1 = (
                         "".join(("--", i18n.zeilenParas["vielfachevonzahlen"], "="))
-                        + zahlenReiheKeineWteiler
+                        + zahlenReiheKeineWteiler2
                     )
                 else:
                     zeiln1 = ""
@@ -1775,7 +1800,7 @@ def zeiln1234create(
                                 i18n.befehle2["v"] + str(z)
                                 for z in re.split(
                                     kpattern,
-                                    zahlenReiheKeineWteiler,
+                                    zahlenReiheKeineWteiler2,
                                 )
                             ]
                         ),

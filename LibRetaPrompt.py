@@ -307,17 +307,9 @@ def is15or16command(text: str) -> bool:
 def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
     stext2 = []
     ifKurzKurz = False
-    xtext = stext[0]
-    if (
-        len(stext) == 1
-        and len(xtext) > 0
-        and (
-            (xtext[0] == "(" and xtext[-1] == ")")
-            or (xtext[0] == "[" and xtext[-1] == "]")
-            or (xtext[0] == "{" and xtext[-1] == "}")
-        )
-    ):
-        stext = [",".join(str(B) for B in BereichToNumbers2(xtext, False, 0))]
+    xtext = " ".join(stext)
+    if isZeilenAngabe(xtext):
+        stext = [",".join(str(B) for B in BereichToNumbers2(xtext))]
     del xtext
     for s_ in tuple(deepcopy(stext)):
         x("R67", s_)
