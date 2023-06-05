@@ -41,6 +41,7 @@ def sort_key(key):
             i18n.befehle2["universum"],
             i18n.befehle2["thomas"],
             i18n.befehle2["befehle"],
+            i18n.befehle2["groesse"],
         ):
             return (1, key)
         elif key in (

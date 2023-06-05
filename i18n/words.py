@@ -355,6 +355,7 @@ befehle2.update({"16_15_" + a: "16_15_" + a for a in wahl15.keys() if a != "15"}
 befehle2.update({"16_" + a: "16_" + a for a in wahl16.keys()})
 befehle2.update(
     {
+        "groesse": _("groesse"),
         "emotion": emotionWort,
         freiheitGleichheit[0]: _(freiheitGleichheit[0]),
         freiheitGleichheit[1]: _(freiheitGleichheit[1]),
@@ -1098,6 +1099,7 @@ paraNdataMatrix: list = [
         ParametersMain.strukturgroesse,
         (
             _("Strukturgrösse"),
+            ParametersMain.strukturgroesse[0],
             _("größe"),
             _("groesse"),
             _("gross"),

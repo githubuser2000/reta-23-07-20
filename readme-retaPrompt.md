@@ -47,6 +47,7 @@ Besser die Readme Markdown mit einem Markdown-Leseprogramm lesen!
 -   "B" bzw. "bewusstsein" gibt das Bewusstsein aus, für n oder 1/n aus, z.B. B2
 -   "E" bzw. "emotion" gibt die Gefühle für n oder 1/n aus, z.B. E1/2
 -   "I" bzw. "impulse" gibt die Impulse für n oder 1/n aus, z.B. E1/2
+-   "groesse" gibt die Strukturgröße für n oder 1/n aus
 -   "kugeln" bzw. "kreise" gibt die kugeln kreise für n aus, z.B. kugeln 7,14
 -   "freiheit" bzw. "gleichheit" gibt entsprechendes für n oder 1/n aus
 -   "v" bzw. "einzeln" bzw. "vielfache" bewirkt in Ausgabe-Befehlen außer "reta", dass deren Zeilenangaben z.B. 7 nicht nur Zeile 7 meinen, sondern alle vielfacher dieser Zeilengaben auch, also auch 14,21, usw.

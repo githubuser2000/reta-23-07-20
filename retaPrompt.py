@@ -1075,6 +1075,34 @@ def PromptGrosseAusgabe(
         was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
             Txt.hasWithoutABC(
                 {
+                    i18n.befehle2["groesse"],
+                }
+            ),
+            [
+                "".join(
+                    (
+                        "--",
+                        i18n.ParametersMain.strukturgroesse[0],
+                        "=",
+                        i18n.ParametersMain.strukturgroesse[0],
+                    )
+                )
+            ],
+            None,
+            ("1", "4"),
+            Txt,
+            bruch_GanzZahlReziproke,
+            zahlenBereichC,
+            ketten,
+            cmd_gave_output,
+            zeiln1,
+            zeiln2,
+            zeiln3,
+            zeiln4,
+        )
+        was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
+            Txt.hasWithoutABC(
+                {
                     i18n.befehle2["kugeln"],
                     i18n.befehle2["kreise"],
                 }
@@ -1278,8 +1306,34 @@ def PromptGrosseAusgabe(
                 )
             ],
             (
-                "1" + (",4" if len(Txt.menge & set(befehle)) <= 2 else ""),
-                "1" + (",2" if len(Txt.menge & set(befehle)) <= 2 else ""),
+                "1"
+                + (
+                    ",4"
+                    if len(Txt.menge & set(befehle)) <= 2
+                    and not Txt.hasWithoutABC(
+                        {
+                            i18n.befehle2[
+                                "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                            ],
+                            i18n.befehle2["e"],
+                        }
+                    )
+                    else ""
+                ),
+                "1"
+                + (
+                    ",2"
+                    if len(Txt.menge & set(befehle)) <= 2
+                    and not Txt.hasWithoutABC(
+                        {
+                            i18n.befehle2[
+                                "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                            ],
+                            i18n.befehle2["e"],
+                        }
+                    )
+                    else ""
+                ),
             ),
             Txt,
             bruch_GanzZahlReziproke,
