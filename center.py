@@ -27,6 +27,7 @@ from rich.console import Console
 from rich.markdown import Markdown
 from rich.syntax import Syntax
 
+gspattern = r"\s+(?![^(){}\[\]]*(?:\([^(){}\[\]]*\)[^(){}\[\]]*|{[^(){}\[\]]*}[^(){}\[\]]*|\[[^(){}\[\]]*\][^(){}\[\]]*))"
 Primzahlkreuz_pro_contra_strs = i18n.Primzahlkreuz_pro_contra_strs_Dict[
     (
         "Primzahlkreuz_pro_contra",
@@ -79,6 +80,7 @@ def isZeilenBruchAngabe(text):
     anyAtAll = any([len(txt) > 0 for txt in stext])
     for g in stext:
         a += [isZeilenBruchAngabe_betweenKommas(g) or (g == "" and anyAtAll)]
+    # x("ALL", a)
     return all(a)
 
 

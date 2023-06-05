@@ -2,6 +2,7 @@
 Nestedcompleter for completion of hierarchical data structures.
 """
 import difflib
+import re
 from enum import Enum
 from typing import Any, Dict, Iterable, Mapping, Optional, Set, Union
 
@@ -11,7 +12,7 @@ from prompt_toolkit.completion import (CompleteEvent, Completer, Completion,
                                        FuzzyWordCompleter)
 from prompt_toolkit.document import Document
 
-from center import i18n
+from center import gspattern, i18n
 from LibRetaPrompt import (PromptModus, ausgabeArt, ausgabeParas, befehle,
                            befehle2, hauptForNeben, hauptForNebenSet,
                            isZeilenBruchOrGanzZahlAngabe, kombiMainParas,
@@ -406,7 +407,7 @@ class NestedCompleter(Completer):
         gleich: bool = "=" in text
         komma: bool = "," in text
         if " " in text:
-            first_term = text.split()[0]
+            first_term = re.split(gspattern, text)[0]
             # completer = self.options.get(first_term)
             completer = self.matchTextAlx(first_term)
 
@@ -431,7 +432,11 @@ class NestedCompleter(Completer):
 
         elif gleich or komma:
             text = str(text)
-            first_term = text.split("=" if gleich else ",")[0]
+            first_term = (
+                re.split(r"=(?![^\[\]\{\}\(\)]*[\]\}\)])", text)[0]
+                if gleich
+                else re.split(r",(?![^\[\]\{\}\(\)]*[\]\}\)])",text)[0]
+            )
             # completer = self.options.get(first_term)
             completer = self.matchTextAlx(first_term, "=" if gleich else ",")
 

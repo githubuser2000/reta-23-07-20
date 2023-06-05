@@ -1,4 +1,5 @@
 import os
+import re
 import sys
 from copy import copy, deepcopy
 from enum import Enum
@@ -193,7 +194,7 @@ gebrochenErlaubteZahlen -= {max(gebrochenErlaubteZahlen)}
 
 flagX = False
 for a in wahl15.values():
-    for b in a.split(","):
+    for b in re.split(r",(?![^\[\]\{\}\(\)]*[\]\}\)])", a):
         try:
             assert b in zumVergleich
         except:
@@ -306,18 +307,27 @@ def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
     stext2 = []
     ifKurzKurz = False
     for s_ in tuple(deepcopy(stext)):
+        x("R67", s_)
+        x("R67", s_[::-1])
         s_m = s_
         if not is15or16command(s_) and s_ not in befehle and stext[0] != "reta":
             textDazu = []
             nn: Optional[int] = 0
+            x("R6", s_[::-1])
             for iii, s_3 in enumerate(s_[::-1]):
-                if s_3.isdecimal():
+                if s_3.isdecimal() or (
+                    s_3 in (")", "]", "}")
+                    and "reta" not in stext
+                    and "reta" not in textDazu
+                    and any(("(" in at or "[" in at or "{" for at in stext))
+                ):
                     nn = iii
                     break
             if nn > 0:
                 s_b = s_[-nn:] + s_[:-nn]
             else:
                 s_b = s_
+            x("T5", s_b)
             n: Optional[int] = None
             for ii, s_3 in enumerate(s_b):
                 if s_3.isdecimal():
@@ -348,25 +358,34 @@ def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
 
                 if fullBlockIsZahlenbereichAndBruch_Z:
                     s_ = s_b
-                    buchst = set(s_[:n]) & {
-                        i18n.befehle2[var]
-                        for var in i18n.befehle2.keys()
-                        if len(var) == 1
-                        # i18n.befehle2["G"],
-                        # i18n.befehle2["E"],
-                        # i18n.befehle2["a"],
-                        # i18n.befehle2["t"],
-                        # i18n.befehle2["v"],
-                        # i18n.befehle2["u"],
-                        # i18n.befehle2["p"],
-                        # i18n.befehle2["r"],
-                        # i18n.befehle2["w"],
-                        # i18n.befehle2["s"],
-                        # i18n.befehle2["o"],
-                        # i18n.befehle2["S"],
-                        # i18n.befehle2["e"],
-                        ## i18n.befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"],
-                    }
+                    x("E4", s_)
+                    if not (
+                        (s_[0] == "(" and s_[-1] == ")")
+                        or (s_[0] == "[" and s_[-1] == "]")
+                        or (s_[0] == "{" and s_[-1] == "}")
+                    ):
+                        buchst = set(s_[:n]) & {
+                            i18n.befehle2[var]
+                            for var in i18n.befehle2.keys()
+                            if len(var) == 1
+                            # i18n.befehle2["G"],
+                            # i18n.befehle2["E"],
+                            # i18n.befehle2["a"],
+                            # i18n.befehle2["t"],
+                            # i18n.befehle2["v"],
+                            # i18n.befehle2["u"],
+                            # i18n.befehle2["p"],
+                            # i18n.befehle2["r"],
+                            # i18n.befehle2["w"],
+                            # i18n.befehle2["s"],
+                            # i18n.befehle2["o"],
+                            # i18n.befehle2["S"],
+                            # i18n.befehle2["e"],
+                            ## i18n.befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"],
+                        }
+                    else:
+                        buchst = set()
+                    x("RR", stext)
                     setTextLenIs1 = (
                         len(
                             set(stext)
@@ -380,10 +399,12 @@ def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
                         == 1
                     )
 
+                    x("ZZ", stext)
                     if (len(buchst) != len(s_[:n]) or len(buchst) == 0) and not (
                         setTextLenIs1 and fullBlockIsZahlenbereichAndBruch_Z
                     ):
                         s_ = s_m
+                        x("F4", s_)
                     else:
                         ifKurzKurz = True
                         # erst hier passiert wirklich etwas
@@ -421,8 +442,12 @@ def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
                                     "-" + i18n.mainParaCmds["ausgabe"],
                                     "--" + i18n.ausgabeParas["keineueberschriften"],
                                 ]
+                    x("XX", [stext, textDazu])
+            x("YY1", [textDazu, s_, stext2, stext])
         else:
+            x("YY2", [textDazu, s_, stext2, stext])
             textDazu += [s_]
+        x("YY3", [textDazu, s_, stext2, stext])
         if len(textDazu) > 0:
             stext2 += textDazu
         else:
@@ -433,6 +458,7 @@ def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
         "python",
     ]:
         stext = stext2
+    x("CC", stext)
     return ifKurzKurz, stext
 
 
@@ -451,7 +477,7 @@ def verifyBruchNganzZahlCommaList(
     _zahlenAngaben_ = []
     _etwaAllTrue = []
 
-    for etwaBruch in commaListe.split(","):
+    for etwaBruch in re.split(r",(?![^\[\]\{\}\(\)]*[\]\}\)])", commaListe):
         (
             bruchAndGanzZahlEtwaKorrekterBereich1,
             bruchBereichsAngaben1,
