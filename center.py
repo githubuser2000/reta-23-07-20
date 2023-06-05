@@ -28,6 +28,8 @@ from rich.markdown import Markdown
 from rich.syntax import Syntax
 
 gspattern = r"\s+(?![^(){}\[\]]*(?:\([^(){}\[\]]*\)[^(){}\[\]]*|{[^(){}\[\]]*}[^(){}\[\]]*|\[[^(){}\[\]]*\][^(){}\[\]]*))"
+
+kpattern = r",(?![^\[\]\{\}\(\)]*[\]\}\)])"
 Primzahlkreuz_pro_contra_strs = i18n.Primzahlkreuz_pro_contra_strs_Dict[
     (
         "Primzahlkreuz_pro_contra",

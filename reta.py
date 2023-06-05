@@ -1484,7 +1484,7 @@ class Program:
         self, argv=[], alternativeShellRowsAmount: Optional[int] = None, Txt=None
     ):
         global Tables, infoLog
-        self.argv = argv
+        self.argv = [a.strip() for a in argv]
         self.allesParameters = 0
         self.tables = Tables(self.oberesMaximum2(argv[1:]), Txt)
 

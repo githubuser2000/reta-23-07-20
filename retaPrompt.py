@@ -21,8 +21,8 @@ from prompt_toolkit.styles import Style
 
 from center import (alxp, cliout, gspattern, i18n, invert_dict_B,
                     isZeilenAngabe, isZeilenAngabe_betweenKommas,
-                    isZeilenBruchAngabe, moduloA, primfaktoren, primRepeat,
-                    retaPromptHilfe, teiler, textHatZiffer, x)
+                    isZeilenBruchAngabe, kpattern, moduloA, primfaktoren,
+                    primRepeat, retaPromptHilfe, teiler, textHatZiffer, x)
 from LibRetaPrompt import (BereichToNumbers2, PromptModus,
                            gebrochenErlaubteZahlen, isReTaParameter,
                            notParameterValues, stextFromKleinKleinKleinBefehl,
@@ -69,7 +69,7 @@ class TXT(object):
 
     def __init__(self, txt=""):
         x("rein 4", txt)
-        self.text = txt
+        self.text = txt.strip()
 
     @property
     def e(self):
@@ -105,15 +105,19 @@ class TXT(object):
     @platzhalter.setter
     def platzhalter(self, value):
         x("rein 2", value)
-        self._platzhalter = value
+        self._platzhalter = value.strip()
 
     @text.setter
     def text(self, value):
         x("rein 1", value)
         assert type(value) is str
-        self._text = str(value).strip()
-        self._stext = re.split(gspattern, self._text)
-        # self._stext = re.split(r"\s(?![^\[\]\{\}\(\)]*[\]\}\)])", self._text)
+        value = str(value).strip()
+        self._text = value
+        if value[:4] != "reta":
+            x("sdfgsdgs", self._text)
+            self._stext = re.split(gspattern, self._text)
+        else:
+            self._stext = [s.strip() for s in self._text.split() if len(s.strip()) > 0]
         self._stextSet = set(self._stext)
         self._stextEmenge = self._stextSet | set(self._e)
         self._stextE = self._stext + self._e
@@ -122,10 +126,10 @@ class TXT(object):
 
     @liste.setter
     def liste(self, value):
-        x("rein 5", value)
         assert type(value) is list
-        self._stext = value
-        self._stextSet = set(value)
+        self._stext = [s.strip() for s in value if len(s.strip()) > 0]
+        x("rein 5", self._stext)
+        self._stextSet = set(self._stext)
         self._stextEmenge = self._stextSet | set(self._e)
         self._stextE = self._stext + self._e
 
@@ -1770,7 +1774,7 @@ def zeiln1234create(
                             [
                                 i18n.befehle2["v"] + str(z)
                                 for z in re.split(
-                                    r",(?![^\[\]\{\}\(\)]*[\]\}\)])",
+                                    kpattern,
                                     zahlenReiheKeineWteiler,
                                 )
                             ]
@@ -1880,7 +1884,6 @@ def bruchBereichsManagementAndWbefehl(zahlenBereichC, stext, zahlenAngaben_):
         bruchBereichsAngaben = []
         bruchRanges = []
         abzug = False
-        # for etwaBruch in re.split(r",(?![^\[\]\{\}\(\)]*[\]\}\)])", a):
         x("EtWa", a)
         for etwaBruch in a.split(","):
             bruchRange, bruchBereichsAngabe = createRangesForBruchLists(
@@ -2161,9 +2164,7 @@ def bruchBereichsManagementAndWbefehl(zahlenBereichC, stext, zahlenAngaben_):
                             i += 1
                             rechnung = i * int(nenner)
                 else:
-                    bruch_KeinGanzZahlReziprok_2 |= set(
-                        re.split(r",(?![^\[\]\{\}\(\)]*[\]\}\)])", nenners)
-                    )
+                    bruch_KeinGanzZahlReziprok_2 |= set(re.split(kpattern, nenners))
             bruch_KeinGanzZahlReziprok_ = ",".join(bruch_KeinGanzZahlReziprok_2)
             for rangePunkt in bruchRange:
                 try:
@@ -2220,7 +2221,7 @@ def bruchBereichsManagementAndWbefehl(zahlenBereichC, stext, zahlenAngaben_):
                             [
                                 str(z).split("+")[0]
                                 for z in re.split(
-                                    r",(?![^\[\]\{\}\(\)]*[\]\}\)])",
+                                    kpattern,
                                     zahlenReiheKeineWteiler,
                                 )
                             ]
@@ -2270,16 +2271,14 @@ def bruchBereichsManagementAndWbefehl(zahlenBereichC, stext, zahlenAngaben_):
     # print(stext)
     if len(dazu) > 0:
         zahlenBereichC = ",".join(
-            filter(
-                None, sdazu + re.split(r",(?![^\[\]\{\}\(\)]*[\]\}\)])", zahlenBereichC)
-            )
+            filter(None, sdazu + re.split(kpattern, zahlenBereichC))
         )
         stext += [",".join(sdazu + dazu)]
         bruch_GanzZahlReziproke = ",".join(
             filter(
                 None,
                 bruch_GanzZahlReziprokeDazu
-                + re.split(r",(?![^\[\]\{\}\(\)]*[\]\}\)])", bruch_GanzZahlReziproke),
+                + re.split(kpattern, bruch_GanzZahlReziproke),
             )
         )
     # print(bruch_GanzZahlReziproke)
@@ -2341,7 +2340,7 @@ def addMoreVals(EsGabzahlenAngaben, bruch2, bruch_GanzZahlReziprokeDazu, dazu, s
 
 
 def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, Txt, cmd_gave_output):
-    if len(Txt.liste) > 0 and Txt.liste[0] in (i18n.befehle2["shell"]):
+    if len(Txt.liste) > 0 and Txt.liste[0] in (i18n.befehle2["shell"],):
         cmd_gave_output = True
         try:
             process = subprocess.Popen([*Txt.liste[1:]])
@@ -2357,7 +2356,7 @@ def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, Txt, cmd_gave_out
             pass
     if len(Txt.liste) > 0 and i18n.befehle2["math"] == Txt.liste[0]:
         cmd_gave_output = True
-        for st in re.split(r",(?![^\[\]\{\}\(\)]*[\]\}\)])", "".join(Txt.liste[1:2])):
+        for st in re.split(kpattern, "".join(Txt.liste[1:2])):
             try:
                 process = subprocess.Popen(["python3", "-c", "print(" + st + ")"])
                 process.wait()
@@ -2376,7 +2375,7 @@ def verdreheWoReTaBefehl(text1: str, text2: str, text3: str, PromptMode: PromptM
 
     # x("VERDREHT ?", [text1, text2, text3, PromptMode])
     if text2[:4] == "reta" and text1[:4] != "reta" and len(text3) > 0:
-        # x("VERDREHT", PromptMode)
+        x("VERDREHT", [text2, re.split(gspattern, text2)])
         return text2, text1, re.split(gspattern, text2)
     # x("NICHT VERDREHT", PromptMode)
     return text1, text2, text3

@@ -9,7 +9,8 @@ from typing import Optional
 import reta
 from center import (BereichToNumbers2, Primzahlkreuz_pro_contra_strs, i18n,
                     isZeilenAngabe, isZeilenAngabe_betweenKommas,
-                    isZeilenBruchAngabe, isZeilenBruchOrGanzZahlAngabe, x)
+                    isZeilenBruchAngabe, isZeilenBruchOrGanzZahlAngabe,
+                    kpattern, x)
 
 wahl15 = i18n.wahl15
 wahl16 = i18n.wahl16
@@ -194,7 +195,7 @@ gebrochenErlaubteZahlen -= {max(gebrochenErlaubteZahlen)}
 
 flagX = False
 for a in wahl15.values():
-    for b in re.split(r",(?![^\[\]\{\}\(\)]*[\]\}\)])", a):
+    for b in re.split(kpattern, a):
         try:
             assert b in zumVergleich
         except:
@@ -306,6 +307,18 @@ def is15or16command(text: str) -> bool:
 def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
     stext2 = []
     ifKurzKurz = False
+    xtext = stext[0]
+    if (
+        len(stext) == 1
+        and len(xtext) > 0
+        and (
+            (xtext[0] == "(" and xtext[-1] == ")")
+            or (xtext[0] == "[" and xtext[-1] == "]")
+            or (xtext[0] == "{" and xtext[-1] == "}")
+        )
+    ):
+        stext = [",".join(str(B) for B in BereichToNumbers2(xtext, False, 0))]
+    del xtext
     for s_ in tuple(deepcopy(stext)):
         x("R67", s_)
         x("R67", s_[::-1])
@@ -477,7 +490,7 @@ def verifyBruchNganzZahlCommaList(
     _zahlenAngaben_ = []
     _etwaAllTrue = []
 
-    for etwaBruch in re.split(r",(?![^\[\]\{\}\(\)]*[\]\}\)])", commaListe):
+    for etwaBruch in re.split(kpattern, commaListe):
         (
             bruchAndGanzZahlEtwaKorrekterBereich1,
             bruchBereichsAngaben1,

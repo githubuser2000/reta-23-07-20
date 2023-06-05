@@ -4075,7 +4075,7 @@ class retaPrompt:
             "') ist tatsächlich ein Befehl (oder es sind mehrere), aber es gibt nichts auszugeben."
         ),
     )
-    out2Satz = _("Das ist kein Befehl! -> '{}''")
+    out2Satz = _("Das ist kein Befehl! -> '{}'")
     out3Saetze = _(
         'Wenn im Zähler oder Nenner eine 1 ist, so werden davon oft (nicht immer) keine Vielfacher gebildet.\nFür Brüche "n/1=ganze Zahl" gibt es die gewöhnlichen Befehle für ganze Zahlen.\nDas ist eine Design-Entscheidung, die getroffen worden ist.'
     )
