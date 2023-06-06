@@ -68,7 +68,6 @@ class TXT(object):
         return len(hasSet & self._stextSet) > 0
 
     def __init__(self, txt=""):
-        x("rein 4", txt)
         self.text = txt.strip()
 
     @property
@@ -77,17 +76,14 @@ class TXT(object):
 
     @property
     def menge(self):
-        alxp("b {}".format(self._stextSet))
         return self._stextSet
 
     @property
     def listeE(self):
-        alxp("d {}".format(self._stext))
         return self._stextE
 
     @property
     def liste(self):
-        alxp("c {}".format(self._stext))
         return self._stext
 
     @property
@@ -104,31 +100,25 @@ class TXT(object):
 
     @platzhalter.setter
     def platzhalter(self, value):
-        x("rein 2", value)
         self._platzhalter = value.strip()
 
     @text.setter
     def text(self, value):
-        x("rein 1", value)
         assert type(value) is str
         value = str(value).strip()
         self._text = value
         if value[:4] != "reta":
-            x("sdfgsdgs", self._text)
             self._stext = re.split(gspattern, self._text)
         else:
             self._stext = [s.strip() for s in self._text.split() if len(s.strip()) > 0]
         self._stextSet = set(self._stext)
         self._stextEmenge = self._stextSet | set(self._e)
         self._stextE = self._stext + self._e
-        alxp(self._stext)
-        alxp(self._stextSet)
 
     @liste.setter
     def liste(self, value):
         assert type(value) is list
         self._stext = [s.strip() for s in value if len(s.strip()) > 0]
-        x("rein 5", self._stext)
         self._stextSet = set(self._stext)
         self._stextEmenge = self._stextSet | set(self._e)
         self._stextE = self._stext + self._e
@@ -510,9 +500,7 @@ def speichern(ketten, platzhalter, text):
                         rpBefehlE += " ".join(rpBefehlSplitted) + " "
                 rpBefehlE = rpBefehlE[:-1]
                 Txt2 = TXT()
-                alxp("E")
                 Txt2.liste = textUndPlatzHalterNeu
-                alxp("F")
                 ifKurzKurz, Txt2.liste = stextFromKleinKleinKleinBefehl(
                     PromptModus.AusgabeSelektiv, Txt2.liste, []
                 )
@@ -529,7 +517,6 @@ def speichern(ketten, platzhalter, text):
                             listeNeu += [replacements[token]]
                         except KeyError:
                             listeNeu += [token]
-                    alxp("G")
                     Txt2.liste = listeNeu
 
                 Txt.platzhalter = " ".join(Txt2.liste + langKurzBefehle)
@@ -699,7 +686,6 @@ def PromptScope():
                     ),
                     True,
                 )
-                alxp(i18nRP.promptModeSatz.format(promptMode, promptMode2))
                 promptMode = PromptModus.loeschenSelect
                 continue
 
@@ -1272,10 +1258,8 @@ def PromptGrosseAusgabe(
             #        "," if zeiln2[-1].isdecimal() else ""
             #    ) + zeilenAusReziprokenDazu
             ZahlenAngabenCneu = zahlenBereichC + "," + bruch_GanzZahlReziproke
-            x("CNEU", ZahlenAngabenCneu)
             ZahlenAngabenCneu = ZahlenAngabenCneu.replace(",,", ",")
             ZahlenAngabenCneu = ZahlenAngabenCneu.strip(",")
-            x("CNEU", ZahlenAngabenCneu)
 
             TxtNeu = deepcopy(Txt)
             TxtNeu.text += " " + bruch_GanzZahlReziproke
@@ -1664,7 +1648,6 @@ def PromptGrosseAusgabe(
         loggingSwitch, Txt, cmd_gave_output
     )
     if len(nurEinBefehl) > 0:
-        alxp("H")
         Txt.liste = list(befehleBeenden)
         nurEinBefehl = " ".join(befehleBeenden)
         exit()
@@ -1707,7 +1690,6 @@ def retaCmdAbstraction_n_and_1pron(
             retaExecuteNprint(
                 ketten, Txt.listeE, zeiln1, zeiln2, paras, selectedCols[0], Txt
             )
-        x("_s_", bruch_GanzZahlReziproke)
         if (
             len(bruch_GanzZahlReziproke) > 0
             and textHatZiffer(bruch_GanzZahlReziproke)
@@ -1874,7 +1856,6 @@ def retaExecuteNprint(
                 print(" ".join(kette))
             else:
                 cliout(" ".join(kette), True)
-    # x("ENDE", kette)
     reta.Program(kette, Txt=Txt)
 
 
@@ -1909,12 +1890,10 @@ def bruchBereichsManagementAndWbefehl(zahlenBereichC, stext, zahlenAngaben_):
         bruchBereichsAngaben = []
         bruchRanges = []
         abzug = False
-        x("EtWa", a)
         for etwaBruch in a.split(","):
             bruchRange, bruchBereichsAngabe = createRangesForBruchLists(
                 bruchSpalt(etwaBruch)
             )
-            x("etwa", [bruchRange, bruchBereichsAngabe])
             (
                 bruchAndGanzZahlEtwaKorrekterBereich,
                 bruchBereichsAngaben,
@@ -2400,7 +2379,6 @@ def verdreheWoReTaBefehl(text1: str, text2: str, text3: str, PromptMode: PromptM
 
     # x("VERDREHT ?", [text1, text2, text3, PromptMode])
     if text2[:4] == "reta" and text1[:4] != "reta" and len(text3) > 0:
-        x("VERDREHT", [text2, re.split(gspattern, text2)])
         return text2, text1, re.split(gspattern, text2)
     # x("NICHT VERDREHT", PromptMode)
     return text1, text2, text3
@@ -2417,11 +2395,9 @@ def promptVorbereitungGrosseAusgabe(
     if len(Txt.liste) > 0:
         textDazu: list = []
         s_2: list
-        alxp("J")
         ifKurzKurz, Txt.liste = stextFromKleinKleinKleinBefehl(
             promptMode2, Txt.liste, textDazu
         )
-        alxp("J1")
     if Txt.liste is not None:
         nstextnum: list = []
         for astext in Txt.liste:
@@ -2446,9 +2422,7 @@ def promptVorbereitungGrosseAusgabe(
         promptMode2 == PromptModus.AusgabeSelektiv
         and promptModeLast == PromptModus.normal
     ):
-        x("DA", Txt.liste)
         Txt.liste = textDazu0 + Txt.liste
-        x("DA", Txt.liste)
     if (
         promptMode == PromptModus.normal
         and len(Txt.platzhalter) > 1
@@ -2469,7 +2443,6 @@ def promptVorbereitungGrosseAusgabe(
         stextDict = {i: swort for i, swort in enumerate(Txt.liste)}
         for todel in woerterToDel:
             del stextDict[todel]
-        alxp("K")
         Txt.liste = list(stextDict.values())
 
         if len({i18n.befehle2["w"], i18n.befehle2["teiler"]} & Txt.menge) > 0:
@@ -2483,14 +2456,12 @@ def promptVorbereitungGrosseAusgabe(
             try:
                 tx = Txt.liste
                 tx.remove(i18n.befehle2["w"])
-                alxp("L")
                 Txt.liste = x
             except:
                 pass
             try:
                 tx = Txt.liste
                 tx.remove(i18n.befehle2["teiler"])
-                alxp("M")
                 Txt.liste = x
             except:
                 pass
@@ -2510,14 +2481,12 @@ def promptVorbereitungGrosseAusgabe(
             try:
                 tx = Txt.liste
                 tx.remove(i18n.befehle2["v"])
-                alxp("N")
                 Txt.liste = x
             except:
                 pass
             try:
                 tx = Txt.liste
                 tx.remove(i18n.befehle2["vielfache"])
-                alxp("O")
                 Txt.liste = x
             except:
                 pass
@@ -2526,7 +2495,6 @@ def promptVorbereitungGrosseAusgabe(
     zahlenAngaben_ = []
     zahlenAngabenC = ""
     if len(Txt.menge & befehleBeenden) > 0:
-        alxp("A")
         Txt.liste = [tuple(befehleBeenden)[0]]
         exit()
     replacements = i18nRP.replacements
@@ -2542,10 +2510,8 @@ def promptVorbereitungGrosseAusgabe(
                 listeNeu += [replacements[token]]
             except KeyError:
                 listeNeu += [token]
-        alxp("B")
         Txt.liste = listeNeu
     if Txt.liste[:1] != ["reta"]:
-        alxp("C")
         Txt.liste = list(Txt.menge)
     return (
         IsPureOnlyReTaCmd,
@@ -2583,7 +2549,6 @@ def PromptAllesVorGroesserSchleife():
     else:
         nurEinBefehl = []
     if "-" + i18nRP.retaPromptParameter["e"] in sys.argv:
-        alxp(i18nRP.infoDebugAktiv)
         immerEbefehlJa = True
     else:
         immerEbefehlJa = False
@@ -2641,7 +2606,6 @@ def PromptLoescheVorSpeicherungBefehle(platzhalter, promptMode, text):
         zuloeschen2 = set()
         for wort in TxtZuloeschen.liste:
             try:
-                alxp("D")
                 TxtLoeschbereiche.liste = list(
                     filter(lambda a: a != wort, TxtLoeschbereiche.liste)
                 )
@@ -2729,6 +2693,5 @@ if __name__ == "__main__":
 
 def start(sprachenWahl1="deutsch"):
     global sprachenWahl
-    alxp(sys.argv)
     PromptScope()
     return sprachenWahl

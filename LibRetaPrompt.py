@@ -7,10 +7,10 @@ from fractions import Fraction
 from typing import Optional
 
 import reta
-from center import (BereichToNumbers2, Primzahlkreuz_pro_contra_strs, i18n,
-                    isZeilenAngabe, isZeilenAngabe_betweenKommas,
-                    isZeilenBruchAngabe, isZeilenBruchOrGanzZahlAngabe,
-                    kpattern, x)
+from center import (BereichToNumbers2, Primzahlkreuz_pro_contra_strs,
+                    gspattern, i18n, isZeilenAngabe,
+                    isZeilenAngabe_betweenKommas, isZeilenBruchAngabe,
+                    isZeilenBruchOrGanzZahlAngabe, kpattern, x)
 
 wahl15 = i18n.wahl15
 wahl16 = i18n.wahl16
@@ -308,23 +308,21 @@ def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
     stext2 = []
     ifKurzKurz = False
     xtext = " ".join(stext)
-    if isZeilenAngabe(xtext):
-        stext = [",".join(str(B) for B in BereichToNumbers2(xtext))]
+    # if isZeilenAngabe(xtext):
+    #    stext = [",".join(str(B) for B in BereichToNumbers2(xtext))]
+    stext2 = re.split(gspattern, xtext)
     del xtext
-    for s_ in tuple(deepcopy(stext)):
-        x("R67", s_)
-        x("R67", s_[::-1])
+    for kkk, s_ in enumerate(tuple(deepcopy(stext2))):
         s_m = s_
         if not is15or16command(s_) and s_ not in befehle and stext[0] != "reta":
             textDazu = []
             nn: Optional[int] = 0
-            x("R6", s_[::-1])
             for iii, s_3 in enumerate(s_[::-1]):
                 if s_3.isdecimal() or (
                     s_3 in (")", "]", "}")
-                    and "reta" not in stext
+                    and "reta" not in s_
                     and "reta" not in textDazu
-                    and any(("(" in at or "[" in at or "{" for at in stext))
+                    and any(("(" in at or "[" in at or "{" for at in s_))
                 ):
                     nn = iii
                     break
@@ -332,10 +330,14 @@ def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
                 s_b = s_[-nn:] + s_[:-nn]
             else:
                 s_b = s_
-            x("T5", s_b)
             n: Optional[int] = None
             for ii, s_3 in enumerate(s_b):
-                if s_3.isdecimal():
+                if s_3.isdecimal() or (
+                    s_3 in ("(", "[", "{")
+                    and "reta" not in s_b
+                    and "reta" not in textDazu
+                    and any((")" in at or "]" in at or "}" for at in s_b))
+                ):
                     n = ii
                     break
             try:
@@ -363,7 +365,6 @@ def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
 
                 if fullBlockIsZahlenbereichAndBruch_Z:
                     s_ = s_b
-                    x("E4", s_)
                     if not (
                         (s_[0] == "(" and s_[-1] == ")")
                         or (s_[0] == "[" and s_[-1] == "]")
@@ -373,24 +374,9 @@ def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
                             i18n.befehle2[var]
                             for var in i18n.befehle2.keys()
                             if len(var) == 1
-                            # i18n.befehle2["G"],
-                            # i18n.befehle2["E"],
-                            # i18n.befehle2["a"],
-                            # i18n.befehle2["t"],
-                            # i18n.befehle2["v"],
-                            # i18n.befehle2["u"],
-                            # i18n.befehle2["p"],
-                            # i18n.befehle2["r"],
-                            # i18n.befehle2["w"],
-                            # i18n.befehle2["s"],
-                            # i18n.befehle2["o"],
-                            # i18n.befehle2["S"],
-                            # i18n.befehle2["e"],
-                            ## i18n.befehle2["keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"],
                         }
                     else:
                         buchst = set()
-                    x("RR", stext)
                     setTextLenIs1 = (
                         len(
                             set(stext)
@@ -404,12 +390,10 @@ def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
                         == 1
                     )
 
-                    x("ZZ", stext)
                     if (len(buchst) != len(s_[:n]) or len(buchst) == 0) and not (
                         setTextLenIs1 and fullBlockIsZahlenbereichAndBruch_Z
                     ):
                         s_ = s_m
-                        x("F4", s_)
                     else:
                         ifKurzKurz = True
                         # erst hier passiert wirklich etwas
@@ -447,12 +431,8 @@ def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
                                     "-" + i18n.mainParaCmds["ausgabe"],
                                     "--" + i18n.ausgabeParas["keineueberschriften"],
                                 ]
-                    x("XX", [stext, textDazu])
-            x("YY1", [textDazu, s_, stext2, stext])
         else:
-            x("YY2", [textDazu, s_, stext2, stext])
             textDazu += [s_]
-        x("YY3", [textDazu, s_, stext2, stext])
         if len(textDazu) > 0:
             stext2 += textDazu
         else:
@@ -463,7 +443,6 @@ def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
         "python",
     ]:
         stext = stext2
-    x("CC", stext)
     return ifKurzKurz, stext
 
 
@@ -522,11 +501,9 @@ def verifyBruchNganzZahlBetweenCommas(
     zahlenAngaben_,
 ):
 
-    # print("x {}".format(bruchBereichsAngabe))
     isBruch, isGanzZahl = isZeilenAngabe_betweenKommas(
         bruchBereichsAngabe
     ), isZeilenAngabe_betweenKommas(etwaBruch)
-    # print("y {}".format(bruchBereichsAngabe))
     if isBruch != isGanzZahl:
         bruchAndGanzZahlEtwaKorrekterBereich += [True]
         if isBruch:
@@ -538,7 +515,6 @@ def verifyBruchNganzZahlBetweenCommas(
         bruchAndGanzZahlEtwaKorrekterBereich += [False]
     # if isZeilenAngabe_betweenKommas(etwaBruch):
     #    zahlenAngaben_ += [etwaBruch]
-    # print("h {},{}".format(bruchBereichsAngaben, bruchAndGanzZahlEtwaKorrekterBereich))
     return (
         bruchAndGanzZahlEtwaKorrekterBereich,
         bruchBereichsAngaben,
