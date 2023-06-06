@@ -95,7 +95,7 @@ Primzahlkreuz_pro_contra_strs: tuple = (
     "nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)",
 )
 
-keineTabellenAusgabe = _("kein Tabelleninhalt")
+keineTabellenAusgabe = _("ein Mal kein Tabelleninhalt")
 Primzahlkreuz_pro_contra_strs_Fkt: tuple = (
     _("Primzahlkreuz_pro_contra"),
     _("nachvollziehen_emotional_oder_geistig_durch_Primzahl-Kreuz-Algorithmus_(15)"),

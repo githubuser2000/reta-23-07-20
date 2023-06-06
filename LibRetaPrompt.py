@@ -443,6 +443,7 @@ def stextFromKleinKleinKleinBefehl(promptMode2, stext, textDazu):
         "python",
     ]:
         stext = stext2
+    # x("stext", stext)
     return ifKurzKurz, stext
 
 

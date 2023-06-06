@@ -410,7 +410,8 @@ class Tables:
                 if type(self.__outType) in (htmlSyntax, bbCodeSyntax):
                     self.cliout2(self.__outType.beginTable)
                 lastlastSubCellIndex = lastSubCellIndex
-                tabelleLeer = False
+                entries: list
+                wasEmptyLine = False
                 try:
                     for (
                         BigCellLineNumber,
@@ -418,6 +419,7 @@ class Tables:
                     ) in enumerate(
                         zip(newTable, self.finallyDisplayLines)
                     ):  # n Linien einer Zelle, d.h. 1 EL = n Zellen
+                        entries = []
                         if BigCellLineNumber == 0 and self.tables.keineUeberschriften:
                             continue
                         for iterWholeLine, OneWholeScreenLine_AllSubCells in enumerate(
@@ -449,23 +451,9 @@ class Tables:
                                 # funktioniert nicht: ist alles sehr viel komplizierter
                                 # ARGGGHHHH
                                 # ZB Kann ich Überschriften nicht von anderem so einfach unterscheiden!
-                                if (
-                                    False
-                                    and self.Txt is not None
-                                    and self.Txt.has(
-                                        {
-                                            i18n.befehle2["e"],
-                                            i18n.befehle2[
-                                                "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
-                                            ],
-                                        }
-                                    )
-                                ):
-                                    raise BreakoutException
-                                    # continue
-                                else:
-                                    tabelleLeer = True
-                                    self.cliout2(i18n.keineTabellenAusgabe + ": ")
+
+                                pass
+                                # self.cliout2(i18n.keineTabellenAusgabe + ": ")
                             # x("___", filteredLineNumbersofOrignal)
                             line = (
                                 (
@@ -586,6 +574,15 @@ class Tables:
                                     if sumWidths < shellRowsAmount or self.__oneTable:
                                         lastSubCellIndex = subCellIndexRightLeft
                                         try:
+                                            entryAfterHeading = newTable[
+                                                BigCellLineNumber + 1
+                                            ][subCellIndexRightLeft][
+                                                OneWholeScreenLine_AllSubCells
+                                            ]
+                                            entries += [entryAfterHeading]
+                                        except:
+                                            pass
+                                        try:
                                             entry = newTable[BigCellLineNumber][
                                                 subCellIndexRightLeft
                                             ][OneWholeScreenLine_AllSubCells]
@@ -668,7 +665,31 @@ class Tables:
                                         rowsEmpty += 1
                                 else:
                                     rowsEmpty += 1
-
+                            if (
+                                all([len(e.strip()) < 2 for e in entries])
+                                and len(entries) > 0
+                            ):
+                                self.cliout2(
+                                    i18n.keineTabellenAusgabe
+                                    + (
+                                        ": "
+                                        if not self.tables.keineleereninhalte
+                                        else ""
+                                    )
+                                )
+                                entries = []
+                                wasEmptyLine = True
+                                # if self.Txt is not None and self.Txt.has(
+                                #    {
+                                #        i18n.befehle2["e"],
+                                #        i18n.befehle2[
+                                #            "keineEinZeichenZeilenPlusKeineAusgabeWelcherBefehlEsWar"
+                                #        ],
+                                #    }
+                                # ):
+                                if self.tables.keineleereninhalte:
+                                    raise BreakoutException
+                                    # continue
                             if rowsEmpty != len(self.rowsAsNumbers) and (
                                 iterWholeLine < self.textheight or self.textheight == 0
                             ):  # and m < actualPartLineLen:
@@ -793,10 +814,9 @@ class Tables:
                                                 )
                                                 + "|"
                                             )
-                        if tabelleLeer and filteredLineNumbersofOrignal != 0:
+                        if filteredLineNumbersofOrignal != 0 and wasEmptyLine:
                             self.cliout2("".join(("(", i18n.keineTabellenAusgabe, ")")))
                             print()
-                            tabelleLeer = False
                 except BreakoutException:
                     pass
                 if type(self.__outType) in (htmlSyntax, bbCodeSyntax):
@@ -1216,7 +1236,8 @@ class Tables:
             place = os.path.join(
                 os.getcwd(),
                 os.path.dirname(__file__),
-                os.path.basename("./" + csvFileName),
+                "csv",
+                os.path.basename(csvFileName),
             )
 
             self.sumOfAllCombiRowsAmount += len(rowsOfcombi)

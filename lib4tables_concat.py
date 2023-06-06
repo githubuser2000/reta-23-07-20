@@ -2973,12 +2973,13 @@ class Concat:
         place = os.path.join(
             os.getcwd(),
             os.path.dirname(__file__),
+            "csv",
             os.path.basename(
-                "./" + csvNames.prim
+                csvNames.prim
                 if concatTable == 1
-                else "./" + csvNames.bruch15
+                else csvNames.bruch15
                 if concatTable in (2, 4)
-                else "./" + csvNames.bruch13
+                else csvNames.bruch13
                 if concatTable in (3, 5)
                 else None
             ),

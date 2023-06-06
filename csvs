@@ -13,7 +13,7 @@ read branchwechslung
 [ "$branchwechslung" = "m" ] && git --git-dir ${GIT_DIRECTORY} --work-tree=${ABS_DIRECTORY} switch master
 [ "$branchwechslung" = "f" ] && git --git-dir ${GIT_DIRECTORY} --work-tree=${ABS_DIRECTORY} switch feature || git --git-dir ${GIT_DIRECTORY} --work-tree=${ABS_DIRECTORY} switch master
 sleep 2
-file=`ls ${ABS_DIRECTORY} -S | grep -e '\.csv$' | fzf`
+file=`ls ${ABS_DIRECTORY}/csv -S | grep -e '\.csv$' | fzf`
 if [ "$file" != "" ];then
-    libreoffice ${ABS_DIRECTORY}/${file}
+    libreoffice ${ABS_DIRECTORY}/csv/${file}
 fi

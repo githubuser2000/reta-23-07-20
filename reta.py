@@ -1082,9 +1082,11 @@ class Program:
             place = os.path.join(
                 os.getcwd(),
                 os.path.dirname(__file__),
-                os.path.basename("./" + csvFileNames.religion),
+                "csv",
+                os.path.basename(csvFileNames.religion),
             )
         else:
+            exit()
             place = csvFileNames.religion
         with open(place, mode="r", encoding="utf-8") as csv_file:
             self.relitable: list = []

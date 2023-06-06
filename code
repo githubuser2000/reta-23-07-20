@@ -1,6 +1,0 @@
-#!/bin/sh
-cd ~/myRepos/reta
-file=`ls | grep -e '\.vim$' | fzf`
-if [ "$file" != "" ];then
-  vim -S $file
-fi
