@@ -415,7 +415,7 @@ def unique_everseen(iterable, key=None):
 
 # @jit(nopython=True, parallel=True, cache=True)
 def BereichToNumbers2(
-    MehrereBereiche: str, vielfache=False, maxZahl: int = 1028
+    MehrereBereiche: str, vielfache=False, maxZahl: int = 1028, allowLessEqZero=False
 ) -> set:
     # print(re.split(r",(?![^\[\]\{\}\(\)]*[\]\}\)])", MehrereBereiche))
     # print([s for s in re.split(r",(?![^\[\]\{\}\(\)]*[\]\}\)])", MehrereBereiche) if s])
@@ -456,7 +456,10 @@ def BereichToNumbers2(
             1028 if (vielfache or vielfache2) and maxZahl == float("inf") else maxZahl,
             vielfache or vielfache2,
         )
-    return dazu - hinfort
+    if allowLessEqZero:
+        return dazu - hinfort
+    else:
+        return set(filter(lambda x: x > 0, dazu - hinfort))
 
 
 def BereichToNumbers2_EinBereich(EinBereich, dazu, hinfort, maxZahl, vielfache):

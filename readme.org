@@ -37,6 +37,9 @@
 + a und u n/m sollte ich noch mal anschauen: nicht höheres neues, nur das alte wieder überprüfen
 + Gefühle n/m
 + Alle Brucherweiterungen, überall, also nicht nur bei n/m, sondern auch bei n und 1/n bei allen Grundstrukturen
+  *** 4. ReTa content
++ Ich müsste mal die gebrochen-rationalen Gefühle probieren zu machen.
+  Das würde mir gut woanders weiterhelfen.
 ***** noch mal überprüfen (weniger wichtig)
 + höherer Geist n und 1/n
 + Kombinationen und n/m
@@ -44,24 +47,16 @@
 ***** unwichtiges
 + Ich könnte erweitern aus welchen Dingen ich noch bestehe, der höheren Art, wie höhere Gefühle und Impulse, etc. Denn das gabs vorher nicht.
 *** 2. Feature Ideen
-+ KI die höheren Symbolnamen fortsetzen lassen: also nur content
-+ clear befehl zum bildschirm löschen
++ KI die höheren antik griechischen Symbolnamen fortsetzen lassen: also nur content
 + Reziproke und n/m für w Befehl ermöglichen
 + Brucherweiterungen aus Spalte aus der csv in n/m und n/n Dingen in retaPrompt mit dazu ausgeben.
 + andere Primzahlbedeutungen, außer 28 bis 32, der anderen Reihen auch hinzufügen
-+ mit AI csvs übersetzen
 + Halb-Mond-Halb-Sonne Zahlen, wie 12 und 18 markieren: Für die Zeilenfilterung
 + Filtern nach Primzahlarten und deren Vielfachern und nach 6*n zusätzlich, wegen besonderer Bedeutung (obwohl "grins" oder "lach" alle Zahlen besonders sind.)
 + Filtern wie die HTML: Dafür ein System ausdenken
 + Parameter hinzufügen für das Nicht-Printen von Spalten, in welchen nur ein Zeichen oder keins vorhanden ist.
 + Teile der reta readme einfach besser generieren lassen: sparrt am Ende Zeit und sparrt noch mehr Zeit bei Mehrsprachigkeit und sorgt für weniger Fehler!
-+ statt text und stext, sollte ich in retaPrompt.py noch eine weitere Variable einführen, für das mitschleppen von äußeren zusätzlichen Variablen. Eine Fkt führt beide jedes Mal zusammen, wenn stext oder text mit dieser zusätzlichen Variablen abgefragt werden. Das ist also eine Form von Refactoring irgendwie.
-  + Ich sollte das nicht vernachlässigen und bald einprogrammieren. Es geht schnell einzuprogrammieren. Ich verhindere damit Fehler in der Zukunft.
-  + refactoring: besser wäre eine Funktion oder Klasse, die alle stext, text, textE, stextE Variablen rumschleppt und diese als list tuple oder set abfragen lassen kann: So wiederholen sich mehrere redundante Umwandlungen nicht ständig: Programmier-Muster: besser
-    + Ich erschaffe eine statische Klasse, in der alles gelagert ist und einzelne verschiedene Fkt rufen das ab, was dann jeweils gebraucht wird.
-    + Dieses Refactoring dauert nicht ewig zu programmieren und das sollte ich am Besten bald programmieren, weil ich sowieso komplett alles durchtesten muss jetzt, aber danach noch mal, nachdem ich eine neue Sprache hinzugefügt hätte. Ohje.
 + Feature Primfaktorzerlegungsvergleich: alles - das dazu ausgegeben werden sollte.
-+ Dass man auch alle Überschriften als Ausgabe aussparen könnte.
 + Zeilen-Befehle für Primzahlen und deren Vielfachern (und welche) und der Primzahlart von 4
 + die Primzahlfilterung und alle Filterungen von der html
 + SQL like Relationen, z.B. 2:1, d.h. 3 Spalten, und auch alles wie bei SQL, d.h. z.B. n Spalten nach oben/unten: bei z.B. Abstand 1: Gegenspieler. Warum nicht gleich eine SQL (like) Sprache übernehmen, statt das Rad neu zu erfinden!
@@ -71,52 +66,28 @@
 + schöneres UTF: Ideen? Keine!
 + Kurzform für Zeile und Spalte einführen, statt die langen Befehlsketten immer.
 + Die Spaltennummer direkt als Zahl wählen können.
-+ Wie programmiere ich, dass nachträgliches Resizen der CLI App geht?
-  + Programmieren, dass man die Konsole beliebig resizen kann, und dass es dann immernoch die richtige Größe ermöglicht.
-    + Teil A
-      1. Sortierte Ausgabe
-      2. Option begrenzter Auswahl von Zahlen.
-      3. Intern die Zahlenkombi in eigene Datenstruktur packen, anstelle gleich in den String verwursten.
-    + Teil B
-      1. Parameteroption hinzufügen
-      2. später in Readme, try catch fehlerausgabe und befehlliste für retaPrompt, oder ggf. etc., dazu bauen
-      3. statt String Zahlenliste machen
-      4. Zahlen vorher ordnen und dann hinzufügen
-      5. nach Zahlen filtern durch diesen Programm-Parameter.
-      6. 2. durchführen.
 + neues Farbschema: für html aber besser nur: primzahlen pro außen und pro innen und ggf. dessen vielfacher; Farbschema mit durch 3 teilbarem außerdem
   + Farbschema der Helligkeiten aus welchen Primzahlen welche Zahl besteht
   + Um bessere Farben für die html zu finden, sollte ich einen screenshot davon machen und diesen mit gimp so bearbeiten, dass ich exakt eine Farbe in eine andere ändere. In Gimp kann ich viele Farben ausprobieren.
 + retaPrompt skriptingfähig machen: nein, das muss nicht bald sein
 **** 2.1. Multilingual: fast bereits erledigt
-+ csvs und Befehle multilingual machen: vorher planen und recherchieren für beste Lösung und _ fragen!
-+ Ich sollte gettext verwenden und zur Generierung dafür Pygettext.
-+ nein ich sollte Babel verwenden: +"Pygettext hingegen ist ein Werkzeug zum Generieren von Sprachdateien aus Python-Code, die mit der gettext-Bibliothek verwendet werden können. Es bietet eine einfache Möglichkeit, Texte aus Python-Code zu extrahieren und in eine Sprachdatei zu schreiben. Pygettext ist ideal für kleinere Projekte oder Anwendungen mit wenigen Texten, die übersetzt werden müssen."+
-  + Unterstützung für Fortgeschrittene Funktionen: Babel unterstützt fortgeschrittene Funktionen wie Pluralformen, Kontexte, Variablen-Substitution und Markup-Unterstützung, die für eine qualitativ hochwertige Übersetzungserfahrung unerlässlich sind.
-  + PO (Portable Object), MO (Machine Object), JSON, YAML und CSV
-  + automatische Extraktion von Zeichenfolgen
++ ts multilingual
++ mit AI csvs übersetzen
 + "Mache mir eine Datenstruktur, in der nur alle diese strings drin auf die Art gespeichert sind, dass man mit dem python tool babel diese strings auch mit anderen strings für andere sprachen befüllen kann und programmiere mir, dass diese Datenstruktur aus nur diesen strings, die strings der einen großen Datenstruktur befüllt, sodass sie im einfachen Fall letztlich die gleiche Datenstruktur sein wird, nachdem sie wieder mit den strings befüllt wurde, die sie eigentlich ursprünglich hatte."
 ****  2.2. minder wichtig, aber geht schnell:
-+ Befehl: "größe" oder "size" über Strukturgrößen für n und 1/n
-+ Dass Py Formeln durch Python als Formeln interpretiert werden und eine Zahl ergeben: Dass es das ist mit regex überprüfen und nur umsetzen, wenn es kein sonstiger üblicher Zahlenbereich von reta ist.
-+ +Dass Befehl v und w nicht so kombiniert werden, dass v auch alle Vielfacher von w nimmt.+
-  + in reta wie in retaPrompt: bisher nur in ReTaPrompt so umgesetzt, aber nicht in reta
   + Ich sollte aber das gesamte Design in ReTa ändern, von der Kombinierbarkeit der Zeilenangaben und das so machen, wie in der html. Dazu muss ich mir aber geduldig ein neues Design überlegen, das durchdacht genug ist, das alles so perfekt kombiniert werden kann, wie bei SQL-Sprachen und nicht so unflexibel, wie es bisher immer war.
   + Erst nachdem ich das neu designt habe, sollte ich das mit der besseren Kombinierbarkeit von v und w nicht in rp, sondern reta umsetzen:
     1. Weil das so sehr viel besser geht,
     2. weil es anders nur ein Verschieben von Problemen ist und
     3. weil grundsätzliches Neudesign auch wichtiger ist und eigentlich nicht ewig Zeit beanspruchen dürfte: Es ist nicht hochkomplex.
-+ +Für besseres Unit-Testing: dass man mehrere Befehle bei Start von RetaPrompt angeben kann mit anschließendem Beenden.+
-+ +Bereichsangaben bei von bis speicherbefehlen - retaPrompt+
-+ html zstd pro zelle: sukkzessiv mit zentraler lib aber dennoch pro zelle komprimiert: so wie mehrere dateien auch zusammen verschlüsselt werden können, ohne dass die Kompression wieder von vorn beginnen muss: spart platz insgesamt.
-+ --nocolor auch für html und bbcode als option umsetzen
-+ --parameter=* könnte alle Unter-Parameter meinen, als Kommandozeilenargument. Dürfte nicht so lange dauern einprogrammiert zu werden
-+ minder wichtig, aber geht schnell: Multiplikation aus 3 Faktoren, oder mehr, statt nur aus 2:
+  + html zstd pro Spalte: sukkzessiv mit zentraler lib aber dennoch pro zelle komprimiert: so wie mehrere dateien auch zusammen verschlüsselt werden können, ohne dass die Kompression wieder von vorn beginnen muss: spart platz insgesamt.
+  + --nocolor auch für html und bbcode für deren Tag als option umsetzen
+  + --parameter=* könnte alle Unter-Parameter meinen, als Kommandozeilenargument. Dürfte nicht so lange dauern einprogrammiert zu werden
+  + Multiplikation aus 3 Faktoren, oder mehr, statt nur aus 2:
   python print(str((1,*(2,3))))
   (1, 2, 3)
   Geht einfach und schnell zu programmieren durch Rekursion.
 + Dass man bei Kombinationen filtern kann nach nur bestimmten Zahlen, dazu und hinweg - am Besten mit den bisherigeen allen Filtermethoden, den Bereichsangaben, aber auch für Brüche dann ja wohl - das aber vorher detailliert und umfangreich und lang genug vorher planen!
-+ +minder wichtig, aber geht schnell: nicht loggen, bei befehlen über Logging+
 **** 2.3. aus reta.py
 + kombinationen sortiert ausgeben und als Hierarchiebaum den Zahlenkombinationen entlang
 + kombinationen filterbar machen, dass nicht alle kombinationen bei einer Zahl immer angezeigt werden
@@ -138,15 +109,7 @@
 **** 2.4. eher Luxus, aber nett, fancy und cool
 + auf Basis des Bereich-Regex generieren lassen: AutoComplete für alle ZahlenBereiche für mindestens immer stückweise 2 felder (was dann komisch aussieht, weils nicht das Ganze ist), wodurch bei Zahlen 0-9 bereits 100 und dann mehr ZeichenKombis möglich sind, aber was solls: Könnte machbar sein. Wird aber ein wenig umständliches hin und her: Aber nicht so super viele Codezeilen: vielleicht schaffbar an 3 Tagen. Der schaut dann immer in die Zukunft im ganzen langen Zahlenbereich von nur 1+1 Zeichen. Sieht dann merkwürdig aus, aber das könnte gehen. Der Regex generiert das dann, dadurch dass ich einen Brutforce mit begrenzten Zeichen auf ihn werfe. Ansich eigentlich eine coole Idee finde ich, das so zu lösen.
   + ist ein wenig schwieriger, aber nicht super viel Code - machbar
-*** 3. Bugs
-+ Bei ReTaPrompt gibt es das Problem, dass Textvorschläge gemacht werden, bei denen das nicht richtig ist.
-Es ist ja schön, wenn ich weiß, was ich tippen muss, aber ich darf das nicht so lassen.
-Es reicht nicht, wenn ich ReTa nur so programmiere, dass es mir passt.
-Es muss auch für manche DAUs funktionieren.
-*** 4. ReTa content
-+ Ich müsste mal die gebrochen-rationalen Gefühle probieren zu machen.
-Das würde mir gut woanders weiterhelfen.
-*** 5. Feature - Geschwindigkeit
+*** 3. Feature - Geschwindigkeit
 +  Wo ist Verbesserung der Geschwindigkeit möglich:
 + bei der Ausgabe
 + Parallelisierung
@@ -174,7 +137,7 @@ Deshalb programmiere ich ReTa als Proof-of-Work, als ein Programm, das dennoch a
 Was ansonsten noch für deutlich fernere Zukunft noch für RetaPrompt gebrauchbar ist, wäre Skriptingfähigkeit. Dann kann man Skripten, mit einer Schleife oder Rekursion, welche Zeilennummern man möchte und was einem sonst noch so einfällt. Dann kann man Variablen verwenden und wiederverwenden, usw.
 
 Irgendjemand kann sich vielleicht noch eine eigene SQL-ähnliche Syntax einfallen lassen, wenn es darum gehen soll, diese Tabellen wie SQL Tabellen zu verschachteln.
-*** 6. Feature: Mathe
+*** 4. Feature: Mathe
 + z.B. ggT & kgV
 Vielfacher einer Zahl für einen Bereich
 Distanzen einer Zahl zu einem Bereich
@@ -202,7 +165,7 @@ z.B. beliebig geskriptete Zeilennummern, z.B.: alle modulo 24 + pro außen primz
 
 EDIT:
 In ReTA-Prompt anfangs texten, dass gerade vi-mode oder emacs-mode aktiv ist.
-*** 7. Überlegungen
+*** 5. Überlegungen
 + Meine Stabilität Policy ist eine Schande
        https://doc.pypy.org/en/latest/cpython_differences.html
   + endlich mal unit tests machen
@@ -257,14 +220,15 @@ Ich hätte das gleich so machen sollen, aber ich konnte nicht wissen, wie riesig
 
 Sollte ich das umsetzen wollen, dann sollte ich unbedingt einen neuen eigenen Branch dafür anlegen, komme was wolle.
 
-*** 8. Refacturing
+*** 6. Refacturing
 + Aus Objektorientiertem Prozedurales machen, es sei denn es ist besser wie es war in wenigen Fällen.
 + Vorher planen, viel Durchdenken.
 + Oder statische Klassen, statt Instanzen verwenden.
 + Aufhören damit, weg machen: mehrfache Art gleichzeitig Variablen zu übergeben und zu referenzieren: Das ist liederlich, unordentlich.
 + Vielleicht mal besser doch Clean Code umsetzen, obwohl mir das den Spaß wegnimmt.
-*** 9. Typescript
+*** 7. Typescript
 **** Allgemeines
 + Alles zusammen gleichzeitig refactoren und dabei gleichzeitig Unit-Tests einbauen.
   + Unit-Tests mit einem leichtgewichtigen Framework dazu
   + gleichzeitig moderne Typescript-Fähigkeiten und Programmierkonzepte dazu verwenden und diese zuvor recherchieren, welche neuesten es für Typescript dafür gibt!
++  Mehrsprachigkeit
