@@ -375,6 +375,7 @@ befehle2.update(
         "vielfache": _("vielfache"),
         "einzeln": _("einzeln"),
         "multis": _("multis"),
+        "multis3": _("multis3"),
         "modulo": _("modulo"),
         "prim": _("prim"),
         "primfaktorzerlegung": _("primfaktorzerlegung"),

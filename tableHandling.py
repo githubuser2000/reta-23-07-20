@@ -410,7 +410,7 @@ class Tables:
                 if type(self.__outType) in (htmlSyntax, bbCodeSyntax):
                     self.cliout2(self.__outType.beginTable)
                 lastlastSubCellIndex = lastSubCellIndex
-                # tabelleLeer = False
+                tabelleLeer = False
                 try:
                     for (
                         BigCellLineNumber,
@@ -436,8 +436,8 @@ class Tables:
 
                             if (
                                 BigCellLineNumber == 0
-                                and iterWholeLine == 0
                                 and self.tables.keineleereninhalte
+                                and iterWholeLine == 0
                                 and all(
                                     [
                                         len(element) < 2
@@ -447,7 +447,7 @@ class Tables:
                                     ]
                                 )
                             ):
-                                # tabelleLeer = True
+                                tabelleLeer = True
                                 self.cliout2("")
                                 # self.cliout2(i18n.keineTabellenAusgabe + ": ")
                             # x("___", filteredLineNumbersofOrignal)
@@ -777,10 +777,11 @@ class Tables:
                                                 )
                                                 + "|"
                                             )
-                        # if tabelleLeer and filteredLineNumbersofOrignal != 0:
+                    if tabelleLeer and filteredLineNumbersofOrignal != 0:
                         # self.cliout2("".join(("(", i18n.keineTabellenAusgabe, ")")))
-                        # print()
-                        # tabelleLeer = False
+                        tabelleLeer = False
+                        # if self.tables.keineleereninhalte:
+                        self.cliout2("")
                 except BreakoutException:
                     pass
                 if type(self.__outType) in (htmlSyntax, bbCodeSyntax):

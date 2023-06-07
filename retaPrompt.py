@@ -29,6 +29,7 @@ from LibRetaPrompt import (BereichToNumbers2, PromptModus,
                            verifyBruchNganzZahlBetweenCommas, verkuerze_dict,
                            wahl15, wahl16)
 from multis import mult
+from multis3 import mult3
 # import reta
 from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
                        befehle2, hauptForNeben, kombiMainParas, mainParas,
@@ -1461,6 +1462,12 @@ def PromptGrosseAusgabe(
                     .replace("'", "")
                     .replace(", ", " ")
                 )
+
+        if Txt.hasWithoutABC({"multis3"}) > 0:
+            cmd_gave_output = True
+
+            listeStrWerte = BereichToNumbers2(zahlenReiheKeineWteiler, False, 0)
+            mult3(listeStrWerte)
 
         if Txt.hasWithoutABC({"multis"}) > 0:
             cmd_gave_output = True

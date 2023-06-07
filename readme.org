@@ -83,11 +83,7 @@
   + html zstd pro Spalte: sukkzessiv mit zentraler lib aber dennoch pro zelle komprimiert: so wie mehrere dateien auch zusammen verschlüsselt werden können, ohne dass die Kompression wieder von vorn beginnen muss: spart platz insgesamt.
   + --nocolor auch für html und bbcode für deren Tag als option umsetzen
   + --parameter=* könnte alle Unter-Parameter meinen, als Kommandozeilenargument. Dürfte nicht so lange dauern einprogrammiert zu werden
-  + Multiplikation aus 3 Faktoren, oder mehr, statt nur aus 2:
-  python print(str((1,*(2,3))))
-  (1, 2, 3)
-  Geht einfach und schnell zu programmieren durch Rekursion.
-+ Dass man bei Kombinationen filtern kann nach nur bestimmten Zahlen, dazu und hinweg - am Besten mit den bisherigeen allen Filtermethoden, den Bereichsangaben, aber auch für Brüche dann ja wohl - das aber vorher detailliert und umfangreich und lang genug vorher planen!
+  + Dass man bei Kombinationen filtern kann nach nur bestimmten Zahlen, dazu und hinweg - am Besten mit den bisherigeen allen Filtermethoden, den Bereichsangaben, aber auch für Brüche dann ja wohl - das aber vorher detailliert und umfangreich und lang genug vorher planen!
 **** 2.3. aus reta.py
 + kombinationen sortiert ausgeben und als Hierarchiebaum den Zahlenkombinationen entlang
 + kombinationen filterbar machen, dass nicht alle kombinationen bei einer Zahl immer angezeigt werden
