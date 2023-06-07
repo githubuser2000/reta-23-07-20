@@ -396,6 +396,8 @@ befehle2.update(
         "G": _("G"),
         "u": _("u"),
         "I": _("I"),
+        "T": _("T"),
+        "triebe": _("triebe"),
         "befehle": _("befehle"),
         "t": _("t"),
         "richtung": _("richtung"),
@@ -2156,6 +2158,7 @@ paraNdataMatrix: list = [
         (
             _("Lust_(9)"),
             _("lust"),
+            _("einheiten"),
         ),
         {255, 391},
     ),
@@ -2365,7 +2368,7 @@ paraNdataMatrix: list = [
             _("bedürfnis"),
             _("bedürfnisse"),
         ),
-        {254},
+        {254, 392},
     ),
     (
         ParametersMain.grundstrukturen,
@@ -4091,6 +4094,7 @@ class retaPrompt:
         befehle2["E"]: befehle2["emotion"],
         befehle2["u"]: befehle2["universum"],
         befehle2["I"]: befehle2["impulse"],
+        befehle2["T"]: befehle2["triebe"],
         befehle2["t"]: befehle2["thomas"],
         befehle2["r"]: befehle2["richtung"],
         befehle2["v"]: befehle2["vielfache"],

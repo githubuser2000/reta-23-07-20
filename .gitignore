@@ -17,6 +17,8 @@ eggs/
 #lib/
 #lib64/
 #lib64
+#lib/pypy3*
+#lib/python3*
 parts/
 sdist/
 var/

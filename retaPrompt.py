@@ -1,23 +1,20 @@
 #!/usr/bin/env pypy3
 # -*- coding: utf-8 -*-
 import os
+import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "libs"))
+import os
 import platform
 import pprint
 import re
 import subprocess
-import sys
 from collections import OrderedDict, defaultdict
 from copy import copy, deepcopy
 from enum import Enum
 from fractions import Fraction
 from itertools import zip_longest
 from typing import Optional
-
-from prompt_toolkit import PromptSession, print_formatted_text, prompt
-# from prompt_toolkit.completion import Completer, Completion, WordCompleter
-from prompt_toolkit.completion import Completer, Completion
-from prompt_toolkit.history import FileHistory, InMemoryHistory
-from prompt_toolkit.styles import Style
 
 from center import (alxp, cliout, gspattern, i18n, invert_dict_B,
                     isZeilenAngabe, isZeilenAngabe_betweenKommas,
@@ -28,13 +25,19 @@ from LibRetaPrompt import (BereichToNumbers2, PromptModus,
                            notParameterValues, stextFromKleinKleinKleinBefehl,
                            verifyBruchNganzZahlBetweenCommas, verkuerze_dict,
                            wahl15, wahl16)
-from multis import mult
-from multis3 import mult3
 # import reta
 from nestedAlx import (ComplSitua, NestedCompleter, ausgabeParas, befehle,
                        befehle2, hauptForNeben, kombiMainParas, mainParas,
                        reta, retaProgram, spalten, spaltenDict, zeilenParas)
+from prompt_toolkit import PromptSession, print_formatted_text, prompt
+# from prompt_toolkit.completion import Completer, Completion, WordCompleter
+from prompt_toolkit.completion import Completer, Completion
+from prompt_toolkit.history import FileHistory, InMemoryHistory
+from prompt_toolkit.styles import Style
 from word_completerAlx import WordCompleter
+
+from multis import mult
+from multis3 import mult3
 
 i18nRP = i18n.retaPrompt
 wahl15[""] = wahl15["15"]
@@ -51,6 +54,7 @@ class TXT(object):
     _text = ""
     _platzhalter = ""
     _stext = []
+    _stextS = []
     _stextE = []
     _e = []
     _stextEmenge = {}
@@ -84,6 +88,10 @@ class TXT(object):
         return self._stextE
 
     @property
+    def listeS(self):
+        return self._stextS
+
+    @property
     def liste(self):
         return self._stext
 
@@ -112,6 +120,7 @@ class TXT(object):
             self._stext = re.split(gspattern, self._text)
         else:
             self._stext = [s.strip() for s in self._text.split() if len(s.strip()) > 0]
+        self._stextS = value.split()
         self._stextSet = set(self._stext)
         self._stextEmenge = self._stextSet | set(self._e)
         self._stextE = self._stext + self._e
@@ -123,6 +132,7 @@ class TXT(object):
         self._stextSet = set(self._stext)
         self._stextEmenge = self._stextSet | set(self._e)
         self._stextE = self._stext + self._e
+        self._stextS = [s for g in [v.split() for v in value] for s in g]
 
     @e.setter
     def e(self, value):
@@ -923,11 +933,6 @@ def PromptGrosseAusgabe(
         from importlib import reload
 
         import __main__
-        import prompt_toolkit
-        import prompt_toolkit.completion
-        import prompt_toolkit.history
-        import prompt_toolkit.styles
-
         import center
         import lib4tables
         import lib4tables_concat
@@ -935,10 +940,15 @@ def PromptGrosseAusgabe(
         import lib4tables_prepare
         import LibRetaPrompt
         import nestedAlx
-        import reta
-        import retaPrompt
+        import prompt_toolkit
+        import prompt_toolkit.completion
+        import prompt_toolkit.history
+        import prompt_toolkit.styles
         import tableHandling
         import word_completerAlx
+
+        import reta
+        import retaPrompt
 
         for a in range(2):
             reload(center)
@@ -981,6 +991,30 @@ def PromptGrosseAusgabe(
             ],
             None,
             ("1,2", "3,4"),
+            Txt,
+            bruch_GanzZahlReziproke,
+            zahlenBereichC,
+            ketten,
+            cmd_gave_output,
+            zeiln1,
+            zeiln2,
+            zeiln3,
+            zeiln4,
+        )
+        was_n_1proN_cmd, cmd_gave_output = retaCmdAbstraction_n_and_1pron(
+            Txt.hasWithoutABC({i18n.befehle2["T"], i18n.befehle2["triebe"]}),
+            [
+                "".join(
+                    (
+                        "--",
+                        i18n.ParametersMain.grundstrukturen[0],
+                        "=",
+                        wahl15["6"],
+                    )
+                )
+            ],
+            None,
+            ("1", "2"),
             Txt,
             bruch_GanzZahlReziproke,
             zahlenBereichC,
@@ -2351,23 +2385,23 @@ def addMoreVals(EsGabzahlenAngaben, bruch2, bruch_GanzZahlReziprokeDazu, dazu, s
 
 
 def PromptVonGrosserAusgabeSonderBefehlAusgaben(loggingSwitch, Txt, cmd_gave_output):
-    if len(Txt.liste) > 0 and Txt.liste[0] in (i18n.befehle2["shell"],):
+    if len(Txt.listeS) > 0 and Txt.listeS[0] in (i18n.befehle2["shell"],):
         cmd_gave_output = True
         try:
-            process = subprocess.Popen([*Txt.liste[1:]])
+            process = subprocess.Popen([*Txt.listeS[1:]])
             process.wait()
         except:
             pass
-    if len(Txt.liste) > 0 and i18n.befehle2["python"] == Txt.liste[0]:
+    if len(Txt.listeS) > 0 and i18n.befehle2["python"] == Txt.listeS[0]:
         cmd_gave_output = True
         try:
-            process = subprocess.Popen(["python3", "-c", " ".join(Txt.liste[1:])])
+            process = subprocess.Popen(["python3", "-c", " ".join(Txt.listeS[1:])])
             process.wait()
         except:
             pass
-    if len(Txt.liste) > 0 and i18n.befehle2["math"] == Txt.liste[0]:
+    if len(Txt.listeS) > 0 and i18n.befehle2["math"] == Txt.listeS[0]:
         cmd_gave_output = True
-        for st in re.split(kpattern, "".join(Txt.liste[1:2])):
+        for st in re.split(kpattern, "".join(Txt.listeS[1:2])):
             try:
                 process = subprocess.Popen(["python3", "-c", "print(" + st + ")"])
                 process.wait()

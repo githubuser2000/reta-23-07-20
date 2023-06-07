@@ -1,14 +1,18 @@
 #!/usr/bin/env pypy3
 # -*- coding: utf-8 -*-
 import json
+import os
 import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "libs"))
 from collections import OrderedDict
 from copy import deepcopy
 from functools import cmp_to_key
 from pprint import pprint
 
-import i18n.words as i18n
 from LibRetaPrompt import wahl15
+
+import i18n.words as i18n
 
 
 def cmp_before(value):

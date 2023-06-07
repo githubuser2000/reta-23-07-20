@@ -2973,6 +2973,7 @@ class Concat:
         place = os.path.join(
             os.getcwd(),
             os.path.dirname(__file__),
+            "..",
             "csv",
             os.path.basename(
                 csvNames.prim

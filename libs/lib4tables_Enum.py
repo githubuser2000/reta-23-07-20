@@ -40,6 +40,7 @@ tableTags = {
         281,
         378,
         377,
+        392,
     },
     frozenset({ST.gleichfoermigesPolygon, ST.keinParaOdMetaP, ST.universum}): {
         205,
@@ -141,6 +142,7 @@ tableTags = {
         384,
         388,
         389,
+        391,
     },
     frozenset({ST.sternPolygon, ST.galaxie}): {
         0,

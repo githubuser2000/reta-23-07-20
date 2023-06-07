@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 import sys
 import os
-
-
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "libs"))
 def externCommand(cmd: str, Parameter1: str):
     import subprocess
     Parameter = Parameter1.split()

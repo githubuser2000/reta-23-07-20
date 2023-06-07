@@ -1,15 +1,12 @@
 """
 Nestedcompleter for completion of hierarchical data structures.
 """
+import sys
+
+sys.path.insert(0, "libs")
 import difflib
 from enum import Enum
 from typing import Any, Dict, Iterable, Mapping, Optional, Set, Union
-
-# from baseAlx import WordCompleter
-# from completionAlx import Completion
-from prompt_toolkit.completion import (CompleteEvent, Completer, Completion,
-                                       FuzzyWordCompleter)
-from prompt_toolkit.document import Document
 
 from center import i18n
 from LibRetaPrompt import (PromptModus, ausgabeArt, ausgabeParas, befehle,
@@ -18,6 +15,11 @@ from LibRetaPrompt import (PromptModus, ausgabeArt, ausgabeParas, befehle,
                            mainParas, reta, retaProgram, spalten, spaltenDict,
                            stextFromKleinKleinKleinBefehl, zeilenParas,
                            zeilenTypen, zeilenZeit)
+# from baseAlx import WordCompleter
+# from completionAlx import Completion
+from prompt_toolkit.completion import (CompleteEvent, Completer, Completion,
+                                       FuzzyWordCompleter)
+from prompt_toolkit.document import Document
 # from prompt_toolkit.completion.word_completer import WordCompleter
 from word_completerAlx import WordCompleter
 

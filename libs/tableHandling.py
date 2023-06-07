@@ -1201,6 +1201,7 @@ class Tables:
             place = os.path.join(
                 os.getcwd(),
                 os.path.dirname(__file__),
+                "..",
                 "csv",
                 os.path.basename(csvFileName),
             )

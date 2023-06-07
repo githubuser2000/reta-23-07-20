@@ -1,10 +1,11 @@
 #!/usr/bin/env pypy3
 # -*- coding: utf-8 -*-
+import os
 import sys
 import unittest
 
-sys.path.insert(0, "/home/alex/myRepos/reta")
-sys.path.insert(1, "/home/alex/myRepos/reta/i18n")
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(1, os.path.join(os.path.dirname(__file__), "..", "i18n"))
 import center
 import retaPrompt
 import words
