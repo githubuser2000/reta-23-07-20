@@ -3,7 +3,8 @@ Bequemer ist retaPrompt, was es mit Voreinstellungen noch als rp und rpl gibt.
 
 Bedienungsanleitung:
 Es gibt 4 Hauptparameter.
-**Wichtig: die Nebenparameter müssen direkt hinter dem richtigen Hauptparamter stehen, sonst wirken sie nicht und dazwischen darf kein anderer Hauptparameter stehen!**
+**Wichtig: die Nebenparameter müssen direkt hinter dem richtigen Hauptparamter stehen, sonst wirken sie
+nicht und dazwischen darf kein anderer Hauptparameter stehen!**
 Hauptparameter beginnen mit einem Minus -.
 Nebenparameter beginnen mit 2 Minus --.
 
@@ -52,68 +53,62 @@ Besser die Readme aus Markdown mit einem Markdown-Leseprogramm lesen!
 ## -spalten
 
     * --alles
-    * --wichtigsteverstehen=
-        * wichtigste,zweitwichtigste,drittwichtigste,viertwichtigste
-    * --wichtigsteeinordnen=
-        * wichtigste,zweitwichtigste
     * --breite=
-        * 40
-        * 70
     * --breiten=
-        * 20,50,10,70
-        * 30,100,20
-    * --keinenummerierung
-    * --religionen=
-        * sternpolygon,dertierkreiszeichen,gleichfoermigespolygon,vertreterhoehererkonzepte,messias,religionsgründertyp,vergleich,hinduismus
-    * --galaxie= oder
-    --kreis=
-        * tierkreiszeichen,thomasevangelium,analytischeontologie,offenbarungdesjohannes,chinesischeshoroskop,kugelnkreise,modallogik,innenaussenstrukur,weltall,hochzuechten
-    * --groessenordnung=
-        * strukturgroesse, organisation, politischesysteme, licht
-    * --universum= oder --kugel=
-        * transzendentalien,komplexitaet,ontologie,kugelnkreise,gegentranszendentalien,systemsachen,transzendentalienreziproke,warumtranszendentaliegleichkomplexitaet,warumtranszendentaliezustrukturgroesseundcharakter,metaparadigmareligion,kategorie,weltall,netzwerk,geist,hochzuechten,kombinierenetc,programmierparadigmen,verhaeltnisgleicherzahl
-    * --menschliches=
-        * liebe,ethik,angreifbarkeit,motivation,erhalten,erwerben,benoetigen,krankheit,alpha,kreativ,chef,beruf,loesungen,musik,glaube,erkenntnis,dominierendesgeschlecht,incel,ausgangslage,sinndeslebens,emotionen,gleichheit,wirkung,egoismus,gegentranszendentalien,denkweise,intelligenzprobleme,manipulation,fachbereiche,moral,ehrlich,hoeflich,klasse,wahrnehmung,bewusstsein,menschtier
-    * --procontra=
-        * pro,contra,gegenteil,harmonie,helfen,hilfeerhalten,gegenposition,pronutzen,nervig,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,gegenspieler,sinn,vorteile,veraendern,kontrollieren,einheit,primzahlkreuz,positionen
-    * --wirtschaft=
-        * system,realistisch,funktioniert,erklaerung,maschinen,organisationsform,bwl,pflanzen,fachbereiche
-    * --licht
-    * --bedeutung=
-        * primzahlen,anwendungdersonnen,zaehlungen,jura,geist,gestirn,mechanismen,zuechtung,konjunktiv,wurzel,vorzeichen,inreta
-    * --symbole
-    * --grundstrukturen
-        * konkreta,impulse,gefuehle,modus,wirklichkeiten,metasysteme,paradigmen,meta-paradigmen,positionen,geist,verbundenheiten,triebe,lust,reflexe,absicht6,absicht7,absicht10,absicht17,zeit,funktionen,vorstellungen,wahrheit,wahrnehmung,achtung,focus,absicht1pro8,ziele,reflektion,kategorien,regung,energie,universelleeigenschaften,stimmungen,klassen,kombinationen,empathie,energie,garben,nachvollziehen,absicht1pro6,verhalten,bedeutung,optimierung,themen,attraktionen,absicht16,liebe,koalitionen,prinzipien,ordnenundfiltern,bedingung,ausloeser,relativerzeitbetrag,zahlenvergleich,erwartungen,vorstellungen,ansichten,extremalien,existenzialien,universellerkomperativ,relativreziprokuniversell,sollen,grundstrukturen,abhaengigkeit,helfen
-    * --eigenschaften=
-    * oder
-    * --konzept
-        * weisheit,gut,zeit,ruf,egoismus,kausal,liebepolung,einheit,meinungsintelligenz,ursprungsintelligenz,sanft,hart,egalitaer,autoritaer,ueberheblich,foerdern,durchleuchten,sittlichkeit,fuehrung,sinn,familiaer,goettlich,wertvoll,gleich,ueberleben,abgeneigt,zugeneigt,tragweite,aehnlich,ehrlich,hoeflich,variationsreich,selbstlos,kooperation,arsch,liebe,wissenschaft,einklinken,selbstsucht,ichsucht,ego,familiebrauchen,recht,einklinken,anprangern,vertrauenerhalten,forschen,erfinden,ehrlichkeit,streit,unterlegen,ueberlegen
-    * --Eigenschaften_1/n=
-    * oder
-    * --konzept2
-        * akzeptanz,toleranz,respekt,einrichten,ausrichten,werte,gutesreziproke,reflektieren,vertrauenwollen,regel,ausnahme,würdig
-    * --inkrementieren=
-        * um1,um2,um3,warumtranszendentaliezustrukturgroesseundcharakter,warumtranszendentaliegleichkomplexitaet,addition
-    * --operationen=
-        * halbierungen,2,3,4,5,9,multiplikation
-    * --universummetakonkret=
-        * konkret,meta,theorie,praxis,ganzheitlich,hinausgehend,management,veraendernd,unternehmung,wert,richtung,regieren
-    * --primzahlwirkung=
-        * universum,absichtgalaxie,absichtgalaxiereziproke,universumreziproke,richtungrichtung,dagegengegenstrukturalie,neutralegegenstrukturalie
-    * --multiplikationen=
-        * beschrieben,motivstern,strukturstern,motivgleichfoermig,strukturgleichfoermig,motivgebrstern,strukgebrstern,motivgebrgleichf,strukgebrgleichf,rahmen
-    * --gebrochengalaxie=
-        * 2,3,4,5,6,7,8,9,10,11,12,13,14,15, ..... usw.
-    * --gebrochenuniversum=
-        * 2,3,4,5,6,7,8,9,10,11,12,13,14,15, ..... usw.
-    * --planet=
-        * komplexitaet,freiheit,gleichheit,mechanismen,intelligenz,metasysteme,wirklichkeiten,ordnung
+    
+    * --wichtigsteverstehen= 
+        * wichtigste,zweitwichtigste,drittwichtigste,viertwichtigste
+    * --menschliches= 
+        * menschtier,ansichten,richtungen,klasse,moral,fachgebiete,sinndeslebens,intelligenzprobleme,lebewesendenkweise,gegentranszendentalien,gleichheitfreiheit,emotionen,egoismus,wirkung,incel,irrationalezahlendurchwurzelbildung,dominierendesgeschlecht,liebe,glauben,angreifbarkeit,motive,positionen,bewusstsein,errungenschaften,evolutionärerwerbenundintelligenz,benoetigen,krankheit,alphabeta,anfuehrer,manipulation,berufe,lösungen,musik,ehrlich
+    * --planet= 
+        * wirklichkeit,metasysteme,intelligenz,gleichheit,komplexität,mechanismen
+    * --wichtigsteeinordnen= 
+        * wichtigstes,zweitwichtigste
+    * --operationen= 
+        * halbierung,fünf,neun,drei,zwei,multiplikation,vier
+    * --religionen= 
+        * religionsgründertyp,hinduismus,sternpolygon,dertierkreiszeichen,vergleich,messias,gleichförmigespolygon,vertreterhoehererkonzepte
+    * --galaxie= 
+        * offenbarung,hochzüchten,kugelnkreise,chinesischeshoroskop,tierkreiszeichen,thomasevangelium,analytischeontologie,innenaussenstrukur,modallogik,weltall
+    * --inkrementieren= 
+        * addition,um1,um2,um3,warumtranszendentaliezustrukturgroesseundcharakter,warumtranszendentaliegleichkomplexitaet
+    * --universum= 
+        * strategie,verhaeltnisgleicherzahl,recht,kombinierenetc,hochzüchten,addition,metaparadigmareligion,kugelnkreise,analytischeontologie,gegentranszendentalien,systemsachen,transzendentalien,transzendentalienreziproke,netzwerk,warumtranszendentaliezustrukturgroesseundcharakter,kategorie,weltall,programmierparadigmen,geist,warumtranszendentaliegleichkomplexitaet,modelofhierarchicalcomplexity
+    * --multiversum= 
+        * multiversalien,teilchen
+    * --groessenordnung= 
+        * licht,Größenordnung,organisationen,politischesysteme
+    * --universummetakonkret= 
+        * meta,konkret,theorie,praxis,management,veraendernd,mathematisch_diskret,hinausgehend,unternehmen,wert,regieren,richtung
+    * --primzahlwirkung= 
+        * universum,richtungrichtung,absichtgalaxie,absichtgalaxiereziproke,universumreziproke,dagegengegentranszendentalie,neutralegegentranszendentalie
+    * --grundstrukturen= 
+        * modelofhierarchicalcomplexity,Transzendentalien,bedingung,massnahmen,relativreziprokuniversell,universellerkomperativ,existenzialien,extremalien,erwartungen,leidenschaft,relativerzeitbetrag,zahlenvergleich,bestrebung,prinzipien,attraktionen,optimierung,themen,bedeutung,reziproke,achtung,zeit,absicht16,absicht17,absicht6,absicht7,regung,verhalten,energie,garben,nachvollziehen,empathie,absicht1/6,absicht10,geist,reflex,lust,paradigmen,wirklichkeit,stimmung,klasse,ordnen,metasysteme,absicht1pro8,ziele,konkreta,gefuehle,abhaengigkeit,karte,fundament,positionen,vorstellungen,sollen,ansichten,verbundenheiten,absicht13,liebe,koalitionen,impulse,trieb,reflektion,zustaende
+    * --wirtschaft= 
+        * fachgebiete,pflanzen,maschinen,organisationsform,system,funktioniert,erklärung,bwl
+    * --procontra= 
+        * ergibtsinn,veraenderung,baendigenkontrollieren,einheit,vorteile,gegenspieler,nervig,pronutzen,gegenposition,hilfeerhalten,helfen,pro,nichtauskommen,nichtdagegen,keingegenteil,nichtdafuer,hilfenichtgebrauchen,nichthelfenkoennen,nichtabgeneigt,unmotivierbar,dagegen,gegenteil,harmonie,primzahlkreuz
+    * --licht 
+    * --bedeutung= 
+        * primzahlkreuz,inreta,vorzeichen,primzahlen,anwendungdersonnenundmonde,zählungen,jura,vollkommenheit,gestirn,konjunktiv,mechanismen
+    * --gebrochen-rational_Galaxie_n/m= 
+        * 23,22,8,4,7,10,17,13,14,9,2,20,12,3,18,21,5,19,15,11,6,16
+    * --gebrochen-rational_Universum_n/m= 
+        * 23,22,8,4,7,10,17,13,14,9,2,20,12,3,18,21,5,19,15,11,6,16
+    * --symbole 
+    * --eigenschaften= 
+        * weisheit,rechte,unterlegen,streit,einklinken,familiebrauchen,bescheiden,selbstsucht,wissenschaft,arschloch,liebe,selbstlos,eintönig,abgeneigt,ehrlich,tragweite,wertlos,familiaer,sanft,vereinenverbinden,aehnlich,gut,sinn,zeit,egalitaerautoritaer,meinungen,meinungsintelligenz,sittlichkeit,führung,durchleuchten,foerdern,überheblich,liebepolung,egoismus,geltung,gleich,ueberleben
+    * --konzept2= 
+        * wuerdig,regel,filterart,werte,position,reflektieren,vertrauenwollen,einrichten,toleranz
+    * --multiplikationen= 
+        * rahmen,motivgleichfoermig,strukturgleichfoermig,motivstern,strukturstern,motivgebrstern,strukgebrstern,motivgebrgleichf,strukgebrgleichf,beschrieben
+
 
 ## -kombination
     * --galaxie=
-        * tiere,berufe,intelligenz,liebe,frauen,maenner,persoenlichkeit,religionen,motive,emotionen,personen,wirtschaftssysteme
+        * Lebewesen,tiere,tier,lebewesen,Berufe,berufe,beruf,Kreativität_und_Intelligenz,kreativität,intelligenz,kreativitaet,Liebe,liebe,Männer,männer,maenner,frauen,Persönlichkeit_evolutionär_erwerben,evolution,erwerben,persoenlichkeit,persönlichkeit,Religion,religion,religionen,Motive_Ziele,motivation,ziele,ziel,motive,Emotionen,emotionen,gefuehle,emotion,gefühl,gefühle,Personen,personen,berühmtheiten,beruehmtheiten,Wirtschaftssysteme,wirtschaftssystem,wirtschaftssysteme,kombinierteswirtschaftssystem,kombiniertewirtschaftssysteme
     * --universum=
-        * tiere,berufe,transzendentalien,strukturalien,primzahlkreuz,persoenlichkeit,ontologie,mechanismen,gegentranszendentalien,maschinen,addition,motive,geist
+        * Lebewesen,tiere,tier,lebewesen,Berufe,berufe,beruf,Transzendentalien_Strukturalien,transzendenz,transzendentalien,strukturalien,alien,Primzahlkreuz,leibnitz,primzahlkreuz,Persönlichkeit_evolutionär_erwerben,evolution,erwerben,persoenlichkeit,persönlichkeit,Religion,religion,religionen,Motive_Ziele,motivation,motive,ziele,ziel,analytische_Ontologie,analytischeontologie,ontologie,Personen,personen,berühmtheiten,beruehmtheiten,Mechanismen_der_Zuechtung,mechanismen,wesen,zuechten,züchten,Gegentranszendentalien,gegentranszendentalien,gegenstrukturalien,Maschinen,maschinen,geräte,geraete,Geist,geist,Bewusstsein,bewusstsein
 
 
 ## -ausgabe
