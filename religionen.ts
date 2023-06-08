@@ -749,12 +749,16 @@ for (i = 0; i < tdClasses1.length; i++)
 };
 
 function makeMapsOfHeadLCheckB(p1: string, p2: string | null, num: string | number, tags: any): void {
-  if (typeof mapMapMap[p1][p2] === "undefined") mapMapMap[p1][p2] = new Set();
-  mapMapMap[p1][p2].add(num);
-  if (typeof mapMapMapTags[p1] === "undefined") mapMapMapTags[p1] = {};
-  if (typeof mapMapMapTags[p1][p2] === "undefined")
+  try {
+    mapMapMap[p1][p2].add(num);
+  } catch(e:Exception){
+    mapMapMap[p1][p2] = new Set();
+    mapMapMap[p1][p2].add(num);
+  }
+  if (typeof mapMapMapTags[p1] === "undefined") mapMapMapTags[p1] = [];
+  if (typeof mapMapMapTags[p1][p2] !== "Set")
     mapMapMapTags[p1][p2] = new Set();
-  if (typeof tags != "undefined" && tags != "null")
+  if (typeof tags !== "Set" && tags != "null")
     mapMapMapTags[p1][p2] = new Set([...mapMapMapTags[p1][p2], ...tags]);
 }
 

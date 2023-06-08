@@ -708,14 +708,18 @@ window.onload = function () {
     document.body.style.backgroundImage = 'url(' + polyg2 + ')';*/
 };
 function makeMapsOfHeadLCheckB(p1, p2, num, tags) {
-    if (typeof mapMapMap[p1][p2] === "undefined")
+    try {
+        mapMapMap[p1][p2].add(num);
+    }
+    catch (e) {
         mapMapMap[p1][p2] = new Set();
-    mapMapMap[p1][p2].add(num);
+        mapMapMap[p1][p2].add(num);
+    }
     if (typeof mapMapMapTags[p1] === "undefined")
-        mapMapMapTags[p1] = {};
-    if (typeof mapMapMapTags[p1][p2] === "undefined")
+        mapMapMapTags[p1] = [];
+    if (typeof mapMapMapTags[p1][p2] !== "Set")
         mapMapMapTags[p1][p2] = new Set();
-    if (typeof tags != "undefined" && tags != "null")
+    if (typeof tags !== "Set" && tags != "null")
         mapMapMapTags[p1][p2] = new Set([...mapMapMapTags[p1][p2], ...tags]);
 }
 function disEnAbleChks(Enums1) {
