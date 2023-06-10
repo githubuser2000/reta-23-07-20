@@ -7,6 +7,7 @@ from fractions import Fraction
 from typing import Optional
 
 import reta
+
 from center import (BereichToNumbers2, Primzahlkreuz_pro_contra_strs,
                     gspattern, i18n, isZeilenAngabe,
                     isZeilenAngabe_betweenKommas, isZeilenBruchAngabe,
@@ -502,6 +503,7 @@ def verifyBruchNganzZahlBetweenCommas(
     zahlenAngaben_,
 ):
 
+    x("blub ", etwaBruch)
     isBruch, isGanzZahl = isZeilenAngabe_betweenKommas(
         bruchBereichsAngabe
     ), isZeilenAngabe_betweenKommas(etwaBruch)
