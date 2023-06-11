@@ -47,6 +47,9 @@
 ***** unwichtiges
 + Ich könnte erweitern aus welchen Dingen ich noch bestehe, der höheren Art, wie höhere Gefühle und Impulse, etc. Denn das gabs vorher nicht.
 *** 2. Feature Ideen
++ " * " mit "?" oder regex überall auch, z.B. bei 15_*_10 oder bei Zahlenbereichen oder bei spalten.
+  + Ich könnte direkt die Python Regexe dafür verwenden, das also weiterleiten.
++ Alles in Klammern ermöglichen und nicht nur Generatoren aus Python. Außerdem Formeln erlauben, wo jetzt schon Generatoren funktionieren.
 + KI die höheren antik griechischen Symbolnamen fortsetzen lassen: also nur content
 + Reziproke und n/m für w Befehl ermöglichen
 + Brucherweiterungen aus Spalte aus der csv in n/m und n/n Dingen in retaPrompt mit dazu ausgeben.
