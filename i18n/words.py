@@ -2018,7 +2018,7 @@ paraNdataMatrix: list = [
             _("achtung"),
             _("achten"),
         ),
-        {270},
+        {270, 393},
     ),
     (
         ParametersMain.grundstrukturen,
@@ -2368,7 +2368,7 @@ paraNdataMatrix: list = [
             _("bedürfnis"),
             _("bedürfnisse"),
         ),
-        {254, 392},
+        {254},
     ),
     (
         ParametersMain.grundstrukturen,
