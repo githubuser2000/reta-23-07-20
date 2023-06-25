@@ -434,9 +434,21 @@ class Tables:
                             #     ],
                             # )
 
+                            # alxp(self.tables.keineleereninhalte)
+                            # alxp(self.tables.keineleereninhalte)
                             if (
                                 BigCellLineNumber == 0
-                                and self.tables.keineleereninhalte
+                                and (
+                                    self.tables.keineleereninhalte
+                                    or all(
+                                        [
+                                            len(element.strip()) == 0
+                                            for row in newTable[1:]
+                                            for element in row[lastlastSubCellIndex + 1]
+                                            # if len(a) > 1
+                                        ]
+                                    )
+                                )
                                 and iterWholeLine == 0
                                 and all(
                                     [
