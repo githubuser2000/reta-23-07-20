@@ -130,6 +130,7 @@ def retaHilfe():
     with open(place, encoding="utf-8") as f:
         markdownText = f.read()
     print(markdownText)
+    # return markdownText
     # for m in markdownText.split("\n"):
     #    console = Console(soft_wrap=False, width=len(m), markup=False)
     #    md = Markdown(m, style="emacs")
@@ -622,7 +623,6 @@ def textHatZiffer(text) -> bool:
 
 
 def primfaktoren(n, modulo=False):
-
     """zerlegt eine Zahl in ihre Primfaktoren
 
     >>> primfaktoren(24)

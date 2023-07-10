@@ -502,8 +502,6 @@ def verifyBruchNganzZahlBetweenCommas(
     etwaBruch,
     zahlenAngaben_,
 ):
-
-    x("blub ", etwaBruch)
     isBruch, isGanzZahl = isZeilenAngabe_betweenKommas(
         bruchBereichsAngabe
     ), isZeilenAngabe_betweenKommas(etwaBruch)
