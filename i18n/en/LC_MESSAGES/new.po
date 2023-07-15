@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-06 18:41+0200\n"
+"POT-Creation-Date: 2023-07-15 15:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3729,8 +3729,16 @@ msgstr ""
 #~ msgid "{}{}{} ergibt sich aus '{}' und ergibt danach reta-Befehl:"
 #~ msgstr "{}{}{} results from '{}' and results reta command after:"
 
-#~ msgid "ein Mal kein Tabelleninhalt"
-#~ msgstr "one time no table content"
-
+# msgid "ein Mal kein Tabelleninhalt"
+# msgstr "one time no table content"
 #~ msgid "Das ist kein Befehl! -> '{}'"
 #~ msgstr "This is not a command! -> '{}'"
+
+#~ msgid "multis3"
+#~ msgstr "multis3"
+
+#~ msgid "T"
+#~ msgstr "D"
+
+#~ msgid "einheiten"
+#~ msgstr "units"

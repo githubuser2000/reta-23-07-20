@@ -341,6 +341,7 @@ wahl15: dict = {
     "13_13": _("Absicht_13_ist_Helfen"),
     "1pro12": _("Karte_Filter_und_Unterscheidung_(1/12)"),
     "39": _("Maßnahmen_(39)"),
+    "1pro6": _("innere_Werte_1/6_der_Reinigung_und_Klarheit"),
 }
 wahl16 = {
     "16": ",".join(wahl16Words.values()),
@@ -2130,6 +2131,14 @@ paraNdataMatrix: list = [
     (
         ParametersMain.grundstrukturen,
         (
+            _("innere_Werte_1/6_der_Reinigung_und_Klarheit"),
+            _("innerewerte"),
+        ),
+        {398, 399, 400, 401},
+    ),
+    (
+        ParametersMain.grundstrukturen,
+        (
             _("Absicht_10_ist_Wirklichkeit_erkennen"),
             _("absicht10"),
         ),
@@ -2367,8 +2376,9 @@ paraNdataMatrix: list = [
             _("triebe"),
             _("bedürfnis"),
             _("bedürfnisse"),
+            _("werte"),
         ),
-        {254},
+        {254, 396, 397},
     ),
     (
         ParametersMain.grundstrukturen,
@@ -3973,7 +3983,6 @@ class lib4tables:
 
 
 class retapy:
-
     beschriebenWort = _("beschrieben")
     nichtsWort = _("nichts")
     cliout1Saetze = (
