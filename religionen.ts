@@ -212,9 +212,9 @@ function subFkt1_PolyTpes(Enums1: Array<number> | Set<number> | HTMLCollectionOf
 
 
 function giveSetOfPolyTypes(Enums1: Array<number> | Set<number> | HTMLCollectionOf<any>): void  {
-  var ifDrawPoly: Set<number> = new Set();
+  var ifDrawPoly: Set<number> = new Set(Enums1);
   var [Enums, Enume, abzug] = subFkt1_PolyTpes(Enums1);
-  subFkt3(Enums, (unimportantVar: number) => {},SubFkt3SubFkt2bPtr, ifDrawPoly, TRs);
+  subFkt3(Enums, (unimportantVar: number) => {}, SubFkt3SubFkt2bPtr, ifDrawPoly, TRs);
   //subFkt3(Enums, (unimportantVar: number) => {},SubFkt3SubFkt2bPtr, ifDrawPoly);
   //ifDrawPoly.delete(0);
   //ifDrawPoly.delete(1);
@@ -226,34 +226,40 @@ var SubFkt3SubFkt2bPtr: (i: number, k?: number, ifDrawPoly?:Set<number>,spalten4
     //ifDrawPoly.add(k);
     //spalten4spaltenTags[i][k].style.fontSize = "100%";
       //
+    //
+    //console.log([...ifDrawPoly])
+    //
+    //TDs = TRs[i].cells as HTMLCollectionOf<HTMLTableCellElement>;
+    //console.log(TDs[k].innerHTML)
     if (!isNaN(TDs[1].innerHTML.trim())) {
         if (i>4 && i<21) {
-            //for (var k: number = 0; k < TDs.length; k++) {
-            if ( ifDrawSpoly.has(k)) {
-                //window.alert("yes2");
-                TDs[k].style.backgroundImage = 'url(' + polyg1 + ')';
-                //TDs[k].style.backgroundRepeat = 'no-repeat';
-                TDs[k].style.backgroundPosition = 'center';
-            }
-            if ( ifDrawgfPoly.has(k)) {
-                //window.alert("yes2");
-                TDs[k].style.backgroundImage = 'url(' + polyg2 + ')';
-                //TDs[k].style.backgroundRepeat = 'no-repeat';
-                TDs[k].style.backgroundPosition = 'center';
+            for (var m: number = 0; m < TDs.length; m++) {
+                if ( ifDrawPoly.has(0)) {
+                    //window.alert("yes2");
+                    TDs[m].style.backgroundImage = 'url(' + polyg1 + ')';
+                    //TDs[m].style.backgroundRepeat = 'no-repeat';
+                    TDs[m].style.backgroundPosition = 'center';
+                }
+                if ( ifDrawPoly.has(1)) {
+                    //window.alert("yes2");
+                    TDs[m].style.backgroundImage = 'url(' + polyg2 + ')';
+                    //TDs[m].style.backgroundRepeat = 'no-repeat';
+                    TDs[m].style.backgroundPosition = 'center';
+                }
             }
         }
         if (i<5) {
-            //for (var k: number = 0; k < TDs.length; k++) {
-            if ( ifDrawSpoly.has(k) || ifDrawgfPoly.has(k)) {
-                //window.alert("yes2");
-                TDs[k].style.backgroundImage = 'url(' + polyg2 + ')';
-                //TDs[k].style.backgroundRepeat = 'no-repeat';
-                TDs[k].style.backgroundPosition = 'center';
+            for (var m: number = 0; m < TDs.length; m++) {
+                if ( ifDrawPoly.has(0) || ifDrawPoly.has(1)) {
+                    //window.alert("yes2");
+                    TDs[m].style.backgroundImage = 'url(' + polyg2 + ')';
+                    //TDs[m].style.backgroundRepeat = 'no-repeat';
+                    TDs[m].style.backgroundPosition = 'center';
+                }
             }
         }
     }
 }
-
 function returnChangeButtons(number1: number): string {
   var number = number1.toString()
   return (
@@ -695,20 +701,23 @@ for (i = 0; i < tdClasses1.length; i++)
     grunp2Keys
   );*/
   //window.alert(TRs.length);
-  var ueberschrift: string;
+  //var ueberschrift: string;
   //const regex1: RegExp = /(?<!\() n (?!\d|\/)/;
+  /*
   const regex2: RegExp = /(?<! )1\/n|(?<!\()1\/n(?!\))/;
   const regex3: RegExp = /(?<! )1\/|(?<!\()1\/(?!\))/;
   const regex4 = /\(\s*\d+\s*\)|\s+\d+\s+|\s+\d+$/;
   const regex5 = /\(\s*1\/\d+\s*\)|\s+1\/\d+\s+|\s+1\/\d+$/;
   const regex6 = /[a-zA-Z\(]+\d+$|[a-zA-Z\(]+\d+[^\d]+/;
-
-  ifDrawgfPoly =  new Set();
-  ifDrawSpoly =  new Set();
-  /*ifDrawgfPoly =  giveSetOfPolyTypes([1]);
-  ifDrawSpoly =  giveSetOfPolyTypes([0]);
-  ifDrawgfPoly = new Set([...ifDrawgfPoly].filter((x) => !ifDrawSpoly.has(x)));
+  */
+  //ifDrawgfPoly =  new Set();
+  //ifDrawSpoly =  new Set();
+  giveSetOfPolyTypes([1]);
+  giveSetOfPolyTypes([0]);
+  //giveSetOfPolyTypes([0]);
+  /*ifDrawgfPoly = new Set([...ifDrawgfPoly].filter((x) => !ifDrawSpoly.has(x)));
   ifDrawSpoly = new Set([...ifDrawSpoly].filter((x) => !ifDrawgfPoly.has(x)));*/
+  /*
   for (var i: number = 0; i < TRs.length; i++) {
         TDs = TRs[i].cells as HTMLCollectionOf<HTMLTableCellElement>;
         for (var k: number = 0; k < TDs.length; k++) {
@@ -767,7 +776,7 @@ for (i = 0; i < tdClasses1.length; i++)
 
         }
   }
-
+  */
   /*sPolygon = new StarPolygon(150);
   polyg1 = sPolygon.drawStarPolygon(7, 25, 25, 25);
   polyg2 = sPolygon.drawStarPolygon(10, 75, 75, 75);
@@ -876,7 +885,6 @@ const primZahlen: number[] = [
 
 
 function subFkt3(Enums: number[], SubFkt3SubFkt2Var: (i3: number, k3?: number, ifDrawPoly?:Set<number>, spalten4spaltenTags?: any) => void | Set<number>, SubFkt3SubFkt1Var: (i3: number, k3?: number, ifDrawPoly?:Set<number>, spalten4spaltenTags?: any) => void | Set<number>, ifDrawPoly: Set<number>, chks2orSpaltenTagsOrTRs: any[][]| HTMLCollectionOf<HTMLTableRowElement>): void {
-  //console.log(Enums)
   var enumi: Set<number> = new Set();
   for (var i: number = ((chks2orSpaltenTagsOrTRs === spaltenTags) ? 2 : 0); i < chks2orSpaltenTagsOrTRs.length; i++) {
     enumi = new Set();
@@ -885,6 +893,7 @@ function subFkt3(Enums: number[], SubFkt3SubFkt2Var: (i3: number, k3?: number, i
         if (chks2orSpaltenTagsOrTRs[i][k] == Enums[l].toString())
           enumi.add(Enums[l]);
       if (TRs === chks2orSpaltenTagsOrTRs){
+        //console.log("ja1")
         TDs = TRs[i].cells as HTMLCollectionOf<HTMLTableCellElement>;
         if (i>4 && i<21) {
             if (!isNaN(TDs[1].innerHTML.trim())) {
@@ -2172,7 +2181,7 @@ function erlaubeVerbieteZeilenBeiZeilenErlaubenVerbieten(which: number) {
   //window.alert(neuErlauben+" "+neuHinfort+" "+dazuErlauben+" "+dazuHinfort);
   const spalte: HTMLCollectionOf<HTMLTableRowElement> = document.getElementById("bigtable").rows;
   var tabellenZelle: HTMLTableRowElement;
-  var echteZeilenNummer1: RegExpMatchArray ;
+  var echteZeilenNummer1: RegExpMatchArray | null;
   var echteZeilenNummer: number;
   for (var s: number = 1; s < spalte.length; s++) {
     tabellenZelle = spalte[s];

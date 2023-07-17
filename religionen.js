@@ -201,7 +201,7 @@ function subFkt1_PolyTpes(Enums1) {
     return [Enums, Enume, abzug];
 }
 function giveSetOfPolyTypes(Enums1) {
-    var ifDrawPoly = new Set();
+    var ifDrawPoly = new Set(Enums1);
     var [Enums, Enume, abzug] = subFkt1_PolyTpes(Enums1);
     subFkt3(Enums, (unimportantVar) => { }, SubFkt3SubFkt2bPtr, ifDrawPoly, TRs);
     //subFkt3(Enums, (unimportantVar: number) => {},SubFkt3SubFkt2bPtr, ifDrawPoly);
@@ -214,29 +214,36 @@ var SubFkt3SubFkt2bPtr = function SubFkt3SubFkt2b(i, k = 0, ifDrawPoly = new Set
     //ifDrawPoly.add(k);
     //spalten4spaltenTags[i][k].style.fontSize = "100%";
     //
+    //
+    //console.log([...ifDrawPoly])
+    //
+    //TDs = TRs[i].cells as HTMLCollectionOf<HTMLTableCellElement>;
+    //console.log(TDs[k].innerHTML)
     if (!isNaN(TDs[1].innerHTML.trim())) {
         if (i > 4 && i < 21) {
-            //for (var k: number = 0; k < TDs.length; k++) {
-            if (ifDrawSpoly.has(k)) {
-                //window.alert("yes2");
-                TDs[k].style.backgroundImage = 'url(' + polyg1 + ')';
-                //TDs[k].style.backgroundRepeat = 'no-repeat';
-                TDs[k].style.backgroundPosition = 'center';
-            }
-            if (ifDrawgfPoly.has(k)) {
-                //window.alert("yes2");
-                TDs[k].style.backgroundImage = 'url(' + polyg2 + ')';
-                //TDs[k].style.backgroundRepeat = 'no-repeat';
-                TDs[k].style.backgroundPosition = 'center';
+            for (var m = 0; m < TDs.length; m++) {
+                if (ifDrawPoly.has(0)) {
+                    //window.alert("yes2");
+                    TDs[m].style.backgroundImage = 'url(' + polyg1 + ')';
+                    //TDs[m].style.backgroundRepeat = 'no-repeat';
+                    TDs[m].style.backgroundPosition = 'center';
+                }
+                if (ifDrawPoly.has(1)) {
+                    //window.alert("yes2");
+                    TDs[m].style.backgroundImage = 'url(' + polyg2 + ')';
+                    //TDs[m].style.backgroundRepeat = 'no-repeat';
+                    TDs[m].style.backgroundPosition = 'center';
+                }
             }
         }
         if (i < 5) {
-            //for (var k: number = 0; k < TDs.length; k++) {
-            if (ifDrawSpoly.has(k) || ifDrawgfPoly.has(k)) {
-                //window.alert("yes2");
-                TDs[k].style.backgroundImage = 'url(' + polyg2 + ')';
-                //TDs[k].style.backgroundRepeat = 'no-repeat';
-                TDs[k].style.backgroundPosition = 'center';
+            for (var m = 0; m < TDs.length; m++) {
+                if (ifDrawPoly.has(0) || ifDrawPoly.has(1)) {
+                    //window.alert("yes2");
+                    TDs[m].style.backgroundImage = 'url(' + polyg2 + ')';
+                    //TDs[m].style.backgroundRepeat = 'no-repeat';
+                    TDs[m].style.backgroundPosition = 'center';
+                }
             }
         }
     }
@@ -658,73 +665,82 @@ window.onload = function () {
       grunp2Keys
     );*/
     //window.alert(TRs.length);
-    var ueberschrift;
+    //var ueberschrift: string;
     //const regex1: RegExp = /(?<!\() n (?!\d|\/)/;
-    const regex2 = /(?<! )1\/n|(?<!\()1\/n(?!\))/;
-    const regex3 = /(?<! )1\/|(?<!\()1\/(?!\))/;
+    /*
+    const regex2: RegExp = /(?<! )1\/n|(?<!\()1\/n(?!\))/;
+    const regex3: RegExp = /(?<! )1\/|(?<!\()1\/(?!\))/;
     const regex4 = /\(\s*\d+\s*\)|\s+\d+\s+|\s+\d+$/;
     const regex5 = /\(\s*1\/\d+\s*\)|\s+1\/\d+\s+|\s+1\/\d+$/;
     const regex6 = /[a-zA-Z\(]+\d+$|[a-zA-Z\(]+\d+[^\d]+/;
-    ifDrawgfPoly = new Set();
-    ifDrawSpoly = new Set();
-    /*ifDrawgfPoly =  giveSetOfPolyTypes([1]);
-    ifDrawSpoly =  giveSetOfPolyTypes([0]);
-    ifDrawgfPoly = new Set([...ifDrawgfPoly].filter((x) => !ifDrawSpoly.has(x)));
+    */
+    //ifDrawgfPoly =  new Set();
+    //ifDrawSpoly =  new Set();
+    giveSetOfPolyTypes([1]);
+    giveSetOfPolyTypes([0]);
+    //giveSetOfPolyTypes([0]);
+    /*ifDrawgfPoly = new Set([...ifDrawgfPoly].filter((x) => !ifDrawSpoly.has(x)));
     ifDrawSpoly = new Set([...ifDrawSpoly].filter((x) => !ifDrawgfPoly.has(x)));*/
-    for (var i = 0; i < TRs.length; i++) {
-        TDs = TRs[i].cells;
-        for (var k = 0; k < TDs.length; k++) {
-            ueberschrift = TDs[k].innerHTML;
-            if (i == 0 && (ueberschrift.includes('eziproke') || ueberschrift.includes('gleichförm') || regex2.test(ueberschrift) || regex3.test(ueberschrift) || regex5.test(ueberschrift)) && !((ueberschrift.includes('ternpolygon') && !ueberschrift.includes('nicht-Sternpolygon')) || ueberschrift.includes(' n ') || ueberschrift.trim().slice(-2) === " n" || ueberschrift.includes('(n)')))
-                ifDrawgfPoly.add(k);
-            else if (i == 0 && (ueberschrift.includes('ternpolygon') || (regex6.test(ueberschrift.replace(/\s/g, "").trim()) && isNaN(ueberschrift.replace(/\s/g, ""))) || ueberschrift.includes(' n ') || ueberschrift.trim().slice(-2) === " n" || ueberschrift.includes('(n)') && regex4.test(ueberschrift.trim())) && !(ueberschrift.includes('1/') || ueberschrift.includes('gleichförm') || regex2.test(ueberschrift) || regex3.test(ueberschrift) || regex5.test(ueberschrift)))
-                ifDrawSpoly.add(k);
-        }
-        if (i > 4 && i < 21) {
-            if (!isNaN(TDs[1].innerHTML.trim())) {
-                i2 = parseInt(TDs[1].innerHTML.trim());
-                //window.alert(TDs[1].innerHTML);
-                sPolygon = new StarPolygon(pSize * 2, alleMonde.includes(i2) ? 'white' : 'black');
-                polyg1 = sPolygon.drawStarPolygon(i, pSize, pSize, 25);
-                starPolygons.push(sPolygon);
-                //sPolygon.animate();
-                gfPolygon = new gleichfPolygon(pSize * 2, alleMonde.includes(i2) ? 'white' : 'black');
-                polyg2 = gfPolygon.drawPolygon(i, pSize, pSize, 14);
-                for (var k = 0; k < TDs.length; k++) {
-                    if (ifDrawSpoly.has(k)) {
-                        //window.alert("yes2");
-                        TDs[k].style.backgroundImage = 'url(' + polyg1 + ')';
-                        //TDs[k].style.backgroundRepeat = 'no-repeat';
-                        TDs[k].style.backgroundPosition = 'center';
-                    }
-                    if (ifDrawgfPoly.has(k)) {
-                        //window.alert("yes2");
-                        TDs[k].style.backgroundImage = 'url(' + polyg2 + ')';
-                        //TDs[k].style.backgroundRepeat = 'no-repeat';
-                        TDs[k].style.backgroundPosition = 'center';
-                    }
-                }
-                //}
-            }
-        }
-        if (i < 5) {
-            if (!isNaN(TDs[1].innerHTML.trim())) {
-                //window.alert(TDs[1].innerHTML);
-                i2 = parseInt(TDs[1].innerHTML.trim());
-                gfPolygon = new gleichfPolygon(pSize * 2, alleMonde.includes(i2) ? 'white' : 'black');
-                polyg2 = gfPolygon.drawPolygon(i, pSize, pSize, 15);
-                for (var k = 0; k < TDs.length; k++) {
-                    if (ifDrawSpoly.has(k) || ifDrawgfPoly.has(k)) {
-                        //window.alert("yes2");
-                        TDs[k].style.backgroundImage = 'url(' + polyg2 + ')';
-                        //TDs[k].style.backgroundRepeat = 'no-repeat';
-                        TDs[k].style.backgroundPosition = 'center';
-                    }
-                }
-                //}
-            }
-        }
+    /*
+    for (var i: number = 0; i < TRs.length; i++) {
+          TDs = TRs[i].cells as HTMLCollectionOf<HTMLTableCellElement>;
+          for (var k: number = 0; k < TDs.length; k++) {
+            ueberschrift = TDs[k].innerHTML
+            if (i==0 && (ueberschrift.includes('eziproke') || ueberschrift.includes('gleichförm') || regex2.test(ueberschrift)  || regex3.test(ueberschrift) || regex5.test(ueberschrift)) && !((ueberschrift.includes('ternpolygon') && !ueberschrift.includes('nicht-Sternpolygon') ) || ueberschrift.includes(' n ') || ueberschrift.trim().slice(-2) === " n" || ueberschrift.includes('(n)'))) ifDrawgfPoly.add(k);
+            else if (i==0 && (ueberschrift.includes('ternpolygon') || (regex6.test(ueberschrift.replace(/\s/g, "").trim()) && isNaN(ueberschrift.replace(/\s/g, ""))) || ueberschrift.includes(' n ') || ueberschrift.trim().slice(-2) === " n" || ueberschrift.includes('(n)') && regex4.test(ueberschrift.trim())) && !(ueberschrift.includes('1/') || ueberschrift.includes('gleichförm') || regex2.test(ueberschrift)  || regex3.test(ueberschrift) || regex5.test(ueberschrift))) ifDrawSpoly.add(k);
+          }
+  
+  
+          if (i>4 && i<21) {
+              if (!isNaN(TDs[1].innerHTML.trim())) {
+                      i2 = parseInt(TDs[1].innerHTML.trim())
+                      //window.alert(TDs[1].innerHTML);
+                      sPolygon = new StarPolygon(pSize*2, alleMonde.includes(i2) ? 'white' : 'black');
+                      polyg1 = sPolygon.drawStarPolygon(i, pSize, pSize, 25);
+                      starPolygons.push(sPolygon);
+                      //sPolygon.animate();
+                      gfPolygon = new gleichfPolygon(pSize*2, alleMonde.includes(i2) ? 'white' : 'black');
+                      polyg2 = gfPolygon.drawPolygon(i, pSize, pSize, 14);
+                      for (var k: number = 0; k < TDs.length; k++) {
+                          if ( ifDrawSpoly.has(k)) {
+                                  //window.alert("yes2");
+                                  TDs[k].style.backgroundImage = 'url(' + polyg1 + ')';
+                                  //TDs[k].style.backgroundRepeat = 'no-repeat';
+                                  TDs[k].style.backgroundPosition = 'center';
+                          }
+                          if ( ifDrawgfPoly.has(k)) {
+                                  //window.alert("yes2");
+                                  TDs[k].style.backgroundImage = 'url(' + polyg2 + ')';
+                                  //TDs[k].style.backgroundRepeat = 'no-repeat';
+                                  TDs[k].style.backgroundPosition = 'center';
+                          }}
+  
+              //}
+  
+              }
+  
+          }
+          if (i<5) {
+              if (!isNaN(TDs[1].innerHTML.trim())) {
+                      //window.alert(TDs[1].innerHTML);
+                      i2 = parseInt(TDs[1].innerHTML.trim())
+                      gfPolygon = new gleichfPolygon(pSize*2, alleMonde.includes(i2) ? 'white' : 'black');
+                      polyg2= gfPolygon.drawPolygon(i, pSize, pSize, 15);
+                      for (var k: number = 0; k < TDs.length; k++) {
+                              if ( ifDrawSpoly.has(k) || ifDrawgfPoly.has(k)) {
+                                  //window.alert("yes2");
+                                  TDs[k].style.backgroundImage = 'url(' + polyg2 + ')';
+                                  //TDs[k].style.backgroundRepeat = 'no-repeat';
+                                  TDs[k].style.backgroundPosition = 'center';
+                          }}
+  
+              //}
+  
+              }
+  
+          }
     }
+    */
     /*sPolygon = new StarPolygon(150);
     polyg1 = sPolygon.drawStarPolygon(7, 25, 25, 25);
     polyg2 = sPolygon.drawStarPolygon(10, 75, 75, 75);
@@ -831,7 +847,6 @@ const primZahlen = [
         if (chks2[i][k] == Enums[l].toString()) enumi.add(Enums[l]);
 */
 function subFkt3(Enums, SubFkt3SubFkt2Var, SubFkt3SubFkt1Var, ifDrawPoly, chks2orSpaltenTagsOrTRs) {
-    //console.log(Enums)
     var enumi = new Set();
     for (var i = ((chks2orSpaltenTagsOrTRs === spaltenTags) ? 2 : 0); i < chks2orSpaltenTagsOrTRs.length; i++) {
         enumi = new Set();
@@ -840,6 +855,7 @@ function subFkt3(Enums, SubFkt3SubFkt2Var, SubFkt3SubFkt1Var, ifDrawPoly, chks2o
                 if (chks2orSpaltenTagsOrTRs[i][k] == Enums[l].toString())
                     enumi.add(Enums[l]);
         if (TRs === chks2orSpaltenTagsOrTRs) {
+            //console.log("ja1")
             TDs = TRs[i].cells;
             if (i > 4 && i < 21) {
                 if (!isNaN(TDs[1].innerHTML.trim())) {
