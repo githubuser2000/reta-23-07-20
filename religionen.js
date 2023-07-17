@@ -152,9 +152,10 @@ class StarPolygon {
         return this.canvas.toDataURL();
     }
 }
-function giveSetOfPolyTypes(numberList) {
-    var ifDrawPoly = new Set();
-    var Enums = new Set();
+function subFkt1_PolyTpes(Enums1) {
+    var Enums = new Set(Enums1);
+    //console.log(Array.from(Enums.values()));
+    //console.log(Array.from(Enume.values()));
     var abzug = [];
     if (Enums.has(6) && !Enums.has(0))
         abzug.push(0);
@@ -181,34 +182,28 @@ function giveSetOfPolyTypes(numberList) {
     if (Enums.has(5) && !Enums.has(4))
         abzug.push(4);
     Enume = new Set([...Enums, ...Enume]);
-    for (var i3 = 0; i3 < abzug.length; i3++)
-        Enume.delete(abzug[i3]);
+    for (var i = 0; i < abzug.length; i++)
+        Enume.delete(abzug[i]);
     Enums = Array.from(Enume);
-    for (var i3 = 2; i3 < spaltenTags.length; i3++) {
-        var enumi = new Set();
-        for (var k3 = 0; k3 < spaltenTags[i3].length; k3++)
-            for (var l3 = 0; l3 < Enums.length; l3++)
-                if (spaltenTags[i3][k3] == Enums[l3])
-                    enumi.add(Enums[l3]);
-        if ((!enumi.has(0) && !enumi.has(1) && !enumi.has(6)) ||
-            (!enumi.has(3) && !enumi.has(4) && !enumi.has(5)) ||
-            enumi.size == 0) {
-            /*var spaltenTags2: string;
-            for (var k: number = 0; k < spalten4spaltenTags[i].length; k++) {
-                spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "80%";
-                spaltenTags2 = spalten4spaltenTags[i][k].style.opacity = "0.4";
-            }*/
-        }
-        else {
-            for (var k3 = 0; k3 < spalten4spaltenTags[i3].length; k3++) {
-                ifDrawPoly.add(k3);
-            }
-        }
-    }
+    //console.log(Enums);
+    //console.log(abzug);
+    return [Enums, Enume, abzug];
+}
+function giveSetOfPolyTypes(Enums1) {
+    var ifDrawPoly = new Set();
+    var [Enums, Enume, abzug] = subFkt1_PolyTpes(Enums1);
+    subFkt3(Enums, (unimportantVar) => { }, SubFkt3SubFkt2bPtr, ifDrawPoly);
+    //subFkt3(Enums, (unimportantVar: number) => {},SubFkt3SubFkt2bPtr, ifDrawPoly);
     ifDrawPoly.delete(0);
     ifDrawPoly.delete(1);
     return ifDrawPoly;
 }
+var SubFkt3SubFkt2bPtr = function SubFkt3SubFkt2b(i, k = 0, ifDrawPoly = new Set(), spalten4spaltenTags = {}) {
+    for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
+        ifDrawPoly.add(k);
+    }
+    return ifDrawPoly;
+};
 function returnChangeButtons(number1) {
     var number = number1.toString();
     return ('<label style="white-space: nowrap;font-size: 100%;"><input type="radio" class="neuErlauben" name="zeilenDazuOrWeg' +
@@ -631,8 +626,8 @@ window.onload = function () {
     var gfPolygon;
     var polyg1;
     var polyg2;
-    var ifDrawSpoly = new Set();
-    var ifDrawgfPoly = new Set();
+    var ifDrawSpoly;
+    var ifDrawgfPoly;
     let pSize = 120;
     var i2;
     var ueberschrift;
@@ -717,86 +712,16 @@ function makeMapsOfHeadLCheckB(p1, p2, num, tags) {
     }
     if (typeof mapMapMapTags[p1] === "undefined")
         mapMapMapTags[p1] = [];
-    if (typeof mapMapMapTags[p1][p2] !== "Set")
-        mapMapMapTags[p1][p2] = new Set();
     if (typeof tags !== "Set" && tags != "null")
+        mapMapMapTags[p1][p2] = new Set();
+    if (typeof tags != "undefined" && tags != "null")
         mapMapMapTags[p1][p2] = new Set([...mapMapMapTags[p1][p2], ...tags]);
 }
 function disEnAbleChks(Enums1) {
-    var Enums = new Set(Enums1);
-    var abzug = [];
-    if (Enums.has(6) && !Enums.has(0))
-        abzug.push(0);
-    if (Enums.has(6) && !Enums.has(1))
-        abzug.push(1);
-    if (Enums.has(1) && !Enums.has(0))
-        abzug.push(0);
-    if (Enums.has(1) && !Enums.has(6))
-        abzug.push(6);
-    if (Enums.has(0) && !Enums.has(1))
-        abzug.push(1);
-    if (Enums.has(0) && !Enums.has(6))
-        abzug.push(6);
-    if (Enums.has(3) && !Enums.has(4))
-        abzug.push(4);
-    if (Enums.has(3) && !Enums.has(5))
-        abzug.push(5);
-    if (Enums.has(4) && !Enums.has(3))
-        abzug.push(3);
-    if (Enums.has(4) && !Enums.has(5))
-        abzug.push(5);
-    if (Enums.has(5) && !Enums.has(3))
-        abzug.push(3);
-    if (Enums.has(5) && !Enums.has(4))
-        abzug.push(4);
-    Enume = new Set([...Enums, ...Enume]);
-    for (var i = 0; i < abzug.length; i++)
-        Enume.delete(abzug[i]);
-    Enums = Array.from(Enume);
-    for (var i = 0; i < chks2.length; i++) {
-        var enumi = new Set();
-        for (var k = 0; k < chks2[i].length; k++)
-            for (var l = 0; l < Enums.length; l++)
-                if (chks2[i][k] == Enums[l].toString())
-                    enumi.add(Enums[l]);
-        if ((!enumi.has(0) && !enumi.has(1) && !enumi.has(6)) ||
-            (!enumi.has(3) && !enumi.has(4) && !enumi.has(5)) ||
-            enumi.size == 0) {
-            chks1[i].disabled = true;
-            chks1[i].style.fontSize = tdStyleFontSizeKl;
-            chks1[i].style.color = tdStyleColorKl;
-            chks1[i].style.whiteSpace = tdStyleWhiteSpace;
-        }
-        else {
-            chks1[i].disabled = false;
-            chks1[i].style.fontSize = tdStyleFontSize;
-            chks1[i].style.color = "";
-            chks1[i].style.whiteSpace = tdStyleWhiteSpace;
-        }
-    }
-    for (var i = 2; i < spaltenTags.length; i++) {
-        var enumi = new Set();
-        for (var k = 0; k < spaltenTags[i].length; k++)
-            for (var l = 0; l < Enums.length; l++)
-                if (spaltenTags[i][k] == Enums[l])
-                    enumi.add(Enums[l]);
-        if ((!enumi.has(0) && !enumi.has(1) && !enumi.has(6)) ||
-            (!enumi.has(3) && !enumi.has(4) && !enumi.has(5)) ||
-            enumi.size == 0) {
-            var spaltenTags2;
-            for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
-                spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "80%";
-                spaltenTags2 = spalten4spaltenTags[i][k].style.opacity = "0.4";
-            }
-        }
-        else {
-            for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
-                spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "100%";
-                spaltenTags2 = spalten4spaltenTags[i][k].style.opacity = "1.0";
-            }
-        }
-    }
-    Achks = document.getElementsByClassName("chksA");
+    var [Enums, Enume, abzug] = subFkt1_PolyTpes(Enums1);
+    subFkt3(Enums, SubFkt3SubFkt1Ptr, SubFkt3SubFkt2Ptr, new Set(), chks2);
+    subFkt3(Enums, SubFkt3SubFkt1Ptr2, SubFkt3SubFkt2Ptr2, new Set(), spaltenTags);
+    var Achks = document.getElementsByClassName("chksA");
     var Bchks;
     for (var i = 0; i < Achks.length; i++) {
         Bchks = Achks[i]
@@ -865,6 +790,63 @@ const primZahlen = [
     919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997, 1009, 1013, 1019,
     1021,
 ];
+/*
+  for (var i: number = 2; i < spaltenTags.length; i++) {
+  for (var i: number = 0; i < chks2.length; i++) {
+    var enumi: Set<number> = new Set();
+    var enumi: Set<number> = new Set();
+    for (var k: number = 0; k < spaltenTags[i].length; k++)
+    for (var k: number = 0; k < chks2[i].length; k++)
+      for (var l: number = 0; l < Enums.length; l++)
+      for (var l: number = 0; l < Enums.length; l++)
+        if (spaltenTags[i][k] == Enums[l]) enumi.add(Enums[l]);
+        if (chks2[i][k] == Enums[l].toString()) enumi.add(Enums[l]);
+*/
+function subFkt3(Enums, SubFkt3SubFkt2Var, SubFkt3SubFkt1Var, ifDrawPoly, chks2orSpaltenTags) {
+    console.log(Enums);
+    var enumi = new Set();
+    for (var i = ((chks2orSpaltenTags === spaltenTags) ? 2 : 0); i < chks2orSpaltenTags.length; i++) {
+        enumi = new Set();
+        for (var k = 0; k < chks2orSpaltenTags[i].length; k++)
+            for (var l = 0; l < Enums.length; l++)
+                if (chks2orSpaltenTags[i][k] == Enums[l].toString())
+                    enumi.add(Enums[l]);
+        if ((!enumi.has(0) && !enumi.has(1) && !enumi.has(6)) ||
+            (!enumi.has(3) && !enumi.has(4) && !enumi.has(5)) ||
+            enumi.size == 0) {
+            SubFkt3SubFkt1Var(i, k, ifDrawPoly, spalten4spaltenTags);
+        }
+        else {
+            SubFkt3SubFkt2Var(i, k, ifDrawPoly, spalten4spaltenTags);
+        }
+    }
+}
+var SubFkt3SubFkt2Ptr2 = function SubFkt3SubFkt2(i, k = 0, ifDrawPoly = new Set(), spalten4spaltenTags = {}) {
+    var spaltenTags2;
+    for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
+        spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "80%";
+        spaltenTags2 = spalten4spaltenTags[i][k].style.opacity = "0.4";
+    }
+};
+var SubFkt3SubFkt1Ptr2 = function SubFkt3SubFkt1(i, k = 0, ifDrawPoly = new Set(), spalten4spaltenTags = {}) {
+    var spaltenTags2;
+    for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
+        spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "100%";
+        spaltenTags2 = spalten4spaltenTags[i][k].style.opacity = "1.0";
+    }
+};
+var SubFkt3SubFkt1Ptr = function SubFkt3SubFkt2(i, k = 0, ifDrawPoly = new Set(), spalten4spaltenTags = {}) {
+    chks1[i].disabled = false;
+    chks1[i].style.fontSize = tdStyleFontSize;
+    chks1[i].style.color = "";
+    chks1[i].style.whiteSpace = tdStyleWhiteSpace;
+};
+var SubFkt3SubFkt2Ptr = function SubFkt3SubFkt1(i, k = 0, ifDrawPoly = new Set(), spalten4spaltenTags = {}) {
+    chks1[i].disabled = true;
+    chks1[i].style.fontSize = tdStyleFontSizeKl;
+    chks1[i].style.color = tdStyleColorKl;
+    chks1[i].style.whiteSpace = tdStyleWhiteSpace;
+};
 function makeSpacesOutOf_(text) {
     //if (text.length == 10) if (text == "Wichtigste") return "<b>Wichtigste</b>";
     //
