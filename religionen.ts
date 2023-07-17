@@ -23,6 +23,17 @@ var mapMapMap: Map<string,Map<string, number>> = new Map();
 var insertnull: string;
 var erlaubteZeilen: Set<number> = new Set();
 var starPolygons: StarPolygon[] = [];
+var tAble:  HTMLTableElement;
+var TRs: HTMLCollectionOf<HTMLTableRowElement>;
+var TDs: HTMLCollectionOf<HTMLTableCellElement>;
+var sPolygon: StarPolygon;
+var gfPolygon: gleichfPolygon;
+var polyg1: string;
+var polyg2: string;
+var ifDrawSpoly: Set<number>;
+var ifDrawgfPoly: Set<number>;
+let pSize: number = 120;
+var i2: number;
 
 function animateAllPolygons() {
     for (var i: number=0; i < starPolygons.length; i++) {
@@ -200,21 +211,47 @@ function subFkt1_PolyTpes(Enums1: Array<number> | Set<number> | HTMLCollectionOf
 
 
 
-function giveSetOfPolyTypes(Enums1: Array<number> | Set<number> | HTMLCollectionOf<any>): Set<number>  {
+function giveSetOfPolyTypes(Enums1: Array<number> | Set<number> | HTMLCollectionOf<any>): void  {
   var ifDrawPoly: Set<number> = new Set();
   var [Enums, Enume, abzug] = subFkt1_PolyTpes(Enums1);
-  subFkt3(Enums, (unimportantVar: number) => {},SubFkt3SubFkt2bPtr, ifDrawPoly);
+  subFkt3(Enums, (unimportantVar: number) => {},SubFkt3SubFkt2bPtr, ifDrawPoly, TRs);
   //subFkt3(Enums, (unimportantVar: number) => {},SubFkt3SubFkt2bPtr, ifDrawPoly);
-  ifDrawPoly.delete(0);
-  ifDrawPoly.delete(1);
-  return ifDrawPoly
+  //ifDrawPoly.delete(0);
+  //ifDrawPoly.delete(1);
+  //return ifDrawPoly
 }
 
-var SubFkt3SubFkt2bPtr: (i: number, k?: number, ifDrawPoly?:Set<number>,spalten4spaltenTags?: any) => void | Set<number> = function SubFkt3SubFkt2b(i: number, k: number=0, ifDrawPoly: Set<number> = new Set(), spalten4spaltenTags: any = {}): Set<number> {
-  for (var k: number = 0; k < spalten4spaltenTags[i].length; k++) {
-    ifDrawPoly.add(k);
-  }
-  return ifDrawPoly
+var SubFkt3SubFkt2bPtr: (i: number, k?: number, ifDrawPoly?:Set<number>,spalten4spaltenTags?: any) => void | Set<number> = function SubFkt3SubFkt2b(i: number, k: number=0, ifDrawPoly: Set<number> = new Set(), spalten4spaltenTags: any = {}): void {
+  //for (var k: number = 0; k < spalten4spaltenTags[i].length; k++) {
+    //ifDrawPoly.add(k);
+    //spalten4spaltenTags[i][k].style.fontSize = "100%";
+      //
+    if (!isNaN(TDs[1].innerHTML.trim())) {
+        if (i>4 && i<21) {
+            //for (var k: number = 0; k < TDs.length; k++) {
+            if ( ifDrawSpoly.has(k)) {
+                //window.alert("yes2");
+                TDs[k].style.backgroundImage = 'url(' + polyg1 + ')';
+                //TDs[k].style.backgroundRepeat = 'no-repeat';
+                TDs[k].style.backgroundPosition = 'center';
+            }
+            if ( ifDrawgfPoly.has(k)) {
+                //window.alert("yes2");
+                TDs[k].style.backgroundImage = 'url(' + polyg2 + ')';
+                //TDs[k].style.backgroundRepeat = 'no-repeat';
+                TDs[k].style.backgroundPosition = 'center';
+            }
+        }
+        if (i<5) {
+            //for (var k: number = 0; k < TDs.length; k++) {
+            if ( ifDrawSpoly.has(k) || ifDrawgfPoly.has(k)) {
+                //window.alert("yes2");
+                TDs[k].style.backgroundImage = 'url(' + polyg2 + ')';
+                //TDs[k].style.backgroundRepeat = 'no-repeat';
+                TDs[k].style.backgroundPosition = 'center';
+            }
+        }
+    }
 }
 
 function returnChangeButtons(number1: number): string {
@@ -239,6 +276,9 @@ function returnChangeButtons(number1: number): string {
 window.onload = function () {
   let div: HTMLDivElement = document.createElement("div");
   let div2: HTMLDivElement = document.createElement("div");
+  tAble = document.getElementById("bigtable") as HTMLTableElement;
+  TRs = tAble.rows;
+
   div.className = "headingsDiv";
   /*
     sternPolygon = 0
@@ -265,8 +305,6 @@ for (i = 0; i < tdClasses1.length; i++)
   var str3: string = "";
   var trStyles: Array<string> = [];
 
-  const tAble:  HTMLTableElement = document.getElementById("bigtable") as HTMLTableElement;
-  const TRs: HTMLCollectionOf<HTMLTableRowElement> = tAble.rows;
   for (var i: number = 0; i < TRs.length; i++) {
     trStyles.push(TRs[i].style.cssText);
     var TDs: HTMLCollectionOf<HTMLTableCellElement> = TRs[i].cells;
@@ -541,7 +579,7 @@ for (i = 0; i < tdClasses1.length; i++)
   }
   toggleChkSpalten();
 
-  var tabelle: HTMLTableElement = document.getElementById("bigtable");
+  var tabelle: HTMLTableElement = document.getElementById("bigtable") as HTMLTableElement;
   var tds: HTMLCollectionOf<HTMLTableCellElement>  = tabelle.cells;
   /*
   for (var i = 0; i < tds.length; i++) {
@@ -657,15 +695,6 @@ for (i = 0; i < tdClasses1.length; i++)
     grunp2Keys
   );*/
   //window.alert(TRs.length);
-  var TDs: HTMLCollectionOf<HTMLTableCellElement>;
-  var sPolygon: StarPolygon;
-  var gfPolygon: gleichfPolygon;
-  var polyg1: string;
-  var polyg2: string;
-  var ifDrawSpoly: Set<number>;
-  var ifDrawgfPoly: Set<number>;
-  let pSize: number = 120;
-  var i2: number;
   var ueberschrift: string;
   //const regex1: RegExp = /(?<!\() n (?!\d|\/)/;
   const regex2: RegExp = /(?<! )1\/n|(?<!\()1\/n(?!\))/;
@@ -846,15 +875,38 @@ const primZahlen: number[] = [
 */
 
 
-function subFkt3(Enums: number[], SubFkt3SubFkt2Var: (i3: number, k3?: number, ifDrawPoly?:Set<number>, spalten4spaltenTags?: any) => void | Set<number>, SubFkt3SubFkt1Var: (i3: number, k3?: number, ifDrawPoly?:Set<number>, spalten4spaltenTags?: any) => void | Set<number>, ifDrawPoly: Set<number>, chks2orSpaltenTags: any[][]) {
-  console.log(Enums)
+function subFkt3(Enums: number[], SubFkt3SubFkt2Var: (i3: number, k3?: number, ifDrawPoly?:Set<number>, spalten4spaltenTags?: any) => void | Set<number>, SubFkt3SubFkt1Var: (i3: number, k3?: number, ifDrawPoly?:Set<number>, spalten4spaltenTags?: any) => void | Set<number>, ifDrawPoly: Set<number>, chks2orSpaltenTagsOrTRs: any[][]| HTMLCollectionOf<HTMLTableRowElement>): void {
+  //console.log(Enums)
   var enumi: Set<number> = new Set();
-  for (var i: number = ((chks2orSpaltenTags === spaltenTags) ? 2 : 0); i < chks2orSpaltenTags.length; i++) {
+  for (var i: number = ((chks2orSpaltenTagsOrTRs === spaltenTags) ? 2 : 0); i < chks2orSpaltenTagsOrTRs.length; i++) {
     enumi = new Set();
-    for (var k: number = 0; k < chks2orSpaltenTags[i].length; k++)
+    for (var k: number = 0; k < chks2orSpaltenTagsOrTRs[i].length; k++)
       for (var l: number = 0; l < Enums.length; l++)
-        if (chks2orSpaltenTags[i][k] == Enums[l].toString())
+        if (chks2orSpaltenTagsOrTRs[i][k] == Enums[l].toString())
           enumi.add(Enums[l]);
+      if (TRs === chks2orSpaltenTagsOrTRs){
+        TDs = TRs[i].cells as HTMLCollectionOf<HTMLTableCellElement>;
+        if (i>4 && i<21) {
+            if (!isNaN(TDs[1].innerHTML.trim())) {
+                i2 = parseInt(TDs[1].innerHTML.trim())
+                //window.alert(TDs[1].innerHTML);
+                sPolygon = new StarPolygon(pSize*2, alleMonde.includes(i2) ? 'white' : 'black');
+                polyg1 = sPolygon.drawStarPolygon(i, pSize, pSize, 25);
+                starPolygons.push(sPolygon);
+                //sPolygon.animate();
+                gfPolygon = new gleichfPolygon(pSize*2, alleMonde.includes(i2) ? 'white' : 'black');
+                polyg2 = gfPolygon.drawPolygon(i, pSize, pSize, 14);
+            }
+        }
+        if (i<5) {
+            if (!isNaN(TDs[1].innerHTML.trim())) {
+                //window.alert(TDs[1].innerHTML);
+                i2 = parseInt(TDs[1].innerHTML.trim())
+                gfPolygon = new gleichfPolygon(pSize*2, alleMonde.includes(i2) ? 'white' : 'black');
+                polyg2= gfPolygon.drawPolygon(i, pSize, pSize, 15);
+            }
+        }
+    }
     if ((!enumi.has(0) && !enumi.has(1) && !enumi.has(6)) ||
       (!enumi.has(3) && !enumi.has(4) && !enumi.has(5)) ||
       enumi.size == 0) {
