@@ -30,8 +30,8 @@ var sPolygon: StarPolygon;
 var gfPolygon: gleichfPolygon;
 var polyg1: string;
 var polyg2: string;
-var ifDrawSpoly: Set<number>;
-var ifDrawgfPoly: Set<number>;
+//var ifDrawSpoly: Set<number>;
+//var ifDrawgfPoly: Set<number>;
 let pSize: number = 120;
 var i2: number;
 var enumi: Set<number>;
@@ -184,10 +184,8 @@ class StarPolygon {
     }
 }
 
-function subFkt1_PolyTpes(Enums1: Array<number> | Set<number> | HTMLCollectionOf<any>): [number[], Set<number>, number[]] {
+function subFkt1_PolyTpes(Enums1: Array<number> | Set<number> | HTMLCollectionOf<any>): number[] {
   var Enums: Set<number> | Array<number> = new Set(Enums1);
-  //console.log(Array.from(Enums.values()));
-  //console.log(Array.from(Enume.values()));
   var abzug: number[] = [];
   if (Enums.has(6) && !Enums.has(0)) abzug.push(0);
   if (Enums.has(6) && !Enums.has(1)) abzug.push(1);
@@ -204,25 +202,17 @@ function subFkt1_PolyTpes(Enums1: Array<number> | Set<number> | HTMLCollectionOf
   var Enume : Set<number>= new Set([...Enums, ...Enume1]);
   for (var i = 0; i < abzug.length; i++) Enume.delete(abzug[i]);
   Enums  = Array.from(Enume);
-  //console.log(Enums);
-  //console.log(abzug);
-  return [Enums, Enume, abzug];
+  return Enums;
 }
 
 
 
 function giveSetOfPolyTypes(Enums1: Array<number> | Set<number> | HTMLCollectionOf<any>): void  {
-  var ifDrawPoly: Set<number> = new Set(Enums1);
-  var [Enums, Enume, abzug] = subFkt1_PolyTpes(Enums1);
-  //console.log(spalten4spaltenTags[0][0]);
-  subFkt3(Enums, SubFkt3SubFkt2bPtr, (unimportantVar: number) => {}, ifDrawPoly, TRs);
-  //subFkt3(Enums, (unimportantVar: number) => {},SubFkt3SubFkt2bPtr, ifDrawPoly);
-  //ifDrawPoly.delete(0);
-  //ifDrawPoly.delete(1);
-  //return ifDrawPoly
+  var Enums = subFkt1_PolyTpes(Enums1);
+  subFkt3(Enums, SubFkt3SubFkt2bPtr, (unimportantVar: number) => {}, TRs);
 }
 
-var SubFkt3SubFkt2bPtr: (i: number, k?: number, ifDrawPoly?:Set<number>,spalten4spaltenTags?: any) => void | Set<number> = function SubFkt3SubFkt2b(i: number, k: number=0, ifDrawPoly: Set<number> = new Set(), spalten4spaltenTags: any = {}): void {
+var SubFkt3SubFkt2bPtr: (i: number, k?: number) => void | Set<number> = function SubFkt3SubFkt2b(i: number, k: number=0): void {
     if (!isNaN(TDs[1].innerHTML.trim())) {
         if (i>4 && i<21) {
             //for (var m: number = 0; m < spalten4spaltenTags[k].length; m++) {
@@ -793,9 +783,9 @@ function makeMapsOfHeadLCheckB(p1: string, p2: string | null, num: string | numb
 }
 
 function disEnAbleChks(Enums1: Array<number> | Set<number> | HTMLCollectionOf<any>) {
-  var [Enums, Enume, abzug] = subFkt1_PolyTpes(Enums1);
-  subFkt3(Enums, SubFkt3SubFkt1Ptr, SubFkt3SubFkt2Ptr, new Set(), chks2);
-  subFkt3(Enums, SubFkt3SubFkt1Ptr2, SubFkt3SubFkt2Ptr2, new Set(), spaltenTags);
+  var Enums = subFkt1_PolyTpes(Enums1);
+  subFkt3(Enums, SubFkt3SubFkt1Ptr, SubFkt3SubFkt2Ptr, chks2);
+  subFkt3(Enums, SubFkt3SubFkt1Ptr2, SubFkt3SubFkt2Ptr2, spaltenTags);
 
   var Achks: HTMLCollectionOf<HTMLInputElement> = document.getElementsByClassName("chksA") as HTMLCollectionOf<HTMLInputElement>;
   var Bchks: HTMLCollectionOf<HTMLInputElement>;
@@ -879,7 +869,7 @@ const primZahlen: number[] = [
 */
 
 
-function subFkt3(Enums: number[], SubFkt3SubFkt2Var: (i3: number, k3?: number, ifDrawPoly?:Set<number>, spalten4spaltenTags?: any) => void | Set<number>, SubFkt3SubFkt1Var: (i3: number, k3?: number, ifDrawPoly?:Set<number>, spalten4spaltenTags?: any) => void | Set<number>, ifDrawPoly: Set<number>, chks2orSpaltenTagsOrTRs: any[][]| HTMLCollectionOf<HTMLTableRowElement>): void {
+function subFkt3(Enums: number[], SubFkt3SubFkt2Var: (i3: number, k3?: number) => void | Set<number>, SubFkt3SubFkt1Var: (i3: number, k3?: number) => void | Set<number>, chks2orSpaltenTagsOrTRs: any[][]| HTMLCollectionOf<HTMLTableRowElement>): void {
   /*console.log(chks2orSpaltenTagsOrTRs[0].cells.length)
   console.log(TRs[0].cells.length)
   console.log(spaltenTags.length)*/
@@ -896,7 +886,6 @@ function subFkt3(Enums: number[], SubFkt3SubFkt2Var: (i3: number, k3?: number, i
                 enumi.add(Enums[l]);
     }
     if (TRs === chks2orSpaltenTagsOrTRs) {
-        //console.log("ja1")
         TDs = TRs[i].cells as HTMLCollectionOf<HTMLTableCellElement>;
         if (i>4 && i<21) {
             if (!isNaN(TDs[1].innerHTML.trim())) {
@@ -909,54 +898,50 @@ function subFkt3(Enums: number[], SubFkt3SubFkt2Var: (i3: number, k3?: number, i
                 gfPolygon = new gleichfPolygon(pSize*2, alleMonde.includes(i2) ? 'white' : 'black');
                 polyg2 = gfPolygon.drawPolygon(i, pSize, pSize, 14);
             }
-        }
-        if (i<5) {
-            if (!isNaN(TDs[1].innerHTML.trim())) {
-                //window.alert(TDs[1].innerHTML);
-                i2 = parseInt(TDs[1].innerHTML.trim())
-                gfPolygon = new gleichfPolygon(pSize*2, alleMonde.includes(i2) ? 'white' : 'black');
-                polyg2= gfPolygon.drawPolygon(i, pSize, pSize, 15);
+        } else
+            if (i<5) {
+                if (!isNaN(TDs[1].innerHTML.trim())) {
+                    //window.alert(TDs[1].innerHTML);
+                    i2 = parseInt(TDs[1].innerHTML.trim())
+                    gfPolygon = new gleichfPolygon(pSize*2, alleMonde.includes(i2) ? 'white' : 'black');
+                    polyg2= gfPolygon.drawPolygon(i, pSize, pSize, 15);
+                }
             }
-        }
     }
     if ((!enumi.has(0) && !enumi.has(1) && !enumi.has(6)) ||
       (!enumi.has(3) && !enumi.has(4) && !enumi.has(5)) ||
       enumi.size == 0) {
-      //console.log("ja")
-      SubFkt3SubFkt1Var(i,k,ifDrawPoly,spalten4spaltenTags);
+      SubFkt3SubFkt1Var(i,k);
     } else {
-      //console.log("nein")
-      SubFkt3SubFkt2Var(i,k,ifDrawPoly,spalten4spaltenTags);
+      SubFkt3SubFkt2Var(i,k);
     }
   }
 }
 
-var SubFkt3SubFkt2Ptr2: (i: number, k?: number, ifDrawPoly?:Set<number>, spalten4spaltenTags?: any) => void | Set<number> = function SubFkt3SubFkt2(i: number,k: number=0, ifDrawPoly: Set<number> = new Set(), spalten4spaltenTags: any = {}): void {
-    var spaltenTags2: string;
+var SubFkt3SubFkt2Ptr2: (i: number, k?: number) => void | Set<number> = function SubFkt3SubFkt2(i: number,k: number=0): void {
     for (var k: number = 0; k < spalten4spaltenTags[i].length; k++) {
-        spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "80%";
-        spaltenTags2 = spalten4spaltenTags[i][k].style.opacity = "0.4";
+        spalten4spaltenTags[i][k].style.fontSize = "80%";
+        spalten4spaltenTags[i][k].style.opacity = "0.4";
     }
 }
 
-var SubFkt3SubFkt1Ptr2: (i: number, k?: number, ifDrawPoly?:Set<number>, spalten4spaltenTags?: any) => void | Set<number> = function SubFkt3SubFkt1(i: number,k: number=0, ifDrawPoly: Set<number> = new Set(), spalten4spaltenTags: any = {}): void {
-    var spaltenTags2: string;
+var SubFkt3SubFkt1Ptr2: (i: number, k?: number) => void | Set<number> = function SubFkt3SubFkt1(i: number,k: number=0): void {
     for (var k: number = 0; k < spalten4spaltenTags[i].length; k++) {
-        spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "100%";
-        spaltenTags2 = spalten4spaltenTags[i][k].style.opacity = "1.0";
+        spalten4spaltenTags[i][k].style.fontSize = "100%";
+        spalten4spaltenTags[i][k].style.opacity = "1.0";
     }
 }
 
 
 
-var SubFkt3SubFkt1Ptr: (i: number, k?: number, ifDrawPoly?:Set<number>, spalten4spaltenTags?: any) => void | Set<number> = function SubFkt3SubFkt2(i: number,k: number=0, ifDrawPoly: Set<number> = new Set(), spalten4spaltenTags: any = {}): void {
+var SubFkt3SubFkt1Ptr: (i: number, k?: number) => void | Set<number> = function SubFkt3SubFkt2(i: number,k: number=0): void {
   chks1[i].disabled = false;
   chks1[i].style.fontSize = tdStyleFontSize;
   chks1[i].style.color = "";
   chks1[i].style.whiteSpace = tdStyleWhiteSpace;
 }
 
-var SubFkt3SubFkt2Ptr: (i: number, k?: number, ifDrawPoly?:Set<number>, spalten4spaltenTags?: any) => void | Set<number> = function SubFkt3SubFkt1(i: number,k: number=0, ifDrawPoly: Set<number> = new Set(), spalten4spaltenTags: any = {}): void {
+var SubFkt3SubFkt2Ptr: (i: number, k?: number) => void | Set<number> = function SubFkt3SubFkt1(i: number,k: number=0): void {
   chks1[i].disabled = true;
   chks1[i].style.fontSize = tdStyleFontSizeKl;
   chks1[i].style.color = tdStyleColorKl;

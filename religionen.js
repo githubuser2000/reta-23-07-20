@@ -40,8 +40,8 @@ var sPolygon;
 var gfPolygon;
 var polyg1;
 var polyg2;
-var ifDrawSpoly;
-var ifDrawgfPoly;
+//var ifDrawSpoly: Set<number>;
+//var ifDrawgfPoly: Set<number>;
 let pSize = 120;
 var i2;
 var enumi;
@@ -166,8 +166,6 @@ class StarPolygon {
 }
 function subFkt1_PolyTpes(Enums1) {
     var Enums = new Set(Enums1);
-    //console.log(Array.from(Enums.values()));
-    //console.log(Array.from(Enume.values()));
     var abzug = [];
     if (Enums.has(6) && !Enums.has(0))
         abzug.push(0);
@@ -197,21 +195,13 @@ function subFkt1_PolyTpes(Enums1) {
     for (var i = 0; i < abzug.length; i++)
         Enume.delete(abzug[i]);
     Enums = Array.from(Enume);
-    //console.log(Enums);
-    //console.log(abzug);
-    return [Enums, Enume, abzug];
+    return Enums;
 }
 function giveSetOfPolyTypes(Enums1) {
-    var ifDrawPoly = new Set(Enums1);
-    var [Enums, Enume, abzug] = subFkt1_PolyTpes(Enums1);
-    //console.log(spalten4spaltenTags[0][0]);
-    subFkt3(Enums, SubFkt3SubFkt2bPtr, (unimportantVar) => { }, ifDrawPoly, TRs);
-    //subFkt3(Enums, (unimportantVar: number) => {},SubFkt3SubFkt2bPtr, ifDrawPoly);
-    //ifDrawPoly.delete(0);
-    //ifDrawPoly.delete(1);
-    //return ifDrawPoly
+    var Enums = subFkt1_PolyTpes(Enums1);
+    subFkt3(Enums, SubFkt3SubFkt2bPtr, (unimportantVar) => { }, TRs);
 }
-var SubFkt3SubFkt2bPtr = function SubFkt3SubFkt2b(i, k = 0, ifDrawPoly = new Set(), spalten4spaltenTags = {}) {
+var SubFkt3SubFkt2bPtr = function SubFkt3SubFkt2b(i, k = 0) {
     if (!isNaN(TDs[1].innerHTML.trim())) {
         if (i > 4 && i < 21) {
             //for (var m: number = 0; m < spalten4spaltenTags[k].length; m++) {
@@ -759,9 +749,9 @@ function makeMapsOfHeadLCheckB(p1, p2, num, tags) {
         mapMapMapTags[p1][p2] = new Set([...mapMapMapTags[p1][p2], ...tags]);
 }
 function disEnAbleChks(Enums1) {
-    var [Enums, Enume, abzug] = subFkt1_PolyTpes(Enums1);
-    subFkt3(Enums, SubFkt3SubFkt1Ptr, SubFkt3SubFkt2Ptr, new Set(), chks2);
-    subFkt3(Enums, SubFkt3SubFkt1Ptr2, SubFkt3SubFkt2Ptr2, new Set(), spaltenTags);
+    var Enums = subFkt1_PolyTpes(Enums1);
+    subFkt3(Enums, SubFkt3SubFkt1Ptr, SubFkt3SubFkt2Ptr, chks2);
+    subFkt3(Enums, SubFkt3SubFkt1Ptr2, SubFkt3SubFkt2Ptr2, spaltenTags);
     var Achks = document.getElementsByClassName("chksA");
     var Bchks;
     for (var i = 0; i < Achks.length; i++) {
@@ -843,7 +833,7 @@ const primZahlen = [
         if (spaltenTags[i][k] == Enums[l]) enumi.add(Enums[l]);
         if (chks2[i][k] == Enums[l].toString()) enumi.add(Enums[l]);
 */
-function subFkt3(Enums, SubFkt3SubFkt2Var, SubFkt3SubFkt1Var, ifDrawPoly, chks2orSpaltenTagsOrTRs) {
+function subFkt3(Enums, SubFkt3SubFkt2Var, SubFkt3SubFkt1Var, chks2orSpaltenTagsOrTRs) {
     /*console.log(chks2orSpaltenTagsOrTRs[0].cells.length)
     console.log(TRs[0].cells.length)
     console.log(spaltenTags.length)*/
@@ -860,7 +850,6 @@ function subFkt3(Enums, SubFkt3SubFkt2Var, SubFkt3SubFkt1Var, ifDrawPoly, chks2o
                     enumi.add(Enums[l]);
         }
         if (TRs === chks2orSpaltenTagsOrTRs) {
-            //console.log("ja1")
             TDs = TRs[i].cells;
             if (i > 4 && i < 21) {
                 if (!isNaN(TDs[1].innerHTML.trim())) {
@@ -874,7 +863,7 @@ function subFkt3(Enums, SubFkt3SubFkt2Var, SubFkt3SubFkt1Var, ifDrawPoly, chks2o
                     polyg2 = gfPolygon.drawPolygon(i, pSize, pSize, 14);
                 }
             }
-            if (i < 5) {
+            else if (i < 5) {
                 if (!isNaN(TDs[1].innerHTML.trim())) {
                     //window.alert(TDs[1].innerHTML);
                     i2 = parseInt(TDs[1].innerHTML.trim());
@@ -886,36 +875,32 @@ function subFkt3(Enums, SubFkt3SubFkt2Var, SubFkt3SubFkt1Var, ifDrawPoly, chks2o
         if ((!enumi.has(0) && !enumi.has(1) && !enumi.has(6)) ||
             (!enumi.has(3) && !enumi.has(4) && !enumi.has(5)) ||
             enumi.size == 0) {
-            //console.log("ja")
-            SubFkt3SubFkt1Var(i, k, ifDrawPoly, spalten4spaltenTags);
+            SubFkt3SubFkt1Var(i, k);
         }
         else {
-            //console.log("nein")
-            SubFkt3SubFkt2Var(i, k, ifDrawPoly, spalten4spaltenTags);
+            SubFkt3SubFkt2Var(i, k);
         }
     }
 }
-var SubFkt3SubFkt2Ptr2 = function SubFkt3SubFkt2(i, k = 0, ifDrawPoly = new Set(), spalten4spaltenTags = {}) {
-    var spaltenTags2;
+var SubFkt3SubFkt2Ptr2 = function SubFkt3SubFkt2(i, k = 0) {
     for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
-        spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "80%";
-        spaltenTags2 = spalten4spaltenTags[i][k].style.opacity = "0.4";
+        spalten4spaltenTags[i][k].style.fontSize = "80%";
+        spalten4spaltenTags[i][k].style.opacity = "0.4";
     }
 };
-var SubFkt3SubFkt1Ptr2 = function SubFkt3SubFkt1(i, k = 0, ifDrawPoly = new Set(), spalten4spaltenTags = {}) {
-    var spaltenTags2;
+var SubFkt3SubFkt1Ptr2 = function SubFkt3SubFkt1(i, k = 0) {
     for (var k = 0; k < spalten4spaltenTags[i].length; k++) {
-        spaltenTags2 = spalten4spaltenTags[i][k].style.fontSize = "100%";
-        spaltenTags2 = spalten4spaltenTags[i][k].style.opacity = "1.0";
+        spalten4spaltenTags[i][k].style.fontSize = "100%";
+        spalten4spaltenTags[i][k].style.opacity = "1.0";
     }
 };
-var SubFkt3SubFkt1Ptr = function SubFkt3SubFkt2(i, k = 0, ifDrawPoly = new Set(), spalten4spaltenTags = {}) {
+var SubFkt3SubFkt1Ptr = function SubFkt3SubFkt2(i, k = 0) {
     chks1[i].disabled = false;
     chks1[i].style.fontSize = tdStyleFontSize;
     chks1[i].style.color = "";
     chks1[i].style.whiteSpace = tdStyleWhiteSpace;
 };
-var SubFkt3SubFkt2Ptr = function SubFkt3SubFkt1(i, k = 0, ifDrawPoly = new Set(), spalten4spaltenTags = {}) {
+var SubFkt3SubFkt2Ptr = function SubFkt3SubFkt1(i, k = 0) {
     chks1[i].disabled = true;
     chks1[i].style.fontSize = tdStyleFontSizeKl;
     chks1[i].style.color = tdStyleColorKl;
