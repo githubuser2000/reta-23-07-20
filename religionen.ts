@@ -153,7 +153,7 @@ class StarPolygon {
         // Nächsten Frame anfordern
         requestAnimationFrame(this.animate);
     }
-    drawStarPolygon(n: number, centerX: number, centerY: number, radius: number, startAngle: number = 0) {
+    drawStarPolygon(n: number, centerX: number, centerY: number, radius: number, startAngle?: number = 0, blurVar?: number = 1) {
         if (n < 5) {
             console.log("Cannot draw a star polygon with less than 5 points");
             return this.canvas.toDataURL();
@@ -178,7 +178,7 @@ class StarPolygon {
             this.context.lineTo(x2, y2);
         }
 
-        this.context.filter = "blur(1px)";
+        this.context.filter = "blur("+blurVar.toString()+"px)";
         this.context.stroke();
         return this.canvas.toDataURL();
     }
@@ -762,10 +762,12 @@ for (i = 0; i < tdClasses1.length; i++)
         }
   }
   */
-  /*sPolygon = new StarPolygon(150);
-  polyg1 = sPolygon.drawStarPolygon(7, 25, 25, 25);
-  polyg2 = sPolygon.drawStarPolygon(10, 75, 75, 75);
-  document.body.style.backgroundImage = 'url(' + polyg2 + ')';*/
+  sPolygon = new StarPolygon(250, 'brown');
+  polyg1 = sPolygon.drawStarPolygon(7, 125, 125, 36, Math.PI/14, 3);
+  polyg2 = sPolygon.drawStarPolygon(10, 125, 125, 130, Math.PI/2, 5);
+  polyg2 = sPolygon.drawStarPolygon(10, 125, 125, 130, Math.PI/2, 5);
+  document.body.style.backgroundAttachment = "fixed"
+  document.body.style.backgroundImage = 'url(' + polyg2 + ')';
 };
 
 function makeMapsOfHeadLCheckB(p1: string, p2: string | null, num: string | number, tags: any): void {
