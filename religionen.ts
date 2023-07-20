@@ -34,7 +34,7 @@ var ifDrawSpoly: Set<number>;
 var ifDrawgfPoly: Set<number>;
 let pSize: number = 120;
 var i2: number;
-
+var enumi: Set<number>;
 function animateAllPolygons() {
     for (var i: number=0; i < starPolygons.length; i++) {
         starPolygons[i].animate();
@@ -214,7 +214,8 @@ function subFkt1_PolyTpes(Enums1: Array<number> | Set<number> | HTMLCollectionOf
 function giveSetOfPolyTypes(Enums1: Array<number> | Set<number> | HTMLCollectionOf<any>): void  {
   var ifDrawPoly: Set<number> = new Set(Enums1);
   var [Enums, Enume, abzug] = subFkt1_PolyTpes(Enums1);
-  subFkt3(Enums, (unimportantVar: number) => {}, SubFkt3SubFkt2bPtr, ifDrawPoly, TRs);
+  //console.log(spalten4spaltenTags[0][0]);
+  subFkt3(Enums, SubFkt3SubFkt2bPtr, (unimportantVar: number) => {}, ifDrawPoly, TRs);
   //subFkt3(Enums, (unimportantVar: number) => {},SubFkt3SubFkt2bPtr, ifDrawPoly);
   //ifDrawPoly.delete(0);
   //ifDrawPoly.delete(1);
@@ -230,31 +231,37 @@ var SubFkt3SubFkt2bPtr: (i: number, k?: number, ifDrawPoly?:Set<number>,spalten4
     //console.log([...ifDrawPoly])
     //
     //TDs = TRs[i].cells as HTMLCollectionOf<HTMLTableCellElement>;
-    //console.log(TDs[k].innerHTML)
+    //console.log([...enumi])
+    //
+    //for (var k: number = 0; k < spalten4spaltenTags[i].length; k++) {
+      //  spalten4spaltenTags[i][k].style.fontSize = "80%";
     if (!isNaN(TDs[1].innerHTML.trim())) {
         if (i>4 && i<21) {
+            //for (var m: number = 0; m < spalten4spaltenTags[k].length; m++) {
             for (var m: number = 0; m < TDs.length; m++) {
-                if ( ifDrawPoly.has(0)) {
+                if (spaltenTags[m].includes('0')) {
                     //window.alert("yes2");
-                    TDs[m].style.backgroundImage = 'url(' + polyg1 + ')';
+                    //TDs[m].style.backgroundImage = 'url(' + polyg1 + ')';
+                    spalten4spaltenTags[m][i].style.backgroundImage = 'url(' + polyg1 + ')';
                     //TDs[m].style.backgroundRepeat = 'no-repeat';
-                    TDs[m].style.backgroundPosition = 'center';
+                    //TDs[m].style.backgroundPosition = 'center';
+                    spalten4spaltenTags[m][i].style.backgroundPosition = 'center';
                 }
-                if ( ifDrawPoly.has(1)) {
+                if (spaltenTags[m].includes('1')) {
                     //window.alert("yes2");
-                    TDs[m].style.backgroundImage = 'url(' + polyg2 + ')';
+                    spalten4spaltenTags[m][i].style.backgroundImage = 'url(' + polyg2 + ')';
                     //TDs[m].style.backgroundRepeat = 'no-repeat';
-                    TDs[m].style.backgroundPosition = 'center';
+                    spalten4spaltenTags[m][i].style.backgroundPosition = 'center';
                 }
             }
         }
         if (i<5) {
             for (var m: number = 0; m < TDs.length; m++) {
-                if ( ifDrawPoly.has(0) || ifDrawPoly.has(1)) {
+                if (spaltenTags[m].includes('1') || spaltenTags[m].includes('0')) {
                     //window.alert("yes2");
-                    TDs[m].style.backgroundImage = 'url(' + polyg2 + ')';
+                    spalten4spaltenTags[m][i].style.backgroundImage = 'url(' + polyg2 + ')';
                     //TDs[m].style.backgroundRepeat = 'no-repeat';
-                    TDs[m].style.backgroundPosition = 'center';
+                    spalten4spaltenTags[m][i].style.backgroundPosition = 'center';
                 }
             }
         }
@@ -712,7 +719,7 @@ for (i = 0; i < tdClasses1.length; i++)
   */
   //ifDrawgfPoly =  new Set();
   //ifDrawSpoly =  new Set();
-  giveSetOfPolyTypes([1]);
+  //giveSetOfPolyTypes([1]);
   giveSetOfPolyTypes([0]);
   //giveSetOfPolyTypes([0]);
   /*ifDrawgfPoly = new Set([...ifDrawgfPoly].filter((x) => !ifDrawSpoly.has(x)));
@@ -885,14 +892,23 @@ const primZahlen: number[] = [
 
 
 function subFkt3(Enums: number[], SubFkt3SubFkt2Var: (i3: number, k3?: number, ifDrawPoly?:Set<number>, spalten4spaltenTags?: any) => void | Set<number>, SubFkt3SubFkt1Var: (i3: number, k3?: number, ifDrawPoly?:Set<number>, spalten4spaltenTags?: any) => void | Set<number>, ifDrawPoly: Set<number>, chks2orSpaltenTagsOrTRs: any[][]| HTMLCollectionOf<HTMLTableRowElement>): void {
-  var enumi: Set<number> = new Set();
+  enumi = new Set();
+  /*console.log(chks2orSpaltenTagsOrTRs[0].cells.length)
+  console.log(TRs[0].cells.length)
+  console.log(spaltenTags.length)*/
   for (var i: number = ((chks2orSpaltenTagsOrTRs === spaltenTags) ? 2 : 0); i < chks2orSpaltenTagsOrTRs.length; i++) {
     enumi = new Set();
-    for (var k: number = 0; k < chks2orSpaltenTagsOrTRs[i].length; k++)
+    for (var k: number = 0; k < ((TRs === chks2orSpaltenTagsOrTRs) ? chks2orSpaltenTagsOrTRs[i].cells.length : chks2orSpaltenTagsOrTRs[i].length); k++) {
       for (var l: number = 0; l < Enums.length; l++)
-        if (chks2orSpaltenTagsOrTRs[i][k] == Enums[l].toString())
-          enumi.add(Enums[l]);
-      if (TRs === chks2orSpaltenTagsOrTRs){
+        if (chks2orSpaltenTagsOrTRs === TRs) {
+            if (spaltenTags[i][k] == Enums[l].toString()) {
+                enumi.add(Enums[l]);
+            }
+        } else
+            if (chks2orSpaltenTagsOrTRs[i][k] == Enums[l].toString())
+                enumi.add(Enums[l]);
+    }
+    if (TRs === chks2orSpaltenTagsOrTRs) {
         //console.log("ja1")
         TDs = TRs[i].cells as HTMLCollectionOf<HTMLTableCellElement>;
         if (i>4 && i<21) {
@@ -919,8 +935,10 @@ function subFkt3(Enums: number[], SubFkt3SubFkt2Var: (i3: number, k3?: number, i
     if ((!enumi.has(0) && !enumi.has(1) && !enumi.has(6)) ||
       (!enumi.has(3) && !enumi.has(4) && !enumi.has(5)) ||
       enumi.size == 0) {
+      console.log("ja")
       SubFkt3SubFkt1Var(i,k,ifDrawPoly,spalten4spaltenTags);
     } else {
+      console.log("nein")
       SubFkt3SubFkt2Var(i,k,ifDrawPoly,spalten4spaltenTags);
     }
   }

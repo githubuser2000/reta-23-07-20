@@ -1,0 +1,18 @@
+cloc --exclude-dir=inspiration,.git,include,bin,build,__pycache_,reta.egg-info,lib --exclude-lang='PO File',CSV,JSON,Markdown,JavaScript .
+     100 files     143 text files.
+classified 143 filesDuplicate file check 143 files (106 known unique)Unique:      100 files                                               120 unique files.
+Counting:  100     101 files ignored.
+
+github.com/AlDanial/cloc v 1.90  T=0.37 s (119.9 files/s, 63595.7 lines/s)
+--------------------------------------------------------------------------------
+Language                      files          blank        comment           code
+--------------------------------------------------------------------------------
+Python                           21           1146           1837          14950
+TypeScript                        1            144            443           1635
+Bourne Shell                     17             23             48            277
+Jupyter Notebook                  2              0           2669            138
+TOML                              1              2              0             17
+Bourne Again Shell                2              0              0             14
+--------------------------------------------------------------------------------
+SUM:                             44           1315           4997          17031
+--------------------------------------------------------------------------------
