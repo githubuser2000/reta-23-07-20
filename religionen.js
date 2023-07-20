@@ -206,7 +206,7 @@ var SubFkt3SubFkt2bPtr = function SubFkt3SubFkt2b(i, k = 0) {
         if (i > 4 && i < 21) {
             //for (var m: number = 0; m < spalten4spaltenTags[k].length; m++) {
             for (var m = 0; m < TDs.length; m++) {
-                if (spaltenTags[m].includes('0')) {
+                if (spaltenTags[m].includes('0') || !spaltenTags[m].includes('1')) {
                     //window.alert("yes2");
                     //TDs[m].style.backgroundImage = 'url(' + polyg1 + ')';
                     spalten4spaltenTags[m][i].style.backgroundImage = 'url(' + polyg1 + ')';
@@ -214,7 +214,7 @@ var SubFkt3SubFkt2bPtr = function SubFkt3SubFkt2b(i, k = 0) {
                     //TDs[m].style.backgroundPosition = 'center';
                     spalten4spaltenTags[m][i].style.backgroundPosition = 'center';
                 }
-                if (spaltenTags[m].includes('1')) {
+                if (spaltenTags[m].includes('1') && !spaltenTags[m].includes('0')) {
                     //window.alert("yes2");
                     spalten4spaltenTags[m][i].style.backgroundImage = 'url(' + polyg2 + ')';
                     //TDs[m].style.backgroundRepeat = 'no-repeat';
@@ -224,7 +224,7 @@ var SubFkt3SubFkt2bPtr = function SubFkt3SubFkt2b(i, k = 0) {
         }
         if (i < 5) {
             for (var m = 0; m < TDs.length; m++) {
-                if (spaltenTags[m].includes('1') || spaltenTags[m].includes('0')) {
+                if (true) {
                     //window.alert("yes2");
                     spalten4spaltenTags[m][i].style.backgroundImage = 'url(' + polyg2 + ')';
                     //TDs[m].style.backgroundRepeat = 'no-repeat';
@@ -873,6 +873,8 @@ function subFkt3(Enums, SubFkt3SubFkt2Var, SubFkt3SubFkt1Var, chks2orSpaltenTags
                     polyg2 = gfPolygon.drawPolygon(i, pSize, pSize, 15);
                 }
             }
+            if (i == 1)
+                SubFkt3SubFkt2Var(i, k);
         }
         if ((!enumi.has(0) && !enumi.has(1) && !enumi.has(6)) ||
             (!enumi.has(3) && !enumi.has(4) && !enumi.has(5)) ||
