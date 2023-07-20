@@ -11,12 +11,12 @@ var tdStyleWhiteSpace: string = "nowrap";
 var tdStyleFontSize: string = "100%";
 var tdStyleFontSizeKl:string = "80%";
 var tdStyleColorKl:string = "grey";
-var Enume : Set<number> = new Set([0, 1, 3, 4, 5, 6]);
+var Enume1 : Set<number> = new Set([0, 1, 3, 4, 5, 6]);
 var mapMapMapTags: Map<number, string[]> = new Map<number, string[]>();
 var chks1: HTMLCollectionOf<HTMLInputElement>;
 var chks2: string[][];
-var spaltenTags: Array<Array<any> > = [];
-var spalten4spaltenTags: Map<number, HTMLTableCellElement[]> = new Map();
+var spaltenTags: Array<Array<any>>;
+var spalten4spaltenTags: Map<number, HTMLTableCellElement[]>;
 var Achks: HTMLCollectionOf<HTMLInputElement>;
 let tdClasses: HTMLCollectionOf<HTMLTableCellElement> = document.getElementsByClassName("z_0") as HTMLCollectionOf<HTMLTableCellElement>;
 var mapMapMap: Map<string,Map<string, number>> = new Map();
@@ -201,7 +201,7 @@ function subFkt1_PolyTpes(Enums1: Array<number> | Set<number> | HTMLCollectionOf
   if (Enums.has(4) && !Enums.has(5)) abzug.push(5);
   if (Enums.has(5) && !Enums.has(3)) abzug.push(3);
   if (Enums.has(5) && !Enums.has(4)) abzug.push(4);
-  Enume = new Set([...Enums, ...Enume]);
+  var Enume : Set<number>= new Set([...Enums, ...Enume1]);
   for (var i = 0; i < abzug.length; i++) Enume.delete(abzug[i]);
   Enums  = Array.from(Enume);
   //console.log(Enums);
@@ -223,18 +223,6 @@ function giveSetOfPolyTypes(Enums1: Array<number> | Set<number> | HTMLCollection
 }
 
 var SubFkt3SubFkt2bPtr: (i: number, k?: number, ifDrawPoly?:Set<number>,spalten4spaltenTags?: any) => void | Set<number> = function SubFkt3SubFkt2b(i: number, k: number=0, ifDrawPoly: Set<number> = new Set(), spalten4spaltenTags: any = {}): void {
-  //for (var k: number = 0; k < spalten4spaltenTags[i].length; k++) {
-    //ifDrawPoly.add(k);
-    //spalten4spaltenTags[i][k].style.fontSize = "100%";
-      //
-    //
-    //console.log([...ifDrawPoly])
-    //
-    //TDs = TRs[i].cells as HTMLCollectionOf<HTMLTableCellElement>;
-    //console.log([...enumi])
-    //
-    //for (var k: number = 0; k < spalten4spaltenTags[i].length; k++) {
-      //  spalten4spaltenTags[i][k].style.fontSize = "80%";
     if (!isNaN(TDs[1].innerHTML.trim())) {
         if (i>4 && i<21) {
             //for (var m: number = 0; m < spalten4spaltenTags[k].length; m++) {
@@ -318,6 +306,7 @@ for (i = 0; i < tdClasses1.length; i++)
   var str3: string = "";
   var trStyles: Array<string> = [];
 
+  spalten4spaltenTags = new Map();
   for (var i: number = 0; i < TRs.length; i++) {
     trStyles.push(TRs[i].style.cssText);
     var TDs: HTMLCollectionOf<HTMLTableCellElement> = TRs[i].cells;
@@ -336,7 +325,7 @@ for (i = 0; i < tdClasses1.length; i++)
   console.log("Checksum:", result);
   })();*/
 
-
+  spaltenTags = []
   for (var i: number = 0; i < tdClasses.length; i++) {
     var name: string = tdClasses[i].className;
     var num1: RegExpMatchArray | null   = name.match(/r_(\d+)/);
@@ -719,9 +708,8 @@ for (i = 0; i < tdClasses1.length; i++)
   */
   //ifDrawgfPoly =  new Set();
   //ifDrawSpoly =  new Set();
-  //giveSetOfPolyTypes([1]);
+  giveSetOfPolyTypes([1]);
   giveSetOfPolyTypes([0]);
-  //giveSetOfPolyTypes([0]);
   /*ifDrawgfPoly = new Set([...ifDrawgfPoly].filter((x) => !ifDrawSpoly.has(x)));
   ifDrawSpoly = new Set([...ifDrawSpoly].filter((x) => !ifDrawgfPoly.has(x)));*/
   /*
@@ -892,7 +880,6 @@ const primZahlen: number[] = [
 
 
 function subFkt3(Enums: number[], SubFkt3SubFkt2Var: (i3: number, k3?: number, ifDrawPoly?:Set<number>, spalten4spaltenTags?: any) => void | Set<number>, SubFkt3SubFkt1Var: (i3: number, k3?: number, ifDrawPoly?:Set<number>, spalten4spaltenTags?: any) => void | Set<number>, ifDrawPoly: Set<number>, chks2orSpaltenTagsOrTRs: any[][]| HTMLCollectionOf<HTMLTableRowElement>): void {
-  enumi = new Set();
   /*console.log(chks2orSpaltenTagsOrTRs[0].cells.length)
   console.log(TRs[0].cells.length)
   console.log(spaltenTags.length)*/
@@ -935,10 +922,10 @@ function subFkt3(Enums: number[], SubFkt3SubFkt2Var: (i3: number, k3?: number, i
     if ((!enumi.has(0) && !enumi.has(1) && !enumi.has(6)) ||
       (!enumi.has(3) && !enumi.has(4) && !enumi.has(5)) ||
       enumi.size == 0) {
-      console.log("ja")
+      //console.log("ja")
       SubFkt3SubFkt1Var(i,k,ifDrawPoly,spalten4spaltenTags);
     } else {
-      console.log("nein")
+      //console.log("nein")
       SubFkt3SubFkt2Var(i,k,ifDrawPoly,spalten4spaltenTags);
     }
   }
